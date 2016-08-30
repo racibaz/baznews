@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Validator;
 
 class Country extends Model
 {
+    protected $primaryKey = 'country_id';
+
+    protected $table = 'countries';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,12 +23,12 @@ class Country extends Model
 
     public function cities()
     {
-        return $this->hasMany('App\City');
+        return $this->hasMany('App\Models\City');
     }
 
     public function users()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\Models\User');
     }
 
     public static function validate($input) {

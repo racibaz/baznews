@@ -20,12 +20,12 @@ class City extends Model
 
     public function country()
     {
-        return $this->belongsTo('App\Country','country_id');
+        return $this->belongsTo('App\Models\Country','country_id');
     }
 
     public function users()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\Models\User');
     }
 
     public static function validate($input) {

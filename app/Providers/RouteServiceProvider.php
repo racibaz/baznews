@@ -26,6 +26,17 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        Route::model('country', 'App\Models\Country');
+        Route::model('city', 'App\Models\City');
+        Route::model('user', 'App\Models\User');
+        Route::model('role', 'App\Models\Role');
+        Route::model('permission', 'App\Models\Permission');
+        Route::model('group', 'App\Models\Group');
+        Route::model('language', 'App\Models\Language');
+
+
+
     }
 
     /**

@@ -1,4 +1,5 @@
-<?php
+<?php namespace App\Repositories;
+
 
 /**
  * Created by PhpStorm.
@@ -6,7 +7,15 @@
  * Date: 30.8.2016
  * Time: 12:53
  */
-class CountryRepository
-{
+
+
+use Bosnadev\Repositories\Contracts\RepositoryInterface;
+use Bosnadev\Repositories\Eloquent\Repository;
+
+class CountryRepository extends Repository {
+
+    public function model() {
+        return 'App\Models\Country';
+    }
 
 }

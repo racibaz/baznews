@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a843f3ccc9cd581c60ae74571d05cf33",
-    "content-hash": "fd53cd988ef02ba8ec52d9b8125cf7ef",
+    "hash": "9809072d00e78b3676e29d9db391bf5b",
+    "content-hash": "7ba4a0bc1a2147c6115744005282506a",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -60,6 +60,112 @@
                 "webprofiler"
             ],
             "time": "2016-07-29 15:00:36"
+        },
+        {
+            "name": "bosnadev/repositories",
+            "version": "0.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bosnadev/repository.git",
+                "reference": "3a289a137e27ac6b795852a0d72c509a51b70a26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bosnadev/repository/zipball/3a289a137e27ac6b795852a0d72c509a51b70a26",
+                "reference": "3a289a137e27ac6b795852a0d72c509a51b70a26",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^5.2",
+                "illuminate/database": "^5.2",
+                "illuminate/filesystem": "^5.2",
+                "illuminate/support": "^5.2",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master@dev"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bosnadev\\": "src/Bosnadev/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Paauw",
+                    "email": "maartenpaauw@gmail.com"
+                },
+                {
+                    "name": "Mirza Pasic",
+                    "email": "mirza@bosnadev.com"
+                }
+            ],
+            "description": "Laravel Repositories",
+            "homepage": "https://bosnadev.com",
+            "keywords": [
+                "database",
+                "eloquent",
+                "laravel",
+                "repositories",
+                "repository"
+            ],
+            "time": "2016-08-19 13:21:55"
+        },
+        {
+            "name": "caffeinated/themes",
+            "version": "v3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caffeinated/themes.git",
+                "reference": "69f0211ac18756bececdab73d342204a607a5806"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caffeinated/themes/zipball/69f0211ac18756bececdab73d342204a607a5806",
+                "reference": "69f0211ac18756bececdab73d342204a607a5806",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "5.3.*",
+                "illuminate/filesystem": "5.3.*",
+                "illuminate/support": "5.3.*",
+                "illuminate/view": "5.3.*",
+                "php": ">=5.6.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Caffeinated\\Themes\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shea Lewis",
+                    "email": "shea.lewis89@gmail.com"
+                }
+            ],
+            "description": "Laravel 5 Themes",
+            "keywords": [
+                "blade",
+                "caffeinated",
+                "laravel",
+                "themes"
+            ],
+            "time": "2016-08-23 23:20:54"
         },
         {
             "name": "classpreloader/classpreloader",

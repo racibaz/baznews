@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Group;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -12,37 +13,37 @@ class GroupsTableSeeder extends Seeder
      */
     public function run()
     {
-        $group1 = \App\Group::create([
+        $group1 = Group::create([
             'name'          => 'Üst Yönetim',
             'description'   => 'Site Yöneticileri',
             'is_active'  => 1,
         ]);
 
-        $group2 = \App\Group::create([
+        $group2 = Group::create([
             'name'          => 'Yurt Müdürleri',
             'description'   => 'Yurt Yöneticileri',
             'is_active'  => 1,
         ]);
 
-        $group3 = \App\Group::create([
+        $group3 = Group::create([
             'name'          => 'Birim  Yöneticileri',
             'description'   => 'Birim Yöneticileri',
             'is_active'  => 1,
         ]);
 
-        $group4 = \App\Group::create([
+        $group4 = Group::create([
             'name'          => 'Ev Sorumlusu',
             'description'   => 'Ev Sorumlusu',
             'is_active'  => 1,
         ]);
 
-        $group5 = \App\Group::create([
+        $group5 = Group::create([
             'name'          => 'Personel',
             'description'   => 'Personel',
             'is_active'  => 1,
         ]);
 
-        $group6 = \App\Group::create([
+        $group6 = Group::create([
             'name'          => 'Öğrenci',
             'description'   => 'Öğrenci',
             'is_active'  => 1,

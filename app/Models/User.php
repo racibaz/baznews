@@ -54,13 +54,13 @@ class User extends Authenticatable
     public function groups()
     {
         //return $this->belongsToMany('App\Group');
-        return $this->belongsToMany('App\Group','group_user','user_id', 'group_id');
+        return $this->belongsToMany('App\Models\Group','group_user','user_id', 'group_id');
     }
 
     public function roles()
     {
         //return $this->belongsToMany('App\Role');
-        return $this->belongsToMany('App\Role','role_user','user_id', 'role_id');
+        return $this->belongsToMany('App\Models\Role','role_user','user_id', 'role_id');
     }
 
 
@@ -75,12 +75,12 @@ class User extends Authenticatable
 
     public function city()
     {
-        return $this->belongsTo('App\City');
+        return $this->belongsTo('App\Models\City');
     }
 
     public function country()
     {
-        return $this->belongsTo('App\Country');
+        return $this->belongsTo('App\Models\Country');
     }
 
 //    public function userable()
@@ -90,7 +90,7 @@ class User extends Authenticatable
 
     public function attachments()
     {
-        return $this->morphMany('App\Attachment', 'attachmentable');
+        return $this->morphMany('App\Models\Attachment', 'attachmentable');
     }
 
 

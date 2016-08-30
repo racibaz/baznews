@@ -12,10 +12,10 @@
 use Bosnadev\Repositories\Contracts\RepositoryInterface;
 use Bosnadev\Repositories\Eloquent\Repository;
 
-class CityRepository extends Repository {
+class RoleRepository extends Repository {
 
     public function model() {
-        return 'App\Models\City';
+        return 'App\Models\Role';
     }
 
 }

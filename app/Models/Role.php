@@ -33,19 +33,19 @@ class Role extends EntrustRole
     public function groups()
     {
         //return $this->belongsToMany('App\Group');
-        return $this->belongsToMany('App\Group','group_role','role_id', 'group_id');
+        return $this->belongsToMany('App\Models\Group','group_role','role_id', 'group_id');
     }
 
     public function users()
     {
-        return $this->belongsToMany('App\User','role_user','role_id', 'user_id');
+        return $this->belongsToMany('App\Models\User','role_user','role_id', 'user_id');
         //return $this->belongsToMany('App\Products', 'products_shops','id_role', 'id_person');
     }
 
     public function permissions()
     {
         //return $this->belongsToMany('App\Permission');
-        return $this->belongsToMany('App\Permission','permission_role','role_id', 'permission_id');
+        return $this->belongsToMany('App\Models\Permission','permission_role','role_id', 'permission_id');
     }
 
 

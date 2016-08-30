@@ -15,12 +15,12 @@ class Group extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\Models\User');
     }
 
     public function roles()
     {
-        return $this->belongsToMany('App\Role');
+        return $this->belongsToMany('App\Models\Role');
     }
 
     public static function validate($input) {

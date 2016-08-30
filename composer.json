@@ -9,7 +9,9 @@
         "laravel/framework": "5.3.*",
         "barryvdh/laravel-debugbar": "^2.2",
         "zizaco/entrust": "5.2.x-dev",
-        "laravelcollective/html": "5.3.*"
+        "laravelcollective/html": "5.3.*",
+        "bosnadev/repositories": " 0.*",
+        "caffeinated/themes": "^3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

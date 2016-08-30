@@ -181,6 +181,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Caffeinated\Themes\ThemesServiceProvider::class,
 
 
     ],
@@ -234,6 +235,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Theme' => Caffeinated\Themes\Facades\Theme::class,
     ],
 
 ];
