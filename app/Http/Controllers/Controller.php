@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -10,4 +11,17 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+
+    /**
+     * Controller constructor.
+     *
+     * Set Caffeinated\Themes Plugin theme name
+     *
+     */
+    public function __construct()
+    {
+        Theme::setActive('default-theme');
+    }
+
 }

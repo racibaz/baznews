@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -32,13 +33,11 @@ class UserController extends Controller
     public function index()
     {
         $records = User::all();
+//        return view($this->getViewName(__FUNCTION__))
+//            ->with('records', $records);
 
-        dd($records);
 
-        dd($this->getViewName(__FUNCTION__));
-
-        return view($this->getViewName(__FUNCTION__))
-            ->with('records', $records);
+        return Theme::view('welcome', compact('records'));
     }
 
 

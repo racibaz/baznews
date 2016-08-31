@@ -236,6 +236,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Theme' => Caffeinated\Themes\Facades\Theme::class,
+
+        ////TODO  THEME İN COMPONET GİBİ BİRŞEY VARDI ONA BAKILACAK
     ],
 
 ];
