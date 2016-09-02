@@ -19,10 +19,10 @@ class UserController extends Controller
     private $redirectViewName = 'backend';
     private $redirectRouteName = 'admin';
 
-//    public function __construct(CityRepositoryInterface $model)
-//    {
-//        $this->model= $model;
-//    }
+    public function __construct(User $model)
+    {
+        $this->model= $model;
+    }
 
     public function getViewName($methodName)
     {
@@ -32,20 +32,15 @@ class UserController extends Controller
 
     public function index()
     {
-        $records = User::all();
-//        return view($this->getViewName(__FUNCTION__))
-//            ->with('records', $records);
-
-
-        return Theme::view('welcome', compact('records'));
+        $records = $this->model->all();
+        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
     }
 
 
     public function create()
     {
         $record = new User();
-        return view($this->getViewName(__FUNCTION__))
-            ->with('record', $record);
+        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
     }
 
 
@@ -57,16 +52,13 @@ class UserController extends Controller
 
     public function show(User $record)
     {
-
-        return view($this->getViewName(__FUNCTION__))
-            ->with('record', $record);
+        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
     }
 
 
     public function edit(User $record)
     {
-        return view($this->getViewName(__FUNCTION__))
-            ->with('record', $record);
+        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
     }
 
 
@@ -79,7 +71,7 @@ class UserController extends Controller
     public function destroy(User $record)
     {
 
-        $record->delete();
+        $this->model->delete($record->id);
 
 //        $this->model->delete($record->id);
 //        Session::flash('flash_message', trans('common.message_model_deleted'));
@@ -104,12 +96,10 @@ class UserController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $record->update($input);
-
+                $result = $this->model->update($input,$record->id);
             } else {
-                $result = $record->create($input);
-                $record = $result;
-                if (isset($result)) {
+                $result = $this->model->create($input);
+                if (!empty($result)) {
                     $result = true;
                 }
             }
