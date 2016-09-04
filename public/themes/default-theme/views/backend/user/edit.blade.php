@@ -1,4 +1,4 @@
-@extends('backend.master')
+@extends('default-theme::backend.master')
 
 {{--@section('title'){{ $record->title }}@stop--}}
 {{--@section('title-description'){{trans('common.edit')}}@stop--}}
