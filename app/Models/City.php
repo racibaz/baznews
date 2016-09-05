@@ -38,7 +38,7 @@ class City extends Model
 
     public static function cityList()
     {
-        return City::where('is_active',1)->lists('name','id');
+        return City::where('is_active',1)->pluck('name','id');
     }
 
 }

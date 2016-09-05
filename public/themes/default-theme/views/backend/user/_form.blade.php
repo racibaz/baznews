@@ -1,4 +1,4 @@
-@extends('backend.master')
+@extends('default-theme::backend.master')
 
 @section('content')
 <div class="container-fluid">
@@ -11,7 +11,7 @@
             <!--Top breadcrumb start -->
             <ol class="breadcrumb">
                 <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('admin.user.index') !!}">Kullanıcılar</a></li>
+                <li><a href="{!! URL::route('user.index') !!}"> {{ trans('user.users') }} </a></li>
                 <li class="active">Kullanıcı Ekle / Düzenle</li>
             </ol>
             <!--Top breadcrumb start -->
@@ -26,9 +26,9 @@
                 </div>
 
                 @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['admin.user.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+                    {!! Form::model($record, ['route' => ['user.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
                 @else
-                    {!! Form::open(['route' => 'admin.user.store','method' => 'post', 'files' => 'true']) !!}
+                    {!! Form::open(['route' => 'user.store','method' => 'post', 'files' => 'true']) !!}
                 @endif
 
                 <div class="panel-body">
@@ -59,24 +59,24 @@
                             </div>
                         </div>
                     </div>
-                    {{--<div class="form-group">--}}
-                    {{--<div class="row">--}}
-                    {{--{!! Form::label('password', "Şifre",['class'=> 'col-lg-2 control-label']) !!}--}}
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('password', trans('user.password'), ['class'=> 'col-lg-2 control-label']) !!}
 
-                    {{--<div class="col-lg-10">--}}
-                    {{--{!! Form::password('password', array('placeholder' => 'Şifre','class'=>'form-control')) !!}--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group">--}}
-                    {{--<div class="row">--}}
-                    {{--{!! Form::label('password_confirmation', "Şifre Tekrarı",['class'=> 'col-lg-2 control-label']) !!}--}}
+                            <div class="col-lg-10">
+                            {!! Form::password('password', array('placeholder' => trans('user.password'), 'class'=>'form-control')) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('password_confirmation', trans('user.password_confirmation') ,['class'=> 'col-lg-2 control-label']) !!}
 
-                    {{--<div class="col-lg-10">--}}
-                    {{--{!! Form::password('password_confirmation', array('placeholder' => 'Şifre Tekrarı','class'=>'form-control')) !!}--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
+                            <div class="col-lg-10">
+                            {!! Form::password('password_confirmation', array('placeholder' => trans('user.password_confirmation'), 'class'=>'form-control')) !!}
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="row">
                             {!! Form::label('country_id', "Ülke",['class'=> 'col-lg-2 control-label']) !!}
@@ -95,25 +95,100 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('phone_number', "Telefon Numarası",['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('slug', trans('user.slug'), ['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('phone_number', $record->phone_number,['placeholder' => 'Telefon Numarası','class' => 'form-control']) !!}
+                                {!! Form::text('slug', $record->slug,['placeholder' => trans('user.slug'), 'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="row">
+                            {!! Form::label('cell_phone', trans('user.cell_phone'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('cell_phone', $record->cell_phone,['placeholder' => trans('user.cell_phone'), 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('facebook', trans('user.facebook'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('facebook', $record->facebook,['placeholder' => trans('user.facebook'), 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('twitter', trans('user.twitter'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('twitter', $record->cell_phone,['placeholder' => trans('user.twitter'), 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('linkedin', trans('user.linkedin'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('linkedin', $record->linkedin,['placeholder' => trans('user.linkedin'), 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('youtube', trans('user.youtube'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('youtube', $record->youtube, ['placeholder' => trans('user.youtube'), 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('blood_type', trans('user.blood_type'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('blood_type', $record->blood_type, ['placeholder' => trans('user.blood_type'), 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('avatar', trans('user.avatar'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('avatar', $record->avatar, ['placeholder' => trans('user.avatar'), 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {{trans('user.sex')}}
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
-                                        {{--{!! Form::checkbox('is_active', 'value', true, array('class' => 'name')) !!}--}}
-                                        {!! Form::checkbox('status', null , $record->status) !!}
-                                        <i></i> Status
+                                        {!! Form::checkbox('sex', 'value', $record->sex, array('class' => 'name')) !!}
+
+                                        <i></i> {{trans('user.sex')}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {{trans('user.status')}}
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <div class="checkbox i-checks">
+                                    <label>
+                                        {!! Form::checkbox('status', 'value', $record->status, array('class' => 'name')) !!}
+                                        <i></i> {{trans('user.status')}}
                                     </label>
                                 </div>
                             </div>

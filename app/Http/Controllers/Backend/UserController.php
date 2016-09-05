@@ -3,23 +3,27 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
+use App\Models\Country;
+use App\Repositories\UserRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 
 class UserController extends Controller
 {
 
     private $model;
-    private $view = '.user.';
-    private $redirectViewName = 'backend';
-    private $redirectRouteName = 'admin';
+    private $view = 'user.';
+    private $redirectViewName = 'backend.';
+    private $redirectRouteName = '';
 
-    public function __construct(User $model)
+    public function __construct(UserRepository $model)
     {
         $this->model= $model;
     }
@@ -58,7 +62,9 @@ class UserController extends Controller
 
     public function edit(User $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        $countries = Country::countryList();
+        $cities = City::cityList();
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities']));
     }
 
 
@@ -87,7 +93,20 @@ class UserController extends Controller
 
         $input['status'] = Input::get('status') == "on" ? true : false;
 
-        $v = User::validate($input);
+        //kullanıcı email adresini guncellediğinde email adresini uniqe olduğu için
+        //kendi email adresini daha önce kayıtlı olarak görüyor ve hata veriyor
+        //bundan dolayı aynı ise burada unique validasyonunu atlamış oluyoruz.
+        $rules = [
+            'first_name'                    => 'required|max:255',
+            'last_name'                     => 'required|max:255',
+            'email'                         => $input['email'] == $record['email'] ?  'Required|Between:3,64|email' : 'required|string|Between:3,64|Unique:users',
+            'password'                      => isset($record->id)  ?   'min:4|Confirmed' : 'required|min:4|Confirmed',
+            'password_confirmation'         => isset($record->id)  ? 'min:4' : 'required|min:4',
+        ];
+
+        $v = Validator::make($input, $rules);
+
+
 
         if ($v->fails()) {
             return Redirect::back()
@@ -96,7 +115,8 @@ class UserController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->model->update($input,$record->id);
+                $result = $this->model->updateRich($input,$record->id);
+
             } else {
                 $result = $this->model->create($input);
                 if (!empty($result)) {
@@ -106,7 +126,7 @@ class UserController extends Controller
             if ($result) {
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 //Log::info('class : ' . get_class($this) . ' function :' . __FUNCTION__ . ' Kişi : ' . Auth::user()->UserFullName() . ' Kayıt ID : ' . $record->id . ' - IP :' . Auth::user()->getUserIp());
-                return Redirect::route($this->redirectRouteName . $this->view . '.index', $record);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))

@@ -55,6 +55,7 @@
 
         <!-- Main content -->
         <section class="content">
+            @include('default-theme::backend.partials._messages')
             @yield('content')
         </section>
         <!-- /.content -->
