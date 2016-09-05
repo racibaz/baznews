@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 //    Route::post('announcement.announcement_establishment_store', 'AnnouncementController@announcement_establishment_store')->name('announcement_establishment_store');
 //    Route::get('user_operation/{user_id}', 'UserController@user_operation')->name('user_operation');
 
+
 });
 Auth::routes();
 

@@ -11,7 +11,8 @@
         "zizaco/entrust": "5.2.x-dev",
         "laravelcollective/html": "5.3.*",
         "bosnadev/repositories": " 0.*",
-        "caffeinated/themes": "^3.0"
+        "caffeinated/themes": "^3.0",
+        "arcanedev/log-viewer": "^3.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

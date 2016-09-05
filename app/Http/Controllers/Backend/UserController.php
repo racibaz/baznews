@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Country;
-use App\Repositories\UserRepository;
+use App\Repositories\UserRepository as UserREpo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -23,7 +25,7 @@ class UserController extends Controller
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
-    public function __construct(UserRepository $model)
+    public function __construct(UserREpo $model)
     {
         $this->model= $model;
     }
@@ -107,7 +109,6 @@ class UserController extends Controller
         $v = Validator::make($input, $rules);
 
 
-
         if ($v->fails()) {
             return Redirect::back()
                 ->withErrors($v)
@@ -116,6 +117,11 @@ class UserController extends Controller
 
             if (isset($record->id)) {
                 $result = $this->model->updateRich($input,$record->id);
+
+                //Log::info('class : ' . get_class($this) . ' function :' . __FUNCTION__ . ' Kişi : ' . Auth::user()->UserFullName() . ' Kayıt ID : ' . $record->id . ' - IP :' . Auth::user()->getUserIp());
+                //event(get_class($this), __FUNCTION__, Auth::user()->UserFullName(), $record->id, Auth::user()->getUserIp());
+
+                event('model','methof','isim','id','ip');
 
             } else {
                 $result = $this->model->create($input);
