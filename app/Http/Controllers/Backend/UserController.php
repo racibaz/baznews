@@ -119,10 +119,7 @@ class UserController extends Controller
             if (isset($record->id)) {
                 $result = $this->model->updateRich($input,$record->id);
 
-                //Log::info('class : ' . get_class($this) . ' function :' . __FUNCTION__ . ' Kişi : ' . Auth::user()->UserFullName() . ' Kayıt ID : ' . $record->id . ' - IP :' . Auth::user()->getUserIp());
-                //event(new ModelCRUD('model','methof','isim','id','ip'));
-
-                event(new ModelCRUD(get_class($this), __FUNCTION__, Auth::user()->UserFullName(), $record->id, Auth::user()->getUserIp()));
+                //event(new ModelCRUD(get_class($this), __FUNCTION__, Auth::user()->UserFullName(), $record->id, Auth::user()->getUserIp()));
 
             } else {
                 $result = $this->model->create($input);
