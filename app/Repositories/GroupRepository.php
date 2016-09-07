@@ -1,21 +1,13 @@
-<?php namespace App\Repositories;
+<?php
 
+namespace App\Repositories;
 
-/**
- * Created by PhpStorm.
- * User: recai.cansiz
- * Date: 30.8.2016
- * Time: 12:53
- */
+use Rinvex\Repository\Repositories\EloquentRepository;
 
+class GroupRepository extends EloquentRepository
+{
+    protected $repositoryId = 'rinvex.repository.uniqueid';
 
-use Bosnadev\Repositories\Contracts\RepositoryInterface;
-use Bosnadev\Repositories\Eloquent\Repository;
-
-class GroupRepository extends Repository {
-
-    public function model() {
-        return 'App\Models\Group';
-    }
+    protected $model = 'App\Models\Group';
 
 }

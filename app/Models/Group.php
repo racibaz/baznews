@@ -23,6 +23,11 @@ class Group extends Model
         return $this->belongsToMany('App\Models\Role');
     }
 
+    public function announcements()
+    {
+        return $this->belongsToMany('App\Models\Announcement');
+    }
+
     public static function validate($input) {
         $rules = array(
             'name'                    => 'required|max:255',

@@ -16,7 +16,8 @@ class Permission extends EntrustPermission
 {
     protected $fillable = [
         'name',
-        'label',
+        'display_name',
+        'description',
         'is_active',
     ];
 

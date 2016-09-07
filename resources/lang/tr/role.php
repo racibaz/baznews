@@ -3,5 +3,6 @@
 return [
     'name' => 'Role İsmi',
     'managment' => 'Role Yönetimi',
-    'roles' => 'Roller'
+    'roles' => 'Roller',
+    'role_form' => 'Kullanıcı Formu',
 ];

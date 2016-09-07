@@ -1,21 +1,16 @@
-<?php namespace App\Repositories;
+<?php
 
-
-/**
- * Created by PhpStorm.
- * User: recai.cansiz
- * Date: 30.8.2016
- * Time: 12:53
- */
-
+namespace App\Repositories;
 
 use Bosnadev\Repositories\Contracts\RepositoryInterface;
 use Bosnadev\Repositories\Eloquent\Repository;
 
-class PermissionRepository extends Repository {
+use Rinvex\Repository\Repositories\EloquentRepository;
 
-    public function model() {
-        return 'App\Models\Permission';
-    }
+class PermissionRepository extends EloquentRepository
+{
+    protected $repositoryId = 'rinvex.repository.uniqueid';
+
+    protected $model = 'App\Models\Permission';
 
 }

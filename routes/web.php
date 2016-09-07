@@ -36,9 +36,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('group', 'Backend\GroupController');
     Route::resource('role', 'Backend\RoleController');
     Route::resource('permission', 'Backend\PermissionController');
+    Route::resource('announcement', 'Backend\AnnouncementController');
 
 
-//    Route::post('announcement.announcement_establishment_store', 'AnnouncementController@announcement_establishment_store')->name('announcement_establishment_store');
+    Route::post('announcement.announcement_establishment_store', 'Backend\AnnouncementController@announcement_establishment_store')->name('announcement_establishment_store');
+    Route::post('announcement.announcement_group_store', 'Backend\AnnouncementController@announcement_group_store')->name('announcement_group_store');
+    Route::post('announcement.list_to_show', 'AnnouncementController@list_to_show')->name('list_to_show');
 //    Route::get('user_operation/{user_id}', 'UserController@user_operation')->name('user_operation');
 
 

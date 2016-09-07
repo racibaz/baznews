@@ -89,7 +89,7 @@ class RoleController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id, $input);
             } else {
                 $result = $this->repo->create($input);
                 if (!empty($result)) {

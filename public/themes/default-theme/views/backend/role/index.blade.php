@@ -4,9 +4,14 @@
 
     <div class="row">
         <div class="col-xs-12">
+            <div style="margin-bottom: 20px;">
+                <a href="{{ route('role.create') }}" class="btn btn-success">
+                    <i class="fa fa-plus"></i> {{ trans('common.create') }}
+                </a>
+            </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Hover Data Table</h3>
+                    <h3 class="box-title"><strong>{{trans('role.managment')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">

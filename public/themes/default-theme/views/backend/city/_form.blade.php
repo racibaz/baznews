@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <!--Top header start-->
-            <h3 class="ls-top-header">Kullanıcı Ekle / Düzenle</h3>
+            <h3 class="ls-top-header">{{trans('user.managment')}}</h3>
             <!--Top header end -->
 
             <!--Top breadcrumb start -->
@@ -22,7 +22,7 @@
         <div class="col-md-6">
             <div class="panel panel-light-blue">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>
+                    {{--<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                 </div>
 
                 @if(isset($record->id))

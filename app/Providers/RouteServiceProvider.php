@@ -33,6 +33,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('role', 'App\Models\Role');
         Route::model('permission', 'App\Models\Permission');
         Route::model('group', 'App\Models\Group');
+        Route::model('announcement', 'App\Models\Announcement');
         Route::model('language', 'App\Models\Language');
         
     }

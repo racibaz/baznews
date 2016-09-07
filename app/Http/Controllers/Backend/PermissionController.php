@@ -3,28 +3,21 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\City;
-use App\Models\Country;
-use App\Repositories\UserRepository as UseRepo;
+use App\Models\Permission;
+use App\Repositories\PermissionRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 
-
-
-class UserController extends Controller
-{
-
-    private $repo;
-    private $view = 'user.';
+class PermissionController extends Controller
+{  private $repo;
+    private $view = 'permission.';
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
-    public function __construct(UseRepo $repo)
+    public function __construct(Repo $repo)
     {
         $this->repo= $repo;
     }
@@ -45,9 +38,7 @@ class UserController extends Controller
     public function create()
     {
         $record = $this->repo->createModel();
-        $countries = Country::countryList();
-        $cities = City::cityList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities']));
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
@@ -57,27 +48,25 @@ class UserController extends Controller
     }
 
 
-    public function show(User $record)
+    public function show(Permission $record)
     {
         return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
     }
 
 
-    public function edit(User $record)
+    public function edit(Permission $record)
     {
-        $countries = Country::countryList();
-        $cities = City::cityList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities']));
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
-    public function update(Request $request, User $record)
+    public function update(Request $request, Permission $record)
     {
         return $this->save($record);
     }
 
 
-    public function destroy(User $record)
+    public function destroy(Permission $record)
     {
         $this->repo->delete($record->id);
         return redirect()->route($this->redirectRouteName . $this->view .'index');
@@ -88,21 +77,9 @@ class UserController extends Controller
     {
         $input = Input::all();
 
-        $input['status'] = Input::get('status') == "on" ? true : false;
+        $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        //kullanıcı email adresini guncellediğinde email adresini uniqe olduğu için
-        //kendi email adresini daha önce kayıtlı olarak görüyor ve hata veriyor
-        //bundan dolayı aynı ise burada unique validasyonunu atlamış oluyoruz.
-        $rules = [
-            'first_name'                    => 'required|max:255',
-            'last_name'                     => 'required|max:255',
-            'email'                         => $input['email'] == $record['email'] ?  'Required|Between:3,64|email' : 'required|string|Between:3,64|Unique:users',
-            'password'                      => isset($record->id)  ?   'min:4|Confirmed' : 'required|min:4|Confirmed',
-            'password_confirmation'         => isset($record->id)  ? 'min:4' : 'required|min:4',
-        ];
-
-        $v = Validator::make($input, $rules);
-
+        $v = Permission::validate($input);
 
         if ($v->fails()) {
             return Redirect::back()
@@ -111,9 +88,7 @@ class UserController extends Controller
         } else {
 
             if (isset($record->id)) {
-
                 $result = $this->repo->update($record->id, $input);
-
             } else {
                 $result = $this->repo->create($input);
                 if (!empty($result)) {
