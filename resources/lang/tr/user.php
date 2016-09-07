@@ -14,5 +14,5 @@ return [
     'avatar' => 'Fotoğraf',
     'password' => 'Şifre',
     'password_confirmation' => 'Şifre Tekrarı',
-
+    'managment' => 'Kullanıcı Yönetimi',
 ];

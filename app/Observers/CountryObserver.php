@@ -3,37 +3,27 @@
 namespace App\Observers;
 
 use App\Events\ModelCRUD;
+use App\Models\Country;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class UserObserver
+class CountryObserver
 {
-    /**
-     * Listen to the User created event.
-     *
-     * @param  User  $user
-     * @return void
-     */
-    public function created(User $user)
+
+    public function created(Country $user)
     {
         //
     }
 
 
-    public function updated(User $user)
+    public function updated(Country $user)
     {
         //event(new ModelCRUD(get_class($this), __FUNCTION__, Auth::user()->UserFullName(), $record->id, Auth::user()->getUserIp()));
         event(new ModelCRUD(get_class($this), __FUNCTION__, $user->id , Auth::user()->getUserIp()));
     }
 
 
-    /**
-     * Listen to the User deleting event.
-     *
-     * @param  User  $user
-     * @return void
-     */
-    public function deleting(User $user)
+    public function deleting(Country $user)
     {
         event(new ModelCRUD(get_class($this), __FUNCTION__, $user->id , Auth::user()->getUserIp()));
     }

@@ -7,9 +7,6 @@ use Illuminate\Support\Facades\Validator;
 
 class Country extends Model
 {
-    protected $primaryKey = 'country_id';
-
-    protected $table = 'countries';
 
     /**
      * The attributes that are mass assignable.

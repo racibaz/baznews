@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('blood_type')->nullable();
             $table->string('avatar')->nullable();
             $table->string('IP')->nullable();
+            $table->dateTime('last_login')->nullable();
             $table->integer('status');
             $table->rememberToken();
             $table->timestamps();

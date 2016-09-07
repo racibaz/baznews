@@ -1,29 +1,28 @@
-<?php namespace App\Http\Controllers\Backend;
+<?php
 
-
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Country;
-use App\Repositories\CountryRepository;
+use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
-
+use App\Repositories\CountryRepository as Repo;
 
 
 class CountryController extends Controller
 {
-    protected  $repo;
-    private $view = '.country.';
-    private $redirectViewName = 'backend';
-    private $redirectRouteName = 'admin';
 
+    private $repo;
+    private $view = 'country.';
+    private $redirectViewName = 'backend.';
+    private $redirectRouteName = '';
 
-    public function __construct(CountryRepository $repo)
+    public function __construct(Repo $repo)
     {
-        $this->repo = $repo;
+        $this->repo= $repo;
     }
 
     public function getViewName($methodName)
@@ -31,40 +30,36 @@ class CountryController extends Controller
         return $this->redirectViewName . $this->view . $methodName;
     }
 
+
     public function index()
     {
-
-        $records = $records = $this->repo->all();
-        return view($this->getViewName(__FUNCTION__))
-            ->with('records', $records);
+        $records = $this->repo->findAll();
+        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
     }
 
 
     public function create()
     {
-        $record = new Country();
-        return view($this->getViewName(__FUNCTION__))
-            ->with('record', $record);
+        $record = $this->repo->createModel();
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
     public function store(Request $request)
     {
-        return $this->save(new Country());
+        return $this->save($this->repo->createModel());
     }
 
 
     public function show(Country $record)
     {
-        return view($this->getViewName(__FUNCTION__))
-            ->with('record', $record);
+        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
     }
 
 
     public function edit(Country $record)
     {
-        return view($this->getViewName(__FUNCTION__))
-            ->with('record', $record);
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
@@ -76,13 +71,7 @@ class CountryController extends Controller
 
     public function destroy(Country $record)
     {
-
         $this->repo->delete($record->id);
-
-//        $this->repo->delete($record->id);
-//        Session::flash('flash_message', trans('common.message_repo_deleted'));
-//        Log::info('class : ' . get_class($this) . ' function :' . __FUNCTION__ . ' Kişi : ' . Auth::user()->CountryFullName() . ' Kayıt ID : ' . $record->id . ' - IP :' . Auth::user()->getCountryIp());
-
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -90,8 +79,7 @@ class CountryController extends Controller
     public function save($record)
     {
         $input = Input::all();
-
-        $input['status'] = Input::get('status') == "on" ? true : false;
+        $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         $v = Country::validate($input);
 
@@ -100,21 +88,18 @@ class CountryController extends Controller
                 ->withErrors($v)
                 ->withInput($input);
         } else {
-            
-            if (isset($record->id)) {
-                $result = $this->repo->update($input,$record->id);
 
+            if (isset($record->id)) {
+                $result = $this->repo->update($record->id,$input);
             } else {
                 $result = $this->repo->create($input);
-                $record = $result;
-                if (isset($result)) {
+                if (!empty($result)) {
                     $result = true;
                 }
             }
             if ($result) {
-                Session::flash('flash_message', trans('common.message_repo_updated'));
-                //Log::info('class : ' . get_class($this) . ' function :' . __FUNCTION__ . ' Kişi : ' . Auth::user()->CountryFullName() . ' Kayıt ID : ' . $record->id . ' - IP :' . Auth::user()->getCountryIp());
-                return Redirect::route($this->redirectRouteName . $this->view . '.index', $record);
+                Session::flash('flash_message', trans('common.message_model_updated'));
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))
@@ -122,9 +107,4 @@ class CountryController extends Controller
             }
         }
     }
-
-
-
-
-
 }

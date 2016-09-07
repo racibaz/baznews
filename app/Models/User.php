@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use Zizaco\Entrust\Traits\EntrustUserTrait;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 
 class User extends Authenticatable
 {
+
     use EntrustUserTrait;
     use Notifiable;
 
@@ -38,7 +39,9 @@ class User extends Authenticatable
         'blood_type',
         'avatar',
         'IP',
+        'last_login',
         'status',
+
     ];
 
     /**

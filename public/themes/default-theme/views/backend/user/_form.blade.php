@@ -187,7 +187,7 @@
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
-                                        {!! Form::checkbox('status', 'value', $record->status, array('class' => 'name')) !!}
+                                        {!! Form::checkbox('is_active', null , $record->is_active) !!}
                                         <i></i> {{trans('user.status')}}
                                     </label>
                                 </div>
@@ -205,74 +205,6 @@
                 {!! Form::close() !!}
             </div>
         </div>
-
-        {{--<div class="col-md-6">--}}
-        {{--<div class="panel panel-red">--}}
-        {{--<div class="panel-heading">--}}
-        {{--<h3 class="panel-title">Kullanıcı Rolleri</h3>--}}
-        {{--</div>--}}
-        {{--<div class="panel-body">--}}
-        {{--<form class="form-horizontal ls_form ls_form_horizontal">--}}
-        {{--{!! Form::open(['route' => 'role_user_store','method' => 'post']) !!}--}}
-
-        {{--<div class="form-group">--}}
-        {{--<label class="col-lg-2 control-label">Kullanıcı Rolleri</label>--}}
-
-        {{--<div class="col-lg-10">--}}
-
-        {{--{!!  Form::hidden('user_id', $record->id) !!}--}}
-
-        {{--@foreach($roles as $role)--}}
-        {{--<div class="form-group">--}}
-        {{--{{ $role->name }} :--}}
-        {{--{!! Form::checkbox($role->id, $role->id, in_array($role->id , $record->roles->lists('id')->toArray())) !!}--}}
-        {{--</div>--}}
-        {{--@endforeach--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="form-group">--}}
-        {{--<div class="col-lg-offset-2 col-lg-10">--}}
-        {{--<button class="btn btn-sm btn-default" type="submit">Kaydet</button>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--{!! Form::close() !!}--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-
-        {{--<div class="col-md-6">--}}
-        {{--<div class="panel panel-light-green">--}}
-        {{--<div class="panel-heading">--}}
-        {{--<h3 class="panel-title">Kullanıcı Grupları</h3>--}}
-        {{--</div>--}}
-        {{--<div class="panel-body">--}}
-        {{--<form class="form-horizontal ls_form ls_form_horizontal">--}}
-        {{--{!! Form::open(['route' => 'group_user_store','method' => 'post']) !!}--}}
-        {{--<div class="form-group">--}}
-        {{--<label class="col-lg-2 control-label">Kullanıcı Grupları</label>--}}
-
-        {{--<div class="col-lg-10">--}}
-
-        {{--{!!  Form::hidden('user_id', $record->id) !!}--}}
-
-        {{--@foreach($groups as $group)--}}
-        {{--<div class="form-group">--}}
-        {{--{{ $group->name }} :--}}
-        {{--{!! Form::checkbox($group->name, $group->id, in_array($group->name , $record->groups->lists('name')->toArray())) !!}--}}
-        {{--</div>--}}
-        {{--@endforeach--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="form-group">--}}
-        {{--<div class="col-lg-offset-2 col-lg-10">--}}
-        {{--<button class="btn btn-sm btn-default" type="submit">Kaydet</button>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-
-        {{--{!! Form::close() !!}--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
     </div><!-- end row -->
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->

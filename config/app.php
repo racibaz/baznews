@@ -183,6 +183,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Caffeinated\Themes\ThemesServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
+        Rinvex\Repository\Providers\RepositoryServiceProvider::class,
 
 
     ],

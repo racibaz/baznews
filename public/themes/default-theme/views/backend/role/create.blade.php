@@ -3,5 +3,5 @@
 {{--@section('title'){{trans('common.create')}}@stop--}}
 
 @section('content')
-    @include('default-theme::backend.user._form', ['record' => $record])
+    @include('default-theme::backend.role._form', ['record' => $record])
 @stop

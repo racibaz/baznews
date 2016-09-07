@@ -2,15 +2,12 @@
 
 namespace App\Repositories;
 
+use Rinvex\Repository\Repositories\EloquentRepository;
 
+class CountryRepository extends EloquentRepository
+{
+    protected $repositoryId = 'rinvex.repository.uniqueid';
 
-use Bosnadev\Repositories\Contracts\RepositoryInterface;
-use Bosnadev\Repositories\Eloquent\Repository;
-
-class CountryRepository extends Repository {
-
-    public function model() {
-        return 'App\Models\Country';
-    }
+    protected $model = 'App\Models\Country';
 
 }

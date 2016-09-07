@@ -27,6 +27,6 @@ class CreateLogEntry
      */
     public function handle(ModelCRUD $event)
     {
-        Log::info('class : ' . $event->modelName . ' function :' . $event->methodName  . ' Kişi : ' . $event->userFullName . ' Kayıt ID : ' . $event->recordId . ' - IP :' . $event->userIp );
+        Log::info('class : ' . $event->modelName . ' function :' . $event->methodName  . ' user_id ' . $event->userFullName .  ' - IP :' . $event->userIp );
     }
 }

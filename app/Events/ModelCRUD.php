@@ -23,16 +23,12 @@ class ModelCRUD
      * ModelCRUD constructor.
      * @param $modelName
      */
-    public function __construct($modelName, $methodName, $userFullName , $recordId , $userIp)
+    public function __construct($modelName, $methodName, $userFullName, $userIp)
     {
-
         $this->modelName = $modelName;
         $this->methodName = $methodName;
         $this->userFullName = $userFullName;
-        $this->recordId = $recordId;
         $this->userIp = $userIp;
-
-//        dd($modelName);
     }
 
     /**

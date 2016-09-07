@@ -31,11 +31,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('dashboard', 'Backend\DashboardController@index');
 
     Route::resource('user', 'Backend\UserController');
-//    Route::resource('country', 'Backend\CountryController');
-//    Route::resource('city', 'Backend\CityController');
-//    Route::resource('group', 'Backend\GroupController');
-//    Route::resource('role', 'Backend\RoleController');
-//    Route::resource('permission', 'Backend\PermissionController');
+    Route::resource('country', 'Backend\CountryController');
+    Route::resource('city', 'Backend\CityController');
+    Route::resource('group', 'Backend\GroupController');
+    Route::resource('role', 'Backend\RoleController');
+    Route::resource('permission', 'Backend\PermissionController');
 
 
 //    Route::post('announcement.announcement_establishment_store', 'AnnouncementController@announcement_establishment_store')->name('announcement_establishment_store');

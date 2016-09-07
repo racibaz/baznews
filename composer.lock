@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "45e0b083dab2f3fcb9cbfe9448a97ee9",
-    "content-hash": "0fa3371177c1660df506b92e45466597",
+    "hash": "de5746a39af87fceba85c24e31d4e4ef",
+    "content-hash": "3c8fa730823e2cd755ab1168672a3a0f",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -182,66 +182,6 @@
                 "webprofiler"
             ],
             "time": "2016-07-29 15:00:36"
-        },
-        {
-            "name": "bosnadev/repositories",
-            "version": "0.13",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bosnadev/repository.git",
-                "reference": "3a289a137e27ac6b795852a0d72c509a51b70a26"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bosnadev/repository/zipball/3a289a137e27ac6b795852a0d72c509a51b70a26",
-                "reference": "3a289a137e27ac6b795852a0d72c509a51b70a26",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/console": "^5.2",
-                "illuminate/database": "^5.2",
-                "illuminate/filesystem": "^5.2",
-                "illuminate/support": "^5.2",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "dev-master@dev"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Bosnadev\\": "src/Bosnadev/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Maarten Paauw",
-                    "email": "maartenpaauw@gmail.com"
-                },
-                {
-                    "name": "Mirza Pasic",
-                    "email": "mirza@bosnadev.com"
-                }
-            ],
-            "description": "Laravel Repositories",
-            "homepage": "https://bosnadev.com",
-            "keywords": [
-                "database",
-                "eloquent",
-                "laravel",
-                "repositories",
-                "repository"
-            ],
-            "time": "2016-08-19 13:21:55"
         },
         {
             "name": "caffeinated/themes",
@@ -1370,6 +1310,79 @@
                 "uuid"
             ],
             "time": "2016-08-02 18:39:32"
+        },
+        {
+            "name": "rinvex/repository",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rinvex/repository.git",
+                "reference": "32e808bc19d2ae322f62027a75e0f9cc1474ef2b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rinvex/repository/zipball/32e808bc19d2ae322f62027a75e0f9cc1474ef2b",
+                "reference": "32e808bc19d2ae322f62027a75e0f9cc1474ef2b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "5.1.*|5.2.*|5.3.*",
+                "illuminate/contracts": "5.1.*|5.2.*|5.3.*",
+                "illuminate/database": "5.1.*|5.2.*|5.3.*",
+                "illuminate/events": "5.1.*|5.2.*|5.3.*",
+                "illuminate/support": "5.1.*|5.2.*|5.3.*",
+                "php": ">=5.5.9"
+            },
+            "suggest": {
+                "illuminate/pagination": "Required to paginate the result set."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rinvex\\Repository\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rinvex LLC",
+                    "email": "help@rinvex.com",
+                    "homepage": "https://rinvex.com"
+                },
+                {
+                    "name": "Abdelrahman Omran",
+                    "email": "me@omranic.com",
+                    "homepage": "https://omranic.com",
+                    "role": "Project Lead"
+                },
+                {
+                    "name": "The Generous PHP Community",
+                    "homepage": "https://github.com/rinvex/repository/contributors"
+                }
+            ],
+            "description": "Rinvex Repository is a simple, intuitive, and smart implementation of Active Repository with extremely flexible & granular caching system for Laravel, used to abstract the data layer, making applications more flexible to maintain.",
+            "homepage": "https://rinvex.com/marketplace/rinvex-repository/",
+            "keywords": [
+                "cache",
+                "contract",
+                "eloquent",
+                "granular",
+                "interface",
+                "intuitive",
+                "laravel",
+                "pattern",
+                "repository",
+                "rinvex"
+            ],
+            "time": "2016-08-05 22:40:10"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2652,16 +2665,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.5.1",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "a8773992b362b58498eed24bf85005f363c34771"
+                "reference": "da8529775f14f4fdae33f916eb0cf65f6afbddbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/a8773992b362b58498eed24bf85005f363c34771",
-                "reference": "a8773992b362b58498eed24bf85005f363c34771",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/da8529775f14f4fdae33f916eb0cf65f6afbddbc",
+                "reference": "da8529775f14f4fdae33f916eb0cf65f6afbddbc",
                 "shasum": ""
             },
             "require": {
@@ -2690,7 +2703,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2015-11-20 12:04:31"
+            "time": "2016-09-06 16:07:05"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -3224,16 +3237,16 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "3.2.6",
+            "version": "3.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "46b249b43fd2ed8e127aa0fdb3cbcf56e9bc0e49"
+                "reference": "546898a2c0c356ef2891b39dd7d07f5d82c8ed0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/46b249b43fd2ed8e127aa0fdb3cbcf56e9bc0e49",
-                "reference": "46b249b43fd2ed8e127aa0fdb3cbcf56e9bc0e49",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/546898a2c0c356ef2891b39dd7d07f5d82c8ed0a",
+                "reference": "546898a2c0c356ef2891b39dd7d07f5d82c8ed0a",
                 "shasum": ""
             },
             "require": {
@@ -3279,7 +3292,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2016-08-26 05:51:59"
+            "time": "2016-09-06 16:07:45"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
