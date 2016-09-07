@@ -27,13 +27,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        User::observe(UserObserver::class);
-        Country::observe(CountryObserver::class);
-        City::observe(CityObserver::class);
-        Role::observe(RoleObserver::class);
-        Group::observe(GroupObserver::class);
-        Permission::observe(PermissionObserver::class);
-        Announcement::observe(AnnouncementObserver::class);
+//        User::observe(UserObserver::class);
+//        Country::observe(CountryObserver::class);
+//        City::observe(CityObserver::class);
+//        Role::observe(RoleObserver::class);
+//        Group::observe(GroupObserver::class);
+//        Permission::observe(PermissionObserver::class);
+//        Announcement::observe(AnnouncementObserver::class);
 
     }
 
