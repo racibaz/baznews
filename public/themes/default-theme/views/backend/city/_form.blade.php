@@ -32,6 +32,8 @@
                 @endif
 
                 <div class="panel-body">
+
+
                     <div class="form-group">
                         <div class="row">
                             {!! Form::label('country_id', trans('country.name'),['class'=> 'col-lg-2 control-label']) !!}

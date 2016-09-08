@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Post\Http\Controllers\Backend;
+namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Post\Repositories\PostRepository as Repo;

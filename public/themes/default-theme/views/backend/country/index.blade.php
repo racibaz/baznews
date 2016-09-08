@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
-                <a href="{{ route('country.create') }}" class="btn btn-success">
+                <a href="{{ route('city.create') }}" class="btn btn-success">
                     <i class="fa fa-plus"></i> {{ trans('common.create') }}
                 </a>
             </div>

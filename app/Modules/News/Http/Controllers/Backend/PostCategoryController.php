@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Modules\Post\Http\Controllers\Backend;
+namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Post\Repositories\PostRepository as Repo;
+use App\Modules\News\Repositories\PostCategoryRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 
-class PostController extends Controller
+class PostCategoryController extends Controller
 {
     private $repo;
-    private $view = 'post.';
+    private $view = 'post_category.';
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
@@ -33,16 +33,16 @@ class PostController extends Controller
     public function index()
     {
         $records = $this->repo->findAll();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        return Theme::view('index');
+
+        //return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
     }
 
 
     public function create()
     {
         $record = $this->repo->createModel();
-        $countries = Country::countryList();
-        $cities = City::cityList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities']));
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
@@ -60,9 +60,7 @@ class PostController extends Controller
 
     public function edit(User $record)
     {
-        $countries = Country::countryList();
-        $cities = City::cityList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities']));
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
@@ -83,7 +81,7 @@ class PostController extends Controller
     {
         $input = Input::all();
 
-        $input['status'] = Input::get('status') == "on" ? true : false;
+        $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         //kullanıcı email adresini guncellediğinde email adresini uniqe olduğu için
         //kendi email adresini daha önce kayıtlı olarak görüyor ve hata veriyor
