@@ -3,7 +3,7 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Post\Repositories\PostRepository as Repo;
+use App\Modules\News\Repositories\PostRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
