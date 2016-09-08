@@ -184,6 +184,7 @@ return [
         Caffeinated\Themes\ThemesServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
         Rinvex\Repository\Providers\RepositoryServiceProvider::class,
+        Caffeinated\Modules\ModulesServiceProvider::class,
 
 
     ],
@@ -238,6 +239,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Theme' => Caffeinated\Themes\Facades\Theme::class,
+        'Module' => Caffeinated\Modules\Facades\Module::class,
 
         ////TODO  THEME İN COMPONET GİBİ BİRŞEY VARDI ONA BAKILACAK
     ],

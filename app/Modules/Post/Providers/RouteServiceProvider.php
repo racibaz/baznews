@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace App\Modules\Post\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Http\Controllers';
+    protected $namespace = 'App\Modules\Post\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -26,22 +26,10 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
-
-        Route::model('country', 'App\Models\Country');
-        Route::model('city', 'App\Models\City');
-        Route::model('user', 'App\Models\User');
-        Route::model('role', 'App\Models\Role');
-        Route::model('permission', 'App\Models\Permission');
-        Route::model('group', 'App\Models\Group');
-        Route::model('announcement', 'App\Models\Announcement');
-        Route::model('menu', 'App\Models\Menu');
-        Route::model('page', 'App\Models\Page');
-        Route::model('language', 'App\Models\Language');
-        
     }
 
     /**
-     * Define the routes for the application.
+     * Define the routes for the module.
      *
      * @return void
      */
@@ -55,7 +43,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the "web" routes for the application.
+     * Define the "web" routes for the module.
      *
      * These routes all receive session state, CSRF protection, etc.
      *
@@ -65,14 +53,14 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => 'web',
-            'namespace' => $this->namespace,
+            'namespace'  => $this->namespace,
         ], function ($router) {
-            require base_path('routes/web.php');
+            require module_path('post', 'Routes/web.php');
         });
     }
 
     /**
-     * Define the "api" routes for the application.
+     * Define the "api" routes for the module.
      *
      * These routes are typically stateless.
      *
@@ -82,10 +70,10 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => 'api',
-            'namespace' => $this->namespace,
-            'prefix' => 'api',
+            'namespace'  => $this->namespace,
+            'prefix'     => 'api',
         ], function ($router) {
-            require base_path('routes/api.php');
+            require module_path('post', 'Routes/api.php');
         });
     }
 }

@@ -1,5 +1,6 @@
-<?php namespace App\Repositories;
+<?php
 
+namespace App\Repositories;
 
 use Rinvex\Repository\Repositories\EloquentRepository;
 

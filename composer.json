@@ -12,7 +12,8 @@
         "laravelcollective/html": "5.3.*",
         "caffeinated/themes": "^3.0",
         "arcanedev/log-viewer": "^3.10",
-        "rinvex/repository": "2.0.*"
+        "rinvex/repository": "2.0.*",
+        "caffeinated/modules": "^4.0"
 
     },
     "require-dev": {
