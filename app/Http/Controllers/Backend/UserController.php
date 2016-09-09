@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller
 {
-
     private $repo;
     private $view = 'user.';
     private $redirectViewName = 'backend.';
@@ -89,6 +88,7 @@ class UserController extends Controller
         $input = Input::all();
 
         $input['status'] = Input::get('status') == "on" ? true : false;
+        $input['sex'] = Input::get('sex') == "on" ? true : false;
 
         //kullanıcı email adresini guncellediğinde email adresini uniqe olduğu için
         //kendi email adresini daha önce kayıtlı olarak görüyor ve hata veriyor

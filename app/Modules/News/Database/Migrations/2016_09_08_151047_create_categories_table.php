@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreatePostCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -35,6 +35,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pages');
+        Schema::drop('post_categories');
     }
 }

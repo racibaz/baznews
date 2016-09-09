@@ -37,6 +37,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('role', 'Backend\RoleController');
     Route::resource('permission', 'Backend\PermissionController');
     Route::resource('announcement', 'Backend\AnnouncementController');
+    Route::resource('page', 'Backend\PageController');
+    Route::resource('menu', 'Backend\MenuController');
+    Route::resource('contact_type', 'Backend\ContactTypeController');
+    Route::resource('contact', 'Backend\ContactController');
 
 
     Route::post('announcement.announcement_establishment_store', 'Backend\AnnouncementController@announcement_establishment_store')->name('announcement_establishment_store');

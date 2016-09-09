@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Country;
+use App\Models\Page;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
-use App\Repositories\CountryRepository as Repo;
+use App\Repositories\PageRepository as Repo;
 
-
-class CountryController extends Controller
+class PageController extends Controller
 {
     private $repo;
-    private $view = 'country.';
+    private $view = 'page.';
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
@@ -50,25 +49,25 @@ class CountryController extends Controller
     }
 
 
-    public function show(Country $record)
+    public function show(Page $record)
     {
         return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
     }
 
 
-    public function edit(Country $record)
+    public function edit(Page $record)
     {
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
-    public function update(Request $request, Country $record)
+    public function update(Request $request, Page $record)
     {
         return $this->save($record);
     }
 
 
-    public function destroy(Country $record)
+    public function destroy(Page $record)
     {
         $this->repo->delete($record->id);
         return redirect()->route($this->redirectRouteName . $this->view .'index');
@@ -78,9 +77,11 @@ class CountryController extends Controller
     public function save($record)
     {
         $input = Input::all();
-        $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = Country::validate($input);
+        $input['is_active'] = Input::get('is_active') == "on" ? true : false;
+        
+
+        $v = Page::validate($input);
 
         if ($v->fails()) {
             return Redirect::back()

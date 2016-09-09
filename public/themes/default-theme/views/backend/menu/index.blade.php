@@ -5,21 +5,21 @@
     <div class="row">
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
-                <a href="{{ route('country.create') }}" class="btn btn-success">
+                <a href="{{ route('menu.create') }}" class="btn btn-success">
                     <i class="fa fa-plus"></i> {{ trans('common.create') }}
                 </a>
             </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><strong>{{trans('country.managment')}}</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('menu.managment')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="countries" class="table table-bordered table-hover">
+                    <table id="example2" class="table table-bordered table-hover">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('country.name')}}</th>
+                            <th>{{trans('menu.name')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </thead>
@@ -27,15 +27,12 @@
                             @foreach($records as $record)
                                 <tr>
                                     <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('country.show', $record->name , $record, [] ) !!}</td>
+                                    <td>{!! link_to_route('menu.show', $record->name , $record, [] ) !!}</td>
                                     <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('country.destroy',  $record))) !!}
-
-                                            {!! link_to_route('country.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-
-
+                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('menu.destroy',  $record))) !!}
+                                            {!! link_to_route('menu.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
                                             {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
                                             {!! Form::close() !!}
                                         </div>
@@ -46,7 +43,7 @@
                         <tfoot>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('country.name')}}</th>
+                            <th>{{trans('menu.name')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </tfoot>
@@ -59,6 +56,4 @@
         </div>
         <!-- /.col -->
     </div>
-
-
 @endsection

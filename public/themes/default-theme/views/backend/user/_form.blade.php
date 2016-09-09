@@ -173,7 +173,7 @@
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
-                                        {!! Form::checkbox('sex', 'value', $record->sex, array('class' => 'name')) !!}
+                                        {!! Form::checkbox('sex', null , $record->is_active) !!}
 
                                         <i></i> {{trans('user.sex')}}
                                     </label>

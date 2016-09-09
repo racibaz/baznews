@@ -39,7 +39,4 @@ class Country extends Model
     {
         return Country::where('is_active',1)->pluck('name','id');
     }
-
-
-
 }
