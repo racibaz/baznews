@@ -39,6 +39,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('language', 'App\Models\Language');
         Route::model('contact_type', 'App\Models\ContactType');
         Route::model('contact', 'App\Models\Contact');
+        Route::model('setting', 'App\Models\Setting');
         
     }
 

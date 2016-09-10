@@ -7,7 +7,5 @@ use Rinvex\Repository\Repositories\EloquentRepository;
 class PostCategoryRepository extends EloquentRepository
 {
     protected $repositoryId = 'rinvex.repository.uniqueid';
-
     protected $model = 'App\Modules\News\Models\PostCategory';
-
 }

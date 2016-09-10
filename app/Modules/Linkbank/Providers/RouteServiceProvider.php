@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\News\Providers;
+namespace App\Modules\Linkbank\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Modules\News\Http\Controllers';
+    protected $namespace = 'App\Modules\Linkbank\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -23,8 +23,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::model('news', 'App\Modules\News\Models\Post');
-        Route::model('news_categories', 'App\Modules\News\Models\PostCategory');
+        //
 
         parent::boot();
     }
@@ -56,7 +55,7 @@ class RouteServiceProvider extends ServiceProvider
             'middleware' => 'web',
             'namespace'  => $this->namespace,
         ], function ($router) {
-            require module_path('news', 'Routes/web.php');
+            require module_path('linkbank', 'Routes/web.php');
         });
     }
 
@@ -74,7 +73,7 @@ class RouteServiceProvider extends ServiceProvider
             'namespace'  => $this->namespace,
             'prefix'     => 'api',
         ], function ($router) {
-            require module_path('news', 'Routes/api.php');
+            require module_path('linkbank', 'Routes/api.php');
         });
     }
 }

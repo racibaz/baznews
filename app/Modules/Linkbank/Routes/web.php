@@ -11,19 +11,8 @@
 |
 */
 
-use Illuminate\Support\Facades\Route;
-
-Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
-
-
-    Route::resource('news_categories', 'Backend\PostCategoriesController');
-    Route::resource('news', 'Backend\PostController');
-
-});
-
-
-Route::group(['prefix' => 'news'], function() {
+Route::group(['prefix' => 'linkbank'], function() {
     Route::get('/', function() {
-        dd('This is the News module index page. Build something great!');
+        dd('This is the Linkbank module index page. Build something great!');
     });
 });

@@ -22,5 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MenuTableSeeder::class);
         $this->call(ContactTypeTableSeeder::class);
         $this->call(ContactTableSeeder::class);
+        $this->call(SettingTableSeeder::class);
+        //$this->call(PostCategoryTableSeeder::class);
     }
 }
