@@ -104,7 +104,7 @@ class User extends Authenticatable
 
     public static function userList()
     {
-        return User::where('is_active',1)->lists('first_name', 'id');
+        return User::where('is_active',1)->pluck('first_name', 'id');
     }
 
 

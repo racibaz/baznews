@@ -11,15 +11,19 @@
 |
 */
 
-use Illuminate\Support\Facades\Route;
+
+
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
 
-    Route::resource('news_categories', 'Backend\PostCategoriesController');
-    Route::resource('news', 'Backend\PostController');
+    Route::resource('news_category', 'Backend\NewsCategoryController');
+    Route::resource('news', 'Backend\NewsController');
+    Route::resource('news_source', 'Backend\NewsSourceController');
 
 });
+
+
 
 
 Route::group(['prefix' => 'news'], function() {

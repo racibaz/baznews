@@ -23,8 +23,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::model('news', 'App\Modules\News\Models\Post');
-        Route::model('news_categories', 'App\Modules\News\Models\PostCategory');
+        Route::model('news_category', 'App\Modules\News\Models\NewsCategory');
+        Route::model('news', 'App\Modules\News\Models\News');
+        Route::model('news_source', 'App\Modules\News\Models\NewsSource');
 
         parent::boot();
     }

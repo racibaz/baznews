@@ -16,6 +16,8 @@ use App\Observers\GroupObserver;
 use App\Observers\PermissionObserver;
 use App\Observers\RoleObserver;
 use App\Observers\UserObserver;
+use Caffeinated\Themes\Facades\Theme;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::share('activeTheme', Theme::getActive());
+
 //        User::observe(UserObserver::class);
 //        Country::observe(CountryObserver::class);
 //        City::observe(CityObserver::class);
