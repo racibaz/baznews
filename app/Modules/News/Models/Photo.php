@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Validator;
 
 class Photo extends Model
 {
+    /*
+     * Alt yazı
+     * Alternatif metin
+     *
+     *
+     * */
     protected $fillable = ['photo_gallery_id', 'name', 'slug', 'file', 'link','description', 'keywords', 'order', 'is_active'];
 
     public static function validate($input) {
