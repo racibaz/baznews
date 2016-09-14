@@ -3,20 +3,18 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Modules\News\Models\PhotoCategory;
-use App\Modules\News\Models\PhotoGallery;
-use App\Modules\News\Repositories\PhotoGalleryRepository as Repo;
+use App\Modules\News\Models\VideoCategory;
+use App\Modules\News\Repositories\VideoCategoryRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
-class PhotoGalleryController extends Controller
+class VideoCategoryController extends Controller
 {
     private $repo;
-    private $view = 'photo_gallery.';
+    private $view = 'video_category.';
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
@@ -40,9 +38,9 @@ class PhotoGalleryController extends Controller
 
     public function create()
     {
-        $photoCategories = PhotoCategory::photoCategoryList();
+        $videoCategoryList = VideoCategory::videoCategoryList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'photoCategories']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'videoCategoryList']));
     }
 
 
@@ -52,26 +50,26 @@ class PhotoGalleryController extends Controller
     }
 
 
-    public function show(PhotoGallery $record)
+    public function show(VideoCategory $record)
     {
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact('record'));
     }
 
 
-    public function edit(PhotoGallery $record)
+    public function edit(VideoCategory $record)
     {
-        $photoCategories = PhotoCategory::photoCategoryList();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'photoCategories']));
+        $videoCategoryList = VideoCategory::videoCategoryList();
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'videoCategoryList']));
     }
 
 
-    public function update(Request $request, PhotoGallery $record)
+    public function update(Request $request, VideoCategory $record)
     {
         return $this->save($record);
     }
 
 
-    public function destroy(PhotoGallery $record)
+    public function destroy(VideoCategory $record)
     {
         $this->repo->delete($record->id);
         return redirect()->route($this->redirectRouteName . $this->view .'index');
@@ -82,10 +80,10 @@ class PhotoGalleryController extends Controller
     {
         $input = Input::all();
 
+        $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
-        $input['user_id'] = Auth::user()->id;
 
-        $v = PhotoGallery::validate($input);
+        $v = VideoCategory::validate($input);
 
         if ($v->fails()) {
             return Redirect::back()

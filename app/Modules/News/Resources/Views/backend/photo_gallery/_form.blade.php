@@ -34,6 +34,15 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="row">
+                            {!! Form::label('photo_category_id', trans('news::news.photo_category_id'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::select('photo_category_id', $photoCategories , $record->photo_category_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {!! Form::label('title', trans('news::photo_gallery.title'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">

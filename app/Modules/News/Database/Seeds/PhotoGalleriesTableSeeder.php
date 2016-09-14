@@ -15,6 +15,7 @@ class PhotoGalleriesTableSeeder extends Seeder
     public function run()
     {
         PhotoGallery::create([
+            'photo_category_id' => 1,
             'user_id' => 1,
             'title' => 'ilk photo gallery',
             'slug' => 'ilk_photo_gallery',
@@ -24,6 +25,7 @@ class PhotoGalleriesTableSeeder extends Seeder
         ]);
 
         PhotoGallery::create([
+            'photo_category_id' => 2,
             'user_id' => 1,
             'title' => 'ikinci photo gallery',
             'slug' => 'ikinci_photo_gallery',
@@ -33,6 +35,7 @@ class PhotoGalleriesTableSeeder extends Seeder
         ]);
 
         PhotoGallery::create([
+            'photo_category_id' => 1,
             'user_id' => 1,
             'title' => 'üç photo gallery',
             'slug' => 'üç_photo_gallery',
@@ -42,6 +45,7 @@ class PhotoGalleriesTableSeeder extends Seeder
         ]);
 
         PhotoGallery::create([
+            'photo_category_id' => 3,
             'user_id' => 1,
             'title' => 'dört photo gallery',
             'slug' => 'dört_photo_gallery',
@@ -51,6 +55,7 @@ class PhotoGalleriesTableSeeder extends Seeder
         ]);
 
         PhotoGallery::create([
+            'photo_category_id' => 4,
             'user_id' => 1,
             'title' => 'beş photo gallery',
             'slug' => 'beş_photo_gallery',

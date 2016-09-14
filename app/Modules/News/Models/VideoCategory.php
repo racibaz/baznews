@@ -5,19 +5,15 @@ namespace App\Modules\News\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
-class PhotoCategory extends Model
+class VideoCategory extends Model
 {
-    protected $table = 'photo_categories';
+    protected $table = 'video_categories';
     protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'icon', 'is_cuff', 'is_active'];
 
-//    public function news()
-//    {
-//        return $this->belongsToMany('App\Modules\News\Models\NewsCategory', 'news_categories_news', 'news_category_id', 'news_id');
-//    }
 
-    public function photo_galleries()
+    public function video_galleries()
     {
-        return $this->hasMany('App\Modules\News\Models\PhotoGallery');
+        return $this->hasMany('App\Modules\News\Models\VideoGallery');
     }
 
     public static function validate($input) {
@@ -27,8 +23,8 @@ class PhotoCategory extends Model
         return Validator::make($input, $rules);
     }
 
-    public static function photoCategoryList()
+    public static function videoCategoryList()
     {
-        return PhotoCategory::where('is_active',1)->pluck('name', 'id');
+        return VideoCategory::where('is_active',1)->pluck('name', 'id');
     }
 }

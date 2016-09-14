@@ -25,6 +25,9 @@ class CreatePhotosTable extends Migration
             $table->unsignedInteger('order')->nullable();
             $table->boolean('is_active')->nullable();
             $table->timestamps();
+
+            // Keys
+            $table->foreign('photo_gallery_id')->references('id')->on('photo_galleries')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

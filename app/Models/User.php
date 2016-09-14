@@ -86,6 +86,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Country');
     }
 
+    public function photo_galleries()
+    {
+        return $this->hasMany('App\Modules\News\Models\PhotoGallery');
+    }
+
 //    public function userable()
 //    {
 //        return $this->morphTo();

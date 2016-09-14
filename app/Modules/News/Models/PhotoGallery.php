@@ -7,7 +7,17 @@ use Illuminate\Support\Facades\Validator;
 
 class PhotoGallery extends Model
 {
-    protected $fillable = ['user_id', 'title', 'slug', 'description', 'keywords', 'is_active'];
+    protected $fillable = ['photo_category_id', 'user_id', 'title', 'slug', 'description', 'keywords', 'is_active'];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function photo_category()
+    {
+        return $this->belongsTo('App\Modules\News\Models\PhotoCategory');
+    }
 
     public static function validate($input) {
         $rules = array(

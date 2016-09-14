@@ -15,6 +15,10 @@ class Photo extends Model
      * */
     protected $fillable = ['photo_gallery_id', 'name', 'slug', 'file', 'link','description', 'keywords', 'order', 'is_active'];
 
+    public function photo_gallery()
+    {
+        return $this->belongsTo('App\Modules\News\Models\PhotoGallery');
+    }
     public static function validate($input) {
         $rules = array(
             'name' => 'required',

@@ -29,6 +29,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('photo_gallery', 'App\Modules\News\Models\PhotoGallery');
         Route::model('photo', 'App\Modules\News\Models\Photo');
         Route::model('photo_category', 'App\Modules\News\Models\PhotoCategory');
+        Route::model('video_category', 'App\Modules\News\Models\VideoCategory');
 
         parent::boot();
     }
