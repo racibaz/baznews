@@ -5,16 +5,15 @@ namespace App\Modules\News\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Country;
-use App\Modules\News\Database\Seeds\NewsCategoriesTableSeeder;
 use App\Modules\News\Models\News;
 use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Models\NewsSource;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Input;
 
 class NewsController extends Controller
 {
@@ -36,7 +35,7 @@ class NewsController extends Controller
 
     public function index()
     {
-        $records = $this->repo->findAll();
+        $records = $this->repo->orderBy('updated_at', 'desc')->findAll();
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records']));
     }
 

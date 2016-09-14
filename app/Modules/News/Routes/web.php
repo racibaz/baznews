@@ -20,6 +20,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('news_category', 'Backend\NewsCategoryController');
     Route::resource('news', 'Backend\NewsController');
     Route::resource('news_source', 'Backend\NewsSourceController');
+    Route::resource('photo_gallery', 'Backend\PhotoGalleryController');
+    Route::resource('photo', 'Backend\PhotoController');
 
 });
 

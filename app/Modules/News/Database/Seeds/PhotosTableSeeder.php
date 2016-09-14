@@ -1,0 +1,77 @@
+<?php
+
+namespace App\Modules\News\Database\Seeds;
+
+use App\Modules\News\Models\Photo;
+use Illuminate\Database\Seeder;
+
+class PhotosTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Photo::create([
+            'photo_gallery_id' => 1,
+            'name' => 'galeri 1',
+            'slug' => 'galeri_1',
+            'file' => 'galeri 1',
+            'link' => 'galeri 1',
+            'description' => 'galeri 1 tanım',
+            'keywords' => 'galeri 1',
+            'order' => 1,
+            'is_active' => 1,
+        ]);
+
+        Photo::create([
+            'photo_gallery_id' => 2,
+            'name' => 'galeri 2',
+            'slug' => 'galeri_2',
+            'file' => 'galeri 2',
+            'link' => 'galeri 2',
+            'description' => 'galeri 2 tanım',
+            'keywords' => 'galeri 2',
+            'order' => 2,
+            'is_active' => 1,
+        ]);
+
+        Photo::create([
+            'photo_gallery_id' => 1,
+            'name' => 'galeri 3',
+            'slug' => 'galeri_3',
+            'file' => 'galeri 3',
+            'link' => 'galeri 3',
+            'description' => 'galeri 3 tanım',
+            'keywords' => 'galeri 3',
+            'order' => 3,
+            'is_active' => 1,
+        ]);
+
+        Photo::create([
+            'photo_gallery_id' => 2,
+            'name' => 'galeri 4',
+            'slug' => 'galeri_4',
+            'file' => 'galeri 4',
+            'link' => 'galeri 4',
+            'description' => 'galeri 4 tanım',
+            'keywords' => 'galeri 4',
+            'order' => 4,
+            'is_active' => 1,
+        ]);
+
+        Photo::create([
+            'photo_gallery_id' => 3,
+            'name' => 'galeri 5',
+            'slug' => 'galeri_5',
+            'file' => 'galeri 5',
+            'link' => 'galeri 5',
+            'description' => 'galeri 5 tanım',
+            'keywords' => 'galeri 5',
+            'order' => 5,
+            'is_active' => 1,
+        ]);
+    }
+}

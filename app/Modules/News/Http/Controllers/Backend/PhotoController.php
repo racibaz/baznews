@@ -3,18 +3,19 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Modules\News\Models\NewsSource;
-use App\Modules\News\Repositories\NewsSourceRepository as Repo;
+use App\Modules\News\Models\Photo;
+use App\Modules\News\Models\PhotoGallery;
+use App\Modules\News\Repositories\PhotoRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Input;
 
-class NewsSourceController extends Controller
+class PhotoController extends Controller
 {
     private $repo;
-    private $view = 'news_source.';
+    private $view = 'photo.';
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
@@ -38,8 +39,9 @@ class NewsSourceController extends Controller
 
     public function create()
     {
+        $photoGalleryList = PhotoGallery::photoGalleryList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'photoGalleryList']));
     }
 
 
@@ -49,25 +51,26 @@ class NewsSourceController extends Controller
     }
 
 
-    public function show(NewsSource $record)
+    public function show(Photo $record)
     {
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact('record'));
     }
 
 
-    public function edit(NewsSource $record)
+    public function edit(Photo $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record']));
+        $photoGalleryList = PhotoGallery::photoGalleryList();
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'photoGalleryList']));
     }
 
 
-    public function update(Request $request, NewsSource $record)
+    public function update(Request $request, Photo $record)
     {
         return $this->save($record);
     }
 
 
-    public function destroy(NewsSource $record)
+    public function destroy(Photo $record)
     {
         $this->repo->delete($record->id);
         return redirect()->route($this->redirectRouteName . $this->view .'index');
@@ -80,7 +83,7 @@ class NewsSourceController extends Controller
 
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = NewsSource::validate($input);
+        $v = Photo::validate($input);
 
         if ($v->fails()) {
             return Redirect::back()
