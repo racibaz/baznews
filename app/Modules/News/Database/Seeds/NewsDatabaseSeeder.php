@@ -21,5 +21,6 @@ class NewsDatabaseSeeder extends Seeder
         $this->call(PhotosTableSeeder::class);
         $this->call(VideoCategoriesTableSeeder::class);
         $this->call(VideoGalleriesTableSeeder::class);
+        $this->call(VideosTableSeeder::class);
     }
 }

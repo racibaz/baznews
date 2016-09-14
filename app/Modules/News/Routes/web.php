@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('photo_category', 'Backend\PhotoCategoryController');
     Route::resource('video_category', 'Backend\VideoCategoryController');
     Route::resource('video_gallery', 'Backend\VideoGalleryController');
+    Route::resource('video', 'Backend\VideoController');
 
 });
 
