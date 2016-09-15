@@ -38,6 +38,11 @@ class CreateNewsTable extends Migration
             $table->boolean('is_comment');
             $table->boolean('is_active');
             $table->timestamps();
+
+            // Keys
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('news_resource_id')->references('id')->on('news_sources')->onDelete('cascade')->onUpdate('cascade');
         });
 
 
@@ -47,7 +52,6 @@ class CreateNewsTable extends Migration
 
             $table->foreign('news_category_id')->references('id')->on('news_categories')->onDelete('cascade');
             $table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
-
         });
 
 

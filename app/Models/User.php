@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Validator;
 
 class User extends Authenticatable
 {
-
     use EntrustUserTrait;
     use Notifiable;
 
@@ -86,11 +85,6 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Country');
     }
 
-    public function photo_galleries()
-    {
-        return $this->hasMany('App\Modules\News\Models\PhotoGallery');
-    }
-
 //    public function userable()
 //    {
 //        return $this->morphTo();
@@ -101,6 +95,17 @@ class User extends Authenticatable
         return $this->morphMany('App\Models\Attachment', 'attachmentable');
     }
 
+    //modules news
+    public function photo_galleries()
+    {
+        return $this->hasMany('App\Modules\News\Models\PhotoGallery');
+    }
+
+    //modules news
+    public function video_galleries()
+    {
+        return $this->hasMany('App\Modules\News\Models\VideoGallery');
+    }
 
     public static function UserFullName()
     {

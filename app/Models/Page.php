@@ -9,6 +9,11 @@ class Page extends Model
 {
     protected $fillable = ['name', 'slug', 'content', 'description', 'keywords' ,'is_active'];
 
+    public function menus()
+    {
+        return $this->hasMany('App\Models\Menu');
+    }
+
     public static function validate($input) {
         $rules = array(
             'name'                     => 'Required',

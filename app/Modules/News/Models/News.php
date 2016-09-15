@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Validator;
 
 class News extends Model
 {
+    public $news_types = ['Standard', 'Photo', 'Photo Gallery', 'Video', 'Video Gallery', 'Sound'];
+
     protected $table = 'news';
 
     //TODO eklenebilecekler
@@ -31,6 +33,41 @@ class News extends Model
     public function news_categories()
     {
         return $this->belongsToMany('App\Modules\News\Models\NewsCategory', 'news_categories_news', 'news_id', 'news_category_id');
+    }
+
+    public function photo_galleries()
+    {
+        return $this->belongsToMany('App\Modules\News\Models\PhotoGallery', 'news_photo_galleries', 'news_id', 'photo_gallery_id');
+    }
+
+    public function video_galleries()
+    {
+        return $this->belongsToMany('App\Modules\News\Models\VideoGallery', 'news_video_galleries', 'news_id', 'video_gallery_id');
+    }
+
+    public function photos()
+    {
+        return $this->belongsToMany('App\Modules\News\Models\Photo', 'news_photos', 'news_id', 'photo_id');
+    }
+
+    public function videos()
+    {
+        return $this->belongsToMany('App\Modules\News\Models\Video', 'news_videos', 'news_id', 'video_id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo('App\Modules\News\Models\Country');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo('App\Modules\News\Models\City');
+    }
+
+    public function news_source()
+    {
+        return $this->belongsTo('App\Modules\News\Models\NewsSource');
     }
 
     public static function validate($input) {

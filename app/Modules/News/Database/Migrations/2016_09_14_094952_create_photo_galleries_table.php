@@ -28,7 +28,19 @@ class CreatePhotoGalleriesTable extends Migration
             $table->foreign('photo_category_id')->references('id')->on('photo_categories')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
+
+
+        Schema::create('news_photo_galleries', function (Blueprint $table) {
+            $table->unsignedInteger('photo_gallery_id')->index();
+            $table->unsignedInteger('news_id')->index();
+
+            $table->foreign('photo_gallery_id')->references('id')->on('photo_galleries')->onDelete('cascade');
+            $table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
+        });
+
     }
+
+
 
     /**
      * Reverse the migrations.
@@ -37,6 +49,7 @@ class CreatePhotoGalleriesTable extends Migration
      */
     public function down()
     {
+        Schema::drop('news_photo_galleries');
         Schema::drop('photo_galleries');
     }
 }

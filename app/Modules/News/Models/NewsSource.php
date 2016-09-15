@@ -9,6 +9,11 @@ class NewsSource extends Model
 {
     protected $fillable = ['name', 'url', 'is_active'];
 
+    public function news()
+    {
+        return $this->hasMany('App\Modules\News\Models\NewsSource');
+    }
+
     public static function validate($input) {
         $rules = array(
             'name' => 'required',

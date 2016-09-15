@@ -28,6 +28,12 @@ class City extends Model
         return $this->hasMany('App\Models\User');
     }
 
+    //modules news
+    public function news()
+    {
+        return $this->hasMany('App\Modules\News\Models\News');
+    }
+
     public static function validate($input) {
         $rules = array(
             'country_id'                    => 'required',

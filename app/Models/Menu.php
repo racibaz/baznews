@@ -9,6 +9,11 @@ class Menu extends Model
 {
     protected $fillable = ['parent_id', 'page_id', 'name', 'slug', 'url', 'icon', 'order' ,'is_active'];
 
+    public function page()
+    {
+        return $this->belongsTo('App\Models\Page');
+    }
+
     public static function validate($input) {
         $rules = array(
             'name'                     => 'Required',

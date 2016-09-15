@@ -28,6 +28,13 @@ class Country extends Model
         return $this->hasMany('App\Models\User');
     }
 
+    //modules news
+    public function news()
+    {
+        return $this->hasMany('App\Modules\News\Models\News');
+    }
+
+
     public static function validate($input) {
         $rules = array(
             'name'                          => 'required|min:4|max:255',

@@ -15,6 +15,11 @@ class Photo extends Model
      * */
     protected $fillable = ['photo_gallery_id', 'name', 'slug', 'file', 'link','description', 'keywords', 'order', 'is_active'];
 
+    public function news()
+    {
+        return $this->belongsToMany('App\Modules\News\Models\News', 'news_photos', 'photo_id', 'news_id');
+    }
+
     public function photo_gallery()
     {
         return $this->belongsTo('App\Modules\News\Models\PhotoGallery');

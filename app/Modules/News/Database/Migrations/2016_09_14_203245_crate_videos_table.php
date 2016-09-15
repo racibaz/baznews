@@ -29,6 +29,14 @@ class CrateVideosTable extends Migration
             // Keys
             $table->foreign('video_gallery_id')->references('id')->on('video_galleries')->onDelete('cascade')->onUpdate('cascade');
         });
+
+        Schema::create('news_videos', function (Blueprint $table) {
+            $table->unsignedInteger('video_id')->index();
+            $table->unsignedInteger('news_id')->index();
+
+            $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');
+            $table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
+        });
     }
 
     /**
@@ -38,6 +46,7 @@ class CrateVideosTable extends Migration
      */
     public function down()
     {
+        Schema::drop('news_videos');
         Schema::drop('videos');
     }
 }

@@ -9,6 +9,12 @@ class PhotoGallery extends Model
 {
     protected $fillable = ['photo_category_id', 'user_id', 'title', 'slug', 'description', 'keywords', 'is_active'];
 
+
+    public function news()
+    {
+        return $this->belongsToMany('App\Modules\News\Models\News', 'news_photo_galleries', 'photo_gallery_id', 'news_id');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');
