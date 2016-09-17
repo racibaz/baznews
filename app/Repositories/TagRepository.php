@@ -4,10 +4,10 @@ namespace App\Repositories;
 
 use Rinvex\Repository\Repositories\EloquentRepository;
 
-class AnnouncementRepository extends EloquentRepository
+class TagRepository extends EloquentRepository
 {
     protected $repositoryId = 'rinvex.repository.uniqueid';
 
-    protected $model = 'App\Models\Announcement';
+    protected $model = 'App\Models\Tag';
 
 }

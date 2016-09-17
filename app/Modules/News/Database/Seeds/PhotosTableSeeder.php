@@ -73,5 +73,17 @@ class PhotosTableSeeder extends Seeder
             'order' => 5,
             'is_active' => 1,
         ]);
+
+        Photo::create([
+            'photo_gallery_id' => 3,
+            'name' => 'galeri 6',
+            'slug' => 'galeri_6',
+            'file' => 'galeri 6',
+            'link' => 'galeri 6',
+            'description' => 'galeri 6 tanım',
+            'keywords' => 'galeri 6',
+            'order' => 6,
+            'is_active' => 1,
+        ]);
     }
 }

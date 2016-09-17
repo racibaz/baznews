@@ -19,6 +19,12 @@ class Video extends Model
     {
         return $this->belongsTo('App\Modules\News\Models\VideoGallery');
     }
+
+    public function tags()
+    {
+        return $this->morphToMany('App\Models\Tag', 'taggable');
+    }
+
     public static function validate($input) {
         $rules = array(
             'name' => 'required',

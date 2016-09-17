@@ -70,6 +70,21 @@ class News extends Model
         return $this->belongsTo('App\Modules\News\Models\NewsSource');
     }
 
+    public function future_news()
+    {
+        return $this->hasMany(FutureNews::class);
+    }
+
+    public function recommendation_news()
+    {
+        return $this->hasMany(RecommendationNews::class);
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany('App\Models\Tag', 'taggable');
+    }
+
     public static function validate($input) {
         $rules = array(
             'title' => 'Required',

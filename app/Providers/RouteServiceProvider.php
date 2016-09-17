@@ -40,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('contact_type', 'App\Models\ContactType');
         Route::model('contact', 'App\Models\Contact');
         Route::model('setting', 'App\Models\Setting');
+        Route::model('tag', 'App\Models\Tag');
         
     }
 

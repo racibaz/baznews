@@ -24,6 +24,12 @@ class Photo extends Model
     {
         return $this->belongsTo('App\Modules\News\Models\PhotoGallery');
     }
+
+    public function tags()
+    {
+        return $this->morphToMany('App\Models\Tag', 'taggable');
+    }
+
     public static function validate($input) {
         $rules = array(
             'name' => 'required',

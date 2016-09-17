@@ -63,5 +63,15 @@ class PhotoGalleriesTableSeeder extends Seeder
             'keywords' => 'beş galeri',
             'is_active' => 1,
         ]);
+
+        PhotoGallery::create([
+            'photo_category_id' => 5,
+            'user_id' => 2,
+            'title' => 'altı photo gallery',
+            'slug' => 'altı_photo_gallery',
+            'description' => 'galeri tanım/not',
+            'keywords' => 'altı galeri',
+            'is_active' => 1,
+        ]);
     }
 }
