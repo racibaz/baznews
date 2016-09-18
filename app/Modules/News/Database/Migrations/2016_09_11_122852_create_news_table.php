@@ -15,6 +15,7 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('country_id')->nullable();
             $table->unsignedInteger('city_id')->nullable();
             $table->unsignedInteger('news_resource_id')->nullable();
@@ -40,6 +41,7 @@ class CreateNewsTable extends Migration
             $table->timestamps();
 
             // Keys
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('news_resource_id')->references('id')->on('news_sources')->onDelete('cascade')->onUpdate('cascade');

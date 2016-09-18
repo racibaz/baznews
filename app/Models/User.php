@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Modules\News\Models\Biography;
+use App\Modules\News\Models\RecommendationNews;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -114,7 +116,17 @@ class User extends Authenticatable
 
     public static function userList()
     {
-        return User::where('is_active',1)->pluck('first_name', 'id');
+        return User::where('status',1)->pluck('first_name', 'id');
+    }
+
+    public function recommendation_news()
+    {
+        return $this->hasMany(RecommendationNews::class);
+    }
+
+    public function biographies()
+    {
+        return $this->hasMany(Biography::class);
     }
 
 

@@ -16,6 +16,7 @@ class NewsTableSeeder extends Seeder
     public function run()
     {
         $news1 = News::create([
+            'user_id'                           => 1,
             'country_id'                        => 1,
             'city_id'                           => 1,
             'news_resource_id'                  => 1,
@@ -41,6 +42,7 @@ class NewsTableSeeder extends Seeder
         ]);
 
         $news2 = News::create([
+            'user_id'                           => 1,
             'country_id'                        => 1,
             'city_id'                           => 1,
             'news_resource_id'                  => 1,
@@ -66,6 +68,7 @@ class NewsTableSeeder extends Seeder
         ]);
 
         $news3 = News::create([
+            'user_id'                           => 1,
             'country_id'                        => 1,
             'city_id'                           => 1,
             'news_resource_id'                  => 1,
@@ -91,6 +94,7 @@ class NewsTableSeeder extends Seeder
         ]);
 
         $news4 = News::create([
+            'user_id'                           => 1,
             'country_id'                        => 1,
             'city_id'                           => 1,
             'news_resource_id'                  => 1,

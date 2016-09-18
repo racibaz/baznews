@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuotationAuthorsTable extends Migration
+class CreateAuthorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateQuotationAuthorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('quotation_authors', function (Blueprint $table) {
+        Schema::create('authors', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('name')->unique();
@@ -23,9 +23,13 @@ class CreateQuotationAuthorsTable extends Migration
             $table->string('photo')->nullable();
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();
+            $table->boolean('is_quotation')->default(false);
             $table->boolean('is_cuff')->default(false);
             $table->boolean('is_active')->default(false);
             $table->timestamps();
+
+            // Keys
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -36,6 +40,6 @@ class CreateQuotationAuthorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quotation_authors');
+        Schema::dropIfExists('authors');
     }
 }

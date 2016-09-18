@@ -26,7 +26,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('video_category', 'Backend\VideoCategoryController');
     Route::resource('video_gallery', 'Backend\VideoGalleryController');
     Route::resource('video', 'Backend\VideoController');
-    Route::resource('quotation_author', 'Backend\QuotationAuthorController');
+    Route::resource('recommendation_news', 'Backend\RecommendationNewsController');
+    Route::resource('biography', 'Backend\BiographyController');
+
 });
 
 

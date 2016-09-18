@@ -24,7 +24,7 @@ class NewsDatabaseSeeder extends Seeder
         $this->call(VideosTableSeeder::class);
         $this->call(FutureNewsTableSeeder::class);
         $this->call(RecommendationNewsTableSeeder::class);
-        $this->call(QuotationAuthorsTableSeeder::class);
+        $this->call(BiographiesTableSeeder::class);
         $this->call(RelationsTableSeeder::class);
     }
 }

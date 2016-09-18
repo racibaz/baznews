@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Modules\News\Models;
+namespace App\Modules\Article\Models;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
-class QuotationAuthor extends Model
+class Author extends Model
 {
-    protected $table = 'quotation_authors';
-    protected $fillable = ['user_id', 'name', 'slug', 'email', 'cv', 'photo', 'description', 'keywords', 'is_cuff', 'is_active'];
+    protected $table = 'authors';
+    protected $fillable = ['user_id', 'name', 'slug', 'email', 'cv', 'photo', 'description', 'keywords', 'is_quotation', 'is_cuff', 'is_active'];
 
     public function user()
     {
@@ -24,8 +24,8 @@ class QuotationAuthor extends Model
         return Validator::make($input, $rules);
     }
 
-    public static function quotationAuthorList()
+    public static function authorList()
     {
-        return QuotationAuthor::where('is_active',1)->pluck('name', 'id');
+        return Author::where('is_active',1)->pluck('name', 'id');
     }
 }

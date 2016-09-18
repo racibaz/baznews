@@ -1,20 +1,22 @@
 <?php
 
-namespace App\Modules\News\Http\Controllers\Backend;
+namespace App\Modules\Article\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Modules\News\Models\QuotationAuthor;
-use App\Modules\News\Repositories\QuotationAuthorRepository as Repo;
+use App\Modules\Article\Models\Article;
+use App\Modules\Article\Models\Author;
+use App\Modules\Article\Repositories\ArticleRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
-class QuotationAuthorController extends Controller
+class ArticleController extends Controller
 {
     private $repo;
-    private $view = 'quotation_author.';
+    private $view = 'article.';
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
@@ -32,14 +34,15 @@ class QuotationAuthorController extends Controller
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->findAll();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
     public function create()
     {
+        $authorList = Author::authorList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record']));
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'authorList']));
     }
 
 
@@ -49,25 +52,26 @@ class QuotationAuthorController extends Controller
     }
 
 
-    public function show(QuotationAuthor $record)
+    public function show(Article $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
-    public function edit(QuotationAuthor $record)
+    public function edit(Article $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record']));
+        $authorList = Author::authorList();
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'authorList']));
     }
 
 
-    public function update(Request $request, QuotationAuthor $record)
+    public function update(Request $request, Article $record)
     {
         return $this->save($record);
     }
 
 
-    public function destroy(QuotationAuthor $record)
+    public function destroy(Article $record)
     {
         $this->repo->delete($record->id);
         return redirect()->route($this->redirectRouteName . $this->view . 'index');
@@ -80,8 +84,9 @@ class QuotationAuthorController extends Controller
 
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
+        $input['user_id'] = Auth::user()->id;
 
-        $v = QuotationAuthor::validate($input);
+        $v = Article::validate($input);
 
         if ($v->fails()) {
             return Redirect::back()
