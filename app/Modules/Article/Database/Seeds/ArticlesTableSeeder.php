@@ -2,7 +2,7 @@
 
 namespace App\Modules\Article\Database\Seeds;
 
-use App\Modules\News\Models\Article;
+use App\Modules\Article\Models\Article;
 use Illuminate\Database\Seeder;
 
 class ArticlesTableSeeder extends Seeder

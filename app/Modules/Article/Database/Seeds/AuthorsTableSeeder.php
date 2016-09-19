@@ -2,7 +2,7 @@
 
 namespace App\Modules\Article\Database\Seeds;
 
-use App\Modules\News\Models\Author;
+use App\Modules\Article\Models\Author;
 use Illuminate\Database\Seeder;
 
 class AuthorsTableSeeder extends Seeder

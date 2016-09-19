@@ -4,5 +4,5 @@
 {{--@section('title-description'){{trans('common.edit')}}@stop--}}
 
 @section('content')
-    @include('news::backend.article._form', ['record' => $record])
+    @include('article::backend.article._form', ['record' => $record])
 @stop
