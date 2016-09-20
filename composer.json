@@ -14,7 +14,8 @@
         "arcanedev/log-viewer": "^3.10",
         "rinvex/repository": "2.0.*",
         "caffeinated/modules": "^4.0",
-        "kalnoy/nestedset": "^4.1"
+        "kalnoy/nestedset": "^4.1",
+        "venturecraft/revisionable": "1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

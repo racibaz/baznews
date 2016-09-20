@@ -3,11 +3,13 @@
 namespace App\Modules\Article\Models;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 use Illuminate\Support\Facades\Validator;
 
-class Author extends Model
+class Author extends Eloquent
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
+
     protected $table = 'authors';
     protected $fillable = ['user_id', 'name', 'slug', 'email', 'cv', 'photo', 'description', 'keywords', 'is_quotation', 'is_cuff', 'is_active'];
 

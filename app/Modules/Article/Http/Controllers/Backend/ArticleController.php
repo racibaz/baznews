@@ -60,8 +60,9 @@ class ArticleController extends Controller
 
     public function edit(Article $record)
     {
+        $histories = $record->revisionHistory;
         $authorList = Author::authorList();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'authorList']));
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'authorList', 'histories']));
     }
 
 
