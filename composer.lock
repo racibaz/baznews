@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "246ba70de6d042241247959de1fbedd1",
+    "hash": "fd2538ae923d23e474214cdca5181065",
     "content-hash": "fcae683396decb73c908f4ab2215288d",
     "packages": [
         {
@@ -72,16 +72,16 @@
         },
         {
             "name": "arcanedev/support",
-            "version": "3.14.0",
+            "version": "3.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ARCANEDEV/Support.git",
-                "reference": "daa8c5a46acb9afeb7db7a84862e799890fcc4d6"
+                "reference": "9dfe987cada7341966be38110e8b349f5c30e9fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/Support/zipball/daa8c5a46acb9afeb7db7a84862e799890fcc4d6",
-                "reference": "daa8c5a46acb9afeb7db7a84862e799890fcc4d6",
+                "url": "https://api.github.com/repos/ARCANEDEV/Support/zipball/9dfe987cada7341966be38110e8b349f5c30e9fa",
+                "reference": "9dfe987cada7341966be38110e8b349f5c30e9fa",
                 "shasum": ""
             },
             "require": {
@@ -127,7 +127,7 @@
                 "laravel",
                 "support"
             ],
-            "time": "2016-09-04 23:35:41"
+            "time": "2016-09-18 16:31:53"
         },
         {
             "name": "barryvdh/laravel-debugbar",
