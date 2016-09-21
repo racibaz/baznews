@@ -4,8 +4,13 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
+    "hash": "fd2538ae923d23e474214cdca5181065",
+    "content-hash": "fcae683396decb73c908f4ab2215288d",
+=======
     "hash": "bdea83919d9ea0a54fbbb127c8d5d246",
     "content-hash": "d881384384b40f0bc11068f52f0895bd",
+>>>>>>> 4c9d5f99dddd38b726aec99ba6cc507bb51e9e55
     "packages": [
         {
             "name": "arcanedev/log-viewer",
