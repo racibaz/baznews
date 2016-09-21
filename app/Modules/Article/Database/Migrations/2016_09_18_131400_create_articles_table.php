@@ -35,6 +35,14 @@ class CreateArticlesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade')->onUpdate('cascade');
         });
+
+        Schema::create('article_categories_articles', function (Blueprint $table) {
+            $table->unsignedInteger('article_category_id')->index();
+            $table->unsignedInteger('article_id')->index();
+
+            $table->foreign('article_category_id')->references('id')->on('article_categories')->onDelete('cascade');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+        });
     }
 
     /**
@@ -44,6 +52,7 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('article_categories_articles');
         Schema::dropIfExists('articles');
     }
 }

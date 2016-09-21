@@ -5,13 +5,13 @@
     <div class="row">
         <div class="col-md-12">
             <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('article::article.managment')}}</h3>
+            <h3 class="ls-top-header">{{trans('article::article_category.managment')}}</h3>
             <!--Top header end -->
 
             <!--Top breadcrumb start -->
             <ol class="breadcrumb">
                 <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('article.index') !!}"> {{ trans('article::article.article_categories') }} </a></li>
+                <li><a href="{!! URL::route('article_category.index') !!}"> {{ trans('article::article_category.article_categories') }} </a></li>
                 <li class="active"> {{ trans('article::common.add_update') }}</li>
             </ol>
             <!--Top breadcrumb start -->
@@ -20,114 +20,96 @@
     <!-- Main Content Element  Start-->
     <div class="row">
         <div class="col-md-6">
-            @include('article::backend.partials._rivisions', ['rivisions' => $record->revisionHistory])
             <div class="panel panel-light-blue">
                 <div class="panel-heading">
                     {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                 </div>
 
                 @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['article.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+                    {!! Form::model($record, ['route' => ['article_category.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
                 @else
-                    {!! Form::open(['route' => 'article.store','method' => 'post', 'files' => 'true']) !!}
+                    {!! Form::open(['route' => 'article_category.store','method' => 'post', 'files' => 'true']) !!}
                 @endif
 
+                <div class="panel-body">
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('author_id', trans('article::article.author_id'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('parent_id', trans('article::article_category.parent_id'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::select('author_id', $authorList , $record->author_id , ['placeholder' => trans('article::common.please_choose'),'class' => 'form-control']) !!}
+                                {!! Form::select('parent_id', $articleCategoryList , $record->parent_id , ['placeholder' => trans('article::common.please_choose'),'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('title', trans('article::article.title'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('_lft', trans('article::article_category._lft'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('title', $record->title, ['placeholder' => trans('article::article.title') ,'class' => 'form-control']) !!}
+                                {!! Form::number('_lft', $record->_lft, ['placeholder' => trans('article::article_category._lft') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('slug', trans('article::article.slug'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('_rgt', trans('article::article_category._rgt'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('article::article.slug') ,'class' => 'form-control']) !!}
+                                {!! Form::number('_rgt', $record->_rgt, ['placeholder' => trans('article::article_category._rgt') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('subtitle', trans('article::article.subtitle'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('name', trans('article::article_category.name'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('subtitle', $record->subtitle, ['placeholder' => trans('article::article.subtitle') ,'class' => 'form-control']) !!}
+                                {!! Form::text('name', $record->name, ['placeholder' => trans('article::article_category.name') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('spot', trans('article::article.spot'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('slug', trans('article::article_category.slug'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::textarea('spot', $record->spot, ['placeholder' => trans('article::article.spot') ,'class' => 'form-control']) !!}
+                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('article::article_category.slug') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('spot', trans('article::article.spot'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('description', trans('article::article_category.description'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::textarea('spot', $record->cv, ['placeholder' => trans('article::article.spot') ,'class' => 'form-control']) !!}
+                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('article::article_category.description') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('description', trans('article::article.description'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('keywords', trans('article::article_category.keywords'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('article::article.description') ,'class' => 'form-control']) !!}
+                                {!! Form::textarea('keywords', $record->keywords, ['placeholder' => trans('article::article_category.keywords') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('keywords', trans('article::article.keywords'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('hit', trans('article::article_category.hit'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::textarea('keywords', $record->keywords, ['placeholder' => trans('article::article.keywords') ,'class' => 'form-control']) !!}
+                                {!! Form::number('hit', $record->hit, ['placeholder' => trans('article::article_category.hit') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('hit', trans('article::article.hit'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('icon', trans('article::article_category.icon'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::number('hit', $record->hit, ['placeholder' => trans('article::article.hit') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('order', trans('article::article.order'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::number('order', $record->order, ['placeholder' => trans('article::article.order') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('status', trans('article::article.status'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::number('status', $record->status, ['placeholder' => trans('article::article.status') ,'class' => 'form-control']) !!}
+                                {!! Form::file('icon') !!}
                             </div>
                         </div>
                     </div>

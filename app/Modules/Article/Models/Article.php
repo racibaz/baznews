@@ -23,6 +23,11 @@ class Article extends Eloquent
         return $this->belongsTo(Author::class);
     }
 
+    public function article_categories()
+    {
+        return $this->belongsToMany('App\Modules\Article\Models\ArticleCategory', 'article_categories_articles', 'article_id', 'article_category_id');
+    }
+
     public static function validate($input) {
         $rules = array(
             'user_id' => 'required',

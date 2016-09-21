@@ -11,6 +11,7 @@ use App\Modules\News\Models\NewsSource;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -46,9 +47,10 @@ class NewsController extends Controller
         $cityList = City::cityList();
         $newsCategoryList = NewsCategory::newsCategoryList();
         $newsSourceList = NewsSource::newsSourceList();
+        $statuses = News::$statuses;
         $record = $this->repo->createModel();
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
-            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList']));
+            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses']));
     }
 
 
@@ -70,8 +72,9 @@ class NewsController extends Controller
         $cityList = City::cityList();
         $newsCategoryList = NewsCategory::newsCategoryList();
         $newsSourceList = NewsSource::newsSourceList();
+        $statuses = News::$statuses;
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
-            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList']));
+            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses']));
     }
 
 
@@ -92,6 +95,7 @@ class NewsController extends Controller
     {
         $input = Input::all();
 
+        $input['user_id'] = Auth::user()->id;
         $input['band_news'] = Input::get('band_news') == "on" ? true : false;
         $input['box_cuff'] = Input::get('box_cuff') == "on" ? true : false;
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;

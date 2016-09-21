@@ -155,7 +155,7 @@
                             {!! Form::label('status', trans('news::news.status'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::number('status', $record->status, ['placeholder' => trans('news::news.status') ,'class' => 'form-control']) !!}
+                                {!! Form::select('status', $statuses , $record->status , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

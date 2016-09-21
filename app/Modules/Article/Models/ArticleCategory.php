@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Modules\News\Models;
+namespace App\Modules\Article\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
-class NewsCategory extends Model
+class ArticleCategory extends Model
 {
-    protected $table = 'news_categories';
+    protected $table = 'article_categories';
     protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'icon', 'is_cuff', 'is_active'];
 
-    public function news()
+    public function articles()
     {
-        return $this->belongsToMany('App\Modules\News\Models\News', 'news_categories_news', 'news_category_id', 'news_id');
+        return $this->belongsToMany('App\Modules\Article\Models\Article', 'article_categories_articles', 'article_category_id', 'article_id');
     }
 
     public static function validate($input) {
@@ -22,8 +22,8 @@ class NewsCategory extends Model
         return Validator::make($input, $rules);
     }
 
-    public static function newsCategoryList()
+    public static function articleCategoryList()
     {
-        return NewsCategory::where('is_active',1)->pluck('name', 'id');
+        return ArticleCategory::where('is_active',1)->pluck('name', 'id');
     }
 }

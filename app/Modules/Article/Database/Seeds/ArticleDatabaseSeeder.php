@@ -13,6 +13,7 @@ class ArticleDatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(ArticleCategoriesTableSeeder::class);
         $this->call(AuthorsTableSeeder::class);
         $this->call(ArticlesTableSeeder::class);
     }

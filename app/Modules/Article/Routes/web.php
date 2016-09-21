@@ -18,6 +18,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
     Route::resource('author', 'Backend\AuthorController');
     Route::resource('article', 'Backend\ArticleController');
+    Route::resource('article_category', 'Backend\ArticleCategoryController');
 });
 
 
