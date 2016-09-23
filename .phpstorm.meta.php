@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-09-19.
+    * Generated on 2016-09-23.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -86,6 +86,7 @@ namespace PHPSTORM_META {
             'migrator' instanceof \Illuminate\Database\Migrations\Migrator,
             'Caffeinated\Modules\Contracts\Repository' instanceof \Caffeinated\Modules\Repositories\LocalRepository,
             'modules' instanceof \Caffeinated\Modules\Modules,
+            'image' instanceof \Intervention\Image\ImageManager,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -167,6 +168,7 @@ namespace PHPSTORM_META {
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'html' instanceof \Collective\Html\HtmlBuilder,
             'form' instanceof \Collective\Html\FormBuilder,
+            'purifier' instanceof \Mews\Purifier\Purifier,
         ],
         \Illuminate\Contracts\Container\Container::make('') => [
             '' == '@',
@@ -245,6 +247,7 @@ namespace PHPSTORM_META {
             'migrator' instanceof \Illuminate\Database\Migrations\Migrator,
             'Caffeinated\Modules\Contracts\Repository' instanceof \Caffeinated\Modules\Repositories\LocalRepository,
             'modules' instanceof \Caffeinated\Modules\Modules,
+            'image' instanceof \Intervention\Image\ImageManager,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -326,6 +329,7 @@ namespace PHPSTORM_META {
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'html' instanceof \Collective\Html\HtmlBuilder,
             'form' instanceof \Collective\Html\FormBuilder,
+            'purifier' instanceof \Mews\Purifier\Purifier,
         ],
         \App::make('') => [
             '' == '@',
@@ -404,6 +408,7 @@ namespace PHPSTORM_META {
             'migrator' instanceof \Illuminate\Database\Migrations\Migrator,
             'Caffeinated\Modules\Contracts\Repository' instanceof \Caffeinated\Modules\Repositories\LocalRepository,
             'modules' instanceof \Caffeinated\Modules\Modules,
+            'image' instanceof \Intervention\Image\ImageManager,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -485,6 +490,7 @@ namespace PHPSTORM_META {
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'html' instanceof \Collective\Html\HtmlBuilder,
             'form' instanceof \Collective\Html\FormBuilder,
+            'purifier' instanceof \Mews\Purifier\Purifier,
         ],
         \app('') => [
             '' == '@',
@@ -563,6 +569,7 @@ namespace PHPSTORM_META {
             'migrator' instanceof \Illuminate\Database\Migrations\Migrator,
             'Caffeinated\Modules\Contracts\Repository' instanceof \Caffeinated\Modules\Repositories\LocalRepository,
             'modules' instanceof \Caffeinated\Modules\Modules,
+            'image' instanceof \Intervention\Image\ImageManager,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -644,6 +651,7 @@ namespace PHPSTORM_META {
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'html' instanceof \Collective\Html\HtmlBuilder,
             'form' instanceof \Collective\Html\FormBuilder,
+            'purifier' instanceof \Mews\Purifier\Purifier,
         ],
     ];
 }

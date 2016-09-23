@@ -261,10 +261,6 @@
 <!-- ./wrapper -->
 
 
-
-
-
-
 <!-- jQuery 2.2.3 -->
 <script src="{{ Theme::asset('default-theme::AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -286,5 +282,8 @@
 <script src="{{ Theme::asset('default-theme::AdminLTE/dist/js/pages/dashboard2.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ Theme::asset('default-theme::AdminLTE/dist/js/demo.js') }}"></script>
+
+@yield('js')
+
 </body>
 </html>

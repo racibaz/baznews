@@ -185,6 +185,11 @@ return [
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
         Rinvex\Repository\Providers\RepositoryServiceProvider::class,
         Caffeinated\Modules\ModulesServiceProvider::class,
+        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        Unisharp\Ckeditor\ServiceProvider::class,
+        Mews\Purifier\PurifierServiceProvider::class,
+
 
     ],
 
@@ -239,6 +244,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Theme' => Caffeinated\Themes\Facades\Theme::class,
         'Module' => Caffeinated\Modules\Facades\Module::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Purifier' => Mews\Purifier\Facades\Purifier::class,
 
         ////TODO  THEME İN COMPONET GİBİ BİRŞEY VARDI ONA BAKILACAK
     ],
