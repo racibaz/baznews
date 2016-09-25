@@ -3,12 +3,32 @@
 namespace App\Modules\News\Models;
 
 use App\Models\User;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
+use Venturecraft\Revisionable\RevisionableTrait;
 
 class Biography extends Model
 {
+    use RevisionableTrait;
+
+    use Sluggable;
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => ['full_name']
+            ]
+        ];
+    }
+
     protected $table = 'biographies';
+    //todo biografiye title veya name alanı eklenecek
     protected $fillable = ['user_id', 'full_name', 'slug', 'content', 'photo', 'description', 'keywords', 'order', 'hit', 'is_cuff', 'is_active'];
 
 

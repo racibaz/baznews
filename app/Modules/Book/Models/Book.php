@@ -2,11 +2,30 @@
 
 namespace App\Modules\Book\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
+use Venturecraft\Revisionable\RevisionableTrait;
 
 class Book extends Model
 {
+    use RevisionableTrait;
+
+    use Sluggable;
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => ['name']
+            ]
+        ];
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -37,7 +56,6 @@ class Book extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
-
 
     public static function validate($input) {
         $rules = array(

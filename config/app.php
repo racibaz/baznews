@@ -189,6 +189,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
 
 
     ],

@@ -2,11 +2,27 @@
 
 namespace App\Modules\Article\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class ArticleCategory extends Model
 {
+    use Sluggable;
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => ['title']
+            ]
+        ];
+    }
+
     protected $table = 'article_categories';
     protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'icon', 'is_cuff', 'is_active'];
 

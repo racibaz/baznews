@@ -3,12 +3,29 @@
 namespace App\Modules\Article\Models;
 
 use App\Models\User;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent;
 use Illuminate\Support\Facades\Validator;
+use Venturecraft\Revisionable\RevisionableTrait;
 
 class Article extends Eloquent
 {
-    use \Venturecraft\Revisionable\RevisionableTrait;
+    use RevisionableTrait;
+
+    use Sluggable;
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => ['title']
+            ]
+        ];
+    }
 
     protected $table = 'articles';
     protected $fillable = ['user_id', 'author_id', 'title', 'slug', 'subtitle', 'spot', 'content', 'description', 'keywords', 'hit', 'order', 'status', 'is_cuff', 'is_active'];

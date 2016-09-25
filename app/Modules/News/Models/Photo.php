@@ -2,11 +2,30 @@
 
 namespace App\Modules\News\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
+use Venturecraft\Revisionable\RevisionableTrait;
 
 class Photo extends Model
 {
+    use RevisionableTrait;
+
+    use Sluggable;
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => ['name']
+            ]
+        ];
+    }
+
     /*
      * Alt yazı
      * Alternatif metin

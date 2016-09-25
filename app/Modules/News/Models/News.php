@@ -2,6 +2,7 @@
 
 namespace App\Modules\News\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 use Venturecraft\Revisionable\RevisionableTrait;
@@ -9,6 +10,22 @@ use Venturecraft\Revisionable\RevisionableTrait;
 class News extends Model
 {
     use RevisionableTrait;
+
+    use Sluggable;
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => ['title']
+            ]
+        ];
+    }
+
 
     public $news_types = ['Standard', 'Photo', 'Photo Gallery', 'Video', 'Video Gallery', 'Sound'];
 

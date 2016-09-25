@@ -2,11 +2,30 @@
 
 namespace App\Modules\News\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
+use Venturecraft\Revisionable\RevisionableTrait;
 
 class VideoGallery extends Model
 {
+    use RevisionableTrait;
+
+    use Sluggable;
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => ['title']
+            ]
+        ];
+    }
+
     protected $fillable = ['video_category_id', 'user_id', 'title', 'slug', 'description', 'keywords', 'is_active'];
 
     public function news()

@@ -121,6 +121,7 @@ class NewsController extends Controller
                     $result = true;
                 }
             }
+
             if ($result) {
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
