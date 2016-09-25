@@ -40,12 +40,11 @@ class FutureNewsCommand extends Command
      */
     public function handle()
     {
-        //TODO SQL HATA VEERİYOR BAKILACAK.
-//        $future_news_ids = FutureNews::whereBetween('future_datetime', [Carbon::now(), Carbon::now()->addHour(1)])->get('id')->toArray();
-//        $news = News::whereIn('id', $future_news_ids);
-//        foreach ($news as $n)
-//        {
-//            $news->update(['status',3]);
-//        }
+        $future_news_ids = FutureNews::whereBetween('future_datetime', [Carbon::now(), Carbon::now()->addHour(1)])
+            ->get()
+            ->pluck('id');
+
+        $news = News::whereIn('id', $future_news_ids)
+            ->update(['status' => 3]);
     }
 }

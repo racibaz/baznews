@@ -100,4 +100,9 @@ class News extends Model
     {
         return News::where('is_active',1)->pluck('title', 'id');
     }
+
+    public static function newsAllList()
+    {
+        return News::pluck('title', 'id');
+    }
 }
