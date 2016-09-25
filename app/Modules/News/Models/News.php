@@ -4,9 +4,12 @@ namespace App\Modules\News\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
+use Venturecraft\Revisionable\RevisionableTrait;
 
 class News extends Model
 {
+    use RevisionableTrait;
+
     public $news_types = ['Standard', 'Photo', 'Photo Gallery', 'Video', 'Video Gallery', 'Sound'];
 
     protected $table = 'news';
@@ -59,12 +62,12 @@ class News extends Model
 
     public function country()
     {
-        return $this->belongsTo('App\Modules\News\Models\Country');
+        return $this->belongsTo('App\Models\Country');
     }
 
     public function city()
     {
-        return $this->belongsTo('App\Modules\News\Models\City');
+        return $this->belongsTo('App\Models\City');
     }
 
     public function news_source()

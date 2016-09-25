@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Modules\Book\Models\Book;
 use App\Modules\News\Models\Biography;
 use App\Modules\News\Models\RecommendationNews;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
@@ -129,6 +130,10 @@ class User extends Authenticatable
         return $this->hasMany(Biography::class);
     }
 
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
 
     public static function getAllUsers()
     {

@@ -18,7 +18,7 @@ class CreateNewsCategoriesTable extends Migration
             $table->increments('id');
             NestedSet::columns($table);
             $table->string('name')->unique();
-            $table->string('slug')->nullable();
+            $table->string('slug')->nullable()->unique();
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();
             $table->unsignedInteger('hit')->nullable();

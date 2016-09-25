@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Modules\Book\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\City;
-use App\Models\Country;
-use App\Repositories\CityRepository as Repo;
+use App\Modules\Book\Models\Book;
+use App\Modules\Book\Repositories\BookRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
-class CityController extends Controller
+class BookController extends Controller
 {
     private $repo;
-    private $view = 'city.';
+    private $view = 'book.';
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
@@ -29,19 +28,17 @@ class CityController extends Controller
         return $this->redirectViewName . $this->view . $methodName;
     }
 
-
     public function index()
     {
         $records = $this->repo->findAll();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['records']));
     }
 
 
     public function create()
     {
-        $countries = Country::countryList();
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'countries']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
@@ -51,26 +48,25 @@ class CityController extends Controller
     }
 
 
-    public function show(City $record)
+    public function show(Book $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['records']));
     }
 
 
-    public function edit(City $record)
+    public function edit(Book $record)
     {
-        $countries = Country::countryList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'countries']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
-    public function update(Request $request, City $record)
+    public function update(Request $request, Book $record)
     {
         return $this->save($record);
     }
 
 
-    public function destroy(City $record)
+    public function destroy(Book $record)
     {
         $this->repo->delete($record->id);
         return redirect()->route($this->redirectRouteName . $this->view .'index');
@@ -82,8 +78,9 @@ class CityController extends Controller
         $input = Input::all();
 
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
+        $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
 
-        $v = City::validate($input);
+        $v = Book::validate($input);
 
         if ($v->fails()) {
             return Redirect::back()

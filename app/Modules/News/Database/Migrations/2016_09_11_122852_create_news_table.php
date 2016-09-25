@@ -20,7 +20,7 @@ class CreateNewsTable extends Migration
             $table->unsignedInteger('city_id')->nullable();
             $table->unsignedInteger('news_resource_id')->nullable();
             $table->string('title')->unique();
-            $table->string('slug')->nullable();
+            $table->string('slug')->nullable()->unique();
             $table->text('spot');
             $table->text('content');
             $table->text('description')->nullable();

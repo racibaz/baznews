@@ -20,7 +20,7 @@
     <!-- Main Content Element  Start-->
     <div class="row">
         <div class="col-md-6">
-            @include('article::backend.partials._rivisions', ['rivisions' => $record->revisionHistory])
+            @include($activeTheme . '::backend.partials._rivisions', ['rivisions' => $record->revisionHistory])
             <div class="panel panel-light-blue">
                 <div class="panel-heading">
                     {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
