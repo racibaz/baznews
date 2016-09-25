@@ -41,7 +41,7 @@ class Photo extends Model
 
     public function photo_gallery()
     {
-        return $this->belongsTo('App\Modules\News\Models\PhotoGallery');
+        return $this->belongsTo(PhotoGallery::class);
     }
 
     public function tags()

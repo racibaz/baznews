@@ -21,7 +21,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('news', 'Backend\NewsController');
     Route::resource('news_source', 'Backend\NewsSourceController');
     Route::resource('future_news', 'Backend\FutureNewsController');
+
+    Route::get('photo_gallery/add_multi_photos_view/{photo_gallery_id}', 'Backend\PhotoGalleryController@addMultiPhotosView')->name('add_multi_photos_view');
+    Route::post('photo_gallery/add_multi_photos', 'Backend\PhotoGalleryController@addMultiPhotos')->name('addMultiPhotos');
     Route::resource('photo_gallery', 'Backend\PhotoGalleryController');
+
     Route::resource('photo', 'Backend\PhotoController');
     Route::resource('photo_category', 'Backend\PhotoCategoryController');
     Route::resource('video_category', 'Backend\VideoCategoryController');
@@ -31,8 +35,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('biography', 'Backend\BiographyController');
 
 });
-
-
 
 
 Route::group(['prefix' => 'news'], function() {

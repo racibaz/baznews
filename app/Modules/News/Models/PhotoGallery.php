@@ -44,6 +44,11 @@ class PhotoGallery extends Model
         return $this->belongsTo('App\Modules\News\Models\PhotoCategory');
     }
 
+    public function photos()
+    {
+        return $this->hasMany(Photo::class);
+    }
+
     public static function validate($input) {
         $rules = array(
             'user_id' => 'required',
