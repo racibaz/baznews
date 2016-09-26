@@ -115,9 +115,9 @@ class PhotoGalleryController extends Controller
 
     public function addMultiPhotosView($photo_gallery_id)
     {
-        //$photo_gallery = PhotoGallery::find($photo_gallery_id);
+        $photo_gallery = PhotoGallery::find($photo_gallery_id);
 
-        return Theme::view('news::' . $this->redirectViewName . $this->view . 'add_multi_photos_view', compact(['photo_gallery_id']));
+        return Theme::view('news::' . $this->redirectViewName . $this->view . 'add_multi_photos_view', compact(['photo_gallery', 'photo_gallery_id']));
     }
 
     public function addMultiPhotos(Request $request)
@@ -134,7 +134,7 @@ class PhotoGalleryController extends Controller
             'photo_gallery_id'  => $gallery->id,
             'name'              => $fileName,
             'slug'              => str_slug($fileName),
-            'file'              => 'galley/photos/' . $fileName,
+            'file'              => '/gallery/photos/' . $fileName,
             'is_active'         => 1
         ]);
 
