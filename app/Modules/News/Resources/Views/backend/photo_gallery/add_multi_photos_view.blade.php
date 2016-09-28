@@ -5,6 +5,12 @@
 @endsection
 
 @section('content')
+    <ul>
+        @foreach($photo_gallery->photos as $photo)
+                <li>
+                    <img src="{{$photo->file}}">
+                </li>
+        @endforeach
 
     <div class="row">
         <div class="col-md-6">
@@ -42,6 +48,38 @@
 
 
 @section('js')
+
+    <script>
+            Dropzone.options.addPhotos = {
+
+                maxFileSize: 2,
+                acceptedFiles : 'image/*',
+                success: function (file, response) {
+
+                    if(file.status == 'success'){
+                        handleDropzoneFileUpload.handleSuccess(response);
+                    }else {
+                        handleDropzoneFileUpload.handleError(response);
+                    }
+                }
+
+            };
+        
+        
+        var handleDropzoneFileUpload = {
+            
+            handleError: function (response) {
+                console.log(response);
+            },
+            handleSuccess: function (response) {
+                console.log(response);
+            }
+            
+        };
+
+
+    </script>
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 
     <script>

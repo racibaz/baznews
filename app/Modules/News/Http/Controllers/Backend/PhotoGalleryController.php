@@ -139,7 +139,7 @@ class PhotoGalleryController extends Controller
             'photo_gallery_id'  => $gallery->id,
             'name'              => $fileName,
             'slug'              => str_slug($fileName),
-            'file'              => $basePath . $fileName,
+            'file'              => 'galley/photos/' . $fileName,
             'is_active'         => 1
         ]);
     }
