@@ -24,6 +24,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
     Route::get('photo_gallery/add_multi_photos_view/{photo_gallery_id}', 'Backend\PhotoGalleryController@addMultiPhotosView')->name('add_multi_photos_view');
     Route::post('photo_gallery/add_multi_photos', 'Backend\PhotoGalleryController@addMultiPhotos')->name('addMultiPhotos');
+    Route::post('photo_gallery/updateGalleryPhotos', 'Backend\PhotoGalleryController@updateGalleryPhotos')->name('updateGalleryPhotos');
     Route::resource('photo_gallery', 'Backend\PhotoGalleryController');
 
     Route::resource('photo', 'Backend\PhotoController');

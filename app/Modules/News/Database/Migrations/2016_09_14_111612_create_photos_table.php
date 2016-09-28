@@ -18,9 +18,10 @@ class CreatePhotosTable extends Migration
             $table->unsignedInteger('photo_gallery_id')->nullable();
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
+            $table->string('subtitle')->nullable();
             $table->text('file')->nullable();
             $table->string('link')->nullable();
-            $table->text('description')->nullable();
+            $table->text('content')->nullable();
             $table->string('keywords')->nullable();
             $table->unsignedInteger('order')->nullable();
             $table->boolean('is_active')->nullable();

@@ -3,6 +3,7 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Modules\News\Models\Photo;
 use App\Modules\News\Models\PhotoCategory;
 use App\Modules\News\Models\PhotoGallery;
 use App\Modules\News\Repositories\PhotoGalleryRepository as Repo;
@@ -115,30 +116,86 @@ class PhotoGalleryController extends Controller
 
     public function addMultiPhotosView($photo_gallery_id)
     {
-        //$photo_gallery = PhotoGallery::find($photo_gallery_id);
+        $photo_gallery = PhotoGallery::find($photo_gallery_id);
 
-        return Theme::view('news::' . $this->redirectViewName . $this->view . 'add_multi_photos_view', compact(['photo_gallery_id']));
+        return Theme::view('news::' . $this->redirectViewName . $this->view . 'add_multi_photos_view', compact(['photo_gallery']));
     }
 
+    //TODO YOUTUBE CLONE EĞİTİMİNDE Kİ GİBİ YAPILACAK JOB,QUEUE VS..
     public function addMultiPhotos(Request $request)
     {
+        $gallery = PhotoGallery::find($request->input('photo_gallery_id'));
+
         $file = $request->file('file');
 
         $fileName = uniqid() . $file->getClientOriginalName();
 
-        $file->move('gallery/photos/',$fileName);
+        $basePath = 'gallery/' . $gallery->slug . '/photos/';
 
-        $gallery = PhotoGallery::find($request->input('photo_gallery_id'));
+        $file->move($basePath, $fileName);
+
 
         $photo = $gallery->photos()->create([
             'photo_gallery_id'  => $gallery->id,
             'name'              => $fileName,
             'slug'              => str_slug($fileName),
-            'file'              => 'galley/photos/' . $fileName,
+            'file'              => $basePath . $fileName,
             'is_active'         => 1
         ]);
+    }
 
-        //protected $fillable = ['photo_gallery_id', 'name', 'slug', 'file', 'link','description', 'keywords', 'order', 'is_active'];
+
+
+    public function updateGalleryPhotos(Request $request)
+    {
+        $subtitle = $content = null;
+
+        $inputs = Input::all();
+
+        unset($inputs['_token']);
+
+        //form name alanından gönderdiğimiz  photo id lerini alıyoruz
+        //value alanlarını subtitle ve content ile değiştiriyoruz.
+        foreach (array_keys($inputs) as $key)
+        {
+            if(!empty($inputs[$key]))
+            {
+                /*
+                 * $fields[0] değeri content veya subtitle olabiliyor
+                 * $fields[1] değeri ise formdan verdiğimiz id oluyor.
+                 * */
+
+                $fields = explode('/',$key);
+
+                $field = $fields[0];
+                $id = $fields[1];
+
+                if($field == 'subtitle'){
+
+                    $subtitle = $inputs[$key];
+
+                }else if($field == 'content'){
+
+                    $content = $inputs[$key];
+                }
+
+
+
+                if(is_numeric($id)){
+
+                    $photo = Photo::find($id);
+                    //ikisinden biri boş ise önceki değerini veriyoruz.
+                    $photo->subtitle =  htmlentities($subtitle) ? htmlentities($subtitle) : $photo->subtitle;
+                    $photo->content =  htmlentities($content) ? htmlentities($content) : $photo->content;
+                    $photo->save();
+                }
+
+                //değişkenleri temizliyoruz.
+                $subtitle = null;
+                $content = null;
+            }
+
+        }
     }
 
 

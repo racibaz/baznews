@@ -25,14 +25,8 @@ class Photo extends Model
             ]
         ];
     }
-
-    /*
-     * Alt yazı
-     * Alternatif metin
-     *
-     *
-     * */
-    protected $fillable = ['photo_gallery_id', 'name', 'slug', 'file', 'link','description', 'keywords', 'order', 'is_active'];
+    
+    protected $fillable = ['photo_gallery_id', 'name', 'subtitle', 'slug', 'file', 'link','content', 'keywords', 'order', 'is_active'];
 
     public function news()
     {
