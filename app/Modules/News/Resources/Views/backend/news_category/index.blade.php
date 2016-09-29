@@ -14,6 +14,24 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
+
+{{
+
+                        $traverse = function ($categories, $prefix = '-') use (&$traverse) {
+                        foreach ($categories as $category) {
+                        echo PHP_EOL.$prefix.' '.$category->name;
+
+                        $traverse($category->children, $prefix.'-');
+                        }
+                    };
+
+                    $traverse($recordsTree);
+
+
+}}
+
+
+                    {{$traverse}}
                     <table id="countries" class="table table-bordered table-hover">
                         <thead>
                         <tr>
