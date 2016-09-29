@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Modules\Book\Models\Book;
 use App\Modules\News\Models\Biography;
 use App\Modules\News\Models\RecommendationNews;
+use Venturecraft\Revisionable\Revision;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -144,6 +145,12 @@ class User extends Authenticatable
 
         $group = Group::where('id',$group_id)->first();
         return $group->users;
+    }
+
+
+    public static function getUserRevisions($user_id)
+    {
+        return Revision::where('user_id',$user_id)->get();
     }
 
     public static function validate($input) {

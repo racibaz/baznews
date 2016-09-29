@@ -58,7 +58,8 @@ class UserController extends Controller
 
     public function show(User $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        $revisions = $record->getUserRevisions($record->id);
+        return Theme::view($this->getViewName(__FUNCTION__),compact('record', 'revisions'));
     }
 
 
