@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container-fluid">
+    <div class="container-fluid" xmlns="http://www.w3.org/1999/html">
         <div class="row">
             <div class="col-md-12">
                 <!--Top header start-->
@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div style="margin-bottom: 20px;">
-                    {{ link_to_route('admin.user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-md'] ) }}
+                    {{ link_to_route('user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-md'] ) }}
                 </div>
             </div><!-- end col-md-12 -->
         </div><!-- end row -->
@@ -78,6 +78,70 @@
                 </div>
             </div>
         </div><!-- end row -->
+
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"><strong>{{trans('user.user_revisions')}}</strong></h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="users" class="table table-bordered table-hover table-data">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{trans('revision.revisionable_type')}}</th>
+                            <th>{{trans('revision.revisionable_id')}}</th>
+                            <th>{{trans('revision.key')}}</th>
+                            <th>{{trans('revision.old_value')}}</th>
+                            <th>{{trans('revision.new_value')}}</th>
+                            <th>{{trans('revision.created_at')}}</th>
+                            <th>{{trans('revision.updated_at')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                        </tr>
+                        </thead>
+                            <tbody>
+                                @foreach($revisions as $revison)
+                                    <tr>
+                                        <td>{{$revison->id}}</td>
+                                        <td>{{$revison->revisionable_type }}</td>
+                                        <td>{{$revison->revisionable_id }}</td>
+                                        <td>{{$revison->key }}</td>
+                                        <td>{{$revison->old_value }}</td>
+                                        <td>{{$revison->new_value }}</td>
+                                        <td>{{$revison->created_at }}</td>
+                                        <td>{{$revison->updated_at }}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                {{--TODO revision CRUD işlemrlerinin yapıldığı yere düzenle ve sil linkleri verilecek.--}}
+                                                {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('user.destroy',  $record))) !!}
+                                                {!! link_to_route('user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                                {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                                {!! Form::close() !!}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>{{trans('revision.revisionable_type')}}</th>
+                            <th>{{trans('revision.revisionable_id')}}</th>
+                            <th>{{trans('revision.key')}}</th>
+                            <th>{{trans('revision.old_value')}}</th>
+                            <th>{{trans('revision.new_value')}}</th>
+                            <th>{{trans('revision.created_at')}}</th>
+                            <th>{{trans('revision.updated_at')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
         <!-- Main Content Element  End-->
     </div><!-- container-fluid -->
 
