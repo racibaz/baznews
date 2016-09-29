@@ -20,7 +20,8 @@
         "unisharp/laravel-filemanager": "^1.6",
         "unisharp/laravel-ckeditor": "^4.5",
         "mews/purifier": "^2.0",
-        "cviebrock/eloquent-sluggable": "^4.1"
+        "cviebrock/eloquent-sluggable": "^4.1",
+        "RobBrazier/Piwik": "~2.1"
 
 
     },

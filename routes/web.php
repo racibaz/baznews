@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 //    Route::get('user_operation/{user_id}', 'UserController@user_operation')->name('user_operation');
 
 
+    Route::get('piwik', 'Backend\PiwikController@index');
 });
 Auth::routes();
 
