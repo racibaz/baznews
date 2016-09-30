@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Event;
 use App\Repositories\UserRepository as UseRepo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -59,7 +61,12 @@ class UserController extends Controller
     public function show(User $record)
     {
         $revisions = $record->getUserRevisions($record->id);
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record', 'revisions'));
+
+        //$events = $record->events();
+
+        $events = Event::where('user_id',$record->id)->get();
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact('record', 'revisions', 'events'));
     }
 
 
@@ -80,6 +87,7 @@ class UserController extends Controller
     public function destroy(User $record)
     {
         $this->repo->delete($record->id);
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 

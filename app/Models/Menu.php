@@ -14,6 +14,11 @@ class Menu extends Model
         return $this->belongsTo('App\Models\Page');
     }
 
+    public function events()
+    {
+        return $this->morphMany(Event::class, 'eventable');
+    }
+
     public static function validate($input) {
         $rules = array(
             'name'                     => 'Required',

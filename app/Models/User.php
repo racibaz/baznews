@@ -56,7 +56,38 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    
+
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function($user) {
+
+            $event = new Event();
+            $event->user_id = Auth::user()->id;
+            $event->event = 'User Create';
+            $user->events()->save($event);
+        });
+
+        static::updated(function($user) {
+
+            $event = new Event();
+            $event->user_id = Auth::user()->id;
+            $event->event = 'User Updated';
+            $user->events()->save($event);
+        });
+
+        static::deleted(function($user){
+
+            $event = new Event();
+            $event->user_id = Auth::user()->id;
+            $event->event = 'User Delete';
+            $user->events()->save($event);
+        });
+    }
+
+
     public function groups()
     {
         //return $this->belongsToMany('App\Group');
@@ -134,6 +165,12 @@ class User extends Authenticatable
     public function books()
     {
         return $this->hasMany(Book::class);
+    }
+
+
+    public function events()
+    {
+        return $this->morphMany(Event::class, 'eventable');
     }
 
     public static function getAllUsers()

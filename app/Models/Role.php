@@ -48,6 +48,11 @@ class Role extends EntrustRole
         return $this->belongsToMany('App\Models\Permission','permission_role','role_id', 'permission_id');
     }
 
+    public function events()
+    {
+        return $this->morphMany(Event::class, 'eventable');
+    }
+
 
     public static function roleList()
     {

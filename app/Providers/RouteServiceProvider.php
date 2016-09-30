@@ -41,6 +41,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('contact', 'App\Models\Contact');
         Route::model('setting', 'App\Models\Setting');
         Route::model('tag', 'App\Models\Tag');
+        Route::model('event', 'App\Models\Event');
         
     }
 

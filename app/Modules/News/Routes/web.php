@@ -18,6 +18,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
 
     Route::resource('news_category', 'Backend\NewsCategoryController');
+
+    Route::post('news/newsFilter', 'Backend\NewsController@newsFilter')->name('newsFilter');
     Route::resource('news', 'Backend\NewsController');
     Route::resource('news_source', 'Backend\NewsSourceController');
     Route::resource('future_news', 'Backend\FutureNewsController');

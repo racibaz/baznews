@@ -142,7 +142,64 @@
             </div>
             <!-- /.box -->
         </div>
-        <!-- Main Content Element  End-->
+
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"><strong>{{trans('user.events')}}</strong></h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="users" class="table table-bordered table-hover table-data">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{trans('event.eventable_type')}}</th>
+                            <th>{{trans('event.eventable_id')}}</th>
+                            <th>{{trans('event.event')}}</th>
+                            <th>{{trans('event.created_at')}}</th>
+                            <th>{{trans('event.updated_at')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($events as $event)
+                            <tr>
+                                <td>{{$event->id}}</td>
+                                <td>{{$event->eventable_type }}</td>
+                                <td>{{$event->eventable_id }}</td>
+                                <td>{{$event->event }}</td>
+                                <td>{{$event->created_at }}</td>
+                                <td>{{$event->updated_at }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        {{--TODO revision CRUD işlemrlerinin yapıldığı yere düzenle ve sil linkleri verilecek.--}}
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('user.destroy',  $record))) !!}
+                                        {!! link_to_route('user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>{{trans('event.eventable_type')}}</th>
+                            <th>{{trans('event.eventable_id')}}</th>
+                            <th>{{trans('event.event')}}</th>
+                            <th>{{trans('event.created_at')}}</th>
+                            <th>{{trans('event.updated_at')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
     </div><!-- container-fluid -->
 
 

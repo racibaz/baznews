@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class Announcement extends Model
@@ -21,9 +22,44 @@ class Announcement extends Model
     ];
 
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function($user) {
+
+            $event = new Event();
+            $event->user_id = Auth::user()->id;
+            $event->event = 'Announcement Create';
+            $user->events()->save($event);
+        });
+
+        static::updated(function($user) {
+
+            $event = new Event();
+            $event->user_id = Auth::user()->id;
+            $event->event = 'Announcement Updated';
+            $user->events()->save($event);
+        });
+
+        static::deleted(function($user){
+
+            $event = new Event();
+            $event->user_id = Auth::user()->id;
+            $event->event = 'Announcement Delete';
+            $user->events()->save($event);
+        });
+    }
+
+
     public function groups()
     {
         return $this->belongsToMany('App\Models\Group');
+    }
+
+    public function events()
+    {
+        return $this->morphMany(Event::class, 'eventable');
     }
 
 

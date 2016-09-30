@@ -154,7 +154,7 @@
                         {!! Form::text('end_date', null ,['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::submit(trans('common.search'), ['class' => 'btn btn-primary']) !!}
+                        {!! Form::submit(trans('common.filter'), ['class' => 'btn btn-primary']) !!}
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -204,33 +204,33 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $record)
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('news.show', $record->title , $record, [] ) !!}</td>
-                                    <td> {{$record->hit}} </td>
-                                    <td> {{$record->status}} </td>
-                                    <td> {{$record->band_news}} </td>
-                                    <td> {{$record->box_cuff}} </td>
-                                    <td> {{$record->is_cuff}} </td>
-                                    <td> {{$record->break_news}} </td>
-                                    <td> {{$record->is_comment}} </td>
-                                    <td> {{$record->main_cuff}} </td>
-                                    <td> {{$record->mini_cuff}} </td>
-                                    <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('news.destroy',  $record))) !!}
+                        @foreach($records as $record)
+                            <tr>
+                                <td>{{$record->id}}</td>
+                                <td>{!! link_to_route('news.show', $record->title , $record, [] ) !!}</td>
+                                <td> {{$record->hit}} </td>
+                                <td> {{$record->status}} </td>
+                                <td> {{$record->band_news}} </td>
+                                <td> {{$record->box_cuff}} </td>
+                                <td> {{$record->is_cuff}} </td>
+                                <td> {{$record->break_news}} </td>
+                                <td> {{$record->is_comment}} </td>
+                                <td> {{$record->main_cuff}} </td>
+                                <td> {{$record->mini_cuff}} </td>
+                                <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('news.destroy',  $record))) !!}
 
-                                            {!! link_to_route('news.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! link_to_route('news.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
 
 
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                         <tfoot>
                         <tr>

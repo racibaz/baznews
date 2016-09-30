@@ -88,6 +88,7 @@ class AnnouncementController extends Controller
     public function edit(Announcement $record)
     {
         $groupList =  Auth::user()->groups;
+
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'groupList']));
     }
 
