@@ -3,6 +3,7 @@
 namespace App\Modules\News\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 use Venturecraft\Revisionable\RevisionableTrait;
@@ -12,6 +13,8 @@ class PhotoCategory extends Model
     use RevisionableTrait;
 
     use Sluggable;
+
+    use NodeTrait;
 
     /**
      * Return the sluggable configuration array for this model.

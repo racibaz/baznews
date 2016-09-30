@@ -33,9 +33,7 @@ class NewsCategoryController extends Controller
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->findAll();
-
-        $recordsTree = $records->toTree();
-        
+        $recordsTree = NewsCategory::get()->toTree();
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records','recordsTree']));
     }

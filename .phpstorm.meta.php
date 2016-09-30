@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-09-29.
+    * Generated on 2016-09-30.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -160,7 +160,6 @@ namespace PHPSTORM_META {
             'queue' instanceof \Illuminate\Queue\QueueManager,
             'queue.connection' instanceof \Illuminate\Queue\SyncQueue,
             'command.queue.work' instanceof \Illuminate\Queue\Console\WorkCommand,
-            'command.queue.daemon' instanceof \Illuminate\Queue\Console\DaemonCommand,
             'command.queue.restart' instanceof \Illuminate\Queue\Console\RestartCommand,
             'queue.worker' instanceof \Illuminate\Queue\Worker,
             'command.queue.listen' instanceof \Illuminate\Queue\Console\ListenCommand,
@@ -324,7 +323,6 @@ namespace PHPSTORM_META {
             'queue' instanceof \Illuminate\Queue\QueueManager,
             'queue.connection' instanceof \Illuminate\Queue\SyncQueue,
             'command.queue.work' instanceof \Illuminate\Queue\Console\WorkCommand,
-            'command.queue.daemon' instanceof \Illuminate\Queue\Console\DaemonCommand,
             'command.queue.restart' instanceof \Illuminate\Queue\Console\RestartCommand,
             'queue.worker' instanceof \Illuminate\Queue\Worker,
             'command.queue.listen' instanceof \Illuminate\Queue\Console\ListenCommand,
@@ -488,7 +486,6 @@ namespace PHPSTORM_META {
             'queue' instanceof \Illuminate\Queue\QueueManager,
             'queue.connection' instanceof \Illuminate\Queue\SyncQueue,
             'command.queue.work' instanceof \Illuminate\Queue\Console\WorkCommand,
-            'command.queue.daemon' instanceof \Illuminate\Queue\Console\DaemonCommand,
             'command.queue.restart' instanceof \Illuminate\Queue\Console\RestartCommand,
             'queue.worker' instanceof \Illuminate\Queue\Worker,
             'command.queue.listen' instanceof \Illuminate\Queue\Console\ListenCommand,
@@ -652,7 +649,6 @@ namespace PHPSTORM_META {
             'queue' instanceof \Illuminate\Queue\QueueManager,
             'queue.connection' instanceof \Illuminate\Queue\SyncQueue,
             'command.queue.work' instanceof \Illuminate\Queue\Console\WorkCommand,
-            'command.queue.daemon' instanceof \Illuminate\Queue\Console\DaemonCommand,
             'command.queue.restart' instanceof \Illuminate\Queue\Console\RestartCommand,
             'queue.worker' instanceof \Illuminate\Queue\Worker,
             'command.queue.listen' instanceof \Illuminate\Queue\Console\ListenCommand,

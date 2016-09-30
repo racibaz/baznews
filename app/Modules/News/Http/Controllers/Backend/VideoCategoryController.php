@@ -32,7 +32,9 @@ class VideoCategoryController extends Controller
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->findAll();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records']));
+        $recordsTree = VideoCategory::get()->toTree();
+
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records','recordsTree']));
     }
 
 

@@ -3,6 +3,7 @@
 namespace App\Modules\Article\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
@@ -10,6 +11,8 @@ class ArticleCategory extends Model
 {
     use Sluggable;
 
+    use NodeTrait;
+    
     /**
      * Return the sluggable configuration array for this model.
      *
