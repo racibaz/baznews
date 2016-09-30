@@ -52,6 +52,8 @@
                             </div>
                         </div>
                     </div>
+                    {!! Mapper::render() !!}
+
                     <div class="form-group">
                         <div class="row">
                             {{trans('common.status')}}

@@ -7,6 +7,8 @@ use App\Models\City;
 use App\Models\Country;
 use App\Repositories\CityRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
+use Cornford\Googlmapper\Mapper;
+use Cornford\Googlmapper\Models\Map;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -59,6 +61,7 @@ class CityController extends Controller
 
     public function edit(City $record)
     {
+     //   Mapper::map(50, 0, ['marker' => false]);
         $countries = Country::countryList();
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'countries']));
     }

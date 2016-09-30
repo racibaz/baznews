@@ -190,7 +190,8 @@ return [
         Unisharp\Ckeditor\ServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
-        RobBrazier\Piwik\PiwikServiceProvider::class
+        RobBrazier\Piwik\PiwikServiceProvider::class,
+        Cornford\Googlmapper\MapperServiceProvider::class
 
 
     ],
@@ -248,7 +249,8 @@ return [
         'Module' => Caffeinated\Modules\Facades\Module::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
-        'Piwik' => RobBrazier\Piwik\Facades\Piwik::class
+        'Piwik' => RobBrazier\Piwik\Facades\Piwik::class,
+        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class
 
         ////TODO  THEME İN COMPONET GİBİ BİRŞEY VARDI ONA BAKILACAK
     ],
