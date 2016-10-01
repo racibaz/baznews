@@ -26,29 +26,31 @@ class Announcement extends Model
     {
         parent::boot();
 
-        static::created(function($user) {
+        if(!app()->runningInConsole() ) {
+            static::created(function ($user) {
 
-            $event = new Event();
-            $event->user_id = Auth::user()->id;
-            $event->event = 'Announcement Create';
-            $user->events()->save($event);
-        });
+                $event = new Event();
+                $event->user_id = Auth::user()->id;
+                $event->event = 'Announcement Create';
+                $user->events()->save($event);
+            });
 
-        static::updated(function($user) {
+            static::updated(function ($user) {
 
-            $event = new Event();
-            $event->user_id = Auth::user()->id;
-            $event->event = 'Announcement Updated';
-            $user->events()->save($event);
-        });
+                $event = new Event();
+                $event->user_id = Auth::user()->id;
+                $event->event = 'Announcement Updated';
+                $user->events()->save($event);
+            });
 
-        static::deleted(function($user){
+            static::deleted(function ($user) {
 
-            $event = new Event();
-            $event->user_id = Auth::user()->id;
-            $event->event = 'Announcement Delete';
-            $user->events()->save($event);
-        });
+                $event = new Event();
+                $event->user_id = Auth::user()->id;
+                $event->event = 'Announcement Delete';
+                $user->events()->save($event);
+            });
+        }
     }
 
 

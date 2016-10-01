@@ -58,33 +58,37 @@ class User extends Authenticatable
 
 
 
+
     public static function boot()
     {
         parent::boot();
 
-        static::created(function($user) {
+        if(!app()->runningInConsole() ) {
 
-            $event = new Event();
-            $event->user_id = Auth::user()->id;
-            $event->event = 'User Create';
-            $user->events()->save($event);
-        });
+            static::created(function ($user) {
 
-        static::updated(function($user) {
+                $event = new Event();
+                $event->user_id = Auth::user()->id;
+                $event->event = 'User Create';
+                $user->events()->save($event);
+            });
 
-            $event = new Event();
-            $event->user_id = Auth::user()->id;
-            $event->event = 'User Updated';
-            $user->events()->save($event);
-        });
+            static::updated(function ($user) {
 
-        static::deleted(function($user){
+                $event = new Event();
+                $event->user_id = Auth::user()->id;
+                $event->event = 'User Updated';
+                $user->events()->save($event);
+            });
 
-            $event = new Event();
-            $event->user_id = Auth::user()->id;
-            $event->event = 'User Delete';
-            $user->events()->save($event);
-        });
+            static::deleted(function ($user) {
+
+                $event = new Event();
+                $event->user_id = Auth::user()->id;
+                $event->event = 'User Delete';
+                $user->events()->save($event);
+            });
+        }
     }
 
 
