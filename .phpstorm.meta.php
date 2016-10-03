@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-09-30.
+    * Generated on 2016-10-01.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -89,6 +89,7 @@ namespace PHPSTORM_META {
             'image' instanceof \Intervention\Image\ImageManager,
             'Cviebrock\EloquentSluggable\SluggableObserver' instanceof \Cviebrock\EloquentSluggable\SluggableObserver,
             'piwik' instanceof \RobBrazier\Piwik\Piwik,
+            'mapper' instanceof \Cornford\Googlmapper\Mapper,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -252,6 +253,7 @@ namespace PHPSTORM_META {
             'image' instanceof \Intervention\Image\ImageManager,
             'Cviebrock\EloquentSluggable\SluggableObserver' instanceof \Cviebrock\EloquentSluggable\SluggableObserver,
             'piwik' instanceof \RobBrazier\Piwik\Piwik,
+            'mapper' instanceof \Cornford\Googlmapper\Mapper,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -415,6 +417,7 @@ namespace PHPSTORM_META {
             'image' instanceof \Intervention\Image\ImageManager,
             'Cviebrock\EloquentSluggable\SluggableObserver' instanceof \Cviebrock\EloquentSluggable\SluggableObserver,
             'piwik' instanceof \RobBrazier\Piwik\Piwik,
+            'mapper' instanceof \Cornford\Googlmapper\Mapper,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -578,6 +581,7 @@ namespace PHPSTORM_META {
             'image' instanceof \Intervention\Image\ImageManager,
             'Cviebrock\EloquentSluggable\SluggableObserver' instanceof \Cviebrock\EloquentSluggable\SluggableObserver,
             'piwik' instanceof \RobBrazier\Piwik\Piwik,
+            'mapper' instanceof \Cornford\Googlmapper\Mapper,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
