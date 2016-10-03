@@ -4,5 +4,5 @@
 {{--@section('title-description'){{trans('common.edit')}}@stop--}}
 
 @section('content')
-    @include('news::backend.news._form', ['record' => $record])
+    @include('news::backend.news._form', ['record' => $record,'googleMapsRender' => $googleMapsRender ])
 @stop

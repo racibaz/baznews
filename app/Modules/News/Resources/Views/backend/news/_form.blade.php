@@ -262,6 +262,15 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+{{--                            {!! Form::label('map', trans('news::news.map'),['class'=> 'col-lg-2 control-label']) !!}--}}
+
+                            <div class="col-lg-10">
+                                <div style="height: 400px; width:100&;"> {!! $googleMapsRender !!} </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {{trans('news::common.status')}}
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">

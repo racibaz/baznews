@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Mapper;
 
 class NewsController extends Controller
 {
@@ -44,6 +45,14 @@ class NewsController extends Controller
 
     public function create()
     {
+        Mapper::map(41.015137, 28.979530, ['zoom' => 10, 'markers' => ['title' => 'My Location', 'animation' => 'DROP'], 'clusters' => ['size' => 10, 'center' => true, 'zoom' => 20]]);
+        Mapper::informationWindow(41.015137, 28.979530, 'haber başlık linki',
+            [
+                'open' => true, 'maxWidth'=> 300, 'markers' => ['title' => 'haber başlığı'],
+                'markers' => ['symbol' => 'circle', 'scale' => 1000, 'animation' => 'DROP']
+            ]);
+        $googleMapsRender = Mapper::render();
+
         $countryList = Country::countryList();
         $cityList = City::cityList();
         $newsCategoryList = NewsCategory::newsCategoryList();
@@ -51,7 +60,7 @@ class NewsController extends Controller
         $statuses = News::$statuses;
         $record = $this->repo->createModel();
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
-            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses']));
+            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses','googleMapsRender']));
     }
 
 
@@ -69,13 +78,22 @@ class NewsController extends Controller
 
     public function edit(News $record)
     {
+        Mapper::map(41.015137, 28.979530, ['zoom' => 10, 'markers' => ['title' => 'My Location', 'animation' => 'DROP'], 'clusters' => ['size' => 10, 'center' => true, 'zoom' => 20]]);
+        Mapper::informationWindow(41.015137, 28.979530, 'haber başlık linki',
+            [
+                'open' => true, 'maxWidth'=> 300, 'markers' => ['title' => 'haber başlığı'],
+                'markers' => ['symbol' => 'circle', 'scale' => 1000, 'animation' => 'DROP']
+            ]);
+        $googleMapsRender = Mapper::render();
+
+
         $countryList = Country::countryList();
         $cityList = City::cityList();
         $newsCategoryList = NewsCategory::newsCategoryList();
         $newsSourceList = NewsSource::newsSourceList();
         $statuses = News::$statuses;
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
-            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses']));
+            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses', 'googleMapsRender']));
     }
 
 

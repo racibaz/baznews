@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Permission;
 use App\Models\Role;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
@@ -38,8 +39,9 @@ class RoleController extends Controller
 
     public function create()
     {
+        $perms = Permission::permissionList();
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'perms']));
     }
 
 
@@ -57,7 +59,8 @@ class RoleController extends Controller
 
     public function edit(Role $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        $perms = Permission::permissionList();
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'perms']));
     }
 
 
@@ -106,4 +109,23 @@ class RoleController extends Controller
             }
         }
     }
+
+
+    public function permission_role_store(Request $request)
+    {
+        $input = Input::all();
+        $role_id = $input['role_id'];
+
+        unset($input['role_id']);
+        unset($input['_token']);
+
+        $role = Role::find($role_id);
+        //$role->permissons->sync($input);
+
+        $role->permissions()->sync($input);
+
+        return Redirect::back();
+    }
+
+
 }

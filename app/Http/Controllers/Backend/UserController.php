@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Event;
+use App\Models\Group;
+use App\Models\Role;
 use App\Repositories\UserRepository as UseRepo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Foundation\Auth\User;
@@ -48,7 +50,9 @@ class UserController extends Controller
         $record = $this->repo->createModel();
         $countries = Country::countryList();
         $cities = City::cityList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities']));
+        $roles = Role::roleList();
+        $groups = Group::groupList();
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups']));
     }
 
 
@@ -74,7 +78,9 @@ class UserController extends Controller
     {
         $countries = Country::countryList();
         $cities = City::cityList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities']));
+        $roles = Role::roleList();
+        $groups = Group::groupList();
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups']));
     }
 
 
@@ -139,4 +145,47 @@ class UserController extends Controller
             }
         }
     }
+
+    public function role_user_store(Request $request)
+    {
+        $input = Input::all();
+        $user_id = $input['user_id'];
+
+
+        unset($input['user_id']);
+        unset($input['_token']);
+
+        if(count($input) < 1){
+            return Redirect::back();
+        }
+
+        $user = $this->repo->find($user_id);
+
+        $user->roles()->sync($input);
+
+        //$roller = $user->roles->lists('name')->toArray();
+        //dd($roller);
+
+        return Redirect::back();
+    }
+
+    public function group_user_store(Request $request)
+    {
+        $input = Input::all();
+        $user_id = $input['user_id'];
+
+        unset($input['user_id']);
+        unset($input['_token']);
+
+        if(count($input) < 1){
+            return Redirect::back();
+        }
+
+        $user = $this->repo->find($user_id);
+        $user->groups()->sync($input);
+
+        return Redirect::back();
+    }
+
+
 }

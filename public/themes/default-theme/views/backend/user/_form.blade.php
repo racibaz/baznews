@@ -206,6 +206,74 @@
             </div>
         </div>
     </div><!-- end row -->
+
+    @if(isset($record->id))
+        <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Kullanıcı Rol Yonetimi</h3>
+                </div>
+
+            {!! Form::open(['route' => 'role_user_store','method' => 'post']) !!}
+
+            <!-- /.box-header -->
+                <div class="box-body">
+                    {{--<form role="form">--}}
+
+                    {!!  Form::hidden('user_id', $record->id) !!}
+
+                    @foreach($roles as $role)
+                        <div class="form-group">
+                            {{ $role->name }} :
+                            {!! Form::checkbox($role->name, $role->id, in_array($role->name , $record->roles->pluck('name')->toArray())) !!}
+                        </div>
+                    @endforeach
+
+                    <div class="box-footer">
+                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Kullanıcı Grup Yonetimi</h3>
+                </div>
+
+            {!! Form::open(['route' => 'group_user_store','method' => 'post']) !!}
+
+            <!-- /.box-header -->
+                <div class="box-body">
+                    {{--<form role="form">--}}
+
+                    {!!  Form::hidden('user_id', $record->id) !!}
+
+                    @foreach($groups as $group)
+                        <div class="form-group">
+                            {{ $group->name }} :
+                            {!! Form::checkbox($group->name, $group->id, in_array($group->name , $record->groups->pluck('name')->toArray())) !!}
+                        </div>
+                    @endforeach
+
+                    <div class="box-footer">
+                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    @endif
+
+
+
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->
 @endsection

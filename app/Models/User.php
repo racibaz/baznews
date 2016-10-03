@@ -95,7 +95,7 @@ class User extends Authenticatable
     public function groups()
     {
         //return $this->belongsToMany('App\Group');
-        return $this->belongsToMany('App\Models\Group','group_user','user_id', 'group_id');
+        return $this->belongsToMany('App\Models\Group');
     }
 
     public function roles()

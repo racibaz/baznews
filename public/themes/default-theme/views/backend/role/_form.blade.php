@@ -67,6 +67,57 @@
             </div>
         </div>
     </div><!-- end row -->
+
+    <div class="col-md-6">
+        <!-- general form elements disabled -->
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">Role İzin Yonetimi</h3>
+            </div>
+
+        {!! Form::open(['route' => 'permission_role_store','method' => 'post']) !!}
+
+        <!-- /.box-header -->
+            <div class="box-body">
+                {{--<form role="form">--}}
+
+                {!!  Form::hidden('role_id', $record->id) !!}
+
+                @foreach($perms as $perm)
+                    <div class="form-group">
+                        {{ $perm->name }} :
+                        {!! Form::checkbox($perm->name, $perm->id, in_array($perm->name , $record->permissions->pluck('name')->toArray())) !!}
+                    </div>
+                @endforeach
+
+                <div class="box-footer">
+                    {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
+                </div>
+                {!! Form::close() !!}
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->
 @endsection
+@section('js')
+    <script type="text/javascript">
+        $('.btn-all').click(function (e) {
+            $('.perm input[type=checkbox]').each(function (e) {
+                if(!$(this).prop("checked")){
+                    $(this).click();
+                }
+            });
+
+        });
+        $('.btn-remove').click(function (e) {
+            $('.perm input[type=checkbox]').each(function (e) {
+                if($(this).prop("checked")){
+                    $(this).click();
+                }
+            });
+        });
+    </script>
+@stop

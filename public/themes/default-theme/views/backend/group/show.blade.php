@@ -24,7 +24,7 @@
                 : {{$record->description}}
             </div>
             <div class="form-group">
-                {!! Form::label('is_active', trans('group.is_active')) !!}
+                {!! Form::label('is_active', trans('common.is_active')) !!}
                 : {{$record->is_active}}
             </div>
         </div>

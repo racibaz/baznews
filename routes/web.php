@@ -30,11 +30,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('index', 'Backend\DashboardController@index');
     Route::get('dashboard', 'Backend\DashboardController@index');
 
+    Route::post('user.role_user_store', 'Backend\UserController@role_user_store')->name('role_user_store');
+    Route::post('user.group_user_store', 'Backend\UserController@group_user_store')->name('group_user_store');
     Route::resource('user', 'Backend\UserController');
     Route::resource('country', 'Backend\CountryController');
     Route::resource('city', 'Backend\CityController');
     Route::resource('group', 'Backend\GroupController');
+
+    Route::post('role.permission_role_store', 'Backend\RoleController@permission_role_store')->name('permission_role_store');
     Route::resource('role', 'Backend\RoleController');
+
     Route::resource('permission', 'Backend\PermissionController');
     Route::resource('announcement', 'Backend\AnnouncementController');
     Route::resource('page', 'Backend\PageController');
