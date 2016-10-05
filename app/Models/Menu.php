@@ -2,12 +2,31 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
+use Kalnoy\Nestedset\NodeTrait;
 
 class Menu extends Model
 {
-    protected $fillable = ['parent_id', 'page_id', 'name', 'slug', 'url', 'icon', 'order' ,'is_active'];
+    use Sluggable;
+
+    use NodeTrait;
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => ['name']
+            ]
+        ];
+    }
+
+    protected $fillable = ['parent_id', '_lft', '_rgt', 'page_id', 'name', 'slug', 'url', 'icon', 'order' ,'is_active'];
 
     public function page()
     {
@@ -25,4 +44,10 @@ class Menu extends Model
         );
         return Validator::make($input, $rules);
     }
+
+    public static function menuList()
+    {
+        return Menu::where('is_active',1)->pluck('name', 'id');
+    }
+
 }

@@ -15,6 +15,9 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
+
+                    @include($activeTheme . '::backend.partials.tree',$recordsTree)
+
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
                         <tr>

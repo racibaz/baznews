@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Kalnoy\Nestedset\NestedSet;
 
 class CreateMenusTable extends Migration
 {
@@ -15,8 +16,8 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('parent_id')->nullable();
-            $table->unsignedInteger('page_id');
+            NestedSet::columns($table);
+            $table->unsignedInteger('page_id')->nullable();
             $table->string('name');
             $table->string('slug')->nullable();
             $table->string('url')->nullable();

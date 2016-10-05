@@ -13,13 +13,41 @@ class MenuTableSeeder extends Seeder
     public function run()
     {
         Menu::create([
-            'page_id'       => 1,
-            'name'          => 'menü 1',
-            'slug'          => 'menu1',
-            'url'           => 'link',
-            'icon'          => 'icon',
-            'order'         => 1,
-            'is_active'  => 1,
+            'parent_id'                 => null,
+            '_lft'                      => 1,
+            '_rgt'                      => 1,
+            'name'                      => 'menü 1',
+            'slug'                      => 'menu1',
+            'url'                       => 'link',
+            'icon'                      => 'icon',
+            'order'                     => 1,
+            'is_active'                 => 1,
+        ]);
+
+
+        Menu::create([
+            'parent_id'                 => null,
+            '_lft'                      => 1,
+            '_rgt'                      => 1,
+            'name'                      => 'menü 1',
+            'slug'                      => 'menu1',
+            'url'                       => 'link',
+            'icon'                      => 'icon',
+            'order'                     => 1,
+            'is_active'                 => 1,
+        ]);
+
+
+        Menu::create([
+            'parent_id'                 => null,
+            '_lft'                      => 1,
+            '_rgt'                      => 1,
+            'name'                      => 'menü 1',
+            'slug'                      => 'menu1',
+            'url'                       => 'link',
+            'icon'                      => 'icon',
+            'order'                     => 1,
+            'is_active'                 => 1,
         ]);
     }
 }

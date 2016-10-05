@@ -21,4 +21,9 @@ class Page extends Model
         );
         return Validator::make($input, $rules);
     }
+
+    public static function pageList()
+    {
+        return Page::where('is_active',1)->pluck('name', 'id');
+    }
 }

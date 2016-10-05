@@ -34,11 +34,86 @@
                 <div class="panel-body">
 
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('name', trans('menu.name'),['class'=> 'col-lg-2 control-label']) !!}
 
-                            <div class="col-lg-10">
-                                {!! Form::text('name', $record->name, ['placeholder' => trans('menu.name') ,'class' => 'form-control']) !!}
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('parent_id', trans('menu.parent_id'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::select('parent_id', $menuList , $record->parent_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('page_id', trans('menu.page_id'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::select('page_id', $pageList , $record->page_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('_lft', trans('menu._lft'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::number('_lft', $record->_lft, ['placeholder' => trans('menu._lft') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('_rgt', trans('menu._rgt'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::number('_rgt', $record->_rgt, ['placeholder' => trans('menu._rgt') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('name', trans('menu.name'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::text('name', $record->name, ['placeholder' => trans('menu.name') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('slug', trans('menu.slug'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::text('slug', $record->slug, ['placeholder' => trans('menu.slug') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('url', trans('menu.url'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::text('url', $record->url, ['placeholder' => trans('menu.url') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('url', trans('menu.url'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::file('icon') !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('order', trans('menu.order'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::text('order', $record->order, ['placeholder' => trans('menu.order') ,'class' => 'form-control']) !!}
+                                </div>
                             </div>
                         </div>
                     </div>

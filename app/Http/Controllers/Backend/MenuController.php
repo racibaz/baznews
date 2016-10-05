@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
+use App\Models\Page;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -32,14 +33,17 @@ class MenuController extends Controller
     public function index()
     {
         $records = $this->repo->findAll();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        $recordsTree = Menu::get()->toTree();
+        return Theme::view($this->getViewName(__FUNCTION__),compact('records', 'recordsTree'));
     }
 
 
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        $menuList = Menu::menuList();
+        $pageList = Page::pageList();
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'menuList', 'pageList']));
     }
 
 
@@ -57,7 +61,9 @@ class MenuController extends Controller
 
     public function edit(Menu $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        $menuList = Menu::menuList();
+        $pageList = Page::pageList();
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'menuList', 'pageList']));
     }
 
 
