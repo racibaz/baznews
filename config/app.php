@@ -191,7 +191,8 @@ return [
         Mews\Purifier\PurifierServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         RobBrazier\Piwik\PiwikServiceProvider::class,
-        Cornford\Googlmapper\MapperServiceProvider::class
+        Cornford\Googlmapper\MapperServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
 
 
     ],
