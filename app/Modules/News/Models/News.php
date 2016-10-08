@@ -29,6 +29,8 @@ class News extends Model
 
     public $news_types = ['Standard', 'Photo', 'Photo Gallery', 'Video', 'Video Gallery', 'Sound'];
 
+    public static $statuses = ['Pasif', 'Aktif', 'Taslak', 'Yayında', 'Hazırlanıyor', 'Editor Onayı İçin Beklemede', 'Çöpte'];
+
     protected $table = 'news';
 
     //TODO eklenebilecekler
@@ -52,7 +54,7 @@ class News extends Model
     protected $fillable = ['user_id', 'country_id', 'city_id', 'news_resource_id', 'title', 'slug', 'spot', 'content', 'description', 'keywords',
         'meta_tags', 'thumbnail', 'hit', 'status', 'band_news', 'box_cuff', 'is_cuff','break_news', 'is_comment', 'main_cuff' ,'mini_cuff' ,'map', 'is_active'];
 
-    public static $statuses = ['Pasif', 'Aktif', 'Taslak', 'Yayında', 'Hazırlanıyor', 'Editor Onayı İçin Beklemede', 'Çöpte'];
+
 
     public function news_categories()
     {
@@ -116,6 +118,11 @@ class News extends Model
             'content' => 'Required',
         );
         return Validator::make($input, $rules);
+    }
+
+    public function scopeStatus($query, $flag)
+    {
+        return $query->where('status', $flag);
     }
 
     public static function newsList()

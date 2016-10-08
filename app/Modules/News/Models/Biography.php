@@ -31,6 +31,8 @@ class Biography extends Model
     //todo biografiye title veya name alanı eklenecek
     protected $fillable = ['user_id', 'full_name', 'slug', 'content', 'photo', 'description', 'keywords', 'order', 'hit', 'is_cuff', 'is_active'];
 
+    public static $statuses = ['Pasif', 'Aktif', 'Taslak', 'Yayında', 'Hazırlanıyor', 'Editor Onayı İçin Beklemede', 'Çöpte'];
+
 
     public function user()
     {

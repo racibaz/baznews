@@ -37,6 +37,7 @@ class NewsController extends Controller
 
     public function index()
     {
+
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate(50);
         $newsCategoryList = NewsCategory::newsCategoryList();
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records', 'newsCategoryList']));
