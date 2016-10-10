@@ -1,0 +1,73 @@
+
+php artisan migrate
+php artisan db:seed
+php artisan module:migrate
+php artisan module:seed
+php artisan migrate --path=vendor/venturecraft/revisionable/src/migrations
+
+
+polycy
+request class
+++Editorün seçtikleri(tavsiye haberler)
+++makaleler kategorisi
+++Makaleler
+++Biyografi
+E-Gazete
+Anket
+Reklam
+++Kitap Modulü
+Röportaj
+
+kaldığım yer
+https://www.youtube.com/watch?v=Efj6rN30baE&list=PLkZU2rKh1mT8USyI0vUAzx7vA3chASM8T&index=4
+
+
+menu module de news_category de olduğu gibi kategorize edilecek
+
+++Haber aşaması status üzerinden (taslak,yayında,hazırlanıyor,editor onayı beklemeklemede)
+diğerlerine de yapılacak
+
+
+http://www.tebilisim.com/editor-performans-eklentisi-16h.html
+
+++tek yazar tablosu olacak alıntı yazar orda alan olacak.
+
+Mass Assignment
+protected $guarded = ['permissions'];
+
+Genel ve özel ayarlar için bakılacak.
+https://github.com/anlutro/laravel-settings
+
+Laravel Medialibrary
+
+
+Gruplara Özel Sayfa gösterimi tanımlayabilme
+
+https://github.com/barryvdh/laravel-elfinder
+
+http://pusher-community.github.io/real-time-laravel/introduction/pusher-use-cases.html
+
+
+sabit sayfalar ön tarafta bu şekilde de gösterilebilir.
+http://www.yenisafak.com/kurumsal/hakkimizda
+
+
+Elfinder kurulacak mı?
+
+elixir ve gulp işlevlerini profosyonel şekilde nasıl kullanabiliriz.
+
+sık sorulanlar modulü yapılabilir diğer özelliklerine de bakılabilinir.
+https://github.com/LavaLite/cms
+
+
+modellerin status kısmı bu şekilde yapılacak.
+https://github.com/hootlex/laravel-moderation
+
+
+breadcrumbs sistemi frontend de yapılacak.
+http://laravel-breadcrumbs.davejamesmiller.com/en/latest/start.html
+
+
+
+Yabancı diller
+Purifier content,detail alanları  temizlenecek

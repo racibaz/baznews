@@ -27,7 +27,7 @@ class CreateNewsTable extends Migration
             $table->string('keywords')->nullable();
             $table->text('meta_tags')->nullable();
             $table->string('thumbnail')->nullable();
-            $table->string('map')->nullable();
+            $table->string('map_text')->nullable();
             $table->unsignedInteger('hit')->nullable();
             $table->unsignedInteger('status')->nullable();
             $table->boolean('band_news');

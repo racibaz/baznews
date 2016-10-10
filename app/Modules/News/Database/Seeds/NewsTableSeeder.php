@@ -37,7 +37,7 @@ class NewsTableSeeder extends Seeder
             'is_comment'                        => 1,
             'main_cuff'                         => 1,
             'mini_cuff'                         => 1,
-            'map'                               => 'koordinatlar',
+            'map_text'                               => 'koordinatlar',
             'is_active'                         => 1
         ]);
 
@@ -63,7 +63,7 @@ class NewsTableSeeder extends Seeder
             'is_comment'                        => 1,
             'main_cuff'                         => 1,
             'mini_cuff'                         => 1,
-            'map'                               => 'koordinatlar',
+            'map_text'                               => 'koordinatlar',
             'is_active'                         => 1
         ]);
 
@@ -89,7 +89,7 @@ class NewsTableSeeder extends Seeder
             'is_comment'                        => 1,
             'main_cuff'                         => 1,
             'mini_cuff'                         => 1,
-            'map'                               => 'koordinatlar',
+            'map_text'                               => 'koordinatlar',
             'is_active'                         => 1
         ]);
 
@@ -115,7 +115,7 @@ class NewsTableSeeder extends Seeder
             'is_comment'                        => 1,
             'main_cuff'                         => 1,
             'mini_cuff'                         => 1,
-            'map'                               => 'koordinatlar',
+            'map_text'                               => 'koordinatlar',
             'is_active'                         => 1
         ]);
 

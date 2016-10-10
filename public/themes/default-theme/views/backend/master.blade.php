@@ -260,6 +260,7 @@
 <!-- ./wrapper -->
 
 
+
 <!-- jQuery 2.2.3 -->
 <script src="{{ Theme::asset('default-theme::AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -278,7 +279,7 @@
 <!-- ChartJS 1.0.1 -->
 <script src="{{ Theme::asset('default-theme::AdminLTE/plugins/chartjs/Chart.min.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ Theme::asset('default-theme::AdminLTE/dist/js/pages/dashboard2.js') }}"></script>
+{{--<script src="{{ Theme::asset('default-theme::AdminLTE/dist/js/pages/dashboard2.js') }}"></script>--}}
 <!-- AdminLTE for demo purposes -->
 <script src="{{ Theme::asset('default-theme::AdminLTE/dist/js/demo.js') }}"></script>
 

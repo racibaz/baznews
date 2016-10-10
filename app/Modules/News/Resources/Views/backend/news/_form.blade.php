@@ -251,24 +251,27 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('map', trans('news::news.map'),['class'=> 'col-lg-2 control-label']) !!}
+                    {{--<div class="form-group">--}}
+                        {{--<div class="row">--}}
+                            {{--{!! Form::label('map_text', trans('news::news.map_text'),['class'=> 'col-lg-2 control-label']) !!}--}}
 
-                            <div class="col-lg-10">
-                                {!! Form::text('map', $record->map, ['placeholder' => trans('news::news.map') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
+                            {{--<div class="col-lg-10">--}}
+                                {{--{!! Form::text('map_text', $record->map_text, ['placeholder' => trans('news::news.map_text') ,'class' => 'form-control']) !!}--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="form-group">--}}
+                        {{--<div class="row">--}}
 {{--                            {!! Form::label('map', trans('news::news.map'),['class'=> 'col-lg-2 control-label']) !!}--}}
 
-                            <div class="col-lg-10">
-                                <div style="height: 400px; width:100&;"> {!! $googleMapsRender !!} </div>
-                            </div>
-                        </div>
-                    </div>
+                            {{--<div class="col-lg-10">--}}
+                                {{--<div style="height: 400px; width:100&;"> {!! $googleMapsRender !!} </div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+
+
+
                     <div class="form-group">
                         <div class="row">
                             {{trans('news::common.status')}}
@@ -296,6 +299,7 @@
     </div><!-- end row -->
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->
+
 @endsection
 
 @section('js')

@@ -2,85 +2,57 @@
 
 @section('content')
 
-    {{--<div class="container-fluid">--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-md-12">--}}
-                {{--<!--Top header start-->--}}
-                {{--<h3 class="ls-top-header">Kullanıcılar</h3>--}}
-                {{--<!--Top header end -->--}}
 
-                {{--<!--Top breadcrumb start -->--}}
-                {{--<ol class="breadcrumb">--}}
-                    {{--<li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>--}}
-                    {{--<li>Kullanıcılar</li>--}}
-                    {{--<li class="active">{{$record->first_name}}</li>--}}
-                {{--</ol>--}}
-                {{--<!--Top breadcrumb start -->--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-md-12">--}}
-                {{--<div style="margin-bottom: 20px;">--}}
-                    {{--{{ link_to_route('admin.user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-md'] ) }}--}}
-                {{--</div>--}}
-            {{--</div><!-- end col-md-12 -->--}}
-        {{--</div><!-- end row -->--}}
-        {{--<!-- Main Content Element  Start-->--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-md-6">--}}
-                {{--<div class="panel panel-light-blue">--}}
-                    {{--<div class="panel-heading">--}}
-                        {{--<h3 class="panel-title">{{$record->first_name}}</h3>--}}
-                    {{--</div>--}}
-                    {{--<div class="panel-body">--}}
-                        {{--<div class="table-responsive ls-table">--}}
-                            {{--<table class="table table-bordered table-bottomless table-hover ">--}}
-                                {{--<thead>--}}
-                                {{--<tr>--}}
-                                    {{--<th width="20%">Tanım</th>--}}
-                                    {{--<th width="80%">Bilgi</th>--}}
-                                {{--</tr>--}}
-                                {{--</thead>--}}
-                                {{--<tbody>--}}
-                                    {{--<tr>--}}
-                                        {{--<th>Ad Soyad</th>--}}
-                                        {{--<td>{{$record->first_name}}</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                        {{--<th>E-Posta</th>--}}
-                                        {{--<td>{{$record->email}}</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                        {{--<th>Rolleri</th>--}}
-                                        {{--<td>--}}
-                                            {{--@foreach($record->roles as $role)--}}
-                                                {{--<span class="label label-default">{{$role->name}}</span>--}}
-                                            {{--@endforeach--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                        {{--<th>Grupları</th>--}}
-                                        {{--<td>--}}
-                                            {{--@foreach($record->groups as $group)--}}
-                                                {{--<span class="label label-default">{{$group->name}}</span>--}}
-                                            {{--@endforeach--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                        {{--<th>Aktif/Pasif</th>--}}
-                                        {{--<td>{!!$record->is_active ? '<label class="badge badge-green">Aktif</label>' : '<label class="badge badge-brown">Pasif</label>'!!}</td>--}}
-                                    {{--</tr>--}}
+    <div id="map"></div>
+    <script>
 
-                                {{--</tbody>--}}
-                            {{--</table>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div><!-- end row -->--}}
-        {{--<!-- Main Content Element  End-->--}}
-    {{--</div><!-- container-fluid -->--}}
+        // This example displays a marker at the center of Australia.
+        // When the user clicks the marker, an info window opens.
 
+        function initMap() {
+            var uluru = {lat: 38.9637, lng: 35.2433};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru
+            });
 
+            var contentString = '<div id="content">'+
+                    '<div id="siteNotice">'+
+                    '</div>'+
+                    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+                    '<div id="bodyContent">'+
+                    '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+                    'sandstone rock formation in the southern part of the '+
+                    'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+                    'south west of the nearest large town, Alice Springs; 450&#160;km '+
+                    '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+                    'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+                    'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+                    'Aboriginal people of the area. It has many springs, waterholes, '+
+                    'rock caves and ancient paintings. Uluru is listed as a World '+
+                    'Heritage Site.</p>'+
+                    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+                    'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+                    '(last visited June 22, 2009).</p>'+
+                    '</div>'+
+                    '</div>';
+
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                title: 'Uluru (Ayers Rock)'
+            });
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsaCorPc9onKQMuz7HU2rHTFpx1BoJeT0&callback=initMap">
+    </script>
 @endsection
 
