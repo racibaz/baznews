@@ -17,8 +17,11 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function ($api) {
 
-    dd('v1');
-    $api->get('users/{id}', 'App\Api\Controllers\UserController@show');
+    //$api->get('users/{id}', 'App\Api\Controllers\UserController@show');
+    $api->get('hello', function(){
+        return 'hello';
+    });
+
 });
 
 
