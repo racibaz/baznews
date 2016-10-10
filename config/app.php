@@ -193,6 +193,7 @@ return [
         RobBrazier\Piwik\PiwikServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class
 
 
     ],
