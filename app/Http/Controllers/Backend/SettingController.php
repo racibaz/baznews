@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Repositories\SettingRepository as Repo;
+use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use Route;
 
 class SettingController extends Controller
 {
@@ -31,8 +33,14 @@ class SettingController extends Controller
 
     public function index()
     {
+        $routeCollection = Route::getRoutes();
+        $themes = Theme::all();
+        $activeTheme = Theme::getActive();
+        $modules = Module::all();
+        $modulesCount = Module::count();
+
         $records = $this->repo->findAll();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        return Theme::view($this->getViewName(__FUNCTION__),compact('records', 'routeCollection', 'themes', 'activeTheme', 'modules', 'modulesCount'));
     }
 
 
@@ -57,7 +65,7 @@ class SettingController extends Controller
 
     public function edit(Setting $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','routeCollection']));
     }
 
 

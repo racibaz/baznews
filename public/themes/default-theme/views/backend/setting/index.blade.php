@@ -51,6 +51,34 @@
                         </tr>
                         </tfoot>
                     </table>
+
+                    <div>
+                        <h1>activeTheme :</h1> {{$activeTheme}} <br>
+                        <h1> themes : </h1>
+                        @foreach($themes as $theme)
+                            {{$theme}} <br />
+                        @endforeach
+<br><br><br><br><br>
+
+                        <h1> modulesCount : </h1> {{$modulesCount}}
+                        <br>
+                        <h1> modules : </h1>
+                        <br>
+                        @foreach($modules as $module)
+                            {{$module['basename']}} <br />
+                        @endforeach
+
+<br><br><br><br><br>
+                    </div>
+
+                    <h1> RoactiveTheme :utes </h1>
+                    <div id="routes">
+                        @foreach ($routeCollection as $value)
+                            {{$value->getPath()}} <br />
+                        @endforeach
+                    </div>
+
+
                 </div>
                 <!-- /.box-body -->
             </div>
