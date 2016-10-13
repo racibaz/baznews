@@ -13,6 +13,21 @@ use Illuminate\Http\Request;
 |
 */
 
+
+$api = app('Dingo\Api\Routing\Router');
+
+
+
+$api->version('v1', function ($api) {
+
+    //$api->get('users/{id}', 'App\Api\Controllers\UserController@show');
+
+    $api->get('articles', 'App\Modules\Article\Http\Controllers\Api\ArticleController@getArticles');
+    $api->get('article_categories', 'App\Modules\Article\Http\Controllers\Api\ArticleController@getArticleCategories');
+
+});
+
+
 Route::get('/article', function (Request $request) {
     // return $request->article();
 })->middleware('auth:api');

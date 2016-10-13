@@ -4,11 +4,14 @@ namespace App\Modules\Article\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Article\Models\Article;
+use App\Modules\Article\Models\ArticleCategory;
 use App\Modules\Article\Models\Author;
 use App\Modules\Article\Repositories\ArticleRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -30,20 +33,38 @@ class ArticleController extends Controller
     {
         return $this->redirectViewName . $this->view . $methodName;
     }
-
-
+    
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->findAll();
+        DB::connection()->enableQueryLog();
+
+        if(Cache::has('articles'))
+        {
+
+            $records = Cache::get('articles');
+        }else
+        {
+            $records = Article::all();
+            Cache::store('redis')->put('articles', $records, 10);
+        }
+
+
+
+        $queries  = DB::getQueryLog();
+        print_r($queries);
+
+
         return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
     public function create()
     {
+        $articleCategories = ArticleCategory::articleCategories();
         $authorList = Author::authorList();
         $record = $this->repo->createModel();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'authorList']));
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'authorList', 'articleCategories']));
     }
 
 
@@ -61,8 +82,9 @@ class ArticleController extends Controller
 
     public function edit(Article $record)
     {
+        $articleCategories = ArticleCategory::articleCategories();
         $authorList = Author::authorList();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'authorList']));
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'authorList', 'articleCategories']));
     }
 
 
@@ -114,4 +136,21 @@ class ArticleController extends Controller
             }
         }
     }
+
+    public function article_article_category_store(Request $request)
+    {
+        $input = Input::all();
+        $article_id = $input['article_id'];
+
+        unset($input['article_id']);
+        unset($input['_token']);
+
+        $article = Article::find($article_id);
+        //$role->permissons->sync($input);
+
+        $article->article_categories()->sync($input);
+
+        return Redirect::back();
+    }
+
 }

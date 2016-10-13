@@ -169,6 +169,40 @@
             </div>
         </div>
     </div><!-- end row -->
+
+
+    <div class="col-md-6">
+        <!-- general form elements disabled -->
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">Role İzin Yonetimi</h3>
+            </div>
+
+            {!! Form::open(['route' => 'article_article_category_store','method' => 'post']) !!}
+
+                    <!-- /.box-header -->
+            <div class="box-body">
+                {{--<form role="form">--}}
+
+                {!!  Form::hidden('article_id', $record->id) !!}
+
+                @foreach($articleCategories as $articleCategory)
+                    <div class="form-group">
+                        {{ $articleCategory->name }} :
+                        {!! Form::checkbox($articleCategory->name, $articleCategory->id, in_array($articleCategory->name , $record->article_categories->pluck('name')->toArray())) !!}
+                    </div>
+                @endforeach
+
+                <div class="box-footer">
+                    {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
+                </div>
+                {!! Form::close() !!}
+            </div>
+            <!-- /.box-body -->
+        </div>
+    <!-- /.box -->
+    </div>
+
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->
 

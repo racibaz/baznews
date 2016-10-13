@@ -24,7 +24,8 @@
         "RobBrazier/Piwik": "~2.1",
         "cornford/googlmapper": "2.*",
         "spatie/laravel-backup": "^4.0",
-        "dingo/api": "1.0.x@dev"
+        "dingo/api": "1.0.x@dev",
+        "predis/predis": "^1.1"
 
 
     },

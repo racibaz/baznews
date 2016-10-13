@@ -45,4 +45,9 @@ class ArticleCategory extends Model
     {
         return ArticleCategory::where('is_active',1)->pluck('name', 'id');
     }
+
+    public static function articleCategories()
+    {
+        return ArticleCategory::where('is_active',1)->get();
+    }
 }
