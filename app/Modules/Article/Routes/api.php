@@ -24,6 +24,7 @@ $api->version('v1', function ($api) {
 
     $api->get('articles', 'App\Modules\Article\Http\Controllers\Api\ArticleController@getArticles');
     $api->get('article_categories', 'App\Modules\Article\Http\Controllers\Api\ArticleController@getArticleCategories');
+    $api->get('authors/{count?}', 'App\Modules\Article\Http\Controllers\Api\AuthorController@getAuthors')->where('count', '[0-9]+');
 
 });
 
