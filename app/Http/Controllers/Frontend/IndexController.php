@@ -15,7 +15,7 @@ class IndexController extends Controller
     public function index()
     {
 
-        $records =  Cache::remember('index', 10, function() use () {
+        $records =  Cache::remember('index', 10, function(){
 
             $records = News::where('is_active',1)->get();
 
