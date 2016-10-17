@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 //Auth::loginUsingId(1);
 //Route::auth();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Frontend\IndexController@index')->name('index');
+
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 
 

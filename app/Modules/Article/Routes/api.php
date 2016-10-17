@@ -35,6 +35,7 @@ $api->version('v1', ['middleware' => 'api.throttle', 'limit' => 100, 'expires' =
 
 
     $api->get('article_categories', 'App\Modules\Article\Http\Controllers\Api\ArticleController@getArticleCategories');
+    $api->get('authors/{count?}', 'App\Modules\Article\Http\Controllers\Api\AuthorController@getAuthors')->where('count', '[0-9]+');
 
 });
 
