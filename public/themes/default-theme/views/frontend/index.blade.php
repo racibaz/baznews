@@ -2,6 +2,13 @@
 
 @section('content')
 
+
+
+    <h1>Sayfa Ayarları</h1>
+    <br />
+    
+
+
     <h1>breakNewsItems</h1>
     <br />
     @foreach($breakNewsItems as $breakNewsItem)
@@ -25,6 +32,21 @@
     @foreach($miniCuffNewsItems as $miniCuffNewsItem)
         {{$miniCuffNewsItem->title}} <br/>
     @endforeach
+
+    <h1>Haber Kategoriler</h1>
+    <br />
+    @foreach($cuffNewsCategories as $cuffNewsCategory)
+
+        {{$cuffNewsCategory->name}} : <br>
+
+        @foreach($cuffNewsCategory->news as $categoryNews)
+            {{$categoryNews->title}},
+        @endforeach
+        <br>
+
+    @endforeach
+
+
 
 @endsection
 
