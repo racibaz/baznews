@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('setting', 'Backend\SettingController');
     Route::resource('tag', 'Backend\TagController');
     Route::resource('event', 'Backend\EventController');
+    Route::resource('module', 'Backend\ModuleController');
 
 
     Route::post('announcement.announcement_establishment_store', 'Backend\AnnouncementController@announcement_establishment_store')->name('announcement_establishment_store');

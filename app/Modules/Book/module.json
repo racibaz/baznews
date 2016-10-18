@@ -2,5 +2,6 @@
     "name": "Book",
     "slug": "book",
     "version": "1.0",
-    "description": "This is the description for the Book module."
+    "description": "This is the description for the Book module.",
+    "widget" : true
 }

@@ -56,6 +56,7 @@
         <section class="content">
             @include('default-theme::backend.partials._messages')
             @yield('content')
+            @yield('widgets')
         </section>
         <!-- /.content -->
     </div>

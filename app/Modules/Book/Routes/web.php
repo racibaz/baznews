@@ -12,17 +12,11 @@
 */
 
 
+
+Route::get('books', 'Frontend\BookController@index')->name('books');
+
+
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('book', 'Backend\BookController');
 });
 
-
-
-
-
-
-Route::group(['prefix' => 'book'], function() {
-    Route::get('/', function() {
-        dd('This is the Book module index page. Build something great!');
-    });
-});
