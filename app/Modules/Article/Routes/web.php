@@ -14,6 +14,10 @@
 
 
 
+Route::get('articles_sitemap', 'Frontend\SitemapController@sitemap')->name('articles_sitemap');
+
+
+
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
 

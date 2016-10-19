@@ -47,6 +47,8 @@
     @endforeach
 
 
+    widget ve sitemap rss tabloları yapılacak.
+
 
 @endsection
 

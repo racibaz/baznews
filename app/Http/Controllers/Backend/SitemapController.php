@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\City;
-use App\Models\Country;
-use App\Repositories\CityRepository as Repo;
+use App\Models\Sitemap;
+use App\Repositories\SitemapRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
-class CityController extends Controller
+class SitemapController extends Controller
 {
     private $repo;
-    private $view = 'city.';
+    private $view = 'sitemap.';
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
@@ -39,9 +38,8 @@ class CityController extends Controller
 
     public function create()
     {
-        $countries = Country::countryList();
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'countries']));
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
@@ -51,27 +49,25 @@ class CityController extends Controller
     }
 
 
-    public function show(City $record)
+    public function show(Sitemap $record)
     {
         return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
     }
 
 
-    public function edit(City $record)
+    public function edit(Sitemap $record)
     {
-     //   Mapper::map(50, 0, ['marker' => false]);
-        $countries = Country::countryList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'countries']));
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
-    public function update(Request $request, City $record)
+    public function update(Request $request, Sitemap $record)
     {
         return $this->save($record);
     }
 
 
-    public function destroy(City $record)
+    public function destroy(Sitemap $record)
     {
         $this->repo->delete($record->id);
         return redirect()->route($this->redirectRouteName . $this->view .'index');
@@ -84,7 +80,7 @@ class CityController extends Controller
 
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = City::validate($input);
+        $v = Sitemap::validate($input);
 
         if ($v->fails()) {
             return Redirect::back()

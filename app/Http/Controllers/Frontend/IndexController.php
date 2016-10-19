@@ -27,7 +27,7 @@ class IndexController extends Controller
              //TODO setting tek satır yapılacak
              $pageSetting = Setting::all();
 
-             dd($pageSetting);
+             //dd($pageSetting);
 
 
              $modules = Module::enabled();

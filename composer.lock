@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fa6cbedb3cb4bf3cf462b80acbca6887",
-    "content-hash": "09d0b56b7e2bd41a2dc34b711f25ec15",
+    "hash": "3a960307bcc13ada85d942c7e6b5ed61",
+    "content-hash": "0d40837c6f661107c6c21c34d2fb36e3",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -2501,6 +2501,57 @@
                 "piwik"
             ],
             "time": "2016-08-20 16:51:55"
+        },
+        {
+            "name": "roumen/feed",
+            "version": "v2.10.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RoumenDamianoff/laravel-feed.git",
+                "reference": "900594412cab37515b2b53c8953af1201024e48d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RoumenDamianoff/laravel-feed/zipball/900594412cab37515b2b53c8953af1201024e48d",
+                "reference": "900594412cab37515b2b53c8953af1201024e48d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.0",
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Roumen\\Feed": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roumen Damianoff",
+                    "email": "roumen@dawebs.com",
+                    "homepage": "https://roumen.it",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple feed generator for Laravel.",
+            "homepage": "https://roumen.it/projects/laravel-feed",
+            "keywords": [
+                "atom",
+                "feed",
+                "generator",
+                "laravel",
+                "rss"
+            ],
+            "time": "2016-07-17 13:06:35"
         },
         {
             "name": "spatie/db-dumper",

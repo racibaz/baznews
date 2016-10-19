@@ -3,5 +3,7 @@
     "slug": "article",
     "version": "1.0",
     "description": "This is the description for the Article module.",
-    "widget" : false
+    "widget" : false,
+    "sitemap" : true,
+    "sitemap_path" : "articles_sitemap"
 }

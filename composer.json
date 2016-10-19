@@ -25,7 +25,8 @@
         "cornford/googlmapper": "2.*",
         "spatie/laravel-backup": "^4.0",
         "dingo/api": "1.0.x@dev",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "roumen/feed": "^2.10"
 
 
     },

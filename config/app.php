@@ -193,7 +193,8 @@ return [
         RobBrazier\Piwik\PiwikServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
-        Dingo\Api\Provider\LaravelServiceProvider::class
+        Dingo\Api\Provider\LaravelServiceProvider::class,
+        Roumen\Feed\FeedServiceProvider::class,
 
 
     ],
@@ -252,7 +253,8 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
         'Piwik' => RobBrazier\Piwik\Facades\Piwik::class,
-        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class
+        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
+        'Feed' => Roumen\Feed\Feed::class,
 
         ////TODO  THEME İN COMPONET GİBİ BİRŞEY VARDI ONA BAKILACAK
     ],

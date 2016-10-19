@@ -14,6 +14,10 @@
 
 
 
+Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sitemap');
+
+
+
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
 
