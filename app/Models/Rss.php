@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
-class Sitemap extends Model
+class Rss extends Model
 {
+    protected $table = 'rss';
 
-    protected $table = 'sitemaps';
-    
     protected $fillable = [
         'name',
         'url',
-        'last_modified',
         'order',
         'is_active',
     ];

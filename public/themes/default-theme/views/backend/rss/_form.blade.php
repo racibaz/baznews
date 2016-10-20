@@ -5,13 +5,13 @@
     <div class="row">
         <div class="col-md-12">
             <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('city.managment')}}</h3>
+            <h3 class="ls-top-header">{{trans('rss.managment')}}</h3>
             <!--Top header end -->
 
             <!--Top breadcrumb start -->
             <ol class="breadcrumb">
                 <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('city.index') !!}"> {{ trans('city.countries') }} </a></li>
+                <li><a href="{!! URL::route('rss.index') !!}"> {{ trans('rss.rsss') }} </a></li>
                 <li class="active"> {{ trans('common.add_update') }}</li>
             </ol>
             <!--Top breadcrumb start -->
@@ -26,9 +26,9 @@
                 </div>
 
                 @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['city.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+                    {!! Form::model($record, ['route' => ['rss.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
                 @else
-                    {!! Form::open(['route' => 'city.store','method' => 'post', 'files' => 'true']) !!}
+                    {!! Form::open(['route' => 'rss.store','method' => 'post', 'files' => 'true']) !!}
                 @endif
 
                 <div class="panel-body">
@@ -36,23 +36,31 @@
 
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('country_id', trans('country.name'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('name', trans('rss.name'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::select('country_id', $countries , $record->country_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
+                                {!! Form::text('name', $record->name, ['placeholder' => trans('rss.name') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('name', trans('city.name'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('url', trans('rss.url'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('name', $record->name, ['placeholder' => trans('city.name') ,'class' => 'form-control']) !!}
+                                {!! Form::text('url', $record->url, ['placeholder' => trans('rss.url') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
-                    {!! Mapper::render() !!}
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('order', trans('rss.order'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::number('order', $record->order, ['placeholder' => trans('rss.order') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <div class="row">

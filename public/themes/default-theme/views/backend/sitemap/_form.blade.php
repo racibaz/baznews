@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('user.managment')}}</h3>
+            <h3 class="ls-top-header">{{trans('sitemap.managment')}}</h3>
             <!--Top header end -->
 
             <!--Top breadcrumb start -->
@@ -57,7 +57,7 @@
                             {!! Form::label('order', trans('sitemap.order'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('order', $record->order, ['placeholder' => trans('sitemap.order') ,'class' => 'form-control']) !!}
+                                {!! Form::number('order', $record->order, ['placeholder' => trans('sitemap.order') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

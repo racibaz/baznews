@@ -43,6 +43,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('tag', 'App\Models\Tag');
         Route::model('event', 'App\Models\Event');
         Route::model('sitemap', 'App\Models\Sitemap');
+        Route::model('rss', 'App\Models\Rss');
         
     }
 

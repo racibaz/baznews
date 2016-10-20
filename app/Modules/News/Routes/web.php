@@ -17,6 +17,22 @@
 Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sitemap');
 
 
+Route::group(['prefix' => 'rss'], function() {
+
+    Route::get('all_news', 'Frontend\RssController@allNewsRssRender')->name('rss/all_news');
+    Route::get('band_news', 'Frontend\RssController@bandNewsRssRender')->name('rss/band_news');
+    Route::get('box_cuff', 'Frontend\RssController@boxCuffRssRender')->name('rss/box_cuff');
+    Route::get('break_news', 'Frontend\RssController@breakNewsRssRender')->name('rss/break_news');
+    Route::get('main_cuff', 'Frontend\RssController@mainCuffRssRender')->name('rss/main_cuff');
+    Route::get('mini_cuff', 'Frontend\RssController@miniCuffRssRender')->name('rss/mini_cuff');
+    Route::get('videos', 'Frontend\RssController@videosRssRender')->name('rss/videos');
+    //TODO video kategorileri, photo kategorileri, photo lar da eklenecek.
+
+    //TODO XSS script sorunu olur mu? test edilecek gerekli önlemler alınacak
+    Route::get('news_category/{category_name}', 'Frontend\RssController@getNewsCategoryRssRender')->name('rss/category');
+});
+
+
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 

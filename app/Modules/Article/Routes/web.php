@@ -18,11 +18,18 @@ Route::get('articles_sitemap', 'Frontend\SitemapController@sitemap')->name('arti
 
 
 
+Route::group(['prefix' => 'rss'], function() {
+
+    Route::get('articles', 'Frontend\RssController@articlesRssRender')->name('rss/articles');
+});
+
+
+
+
+
+
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
-
-
     Route::resource('author', 'Backend\AuthorController');
-    
     Route::post('article.article_article_category_store', 'Backend\ArticleController@article_article_category_store')->name('article_article_category_store');
     Route::resource('article', 'Backend\ArticleController');
     Route::resource('article_category', 'Backend\ArticleCategoryController');

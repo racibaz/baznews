@@ -217,6 +217,8 @@
             <li><a href="{!! route('article.index') !!}"><i class="fa fa-book"></i> <span>makaleler</span></a></li>
             <li><a href="{!! route('article_category.index') !!}"><i class="fa fa-book"></i> <span>makale kategorileri</span></a></li>
             <li><a href="{!! route('announcement.index') !!}"><i class="fa fa-book"></i> <span>Duyurular</span></a></li>
+            <li><a href="{!! route('sitemap.index') !!}"><i class="fa fa-book"></i> <span>Site Haritaları</span></a></li>
+            <li><a href="{!! route('rss.index') !!}"><i class="fa fa-book"></i> <span>Rss ler</span></a></li>
 
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>

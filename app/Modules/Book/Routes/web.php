@@ -17,6 +17,16 @@ Route::get('books', 'Frontend\BookController@index')->name('books');
 Route::get('books_sitemap', 'Frontend\SitemapController@sitemap')->name('books_sitemap');
 
 
+Route::group(['prefix' => 'rss'], function() {
+
+    Route::get('books', 'Frontend\RssController@booksRssRender')->name('rss/books');
+});
+
+
+
+
+
+
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('book', 'Backend\BookController');
 });

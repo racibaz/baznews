@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Frontend\IndexController@index')->name('index');
 Route::get('sitemap.xml', 'Frontend\SitemapController@sitemaps')->name('sitemaps');
+Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -54,6 +55,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('event', 'Backend\EventController');
     Route::resource('module', 'Backend\ModuleController');
     Route::resource('sitemap', 'Backend\SitemapController');
+    Route::resource('rss', 'Backend\RssController');
 
 
     Route::post('announcement.announcement_establishment_store', 'Backend\AnnouncementController@announcement_establishment_store')->name('announcement_establishment_store');
