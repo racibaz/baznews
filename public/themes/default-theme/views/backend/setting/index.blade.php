@@ -21,7 +21,6 @@
                             <th>#</th>
                             <th>{{trans('setting.attribute_key')}}</th>
                             <th>{{trans('setting.attribute_value')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -30,7 +29,6 @@
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('setting.show', $record->attribute_key , $record, [] ) !!}</td>
                                     <td> {{ $record->attribute_value  }} </td>
-                                    <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('setting.destroy',  $record))) !!}
@@ -47,7 +45,6 @@
                             <th>#</th>
                             <th>{{trans('setting.attribute_key')}}</th>
                             <th>{{trans('setting.attribute_value')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </tfoot>
                     </table>
