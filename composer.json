@@ -11,7 +11,6 @@
         "zizaco/entrust": "5.2.x-dev",
         "laravelcollective/html": "5.3.*",
         "caffeinated/themes": "^3.0",
-        "arcanedev/log-viewer": "^3.10",
         "rinvex/repository": "2.0.*",
         "caffeinated/modules": "^4.0",
         "kalnoy/nestedset": "^4.1",
@@ -26,7 +25,8 @@
         "spatie/laravel-backup": "^4.0",
         "dingo/api": "1.0.x@dev",
         "predis/predis": "^1.1",
-        "roumen/feed": "^2.10"
+        "roumen/feed": "^2.10",
+        "rap2hpoutre/laravel-log-viewer": "^0.7.0"
 
 
     },

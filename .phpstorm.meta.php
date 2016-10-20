@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-10-19.
+    * Generated on 2016-10-20.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -113,6 +113,7 @@ namespace PHPSTORM_META {
             'api.transformer' instanceof \Dingo\Api\Transformer\Factory,
             'Dingo\Api\Console\Command\Docs' instanceof \Dingo\Api\Console\Command\Docs,
             'api.router.adapter' instanceof \Dingo\Api\Routing\Adapter\Laravel,
+            'feed' instanceof \Roumen\Feed\Feed,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -303,6 +304,7 @@ namespace PHPSTORM_META {
             'api.transformer' instanceof \Dingo\Api\Transformer\Factory,
             'Dingo\Api\Console\Command\Docs' instanceof \Dingo\Api\Console\Command\Docs,
             'api.router.adapter' instanceof \Dingo\Api\Routing\Adapter\Laravel,
+            'feed' instanceof \Roumen\Feed\Feed,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -493,6 +495,7 @@ namespace PHPSTORM_META {
             'api.transformer' instanceof \Dingo\Api\Transformer\Factory,
             'Dingo\Api\Console\Command\Docs' instanceof \Dingo\Api\Console\Command\Docs,
             'api.router.adapter' instanceof \Dingo\Api\Routing\Adapter\Laravel,
+            'feed' instanceof \Roumen\Feed\Feed,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -683,6 +686,7 @@ namespace PHPSTORM_META {
             'api.transformer' instanceof \Dingo\Api\Transformer\Factory,
             'Dingo\Api\Console\Command\Docs' instanceof \Dingo\Api\Console\Command\Docs,
             'api.router.adapter' instanceof \Dingo\Api\Routing\Adapter\Laravel,
+            'feed' instanceof \Roumen\Feed\Feed,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,

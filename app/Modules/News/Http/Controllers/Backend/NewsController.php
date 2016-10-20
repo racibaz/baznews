@@ -54,6 +54,7 @@ class NewsController extends Controller
             ]);
         $googleMapsRender = Mapper::render();
 
+        $newsCategories = NewsCategory::where('is_active', 1)->get();
         $countryList = Country::countryList();
         $cityList = City::cityList();
         $newsCategoryList = NewsCategory::newsCategoryList();
@@ -61,7 +62,7 @@ class NewsController extends Controller
         $statuses = News::$statuses;
         $record = $this->repo->createModel();
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
-            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses','googleMapsRender']));
+            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses','googleMapsRender','newsCategories']));
     }
 
 
@@ -88,13 +89,14 @@ class NewsController extends Controller
         $googleMapsRender = Mapper::render();
 
 
+        $newsCategories = NewsCategory::where('is_active', 1)->get();
         $countryList = Country::countryList();
         $cityList = City::cityList();
         $newsCategoryList = NewsCategory::newsCategoryList();
         $newsSourceList = NewsSource::newsSourceList();
         $statuses = News::$statuses;
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
-            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses', 'googleMapsRender']));
+            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses', 'googleMapsRender','newsCategories']));
     }
 
 
@@ -228,6 +230,18 @@ class NewsController extends Controller
     }
 
 
+    public function news_news_categories_store(Request $request)
+    {
+        $input = Input::all();
+        $news_id = $input['news_id'];
 
+        unset($input['news_id']);
+        unset($input['_token']);
+
+        $record = News::find($news_id);
+        $record->news_categories()->sync($input);
+
+        return Redirect::back();
+    }
 
 }

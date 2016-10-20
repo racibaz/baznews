@@ -296,6 +296,38 @@
                 {!! Form::close() !!}
             </div>
         </div>
+
+
+        <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('news::news.select_categories') }}</h3>
+                </div>
+
+                {!! Form::open(['route' => 'news_news_categories_store','method' => 'post']) !!}
+
+                        <!-- /.box-header -->
+                <div class="box-body">
+                    {{--<form role="form">--}}
+
+                    {!!  Form::hidden('news_id', $record->id) !!}
+                    @foreach($newsCategories as $newsCategory)
+                        <div class="form-group">
+                            {{ $newsCategory->name }} :
+                            {!! Form::checkbox($newsCategory->id, $newsCategory->id, in_array($newsCategory->id , $record->news_categories->pluck('id')->toArray())) !!}
+                        </div>
+                    @endforeach
+
+                    <div class="box-footer">
+                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
     </div><!-- end row -->
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->

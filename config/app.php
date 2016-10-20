@@ -182,7 +182,6 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Caffeinated\Themes\ThemesServiceProvider::class,
-        Arcanedev\LogViewer\LogViewerServiceProvider::class,
         Rinvex\Repository\Providers\RepositoryServiceProvider::class,
         Caffeinated\Modules\ModulesServiceProvider::class,
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
@@ -195,6 +194,7 @@ return [
         Spatie\Backup\BackupServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
 
     ],
