@@ -50,7 +50,13 @@
                     </table>
 
                     <div>
-                        <li><a href="{!! route('repairMysqlTables') !!}"><i class="fa fa-book"></i> <span>Mysql Tabloları Onar</span></a></li>
+
+                        <br /><br /><br />
+                        <ul>
+                            <li><a href="{!! route('repairMysqlTables') !!}"> <span>Mysql Tabloları Onar</span></a></li>
+                            <li><a href="{!! route('getAllRedisKey') !!}"> <span>Cache Verileri Göster</span></a></li>
+                        </ul>
+                        <br /><br />
                     </div>
 
                     <div>

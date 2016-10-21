@@ -1,31 +1,30 @@
 <?php
 
-namespace App\Jobs\Users;
+namespace App\Jobs\Cache;
 
-use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Cache;
 
-class UpdateLastLogin implements ShouldQueue
+class FlushAll implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
-    public $user;
+    public $tags;
 
-    public $date;
+    public $key;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user, Carbon $date)
+    public function __construct($tags = null, $key = null)
     {
-        $this->user = $user;
-        $this->date = $date;
+        $this->tags = $tags;
+        $this->key = $key;
     }
 
     /**
@@ -35,8 +34,21 @@ class UpdateLastLogin implements ShouldQueue
      */
     public function handle()
     {
-        $this->user->update([
-            'last_login' => $this->date
-         ]);
+
+        if($this->tags != null)
+        {
+            if(is_array($this->tags)){
+                Cache::tags($this->tags)->flush();
+            }else
+            {
+                Cache::tags($this->tags)->flush();
+            }
+        }
+
+        if($this->key != null)
+        {
+            Cache::forget($this->key);
+        }
+        
     }
 }

@@ -195,6 +195,7 @@ return [
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Barryvdh\TranslationManager\ManagerServiceProvider::class,
 
 
     ],

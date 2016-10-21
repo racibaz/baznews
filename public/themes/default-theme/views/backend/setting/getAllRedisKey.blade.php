@@ -26,7 +26,11 @@
                     </div>
 
                     <div class="panel-body">
-
+                        <ul>
+                            @foreach($redisKeys as $index => $redisKey)
+                                <li>{{ $index  . '-  ' .  $redisKey}}</li> <br />
+                            @endforeach
+                        </ul>
 
                     </div>
                 </div>

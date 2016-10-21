@@ -2,21 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Announcement;
-use App\Models\City;
-use App\Models\Country;
-use App\Models\Group;
-use App\Models\Permission;
-use App\Models\Role;
 use App\Models\Setting;
-use App\Models\User;
-use App\Observers\AnnouncementObserver;
-use App\Observers\CityObserver;
-use App\Observers\CountryObserver;
-use App\Observers\GroupObserver;
-use App\Observers\PermissionObserver;
-use App\Observers\RoleObserver;
-use App\Observers\UserObserver;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
@@ -32,15 +18,22 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        Cache::remember('settings', 10, function() {
+//        Cache::remember('settings', 10, function() {
+//
+//            $settings =  Setting::all();
+//
+//            foreach ($settings as $setting)
+//            {
+//                Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
+//                //Redis::set($setting->attribute_key, $setting->attribute_value);
+//                //Redis::expire($setting->attribute_key, 1);
+//            }
+//            //return 'setting';
+//        });
 
-            $settings =  Setting::all();
 
-            foreach ($settings as $setting)
-            {
-                Cache::tags(['setting'])->put($setting->attribute_key, $setting->attribute_value, 10);
-            }
-        });
+        //Cache::tags('settings')->flush();
+        //Cache::flush();
 
 
         //TODO cachelenecek

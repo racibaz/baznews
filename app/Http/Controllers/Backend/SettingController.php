@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\Cache\FlushAllCache;
 use App\Models\Setting;
 use App\Repositories\SettingRepository as Repo;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use Route;
@@ -35,7 +38,6 @@ class SettingController extends Controller
 
     public function index()
     {
-
         $routeCollection = Route::getRoutes();
         $themes = Theme::all();
         $activeTheme = Theme::getActive();
@@ -135,10 +137,24 @@ class SettingController extends Controller
             }
         }
 
+        //TODO flash mesaj koyulacak
         Log::info('Database table repaired.');
 
         return Redirect::back();
     }
+
+    public function flushAllCache()
+    {
+        $this->dispatch(new FlushAllCache());
+    }
+
+    public function getAllRedisKey()
+    {
+         $redisKeys = Redis::keys('*');
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['redisKeys']));
+    }
+
 
 
 }
