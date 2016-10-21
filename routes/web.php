@@ -50,6 +50,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('menu', 'Backend\MenuController');
     Route::resource('contact_type', 'Backend\ContactTypeController');
     Route::resource('contact', 'Backend\ContactController');
+
+    Route::get('setting/repairMysqlTables', 'Backend\SettingController@repairMysqlTables')->name('repairMysqlTables');
     Route::resource('setting', 'Backend\SettingController');
     Route::resource('tag', 'Backend\TagController');
     Route::resource('event', 'Backend\EventController');

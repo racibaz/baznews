@@ -53,6 +53,10 @@
                     </table>
 
                     <div>
+                        <li><a href="{!! route('repairMysqlTables') !!}"><i class="fa fa-book"></i> <span>Mysql Tabloları Onar</span></a></li>
+                    </div>
+
+                    <div>
                         <h1>activeTheme :</h1> {{$activeTheme}} <br>
                         <h1> themes : </h1>
                         @foreach($themes as $theme)

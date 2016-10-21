@@ -8,6 +8,8 @@ use App\Repositories\SettingRepository as Repo;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -33,6 +35,7 @@ class SettingController extends Controller
 
     public function index()
     {
+
         $routeCollection = Route::getRoutes();
         $themes = Theme::all();
         $activeTheme = Theme::getActive();
@@ -114,4 +117,28 @@ class SettingController extends Controller
             }
         }
     }
+
+
+    public function repairMysqlTables()
+    {
+        $tables = DB::select('SHOW TABLES');
+
+        foreach ($tables as $table) {
+
+            foreach ($table as $key => $value) {
+                $repairTable = DB::statement('REPAIR TABLE '. $value);
+
+                if(!$repairTable){
+
+                    Log::error('Database table repair error : ' . $value);
+                }
+            }
+        }
+
+        Log::info('Database table repaired.');
+
+        return Redirect::back();
+    }
+
+
 }
