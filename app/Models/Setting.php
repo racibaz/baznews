@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Setting extends Model
 {
+    public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *
