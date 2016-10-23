@@ -2,11 +2,28 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
-class Module extends Model
+class ModuleManager extends Model
 {
+    use Sluggable;
+
+    public $table = 'modules';
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => ['name']
+            ]
+        ];
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -22,8 +39,7 @@ class Module extends Model
 
     public static function validate($input) {
         $rules = array(
-            'name'                    => 'required',
-            'slug'                    => 'required',
+            'name'                    => 'required'
         );
         return Validator::make($input, $rules);
     }

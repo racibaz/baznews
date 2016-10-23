@@ -18,18 +18,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-//        Cache::remember('settings', 10, function() {
-//
-//            $settings =  Setting::all();
-//
-//            foreach ($settings as $setting)
-//            {
-//                Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
-//                //Redis::set($setting->attribute_key, $setting->attribute_value);
-//                //Redis::expire($setting->attribute_key, 1);
-//            }
-//            //return 'setting';
-//        });
+        Cache::remember('settings', 10, function() {
+
+            $settings =  Setting::all();
+
+            foreach ($settings as $setting)
+            {
+                Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
+                //Redis::set($setting->attribute_key, $setting->attribute_value);
+                //Redis::expire($setting->attribute_key, 1);
+            }
+            //return 'setting';
+        });
 
 
         //Cache::tags('settings')->flush();

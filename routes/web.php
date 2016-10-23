@@ -56,7 +56,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('setting', 'Backend\SettingController');
     Route::resource('tag', 'Backend\TagController');
     Route::resource('event', 'Backend\EventController');
-    Route::resource('module', 'Backend\ModuleController');
+    Route::resource('module_manager', 'Backend\ModuleManagerController');
     Route::resource('sitemap', 'Backend\SitemapController');
     Route::resource('rss', 'Backend\RssController');
 

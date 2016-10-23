@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.18 on 2016-10-21.
+ * Generated for Laravel 5.3.19 on 2016-10-22.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1690,6 +1690,17 @@ namespace {
         /**
          * Determine if the current user is authenticated.
          *
+         * @return \App\Models\User 
+         * @throws \Illuminate\Auth\AuthenticationException
+         * @static 
+         */
+        public static function authenticate(){
+            return \Illuminate\Auth\SessionGuard::authenticate();
+        }
+        
+        /**
+         * Determine if the current user is authenticated.
+         *
          * @return bool 
          * @static 
          */
@@ -1705,17 +1716,6 @@ namespace {
          */
         public static function guest(){
             return \Illuminate\Auth\SessionGuard::guest();
-        }
-        
-        /**
-         * Determine if the current user is authenticated.
-         *
-         * @return \App\Models\User 
-         * @throws \Illuminate\Auth\AuthenticationException
-         * @static 
-         */
-        public static function authenticate(){
-            return \Illuminate\Auth\SessionGuard::authenticate();
         }
         
     }
@@ -3815,7 +3815,7 @@ namespace {
         /**
          * Add a basic where clause to the query.
          *
-         * @param string $column
+         * @param string|\Closure $column
          * @param string $operator
          * @param mixed $value
          * @param string $boolean
@@ -3829,7 +3829,7 @@ namespace {
         /**
          * Add an "or where" clause to the query.
          *
-         * @param string $column
+         * @param string|\Closure $column
          * @param string $operator
          * @param mixed $value
          * @return \Illuminate\Database\Eloquent\Builder|static 
@@ -13894,12 +13894,24 @@ namespace {
         }
         
         /**
+         * Renders and returns Google Map javascript code.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function renderJavascript(){
+            return \Cornford\Googlmapper\Mapper::renderJavascript();
+        }
+        
+        /**
          * Locate a location and return a Location instance.
          *
          * @param string $location
          * @throws MapperArgumentException
          * @throws MapperSearchException
+         * @throws MapperSearchResponseException
          * @throws MapperSearchResultException
+         * @throws MapperSearchKeyException
          * @throws MapperSearchLimitException
          * @throws MapperException
          * @return \Cornford\Googlmapper\Location 
