@@ -6,7 +6,7 @@
         <span class="logo-mini"><b>A</b>LT</span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>Admin</b>LTE</span>
-        <span class="logo-lg"> {!! Redis::get('title') !!}  </span>
+        <span class="logo-lg"> {{ Redis::get('title') }}  </span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->

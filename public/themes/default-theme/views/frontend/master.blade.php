@@ -3,23 +3,64 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title> {{ Redis::get('title') }} </title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
+
+    <meta name="google-site-verification" content="{{ Redis::get('google') }}"/>
+
+    <meta name="robots" content="{{ Redis::get('robots') }}">
+    <meta name="keywords" content="{{ Redis::get('keywords') }}"/>
+    <meta name="description" content="{{ Redis::get('description') }}"/>
+    <meta name="subject" content="{{ Redis::get('title') }}">
+    <meta name="copyright" content="{{ Redis::get('copyright') }}">
+    <meta name="language" content="{{ Redis::get('language') }}">
+    <meta name="robots" content="{{ Redis::get('robots') }}" />
+    <meta name="Classification" content="{{ Redis::get('robots') }}">
+    <meta name="reply-to" content="{{ Redis::get('reply-to') }}">
+    <meta name="coverage" content="Worldwide">
+    <meta name="distribution" content="Global">
+    <meta name="rating" content="General">
+    <meta name="revisit-after" content="{{ Redis::get('revisit-after') }}">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta name="designer" content="{{ Redis::get('designer') }}">
+    <meta name="owner" content="{{ Redis::get('owner') }}">
+    <meta name="url" content="{{ Redis::get('url') }}">
+    <meta name="identifier-URL" content="http://www.websiteaddress.com">
+    <meta name="directory" content="submission">
+    <meta http-equiv="refresh" content="30">
+
+
+
+
+    {{--<meta name="abstract" content="">--}}
+    {{--<meta name="topic" content="">--}}
+    {{--<meta name="summary" content="">--}}
+    {{--<meta name="category" content="">--}}
+    {{--<meta name="author" content="name, email@hotmail.com">--}}
+    {{--<meta name="revised" content="Sunday, July 18th, 2010, 5:15 pm" />--}}
+    {{--<meta name='pagename' content='jQuery Tools, Tutorials and Resources - O Reilly Media'>--}}
+    {{--<meta name='subtitle' content='This is my subtitle'>--}}
+    {{--<meta name="author" content="Hege Refsnes">--}}
+
+
+
     <!-- Bootstrap 3.3.6 -->
-    <link href="{{ Theme::asset('default-theme::AdminLTE/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::AdminLTE/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- jvectormap -->
-    <link href="{{ Theme::asset('default-theme::AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet">
     <!-- Theme style -->
-    <link href="{{ Theme::asset('default-theme::AdminLTE/dist/css/AdminLTE.min.css') }}" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::AdminLTE/dist/css/AdminLTE.min.css') }}" rel="stylesheet">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link href="{{ Theme::asset('default-theme::AdminLTE/dist/css/skins/_all-skins.min.css') }}" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::AdminLTE/dist/css/skins/_all-skins.min.css') }}" rel="stylesheet">
 
     @yield('css')
 
@@ -34,9 +75,9 @@
 <div class="wrapper">
 
     <!-- Main Header -->
-    @include('default-theme::backend.layouts.header')
+    @include($activeTheme . '::frontend.layouts.header')
             <!-- Left side column. contains the logo and sidebar -->
-    @include('default-theme::backend.layouts.sidebar')
+    @include($activeTheme . '::frontend.layouts.sidebar')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -54,7 +95,7 @@
 
         <!-- Main content -->
         <section class="content">
-            @include('default-theme::backend.partials._messages')
+            @include($activeTheme . '::frontend.partials._messages')
             @yield('content')
             @yield('widgets')
         </section>
@@ -63,7 +104,7 @@
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
-    @include('default-theme::backend.layouts.footer')
+    @include($activeTheme . '::frontend.layouts.footer')
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -263,26 +304,26 @@
 
 
 <!-- jQuery 2.2.3 -->
-<script src="{{ Theme::asset('default-theme::AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+<script src="{{ Theme::asset($activeTheme . '::AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="{{ Theme::asset('default-theme::AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ Theme::asset($activeTheme . '::AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- FastClick -->
-<script src="{{ Theme::asset('default-theme::AdminLTE/plugins/fastclick/fastclick.js') }}"></script>
+<script src="{{ Theme::asset($activeTheme . '::AdminLTE/plugins/fastclick/fastclick.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="{{ Theme::asset('default-theme::AdminLTE/dist/js/app.min.js') }}"></script>
+<script src="{{ Theme::asset($activeTheme . '::AdminLTE/dist/js/app.min.js') }}"></script>
 <!-- Sparkline -->
-<script src="{{ Theme::asset('default-theme::AdminLTE/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
+<script src="{{ Theme::asset($activeTheme . '::AdminLTE/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
 <!-- jvectormap -->
-<script src="{{ Theme::asset('default-theme::AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-<script src="{{ Theme::asset('default-theme::AdminLTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+<script src="{{ Theme::asset($activeTheme . '::AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+<script src="{{ Theme::asset($activeTheme . '::AdminLTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <!-- SlimScroll 1.3.0 -->
-<script src="{{ Theme::asset('default-theme::AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ Theme::asset($activeTheme . '::AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
 <!-- ChartJS 1.0.1 -->
-<script src="{{ Theme::asset('default-theme::AdminLTE/plugins/chartjs/Chart.min.js') }}"></script>
+<script src="{{ Theme::asset($activeTheme . '::AdminLTE/plugins/chartjs/Chart.min.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{--<script src="{{ Theme::asset('default-theme::AdminLTE/dist/js/pages/dashboard2.js') }}"></script>--}}
 <!-- AdminLTE for demo purposes -->
-<script src="{{ Theme::asset('default-theme::AdminLTE/dist/js/demo.js') }}"></script>
+<script src="{{ Theme::asset($activeTheme . '::AdminLTE/dist/js/demo.js') }}"></script>
 
 @yield('js')
 

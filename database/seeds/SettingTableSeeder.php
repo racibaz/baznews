@@ -19,17 +19,17 @@ class SettingTableSeeder extends Seeder
 
         Setting::create([
             'attribute_key'               => 'title',
-            'attribute_value'             => 'Site Başlığı',
+            'attribute_value'             => 'BazNews Haber Scripti',
         ]);
 
         Setting::create([
             'attribute_key'               => 'description',
-            'attribute_value'             => 'Site Tanımı',
+            'attribute_value'             => 'Rahatlıkla kullanabileceğiniz haber yazılımımızı hizemetinize sunuyoruz.',
         ]);
 
         Setting::create([
             'attribute_key'               => 'keywords',
-            'attribute_value'             => 'Anahtar Kelimler',
+            'attribute_value'             => 'online news script,news script,Haber scripti',
         ]);
 
         Setting::create([
@@ -39,7 +39,7 @@ class SettingTableSeeder extends Seeder
 
         Setting::create([
             'attribute_key'               => 'logo',
-            'attribute_value'             => 'logo path',
+            'attribute_value'             => 'public/logo.jpg',
         ]);
 
         Setting::create([
@@ -89,7 +89,7 @@ class SettingTableSeeder extends Seeder
 
         Setting::create([
             'attribute_key'               => 'url',
-            'attribute_value'             => 'url miz',
+            'attribute_value'             => 'http://www.baznews.com',
         ]);
 
         Setting::create([

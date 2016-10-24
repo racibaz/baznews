@@ -21,6 +21,7 @@ class CreatePhotoGalleriesTable extends Migration
             $table->string('slug')->nullable();
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();
+            $table->boolean('is_cuff')->default(0);
             $table->boolean('is_active');
             $table->timestamps();
 

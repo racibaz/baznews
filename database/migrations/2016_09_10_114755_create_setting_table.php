@@ -17,6 +17,7 @@ class CreateSettingTable extends Migration
             $table->increments('id');
             $table->string('attribute_key');
             $table->string('attribute_value')->nullable();
+            $table->boolean('is_active')->default(0);
         });
     }
 

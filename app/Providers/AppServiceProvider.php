@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\Setting;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,14 +20,17 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
+        //DB::getSchemaBuilder()->getColumnListing('settings');
+
+
         Cache::remember('settings', 10, function() {
 
             $settings =  Setting::all();
 
             foreach ($settings as $setting)
             {
-                Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
-                //Redis::set($setting->attribute_key, $setting->attribute_value);
+                //Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
+                Redis::set($setting->attribute_key, $setting->attribute_value);
                 //Redis::expire($setting->attribute_key, 1);
             }
             //return 'setting';

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Menu;
 use App\Models\Setting;
 use App\Modules\Article\Models\Author;
 use App\Modules\Book\Http\Controllers\Frontend\BookController;
 use App\Modules\News\Models\News;
 use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Models\PhotoGallery;
+use App\Modules\News\Models\VideoGallery;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
@@ -38,7 +40,11 @@ class IndexController extends Controller
              $mainCuffNewsItems =  News::where('main_cuff', 1)->where('status', 1)->take(20)->get();
              $miniCuffNewsItems =  News::where('mini_cuff', 1)->where('status', 1)->take(10)->get();
 
+             $menus = Menu::where('is_active', 1)->orderBy('order','asc')->get();
+
              $photoGalleries = PhotoGallery::where('is_active',1)->take(10)->get();
+
+             $videoGalleries = VideoGallery::where('is_active',1)->take(10)->get();
 
 
             return Theme::view('frontend.index',compact(
@@ -48,7 +54,8 @@ class IndexController extends Controller
                 'mainCuffNewsItems',
                 'miniCuffNewsItems',
                 'cuffNewsCategories',
-                'modules'
+                'modules',
+                'menus'
             ))->render();
 
         });
