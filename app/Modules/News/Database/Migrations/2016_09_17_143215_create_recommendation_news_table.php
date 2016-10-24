@@ -17,6 +17,8 @@ class CreateRecommendationNewsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('news_id');
+            $table->smallInteger('order')->nullable();
+            $table->boolean('is_cuff')->default(0);
             $table->boolean('is_active');
             $table->timestamps();
 

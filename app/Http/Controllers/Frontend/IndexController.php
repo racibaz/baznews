@@ -9,6 +9,7 @@ use App\Modules\Book\Http\Controllers\Frontend\BookController;
 use App\Modules\News\Models\News;
 use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Models\PhotoGallery;
+use App\Modules\News\Models\RecommendationNews;
 use App\Modules\News\Models\VideoGallery;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
@@ -43,8 +44,17 @@ class IndexController extends Controller
              $menus = Menu::where('is_active', 1)->orderBy('order','asc')->get();
 
              $photoGalleries = PhotoGallery::where('is_active',1)->take(10)->get();
-
              $videoGalleries = VideoGallery::where('is_active',1)->take(10)->get();
+
+
+             $recommendationNewsItems = RecommendationNews::with('news')
+                                                             ->where('is_active', 1)
+                                                             ->where('is_cuff', 1)
+//                                                             ->orderBy('order','asc')
+                                                             ->take(5)
+                                                             ->get();
+
+//             dd($recommendationNewsItems);
 
 
             return Theme::view('frontend.index',compact(
@@ -55,7 +65,10 @@ class IndexController extends Controller
                 'miniCuffNewsItems',
                 'cuffNewsCategories',
                 'modules',
-                'menus'
+                'menus',
+                'photoGalleries',
+                'videoGalleries',
+                'recommendationNewsItems'
             ))->render();
 
         });

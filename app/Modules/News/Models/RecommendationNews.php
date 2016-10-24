@@ -9,7 +9,14 @@ use Illuminate\Support\Facades\Validator;
 class RecommendationNews extends Model
 {
     protected $table = 'recommendation_news';
-    protected $fillable = ['user_id', 'news_id', 'is_active'];
+
+    protected $fillable = [
+        'user_id',
+        'news_id',
+        'order',
+        'is_cuff',
+        'is_active'
+    ];
 
     public function user()
     {

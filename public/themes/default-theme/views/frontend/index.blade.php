@@ -3,6 +3,10 @@
 @section('content')
 
 
+    1.widget managment yapılacak.<br>
+    2.Tema parçalara ayrılarak cachelenecek<br>
+    3.Setting module tamamlanacak.<br>
+
 
     <h1>Sayfa Ayarları</h1>
     <br />
@@ -43,10 +47,27 @@
             {{$categoryNews->title}},
         @endforeach
         <br>
+    @endforeach
 
+    <h1>Photo Galleries</h1>
+    <br />
+    @foreach($photoGalleries as $photoGallery)
+        {{$photoGallery->title}} <br/>
+    @endforeach
+
+    <h1>Video Galleries</h1>
+    <br />
+    @foreach($videoGalleries as $videoGallery)
+        {{$videoGallery->title}} <br/>
     @endforeach
 
 
+    <br>
+    @widget('RecommendationNews')
+
+
+
+    <br />
     widget ve sitemap rss tabloları yapılacak.
 
 

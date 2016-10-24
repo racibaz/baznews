@@ -52,6 +52,28 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            {!! Form::label('order', trans('news::recommendation_news.order'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::number('order', $record->order, ['placeholder' => trans('news::recommendation_news.order') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {{trans('news::recommendation_news.is_cuff')}}
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <div class="checkbox i-checks">
+                                    <label>
+                                        {!! Form::checkbox('is_cuff', null , $record->is_active) !!}
+                                        <i></i> {{trans('news::recommendation_news.is_cuff')}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {{trans('news::common.status')}}
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">

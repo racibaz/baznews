@@ -20,6 +20,8 @@
                             <th>#</th>
                             <th>{{trans('recommendation_news.news_id')}}</th>
                             <th>{{trans('recommendation_news.user_id')}}</th>
+                            <th>{{trans('common.order')}}</th>
+                            <th>{{trans('common.is_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </thead>
@@ -29,6 +31,8 @@
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('recommendation_news.show', $record->news->title , $record, [] ) !!}</td>
                                     <td> {{$record->user->first_name}} </td>
+                                    <td> {{$record->order }} </td>
+                                    <td>{!!$record->is_cuff ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
@@ -49,6 +53,8 @@
                             <th>#</th>
                             <th>{{trans('recommendation_news.news_id')}}</th>
                             <th>{{trans('recommendation_news.user_id')}}</th>
+                            <th>{{trans('common.order')}}</th>
+                            <th>{{trans('common.is_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </tfoot>

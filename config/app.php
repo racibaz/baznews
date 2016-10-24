@@ -196,6 +196,7 @@ return [
         Roumen\Feed\FeedServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Barryvdh\TranslationManager\ManagerServiceProvider::class,
+        Arrilot\Widgets\ServiceProvider::class,
 
 
     ],
@@ -256,6 +257,8 @@ return [
         'Piwik' => RobBrazier\Piwik\Facades\Piwik::class,
         'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
         'Feed' => Roumen\Feed\Feed::class,
+        'Widget'       => Arrilot\Widgets\Facade::class,
+        'AsyncWidget'  => Arrilot\Widgets\AsyncFacade::class,
 
         ////TODO  THEME İN COMPONET GİBİ BİRŞEY VARDI ONA BAKILACAK
     ],
