@@ -13,8 +13,8 @@ class SettingTableSeeder extends Seeder
     public function run()
     {
         Setting::create([
-            'attribute_key'               => 'language_id',
-            'attribute_value'             => '1',
+            'attribute_key'               => 'language_code',
+            'attribute_value'             => 'tr',
         ]);
 
         Setting::create([
@@ -102,29 +102,5 @@ class SettingTableSeeder extends Seeder
             'attribute_value'             => '20',
         ]);
 
-        Setting::create([
-            'attribute_key'               => 'band_news',
-            'attribute_value'             => '5',
-        ]);
-
-        Setting::create([
-            'attribute_key'               => 'box_cuff',
-            'attribute_value'             => '20',
-        ]);
-
-        Setting::create([
-            'attribute_key'               => 'break_news',
-            'attribute_value'             => '5',
-        ]);
-
-        Setting::create([
-            'attribute_key'               => 'main_cuff',
-            'attribute_value'             => '20',
-        ]);
-
-        Setting::create([
-            'attribute_key'               => 'mini_cuff',
-            'attribute_value'             => '10',
-        ]);
     }
 }

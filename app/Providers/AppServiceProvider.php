@@ -19,30 +19,30 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if(!app()->runningInConsole() ) {
 
-        //DB::getSchemaBuilder()->getColumnListing('settings');
-
-
-        Cache::remember('settings', 10, function() {
-
-            $settings =  Setting::all();
-
-            foreach ($settings as $setting)
-            {
-                //Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
-                Redis::set($setting->attribute_key, $setting->attribute_value);
-                //Redis::expire($setting->attribute_key, 1);
-            }
-            //return 'setting';
-        });
+            //DB::getSchemaBuilder()->getColumnListing('settings');
 
 
-        //Cache::tags('settings')->flush();
-        //Cache::flush();
+            Cache::remember('settings', 10, function () {
+
+                $settings = Setting::all();
+
+                foreach ($settings as $setting) {
+                    //Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
+                    Redis::set($setting->attribute_key, $setting->attribute_value);
+                    //Redis::expire($setting->attribute_key, 1);
+                }
+                //return 'setting';
+            });
 
 
-        //TODO cachelenecek
-        View::share('activeTheme', Theme::getActive());
+            //Cache::tags('settings')->flush();
+            //Cache::flush();
+
+
+            //TODO cachelenecek
+            View::share('activeTheme', Theme::getActive());
 
 //        User::observe(UserObserver::class);
 //        Country::observe(CountryObserver::class);
@@ -51,6 +51,8 @@ class AppServiceProvider extends ServiceProvider
 //        Group::observe(GroupObserver::class);
 //        Permission::observe(PermissionObserver::class);
 //        Announcement::observe(AnnouncementObserver::class);
+
+        }
 
     }
 

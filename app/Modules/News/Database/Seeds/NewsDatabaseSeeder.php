@@ -2,6 +2,7 @@
 
 namespace App\Modules\News\Database\Seeds;
 
+use App\Models\Setting;
 use Illuminate\Database\Seeder;
 
 class NewsDatabaseSeeder extends Seeder
@@ -26,5 +27,51 @@ class NewsDatabaseSeeder extends Seeder
         $this->call(RecommendationNewsTableSeeder::class);
         $this->call(BiographiesTableSeeder::class);
         $this->call(RelationsTableSeeder::class);
+
+
+        $setting = Setting::where('attribute_key','break_news')->first();
+        if(empty($setting))
+        {
+            Setting::create([
+                'attribute_key'               => 'break_news',
+                'attribute_value'             => '5',
+            ]);
+        }
+
+        $setting = Setting::where('attribute_key','band_news')->first();
+        if(empty($setting))
+        {
+            Setting::create([
+                'attribute_key'               => 'band_news',
+                'attribute_value'             => '5',
+            ]);
+        }
+
+        $setting = Setting::where('attribute_key','box_cuff')->first();
+        if(empty($setting))
+        {
+            Setting::create([
+                'attribute_key'               => 'box_cuff',
+                'attribute_value'             => '20',
+            ]);
+        }
+
+        $setting = Setting::where('attribute_key','main_cuff')->first();
+        if(empty($setting))
+        {
+            Setting::create([
+                'attribute_key'               => 'main_cuff',
+                'attribute_value'             => '20',
+            ]);
+        }
+
+        $setting = Setting::where('attribute_key','mini_cuff')->first();
+        if(empty($setting))
+        {
+            Setting::create([
+                'attribute_key'               => 'mini_cuff',
+                'attribute_value'             => '10',
+            ]);
+        }
     }
 }

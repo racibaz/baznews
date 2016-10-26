@@ -45,6 +45,9 @@ class SettingController extends Controller
         $modulesCount = Module::count();
 
         $records = $this->repo->findAll();
+        //$records = Setting::all();
+
+
         return Theme::view($this->getViewName(__FUNCTION__),compact('records', 'routeCollection', 'themes', 'activeTheme', 'modules', 'modulesCount'));
     }
 
@@ -154,6 +157,18 @@ class SettingController extends Controller
 
         return Theme::view($this->getViewName(__FUNCTION__),compact(['redisKeys']));
     }
+
+
+    public function deleteCacheByContent($content)
+    {
+        $laravelCaches = Redis::keys('*' . $content . '*');
+
+        foreach ($laravelCaches as $laravelCache)
+        {
+            Redis::del($laravelCache);
+        }
+    }
+
 
 
 
