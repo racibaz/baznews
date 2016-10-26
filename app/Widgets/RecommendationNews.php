@@ -2,9 +2,11 @@
 
 namespace App\Widgets;
 
+use App\Modules\News\Repositories\RecommendationNewsRepository;
 use Arrilot\Widgets\AbstractWidget;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redis;
 
 class RecommendationNews extends AbstractWidget
 {
@@ -21,18 +23,17 @@ class RecommendationNews extends AbstractWidget
      */
     public function run()
     {
+        $recommendationNewsItems = Cache::remember('recommendationNewsItems', 10, function()  {
 
-        $recommendationNewsItems = Cache::remember('recommendationNewsItems', 10, function() {
-
-            return  \App\Modules\News\Models\RecommendationNews::with('news')
+            $recommendationNewsRepository = new RecommendationNewsRepository();
+            return  $recommendationNewsRepository->with(['news'])
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
-                ->orderBy('order','asc')
-                ->take(5)
+                ->take(Redis::get('recommendation_news'))
+                ->orderBy('order','desc')
                 ->get();
+
         });
-
-
 
         return Theme::view('frontend.widgets.recommendation_news', compact(['config','recommendationNewsItems']));
 

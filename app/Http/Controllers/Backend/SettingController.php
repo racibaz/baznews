@@ -149,6 +149,9 @@ class SettingController extends Controller
     public function flushAllCache()
     {
         $this->dispatch(new FlushAllCache());
+
+        //TODO LOG VE FLASH MESAJ KOYULACAK
+        return Redirect::back();
     }
 
     public function getAllRedisKey()

@@ -6,6 +6,8 @@
     1.widget managment yapılacak.<br>
     2.Tema parçalara ayrılarak cachelenecek<br>
     3.Setting module tamamlanacak.<br>
+    3.module içerinde group route yapılan yerler admin sidebar da group olarak gösterilebilir mi?.<br>
+    4.Theme yönetimi yapılacak
 
 
     <h1>Sayfa Ayarları</h1>
