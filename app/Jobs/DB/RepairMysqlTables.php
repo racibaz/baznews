@@ -1,33 +1,18 @@
 <?php
 
-namespace App\Jobs\Users;
+namespace App\Jobs\DB;
 
-use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
-class UpdateLastLogin implements ShouldQueue
+class RepairMysqlTables implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
-
-    public $user;
-
-    public $date;
-
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public function __construct(User $user, Carbon $date)
-    {
-        $this->user = $user;
-        $this->date = $date;
-    }
-
+    
     /**
      * Execute the job.
      *
@@ -35,8 +20,18 @@ class UpdateLastLogin implements ShouldQueue
      */
     public function handle()
     {
-        $this->user->update([
-            'last_login' => $this->date
-         ]);
+        $tables = DB::select('SHOW TABLES');
+
+        foreach ($tables as $table) {
+
+            foreach ($table as $key => $value) {
+                $repairTable = DB::statement('REPAIR TABLE '. $value);
+
+                if(!$repairTable){
+
+                    Log::error('Database table repair error : ' . $value);
+                }
+            }
+        }
     }
 }

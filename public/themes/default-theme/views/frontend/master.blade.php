@@ -9,10 +9,8 @@
 
 
     <meta name="google-site-verification" content="{{ Redis::get('google') }}"/>
-
+    @yield('meta_tags')
     <meta name="robots" content="{{ Redis::get('robots') }}">
-    <meta name="keywords" content="{{ Redis::get('keywords') }}"/>
-    <meta name="description" content="{{ Redis::get('description') }}"/>
     <meta name="subject" content="{{ Redis::get('title') }}">
     <meta name="copyright" content="{{ Redis::get('copyright') }}">
     <meta name="language" content="{{ Redis::get('language') }}">
@@ -31,7 +29,7 @@
     <meta name="url" content="{{ Redis::get('url') }}">
     <meta name="identifier-URL" content="http://www.websiteaddress.com">
     <meta name="directory" content="submission">
-    <meta http-equiv="refresh" content="30">
+    {{--<meta http-equiv="refresh" content="30">--}}
 
 
 

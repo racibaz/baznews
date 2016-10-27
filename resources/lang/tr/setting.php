@@ -1,8 +1,6 @@
 <?php
 
 return [
-    'name' => 'Şehir İsmi',
-    'countries' => 'Ülkeler',
-    'managment' => 'Şehir Yönetimi',
-    'city_form' => 'Kullanıcı Formu',
+    'repair_mysql_tables'       => 'Mysql Veritabanı Onarıldı',
+    'flush_all_cache'           => 'Tüm Cacheler silindi',
 ];

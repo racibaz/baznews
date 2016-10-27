@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Jobs\Cache\FlushAllCache;
+use App\Jobs\DB\RepairMysqlTables;
 use App\Models\Setting;
 use App\Repositories\SettingRepository as Repo;
 use Caffeinated\Modules\Facades\Module;
@@ -126,22 +127,10 @@ class SettingController extends Controller
 
     public function repairMysqlTables()
     {
-        $tables = DB::select('SHOW TABLES');
+        $this->dispatch(new RepairMysqlTables());
 
-        foreach ($tables as $table) {
-
-            foreach ($table as $key => $value) {
-                $repairTable = DB::statement('REPAIR TABLE '. $value);
-
-                if(!$repairTable){
-
-                    Log::error('Database table repair error : ' . $value);
-                }
-            }
-        }
-
-        //TODO flash mesaj koyulacak
         Log::info('Database table repaired.');
+        Session::flash('flash_message', trans('setting.repair_mysql_tables'));
 
         return Redirect::back();
     }
@@ -150,7 +139,8 @@ class SettingController extends Controller
     {
         $this->dispatch(new FlushAllCache());
 
-        //TODO LOG VE FLASH MESAJ KOYULACAK
+        Log::info('Caches deleted');
+        Session::flash('flash_message', trans('setting.flush_all_cache'));
         return Redirect::back();
     }
 

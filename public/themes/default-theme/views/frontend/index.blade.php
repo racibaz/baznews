@@ -8,6 +8,7 @@
     3.Setting module tamamlanacak.<br>
     3.module içerinde group route yapılan yerler admin sidebar da group olarak gösterilebilir mi?.<br>
     4.Theme yönetimi yapılacak
+    5.Theme de widget yerilerini göstermek için her temanın içerisine temenın şablonunu gösteren foto olacak aktif widget dan o resmi çekip tema ve widget yönetimine koyulacak.
 
 
     <h1>Sayfa Ayarları</h1>
@@ -72,7 +73,6 @@
     <br />
     widget ve sitemap rss tabloları yapılacak.
 
-
 @endsection
 
 @section('widgets')
@@ -91,3 +91,10 @@
     {{--@include($activeTheme . '::frontend.book.index')--}}
 
 @endsection
+
+@section('meta_tags')
+    <meta name="keywords" content="{{ Redis::get('keywords') }}"/>
+    <meta name="description" content="{{ Redis::get('description') }}"/>
+@endsection
+
+
