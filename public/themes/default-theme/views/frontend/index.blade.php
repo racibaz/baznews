@@ -10,6 +10,7 @@
     5.Theme yönetimi yapılacak.<br>
     6.Theme de widget yerilerini göstermek için her temanın içerisine temenın şablonunu gösteren foto olacak aktif widget dan o resmi çekip tema ve widget yönetimine koyulacak.<br>
     7.Theme ayarlarından theme in alanları alınabilecek.(Tema ayarlarında 'sidebar','rightbar' vs.. listelenirken veriler theme in ayarlarından gelecek.)<br>
+    8.Laravel Medialibrary <br>
 
 
     <h1>Sayfa Ayarları</h1>
