@@ -6,9 +6,10 @@
     1.widget managment yapılacak.<br>
     2.Tema parçalara ayrılarak cachelenecek<br>
     3.Setting module tamamlanacak.<br>
-    3.module içerinde group route yapılan yerler admin sidebar da group olarak gösterilebilir mi?.<br>
-    4.Theme yönetimi yapılacak.<br>
-    5.Theme de widget yerilerini göstermek için her temanın içerisine temenın şablonunu gösteren foto olacak aktif widget dan o resmi çekip tema ve widget yönetimine koyulacak.<br>
+  ++4.module içerinde group route yapılan yerler admin sidebar da group olarak gösterilebilir mi?.<br>
+    5.Theme yönetimi yapılacak.<br>
+    6.Theme de widget yerilerini göstermek için her temanın içerisine temenın şablonunu gösteren foto olacak aktif widget dan o resmi çekip tema ve widget yönetimine koyulacak.<br>
+    7.Theme ayarlarından theme in alanları alınabilecek.(Tema ayarlarında 'sidebar','rightbar' vs.. listelenirken veriler theme in ayarlarından gelecek.)<br>
 
 
     <h1>Sayfa Ayarları</h1>
@@ -69,6 +70,13 @@
     {{--@widget('RecommendationNews')--}}
 
     @widget('\App\Modules\News\Widgets\RecommendationNews')
+
+    <br />
+
+    @widget('\App\Modules\Article\Widgets\RecentArticles')
+    <br />
+
+    @widget('\App\Modules\Book\Widgets\RecentBooks')
 
 
     <br />

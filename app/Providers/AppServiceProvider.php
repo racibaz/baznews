@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Setting;
+use Caffeinated\Modules\Facades\Module;
+use Caffeinated\Modules\Modules;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;

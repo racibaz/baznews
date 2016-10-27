@@ -39,7 +39,7 @@ class SettingTableSeeder extends Seeder
 
         Setting::create([
             'attribute_key'               => 'logo',
-            'attribute_value'             => 'public/logo.jpg',
+            'attribute_value'             => 'logo.jpg',
         ]);
 
         Setting::create([
@@ -95,6 +95,11 @@ class SettingTableSeeder extends Seeder
         Setting::create([
             'attribute_key'               => 'rss_count',
             'attribute_value'             => '20',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'rss_cache_life_time',
+            'attribute_value'             => '60',
         ]);
 
         Setting::create([

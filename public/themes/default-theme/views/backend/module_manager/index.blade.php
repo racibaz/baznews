@@ -20,9 +20,11 @@
                         <ul>
                             @foreach($modules as $module)
                                 <li>
-                                    {{--{{ $module['name'] }} ----}}
+                                    {{ $module['name'] }} --
 
-                                    {{ \Caffeinated\Modules\Facades\Module::isEnabled($module['slug']) ? 'Aktif' : 'Pasif' }}
+                                    {!! link_to_route('moduleActivationToggle', \Caffeinated\Modules\Facades\Module::isEnabled($module['slug']) ? 'Aktif' : 'Pasif' , $module['slug'], [] ) !!}
+
+
 
                                 </li> <br />
 

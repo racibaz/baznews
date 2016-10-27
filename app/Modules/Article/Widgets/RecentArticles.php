@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Widgets;
+namespace App\Modules\Article\Widgets;
 
-use App\Modules\News\Repositories\RecommendationNewsRepository;
+use App\Modules\Article\Repositories\ArticleRepository;
 use Arrilot\Widgets\AbstractWidget;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
 
-class RecommendationNews extends AbstractWidget
+class RecentArticles extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -23,21 +23,22 @@ class RecommendationNews extends AbstractWidget
      */
     public function run()
     {
-        $recommendationNewsItems = Cache::remember('recommendationNewsItems', 10, function()  {
 
-            $recommendationNewsRepository = new RecommendationNewsRepository();
-            return  $recommendationNewsRepository->with(['news'])
+        $recentArticles = Cache::remember('recentArticles', 10, function()  {
+
+            $articleRepository = new ArticleRepository();
+            return  $articleRepository->with(['article_categories', 'authors'])
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
+                ->where('status', 1)
                 ->take(Redis::get('recommendation_news'))
                 ->orderBy('order','desc')
                 ->get();
-
         });
 
-        return Theme::view('frontend.widgets.recommendation_news', compact(['config','recommendationNewsItems']));
+        return Theme::view('frontend.widgets.recent_articles', compact(['recentArticles']));
 
-//        return view("widgets.recommendation_news", [
+//        return view("widgets.recent_articles", [
 //            'config' => $this->config,
 //        ]);
     }

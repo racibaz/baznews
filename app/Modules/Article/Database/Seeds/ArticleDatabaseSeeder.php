@@ -3,6 +3,7 @@
 namespace App\Modules\Article\Database\Seeds;
 
 use App\Models\Setting;
+use WidgetManagersTableSeeder;
 use Illuminate\Database\Seeder;
 
 class ArticleDatabaseSeeder extends Seeder
@@ -17,6 +18,7 @@ class ArticleDatabaseSeeder extends Seeder
         $this->call(ArticleCategoriesTableSeeder::class);
         $this->call(AuthorsTableSeeder::class);
         $this->call(ArticlesTableSeeder::class);
+        $this->call(ArticleWidgetManagerTableSeeder::class);
 
 
 

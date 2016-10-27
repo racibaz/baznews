@@ -20,6 +20,8 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('widget_manager.name')}}</th>
+                            <th>{{trans('widget_manager.position')}}</th>
+                            <th>{{trans('widget_manager.group')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </thead>
@@ -28,6 +30,8 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('widget_manager.show', $record->name , $record, [] ) !!}</td>
+                                    <td>{{ $record->position }}</td>
+                                    <td>{{ $record->group }}</td>
                                     <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
@@ -47,6 +51,8 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('widget_manager.name')}}</th>
+                            <th>{{trans('widget_manager.position')}}</th>
+                            <th>{{trans('widget_manager.group')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </tfoot>

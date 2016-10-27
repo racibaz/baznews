@@ -1,0 +1,1 @@
+<li><a href="{!! route('book.index') !!}"><i class="fa fa-book"></i> <span>kitap</span></a></li>

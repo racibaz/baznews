@@ -15,6 +15,9 @@ class BookDatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(BooksTableSeeder::class);
+        $this->call(BookWidgetManagerTableSeeder::class);
+
+
 
 
         $setting = Setting::where('attribute_key','book_count')->first();

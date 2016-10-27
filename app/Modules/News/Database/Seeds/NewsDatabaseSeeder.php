@@ -3,6 +3,7 @@
 namespace App\Modules\News\Database\Seeds;
 
 use App\Models\Setting;
+use WidgetManagersTableSeeder;
 use Illuminate\Database\Seeder;
 
 class NewsDatabaseSeeder extends Seeder
@@ -27,6 +28,7 @@ class NewsDatabaseSeeder extends Seeder
         $this->call(RecommendationNewsTableSeeder::class);
         $this->call(BiographiesTableSeeder::class);
         $this->call(RelationsTableSeeder::class);
+        $this->call(NewsWidgetManagerTableSeeder::class);
 
 
         $setting = Setting::where('attribute_key','break_news')->first();

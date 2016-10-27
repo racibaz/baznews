@@ -8,10 +8,21 @@ use App\Http\Requests;
 use App\Modules\News\Models\News;
 use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Models\Video;
+use App\Modules\News\Repositories\NewsCategoryRepository;
+use App\Modules\News\Repositories\NewsRepository;
+use App\Modules\News\Repositories\VideoRepository;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\URL;
 
 class RssController extends Controller
 {
+
+    public $repository;
+
+    public function __construct()
+    {
+        $this->repository = new NewsRepository();
+    }
 
     public function bandNewsRssRender()
     {
@@ -30,24 +41,23 @@ class RssController extends Controller
             // creating rss feed with our most recent 20 posts
             //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
 
-            $newsItems = News::where('status',1)->where('band_news', 1)->orderBy('created_at', 'desc')->take(20)->get();
-
+            $newsItems = $this->repository->where('break_news', 1)->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
 
             // set your feed's title, description, link, pubdate and language
-            $feed->title = 'Your title';
-            $feed->description = 'Your description';
-            $feed->logo = asset('/logo.jpg');
+            $feed->title = Redis::get('title');
+            $feed->description = Redis::get('description');
+            $feed->logo = asset(Redis::get('logo'));
             $feed->link = url('feed');
             $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
             $feed->pubdate = $newsItems[0]->created_at;
-            $feed->lang = 'tr';
+            $feed->lang = Redis::get('language_code');
             $feed->setShortening(true); // true or false
             $feed->setTextLimit(100); // maximum length of description text
 
             foreach ($newsItems as $newsItem)
             {
                 $enclosure = [
-                    'url'=> 'http://baznews.app/' . $newsItem->thumbnail,
+                    'url'=> Redis::get('url') . '/' . $newsItem->thumbnail,
                     'type'=>'image/jpeg'
                 ];
 
@@ -91,17 +101,16 @@ class RssController extends Controller
         // creating rss feed with our most recent 20 posts
         //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
 
-        $newsItems = News::where('status',1)->where('box_cuff', 1)->orderBy('created_at', 'desc')->take(20)->get();
-
+        $newsItems = $this->repository->where('box_cuff', 1)->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
 
         // set your feed's title, description, link, pubdate and language
-        $feed->title = 'Your title';
-        $feed->description = 'Your description';
-        $feed->logo = asset('/logo.jpg');
+        $feed->title = Redis::get('title');
+        $feed->description = Redis::get('description');
+        $feed->logo = asset(Redis::get('logo'));
         $feed->link = url('feed');
         $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
         $feed->pubdate = $newsItems[0]->created_at;
-        $feed->lang = 'tr';
+        $feed->lang = Redis::get('language_code');
         $feed->setShortening(true); // true or false
         $feed->setTextLimit(100); // maximum length of description text
 
@@ -140,17 +149,16 @@ class RssController extends Controller
             // creating rss feed with our most recent 20 posts
             //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
 
-            $newsItems = News::where('status',1)->where('break_news', 1)->orderBy('created_at', 'desc')->take(20)->get();
-
+            $newsItems = $this->repository->where('break_news', 1)->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
 
             // set your feed's title, description, link, pubdate and language
-            $feed->title = 'Your title';
-            $feed->description = 'Your description';
-            $feed->logo = asset('/logo.jpg');
+            $feed->title = Redis::get('title');
+            $feed->description = Redis::get('description');
+            $feed->logo = asset(Redis::get('logo'));
             $feed->link = url('feed');
             $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
             $feed->pubdate = $newsItems[0]->created_at;
-            $feed->lang = 'tr';
+            $feed->lang = Redis::get('language_code');
             $feed->setShortening(true); // true or false
             $feed->setTextLimit(100); // maximum length of description text
 
@@ -188,17 +196,17 @@ class RssController extends Controller
             // creating rss feed with our most recent 20 posts
             //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
 
-            $newsItems = News::where('status',1)->where('main_cuff', 1)->orderBy('created_at', 'desc')->take(20)->get();
+            $newsItems = $this->repository->where('main_cuff', 1)->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
 
 
             // set your feed's title, description, link, pubdate and language
-            $feed->title = 'Your title';
-            $feed->description = 'Your description';
-            $feed->logo = asset('/logo.jpg');
+            $feed->title = Redis::get('title');
+            $feed->description = Redis::get('description');
+            $feed->logo = asset(Redis::get('logo'));
             $feed->link = url('feed');
             $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
             $feed->pubdate = $newsItems[0]->created_at;
-            $feed->lang = 'tr';
+            $feed->lang = Redis::get('language_code');
             $feed->setShortening(true); // true or false
             $feed->setTextLimit(100); // maximum length of description text
 
@@ -236,17 +244,17 @@ class RssController extends Controller
             // creating rss feed with our most recent 20 posts
             //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
 
-            $newsItems = News::where('status',1)->where('mini_cuff', 1)->orderBy('created_at', 'desc')->take(20)->get();
+            $newsItems = $this->repository->where('mini_cuff', 1)->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
 
 
             // set your feed's title, description, link, pubdate and language
-            $feed->title = 'Your title';
-            $feed->description = 'Your description';
-            $feed->logo = asset('/logo.jpg');
+            $feed->title = Redis::get('title');
+            $feed->description = Redis::get('description');
+            $feed->logo = asset(Redis::get('logo'));
             $feed->link = url('feed');
             $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
             $feed->pubdate = $newsItems[0]->created_at;
-            $feed->lang = 'tr';
+            $feed->lang = Redis::get('language_code');
             $feed->setShortening(true); // true or false
             $feed->setTextLimit(100); // maximum length of description text
 
@@ -284,17 +292,16 @@ class RssController extends Controller
             // creating rss feed with our most recent 20 posts
             //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
 
-            $newsItems = News::where('status',1)->orderBy('created_at', 'desc')->take(20)->get();
-
+            $newsItems = $this->repository->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
 
             // set your feed's title, description, link, pubdate and language
-            $feed->title = 'Your title';
-            $feed->description = 'Your description';
-            $feed->logo = asset('/logo.jpg');
+            $feed->title = Redis::get('title');
+            $feed->description = Redis::get('description');
+            $feed->logo = asset(Redis::get('logo'));
             $feed->link = url('feed');
             $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
             $feed->pubdate = $newsItems[0]->created_at;
-            $feed->lang = 'tr';
+            $feed->lang = Redis::get('language_code');
             $feed->setShortening(true); // true or false
             $feed->setTextLimit(100); // maximum length of description text
 
@@ -317,6 +324,9 @@ class RssController extends Controller
 
     public function videosRssRender()
     {
+
+        $this->repository = new VideoRepository();
+
         // create new feed
         $feed = App::make("feed");
 
@@ -332,17 +342,17 @@ class RssController extends Controller
             // creating rss feed with our most recent 20 posts
             //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
 
-            $records = Video::where('is_active',1)->orderBy('created_at', 'desc')->take(20)->get();
+            $records = $this->repository->where('is_active',1)->orderBy('created_at', 'desc')->take(20)->get();
 
 
             // set your feed's title, description, link, pubdate and language
-            $feed->title = 'Your title';
-            $feed->description = 'Your description';
-            $feed->logo = asset('/logo.jpg');
+            $feed->title = Redis::get('title');
+            $feed->description = Redis::get('description');
+            $feed->logo = asset(Redis::get('logo'));
             $feed->link = url('feed');
             $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
             $feed->pubdate = $records[0]->created_at;
-            $feed->lang = 'tr';
+            $feed->lang = Redis::get('language_code');
             $feed->setShortening(true); // true or false
             $feed->setTextLimit(100); // maximum length of description text
 
@@ -373,6 +383,8 @@ class RssController extends Controller
     public function getNewsCategoryRssRender($categoryName)
     {
 
+        $this->repository = new NewsCategoryRepository();
+
         $categoryName = strip_tags($categoryName);
         $categoryName = htmlspecialchars($categoryName);
         $categoryName = trim($categoryName);
@@ -385,14 +397,14 @@ class RssController extends Controller
         // if you are using caching you should set different cache keys for your feeds
 
         // cache the feed for 60 minutes (second parameter is optional)
-        $feed->setCache(60, 'bandNewsRssRender');
+        $feed->setCache(60, $categoryName);
 
         // check if there is cached feed and build new only if is not
         if (!$feed->isCached()) {
             // creating rss feed with our most recent 20 posts
             //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
 
-            $newsCategory = NewsCategory::where('is_active', 1)->where('name', $categoryName)->orderBy('created_at', 'desc')->first();
+            $newsCategory = $this->repository->where('is_active', 1)->where('name', $categoryName)->orderBy('created_at', 'desc')->take(20)->first();
 
 
             if(empty($newsCategory) || !isset($newsCategory) ){
@@ -403,19 +415,19 @@ class RssController extends Controller
 
 
             // set your feed's title, description, link, pubdate and language
-            $feed->title = 'Your title';
-            $feed->description = 'Your description';
-            $feed->logo = asset('/logo.jpg');
+            $feed->title = Redis::get('title');
+            $feed->description = Redis::get('description');
+            $feed->logo = asset(Redis::get('logo'));
             $feed->link = url('feed');
             $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
             $feed->pubdate = $newsItems[0]->created_at;
-            $feed->lang = 'tr';
+            $feed->lang = Redis::get('language_code');
             $feed->setShortening(true); // true or false
             $feed->setTextLimit(100); // maximum length of description text
 
             foreach ($newsItems as $newsItem) {
                 $enclosure = [
-                    'url' => 'http://baznews.app/' . $newsItem->thumbnail,
+                    'url' => Redis::get('url') . '/' . $newsItem->thumbnail,
                     'type' => 'image/jpeg'
                 ];
 

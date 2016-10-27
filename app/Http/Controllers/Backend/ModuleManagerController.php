@@ -113,4 +113,19 @@ class ModuleManagerController extends Controller
         }
     }
 
+    public function moduleActivationToggle($moduleSlug)
+    {
+
+        if (Module::isEnabled($moduleSlug) )  {
+
+            Module::disable($moduleSlug);
+            return Redirect::back();
+        }
+
+        Module::enable($moduleSlug);
+        return Redirect::back();
+    }
+
+
+
 }
