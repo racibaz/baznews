@@ -7,8 +7,8 @@
     2.Tema parçalara ayrılarak cachelenecek<br>
     3.Setting module tamamlanacak.<br>
     3.module içerinde group route yapılan yerler admin sidebar da group olarak gösterilebilir mi?.<br>
-    4.Theme yönetimi yapılacak
-    5.Theme de widget yerilerini göstermek için her temanın içerisine temenın şablonunu gösteren foto olacak aktif widget dan o resmi çekip tema ve widget yönetimine koyulacak.
+    4.Theme yönetimi yapılacak.<br>
+    5.Theme de widget yerilerini göstermek için her temanın içerisine temenın şablonunu gösteren foto olacak aktif widget dan o resmi çekip tema ve widget yönetimine koyulacak.<br>
 
 
     <h1>Sayfa Ayarları</h1>
@@ -66,8 +66,9 @@
 
 
     <br>
-    @widget('RecommendationNews')
+    {{--@widget('RecommendationNews')--}}
 
+    @widget('\App\Modules\News\Widgets\RecommendationNews')
 
 
     <br />

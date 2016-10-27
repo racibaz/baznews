@@ -26,5 +26,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SettingTableSeeder::class);
         $this->call(SitemapsTableSeeder::class);
         $this->call(RssTableSeeder::class);
+        $this->call(WidgetManagersTableSeeder::class);
     }
 }

@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('module_manager', 'Backend\ModuleManagerController');
     Route::resource('sitemap', 'Backend\SitemapController');
     Route::resource('rss', 'Backend\RssController');
+    Route::resource('widget_manager', 'Backend\WidgetManagerController');
 
 
     Route::post('announcement.announcement_establishment_store', 'Backend\AnnouncementController@announcement_establishment_store')->name('announcement_establishment_store');
