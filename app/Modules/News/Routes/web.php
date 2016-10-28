@@ -17,6 +17,7 @@
 Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sitemap');
 
 
+
 Route::group(['prefix' => 'rss'], function() {
 
     Route::get('all_news', 'Frontend\RssController@allNewsRssRender')->name('rss/all_news');
