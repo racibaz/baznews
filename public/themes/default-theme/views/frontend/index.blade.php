@@ -12,6 +12,7 @@
     7.Theme ayarlarından theme in alanları alınabilecek.(Tema ayarlarında 'sidebar','rightbar' vs.. listelenirken veriler theme in ayarlarından gelecek.)<br>
     8.Laravel Medialibrary <br>
     9.News Modülü geliştirilecek<br>
+    10.Moduller aktif ve pasif yapıldığında seeder  migrate ve seeder çalıştırılarak.Modul ayarları eklenip silinebilecek.(widget vs..)
 
 
     <h1>Sayfa Ayarları</h1>
