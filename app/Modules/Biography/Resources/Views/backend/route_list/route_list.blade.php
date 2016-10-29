@@ -1,0 +1,1 @@
+<li><a href="{!! route('biography.index') !!}"><i class="fa fa-book"></i> <span>Biyografi</span></a></li>

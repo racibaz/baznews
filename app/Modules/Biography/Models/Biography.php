@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\News\Models;
+namespace App\Modules\Biography\Models;
 
 use App\Models\User;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Venturecraft\Revisionable\RevisionableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
-use Venturecraft\Revisionable\RevisionableTrait;
 
 class Biography extends Model
 {

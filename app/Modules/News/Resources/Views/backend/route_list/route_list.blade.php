@@ -1,6 +1,5 @@
 <li><a href="{!! route('news_category.index') !!}"><i class="fa fa-book"></i> <span>HAber Kategorileri</span></a></li>
 <li><a href="{!! route('news.index') !!}"><i class="fa fa-book"></i> <span>Haberler</span></a></li>
-<li><a href="{!! route('biography.index') !!}"><i class="fa fa-book"></i> <span>Biyografi</span></a></li>
 <li><a href="{!! route('future_news.index') !!}"><i class="fa fa-book"></i> <span>ileri tarihli haberler</span></a></li>
 <li><a href="{!! route('news_source.index') !!}"><i class="fa fa-book"></i> <span>haber kaynakları</span></a></li>
 <li><a href="{!! route('photo_category.index') !!}"><i class="fa fa-book"></i> <span>foto kategori</span></a></li>

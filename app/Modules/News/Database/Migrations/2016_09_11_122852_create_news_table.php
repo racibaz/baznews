@@ -26,6 +26,7 @@ class CreateNewsTable extends Migration
             $table->text('description')->nullable();
             $table->string('keywords')->nullable();
             $table->text('meta_tags')->nullable();
+            $table->string('cuff_photo')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('map_text')->nullable();
             $table->unsignedInteger('hit')->nullable();

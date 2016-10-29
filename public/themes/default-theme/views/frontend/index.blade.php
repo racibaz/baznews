@@ -11,6 +11,7 @@
     6.Theme de widget yerilerini göstermek için her temanın içerisine temenın şablonunu gösteren foto olacak aktif widget dan o resmi çekip tema ve widget yönetimine koyulacak.<br>
     7.Theme ayarlarından theme in alanları alınabilecek.(Tema ayarlarında 'sidebar','rightbar' vs.. listelenirken veriler theme in ayarlarından gelecek.)<br>
     8.Laravel Medialibrary <br>
+    9.News Modülü geliştirilecek<br>
 
 
     <h1>Sayfa Ayarları</h1>
@@ -40,6 +41,7 @@
     <br />
     @foreach($miniCuffNewsItems as $miniCuffNewsItem)
         {{$miniCuffNewsItem->title}} <br/>
+        <img src="{{$miniCuffNewsItem->cuff_photo}}"> <br/>
     @endforeach
 
     <h1>Haber Kategoriler</h1>
@@ -78,6 +80,9 @@
     <br />
 
     @widget('\App\Modules\Book\Widgets\RecentBooks')
+    <br />
+
+    @widget('\App\Modules\Biography\Widgets\Biographies')
 
 
     <br />
@@ -85,22 +90,20 @@
 
 @endsection
 
-@section('widgets')
+{{--@section('widgets')--}}
 
-    @foreach($modules as $module)
+    {{--@foreach($modules as $module)--}}
 
-        @if($module['widget'] == true )
+        {{--@if($module['widget'] == true )--}}
 
-            {!! Theme::view($module['slug'] . '::frontend.widget') !!}
-        @endif
+            {{--{!! Theme::view($module['slug'] . '::frontend.widget') !!}--}}
+        {{--@endif--}}
 
-    @endforeach
-
-
+    {{--@endforeach--}}
 
     {{--@include($activeTheme . '::frontend.book.index')--}}
 
-@endsection
+{{--@endsection--}}
 
 @section('meta_tags')
     <meta name="keywords" content="{{ Redis::get('keywords') }}"/>

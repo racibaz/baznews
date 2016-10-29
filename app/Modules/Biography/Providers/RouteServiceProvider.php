@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\News\Providers;
+namespace App\Modules\Biography\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Modules\News\Http\Controllers';
+    protected $namespace = 'App\Modules\Biography\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -23,18 +23,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::model('news_category', 'App\Modules\News\Models\NewsCategory');
-        Route::model('news', 'App\Modules\News\Models\News');
-        Route::model('news_source', 'App\Modules\News\Models\NewsSource');
-        Route::model('future_news', 'App\Modules\News\Models\FutureNews');
-        Route::model('photo_gallery', 'App\Modules\News\Models\PhotoGallery');
-        Route::model('photo', 'App\Modules\News\Models\Photo');
-        Route::model('photo_category', 'App\Modules\News\Models\PhotoCategory');
-        Route::model('video_category', 'App\Modules\News\Models\VideoCategory');
-        Route::model('video_gallery', 'App\Modules\News\Models\VideoGallery');
-        Route::model('video', 'App\Modules\News\Models\Video');
-        Route::model('recommendation_news', 'App\Modules\News\Models\RecommendationNews');
 
+        Route::model('biography', 'App\Modules\Biography\Models\Biography');
         parent::boot();
     }
 
@@ -65,7 +55,7 @@ class RouteServiceProvider extends ServiceProvider
             'middleware' => 'web',
             'namespace'  => $this->namespace,
         ], function ($router) {
-            require module_path('news', 'Routes/web.php');
+            require module_path('biography', 'Routes/web.php');
         });
     }
 
@@ -83,7 +73,7 @@ class RouteServiceProvider extends ServiceProvider
             'namespace'  => $this->namespace,
             'prefix'     => 'api',
         ], function ($router) {
-            require module_path('news', 'Routes/api.php');
+            require module_path('biography', 'Routes/api.php');
         });
     }
 }

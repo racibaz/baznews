@@ -3,4 +3,5 @@
 @foreach($recentBooks as $recentBook)
 
     {{ $recentBook->name }} <br />
+    <img src="{{ $recentBook->thumbnail }}">  <br />
 @endforeach

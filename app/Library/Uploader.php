@@ -14,22 +14,21 @@ use Illuminate\Support\Facades\File;
 
 class Uploader
 {
-    public static function fileUpload($record,$file,$path,$filename)
+
+    public static function fileUpload($record,$field,$file,$destination,$filename)
     {
         if($file->isValid()){
 
             //$extension = $file->getClientOriginalExtension();
 
-            $orjinalDirPath = base_path() . '/public/' . $path . "/";
-            $orjinalFilePath = base_path() . '/public/' . $path . "/" . $filename;
+            $orjinalDirPath = public_path($destination);
+            $orjinalFilePath = public_path($destination . "/" . $filename);
             $file->move($orjinalDirPath, $filename);
 
 
-            $attachment = new Attachment();
-            $attachment->path =  $path .'/'. $filename;
-            $attachment->save();
+            $record->$field =  $destination .'/'. $filename;
+            $record->save();
 
-            $record->attachments()->save($attachment);
             return true;
 
         } else {

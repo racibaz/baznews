@@ -3,6 +3,9 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\File\ImageUpload;
+use App\Jobs\File\ImageUploader;
+use App\Library\Uploader;
 use App\Models\City;
 use App\Models\Country;
 use App\Modules\News\Models\News;
@@ -23,6 +26,7 @@ class NewsController extends Controller
     private $view = 'news.';
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
+    private $oldPath;
 
     public function __construct(Repo $repo)
     {
@@ -145,6 +149,25 @@ class NewsController extends Controller
             }
 
             if ($result) {
+
+                if(!empty($input['thumbnail'])) {
+                    $oldPath = $record->thumbnail;
+                    $document_name = $input['thumbnail']->getClientOriginalName();
+                    $destination = '/images/news_images/'. $record->id .'/thumbnail';
+                    Uploader::fileUpload($record , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    Uploader::removeFile($oldPath);
+                }
+
+                if(!empty($input['cuff_photo'])) {
+                    $oldPath = $record->cuff_photo;
+                    $document_name = $input['cuff_photo']->getClientOriginalName();
+                    $destination = '/images/news_images/'. $record->id .'/cuff_photo' ;
+                    Uploader::fileUpload($record , 'cuff_photo', $input['cuff_photo'] , $destination , $document_name);
+                    Uploader::removeFile($oldPath);
+                }
+
+                //$this->dispatch(new ImageUploader($record, $input['thumbnail'], $destination, $document_name, $document_name));
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {

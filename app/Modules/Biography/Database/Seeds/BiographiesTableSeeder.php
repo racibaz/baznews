@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\News\Database\Seeds;
+namespace App\Modules\Biography\Database\Seeds;
 
-use App\Modules\News\Models\Biography;
+use App\Modules\Biography\Models\Biography;
 use Illuminate\Database\Seeder;
 
 class BiographiesTableSeeder extends Seeder

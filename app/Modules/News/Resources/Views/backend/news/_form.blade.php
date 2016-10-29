@@ -126,6 +126,15 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            {!! Form::label('cuff_photo', trans('news::news.cuff_photo'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::file('cuff_photo') !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {!! Form::label('thumbnail', trans('news::news.thumbnail'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
