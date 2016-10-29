@@ -203,6 +203,9 @@
             <li><a href="{!! route('announcement.index') !!}"><i class="fa fa-book"></i> <span>Duyurular</span></a></li>
             <li><a href="{!! route('sitemap.index') !!}"><i class="fa fa-book"></i> <span>Site Haritaları</span></a></li>
             <li><a href="{!! route('rss.index') !!}"><i class="fa fa-book"></i> <span>Rss ler</span></a></li>
+            <li><a href="{!! route('module_manager.index') !!}"><i class="fa fa-book"></i> <span>Modül Yönetimi</span></a></li>
+            <li><a href="{!! route('widget_manager.index') !!}"><i class="fa fa-book"></i> <span>Widget Yönetimi</span></a></li>
+            <li><a href="{!! route('theme_manager.index') !!}"><i class="fa fa-book"></i> <span>Tema Yönetimi</span></a></li>
 
             @foreach( Module::all() as $module)
 

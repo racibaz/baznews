@@ -46,6 +46,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('sitemap', 'App\Models\Sitemap');
         Route::model('rss', 'App\Models\Rss');
         Route::model('widget_manager', 'App\Models\WidgetManager');
+        Route::model('theme_manager', 'App\Models\ThemeManager');
         
     }
 

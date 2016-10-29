@@ -63,6 +63,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('rss', 'Backend\RssController');
     Route::resource('widget_manager', 'Backend\WidgetManagerController');
 
+    Route::get('theme_manager/themeActivationToggle/{themeSlug}', 'Backend\ThemeManagerController@themeActivationToggle')->name('themeActivationToggle');
+    Route::resource('theme_manager', 'Backend\ThemeManagerController');
+
 
     Route::post('announcement.announcement_establishment_store', 'Backend\AnnouncementController@announcement_establishment_store')->name('announcement_establishment_store');
     Route::post('announcement.announcement_group_store', 'Backend\AnnouncementController@announcement_group_store')->name('announcement_group_store');
