@@ -87,6 +87,7 @@ class RecommendationNewsController extends Controller
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
 
+        
         $v = RecommendationNews::validate($input);
 
         if ($v->fails()) {

@@ -3,6 +3,8 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\Cache\FlushAll;
+use App\Jobs\Cache\FlushAllCache;
 use App\Jobs\File\ImageUpload;
 use App\Jobs\File\ImageUploader;
 use App\Library\Uploader;
@@ -12,9 +14,11 @@ use App\Modules\News\Models\News;
 use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Models\NewsSource;
 use App\Modules\News\Repositories\NewsRepository as Repo;
+use App\Modules\News\Repositories\RecommendationNewsRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -98,9 +102,14 @@ class NewsController extends Controller
         $cityList = City::cityList();
         $newsCategoryList = NewsCategory::newsCategoryList();
         $newsSourceList = NewsSource::newsSourceList();
+        $newsSourceList = NewsSource::newsSourceList();
         $statuses = News::$statuses;
+        $futureNews = $record->future_news;
+        $recommendationNews = $record->recommendation_news;
+
+
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
-            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses', 'googleMapsRender','newsCategories']));
+            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses', 'googleMapsRender','newsCategories', 'futureNews', 'recommendationNews']));
     }
 
 
@@ -266,5 +275,87 @@ class NewsController extends Controller
 
         return Redirect::back();
     }
+
+    public function future_news_store(Request $request)
+    {
+        $input = Input::all();
+        $news_id = $input['news_id'];
+        $input['is_active'] = Input::get('is_active') == "on" ? true : false;
+
+        $record = News::find($news_id);
+
+        if(empty($record)){
+
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
+        }
+
+        if(empty($input['future_datetime'])){
+
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
+        }
+
+
+        $futureNews = $record->future_news;
+        $futureNews->future_datetime = $input['future_datetime'];
+        $futureNews->is_active = $input['is_active'];
+        $futureNews->save();
+
+        Log::info('Future news updated by ' . Auth::user()->id);
+        Session::flash('flash_message', trans('news::news.future_news_updated'));
+        return Redirect::back();
+    }
+
+    public function recommendation_news_store(Request $request)
+    {
+        $input = Input::all();
+        $news_id = $input['news_id'];
+        $input['is_active'] = Input::get('is_active') == "on" ? true : false;
+        $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
+
+        $record = News::find($news_id);
+
+        if(empty($record)){
+
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
+        }
+
+        if(empty($input['order'])){
+
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
+        }
+
+
+        $rerecommdationNewsController = new RecommendationNewsController( new RecommendationNewsRepository());
+        $rerecommdationNewsController->save($record);
+        //TODO user_id sorunu çözülecek.
+
+//
+//        $recommdationNews = $record->recommendation_news;
+//        $recommdationNews->user_id = Auth::user()->id;
+//        $recommdationNews->order = $input['order'];
+//        $recommdationNews->is_active = $input['is_active'];
+//        $recommdationNews->is_cuff = $input['is_cuff'];
+//        $recommdationNews->save();
+
+
+
+        $this->dispatch(new FlushAll('laravel'));
+
+        Log::info('Recommendation  news updated by ' . Auth::user()->id);
+        Session::flash('flash_message', trans('news::news.future_news_updated'));
+        return Redirect::back();
+    }
+
+
+
+
 
 }

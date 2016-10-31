@@ -98,12 +98,12 @@ class News extends Model
 
     public function future_news()
     {
-        return $this->hasMany(FutureNews::class);
+        return $this->hasOne(FutureNews::class);
     }
 
     public function recommendation_news()
     {
-        return $this->hasMany(RecommendationNews::class);
+        return $this->hasOne(RecommendationNews::class);
     }
 
     public function tags()
