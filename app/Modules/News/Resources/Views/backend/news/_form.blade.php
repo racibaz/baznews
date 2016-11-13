@@ -460,25 +460,45 @@
 
                     {!!  Form::hidden('news_id', $record->id) !!}
 
-
-                    {{--<div class="form-group">--}}
-                        {{--{!! Form::label('related_news_id', trans('news::news.related_news_id'),['class'=> 'col-lg-2 control-label']) !!}--}}
-
-                        {{--<select class="form-control select2"  id="related_news_ids" multiple="multiple" data-placeholder="{!! trans('news::common.please_choose') !!}" style="width: 100%;">--}}
-                            {{--@foreach($relatedNews as $news)--}}
-                                {{--<option>{{$news->title}}</option>--}}
-                            {{--@endforeach--}}
-                        {{--</select>--}}
-                    {{--</div>--}}
-
-
-
                     <div class="form-group">
                         <div class="row">
                             {!! Form::label('related_news_id', trans('news::news.related_news_id'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::select('related_news_ids[]', $newsList , $relatedIDs , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2','multiple' => 'multiple']) !!}
+                                {!! Form::select('related_news_ids[]', $newsList , $relatedIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('news::news.tags') }}</h3>
+                </div>
+
+            {!! Form::open(['route' => 'tags_news_store','method' => 'post']) !!}
+
+            <!-- /.box-header -->
+                <div class="box-body">
+                    {{--<form role="form">--}}
+
+                    {!!  Form::hidden('news_id', $record->id) !!}
+
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('tags', trans('news::news.tags'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::select('tags_ids[]', $tagList , $tagIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
                             </div>
                         </div>
                     </div>

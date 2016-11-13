@@ -42,7 +42,7 @@ class Tag extends Model
 
     public static function tagList()
     {
-        return Tag::where('is_active',1)->pluck('name','id');
+        return Tag::pluck('name','id');
     }
 
 }

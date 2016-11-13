@@ -10,6 +10,7 @@ use App\Jobs\File\ImageUploader;
 use App\Library\Uploader;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Tag;
 use App\Modules\News\Models\News;
 use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Models\NewsSource;
@@ -98,6 +99,7 @@ class NewsController extends Controller
         $googleMapsRender = Mapper::render();
 
         $relatedIDs = [];
+        $tagIDs = [];
         $newsList = News::newsAllList();
         $newsCategories = NewsCategory::where('is_active', 1)->get();
         $countryList = Country::countryList();
@@ -108,13 +110,20 @@ class NewsController extends Controller
         $statuses = News::$statuses;
         $futureNews = $record->future_news;
         $recommendationNews = $record->recommendation_news;
+        $tagList = Tag::tagList();
+
 
         foreach ($record->related_news as $index => $related_new) {
             $relatedIDs[$index] = $related_new->related_news_id;
         }
 
+        foreach ($record->tags as $index => $tag){
+            $tagIDs[$index] = $tag->id;
+        }
+
+
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
-            compact(['record', 'newsList', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses', 'googleMapsRender','newsCategories', 'futureNews', 'recommendationNews', 'relatedIDs']));
+            compact(['record', 'newsList', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses', 'googleMapsRender','newsCategories', 'futureNews', 'recommendationNews', 'relatedIDs', 'tagList', 'tagIDs']));
     }
 
 
@@ -384,9 +393,21 @@ class NewsController extends Controller
         }
 
         return Redirect::back();
-
     }
 
+    public function tags_news_store(Request $request)
+    {
+        $input = Input::all();
+        $news_id = $input['news_id'];
+
+        unset($input['news_id']);
+        unset($input['_token']);
+
+        $record = News::find($news_id);
+        $record->tags()->sync($input['tags_ids']);
+
+        return Redirect::back();
+    }
 
 
 
