@@ -13,6 +13,7 @@ use App\Models\Country;
 use App\Modules\News\Models\News;
 use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Models\NewsSource;
+use App\Modules\News\Models\RelatedNews;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Modules\News\Repositories\RecommendationNewsRepository;
 use Caffeinated\Themes\Facades\Theme;
@@ -96,7 +97,8 @@ class NewsController extends Controller
             ]);
         $googleMapsRender = Mapper::render();
 
-
+        $relatedIDs = [];
+        $newsList = News::newsAllList();
         $newsCategories = NewsCategory::where('is_active', 1)->get();
         $countryList = Country::countryList();
         $cityList = City::cityList();
@@ -107,9 +109,12 @@ class NewsController extends Controller
         $futureNews = $record->future_news;
         $recommendationNews = $record->recommendation_news;
 
+        foreach ($record->related_news as $index => $related_new) {
+            $relatedIDs[$index] = $related_new->related_news_id;
+        }
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
-            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses', 'googleMapsRender','newsCategories', 'futureNews', 'recommendationNews']));
+            compact(['record', 'newsList', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses', 'googleMapsRender','newsCategories', 'futureNews', 'recommendationNews', 'relatedIDs']));
     }
 
 
@@ -352,6 +357,34 @@ class NewsController extends Controller
         Log::info('Recommendation  news updated by ' . Auth::user()->id);
         Session::flash('flash_message', trans('news::news.future_news_updated'));
         return Redirect::back();
+    }
+
+
+
+    public function related_news_news_store(Request $request)
+    {
+        $input = Input::all();
+
+        $news_id = $input['news_id'];
+
+        unset($input['news_id']);
+        unset($input['_token']);
+
+        $record = News::find($news_id);
+
+        RelatedNews::where('news_id',$news_id)->delete();
+
+        foreach ($input['related_news_ids'] as $in){
+
+            $relatedNews = new RelatedNews();
+            $relatedNews->news_id = $news_id;
+            $relatedNews->related_news_id =  $in;
+            $relatedNews->save();
+
+        }
+
+        return Redirect::back();
+
     }
 
 

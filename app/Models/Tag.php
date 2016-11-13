@@ -39,4 +39,10 @@ class Tag extends Model
         );
         return Validator::make($input, $rules);
     }
+
+    public static function tagList()
+    {
+        return Tag::where('is_active',1)->pluck('name','id');
+    }
+
 }

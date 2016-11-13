@@ -106,6 +106,11 @@ class News extends Model
         return $this->hasOne(RecommendationNews::class);
     }
 
+    public function related_news()
+    {
+        return $this->hasMany(RelatedNews::class);
+    }
+
     public function tags()
     {
         return $this->morphToMany('App\Models\Tag', 'taggable');

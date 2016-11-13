@@ -56,8 +56,6 @@ class CreateNewsTable extends Migration
             $table->foreign('news_category_id')->references('id')->on('news_categories')->onDelete('cascade');
             $table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
         });
-
-
     }
 
     /**
@@ -67,6 +65,7 @@ class CreateNewsTable extends Migration
      */
     public function down()
     {
+//        Schema::drop('related_news_news');
         Schema::drop('news_categories_news');
         Schema::drop('news');
     }

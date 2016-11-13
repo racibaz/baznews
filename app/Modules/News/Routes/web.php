@@ -39,6 +39,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
 
     Route::resource('news_category', 'Backend\NewsCategoryController');
+
+
+    Route::post('news.related_news_news_store', 'Backend\NewsController@related_news_news_store')->name('related_news_news_store');
     Route::post('news.recommendation_news_store', 'Backend\NewsController@recommendation_news_store')->name('recommendation_news_store');
     Route::post('news.future_news_store', 'Backend\NewsController@future_news_store')->name('future_news_store');
     Route::post('news.news_news_categories_store', 'Backend\NewsController@news_news_categories_store')->name('news_news_categories_store');
