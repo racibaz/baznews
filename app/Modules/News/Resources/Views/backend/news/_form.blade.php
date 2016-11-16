@@ -511,6 +511,76 @@
             </div>
             <!-- /.box -->
         </div>
+
+        <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('news::news.photo_galleries') }}</h3>
+                </div>
+
+                {!! Form::open(['route' => 'news_photo_galleries_store','method' => 'post']) !!}
+
+                        <!-- /.box-header -->
+                <div class="box-body">
+                    {{--<form role="form">--}}
+
+                    {!!  Form::hidden('news_id', $record->id) !!}
+
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('photo_galleries', trans('news::news.photo_galleries'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::select('photo_gallery_ids[]', $photoGalleriesList , $photoGalleryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+        <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('news::news.video_galleries') }}</h3>
+                </div>
+
+                {!! Form::open(['route' => 'news_video_galleries_store','method' => 'post']) !!}
+
+                        <!-- /.box-header -->
+                <div class="box-body">
+                    {{--<form role="form">--}}
+
+                    {!!  Form::hidden('news_id', $record->id) !!}
+
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('video_galleries', trans('news::news.video_galleries'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::select('video_gallery_ids[]', $videoGalleriesList , $videoGalleryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+
     </div><!-- end row -->
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->

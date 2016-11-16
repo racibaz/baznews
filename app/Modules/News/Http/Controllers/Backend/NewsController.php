@@ -14,7 +14,9 @@ use App\Models\Tag;
 use App\Modules\News\Models\News;
 use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Models\NewsSource;
+use App\Modules\News\Models\PhotoGallery;
 use App\Modules\News\Models\RelatedNews;
+use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Modules\News\Repositories\RecommendationNewsRepository;
 use Caffeinated\Themes\Facades\Theme;
@@ -100,6 +102,7 @@ class NewsController extends Controller
 
         $relatedIDs = [];
         $tagIDs = [];
+        $photoGalleryIDs = [];
         $newsList = News::newsAllList();
         $newsCategories = NewsCategory::where('is_active', 1)->get();
         $countryList = Country::countryList();
@@ -111,6 +114,8 @@ class NewsController extends Controller
         $futureNews = $record->future_news;
         $recommendationNews = $record->recommendation_news;
         $tagList = Tag::tagList();
+        $photoGalleriesList = PhotoGallery::photoGalleryList();
+        $videoGalleriesList = VideoGallery::videoGalleryList();
 
 
         foreach ($record->related_news as $index => $related_new) {
@@ -121,9 +126,34 @@ class NewsController extends Controller
             $tagIDs[$index] = $tag->id;
         }
 
+        foreach ($record->photo_galleries as $index => $photo_gallery) {
+            $photoGalleryIDs[$index] = $photo_gallery->id;
+        }
+
+        foreach ($record->video_galleries as $index => $video_gallery) {
+            $videoGalleryIDs[$index] = $video_gallery->id;
+        }
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
-            compact(['record', 'newsList', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses', 'googleMapsRender','newsCategories', 'futureNews', 'recommendationNews', 'relatedIDs', 'tagList', 'tagIDs']));
+            compact(['record',
+                'newsList',
+                'countryList',
+                'cityList',
+                'newsCategoryList',
+                'newsSourceList',
+                'statuses',
+                'googleMapsRender',
+                'newsCategories',
+                'futureNews',
+                'recommendationNews',
+                'relatedIDs',
+                'tagList',
+                'tagIDs',
+                'photoGalleriesList',
+                'photoGalleryIDs',
+                'videoGalleriesList',
+                'videoGalleryIDs',
+            ]));
     }
 
 
@@ -408,6 +438,39 @@ class NewsController extends Controller
 
         return Redirect::back();
     }
+
+
+    public function news_photo_galleries_store(Request $request)
+    {
+        $input = Input::all();
+        $news_id = $input['news_id'];
+
+        unset($input['news_id']);
+        unset($input['_token']);
+
+        $record = News::find($news_id);
+        $record->photo_galleries()->sync($input['photo_gallery_ids']);
+
+
+        return Redirect::back();
+    }
+
+    public function news_video_galleries_store(Request $request)
+    {
+        $input = Input::all();
+        $news_id = $input['news_id'];
+
+        unset($input['news_id']);
+        unset($input['_token']);
+
+        $record = News::find($news_id);
+        $record->video_galleries()->sync($input['video_gallery_ids']);
+
+        return Redirect::back();
+    }
+
+
+
 
 
 
