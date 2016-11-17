@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\UserRegistered;
 use App\Models\Setting;
+use App\Models\User;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Modules\Modules;
 use Caffeinated\Themes\Facades\Theme;
@@ -21,6 +23,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        User::created(function ($user) {
+            $token = $user->activationToken()->create([
+                'token' => str_random(128),
+            ]);
+
+            event(new UserRegistered($user));
+        });
+
+
         if(!app()->runningInConsole() ) {
 
             //DB::getSchemaBuilder()->getColumnListing('settings');

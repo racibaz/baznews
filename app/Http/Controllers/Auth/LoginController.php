@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Jobs\Users\UpdateLastLogin;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -51,6 +52,11 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         $this->dispatch(new UpdateLastLogin($user, Carbon::now()));
-    }
 
+        if (!$user->active) {
+            Auth::logout();
+
+            return redirect('/login')->withError('Please activate your account. <a href="' . route('auth.activate.resend') . '?email=' . $user->email . '">Resend</a>');
+        }
+    }
 }

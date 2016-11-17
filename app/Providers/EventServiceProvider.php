@@ -16,6 +16,14 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\ModelCRUD' => [
             'App\Listeners\CreateLogEntry',
         ],
+        'App\Events\UserRegistered' => [
+            'App\Listeners\SendActivationEmail',
+        ],
+        'App\Events\UserRequestedActivationEmail' => [
+            'App\Listeners\SendActivationEmail',
+        ],
+
+
     ];
 
     /**

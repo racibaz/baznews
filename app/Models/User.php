@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
+use App\Modules\Biography\Models\Biography;
 use App\Modules\Book\Models\Book;
-use App\Modules\News\Models\Biography;
 use App\Modules\News\Models\RecommendationNews;
 use Venturecraft\Revisionable\Revision;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
@@ -44,7 +44,7 @@ class User extends Authenticatable
         'IP',
         'last_login',
         'status',
-
+        'active',
     ];
 
     /**
@@ -65,29 +65,34 @@ class User extends Authenticatable
 
         if(!app()->runningInConsole() ) {
 
-            static::created(function ($user) {
+            if(Auth::check()){
 
-                $event = new Event();
-                $event->user_id = Auth::user()->id;
-                $event->event = 'User Create';
-                $user->events()->save($event);
-            });
+                static::created(function ($user) {
 
-            static::updated(function ($user) {
+                    $event = new Event();
+                    $event->user_id = Auth::user()->id;
+                    $event->event = 'User Create';
+                    $user->events()->save($event);
+                });
 
-                $event = new Event();
-                $event->user_id = Auth::user()->id;
-                $event->event = 'User Updated';
-                $user->events()->save($event);
-            });
+                static::updated(function ($user) {
 
-            static::deleted(function ($user) {
+                    $event = new Event();
+                    $event->user_id = Auth::user()->id;
+                    $event->event = 'User Updated';
+                    $user->events()->save($event);
+                });
 
-                $event = new Event();
-                $event->user_id = Auth::user()->id;
-                $event->event = 'User Delete';
-                $user->events()->save($event);
-            });
+                static::deleted(function ($user) {
+
+                    $event = new Event();
+                    $event->user_id = Auth::user()->id;
+                    $event->event = 'User Delete';
+                    $user->events()->save($event);
+                });
+
+            }
+
         }
     }
 
@@ -171,6 +176,11 @@ class User extends Authenticatable
         return $this->hasMany(Book::class);
     }
 
+    public function activationToken()
+    {
+        return $this->hasOne(ActivationToken::class);
+    }
+
 
     public function events()
     {
@@ -210,6 +220,11 @@ class User extends Authenticatable
     public static function getUserIp()
     {
         return Request::ip();
+    }
+
+    public static function byEmail($email)
+    {
+        return static::where('email', $email);
     }
 
 
