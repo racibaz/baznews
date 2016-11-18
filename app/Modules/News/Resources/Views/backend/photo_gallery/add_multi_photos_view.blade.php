@@ -14,7 +14,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <div id="galler-photos">
+            <div id="gallery-photos">
                 <ul>
                     {!! Form::open(['route' => 'updateGalleryPhotos','method' => 'post']) !!}
 
@@ -50,33 +50,36 @@
 @section('js')
 
     <script>
-            Dropzone.options.addPhotos = {
+        Dropzone.options.addPhotos = {
 
-                maxFileSize: 2,
-                acceptedFiles : 'image/*',
-                success: function (file, response) {
+            maxFileSize: 2,
+            acceptedFiles : 'image/*',
+            success: function (file, response) {
 
-                    if(file.status == 'success'){
-                        handleDropzoneFileUpload.handleSuccess(response);
-                    }else {
-                        handleDropzoneFileUpload.handleError(response);
-                    }
+                if(file.status == 'success'){
+                    handleDropzoneFileUpload.handleSuccess(response);
+                }else {
+                    handleDropzoneFileUpload.handleError(response);
                 }
+            }
 
-            };
-        
-        
+        };
+
+
         var handleDropzoneFileUpload = {
-            
+
             handleError: function (response) {
                 console.log(response);
             },
             handleSuccess: function (response) {
-                console.log(response);
-            }
-            
-        };
 
+                var $photoList = $('#gallery-photos ul');
+                var photoSrc = baseUrl + '/' + response.file;
+                $($photoList).append('<li> <a href="' + photoSrc + '"><img src="' + $photoSrc + '"></a></li>');
+
+            }
+
+        };
 
     </script>
 

@@ -142,6 +142,8 @@ class PhotoGalleryController extends Controller
             'file'              => 'galley/photos/' . $fileName,
             'is_active'         => 1
         ]);
+
+        return $photo;
     }
 
 

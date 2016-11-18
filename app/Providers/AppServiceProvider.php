@@ -24,16 +24,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        User::created(function ($user) {
-            $token = $user->activationToken()->create([
-                'token' => str_random(128),
-            ]);
-
-            event(new UserRegistered($user));
-        });
-
-
         if(!app()->runningInConsole() ) {
+
+            User::created(function ($user) {
+                $token = $user->activationToken()->create([
+                    'token' => str_random(128),
+                ]);
+
+                event(new UserRegistered($user));
+            });
 
             //DB::getSchemaBuilder()->getColumnListing('settings');
 
