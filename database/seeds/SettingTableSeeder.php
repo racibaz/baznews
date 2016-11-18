@@ -107,5 +107,15 @@ class SettingTableSeeder extends Seeder
             'attribute_value'             => '20',
         ]);
 
+        Setting::create([
+            'attribute_key'               => 'allow_photo_formats',
+            'attribute_value'             => '.jpg|.tiff|.gif|.png',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'allow_video_formats',
+            'attribute_value'             => '.avi|.mov|.mp4|.3gp|.3gp2|.wmv|.flv',
+        ]);
+
     }
 }

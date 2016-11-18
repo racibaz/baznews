@@ -52,6 +52,6 @@ class Photo extends Model
 
     public static function photoList()
     {
-        return PhotoGallery::where('is_active',1)->pluck('name', 'id');
+        return Photo::where('is_active',1)->pluck('name', 'id');
     }
 }

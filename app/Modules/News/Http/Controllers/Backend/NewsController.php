@@ -14,8 +14,10 @@ use App\Models\Tag;
 use App\Modules\News\Models\News;
 use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Models\NewsSource;
+use App\Modules\News\Models\Photo;
 use App\Modules\News\Models\PhotoGallery;
 use App\Modules\News\Models\RelatedNews;
+use App\Modules\News\Models\Video;
 use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Modules\News\Repositories\RecommendationNewsRepository;
@@ -103,6 +105,8 @@ class NewsController extends Controller
         $relatedIDs = [];
         $tagIDs = [];
         $photoGalleryIDs = [];
+        $videosIDs = [];
+        $photosIDs = [];
         $newsList = News::newsAllList();
         $newsCategories = NewsCategory::where('is_active', 1)->get();
         $countryList = Country::countryList();
@@ -116,7 +120,17 @@ class NewsController extends Controller
         $tagList = Tag::tagList();
         $photoGalleriesList = PhotoGallery::photoGalleryList();
         $videoGalleriesList = VideoGallery::videoGalleryList();
+        $videoList = Video::videoList();
+        $photoList = Photo::photoList();
 
+
+        foreach ($record->photos as $index => $photo) {
+            $photosIDs[$index] = $photo->id;
+        }
+
+        foreach ($record->videos as $index => $video) {
+            $videosIDs[$index] = $video->id;
+        }
 
         foreach ($record->related_news as $index => $related_new) {
             $relatedIDs[$index] = $related_new->related_news_id;
@@ -153,6 +167,10 @@ class NewsController extends Controller
                 'photoGalleryIDs',
                 'videoGalleriesList',
                 'videoGalleryIDs',
+                'videoList',
+                'videosIDs',
+                'photoList',
+                'photosIDs',
             ]));
     }
 
@@ -469,10 +487,32 @@ class NewsController extends Controller
         return Redirect::back();
     }
 
+    public function news_videos_store(Request $request)
+    {
+        $input = Input::all();
+        $news_id = $input['news_id'];
 
+        unset($input['news_id']);
+        unset($input['_token']);
 
+        $record = News::find($news_id);
+        $record->videos()->sync($input['videos_ids']);
 
+        return Redirect::back();
+    }
 
+    public function news_photos_store(Request $request)
+    {
+        $input = Input::all();
+        $news_id = $input['news_id'];
 
+        unset($input['news_id']);
+        unset($input['_token']);
 
+        $record = News::find($news_id);
+        $record->photos()->sync($input['photos_ids']);
+
+        return Redirect::back();
+    }
+    
 }

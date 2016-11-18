@@ -53,6 +53,6 @@ class Video extends Model
 
     public static function videoList()
     {
-        return VideoGallery::where('is_active',1)->pluck('name', 'id');
+        return Video::where('is_active',1)->pluck('name', 'id');
     }
 }

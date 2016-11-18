@@ -15,6 +15,7 @@
     v210.Moduller aktif ve pasif yapıldığında seeder  migrate ve seeder çalıştırılarak.Modul ayarları eklenip silinebilecek.(widget vs..)<br>
     11.Auth::user() presenter pattern ları yapılacak.<br>
     12.news edit sayfasına video,photo gallery,tags,video,photo lar eklenebilecek.<br>
+    13.Video Ekleme Tamamlanacak.<br>
 
 
     <h1>Sayfa Ayarları</h1>

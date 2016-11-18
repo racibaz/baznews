@@ -40,9 +40,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
     Route::resource('news_category', 'Backend\NewsCategoryController');
 
+    
 
-
-
+    Route::post('news.news_photos_store', 'Backend\NewsController@news_photos_store')->name('news_photos_store');
+    Route::post('news.news_videos_store', 'Backend\NewsController@news_videos_store')->name('news_videos_store');
     Route::post('news.news_video_galleries_store', 'Backend\NewsController@news_video_galleries_store')->name('news_video_galleries_store');
     Route::post('news.news_photo_galleries_store', 'Backend\NewsController@news_photo_galleries_store')->name('news_photo_galleries_store');
     Route::post('news.photo_galleries_news_store', 'Backend\NewsController@photo_galleries_news_store')->name('photo_galleries_news_store');

@@ -144,19 +144,19 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('hit', trans('news::news.hit'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('video_embed', trans('news::news.video_embed'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::number('hit', $record->hit, ['placeholder' => trans('news::news.hit') ,'class' => 'form-control']) !!}
+                                {!! Form::textarea('video_embed', $record->video_embed, ['placeholder' => trans('news::news.video_embed') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('meta_tags', trans('news::news.meta_tags'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('hit', trans('news::news.hit'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::textarea('meta_tags', $record->meta_tags, ['placeholder' => trans('news::news.meta_tags') ,'class' => 'form-control']) !!}
+                                {!! Form::number('hit', $record->hit, ['placeholder' => trans('news::news.hit') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -323,8 +323,8 @@
                     {!!  Form::hidden('news_id', $record->id) !!}
                     @foreach($newsCategories as $newsCategory)
                         <div class="form-group">
-                            {{ $newsCategory->name }} :
-                            {!! Form::checkbox($newsCategory->id, $newsCategory->id, in_array($newsCategory->id , $record->news_categories->pluck('id')->toArray())) !!}
+                            {!! Form::checkbox($newsCategory->id, $newsCategory->id, in_array($newsCategory->id , $record->news_categories->pluck('id')->toArray())) !!} :
+                            {{ $newsCategory->name }}
                         </div>
                     @endforeach
 
@@ -567,6 +567,74 @@
 
                             <div class="col-lg-10">
                                 {!! Form::select('video_gallery_ids[]', $videoGalleriesList , $videoGalleryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+        <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('news::news.videos') }}</h3>
+                </div>
+
+                {!! Form::open(['route' => 'news_videos_store','method' => 'post']) !!}
+
+                        <!-- /.box-header -->
+                <div class="box-body">
+                    {{--<form role="form">--}}
+
+                    {!!  Form::hidden('news_id', $record->id) !!}
+
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('videos', trans('news::news.videos'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::select('videos_ids[]', $videoList , $videosIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+        <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('news::news.photos') }}</h3>
+                </div>
+
+                {!! Form::open(['route' => 'news_photos_store','method' => 'post']) !!}
+
+                        <!-- /.box-header -->
+                <div class="box-body">
+                    {{--<form role="form">--}}
+
+                    {!!  Form::hidden('news_id', $record->id) !!}
+
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('photos', trans('news::news.photos'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::select('photos_ids[]', $photoList , $photosIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
                             </div>
                         </div>
                     </div>
