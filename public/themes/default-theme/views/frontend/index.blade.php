@@ -19,7 +19,6 @@
     14.php artisan komutlarının bazıları setting sayfasında çalıştırılabilecek..(backup list,config cache ve clear,route cache,clear,view cache ve clear)<br>
 
 
-
     <h1>Sayfa Ayarları</h1>
     <br />
     

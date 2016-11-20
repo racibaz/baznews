@@ -197,6 +197,7 @@ return [
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Barryvdh\TranslationManager\ManagerServiceProvider::class,
         Arrilot\Widgets\ServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
 
     ],
@@ -259,6 +260,7 @@ return [
         'Feed' => Roumen\Feed\Feed::class,
         'Widget'       => Arrilot\Widgets\Facade::class,
         'AsyncWidget'  => Arrilot\Widgets\AsyncFacade::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
         ////TODO  THEME İN COMPONET GİBİ BİRŞEY VARDI ONA BAKILACAK
     ],
