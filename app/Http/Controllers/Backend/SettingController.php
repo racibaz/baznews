@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\BackUp\GetBackUp;
 use App\Jobs\Cache\FlushAllCache;
 use App\Jobs\DB\RepairMysqlTables;
 use App\Models\Setting;
@@ -162,7 +163,14 @@ class SettingController extends Controller
         }
     }
 
+    public function getBackUp()
+    {
+        $this->dispatch( new GetBackUp());
 
+        Log::info('Backup received.');
+        Session::flash('flash_message', trans('setting.backup_received'));
 
+        return Redirect::back();
 
+    }
 }

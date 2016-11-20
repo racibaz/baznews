@@ -16,6 +16,8 @@
     11.Auth::user() presenter pattern ları yapılacak.<br>
     12.news edit sayfasına video,photo gallery,tags,video,photo lar eklenebilecek.<br>
     13.Video Ekleme Tamamlanacak.<br>
+    14.php artisan komutlarının bazıları setting sayfasında çalıştırılabilecek..(backup list,config cache ve clear,route cache,clear,view cache ve clear)<br>
+
 
 
     <h1>Sayfa Ayarları</h1>
@@ -27,6 +29,22 @@
     <br />
     @foreach($breakNewsItems as $breakNewsItem)
         {{$breakNewsItem->title}} <br/>
+
+
+        <video id="example_video_1" class="video-js vjs-default-skin"
+               controls preload="auto" width="640" height="264"
+               poster="http://video-js.zencoder.com/oceans-clip.png"
+               data-setup='{"example_option":true}'>
+            <source src="https://www.youtube.com/watch?v=k4SysITCN_M" type="video/mp4" />
+            <source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm" />
+            <source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />
+            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+        </video>
+
+        <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+
+
+        {!! $breakNewsItem->video_embed !!} <br/>
     @endforeach
 
     <h1>bandNewsItem</h1>

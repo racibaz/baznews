@@ -51,6 +51,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('contact_type', 'Backend\ContactTypeController');
     Route::resource('contact', 'Backend\ContactController');
 
+
+
+    Route::get('setting/getBackUp', 'Backend\SettingController@getBackUp')->name('getBackUp');
     Route::get('setting/repairMysqlTables', 'Backend\SettingController@repairMysqlTables')->name('repairMysqlTables');
     Route::get('setting/getAllRedisKey', 'Backend\SettingController@getAllRedisKey')->name('getAllRedisKey');
     Route::get('setting/flushAllCache', 'Backend\SettingController@flushAllCache')->name('flushAllCache');

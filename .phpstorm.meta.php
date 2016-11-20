@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-10-24.
+    * Generated on 2016-11-20.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -103,6 +103,10 @@ namespace PHPSTORM_META {
             'command.translation-manager.find' instanceof \Barryvdh\TranslationManager\Console\FindCommand,
             'command.translation-manager.export' instanceof \Barryvdh\TranslationManager\Console\ExportCommand,
             'command.translation-manager.clean' instanceof \Barryvdh\TranslationManager\Console\CleanCommand,
+            'arrilot.widget' instanceof \Arrilot\Widgets\Factories\WidgetFactory,
+            'arrilot.async-widget' instanceof \Arrilot\Widgets\Factories\AsyncWidgetFactory,
+            'arrilot.widget-group-collection' instanceof \Arrilot\Widgets\WidgetGroupCollection,
+            'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -283,6 +287,10 @@ namespace PHPSTORM_META {
             'command.translation-manager.find' instanceof \Barryvdh\TranslationManager\Console\FindCommand,
             'command.translation-manager.export' instanceof \Barryvdh\TranslationManager\Console\ExportCommand,
             'command.translation-manager.clean' instanceof \Barryvdh\TranslationManager\Console\CleanCommand,
+            'arrilot.widget' instanceof \Arrilot\Widgets\Factories\WidgetFactory,
+            'arrilot.async-widget' instanceof \Arrilot\Widgets\Factories\AsyncWidgetFactory,
+            'arrilot.widget-group-collection' instanceof \Arrilot\Widgets\WidgetGroupCollection,
+            'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -463,6 +471,10 @@ namespace PHPSTORM_META {
             'command.translation-manager.find' instanceof \Barryvdh\TranslationManager\Console\FindCommand,
             'command.translation-manager.export' instanceof \Barryvdh\TranslationManager\Console\ExportCommand,
             'command.translation-manager.clean' instanceof \Barryvdh\TranslationManager\Console\CleanCommand,
+            'arrilot.widget' instanceof \Arrilot\Widgets\Factories\WidgetFactory,
+            'arrilot.async-widget' instanceof \Arrilot\Widgets\Factories\AsyncWidgetFactory,
+            'arrilot.widget-group-collection' instanceof \Arrilot\Widgets\WidgetGroupCollection,
+            'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -643,6 +655,10 @@ namespace PHPSTORM_META {
             'command.translation-manager.find' instanceof \Barryvdh\TranslationManager\Console\FindCommand,
             'command.translation-manager.export' instanceof \Barryvdh\TranslationManager\Console\ExportCommand,
             'command.translation-manager.clean' instanceof \Barryvdh\TranslationManager\Console\CleanCommand,
+            'arrilot.widget' instanceof \Arrilot\Widgets\Factories\WidgetFactory,
+            'arrilot.async-widget' instanceof \Arrilot\Widgets\Factories\AsyncWidgetFactory,
+            'arrilot.widget-group-collection' instanceof \Arrilot\Widgets\WidgetGroupCollection,
+            'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
