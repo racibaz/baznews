@@ -20,15 +20,20 @@ Route::get('/', 'Frontend\IndexController@index')->name('index');
 Route::get('sitemap.xml', 'Frontend\SitemapController@sitemaps')->name('sitemaps');
 Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+Route::get('/activate/token/{token}', 'Auth\ActivationController@activate')->name('auth.activate');
+Route::get('/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
+
+Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
 
 
 
-//Route::group(['prefix' => 'admin', 'middleware' => ['role:super_admin|admin|owner|editor|member']], function() {
+
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
-//Route::group(['prefix' => 'admin'], function() {
 
     Route::get('/', 'Backend\DashboardController@index')->name('dashboard');
     Route::get('index', 'Backend\DashboardController@index');
@@ -79,12 +84,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('piwik', 'Backend\PiwikController@index');
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 });
-Auth::routes();
 
-
-Route::get('/home', 'HomeController@index');
-Route::get('/activate/token/{token}', 'Auth\ActivationController@activate')->name('auth.activate');
-Route::get('/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
-
-Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider');
-Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');

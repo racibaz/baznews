@@ -17,7 +17,8 @@
     12.news edit sayfasına video,photo gallery,tags,video,photo lar eklenebilecek.<br>
     13.Video Ekleme Tamamlanacak.<br>
     14.php artisan komutlarının bazıları setting sayfasında çalıştırılabilecek..(backup list,config cache ve clear,route cache,clear,view cache ve clear)<br>
-    15.Social provider register sayfalarına bakılacak paaword sorunu çözülecek.
+    15.Social provider register sayfalarına bakılacak paaword sorunu çözülecek.<br/>
+    16.Account sayfası yapılacak.(kullanıcı fotosu socialite dan alınabilir mi?)
 
 
 
