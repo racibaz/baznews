@@ -19,8 +19,7 @@ class UsersTableSeeder extends Seeder
             'language_id' => 1,
             'country_id' => 1,
             'city_id' => 1,
-            'first_name' => 'recai',
-            'last_name' => 'cansız',
+            'name' => 'recai cansız',
             'email' => 'r.c67@hotmail.com',
             'password' => bcrypt("1"),
 //            'slug' => 'slug',
@@ -34,6 +33,7 @@ class UsersTableSeeder extends Seeder
 //            'avatar' => 'avatar',
 //            'IP' => 'avatar',
             'status' => 1,
+            'active' => 1,
         ]);
 
 
@@ -41,8 +41,7 @@ class UsersTableSeeder extends Seeder
             'language_id' => 1,
             'country_id' => 1,
             'city_id' => 1,
-            'first_name' => 'editor',
-            'last_name' => 'cansız',
+            'name' => 'editor cansız',
             'email' => 'editor@hotmail.com',
             'password' => bcrypt("1"),
 //            'slug' => 'slug',
@@ -56,6 +55,7 @@ class UsersTableSeeder extends Seeder
 //            'avatar' => 'avatar',
 //            'IP' => 'avatar',
             'status' => 1,
+            'active' => 1,
         ]);
 
 
@@ -63,8 +63,7 @@ class UsersTableSeeder extends Seeder
             'language_id' => 1,
             'country_id' => 1,
             'city_id' => 1,
-            'first_name' => 'yazar',
-            'last_name' => 'cansız',
+            'name' => 'yazar cansız',
             'email' => 'yazar@hotmail.com',
             'password' => bcrypt("1"),
 //            'slug' => 'slug',
@@ -78,6 +77,7 @@ class UsersTableSeeder extends Seeder
 //            'avatar' => 'avatar',
 //            'IP' => '1213123',
             'status' => 1,
+            'active' => 1,
         ]);
         
     }

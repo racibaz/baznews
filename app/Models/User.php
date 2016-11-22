@@ -28,8 +28,7 @@ class User extends Authenticatable
         'language_id',
         'country_id',
         'city_id',
-        'first_name',
-        'last_name',
+        'name',
         'email',
         'password',
         'slug',
@@ -129,10 +128,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Country');
     }
 
-//    public function userable()
-//    {
-//        return $this->morphTo();
-//    }
+    public function social_providers()
+    {
+        return $this->hasMany(SocialProvider::class);
+    }
 
     public function attachments()
     {
@@ -153,12 +152,12 @@ class User extends Authenticatable
 
     public static function UserFullName()
     {
-        return Auth::user()->first_name .' '. Auth::user()->last_name;
+        return Auth::user()->name;
     }
 
     public static function userList()
     {
-        return User::where('status',1)->pluck('first_name', 'id');
+        return User::where('status',1)->pluck('name', 'id');
     }
 
     public function recommendation_news()
@@ -206,8 +205,7 @@ class User extends Authenticatable
 
     public static function validate($input) {
         $rules = array(
-            'first_name'                    => 'required|max:255',
-            'last_name'                     => 'required|max:255',
+            'name'                    => 'required|max:255',
             'email'                         => 'required|Between:3,64|email|Unique:users',
             'password'                      => 'required|min:4|Confirmed',
             'password_confirmation'         => 'required|min:4',

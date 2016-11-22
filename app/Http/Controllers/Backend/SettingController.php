@@ -11,6 +11,7 @@ use App\Repositories\SettingRepository as Repo;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -171,6 +172,5 @@ class SettingController extends Controller
         Session::flash('flash_message', trans('setting.backup_received'));
 
         return Redirect::back();
-
     }
 }

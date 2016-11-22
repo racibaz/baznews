@@ -28,7 +28,7 @@
                             @foreach($records as $record)
                                 <tr>
                                     <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('user.show', $record->first_name . ' ' . $record->last_name, $record, [] ) !!}</td>
+                                    <td>{!! link_to_route('user.show', $record->name, $record, [] ) !!}</td>
                                     <td>{{$record->email}}</td>
                                     <td>
                                         <div class="btn-group">

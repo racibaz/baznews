@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\SocialProvider;
 use App\Models\User;
+use Laravel\Socialite\Facades\Socialite;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -88,5 +90,59 @@ class RegisterController extends Controller
 
         return redirect('/login')->withInfo('Please now activate your account.');
     }
+
+
+    /**
+     * Redirect the user to the GitHub,Google,Facebook,Twitter authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub,Google,Facebook,Twitter
+     *
+     * @return Response
+     */
+    public function handleProviderCallback($provider)
+    {
+        try
+        {
+            $socialUser = Socialite::driver($provider)->user();
+
+        }catch (\Exception $e)
+        {
+            return redirect('/');
+        }
+
+        $socialProvider = SocialProvider::where('provider_id',$socialUser->getId())->first();
+
+        if(!$socialProvider){
+
+            //TODO password alanı zorunlu olduğu için hata veriyor.
+            //social sitelerin register api lerine bakılacak.
+            //create a new user and provider
+            $user = User::firstOrCreate(
+                ['email' => $socialUser->getEmail()],
+                ['name' => $socialUser->getName()]
+            );
+
+            $user->social_providers()->create(
+                ['provider_id' => $socialUser->getId(), 'provider' => $provider]
+            );
+
+        }else{
+            $user = $socialProvider->user;
+        }
+
+        auth()->login($user);
+
+        return redirect('/home');
+    }
+
+
 
 }

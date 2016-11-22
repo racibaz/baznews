@@ -34,19 +34,10 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('first_name', "Kullanıcı Adı",['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('name', "Kullanıcı Adı",['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('first_name', $record->first_name, ['placeholder' => 'Kullanıcı Adı','class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('last_name', "Kullanıcı Soyadı",['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('last_name', $record->last_name, ['placeholder' => 'Kullanıcı Soaydı','class' => 'form-control']) !!}
+                                {!! Form::text('name', $record->name, ['placeholder' => 'Kullanıcı Adı','class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

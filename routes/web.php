@@ -81,6 +81,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 });
 Auth::routes();
 
+
 Route::get('/home', 'HomeController@index');
 Route::get('/activate/token/{token}', 'Auth\ActivationController@activate')->name('auth.activate');
 Route::get('/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
+
+Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
