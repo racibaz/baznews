@@ -16,21 +16,25 @@ use Illuminate\Support\Facades\Route;
 //Auth::loginUsingId(1);
 //Route::auth();
 
-Route::get('/', 'Frontend\IndexController@index')->name('index');
-Route::get('sitemap.xml', 'Frontend\SitemapController@sitemaps')->name('sitemaps');
-Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');
-
-
 Auth::routes();
 
+
+Route::get('/', 'Frontend\IndexController@index')->name('index');
 Route::get('/home', 'HomeController@index');
+Route::get('/account', 'Frontend\AccountController@index')->name('account');
+
+
 Route::get('/activate/token/{token}', 'Auth\ActivationController@activate')->name('auth.activate');
 Route::get('/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
 
 Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
 
+Route::get('sitemap.xml', 'Frontend\SitemapController@sitemaps')->name('sitemaps');
+Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');
 
+
+Route::resource('account', 'Frontend\AccountController');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {

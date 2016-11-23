@@ -198,8 +198,6 @@ return [
         Barryvdh\TranslationManager\ManagerServiceProvider::class,
         Arrilot\Widgets\ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-
-
     ],
 
     /*

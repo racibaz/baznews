@@ -2,22 +2,21 @@
 
 namespace App\Models;
 
-use App\Modules\Biography\Models\Biography;
-use App\Modules\Book\Models\Book;
-use App\Modules\News\Models\RecommendationNews;
+use Request;
 use Venturecraft\Revisionable\Revision;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 
-class User extends Authenticatable
+class Account extends Model
 {
     use EntrustUserTrait;
     use Notifiable;
 
+
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -56,68 +55,6 @@ class User extends Authenticatable
     ];
 
 
-
-
-    public static function boot()
-    {
-        parent::boot();
-
-        if(!app()->runningInConsole() ) {
-
-            if(Auth::check()){
-
-                static::created(function ($user) {
-
-                    $event = new Event();
-                    $event->user_id = Auth::user()->id;
-                    $event->event = 'User Create';
-                    $user->events()->save($event);
-                });
-
-                static::updated(function ($user) {
-
-                    $event = new Event();
-                    $event->user_id = Auth::user()->id;
-                    $event->event = 'User Updated';
-                    $user->events()->save($event);
-                });
-
-                static::deleted(function ($user) {
-
-                    $event = new Event();
-                    $event->user_id = Auth::user()->id;
-                    $event->event = 'User Delete';
-                    $user->events()->save($event);
-                });
-
-            }
-
-        }
-    }
-
-
-    public function groups()
-    {
-        //return $this->belongsToMany('App\Group');
-        return $this->belongsToMany('App\Models\Group');
-    }
-
-    public function roles()
-    {
-        //return $this->belongsToMany('App\Role');
-        return $this->belongsToMany('App\Models\Role','role_user','user_id', 'role_id');
-    }
-
-
-//
-//    /**
-//     * Get all of the owning imageable models.
-//     */
-//    public function userable()
-//    {
-//        return $this->morphTo();
-//    }
-
     public function city()
     {
         return $this->belongsTo('App\Models\City');
@@ -155,31 +92,10 @@ class User extends Authenticatable
         return Auth::user()->name;
     }
 
-    public static function userList()
-    {
-        return User::where('status',1)->pluck('name', 'id');
-    }
-
-    public function recommendation_news()
-    {
-        return $this->hasMany(RecommendationNews::class);
-    }
-
-    public function biographies()
-    {
-        return $this->hasMany(Biography::class);
-    }
-
-    public function books()
-    {
-        return $this->hasMany(Book::class);
-    }
-
     public function activationToken()
     {
         return $this->hasOne(ActivationToken::class);
     }
-
 
     public function events()
     {
@@ -224,5 +140,4 @@ class User extends Authenticatable
     {
         return static::where('email', $email);
     }
-    
 }

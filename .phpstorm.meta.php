@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-11-20.
+    * Generated on 2016-11-23.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -192,6 +192,7 @@ namespace PHPSTORM_META {
             'html' instanceof \Collective\Html\HtmlBuilder,
             'form' instanceof \Collective\Html\FormBuilder,
             'purifier' instanceof \Mews\Purifier\Purifier,
+            'Laravel\Socialite\Contracts\Factory' instanceof \Laravel\Socialite\SocialiteManager,
         ],
         \Illuminate\Contracts\Container\Container::make('') => [
             '' == '@',
@@ -376,6 +377,7 @@ namespace PHPSTORM_META {
             'html' instanceof \Collective\Html\HtmlBuilder,
             'form' instanceof \Collective\Html\FormBuilder,
             'purifier' instanceof \Mews\Purifier\Purifier,
+            'Laravel\Socialite\Contracts\Factory' instanceof \Laravel\Socialite\SocialiteManager,
         ],
         \App::make('') => [
             '' == '@',
@@ -560,6 +562,7 @@ namespace PHPSTORM_META {
             'html' instanceof \Collective\Html\HtmlBuilder,
             'form' instanceof \Collective\Html\FormBuilder,
             'purifier' instanceof \Mews\Purifier\Purifier,
+            'Laravel\Socialite\Contracts\Factory' instanceof \Laravel\Socialite\SocialiteManager,
         ],
         \app('') => [
             '' == '@',
@@ -744,6 +747,7 @@ namespace PHPSTORM_META {
             'html' instanceof \Collective\Html\HtmlBuilder,
             'form' instanceof \Collective\Html\FormBuilder,
             'purifier' instanceof \Mews\Purifier\Purifier,
+            'Laravel\Socialite\Contracts\Factory' instanceof \Laravel\Socialite\SocialiteManager,
         ],
     ];
 }
