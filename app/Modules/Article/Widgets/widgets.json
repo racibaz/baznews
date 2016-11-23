@@ -1,0 +1,10 @@
+{
+  "RecentArticles": {
+    "name": "RecentArticles",
+    "slug": "recent_articles",
+    "module_name": "Article",
+    "namespace": "\\App\\Modules\\Article\\Widgets\\RecentArticles",
+    "version": "1.0",
+    "description": "Recent Articles Widgets"
+  }
+}

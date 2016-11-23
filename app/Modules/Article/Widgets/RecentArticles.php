@@ -23,7 +23,6 @@ class RecentArticles extends AbstractWidget
      */
     public function run()
     {
-
         $recentArticles = Cache::remember('recentArticles', 10, function()  {
 
             $articleRepository = new ArticleRepository();

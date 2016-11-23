@@ -96,19 +96,19 @@
     <br>
     {{--@widget('RecommendationNews')--}}
 
-    @widget('\App\Modules\News\Widgets\RecommendationNews')
+    @foreach($widgets as $widget)
+        <br />
+        @widget($widget['namespace'])
+    @endforeach
 
-    <br />
+    {{--<br />--}}
+    {{--@widget('\App\Modules\Article\Widgets\RecentArticles')--}}
+    {{--<br />--}}
+    {{--@widget('\App\Modules\Book\Widgets\RecentBooks')--}}
+    {{--<br />--}}
+    {{--@widget('\App\Modules\Biography\Widgets\Biographies')--}}
 
-    @widget('\App\Modules\Article\Widgets\RecentArticles')
-    <br />
-
-    @widget('\App\Modules\Book\Widgets\RecentBooks')
-    <br />
-
-    @widget('\App\Modules\Biography\Widgets\Biographies')
-
-
+    
     <br />
     widget ve sitemap rss tabloları yapılacak.
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Menu;
 use App\Models\Setting;
+use App\Models\WidgetManager;
 use App\Modules\Article\Models\Author;
 use App\Modules\Book\Http\Controllers\Frontend\BookController;
 use App\Modules\News\Models\News;
@@ -61,6 +62,9 @@ class IndexController extends Controller
                                                                          ->orderBy('order','asc')
                                                                          ->get();
 
+             $widgets = WidgetManager::where('is_active',1)->get();
+
+
              //TODO setting tek satır yapılacak
              $pageSetting = Setting::all();
 
@@ -99,7 +103,8 @@ class IndexController extends Controller
                 'menus',
                 'photoGalleries',
                 'videoGalleries',
-                'recommendationNewsItems'
+                'recommendationNewsItems',
+                'widgets'
             ))->render();
 
         });

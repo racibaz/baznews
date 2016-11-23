@@ -1,0 +1,10 @@
+{
+  "RecommendationNews": {
+    "name": "RecommendationNews",
+    "slug": "recommendation_news",
+    "module_name": "News",
+    "namespace": "\\App\\Modules\\News\\Widgets\\RecommendationNews",
+    "version": "1.0",
+    "description": "Recommendation News Widget."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "Biographies": {
+    "name": "Biographies",
+    "slug": "biographies",
+    "module_name": "Biography",
+    "namespace": "\\App\\Modules\\Biography\\Widgets\\Biographies",
+    "version": "1.0",
+    "description": "Biography Widget"
+  }
+}

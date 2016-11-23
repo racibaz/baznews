@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\WidgetManager;
 use App\Repositories\WidgetManagerRepository as Repo;
+use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use RecursiveArrayIterator;
+use RecursiveIteratorIterator;
 
 class WidgetManagerController extends Controller
 {
@@ -32,14 +35,20 @@ class WidgetManagerController extends Controller
     public function index()
     {
         $records = $this->repo->findAll();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+
+        $widgets = WidgetManager::getEnableModuleWidgets();
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact('records', 'widgets'));
     }
 
 
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+
+        $widgetGroups = WidgetManager::$widgetGroups;
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'widgetGroups']));
     }
 
 
@@ -57,7 +66,9 @@ class WidgetManagerController extends Controller
 
     public function edit(WidgetManager $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        $widgetGroups = WidgetManager::$widgetGroups;
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'widgetGroups']));
     }
 
 

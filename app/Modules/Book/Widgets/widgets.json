@@ -1,0 +1,10 @@
+{
+  "RecentBooks": {
+    "name": "RecentBooks",
+    "slug": "recent_books",
+    "namespace": "\\App\\Modules\\Book\\Widgets\\RecentBooks",
+    "module_name": "Book",
+    "version": "1.0",
+    "description": "Recent Books Widget"
+  }
+}

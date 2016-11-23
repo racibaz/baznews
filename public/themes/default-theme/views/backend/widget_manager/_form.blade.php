@@ -71,10 +71,10 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('group', trans('widget_manager.group'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('group', "Group",['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('group', $record->group, ['placeholder' => trans('widget_manager.group') ,'class' => 'form-control']) !!}
+                                {!! Form::select('group', $widgetGroups, $record->group, ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

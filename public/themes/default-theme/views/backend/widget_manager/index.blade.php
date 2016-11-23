@@ -9,12 +9,31 @@
                     <i class="fa fa-plus"></i> {{ trans('common.create') }}
                 </a>
             </div>
+
+            <ul>
+
+                {{--{{$widgets['News']['name']}}--}}
+                @foreach($widgets as $widget)
+
+                    <li>{{trans('widget_manager.module_name')}} : {{$widget['module_name']}}</li>
+                        <ul>
+                            <li>{{trans('widget_manager.name')}} : {{$widget['name']}}</li>
+                            <li>{{trans('widget_manager.slug')}} : {{$widget['slug']}}</li>
+                            <li>{{trans('widget_manager.namespace')}} : {{$widget['namespace']}}</li>
+                            <li>{{trans('widget_manager.version')}} : {{$widget['version']}}</li>
+                            <li>{{trans('widget_manager.description')}} : {{$widget['description']}}</li>
+                        </ul>
+                @endforeach
+            </ul>
+
+
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title"><strong>{{trans('widget_manager.managment')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
+
                     <table id="countries" class="table table-bordered table-hover">
                         <thead>
                         <tr>
