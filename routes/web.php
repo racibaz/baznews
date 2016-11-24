@@ -35,6 +35,7 @@ Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');
 
 
 Route::resource('account', 'Frontend\AccountController');
+Route::resource('archives', 'Frontend\ArchivesController');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
