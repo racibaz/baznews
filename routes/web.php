@@ -35,7 +35,7 @@ Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');
 
 
 Route::resource('account', 'Frontend\AccountController');
-Route::resource('archives', 'Frontend\ArchivesController');
+
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
@@ -63,6 +63,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
 
 
+    Route::get('setting/configCache', 'Backend\SettingController@configCache')->name('configCache');
+    Route::get('setting/configClear', 'Backend\SettingController@configClear')->name('configClear');
+    Route::get('setting/routeClear', 'Backend\SettingController@routeClear')->name('routeClear');
+    Route::get('setting/viewClear', 'Backend\SettingController@viewClear')->name('viewClear');
+    Route::get('setting/backUpClean', 'Backend\SettingController@backUpClean')->name('backUpClean');
     Route::get('setting/getBackUp', 'Backend\SettingController@getBackUp')->name('getBackUp');
     Route::get('setting/repairMysqlTables', 'Backend\SettingController@repairMysqlTables')->name('repairMysqlTables');
     Route::get('setting/getAllRedisKey', 'Backend\SettingController@getAllRedisKey')->name('getAllRedisKey');

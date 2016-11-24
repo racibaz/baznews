@@ -28,6 +28,6 @@ $api->version('v1', function ($api) {
 
 
 
-Route::get('/news', function (Request $request) {
-    // return $request->news();
-})->middleware('auth:api');
+//Route::get('/news', function (Request $request) {
+//    // return $request->news();
+//})->middleware('auth:api');

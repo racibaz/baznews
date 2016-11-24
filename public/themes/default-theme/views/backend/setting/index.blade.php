@@ -57,7 +57,11 @@
                             <li><a href="{!! route('getAllRedisKey') !!}"> <span>Cache Verileri Göster</span></a></li>
                             <li><a href="{!! route('flushAllCache') !!}"> <span>Cache Verilerini Sil</span></a></li>
                             <li><a href="{!! route('getBackUp') !!}"> <span>Backup Al</span></a></li>
-
+                            <li><a href="{!! route('backUpClean') !!}"> <span>Backup ları Sil</span></a></li>
+                            <li><a href="{!! route('viewClear') !!}"> <span>View Cache lerini Temizle</span></a></li>
+                            <li><a href="{!! route('routeClear') !!}"> <span>Route Cache lerini Temizle</span></a></li>
+                            <li><a href="{!! route('configClear') !!}"> <span>Konfigirasyon Ayarlarını lerini Temizle</span></a></li>
+                            <li><a href="{!! route('configCache') !!}"> <span>Konfigirasyon Ayarlarını lerini Cache le</span></a></li>
                         </ul>
                         <br /><br />
                     </div>

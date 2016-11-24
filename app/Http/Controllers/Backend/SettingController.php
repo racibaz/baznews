@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\BackUp\BackUpClean;
 use App\Jobs\BackUp\GetBackUp;
 use App\Jobs\Cache\FlushAllCache;
 use App\Jobs\DB\RepairMysqlTables;
@@ -12,13 +13,11 @@ use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Input;
 use Route;
 
 class SettingController extends Controller
@@ -170,6 +169,66 @@ class SettingController extends Controller
 
         Log::info('Backup received.');
         Session::flash('flash_message', trans('setting.backup_received'));
+
+        return Redirect::back();
+    }
+
+    public function backUpClean()
+    {
+        $this->dispatch( new BackUpClean());
+
+        Log::info('Backup cleaned.');
+        Session::flash('flash_message', trans('setting.backup_cleaned'));
+
+        return Redirect::back();
+    }
+
+    //TODO
+    /*
+     * route:cache işlemi yapıldığında bu hatayı alıyoruz.
+     * Unable to prepare route [laravel-filemanager/demo] for serialization. Uses Closure.
+     *
+     * Route lar da clouse yapı kullanıldığı için
+     * https://github.com/laravel/framework/issues/7319#issuecomment-73362932
+     * */
+
+    public function routeClear()
+    {
+        \Artisan::call('route:clear');
+
+        Log::info('Route Cleared.');
+        Session::flash('flash_message', trans('setting.route_cleared'));
+
+        return Redirect::back();
+    }
+
+
+    public function viewClear()
+    {
+        \Artisan::call('view:clear');
+
+        Log::info('View Cleared.');
+        Session::flash('flash_message', trans('setting.view_cleared'));
+
+        return Redirect::back();
+    }
+
+    public function configClear()
+    {
+        \Artisan::call('config:clear');
+
+        Log::info('Config Cleared.');
+        Session::flash('flash_message', trans('setting.config_cleared'));
+
+        return Redirect::back();
+    }
+
+    public function configCache()
+    {
+        \Artisan::call('config:cache');
+
+        Log::info('Config Cache.');
+        Session::flash('flash_message', trans('setting.config_cache'));
 
         return Redirect::back();
     }
