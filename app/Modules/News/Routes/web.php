@@ -16,9 +16,7 @@
 
 Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sitemap');
 
-Route::get('archive', 'Frontend\ArchiveController@getArchive')->name('archive');
-Route::post('archive/{datetime?}', 'Frontend\ArchiveController@postArchive')->name('archive-post');
-
+Route::get('archive/{datetime?}', 'Frontend\ArchiveController@getArchive')->name('archive');
 
 Route::group(['prefix' => 'rss'], function() {
 

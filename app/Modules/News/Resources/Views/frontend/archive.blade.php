@@ -26,7 +26,7 @@
                     <div class="panel-heading">
                         {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                     </div>
-                    {!! Form::open(['route' => 'archive-post','method' => 'post']) !!}
+                    {!! Form::open(['route' => 'archive','method' => 'get']) !!}
 
                             <div class="panel-body">
                                 <div class="form-group">

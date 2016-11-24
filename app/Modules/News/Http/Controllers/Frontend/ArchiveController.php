@@ -10,11 +10,13 @@ use App\Http\Controllers\Controller;
 
 class ArchiveController extends Controller
 {
-    public function getArchive()
+    public function getArchive(Request $request)
     {
+        dd($request['datetime']);
 
         //TODO
         /*
+         * index() yapılacak yıl ve ay haberleri de listelenebilinir.
          * is_datetime gibi birşeyle kontrol edilip get olarak çekilebilinir.
          *
          * */
@@ -22,9 +24,4 @@ class ArchiveController extends Controller
         return Theme::view('news::frontend.archive',compact(['records']));
     }
 
-    public function postArchive($datatime = null)
-    {
-        dd($datatime);
-        return Theme::view('news::frontend.archive',compact(['records']));
-    }
 }
