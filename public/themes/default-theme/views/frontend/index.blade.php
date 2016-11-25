@@ -26,7 +26,7 @@
     <h1>Sayfa Ayarları</h1>
     <br />
     
-
+    <example></example>
 
     <h1>breakNewsItems</h1>
     <br />
@@ -38,7 +38,7 @@
                controls preload="auto" width="640" height="264"
                poster="http://video-js.zencoder.com/oceans-clip.png"
                data-setup='{"example_option":true}'>
-            <source src="https://www.youtube.com/watch?v=k4SysITCN_M" type="video/mp4" />
+            <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
             <source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm" />
             <source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />
             <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
@@ -135,4 +135,6 @@
     <meta name="description" content="{{ Redis::get('description') }}"/>
 @endsection
 
-
+@section('js')
+    <script src="js/app.js"></script>
+@endsection

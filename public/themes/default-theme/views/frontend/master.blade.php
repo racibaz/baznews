@@ -326,6 +326,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ Theme::asset($activeTheme . '::AdminLTE/dist/js/demo.js') }}"></script>
 
+<script src="js/vendor.js"></script>
+
 @yield('js')
 
 </body>

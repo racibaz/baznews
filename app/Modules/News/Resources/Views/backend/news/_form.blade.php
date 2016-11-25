@@ -33,6 +33,9 @@
                 @endif
 
                 <div class="panel-body">
+
+                    <example></example>
+
                     <div class="form-group">
                         <div class="row">
                             {!! Form::label('country_id', trans('news::news.country_id'),['class'=> 'col-lg-2 control-label']) !!}
@@ -621,13 +624,16 @@
                     <h3 class="box-title">{{ trans('news::news.photos') }}</h3>
                 </div>
 
-                {!! Form::open(['route' => 'news_photos_store','method' => 'post']) !!}
+                {!! Form::open(['id' => 'news_photos_store', 'method' => 'post', '@submit.prevent' => 'newsPhotosStore']) !!}
+
+
 
                         <!-- /.box-header -->
                 <div class="box-body">
                     {{--<form role="form">--}}
 
                     {!!  Form::hidden('news_id', $record->id) !!}
+
 
                     <div class="form-group">
                         <div class="row">
@@ -662,6 +668,9 @@
 
 
 @section('js')
+
+
+    <script src="{{ Theme::asset($activeTheme . '::js/backend/components/News.js') }}"></script>
 
     <script src="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
 
