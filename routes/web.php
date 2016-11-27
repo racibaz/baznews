@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/', 'Frontend\IndexController@index')->name('index');
 Route::get('/home', 'HomeController@index');
-Route::get('/account', 'Frontend\AccountController@index')->name('account');
+//Route::get('/account', 'Frontend\AccountController@index')->name('account');
 
 
 Route::get('/activate/token/{token}', 'Auth\ActivationController@activate')->name('auth.activate');

@@ -108,8 +108,7 @@ class UserController extends Controller
         //kendi email adresini daha önce kayıtlı olarak görüyor ve hata veriyor
         //bundan dolayı aynı ise burada unique validasyonunu atlamış oluyoruz.
         $rules = [
-            'first_name'                    => 'required|max:255',
-            'last_name'                     => 'required|max:255',
+            'name'                          => 'required|max:255',
             'email'                         => $input['email'] == $record['email'] ?  'Required|Between:3,64|email' : 'required|string|Between:3,64|Unique:users',
             'password'                      => isset($record->id)  ?   'min:4|Confirmed' : 'required|min:4|Confirmed',
             'password_confirmation'         => isset($record->id)  ? 'min:4' : 'required|min:4',

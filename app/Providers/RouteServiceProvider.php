@@ -47,7 +47,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('rss', 'App\Models\Rss');
         Route::model('widget_manager', 'App\Models\WidgetManager');
         Route::model('theme_manager', 'App\Models\ThemeManager');
-        Route::model('account', 'App\Models\User');
+        Route::model('account', 'App\Models\Account');
         
     }
 

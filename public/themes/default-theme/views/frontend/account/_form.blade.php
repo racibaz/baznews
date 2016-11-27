@@ -25,11 +25,7 @@
                     {{--<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                 </div>
 
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['user.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'user.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
+                {!! Form::model($record, ['route' => ['account.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
 
                 <div class="panel-body">
                     <div class="form-group">
@@ -146,33 +142,6 @@
 
                             <div class="col-lg-10">
                                 {!! Form::text('avatar', $record->avatar, ['placeholder' => trans('user.avatar'), 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {{trans('user.sex')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('sex', null , $record->is_active) !!}
-
-                                        <i></i> {{trans('user.sex')}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {{trans('user.status')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                        <i></i> {{trans('user.status')}}
-                                    </label>
-                                </div>
                             </div>
                         </div>
                     </div>

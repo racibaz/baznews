@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Account;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Event;
 use App\Models\Group;
 use App\Models\Role;
-use App\Models\User;
-use App\Repositories\UserRepository as UseRepo;
+use App\Repositories\AccountRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 
 class AccountController extends Controller
 {
@@ -24,7 +24,7 @@ class AccountController extends Controller
     private $redirectViewName = 'frontend.';
     private $redirectRouteName = '';
 
-    public function __construct(UseRepo $repo)
+    public function __construct(Repo $repo)
     {
         $this->repo= $repo;
     }
@@ -37,12 +37,12 @@ class AccountController extends Controller
 
     public function index()
     {
-        $record = $this->repo->find(\Auth::user()->id);
+        $record = \Auth::user();
         return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
     }
 
 
-    public function show(User $record)
+    public function show(Account $record)
     {
         $revisions = $record->getUserRevisions($record->id);
 
@@ -54,7 +54,7 @@ class AccountController extends Controller
     }
 
 
-    public function edit(User $record)
+    public function edit(Account $record)
     {
         $countries = Country::countryList();
         $cities = City::cityList();
@@ -64,7 +64,7 @@ class AccountController extends Controller
     }
 
 
-    public function update(Request $request, User $record)
+    public function update(Request $request, Account $record)
     {
         return $this->save($record);
     }
@@ -73,6 +73,7 @@ class AccountController extends Controller
     {
         $input = Input::all();
 
+
         $input['status'] = Input::get('status') == "on" ? true : false;
         $input['sex'] = Input::get('sex') == "on" ? true : false;
 
@@ -80,8 +81,7 @@ class AccountController extends Controller
         //kendi email adresini daha önce kayıtlı olarak görüyor ve hata veriyor
         //bundan dolayı aynı ise burada unique validasyonunu atlamış oluyoruz.
         $rules = [
-            'first_name'                    => 'required|max:255',
-            'last_name'                     => 'required|max:255',
+            'name'                          => 'required|max:255',
             'email'                         => $input['email'] == $record['email'] ?  'Required|Between:3,64|email' : 'required|string|Between:3,64|Unique:users',
             'password'                      => isset($record->id)  ?   'min:4|Confirmed' : 'required|min:4|Confirmed',
             'password_confirmation'         => isset($record->id)  ? 'min:4' : 'required|min:4',
