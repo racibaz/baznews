@@ -669,7 +669,6 @@
 
 @section('js')
 
-
     <script src="{{ Theme::asset($activeTheme . '::js/backend/components/News.js') }}"></script>
 
     <script src="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
