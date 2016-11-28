@@ -20,6 +20,8 @@
     15.Social provider register sayfalarına bakılacak paaword sorunu çözülecek.<br/>
     16.Account sayfası yapılacak.(kullanıcı fotosu socialite dan alınabilir mi? gravatar dan da alınabilir.) <br />
     17.Arşiv bölümü yapılacak. <br />
+    18.Scuot ile arama yapılabileek. <br />
+    19.Dashboard Yapılacak <br />
 
 
 

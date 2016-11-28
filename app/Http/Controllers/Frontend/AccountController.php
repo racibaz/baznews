@@ -58,9 +58,7 @@ class AccountController extends Controller
     {
         $countries = Country::countryList();
         $cities = City::cityList();
-        $roles = Role::roleList();
-        $groups = Group::groupList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups']));
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities']));
     }
 
 

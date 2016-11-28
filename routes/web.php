@@ -34,7 +34,9 @@ Route::get('sitemap.xml', 'Frontend\SitemapController@sitemaps')->name('sitemaps
 Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');
 
 
-Route::resource('account', 'Frontend\AccountController');
+Route::resource('account', 'Frontend\AccountController', ['only' => [
+    'index', 'edit', 'update','show'
+]]);
 
 
 

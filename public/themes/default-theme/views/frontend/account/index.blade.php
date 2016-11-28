@@ -1,15 +1,10 @@
-@extends('default-theme::backend.master')
+@extends('default-theme::frontend.master')
 
 @section('content')
 
     <div class="row">
         <div class="col-xs-12">
 
-            <div style="margin-bottom: 20px;">
-                <a href="{{ route('account.create') }}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> {{ trans('common.create') }}
-                </a>
-            </div>
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title"><strong>{{trans('account.managment')}}</strong></h3>

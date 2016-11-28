@@ -33,7 +33,7 @@
                             {!! Form::label('name', "Kullanıcı Adı",['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('name', $record->name, ['placeholder' => 'Kullanıcı Adı','class' => 'form-control']) !!}
+                                {{  $record->name }}
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                             {!! Form::label('email', "E-Posta",['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::email('email', $record->email, ['class' => 'form-control','placeholder' => "E-Posta"]) !!}
+                                {{  $record->email }}
                             </div>
                         </div>
                     </div>
