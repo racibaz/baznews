@@ -20,10 +20,48 @@
     15.Social provider register sayfalarına bakılacak paaword sorunu çözülecek.<br/>
     16.Account sayfası yapılacak.(kullanıcı fotosu socialite dan alınabilir mi? gravatar dan da alınabilir.) <br />
     17.Arşiv bölümü yapılacak.(tarihe göre seçerken api kullanılacak.) <br />
-    18.Scuot ile arama yapılabileek. <br />
+  ++18.Scuot ile arama yapılabileek. <br />
     19.Dashboard Yapılacak <br />
+    20.Status Durumları ENUM yapılacak.(ekranda nasıl listelenecek ona da bakılacak) <br />
 
 
+    APP_ENV=local
+    APP_KEY=base64:Yr/opRj3NViZF9REHlU5WWingI5jLnJ8rkINNNS3nfM=
+    APP_DEBUG=true
+    APP_LOG_LEVEL=debug
+    APP_URL=http://localhost
+
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=baznews
+    DB_USERNAME=homestead
+    DB_PASSWORD=secret
+
+    BROADCAST_DRIVER=log
+    CACHE_DRIVER=redis
+    SESSION_DRIVER=file
+    QUEUE_DRIVER=redis
+
+    REDIS_HOST=127.0.0.1
+    REDIS_PASSWORD=null
+    REDIS_PORT=6379
+
+    MAIL_DRIVER=smtp
+    MAIL_HOST=mailtrap.io
+    MAIL_PORT=2525
+    MAIL_USERNAME=null
+    MAIL_PASSWORD=null
+    MAIL_ENCRYPTION=null
+
+    PUSHER_APP_ID=
+    PUSHER_KEY=
+    PUSHER_SECRET=
+
+    SCOUT_DRIVER=algolia
+    ALGOLIA_APP_ID=RSUIT6WJY7
+    ALGOLIA_SECRET=c0787229689cc39436deb67a27548754
+    SCOUT_QUEUE=true
 
     <h1>Sayfa Ayarları</h1>
     <br />

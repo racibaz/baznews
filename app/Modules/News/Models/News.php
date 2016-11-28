@@ -5,13 +5,17 @@ namespace App\Modules\News\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Scout\Searchable;
 use Venturecraft\Revisionable\RevisionableTrait;
 
 class News extends Model
 {
+    use Searchable;
+
     use RevisionableTrait;
 
     use Sluggable;
+
 
     /**
      * Return the sluggable configuration array for this model.
@@ -24,6 +28,17 @@ class News extends Model
                 'source' => ['title']
             ]
         ];
+    }
+
+
+    /**
+     * Get the index name for the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return 'news';
     }
 
 

@@ -29,7 +29,9 @@
         "rap2hpoutre/laravel-log-viewer": "^0.7.0",
         "barryvdh/laravel-translation-manager": "^0.2.5",
         "arrilot/laravel-widgets": "^3.6",
-        "laravel/socialite": "^2.0"
+        "laravel/socialite": "^2.0",
+        "laravel/scout": "^1.1",
+        "algolia/algoliasearch-client-php": "^1.11"
 
 
     },

@@ -18,6 +18,9 @@ Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sit
 
 Route::get('archive/', 'Frontend\ArchiveController@index')->name('archive_index');
 Route::get('archive/{years?}/{months?}/{days?}/{news_category_id?}', 'Frontend\ArchiveController@getArchive')->name('archive');
+Route::get('q/{q}', 'Frontend\SearchController@index')->name('search');
+
+
 
 
 Route::group(['prefix' => 'rss'], function() {
