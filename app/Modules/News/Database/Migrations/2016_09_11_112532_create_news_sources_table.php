@@ -29,6 +29,6 @@ class CreateNewsSourcesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('news_sources');
+        Schema::dropIfExists('news_sources');
     }
 }

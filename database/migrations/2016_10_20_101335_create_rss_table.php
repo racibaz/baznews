@@ -30,6 +30,6 @@ class CreateRssTable extends Migration
      */
     public function down()
     {
-        Schema::drop('rss');
+        Schema::dropIfExists('rss');
     }
 }

@@ -47,7 +47,7 @@ class CreatePhotosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('news_photos');
-        Schema::drop('photos');
+        Schema::dropIfExists('news_photos');
+        Schema::dropIfExists('photos');
     }
 }

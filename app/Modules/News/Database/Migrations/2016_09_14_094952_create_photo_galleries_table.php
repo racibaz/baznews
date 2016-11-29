@@ -50,7 +50,7 @@ class CreatePhotoGalleriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('news_photo_galleries');
-        Schema::drop('photo_galleries');
+        Schema::dropIfExists('news_photo_galleries');
+        Schema::dropIfExists('photo_galleries');
     }
 }

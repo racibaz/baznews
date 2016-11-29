@@ -36,6 +36,6 @@ class CreatePhotoCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('photo_categories');
+        Schema::dropIfExists('photo_categories');
     }
 }

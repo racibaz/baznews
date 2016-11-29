@@ -31,6 +31,6 @@ class CreateSitemapsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sitemaps');
+        Schema::dropIfExists('sitemaps');
     }
 }

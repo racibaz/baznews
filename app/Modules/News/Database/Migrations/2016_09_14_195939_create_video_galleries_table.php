@@ -46,7 +46,7 @@ class CreateVideoGalleriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('news_video_galleries');
-        Schema::drop('video_galleries');
+        Schema::dropIfExists('news_video_galleries');
+        Schema::dropIfExists('video_galleries');
     }
 }

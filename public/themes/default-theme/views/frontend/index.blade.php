@@ -48,11 +48,11 @@
     REDIS_PORT=6379
 
     MAIL_DRIVER=smtp
-    MAIL_HOST=mailtrap.io
-    MAIL_PORT=2525
-    MAIL_USERNAME=null
-    MAIL_PASSWORD=null
-    MAIL_ENCRYPTION=null
+    MAIL_HOST=smtp.gmail.com
+    MAIL_PORT=465
+    MAIL_USERNAME=hudayianket@gmail.com
+    MAIL_PASSWORD=dd1985ilam
+    MAIL_ENCRYPTION=ssl
 
     PUSHER_APP_ID=
     PUSHER_KEY=

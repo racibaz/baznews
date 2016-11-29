@@ -45,8 +45,8 @@ class CreateGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('group_role');
-        Schema::drop('group_user');
-        Schema::drop('groups');
+        Schema::dropIfExists('group_role');
+        Schema::dropIfExists('group_user');
+        Schema::dropIfExists('groups');
     }
 }

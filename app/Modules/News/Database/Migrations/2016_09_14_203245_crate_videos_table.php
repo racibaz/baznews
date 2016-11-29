@@ -46,7 +46,7 @@ class CrateVideosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('news_videos');
-        Schema::drop('videos');
+        Schema::dropIfExists('news_videos');
+        Schema::dropIfExists('videos');
     }
 }

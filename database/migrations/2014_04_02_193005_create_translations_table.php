@@ -31,7 +31,7 @@ class CreateTranslationsTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('ltm_translations');
+        Schema::dropIfExists('ltm_translations');
 	}
 
 }

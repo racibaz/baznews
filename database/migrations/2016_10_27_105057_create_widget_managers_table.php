@@ -32,6 +32,6 @@ class CreateWidgetManagersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('widget_managers');
+        Schema::dropIfExists('widget_managers');
     }
 }

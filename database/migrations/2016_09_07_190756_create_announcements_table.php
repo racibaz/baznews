@@ -40,7 +40,7 @@ class CreateAnnouncementsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('announcement_group');
-        Schema::drop('announcements');
+        Schema::dropIfExists('announcement_group');
+        Schema::dropIfExists('announcements');
     }
 }
