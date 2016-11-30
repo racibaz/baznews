@@ -25,18 +25,18 @@
                         <div class="panel-heading">
                             {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                         </div>
-                        {!! Form::open(['route' => 'archive','method' => 'get']) !!}
+                        {!! Form::open(['route' => 'archive_index','method' => 'get']) !!}
 
                         <div class="panel-body">
-                            <div class="form-group">
-                                <div class="row">
-                                    {!! Form::label('news_category_id', trans('news::news.selected_all_categories'),['class'=> 'col-lg-2 control-label']) !!}
+                            {{--<div class="form-group">--}}
+                                {{--<div class="row">--}}
+                                    {{--{!! Form::label('news_category', trans('news::news.selected_all_categories'),['class'=> 'col-lg-2 control-label']) !!}--}}
 
-                                    <div class="col-lg-10">
-                                        {!! Form::select('news_category_id', $newsCategoryList , null , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
-                                    </div>
-                                </div>
-                            </div>
+                                    {{--<div class="col-lg-10">--}}
+                                        {{--{!! Form::select('news_category', $newsCategoryList , null , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
                             <div class="form-group">
                                 <div class="row">

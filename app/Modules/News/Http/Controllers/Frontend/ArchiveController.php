@@ -3,6 +3,7 @@
 namespace App\Modules\News\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Modules\News\Models\News;
 use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -21,14 +22,64 @@ class ArchiveController extends Controller
         $this->repo = $repo;
     }
 
-    public function index()
+//    public function index( $years = null, $months = null, $days = null, $news_category = null, Request $request)
+    public function index(Request $request)
     {
-        return Cache::remember('archive-page', 100, function() {
+        $records = [];
+        $years = $request->years;
+        $months = $request->months;
+        $days = $request->days;
 
-            $newsCategoryList = NewsCategory::newsCategoryList();
+        if(!empty($years) && !empty($months) && !empty($days)){
 
-            return Theme::view('news::frontend.archive',compact(['newsCategoryList']))->render();
-        });
+            $datetime = $years . '-' . $months . '-' . $days;
+
+//            $records = $this->repo->where('is_active',1)
+//                                    ->where('status',1)
+//                                    ->where('created_at','>=',$datetime . ' 00:00:00')
+//                                    ->where('created_at','<=',$datetime . ' 23:59:-59')
+//                                    ->get();
+
+
+            $records = News::where('is_active',1)
+                            ->where('status',1)
+                            ->whereBetween('created_at', [$datetime . ' 00:00:00',$datetime . ' 23:59:-59'])
+                            ->get();
+        }
+
+
+//        $newsCategoryList = Cache::remember('newsCategoryList', 100, function() {
+//
+//            return NewsCategory::newsCategoryList();
+//        });
+
+        return Theme::view('news::frontend.archive',compact(['records']));
+
+
+        /*
+         * YEAR(created_at) year,
+       MONTH(created_at) month,
+       MONTHNAME(created_at) month_name,
+         *
+         *
+         *
+         * $posts_by_date = Post::all()->groupBy(function($date) {
+    return Carbon::parse($date->created_at)->format('Y-m');
+});
+         *
+         *
+         *https://laracasts.com/discuss/channels/general-discussion/group-post-by-day
+         *
+         * $posts = Post::all()->groupBy(function($item){ return $item->created_at->format('d-M-y'); })->toArray();
+         * */
+
+
+//        return Cache::remember('archive-page', 100, function() {
+//
+//            $newsCategoryList = NewsCategory::newsCategoryList();
+//
+//            return Theme::view('news::frontend.archive',compact(['newsCategoryList']))->render();
+//        });
     }
 
     //TODO Api ile çekilecek.

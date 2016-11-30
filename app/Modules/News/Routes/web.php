@@ -16,8 +16,12 @@
 
 Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sitemap');
 
-Route::get('archive/', 'Frontend\ArchiveController@index')->name('archive_index');
-Route::get('archive/{years?}/{months?}/{days?}/{news_category_id?}', 'Frontend\ArchiveController@getArchive')->name('archive');
+Route::get('archive/{years?}/{months?}/{days?}', 'Frontend\ArchiveController@index')
+    ->name('archive_index')
+    ->where('years', '[0-9]+')
+    ->where('months', '[0-9]+')
+    ->where('days', '[0-9]+');
+
 Route::get('q/{q}', 'Frontend\SearchController@index')->name('search');
 
 

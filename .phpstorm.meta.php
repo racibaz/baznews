@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-11-29.
+    * Generated on 2016-11-30.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -69,7 +69,6 @@ namespace PHPSTORM_META {
             'modules' instanceof \Caffeinated\Modules\Modules,
             'image' instanceof \Intervention\Image\ImageManager,
             'Cviebrock\EloquentSluggable\SluggableObserver' instanceof \Cviebrock\EloquentSluggable\SluggableObserver,
-            'piwik' instanceof \RobBrazier\Piwik\Piwik,
             'mapper' instanceof \Cornford\Googlmapper\Mapper,
             'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
             'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
@@ -255,7 +254,6 @@ namespace PHPSTORM_META {
             'modules' instanceof \Caffeinated\Modules\Modules,
             'image' instanceof \Intervention\Image\ImageManager,
             'Cviebrock\EloquentSluggable\SluggableObserver' instanceof \Cviebrock\EloquentSluggable\SluggableObserver,
-            'piwik' instanceof \RobBrazier\Piwik\Piwik,
             'mapper' instanceof \Cornford\Googlmapper\Mapper,
             'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
             'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
@@ -441,7 +439,6 @@ namespace PHPSTORM_META {
             'modules' instanceof \Caffeinated\Modules\Modules,
             'image' instanceof \Intervention\Image\ImageManager,
             'Cviebrock\EloquentSluggable\SluggableObserver' instanceof \Cviebrock\EloquentSluggable\SluggableObserver,
-            'piwik' instanceof \RobBrazier\Piwik\Piwik,
             'mapper' instanceof \Cornford\Googlmapper\Mapper,
             'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
             'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
@@ -627,7 +624,6 @@ namespace PHPSTORM_META {
             'modules' instanceof \Caffeinated\Modules\Modules,
             'image' instanceof \Intervention\Image\ImageManager,
             'Cviebrock\EloquentSluggable\SluggableObserver' instanceof \Cviebrock\EloquentSluggable\SluggableObserver,
-            'piwik' instanceof \RobBrazier\Piwik\Piwik,
             'mapper' instanceof \Cornford\Googlmapper\Mapper,
             'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
             'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,

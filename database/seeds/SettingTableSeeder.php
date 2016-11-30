@@ -38,6 +38,16 @@ class SettingTableSeeder extends Seeder
         ]);
 
         Setting::create([
+            'attribute_key'               => 'page_refresh',
+            'attribute_value'             => '<meta http-equiv=\"refresh\" content=\"60\">',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'timezone',
+            'attribute_value'             => 'Europe/Istanbul',
+        ]);
+
+        Setting::create([
             'attribute_key'               => 'logo',
             'attribute_value'             => 'logo.jpg',
         ]);

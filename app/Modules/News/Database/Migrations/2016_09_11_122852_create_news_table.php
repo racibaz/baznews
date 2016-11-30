@@ -32,6 +32,7 @@ class CreateNewsTable extends Migration
             $table->string('map_text')->nullable();
             $table->unsignedInteger('hit')->nullable();
             $table->unsignedInteger('status')->nullable();
+            //$table->enum('choices', array('foo', 'bar'));
             $table->boolean('band_news');
             $table->boolean('box_cuff');
             $table->boolean('is_cuff');

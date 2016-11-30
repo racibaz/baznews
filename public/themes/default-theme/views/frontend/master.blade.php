@@ -35,8 +35,6 @@
     {{--<meta http-equiv="refresh" content="30">--}}
 
 
-
-
     {{--<meta name="abstract" content="">--}}
     {{--<meta name="topic" content="">--}}
     {{--<meta name="summary" content="">--}}
@@ -329,6 +327,24 @@
 <script src="js/vendor.js"></script>
 
 @yield('js')
+
+
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//baznews.app/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//baznews.app/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
 
 </body>
 </html>

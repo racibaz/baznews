@@ -25,7 +25,7 @@
                     {{--<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                 </div>
 
-                {!! Form::model($record, ['route' => ['account.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+                {!! Form::model($record, ['route' => ['account.update', $record], 'method' => 'PATCH']) !!}
 
                 <div class="panel-body">
                     <div class="form-group">
@@ -133,15 +133,6 @@
 
                             <div class="col-lg-10">
                                 {!! Form::text('blood_type', $record->blood_type, ['placeholder' => trans('user.blood_type'), 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('avatar', trans('user.avatar'), ['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('avatar', $record->avatar, ['placeholder' => trans('user.avatar'), 'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

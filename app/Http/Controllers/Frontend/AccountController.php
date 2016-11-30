@@ -72,15 +72,11 @@ class AccountController extends Controller
         $input = Input::all();
 
 
-        $input['status'] = Input::get('status') == "on" ? true : false;
-        $input['sex'] = Input::get('sex') == "on" ? true : false;
 
         //kullanıcı email adresini guncellediğinde email adresini uniqe olduğu için
         //kendi email adresini daha önce kayıtlı olarak görüyor ve hata veriyor
         //bundan dolayı aynı ise burada unique validasyonunu atlamış oluyoruz.
         $rules = [
-            'name'                          => 'required|max:255',
-            'email'                         => $input['email'] == $record['email'] ?  'Required|Between:3,64|email' : 'required|string|Between:3,64|Unique:users',
             'password'                      => isset($record->id)  ?   'min:4|Confirmed' : 'required|min:4|Confirmed',
             'password_confirmation'         => isset($record->id)  ? 'min:4' : 'required|min:4',
         ];
@@ -94,16 +90,12 @@ class AccountController extends Controller
                 ->withInput($input);
         } else {
 
+            $result = null;
+
             if (isset($record->id)) {
-
                 $result = $this->repo->update($record->id, $input);
-
-            } else {
-                $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
             }
+
             if ($result) {
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);

@@ -20,7 +20,6 @@
         "unisharp/laravel-ckeditor": "^4.5",
         "mews/purifier": "^2.0",
         "cviebrock/eloquent-sluggable": "^4.1",
-        "RobBrazier/Piwik": "~2.1",
         "cornford/googlmapper": "2.*",
         "spatie/laravel-backup": "^4.0",
         "dingo/api": "1.0.x@dev",

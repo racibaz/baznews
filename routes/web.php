@@ -21,8 +21,6 @@ Auth::routes();
 
 Route::get('/', 'Frontend\IndexController@index')->name('index');
 Route::get('/home', 'HomeController@index');
-//Route::get('/account', 'Frontend\AccountController@index')->name('account');
-
 
 Route::get('/activate/token/{token}', 'Auth\ActivationController@activate')->name('auth.activate');
 Route::get('/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
@@ -93,7 +91,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 //    Route::get('user_operation/{user_id}', 'UserController@user_operation')->name('user_operation');
 
 
-    Route::get('piwik', 'Backend\PiwikController@index');
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 });
 
