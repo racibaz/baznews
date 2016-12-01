@@ -11,11 +11,13 @@ use App\Library\Uploader;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Tag;
+use App\Modules\News\Models\FutureNews;
 use App\Modules\News\Models\News;
 use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Models\NewsSource;
 use App\Modules\News\Models\Photo;
 use App\Modules\News\Models\PhotoGallery;
+use App\Modules\News\Models\RecommendationNews;
 use App\Modules\News\Models\RelatedNews;
 use App\Modules\News\Models\Video;
 use App\Modules\News\Models\VideoGallery;
@@ -68,15 +70,53 @@ class NewsController extends Controller
             ]);
         $googleMapsRender = Mapper::render();
 
+        $relatedIDs = [];
+        $tagIDs = [];
+        $photoGalleryIDs = [];
+        $videosIDs = [];
+        $photosIDs = [];
+        $videoGalleryIDs = [];
+        $newsList = News::newsAllList();
         $newsCategories = NewsCategory::where('is_active', 1)->get();
         $countryList = Country::countryList();
         $cityList = City::cityList();
         $newsCategoryList = NewsCategory::newsCategoryList();
         $newsSourceList = NewsSource::newsSourceList();
+        $newsSourceList = NewsSource::newsSourceList();
         $statuses = News::$statuses;
+        $futureNews = new FutureNews();
+        $recommendationNews = new RecommendationNews();
+        $tagList = Tag::tagList();
+        $photoGalleriesList = PhotoGallery::photoGalleryList();
+        $videoGalleriesList = VideoGallery::videoGalleryList();
+        $videoList = Video::videoList();
+        $photoList = Photo::photoList();
+
         $record = $this->repo->createModel();
+
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
-            compact(['record', 'countryList', 'cityList', 'newsCategoryList', 'newsSourceList', 'statuses','googleMapsRender','newsCategories']));
+            compact(['record',
+                'newsList',
+                'countryList',
+                'cityList',
+                'newsCategoryList',
+                'newsSourceList',
+                'statuses',
+                'googleMapsRender',
+                'newsCategories',
+                'futureNews',
+                'recommendationNews',
+                'relatedIDs',
+                'tagList',
+                'tagIDs',
+                'photoGalleriesList',
+                'photoGalleryIDs',
+                'videoGalleriesList',
+                'videoGalleryIDs',
+                'videoList',
+                'videosIDs',
+                'photoList',
+                'photosIDs',]));
     }
 
 
@@ -107,6 +147,7 @@ class NewsController extends Controller
         $photoGalleryIDs = [];
         $videosIDs = [];
         $photosIDs = [];
+        $videoGalleryIDs = [];
         $newsList = News::newsAllList();
         $newsCategories = NewsCategory::where('is_active', 1)->get();
         $countryList = Country::countryList();

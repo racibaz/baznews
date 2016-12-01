@@ -283,6 +283,10 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ Theme::asset('default-theme::AdminLTE/dist/js/demo.js') }}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.3/vue.common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.common.js"></script>
+
+
 <script src="/js/vendor.js"></script>
 
 @yield('js')

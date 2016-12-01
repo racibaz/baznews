@@ -1,9 +1,9 @@
 <?php return array (
-  'lifetime' => 1480515545,
+  'lifetime' => 1480594917,
   'data' => 
   array (
     'isBrowserTriggerEnabled' => true,
-    'lastTrackerCronRun' => '1480514918',
+    'lastTrackerCronRun' => 1480594617,
     'allUrlsByHostAndIdSite' => 
     array (
       'baznews.app' => 
