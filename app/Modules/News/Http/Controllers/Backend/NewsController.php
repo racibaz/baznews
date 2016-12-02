@@ -173,6 +173,8 @@ class NewsController extends Controller
             $videosIDs[$index] = $video->id;
         }
 
+
+
         foreach ($record->related_news as $index => $related_new) {
             $relatedIDs[$index] = $related_new->related_news_id;
         }
@@ -233,6 +235,7 @@ class NewsController extends Controller
     {
         $input = Input::all();
 
+
         $input['user_id'] = Auth::user()->id;
         $input['band_news'] = Input::get('band_news') == "on" ? true : false;
         $input['box_cuff'] = Input::get('box_cuff') == "on" ? true : false;
@@ -255,12 +258,9 @@ class NewsController extends Controller
                 $result = $this->repo->update($record->id,$input);
             } else {
                 $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
             }
 
-            if ($result) {
+            if ($result[0]) {
 
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
@@ -278,6 +278,18 @@ class NewsController extends Controller
                     Uploader::removeFile($oldPath);
                 }
 
+
+                $this->news_news_categories_store($result[1],$input);
+                $this->future_news_store($result[1],$input);
+                $this->recommendation_news_store($result[1],$input);
+                $this->related_news_news_store($result[1],$input);
+                $this->tags_news_store($result[1],$input);
+                $this->news_photo_galleries_store($result[1],$input);
+                $this->news_video_galleries_store($result[1],$input);
+                $this->news_videos_store($result[1],$input);
+                $this->news_photos_store($result[1],$input);
+
+
                 //$this->dispatch(new ImageUploader($record, $input['thumbnail'], $destination, $document_name, $document_name));
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
@@ -290,6 +302,130 @@ class NewsController extends Controller
         }
     }
 
+
+    public function news_news_categories_store(News $record, $input)
+    {
+        $record->news_categories()->sync($input['news_category_ids']);
+    }
+
+    public function future_news_store(News $record, $input)
+    {
+        $input['future_news__is_active'] = Input::get('future_news__is_active') == "on" ? true : false;
+
+        if(empty($record)){
+
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
+        }
+
+        if(!empty($input['future_datetime'])){
+
+            if(!empty($record->future_news)) {
+
+                $futureNews = $record->future_news;
+                $futureNews->future_datetime = $input['future_datetime'];
+                $futureNews->is_active = $input['future_news__is_active'];
+                $futureNews->save();
+
+            }else {
+
+                $record->future_news()->create([
+                    'future_datetime'   => $input['future_datetime'],
+                    'is_active'         => $input['future_news__is_active']
+                ]);
+            }
+
+            Log::info('Future news updated by ' . Auth::user()->id);
+            Session::flash('flash_message', trans('news::news.future_news_updated'));
+        }
+
+    }
+
+
+    public function recommendation_news_store(News $record, $input)
+    {
+
+        if(empty($record)){
+
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
+        }
+
+
+        if(!empty($input['recommendation_news_order'])){
+
+            $input['recommendation_news_is_active'] = Input::get('recommendation_news_is_active') == "on" ? true : false;
+            $input['recommendation_news_is_cuff'] = Input::get('recommendation_news_is_cuff') == "on" ? true : false;
+
+            if(!empty($record->recommendation_news)){
+
+                $recommendation_news            = $record->recommendation_news;
+                $recommendation_news->user_id   = Auth::user()->id;
+                $recommendation_news->order     = $input['recommendation_news_order'];
+                $recommendation_news->is_active = $input['recommendation_news_is_active'];
+                $recommendation_news->is_cuff   = $input['recommendation_news_is_cuff'];
+                $recommendation_news->save();
+
+            }else {
+                $record->recommendation_news()->create([
+                    'user_id'   => Auth::user()->id,
+                    'order'   => $input['recommendation_news_order'],
+                    'is_active'   => $input['recommendation_news_is_active'],
+                    'is_cuff'   => $input['recommendation_news_is_cuff'],
+                ]);
+            }
+
+
+            Log::info('Recommendation  news updated by ' . Auth::user()->id);
+            Session::flash('flash_message', trans('news::news.recommendation_news_updated'));
+        }
+
+
+    }
+
+
+    public function related_news_news_store(News $record, $input)
+    {
+//        $record->related_news()->sync($input['related_news_ids']);
+
+        RelatedNews::where('news_id',$record->id)->delete();
+
+        foreach ($input['related_news_ids'] as $in){
+
+            $relatedNews = new RelatedNews();
+            $relatedNews->news_id = $record->id;
+            $relatedNews->related_news_id =  $in;
+            $relatedNews->save();
+        }
+
+    }
+
+    public function tags_news_store(News $record, $input)
+    {
+        $record->tags()->sync($input['tags_ids']);
+    }
+
+    public function news_photo_galleries_store(News $record, $input)
+    {
+        $record->photo_galleries()->sync($input['photo_gallery_ids']);
+    }
+
+    public function news_video_galleries_store(News $record, $input)
+    {
+        $record->video_galleries()->sync($input['video_gallery_ids']);
+    }
+
+    public function news_videos_store(News $record, $input)
+    {
+        $record->videos()->sync($input['videos_ids']);
+    }
+
+    public function news_photos_store(News $record, $input)
+    {
+        $record->photos()->sync($input['photos_ids']);
+    }
 
     public function newsFilter(Request $request)
     {
@@ -362,198 +498,6 @@ class NewsController extends Controller
         $records = $records->paginate(100);
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records', 'newsCategoryList']));
-    }
-
-
-    public function news_news_categories_store(Request $request)
-    {
-        $input = Input::all();
-        $news_id = $input['news_id'];
-
-        unset($input['news_id']);
-        unset($input['_token']);
-
-        $record = News::find($news_id);
-        $record->news_categories()->sync($input);
-
-        return Redirect::back();
-    }
-
-    public function future_news_store(Request $request)
-    {
-        $input = Input::all();
-        $news_id = $input['news_id'];
-        $input['is_active'] = Input::get('is_active') == "on" ? true : false;
-
-        $record = News::find($news_id);
-
-        if(empty($record)){
-
-            return Redirect::back()
-                ->withErrors(trans('common.save_failed'))
-                ->withInput($input);
-        }
-
-        if(empty($input['future_datetime'])){
-
-            return Redirect::back()
-                ->withErrors(trans('common.save_failed'))
-                ->withInput($input);
-        }
-
-
-        $futureNews = $record->future_news;
-        $futureNews->future_datetime = $input['future_datetime'];
-        $futureNews->is_active = $input['is_active'];
-        $futureNews->save();
-
-        Log::info('Future news updated by ' . Auth::user()->id);
-        Session::flash('flash_message', trans('news::news.future_news_updated'));
-        return Redirect::back();
-    }
-
-    public function recommendation_news_store(Request $request)
-    {
-        $input = Input::all();
-        $news_id = $input['news_id'];
-        $input['is_active'] = Input::get('is_active') == "on" ? true : false;
-        $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
-
-        $record = News::find($news_id);
-
-        if(empty($record)){
-
-            return Redirect::back()
-                ->withErrors(trans('common.save_failed'))
-                ->withInput($input);
-        }
-
-        if(empty($input['order'])){
-
-            return Redirect::back()
-                ->withErrors(trans('common.save_failed'))
-                ->withInput($input);
-        }
-
-
-        $rerecommdationNewsController = new RecommendationNewsController( new RecommendationNewsRepository());
-        $rerecommdationNewsController->save($record);
-        //TODO user_id sorunu çözülecek.
-
-//
-//        $recommdationNews = $record->recommendation_news;
-//        $recommdationNews->user_id = Auth::user()->id;
-//        $recommdationNews->order = $input['order'];
-//        $recommdationNews->is_active = $input['is_active'];
-//        $recommdationNews->is_cuff = $input['is_cuff'];
-//        $recommdationNews->save();
-
-
-
-        $this->dispatch(new FlushAll('laravel'));
-
-        Log::info('Recommendation  news updated by ' . Auth::user()->id);
-        Session::flash('flash_message', trans('news::news.future_news_updated'));
-        return Redirect::back();
-    }
-
-
-
-    public function related_news_news_store(Request $request)
-    {
-        $input = Input::all();
-
-        $news_id = $input['news_id'];
-
-        unset($input['news_id']);
-        unset($input['_token']);
-
-        $record = News::find($news_id);
-
-        RelatedNews::where('news_id',$news_id)->delete();
-
-        foreach ($input['related_news_ids'] as $in){
-
-            $relatedNews = new RelatedNews();
-            $relatedNews->news_id = $news_id;
-            $relatedNews->related_news_id =  $in;
-            $relatedNews->save();
-
-        }
-
-        return Redirect::back();
-    }
-
-    public function tags_news_store(Request $request)
-    {
-        $input = Input::all();
-        $news_id = $input['news_id'];
-
-        unset($input['news_id']);
-        unset($input['_token']);
-
-        $record = News::find($news_id);
-        $record->tags()->sync($input['tags_ids']);
-
-        return Redirect::back();
-    }
-
-
-    public function news_photo_galleries_store(Request $request)
-    {
-        $input = Input::all();
-        $news_id = $input['news_id'];
-
-        unset($input['news_id']);
-        unset($input['_token']);
-
-        $record = News::find($news_id);
-        $record->photo_galleries()->sync($input['photo_gallery_ids']);
-
-
-        return Redirect::back();
-    }
-
-    public function news_video_galleries_store(Request $request)
-    {
-        $input = Input::all();
-        $news_id = $input['news_id'];
-
-        unset($input['news_id']);
-        unset($input['_token']);
-
-        $record = News::find($news_id);
-        $record->video_galleries()->sync($input['video_gallery_ids']);
-
-        return Redirect::back();
-    }
-
-    public function news_videos_store(Request $request)
-    {
-        $input = Input::all();
-        $news_id = $input['news_id'];
-
-        unset($input['news_id']);
-        unset($input['_token']);
-
-        $record = News::find($news_id);
-        $record->videos()->sync($input['videos_ids']);
-
-        return Redirect::back();
-    }
-
-    public function news_photos_store(Request $request)
-    {
-        $input = Input::all();
-        $news_id = $input['news_id'];
-
-        unset($input['news_id']);
-        unset($input['_token']);
-
-        $record = News::find($news_id);
-        $record->photos()->sync($input['photos_ids']);
-
-        return Redirect::back();
     }
     
 }

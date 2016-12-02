@@ -200,51 +200,51 @@
     </div><!-- end row -->
 
 
-        <div class="col-md-6">
-            <!-- general form elements disabled -->
-            <div class="box box-warning">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Kullanıcı Rol Yonetimi</h3>
-                </div>
-
-            <!-- /.box-header -->
-                <div class="box-body">
-
-                    @foreach($roles as $role)
-                        <div class="form-group">
-                            {{ $role->name }} :
-                            {!! Form::checkbox('role_user_store_' . $role->id, $role->id, in_array($role->name , $record->roles->pluck('name')->toArray())) !!}
-                        </div>
-                    @endforeach
-
-                </div>
-                <!-- /.box-body -->
+    <div class="col-md-6">
+        <!-- general form elements disabled -->
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">Kullanıcı Rol Yonetimi</h3>
             </div>
-            <!-- /.box -->
-        </div>
-        <div class="col-md-6">
-            <!-- general form elements disabled -->
-            <div class="box box-warning">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Kullanıcı Grup Yonetimi</h3>
-                </div>
 
-            <!-- /.box-header -->
-                <div class="box-body">
-                    {{--<form role="form">--}}
+        <!-- /.box-header -->
+            <div class="box-body">
 
-                    @foreach($groups as $group)
-                        <div class="form-group">
-                            {{ $group->name }} :
-                            {!! Form::checkbox('group_user_store_' . $group->id, $group->id, in_array($group->name , $record->groups->pluck('name')->toArray())) !!}
-                        </div>
-                    @endforeach
+                @foreach($roles as $role)
+                    <div class="form-group">
+                        {{ $role->name }} :
+                        {!! Form::checkbox('role_user_store_[]', $role->id, in_array($role->id , $record->roles->pluck('id')->toArray())) !!}
+                    </div>
+                @endforeach
 
-                </div>
-                <!-- /.box-body -->
             </div>
-            <!-- /.box -->
+            <!-- /.box-body -->
         </div>
+        <!-- /.box -->
+    </div>
+    <div class="col-md-6">
+        <!-- general form elements disabled -->
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">Kullanıcı Grup Yonetimi</h3>
+            </div>
+
+        <!-- /.box-header -->
+            <div class="box-body">
+                {{--<form role="form">--}}
+
+                @foreach($groups as $group)
+                    <div class="form-group">
+                        {{ $group->name }} :
+                        {!! Form::checkbox('group_user_store_[]', $group->id, in_array($group->id , $record->groups->pluck('id')->toArray())) !!}
+                    </div>
+                @endforeach
+
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
 
 
     {!! Form::close() !!}

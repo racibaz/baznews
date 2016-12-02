@@ -17,6 +17,12 @@
             <!--Top breadcrumb start -->
         </div>
     </div>
+
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['news.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'news.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
     <!-- Main Content Element  Start-->
     <div class="row">
         <div class="col-md-6">
@@ -26,15 +32,7 @@
                     {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                 </div>
 
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['news.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'news.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
-
                 <div class="panel-body">
-
-                    <example></example>
 
                     <div class="form-group">
                         <div class="row">
@@ -305,7 +303,6 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
             </div>
         </div>
 
@@ -316,25 +313,17 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('news::news.select_categories') }}</h3>
                 </div>
-
-                {!! Form::open(['route' => 'news_news_categories_store','method' => 'post']) !!}
-
                         <!-- /.box-header -->
                 <div class="box-body">
                     {{--<form role="form">--}}
 
-                    {!!  Form::hidden('news_id', $record->id) !!}
                     @foreach($newsCategories as $newsCategory)
                         <div class="form-group">
-                            {!! Form::checkbox($newsCategory->id, $newsCategory->id, in_array($newsCategory->id , $record->news_categories->pluck('id')->toArray())) !!} :
+                            {!! Form::checkbox('news_category_ids[]' . $newsCategory->id, $newsCategory->id, in_array($newsCategory->id , $record->news_categories->pluck('id')->toArray())) !!} :
                             {{ $newsCategory->name }}
                         </div>
                     @endforeach
 
-                    <div class="box-footer">
-                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
-                    </div>
-                    {!! Form::close() !!}
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -345,43 +334,35 @@
             <!-- general form elements disabled -->
             <div class="box box-warning">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{ trans('news::news.future_news') }}</h3>
+                    <h3 class="box-title">{{ trans('news::news.future_datetime') }}</h3>
                 </div>
-
-                {!! Form::open(['route' => 'future_news_store','method' => 'post']) !!}
-
                         <!-- /.box-header -->
                 <div class="box-body">
                     {{--<form role="form">--}}
 
-                    {!!  Form::hidden('news_id', $record->id) !!}
                     <div class="form-group">
                         <div class="row">
                             {!! Form::label('future_datetime', trans('news::news.future_datetime'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('future_datetime', $futureNews->future_datetime , ['placeholder' => trans('news::news.future_datetime') ,'class' => 'form-control']) !!}
+                                {!! Form::text('future_datetime', isset($futureNews) ? $futureNews->future_datetime : null , ['placeholder' => trans('news::news.future_datetime') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {{trans('news::news.future_news_is_active')}}
+                            {{trans('news::news.future_news__is_active')}}
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
-                                        {!! Form::checkbox('is_active', null , $futureNews->is_active) !!}
-                                        <i></i> {{trans('news::news.future_news_is_active')}}
+                                        {!! Form::checkbox('future_news__is_active', null , isset($futureNews) ? $futureNews->is_active : null) !!}
+                                        <i></i> {{trans('news::news.future_news__is_active')}}
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="box-footer">
-                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
-                    </div>
-                    {!! Form::close() !!}
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -394,21 +375,15 @@
                     <h3 class="box-title">{{ trans('news::news.recommendation_news') }}</h3>
                 </div>
 
-                {!! Form::open(['route' => 'recommendation_news_store','method' => 'post']) !!}
-
-                        <!-- /.box-header -->
+                <!-- /.box-header -->
                 <div class="box-body">
-                    {{--<form role="form">--}}
-
-                    {!!  Form::hidden('news_id', $record->id) !!}
-                    {!!  Form::hidden('user_id', Auth::user()->id) !!}
 
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('order', trans('news::news.recommendation_news_order'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('recommendation_news_order', trans('news::news.recommendation_news_order'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::number('order', $recommendationNews->order , ['placeholder' => trans('news::news.recommendation_news_order') ,'class' => 'form-control']) !!}
+                                {!! Form::number('recommendation_news_order', isset($recommendationNews) ?  $recommendationNews->order : null, ['placeholder' => trans('news::news.recommendation_news_order') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -418,7 +393,7 @@
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
-                                        {!! Form::checkbox('is_cuff', null , $recommendationNews->is_active) !!}
+                                        {!! Form::checkbox('recommendation_news_is_cuff', null , isset($recommendationNews) ? $recommendationNews->is_cuff : null) !!}
                                         <i></i> {{trans('news::news.recommendation_news_is_cuff')}}
                                     </label>
                                 </div>
@@ -431,18 +406,13 @@
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
-                                        {!! Form::checkbox('is_active', null , $recommendationNews->is_active) !!}
+                                        {!! Form::checkbox('recommendation_news_is_active', null , isset($recommendationNews) ? $recommendationNews->is_active : null) !!}
                                         <i></i> {{trans('news::news.recommendation_news_is_active')}}
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="box-footer">
-                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
-                    </div>
-                    {!! Form::close() !!}
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -455,13 +425,8 @@
                     <h3 class="box-title">{{ trans('news::news.related_news') }}</h3>
                 </div>
 
-            {!! Form::open(['route' => 'related_news_news_store','method' => 'post']) !!}
-
             <!-- /.box-header -->
                 <div class="box-body">
-                    {{--<form role="form">--}}
-
-                    {!!  Form::hidden('news_id', $record->id) !!}
 
                     <div class="form-group">
                         <div class="row">
@@ -473,9 +438,7 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
                     </div>
-                    {!! Form::close() !!}
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -487,8 +450,6 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('news::news.tags') }}</h3>
                 </div>
-
-            {!! Form::open(['route' => 'tags_news_store','method' => 'post']) !!}
 
             <!-- /.box-header -->
                 <div class="box-body">
@@ -506,9 +467,7 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
                     </div>
-                    {!! Form::close() !!}
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -521,14 +480,9 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('news::news.photo_galleries') }}</h3>
                 </div>
-
-                {!! Form::open(['route' => 'news_photo_galleries_store','method' => 'post']) !!}
-
                         <!-- /.box-header -->
                 <div class="box-body">
                     {{--<form role="form">--}}
-
-                    {!!  Form::hidden('news_id', $record->id) !!}
 
                     <div class="form-group">
                         <div class="row">
@@ -540,9 +494,7 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
                     </div>
-                    {!! Form::close() !!}
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -555,14 +507,9 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('news::news.video_galleries') }}</h3>
                 </div>
-
-                {!! Form::open(['route' => 'news_video_galleries_store','method' => 'post']) !!}
-
                         <!-- /.box-header -->
                 <div class="box-body">
                     {{--<form role="form">--}}
-
-                    {!!  Form::hidden('news_id', $record->id) !!}
 
                     <div class="form-group">
                         <div class="row">
@@ -574,9 +521,7 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
                     </div>
-                    {!! Form::close() !!}
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -589,14 +534,9 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('news::news.videos') }}</h3>
                 </div>
-
-                {!! Form::open(['route' => 'news_videos_store','method' => 'post']) !!}
-
                         <!-- /.box-header -->
                 <div class="box-body">
                     {{--<form role="form">--}}
-
-                    {!!  Form::hidden('news_id', $record->id) !!}
 
                     <div class="form-group">
                         <div class="row">
@@ -608,9 +548,8 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
+
                     </div>
-                    {!! Form::close() !!}
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -623,18 +562,9 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('news::news.photos') }}</h3>
                 </div>
-
-                {!! Form::open(['id' => 'news_photos_store', 'method' => 'post', '@submit.prevent' => 'newsPhotosStore']) !!}
-
-
-
                         <!-- /.box-header -->
                 <div class="box-body">
                     {{--<form role="form">--}}
-
-                    {!!  Form::hidden('news_id', $record->id) !!}
-
-
                     <div class="form-group">
                         <div class="row">
                             {!! Form::label('photos', trans('news::news.photos'),['class'=> 'col-lg-2 control-label']) !!}
@@ -645,19 +575,18 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
                     </div>
-                    {!! Form::close() !!}
                 </div>
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
         </div>
-
-
     </div><!-- end row -->
+
+    {!! Form::close() !!}
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->
+
 
 @endsection
 
@@ -669,15 +598,6 @@
 
 @section('js')
 
-
-    <script>
-        Vue.http.post('/someUrl', [body], [options]).then(successCallback, errorCallback);
-
-    </script>
-
-
-
-    {{--<script src="{{ Theme::asset($activeTheme . '::js/backend/components/News.js') }}"></script>--}}
 
     <script src="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
 

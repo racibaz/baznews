@@ -13,8 +13,7 @@ class RelatedNews extends Model
 
     public function news()
     {
-        return $this->belongsTo(News::class);
-
+        return $this->belongsToMany(News::class);
     }
 
     public static function validate($input) {

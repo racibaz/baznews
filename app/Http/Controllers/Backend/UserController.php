@@ -149,30 +149,12 @@ class UserController extends Controller
 
     public function role_user_store(User $record, $input)
     {
-        $role_user_store_inputs= [];
-        //role_user_store input verilerini alıyoruz
-        foreach ($input as $key =>  $value)
-        {
-            if (strpos($key, 'role_user_store_') !== false) {
-                $role_user_store_inputs[$key] = $value;
-            }
-        }
-
-        $record->roles()->sync($role_user_store_inputs);
+        $record->roles()->sync($input['role_user_store_']);
     }
 
 
     public function group_user_store(User $record, $input)
     {
-        $group_user_store_inputs= [];
-        //role_user_store input verilerini alıyoruz
-        foreach ($input as $key =>  $value)
-        {
-            if (strpos($key, 'group_user_store_') !== false) {
-                $group_user_store_inputs[$key] = $value;
-            }
-        }
-
-        $record->groups()->sync($group_user_store_inputs);
+        $record->groups()->sync($input['group_user_store_']);
     }
 }

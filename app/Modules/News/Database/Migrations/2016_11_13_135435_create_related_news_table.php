@@ -14,6 +14,7 @@ class CreateRelatedNewsTable extends Migration
     public function up()
     {
         Schema::create('related_news', function (Blueprint $table) {
+
             $table->unsignedInteger('news_id')->index();
             $table->unsignedInteger('related_news_id')->index();
 
@@ -22,16 +23,6 @@ class CreateRelatedNewsTable extends Migration
             $table->foreign('related_news_id')->references('id')->on('news')->onDelete('cascade')->onUpdate('cascade');
         });
 
-//        Schema::create('related_news_news', function (Blueprint $table) {
-//            $table->unsignedInteger('news_id')->index();
-//            $table->unsignedInteger('related_news_id')->index();
-//            $table->timestamps();
-//
-//            // Keys
-//            $table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
-//            $table->foreign('related_news_id')->references('id')->on('news')->onDelete('cascade');
-//
-//        });
     }
 
     /**
@@ -41,7 +32,6 @@ class CreateRelatedNewsTable extends Migration
      */
     public function down()
     {
-//        Schema::dropIfExists('related_news_news');
         Schema::dropIfExists('related_news');
     }
 }

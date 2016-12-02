@@ -96,6 +96,11 @@ class News extends Model
         return $this->belongsToMany('App\Modules\News\Models\Video', 'news_videos', 'news_id', 'video_id');
     }
 
+    public function related_news()
+    {
+        return $this->hasMany(RelatedNews::class);
+    }
+
     public function country()
     {
         return $this->belongsTo('App\Models\Country');
@@ -121,10 +126,6 @@ class News extends Model
         return $this->hasOne(RecommendationNews::class);
     }
 
-    public function related_news()
-    {
-        return $this->hasMany(RelatedNews::class);
-    }
 
     public function tags()
     {
