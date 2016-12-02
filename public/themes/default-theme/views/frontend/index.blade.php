@@ -74,20 +74,31 @@
         {{$breakNewsItem->title}} <br/>
 
 
-        <video id="example_video_1" class="video-js vjs-default-skin"
-               controls preload="auto" width="640" height="264"
-               poster="http://video-js.zencoder.com/oceans-clip.png"
-               data-setup='{"example_option":true}'>
-            <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
-            <source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm" />
-            <source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />
-            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+        {{--<video id="example_video_1" class="video-js vjs-default-skin"--}}
+               {{--controls preload="auto" width="640" height="264"--}}
+               {{--poster="http://video-js.zencoder.com/oceans-clip.png"--}}
+               {{--data-setup='{"example_option":true}'>--}}
+            {{--<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />--}}
+            {{--<source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm" />--}}
+            {{--<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />--}}
+            {{--<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>--}}
+        {{--</video>--}}
+
+
+
+
+
+        <video
+                id="{{$breakNewsItem->id}}"
+                class="video-js vjs-default-skin"
+                controls
+                width="640" height="264"
+                data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{!! $breakNewsItem->video_embed !!}"}] }'
+        >
         </video>
 
-        <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
 
-
-        {!! $breakNewsItem->video_embed !!} <br/>
+         <br/>
     @endforeach
 
     <h1>bandNewsItem</h1>
@@ -198,6 +209,14 @@
     <meta name="description" content="{{ Redis::get('description') }}"/>
 @endsection
 
+
+@section('css')
+    <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
+@endsection
+
 @section('js')
     <script src="js/app.js"></script>
+
+    <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>
 @endsection
