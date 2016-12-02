@@ -1,3 +1,0 @@
-task,output
-Piwik\Plugins\ExamplePlugin\Tasks.myTask,Time elapsed: 0.000s
-Piwik\Plugins\CustomPiwikJs\Tasks.updateTracker,Time elapsed: 0.140s

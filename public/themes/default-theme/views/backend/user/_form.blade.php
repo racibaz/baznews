@@ -17,6 +17,13 @@
             <!--Top breadcrumb start -->
         </div>
     </div>
+
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['user.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'user.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
+
     <!-- Main Content Element  Start-->
     <div class="row">
         <div class="col-md-6">
@@ -24,12 +31,6 @@
                 <div class="panel-heading">
                     {{--<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                 </div>
-
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['user.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'user.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
 
                 <div class="panel-body">
                     <div class="form-group">
@@ -193,12 +194,12 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                {{--{!! Form::close() !!}--}}
             </div>
         </div>
     </div><!-- end row -->
 
-    @if(isset($record->id))
+
         <div class="col-md-6">
             <!-- general form elements disabled -->
             <div class="box box-warning">
@@ -206,25 +207,16 @@
                     <h3 class="box-title">Kullanıcı Rol Yonetimi</h3>
                 </div>
 
-            {!! Form::open(['route' => 'role_user_store','method' => 'post']) !!}
-
             <!-- /.box-header -->
                 <div class="box-body">
-                    {{--<form role="form">--}}
-
-                    {!!  Form::hidden('user_id', $record->id) !!}
 
                     @foreach($roles as $role)
                         <div class="form-group">
                             {{ $role->name }} :
-                            {!! Form::checkbox($role->name, $role->id, in_array($role->name , $record->roles->pluck('name')->toArray())) !!}
+                            {!! Form::checkbox('role_user_store_' . $role->id, $role->id, in_array($role->name , $record->roles->pluck('name')->toArray())) !!}
                         </div>
                     @endforeach
 
-                    <div class="box-footer">
-                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
-                    </div>
-                    {!! Form::close() !!}
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -237,31 +229,25 @@
                     <h3 class="box-title">Kullanıcı Grup Yonetimi</h3>
                 </div>
 
-            {!! Form::open(['route' => 'group_user_store','method' => 'post']) !!}
-
             <!-- /.box-header -->
                 <div class="box-body">
                     {{--<form role="form">--}}
 
-                    {!!  Form::hidden('user_id', $record->id) !!}
-
                     @foreach($groups as $group)
                         <div class="form-group">
                             {{ $group->name }} :
-                            {!! Form::checkbox($group->name, $group->id, in_array($group->name , $record->groups->pluck('name')->toArray())) !!}
+                            {!! Form::checkbox('group_user_store_' . $group->id, $group->id, in_array($group->name , $record->groups->pluck('name')->toArray())) !!}
                         </div>
                     @endforeach
 
-                    <div class="box-footer">
-                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
-                    </div>
-                    {!! Form::close() !!}
                 </div>
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
         </div>
-    @endif
+
+
+    {!! Form::close() !!}
 
 
 

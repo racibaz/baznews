@@ -129,11 +129,13 @@ class UserController extends Controller
 
             } else {
                 $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
             }
-            if ($result) {
+            if ($result[0]) {
+
+                $this->role_user_store($result[1],$input);
+
+                $this->group_user_store($result[1],$input);
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {
@@ -144,45 +146,33 @@ class UserController extends Controller
         }
     }
 
-    public function role_user_store(Request $request)
+
+    public function role_user_store(User $record, $input)
     {
-        $input = Input::all();
-        $user_id = $input['user_id'];
-
-
-        unset($input['user_id']);
-        unset($input['_token']);
-
-        if(count($input) < 1){
-            return Redirect::back();
+        $role_user_store_inputs= [];
+        //role_user_store input verilerini alıyoruz
+        foreach ($input as $key =>  $value)
+        {
+            if (strpos($key, 'role_user_store_') !== false) {
+                $role_user_store_inputs[$key] = $value;
+            }
         }
 
-        $user = $this->repo->find($user_id);
-
-        $user->roles()->sync($input);
-
-        //$roller = $user->roles->lists('name')->toArray();
-        //dd($roller);
-
-        return Redirect::back();
+        $record->roles()->sync($role_user_store_inputs);
     }
 
-    public function group_user_store(Request $request)
+
+    public function group_user_store(User $record, $input)
     {
-        $input = Input::all();
-        $user_id = $input['user_id'];
-
-        unset($input['user_id']);
-        unset($input['_token']);
-
-        if(count($input) < 1){
-            return Redirect::back();
+        $group_user_store_inputs= [];
+        //role_user_store input verilerini alıyoruz
+        foreach ($input as $key =>  $value)
+        {
+            if (strpos($key, 'group_user_store_') !== false) {
+                $group_user_store_inputs[$key] = $value;
+            }
         }
 
-        $user = $this->repo->find($user_id);
-        $user->groups()->sync($input);
-
-        return Redirect::back();
+        $record->groups()->sync($group_user_store_inputs);
     }
-    
 }
