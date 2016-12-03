@@ -96,6 +96,11 @@ class User extends Authenticatable
     }
 
 
+    public function routeNotificationForPusherPushNotifications()
+    {
+        //
+    }
+
     public function groups()
     {
         //return $this->belongsToMany('App\Group');

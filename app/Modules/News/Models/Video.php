@@ -32,7 +32,7 @@ class Video extends Model
      *
      *
      * */
-    protected $fillable = ['video_gallery_id', 'name', 'slug', 'file', 'link','description', 'keywords', 'order', 'is_active'];
+    protected $fillable = ['video_gallery_id', 'name', 'slug', 'subtitle', 'file', 'link', 'content', 'keywords', 'order', 'is_active'];
 
     public function video_gallery()
     {

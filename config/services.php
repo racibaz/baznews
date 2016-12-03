@@ -49,6 +49,10 @@ return [
         'client_secret' => 'YCYdN2chSeEAveuA2-p-JUtk',
         'redirect' => 'http://baznews.app/auth/google/callback',
     ],
+    'onesignal' => [
+        'app_id' => env('ONESIGNAL_APP_ID'),
+        'rest_api_key' => env('ONESIGNAL_REST_API_KEY')
+    ]
 
 
 

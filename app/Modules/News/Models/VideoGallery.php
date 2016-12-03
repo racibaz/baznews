@@ -45,7 +45,7 @@ class VideoGallery extends Model
 
     public function videos()
     {
-        return $this->hasMany('App\Modules\News\Models\Videos');
+        return $this->hasMany('App\Modules\News\Models\Video');
     }
 
     public static function validate($input) {

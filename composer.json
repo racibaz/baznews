@@ -30,7 +30,8 @@
         "arrilot/laravel-widgets": "^3.6",
         "laravel/socialite": "^2.0",
         "laravel/scout": "^1.1",
-        "algolia/algoliasearch-client-php": "^1.11"
+        "algolia/algoliasearch-client-php": "^1.11",
+        "laravel-notification-channels/pusher-push-notifications": "^1.0"
 
 
     },

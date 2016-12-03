@@ -3,10 +3,12 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Modules\News\Models\Video;
 use App\Modules\News\Models\VideoCategory;
 use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\VideoGalleryRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -112,4 +114,105 @@ class VideoGalleryController extends Controller
             }
         }
     }
+
+
+    public function addMultiVideosView($video_gallery_id)
+    {
+        $video_gallery = VideoGallery::find($video_gallery_id);
+
+        return Theme::view('news::' . $this->redirectViewName . $this->view . 'add_multi_videos_view', compact(['video_gallery']));
+    }
+
+    //TODO YOUTUBE CLONE EĞİTİMİNDE Kİ GİBİ YAPILACAK JOB,QUEUE VS..
+    public function addMultiVideos(Request $request)
+    {
+        $gallery = VideoGallery::find($request->input('video_gallery_id'));
+
+        $file = $request->file('file');
+
+        $fileName = uniqid() . $file->getClientOriginalName();
+
+        $basePath = 'gallery/' . $gallery->slug . '/videos/';
+
+        $file->move($basePath, $fileName);
+
+        //TODO  Storage facede ile cloud işlemleri de yapılabilecek.
+
+        $photo = $gallery->videos()->create([
+            'video_gallery_id'  => $gallery->id,
+            'name'              => $fileName,
+            'slug'              => str_slug($fileName),
+            'file'              => $basePath . $fileName,
+            'is_active'         => 1
+        ]);
+
+        return $photo;
+    }
+
+
+
+    public function updateGalleryVideos(Request $request)
+    {
+        $subtitle = $content = null;
+
+        $inputs = Input::all();
+
+        unset($inputs['_token']);
+
+        //form name alanından gönderdiğimiz  photo id lerini alıyoruz
+        //value alanlarını subtitle ve content ile değiştiriyoruz.
+        foreach (array_keys($inputs) as $key)
+        {
+            if(!empty($inputs[$key]))
+            {
+                /*
+                 * $fields[0] değeri content veya subtitle olabiliyor
+                 * $fields[1] değeri ise formdan verdiğimiz id oluyor.
+                 * */
+
+                $fields = explode('/',$key);
+
+                $field = $fields[0];
+                $id = $fields[1];
+
+                if($field == 'delete'){
+                    try{
+                        $video =  Video::find($id)->delete();
+                        //TODO video nun dosyaları da silinecek.
+                        continue;
+                    }catch (Exception $e)
+                    {
+                        //todo log yazılacak
+                    }
+
+                }else if($field == 'subtitle'){
+
+                    $subtitle = $inputs[$key];
+
+                }else if($field == 'content'){
+
+                    $content = $inputs[$key];
+                }
+
+
+
+                if(is_numeric($id)){
+
+                    $video = Video::find($id);
+                    //ikisinden biri boş ise önceki değerini veriyoruz.
+                    $video->subtitle =  htmlentities($subtitle) ? htmlentities($subtitle) : $video->subtitle;
+                    $video->content =  htmlentities($content) ? htmlentities($content) : $video->content;
+                    $video->save();
+                }
+
+                //değişkenleri temizliyoruz.
+                $subtitle = null;
+                $content = null;
+            }
+
+        }
+
+        return Redirect::back();
+    }
+
 }

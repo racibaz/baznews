@@ -33,11 +33,9 @@
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('video_gallery.destroy',  $record))) !!}
-
-                                            {!! link_to_route('video_gallery.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-
-
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                                {!! link_to_route('add_multi_videos_view', trans('common.add_multi_videosView'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                                {!! link_to_route('video_gallery.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                                {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
                                             {!! Form::close() !!}
                                         </div>
                                     </td>

@@ -212,6 +212,8 @@
 
 @section('css')
     <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
+
+    <link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">
 @endsection
 
 @section('js')
@@ -219,4 +221,37 @@
 
     <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>
+
+
+    <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>
+
+
+    <script>
+
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('72259496952df9087a50', {
+            cluster: 'eu',
+            encrypted: true
+        });
+
+        var channel = pusher.subscribe('test_channel');
+        channel.bind('my_event', function(data) {
+
+//                alert(data.title + ' ' + data.message );
+            var n = noty({text: data.title + ' ' + data.message});
+
+        });
+    </script>
+
 @endsection

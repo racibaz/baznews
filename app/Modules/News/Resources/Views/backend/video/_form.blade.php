@@ -79,10 +79,10 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('description', trans('news::video.description'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('content', trans('news::video.content'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('description', $record->description, ['placeholder' => trans('news::video.description') ,'class' => 'form-control']) !!}
+                                {!! Form::text('content', $record->content, ['placeholder' => trans('news::video.content') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

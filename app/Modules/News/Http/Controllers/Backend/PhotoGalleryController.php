@@ -8,11 +8,13 @@ use App\Modules\News\Models\PhotoCategory;
 use App\Modules\News\Models\PhotoGallery;
 use App\Modules\News\Repositories\PhotoGalleryRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
+use League\Flysystem\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
 
 class PhotoGalleryController extends Controller
 {
@@ -134,12 +136,16 @@ class PhotoGalleryController extends Controller
 
         $file->move($basePath, $fileName);
 
+        //TODO  Storage facede ile cloud işlemleri de yapılabilecek.
+//        Storage::put($basePath , $file);
+//        $path = Storage::put($basePath , \File::get($file));
+//        Storage::disk('public')->put($fileName,\File::get($file));
 
         $photo = $gallery->photos()->create([
             'photo_gallery_id'  => $gallery->id,
             'name'              => $fileName,
             'slug'              => str_slug($fileName),
-            'file'              => 'galley/photos/' . $fileName,
+            'file'              => $basePath . $fileName,
             'is_active'         => 1
         ]);
 
@@ -172,7 +178,19 @@ class PhotoGalleryController extends Controller
                 $field = $fields[0];
                 $id = $fields[1];
 
-                if($field == 'subtitle'){
+                if($field == 'delete'){
+
+                    try{
+
+                        Photo::find($id)->delete();
+                        //TODO video nun dosyaları da silinecek.
+                        continue;
+                    }catch (Exception $e)
+                    {
+                        //todo log yazılacak
+                    }
+
+                }else if($field == 'subtitle'){
 
                     $subtitle = $inputs[$key];
 
@@ -198,6 +216,8 @@ class PhotoGalleryController extends Controller
             }
 
         }
+
+        return Redirect::back();
     }
 
 

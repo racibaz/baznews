@@ -20,8 +20,24 @@
 
                         @foreach($photo_gallery->photos as $photo)
                             <li>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        {{trans('news::news.delete_photo')}}
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <div class="checkbox i-checks">
+                                                <label>
+                                                    {!! Form::checkbox('delete/' . $photo->id, null , null) !!}
+                                                    <i></i> {{trans('news::news.delete_photo')}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                                 {{--<a href="{{$photo->file}}" target="_blank">--}}
-                                    <img src="{{url($photo->file)}}" width="240"  height="150">
+                                    <img src="{{asset($photo->file)}}" width="240"  height="150">
                                     {!! Form::text('subtitle/'. $photo->id, $photo->subtitle, ['placeholder' => trans('news::photo_gallery.subtitle') ,'class' => 'form-control']) !!}
                                     {!! Form::textarea('content/'. $photo->id, $photo->content, ['placeholder' => trans('news::photo_gallery.subtitle') ,'class' => 'form-control']) !!}
                                 {{--</a>--}}
@@ -48,6 +64,8 @@
 
 
 @section('js')
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 
     <script>
         Dropzone.options.addPhotos = {
@@ -76,17 +94,8 @@
                 var $photoList = $('#gallery-photos ul');
                 var photoSrc = baseUrl + '/' + response.file;
                 $($photoList).append('<li> <a href="' + photoSrc + '"><img src="' + $photoSrc + '"></a></li>');
-
             }
-
         };
-
-    </script>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
-
-    <script>
-
 
     </script>
 

@@ -197,7 +197,8 @@ return [
         Barryvdh\TranslationManager\ManagerServiceProvider::class,
         Arrilot\Widgets\ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Laravel\Scout\ScoutServiceProvider::class
+        Laravel\Scout\ScoutServiceProvider::class,
+        NotificationChannels\PusherPushNotifications\PusherPushNotificationsServiceProvider::class,
     ],
 
     /*
