@@ -16,6 +16,7 @@ class BookDatabaseSeeder extends Seeder
     {
         $this->call(BooksTableSeeder::class);
         $this->call(BookWidgetManagerTableSeeder::class);
+        $this->call(PermissionTableSeeder::class);
 
 
 

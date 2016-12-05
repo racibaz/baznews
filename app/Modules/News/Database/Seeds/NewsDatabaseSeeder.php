@@ -28,6 +28,7 @@ class NewsDatabaseSeeder extends Seeder
         $this->call(RecommendationNewsTableSeeder::class);
         $this->call(RelationsTableSeeder::class);
         $this->call(NewsWidgetManagerTableSeeder::class);
+        $this->call(PermissionsTableSeeder::class);
 
 
         $setting = Setting::where('attribute_key','break_news')->first();

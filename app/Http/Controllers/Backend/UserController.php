@@ -8,11 +8,10 @@ use App\Models\Country;
 use App\Models\Event;
 use App\Models\Group;
 use App\Models\Role;
-use App\Repositories\UserRepository as UseRepo;
+use App\Repositories\UserRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -26,8 +25,15 @@ class UserController extends Controller
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
-    public function __construct(UseRepo $repo)
+    public function __construct(Repo $repo)
     {
+        $this->middleware(function ($request, $next) {
+
+            $this->permisson_check();
+
+            return $next($request);
+        });
+
         $this->repo= $repo;
     }
 

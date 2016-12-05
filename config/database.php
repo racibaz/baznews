@@ -62,7 +62,10 @@ return [
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
-            'strict' => true,
+            //laravel-translation-manager
+            //https://github.com/barryvdh/laravel-translation-manager/issues/144
+            //strict i false yapıyoruz
+            'strict' => false,
             'engine' => null,
         ],
 

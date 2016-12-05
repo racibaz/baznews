@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Country;
 use App\Repositories\CityRepository as Repo;
+use Auth;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -21,6 +22,13 @@ class CityController extends Controller
 
     public function __construct(Repo $repo)
     {
+        $this->middleware(function ($request, $next) {
+
+            $this->permisson_check();
+
+            return $next($request);
+        });
+
         $this->repo= $repo;
     }
 

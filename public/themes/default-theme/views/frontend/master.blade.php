@@ -63,6 +63,8 @@
 
     @yield('css')
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -303,7 +305,7 @@
 
 
 <!-- jQuery 2.2.3 -->
-<script src="{{ Theme::asset($activeTheme . '::AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+{{--<script src="{{ Theme::asset($activeTheme . '::AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>--}}
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ Theme::asset($activeTheme . '::AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- FastClick -->

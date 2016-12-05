@@ -26,7 +26,14 @@ class ArticleController extends Controller
 
     public function __construct(Repo $repo)
     {
-        $this->repo = $repo;
+        $this->middleware(function ($request, $next) {
+
+            $this->permisson_check();
+
+            return $next($request);
+        });
+
+        $this->repo= $repo;
     }
 
     public function getViewName($methodName)
