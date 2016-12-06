@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Group;
+use App\Models\Menu;
+use App\Models\Page;
 use App\Models\User;
+use Theme;
 
 
 class DashboardController extends Controller
@@ -27,11 +31,23 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $records = User::all();
+        $activeUserCount= User::where('status',1)->get()->count();
+        //todo farklı statusler de gelmeli.
 
-        dd($this->getViewName(__FUNCTION__));
+        $activeGroupCount = Group::where('is_active',1)->get()->count();
+        $passiveGroupCount = Group::where('is_active',0)->get()->count();
 
-        return view($this->getViewName(__FUNCTION__))
-            ->with('records', $records);
+        $activePageCount = Page::where('is_active',1)->get()->count();
+        $passivePageCount = Page::where('is_active',0)->get()->count();
+
+        $activeMenuCount = Menu::where('is_active',1)->get()->count();
+        $passiveMenuCount = Menu::where('is_active',0)->get()->count();
+
+
+        dd($activeUserCount);
+
+//        dd($this->getViewName(__FUNCTION__));
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
     }
 }
