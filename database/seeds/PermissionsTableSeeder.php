@@ -276,8 +276,8 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         $user6 = Permission::create([
-            'name'          => 'user_operation-user',
-            'display_name'  => 'Kullanıcı İşlemleri',
+            'name'          => 'update-user',
+            'display_name'  => 'Kullanıcı Güncelleme',
             'is_active'     => 1,
         ]);
 
@@ -510,6 +510,12 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $account6 = Permission::create([
+            'name'          => 'update-account',
+            'display_name'  => 'account Güncelleme',
+            'is_active'     => 1,
+        ]);
+
         //country
         $country1 = Permission::create([
             'name'          => 'index-country',
@@ -739,12 +745,40 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
-
-
-        //index_setting
-        $index_setting = Permission::create([
+        //setting
+        $setting1 = Permission::create([
             'name'          => 'index-setting',
-            'display_name'  => 'Ayarlar bilgilerinin linkleri',
+            'display_name'  => 'Ayarlar Bilgilerinin Listeleme',
+            'is_active'     => 1,
+        ]);
+
+        $setting2 = Permission::create([
+            'name'          => 'create-setting',
+            'display_name'  => 'Ayarlar Bilgilerinin Oluşturma',
+            'is_active'     => 1,
+        ]);
+
+        $setting3 = Permission::create([
+            'name'          => 'edit-setting',
+            'display_name'  => 'Ayarlar Bilgilerinin Düzenleme',
+            'is_active'     => 1,
+        ]);
+
+        $setting4 = Permission::create([
+            'name'          => 'destroy-setting',
+            'display_name'  => 'Ayarlar Bilgilerinin Silme',
+            'is_active'     => 1,
+        ]);
+
+        $setting5 = Permission::create([
+            'name'          => 'show-setting',
+            'display_name'  => 'Ayarlar Bilgilerinin Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $setting6 = Permission::create([
+            'name'          => 'update-setting',
+            'display_name'  => 'Ayarlar Bilgilerinin Güncelleme',
             'is_active'     => 1,
         ]);
 
@@ -806,6 +840,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($account3);
         $super_admin->permissions()->attach($account4);
         $super_admin->permissions()->attach($account5);
+        $super_admin->permissions()->attach($account6);
         $super_admin->permissions()->attach($country1);
         $super_admin->permissions()->attach($country2);
         $super_admin->permissions()->attach($country3);
@@ -873,8 +908,12 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($widgetmanager4);
         $super_admin->permissions()->attach($widgetmanager5);
         $super_admin->permissions()->attach($widgetmanager6);
-
-        $super_admin->permissions()->attach($index_setting);
+        $super_admin->permissions()->attach($setting1);
+        $super_admin->permissions()->attach($setting2);
+        $super_admin->permissions()->attach($setting3);
+        $super_admin->permissions()->attach($setting4);
+        $super_admin->permissions()->attach($setting5);
+        $super_admin->permissions()->attach($setting6);
 
     }
 }

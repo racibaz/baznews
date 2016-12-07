@@ -4,10 +4,14 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{!! asset('dist/img/user2-160x160.jpg') !!}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p>{!! link_to_route('account.show', Auth::user()->name , Auth::user(), [] ) !!}</p>
+
+
+{{--                {!! route('setting.index') !!}--}}
+
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>

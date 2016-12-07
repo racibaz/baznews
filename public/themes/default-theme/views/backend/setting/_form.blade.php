@@ -38,7 +38,7 @@
                             {!! Form::label('attribute_key', trans('setting.attribute_key'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('attribute_key', $record->attribute_key, ['placeholder' => trans('setting.attribute_key') ,'class' => 'form-control']) !!}
+                                {!! Form::text('attribute_key', $record->attribute_key, ['placeholder' => trans('setting.attribute_key') ,'class' => 'form-control', 'disabled' => 'disabled']) !!}
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,16 @@
                             {!! Form::label('attribute_value', trans('setting.attribute_value'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('attribute_value', $record->attribute_value, ['placeholder' => trans('setting.attribute_value') ,'class' => 'form-control']) !!}
+                                {!! Form::textarea('attribute_value', $record->attribute_value, ['placeholder' => trans('setting.attribute_value') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('description', trans('setting.description'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('setting.description') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

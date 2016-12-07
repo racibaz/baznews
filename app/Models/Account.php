@@ -118,8 +118,6 @@ class Account extends Model
 
     public static function validate($input) {
         $rules = array(
-            'name'                          => 'required|max:255',
-            'email'                         => 'required|Between:3,64|email|Unique:users',
             'password'                      => 'required|min:4|Confirmed',
             'password_confirmation'         => 'required|min:4',
         );

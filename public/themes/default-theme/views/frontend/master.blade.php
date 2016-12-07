@@ -1,52 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> {{ Redis::get('title') }} </title>
+
     <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+
+    {{--<meta name="google-site-verification" content="{{ Redis::get('google') }}"/>--}}
+    {!! Redis::get('static_meta_tags') !!}
+    @yield('meta_tags')
 
     <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
     <!-- If you'd like to support IE8 -->
     <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-
-    <meta name="google-site-verification" content="{{ Redis::get('google') }}"/>
-    @yield('meta_tags')
-    <meta name="robots" content="{{ Redis::get('robots') }}">
-    <meta name="subject" content="{{ Redis::get('title') }}">
-    <meta name="copyright" content="{{ Redis::get('copyright') }}">
-    <meta name="language" content="{{ Redis::get('language') }}">
-    <meta name="robots" content="{{ Redis::get('robots') }}" />
-    <meta name="Classification" content="{{ Redis::get('robots') }}">
-    <meta name="reply-to" content="{{ Redis::get('reply-to') }}">
-    <meta name="coverage" content="Worldwide">
-    <meta name="distribution" content="Global">
-    <meta name="rating" content="General">
-    <meta name="revisit-after" content="{{ Redis::get('revisit-after') }}">
-    <meta http-equiv="Expires" content="0">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta name="designer" content="{{ Redis::get('designer') }}">
-    <meta name="owner" content="{{ Redis::get('owner') }}">
-    <meta name="url" content="{{ Redis::get('url') }}">
-    <meta name="identifier-URL" content="http://www.websiteaddress.com">
-    <meta name="directory" content="submission">
-    {{--<meta http-equiv="refresh" content="30">--}}
-
-
-    {{--<meta name="abstract" content="">--}}
-    {{--<meta name="topic" content="">--}}
-    {{--<meta name="summary" content="">--}}
-    {{--<meta name="category" content="">--}}
-    {{--<meta name="author" content="name, email@hotmail.com">--}}
-    {{--<meta name="revised" content="Sunday, July 18th, 2010, 5:15 pm" />--}}
-    {{--<meta name='pagename' content='jQuery Tools, Tutorials and Resources - O Reilly Media'>--}}
-    {{--<meta name='subtitle' content='This is my subtitle'>--}}
-    {{--<meta name="author" content="Hege Refsnes">--}}
-
-
-
     <!-- Bootstrap 3.3.6 -->
     <link href="{{ Theme::asset($activeTheme . '::AdminLTE/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -71,9 +36,13 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    {!!  Redis::get('google_tag_manager_head_code') !!}
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+
+    {!!  Redis::get('google_tag_manager_body_code') !!}
 
     <!-- Main Header -->
     @include($activeTheme . '::frontend.layouts.header')

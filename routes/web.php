@@ -94,5 +94,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
+    Route::resource('account', 'Backend\AccountController', ['only' => [
+        'edit', 'update','show'
+    ]]);
+
 });
 

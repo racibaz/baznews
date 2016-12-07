@@ -49,7 +49,6 @@ class AppServiceProvider extends ServiceProvider
                 //return 'setting';
             });
 
-
             //Cache::tags('settings')->flush();
             //Cache::flush();
 
