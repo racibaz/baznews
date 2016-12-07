@@ -38,7 +38,7 @@
                             {!! Form::label('attribute_key', trans('setting.attribute_key'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('attribute_key', $record->attribute_key, ['placeholder' => trans('setting.attribute_key') ,'class' => 'form-control', 'disabled' => 'disabled']) !!}
+                                {!! Form::text('attribute_key', $record->attribute_key, ['placeholder' => trans('setting.attribute_key') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

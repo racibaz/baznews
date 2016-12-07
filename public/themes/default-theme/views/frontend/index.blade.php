@@ -2,27 +2,27 @@
 
 @section('content')
 
-
-    1.widget managment yapılacak.<br>
     2.Tema parçalara ayrılarak cachelenecek<br>
     3.Setting module tamamlanacak.<br>
-  ++4.module içerinde group route yapılan yerler admin sidebar da group olarak gösterilebilir mi?.<br>
-  ++5.Theme yönetimi yapılacak.<br>
     6.Theme de widget yerilerini göstermek için her temanın içerisine temenın şablonunu gösteren foto olacak aktif widget dan o resmi çekip tema ve widget yönetimine koyulacak.<br>
   ??7.Theme ayarlarından theme in alanları alınabilecek.(Tema ayarlarında 'sidebar','rightbar' vs.. listelenirken veriler theme in ayarlarından gelecek.)<br>
     8.Laravel Medialibrary <br>
     9.News Modülü geliştirilecek<br>
     v210.Moduller aktif ve pasif yapıldığında seeder  migrate ve seeder çalıştırılarak.Modul ayarları eklenip silinebilecek.(widget vs..)<br>
     11.Auth::user() presenter pattern ları yapılacak.<br>
-  ++12.news edit sayfasına video,photo gallery,tags,video,photo lar eklenebilecek.<br>
     13.Video Ekleme Tamamlanacak.<br>
     14.php artisan komutlarının bazıları setting sayfasında çalıştırılabilecek..(backup list)<br>
     15.Social provider register sayfalarına bakılacak paaword sorunu çözülecek.<br/>
     16.Account sayfası yapılacak.(kullanıcı fotosu socialite dan alınabilir mi? gravatar dan da alınabilir.) <br />
-    17.Arşiv bölümü yapılacak.(tarihe göre seçerken api kullanılacak.) <br />
-  ++18.Scuot ile arama yapılabileek. <br />
+    +17.Arşiv bölümü yapılacak.(tarihe göre seçerken api kullanılacak.) <br />
     19.Dashboard Yapılacak <br />
     20.Status Durumları ENUM yapılacak.(ekranda nasıl listelenecek ona da bakılacak) <br />
+    21.open graft lar eklenecek <br />
+    22.Setting de değer alanına text editor koyulacak(admin lte 2 var) <br />
+    22.Setting de değer alanına text editor koyulacak(admin lte 2 var) <br />
+    23.tema eklenecek.<br />
+    24.face comment eklenecek.<br />
+    25.admin tarafına editorlerin kullanabileceği chat uygulaması koyulacak.<br />
 
 
     APP_ENV=local
