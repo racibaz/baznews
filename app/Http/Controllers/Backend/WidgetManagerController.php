@@ -5,14 +5,11 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\WidgetManager;
 use App\Repositories\WidgetManagerRepository as Repo;
-use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
-use RecursiveArrayIterator;
-use RecursiveIteratorIterator;
 
 class WidgetManagerController extends Controller
 {
@@ -123,4 +120,23 @@ class WidgetManagerController extends Controller
             }
         }
     }
+
+
+    public function addWidgetActivation($widgetSlug)
+    {
+        $widget = WidgetManager::getWidgetInfo($widgetSlug);
+
+        $widgetManagaer =[];
+        $widgetManagaer['name']     = $widget['name'];
+        $widgetManagaer['slug']       = $widget['slug'];
+        $widgetManagaer['namespace']  = $widget['namespace'];
+        $widgetManagaer['position']   = 1;
+        $widgetManagaer['group']      = 'rightbar';
+
+        $this->repo->create($widgetManagaer);
+
+        return Redirect::back();
+    }
+
+
 }

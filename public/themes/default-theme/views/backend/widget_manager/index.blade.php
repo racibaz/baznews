@@ -15,7 +15,11 @@
                 {{--{{$widgets['News']['name']}}--}}
                 @foreach($widgets as $widget)
 
-                    <li>{{trans('widget_manager.module_name')}} : {{$widget['module_name']}}</li>
+                    <li>{{trans('widget_manager.module_name')}} : {{$widget['module_name']}}
+                        @if(!in_array($widget['slug'] ,$records->pluck('slug')->toArray()))
+                            {!! link_to_route('addWidgetActivation', trans('widget_manager.passive') , $widget['slug'], [] ) !!}
+                        @endif
+                    </li>
                         <ul>
                             <li>{{trans('widget_manager.name')}} : {{$widget['name']}}</li>
                             <li>{{trans('widget_manager.slug')}} : {{$widget['slug']}}</li>

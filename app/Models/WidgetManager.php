@@ -89,6 +89,47 @@ class WidgetManager extends Model
         return $widgets;
     }
 
+    public static function getWidgetInfo($widgetSlug)
+    {
+        $widget = [];
+
+        foreach (Module::all() as $module)
+        {
+            //module pasif ise widget bilgilerini almıyoruz.
+            if (Module::isDisabled($module['slug'])) {
+                continue;
+            }
+
+            //module un widgets.json file yolu
+            $moduleWidgetsJsonFilePath = base_path('app/Modules/' . $module['basename'] . '/Widgets/widgets.json');
+
+            $jsonFile = file_get_contents($moduleWidgetsJsonFilePath);
+
+            $jsonIterator = new RecursiveIteratorIterator(
+                new RecursiveArrayIterator(json_decode($jsonFile, true)),
+                RecursiveIteratorIterator::SELF_FIRST);
+
+
+            foreach ($jsonIterator as $key => $val)
+            {
+                if(is_array($val)) {
+                    //echo "$key:\n";
+                } else {
+
+                    if($key === 'slug' && $val === $widgetSlug){
+
+                        foreach ($jsonIterator as $key => $val)
+                        {
+                            $widget[$key] = $val;
+                        }
+                    }
+                }
+            }
+        }
+
+        return $widget;
+    }
+
 
 
 }

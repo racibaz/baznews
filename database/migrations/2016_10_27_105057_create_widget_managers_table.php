@@ -18,8 +18,8 @@ class CreateWidgetManagersTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->string('namespace');
-            $table->smallInteger('position');
-            $table->string('group');
+            $table->smallInteger('position')->nullable();
+            $table->string('group')->nullable();
             $table->boolean('is_active');
             $table->timestamps();
         });

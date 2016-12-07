@@ -79,6 +79,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('module_manager', 'Backend\ModuleManagerController');
     Route::resource('sitemap', 'Backend\SitemapController');
     Route::resource('rss', 'Backend\RssController');
+
+    Route::get('widget_manager/addWidgetActivation/{widgetSlug}', 'Backend\WidgetManagerController@addWidgetActivation')->name('addWidgetActivation');
     Route::resource('widget_manager', 'Backend\WidgetManagerController');
 
     Route::get('theme_manager/themeActivationToggle/{themeSlug}', 'Backend\ThemeManagerController@themeActivationToggle')->name('themeActivationToggle');

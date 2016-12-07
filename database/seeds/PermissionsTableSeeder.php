@@ -696,6 +696,12 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $widgetmanager6 = Permission::create([
+            'name'          => 'addWidgetActivation-widgetmanager',
+            'display_name'  => 'addWidgetActivation işlemleri',
+            'is_active'     => 1,
+        ]);
+
         //modulemanager
         $modulemanager1 = Permission::create([
             'name'          => 'index-modulemanager',
@@ -726,6 +732,14 @@ class PermissionsTableSeeder extends Seeder
             'display_name'  => 'Dosya Gösterme',
             'is_active'     => 1,
         ]);
+
+        $modulemanager6 = Permission::create([
+            'name'          => 'moduleActivationToggle-modulemanager',
+            'display_name'  => 'Dosya Gösterme',
+            'is_active'     => 1,
+        ]);
+
+
 
         //index_setting
         $index_setting = Permission::create([
@@ -852,11 +866,13 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($modulemanager3);
         $super_admin->permissions()->attach($modulemanager4);
         $super_admin->permissions()->attach($modulemanager5);
+        $super_admin->permissions()->attach($modulemanager6);
         $super_admin->permissions()->attach($widgetmanager1);
         $super_admin->permissions()->attach($widgetmanager2);
         $super_admin->permissions()->attach($widgetmanager3);
         $super_admin->permissions()->attach($widgetmanager4);
         $super_admin->permissions()->attach($widgetmanager5);
+        $super_admin->permissions()->attach($widgetmanager6);
 
         $super_admin->permissions()->attach($index_setting);
 

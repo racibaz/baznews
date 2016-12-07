@@ -16,6 +16,7 @@ class BiographyDatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(BiographiesTableSeeder::class);
+        $this->call(PermissionTableSeeder::class);
 
 
 //        $setting = Setting::where('attribute_key','break_news')->first();
