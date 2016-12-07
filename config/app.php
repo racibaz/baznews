@@ -194,8 +194,6 @@ return [
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
-        Barryvdh\TranslationManager\ManagerServiceProvider::class,
-        Barryvdh\TranslationManager\TranslationServiceProvider::class,
         Arrilot\Widgets\ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,

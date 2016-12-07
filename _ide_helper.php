@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.26 on 2016-12-05.
+ * Generated for Laravel 5.3.26 on 2016-12-07.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -5994,28 +5994,6 @@ namespace {
     class Lang extends \Illuminate\Support\Facades\Lang{
         
         /**
-         * Get the translation for the given key.
-         *
-         * @param string $key
-         * @param array $replace
-         * @param string $locale
-         * @return string 
-         * @static 
-         */
-        public static function get($key, $replace = array(), $locale = null, $fallback = true){
-            return \Barryvdh\TranslationManager\Translator::get($key, $replace, $locale, $fallback);
-        }
-        
-        /**
-         * 
-         *
-         * @static 
-         */
-        public static function setTranslationManager($manager){
-            return \Barryvdh\TranslationManager\Translator::setTranslationManager($manager);
-        }
-        
-        /**
          * Determine if a translation exists for a given locale.
          *
          * @param string $key
@@ -6024,8 +6002,7 @@ namespace {
          * @static 
          */
         public static function hasForLocale($key, $locale = null){
-            //Method inherited from \Illuminate\Translation\Translator            
-            return \Barryvdh\TranslationManager\Translator::hasForLocale($key, $locale);
+            return \Illuminate\Translation\Translator::hasForLocale($key, $locale);
         }
         
         /**
@@ -6038,8 +6015,21 @@ namespace {
          * @static 
          */
         public static function has($key, $locale = null, $fallback = true){
-            //Method inherited from \Illuminate\Translation\Translator            
-            return \Barryvdh\TranslationManager\Translator::has($key, $locale, $fallback);
+            return \Illuminate\Translation\Translator::has($key, $locale, $fallback);
+        }
+        
+        /**
+         * Get the translation for the given key.
+         *
+         * @param string $key
+         * @param array $replace
+         * @param string|null $locale
+         * @param bool $fallback
+         * @return string|array|null 
+         * @static 
+         */
+        public static function get($key, $replace = array(), $locale = null, $fallback = true){
+            return \Illuminate\Translation\Translator::get($key, $replace, $locale, $fallback);
         }
         
         /**
@@ -6052,8 +6042,7 @@ namespace {
          * @static 
          */
         public static function addLines($lines, $locale, $namespace = '*'){
-            //Method inherited from \Illuminate\Translation\Translator            
-            \Barryvdh\TranslationManager\Translator::addLines($lines, $locale, $namespace);
+            \Illuminate\Translation\Translator::addLines($lines, $locale, $namespace);
         }
         
         /**
@@ -6067,8 +6056,7 @@ namespace {
          * @static 
          */
         public static function choice($key, $number, $replace = array(), $locale = null){
-            //Method inherited from \Illuminate\Translation\Translator            
-            return \Barryvdh\TranslationManager\Translator::choice($key, $number, $replace, $locale);
+            return \Illuminate\Translation\Translator::choice($key, $number, $replace, $locale);
         }
         
         /**
@@ -6082,8 +6070,7 @@ namespace {
          * @static 
          */
         public static function trans($id, $parameters = array(), $domain = 'messages', $locale = null){
-            //Method inherited from \Illuminate\Translation\Translator            
-            return \Barryvdh\TranslationManager\Translator::trans($id, $parameters, $domain, $locale);
+            return \Illuminate\Translation\Translator::trans($id, $parameters, $domain, $locale);
         }
         
         /**
@@ -6098,8 +6085,7 @@ namespace {
          * @static 
          */
         public static function transChoice($id, $number, $parameters = array(), $domain = 'messages', $locale = null){
-            //Method inherited from \Illuminate\Translation\Translator            
-            return \Barryvdh\TranslationManager\Translator::transChoice($id, $number, $parameters, $domain, $locale);
+            return \Illuminate\Translation\Translator::transChoice($id, $number, $parameters, $domain, $locale);
         }
         
         /**
@@ -6112,8 +6098,7 @@ namespace {
          * @static 
          */
         public static function load($namespace, $group, $locale){
-            //Method inherited from \Illuminate\Translation\Translator            
-            \Barryvdh\TranslationManager\Translator::load($namespace, $group, $locale);
+            \Illuminate\Translation\Translator::load($namespace, $group, $locale);
         }
         
         /**
@@ -6125,8 +6110,7 @@ namespace {
          * @static 
          */
         public static function addNamespace($namespace, $hint){
-            //Method inherited from \Illuminate\Translation\Translator            
-            \Barryvdh\TranslationManager\Translator::addNamespace($namespace, $hint);
+            \Illuminate\Translation\Translator::addNamespace($namespace, $hint);
         }
         
         /**
@@ -6137,8 +6121,7 @@ namespace {
          * @static 
          */
         public static function parseKey($key){
-            //Method inherited from \Illuminate\Translation\Translator            
-            return \Barryvdh\TranslationManager\Translator::parseKey($key);
+            return \Illuminate\Translation\Translator::parseKey($key);
         }
         
         /**
@@ -6148,8 +6131,7 @@ namespace {
          * @static 
          */
         public static function getSelector(){
-            //Method inherited from \Illuminate\Translation\Translator            
-            return \Barryvdh\TranslationManager\Translator::getSelector();
+            return \Illuminate\Translation\Translator::getSelector();
         }
         
         /**
@@ -6160,8 +6142,7 @@ namespace {
          * @static 
          */
         public static function setSelector($selector){
-            //Method inherited from \Illuminate\Translation\Translator            
-            \Barryvdh\TranslationManager\Translator::setSelector($selector);
+            \Illuminate\Translation\Translator::setSelector($selector);
         }
         
         /**
@@ -6171,8 +6152,7 @@ namespace {
          * @static 
          */
         public static function getLoader(){
-            //Method inherited from \Illuminate\Translation\Translator            
-            return \Barryvdh\TranslationManager\Translator::getLoader();
+            return \Illuminate\Translation\Translator::getLoader();
         }
         
         /**
@@ -6182,8 +6162,7 @@ namespace {
          * @static 
          */
         public static function locale(){
-            //Method inherited from \Illuminate\Translation\Translator            
-            return \Barryvdh\TranslationManager\Translator::locale();
+            return \Illuminate\Translation\Translator::locale();
         }
         
         /**
@@ -6193,8 +6172,7 @@ namespace {
          * @static 
          */
         public static function getLocale(){
-            //Method inherited from \Illuminate\Translation\Translator            
-            return \Barryvdh\TranslationManager\Translator::getLocale();
+            return \Illuminate\Translation\Translator::getLocale();
         }
         
         /**
@@ -6205,8 +6183,7 @@ namespace {
          * @static 
          */
         public static function setLocale($locale){
-            //Method inherited from \Illuminate\Translation\Translator            
-            \Barryvdh\TranslationManager\Translator::setLocale($locale);
+            \Illuminate\Translation\Translator::setLocale($locale);
         }
         
         /**
@@ -6216,8 +6193,7 @@ namespace {
          * @static 
          */
         public static function getFallback(){
-            //Method inherited from \Illuminate\Translation\Translator            
-            return \Barryvdh\TranslationManager\Translator::getFallback();
+            return \Illuminate\Translation\Translator::getFallback();
         }
         
         /**
@@ -6228,8 +6204,7 @@ namespace {
          * @static 
          */
         public static function setFallback($fallback){
-            //Method inherited from \Illuminate\Translation\Translator            
-            \Barryvdh\TranslationManager\Translator::setFallback($fallback);
+            \Illuminate\Translation\Translator::setFallback($fallback);
         }
         
         /**
@@ -6242,7 +6217,7 @@ namespace {
          */
         public static function setParsedKey($key, $parsed){
             //Method inherited from \Illuminate\Support\NamespacedItemResolver            
-            \Barryvdh\TranslationManager\Translator::setParsedKey($key, $parsed);
+            \Illuminate\Translation\Translator::setParsedKey($key, $parsed);
         }
         
         /**
@@ -6254,8 +6229,7 @@ namespace {
          * @static 
          */
         public static function macro($name, $macro){
-            //Method inherited from \Illuminate\Translation\Translator            
-            \Barryvdh\TranslationManager\Translator::macro($name, $macro);
+            \Illuminate\Translation\Translator::macro($name, $macro);
         }
         
         /**
@@ -6266,8 +6240,7 @@ namespace {
          * @static 
          */
         public static function hasMacro($name){
-            //Method inherited from \Illuminate\Translation\Translator            
-            return \Barryvdh\TranslationManager\Translator::hasMacro($name);
+            return \Illuminate\Translation\Translator::hasMacro($name);
         }
         
     }

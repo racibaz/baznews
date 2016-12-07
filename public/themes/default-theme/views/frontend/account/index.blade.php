@@ -1,4 +1,4 @@
-@extends('default-theme::frontend.master')
+@extends($activeTheme . '::frontend.master')
 
 @section('content')
 

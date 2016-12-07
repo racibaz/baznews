@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Repositories\RoleRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Repositories\RoleRepository as Repo;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;

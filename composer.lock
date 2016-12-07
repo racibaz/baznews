@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c97fd8dfa50c559fe94b04344d74a565",
-    "content-hash": "637f89edfbb4dd4cf057937d8f92b019",
+    "hash": "7e41f226e07a63592ab7b796d9a185d8",
+    "content-hash": "0550b9e13118795ebf9e9cd483b61350",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -161,55 +161,6 @@
                 "webprofiler"
             ],
             "time": "2016-09-15 14:05:56"
-        },
-        {
-            "name": "barryvdh/laravel-translation-manager",
-            "version": "v0.2.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/barryvdh/laravel-translation-manager.git",
-                "reference": "05921dff9b2af33b67c9ed3839a82a1258190d46"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-translation-manager/zipball/05921dff9b2af33b67c9ed3839a82a1258190d46",
-                "reference": "05921dff9b2af33b67c9ed3839a82a1258190d46",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.0.x|5.1.x|5.2.x|5.3.x",
-                "illuminate/translation": "5.0.x|5.1.x|5.2.x|5.3.x",
-                "php": ">=5.4.0",
-                "symfony/finder": "~2.3|~3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Barryvdh\\TranslationManager\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Barry vd. Heuvel",
-                    "email": "barryvdh@gmail.com"
-                }
-            ],
-            "description": "Manage Laravel Translations",
-            "keywords": [
-                "laravel",
-                "translations",
-                "translator"
-            ],
-            "time": "2016-09-28 11:18:49"
         },
         {
             "name": "caffeinated/modules",
@@ -1249,20 +1200,20 @@
         },
         {
             "name": "jeremeamia/SuperClosure",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeremeamia/super_closure.git",
-                "reference": "29a88be2a4846d27c1613aed0c9071dfad7b5938"
+                "reference": "443c3df3207f176a1b41576ee2a66968a507b3db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/29a88be2a4846d27c1613aed0c9071dfad7b5938",
-                "reference": "29a88be2a4846d27c1613aed0c9071dfad7b5938",
+                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/443c3df3207f176a1b41576ee2a66968a507b3db",
+                "reference": "443c3df3207f176a1b41576ee2a66968a507b3db",
                 "shasum": ""
             },
             "require": {
-                "nikic/php-parser": "^1.2|^2.0",
+                "nikic/php-parser": "^1.2|^2.0|^3.0",
                 "php": ">=5.4",
                 "symfony/polyfill-php56": "^1.0"
             },
@@ -1272,7 +1223,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.3-dev"
                 }
             },
             "autoload": {
@@ -1303,7 +1254,7 @@
                 "serialize",
                 "tokenizer"
             ],
-            "time": "2015-12-05 17:17:57"
+            "time": "2016-12-07 09:37:55"
         },
         {
             "name": "kalnoy/nestedset",

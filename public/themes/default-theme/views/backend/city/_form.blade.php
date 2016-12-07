@@ -1,4 +1,4 @@
-@extends('default-theme::backend.master')
+@extends($activeTheme . '::backend.master')
 
 @section('content')
 <div class="container-fluid">

@@ -1,10 +1,10 @@
-@extends('default-theme::backend.master')
+@extends($activeTheme . '::backend.master')
 
 {{--@section('title'){{ $record->title }}@stop--}}
 {{--@section('title-description'){{trans('common.edit')}}@stop--}}
 
 @section('content')
-    @include('default-theme::backend.menu._form', ['record' => $record])
+    @include($activeTheme . '::backend.menu._form', ['record' => $record])
 @stop
 
 

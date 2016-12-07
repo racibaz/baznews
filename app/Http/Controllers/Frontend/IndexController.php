@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Menu;
+use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Models\WidgetManager;
-use App\Modules\Article\Models\Author;
-use App\Modules\Book\Http\Controllers\Frontend\BookController;
-use App\Modules\News\Models\News;
-use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Models\PhotoGallery;
 use App\Modules\News\Models\RecommendationNews;
 use App\Modules\News\Models\VideoGallery;
@@ -17,13 +13,8 @@ use App\Modules\News\Repositories\NewsRepository;
 use App\Repositories\MenuRepository;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
-use Illuminate\Support\Facades\View;
 
 class IndexController extends Controller
 {

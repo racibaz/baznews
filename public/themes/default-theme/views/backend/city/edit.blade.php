@@ -4,7 +4,7 @@
 {{--@section('title-description'){{trans('common.edit')}}@stop--}}
 
 @section('content')
-    @include('default-theme::backend.city._form', ['record' => $record])
+    @include($activeTheme . '::backend.city._form', ['record' => $record])
 @stop
 
 

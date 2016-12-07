@@ -1,7 +1,7 @@
-@extends('default-theme::backend.master')
+@extends($activeTheme . '::backend.master')
 
 {{--@section('title'){{trans('common.create')}}@stop--}}
 
 @section('content')
-    @include('default-theme::backend.event._form', ['record' => $record])
+    @include($activeTheme . '::backend.event._form', ['record' => $record])
 @stop

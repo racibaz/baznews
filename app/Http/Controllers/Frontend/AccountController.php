@@ -7,15 +7,13 @@ use App\Models\Account;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Event;
-use App\Models\Group;
-use App\Models\Role;
 use App\Repositories\AccountRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 
 class AccountController extends Controller
 {

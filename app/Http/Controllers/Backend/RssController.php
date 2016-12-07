@@ -7,9 +7,10 @@ use App\Models\Rss;
 use App\Repositories\RssRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
+
 class RssController extends Controller
 {
     private $repo;

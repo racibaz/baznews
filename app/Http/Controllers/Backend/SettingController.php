@@ -11,14 +11,13 @@ use App\Models\Setting;
 use App\Repositories\SettingRepository as Repo;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
+use Route;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
-use Route;
+use Illuminate\Support\Facades\Input;
 
 class SettingController extends Controller
 {
