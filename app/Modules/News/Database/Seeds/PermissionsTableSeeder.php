@@ -47,6 +47,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $futurenews6 = Permission::create([
+            'name'          => 'update-futurenews',
+            'display_name'  => 'futurenews update',
+            'is_active'     => 1,
+        ]);
+
+        $futurenews7 = Permission::create([
+            'name'          => 'store-futurenews',
+            'display_name'  => 'futurenews  store',
+            'is_active'     => 1,
+        ]);
+
         //newscategory
         $newscategory1 = Permission::create([
             'name'          => 'index-newscategory',
@@ -75,6 +87,18 @@ class PermissionsTableSeeder extends Seeder
         $newscategory5 = Permission::create([
             'name'          => 'show-newscategory',
             'display_name'  => 'newscategory Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $newscategory6 = Permission::create([
+            'name'          => 'update-newscategory',
+            'display_name'  => 'newscategory update',
+            'is_active'     => 1,
+        ]);
+
+        $newscategory7 = Permission::create([
+            'name'          => 'store-newscategory',
+            'display_name'  => 'futurenews  store',
             'is_active'     => 1,
         ]);
 
@@ -109,6 +133,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $newssource6 = Permission::create([
+            'name'          => 'update-newssource',
+            'display_name'  => 'newssource update',
+            'is_active'     => 1,
+        ]);
+
+        $newssource7 = Permission::create([
+            'name'          => 'store-newssource',
+            'display_name'  => 'newssource store',
+            'is_active'     => 1,
+        ]);
+
         //news
         $news1 = Permission::create([
             'name'          => 'index-news',
@@ -137,6 +173,18 @@ class PermissionsTableSeeder extends Seeder
         $news5 = Permission::create([
             'name'          => 'show-news',
             'display_name'  => 'news Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $news6 = Permission::create([
+            'name'          => 'update-news',
+            'display_name'  => 'news update',
+            'is_active'     => 1,
+        ]);
+
+        $news7 = Permission::create([
+            'name'          => 'store-news',
+            'display_name'  => 'news store',
             'is_active'     => 1,
         ]);
 
@@ -171,6 +219,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $newswidgetmanager6 = Permission::create([
+            'name'          => 'update-newswidgetmanager',
+            'display_name'  => 'newswidgetmanager update',
+            'is_active'     => 1,
+        ]);
+
+        $newswidgetmanager7 = Permission::create([
+            'name'          => 'store-newswidgetmanager',
+            'display_name'  => 'newswidgetmanager store',
+            'is_active'     => 1,
+        ]);
+
         //photocategory
         $photocategory1 = Permission::create([
             'name'          => 'index-photocategory',
@@ -199,6 +259,18 @@ class PermissionsTableSeeder extends Seeder
         $photocategory5 = Permission::create([
             'name'          => 'show-photocategory',
             'display_name'  => 'photocategory Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $photocategory6 = Permission::create([
+            'name'          => 'update-photocategory',
+            'display_name'  => 'photocategory update',
+            'is_active'     => 1,
+        ]);
+
+        $photocategory7 = Permission::create([
+            'name'          => 'store-photocategory',
+            'display_name'  => 'photocategory store',
             'is_active'     => 1,
         ]);
 
@@ -233,6 +305,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $photogallery6 = Permission::create([
+            'name'          => 'update-photogallery',
+            'display_name'  => 'photogallery update',
+            'is_active'     => 1,
+        ]);
+
+        $photogallery7 = Permission::create([
+            'name'          => 'store-photogallery',
+            'display_name'  => 'photogallery store',
+            'is_active'     => 1,
+        ]);
+
         //photo
         $photo1 = Permission::create([
             'name'          => 'index-photo',
@@ -261,6 +345,18 @@ class PermissionsTableSeeder extends Seeder
         $photo5 = Permission::create([
             'name'          => 'show-photo',
             'display_name'  => 'photo Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $photo6 = Permission::create([
+            'name'          => 'update-photo',
+            'display_name'  => 'photo update',
+            'is_active'     => 1,
+        ]);
+
+        $photo7 = Permission::create([
+            'name'          => 'store-photo',
+            'display_name'  => 'photo store',
             'is_active'     => 1,
         ]);
 
@@ -295,6 +391,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $recommendationnews6 = Permission::create([
+            'name'          => 'update-recommendationnews',
+            'display_name'  => 'recommendationnews update',
+            'is_active'     => 1,
+        ]);
+
+        $recommendationnews7 = Permission::create([
+            'name'          => 'store-recommendationnews',
+            'display_name'  => 'recommendationnews store',
+            'is_active'     => 1,
+        ]);
+
         //videocategory
         $videocategory1 = Permission::create([
             'name'          => 'index-videocategory',
@@ -323,6 +431,18 @@ class PermissionsTableSeeder extends Seeder
         $videocategory5 = Permission::create([
             'name'          => 'show-videocategory',
             'display_name'  => 'videocategory Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $videocategory6 = Permission::create([
+            'name'          => 'update-videocategory',
+            'display_name'  => 'videocategory update',
+            'is_active'     => 1,
+        ]);
+
+        $videocategory7 = Permission::create([
+            'name'          => 'store-videocategory',
+            'display_name'  => 'videocategory store',
             'is_active'     => 1,
         ]);
 
@@ -357,6 +477,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $videogallery6 = Permission::create([
+            'name'          => 'update-videogallery',
+            'display_name'  => 'videogallery update',
+            'is_active'     => 1,
+        ]);
+
+        $videogallery7 = Permission::create([
+            'name'          => 'store-videogallery',
+            'display_name'  => 'videogallery store',
+            'is_active'     => 1,
+        ]);
+
         //video
         $video1 = Permission::create([
             'name'          => 'index-video',
@@ -388,6 +520,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $video6 = Permission::create([
+            'name'          => 'update-video',
+            'display_name'  => 'video update',
+            'is_active'     => 1,
+        ]);
+
+        $video7 = Permission::create([
+            'name'          => 'store-video',
+            'display_name'  => 'video store',
+            'is_active'     => 1,
+        ]);
+
 
 
         $first_user = User::find(1);
@@ -398,61 +542,85 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($futurenews3);
         $super_admin->permissions()->attach($futurenews4);
         $super_admin->permissions()->attach($futurenews5);
+        $super_admin->permissions()->attach($futurenews6);
+        $super_admin->permissions()->attach($futurenews7);
         $super_admin->permissions()->attach($newscategory1);
         $super_admin->permissions()->attach($newscategory2);
         $super_admin->permissions()->attach($newscategory3);
         $super_admin->permissions()->attach($newscategory4);
         $super_admin->permissions()->attach($newscategory5);
+        $super_admin->permissions()->attach($newscategory6);
+        $super_admin->permissions()->attach($newscategory7);
         $super_admin->permissions()->attach($newssource1);
         $super_admin->permissions()->attach($newssource2);
         $super_admin->permissions()->attach($newssource3);
         $super_admin->permissions()->attach($newssource4);
         $super_admin->permissions()->attach($newssource5);
+        $super_admin->permissions()->attach($newssource6);
+        $super_admin->permissions()->attach($newssource7);
         $super_admin->permissions()->attach($news1);
         $super_admin->permissions()->attach($news2);
         $super_admin->permissions()->attach($news3);
         $super_admin->permissions()->attach($news4);
         $super_admin->permissions()->attach($news5);
+        $super_admin->permissions()->attach($news6);
+        $super_admin->permissions()->attach($news7);
         $super_admin->permissions()->attach($newswidgetmanager1);
         $super_admin->permissions()->attach($newswidgetmanager2);
         $super_admin->permissions()->attach($newswidgetmanager3);
         $super_admin->permissions()->attach($newswidgetmanager4);
         $super_admin->permissions()->attach($newswidgetmanager5);
+        $super_admin->permissions()->attach($newswidgetmanager6);
+        $super_admin->permissions()->attach($newswidgetmanager7);
         $super_admin->permissions()->attach($photocategory1);
         $super_admin->permissions()->attach($photocategory2);
         $super_admin->permissions()->attach($photocategory3);
         $super_admin->permissions()->attach($photocategory4);
         $super_admin->permissions()->attach($photocategory5);
+        $super_admin->permissions()->attach($photocategory6);
+        $super_admin->permissions()->attach($photocategory7);
         $super_admin->permissions()->attach($photogallery1);
         $super_admin->permissions()->attach($photogallery2);
         $super_admin->permissions()->attach($photogallery3);
         $super_admin->permissions()->attach($photogallery4);
         $super_admin->permissions()->attach($photogallery5);
+        $super_admin->permissions()->attach($photogallery6);
+        $super_admin->permissions()->attach($photogallery7);
         $super_admin->permissions()->attach($photo1);
         $super_admin->permissions()->attach($photo2);
         $super_admin->permissions()->attach($photo3);
         $super_admin->permissions()->attach($photo4);
         $super_admin->permissions()->attach($photo5);
+        $super_admin->permissions()->attach($photo6);
+        $super_admin->permissions()->attach($photo7);
         $super_admin->permissions()->attach($recommendationnews1);
         $super_admin->permissions()->attach($recommendationnews2);
         $super_admin->permissions()->attach($recommendationnews3);
         $super_admin->permissions()->attach($recommendationnews4);
         $super_admin->permissions()->attach($recommendationnews5);
+        $super_admin->permissions()->attach($recommendationnews6);
+        $super_admin->permissions()->attach($recommendationnews7);
         $super_admin->permissions()->attach($videocategory1);
         $super_admin->permissions()->attach($videocategory2);
         $super_admin->permissions()->attach($videocategory3);
         $super_admin->permissions()->attach($videocategory4);
         $super_admin->permissions()->attach($videocategory5);
+        $super_admin->permissions()->attach($videocategory6);
+        $super_admin->permissions()->attach($videocategory7);
         $super_admin->permissions()->attach($videogallery1);
         $super_admin->permissions()->attach($videogallery2);
         $super_admin->permissions()->attach($videogallery3);
         $super_admin->permissions()->attach($videogallery4);
         $super_admin->permissions()->attach($videogallery5);
+        $super_admin->permissions()->attach($videogallery6);
+        $super_admin->permissions()->attach($videogallery7);
         $super_admin->permissions()->attach($video1);
         $super_admin->permissions()->attach($video2);
         $super_admin->permissions()->attach($video3);
         $super_admin->permissions()->attach($video4);
         $super_admin->permissions()->attach($video5);
+        $super_admin->permissions()->attach($video6);
+        $super_admin->permissions()->attach($video7);
 
     }
 }

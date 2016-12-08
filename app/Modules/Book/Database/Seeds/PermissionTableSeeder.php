@@ -47,6 +47,18 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $book6 = Permission::create([
+            'name'          => 'update-book',
+            'display_name'  => 'book update',
+            'is_active'     => 1,
+        ]);
+
+        $book7 = Permission::create([
+            'name'          => 'store-book',
+            'display_name'  => 'book store',
+            'is_active'     => 1,
+        ]);
+
 
         $super_admin = Role::find(1);
 
@@ -55,6 +67,8 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($book3);
         $super_admin->permissions()->attach($book4);
         $super_admin->permissions()->attach($book5);
+        $super_admin->permissions()->attach($book6);
+        $super_admin->permissions()->attach($book7);
 
 
     }

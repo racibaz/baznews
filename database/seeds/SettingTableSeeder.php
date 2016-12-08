@@ -40,7 +40,6 @@ class SettingTableSeeder extends Seeder
                         <meta charset='UTF-8'>    
                         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
                         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-                        <title> SITE TITLE  </title>
                         <meta name='copyright' content='company name'>
                         <meta name='language' content='TR'>
                         <meta name='robots' content='index,follow'>

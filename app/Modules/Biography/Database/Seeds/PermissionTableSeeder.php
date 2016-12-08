@@ -46,6 +46,17 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $biography6 = Permission::create([
+            'name'          => 'update-biography',
+            'display_name'  => 'update biography',
+            'is_active'     => 1,
+        ]);
+
+        $biography7 = Permission::create([
+            'name'          => 'store-biography',
+            'display_name'  => 'update store',
+            'is_active'     => 1,
+        ]);
 
         $super_admin = Role::find(1);
 
@@ -54,5 +65,7 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($biography3);
         $super_admin->permissions()->attach($biography4);
         $super_admin->permissions()->attach($biography5);
+        $super_admin->permissions()->attach($biography6);
+        $super_admin->permissions()->attach($biography7);
     }
 }

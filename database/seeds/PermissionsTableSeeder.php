@@ -27,36 +27,6 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
-        //document
-        $document1 = Permission::create([
-            'name'          => 'index-document',
-            'display_name'  => 'Dosya Listeleme',
-            'is_active'     => 1,
-        ]);
-
-        $document2 = Permission::create([
-            'name'          => 'create-document',
-            'display_name'  => 'Dosya Oluşturma',
-            'is_active'     => 1,
-        ]);
-
-        $document3 = Permission::create([
-            'name'          => 'edit-document',
-            'display_name'  => 'Dosya Düzenleme',
-            'is_active'     => 1,
-        ]);
-
-        $document4 = Permission::create([
-            'name'          => 'destroy-document',
-            'display_name'  => 'Dosya Silme',
-            'is_active'     => 1,
-        ]);
-
-        $document5 = Permission::create([
-            'name'          => 'show-document',
-            'display_name'  => 'Dosya Gösterme',
-            'is_active'     => 1,
-        ]);
 
         //announcement
         $announcement1 = Permission::create([
@@ -86,6 +56,18 @@ class PermissionsTableSeeder extends Seeder
         $announcement5 = Permission::create([
             'name'          => 'show-announcement',
             'display_name'  => 'Dosya Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $announcement6 = Permission::create([
+            'name'          => 'update-announcement',
+            'display_name'  => 'announcement update',
+            'is_active'     => 1,
+        ]);
+
+        $announcement7 = Permission::create([
+            'name'          => 'store-announcement',
+            'display_name'  => 'announcement store',
             'is_active'     => 1,
         ]);
 
@@ -120,6 +102,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $contactType6 = Permission::create([
+            'name'          => 'update-contactType',
+            'display_name'  => 'contactType update',
+            'is_active'     => 1,
+        ]);
+
+        $contactType7 = Permission::create([
+            'name'          => 'store-contactType',
+            'display_name'  => 'contactType store',
+            'is_active'     => 1,
+        ]);
+
         //menu
         $menu1 = Permission::create([
             'name'          => 'index-menu',
@@ -148,6 +142,18 @@ class PermissionsTableSeeder extends Seeder
         $menu5 = Permission::create([
             'name'          => 'show-menu',
             'display_name'  => 'Dosya Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $menu6 = Permission::create([
+            'name'          => 'update-menu',
+            'display_name'  => 'menu update',
+            'is_active'     => 1,
+        ]);
+
+        $menu7 = Permission::create([
+            'name'          => 'store-menu',
+            'display_name'  => 'menu store',
             'is_active'     => 1,
         ]);
 
@@ -182,6 +188,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $page6 = Permission::create([
+            'name'          => 'update-page',
+            'display_name'  => 'page update',
+            'is_active'     => 1,
+        ]);
+
+        $page7 = Permission::create([
+            'name'          => 'store-page',
+            'display_name'  => 'page store',
+            'is_active'     => 1,
+        ]);
+
         //rss
         $rss1 = Permission::create([
             'name'          => 'index-rss',
@@ -213,6 +231,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $rss6 = Permission::create([
+            'name'          => 'update-rss',
+            'display_name'  => 'rss update',
+            'is_active'     => 1,
+        ]);
+
+        $rss7 = Permission::create([
+            'name'          => 'store-rss',
+            'display_name'  => 'rss store',
+            'is_active'     => 1,
+        ]);
+
         //sitemaps
         $sitemaps1 = Permission::create([
             'name'          => 'index-sitemaps',
@@ -241,6 +271,18 @@ class PermissionsTableSeeder extends Seeder
         $sitemaps5 = Permission::create([
             'name'          => 'show-sitemaps',
             'display_name'  => 'Dosya Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $sitemaps6 = Permission::create([
+            'name'          => 'update-sitemaps',
+            'display_name'  => 'sitemaps update',
+            'is_active'     => 1,
+        ]);
+
+        $sitemaps7 = Permission::create([
+            'name'          => 'store-sitemaps',
+            'display_name'  => 'sitemaps store',
             'is_active'     => 1,
         ]);
 
@@ -282,12 +324,19 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         $user7 = Permission::create([
-            'name'          => 'update_other_user-user',
+            'name'          => 'store-user',
             'display_name'  => 'Kullanıcı başka bir kullanıcıyı güncelleme yetkisi',
             'is_active'     => 1,
         ]);
 
         $user8 = Permission::create([
+            'name'          => 'update_other_user-user',
+            'display_name'  => 'Kullanıcı başka bir kullanıcıyı güncelleme yetkisi',
+            'is_active'     => 1,
+        ]);
+
+
+        $user9 = Permission::create([
             'name'          => 'show_other_user-user',
             'display_name'  => 'Kullanıcı başka bir kullanıcıyı detaylarını görme yetkisi',
             'is_active'     => 1,
@@ -324,6 +373,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $group6 = Permission::create([
+            'name'          => 'update-group',
+            'display_name'  => 'group update',
+            'is_active'     => 1,
+        ]);
+
+        $group7 = Permission::create([
+            'name'          => 'store-group',
+            'display_name'  => 'group store',
+            'is_active'     => 1,
+        ]);
+
         //role
         $role1 = Permission::create([
             'name'          => 'index-role',
@@ -352,6 +413,18 @@ class PermissionsTableSeeder extends Seeder
         $role5 = Permission::create([
             'name'          => 'show-role',
             'display_name'  => 'role Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $role6 = Permission::create([
+            'name'          => 'update-role',
+            'display_name'  => 'role update',
+            'is_active'     => 1,
+        ]);
+
+        $role7 = Permission::create([
+            'name'          => 'store-role',
+            'display_name'  => 'role store',
             'is_active'     => 1,
         ]);
 
@@ -386,6 +459,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $tag6 = Permission::create([
+            'name'          => 'update-tag',
+            'display_name'  => 'tag update',
+            'is_active'     => 1,
+        ]);
+
+        $tag7 = Permission::create([
+            'name'          => 'store-tag',
+            'display_name'  => 'tag store',
+            'is_active'     => 1,
+        ]);
+
         //permission
         $permission1 = Permission::create([
             'name'          => 'index-permission',
@@ -414,6 +499,18 @@ class PermissionsTableSeeder extends Seeder
         $permission5 = Permission::create([
             'name'          => 'show-permission',
             'display_name'  => 'permission Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $permission6 = Permission::create([
+            'name'          => 'update-permission',
+            'display_name'  => 'permission update',
+            'is_active'     => 1,
+        ]);
+
+        $permission7 = Permission::create([
+            'name'          => 'store-permission',
+            'display_name'  => 'permission store',
             'is_active'     => 1,
         ]);
 
@@ -448,6 +545,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $revision6 = Permission::create([
+            'name'          => 'update-revision',
+            'display_name'  => 'revision update',
+            'is_active'     => 1,
+        ]);
+
+        $revision7 = Permission::create([
+            'name'          => 'store-revision',
+            'display_name'  => 'revision store',
+            'is_active'     => 1,
+        ]);
+
         //log
         $log1 = Permission::create([
             'name'          => 'index-log',
@@ -476,6 +585,18 @@ class PermissionsTableSeeder extends Seeder
         $log5 = Permission::create([
             'name'          => 'show-log',
             'display_name'  => 'log Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $log6 = Permission::create([
+            'name'          => 'update-log',
+            'display_name'  => 'log update',
+            'is_active'     => 1,
+        ]);
+
+        $log7 = Permission::create([
+            'name'          => 'store-log',
+            'display_name'  => 'log update',
             'is_active'     => 1,
         ]);
 
@@ -516,6 +637,12 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $account7 = Permission::create([
+            'name'          => 'store-account',
+            'display_name'  => 'account store',
+            'is_active'     => 1,
+        ]);
+
         //country
         $country1 = Permission::create([
             'name'          => 'index-country',
@@ -544,6 +671,18 @@ class PermissionsTableSeeder extends Seeder
         $country5 = Permission::create([
             'name'          => 'show-country',
             'display_name'  => 'country Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $country6 = Permission::create([
+            'name'          => 'update-country',
+            'display_name'  => 'country update',
+            'is_active'     => 1,
+        ]);
+
+        $country7 = Permission::create([
+            'name'          => 'store-country',
+            'display_name'  => 'country store',
             'is_active'     => 1,
         ]);
 
@@ -578,6 +717,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $city6 = Permission::create([
+            'name'          => 'update-city',
+            'display_name'  => 'city update',
+            'is_active'     => 1,
+        ]);
+
+        $city7 = Permission::create([
+            'name'          => 'store-city',
+            'display_name'  => 'city store',
+            'is_active'     => 1,
+        ]);
+
         //contact
         $contact1 = Permission::create([
             'name'          => 'index-contact',
@@ -606,6 +757,18 @@ class PermissionsTableSeeder extends Seeder
         $contact5 = Permission::create([
             'name'          => 'show-contact',
             'display_name'  => 'Dosya Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $contact6 = Permission::create([
+            'name'          => 'update-contact',
+            'display_name'  => 'contact update',
+            'is_active'     => 1,
+        ]);
+
+        $contact7 = Permission::create([
+            'name'          => 'store-contact',
+            'display_name'  => 'contact store',
             'is_active'     => 1,
         ]);
 
@@ -640,6 +803,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $event6 = Permission::create([
+            'name'          => 'update-event',
+            'display_name'  => 'event update',
+            'is_active'     => 1,
+        ]);
+
+        $event7 = Permission::create([
+            'name'          => 'store-event',
+            'display_name'  => 'event store',
+            'is_active'     => 1,
+        ]);
+
         //thememanager
         $thememanager1 = Permission::create([
             'name'          => 'index-thememanager',
@@ -668,6 +843,18 @@ class PermissionsTableSeeder extends Seeder
         $thememanager5 = Permission::create([
             'name'          => 'show-thememanager',
             'display_name'  => 'Dosya Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $thememanager6 = Permission::create([
+            'name'          => 'update-thememanager',
+            'display_name'  => 'thememanager update',
+            'is_active'     => 1,
+        ]);
+
+        $thememanager7 = Permission::create([
+            'name'          => 'store-thememanager',
+            'display_name'  => 'thememanager store',
             'is_active'     => 1,
         ]);
 
@@ -703,6 +890,18 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         $widgetmanager6 = Permission::create([
+            'name'          => 'update-widgetmanager',
+            'display_name'  => 'widgetmanager update',
+            'is_active'     => 1,
+        ]);
+
+        $widgetmanager7 = Permission::create([
+            'name'          => 'store-widgetmanager',
+            'display_name'  => 'widgetmanager store',
+            'is_active'     => 1,
+        ]);
+
+        $widgetmanager8 = Permission::create([
             'name'          => 'addWidgetActivation-widgetmanager',
             'display_name'  => 'addWidgetActivation işlemleri',
             'is_active'     => 1,
@@ -745,6 +944,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $modulemanager7 = Permission::create([
+            'name'          => 'update-modulemanager',
+            'display_name'  => 'modulemanager update',
+            'is_active'     => 1,
+        ]);
+
+        $modulemanager8 = Permission::create([
+            'name'          => 'store-modulemanager',
+            'display_name'  => 'modulemanager store',
+            'is_active'     => 1,
+        ]);
+
         //setting
         $setting1 = Permission::create([
             'name'          => 'index-setting',
@@ -782,7 +993,11 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
-
+        $setting7 = Permission::create([
+            'name'          => 'store-setting',
+            'display_name'  => 'setting store',
+            'is_active'     => 1,
+        ]);
 
 
         $first_user = User::find(1);
@@ -792,11 +1007,6 @@ class PermissionsTableSeeder extends Seeder
 
         $super_admin->permissions()->attach($dashboard1);
         $super_admin->permissions()->attach($dashboard2);
-        $super_admin->permissions()->attach($document1);
-        $super_admin->permissions()->attach($document2);
-        $super_admin->permissions()->attach($document3);
-        $super_admin->permissions()->attach($document4);
-        $super_admin->permissions()->attach($document5);
         $super_admin->permissions()->attach($user1);
         $super_admin->permissions()->attach($user2);
         $super_admin->permissions()->attach($user3);
@@ -805,115 +1015,155 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($user6);
         $super_admin->permissions()->attach($user7);
         $super_admin->permissions()->attach($user8);
+        $super_admin->permissions()->attach($user9);
         $super_admin->permissions()->attach($group1);
         $super_admin->permissions()->attach($group2);
         $super_admin->permissions()->attach($group3);
         $super_admin->permissions()->attach($group4);
         $super_admin->permissions()->attach($group5);
+        $super_admin->permissions()->attach($group6);
+        $super_admin->permissions()->attach($group7);
         $super_admin->permissions()->attach($role1);
         $super_admin->permissions()->attach($role2);
         $super_admin->permissions()->attach($role3);
         $super_admin->permissions()->attach($role4);
         $super_admin->permissions()->attach($role5);
+        $super_admin->permissions()->attach($role6);
+        $super_admin->permissions()->attach($role7);
         $super_admin->permissions()->attach($tag1);
         $super_admin->permissions()->attach($tag2);
         $super_admin->permissions()->attach($tag3);
         $super_admin->permissions()->attach($tag4);
         $super_admin->permissions()->attach($tag5);
+        $super_admin->permissions()->attach($tag6);
+        $super_admin->permissions()->attach($tag7);
         $super_admin->permissions()->attach($permission1);
         $super_admin->permissions()->attach($permission2);
         $super_admin->permissions()->attach($permission3);
         $super_admin->permissions()->attach($permission4);
         $super_admin->permissions()->attach($permission5);
+        $super_admin->permissions()->attach($permission6);
+        $super_admin->permissions()->attach($permission7);
         $super_admin->permissions()->attach($revision1);
         $super_admin->permissions()->attach($revision2);
         $super_admin->permissions()->attach($revision3);
         $super_admin->permissions()->attach($revision4);
         $super_admin->permissions()->attach($revision5);
+        $super_admin->permissions()->attach($revision6);
+        $super_admin->permissions()->attach($revision7);
         $super_admin->permissions()->attach($log1);
         $super_admin->permissions()->attach($log2);
         $super_admin->permissions()->attach($log3);
         $super_admin->permissions()->attach($log4);
         $super_admin->permissions()->attach($log5);
+        $super_admin->permissions()->attach($log6);
+        $super_admin->permissions()->attach($log7);
         $super_admin->permissions()->attach($account1);
         $super_admin->permissions()->attach($account2);
         $super_admin->permissions()->attach($account3);
         $super_admin->permissions()->attach($account4);
         $super_admin->permissions()->attach($account5);
         $super_admin->permissions()->attach($account6);
+        $super_admin->permissions()->attach($account7);
         $super_admin->permissions()->attach($country1);
         $super_admin->permissions()->attach($country2);
         $super_admin->permissions()->attach($country3);
         $super_admin->permissions()->attach($country4);
         $super_admin->permissions()->attach($country5);
+        $super_admin->permissions()->attach($country6);
+        $super_admin->permissions()->attach($country7);
         $super_admin->permissions()->attach($city1);
         $super_admin->permissions()->attach($city2);
         $super_admin->permissions()->attach($city3);
         $super_admin->permissions()->attach($city4);
         $super_admin->permissions()->attach($city5);
+        $super_admin->permissions()->attach($city6);
+        $super_admin->permissions()->attach($city7);
         $super_admin->permissions()->attach($contactType1);
         $super_admin->permissions()->attach($contactType2);
         $super_admin->permissions()->attach($contactType3);
         $super_admin->permissions()->attach($contactType4);
         $super_admin->permissions()->attach($contactType5);
+        $super_admin->permissions()->attach($contactType6);
+        $super_admin->permissions()->attach($contactType7);
         $super_admin->permissions()->attach($contact1);
         $super_admin->permissions()->attach($contact2);
         $super_admin->permissions()->attach($contact3);
         $super_admin->permissions()->attach($contact4);
         $super_admin->permissions()->attach($contact5);
+        $super_admin->permissions()->attach($contact6);
+        $super_admin->permissions()->attach($contact7);
         $super_admin->permissions()->attach($event1);
         $super_admin->permissions()->attach($event2);
         $super_admin->permissions()->attach($event3);
         $super_admin->permissions()->attach($event4);
         $super_admin->permissions()->attach($event5);
+        $super_admin->permissions()->attach($event6);
+        $super_admin->permissions()->attach($event7);
         $super_admin->permissions()->attach($menu1);
         $super_admin->permissions()->attach($menu2);
         $super_admin->permissions()->attach($menu3);
         $super_admin->permissions()->attach($menu4);
         $super_admin->permissions()->attach($menu5);
+        $super_admin->permissions()->attach($menu6);
+        $super_admin->permissions()->attach($menu7);
         $super_admin->permissions()->attach($page1);
         $super_admin->permissions()->attach($page2);
         $super_admin->permissions()->attach($page3);
         $super_admin->permissions()->attach($page4);
         $super_admin->permissions()->attach($page5);
+        $super_admin->permissions()->attach($page6);
+        $super_admin->permissions()->attach($page7);
         $super_admin->permissions()->attach($rss1);
         $super_admin->permissions()->attach($rss2);
         $super_admin->permissions()->attach($rss3);
         $super_admin->permissions()->attach($rss4);
         $super_admin->permissions()->attach($rss5);
+        $super_admin->permissions()->attach($rss6);
+        $super_admin->permissions()->attach($rss7);
         $super_admin->permissions()->attach($sitemaps1);
         $super_admin->permissions()->attach($sitemaps2);
         $super_admin->permissions()->attach($sitemaps3);
         $super_admin->permissions()->attach($sitemaps4);
         $super_admin->permissions()->attach($sitemaps5);
+        $super_admin->permissions()->attach($sitemaps6);
+        $super_admin->permissions()->attach($sitemaps7);
         $super_admin->permissions()->attach($announcement1);
         $super_admin->permissions()->attach($announcement2);
         $super_admin->permissions()->attach($announcement3);
         $super_admin->permissions()->attach($announcement4);
         $super_admin->permissions()->attach($announcement5);
+        $super_admin->permissions()->attach($announcement6);
+        $super_admin->permissions()->attach($announcement7);
         $super_admin->permissions()->attach($thememanager1);
         $super_admin->permissions()->attach($thememanager2);
         $super_admin->permissions()->attach($thememanager3);
         $super_admin->permissions()->attach($thememanager4);
         $super_admin->permissions()->attach($thememanager5);
+        $super_admin->permissions()->attach($thememanager6);
+        $super_admin->permissions()->attach($thememanager7);
         $super_admin->permissions()->attach($modulemanager1);
         $super_admin->permissions()->attach($modulemanager2);
         $super_admin->permissions()->attach($modulemanager3);
         $super_admin->permissions()->attach($modulemanager4);
         $super_admin->permissions()->attach($modulemanager5);
         $super_admin->permissions()->attach($modulemanager6);
+        $super_admin->permissions()->attach($modulemanager7);
+        $super_admin->permissions()->attach($modulemanager8);
         $super_admin->permissions()->attach($widgetmanager1);
         $super_admin->permissions()->attach($widgetmanager2);
         $super_admin->permissions()->attach($widgetmanager3);
         $super_admin->permissions()->attach($widgetmanager4);
         $super_admin->permissions()->attach($widgetmanager5);
         $super_admin->permissions()->attach($widgetmanager6);
+        $super_admin->permissions()->attach($widgetmanager7);
+        $super_admin->permissions()->attach($widgetmanager8);
         $super_admin->permissions()->attach($setting1);
         $super_admin->permissions()->attach($setting2);
         $super_admin->permissions()->attach($setting3);
         $super_admin->permissions()->attach($setting4);
         $super_admin->permissions()->attach($setting5);
         $super_admin->permissions()->attach($setting6);
-
+        $super_admin->permissions()->attach($setting7);
     }
 }

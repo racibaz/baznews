@@ -35,10 +35,6 @@ class RecommendationNews extends AbstractWidget
 
         });
 
-        return Theme::view('frontend.widgets.recommendation_news', compact(['config','recommendationNewsItems']));
-
-//        return view("widgets.recommendation_news", [
-//            'config' => $this->config,
-//        ]);
+        return Theme::view('news::frontend.widgets.recommendation_news',compact(['config','recommendationNewsItems']));
     }
 }

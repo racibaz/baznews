@@ -35,6 +35,6 @@ class Biographies extends AbstractWidget
 
         });
 
-        return Theme::view('frontend.widgets.biographies', compact(['config','biographies']));
+        return Theme::view('biography::frontend.widgets.biographies', compact(['config','biographies']));
     }
 }

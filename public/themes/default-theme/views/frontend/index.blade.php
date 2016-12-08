@@ -6,7 +6,6 @@
     3.Setting module tamamlanacak.<br>
     6.Theme de widget yerilerini göstermek için her temanın içerisine temenın şablonunu gösteren foto olacak aktif widget dan o resmi çekip tema ve widget yönetimine koyulacak.<br>
   ??7.Theme ayarlarından theme in alanları alınabilecek.(Tema ayarlarında 'sidebar','rightbar' vs.. listelenirken veriler theme in ayarlarından gelecek.)<br>
-    8.Laravel Medialibrary <br>
     9.News Modülü geliştirilecek<br>
     v210.Moduller aktif ve pasif yapıldığında seeder  migrate ve seeder çalıştırılarak.Modul ayarları eklenip silinebilecek.(widget vs..)<br>
     11.Auth::user() presenter pattern ları yapılacak.<br>
@@ -18,11 +17,10 @@
     19.Dashboard Yapılacak <br />
     20.Status Durumları ENUM yapılacak.(ekranda nasıl listelenecek ona da bakılacak) <br />
     21.open graft lar eklenecek <br />
-    22.Setting de değer alanına text editor koyulacak(admin lte 2 var) <br />
-    22.Setting de değer alanına text editor koyulacak(admin lte 2 var) <br />
     23.tema eklenecek.<br />
     24.face comment eklenecek.<br />
-    25.admin tarafına editorlerin kullanabileceği chat uygulaması koyulacak.<br />
+    25.admin tarafına editorlerin kullanabileceği chat uygulaması koyulacak.<br />;
+    26.haberlere unique uid() koyulacak.<br />;
 
 
     APP_ENV=local
@@ -104,7 +102,9 @@
     <h1>bandNewsItem</h1>
     <br />
     @foreach($bandNewsItems as $bandNewsItem)
-        {{$bandNewsItem->title}} <br/>
+        <a href="{!! route('show_news', ['newsSlug' => $bandNewsItem->slug]) !!}">{{$bandNewsItem->title}}</a>
+        <br/>
+
     @endforeach
 
     <h1>mainCuffNewsItems</h1>
@@ -164,29 +164,6 @@
     <br />
     widget ve sitemap rss tabloları yapılacak.
 
-    <div id="disqus_thread"></div>
-    <script>
-
-        /**
-         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-        /*
-         var disqus_config = function () {
-         this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-         this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-         };
-         */
-        (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = '//baznews.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
-
 @endsection
 
 {{--@section('widgets')--}}
@@ -205,6 +182,7 @@
 {{--@endsection--}}
 
 @section('meta_tags')
+    <title> {{ Redis::get('title') }}  </title>
     <meta name="keywords" content="{{ Redis::get('keywords') }}"/>
     <meta name="description" content="{{ Redis::get('description') }}"/>
     <meta name='subtitle' content='This is my subtitle'>

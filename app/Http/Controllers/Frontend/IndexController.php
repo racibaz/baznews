@@ -55,6 +55,12 @@ class IndexController extends Controller
 
              $widgets = WidgetManager::where('is_active',1)->get();
 
+             if(!Redis::exists('widgets')){
+                 Redis::set('widgets', $widgets);
+             }
+
+
+
 
              //TODO setting tek satır yapılacak
              $pageSetting = Setting::all();

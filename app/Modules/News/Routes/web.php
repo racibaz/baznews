@@ -14,7 +14,10 @@
 
 
 
-Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sitemap');
+
+Route::pattern('newsSlug', '[a-z\-]+');
+
+Route::get('/{newsSlug}', 'Frontend\NewsController@show')->name('show_news');
 
 Route::get('archive/{years?}/{months?}/{days?}', 'Frontend\ArchiveController@index')
     ->name('archive_index')
@@ -24,7 +27,7 @@ Route::get('archive/{years?}/{months?}/{days?}', 'Frontend\ArchiveController@ind
 
 Route::get('q/{q}', 'Frontend\SearchController@index')->name('search');
 
-
+Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sitemap');
 
 
 Route::group(['prefix' => 'rss'], function() {

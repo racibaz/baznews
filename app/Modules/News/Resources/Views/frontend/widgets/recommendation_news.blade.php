@@ -3,4 +3,5 @@
 @foreach($recommendationNewsItems as $recommendationNewsItem)
 
     {{ $recommendationNewsItem->news->title }} <br />
+
 @endforeach

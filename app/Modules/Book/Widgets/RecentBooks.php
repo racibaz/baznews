@@ -34,6 +34,6 @@ class RecentBooks extends AbstractWidget
                 ->orderBy('updated_at','desc')
                 ->get();
         });
-        return Theme::view('frontend.widgets.recent_books', compact(['recentBooks']));
+        return Theme::view('book::frontend.widgets.recent_books', compact(['recentBooks']));
     }
 }

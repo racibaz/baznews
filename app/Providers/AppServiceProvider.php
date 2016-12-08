@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Events\UserRegistered;
 use App\Models\Setting;
 use App\Models\User;
+use App\Models\WidgetManager;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Modules\Modules;
 use Caffeinated\Themes\Facades\Theme;
@@ -48,6 +49,9 @@ class AppServiceProvider extends ServiceProvider
                 }
                 //return 'setting';
             });
+
+
+            View::share('widgets', WidgetManager::where('is_active',1)->get());
 
             //Cache::tags('settings')->flush();
             //Cache::flush();

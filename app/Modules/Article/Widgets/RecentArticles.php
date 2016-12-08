@@ -35,10 +35,6 @@ class RecentArticles extends AbstractWidget
                 ->get();
         });
 
-        return Theme::view('frontend.widgets.recent_articles', compact(['recentArticles']));
-
-//        return view("widgets.recent_articles", [
-//            'config' => $this->config,
-//        ]);
+        return Theme::view('article::frontend.widgets.recent_articles', compact(['recentArticles']));
     }
 }

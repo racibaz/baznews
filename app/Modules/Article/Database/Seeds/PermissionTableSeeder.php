@@ -47,6 +47,18 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $article6 = Permission::create([
+            'name'          => 'update-article',
+            'display_name'  => 'article update',
+            'is_active'     => 1,
+        ]);
+
+        $article7 = Permission::create([
+            'name'          => 'store-article',
+            'display_name'  => 'article update',
+            'is_active'     => 1,
+        ]);
+
         //author
         $author1 = Permission::create([
             'name'          => 'index-author',
@@ -75,6 +87,18 @@ class PermissionTableSeeder extends Seeder
         $author5 = Permission::create([
             'name'          => 'show-author',
             'display_name'  => 'author Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $author6 = Permission::create([
+            'name'          => 'update-author',
+            'display_name'  => 'author update',
+            'is_active'     => 1,
+        ]);
+
+        $author7 = Permission::create([
+            'name'          => 'store-author',
+            'display_name'  => 'author store',
             'is_active'     => 1,
         ]);
 
@@ -109,6 +133,18 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $articlecategory6 = Permission::create([
+            'name'          => 'update-articlecategory',
+            'display_name'  => 'articlecategory update',
+            'is_active'     => 1,
+        ]);
+
+        $articlecategory7 = Permission::create([
+            'name'          => 'store-articlecategory',
+            'display_name'  => 'articlecategory store',
+            'is_active'     => 1,
+        ]);
+
 
         $super_admin = Role::find(1);
 
@@ -117,16 +153,22 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($article3);
         $super_admin->permissions()->attach($article4);
         $super_admin->permissions()->attach($article5);
+        $super_admin->permissions()->attach($article6);
+        $super_admin->permissions()->attach($article7);
         $super_admin->permissions()->attach($author1);
         $super_admin->permissions()->attach($author2);
         $super_admin->permissions()->attach($author3);
         $super_admin->permissions()->attach($author4);
         $super_admin->permissions()->attach($author5);
+        $super_admin->permissions()->attach($author6);
+        $super_admin->permissions()->attach($author7);
         $super_admin->permissions()->attach($articlecategory1);
         $super_admin->permissions()->attach($articlecategory2);
         $super_admin->permissions()->attach($articlecategory3);
         $super_admin->permissions()->attach($articlecategory4);
         $super_admin->permissions()->attach($articlecategory5);
+        $super_admin->permissions()->attach($articlecategory6);
+        $super_admin->permissions()->attach($articlecategory7);
 
     }
 }
