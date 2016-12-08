@@ -24,7 +24,7 @@ class Controller extends BaseController
      */
     public function __construct()
     {
-        Theme::setActive('default-theme');
+        Theme::setActive('news-theme');
     }
 
     /**

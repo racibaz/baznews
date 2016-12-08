@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'active' => 'default-theme',
+	'active' => 'news-theme',
 	
 	'engine' => 'blade',
 

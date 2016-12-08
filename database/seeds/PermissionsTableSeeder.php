@@ -858,6 +858,12 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $thememanager8 = Permission::create([
+            'name'          => 'themeActivationToggle-thememanager',
+            'display_name'  => 'thememanager themeActivationToggle',
+            'is_active'     => 1,
+        ]);
+
         //widgetmanager
         $widgetmanager1 = Permission::create([
             'name'          => 'index-widgetmanager',
@@ -1142,6 +1148,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($thememanager5);
         $super_admin->permissions()->attach($thememanager6);
         $super_admin->permissions()->attach($thememanager7);
+        $super_admin->permissions()->attach($thememanager8);
         $super_admin->permissions()->attach($modulemanager1);
         $super_admin->permissions()->attach($modulemanager2);
         $super_admin->permissions()->attach($modulemanager3);

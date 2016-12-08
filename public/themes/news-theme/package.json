@@ -1,0 +1,32 @@
+{
+  "name": "news-theme",
+  "version": "1.0.0",
+  "description": "News app theme",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "cssnano": "^3.8.0",
+    "gulp": "^3.9.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-typescript": "^3.1.3",
+    "typescript": "^2.0.9"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "browser-sync": "^2.17.5",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/aliduman/news-theme.git"
+  },
+  "author": "Ali Duman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/aliduman/news-theme/issues"
+  },
+  "homepage": "https://gitlab.com/aliduman/news-theme#README"
+}
