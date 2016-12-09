@@ -60,6 +60,8 @@ class AppServiceProvider extends ServiceProvider
             //TODO cachelenecek
             View::share('activeTheme', Theme::getActive());
 
+
+
 //        User::observe(UserObserver::class);
 //        Country::observe(CountryObserver::class);
 //        City::observe(CityObserver::class);

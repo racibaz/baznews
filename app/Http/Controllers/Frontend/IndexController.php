@@ -30,8 +30,8 @@ class IndexController extends Controller
              $mainCuffNewsItems =  $newsRepository->where('main_cuff', 1)->where('status', 1)->take(Redis::get('main_cuff'))->get();
              $miniCuffNewsItems =  $newsRepository->where('mini_cuff', 1)->where('status', 1)->take(Redis::get('mini_cuff'))->get();
 
-             $newsCategoryRepository = new NewsCategoryRepository();
-             $cuffNewsCategories = $newsCategoryRepository->with(['news'])->where('is_cuff', 1)->where('is_active', 1)->get();
+//             $newsCategoryRepository = new NewsCategoryRepository();
+//             $cuffNewsCategories = $newsCategoryRepository->with(['news'])->where('is_cuff', 1)->where('is_active', 1)->get();
 
 
              $menuRepository = new MenuRepository();

@@ -12,7 +12,7 @@ return [
 	| application that does not require dynamically changing the theme.
 	|
 	*/
-
+    //todo setActive çalışmıyor onun yerine dinamik olarak .env dosyasını değiştireceğiz.
 	'active' => 'news-theme',
 	
 	'engine' => 'blade',

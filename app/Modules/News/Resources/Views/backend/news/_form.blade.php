@@ -315,15 +315,9 @@
                 </div>
                         <!-- /.box-header -->
                 <div class="box-body">
-                    {{--<form role="form">--}}
-
-                    @foreach($newsCategories as $newsCategory)
                         <div class="form-group">
-                            {!! Form::checkbox('news_category_ids[]' . $newsCategory->id, $newsCategory->id, in_array($newsCategory->id , $record->news_categories->pluck('id')->toArray())) !!} :
-                            {{ $newsCategory->name }}
+                            {!! Form::select('news_category_ids[]', $newsCategoryList , $newsCategoryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
                         </div>
-                    @endforeach
-
                 </div>
                 <!-- /.box-body -->
             </div>

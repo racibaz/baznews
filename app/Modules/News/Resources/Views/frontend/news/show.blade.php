@@ -2,24 +2,234 @@
 
 @section('content')
 
-    <h1>Haber İçeriği</h1>
 
+    <article class="container" id="container">
+        <div class="breadcrumbs">
+            <p><a href="new-details.html">Home.</a>   \\   <a href="new-details.html">World News.</a>   \\   Single.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div id="new-content">
+                    <div class="share-box">
+                        <ul class="nav nav-justified">
+                            <li>
+                                <a class="btn btn-block btn-social btn-facebook">
+                                    <span class="fa fa-facebook"></span> Paylaş
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn-block btn-social btn-twitter">
+                                    <span class="fa fa-twitter"></span> Paylaş
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn-block btn-social btn-google">
+                                    <span class="fa fa-google-plus"></span> Paylaş
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn-block btn-social btn-linkedin">
+                                    <span class="fa fa-linkedin"></span> Paylaş
+                                </a>
+                            </li>
+                        </ul><!-- /.nav -->
+                    </div><!-- /.share-box -->
+                    <div class="new-img">
+                        <img src="{{$record->thumbnail}}" alt="new text">
+                    </div>
+                    <div class="content" id="content">
+                        <h1 class="ct-title">
+                            {!! $record->title !!}<br />
+                            <br /></h1>
+                        <span class="meta"> Ekleme Zamanı : {!! $record->created_at !!} \\  Güncelleme Zamanı : {!! $record->updated_at !!}
+                            <a href="new-details.html">World News.</a>   \\   <a href="new-details.html">No Coments.</a>
+                        </span><!-- /.meta -->
+                        <div class="ct-text">
+                            {!! $record->content !!}
+                        </div><!-- /.ct-text -->
+                    </div><!-- /.content -->
+                </div><!-- /.new-content -->
+            </div><!-- /.col-md-8 -->
+            <div class="col-md-4">
+                <div class="sidebar">
+                    <div class="nw-sm-img">
+                        <div role="tabpanel">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>
+                                </li>
+                            </ul>
 
-    {{$record->country->name}} <br />
-    {{$record->city->name}} <br />
-    {{$record->news_resorce_id}} <br />
-    {{$record->title}} <br />
-    {{$record->slug}} <br />
-    {!! $record->spot  !!}<br />
-    {!! $record->content !!} <br />
-    {!! $record->hit !!} <br />
-     <br />
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="video">
+                                    <ul class="new-list no-list">
+                                        <li class="nw-bx no-list active">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">1</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">2</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">3</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">4</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">5</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                    </ul><!-- /.new-list -->
+                                </div><!-- /.tab-pane -->
+                                <div role="tabpanel" class="tab-pane" id="son_dakika">
+                                    <ul class="new-list no-list">
+                                        <li class="nw-bx no-list active">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">1</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">2</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">3</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">4</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">5</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                    </ul><!-- /.new-list -->
+                                </div><!-- /.tab-pane -->
+
+                                <div role="tabpanel" class="tab-pane" id="cok_okunanlar">
+                                    <ul class="new-list no-list">
+                                        <li class="nw-bx no-list active">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">1</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">2</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">3</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">4</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                            <span class="dec">5</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                    </ul><!-- /.new-list -->
+                                </div><!-- /.tab-pane -->
+                            </div><!-- /.tab-content -->
+                        </div><!-- /rabpanel -->
+                    </div><!-- /.nw-sm-img -->
+                </div>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+
+    </article><!-- /.article -->
 
 
 
 
     <div class="fb-comment-embed" data-href="{{Redis::get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>
-
 
 
     @foreach($widgets as $widget)

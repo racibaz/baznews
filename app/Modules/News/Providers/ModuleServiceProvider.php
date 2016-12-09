@@ -2,7 +2,10 @@
 
 namespace App\Modules\News\Providers;
 
+use App\Modules\News\Repositories\NewsCategoryRepository;
+use Cache;
 use Caffeinated\Modules\Support\ServiceProvider;
+use View;
 
 class ModuleServiceProvider extends ServiceProvider
 {
@@ -15,6 +18,17 @@ class ModuleServiceProvider extends ServiceProvider
     {
         $this->loadTranslationsFrom(__DIR__.'/../Resources/Lang', 'news');
         $this->loadViewsFrom(__DIR__.'/../Resources/Views', 'news');
+
+
+
+        Cache::remember('cuffNewsCategories', 10, function () {
+
+            $newsCategoryRepository = new NewsCategoryRepository();
+            $cuffNewsCategories = $newsCategoryRepository->with(['news'])->where('is_cuff', 1)->where('is_active', 1)->get();
+            View::share('cuffNewsCategories', $cuffNewsCategories);
+        });
+
+
     }
 
     /**

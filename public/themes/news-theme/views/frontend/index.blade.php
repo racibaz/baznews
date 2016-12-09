@@ -8,7 +8,9 @@
             <div class="col-md-12">
                 <div class="last-time" id="son-dakika">
                     <h4>Son Dakika:</h4>
-                    <a href="new-details.html">Tortor Cras Nibh Egestas Vestibulum</a>
+                    @foreach($breakNewsItems as $breakNewsItem)
+                        <a href="{!! route('show_news', ['newsSlug' => $breakNewsItem->slug]) !!}">{{$breakNewsItem->title}}</a>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -17,10 +19,13 @@
             <div class="col-md-8">
                 <div class="main-slider">
                     <ul class="bxslider">
-                        <li data-slide-index="0"><img src="assets/img/new3.jpg" /></li>
-                        <li data-slide-index="1"><img src="assets/img/new4.jpg" /></li>
-                        <li data-slide-index="2"><img src="assets/img/new2.jpg" /></li>
-                        <li data-slide-index="3"><img src="assets/img/main-slide.jpg" /></li>
+                        @foreach($mainCuffNewsItems as $mainCuffNewsItem)
+                             <li data-slide-index="{{$mainCuffNewsItem->id}}">
+                                 <a href="{!! route('show_news', ['newsSlug' => $mainCuffNewsItem->slug]) !!}">
+                                    <img src="{{$mainCuffNewsItem->cuff_photo}}" alt="News Logo" >
+                                 </a>
+                             </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -28,10 +33,10 @@
             <div class="col-md-4">
                 <div class="main-slider spot">
                     <ul class="bxslider">
-                        <li data-slide-index="0"><img src="assets/img/spot.jpg" /></li>
-                        <li data-slide-index="1"><img src="assets/img/spot.jpg" /></li>
-                        <li data-slide-index="2"><img src="assets/img/spot.jpg" /></li>
-                        <li data-slide-index="3"><img src="assets/img/spot.jpg" /></li>
+                        <li data-slide-index="0"><img src="{{ Theme::asset($activeTheme . '::img/spot.jpg')}}" alt="News Logo" ></li>
+                        <li data-slide-index="1"><img src="{{ Theme::asset($activeTheme . '::img/spot.jpg')}}" alt="News Logo" ></li>
+                        <li data-slide-index="2"><img src="{{ Theme::asset($activeTheme . '::img/spot.jpg')}}" alt="News Logo" ></li>
+                        <li data-slide-index="3"><img src="{{ Theme::asset($activeTheme . '::img/spot.jpg')}}" alt="News Logo" ></li>
                     </ul>
                 </div>
             </div>
@@ -44,7 +49,7 @@
                         <li>
                             <div class="thumbnail">
                                 <a href="new-details.html">
-                                    <img src="assets/img/spot/mini-spot1.jpg" alt="Dummyİmage">
+                                    <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot1.jpg')}}" alt="Dummyİmage">
                                     <div class="caption">
                                         <span class="mini-title">Consectetur Cras</span>
                                         <span class="ct-title">
@@ -60,7 +65,7 @@
                         <li>
                             <div class="thumbnail">
                                 <a href="new-details.html">
-                                    <img src="assets/img/spot/mini-spot2.jpg" alt="Dummyİmage">
+                                    <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot2.jpg')}}" alt="Dummyİmage">
                                     <div class="caption">
                                         <span class="mini-title">Consectetur Cras</span>
                                         <span class="ct-title">
@@ -75,7 +80,7 @@
                         <li>
                             <div class="thumbnail">
                                 <a href="new-details.html">
-                                    <img src="assets/img/spot/mini-spot3.jpg" alt="Dummyİmage">
+                                    <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot3.jpg')}}" alt="Dummyİmage">
                                     <div class="caption">
                                         <span class="mini-title">Consectetur Cras</span>
                                         <span class="ct-title">
@@ -90,7 +95,7 @@
                         <li>
                             <div class="thumbnail">
                                 <a href="new-details.html">
-                                    <img src="assets/img/spot/mini-spot2.jpg" alt="Dummyİmage">
+                                    <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot2.jpg')}}" alt="Dummyİmage">
                                     <div class="caption">
                                         <span class="mini-title">Consectetur Cras</span>
                                         <span class="ct-title">
@@ -105,7 +110,7 @@
                         <li>
                             <div class="thumbnail">
                                 <a href="new-details.html">
-                                    <img src="assets/img/spot/mini-spot1.jpg" alt="Dummyİmage">
+                                    <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot1.jpg')}}" alt="Dummyİmage">
                                     <div class="caption">
                                         <span class="mini-title">Consectetur Cras</span>
                                         <span class="ct-title">
@@ -217,7 +222,7 @@
                                     <li class="nw-bx no-list active">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">1</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -226,7 +231,7 @@
                                     <li class="nw-bx no-list">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">2</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -235,7 +240,7 @@
                                     <li class="nw-bx no-list">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">3</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -244,7 +249,7 @@
                                     <li class="nw-bx no-list">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">4</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -253,7 +258,7 @@
                                     <li class="nw-bx no-list">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">5</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -266,7 +271,7 @@
                                     <li class="nw-bx no-list active">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">1</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -275,7 +280,7 @@
                                     <li class="nw-bx no-list">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">2</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -284,7 +289,7 @@
                                     <li class="nw-bx no-list">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">3</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -293,7 +298,7 @@
                                     <li class="nw-bx no-list">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">4</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -302,7 +307,7 @@
                                     <li class="nw-bx no-list">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">5</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -316,7 +321,7 @@
                                     <li class="nw-bx no-list active">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">1</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -325,7 +330,7 @@
                                     <li class="nw-bx no-list">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">2</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -334,7 +339,7 @@
                                     <li class="nw-bx no-list">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">3</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -343,7 +348,7 @@
                                     <li class="nw-bx no-list">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">4</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -352,7 +357,7 @@
                                     <li class="nw-bx no-list">
                                         <a href="new-details.html" title="" class="full-link"></a>
                                         <span class="imgwrap">
-                                        <img src="assets/img/mini-spot/d_296_2.jpg" alt="">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
                                         <span class="dec">5</span>
                                         <div class="spot">Pellentesque Quam</div>
@@ -374,14 +379,14 @@
                 </div>
                 <div class="th-nw-slide">
                     <div id="m_pg1" class="pager">
-                        <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct"><img src="assets/img/spot/multimedia1.jpg" /></span></a>
-                        <a data-slide-index="1" href="" onmouseover="this.click()"><span class="img-ct"><img src="assets/img/spot/multimedia2.jpg" /></span></a>
-                        <a data-slide-index="2" href="" onmouseover="this.click()"><span class="img-ct"><img src="assets/img/spot/multimedia3.jpg" /></span></a>
+                        <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct"><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia1.jpg')}}" /></span></a>
+                        <a data-slide-index="1" href="" onmouseover="this.click()"><span class="img-ct"><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia2.jpg')}}" /></span></a>
+                        <a data-slide-index="2" href="" onmouseover="this.click()"><span class="img-ct"><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia3.jpg')}}" /></span></a>
                     </div><!-- /.m-pg -->
                     <ul class="slide m-slider1">
-                        <li><img src="assets/img/spot/multimedia1.jpg" /></li>
-                        <li><img src="assets/img/spot/multimedia2.jpg" /></li>
-                        <li><img src="assets/img/spot/multimedia3.jpg" /></li>
+                        <li><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia1.jpg')}}" /></li>
+                        <li><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia2.jpg')}}" /></li>
+                        <li><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia3.jpg')}}" /></li>
                     </ul><!-- /.m-slider -->
                 </div><!-- /.th-nw-slide -->
             </div><!-- /.col -->
@@ -393,14 +398,14 @@
                 </div>
                 <div class="th-nw-slide">
                     <div id="m_pg2" class="pager">
-                        <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct"><img src="assets/img/spot/multimedia1.jpg" /></span></a>
-                        <a data-slide-index="1" href="" onmouseover="this.click()"><span class="img-ct"><img src="assets/img/spot/multimedia2.jpg" /></span></a>
-                        <a data-slide-index="2" href="" onmouseover="this.click()"><span class="img-ct"><img src="assets/img/spot/multimedia3.jpg" /></span></a>
+                        <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct"><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia1.jpg')}}" /></span></a>
+                        <a data-slide-index="1" href="" onmouseover="this.click()"><span class="img-ct"><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia2.jpg')}}" /></span></a>
+                        <a data-slide-index="2" href="" onmouseover="this.click()"><span class="img-ct"><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia3.jpg')}}" /></span></a>
                     </div><!-- /.m-pg -->
                     <ul class="slide m-slider2">
-                        <li><img src="assets/img/spot/multimedia1.jpg" /></li>
-                        <li><img src="assets/img/spot/multimedia2.jpg" /></li>
-                        <li><img src="assets/img/spot/multimedia3.jpg" /></li>
+                        <li><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia1.jpg')}}" /></li>
+                        <li><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia2.jpg')}}" /></li>
+                        <li><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia3.jpg')}}" /></li>
                     </ul><!-- /.m-slider -->
                 </div><!-- /.th-nw-slide -->
             </div><!-- /.col -->
@@ -435,6 +440,8 @@
 @endsection
 
 @section('js')
+
+    <script src="http://code.jquery.com/jquery.min.js"></script>
 
     <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>

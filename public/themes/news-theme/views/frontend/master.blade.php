@@ -2,19 +2,19 @@
 <html lang="tr">
 <head>
 
-    {{--<meta name="google-site-verification" content="{{ Redis::get('google') }}"/>--}}
-    {!! Redis::get('static_meta_tags') !!}
     @yield('meta_tags')
+    {!! Redis::get('static_meta_tags') !!}
 
-    <link href="{{ Theme::asset($activeTheme . '::assets/js/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ Theme::asset($activeTheme . '::assets/js/bxslider-4/dist/jquery.bxslider.min.css') }}" rel="stylesheet">
-    <link href="{{ Theme::asset($activeTheme . '::assets/js/bxslider-4/dist/jquery.bxslider.min.css') }}" rel="stylesheet">
-    <link href="{{ Theme::asset($activeTheme . '::assets/css/style.css') }}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link href="{{ Theme::asset($activeTheme . '::js/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::js/bxslider-4/jquery.bxslider.css') }}" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::css/style.css') }}" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     @yield('css')
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,23 +44,20 @@
     <!-- Left side column. contains the logo and sidebar -->
     @include($activeTheme . '::frontend.layouts.sidebar')
 
-    <!-- Main content -->
+
     @include($activeTheme . '::frontend.partials._messages')
     @yield('content')
-    @yield('widgets')
-    <!-- /.content -->
 
 
     <!-- Main Footer -->
     @include($activeTheme . '::frontend.layouts.footer')
 
-    <script src="http://code.jquery.com/jquery.min.js"></script>
 
-    <script src="{{ Theme::asset($activeTheme . '::assets/js/bxslider-4/dist/jquery.bxslider.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::assets/js/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::assets/js/sticky/jquery.sticky.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::assets/type/script.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::assets/js/custom.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/bxslider-4/jquery.bxslider.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/bootstrap/js/bootstrap.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky/jquery.sticky.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::type/script.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/custom.js') }}"></script>
 
     @yield('js')
 

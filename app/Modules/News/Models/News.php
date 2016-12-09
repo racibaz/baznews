@@ -111,6 +111,11 @@ class News extends Model
         return $this->belongsTo('App\Models\City');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function news_source()
     {
         return $this->belongsTo('App\Modules\News\Models\NewsSource');

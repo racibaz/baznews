@@ -40,6 +40,7 @@ class ThemeManagerController extends Controller
         $themes = Theme::all();
         $activeTheme = Theme::getActive();
 
+
         $records = $this->repo->findAll();
         return Theme::view($this->getViewName(__FUNCTION__),compact(
             'records',

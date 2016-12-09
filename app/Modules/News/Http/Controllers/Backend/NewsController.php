@@ -60,7 +60,6 @@ class NewsController extends Controller
 
     public function index()
     {
-
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate(50);
         $newsCategoryList = NewsCategory::newsCategoryList();
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records', 'newsCategoryList']));
@@ -83,6 +82,7 @@ class NewsController extends Controller
         $videosIDs = [];
         $photosIDs = [];
         $videoGalleryIDs = [];
+        $newsCategoryIDs = [];
         $newsList = News::newsAllList();
         $newsCategories = NewsCategory::where('is_active', 1)->get();
         $countryList = Country::countryList();
@@ -123,7 +123,9 @@ class NewsController extends Controller
                 'videoList',
                 'videosIDs',
                 'photoList',
-                'photosIDs',]));
+                'photosIDs',
+                'newsCategoryIDs',
+            ]));
     }
 
 
@@ -155,6 +157,7 @@ class NewsController extends Controller
         $videosIDs = [];
         $photosIDs = [];
         $videoGalleryIDs = [];
+        $newsCategoryIDs = [];
         $newsList = News::newsAllList();
         $newsCategories = NewsCategory::where('is_active', 1)->get();
         $countryList = Country::countryList();
@@ -181,7 +184,6 @@ class NewsController extends Controller
         }
 
 
-
         foreach ($record->related_news as $index => $related_new) {
             $relatedIDs[$index] = $related_new->related_news_id;
         }
@@ -197,6 +199,11 @@ class NewsController extends Controller
         foreach ($record->video_galleries as $index => $video_gallery) {
             $videoGalleryIDs[$index] = $video_gallery->id;
         }
+
+        foreach ($record->news_categories as $index => $news_category) {
+            $newsCategoryIDs[$index] = $news_category->id;
+        }
+
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
             compact(['record',
@@ -221,6 +228,7 @@ class NewsController extends Controller
                 'videosIDs',
                 'photoList',
                 'photosIDs',
+                'newsCategoryIDs',
             ]));
     }
 
@@ -241,7 +249,6 @@ class NewsController extends Controller
     public function save($record)
     {
         $input = Input::all();
-
 
         $input['user_id'] = Auth::user()->id;
         $input['band_news'] = Input::get('band_news') == "on" ? true : false;
@@ -312,7 +319,9 @@ class NewsController extends Controller
 
     public function news_news_categories_store(News $record, $input)
     {
-        $record->news_categories()->sync($input['news_category_ids']);
+        if(isset($input['news_category_ids'])) {
+            $record->news_categories()->sync($input['news_category_ids']);
+        }
     }
 
     public function future_news_store(News $record, $input)
@@ -348,7 +357,6 @@ class NewsController extends Controller
         }
 
     }
-
 
     public function recommendation_news_store(News $record, $input)
     {
@@ -392,46 +400,57 @@ class NewsController extends Controller
 
     }
 
-
     public function related_news_news_store(News $record, $input)
     {
 //        $record->related_news()->sync($input['related_news_ids']);
 
-        RelatedNews::where('news_id',$record->id)->delete();
+        if(isset($input['related_news_ids'])){
 
-        foreach ($input['related_news_ids'] as $in){
+            RelatedNews::where('news_id',$record->id)->delete();
 
-            $relatedNews = new RelatedNews();
-            $relatedNews->news_id = $record->id;
-            $relatedNews->related_news_id =  $in;
-            $relatedNews->save();
+            foreach ($input['related_news_ids'] as $in){
+
+                $relatedNews = new RelatedNews();
+                $relatedNews->news_id = $record->id;
+                $relatedNews->related_news_id =  $in;
+                $relatedNews->save();
+            }
         }
-
     }
 
     public function tags_news_store(News $record, $input)
     {
-        $record->tags()->sync($input['tags_ids']);
+        if(isset($input['tags_ids'])) {
+            $record->tags()->sync($input['tags_ids']);
+        }
     }
 
     public function news_photo_galleries_store(News $record, $input)
     {
-        $record->photo_galleries()->sync($input['photo_gallery_ids']);
+        if(isset($input['tags_ids'])) {
+            $record->photo_galleries()->sync($input['photo_gallery_ids']);
+        }
     }
 
     public function news_video_galleries_store(News $record, $input)
     {
-        $record->video_galleries()->sync($input['video_gallery_ids']);
+        if(isset($input['tags_ids'])) {
+            $record->video_galleries()->sync($input['video_gallery_ids']);
+        }
     }
 
     public function news_videos_store(News $record, $input)
     {
-        $record->videos()->sync($input['videos_ids']);
+        if(isset($input['tags_ids'])) {
+            $record->videos()->sync($input['videos_ids']);
+        }
     }
 
     public function news_photos_store(News $record, $input)
     {
-        $record->photos()->sync($input['photos_ids']);
+        if(isset($input['tags_ids'])) {
+            $record->photos()->sync($input['tags_ids']);
+        }
     }
 
     public function newsFilter(Request $request)
@@ -506,5 +525,4 @@ class NewsController extends Controller
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records', 'newsCategoryList']));
     }
-    
 }

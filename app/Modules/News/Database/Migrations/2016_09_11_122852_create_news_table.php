@@ -20,7 +20,7 @@ class CreateNewsTable extends Migration
             $table->unsignedInteger('city_id')->nullable();
             $table->unsignedInteger('news_resource_id')->nullable();
             $table->string('title')->unique();
-            $table->string('slug')->nullable()->unique();
+            $table->string('slug')->nullable();
             $table->text('spot');
             $table->text('content');
             $table->text('description')->nullable();
@@ -44,7 +44,6 @@ class CreateNewsTable extends Migration
             $table->timestamps();
 
             // Keys
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('news_resource_id')->references('id')->on('news_sources')->onDelete('cascade')->onUpdate('cascade');
