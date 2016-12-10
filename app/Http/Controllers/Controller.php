@@ -27,11 +27,6 @@ class Controller extends BaseController
 //        Theme::setActive('news-theme');
     }
 
-    /**
-     * @param $method_name
-     * @param $class_model_name
-     * @return bool
-     */
     public function permisson_check()
     {
         $route =  Route::getCurrentRoute()->getAction();
@@ -45,14 +40,11 @@ class Controller extends BaseController
 //        foreach (explode('\\', $controllerName) as $className) {}
         $classModelName = strtolower(substr($controllerName, 0 , -10));
 
-
-//        dd(Auth::check()  );
-
-
         if(!Auth::user()->can($methodName . '-' . $classModelName)){
             Log::warning('Yetkisiz Alana Girmeye Çalışıldı. ' . 'Kişi : ' . Auth::user()->UserFullName() . '  IP :' . Auth::user()->getUserIp() );
             dd('yetkisiz');
         }
         return true;
     }
+
 }

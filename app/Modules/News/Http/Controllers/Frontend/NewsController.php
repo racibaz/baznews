@@ -2,15 +2,10 @@
 
 namespace App\Modules\News\Http\Controllers\Frontend;
 
-use App\Modules\News\Models\News;
-use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Modules\News\Repositories\NewsRepository as Repo;
+use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
 
 class NewsController extends Controller
 {

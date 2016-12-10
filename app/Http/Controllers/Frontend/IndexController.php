@@ -60,33 +60,9 @@ class IndexController extends Controller
              }
 
 
-
-
-             //TODO setting tek satır yapılacak
              $pageSetting = Setting::all();
 
-             //dd($pageSetting);
-
              $modules = Module::enabled();
-//             $cuffNewsCategories = NewsCategory::with('news')->where('is_cuff', 1)->where('is_active', 1)->get();
-//             $breakNewsItems =  News::where('break_news', 1)->where('status', 1)->take(Redis::get('break_news'))->get();
-//             $bandNewsItems =  News::where('band_news', 1)->where('status', 1)->take(Redis::get('band_news'))->get();
-//             $mainCuffNewsItems =  News::where('main_cuff', 1)->where('status', 1)->take(Redis::get('main_cuff'))->get();
-//             $miniCuffNewsItems =  News::where('mini_cuff', 1)->where('status', 1)->take(Redis::get('mini_cuff'))->get();
-//             $menus = Menu::where('is_active', 1)->orderBy('order','asc')->get();
-
-
-//             $photoGalleries = PhotoGallery::where('is_active',1)->take(Redis::get('photo_gallery'))->get();
-//             $videoGalleries = VideoGallery::where('is_active',1)->take(Redis::get('video_gallery'))->get();
-
-
-//             $recommendationNewsItems = RecommendationNews::with('news')
-//                                                             ->where('is_active', 1)
-//                                                             ->where('is_cuff', 1)
-////                                                             ->orderBy('order','asc')
-//                                                             ->take(Redis::get('recommendation_news'))
-//                                                             ->get();
-
 
 
             return Theme::view('frontend.index',compact(

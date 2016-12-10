@@ -137,7 +137,7 @@
                         </h1>
                     </div>
                     <div class="new-list-ct">
-                        <div class="left-img-ct" style="background: url(assets/img/example.jpg);">
+                        <div class="left-img-ct" style="background: {{ Theme::asset($activeTheme . '::img/example.jpg')}}">
                             <a href="new-details.html" class="full-link"></a>
                             <span class="shadow"></span>
                             <div class="new-ct">
@@ -434,22 +434,20 @@
 
 
 @section('css')
-    <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
+    {{--<link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">--}}
 
-    <link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">
+    {{--<link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">--}}
 @endsection
 
 @section('js')
 
-    <script src="http://code.jquery.com/jquery.min.js"></script>
+    {{--<script src="http://code.jquery.com/jquery.min.js"></script>--}}
+    {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>--}}
 
     <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>
 
-
     <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
-
-    {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>--}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>
 

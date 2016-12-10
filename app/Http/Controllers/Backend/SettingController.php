@@ -144,7 +144,10 @@ class SettingController extends Controller
 
     public function flushAllCache()
     {
-        $this->dispatch(new FlushAllCache());
+//        $this->dispatch(new FlushAllCache());
+
+        //tüm cache leri siliyoruz
+        Redis::flushall();
 
         Log::info('Caches deleted');
         Session::flash('flash_message', trans('setting.flush_all_cache'));

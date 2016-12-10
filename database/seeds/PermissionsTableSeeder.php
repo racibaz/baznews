@@ -1005,6 +1005,76 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $setting8 = Permission::create([
+            'name'          => 'repairMysqlTables-setting',
+            'display_name'  => 'setting store',
+            'is_active'     => 1,
+        ]);
+
+        $setting9 = Permission::create([
+            'name'          => 'flushAllCache-setting',
+            'display_name'  => 'setting store',
+            'is_active'     => 1,
+        ]);
+
+        $setting10 = Permission::create([
+            'name'          => 'getAllRedisKey-setting',
+            'display_name'  => 'setting store',
+            'is_active'     => 1,
+        ]);
+
+        $setting11 = Permission::create([
+            'name'          => 'deleteCacheByContent-setting',
+            'display_name'  => 'setting store',
+            'is_active'     => 1,
+        ]);
+
+        $setting12 = Permission::create([
+            'name'          => 'getBackUp-setting',
+            'display_name'  => 'setting store',
+            'is_active'     => 1,
+        ]);
+
+        $setting13 = Permission::create([
+            'name'          => 'backUpClean-setting',
+            'display_name'  => 'setting store',
+            'is_active'     => 1,
+        ]);
+
+        $setting14 = Permission::create([
+            'name'          => 'routeClear-setting',
+            'display_name'  => 'setting store',
+            'is_active'     => 1,
+        ]);
+
+
+        $setting15 = Permission::create([
+            'name'          => 'viewClear-setting',
+            'display_name'  => 'setting store',
+            'is_active'     => 1,
+        ]);
+
+        $setting16 = Permission::create([
+            'name'          => 'configClear-setting',
+            'display_name'  => 'setting store',
+            'is_active'     => 1,
+        ]);
+
+        $setting17 = Permission::create([
+            'name'          => 'configCache-setting',
+            'display_name'  => 'setting store',
+            'is_active'     => 1,
+        ]);
+
+
+
+
+
+
+
+
+
+
 
         $first_user = User::find(1);
         $super_admin = Role::find(1);
@@ -1172,5 +1242,14 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($setting5);
         $super_admin->permissions()->attach($setting6);
         $super_admin->permissions()->attach($setting7);
+        $super_admin->permissions()->attach($setting8);
+        $super_admin->permissions()->attach($setting9);
+        $super_admin->permissions()->attach($setting10);
+        $super_admin->permissions()->attach($setting12);
+        $super_admin->permissions()->attach($setting13);
+        $super_admin->permissions()->attach($setting14);
+        $super_admin->permissions()->attach($setting15);
+        $super_admin->permissions()->attach($setting16);
+        $super_admin->permissions()->attach($setting17);
     }
 }

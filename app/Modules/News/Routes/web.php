@@ -28,6 +28,8 @@ Route::get('archive/{years?}/{months?}/{days?}', 'Frontend\ArchiveController@ind
 Route::get('q/{q}', 'Frontend\SearchController@index')->name('search');
 
 Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sitemap');
+Route::get('category/{newsCategorySlug}', 'Frontend\NewsCategoryController@getNewsByNewsCategorySlug')->name('show_news_category');
+
 
 
 Route::group(['prefix' => 'rss'], function() {
@@ -52,8 +54,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
     Route::resource('news_category', 'Backend\NewsCategoryController');
 
-    
 
+    Route::get('news.toggle_boolean_type/{newsId}/{key}', 'Backend\NewsController@toggle_boolean_type')->name('toggle_boolean_type');
     Route::post('news.news_photos_store', 'Backend\NewsController@news_photos_store')->name('news_photos_store');
     Route::post('news.news_videos_store', 'Backend\NewsController@news_videos_store')->name('news_videos_store');
     Route::post('news.news_video_galleries_store', 'Backend\NewsController@news_video_galleries_store')->name('news_video_galleries_store');

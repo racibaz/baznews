@@ -62,7 +62,7 @@ return [
      *     my-slug-2
      */
 
-    'unique' => true,
+    'unique' => false,
 
     /**
      * If you are enforcing unique slugs, the default is to add an

@@ -58,7 +58,7 @@
     <!-- Main Header -->
     @include($activeTheme . '::frontend.layouts.header')
             <!-- Left side column. contains the logo and sidebar -->
-    @include($activeTheme . '::frontend.layouts.sidebar')
+    {{--@include($activeTheme . '::frontend.layouts.sidebar')--}}
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

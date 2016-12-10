@@ -188,6 +188,12 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $news8 = Permission::create([
+            'name'          => 'toggleBooleanType-news',
+            'display_name'  => 'news toggle_boolean_type',
+            'is_active'     => 1,
+        ]);
+
         //newswidgetmanager
         $newswidgetmanager1 = Permission::create([
             'name'          => 'index-newswidgetmanager',
@@ -565,6 +571,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($news5);
         $super_admin->permissions()->attach($news6);
         $super_admin->permissions()->attach($news7);
+        $super_admin->permissions()->attach($news8);
         $super_admin->permissions()->attach($newswidgetmanager1);
         $super_admin->permissions()->attach($newswidgetmanager2);
         $super_admin->permissions()->attach($newswidgetmanager3);

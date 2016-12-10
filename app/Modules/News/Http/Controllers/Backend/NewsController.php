@@ -24,9 +24,11 @@ use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Modules\News\Repositories\RecommendationNewsRepository;
 use Caffeinated\Themes\Facades\Theme;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -260,6 +262,15 @@ class NewsController extends Controller
         $input['mini_cuff'] = Input::get('mini_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
+
+        if(empty($input['slug']) && $record->id > 0 ) {
+            $slug = SlugService::createSlug(News::class, 'slug', $input['title']);
+            $input['slug'] = $slug;
+        }
+
+
+
+
         $v = News::validate($input);
 
         if ($v->fails()) {
@@ -269,7 +280,9 @@ class NewsController extends Controller
         } else {
 
             if (isset($record->id)) {
+
                 $result = $this->repo->update($record->id,$input);
+
             } else {
                 $result = $this->repo->create($input);
             }
@@ -303,7 +316,7 @@ class NewsController extends Controller
                 $this->news_videos_store($result[1],$input);
                 $this->news_photos_store($result[1],$input);
 
-
+                Redis::flushall();
                 //$this->dispatch(new ImageUploader($record, $input['thumbnail'], $destination, $document_name, $document_name));
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
@@ -525,4 +538,20 @@ class NewsController extends Controller
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records', 'newsCategoryList']));
     }
+
+    public function toggleBooleanType(int $news_id, string $key)
+    {
+        $value = null;
+        $record = $this->repo->find($news_id);
+
+        if($record->$key){
+            $value =  0;
+        }else
+            $value = 1;
+
+        $this->repo->update($record->id,[$key => $value]);
+
+        return Redirect::back();
+    }
+
 }

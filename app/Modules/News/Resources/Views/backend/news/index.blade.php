@@ -208,15 +208,35 @@
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('news.show', $record->title , $record, [] ) !!}</td>
                                     <td> {{$record->hit}} </td>
-                                    <td> {{$record->status}} </td>
-                                    <td> {{$record->band_news}} </td>
-                                    <td> {{$record->box_cuff}} </td>
-                                    <td> {{$record->is_cuff}} </td>
-                                    <td> {{$record->break_news}} </td>
-                                    <td> {{$record->is_comment}} </td>
-                                    <td> {{$record->main_cuff}} </td>
-                                    <td> {{$record->mini_cuff}} </td>
-                                    <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'status']) !!}">{{$record->status}}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'band_news']) !!}">{{$record->band_news}}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'box_cuff']) !!}">{{$record->box_cuff}}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'is_cuff']) !!}">{{$record->is_cuff}}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'break_news']) !!}">{{$record->break_news}}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'is_comment']) !!}">{{$record->is_comment}}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'main_cuff']) !!}">{{$record->main_cuff}}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'mini_cuff']) !!}">{{$record->mini_cuff}}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'is_active']) !!}">
+                                            {!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}
+                                        </a>
+                                    </td>
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('news.destroy',  $record))) !!}

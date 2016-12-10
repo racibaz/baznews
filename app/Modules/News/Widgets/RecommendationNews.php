@@ -23,18 +23,21 @@ class RecommendationNews extends AbstractWidget
      */
     public function run()
     {
-        $recommendationNewsItems = Cache::remember('recommendationNewsItems', 10, function()  {
+        return Cache::remember('recommendationNewsItems', 10, function()  {
 
             $recommendationNewsRepository = new RecommendationNewsRepository();
-            return  $recommendationNewsRepository->with(['news'])
-                ->where('is_active', 1)
-                ->where('is_cuff', 1)
-                ->take(Redis::get('recommendation_news'))
-                ->orderBy('order','desc')
-                ->get();
 
+            $recommendationNewsItems = $recommendationNewsRepository->with(['news'])
+                                    ->where('is_active', 1)
+                                    ->where('is_cuff', 1)
+                                    ->take(Redis::get('recommendation_news'))
+                                    ->orderBy('order','desc')
+                                    ->get();
+
+            return Theme::view('news::frontend.widgets.recommendation_news',compact([
+                'config',
+                'recommendationNewsItems'
+            ]))->render();
         });
-
-        return Theme::view('news::frontend.widgets.recommendation_news',compact(['config','recommendationNewsItems']));
     }
 }
