@@ -188,6 +188,14 @@
                     {{--<li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>--}}
                 {{--</ul>--}}
             {{--</li>--}}
+
+            @foreach(\Illuminate\Support\Facades\Cache::get('menus') as $menu)
+
+                <li><a href="{!! route('page',['slug' => $menu->page->slug ]) !!}"><i class="fa fa-book"></i> <span>{!! $menu->name !!}</span></a></li>
+            @endforeach
+
+
+
             {{--<li><a href="{!! route('user.index') !!}"><i class="fa fa-book"></i> <span>Kullanıcılar</span></a></li>--}}
             {{--<li><a href="{!! route('group.index') !!}"><i class="fa fa-book"></i> <span>gruplar</span></a></li>--}}
             {{--<li><a href="{!! route('permission.index') !!}"><i class="fa fa-book"></i> <span>izinler</span></a></li>--}}

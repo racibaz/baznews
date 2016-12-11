@@ -6,6 +6,7 @@ use App\Events\UserRegistered;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\WidgetManager;
+use App\Repositories\MenuRepository;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Modules\Modules;
 use Caffeinated\Themes\Facades\Theme;
@@ -43,11 +44,18 @@ class AppServiceProvider extends ServiceProvider
                 $settings = Setting::all();
 
                 foreach ($settings as $setting) {
-                    //Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
+//                    Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
                     Redis::set($setting->attribute_key, $setting->attribute_value);
                     //Redis::expire($setting->attribute_key, 1);
                 }
                 //return 'setting';
+            });
+
+
+            Cache::remember('menus', 10, function () {
+
+                $menuRepository = new MenuRepository();
+                return  $menuRepository->with(['page'])->where('is_active', 1)->orderBy('order','asc')->findAll();
             });
 
 

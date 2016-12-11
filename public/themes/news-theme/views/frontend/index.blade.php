@@ -9,7 +9,7 @@
                 <div class="last-time" id="son-dakika">
                     <h4>Son Dakika:</h4>
                     @foreach($breakNewsItems as $breakNewsItem)
-                        <a href="{!! route('show_news', ['newsSlug' => $breakNewsItem->slug]) !!}">{{$breakNewsItem->title}}</a>
+                        <a href="{!! route('show_news', ['slug' => $breakNewsItem->slug]) !!}">{{$breakNewsItem->title}}</a>
                     @endforeach
                 </div>
             </div>
@@ -21,7 +21,7 @@
                     <ul class="bxslider">
                         @foreach($mainCuffNewsItems as $mainCuffNewsItem)
                              <li data-slide-index="{{$mainCuffNewsItem->id}}">
-                                 <a href="{!! route('show_news', ['newsSlug' => $mainCuffNewsItem->slug]) !!}">
+                                 <a href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
                                     <img src="{{$mainCuffNewsItem->cuff_photo}}" alt="News Logo" >
                                  </a>
                              </li>

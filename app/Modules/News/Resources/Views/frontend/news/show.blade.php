@@ -5,7 +5,15 @@
 
     <article class="container" id="container">
         <div class="breadcrumbs">
-            <p><a href="new-details.html">Home.</a>   \\   <a href="new-details.html">World News.</a>   \\   Single.</p>
+            <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \\
+
+                @foreach($record->news_categories as $newsCategory )
+                    <a href="{!! route('show_news_category', ['slug' => $newsCategory->slug]) !!}">
+                        {{$newsCategory->name}}
+                    </a>   \\
+                @endforeach
+                {{$record->title}}
+            </p>
         </div>
         <div class="row">
             <div class="col-md-8">
@@ -39,9 +47,11 @@
                     </div>
                     <div class="content" id="content">
                         <h1 class="ct-title">
-                            {!! $record->title !!}<br />
+                            {{ $record->title }}<br />
                             <br /></h1>
-                        <span class="meta"> Ekleme Zamanı : {!! $record->created_at !!} \\  Güncelleme Zamanı : {!! $record->updated_at !!}
+                        <span class="meta">
+                            Ekleme Zamanı : {{ $record->created_at }} \\
+                            Güncelleme Zamanı : {{ $record->updated_at }}
                             <a href="new-details.html">World News.</a>   \\   <a href="new-details.html">No Coments.</a>
                         </span><!-- /.meta -->
                         <div class="ct-text">
@@ -274,6 +284,16 @@
     <meta name='abstract' content=''>
     <meta name='topic' content=''>
     <meta name='summary' content=''>
+
+    <meta property="og:title" content="{{ $record->title }} " />
+    <meta property="og:url" content="{{ $record->slug }} " />
+    <meta property="og:site_name" content="{{Redis::get('title')}}" />
+    <meta property="og:description" content="{{$record->description}}" />
+    <meta property="fb:app_id" content="671303379704288">
+    {{--<meta property="fb:admins" content="FACEBOOK ADMIN ID SINI BURAYA YAZ"/>--}}
+    <meta property="og:image" content="{{$record->thumbnail}}"/>
+
+
 
 @endsection
 

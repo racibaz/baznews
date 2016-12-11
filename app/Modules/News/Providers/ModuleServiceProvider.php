@@ -24,7 +24,7 @@ class ModuleServiceProvider extends ServiceProvider
             Cache::remember('cuffNewsCategories', 10, function () {
 
                 $newsCategoryRepository = new NewsCategoryRepository();
-                $cuffNewsCategories = $newsCategoryRepository->with(['news'])->where('is_cuff', 1)->where('is_active', 1)->get();
+                $cuffNewsCategories = $newsCategoryRepository->with(['news'])->where('is_cuff', 1)->where('is_active', 1)->findAll();
                 View::share('cuffNewsCategories', $cuffNewsCategories);
             });
         }

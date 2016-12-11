@@ -12,12 +12,9 @@
 */
 
 
+Route::pattern('slug', '[a-z0-9-]+');
 
-
-
-Route::pattern('newsSlug', '[a-z\-]+');
-
-Route::get('/{newsSlug}', 'Frontend\NewsController@show')->name('show_news');
+Route::get('/{slug}', 'Frontend\NewsController@show')->name('show_news');
 
 Route::get('archive/{years?}/{months?}/{days?}', 'Frontend\ArchiveController@index')
     ->name('archive_index')
@@ -28,7 +25,7 @@ Route::get('archive/{years?}/{months?}/{days?}', 'Frontend\ArchiveController@ind
 Route::get('q/{q}', 'Frontend\SearchController@index')->name('search');
 
 Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sitemap');
-Route::get('category/{newsCategorySlug}', 'Frontend\NewsCategoryController@getNewsByNewsCategorySlug')->name('show_news_category');
+Route::get('category/{slug}', 'Frontend\NewsCategoryController@getNewsByNewsCategorySlug')->name('show_news_category');
 
 
 
@@ -55,7 +52,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('news_category', 'Backend\NewsCategoryController');
 
 
-    Route::get('news.toggle_boolean_type/{newsId}/{key}', 'Backend\NewsController@toggle_boolean_type')->name('toggle_boolean_type');
+    Route::post('news.status_toggle', 'Backend\NewsController@statusToggle')->name('status_toggle');
+    Route::get('news.toggle_boolean_type/{newsId}/{key}', 'Backend\NewsController@toggleBooleanType')->name('toggle_boolean_type');
     Route::post('news.news_photos_store', 'Backend\NewsController@news_photos_store')->name('news_photos_store');
     Route::post('news.news_videos_store', 'Backend\NewsController@news_videos_store')->name('news_videos_store');
     Route::post('news.news_video_galleries_store', 'Backend\NewsController@news_video_galleries_store')->name('news_video_galleries_store');

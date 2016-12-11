@@ -44,7 +44,13 @@ return [
      *    'method' => array('Str','slug'),
      */
 
-    'method' => null,
+    'method' => function( $string, $sep ) {
+        return str_slug(
+            str_replace(
+                ['ü','ö','ğ','ç','ş','Ü','Ö','Ğ','Ç','Ş','İ'],
+                ['u','o','g','c','s','u','O','g','c','s','i'],
+            $string));
+    },
 
     /**
      * Separator to use when generating slugs.  Defaults to a hyphen.

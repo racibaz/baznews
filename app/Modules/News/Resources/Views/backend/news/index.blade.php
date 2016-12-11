@@ -203,13 +203,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $record)
+                            @foreach($records as $index => $record)
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('news.show', $record->title , $record, [] ) !!}</td>
                                     <td> {{$record->hit}} </td>
                                     <td>
-                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'status']) !!}">{{$record->status}}</a>
+                                        {{--<a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'status']) !!}">{{$record->status}}</a>--}}
+                                        {!! Form::open(['route' => 'status_toggle','method' => 'post']) !!}
+                                            {!! Form::hidden('recordId',$record->id) !!}
+                                            {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
+                                            {!! Form::submit(trans('common.search'), ['class' => 'btn btn-primary']) !!}
+                                        {!! Form::close() !!}
                                     </td>
                                     <td>
                                         <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'band_news']) !!}">{{$record->band_news}}</a>

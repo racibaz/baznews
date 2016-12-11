@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Models\WidgetManager;
-use App\Modules\News\Models\PhotoGallery;
-use App\Modules\News\Models\RecommendationNews;
-use App\Modules\News\Models\VideoGallery;
-use App\Modules\News\Repositories\NewsCategoryRepository;
 use App\Modules\News\Repositories\NewsRepository;
+use App\Modules\News\Repositories\PhotoGalleryRepository;
+use App\Modules\News\Repositories\RecommendationNewsRepository;
+use App\Modules\News\Repositories\VideoGalleryRepository;
 use App\Repositories\MenuRepository;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
@@ -18,40 +17,34 @@ use Illuminate\Support\Facades\Redis;
 
 class IndexController extends Controller
 {
+
     public function index()
     {
 
          return Cache::remember('home-page', 100, function() {
 
-
              $newsRepository = new NewsRepository();
-             $breakNewsItems    =  $newsRepository->where('break_news', 1)->where('status', 1)->take(Redis::get('break_news'))->get();
-             $bandNewsItems     =  $newsRepository->where('band_news', 1)->where('status', 1)->take(Redis::get('band_news'))->get();
-             $mainCuffNewsItems =  $newsRepository->where('main_cuff', 1)->where('status', 1)->take(Redis::get('main_cuff'))->get();
-             $miniCuffNewsItems =  $newsRepository->where('mini_cuff', 1)->where('status', 1)->take(Redis::get('mini_cuff'))->get();
+             $breakNewsItems    =  $newsRepository->where('break_news', 1)->where('status', 1)->limit(Redis::get('break_news'))->findAll();
+             $bandNewsItems     =  $newsRepository->where('band_news', 1)->where('status', 1)->limit(Redis::get('band_news'))->findAll();
+             $mainCuffNewsItems =  $newsRepository->where('main_cuff', 1)->where('status', 1)->limit(Redis::get('main_cuff'))->findAll();
+             $miniCuffNewsItems =  $newsRepository->where('mini_cuff', 1)->where('status', 1)->limit(Redis::get('mini_cuff'))->findAll();
 
-//             $newsCategoryRepository = new NewsCategoryRepository();
-//             $cuffNewsCategories = $newsCategoryRepository->with(['news'])->where('is_cuff', 1)->where('is_active', 1)->get();
+//             $menuRepository = new MenuRepository();
+//             $menus = $menuRepository->where('is_active', 1)->orderBy('order','asc')->findAll();
 
+             $photoGalleryRepository = new PhotoGalleryRepository();
+             $photoGalleries = $photoGalleryRepository->where('is_active',1)->limit(Redis::get('photo_gallery'))->findAll();
 
-             $menuRepository = new MenuRepository();
-             $menus = $menuRepository->where('is_active', 1)->orderBy('order','asc')->get();
+             $videoGalleryRepository = new VideoGalleryRepository();
+             $videoGalleries = $videoGalleryRepository->where('is_active',1)->limit(Redis::get('video_gallery'))->findAll();
 
-
-             $photoGalleryRepository = new PhotoGallery();
-             $photoGalleries = $photoGalleryRepository->where('is_active',1)->take(Redis::get('photo_gallery'))->get();
-
-             $videoGalleryRepository = new VideoGallery();
-             $videoGalleries = $videoGalleryRepository->where('is_active',1)->take(Redis::get('video_gallery'))->get();
-
-
-             $recommendationNewsRepository = new RecommendationNews();
+             $recommendationNewsRepository = new RecommendationNewsRepository();
              $recommendationNewsItems = $recommendationNewsRepository->with(['news'])
                                                                          ->where('is_active', 1)
                                                                          ->where('is_cuff', 1)
-                                                                         ->take(Redis::get('recommendation_news'))
+                                                                         ->limit(Redis::get('recommendation_news'))
                                                                          ->orderBy('order','asc')
-                                                                         ->get();
+                                                                         ->findAll();
 
              $widgets = WidgetManager::where('is_active',1)->get();
 
@@ -63,7 +56,6 @@ class IndexController extends Controller
              $pageSetting = Setting::all();
 
              $modules = Module::enabled();
-
 
             return Theme::view('frontend.index',compact(
                 'pageSetting',

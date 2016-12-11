@@ -166,7 +166,16 @@
                             {!! Form::label('status', trans('news::news.status'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::select('status', $statuses , $record->status , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
+                                {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('news_type', trans('news::news.news_type'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::select('news_type', $newsTypes , $record->news_type, ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

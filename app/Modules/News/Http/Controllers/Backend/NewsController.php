@@ -33,6 +33,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Mapper;
+use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
@@ -62,9 +63,23 @@ class NewsController extends Controller
 
     public function index()
     {
+        $statusList = [];
+        $statuses = News::$statuses;
+        foreach ($statuses as  $index => $status){
+            if(Auth::user()->can($status . '-news')){
+                $statusList[$index] =  $status;
+            }
+        }
+
+
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate(50);
         $newsCategoryList = NewsCategory::newsCategoryList();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records', 'newsCategoryList']));
+
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
+            'records',
+            'newsCategoryList',
+            'statusList'
+        ]));
     }
 
 
@@ -85,6 +100,7 @@ class NewsController extends Controller
         $photosIDs = [];
         $videoGalleryIDs = [];
         $newsCategoryIDs = [];
+        $statusList = [];
         $newsList = News::newsAllList();
         $newsCategories = NewsCategory::where('is_active', 1)->get();
         $countryList = Country::countryList();
@@ -100,8 +116,17 @@ class NewsController extends Controller
         $videoGalleriesList = VideoGallery::videoGalleryList();
         $videoList = Video::videoList();
         $photoList = Photo::photoList();
+        $newsTypes = News::$newsTypes;
 
         $record = $this->repo->createModel();
+
+        foreach ($statuses as  $index => $status){
+
+            if(Auth::user()->can($status . '-news')){
+                $statusList[$index] =  $status;
+            }
+        }
+
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
             compact(['record',
@@ -110,7 +135,7 @@ class NewsController extends Controller
                 'cityList',
                 'newsCategoryList',
                 'newsSourceList',
-                'statuses',
+                'statusList',
                 'googleMapsRender',
                 'newsCategories',
                 'futureNews',
@@ -127,6 +152,7 @@ class NewsController extends Controller
                 'photoList',
                 'photosIDs',
                 'newsCategoryIDs',
+                'newsTypes'
             ]));
     }
 
@@ -160,6 +186,7 @@ class NewsController extends Controller
         $photosIDs = [];
         $videoGalleryIDs = [];
         $newsCategoryIDs = [];
+        $statusList = [];
         $newsList = News::newsAllList();
         $newsCategories = NewsCategory::where('is_active', 1)->get();
         $countryList = Country::countryList();
@@ -175,6 +202,7 @@ class NewsController extends Controller
         $videoGalleriesList = VideoGallery::videoGalleryList();
         $videoList = Video::videoList();
         $photoList = Photo::photoList();
+        $newsTypes = News::$newsTypes;
 
 
         foreach ($record->photos as $index => $photo) {
@@ -206,6 +234,13 @@ class NewsController extends Controller
             $newsCategoryIDs[$index] = $news_category->id;
         }
 
+        foreach ($statuses as  $index => $status){
+
+            if(Auth::user()->can($status . '-news')){
+                $statusList[$index] =  $status;
+            }
+        }
+
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),
             compact(['record',
@@ -214,7 +249,7 @@ class NewsController extends Controller
                 'cityList',
                 'newsCategoryList',
                 'newsSourceList',
-                'statuses',
+                'statusList',
                 'googleMapsRender',
                 'newsCategories',
                 'futureNews',
@@ -231,6 +266,7 @@ class NewsController extends Controller
                 'photoList',
                 'photosIDs',
                 'newsCategoryIDs',
+                'newsTypes'
             ]));
     }
 
@@ -263,10 +299,12 @@ class NewsController extends Controller
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
 
-        if(empty($input['slug']) && $record->id > 0 ) {
-            $slug = SlugService::createSlug(News::class, 'slug', $input['title']);
-            $input['slug'] = $slug;
-        }
+//        if(empty($input['slug']) && $record->id > 0 ) {
+//            $slug = SlugService::createSlug(News::class, 'slug', $input['title']);
+//            $input['slug'] = $slug;
+//        }else {
+//            $input['slug'] = Str::slug($input['slug']);
+//        }
 
 
 
@@ -293,7 +331,7 @@ class NewsController extends Controller
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
                     $destination = '/images/news_images/'. $record->id .'/thumbnail';
-                    Uploader::fileUpload($record , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    Uploader::fileUpload($result[1] , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
                 }
 
@@ -301,7 +339,7 @@ class NewsController extends Controller
                     $oldPath = $record->cuff_photo;
                     $document_name = $input['cuff_photo']->getClientOriginalName();
                     $destination = '/images/news_images/'. $record->id .'/cuff_photo' ;
-                    Uploader::fileUpload($record , 'cuff_photo', $input['cuff_photo'] , $destination , $document_name);
+                    Uploader::fileUpload($result[1] , 'cuff_photo', $input['cuff_photo'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
                 }
 
@@ -315,6 +353,7 @@ class NewsController extends Controller
                 $this->news_video_galleries_store($result[1],$input);
                 $this->news_videos_store($result[1],$input);
                 $this->news_photos_store($result[1],$input);
+
 
                 Redis::flushall();
                 //$this->dispatch(new ImageUploader($record, $input['thumbnail'], $destination, $document_name, $document_name));
@@ -550,6 +589,24 @@ class NewsController extends Controller
             $value = 1;
 
         $this->repo->update($record->id,[$key => $value]);
+
+        return Redirect::back();
+    }
+
+    public function statusToggle(Request $regust)
+    {
+        $input = Input::all();
+
+        if(empty($input['status'])){
+            return Redirect::back()
+                ->withErrors(trans('common.status_null'))
+                ->withInput($input);
+        }
+
+        $value = null;
+        $record = $this->repo->find($input['recordId']);
+
+        $this->repo->update($record->id,['status' => $input['status']]);
 
         return Redirect::back();
     }
