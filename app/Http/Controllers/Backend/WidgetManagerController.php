@@ -131,12 +131,19 @@ class WidgetManagerController extends Controller
         $widgetManagaer['slug']       = $widget['slug'];
         $widgetManagaer['namespace']  = $widget['namespace'];
         $widgetManagaer['position']   = 1;
-        $widgetManagaer['group']      = 'rightbar';
+        $widgetManagaer['group']      = 'right_bar';
+        $widgetManagaer['is_active']  = 1;
 
-        $this->repo->create($widgetManagaer);
+        $record = $this->repo->findBy('slug',$widgetSlug);
+
+        if(isset($record->id)) {
+            return Redirect::back()
+                ->withErrors(trans('widget.widget_is_exists'));
+        }else{
+            $this->repo->create($widgetManagaer);
+        }
 
         return Redirect::back();
     }
-
 
 }

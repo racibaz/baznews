@@ -46,6 +46,26 @@
             <div class="col-md-12">
                 <div id="post-box-slider">
                     <ul class="bxcarousel">
+
+                        @foreach($miniCuffNewsItems as $miniCuffNewsItem)
+                            <li>
+                                <div class="thumbnail">
+                                    <a href="new-details.html">
+                                        <img src="{{ $miniCuffNewsItem->thumbnail }}" alt="Dummyİmage" >
+                                        <div class="caption">
+                                            <span class="mini-title">Consectetur Cras</span>
+                                            <span class="ct-title">
+                                        Maecenas faucibus mollis interdum.
+                                    </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- /.thumbnail -->
+                            </li>
+                            <!-- /.col -->
+                        @endforeach
+
+
                         <li>
                             <div class="thumbnail">
                                 <a href="new-details.html">
@@ -62,142 +82,114 @@
                         </li>
                         <!-- /.col -->
 
-                        <li>
-                            <div class="thumbnail">
-                                <a href="new-details.html">
-                                    <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot2.jpg')}}" alt="Dummyİmage">
-                                    <div class="caption">
-                                        <span class="mini-title">Consectetur Cras</span>
-                                        <span class="ct-title">
-                                        Maecenas faucibus mollis interdum.
-                                    </span>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- /.thumbnail -->
-                        </li>
-                        <!-- /.col -->
-                        <li>
-                            <div class="thumbnail">
-                                <a href="new-details.html">
-                                    <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot3.jpg')}}" alt="Dummyİmage">
-                                    <div class="caption">
-                                        <span class="mini-title">Consectetur Cras</span>
-                                        <span class="ct-title">
-                                        Maecenas faucibus mollis interdum.
-                                    </span>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- /.thumbnail -->
-                        </li>
-                        <!-- /.col -->
-                        <li>
-                            <div class="thumbnail">
-                                <a href="new-details.html">
-                                    <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot2.jpg')}}" alt="Dummyİmage">
-                                    <div class="caption">
-                                        <span class="mini-title">Consectetur Cras</span>
-                                        <span class="ct-title">
-                                        Maecenas faucibus mollis interdum.
-                                    </span>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- /.thumbnail -->
-                        </li>
-                        <!-- /.col -->
-                        <li>
-                            <div class="thumbnail">
-                                <a href="new-details.html">
-                                    <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot1.jpg')}}" alt="Dummyİmage">
-                                    <div class="caption">
-                                        <span class="mini-title">Consectetur Cras</span>
-                                        <span class="ct-title">
-                                        Maecenas faucibus mollis interdum.
-                                    </span>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- /.thumbnail -->
-                        </li>
-                        <!-- /.col -->
+                        {{--<li>--}}
+                            {{--<div class="thumbnail">--}}
+                                {{--<a href="new-details.html">--}}
+                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot2.jpg')}}" alt="Dummyİmage">--}}
+                                    {{--<div class="caption">--}}
+                                        {{--<span class="mini-title">Consectetur Cras</span>--}}
+                                        {{--<span class="ct-title">--}}
+                                        {{--Maecenas faucibus mollis interdum.--}}
+                                    {{--</span>--}}
+                                    {{--</div>--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                            {{--<!-- /.thumbnail -->--}}
+                        {{--</li>--}}
+                        {{--<!-- /.col -->--}}
+                        {{--<li>--}}
+                            {{--<div class="thumbnail">--}}
+                                {{--<a href="new-details.html">--}}
+                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot3.jpg')}}" alt="Dummyİmage">--}}
+                                    {{--<div class="caption">--}}
+                                        {{--<span class="mini-title">Consectetur Cras</span>--}}
+                                        {{--<span class="ct-title">--}}
+                                        {{--Maecenas faucibus mollis interdum.--}}
+                                    {{--</span>--}}
+                                    {{--</div>--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                            {{--<!-- /.thumbnail -->--}}
+                        {{--</li>--}}
+                        {{--<!-- /.col -->--}}
+                        {{--<li>--}}
+                            {{--<div class="thumbnail">--}}
+                                {{--<a href="new-details.html">--}}
+                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot2.jpg')}}" alt="Dummyİmage">--}}
+                                    {{--<div class="caption">--}}
+                                        {{--<span class="mini-title">Consectetur Cras</span>--}}
+                                        {{--<span class="ct-title">--}}
+                                        {{--Maecenas faucibus mollis interdum.--}}
+                                    {{--</span>--}}
+                                    {{--</div>--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                            {{--<!-- /.thumbnail -->--}}
+                        {{--</li>--}}
+                        {{--<!-- /.col -->--}}
+                        {{--<li>--}}
+                            {{--<div class="thumbnail">--}}
+                                {{--<a href="new-details.html">--}}
+                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot1.jpg')}}" alt="Dummyİmage">--}}
+                                    {{--<div class="caption">--}}
+                                        {{--<span class="mini-title">Consectetur Cras</span>--}}
+                                        {{--<span class="ct-title">--}}
+                                        {{--Maecenas faucibus mollis interdum.--}}
+                                    {{--</span>--}}
+                                    {{--</div>--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                            {{--<!-- /.thumbnail -->--}}
+                        {{--</li>--}}
+                        {{--<!-- /.col -->--}}
                     </ul>
                 </div>
                 <!-- /.post-box-slider -->
             </div>
         </div>
 
+
+
+
+
         <div class="row">
-            <div class="col-md-8">
-                <div class="img-new-list">
-                    <div class="title-section">
-                        <h1>
-                            <span>Spot News</span>
-                        </h1>
-                    </div>
-                    <div class="new-list-ct">
-                        <div class="left-img-ct" style="background: {{ Theme::asset($activeTheme . '::img/example.jpg')}}">
-                            <a href="new-details.html" class="full-link"></a>
-                            <span class="shadow"></span>
-                            <div class="new-ct">
-                                <h3 class="new-title">Dapibus Ridiculus Ultricies Ornare Consectetur1</h3>
-                                <time class="new-date">
-                                    <span class="timeago" title="">11 saat önce</span>
-                                </time>
-                            </div>
+            @foreach($cuffNewsCategories as $cuffNewsCategory)
+                <div class="col-md-8">
+                    <div class="img-new-list">
+                        <div class="title-section">
+                            <h1>
+                                <span>{{$cuffNewsCategory->name}}</span>
+                            </h1>
                         </div>
-                        <ul class="new-list">
-                            <li>
-                                <a href="new-details.html" class="full-link active" data-img="img/mini-spot/haber2.jpg" data-title="Dapibus Ridiculus Ultricies Ornare" data-time="23 saat önce"></a>
+                        <div class="new-list-ct">
+                            <div class="left-img-ct" style="background: {{ Theme::asset($activeTheme . '::img/example.jpg')}}">
+                                <a href="new-details.html" class="full-link"></a>
+                                <span class="shadow"></span>
                                 <div class="new-ct">
-                                    <h3 class="new-title">Dapibus Ridiculus Ultricies Ornare </h3>
+                                    <h3 class="new-title">Dapibus Ridiculus Ultricies Ornare Consectetur1</h3>
                                     <time class="new-date">
-                                        <span class="timeago" title="">23 saat önce</span>
+                                        <span class="timeago" title="">11 saat önce</span>
                                     </time>
                                 </div>
-                            </li>
-                            <li>
-                                <a href="new-details.html" class="full-link" data-img="img/mini-spot/haber445.jpg" data-title="Dapibus Ridiculus Ultricies  Consectetur" data-time="18 saat önce"></a>
-                                <div class="new-ct">
-                                    <h3 class="new-title">Dapibus Ridiculus Ultricies  Consectetur</h3>
-                                    <time class="new-date">
-                                        <span class="timeago" title="">18 saat önce</span>
-                                    </time>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="new-details.html" class="full-link" data-img="img/example.jpg" data-title="Dapibus Ultricies Ornare Consectetur" data-time="12 saat önce"></a>
-                                <div class="new-ct">
-                                    <h3 class="new-title">Dapibus Ultricies Ornare Consectetur</h3>
-                                    <time class="new-date">
-                                        <span class="timeago" title="">12 saat önce</span>
-                                    </time>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="new-details.html" class="full-link" data-img="img/example.jpg" data-title="Dapibus Ridiculus Ultricies Ornare asd" data-time="99 saat önce"></a>
-                                <div class="new-ct">
-                                    <h3 class="new-title"> Ridiculus Ultricies Ornare Consectetur</h3>
-                                    <time class="new-date">
-                                        <span class="timeago" title="img/example.jpg">13 saat önce</span>
-                                    </time>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="new-details.html" class="full-link" data-img="img/example.jpg" data-title="asda Ridiculus Ultricies Ornare Consectetur" data-time="22 saat önce"></a>
-                                <div class="new-ct">
-                                    <h3 class="new-title">Dapibus Ridiculus Ultricies  Consectetur</h3>
-                                    <time class="new-date">
-                                        <span class="timeago" title="">44 saat önce</span>
-                                    </time>
-                                </div>
-                            </li>
-                        </ul>
-                    </div><!-- /.new-list-ct -->
-                </div><!-- /.col-md-8 -->
-                <!-- /.image-banner-list -->
-            </div>
+                            </div>
+                            <ul class="new-list">
+                                @foreach($cuffNewsCategory->news as $news)
+                                    <li>
+                                        <a href="new-details.html" class="full-link active" data-img="img/mini-spot/haber2.jpg" data-title="Dapibus Ridiculus Ultricies Ornare" data-time="23 saat önce"></a>
+                                        <div class="new-ct">
+                                            <h3 class="new-title">{{$news->title}} </h3>
+                                            <time class="new-date">
+                                                <span class="timeago" title="">{{$news->updated_at}}</span>
+                                            </time>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div><!-- /.new-list-ct -->
+                    </div><!-- /.col-md-8 -->
+                    <!-- /.image-banner-list -->
+                </div>
+            @endforeach
 
             <div class="col-md-4">
                 <div class="nw-sm-img">
@@ -370,6 +362,9 @@
                 </div><!-- /.nw-sm-img -->
             </div><!-- /.col -->
         </div><!-- /.row -->
+
+
+
         <div class="row">
             <div class="col-md-6">
                 <div class="title-section">

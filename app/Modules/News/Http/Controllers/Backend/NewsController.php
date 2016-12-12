@@ -3,10 +3,7 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Jobs\Cache\FlushAll;
-use App\Jobs\Cache\FlushAllCache;
 use App\Jobs\File\ImageUpload;
-use App\Jobs\File\ImageUploader;
 use App\Library\Uploader;
 use App\Models\City;
 use App\Models\Country;
@@ -22,18 +19,16 @@ use App\Modules\News\Models\RelatedNews;
 use App\Modules\News\Models\Video;
 use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\NewsRepository as Repo;
-use App\Modules\News\Repositories\RecommendationNewsRepository;
 use Caffeinated\Themes\Facades\Theme;
-use Cviebrock\EloquentSluggable\Services\SlugService;
+use Mapper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Redis;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
-use Mapper;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
 
 class NewsController extends Controller
 {
@@ -330,15 +325,19 @@ class NewsController extends Controller
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/images/news_images/'. $record->id .'/thumbnail';
+                    $documentRealPath = $input['thumbnail']->getRealPath();
+                    $destination = '/images/news_images/'. $result[1]->id .'/thumbnail';
                     Uploader::fileUpload($result[1] , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
+
+                    Image::make(public_path($result[1]->thumbnail))->resize(291,165)->save(public_path($destination . '/291x165' . $document_name));
+
                 }
 
                 if(!empty($input['cuff_photo'])) {
                     $oldPath = $record->cuff_photo;
                     $document_name = $input['cuff_photo']->getClientOriginalName();
-                    $destination = '/images/news_images/'. $record->id .'/cuff_photo' ;
+                    $destination = '/images/news_images/'. $result[1]->id .'/cuff_photo' ;
                     Uploader::fileUpload($result[1] , 'cuff_photo', $input['cuff_photo'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
                 }

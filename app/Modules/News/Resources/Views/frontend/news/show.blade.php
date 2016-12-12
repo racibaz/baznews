@@ -253,10 +253,8 @@
                     </div><!-- /.nw-sm-img -->
 
                     @foreach($widgets as $widget)
-
                         @widget($widget['namespace'])
                         <br />
-
                     @endforeach
                 </div><!-- /.sidebar -->
             </div><!-- /.col -->

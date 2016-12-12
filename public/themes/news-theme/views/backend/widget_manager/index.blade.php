@@ -4,16 +4,13 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <div style="margin-bottom: 20px;">
-                <a href="{{ route('widget_manager.create') }}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> {{ trans('common.create') }}
-                </a>
-            </div>
-
             <ul>
-
                 {{--{{$widgets['News']['name']}}--}}
                 @foreach($widgets as $widget)
+                    {{--DB ye eklenmiş olan widgetları listelemiyoruz--}}
+                    @if(in_array($widget['slug'] ,$records->pluck('slug')->toArray()))
+                        @continue
+                    @endif
 
                     <li>{{trans('widget_manager.module_name')}} : {{$widget['module_name']}}
                         @if(!in_array($widget['slug'] ,$records->pluck('slug')->toArray()))

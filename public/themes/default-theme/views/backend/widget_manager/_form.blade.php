@@ -26,9 +26,9 @@
                 </div>
 
                 @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['widget_manager.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+                    {!! Form::model($record, ['route' => ['widget_manager.update', $record], 'method' => 'PATCH']) !!}
                 @else
-                    {!! Form::open(['route' => 'widget_manager.store','method' => 'post', 'files' => 'true']) !!}
+                    {!! Form::open(['route' => 'widget_manager.store','method' => 'post']) !!}
                 @endif
 
                 <div class="panel-body">

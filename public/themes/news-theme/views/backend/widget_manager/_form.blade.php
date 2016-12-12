@@ -38,7 +38,8 @@
                             {!! Form::label('name', trans('widget_manager.name'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('name', $record->name, ['placeholder' => trans('widget_manager.name') ,'class' => 'form-control']) !!}
+                                {!! Form::hidden('name',$record->name) !!}
+                                {!! Form::text('name', $record->name, ['placeholder' => trans('widget_manager.name') ,'class' => 'form-control','disabled' => 'disabled']) !!}
                             </div>
                         </div>
                     </div>
@@ -47,7 +48,8 @@
                             {!! Form::label('slug', trans('widget_manager.slug'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('widget_manager.slug') ,'class' => 'form-control']) !!}
+                                {!! Form::hidden('slug',$record->slug) !!}
+                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('widget_manager.slug') ,'class' => 'form-control','disabled' => 'disabled']) !!}
                             </div>
                         </div>
                     </div>
@@ -56,7 +58,8 @@
                             {!! Form::label('namespace', trans('widget_manager.namespace'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('namespace', $record->namespace, ['placeholder' => trans('widget_manager.namespace') ,'class' => 'form-control']) !!}
+                                {!! Form::hidden('namespace',$record->namespace) !!}
+                                {!! Form::text('namespace', $record->namespace, ['placeholder' => trans('widget_manager.namespace') ,'class' => 'form-control','disabled' => 'disabled']) !!}
                             </div>
                         </div>
                     </div>

@@ -19,9 +19,9 @@
     </div>
 
     @if(isset($record->id))
-        {!! Form::model($record, ['route' => ['news.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+        {!! Form::model($record, ['route' => ['news.update', $record], 'method' => 'PATCH', 'files' => 'true','enctype' => 'multipart/form-data']) !!}
     @else
-        {!! Form::open(['route' => 'news.store','method' => 'post', 'files' => 'true']) !!}
+        {!! Form::open(['route' => 'news.store','method' => 'post', 'files' => 'true','enctype' => 'multipart/form-data']) !!}
     @endif
     <!-- Main Content Element  Start-->
     <div class="row">

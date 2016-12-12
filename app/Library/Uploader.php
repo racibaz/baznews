@@ -25,9 +25,6 @@ class Uploader
             $orjinalFilePath = public_path($destination . "/" . $filename);
             $file->move($orjinalDirPath, $filename);
 
-//            $record->$field =  $destination .'/'. $filename;
-//            $record->save();
-
             $record->update([
                 $field => $destination .'/'. $filename
             ]);
