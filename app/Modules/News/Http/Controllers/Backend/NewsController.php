@@ -325,13 +325,13 @@ class NewsController extends Controller
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $documentRealPath = $input['thumbnail']->getRealPath();
                     $destination = '/images/news_images/'. $result[1]->id .'/thumbnail';
                     Uploader::fileUpload($result[1] , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
-                    Image::make(public_path($result[1]->thumbnail))->resize(291,165)->save(public_path($destination . '/291x165' . $document_name));
-
+                    Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
+                        ->resize(291,165)
+                        ->save(public_path('images/news_images/' . $result[1]->id . '/291x165_' . $document_name));
                 }
 
                 if(!empty($input['cuff_photo'])) {

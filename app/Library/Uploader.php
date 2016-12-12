@@ -26,7 +26,7 @@ class Uploader
             $file->move($orjinalDirPath, $filename);
 
             $record->update([
-                $field => $destination .'/'. $filename
+                $field => $filename
             ]);
 
             return true;

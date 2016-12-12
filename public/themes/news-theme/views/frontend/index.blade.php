@@ -51,7 +51,7 @@
                             <li>
                                 <div class="thumbnail">
                                     <a href="new-details.html">
-                                        <img src="{{ $miniCuffNewsItem->thumbnail }}" alt="Dummyİmage" >
+                                        <img src="{{ asset('images/news_images/' . $miniCuffNewsItem->id . '/291x165_' . $miniCuffNewsItem->thumbnail) }}" alt="Dummyİmage" >
                                         <div class="caption">
                                             <span class="mini-title">Consectetur Cras</span>
                                             <span class="ct-title">
