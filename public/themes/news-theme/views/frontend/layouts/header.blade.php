@@ -37,7 +37,6 @@
                         <li>
                             <a href="{!! route('show_news_category', ['newsCategorySlug' => $cuffNewsCategory->slug]) !!}">{{$cuffNewsCategory->name}}</a>
                         </li>
-
                     @endforeach
 
                         {{--<li class="current"><a href="new-details.html">{{$cuffNewsCategory->title}}</a></li>--}}

@@ -20,17 +20,13 @@ class IndexController extends Controller
 
     public function index()
     {
-
-         return Cache::remember('home-page', 100, function() {
+          return Cache::remember('home-page', 100, function() {
 
              $newsRepository = new NewsRepository();
              $breakNewsItems    =  $newsRepository->where('break_news', 1)->where('status', 1)->limit(Redis::get('break_news'))->findAll();
              $bandNewsItems     =  $newsRepository->where('band_news', 1)->where('status', 1)->limit(Redis::get('band_news'))->findAll();
              $mainCuffNewsItems =  $newsRepository->where('main_cuff', 1)->where('status', 1)->limit(Redis::get('main_cuff'))->findAll();
              $miniCuffNewsItems =  $newsRepository->where('mini_cuff', 1)->where('status', 1)->limit(Redis::get('mini_cuff'))->findAll();
-
-//             $menuRepository = new MenuRepository();
-//             $menus = $menuRepository->where('is_active', 1)->orderBy('order','asc')->findAll();
 
              $photoGalleryRepository = new PhotoGalleryRepository();
              $photoGalleries = $photoGalleryRepository->where('is_active',1)->limit(Redis::get('photo_gallery'))->findAll();

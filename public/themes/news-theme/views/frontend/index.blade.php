@@ -455,9 +455,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>
 
-
     <script>
-
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
@@ -473,6 +471,57 @@
 //            var n = noty({text: data.title + ' ' + data.message});
 
         });
+    </script>
+
+    <script type="text/javascript">
+        $('document').ready(function () {
+            var slider = $('.bxslider').bxSlider({
+                mode:'fade',
+                speed:0,
+                auto: true,
+                nextText: '<i class="fa fa-angle-right"></i>',
+                prevText: '<i class="fa fa-angle-left"></i>',
+                onSliderLoad: function(){
+                    // do funky JS stuff here
+                    $('.bx-pager-link').on('hover',function (index) {
+                        console.log(index);
+                    });
+                    $('.bx-pager-link').on("mouseover", function(index){
+                        this.click();
+                    });
+                }
+            });
+            $('.bxcarousel').bxSlider({
+                slideWidth: 219,
+                minSlides: 2,
+                maxSlides: 5,
+                slideMargin: 15,
+                auto:true,
+                pager:false,
+                nextText: '<i class="fa fa-angle-right"></i>',
+                prevText: '<i class="fa fa-angle-left"></i>'
+            });
+            $('.m-slider1').bxSlider({
+                mode:'fade',
+                speed:0,
+                pagerCustom: '#m_pg1',
+                nextText: '<i class="fa fa-angle-right"></i>',
+                prevText: '<i class="fa fa-angle-left"></i>'
+            });
+            $('.m-slider2').bxSlider({
+                mode:'fade',
+                speed:0,
+                pagerCustom: '#m_pg2',
+                nextText: '<i class="fa fa-angle-right"></i>',
+                prevText: '<i class="fa fa-angle-left"></i>'
+            });
+
+            $("#sticky-container").sticky({
+                topSpacing: $('header nav').outerHeight(),
+                bottomSpacing: $('.ads').outerHeight() + $('footer').outerHeight()
+            });
+        });
+
     </script>
 
 @endsection

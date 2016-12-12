@@ -1,7 +1,13 @@
-<h1> Tavsiye Edilen Haberler Widget </h1>
-<br />
-@foreach($recommendationNewsItems as $recommendationNewsItem)
+<div class="widget">
+    <div class="title-section">
+        <h1>
+            <span> Tavsiye Edilen Haberler Widget</span>
+        </h1>
+    </div>
+    <ul>
+        @foreach($recommendationNewsItems as $recommendationNewsItem)
+            <li>{{ $recommendationNewsItem->news->title }}</li>
+        @endforeach
+    </ul>
+</div>
 
-    {{ $recommendationNewsItem->news->title }} <br />
-
-@endforeach

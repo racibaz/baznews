@@ -46,9 +46,7 @@
                         <img src="{{$record->thumbnail}}" alt="new text">
                     </div>
                     <div class="content" id="content">
-                        <h1 class="ct-title">
-                            {{ $record->title }}<br />
-                            <br /></h1>
+                        <h1 class="ct-title">{{ $record->title }}</h1>
                         <span class="meta">
                             Ekleme Zamanı : {{ $record->created_at }} \\
                             Güncelleme Zamanı : {{ $record->updated_at }}
@@ -59,6 +57,29 @@
                         </div><!-- /.ct-text -->
                     </div><!-- /.content -->
                 </div><!-- /.new-content -->
+
+                <div class="discus-box">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="disqus_thread"></div>
+                            <script>
+                                var disqus_config = function () {
+                                    this.page.url =  {{$record->slug}};
+                                    this.page.identifier = {{$record->id}};
+                                };
+
+                                (function() { // DON'T EDIT BELOW THIS LINE
+                                    var d = document, s = d.createElement('script');
+                                    s.src = '//baznews.disqus.com/embed.js';
+                                    s.setAttribute('data-timestamp', +new Date());
+                                    (d.head || d.body).appendChild(s);
+                                })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        </div>
+                    </div><!-- Disqus Yorum Alanı -->
+                </div><!-- /.discus-box -->
+
             </div><!-- /.col-md-8 -->
             <div class="col-md-4">
                 <div class="sidebar">
@@ -230,42 +251,21 @@
                             </div><!-- /.tab-content -->
                         </div><!-- /rabpanel -->
                     </div><!-- /.nw-sm-img -->
-                </div>
+
+                    @foreach($widgets as $widget)
+
+                        @widget($widget['namespace'])
+                        <br />
+
+                    @endforeach
+                </div><!-- /.sidebar -->
             </div><!-- /.col -->
         </div><!-- /.row -->
 
     </article><!-- /.article -->
 
 
-
-
     <div class="fb-comment-embed" data-href="{{Redis::get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>
-
-
-    @foreach($widgets as $widget)
-
-        @widget($widget['namespace'])
-        <br />
-
-    @endforeach
-
-
-    <div id="disqus_thread"></div>
-    <script>
-         var disqus_config = function () {
-         this.page.url =  {{$record->slug}};
-         this.page.identifier = {{$record->id}};
-         };
-
-        (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = '//baznews.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
 
 
 @endsection
@@ -301,7 +301,7 @@
 @section('css')
     <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
 
-    <link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">
+    {{--<link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">--}}
 @endsection
 
 @section('js')
