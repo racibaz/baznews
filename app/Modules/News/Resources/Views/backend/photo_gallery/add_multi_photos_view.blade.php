@@ -8,7 +8,7 @@
     <ul>
         @foreach($photo_gallery->photos as $photo)
                 <li>
-                    <img src="{{$photo->file}}">
+                    <img src="{{asset('gallery/' . $photo_gallery->slug . '/photos/' . $photo->file)}}">
                 </li>
         @endforeach
 
@@ -17,6 +17,8 @@
             <div id="gallery-photos">
                 <ul>
                     {!! Form::open(['route' => 'updateGalleryPhotos','method' => 'post']) !!}
+
+                        {!! Form::hidden('photo_gallery_id',$photo_gallery->id) !!}
 
                         @foreach($photo_gallery->photos as $photo)
                             <li>
@@ -30,14 +32,17 @@
                                                     {!! Form::checkbox('delete/' . $photo->id, null , null) !!}
                                                     <i></i> {{trans('news::news.delete_photo')}}
                                                 </label>
+                                                <label>
+                                                    {!! Form::radio('is_cuff_thumbnail', $photo->id, $photo->file == $photo_gallery->thumbnail ? true : false ) !!}
+                                                    <i></i> {{trans('news::news.is_photo_gallery_cuff_thumbnail')}}
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-
                                 {{--<a href="{{$photo->file}}" target="_blank">--}}
-                                    <img src="{{asset($photo->file)}}" width="240"  height="150">
+                                    <img src="{{asset('gallery/' . $photo_gallery->slug . '/photos/' . $photo->file)}}" width="240"  height="150">
                                     {!! Form::text('subtitle/'. $photo->id, $photo->subtitle, ['placeholder' => trans('news::photo_gallery.subtitle') ,'class' => 'form-control']) !!}
                                     {!! Form::textarea('content/'. $photo->id, $photo->content, ['placeholder' => trans('news::photo_gallery.subtitle') ,'class' => 'form-control']) !!}
                                 {{--</a>--}}
@@ -70,7 +75,7 @@
     <script>
         Dropzone.options.addPhotos = {
 
-            maxFileSize: 2,
+            maxFileSize: 100,
             acceptedFiles : 'image/*',
             success: function (file, response) {
 

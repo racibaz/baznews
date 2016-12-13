@@ -61,13 +61,21 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="row">
                             {!! Form::label('title', trans('news::news.title'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
                                 {!! Form::text('title', $record->title, ['placeholder' => trans('news::news.title') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('small_title', trans('news::news.small_title'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('small_title', $record->small_title, ['placeholder' => trans('news::news.small_title') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

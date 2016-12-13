@@ -22,7 +22,7 @@
                         @foreach($mainCuffNewsItems as $mainCuffNewsItem)
                              <li data-slide-index="{{$mainCuffNewsItem->id}}">
                                  <a href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
-                                    <img src="{{$mainCuffNewsItem->cuff_photo}}" alt="News Logo" >
+                                    <img src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}" alt="News Logo" >
                                  </a>
                              </li>
                         @endforeach
@@ -50,12 +50,12 @@
                         @foreach($miniCuffNewsItems as $miniCuffNewsItem)
                             <li>
                                 <div class="thumbnail">
-                                    <a href="new-details.html">
-                                        <img src="{{ asset('images/news_images/' . $miniCuffNewsItem->id . '/291x165_' . $miniCuffNewsItem->thumbnail) }}" alt="Dummyİmage" >
+                                    <a href="{{ route('show_news', ['slug' => $miniCuffNewsItem->slug]) }}">
+                                        <img src="{{ asset('images/news_images/' . $miniCuffNewsItem->id . '/196x150_' . $miniCuffNewsItem->thumbnail) }}" alt="Dummyİmage" >
                                         <div class="caption">
-                                            <span class="mini-title">Consectetur Cras</span>
+                                            <span class="mini-title">{{$miniCuffNewsItem->small_title}}</span>
                                             <span class="ct-title">
-                                        Maecenas faucibus mollis interdum.
+                                        {{$miniCuffNewsItem->small_title}}
                                     </span>
                                         </div>
                                     </a>
@@ -81,76 +81,11 @@
                             <!-- /.thumbnail -->
                         </li>
                         <!-- /.col -->
-
-                        {{--<li>--}}
-                            {{--<div class="thumbnail">--}}
-                                {{--<a href="new-details.html">--}}
-                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot2.jpg')}}" alt="Dummyİmage">--}}
-                                    {{--<div class="caption">--}}
-                                        {{--<span class="mini-title">Consectetur Cras</span>--}}
-                                        {{--<span class="ct-title">--}}
-                                        {{--Maecenas faucibus mollis interdum.--}}
-                                    {{--</span>--}}
-                                    {{--</div>--}}
-                                {{--</a>--}}
-                            {{--</div>--}}
-                            {{--<!-- /.thumbnail -->--}}
-                        {{--</li>--}}
-                        {{--<!-- /.col -->--}}
-                        {{--<li>--}}
-                            {{--<div class="thumbnail">--}}
-                                {{--<a href="new-details.html">--}}
-                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot3.jpg')}}" alt="Dummyİmage">--}}
-                                    {{--<div class="caption">--}}
-                                        {{--<span class="mini-title">Consectetur Cras</span>--}}
-                                        {{--<span class="ct-title">--}}
-                                        {{--Maecenas faucibus mollis interdum.--}}
-                                    {{--</span>--}}
-                                    {{--</div>--}}
-                                {{--</a>--}}
-                            {{--</div>--}}
-                            {{--<!-- /.thumbnail -->--}}
-                        {{--</li>--}}
-                        {{--<!-- /.col -->--}}
-                        {{--<li>--}}
-                            {{--<div class="thumbnail">--}}
-                                {{--<a href="new-details.html">--}}
-                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot2.jpg')}}" alt="Dummyİmage">--}}
-                                    {{--<div class="caption">--}}
-                                        {{--<span class="mini-title">Consectetur Cras</span>--}}
-                                        {{--<span class="ct-title">--}}
-                                        {{--Maecenas faucibus mollis interdum.--}}
-                                    {{--</span>--}}
-                                    {{--</div>--}}
-                                {{--</a>--}}
-                            {{--</div>--}}
-                            {{--<!-- /.thumbnail -->--}}
-                        {{--</li>--}}
-                        {{--<!-- /.col -->--}}
-                        {{--<li>--}}
-                            {{--<div class="thumbnail">--}}
-                                {{--<a href="new-details.html">--}}
-                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot1.jpg')}}" alt="Dummyİmage">--}}
-                                    {{--<div class="caption">--}}
-                                        {{--<span class="mini-title">Consectetur Cras</span>--}}
-                                        {{--<span class="ct-title">--}}
-                                        {{--Maecenas faucibus mollis interdum.--}}
-                                    {{--</span>--}}
-                                    {{--</div>--}}
-                                {{--</a>--}}
-                            {{--</div>--}}
-                            {{--<!-- /.thumbnail -->--}}
-                        {{--</li>--}}
-                        {{--<!-- /.col -->--}}
                     </ul>
                 </div>
                 <!-- /.post-box-slider -->
             </div>
         </div>
-
-
-
-
 
         <div class="row">
             @foreach($cuffNewsCategories as $cuffNewsCategory)
@@ -173,9 +108,14 @@
                                 </div>
                             </div>
                             <ul class="new-list">
-                                @foreach($cuffNewsCategory->news as $news)
+                                @foreach($cuffNewsCategory->news->take(5) as $news)
                                     <li>
-                                        <a href="new-details.html" class="full-link active" data-img="img/mini-spot/haber2.jpg" data-title="Dapibus Ridiculus Ultricies Ornare" data-time="23 saat önce"></a>
+                                        <a href="{!! route('show_news', ['slug' => $news->slug]) !!}"
+                                           class="full-link active"
+                                           data-img="{{ asset('images/news_images/' . $news->id . '/220x310_' . $news->thumbnail) }}"
+                                           data-title="{{$news->title}}"
+                                           data-time="23 saat önce">
+                                        </a>
                                         <div class="new-ct">
                                             <h3 class="new-title">{{$news->title}} </h3>
                                             <time class="new-date">
@@ -363,8 +303,6 @@
             </div><!-- /.col -->
         </div><!-- /.row -->
 
-
-
         <div class="row">
             <div class="col-md-6">
                 <div class="title-section">
@@ -374,14 +312,16 @@
                 </div>
                 <div class="th-nw-slide">
                     <div id="m_pg1" class="pager">
-                        <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct"><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia1.jpg')}}" /></span></a>
-                        <a data-slide-index="1" href="" onmouseover="this.click()"><span class="img-ct"><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia2.jpg')}}" /></span></a>
-                        <a data-slide-index="2" href="" onmouseover="this.click()"><span class="img-ct"><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia3.jpg')}}" /></span></a>
+                        @foreach($photoGalleries as $photoGallery)
+                            <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct">
+                                    <img src="{{ asset('gallery/' . $photoGallery->slug . '/photos/58x58_' . $photoGallery->thumbnail)}}" />
+                                </span></a>
+                        @endforeach
                     </div><!-- /.m-pg -->
                     <ul class="slide m-slider1">
-                        <li><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia1.jpg')}}" /></li>
-                        <li><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia2.jpg')}}" /></li>
-                        <li><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia3.jpg')}}" /></li>
+                        @foreach($photoGalleries as $photoGallery)
+                            <li><img src="{{ asset('gallery/' . $photoGallery->slug . '/photos/497x358_' . $photoGallery->thumbnail)}}" /></li>
+                        @endforeach
                     </ul><!-- /.m-slider -->
                 </div><!-- /.th-nw-slide -->
             </div><!-- /.col -->

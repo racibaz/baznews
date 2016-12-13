@@ -29,7 +29,7 @@ class IndexController extends Controller
              $miniCuffNewsItems =  $newsRepository->where('mini_cuff', 1)->where('status', 1)->limit(Redis::get('mini_cuff'))->findAll();
 
              $photoGalleryRepository = new PhotoGalleryRepository();
-             $photoGalleries = $photoGalleryRepository->where('is_active',1)->limit(Redis::get('photo_gallery'))->findAll();
+             $photoGalleries = $photoGalleryRepository->where('is_active',1)->where('is_cuff',1)->limit(Redis::get('photo_gallery'))->findAll();
 
              $videoGalleryRepository = new VideoGalleryRepository();
              $videoGalleries = $videoGalleryRepository->where('is_active',1)->limit(Redis::get('video_gallery'))->findAll();

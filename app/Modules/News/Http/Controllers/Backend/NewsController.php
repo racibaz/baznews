@@ -329,9 +329,26 @@ class NewsController extends Controller
                     Uploader::fileUpload($result[1] , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
+
                     Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
-                        ->resize(291,165)
-                        ->save(public_path('images/news_images/' . $result[1]->id . '/291x165_' . $document_name));
+                        ->resize(58,58)
+                        ->save(public_path('images/news_images/' . $result[1]->id . '/58x58_' . $document_name));
+
+                    Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
+                        ->resize(196,150)
+                        ->save(public_path('images/news_images/' . $result[1]->id . '/196x150_' . $document_name));
+
+                    Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
+                        ->resize(220,310)
+                        ->save(public_path('images/news_images/' . $result[1]->id . '/220x310_' . $document_name));
+
+                    Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
+                        ->resize(322,265)
+                        ->save(public_path('images/news_images/' . $result[1]->id . '/322x265_' . $document_name));
+
+                    Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
+                        ->resize(497,358)
+                        ->save(public_path('images/news_images/' . $result[1]->id . '/497x358_' . $document_name));
                 }
 
                 if(!empty($input['cuff_photo'])) {
@@ -478,7 +495,7 @@ class NewsController extends Controller
 
     public function news_photo_galleries_store(News $record, $input)
     {
-        if(isset($input['tags_ids'])) {
+        if(isset($input['photo_gallery_ids'])) {
             $record->photo_galleries()->sync($input['photo_gallery_ids']);
         }
     }

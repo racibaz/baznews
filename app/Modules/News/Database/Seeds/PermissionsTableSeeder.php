@@ -377,6 +377,25 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $photogallery8 = Permission::create([
+            'name'          => 'addMultiPhotosView-photogallery',
+            'display_name'  => 'photogallery addMultiPhotosView',
+            'is_active'     => 1,
+        ]);
+
+        $photogallery9 = Permission::create([
+            'name'          => 'addMultiPhotos-photogallery',
+            'display_name'  => 'photogallery addMultiPhotos',
+            'is_active'     => 1,
+        ]);
+
+        $photogallery10 = Permission::create([
+            'name'          => 'updateGalleryPhotos-photogallery',
+            'display_name'  => 'photogallery updateGalleryPhotos',
+            'is_active'     => 1,
+        ]);
+
+
         //photo
         $photo1 = Permission::create([
             'name'          => 'index-photo',
@@ -655,6 +674,9 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($photogallery5);
         $super_admin->permissions()->attach($photogallery6);
         $super_admin->permissions()->attach($photogallery7);
+        $super_admin->permissions()->attach($photogallery8);
+        $super_admin->permissions()->attach($photogallery9);
+        $super_admin->permissions()->attach($photogallery10);
         $super_admin->permissions()->attach($photo1);
         $super_admin->permissions()->attach($photo2);
         $super_admin->permissions()->attach($photo3);

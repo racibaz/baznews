@@ -45,8 +45,6 @@
     <!-- Left side column. contains the logo and sidebar -->
     @include($activeTheme . '::frontend.layouts.sidebar')
 
-    @include($activeTheme . '::frontend.partials._messages')
-
     @yield('content')
 
 
