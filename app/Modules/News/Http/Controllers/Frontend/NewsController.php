@@ -52,6 +52,18 @@ class NewsController extends Controller
 
             $newsSlug = htmlentities(strip_tags($newsSlug), ENT_QUOTES, 'UTF-8');
             $record = $this->repo
+                                ->with([
+                                    'news_categories',
+                                    'photo_galleries',
+                                    'video_galleries',
+                                    'photos',
+                                    'videos',
+                                    'related_news',
+                                    'country',
+                                    'city',
+                                    'news_source',
+                                    'tags'
+                                ])
                                 ->where('status', 1)
                                 ->where('is_active', 1)
                                 ->findBy('slug',$newsSlug);

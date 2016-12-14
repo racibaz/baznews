@@ -331,23 +331,23 @@ class NewsController extends Controller
 
 
                     Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
-                        ->resize(58,58)
+                        ->fit(58,58)
                         ->save(public_path('images/news_images/' . $result[1]->id . '/58x58_' . $document_name));
 
                     Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
-                        ->resize(196,150)
+                        ->fit(196,150)
                         ->save(public_path('images/news_images/' . $result[1]->id . '/196x150_' . $document_name));
 
                     Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
-                        ->resize(220,310)
+                        ->fit(220,310)
                         ->save(public_path('images/news_images/' . $result[1]->id . '/220x310_' . $document_name));
 
                     Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
-                        ->resize(322,265)
+                        ->fit(322,265)
                         ->save(public_path('images/news_images/' . $result[1]->id . '/322x265_' . $document_name));
 
                     Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
-                        ->resize(497,358)
+                        ->fit(497,358)
                         ->save(public_path('images/news_images/' . $result[1]->id . '/497x358_' . $document_name));
                 }
 
@@ -502,22 +502,22 @@ class NewsController extends Controller
 
     public function news_video_galleries_store(News $record, $input)
     {
-        if(isset($input['tags_ids'])) {
+        if(isset($input['video_gallery_ids'])) {
             $record->video_galleries()->sync($input['video_gallery_ids']);
         }
     }
 
     public function news_videos_store(News $record, $input)
     {
-        if(isset($input['tags_ids'])) {
+        if(isset($input['videos_ids'])) {
             $record->videos()->sync($input['videos_ids']);
         }
     }
 
     public function news_photos_store(News $record, $input)
     {
-        if(isset($input['tags_ids'])) {
-            $record->photos()->sync($input['tags_ids']);
+        if(isset($input['photos_ids'])) {
+            $record->photos()->sync($input['photos_ids']);
         }
     }
 

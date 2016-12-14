@@ -33,10 +33,10 @@
             <div class="col-md-4">
                 <div class="main-slider spot">
                     <ul class="bxslider">
-                        <li data-slide-index="0"><img src="{{ Theme::asset($activeTheme . '::img/spot.jpg')}}" alt="News Logo" ></li>
-                        <li data-slide-index="1"><img src="{{ Theme::asset($activeTheme . '::img/spot.jpg')}}" alt="News Logo" ></li>
-                        <li data-slide-index="2"><img src="{{ Theme::asset($activeTheme . '::img/spot.jpg')}}" alt="News Logo" ></li>
-                        <li data-slide-index="3"><img src="{{ Theme::asset($activeTheme . '::img/spot.jpg')}}" alt="News Logo" ></li>
+
+                        @foreach($boxCuffNewsItems as $boxCuffNewsItem)
+                            <li data-slide-index="0"><img src="{{ asset('images/news_images/' . $boxCuffNewsItem->id . '/322x265_' . $boxCuffNewsItem->thumbnail )}}" alt="{{$boxCuffNewsItem->title}}" ></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

@@ -43,7 +43,7 @@
                         </ul><!-- /.nav -->
                     </div><!-- /.share-box -->
                     <div class="new-img">
-                        <img src="{{$record->thumbnail}}" alt="new text">
+                        <img src="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}" alt="{{$record->title}}">
                     </div>
                     <div class="content" id="content">
                         <h1 class="ct-title">{{ $record->title }}</h1>
@@ -53,7 +53,49 @@
                             <a href="new-details.html">World News.</a>   \\   <a href="new-details.html">No Coments.</a>
                         </span><!-- /.meta -->
                         <div class="ct-text">
+
                             {!! $record->content !!}
+                                <br />
+
+                            <h4>Haber Kaynağı</h4>
+                            {{$record->news_source}}
+
+
+
+                            <h4>İlişkili Haberler</h4>
+                            @foreach($record->related_news as $news)
+                                {{$news->title}}
+                            @endforeach
+
+                            <h4>Haberin Video Galerileri</h4>
+                            @foreach($record->video_galleries as $video_gallery)
+                                {{$video_gallery->title}}
+                            @endforeach
+
+                            <h4>Haberin Photo Galerileri</h4>
+                            @foreach($record->photo_galleries as $photo_gallery)
+                                {{$photo_gallery->title}}
+                            @endforeach
+
+                            <h4>Haberin videoları</h4>
+                            @foreach($record->videos as $video)
+                                {{$video->name}}
+                            @endforeach
+
+                            <h4>Haberin Resimleri </h4>
+                            @foreach($record->photos as $photo)
+                                {{$photo->name}}
+                            @endforeach
+
+
+                            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>
+                                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                <div class="addthis_inline_share_toolbox"></div>
+                            @foreach($record->tags as $tag)
+                                {{$tag->name}}
+                            @endforeach
+
                         </div><!-- /.ct-text -->
                     </div><!-- /.content -->
                 </div><!-- /.new-content -->
@@ -64,8 +106,9 @@
                             <div id="disqus_thread"></div>
                             <script>
                                 var disqus_config = function () {
-                                    this.page.url =  {{$record->slug}};
-                                    this.page.identifier = {{$record->id}};
+                                    this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';
+                                    this.page.identifier = '{{$record->id}}';
+                                    this.page.title = '{{$record->title}}';
                                 };
 
                                 (function() { // DON'T EDIT BELOW THIS LINE
@@ -256,6 +299,10 @@
                         @widget($widget['namespace'])
                         <br />
                     @endforeach
+
+                    {{--@widgetGroup('right_bar')--}}
+
+
                 </div><!-- /.sidebar -->
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -283,15 +330,20 @@
     <meta name='topic' content=''>
     <meta name='summary' content=''>
 
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="{{Redis::get('twitter_account')}}">
+    <meta name="twitter:title" content="{{$record->title}}">
+    <meta name="twitter:description" content="{{$record->description}}">
+
+    <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $record->title }} " />
-    <meta property="og:url" content="{{ $record->slug }} " />
+    <meta property="og:url" content="{{Redis::get('url')}}" />
     <meta property="og:site_name" content="{{Redis::get('title')}}" />
     <meta property="og:description" content="{{$record->description}}" />
     <meta property="fb:app_id" content="671303379704288">
-    {{--<meta property="fb:admins" content="FACEBOOK ADMIN ID SINI BURAYA YAZ"/>--}}
-    <meta property="og:image" content="{{$record->thumbnail}}"/>
-
-
+    <meta property="og:image" content="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}"/>
+    <meta property="article:published_time" content="{{$record->created_at}}">
+    {{--<meta property="article:author" content="">--}}
 
 @endsection
 

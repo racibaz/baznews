@@ -6,5 +6,13 @@
     "namespace": "\\App\\Modules\\News\\Widgets\\RecommendationNews",
     "version": "1.0",
     "description": "Recommendation News Widget."
+  },
+  "BoxCuffNews": {
+    "name": "BoxCuffNews",
+    "slug": "box_cuff_news",
+    "module_name": "News",
+    "namespace": "\\App\\Modules\\News\\Widgets\\BoxCuffNews",
+    "version": "1.0",
+    "description": "BoxCuffNews News Widget."
   }
 }

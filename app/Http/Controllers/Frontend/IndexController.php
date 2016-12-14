@@ -27,6 +27,7 @@ class IndexController extends Controller
              $bandNewsItems     =  $newsRepository->where('band_news', 1)->where('status', 1)->limit(Redis::get('band_news'))->findAll();
              $mainCuffNewsItems =  $newsRepository->where('main_cuff', 1)->where('status', 1)->limit(Redis::get('main_cuff'))->findAll();
              $miniCuffNewsItems =  $newsRepository->where('mini_cuff', 1)->where('status', 1)->limit(Redis::get('mini_cuff'))->findAll();
+             $boxCuffNewsItems  =  $newsRepository->where('box_cuff', 1)->where('status', 1)->limit(5)->orderBy('updated_at','desc')->findAll();
 
              $photoGalleryRepository = new PhotoGalleryRepository();
              $photoGalleries = $photoGalleryRepository->where('is_active',1)->where('is_cuff',1)->limit(Redis::get('photo_gallery'))->findAll();
@@ -59,6 +60,7 @@ class IndexController extends Controller
                 'bandNewsItems',
                 'mainCuffNewsItems',
                 'miniCuffNewsItems',
+                'boxCuffNewsItems',
                 'cuffNewsCategories',
                 'modules',
                 'menus',

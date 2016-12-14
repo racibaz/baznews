@@ -217,11 +217,11 @@ class PhotoGalleryController extends Controller
             $img = Image::make(public_path('gallery/'. $photoGallery->slug .'/photos/'. $photo->file));
 
             Image::make(public_path('gallery/'. $photoGallery->slug .'/photos/'. $photo->file))
-                ->crop(58,58,$img->height(),$img->wight())
+                ->fit(58,58)
                 ->save(public_path('gallery/'. $photoGallery->slug .'/photos/58x58_' . $photo->file));
 
             Image::make(public_path('gallery/'. $photoGallery->slug .'/photos/'. $photo->file))
-                ->crop(497,358)
+                ->fit(497,358)
                 ->save(public_path('gallery/'. $photoGallery->slug .'/photos/497x358_' . $photo->file));
 
 

@@ -61,6 +61,7 @@ class AppServiceProvider extends ServiceProvider
 
             View::share('widgets', WidgetManager::where('is_active',1)->get());
 
+
             //Cache::tags('settings')->flush();
             //Cache::flush();
 
