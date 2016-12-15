@@ -3,6 +3,7 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Library\Uploader;
 use App\Modules\News\Models\Video;
 use App\Modules\News\Models\VideoCategory;
 use App\Modules\News\Models\VideoGallery;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Intervention\Image\Facades\Image;
 
 class VideoGalleryController extends Controller
 {
@@ -92,6 +94,7 @@ class VideoGalleryController extends Controller
     {
         $input = Input::all();
 
+        $input['is_cuff'] = Input::get('is_active') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['user_id'] = Auth::user()->id;
 
@@ -111,7 +114,26 @@ class VideoGalleryController extends Controller
                     $result = true;
                 }
             }
-            if ($result) {
+            if ($result[0]) {
+
+                if(!empty($input['thumbnail'])) {
+                    $oldPath = $record->thumbnail;
+                    $document_name = $input['thumbnail']->getClientOriginalName();
+                    $destination = '/video_gallery/'. $result[1]->slug .'/photos';
+                    Uploader::fileUpload($result[1] , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    Uploader::removeFile($oldPath);
+
+
+                    Image::make(public_path('video_gallery/'. $result[1]->slug .'/photos/'. $result[1]->thumbnail))
+                        ->resize(58,58)
+                        ->save(public_path('video_gallery/'. $result[1]->slug .'/photos/58x58_' . $document_name));
+
+                    Image::make(public_path('video_gallery/'. $result[1]->slug .'/photos/'. $result[1]->thumbnail))
+                        ->resize(497,358)
+                        ->save(public_path('video_gallery/'. $result[1]->slug .'/photos/497x358_' . $document_name));
+                }
+
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {
@@ -139,7 +161,7 @@ class VideoGalleryController extends Controller
 
         $fileName = uniqid() . $file->getClientOriginalName();
 
-        $basePath = 'gallery/' . $gallery->slug . '/videos/';
+        $basePath = 'video_gallery/' . $gallery->slug . '/videos/';
 
         $file->move($basePath, $fileName);
 
@@ -200,8 +222,6 @@ class VideoGalleryController extends Controller
 
                     $content = $inputs[$key];
                 }
-
-
 
                 if(is_numeric($id)){
 

@@ -28,7 +28,7 @@ class CreateVideosTable extends Migration
             $table->timestamps();
 
             // Keys
-            $table->foreign('video_gallery_id')->references('id')->on('video_galleries')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('video_gallery_id')->references('id')->on('video_galleries')->onDelete('set null')->onUpdate('set null');
         });
 
         Schema::create('news_videos', function (Blueprint $table) {

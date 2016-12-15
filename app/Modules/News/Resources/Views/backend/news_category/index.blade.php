@@ -23,6 +23,7 @@
                             <th>#</th>
                             <th>{{trans('news_category.name')}}</th>
                             <th>{{trans('news_category.parent_id')}}</th>
+                            <th>{{trans('news_category.news_count')}}</th>
                             <th>{{trans('news_category.hit')}}</th>
                             <th>{{trans('news_category.is_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>
@@ -34,6 +35,7 @@
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('news_category.show', $record->name , $record, [] ) !!}</td>
                                     <td> {{$record->parent_id}} </td>
+                                    <td> {{$record->news->count()}} </td>
                                     <td> {{$record->hit}} </td>
                                     <td> {{$record->is_cuff}} </td>
                                     <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
@@ -56,6 +58,7 @@
                             <th>#</th>
                             <th>{{trans('news_category.name')}}</th>
                             <th>{{trans('news_category.parent_id')}}</th>
+                            <th>{{trans('news_category.news_count')}}</th>
                             <th>{{trans('news_category.hit')}}</th>
                             <th>{{trans('news_category.is_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>

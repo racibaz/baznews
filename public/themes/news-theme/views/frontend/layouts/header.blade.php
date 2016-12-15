@@ -22,10 +22,13 @@
                     <img src="{{ Theme::asset($activeTheme . '::img/news-theme-logo.jpg') }}" alt="Logo" width="130" height="120" />
                 </a>
                 <div class="search pull-right">
-                    <form action="#" method="get">
-                        <input type="text" value="Ara." onblur="if(this.value=='') this.value='Ara.';" onfocus="if(this.value=='Ara.') this.value='';" class="ft">
+
+                    {!! Form::open(array('route' => 'search', 'method' => 'post','class' => 'form')) !!}
+                        {!!  Form::text('q', null, ['placeholder' => trans('homepage.search') ,'class' => 'form-control']) !!}
+                        {{--<input type="q" value="Ara." onblur="if(this.value=='') this.value='Ara.';" onfocus="if(this.value=='Ara.') this.value='';" class="ft">--}}
                         <input type="submit" value="" class="fs">
-                    </form>
+                    {!!Form::close() !!}
+
                 </div>
             </div>
 

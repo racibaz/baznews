@@ -332,15 +332,17 @@
                     </h1>
                 </div>
                 <div class="th-nw-slide">
-                    <div id="m_pg2" class="pager">
-                        <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct"><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia1.jpg')}}" /></span></a>
-                        <a data-slide-index="1" href="" onmouseover="this.click()"><span class="img-ct"><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia2.jpg')}}" /></span></a>
-                        <a data-slide-index="2" href="" onmouseover="this.click()"><span class="img-ct"><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia3.jpg')}}" /></span></a>
+                    <div id="m_pg1" class="pager">
+                        @foreach($videoGalleries as $videoGallery)
+                            <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct">
+                                    <img src="{{ asset('video_gallery/' . $videoGallery->slug . '/photos/58x58_' . $videoGallery->thumbnail)}}" />
+                                </span></a>
+                        @endforeach
                     </div><!-- /.m-pg -->
-                    <ul class="slide m-slider2">
-                        <li><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia1.jpg')}}" /></li>
-                        <li><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia2.jpg')}}" /></li>
-                        <li><img src="{{ Theme::asset($activeTheme . '::img/spot/multimedia3.jpg')}}" /></li>
+                    <ul class="slide m-slider1">
+                        @foreach($videoGalleries as $videoGallery)
+                            <li><img src="{{ asset('video_gallery/' . $videoGallery->slug . '/photos/497x358_' . $videoGallery->thumbnail)}}" /></li>
+                        @endforeach
                     </ul><!-- /.m-slider -->
                 </div><!-- /.th-nw-slide -->
             </div><!-- /.col -->

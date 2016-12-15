@@ -22,7 +22,8 @@ Route::get('archive/{years?}/{months?}/{days?}', 'Frontend\ArchiveController@ind
     ->where('months', '[0-9]+')
     ->where('days', '[0-9]+');
 
-Route::get('q/{q}', 'Frontend\SearchController@index')->name('search');
+//todo get yapılacak ve pattern eklenecek.
+Route::post('search', 'Frontend\SearchController@index')->name('search');
 
 Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sitemap');
 Route::get('category/{slug}', 'Frontend\NewsCategoryController@getNewsByNewsCategorySlug')->name('show_news_category');

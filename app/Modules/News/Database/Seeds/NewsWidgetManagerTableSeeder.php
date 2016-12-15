@@ -14,13 +14,17 @@ class NewsWidgetManagerTableSeeder extends Seeder
      */
     public function run()
     {
-        WidgetManager::create([
-            'name'          => 'RecommendationNews',
-            'slug'          => 'recommandation_news',
-            'namespace'     => '\App\Modules\News\Widgets\RecommendationNews',
-            'position'      => 1,
-            'group'         => 'rightbar',
-            'is_active'     => 1
-        ]);
+        $widget = WidgetManager::where('name','RecommendationNews')->first();
+        if(empty($widget))
+        {
+            WidgetManager::create([
+                'name'          => 'RecommendationNews',
+                'slug'          => 'recommandation_news',
+                'namespace'     => '\App\Modules\News\Widgets\RecommendationNews',
+                'position'      => 1,
+                'group'         => 'rightbar',
+                'is_active'     => 1
+            ]);
+        }
     }
 }

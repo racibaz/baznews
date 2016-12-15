@@ -33,7 +33,7 @@ class IndexController extends Controller
              $photoGalleries = $photoGalleryRepository->where('is_active',1)->where('is_cuff',1)->limit(Redis::get('photo_gallery'))->findAll();
 
              $videoGalleryRepository = new VideoGalleryRepository();
-             $videoGalleries = $videoGalleryRepository->where('is_active',1)->limit(Redis::get('video_gallery'))->findAll();
+             $videoGalleries = $videoGalleryRepository->where('is_active',1)->where('is_cuff',1)->limit(Redis::get('video_gallery'))->findAll();
 
              $recommendationNewsRepository = new RecommendationNewsRepository();
              $recommendationNewsItems = $recommendationNewsRepository->with(['news'])

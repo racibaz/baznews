@@ -61,7 +61,6 @@
                             {{$record->news_source}}
 
 
-
                             <h4>İlişkili Haberler</h4>
                             @foreach($record->related_news as $news)
                                 {{$news->title}}
@@ -79,7 +78,29 @@
 
                             <h4>Haberin videoları</h4>
                             @foreach($record->videos as $video)
-                                {{$video->name}}
+
+                                @if(!empty($video->file))
+                                    <video id="{{$video->id}}"
+                                           class="video-js vjs-default-skin"
+                                           controls preload="auto" width="640" height="264"
+                                           poster="http://video-js.zencoder.com/oceans-clip.png"
+                                           data-setup='{"example_option":true}'>
+                                        <source src="{{url($video->file)}}" type="video/mp4" />
+                                        <source src="{{url($video->file)}}" type="video/webm" />
+                                        <source src="{{url($video->file)}}" type="video/ogg" />
+                                        {{--<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />--}}
+                                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                                    </video>
+                                @elseif(!empty($video->link))
+                                    <video
+                                            id="{{$video->id}}"
+                                            class="video-js vjs-default-skin"
+                                            controls
+                                            width="640" height="264"
+                                            {{--data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'--}}
+                                            data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'>
+                                    </video>
+                                @endif
                             @endforeach
 
                             <h4>Haberin Resimleri </h4>
@@ -359,6 +380,7 @@
 
     <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/videojs/Vimeo.js') }}"></script>
 
 
     <script src="https://js.pusher.com/3.2/pusher.min.js"></script>

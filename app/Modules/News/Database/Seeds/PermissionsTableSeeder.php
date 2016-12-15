@@ -568,6 +568,25 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $videogallery8 = Permission::create([
+            'name'          => 'addMultiVideosView-videogallery',
+            'display_name'  => 'videogallery addMultiVideosView',
+            'is_active'     => 1,
+        ]);
+
+        $videogallery9 = Permission::create([
+            'name'          => 'addMultiVideos-videogallery',
+            'display_name'  => 'videogallery addMultiVideos',
+            'is_active'     => 1,
+        ]);
+
+        $videogallery10 = Permission::create([
+            'name'          => 'updateGalleryVideos-videogallery',
+            'display_name'  => 'videogallery updateGalleryVideos',
+            'is_active'     => 1,
+        ]);
+
+
         //video
         $video1 = Permission::create([
             'name'          => 'index-video',
@@ -705,6 +724,9 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($videogallery5);
         $super_admin->permissions()->attach($videogallery6);
         $super_admin->permissions()->attach($videogallery7);
+        $super_admin->permissions()->attach($videogallery8);
+        $super_admin->permissions()->attach($videogallery9);
+        $super_admin->permissions()->attach($videogallery10);
         $super_admin->permissions()->attach($video1);
         $super_admin->permissions()->attach($video2);
         $super_admin->permissions()->attach($video3);

@@ -82,7 +82,7 @@
                             {!! Form::label('content', trans('news::video.content'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('content', $record->content, ['placeholder' => trans('news::video.content') ,'class' => 'form-control']) !!}
+                                {!! Form::textarea('content', $record->content, ['placeholder' => trans('news::video.content') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                             {!! Form::label('keywords', trans('news::video.keywords'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('news::video.keywords') ,'class' => 'form-control']) !!}
+                                {!! Form::textarea('keywords', $record->keywords, ['placeholder' => trans('news::video.keywords') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

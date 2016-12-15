@@ -1,4 +1,4 @@
-@extends($activeTheme .'::backend.master')
+@extends($activeTheme .'::frontend.master')
 
 
 @section('content')

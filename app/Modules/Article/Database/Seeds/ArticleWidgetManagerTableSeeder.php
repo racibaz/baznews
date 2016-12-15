@@ -14,13 +14,17 @@ class ArticleWidgetManagerTableSeeder extends Seeder
      */
     public function run()
     {
-        WidgetManager::create([
-            'name'          => 'RecentArticles',
-            'slug'          => 'recent_articles',
-            'namespace'     => '\App\Modules\Article\Widgets\RecentArticles',
-            'position'      => 3,
-            'group'         => 'rightbar',
-            'is_active'     => 1
-        ]);
+        $widget = WidgetManager::where('name','RecentArticles')->first();
+        if(empty($widget))
+        {
+            WidgetManager::create([
+                'name'          => 'RecentArticles',
+                'slug'          => 'recent_articles',
+                'namespace'     => '\App\Modules\Article\Widgets\RecentArticles',
+                'position'      => 3,
+                'group'         => 'rightbar',
+                'is_active'     => 1
+            ]);
+        }
     }
 }

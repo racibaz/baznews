@@ -37,12 +37,15 @@ class NewsCategoryController extends Controller
         return Cache::remember('news:'.$newsCategorySlug, 100, function() use($newsCategorySlug) {
 
             $newsCategorySlug = htmlentities(strip_tags($newsCategorySlug), ENT_QUOTES, 'UTF-8');
-            $records = $this->repo
+            $newsCategory = $this->repo
                     ->where('is_active', 1)
-                    ->findBy('slug',$newsCategorySlug)
-                    ->news;
+                    ->findBy('slug',$newsCategorySlug);
+
+
+            $records = $newsCategory->news;
 
             return Theme::view('news::frontend.news_category.category_news', compact([
+                'newsCategory',
                 'records'
             ]))->render();
         });

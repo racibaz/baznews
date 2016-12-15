@@ -14,13 +14,17 @@ class BookWidgetManagerTableSeeder extends Seeder
      */
     public function run()
     {
-        WidgetManager::create([
-            'name'          => 'RecentBooks',
-            'slug'          => 'recent_books',
-            'namespace'     => '\App\Modules\Book\Widgets\RecentBooks',
-            'position'      => 2,
-            'group'         => 'rightbar',
-            'is_active'     => 1
-        ]);
+        $widget = WidgetManager::where('name','RecentBooks')->first();
+        if(empty($widget))
+        {
+            WidgetManager::create([
+                'name'          => 'RecentBooks',
+                'slug'          => 'recent_books',
+                'namespace'     => '\App\Modules\Book\Widgets\RecentBooks',
+                'position'      => 2,
+                'group'         => 'rightbar',
+                'is_active'     => 1
+            ]);
+        }
     }
 }

@@ -26,7 +26,7 @@ class VideoGallery extends Model
         ];
     }
 
-    protected $fillable = ['video_category_id', 'user_id', 'title', 'slug', 'description', 'keywords', 'is_active'];
+    protected $fillable = ['video_category_id', 'user_id', 'title', 'slug', 'description', 'keywords', 'thumbnail', 'is_cuff', 'is_active'];
 
     public function news()
     {
