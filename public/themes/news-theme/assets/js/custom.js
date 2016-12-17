@@ -1,53 +1,48 @@
-// Sağ kısımda hover spot haber slider..
-var start=0;
+// TabSlider START....
+var start = 0;
 var delay = 0;
 var listSlide;
+var sTabLi = $('ul.slide-tab li');
+var sTabLen = $('ul.slide-tab');
+var newNumber = sTabLi.length / sTabLen.length;
+console.log(sTabLi.length +" - "+ sTabLen.length);
+
+
+
 $('a[data-toggle="tab"]').on('shown.bs.tab', function () {
-    delay=0;
-});
-
-$('#video ul.new-list li').hover(function () {
-    clearInterval(listSlide);
-    $('#video ul.new-list li').removeClass("active");
-    $(this).addClass("active");
+    var id = $(this).attr('href');
+    $('.tab-pane .new-list').removeClass('slide-tab');
+    $(id+' .new-list').addClass('slide-tab');
     delay = 0;
-}, function () {
-    slideInterval('#video');
+    sTabLi = $('ul.slide-tab li');
+    sTabLen = $('ul.slide-tab').length;
+    newNumber = sTabLi.length / sTabLen;
+    hoverNewList();
+    interval();
 });
 
-$('#son_dakika ul.new-list li').hover(function () {
-    clearInterval(listSlide);
-    $('#son_dakika ul.new-list li').removeClass("active");
-    $(this).addClass("active");
-    delay = 0;
-}, function () {
-    slideInterval('#son_dakika');
-});
-
-$('#cok_okunanlar ul.new-list li').hover(function () {
-    clearInterval(listSlide);
-    $('#cok_okunanlar ul.new-list li').removeClass("active");
-    $(this).addClass("active");
-    delay = 0;
-}, function () {
-    slideInterval('#cok_okunanlar');
-});
-
-function slideInterval(id) {
-    var newNumber = $(id+' ul.new-list li').length;
+function interval() {
     listSlide = setInterval(function(){
-        if (delay == newNumber) {
-            delay = 0;
-        }
-        $(id+' ul.new-list li').removeClass("active");
-        $(id+" ul.new-list li:eq("+delay+")").addClass("active");
+        if (delay == newNumber) {delay = 0;}
+        sTabLi.removeClass("active");
+        $("ul.slide-tab li:eq("+delay+")").addClass("active");
         delay++;
+        console.log(delay);
+        console.log("newnumber = "+newNumber);
     }, 3000);
 }
-slideInterval('#video');
-slideInterval('#son_dakika');
-slideInterval('#cok_okunanlar');
-// -----------
+function hoverNewList() {
+    sTabLi.hover(function () {
+        clearInterval(listSlide);
+        $(this).parent().parent().find('li').removeClass("active");
+        $(this).addClass("active");
+    }, function () {
+        setTimeout(interval(),3000);
+    });
+}
+
+hoverNewList();
+interval();
 
 $('.new-list-ct .new-list li a').hover(function () {
     $('.new-list-ct .new-list li a').removeClass("active");
@@ -62,6 +57,9 @@ $('.new-list-ct .new-list li a').hover(function () {
     $('.left-img-ct .new-title').html(title);
     $('.left-img-ct .new-date .timeago').html(time);
 });
+
+
+// ====Left Right Adverts====
 var width = $(window).width();
 var left =  $('#dfp-pageskin-sol').width();
 var right =  $('#dfp-160-kare-sag').width();
@@ -72,7 +70,6 @@ $(window).resize(function () {
 $(document).ready(function () {
     adsSize();
 });
-
 function adsSize() {
     ct = $('#container').width();
     width = $(window).width();
@@ -85,9 +82,10 @@ function adsSize() {
         size = (width - sum) / 2;
     }
     console.log("Size: "+size);
-    $('#dfp-160-kare-sag').css("right",size+"px");
-    $('#dfp-pageskin-sol').css("left",size+"px");
+    $('#dfp-160-kare-sag').css("right",size+"px").show();
+    $('#dfp-pageskin-sol').css("left",size+"px").show();
 }
+// ====Left Right Adverts====
 
 $("#sticky-container").sticky({
     topSpacing: $('header nav').outerHeight(),

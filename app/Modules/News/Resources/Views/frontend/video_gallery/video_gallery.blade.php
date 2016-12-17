@@ -50,44 +50,6 @@
                                             </div><!-- /.mini-box -->
                                     </div><!-- /.col -->
                                 @endforeach
-                                {{--<div class="col col-md-6 col-xs-6">--}}
-                                    {{--<div class="mini-box">--}}
-                                        {{--<a href="video-details.html">--}}
-                                            {{--<img src="img/video-manset/video-mini-cover.jpg" alt="Mini Video">--}}
-                                            {{--<div class="video-title">--}}
-                                                {{--<h3>--}}
-                                                    {{--<span>Mattis Etiam Lorem</span>--}}
-                                                {{--</h3>--}}
-                                            {{--</div>--}}
-                                        {{--</a>--}}
-                                    {{--</div><!-- /.mini-box -->--}}
-                                {{--</div><!-- /.col -->--}}
-
-                                {{--<div class="col col-md-6 col-xs-6">--}}
-                                    {{--<div class="mini-box">--}}
-                                        {{--<a href="video-details.html">--}}
-                                            {{--<img src="img/video-manset/video-mini-cover.jpg" alt="Mini Video">--}}
-                                            {{--<div class="video-title">--}}
-                                                {{--<h3>--}}
-                                                    {{--<span>Mattis Etiam Lorem</span>--}}
-                                                {{--</h3>--}}
-                                            {{--</div>--}}
-                                        {{--</a>--}}
-                                    {{--</div><!-- /.mini-box -->--}}
-                                {{--</div><!-- /.col -->--}}
-
-                                {{--<div class="col col-md-6 col-xs-6">--}}
-                                    {{--<div class="mini-box">--}}
-                                        {{--<a href="video-details.html">--}}
-                                            {{--<img src="img/video-manset/video-mini-cover.jpg" alt="Mini Video">--}}
-                                            {{--<div class="video-title">--}}
-                                                {{--<h3>--}}
-                                                    {{--<span>Mattis Etiam Lorem</span>--}}
-                                                {{--</h3>--}}
-                                            {{--</div>--}}
-                                        {{--</a>--}}
-                                    {{--</div><!-- /.mini-box -->--}}
-                                {{--</div><!-- /.col -->--}}
                             </div><!-- /.row -->
                         </div><!-- /.mini-card-boxes -->
                     </div><!-- /.col -->
@@ -102,55 +64,17 @@
 
             <div class="videos">
                 <div class="row">
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate
-                        </span>
-                            </a>
-                        </div>
-                    </div><!-- /.col -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate
-                        </span>
-                            </a>
-                        </div>
-                    </div><!-- /.col -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate C
-                        </span>
-                            </a>
-                        </div>
-                    </div><!-- /.col -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div>
-                    </div><!-- /.col -->
-
+                    @foreach($lastVideos as $lastVideo)
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <div class="r-box">
+                                <a href="{{route('show_videos',['slug' => $lastVideo->slug ])}}">
+                                    <img src="{{ asset('videos/' . $lastVideo->id . '/58x58_' . $lastVideo->thumbnail)}}"   />
+                                    <i class="icon"></i>
+                                    <span class="c-text">{{$lastVideo->name}}</span>
+                                </a>
+                            </div>
+                        </div><!-- /.col -->
+                    @endforeach
                 </div><!-- /.row -->
             </div><!-- /.related-videos -->
 

@@ -38,6 +38,7 @@ class VideoController extends Controller
 
             $otherGalleryVideos = $this->repo->whereNotIn('id', (array) $video->id)->findAll();
 
+
             return Theme::view('news::frontend.video.video', compact([
                 'video',
                 'videoGallery',

@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-12-07.
+    * Generated on 2016-12-17.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -69,7 +69,6 @@ namespace PHPSTORM_META {
             'modules' instanceof \Caffeinated\Modules\Modules,
             'image' instanceof \Intervention\Image\ImageManager,
             'Cviebrock\EloquentSluggable\SluggableObserver' instanceof \Cviebrock\EloquentSluggable\SluggableObserver,
-            'mapper' instanceof \Cornford\Googlmapper\Mapper,
             'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
             'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
             'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
@@ -105,7 +104,7 @@ namespace PHPSTORM_META {
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
-            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
+            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\PusherBroadcaster,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
@@ -248,7 +247,6 @@ namespace PHPSTORM_META {
             'modules' instanceof \Caffeinated\Modules\Modules,
             'image' instanceof \Intervention\Image\ImageManager,
             'Cviebrock\EloquentSluggable\SluggableObserver' instanceof \Cviebrock\EloquentSluggable\SluggableObserver,
-            'mapper' instanceof \Cornford\Googlmapper\Mapper,
             'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
             'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
             'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
@@ -284,7 +282,7 @@ namespace PHPSTORM_META {
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
-            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
+            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\PusherBroadcaster,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
@@ -427,7 +425,6 @@ namespace PHPSTORM_META {
             'modules' instanceof \Caffeinated\Modules\Modules,
             'image' instanceof \Intervention\Image\ImageManager,
             'Cviebrock\EloquentSluggable\SluggableObserver' instanceof \Cviebrock\EloquentSluggable\SluggableObserver,
-            'mapper' instanceof \Cornford\Googlmapper\Mapper,
             'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
             'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
             'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
@@ -463,7 +460,7 @@ namespace PHPSTORM_META {
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
-            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
+            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\PusherBroadcaster,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
@@ -606,7 +603,6 @@ namespace PHPSTORM_META {
             'modules' instanceof \Caffeinated\Modules\Modules,
             'image' instanceof \Intervention\Image\ImageManager,
             'Cviebrock\EloquentSluggable\SluggableObserver' instanceof \Cviebrock\EloquentSluggable\SluggableObserver,
-            'mapper' instanceof \Cornford\Googlmapper\Mapper,
             'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
             'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
             'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
@@ -642,7 +638,7 @@ namespace PHPSTORM_META {
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
-            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
+            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\PusherBroadcaster,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,

@@ -4,6 +4,7 @@ namespace App\Modules\News\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
 use App\Modules\News\Repositories\VideoGalleryRepository as Repo;
+use App\Modules\News\Repositories\VideoRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
@@ -28,11 +29,14 @@ class VideoGalleryController extends Controller
             $galleryVideos = $videoGallery->videos;
             $firstVideo = $videoGallery->videos->first();
 
+            $videoRepository = new VideoRepository();
+            $lastVideos = $videoRepository->orderBy('updated_at','desc')->limit(5)->findAll();
 
             return Theme::view('news::frontend.video_gallery.video_gallery', compact([
                 'videoGallery',
                 'galleryVideos',
-                'firstVideo'
+                'firstVideo',
+                'lastVideos'
             ]))->render();
         });
 

@@ -3,6 +3,7 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Library\Uploader;
 use App\Modules\News\Models\Video;
 use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\VideoRepository as Repo;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Intervention\Image\Facades\Image;
 
 class VideoController extends Controller
 {
@@ -107,6 +109,28 @@ class VideoController extends Controller
                 }
             }
             if ($result) {
+
+                if(!empty($input['thumbnail'])) {
+                    $oldPath = $record->thumbnail;
+                    $document_name = $input['thumbnail']->getClientOriginalName();
+                    $destination = '/videos/'. $result[1]->id;
+                    Uploader::fileUpload($result[1] , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    Uploader::removeFile($destination . '/' . $oldPath);
+
+
+                    Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
+                        ->resize(58,58)
+                        ->save(public_path('videos/'. $result[1]->id .'/58x58_' . $document_name));
+
+                    Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
+                        ->resize(497,358)
+                        ->save(public_path('videos/'. $result[1]->id .'/497x358_' . $document_name));
+
+                    Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
+                        ->resize(658,404)
+                        ->save(public_path('videos/'. $result[1]->id .'/658x404_' . $document_name));
+                }
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {

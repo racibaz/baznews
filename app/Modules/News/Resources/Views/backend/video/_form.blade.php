@@ -61,10 +61,10 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('file', trans('news::video.file'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('thumbnail', trans('news::video.thumbnail'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::file('file') !!}
+                                {!! Form::file('thumbnail') !!}
                             </div>
                         </div>
                     </div>
