@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Cache;
 
 class NewsController extends Controller
 {
-
     private $repo;
     private $view = 'news.';
     private $redirectViewName = 'frontend.';

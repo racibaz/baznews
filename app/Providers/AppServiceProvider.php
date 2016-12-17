@@ -6,6 +6,7 @@ use App\Events\UserRegistered;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\WidgetManager;
+use App\Repositories\AdvertisementRepository;
 use App\Repositories\MenuRepository;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Modules\Modules;
@@ -49,15 +50,25 @@ class AppServiceProvider extends ServiceProvider
                     //Redis::expire($setting->attribute_key, 1);
                 }
                 //return 'setting';
+
+
+                Cache::remember('menus', 10, function () {
+
+                    $menuRepository = new MenuRepository();
+                    return  $menuRepository->with(['page'])->where('is_active', 1)->orderBy('order','asc')->findAll();
+                });
+
+                Cache::remember('advertisements', 10, function () {
+
+                    $advertisementRepository = new AdvertisementRepository();
+                    $advertisements =  $advertisementRepository->where('is_active', 1)->findAll();
+
+                    foreach ($advertisements as $advertisement) {
+//                     Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
+                        Cache::forever($advertisement->name, $advertisement->code);
+                    }
+                });
             });
-
-
-            Cache::remember('menus', 10, function () {
-
-                $menuRepository = new MenuRepository();
-                return  $menuRepository->with(['page'])->where('is_active', 1)->orderBy('order','asc')->findAll();
-            });
-
 
             View::share('widgets', WidgetManager::where('is_active',1)->get());
 
@@ -68,7 +79,6 @@ class AppServiceProvider extends ServiceProvider
 
             //TODO cachelenecek
             View::share('activeTheme', Theme::getActive());
-
 
 
 //        User::observe(UserObserver::class);

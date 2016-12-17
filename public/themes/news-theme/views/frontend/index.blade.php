@@ -2,60 +2,78 @@
 
 @section('content')
 
-    <article class="container" id="container">
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="last-time" id="son-dakika">
-                    <h4>Son Dakika:</h4>
-                    @foreach($breakNewsItems as $breakNewsItem)
-                        <a href="{!! route('show_news', ['slug' => $breakNewsItem->slug]) !!}">{{$breakNewsItem->title}}</a>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-8">
-                <div class="main-slider">
-                    <ul class="bxslider">
-                        @foreach($mainCuffNewsItems as $mainCuffNewsItem)
-                             <li data-slide-index="{{$mainCuffNewsItem->id}}">
-                                 <a href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
-                                    <img src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}" alt="News Logo" >
-                                 </a>
-                             </li>
+    <article>
+        <div class="container" id="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="last-time" id="son-dakika">
+                        <h4>Son Dakika:</h4>
+                        @foreach($breakNewsItems as $breakNewsItem)
+                            <a href="{!! route('show_news', ['slug' => $breakNewsItem->slug]) !!}">{{$breakNewsItem->title}}</a>
                         @endforeach
-                    </ul>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="main-slider spot">
-                    <ul class="bxslider">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="main-slider">
+                        <ul class="bxslider">
+                            @foreach($mainCuffNewsItems as $mainCuffNewsItem)
+                                <li data-slide-index="{{$mainCuffNewsItem->id}}">
+                                    <a href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
+                                        <img src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}" alt="News Logo" >
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
 
-                        @foreach($boxCuffNewsItems as $boxCuffNewsItem)
-                            <li data-slide-index="0"><img src="{{ asset('images/news_images/' . $boxCuffNewsItem->id . '/322x265_' . $boxCuffNewsItem->thumbnail )}}" alt="{{$boxCuffNewsItem->title}}" ></li>
-                        @endforeach
-                    </ul>
+                <div class="col-md-4">
+                    <div class="main-slider spot">
+                        <ul class="bxslider">
+
+                            @foreach($boxCuffNewsItems as $boxCuffNewsItem)
+                                <li data-slide-index="0"><img src="{{ asset('images/news_images/' . $boxCuffNewsItem->id . '/322x265_' . $boxCuffNewsItem->thumbnail )}}" alt="{{$boxCuffNewsItem->title}}" ></li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div id="post-box-slider">
-                    <ul class="bxcarousel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="post-box-slider">
+                        <ul class="bxcarousel">
 
-                        @foreach($miniCuffNewsItems as $miniCuffNewsItem)
+                            @foreach($miniCuffNewsItems as $miniCuffNewsItem)
+                                <li>
+                                    <div class="thumbnail">
+                                        <a href="{{ route('show_news', ['slug' => $miniCuffNewsItem->slug]) }}">
+                                            <img src="{{ asset('images/news_images/' . $miniCuffNewsItem->id . '/196x150_' . $miniCuffNewsItem->thumbnail) }}" alt="Dummyİmage" >
+                                            <div class="caption">
+                                                <span class="mini-title">{{$miniCuffNewsItem->small_title}}</span>
+                                                <span class="ct-title">
+                                        {{$miniCuffNewsItem->small_title}}
+                                    </span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!-- /.thumbnail -->
+                                </li>
+                                <!-- /.col -->
+                            @endforeach
+
+
                             <li>
                                 <div class="thumbnail">
-                                    <a href="{{ route('show_news', ['slug' => $miniCuffNewsItem->slug]) }}">
-                                        <img src="{{ asset('images/news_images/' . $miniCuffNewsItem->id . '/196x150_' . $miniCuffNewsItem->thumbnail) }}" alt="Dummyİmage" >
+                                    <a href="new-details.html">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot1.jpg')}}" alt="Dummyİmage">
                                         <div class="caption">
-                                            <span class="mini-title">{{$miniCuffNewsItem->small_title}}</span>
+                                            <span class="mini-title">Consectetur Cras</span>
                                             <span class="ct-title">
-                                        {{$miniCuffNewsItem->small_title}}
+                                        Maecenas faucibus mollis interdum.
                                     </span>
                                         </div>
                                     </a>
@@ -63,290 +81,281 @@
                                 <!-- /.thumbnail -->
                             </li>
                             <!-- /.col -->
-                        @endforeach
-
-
-                        <li>
-                            <div class="thumbnail">
-                                <a href="new-details.html">
-                                    <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot1.jpg')}}" alt="Dummyİmage">
-                                    <div class="caption">
-                                        <span class="mini-title">Consectetur Cras</span>
-                                        <span class="ct-title">
-                                        Maecenas faucibus mollis interdum.
-                                    </span>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- /.thumbnail -->
-                        </li>
-                        <!-- /.col -->
-                    </ul>
-                </div>
-                <!-- /.post-box-slider -->
-            </div>
-        </div>
-
-        <div class="row">
-            @foreach($cuffNewsCategories as $cuffNewsCategory)
-                <div class="col-md-8">
-                    <div class="img-new-list">
-                        <div class="title-section">
-                            <h1>
-                                <span>{{$cuffNewsCategory->name}}</span>
-                            </h1>
-                        </div>
-                        <div class="new-list-ct">
-                            <div class="left-img-ct" style="background: {{ Theme::asset($activeTheme . '::img/example.jpg')}}">
-                                <a href="new-details.html" class="full-link"></a>
-                                <span class="shadow"></span>
-                                <div class="new-ct">
-                                    <h3 class="new-title">Dapibus Ridiculus Ultricies Ornare Consectetur1</h3>
-                                    <time class="new-date">
-                                        <span class="timeago" title="">11 saat önce</span>
-                                    </time>
-                                </div>
-                            </div>
-                            <ul class="new-list">
-                                @foreach($cuffNewsCategory->news->take(5) as $news)
-                                    <li>
-                                        <a href="{!! route('show_news', ['slug' => $news->slug]) !!}"
-                                           class="full-link active"
-                                           data-img="{{ asset('images/news_images/' . $news->id . '/220x310_' . $news->thumbnail) }}"
-                                           data-title="{{$news->title}}"
-                                           data-time="23 saat önce">
-                                        </a>
-                                        <div class="new-ct">
-                                            <h3 class="new-title">{{$news->title}} </h3>
-                                            <time class="new-date">
-                                                <span class="timeago" title="">{{$news->updated_at}}</span>
-                                            </time>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div><!-- /.new-list-ct -->
-                    </div><!-- /.col-md-8 -->
-                    <!-- /.image-banner-list -->
-                </div>
-            @endforeach
-
-            <div class="col-md-4">
-                <div class="nw-sm-img">
-                    <div role="tabpanel">
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active">
-                                <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>
-                            </li>
                         </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="video">
-                                <ul class="new-list no-list">
-                                    <li class="nw-bx no-list active">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">1</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                    <li class="nw-bx no-list">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">2</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                    <li class="nw-bx no-list">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">3</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                    <li class="nw-bx no-list">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">4</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                    <li class="nw-bx no-list">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">5</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                </ul><!-- /.new-list -->
-                            </div><!-- /.tab-pane -->
-                            <div role="tabpanel" class="tab-pane" id="son_dakika">
-                                <ul class="new-list no-list">
-                                    <li class="nw-bx no-list active">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">1</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                    <li class="nw-bx no-list">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">2</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                    <li class="nw-bx no-list">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">3</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                    <li class="nw-bx no-list">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">4</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                    <li class="nw-bx no-list">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">5</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                </ul><!-- /.new-list -->
-                            </div><!-- /.tab-pane -->
-
-                            <div role="tabpanel" class="tab-pane" id="cok_okunanlar">
-                                <ul class="new-list no-list">
-                                    <li class="nw-bx no-list active">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">1</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                    <li class="nw-bx no-list">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">2</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                    <li class="nw-bx no-list">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">3</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                    <li class="nw-bx no-list">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">4</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                    <li class="nw-bx no-list">
-                                        <a href="new-details.html" title="" class="full-link"></a>
-                                        <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
-                                        <span class="dec">5</span>
-                                        <div class="spot">Pellentesque Quam</div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                    </li>
-                                </ul><!-- /.new-list -->
-                            </div><!-- /.tab-pane -->
-                        </div><!-- /.tab-content -->
-                    </div><!-- /rabpanel -->
-                </div><!-- /.nw-sm-img -->
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="title-section">
-                    <h1>
-                        <span>Galeri</span>
-                    </h1>
+                    </div>
+                    <!-- /.post-box-slider -->
                 </div>
-                <div class="th-nw-slide">
-                    <div id="m_pg1" class="pager">
-                        @foreach($photoGalleries as $photoGallery)
-                            <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct">
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    @foreach($cuffNewsCategories as $cuffNewsCategory)
+                        <div class="img-new-list">
+                            <div class="title-section">
+                                <h1>
+                                    <span>{{$cuffNewsCategory->name}}</span>
+                                </h1>
+                            </div>
+                            <div class="new-list-ct">
+                                <div class="left-img-ct" style="background: {{ Theme::asset($activeTheme . '::img/example.jpg')}}">
+                                    <a href="new-details.html" class="full-link"></a>
+                                    <span class="shadow"></span>
+                                    <div class="new-ct">
+                                        <h3 class="new-title">Dapibus Ridiculus Ultricies Ornare Consectetur1</h3>
+                                        <time class="new-date">
+                                            <span class="timeago" title="">11 saat önce</span>
+                                        </time>
+                                    </div>
+                                </div>
+                                <ul class="new-list">
+                                    @foreach($cuffNewsCategory->news->take(5) as $news)
+                                        <li>
+                                            <a href="{!! route('show_news', ['slug' => $news->slug]) !!}"
+                                               class="full-link active"
+                                               data-img="{{ asset('images/news_images/' . $news->id . '/220x310_' . $news->thumbnail) }}"
+                                               data-title="{{$news->title}}"
+                                               data-time="23 saat önce">
+                                            </a>
+                                            <div class="new-ct">
+                                                <h3 class="new-title">{{$news->title}} </h3>
+                                                <time class="new-date">
+                                                    <span class="timeago" title="">{{$news->updated_at}}</span>
+                                                </time>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div><!-- /.new-list-ct -->
+                        </div><!-- /.col-md-8 -->
+                        <!-- /.image-banner-list -->
+                    @endforeach
+                </div>
+
+                <div class="col-md-4">
+                    <div class="nw-sm-img">
+                        <div role="tabpanel">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>
+                                </li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="video">
+                                    <ul class="new-list no-list">
+                                        <li class="nw-bx no-list active">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">1</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">2</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">3</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">4</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">5</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                    </ul><!-- /.new-list -->
+                                </div><!-- /.tab-pane -->
+                                <div role="tabpanel" class="tab-pane" id="son_dakika">
+                                    <ul class="new-list no-list">
+                                        <li class="nw-bx no-list active">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">1</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">2</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">3</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">4</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">5</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                    </ul><!-- /.new-list -->
+                                </div><!-- /.tab-pane -->
+
+                                <div role="tabpanel" class="tab-pane" id="cok_okunanlar">
+                                    <ul class="new-list no-list">
+                                        <li class="nw-bx no-list active">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">1</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">2</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">3</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">4</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                    </span>
+                                            <span class="dec">5</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                    </ul><!-- /.new-list -->
+                                </div><!-- /.tab-pane -->
+                            </div><!-- /.tab-content -->
+                        </div><!-- /rabpanel -->
+                    </div><!-- /.nw-sm-img -->
+                    <div class="nw-sm-img">
+                        {{Cache::get('right_blok_1')}}
+                    </div>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="title-section">
+                        <h1>
+                            <span>Galeri</span>
+                        </h1>
+                    </div>
+                    <div class="th-nw-slide">
+                        <div id="m_pg1" class="pager">
+                            @foreach($photoGalleries as $photoGallery)
+                                <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct">
                                     <img src="{{ asset('gallery/' . $photoGallery->slug . '/photos/58x58_' . $photoGallery->thumbnail)}}" />
                                 </span></a>
-                        @endforeach
-                    </div><!-- /.m-pg -->
-                    <ul class="slide m-slider1">
-                        @foreach($photoGalleries as $photoGallery)
-                            <li><img src="{{ asset('gallery/' . $photoGallery->slug . '/photos/497x358_' . $photoGallery->thumbnail)}}" /></li>
-                        @endforeach
-                    </ul><!-- /.m-slider -->
-                </div><!-- /.th-nw-slide -->
-            </div><!-- /.col -->
-            <div class="col-md-6">
-                <div class="title-section">
-                    <h1>
-                        <span>Video</span>
-                    </h1>
-                </div>
-                <div class="th-nw-slide">
-                    <div id="m_pg1" class="pager">
-                        @foreach($videoGalleries as $videoGallery)
-                            <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct">
-                                    <img src="{{ asset('video_gallery/' . $videoGallery->slug . '/photos/58x58_' . $videoGallery->thumbnail)}}" />
+                            @endforeach
+                        </div><!-- /.m-pg -->
+                        <ul class="slide m-slider1">
+                            @foreach($photoGalleries as $photoGallery)
+                                <li><img src="{{ asset('gallery/' . $photoGallery->slug . '/photos/497x358_' . $photoGallery->thumbnail)}}" /></li>
+                            @endforeach
+                        </ul><!-- /.m-slider -->
+                    </div><!-- /.th-nw-slide -->
+                </div><!-- /.col -->
+                <div class="col-md-6">
+                    <div class="title-section">
+                        <h1>
+                            <span>Video</span>
+                        </h1>
+                    </div>
+                    <div class="th-nw-slide">
+                        <div id="m_pg1" class="pager">
+                            @foreach($videoGalleries as $videoGallery)
+                                <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct">
+                                    <a href="{{route('show_video_gallery',['slug' => $videoGallery->slug ])}}">
+                                        <img src="{{ asset('video_gallery/' . $videoGallery->slug . '/photos/58x58_' . $videoGallery->thumbnail)}}" /></a>
                                 </span></a>
-                        @endforeach
-                    </div><!-- /.m-pg -->
-                    <ul class="slide m-slider1">
-                        @foreach($videoGalleries as $videoGallery)
-                            <li><img src="{{ asset('video_gallery/' . $videoGallery->slug . '/photos/497x358_' . $videoGallery->thumbnail)}}" /></li>
-                        @endforeach
-                    </ul><!-- /.m-slider -->
-                </div><!-- /.th-nw-slide -->
-            </div><!-- /.col -->
-        </div><!-- /.row -->
+                            @endforeach
+                        </div><!-- /.m-pg -->
+                        <ul class="slide m-slider1">
+                            @foreach($videoGalleries as $videoGallery)
+                                <li>
+                                    <a href="{{route('show_video_gallery',['slug' => $videoGallery->slug ])}}">
+                                        <img src="{{ asset('video_gallery/' . $videoGallery->slug . '/photos/497x358_' . $videoGallery->thumbnail)}}" />
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul><!-- /.m-slider -->
+                    </div><!-- /.th-nw-slide -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div>
     </article><!-- /.article -->
 
 @endsection

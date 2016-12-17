@@ -3,5 +3,62 @@
   "name": "news-theme backend AdminLte 2.3.6 frontend by Ali Duman",
   "author": "Ali Duman",
   "description": "This is an example my default theme.",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "advertisements":
+  [
+    {
+      "areaName":"header_1",
+      "areaType":"leaderboard (728x90)"
+    },
+
+    {
+      "areaName":"left_blok_1",
+      "areaType":"leaderboard (728x90)"
+    },
+
+    {
+      "areaName":"left_blok_2",
+      "areaType":"leaderboard (728x90)"
+    },
+
+    {
+      "areaName":"right_blok_1",
+      "areaType":"leaderboard (728x90)"
+    },
+
+    {
+      "areaName":"right_blok_2",
+      "areaType":"leaderboard (728x90)"
+    },
+
+    {
+      "areaName":"center_1",
+      "areaType":"leaderboard (728x90)"
+    },
+
+    {
+      "areaName":"center_2",
+      "areaType":"leaderboard (728x90)"
+    },
+
+    {
+      "areaName":"footer_1",
+      "areaType":"leaderboard (728x90)"
+    },
+
+    {
+      "areaName":"footer_2",
+      "areaType":"leaderboard (728x90)"
+    },
+
+    {
+      "areaName":"center_news_content_1",
+      "areaType":"leaderboard (728x90)"
+    },
+
+    {
+      "areaName":"center_news_content_2",
+      "areaType":"leaderboard (728x90)"
+    }
+  ]
 }

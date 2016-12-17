@@ -80,14 +80,6 @@ class NewsController extends Controller
 
     public function create()
     {
-        Mapper::map(41.015137, 28.979530, ['zoom' => 10, 'markers' => ['title' => 'My Location', 'animation' => 'DROP'], 'clusters' => ['size' => 10, 'center' => true, 'zoom' => 20]]);
-        Mapper::informationWindow(41.015137, 28.979530, 'haber başlık linki',
-            [
-                'open' => true, 'maxWidth'=> 300, 'markers' => ['title' => 'haber başlığı'],
-                'markers' => ['symbol' => 'circle', 'scale' => 1000, 'animation' => 'DROP']
-            ]);
-        $googleMapsRender = Mapper::render();
-
         $relatedIDs = [];
         $tagIDs = [];
         $photoGalleryIDs = [];
@@ -131,7 +123,6 @@ class NewsController extends Controller
                 'newsCategoryList',
                 'newsSourceList',
                 'statusList',
-                'googleMapsRender',
                 'newsCategories',
                 'futureNews',
                 'recommendationNews',
@@ -166,14 +157,6 @@ class NewsController extends Controller
 
     public function edit(News $record)
     {
-        Mapper::map(41.015137, 28.979530, ['zoom' => 10, 'markers' => ['title' => 'My Location', 'animation' => 'DROP'], 'clusters' => ['size' => 10, 'center' => true, 'zoom' => 20]]);
-        Mapper::informationWindow(41.015137, 28.979530, 'haber başlık linki',
-            [
-                'open' => true, 'maxWidth'=> 300, 'markers' => ['title' => 'haber başlığı'],
-                'markers' => ['symbol' => 'circle', 'scale' => 1000, 'animation' => 'DROP']
-            ]);
-        $googleMapsRender = Mapper::render();
-
         $relatedIDs = [];
         $tagIDs = [];
         $photoGalleryIDs = [];
@@ -245,7 +228,6 @@ class NewsController extends Controller
                 'newsCategoryList',
                 'newsSourceList',
                 'statusList',
-                'googleMapsRender',
                 'newsCategories',
                 'futureNews',
                 'recommendationNews',

@@ -1066,12 +1066,48 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        //advertisement
+        $advertisement1 = Permission::create([
+            'name'          => 'index-advertisement',
+            'display_name'  => 'Dosya Listeleme',
+            'is_active'     => 1,
+        ]);
 
+        $advertisement2 = Permission::create([
+            'name'          => 'create-advertisement',
+            'display_name'  => 'Dosya Oluşturma',
+            'is_active'     => 1,
+        ]);
 
+        $advertisement3 = Permission::create([
+            'name'          => 'edit-advertisement',
+            'display_name'  => 'Dosya Düzenleme',
+            'is_active'     => 1,
+        ]);
 
+        $advertisement4 = Permission::create([
+            'name'          => 'destroy-advertisement',
+            'display_name'  => 'Dosya Silme',
+            'is_active'     => 1,
+        ]);
 
+        $advertisement5 = Permission::create([
+            'name'          => 'show-advertisement',
+            'display_name'  => 'Dosya Gösterme',
+            'is_active'     => 1,
+        ]);
 
+        $advertisement6 = Permission::create([
+            'name'          => 'update-advertisement',
+            'display_name'  => 'advertisement update',
+            'is_active'     => 1,
+        ]);
 
+        $advertisement7 = Permission::create([
+            'name'          => 'store-advertisement',
+            'display_name'  => 'advertisement store',
+            'is_active'     => 1,
+        ]);
 
 
 
@@ -1251,5 +1287,13 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($setting15);
         $super_admin->permissions()->attach($setting16);
         $super_admin->permissions()->attach($setting17);
+        $super_admin->permissions()->attach($advertisement1);
+        $super_admin->permissions()->attach($advertisement2);
+        $super_admin->permissions()->attach($advertisement3);
+        $super_admin->permissions()->attach($advertisement4);
+        $super_admin->permissions()->attach($advertisement5);
+        $super_admin->permissions()->attach($advertisement6);
+        $super_admin->permissions()->attach($advertisement7);
+
     }
 }

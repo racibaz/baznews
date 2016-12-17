@@ -26,7 +26,7 @@ class PhotoGallery extends Model
         ];
     }
 
-    protected $fillable = ['photo_category_id', 'user_id', 'title', 'slug', 'description', 'keywords', 'thumbnail', 'is_active'];
+    protected $fillable = ['photo_category_id', 'user_id', 'title', 'slug', 'description', 'keywords', 'thumbnail', 'is_cuff','is_active'];
 
 
     public function news()

@@ -49,6 +49,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('widget_manager', 'App\Models\WidgetManager');
         Route::model('theme_manager', 'App\Models\ThemeManager');
         Route::model('account', 'App\Models\Account');
+        Route::model('advertisement', 'App\Models\Advertisement');
         
     }
 

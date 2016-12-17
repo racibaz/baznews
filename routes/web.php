@@ -98,5 +98,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
         'edit', 'update','show'
     ]]);
 
+    Route::resource('advertisement', 'Backend\AdvertisementController');
+
 });
 

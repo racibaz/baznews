@@ -131,6 +131,10 @@ class VideoGalleryController extends Controller
                     Image::make(public_path('video_gallery/'. $result[1]->slug .'/photos/'. $result[1]->thumbnail))
                         ->resize(497,358)
                         ->save(public_path('video_gallery/'. $result[1]->slug .'/photos/497x358_' . $document_name));
+
+                    Image::make(public_path('video_gallery/'. $result[1]->slug .'/photos/'. $result[1]->thumbnail))
+                        ->resize(658,404)
+                        ->save(public_path('video_gallery/'. $result[1]->slug .'/photos/658x404_' . $document_name));
                 }
 
 

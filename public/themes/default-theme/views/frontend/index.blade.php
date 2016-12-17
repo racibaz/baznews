@@ -16,8 +16,6 @@
     +17.Arşiv bölümü yapılacak.(tarihe göre seçerken api kullanılacak.) <br />
     19.Dashboard Yapılacak <br />
     20.Status Durumları ENUM yapılacak.(ekranda nasıl listelenecek ona da bakılacak) <br />
-    21.open graft lar eklenecek <br />
-    23.tema eklenecek.<br />
     24.face comment eklenecek.<br />
     25.admin tarafına editorlerin kullanabileceği chat uygulaması koyulacak.<br />;
     26.haberlere unique uid() koyulacak.<br />;

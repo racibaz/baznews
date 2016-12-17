@@ -180,7 +180,6 @@ class User extends Authenticatable
         return $this->hasOne(ActivationToken::class);
     }
 
-
     public function events()
     {
         return $this->morphMany(Event::class, 'eventable');
