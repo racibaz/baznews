@@ -24,7 +24,7 @@
                     <div class="col col-md-7">
                         <div class="main-box">
                             <a href="{{route('show_videos',['slug' => $firstVideo->slug ])}}">
-                                <img src="{{ asset('video_gallery/' . $videoGallery->slug . '/photos/497x358_' . $videoGallery->thumbnail)}}" />
+                                <img src="{{ asset('video_gallery/' . $videoGallery->slug . '/photos/658x404_' . $videoGallery->thumbnail)}}" />
                                 <div class="video-title">
                                     <h3>
                                         <span>{{$videoGallery->title}}</span>
@@ -39,8 +39,8 @@
                                 @foreach($galleryVideos as $video)
                                     <div class="col col-md-6 col-xs-6">
                                             <div class="mini-box">
-                                                <a href="video-details.html">
-                                                    <img src="{{ asset('video_gallery/' . $videoGallery->slug . '/photos/497x358_' . $videoGallery->thumbnail)}}" />
+                                                <a href="{{route('show_videos',['slug' => $video->slug ])}}">
+                                                    <img src="{{ asset('video_gallery/' . $videoGallery->slug . '/photos/224x195_' . $videoGallery->thumbnail)}}" />
                                                     <div class="video-title">
                                                         <h3>
                                                             <span>{{$video->title}}</span>
@@ -68,7 +68,7 @@
                         <div class="col-md-2 col-sm-4 col-xs-6">
                             <div class="r-box">
                                 <a href="{{route('show_videos',['slug' => $lastVideo->slug ])}}">
-                                    <img src="{{ asset('videos/' . $lastVideo->id . '/58x58_' . $lastVideo->thumbnail)}}"   />
+                                    <img src="{{ asset('videos/' . $lastVideo->id . '/165x90_' . $lastVideo->thumbnail)}}"   />
                                     <i class="icon"></i>
                                     <span class="c-text">{{$lastVideo->name}}</span>
                                 </a>
@@ -87,104 +87,17 @@
                 </div><!-- /.title-section -->
                 <div class="row">
 
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.htmvideo-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="#">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="#">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="#">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
+                    @foreach($randomVideos as $randomVideo)
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <div class="r-box">
+                                <a href="{{route('show_videos',['slug' => $randomVideo->slug ])}}">
+                                    <img src="{{ asset('videos/' . $randomVideo->id . '/165x90_' . $randomVideo->thumbnail)}}"   />
+                                    <i class="icon"></i>
+                                    <span class="c-text">{{$randomVideo->name}}</span>
+                                </a>
+                            </div><!-- /.r-box -->
+                        </div><!-- /. -->
+                    @endforeach
                 </div><!-- /.row -->
             </div><!-- /.videos -->
 
@@ -246,13 +159,14 @@
                     <div class="videos hide">t6</div>
                     <div class="col-md-2 visible-lg visible-md">
                         <ul class="tabs">
-                            <li class="active"><a href="javascript:;">Genel</a></li>
-                            <li><a href="#">Güncel</a></li>
-                            <li><a href="#">Siyaset</a></li>
-                            <li><a href="#">Spor</a></li>
-                            <li><a href="#">Hayvanlar Alemi</a></li>
-                            <li><a href="#">Komik</a></li>
-                            <li><a href="#">Yaşam</a></li>
+                            @foreach($videoCategories as $videoCategory)
+                                @if ($loop->first)
+                                    <li class="active"><a href="javascript:;">{{$videoCategory->name}}</a></li>
+                                @else
+                                    <li><a href="#">{{$videoCategory->name}}</a></li>
+                                @endif
+
+                            @endforeach
                         </ul>
                     </div>
                 </div>

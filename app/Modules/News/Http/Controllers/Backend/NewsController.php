@@ -313,23 +313,27 @@ class NewsController extends Controller
 
 
                     Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
-                        ->fit(58,58)
+                        ->fit(58, 58)
                         ->save(public_path('images/news_images/' . $result[1]->id . '/58x58_' . $document_name));
 
                     Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
-                        ->fit(196,150)
+                        ->fit(165, 90)
+                        ->save(public_path('images/news_images/' . $result[1]->id . '/165x90_' . $document_name));
+
+                    Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
+                        ->fit(196, 150)
                         ->save(public_path('images/news_images/' . $result[1]->id . '/196x150_' . $document_name));
 
                     Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
-                        ->fit(220,310)
+                        ->fit(220, 310)
                         ->save(public_path('images/news_images/' . $result[1]->id . '/220x310_' . $document_name));
 
                     Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
-                        ->fit(322,265)
+                        ->fit(322, 265)
                         ->save(public_path('images/news_images/' . $result[1]->id . '/322x265_' . $document_name));
 
                     Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
-                        ->fit(497,358)
+                        ->fit(497, 358)
                         ->save(public_path('images/news_images/' . $result[1]->id . '/497x358_' . $document_name));
                 }
 

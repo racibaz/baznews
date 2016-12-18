@@ -39,6 +39,16 @@ class VideoController extends Controller
             $otherGalleryVideos = $this->repo->whereNotIn('id', (array) $video->id)->findAll();
 
 
+            //todo is set video's videocategory area for video category relations
+            if(!empty($videoGallery->video_category)) {
+                $videoGallery->video_category;
+            }
+
+
+
+
+
+
             return Theme::view('news::frontend.video.video', compact([
                 'video',
                 'videoGallery',

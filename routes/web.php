@@ -20,7 +20,7 @@ Auth::routes();
 
 Route::get('/', 'Frontend\IndexController@index')->name('index');
 Route::get('/home', 'HomeController@index');
-Route::get('page/{slug}', 'Frontend\PageController@show')->name('page');
+Route::get(trans('route.page') . '/{slug}', 'Frontend\PageController@show')->name('page');
 
 Route::get('/activate/token/{token}', 'Auth\ActivationController@activate')->name('auth.activate');
 Route::get('/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
@@ -35,6 +35,8 @@ Route::resource('account', 'Frontend\AccountController', ['only' => [
     'index', 'edit', 'update','show'
 ]]);
 
+Route::get(trans('route.contact'), 'Frontend\ContactController@index')->name('contact-index');
+Route::post(trans('route.contact'), 'Frontend\ContactController@store')->name('contact-store');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
@@ -59,8 +61,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('menu', 'Backend\MenuController');
     Route::resource('contact_type', 'Backend\ContactTypeController');
     Route::resource('contact', 'Backend\ContactController');
-
-
 
     Route::get('setting/configCache', 'Backend\SettingController@configCache')->name('configCache');
     Route::get('setting/configClear', 'Backend\SettingController@configClear')->name('configClear');

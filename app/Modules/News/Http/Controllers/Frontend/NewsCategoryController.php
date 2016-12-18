@@ -66,7 +66,8 @@ class NewsCategoryController extends Controller
 
 
             return Theme::view('news::frontend.news_category.show', compact([
-                'record'
+                'record',
+                'records'
             ]))->render();
         });
     }

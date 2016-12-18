@@ -119,16 +119,30 @@ class VideoController extends Controller
 
 
                     Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
-                        ->resize(58,58)
+                        ->resize(58, 58)
                         ->save(public_path('videos/'. $result[1]->id .'/58x58_' . $document_name));
 
                     Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
-                        ->resize(497,358)
+                        ->resize(497, 358)
                         ->save(public_path('videos/'. $result[1]->id .'/497x358_' . $document_name));
 
                     Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
-                        ->resize(658,404)
+                        ->resize(658, 404)
                         ->save(public_path('videos/'. $result[1]->id .'/658x404_' . $document_name));
+
+                    Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
+                        ->resize(224, 195)
+                        ->save(public_path('videos/'. $result[1]->id .'/224x195_' . $document_name));
+
+                    Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
+                        ->resize(165, 90)
+                        ->save(public_path('videos/'. $result[1]->id .'/165x90_' . $document_name));
+
+                    Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
+                        ->resize(457, 250)
+                        ->save(public_path('videos/'. $result[1]->id .'/257x250_' . $document_name));
+
+
                 }
 
                 Session::flash('flash_message', trans('common.message_model_updated'));

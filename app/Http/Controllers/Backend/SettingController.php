@@ -46,6 +46,12 @@ class SettingController extends Controller
 
     public function index()
     {
+        /*
+         * todo Route::getRoutes() methodunu kullanarak
+         * https://github.com/garygreen/pretty-routes
+         * gibi özellikler kayılabilinir.
+         */
+
         $routeCollection = Route::getRoutes();
         $themes = Theme::all();
         $activeTheme = Theme::getActive();

@@ -59,7 +59,7 @@
                                     <ul class="mn">
                                         <li><a href="{{route('sitemaps')}}" title="sitemaps"><i class="fa fa-book"></i>{{trans('homepage.sitemaps')}}</a></li>
                                         <li><a href="{{route('rss')}}" title="rss.xml"><i class="fa fa-book"></i>Rss.xml</a></li>
-                                        <li><a href="new-details.html" title="...">Bilinen Gerçekler</a></li>
+                                        <li><a href="{{route('contact-index')}}" title="{{trans('contact.title')}}"><i class="fa fa-book"></i>{{trans('contact.title')}}</a></li>
                                     </ul>
                                 </div><!-- /.m-ct -->
                             </div><!-- /.ft-m -->

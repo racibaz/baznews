@@ -2,41 +2,49 @@
 
 @section('content')
 
-
-
     <article class="container" id="container">
-        <div class="breadcrumbs">
-            <p><a href="{!! route('index') !!}">{{trans('news.common')}}</a></p>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="last-time" id="son-dakika">
+                    <h4>Son Dakika:</h4>
+                    <a href="new-details.html">Tortor Cras Nibh Egestas Vestibulum</a>
+                </div>
+            </div>
         </div>
         <div class="row">
-            <div class="col-md-8">
-                <div id="new-content">
-                    <div class="content" id="content">
-
+            <div class="col-lg-7">
+                <div class="cat-posts">
+                    <div class="title-section">
+                        <h1>
+                            <span>{{$newsCategory->name}}</span>
+                        </h1>
+                    </div><!-- /.title-section -->
+                    <div class="row">
                         @foreach($records as $record)
-                            <h1 class="ct-title">
-                                <a href="{!! route('show_news', ['slug' => $record->slug]) !!}">{{$record->title}}</a>
-                            </h1>
-                            {{$record->slug}}<br />
-                            {{$record->keywords}}<br />
-                            {{$record->description}}<br />
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <div class="r-box">
+                                    <a href="{{ route('show_news', ['slug' => $record->slug]) }}">
+                                        <img src="{{asset('images/news_images/' . $record->id . '/165x90_' . $record->thumbnail)}}" alt="{{$record->title}}">
+                                        <span class="c-text">{{$record->title}}</span>
+                                    </a>
+                                </div><!-- /.r-box -->
+                            </div><!-- /. -->
                         @endforeach
-                    </div><!-- /.content -->
-                </div><!-- /.new-content -->
-            </div><!-- /.col-md-8 -->
-            <div class="col-md-4">
-                <div class="sidebar">
-                    @foreach($widgets as $widget)
-                        @widget($widget['namespace'])
-                        <br />
-                    @endforeach
+                    </div><!-- /.row -->
                 </div>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-
-    </article><!-- /.article -->
-
-
+            </div>
+            <div class="col-lg-5">
+                <div class="sidebar">
+                    <div class="widget">
+                        @foreach($widgets as $widget)
+                            @widget($widget['namespace'])
+                            <br />
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
 @endsection
 
 @section('meta_tags')

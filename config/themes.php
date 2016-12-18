@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'active' => env('ACTIVE_THEME', 'default-theme'),
+	'active' => env('ACTIVE_THEME', 'news-theme'),
 	
 	'engine' => 'blade',
 

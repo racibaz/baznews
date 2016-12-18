@@ -30,7 +30,7 @@ class NewsCategory extends Model
     }
 
     protected $table = 'news_categories';
-    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'icon', 'is_cuff', 'is_active'];
+    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'thumbnail', 'is_cuff', 'is_active'];
 
     public function news()
     {
