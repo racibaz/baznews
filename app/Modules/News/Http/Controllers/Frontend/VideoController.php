@@ -29,12 +29,12 @@ class VideoController extends Controller
             $videoGallery = $video->video_gallery;
             $tags = $video->tags;
 
-
             $previousVideoID =  $video::where('order', '<', $video->order)->min('id');
             $nextVideoID =  $video::where('order', '>', $video->order)->min('id');
 
             $previousVideo = $this->repo->with(['video_gallery'])->find($previousVideoID);
             $nextVideo = $this->repo->with(['video_gallery'])->find($nextVideoID);
+
 
             $otherGalleryVideos = $this->repo->whereNotIn('id', (array) $video->id)->findAll();
 
@@ -43,10 +43,6 @@ class VideoController extends Controller
             if(!empty($videoGallery->video_category)) {
                 $videoGallery->video_category;
             }
-
-
-
-
 
 
             return Theme::view('news::frontend.video.video', compact([
