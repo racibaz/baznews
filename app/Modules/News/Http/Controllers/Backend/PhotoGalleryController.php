@@ -112,6 +112,9 @@ class PhotoGalleryController extends Controller
             }
             if ($result[0]) {
 
+                //todo form tarafında foto yüklemesini kaldırdım
+                //çünkü galeri resimlerini gösterirken "gallery/gallery_slug/thumbnail" olduğu için
+                //tekrar kontrol etmemiz gerekiyor.Bundan foto eklemeyi kaldırdım.
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();

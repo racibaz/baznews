@@ -21,10 +21,12 @@ class VideoController extends Controller
         return Cache::remember('video:'.$slug, 100, function() use($slug) {
 
             $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
+
             $video = $this->repo
                 ->with(['video_gallery','tags'])
                 ->where('is_active', 1)
                 ->findBy('slug',$slug);
+
 
             $videoGallery = $video->video_gallery;
             $tags = $video->tags;
@@ -43,7 +45,6 @@ class VideoController extends Controller
             if(!empty($videoGallery->video_category)) {
                 $videoGallery->video_category;
             }
-
 
             return Theme::view('news::frontend.video.video', compact([
                 'video',

@@ -81,9 +81,14 @@
                         <div class="row">
                             {!! Form::label('thumbnail', trans('news::photo_gallery.thumbnail'),['class'=> 'col-lg-2 control-label']) !!}
 
+
                             <div class="col-lg-10">
-                                {!! Form::file('thumbnail') !!}
+                                <img src="{{asset('/gallery/' . $record->slug . '/photos/' . $record->thumbnail)}}">
                             </div>
+
+                            {{--<div class="col-lg-10">--}}
+                                {{--{!! Form::file('thumbnail') !!}--}}
+                            {{--</div>--}}
                         </div>
                     </div>
                     <div class="form-group">
