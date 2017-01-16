@@ -51,7 +51,7 @@
 
                             <div class="player">
 
-                                @if(!empty($video->file))
+                                @if(!empty($video->thumbnail))
                                     <video id="{{$video->id}}"
                                            class="video-js vjs-default-skin"
                                            controls preload="auto"
@@ -95,14 +95,14 @@
                                 </h1>
                             </div>
                             <div class="video-link">
-                                <a href="#">
-                                    <div class="hold">
-                                        <img src="img/video-manset/sidebar-video-img.jpg" alt="{{$nextVideo->name}}" title="{{$nextVideo->name}}">
-                                        <i class="icon play"></i>
-                                    </div>
-                                    <span class="title">{{$nextVideo->name}}</span>
-                                    <span class="time visible-lg">SAĞLIK - {{$nextVideo->updated_at}}</span>
-                                </a>
+                                {{--<a href="#">--}}
+                                    {{--<div class="hold">--}}
+                                        {{--<img src="img/video-manset/sidebar-video-img.jpg" alt="{{$nextVideo->name}}" title="{{$nextVideo->name}}">--}}
+                                        {{--<i class="icon play"></i>--}}
+                                    {{--</div>--}}
+                                    {{--<span class="title">{{$nextVideo->name}}</span>--}}
+                                    {{--<span class="time visible-lg">SAĞLIK - {{$nextVideo->updated_at}}</span>--}}
+                                {{--</a>--}}
                             </div>
                         </div><!-- /.sidebar-video -->
 

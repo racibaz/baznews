@@ -34,7 +34,7 @@ class VideoGalleryController extends Controller
             $lastVideos = $videoRepository->orderBy('updated_at','desc')->limit(6)->findAll();
 
             $videoCount = $videoRepository->where('is_active',1)->findAll()->count();
-            $randomVideos = $videoRepository->where('is_active',1)->findAll()->random(6);
+            $randomVideos = $videoRepository->where('is_active',1)->findAll()->random(3);
 
             $videoCategoryRepository = new VideoCategoryRepository();
             $videoCategories = $videoCategoryRepository->where('is_cuff',1)->where('is_active',1)->findAll();

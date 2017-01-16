@@ -11,6 +11,12 @@
                         {{Form::token()}}
 
                         <legend>{{trans('contact.contact_form')}}</legend>
+
+                        <div class="form-group">
+                            <label for="contact_type_id">{{trans('contact.contact_type_id')}}</label>
+                            {!! Form::select('contact_type_id', $contactTypeList , null , ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
+                        </div>
+
                         <div class="form-group">
                             <label for="full_name">{{trans('contact.full_name')}}</label>
                             <input type="text" class="form-control" name="full_name" id="full_name" placeholder="{{trans('contact.full_name')}}...">

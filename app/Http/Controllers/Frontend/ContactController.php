@@ -42,15 +42,14 @@ class ContactController extends Controller
                 ->withInput($input);
         }
 
-//html_tags türüne çevrilecek
         list($status, $result) = $this->repo->create([
-                'full_name' => clean($input['full_name']),
-                'email' => clean($input['email']),
-                'phone' => clean($input['phone']),
-                'content' => clean($input['content']),
+                'full_name' => strip_tags($input['full_name']),
+                'email' => strip_tags($input['email']),
+                'phone' => strip_tags($input['phone']),
+                'content' => strip_tags($input['content']),
                 'is_read' => 0,
                 'IP' => Request::ip(),
-                'statys' => 0
+                'status' => 0
             ]);
 
         if ($status) {

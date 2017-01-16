@@ -110,6 +110,10 @@ class VideoController extends Controller
             }
             if ($result) {
 
+
+                //todo video yüklenebilecek.
+                //file
+
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
