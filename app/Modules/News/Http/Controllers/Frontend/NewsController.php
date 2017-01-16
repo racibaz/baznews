@@ -47,9 +47,12 @@ class NewsController extends Controller
 
     public function show($newsSlug)
     {
-        return Cache::remember('news:'.$newsSlug, 100, function() use($newsSlug) {
 
-            $newsSlug = htmlentities(strip_tags($newsSlug), ENT_QUOTES, 'UTF-8');
+        $newsId =  substr(strrchr($newsSlug, '-'), 1 );
+
+        return Cache::remember('news:'.$newsId, 100, function() use($newsId) {
+
+            //$newsSlug = htmlentities(strip_tags($newsSlug), ENT_QUOTES, 'UTF-8');
             $record = $this->repo
                                 ->with([
                                     'news_categories',
@@ -65,7 +68,7 @@ class NewsController extends Controller
                                 ])
                                 ->where('status', 1)
                                 ->where('is_active', 1)
-                                ->findBy('slug',$newsSlug);
+                                ->findBy('id',$newsId);
 
             return Theme::view('news::frontend.news.show', compact([
                 'record'

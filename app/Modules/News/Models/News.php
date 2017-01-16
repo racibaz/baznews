@@ -25,7 +25,7 @@ class News extends Model
     public function sluggable() {
         return [
             'slug' => [
-                'source' => ['title']
+                'source' => ['title','id']
             ]
         ];
     }
