@@ -53,8 +53,8 @@
                                         class="video-js vjs-default-skin"
                                         controls
                                         width="640" height="264"
-                                        {{--data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'--}}
-                                        data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'>
+                                        data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'>
+                                        {{--data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'--}}
                                     </video>
                                 @endif
 
@@ -93,7 +93,7 @@
     <script>
         Dropzone.options.addVideos = {
 
-            maxFileSize: 2,
+            maxFileSize: 12,
             acceptedFiles : 'video/*',
             success: function (file, response) {
 
@@ -103,7 +103,6 @@
                     handleDropzoneFileUpload.handleError(response);
                 }
             }
-
         };
 
 
