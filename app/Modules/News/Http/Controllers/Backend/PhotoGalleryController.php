@@ -8,6 +8,7 @@ use App\Modules\News\Models\Photo;
 use App\Modules\News\Models\PhotoCategory;
 use App\Modules\News\Models\PhotoGallery;
 use App\Modules\News\Repositories\PhotoGalleryRepository as Repo;
+use App\Modules\News\Repositories\PhotoRepository;
 use Caffeinated\Themes\Facades\Theme;
 use League\Flysystem\Exception;
 use Illuminate\Http\Request;
@@ -169,12 +170,26 @@ class PhotoGalleryController extends Controller
 //        $path = Storage::put($basePath , \File::get($file));
 //        Storage::disk('public')->put($fileName,\File::get($file));
 
+
         $photo = $gallery->photos()->create([
             'photo_gallery_id'  => $gallery->id,
             'name'              => $fileName,
             'slug'              => str_slug($fileName),
             'file'              => $fileName,
             'is_active'         => 1
+        ]);
+
+        /*
+         * Dosya eklendiğinde isminin sonuna "- + id" şeklinde ekleme yapmıyor.
+         * Sluggable plugin ni için model içerisinde "name + id" yapmamıza rağmen
+         * update işlemi yapmamızı zorunlu kılıyor.
+         *
+         * Bu sorundan dolayı gelen kayıdı slug id si için güncellemememiz gerekiyor.
+         *
+         * */
+        $photoRepo = new PhotoRepository();
+        list($status, $instance) = $photoRepo->update($photo->id,[
+            'name' => $fileName
         ]);
 
         return $photo;
@@ -226,9 +241,6 @@ class PhotoGalleryController extends Controller
             Image::make(public_path('gallery/'. $photoGallery->slug .'/photos/'. $photo->file))
                 ->fit(497,358)
                 ->save(public_path('gallery/'. $photoGallery->slug .'/photos/497x358_' . $photo->file));
-
-
-
         }
 
 

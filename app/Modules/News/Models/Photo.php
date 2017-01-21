@@ -21,7 +21,7 @@ class Photo extends Model
     public function sluggable() {
         return [
             'slug' => [
-                'source' => ['name']
+                'source' => ['name','id']
             ]
         ];
     }

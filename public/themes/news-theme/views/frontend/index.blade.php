@@ -316,14 +316,18 @@
                     <div class="th-nw-slide">
                         <div id="m_pg1" class="pager">
                             @foreach($photoGalleries as $photoGallery)
-                                <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct">
-                                    <img src="{{ asset('gallery/' . $photoGallery->slug . '/photos/58x58_' . $photoGallery->thumbnail)}}" />
-                                </span></a>
+                                <a data-slide-index="0" href="" onmouseover="this.click()">
+                                    <span class="img-ct"><img src="{{ asset('gallery/' . $photoGallery->slug . '/photos/58x58_' . $photoGallery->thumbnail)}}" /></span>
+                                </a>
                             @endforeach
                         </div><!-- /.m-pg -->
                         <ul class="slide m-slider1">
                             @foreach($photoGalleries as $photoGallery)
-                                <li><img src="{{ asset('gallery/' . $photoGallery->slug . '/photos/497x358_' . $photoGallery->thumbnail)}}" /></li>
+                                <li>
+                                    <a href="{{route('show_photo_gallery',['slug' => $photoGallery->slug ])}}">
+                                        <img src="{{ asset('gallery/' . $photoGallery->slug . '/photos/497x358_' . $photoGallery->thumbnail)}}" />
+                                    </a>
+                                </li>
                             @endforeach
                         </ul><!-- /.m-slider -->
                     </div><!-- /.th-nw-slide -->
