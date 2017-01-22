@@ -275,23 +275,29 @@ class NewsController extends Controller
         $input['main_cuff'] = Input::get('main_cuff') == "on" ? true : false;
         $input['mini_cuff'] = Input::get('mini_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
+        
 
+        /*
+         * Haber content i içerisinde ki  tag leri link haline dönüştürürken
+         * update işlemlerinde tekrar üzerine yazıldığında mükerrer oluşturduğundan dolayı
+         * sadece create işleminde bu işlemi yapıyoruz.
+         * */
+        $tagsRepo = new TagRepository();
 
-        $findTagsInContent = Input::get('find_tags_in_content') == "on" ? true : false;
+        if(!isset($record->id)) {
+            $findTagsInContent = Input::get('find_tags_in_content') == "on" ? true : false;
 
-        if($findTagsInContent){
-            $tagsRepo = new TagRepository();
-            foreach ($tagsRepo->findAll() as $tag){
+            if($findTagsInContent){
+                foreach ($tagsRepo->findAll() as $tag){
 
-                $input['content'] = str_replace(
-                    $tag->name,
-                    '<a href="tags/' . $tag->name . '">' . $tag->name . '</a>',
-                    $input['content']
-                );
+                    $input['content'] = str_replace(
+                        $tag->name,
+                        '<a href="tags/' . $tag->name . '\">' . $tag->name . '</a>',
+                        $input['content']
+                    );
+                }
             }
         }
-
-
 
 
 //        if(empty($input['slug']) && $record->id > 0 ) {
@@ -374,6 +380,39 @@ class NewsController extends Controller
                 $this->news_video_galleries_store($result[1],$input);
                 $this->news_videos_store($result[1],$input);
                 $this->news_photos_store($result[1],$input);
+
+
+
+                /*
+                 * content içerisinde bulunan tag leri tag listesine otomatik olarak ekliyoruz
+                 * setting tablosunda "automatic_add_tags" ayarının 1 olması gerekiyor.
+                 *
+                 * Buna göre form alanında checkbox işaretli gelince bu işlemi yapıyoruz.
+                 *
+                 * Önemli NOT : Kullanıcının  manuel olarak haberle ilişkilendirdiği tag ler "tags_news_store"
+                 * methodunda "sync" olarak ekleniyor.BUndan dolayı biz "attach" olarak ekliyoruz.
+                 *
+                 * */
+
+                $automaticAddTags = Input::get('automatic_add_tags') == "on" ? true : false;
+
+                if($automaticAddTags){
+
+                    foreach ($tagsRepo->findAll() as $tag){
+
+                        if(strpos($input['content'], $tag->name)){
+
+                            $isExistTag = $result[1]->tags->where('name',$tag->name)->first();
+
+                            if(empty($isExistTag))
+                                $result[1]->tags()->attach($tag->id);
+                        }
+                    }
+                }
+
+
+
+
 
 
                 Redis::flushall();

@@ -202,6 +202,19 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            {{trans('news::news.automatic_add_tags')}}
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <div class="checkbox i-checks">
+                                    <label>
+                                        {!! Form::checkbox('automatic_add_tags', null , Redis::get('automatic_add_tags') ) !!}
+                                        <i></i> {{trans('news::news.automatic_add_tags')}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {{trans('news::news.band_news')}}
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
