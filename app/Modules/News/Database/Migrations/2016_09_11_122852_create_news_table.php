@@ -30,6 +30,7 @@ class CreateNewsTable extends Migration
             $table->string('cuff_photo')->nullable();
             $table->text('thumbnail')->nullable();
             $table->string('video_embed')->nullable();
+            $table->unsignedBigInteger('news_type')->nullable()->default(0);
             $table->string('map_text')->nullable();
             $table->unsignedInteger('hit')->nullable();
             $table->unsignedInteger('status')->nullable();

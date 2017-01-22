@@ -42,7 +42,7 @@ class News extends Model
     }
 
 
-    public static $newsTypes = ['Standard', 'Photo', 'Photo Gallery', 'Video', 'Video Gallery', 'Sound'];
+    public static $newsTypes = ['Standard', 'Private News','Photo', 'Photo Gallery', 'Video', 'Video Gallery', 'Sound'];
 
     public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
 
@@ -66,8 +66,10 @@ class News extends Model
 
     //is_draft taslak mı ekleneck
 
-    protected $fillable = ['user_id', 'country_id', 'city_id', 'news_resource_id', 'title', 'small_title','slug', 'spot', 'content', 'description', 'keywords',
-        'meta_tags', 'cuff_photo', 'thumbnail', 'video_embed', 'hit', 'status', 'band_news', 'box_cuff', 'is_cuff','break_news', 'is_comment', 'main_cuff' ,'mini_cuff' ,'map', 'is_active'];
+    protected $fillable = ['user_id', 'country_id', 'city_id', 'news_resource_id',
+        'title', 'small_title','slug', 'spot', 'content', 'description', 'keywords', 'meta_tags', 'cuff_photo', 'thumbnail', 'video_embed',
+        'news_type',
+        'hit', 'status', 'band_news', 'box_cuff', 'is_cuff','break_news', 'is_comment', 'main_cuff' ,'mini_cuff' ,'map', 'is_active'];
 
 
 

@@ -159,11 +159,19 @@ class PhotoGalleryController extends Controller
 
         $file = $request->file('file');
 
-        $fileName = uniqid() . $file->getClientOriginalName();
-
         $basePath = 'gallery/' . $gallery->slug . '/photos/';
 
+
+        $fileName = uniqid() . $file->getClientOriginalName();
+
+        //todo dosya ismi yazılırken extension kısmı yazılmamamalı.
+        //$extension = $file->getClientOriginalExtension();
+        //$name = explode('.', $fileName);
+        //$name = pathinfo(public_path($basePath . $fileName), PATHINFO_FILENAME);
+
+
         $file->move($basePath, $fileName);
+
 
         //TODO  Storage facede ile cloud işlemleri de yapılabilecek.
 //        Storage::put($basePath , $file);

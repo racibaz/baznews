@@ -341,6 +341,12 @@
     <title> {{ $record->title }}  </title>
     <meta name="keywords" content="{{$record->keywords}}"/>
     <meta name="description" content="{{$record->description}}"/>
+
+    @if($record->news_type == 1)
+        <meta name='robots' content='noindex, nofollow'>
+    @else
+        <meta name='robots' content='index,follow'>
+    @endif
     <meta name='subtitle' content='This is my subtitle'>
     <meta name='pagename' content='{{$record->title}}'>
     <meta name='identifier-URL' content='http://www.websiteaddress.com'>

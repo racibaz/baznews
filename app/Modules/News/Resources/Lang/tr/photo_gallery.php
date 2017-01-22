@@ -7,4 +7,5 @@ return [
     'slug' => 'Slug',
     'description' => 'Tanım',
     'keywords' => 'Anahtar Kelimelers',
+    'other_galleries' => 'Benzer Galeriler',
 ];

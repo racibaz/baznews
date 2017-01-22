@@ -62,7 +62,7 @@
                     <div class="f-posts">
                         <div class="title-section">
                             <h1>
-                                <span>Other Gallery</span>
+                                <span>{{trans('news::photo_gallery.other_galleries')}}</span>
                             </h1>
                         </div>
                         <div class="row">
