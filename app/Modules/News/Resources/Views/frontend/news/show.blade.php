@@ -114,7 +114,8 @@
                                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
                                 <div class="addthis_inline_share_toolbox"></div>
                             @foreach($record->tags as $tag)
-                                {{$tag->name}}
+                                <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
+                                {{--<a href="/tags/{{$tag->name}}">{{$tag->name}}</a>--}}
                             @endforeach
 
                         </div><!-- /.ct-text -->

@@ -275,7 +275,7 @@ class NewsController extends Controller
         $input['main_cuff'] = Input::get('main_cuff') == "on" ? true : false;
         $input['mini_cuff'] = Input::get('mini_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
-        
+
 
         /*
          * Haber content i içerisinde ki  tag leri link haline dönüştürürken

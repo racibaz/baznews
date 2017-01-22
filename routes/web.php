@@ -31,6 +31,8 @@ Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCa
 Route::get('sitemap.xml', 'Frontend\SitemapController@sitemaps')->name('sitemaps');
 Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');
 
+Route::get('/tags/{q}', 'Frontend\SearchController@tagSearch')->name('tag_search');
+
 Route::resource('account', 'Frontend\AccountController', ['only' => [
     'index', 'edit', 'update','show'
 ]]);

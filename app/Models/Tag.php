@@ -4,9 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Scout\Searchable;
 
 class Tag extends Model
 {
+    use Searchable;
+
+    /**
+     * Get the index name for the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return 'dev_TAGS';
+    }
+
     //TODO $fillable   ALANLAR VE VİEW TARAFI DÜZENLENECEK.
 
     protected $fillable = [
