@@ -75,5 +75,27 @@ class NewsDatabaseSeeder extends Seeder
                 'attribute_value'             => '10',
             ]);
         }
+
+        $setting = Setting::where('attribute_key','find_tags_in_content')->first();
+        if(empty($setting))
+        {
+            Setting::create([
+                'attribute_key'               => 'find_tags_in_content',
+                'attribute_value'             => "1",
+                'is_active'                   => 1
+            ]);
+        }
+
+        $setting = Setting::where('attribute_key','automatic_add_tags')->first();
+        if(empty($setting))
+        {
+            Setting::create([
+                'attribute_key'               => 'automatic_add_tags',
+                'attribute_value'             => "1",
+                'is_active'                   => 1
+            ]);
+        }
+
+
     }
 }

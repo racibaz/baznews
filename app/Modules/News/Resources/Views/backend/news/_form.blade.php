@@ -189,6 +189,19 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            {{trans('news::news.find_tags_in_content')}}
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <div class="checkbox i-checks">
+                                    <label>
+                                        {!! Form::checkbox('find_tags_in_content', null , Redis::get('find_tags_in_content') ) !!}
+                                        <i></i> {{trans('news::news.find_tags_in_content')}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {{trans('news::news.band_news')}}
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">

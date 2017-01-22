@@ -19,6 +19,7 @@ use App\Modules\News\Models\RelatedNews;
 use App\Modules\News\Models\Video;
 use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\NewsRepository as Repo;
+use App\Repositories\TagRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Mapper;
 use Illuminate\Http\Request;
@@ -276,12 +277,30 @@ class NewsController extends Controller
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
 
+        $findTagsInContent = Input::get('find_tags_in_content') == "on" ? true : false;
+
+        if($findTagsInContent){
+            $tagsRepo = new TagRepository();
+            foreach ($tagsRepo->findAll() as $tag){
+
+                $input['content'] = str_replace(
+                    $tag->name,
+                    '<a href="tags/' . $tag->name . '">' . $tag->name . '</a>',
+                    $input['content']
+                );
+            }
+        }
+
+
+
+
 //        if(empty($input['slug']) && $record->id > 0 ) {
 //            $slug = SlugService::createSlug(News::class, 'slug', $input['title']);
 //            $input['slug'] = $slug;
 //        }else {
 //            $input['slug'] = Str::slug($input['slug']);
 //        }
+
 
 
 
