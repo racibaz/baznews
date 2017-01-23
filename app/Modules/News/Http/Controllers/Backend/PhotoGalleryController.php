@@ -141,18 +141,18 @@ class PhotoGalleryController extends Controller
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/gallery/'. $result[1]->slug .'/photos';
+                    $destination = '/gallery/'. $result[1]->id .'/photos';
                     Uploader::fileUpload($result[1] , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
 
-                    Image::make(public_path('gallery/'. $result[1]->slug .'/photos/'. $result[1]->thumbnail))
+                    Image::make(public_path('gallery/'. $result[1]->id .'/photos/'. $result[1]->thumbnail))
                         ->resize(58,58)
-                        ->save(public_path('gallery/'. $result[1]->slug .'/photos/58x58_' . $document_name));
+                        ->save(public_path('gallery/'. $result[1]->id .'/photos/58x58_' . $document_name));
 
-                    Image::make(public_path('gallery/'. $result[1]->slug .'/photos/'. $result[1]->thumbnail))
+                    Image::make(public_path('gallery/'. $result[1]->id .'/photos/'. $result[1]->thumbnail))
                         ->resize(497,358)
-                        ->save(public_path('gallery/'. $result[1]->slug .'/photos/497x358_' . $document_name));
+                        ->save(public_path('gallery/'. $result[1]->id .'/photos/497x358_' . $document_name));
                 }
 
 
@@ -183,7 +183,7 @@ class PhotoGalleryController extends Controller
 
         $file = $request->file('file');
 
-        $basePath = 'gallery/' . $gallery->slug . '/photos/';
+        $basePath = 'gallery/' . $gallery->id . '/photos/';
 
 
         $fileName = uniqid() . $file->getClientOriginalName();
@@ -264,15 +264,15 @@ class PhotoGalleryController extends Controller
 
             //todo yapılacak.
 
-            $img = Image::make(public_path('gallery/'. $photoGallery->slug .'/photos/'. $photo->file));
+            $img = Image::make(public_path('gallery/'. $photoGallery->id .'/photos/'. $photo->file));
 
-            Image::make(public_path('gallery/'. $photoGallery->slug .'/photos/'. $photo->file))
+            Image::make(public_path('gallery/'. $photoGallery->id .'/photos/'. $photo->file))
                 ->fit(58,58)
-                ->save(public_path('gallery/'. $photoGallery->slug .'/photos/58x58_' . $photo->file));
+                ->save(public_path('gallery/'. $photoGallery->id .'/photos/58x58_' . $photo->file));
 
-            Image::make(public_path('gallery/'. $photoGallery->slug .'/photos/'. $photo->file))
+            Image::make(public_path('gallery/'. $photoGallery->id .'/photos/'. $photo->file))
                 ->fit(497,358)
-                ->save(public_path('gallery/'. $photoGallery->slug .'/photos/497x358_' . $photo->file));
+                ->save(public_path('gallery/'. $photoGallery->id .'/photos/497x358_' . $photo->file));
         }
 
 

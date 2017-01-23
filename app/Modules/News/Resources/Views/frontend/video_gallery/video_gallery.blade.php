@@ -24,7 +24,7 @@
                     <div class="col col-md-7">
                         <div class="main-box">
                             <a href="{{route('show_videos',['slug' => $firstVideo->slug ])}}">
-                                <img src="{{ asset('video_gallery/' . $videoGallery->slug . '/photos/658x404_' . $videoGallery->thumbnail)}}" />
+                                <img src="{{ asset('video_gallery/' . $videoGallery->id . '/photos/658x404_' . $videoGallery->thumbnail)}}" />
                                 <div class="video-title">
                                     <h3>
                                         <span>{{$videoGallery->title}}</span>
@@ -40,7 +40,7 @@
                                     <div class="col col-md-6 col-xs-6">
                                             <div class="mini-box">
                                                 <a href="{{route('show_videos',['slug' => $video->slug ])}}">
-                                                    <img src="{{ asset('video_gallery/' . $videoGallery->slug . '/photos/224x195_' . $videoGallery->thumbnail)}}" />
+                                                    <img src="{{ asset('video_gallery/' . $videoGallery->id . '/photos/224x195_' . $videoGallery->thumbnail)}}" />
                                                     <div class="video-title">
                                                         <h3>
                                                             <span>{{$video->title}}</span>

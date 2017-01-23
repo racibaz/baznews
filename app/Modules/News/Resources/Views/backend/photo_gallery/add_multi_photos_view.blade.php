@@ -8,7 +8,7 @@
     <ul>
         @foreach($photo_gallery->photos as $photo)
                 <li>
-                    <img src="{{asset('gallery/' . $photo_gallery->slug . '/photos/' . $photo->file)}}">
+                    <img src="{{asset('gallery/' . $photo_gallery->id . '/photos/' . $photo->file)}}">
                 </li>
         @endforeach
 
@@ -42,7 +42,7 @@
                                 </div>
 
                                 {{--<a href="{{$photo->file}}" target="_blank">--}}
-                                    <img src="{{asset('gallery/' . $photo_gallery->slug . '/photos/' . $photo->file)}}" width="240"  height="150">
+                                    <img src="{{asset('gallery/' . $photo_gallery->id . '/photos/' . $photo->file)}}" width="240"  height="150">
                                     {!! Form::text('subtitle/'. $photo->id, $photo->subtitle, ['placeholder' => trans('news::photo_gallery.subtitle') ,'class' => 'form-control']) !!}
                                     {!! Form::textarea('content/'. $photo->id, $photo->content, ['placeholder' => trans('news::photo_gallery.subtitle') ,'class' => 'form-control']) !!}
                                 {{--</a>--}}

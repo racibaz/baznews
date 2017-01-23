@@ -18,7 +18,7 @@
                         <a href="#">
                             <div class="img">
                                 <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}">
-                                    <img src="{{ asset('gallery/' . $photoGallery->slug . '/photos/' . $firstPhoto->file)}}" alt="{{$firstPhoto->name}}" class="img-responsive" />
+                                    <img src="{{ asset('gallery/' . $photoGallery->id . '/photos/' . $firstPhoto->file)}}" alt="{{$firstPhoto->name}}" class="img-responsive" />
                                 </a>
                             </div>
                         </a>
@@ -74,7 +74,7 @@
                                 <div class="col col-md-4">
                                     <a href="{{route('show_photo_gallery',['slug' => $photoCategoryGallery->slug ])}}" class="news">
                                     <span class="pic">
-                                        <img src="{{ asset('gallery/' . $photoCategoryGallery->slug . '/photos/' . $photoCategoryGallery->thumbnail)}}" alt="{{$photoCategoryGallery->name}}"
+                                        <img src="{{ asset('gallery/' . $photoCategoryGallery->id . '/photos/' . $photoCategoryGallery->thumbnail)}}" alt="{{$photoCategoryGallery->name}}"
                                              title="{{$photoCategoryGallery->title}}"/>
                                     </span>
                                     </a>

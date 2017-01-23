@@ -83,7 +83,7 @@
 
 
                             <div class="col-lg-10">
-                                <img src="{{asset('/gallery/' . $record->slug . '/photos/' . $record->thumbnail)}}">
+                                <img src="{{asset('/gallery/' . $record->id . '/photos/' . $record->thumbnail)}}">
                             </div>
 
                             {{--<div class="col-lg-10">--}}

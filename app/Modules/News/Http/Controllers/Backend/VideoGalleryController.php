@@ -119,38 +119,38 @@ class VideoGalleryController extends Controller
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/video_gallery/'. $result[1]->slug .'/photos';
+                    $destination = '/video_gallery/'. $result[1]->id .'/photos';
                     Uploader::fileUpload($result[1] , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
 
-                    Image::make(public_path('video_gallery/'. $result[1]->slug .'/photos/'. $result[1]->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result[1]->id .'/photos/'. $result[1]->thumbnail))
                         ->resize(58,58)
-                        ->save(public_path('video_gallery/'. $result[1]->slug .'/photos/58x58_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result[1]->id .'/photos/58x58_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $result[1]->slug .'/photos/'. $result[1]->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result[1]->id .'/photos/'. $result[1]->thumbnail))
                         ->resize(497,358)
-                        ->save(public_path('video_gallery/'. $result[1]->slug .'/photos/497x358_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result[1]->id .'/photos/497x358_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $result[1]->slug .'/photos/'. $result[1]->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result[1]->id .'/photos/'. $result[1]->thumbnail))
                         ->resize(658,404)
-                        ->save(public_path('video_gallery/'. $result[1]->slug .'/photos/658x404_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result[1]->id .'/photos/658x404_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $result[1]->slug .'/photos/'. $result[1]->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result[1]->id .'/photos/'. $result[1]->thumbnail))
                         ->resize(224,195)
-                        ->save(public_path('video_gallery/'. $result[1]->slug .'/photos/224x195_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result[1]->id .'/photos/224x195_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $result[1]->slug .'/photos/'. $result[1]->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result[1]->id .'/photos/'. $result[1]->thumbnail))
                         ->resize(165,90)
-                        ->save(public_path('video_gallery/'. $result[1]->slug .'/photos/165x90_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result[1]->id .'/photos/165x90_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $result[1]->slug .'/photos/'. $result[1]->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result[1]->id .'/photos/'. $result[1]->thumbnail))
                         ->resize(457,250)
-                        ->save(public_path('video_gallery/'. $result[1]->slug .'/photos/257x250_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result[1]->id .'/photos/257x250_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $result[1]->slug .'/photos/'. $result[1]->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result[1]->id .'/photos/'. $result[1]->thumbnail))
                         ->resize(213, 116)
-                        ->save(public_path('video_gallery/'. $result[1]->slug .'/photos/213x116_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result[1]->id .'/photos/213x116_' . $document_name));
                 }
 
 
@@ -181,7 +181,7 @@ class VideoGalleryController extends Controller
 
         $fileName = uniqid() . $file->getClientOriginalName();
 
-        $basePath = 'video_gallery/' . $gallery->slug . '/videos/';
+        $basePath = 'video_gallery/' . $gallery->id . '/videos/';
 
         $file->move($basePath, $fileName);
 
