@@ -2,6 +2,7 @@
 
 namespace App\Modules\News\Models;
 
+use App\Models\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;

@@ -118,6 +118,12 @@
                                 {{--<a href="/tags/{{$tag->name}}">{{$tag->name}}</a>--}}
                             @endforeach
 
+                            @if(Redis::get('is_show_editor_profile_in_news'))
+                                <div>{{$record->user->name}}</div>
+                                <div>{{$record->user->bio_note}}</div>
+                                <div>{{$record->user->facebook}}</div>
+                            @endif
+
                         </div><!-- /.ct-text -->
                     </div><!-- /.content -->
                 </div><!-- /.new-content -->

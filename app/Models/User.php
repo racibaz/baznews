@@ -40,6 +40,7 @@ class User extends Authenticatable
         'sex',
         'blood_type',
         'avatar',
+        'bio_note',
         'IP',
         'last_login',
         'status',

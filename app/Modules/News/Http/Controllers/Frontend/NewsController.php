@@ -64,7 +64,8 @@ class NewsController extends Controller
                                     'country',
                                     'city',
                                     'news_source',
-                                    'tags'
+                                    'tags',
+                                    'user'
                                 ])
                                 ->where('status', 1)
                                 ->where('is_active', 1)
