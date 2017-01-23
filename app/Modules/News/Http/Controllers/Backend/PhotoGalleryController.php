@@ -180,22 +180,13 @@ class PhotoGalleryController extends Controller
     public function addMultiPhotos(Request $request)
     {
         $gallery = PhotoGallery::find($request->input('photo_gallery_id'));
-
         $file = $request->file('file');
-
         $basePath = 'gallery/' . $gallery->id . '/photos/';
-
-
         $fileName = uniqid() . $file->getClientOriginalName();
 
-        //todo dosya ismi yazılırken extension kısmı yazılmamamalı.
-        //$extension = $file->getClientOriginalExtension();
-        //$name = explode('.', $fileName);
-        //$name = pathinfo(public_path($basePath . $fileName), PATHINFO_FILENAME);
-
+        list($name,$extension) = explode('.', $file->getClientOriginalName());
 
         $file->move($basePath, $fileName);
-
 
         //TODO  Storage facede ile cloud işlemleri de yapılabilecek.
 //        Storage::put($basePath , $file);
@@ -205,8 +196,8 @@ class PhotoGalleryController extends Controller
 
         $photo = $gallery->photos()->create([
             'photo_gallery_id'  => $gallery->id,
-            'name'              => $fileName,
-            'slug'              => str_slug($fileName),
+            'name'              => $name,
+            'slug'              => str_slug($name),
             'file'              => $fileName,
             'is_active'         => 1
         ]);
@@ -221,7 +212,7 @@ class PhotoGalleryController extends Controller
          * */
         $photoRepo = new PhotoRepository();
         list($status, $instance) = $photoRepo->update($photo->id,[
-            'name' => $fileName
+            'name' => $name
         ]);
 
         return $photo;
