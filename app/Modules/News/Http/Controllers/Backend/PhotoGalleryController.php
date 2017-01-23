@@ -184,9 +184,28 @@ class PhotoGalleryController extends Controller
         $basePath = 'gallery/' . $gallery->id . '/photos/';
         $fileName = uniqid() . $file->getClientOriginalName();
 
-        list($name,$extension) = explode('.', $file->getClientOriginalName());
+
+        /*dosya isminden extension kısmını çıkartıyoruz.*/
+        //dosyanın orjinal ismini alıyoruz(uzantılı).
+        $originalFileName =  explode('.', $file->getClientOriginalName());
+
+        //uzantısını kayıt etmek için uzantısını değişkene atıyoruz.
+        $extention = array_last($originalFileName);
+
+        //"." işaretine göre parçaladığımız ve diziye attığımız elemanların
+        //sonuncu olan uzantıyı diziden siliyoruz.
+        unset($originalFileName[count($originalFileName) - 1]);
+
+        //Dizi içerisinden silinmiş olan uzantıdan sonra tüm dizi elemanlarının
+        // aralarında boşluk veya işaret olmayacak şekilde değişkene atıyoruz.
+        //Böylelikle dosya ismini uzantısız şekilde elde etmiş oluyoruz.
+        $name = implode('', $originalFileName);
+
+
+
 
         $file->move($basePath, $fileName);
+
 
         //TODO  Storage facede ile cloud işlemleri de yapılabilecek.
 //        Storage::put($basePath , $file);

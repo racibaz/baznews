@@ -176,12 +176,25 @@ class VideoGalleryController extends Controller
     public function addMultiVideos(Request $request)
     {
         $gallery = VideoGallery::find($request->input('video_gallery_id'));
-
         $file = $request->file('file');
-
         $fileName = uniqid() . $file->getClientOriginalName();
-
         $basePath = 'video_gallery/' . $gallery->id . '/videos/';
+
+        /*dosya isminden extension kısmını çıkartıyoruz.*/
+        //dosyanın orjinal ismini alıyoruz(uzantılı).
+        $originalFileName =  explode('.', $file->getClientOriginalName());
+
+        //uzantısını kayıt etmek için uzantısını değişkene atıyoruz.
+        $extention = array_last($originalFileName);
+
+        //"." işaretine göre parçaladığımız ve diziye attığımız elemanların
+        //sonuncu olan uzantıyı diziden siliyoruz.
+        unset($originalFileName[count($originalFileName) - 1]);
+
+        //Dizi içerisinden silinmiş olan uzantıdan sonra tüm dizi elemanlarının
+        // aralarında boşluk veya işaret olmayacak şekilde değişkene atıyoruz.
+        //Böylelikle dosya ismini uzantısız şekilde elde etmiş oluyoruz.
+        $name = implode('', $originalFileName);
 
         $file->move($basePath, $fileName);
 
@@ -189,8 +202,8 @@ class VideoGalleryController extends Controller
 
         $photo = $gallery->videos()->create([
             'video_gallery_id'  => $gallery->id,
-            'name'              => $fileName,
-            'slug'              => str_slug($fileName),
+            'name'              => $name,
+            'slug'              => str_slug($name),
             'file'              => $basePath . $fileName,
             'is_active'         => 1
         ]);

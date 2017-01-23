@@ -100,6 +100,7 @@ class PhotoGalleryController extends Controller
             $photoRepository = new PhotoRepository();
             $photo = $photoRepository->where('is_active',1)->find($id);
 
+            //todo bulunamadığında exception yerine düzgün bir hata verilecek.
             $photoGallery = $photo->photo_gallery;
             $galleryPhotos = $photoGallery->photos;
 
