@@ -4,6 +4,7 @@ namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Library\Uploader;
+use App\Models\Tag;
 use App\Modules\News\Models\Photo;
 use App\Modules\News\Models\PhotoCategory;
 use App\Modules\News\Models\PhotoGallery;
@@ -52,9 +53,17 @@ class PhotoGalleryController extends Controller
 
     public function create()
     {
+        $tagIDs = [];
         $photoCategories = PhotoCategory::photoCategoryList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'photoCategories']));
+        $tagList = Tag::tagList();
+
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
+            'record',
+            'photoCategories',
+            'tagList',
+            'tagIDs',
+        ]));
     }
 
 
@@ -72,8 +81,21 @@ class PhotoGalleryController extends Controller
 
     public function edit(PhotoGallery $record)
     {
+        $tagIDs = [];
         $photoCategories = PhotoCategory::photoCategoryList();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'photoCategories']));
+
+        $tagList = Tag::tagList();
+
+        foreach ($record->tags as $index => $tag){
+            $tagIDs[$index] = $tag->id;
+        }
+
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
+            'record',
+            'photoCategories',
+            'tagList',
+            'tagIDs',
+        ]));
     }
 
 
@@ -133,6 +155,8 @@ class PhotoGalleryController extends Controller
                         ->save(public_path('gallery/'. $result[1]->slug .'/photos/497x358_' . $document_name));
                 }
 
+
+                $this->tags_photo_gallery_store($result[1],$input);
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
@@ -317,6 +341,13 @@ class PhotoGalleryController extends Controller
         return Redirect::back();
     }
 
+
+    public function tags_photo_gallery_store(PhotoGallery $record, $input)
+    {
+        if(isset($input['tags_ids'])) {
+            $record->tags()->sync($input['tags_ids']);
+        }
+    }
 
 
 }

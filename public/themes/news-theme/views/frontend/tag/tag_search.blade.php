@@ -5,16 +5,25 @@
 
     <article class="container" id="container">
         <ul>
-            @foreach($records as $record)
 
-                @foreach($record->news as $news)
-                    <a href="{!! route('show_news', ['slug' => $news->slug]) !!}">{{$news->title}}</a>
-                @endforeach
-
-                {{--todo video,photo ve varsa diğerleri yapılacak--}}
-
+            <b>{{$record->name}}</b>
                 <br />
+            @foreach($record->news as $news)
+                <br />
+                <a href="{!! route('show_news', ['slug' => $news->slug]) !!}">{{$news->title}}</a>
             @endforeach
+
+            @foreach($record->videos as $video)
+                <br />
+                <a href="{!! route('show_videos', ['slug' => $video->slug]) !!}">{{$video->name}}</a>
+            @endforeach
+
+            @foreach($record->photo_galleries as $photoGallery)
+                <br />
+                <a href="{!! route('show_photo_gallery', ['slug' => $photoGallery->slug]) !!}">{{$photoGallery->title}}</a>
+            @endforeach
+
+            {{--todo video,photo ve varsa diğerleri yapılacak--}}
         </ul>
     </article>
 

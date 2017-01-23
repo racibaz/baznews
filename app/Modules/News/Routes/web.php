@@ -91,6 +91,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::post('video_gallery/add_multi_videos', 'Backend\VideoGalleryController@addMultiVideos')->name('addMultiVideos');
     Route::post('video_gallery/updateGalleryVideos', 'Backend\VideoGalleryController@updateGalleryVideos')->name('updateGalleryVideos');
     Route::resource('video_gallery', 'Backend\VideoGalleryController');
+
+    Route::post('video.tags_video_store', 'Backend\VideoController@tags_video_store')->name('tags_video_store');
     Route::resource('video', 'Backend\VideoController');
     Route::resource('recommendation_news', 'Backend\RecommendationNewsController');
 

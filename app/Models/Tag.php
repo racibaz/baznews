@@ -30,6 +30,14 @@ class Tag extends Model
     ];
 
 
+
+//    public function taggable()
+//    {
+//        return $this->morphTo();
+//
+////        return $this->morphToPivot();
+//    }
+
     public function news()
     {
         return $this->morphedByMany('App\Modules\News\Models\News', 'taggable');
@@ -40,15 +48,19 @@ class Tag extends Model
         return $this->morphedByMany('App\Modules\News\Models\Photo', 'taggable');
     }
 
+    public function photo_galleries()
+    {
+        return $this->morphedByMany('App\Modules\News\Models\PhotoGallery', 'taggable');
+    }
+
     public function videos()
     {
         return $this->morphedByMany('App\Modules\News\Models\Video', 'taggable');
     }
 
-
     public static function validate($input) {
         $rules = array(
-            'name'                          => 'required|min:3|max:255',
+            'name'                          => 'required|min:1|max:255',
         );
         return Validator::make($input, $rules);
     }

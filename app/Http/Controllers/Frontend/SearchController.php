@@ -12,16 +12,19 @@ class SearchController extends Controller
     public function tagSearch($q)
     {
         $search = $q;
-        $records = Tag::search($q)
-            ->get();
+        $record = Tag::search($q)->first();
+//            ->get();
 
-        dd($records);
+
+
+//        $records = Tag::where('name',$q)->get();
+
 
         //TODO https://www.codecourse.com/lessons/laravel-scout/1050
         //SAYFALAMA DAN DEVAM EDİLEBİLİNİR.
 
         return Theme::view('frontend.tag.tag_search', compact([
-            'records',
+            'record',
             'search'
         ]));
     }

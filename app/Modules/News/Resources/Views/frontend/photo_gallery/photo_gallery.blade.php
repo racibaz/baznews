@@ -56,7 +56,11 @@
                     </div><!-- /.gallery-details -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
-
+            <div>
+                @foreach($photoGallery->tags as $tag)
+                    <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
+                @endforeach
+            </div>
             <div class="row">
                 <div class="col-md-7">
                     <div class="f-posts">

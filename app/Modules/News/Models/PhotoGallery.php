@@ -49,6 +49,11 @@ class PhotoGallery extends Model
         return $this->hasMany(Photo::class);
     }
 
+    public function tags()
+    {
+        return $this->morphToMany('App\Models\Tag', 'taggable');
+    }
+
     public static function validate($input) {
         $rules = array(
             'user_id' => 'required',

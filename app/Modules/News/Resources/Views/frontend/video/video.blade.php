@@ -88,7 +88,7 @@
                                 <h1>{{$video->name}}</h1>
                                 <h2>{{$video->content}}</h2>
                                 @foreach($tags as $tag)
-                                    {{$tag->name}},
+                                    <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
                                 @endforeach
                             </div>
                         </div>

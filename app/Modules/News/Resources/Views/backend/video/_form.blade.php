@@ -19,17 +19,18 @@
     </div>
     <!-- Main Content Element  Start-->
     <div class="row">
+
+        @if(isset($record->id))
+            {!! Form::model($record, ['route' => ['video.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+        @else
+            {!! Form::open(['route' => 'video.store','method' => 'post', 'files' => 'true']) !!}
+        @endif
+
         <div class="col-md-6">
             <div class="panel panel-light-blue">
                 <div class="panel-heading">
                     {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                 </div>
-
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['video.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'video.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
 
                 <div class="panel-body">
                     <div class="form-group">
@@ -125,10 +126,56 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
             </div>
         </div>
+
+        <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('news::video.tags') }}</h3>
+                </div>
+
+                <!-- /.box-header -->
+                <div class="box-body">
+                    {{--<form role="form">--}}
+
+                    {!!  Form::hidden('video_id', $record->id) !!}
+
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('tags', trans('news::video.tags'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::select('tags_ids[]', $tagList , $tagIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+        {!! Form::close() !!}
+
     </div><!-- end row -->
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->
+@endsection
+
+@section('css')
+    <link href="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.min.css') }}" rel="stylesheet">
+@endsection
+
+@section('js')
+    <script src="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $(".select2").select2();
+        });
+    </script>
 @endsection
