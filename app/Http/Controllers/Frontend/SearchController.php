@@ -15,11 +15,6 @@ class SearchController extends Controller
         $record = Tag::search($q)->first();
 //            ->get();
 
-
-
-//        $records = Tag::where('name',$q)->get();
-
-
         //TODO https://www.codecourse.com/lessons/laravel-scout/1050
         //SAYFALAMA DAN DEVAM EDİLEBİLİNİR.
 

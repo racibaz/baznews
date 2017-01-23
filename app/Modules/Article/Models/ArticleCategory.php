@@ -37,6 +37,8 @@ class ArticleCategory extends Model
     public static function validate($input) {
         $rules = array(
             'name'                     => 'Required',
+            'hit'   => 'integer',
+            'icon' => 'image|max:255',
         );
         return Validator::make($input, $rules);
     }

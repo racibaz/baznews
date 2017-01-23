@@ -46,6 +46,7 @@ class Photo extends Model
     public static function validate($input) {
         $rules = array(
             'name' => 'required',
+            'file' => 'image|max:255',
         );
         return Validator::make($input, $rules);
     }

@@ -41,6 +41,8 @@ class VideoCategory extends Model
     public static function validate($input) {
         $rules = array(
             'name'                     => 'required',
+            'hit'   => 'integer',
+            'icon' => 'image|max:255',
         );
         return Validator::make($input, $rules);
     }

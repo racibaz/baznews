@@ -38,6 +38,7 @@ class Author extends Eloquent
         $rules = array(
             'user_id' => 'required',
             'name' => 'required',
+            'photo' => 'image|max:255',
         );
         return Validator::make($input, $rules);
     }

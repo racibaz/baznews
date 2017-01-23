@@ -68,6 +68,7 @@ class Announcement extends Model
     public static function validate($input) {
         $rules = array(
             'title'                    => 'required|max:255',
+            'order' => 'integer',
         );
 
         return Validator::make($input, $rules);

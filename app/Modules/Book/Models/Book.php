@@ -60,6 +60,7 @@ class Book extends Model
     public static function validate($input) {
         $rules = array(
             'name'                          => 'required|min:4|max:255',
+            'photo' => 'image|max:255',
         );
         return Validator::make($input, $rules);
     }

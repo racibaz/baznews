@@ -50,6 +50,8 @@ class Article extends Eloquent
             'user_id' => 'required',
             'author_id' => 'required',
             'title' => 'required',
+            'hit'   => 'integer',
+            'order' => 'integer',
         );
         return Validator::make($input, $rules);
     }

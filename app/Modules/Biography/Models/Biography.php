@@ -43,6 +43,9 @@ class Biography extends Model
         $rules = array(
             'full_name' => 'required',
             'content' => 'required',
+            'order' => 'integer',
+            'hit' => 'integer',
+            'photo' => 'image|max:255',
         );
         return Validator::make($input, $rules);
     }

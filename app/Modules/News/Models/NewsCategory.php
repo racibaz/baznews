@@ -40,6 +40,7 @@ class NewsCategory extends Model
     public static function validate($input) {
         $rules = array(
             'name'                     => 'Required',
+            'thumbnail' => 'image|max:255',
         );
         return Validator::make($input, $rules);
     }

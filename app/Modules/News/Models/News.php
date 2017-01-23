@@ -144,6 +144,8 @@ class News extends Model
             'title' => 'Required',
             'spot' => 'Required',
             'content' => 'Required',
+            'cuff_photo' => 'image|max:255',
+            'thumbnail' => 'image|max:255',
         );
         return Validator::make($input, $rules);
     }

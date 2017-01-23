@@ -20,6 +20,7 @@ class Rss extends Model
         $rules = array(
             'name'                    => 'required|max:255',
             'url'                     => 'required',
+            'order' => 'integer',
         );
 
         return Validator::make($input, $rules);

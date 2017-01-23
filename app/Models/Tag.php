@@ -31,13 +31,6 @@ class Tag extends Model
 
 
 
-//    public function taggable()
-//    {
-//        return $this->morphTo();
-//
-////        return $this->morphToPivot();
-//    }
-
     public function news()
     {
         return $this->morphedByMany('App\Modules\News\Models\News', 'taggable');

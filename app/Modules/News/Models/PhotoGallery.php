@@ -58,6 +58,7 @@ class PhotoGallery extends Model
         $rules = array(
             'user_id' => 'required',
             'title' => 'required',
+            'thumbnail' => 'image|max:255',
         );
         return Validator::make($input, $rules);
     }

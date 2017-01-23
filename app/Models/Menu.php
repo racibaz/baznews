@@ -41,6 +41,9 @@ class Menu extends Model
     public static function validate($input) {
         $rules = array(
             'name'                     => 'Required',
+            'url'   => 'url',
+            'icon' => 'image|max:255',
+            'order' => 'integer',
         );
         return Validator::make($input, $rules);
     }
