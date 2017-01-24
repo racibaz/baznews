@@ -671,5 +671,4 @@ class NewsController extends Controller
 
         return Redirect::back();
     }
-
 }

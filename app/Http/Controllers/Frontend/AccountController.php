@@ -69,8 +69,11 @@ class AccountController extends Controller
     {
         $input = Input::all();
 
-        if(empty($input['password']))
+        if(empty($input['password'])){
             $input['password'] = $record->password;
+        }else{
+            $input['password'] = bcrypt($input['password']);
+        }
 
         //kullanıcı email adresini guncellediğinde email adresini uniqe olduğu için
         //kendi email adresini daha önce kayıtlı olarak görüyor ve hata veriyor
@@ -81,11 +84,6 @@ class AccountController extends Controller
         ];
 
         $v = Validator::make($input, $rules);
-
-
-        $input['password'] = bcrypt($input['password']);
-
-
 
         if ($v->fails()) {
             return Redirect::back()

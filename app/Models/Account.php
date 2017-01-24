@@ -123,6 +123,12 @@ class Account extends Model
             'password_confirmation'         => 'required|min:4',
             'avatar' => 'image|max:255',
             'bio_note'  => 'string|max:255',
+            'facebook'  => 'url',
+            'twitter'  => 'url',
+            'linkedin'  => 'url',
+            'youtube'   => 'url',
+            'IP'    => 'ip',
+            //todo cell_phone
             //todo email alanı kontrol edilmeli
         );
 
