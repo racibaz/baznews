@@ -280,6 +280,19 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            {{trans('news::news.is_show_editor_profile')}}
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <div class="checkbox i-checks">
+                                    <label>
+                                        {!! Form::checkbox('is_show_editor_profile', null , Redis::get('is_show_editor_profile_in_news')) !!}
+                                        <i></i> {{trans('news::news.is_show_editor_profile')}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {{trans('news::news.band_news')}}
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">

@@ -118,7 +118,7 @@
                                 {{--<a href="/tags/{{$tag->name}}">{{$tag->name}}</a>--}}
                             @endforeach
 
-                            @if(Redis::get('is_show_editor_profile_in_news'))
+                            @if($record->is_show_editor_profile)
                                 <div>{{$record->user->name}}</div>
                                 <div>{{$record->user->bio_note}}</div>
                                 <div>{{$record->user->facebook}}</div>

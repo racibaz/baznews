@@ -210,6 +210,7 @@ class User extends Authenticatable
             'password'                      => 'required|min:4|Confirmed',
             'password_confirmation'         => 'required|min:4',
             'avatar' => 'image|max:255',
+            'bio_note'  => 'string|max:255',
         );
 
         return Validator::make($input, $rules);

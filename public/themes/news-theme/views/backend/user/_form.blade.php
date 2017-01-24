@@ -161,11 +161,20 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            {!! Form::label('bio_note', trans('user.bio_note'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('bio_note', $record->bio_note, ['placeholder' => trans('user.bio_note'), 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {{trans('user.sex')}}
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
-                                        {!! Form::checkbox('sex', null , $record->is_active) !!}
+                                        {!! Form::checkbox('sex', null , $record->sex) !!}
 
                                         <i></i> {{trans('user.sex')}}
                                     </label>

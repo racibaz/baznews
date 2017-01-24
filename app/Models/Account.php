@@ -39,6 +39,7 @@ class Account extends Model
         'sex',
         'blood_type',
         'avatar',
+        'bio_note',
         'IP',
     ];
 
@@ -121,6 +122,7 @@ class Account extends Model
             'password'                      => 'required|min:4|Confirmed',
             'password_confirmation'         => 'required|min:4',
             'avatar' => 'image|max:255',
+            'bio_note'  => 'string|max:255',
             //todo email alanı kontrol edilmeli
         );
 
