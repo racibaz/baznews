@@ -122,6 +122,7 @@
                                 <a href="{!! route('editor-profile',['name' => $record->user->name, 'id' => $record->user->id]) !!}">{{$record->user->name}}</a>
                                 <div>{{$record->user->bio_note}}</div>
                                 <div>{{$record->user->facebook}}</div>
+                                <div>{{$record->user->web_site}}</div>
                             @endif
 
                         </div><!-- /.ct-text -->

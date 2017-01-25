@@ -36,6 +36,7 @@ class Account extends Model
         'twitter',
         'linkedin',
         'youtube',
+        'web_site',
         'sex',
         'blood_type',
         'avatar',
@@ -120,12 +121,13 @@ class Account extends Model
         $rules = array(
             'password'                      => 'required|min:4|Confirmed',
             'password_confirmation'         => 'required|min:4',
-            'avatar' => 'image|max:255',
-            'bio_note'  => 'string|max:255',
             'facebook'  => 'url',
             'twitter'  => 'url',
             'linkedin'  => 'url',
             'youtube'   => 'url',
+            'web_site'   => 'url',
+            'avatar' => 'image|max:255',
+            'bio_note'  => 'string|max:255',
             'IP'    => 'ip',
             //todo cell_phone
             //todo email alanı kontrol edilmeli

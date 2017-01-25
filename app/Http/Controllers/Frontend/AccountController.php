@@ -83,6 +83,9 @@ class AccountController extends Controller
         $rules = [
             'password'                      => isset($record->id)  ?   'min:4|Confirmed' : 'required|min:4|Confirmed',
             'password_confirmation'         => isset($record->id)  ? 'min:4' : 'required|min:4',
+            'web_site'  => 'url',
+            'avatar' => 'image|max:255',
+            'bio_note'  => 'string|max:255',
         ];
 
         $v = Validator::make($input, $rules);

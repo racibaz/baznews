@@ -64,6 +64,7 @@ class User extends Authenticatable
         'twitter',
         'linkedin',
         'youtube',
+        'web_site',
         'sex',
         'blood_type',
         'avatar',
@@ -237,6 +238,7 @@ class User extends Authenticatable
             'email'                         => 'required|Between:3,64|email|Unique:users',
             'password'                      => 'required|min:4|Confirmed',
             'password_confirmation'         => 'required|min:4',
+            'web_site'  => 'url',
             'avatar' => 'image|max:255',
             'bio_note'  => 'string|max:255',
         );

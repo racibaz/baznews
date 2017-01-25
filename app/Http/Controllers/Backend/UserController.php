@@ -12,10 +12,10 @@ use App\Repositories\UserRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 
 
 class UserController extends Controller
@@ -118,6 +118,9 @@ class UserController extends Controller
             'email'                         => $input['email'] == $record['email'] ?  'Required|Between:3,64|email' : 'required|string|Between:3,64|Unique:users',
             'password'                      => isset($record->id)  ?   'min:4|Confirmed' : 'required|min:4|Confirmed',
             'password_confirmation'         => isset($record->id)  ? 'min:4' : 'required|min:4',
+            'web_site'  => 'url',
+            'avatar' => 'image|max:255',
+            'bio_note'  => 'string|max:255',
         ];
 
         $v = Validator::make($input, $rules);

@@ -159,6 +159,15 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
+                                    {!! Form::label('web_site', trans('user.web_site'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                                    <div class="col-lg-10">
+                                        {!! Form::text('web_site', $record->web_site, ['placeholder' => trans('user.web_site'), 'class' => 'form-control']) !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
                                     {!! Form::label('blood_type', trans('user.blood_type'), ['class'=> 'col-lg-2 control-label']) !!}
 
                                     <div class="col-lg-10">
