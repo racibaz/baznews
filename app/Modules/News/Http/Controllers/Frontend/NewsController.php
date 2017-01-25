@@ -47,7 +47,6 @@ class NewsController extends Controller
 
     public function show($newsSlug)
     {
-
         $newsId =  substr(strrchr($newsSlug, '-'), 1 );
 
         return Cache::remember('news:'.$newsId, 100, function() use($newsId) {

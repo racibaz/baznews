@@ -119,7 +119,7 @@
                             @endforeach
 
                             @if($record->is_show_editor_profile)
-                                <div>{{$record->user->name}}</div>
+                                <a href="{!! route('editor-profile',['name' => $record->user->name, 'id' => $record->user->id]) !!}">{{$record->user->name}}</a>
                                 <div>{{$record->user->bio_note}}</div>
                                 <div>{{$record->user->facebook}}</div>
                             @endif

@@ -18,6 +18,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
+                <a href="{!! route('login') !!}">{{trans('common.login')}}</a>
+                <a href="{!! route('register') !!}">{{trans('common.register')}}</a>
+
                 <a class="navbar-brand" href="{!! route('index') !!}">
                     <img src="{{ Theme::asset($activeTheme . '::img/news-theme-logo.jpg') }}" alt="Logo" width="130" height="120" />
                 </a>
