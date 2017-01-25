@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Caffeinated\Modules\Facades\Module;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 
 class WidgetManager extends Model
 {
+    use SoftDeletes;
 
     public static $widgetGroups = [
 
@@ -20,7 +22,6 @@ class WidgetManager extends Model
         'footer' =>  'footer',
         'fixed_footer' =>  'fixed_footer',
     ];
-
 
     /**
      * The attributes that are mass assignable.
@@ -35,6 +36,8 @@ class WidgetManager extends Model
         'group',
         'is_active',
     ];
+
+    protected $dates = ['created_at','updated_at','deleted_at'];
 
 
     public static function validate($input) {

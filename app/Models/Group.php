@@ -3,15 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
 
 class Group extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'name',
         'description',
         'is_active',
     ];
+
+    protected $dates = ['created_at','updated_at','deleted_at'];
 
     public function users()
     {

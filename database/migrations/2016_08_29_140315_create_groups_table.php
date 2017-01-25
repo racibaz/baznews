@@ -19,6 +19,7 @@ class CreateGroupsTable extends Migration
             $table->string('description')->nullable();
             $table->boolean('is_active');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('group_user', function (Blueprint $table) {

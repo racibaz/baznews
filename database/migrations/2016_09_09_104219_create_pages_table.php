@@ -22,6 +22,7 @@ class CreatePagesTable extends Migration
             $table->string('keywords')->nullable();
             $table->boolean('is_active')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

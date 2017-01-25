@@ -5,13 +5,14 @@ namespace App\Modules\Article\Models;
 use App\Models\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
 use Venturecraft\Revisionable\RevisionableTrait;
 
 class Article extends Eloquent
 {
+    use SoftDeletes;
     use RevisionableTrait;
-
     use Sluggable;
 
     /**
@@ -29,6 +30,7 @@ class Article extends Eloquent
 
     protected $table = 'articles';
     protected $fillable = ['user_id', 'author_id', 'title', 'slug', 'subtitle', 'spot', 'content', 'description', 'keywords', 'hit', 'order', 'status', 'is_cuff', 'is_active'];
+    protected $dates = ['created_at','updated_at','deleted_at'];
 
     public function user()
     {

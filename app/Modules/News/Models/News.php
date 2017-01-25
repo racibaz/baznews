@@ -5,16 +5,16 @@ namespace App\Modules\News\Models;
 use App\Models\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Scout\Searchable;
 use Venturecraft\Revisionable\RevisionableTrait;
 
 class News extends Model
 {
+    use SoftDeletes;
     use Searchable;
-
     use RevisionableTrait;
-
     use Sluggable;
 
 
@@ -72,6 +72,7 @@ class News extends Model
         'news_type',
         'hit', 'status', 'band_news', 'box_cuff', 'is_cuff','break_news', 'main_cuff' ,'mini_cuff' ,'map', 'is_comment', 'is_show_editor_profile', 'is_active'];
 
+    protected $dates = ['created_at','updated_at','deleted_at'];
 
 
     public function news_categories()

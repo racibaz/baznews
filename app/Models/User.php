@@ -5,8 +5,11 @@ namespace App\Models;
 use App\Modules\Biography\Models\Biography;
 use App\Modules\Book\Models\Book;
 use App\Modules\News\Models\RecommendationNews;
+use Cache;
+use Config;
 use Venturecraft\Revisionable\Revision;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +18,32 @@ use Illuminate\Support\Facades\Validator;
 
 class User extends Authenticatable
 {
-    use EntrustUserTrait;
     use Notifiable;
+
+    /*Oluşan trait hatası
+     *
+     *
+     * Çöüzümü :
+     *
+     * http://stackoverflow.com/questions/25064470/collisions-with-other-trait-methods
+     * https://github.com/Zizaco/entrust/issues/428
+     * https://github.com/Zizaco/entrust/issues/480
+     *
+     * */
+
+    use SoftDeletes, EntrustUserTrait {
+
+        SoftDeletes::restore as sfRestore;
+        EntrustUserTrait::restore as euRestore;
+
+    }
+
+    public function restore() {
+        $this->sfRestore();
+        Cache::tags(Config::get('entrust.role_user_table'))->flush();
+    }
+
+
 
 
     /**
@@ -56,6 +83,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $dates = ['created_at','updated_at','deleted_at'];
 
 
 

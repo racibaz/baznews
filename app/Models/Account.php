@@ -52,7 +52,6 @@ class Account extends Model
         'password', 'remember_token',
     ];
 
-
     public function city()
     {
         return $this->belongsTo('App\Models\City');

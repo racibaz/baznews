@@ -248,6 +248,24 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $news17 = Permission::create([
+            'name'          => 'showTrashedRecords-news',
+            'display_name'  => 'news showTrashedRecords ',
+            'is_active'     => 1,
+        ]);
+
+        $news18 = Permission::create([
+            'name'          => 'trashedNewsRestore-news',
+            'display_name'  => 'news trashedNewsRestore',
+            'is_active'     => 1,
+        ]);
+
+        $news19 = Permission::create([
+            'name'          => 'historyForceDelete-news',
+            'display_name'  => 'news historyForceDelete',
+            'is_active'     => 1,
+        ]);
+
         //newswidgetmanager
         $newswidgetmanager1 = Permission::create([
             'name'          => 'index-newswidgetmanager',
@@ -672,6 +690,9 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($news14);
         $super_admin->permissions()->attach($news15);
         $super_admin->permissions()->attach($news16);
+        $super_admin->permissions()->attach($news17);
+        $super_admin->permissions()->attach($news18);
+        $super_admin->permissions()->attach($news19);
         $super_admin->permissions()->attach($newswidgetmanager1);
         $super_admin->permissions()->attach($newswidgetmanager2);
         $super_admin->permissions()->attach($newswidgetmanager3);

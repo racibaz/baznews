@@ -25,6 +25,7 @@ class CreateContactsTable extends Migration
             $table->unsignedTinyInteger('status')->nullable();
             $table->boolean('is_read');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

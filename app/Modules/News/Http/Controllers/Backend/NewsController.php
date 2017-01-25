@@ -29,6 +29,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rules\In;
 use Intervention\Image\Facades\Image;
 
 class NewsController extends Controller
@@ -74,10 +75,9 @@ class NewsController extends Controller
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
             'records',
             'newsCategoryList',
-            'statusList'
+            'statusList',
         ]));
     }
-
 
     public function create()
     {
@@ -411,11 +411,6 @@ class NewsController extends Controller
                     }
                 }
 
-
-
-
-
-
                 Redis::flushall();
                 //$this->dispatch(new ImageUploader($record, $input['thumbnail'], $destination, $document_name, $document_name));
 
@@ -671,4 +666,53 @@ class NewsController extends Controller
 
         return Redirect::back();
     }
+
+    public function showTrashedRecords()
+    {
+        $trashedRecords = News::onlyTrashed()->paginate(50);
+
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
+            'trashedRecords'
+        ]));
+    }
+
+    public function trashedNewsRestore($trashedNewsId)
+    {
+        if(!is_numeric($trashedNewsId)){
+
+            //todo hata  mesajı verilecek..
+            return Redirect::back();
+        }
+
+//        $news = News::onlyTrashed()->find($trashedNewsId);
+
+        $news = $this->repo->withTrashed()->find($trashedNewsId);
+
+        $news->restore();
+
+        //todo doğrulama  mesajı verilecek..
+        return Redirect::back();
+    }
+
+    public function historyForceDelete()
+    {
+     $input = Input::all();
+
+     if(!empty($input['historyForceDeleteRecordId']) && is_numeric($input['historyForceDeleteRecordId'])) {
+
+
+         //News::find();
+         //$record = $this->repo->forceDelete()->find($input['historyForceDeleteRecordId']);
+//         $record->forceDelete();
+         $news = $this->repo->withTrashed()->find($input['historyForceDeleteRecordId']);
+         $news->forceDelete();
+
+     }
+
+        //dd($historyForceDeleteRecordId);
+//        $record->history()->forceDelete();
+        return redirect()->back();
+    }
+
+
 }

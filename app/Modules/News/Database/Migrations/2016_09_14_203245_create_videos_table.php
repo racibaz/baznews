@@ -27,6 +27,7 @@ class CreateVideosTable extends Migration
             $table->unsignedInteger('order')->nullable();
             $table->boolean('is_active')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             // Keys
             $table->foreign('video_gallery_id')->references('id')->on('video_galleries')->onDelete('set null')->onUpdate('set null');

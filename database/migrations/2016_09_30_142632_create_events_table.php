@@ -20,6 +20,7 @@ class CreateEventsTable extends Migration
             $table->string('eventable_type');
             $table->string('event');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });

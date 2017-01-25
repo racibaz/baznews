@@ -33,6 +33,7 @@ class CreateBooksTable extends Migration
             $table->boolean('is_cuff');
             $table->boolean('is_active');
             $table->timestamps();
+            $table->softDeletes();
 
             //keys
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

@@ -19,6 +19,7 @@ class CreateAdvertisementsTable extends Migration
             $table->text('code');
             $table->boolean('is_active');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

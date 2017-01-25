@@ -22,6 +22,7 @@ class CreateAnnouncementsTable extends Migration
             $table->boolean('is_active');
             $table->dateTime('show_time')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('announcement_group', function (Blueprint $table) {

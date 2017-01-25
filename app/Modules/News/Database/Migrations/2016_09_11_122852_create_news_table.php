@@ -45,6 +45,7 @@ class CreateNewsTable extends Migration
             $table->boolean('is_show_editor_profile')->default(0);
             $table->boolean('is_active');
             $table->timestamps();
+            $table->softDeletes();
 
             // Keys
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');

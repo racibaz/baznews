@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
 
 class Event extends Model
 {
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +21,9 @@ class Event extends Model
         'eventable_id',
         'eventable_type',
     ];
+
+    protected $dates = ['created_at','updated_at','deleted_at'];
+
     public function eventable()
     {
         return $this->morphTo();

@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
 use Kalnoy\Nestedset\NodeTrait;
 
 class Menu extends Model
 {
     use Sluggable;
-
     use NodeTrait;
+    use SoftDeletes;
 
     /**
      * Return the sluggable configuration array for this model.
@@ -27,6 +28,7 @@ class Menu extends Model
     }
 
     protected $fillable = ['parent_id', '_lft', '_rgt', 'page_id', 'name', 'slug', 'url', 'icon', 'order' ,'is_active'];
+    protected $dates = ['created_at','updated_at','deleted_at'];
 
     public function page()
     {

@@ -30,6 +30,7 @@ class CreateArticlesTable extends Migration
             $table->boolean('is_cuff')->default(false);
             $table->boolean('is_active')->default(false);
             $table->timestamps();
+            $table->softDeletes();
 
             // Keys
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

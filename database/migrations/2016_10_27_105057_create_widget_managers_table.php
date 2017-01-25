@@ -22,6 +22,7 @@ class CreateWidgetManagersTable extends Migration
             $table->string('group')->nullable();
             $table->boolean('is_active');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -4,13 +4,14 @@ namespace App\Modules\News\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
 use Venturecraft\Revisionable\RevisionableTrait;
 
 class Video extends Model
 {
+    use SoftDeletes;
     use RevisionableTrait;
-
     use Sluggable;
 
     /**
@@ -33,6 +34,7 @@ class Video extends Model
      *
      * */
     protected $fillable = ['video_gallery_id', 'name', 'slug', 'subtitle', 'thumbnail', 'link', 'content', 'keywords', 'order', 'is_active'];
+    protected $dates = ['created_at','updated_at','deleted_at'];
 
     public function video_gallery()
     {

@@ -4,13 +4,14 @@ namespace App\Modules\Book\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
 use Venturecraft\Revisionable\RevisionableTrait;
 
 class Book extends Model
 {
+    use SoftDeletes;
     use RevisionableTrait;
-
     use Sluggable;
 
     /**
@@ -50,6 +51,8 @@ class Book extends Model
         'is_cuff',
         'is_active',
     ];
+
+    protected $dates = ['created_at','updated_at','deleted_at'];
 
 
     public function user()

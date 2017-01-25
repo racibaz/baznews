@@ -4,13 +4,14 @@ namespace App\Modules\News\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
 use Venturecraft\Revisionable\RevisionableTrait;
 
 class Photo extends Model
 {
+    use SoftDeletes;
     use RevisionableTrait;
-
     use Sluggable;
 
     /**
@@ -27,6 +28,7 @@ class Photo extends Model
     }
     
     protected $fillable = ['photo_gallery_id', 'name', 'subtitle', 'slug', 'file', 'link','content', 'keywords', 'order', 'is_active'];
+    protected $dates = ['created_at','updated_at','deleted_at'];
 
     public function news()
     {
