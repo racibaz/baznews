@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
@@ -9,8 +10,9 @@ use Laravel\Scout\Searchable;
 
 class Tag extends Model
 {
-    use SoftDeletes;
     use Searchable;
+    use Sluggable;
+
 
     /**
      * Get the index name for the model.
@@ -22,16 +24,26 @@ class Tag extends Model
         return 'dev_TAGS';
     }
 
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => ['name']
+            ]
+        ];
+    }
+
     //TODO $fillable   ALANLAR VE VİEW TARAFI DÜZENLENECEK.
 
     protected $fillable = [
         'taggable_id',
         'taggable_type',
-        'name',
-        'is_active',
+        'name'
     ];
-    protected $dates = ['created_at','updated_at','deleted_at'];
-
 
     public function news()
     {
