@@ -29,7 +29,6 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rules\In;
 use Intervention\Image\Facades\Image;
 
 class NewsController extends Controller
@@ -678,39 +677,35 @@ class NewsController extends Controller
 
     public function trashedNewsRestore($trashedNewsId)
     {
-        if(!is_numeric($trashedNewsId)){
+        if(!is_numeric($trashedNewsId) || empty($trashedNewsId)){
 
-            //todo hata  mesajı verilecek..
-            return Redirect::back();
+            return Redirect::back()
+                ->withErrors(trans('common.model_not_resorted'));
         }
 
-//        $news = News::onlyTrashed()->find($trashedNewsId);
-
         $news = $this->repo->withTrashed()->find($trashedNewsId);
-
         $news->restore();
+        $this->repo->forgetCache();
 
-        //todo doğrulama  mesajı verilecek..
+
+        Session::flash('flash_message', trans('common.model_resorted'));
         return Redirect::back();
     }
 
     public function historyForceDelete()
     {
-     $input = Input::all();
+         $input = Input::all();
 
-     if(!empty($input['historyForceDeleteRecordId']) && is_numeric($input['historyForceDeleteRecordId'])) {
+         if(empty($input['historyForceDeleteRecordId']) || !is_numeric($input['historyForceDeleteRecordId'])) {
 
+             return Redirect::back()
+                 ->withErrors(trans('common.save_failed'));
+         }
 
-         //News::find();
-         //$record = $this->repo->forceDelete()->find($input['historyForceDeleteRecordId']);
-//         $record->forceDelete();
-         $news = $this->repo->withTrashed()->find($input['historyForceDeleteRecordId']);
-         $news->forceDelete();
+        $news = $this->repo->withTrashed()->find($input['historyForceDeleteRecordId']);
+        $news->forceDelete();
 
-     }
-
-        //dd($historyForceDeleteRecordId);
-//        $record->history()->forceDelete();
+        Session::flash('flash_message', trans('common.force_deleted'));
         return redirect()->back();
     }
 

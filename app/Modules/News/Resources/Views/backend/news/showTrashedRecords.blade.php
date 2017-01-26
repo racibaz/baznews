@@ -5,12 +5,8 @@
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
                 @if(Auth::user()->can('showTrashedRecords-news'))
-                    {{--{!! Form::open(['route' => 'showTrashedRecords','method' => 'post']) !!}--}}
-                    {{--{!! Form::submit(trans('news.trashed_news'), ['class' => 'btn btn-primary']) !!}--}}
-                    {{--{!! Form::close() !!}--}}
-
-                    <a href="{{ route('showTrashedRecords') }}" class="btn btn-success">
-                        <i class="fa fa-plus"></i> {{ trans('news.trashed_news') }}
+                    <a href="{{ route('news.index') }}" class="btn btn-info">
+                        <i class="fa fa-plus"></i> {{ trans('news.index') }}
                     </a>
                 @endif
 

@@ -177,13 +177,8 @@
                 <a href="{{ route('news.create') }}" class="btn btn-success">
                     <i class="fa fa-plus"></i> {{ trans('common.create') }}
                 </a>
-
                 @if(Auth::user()->can('showTrashedRecords-news'))
-                    {{--{!! Form::open(['route' => 'showTrashedRecords','method' => 'post']) !!}--}}
-                        {{--{!! Form::submit(trans('news.trashed_news'), ['class' => 'btn btn-primary']) !!}--}}
-                    {{--{!! Form::close() !!}--}}
-
-                    <a href="{{ route('showTrashedRecords') }}" class="btn btn-success">
+                    <a href="{{ route('showTrashedRecords') }}" class="btn btn-info">
                         <i class="fa fa-plus"></i> {{ trans('news.trashed_news') }}
                     </a>
                 @endif
