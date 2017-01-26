@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Announcement;
 use App\Models\Group;
 use App\Models\Menu;
 use App\Models\Page;
@@ -31,7 +32,8 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $activeUserCount= User::where('status',1)->get()->count();
+        $activeUserCount = User::where('status',1)->get()->count();
+        $passiveUserCount = User::where('status',1)->get()->count();
         //todo farklı statusler de gelmeli.
 
         $activeGroupCount = Group::where('is_active',1)->get()->count();
@@ -44,10 +46,28 @@ class DashboardController extends Controller
         $passiveMenuCount = Menu::where('is_active',0)->get()->count();
 
 
-        dd($activeUserCount);
+        $userGroups = \Auth::user()->groups;
 
-//        dd($this->getViewName(__FUNCTION__));
+        $userGroupsAnnouncements = $userGroups->map(function($userGroup) {
+            return $userGroup->announcements->where('is_active',1);
+        });
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+
+        $userGroupsAnnouncements = $userGroupsAnnouncements[0];
+
+        //$announcements = Announcement::where('is_active',1)->orderBy('order','desc')->get();
+
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact(
+            'activeUserCount',
+            'passiveUserCount',
+            'activeGroupCount',
+            'passiveGroupCount',
+            'activePageCount',
+            'passivePageCount',
+            'activeMenuCount',
+            'passiveMenuCount',
+            'userGroupsAnnouncements'
+        ));
     }
 }
