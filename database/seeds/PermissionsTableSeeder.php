@@ -342,6 +342,24 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $user10 = Permission::create([
+            'name'          => 'showTrashedRecords-user',
+            'display_name'  => 'user showTrashedRecords ',
+            'is_active'     => 1,
+        ]);
+
+        $user11 = Permission::create([
+            'name'          => 'trashedUserRestore-user',
+            'display_name'  => 'user trashedNewsRestore',
+            'is_active'     => 1,
+        ]);
+
+        $user12 = Permission::create([
+            'name'          => 'historyForceDelete-user',
+            'display_name'  => 'user historyForceDelete',
+            'is_active'     => 1,
+        ]);
+
         //Group
         $group1 = Permission::create([
             'name'          => 'index-group',
@@ -1128,6 +1146,9 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($user7);
         $super_admin->permissions()->attach($user8);
         $super_admin->permissions()->attach($user9);
+        $super_admin->permissions()->attach($user10);
+        $super_admin->permissions()->attach($user11);
+        $super_admin->permissions()->attach($user12);
         $super_admin->permissions()->attach($group1);
         $super_admin->permissions()->attach($group2);
         $super_admin->permissions()->attach($group3);

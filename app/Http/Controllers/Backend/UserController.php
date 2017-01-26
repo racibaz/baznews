@@ -8,9 +8,9 @@ use App\Models\Country;
 use App\Models\Event;
 use App\Models\Group;
 use App\Models\Role;
+use App\Models\User;
 use App\Repositories\UserRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -161,9 +161,55 @@ class UserController extends Controller
         $record->roles()->sync($input['role_user_store_']);
     }
 
-
     public function group_user_store(User $record, $input)
     {
         $record->groups()->sync($input['group_user_store_']);
     }
+
+
+    public function showTrashedRecords()
+    {
+        $trashedRecords = User::onlyTrashed()->paginate(50);
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact(
+            'trashedRecords'
+        ));
+
+    }
+
+    public function trashedUserRestore($trashedUserId)
+    {
+        if(!is_numeric($trashedUserId) || empty($trashedUserId)){
+
+            return Redirect::back()
+                ->withErrors(trans('common.model_not_resorted'));
+        }
+
+        $news = $this->repo->withTrashed()->find($trashedUserId);
+        $news->restore();
+        $this->repo->forgetCache();
+
+        Session::flash('flash_message', trans('common.model_resorted'));
+        return Redirect::back();
+    }
+
+    public function historyForceDelete()
+    {
+        $input = Input::all();
+
+        if(empty($input['historyForceDeleteRecordId']) || !is_numeric($input['historyForceDeleteRecordId'])) {
+
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'));
+        }
+
+        $user = $this->repo->withTrashed()->find($input['historyForceDeleteRecordId']);
+        $user->forceDelete();
+
+        Session::flash('flash_message', trans('common.force_deleted'));
+        return redirect()->back();
+    }
+
+
+
 }

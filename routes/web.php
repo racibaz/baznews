@@ -49,6 +49,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('index', 'Backend\DashboardController@index');
     Route::get('dashboard', 'Backend\DashboardController@index');
 
+
+    Route::get('user/trashedUserRestore/{trashedRecord}', 'Backend\UserController@trashedUserRestore')->name('trashedUserRestore');
+    Route::get('user/showTrashedRecords', 'Backend\UserController@showTrashedRecords')->name('showTrashedUserRecords');
+    Route::delete('user.historyForceDelete/{historyForceDeleteRecordId}', 'Backend\UserController@historyForceDelete')->name('userHistoryForceDelete');
+
+
     Route::post('user.role_user_store', 'Backend\UserController@role_user_store')->name('role_user_store');
     Route::post('user.group_user_store', 'Backend\UserController@group_user_store')->name('group_user_store');
     Route::resource('user', 'Backend\UserController');

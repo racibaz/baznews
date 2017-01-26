@@ -9,6 +9,11 @@
                 <a href="{{ route('user.create') }}" class="btn btn-success">
                     <i class="fa fa-plus"></i> {{ trans('common.create') }}
                 </a>
+                @if(Auth::user()->can('showTrashedRecords-user'))
+                    <a href="{{ route('showTrashedUserRecords') }}" class="btn btn-info">
+                        <i class="fa fa-plus"></i> {{ trans('user.trashed_user') }}
+                    </a>
+                @endif
             </div>
             <div class="box">
                 <div class="box-header">
