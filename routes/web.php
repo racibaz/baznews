@@ -33,8 +33,6 @@ Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');
 
 Route::get('/tags/{q}', 'Frontend\SearchController@tagSearch')->name('tag_search');
 
-Route::get('editor-profile/{name}/{id}', 'Frontend\AccountController@editorProfile')->name('editor-profile');
-
 Route::resource('account', 'Frontend\AccountController', ['only' => [
     'index', 'edit', 'update','show'
 ]]);

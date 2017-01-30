@@ -134,6 +134,7 @@ class UserController extends Controller
 
             if (isset($record->id)) {
 
+                $input['password'] = $record->password;
                 $result = $this->repo->update($record->id, $input);
 
             } else {

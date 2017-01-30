@@ -7,6 +7,7 @@ use App\Modules\Book\Models\Book;
 use App\Modules\News\Models\RecommendationNews;
 use Cache;
 use Config;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Venturecraft\Revisionable\Revision;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Validator;
 class User extends Authenticatable
 {
     use Notifiable;
+    use Sluggable;
 
     /*Oluşan trait hatası
      *
@@ -43,6 +45,19 @@ class User extends Authenticatable
         Cache::tags(Config::get('entrust.role_user_table'))->flush();
     }
 
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => ['name']
+            ]
+        ];
+    }
 
 
 

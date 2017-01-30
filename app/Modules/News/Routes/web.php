@@ -36,6 +36,9 @@ Route::get('photo_gallery/{slug}', 'Frontend\PhotoGalleryController@getPhotoGall
 Route::get('gallery_photo/{slug}', 'Frontend\PhotoGalleryController@showGalleryPhotos')->name('show_gallery_photos');
 
 
+Route::get('editor-profile/{slug}', 'Frontend\EditorController@showProfile')->name('editor-profile');
+
+
 
 Route::group(['prefix' => 'rss'], function() {
 
