@@ -124,7 +124,10 @@
                                 <div>{{$record->user->facebook}}</div>
                                 <div>{{$record->user->web_site}}</div>
                             @endif
-
+                            @if($record->is_show_previous_and_next_news)
+                                <a href="{!! route('show_news', ['slug' => $previousNews->slug]) !!}">{{trans('news::news.previous_news')}}</a>
+                                <a href="{!! route('show_news', ['slug' => $nextNews->slug]) !!}">{{trans('news::news.next_news')}}</a>
+                            @endif
                         </div><!-- /.ct-text -->
                     </div><!-- /.content -->
                 </div><!-- /.new-content -->

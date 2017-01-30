@@ -43,6 +43,7 @@ class CreateNewsTable extends Migration
             $table->boolean('mini_cuff');
             $table->boolean('is_comment');
             $table->boolean('is_show_editor_profile')->default(0);
+            $table->boolean('is_show_previous_and_next_news')->default(0);
             $table->boolean('is_active');
             $table->timestamps();
             $table->softDeletes();

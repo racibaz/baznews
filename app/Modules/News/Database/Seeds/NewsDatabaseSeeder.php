@@ -106,6 +106,15 @@ class NewsDatabaseSeeder extends Seeder
             ]);
         }
 
+        $setting = Setting::where('attribute_key','is_show_previous_and_next_news')->first();
+        if(empty($setting))
+        {
+            Setting::create([
+                'attribute_key'               => 'is_show_previous_and_next_news',
+                'attribute_value'             => "1",
+                'is_active'                   => 1
+            ]);
+        }
 
     }
 }

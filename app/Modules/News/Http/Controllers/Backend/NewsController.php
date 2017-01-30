@@ -274,6 +274,7 @@ class NewsController extends Controller
         $input['mini_cuff'] = Input::get('mini_cuff') == "on" ? true : false;
         $input['is_comment'] = Input::get('is_comment') == "on" ? true : false;
         $input['is_show_editor_profile'] = Input::get('is_show_editor_profile') == "on" ? true : false;
+        $input['is_show_previous_and_next_news'] = Input::get('is_show_previous_and_next_news') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
 

@@ -11,9 +11,7 @@ use Venturecraft\Revisionable\RevisionableTrait;
 class NewsCategory extends Model
 {
     use RevisionableTrait;
-
     use Sluggable;
-
     use NodeTrait;
 
     /**

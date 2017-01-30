@@ -193,7 +193,7 @@
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
-                                        {!! Form::checkbox('find_tags_in_content', null , Redis::get('find_tags_in_content') ) !!}
+                                        {!! Form::checkbox('find_tags_in_content', null , isset($record->id) ? $record->find_tags_in_content : Redis::get('find_tags_in_content') ) !!}
                                         <i></i> {{trans('news::news.find_tags_in_content')}}
                                     </label>
                                 </div>
@@ -206,7 +206,7 @@
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
-                                        {!! Form::checkbox('automatic_add_tags', null , Redis::get('automatic_add_tags') ) !!}
+                                        {!! Form::checkbox('automatic_add_tags', null , isset($record->id) ? 0 :  Redis::get('automatic_add_tags') ) !!}
                                         <i></i> {{trans('news::news.automatic_add_tags')}}
                                     </label>
                                 </div>
@@ -284,8 +284,21 @@
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
-                                        {!! Form::checkbox('is_show_editor_profile', null , Redis::get('is_show_editor_profile_in_news')) !!}
+                                        {!! Form::checkbox('is_show_editor_profile', null , isset($record->id) ? $record->is_show_editor_profile_in_news :  Redis::get('is_show_editor_profile_in_news')) !!}
                                         <i></i> {{trans('news::news.is_show_editor_profile')}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {{trans('news::news.is_show_previous_and_next_news')}}
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <div class="checkbox i-checks">
+                                    <label>
+                                        {!! Form::checkbox('is_show_previous_and_next_news', null ,  isset($record->id) ? $record->is_show_previous_and_next_news  : Redis::get('is_show_previous_and_next_news') ) !!}
+                                        <i></i> {{trans('news::news.is_show_previous_and_next_news')}}
                                     </label>
                                 </div>
                             </div>
