@@ -115,6 +115,5 @@ class NewsDatabaseSeeder extends Seeder
                 'is_active'                   => 1
             ]);
         }
-
     }
 }

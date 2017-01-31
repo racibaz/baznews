@@ -68,6 +68,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('news/trashedNewsRestore', 'Backend\NewsController@showTrashedRecords')->name('showTrashedRecords');
     Route::delete('news.historyForceDelete/{historyForceDeleteRecordId}', 'Backend\NewsController@historyForceDelete')->name('historyForceDelete');
 
+    Route::get('news.forget_news_cache', 'Backend\NewsController@forgetNewsCache')->name('forget_news_cache');
     Route::post('news.status_toggle', 'Backend\NewsController@statusToggle')->name('status_toggle');
     Route::get('news.toggle_boolean_type/{newsId}/{key}', 'Backend\NewsController@toggleBooleanType')->name('toggle_boolean_type');
     Route::post('news.news_photos_store', 'Backend\NewsController@news_photos_store')->name('news_photos_store');

@@ -266,6 +266,12 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $news20 = Permission::create([
+            'name'          => 'forgetNewsCache-news',
+            'display_name'  => 'news forgetNewsCache',
+            'is_active'     => 1,
+        ]);
+
         //newswidgetmanager
         $newswidgetmanager1 = Permission::create([
             'name'          => 'index-newswidgetmanager',
@@ -693,6 +699,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($news17);
         $super_admin->permissions()->attach($news18);
         $super_admin->permissions()->attach($news19);
+        $super_admin->permissions()->attach($news20);
         $super_admin->permissions()->attach($newswidgetmanager1);
         $super_admin->permissions()->attach($newswidgetmanager2);
         $super_admin->permissions()->attach($newswidgetmanager3);

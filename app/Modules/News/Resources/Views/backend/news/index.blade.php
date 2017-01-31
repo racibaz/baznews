@@ -170,13 +170,20 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
-                <a href="{{ route('news.create') }}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> {{ trans('common.create') }}
-                </a>
+
+                @if(Auth::user()->can('create-news'))
+                    <a href="{{ route('news.create') }}" class="btn btn-success">
+                        <i class="fa fa-plus"></i> {{ trans('common.create') }}
+                    </a>
+                @endif
+                @if(Auth::user()->can('forgetNewsCache-news'))
+                    <a href="{{ route('forget_news_cache') }}" class="btn btn-info">
+                        <i class="fa fa-plus"></i> {{ trans('news::news.forget_news_cache') }}
+                    </a>
+                @endif
                 @if(Auth::user()->can('showTrashedRecords-news'))
                     <a href="{{ route('showTrashedRecords') }}" class="btn btn-info">
                         <i class="fa fa-plus"></i> {{ trans('news.trashed_news') }}
