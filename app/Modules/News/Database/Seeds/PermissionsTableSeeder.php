@@ -267,7 +267,7 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         $news20 = Permission::create([
-            'name'          => 'forgetNewsCache-news',
+            'name'          => 'forgetCache-news',
             'display_name'  => 'news forgetNewsCache',
             'is_active'     => 1,
         ]);
@@ -416,6 +416,12 @@ class PermissionsTableSeeder extends Seeder
         $photogallery10 = Permission::create([
             'name'          => 'updateGalleryPhotos-photogallery',
             'display_name'  => 'photogallery updateGalleryPhotos',
+            'is_active'     => 1,
+        ]);
+
+        $photogallery11 = Permission::create([
+            'name'          => 'forgetCache-photogallery',
+            'display_name'  => 'photogallery forgetCache',
             'is_active'     => 1,
         ]);
 
@@ -610,6 +616,12 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $videogallery11 = Permission::create([
+            'name'          => 'forgetCache-videogallery',
+            'display_name'  => 'videogallery forgetCache',
+            'is_active'     => 1,
+        ]);
+
 
         //video
         $video1 = Permission::create([
@@ -724,6 +736,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($photogallery8);
         $super_admin->permissions()->attach($photogallery9);
         $super_admin->permissions()->attach($photogallery10);
+        $super_admin->permissions()->attach($photogallery11);
         $super_admin->permissions()->attach($photo1);
         $super_admin->permissions()->attach($photo2);
         $super_admin->permissions()->attach($photo3);
@@ -755,6 +768,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($videogallery8);
         $super_admin->permissions()->attach($videogallery9);
         $super_admin->permissions()->attach($videogallery10);
+        $super_admin->permissions()->attach($videogallery11);
         $super_admin->permissions()->attach($video1);
         $super_admin->permissions()->attach($video2);
         $super_admin->permissions()->attach($video3);

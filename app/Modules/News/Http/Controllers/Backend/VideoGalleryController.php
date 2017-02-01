@@ -275,4 +275,12 @@ class VideoGalleryController extends Controller
         return Redirect::back();
     }
 
+
+    public function forgetCache()
+    {
+        $this->repo->forgetCache();
+        return Redirect::back();
+    }
+
+
 }

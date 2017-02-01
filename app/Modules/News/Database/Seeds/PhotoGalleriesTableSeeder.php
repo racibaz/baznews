@@ -21,6 +21,7 @@ class PhotoGalleriesTableSeeder extends Seeder
             'slug' => 'ilk_photo_gallery',
             'description' => 'galeri tanım/not',
             'keywords' => 'ilk galeri',
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
@@ -31,6 +32,7 @@ class PhotoGalleriesTableSeeder extends Seeder
             'slug' => 'ikinci_photo_gallery',
             'description' => 'galeri tanım/not',
             'keywords' => 'ikinci galeri',
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
@@ -41,6 +43,7 @@ class PhotoGalleriesTableSeeder extends Seeder
             'slug' => 'üç_photo_gallery',
             'description' => 'galeri tanım/not',
             'keywords' => 'üç galeri',
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
@@ -51,6 +54,7 @@ class PhotoGalleriesTableSeeder extends Seeder
             'slug' => 'dört_photo_gallery',
             'description' => 'galeri tanım/not',
             'keywords' => 'dört galeri',
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
@@ -61,6 +65,7 @@ class PhotoGalleriesTableSeeder extends Seeder
             'slug' => 'beş_photo_gallery',
             'description' => 'galeri tanım/not',
             'keywords' => 'beş galeri',
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
@@ -71,6 +76,7 @@ class PhotoGalleriesTableSeeder extends Seeder
             'slug' => 'altı_photo_gallery',
             'description' => 'galeri tanım/not',
             'keywords' => 'altı galeri',
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
     }

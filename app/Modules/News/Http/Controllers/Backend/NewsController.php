@@ -712,7 +712,7 @@ class NewsController extends Controller
     }
 
 
-    public function forgetNewsCache()
+    public function forgetCache()
     {
         $this->repo->forgetCache();
         return Redirect::back();

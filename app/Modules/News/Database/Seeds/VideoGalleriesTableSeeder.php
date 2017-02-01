@@ -21,6 +21,7 @@ class VideoGalleriesTableSeeder extends Seeder
             'slug' => 'ilk_video_gallery',
             'description' => 'galeri tanım/not',
             'keywords' => 'ilk galeri',
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
@@ -31,6 +32,7 @@ class VideoGalleriesTableSeeder extends Seeder
             'slug' => 'ikinci_video_gallery',
             'description' => 'galeri tanım/not',
             'keywords' => 'ikinci galeri',
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
@@ -41,6 +43,7 @@ class VideoGalleriesTableSeeder extends Seeder
             'slug' => 'üç_video_gallery',
             'description' => 'galeri tanım/not',
             'keywords' => 'üç galeri',
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
@@ -51,6 +54,7 @@ class VideoGalleriesTableSeeder extends Seeder
             'slug' => 'dört_video_gallery',
             'description' => 'galeri tanım/not',
             'keywords' => 'dört galeri',
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
@@ -61,6 +65,7 @@ class VideoGalleriesTableSeeder extends Seeder
             'slug' => 'beş_video_gallery',
             'description' => 'galeri tanım/not',
             'keywords' => 'beş galeri',
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
     }

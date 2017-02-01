@@ -68,7 +68,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('news/trashedNewsRestore', 'Backend\NewsController@showTrashedRecords')->name('showTrashedRecords');
     Route::delete('news.historyForceDelete/{historyForceDeleteRecordId}', 'Backend\NewsController@historyForceDelete')->name('historyForceDelete');
 
-    Route::get('news.forget_news_cache', 'Backend\NewsController@forgetNewsCache')->name('forget_news_cache');
+
     Route::post('news.status_toggle', 'Backend\NewsController@statusToggle')->name('status_toggle');
     Route::get('news.toggle_boolean_type/{newsId}/{key}', 'Backend\NewsController@toggleBooleanType')->name('toggle_boolean_type');
     Route::post('news.news_photos_store', 'Backend\NewsController@news_photos_store')->name('news_photos_store');
@@ -82,6 +82,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::post('news.future_news_store', 'Backend\NewsController@future_news_store')->name('future_news_store');
     Route::post('news.news_news_categories_store', 'Backend\NewsController@news_news_categories_store')->name('news_news_categories_store');
     Route::post('news/newsFilter', 'Backend\NewsController@newsFilter')->name('newsFilter');
+    Route::get('news.forget_news_cache', 'Backend\NewsController@forgetCache')->name('forget_news_cache');
     Route::resource('news', 'Backend\NewsController');
     Route::resource('news_source', 'Backend\NewsSourceController');
     Route::resource('future_news', 'Backend\FutureNewsController');
@@ -89,6 +90,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('photo_gallery/add_multi_photos_view/{photo_gallery_id}', 'Backend\PhotoGalleryController@addMultiPhotosView')->name('add_multi_photos_view');
     Route::post('photo_gallery/add_multi_photos', 'Backend\PhotoGalleryController@addMultiPhotos')->name('addMultiPhotos');
     Route::post('photo_gallery/updateGalleryPhotos', 'Backend\PhotoGalleryController@updateGalleryPhotos')->name('updateGalleryPhotos');
+    Route::get('photo_gallery/forget_photo_gallery_cache', 'Backend\PhotoGalleryController@forgetCache')->name('forget_photo_gallery_cache');
     Route::resource('photo_gallery', 'Backend\PhotoGalleryController');
 
     Route::resource('photo', 'Backend\PhotoController');
@@ -99,6 +101,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('video_gallery/add_multi_videos_view/{video_gallery_id}', 'Backend\VideoGalleryController@addMultiVideosView')->name('add_multi_videos_view');
     Route::post('video_gallery/add_multi_videos', 'Backend\VideoGalleryController@addMultiVideos')->name('addMultiVideos');
     Route::post('video_gallery/updateGalleryVideos', 'Backend\VideoGalleryController@updateGalleryVideos')->name('updateGalleryVideos');
+    Route::get('video_gallery/forget_video_gallery_cache', 'Backend\VideoGalleryController@forgetCache')->name('forget_video_gallery_cache');
     Route::resource('video_gallery', 'Backend\VideoGalleryController');
 
     Route::post('video.tags_video_store', 'Backend\VideoController@tags_video_store')->name('tags_video_store');
