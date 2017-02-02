@@ -8,6 +8,7 @@ use App\Modules\News\Models\Video;
 use App\Modules\News\Models\VideoCategory;
 use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\VideoGalleryRepository as Repo;
+use App\Modules\News\Repositories\VideoRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Exception;
 use Illuminate\Http\Request;
@@ -200,15 +201,20 @@ class VideoGalleryController extends Controller
 
         //TODO  Storage facede ile cloud işlemleri de yapılabilecek.
 
-        $photo = $gallery->videos()->create([
-            'video_gallery_id'  => $gallery->id,
+        $video = $gallery->videos()->create([
+            'video_gallery_id'  => 1,
             'name'              => $name,
             'slug'              => str_slug($name),
-            'file'              => $basePath . $fileName,
+            'file'              => $fileName,
             'is_active'         => 1
         ]);
 
-        return $photo;
+        $videoRepo = new VideoRepository();
+        list($status, $instance) = $videoRepo->update($video->id,[
+            'name' => $name
+        ]);
+
+        return $video;
     }
 
 
@@ -259,10 +265,15 @@ class VideoGalleryController extends Controller
                 if(is_numeric($id)){
 
                     $video = Video::find($id);
-                    //ikisinden biri boş ise önceki değerini veriyoruz.
-                    $video->subtitle =  htmlentities($subtitle) ? htmlentities($subtitle) : $video->subtitle;
-                    $video->content =  htmlentities($content) ? htmlentities($content) : $video->content;
-                    $video->save();
+
+                    //video silinmemiş ise işleme devam ediyoruz.
+                    if(!empty($video)){
+                        //ikisinden biri boş ise önceki değerini veriyoruz.
+                        $video->subtitle =  htmlentities($subtitle) ? htmlentities($subtitle) : $video->subtitle;
+                        $video->content =  htmlentities($content) ? htmlentities($content) : $video->content;
+                        $video->save();
+                    }
+
                 }
 
                 //değişkenleri temizliyoruz.
