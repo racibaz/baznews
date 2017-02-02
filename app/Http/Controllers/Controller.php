@@ -42,7 +42,8 @@ class Controller extends BaseController
 
         if(!Auth::user()->can($methodName . '-' . $classModelName)){
             Log::warning('Yetkisiz Alana Girmeye Çalışıldı. ' . 'Kişi : ' . Auth::user()->UserFullName() . '  IP :' . Auth::user()->getUserIp() );
-            dd('yetkisiz');
+            //dd('yetkisiz');
+            abort(403, 'Unauthorized action.');
         }
         return true;
     }
