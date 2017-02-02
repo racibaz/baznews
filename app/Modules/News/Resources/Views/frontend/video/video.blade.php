@@ -51,35 +51,22 @@
 
                             <div class="player">
 
-                                {{--@if(!empty($video->thumbnail))--}}
-                                    {{--<video id="{{$video->id}}"--}}
-                                           {{--class="video-js vjs-default-skin"--}}
-                                           {{--controls preload="auto"--}}
-                                           {{--poster="http://video-js.zencoder.com/oceans-clip.png"--}}
-                                           {{--data-setup='{"example_option":true}'>--}}
-                                        {{--<source src="{{url($video->file)}}" type="video/mp4" />--}}
-                                        {{--<source src="{{url($video->file)}}" type="video/webm" />--}}
-                                        {{--<source src="{{url($video->file)}}" type="video/ogg" />--}}
-                                        {{--<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />--}}
-                                        {{--<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>--}}
-                                    {{--</video>--}}
-                                {{--@elseif(!empty($video->link))--}}
-                                    {{--<video--}}
-                                            {{--id="{{$video->id}}"--}}
-                                            {{--class="video-js vjs-default-skin"--}}
-                                            {{--controls--}}
-                                            {{--data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'--}}
-                                            {{--data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'>--}}
-                                    {{--</video>--}}
-                                {{--@endif--}}
+                                @if(!empty($video->file))
+                                    <video id="{{$video->id}}"
+                                           class="video-js vjs-default-skin"
+                                           controls preload="auto" width="640" height="264"
+                                           poster="http://video-js.zencoder.com/oceans-clip.png"
+                                           data-setup='{"example_option":true}'>
 
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/mp4" />
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/webm" />
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/ogg" />
 
-                                <video
-                                        id="{{$video->id}}"
-                                        class="video-js vjs-default-skin"
-                                        controls
-                                        data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'>
-                                </video>
+                                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                                    </video>
+                                @elseif(!empty($video->link))
+                                    {!! $video->link !!}
+                                @endif
 
                             </div>
 

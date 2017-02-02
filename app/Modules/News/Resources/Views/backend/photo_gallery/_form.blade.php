@@ -97,7 +97,7 @@
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
-                                        {!! Form::checkbox('is_cuff', null , $record->is_active) !!}
+                                        {!! Form::checkbox('is_cuff', null , $record->is_cuff) !!}
                                         <i></i> {{trans('news::photo_gallery.is_cuff')}}
                                     </label>
                                 </div>

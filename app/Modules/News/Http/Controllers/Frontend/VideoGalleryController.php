@@ -20,12 +20,16 @@ class VideoGalleryController extends Controller
 
     public function getVideoGalleryBySlug($slug)
     {
-        return Cache::remember('video_gallery:'.$slug, 100, function() use($slug) {
 
-            $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
+        $id =  substr(strrchr($slug, '-'), 1 );
+
+        return Cache::remember('video_gallery:'.$id, 100, function() use($id) {
+
             $videoGallery = $this->repo
                 ->where('is_active', 1)
-                ->findBy('slug',$slug);
+                ->findBy('id',$id);
+
+
 
             $galleryVideos = $videoGallery->videos;
             $firstVideo = $videoGallery->videos->first();
