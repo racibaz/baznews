@@ -30,7 +30,9 @@
         "laravel/scout": "^1.1",
         "algolia/algoliasearch-client-php": "^1.11",
         "laravel-notification-channels/pusher-push-notifications": "^1.0",
-        "php-ffmpeg/php-ffmpeg": "^0.7.0"
+        "php-ffmpeg/php-ffmpeg": "^0.8.0",
+        "pbmedia/laravel-ffmpeg": "^1.1"
+
 
 
     },

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c68d30b9340c5f66cee00b62bc30e720",
+    "content-hash": "0e10892a766dabccdc76dc3db0f5585e",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -2448,17 +2448,71 @@
             "time": "2016-11-07T23:38:38+00:00"
         },
         {
-            "name": "php-ffmpeg/php-ffmpeg",
-            "version": "0.7.0",
+            "name": "pbmedia/laravel-ffmpeg",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/PHP-FFMpeg/PHP-FFMpeg.git",
-                "reference": "40f8edaff96a52e5c4da94ca52c003b59895a4de"
+                "url": "https://github.com/pascalbaljetmedia/laravel-ffmpeg.git",
+                "reference": "9a290e5587ec948b00a9a33e74da9f32a3809c56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-FFMpeg/PHP-FFMpeg/zipball/40f8edaff96a52e5c4da94ca52c003b59895a4de",
-                "reference": "40f8edaff96a52e5c4da94ca52c003b59895a4de",
+                "url": "https://api.github.com/repos/pascalbaljetmedia/laravel-ffmpeg/zipball/9a290e5587ec948b00a9a33e74da9f32a3809c56",
+                "reference": "9a290e5587ec948b00a9a33e74da9f32a3809c56",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "^5.1",
+                "illuminate/filesystem": "^5.1",
+                "illuminate/log": "^5.1",
+                "league/flysystem": "^1.0",
+                "php": "^7.0",
+                "php-ffmpeg/php-ffmpeg": "~0.6",
+                "symfony/process": "^2.5|^3.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.5",
+                "phpunit/phpunit": "5.*",
+                "scrutinizer/ocular": "^1.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pbmedia\\LaravelFFMpeg\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pascal Baljet",
+                    "email": "pascal@pascalbaljetmedia.com",
+                    "homepage": "http://www.pascalbaljetmedia.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "FFMpeg for Laravel 5.1 and higher",
+            "homepage": "https://github.com/pbmedia/laravel-ffmpeg",
+            "keywords": [
+                "laravel-ffmpeg",
+                "pbmedia"
+            ],
+            "time": "2017-01-29T14:54:45+00:00"
+        },
+        {
+            "name": "php-ffmpeg/php-ffmpeg",
+            "version": "0.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHP-FFMpeg/PHP-FFMpeg.git",
+                "reference": "a6f6bbcb1eaceddb3d486f7598e25b445e4cc141"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHP-FFMpeg/PHP-FFMpeg/zipball/a6f6bbcb1eaceddb3d486f7598e25b445e4cc141",
+                "reference": "a6f6bbcb1eaceddb3d486f7598e25b445e4cc141",
                 "shasum": ""
             },
             "require": {
@@ -2524,7 +2578,7 @@
                 "video",
                 "video processing"
             ],
-            "time": "2017-01-13T15:43:22+00:00"
+            "time": "2017-01-24T18:45:56+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -3242,16 +3296,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "4.4.3",
+            "version": "4.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "fe38af656f3b989172c2a3cbbc012a90a54a4d99"
+                "reference": "4010cf34b464ea301784bfe90e6ac53a42b45a05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/fe38af656f3b989172c2a3cbbc012a90a54a4d99",
-                "reference": "fe38af656f3b989172c2a3cbbc012a90a54a4d99",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/4010cf34b464ea301784bfe90e6ac53a42b45a05",
+                "reference": "4010cf34b464ea301784bfe90e6ac53a42b45a05",
                 "shasum": ""
             },
             "require": {
@@ -3264,7 +3318,7 @@
                 "league/flysystem": "^1.0.27",
                 "php": "^7.0",
                 "spatie/db-dumper": "^2.1",
-                "spatie/temporary-directory": "~1.0.0",
+                "spatie/temporary-directory": "^1.0",
                 "symfony/finder": "^3.0"
             },
             "require-dev": {
@@ -3304,20 +3358,20 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2017-02-02T10:12:15+00:00"
+            "time": "2017-02-03T13:15:45+00:00"
         },
         {
             "name": "spatie/temporary-directory",
-            "version": "1.0.0",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/temporary-directory.git",
-                "reference": "83deb3b080b5aaa12e37e9a25ad45a39d925977e"
+                "reference": "58e80a88c3fd463d502807614e88c1aec62e79dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/temporary-directory/zipball/83deb3b080b5aaa12e37e9a25ad45a39d925977e",
-                "reference": "83deb3b080b5aaa12e37e9a25ad45a39d925977e",
+                "url": "https://api.github.com/repos/spatie/temporary-directory/zipball/58e80a88c3fd463d502807614e88c1aec62e79dc",
+                "reference": "58e80a88c3fd463d502807614e88c1aec62e79dc",
                 "shasum": ""
             },
             "require": {
@@ -3350,7 +3404,7 @@
                 "spatie",
                 "temporary-directory"
             ],
-            "time": "2017-02-01T11:18:53+00:00"
+            "time": "2017-02-02T13:08:42+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
