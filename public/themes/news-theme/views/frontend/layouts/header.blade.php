@@ -28,7 +28,7 @@
                 <div class="search pull-right">
 
                     {!! Form::open(array('route' => 'search', 'method' => 'post','class' => 'form')) !!}
-                        {!!  Form::text('q', null, ['placeholder' => trans('homepage.search') ,'class' => 'form-control']) !!}
+                        {!!  Form::text('q', null, ['class' => 'ft','onblur'=>"if(this.value=='') this.value='Ara.';","onfocus"=>"if(this.value=='Ara.') this.value='';"]) !!}
                         {{--<input type="q" value="Ara." onblur="if(this.value=='') this.value='Ara.';" onfocus="if(this.value=='Ara.') this.value='';" class="ft">--}}
                         <input type="submit" value="" class="fs">
                     {!!Form::close() !!}

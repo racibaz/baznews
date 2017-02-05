@@ -6,11 +6,15 @@
         <div class="container" id="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="last-time" id="son-dakika">
-                        <h4>Son Dakika:</h4>
-                        @foreach($breakNewsItems as $breakNewsItem)
-                            <a href="{!! route('show_news', ['slug' => $breakNewsItem->slug]) !!}">{{$breakNewsItem->title}}</a>
-                        @endforeach
+                    <div class="ticker last-time" id="son-dakika">
+                        <strong>Son Dakika:</strong>
+                        <ul>
+                            @foreach($breakNewsItems as $breakNewsItem)
+                                <li>
+                                    <a href="{!! route('show_news', ['slug' => $breakNewsItem->slug]) !!}">{{$breakNewsItem->title}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,11 @@
                         <ul class="bxslider">
 
                             @foreach($boxCuffNewsItems as $boxCuffNewsItem)
-                                <li data-slide-index="0"><img src="{{ asset('images/news_images/' . $boxCuffNewsItem->id . '/322x265_' . $boxCuffNewsItem->thumbnail )}}" alt="{{$boxCuffNewsItem->title}}" ></li>
+                                <li data-slide-index="{{$mainCuffNewsItem->id}}">
+                                    <a href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
+                                        <img src="{{ asset('images/news_images/' . $boxCuffNewsItem->id . '/322x265_' . $boxCuffNewsItem->thumbnail )}}" alt="{{$boxCuffNewsItem->title}}" >
+                                    </a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -85,7 +93,7 @@
                     </div>
                     <!-- /.post-box-slider -->
                 </div>
-            </div>
+            </div><!-- /.row -->
 
             <div class="row">
                 <div class="col-md-8">
@@ -129,7 +137,7 @@
                         </div><!-- /.col-md-8 -->
                         <!-- /.image-banner-list -->
                     @endforeach
-                </div>
+                </div><!-- /.col -->
 
                 <div class="col-md-4">
                     <div class="nw-sm-img">
@@ -387,6 +395,19 @@
     {{--<link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">--}}
 
     {{--<link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">--}}
+    <style type="text/css">
+        .ticker {
+            width: 100%
+            margin: 10px auto;
+        }
+        /* The HTML list gets replaced with a single div,
+           which contains the active ticker item, so you
+           can easily style that as well */
+        .ticker div {
+            display: inline-block;
+            word-wrap: break-word;
+        }
+    </style>
 @endsection
 
 @section('js')
@@ -470,6 +491,8 @@
                 topSpacing: $('header nav').outerHeight(),
                 bottomSpacing: $('.ads').outerHeight() + $('footer').outerHeight()
             });
+
+            $('.ticker').ticker();
         });
 
     </script>
