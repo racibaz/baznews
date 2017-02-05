@@ -296,112 +296,56 @@
             <div class="videos">
                 <div class="title-section">
                     <h1>
-                        <span>Categories Other Videos</span>
+                        <span>Lastest Videos</span>
                         <a href="video-details.html" class="btn btn-primary btn-xs m-v-btn">Daha fazla</a>
                     </h1>
                 </div><!-- /.title-section -->
                 <div class="row">
 
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
+                    @foreach($lastestVideos  as $lastestVideo)
 
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="#">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="#">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="#">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <div class="r-box">
+                                <a href="{{route('show_videos',['slug' => $lastestVideo->slug ])}}">
+                                    {{--<img src="{{ asset('videos/' . $lastVideo->id . '/165x90_' . $lastVideo->thumbnail)}}"   />--}}
+                                    <img src="img/video-manset/related-img.jpg" alt="">
+                                    <i class="icon"></i>
+                                    <span class="c-text">{{$lastestVideo->name}}</span>
+                                </a>
+                            </div><!-- /.r-box -->
+                        </div><!-- /. -->
+                    @endforeach
 
                 </div><!-- /.row -->
             </div><!-- /.videos -->
+
+            @if($categoryVideos)
+                <div class="videos">
+                    <div class="title-section">
+                        <h1>
+                            <span>Categories Other Videos</span>
+                            <a href="video-details.html" class="btn btn-primary btn-xs m-v-btn">Daha fazla</a>
+                        </h1>
+                    </div><!-- /.title-section -->
+                    <div class="row">
+                        @foreach($categoryVideos  as $categoryVideo)
+
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <div class="r-box">
+                                    <a href="{{route('show_videos',['slug' => $categoryVideo->slug ])}}">
+                                        {{--<img src="{{ asset('videos/' . $lastVideo->id . '/165x90_' . $lastVideo->thumbnail)}}"   />--}}
+                                        <img src="img/video-manset/related-img.jpg" alt="">
+                                        <i class="icon"></i>
+                                        <span class="c-text">{{$categoryVideo->name}}</span>
+                                    </a>
+                                </div><!-- /.r-box -->
+                            </div><!-- /. -->
+
+                        @endforeach
+                    </div><!-- /.row -->
+                </div><!-- /.videos -->
+            @endif
+
         </div>
     </article><!-- /.article -->
 

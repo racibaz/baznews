@@ -33,6 +33,16 @@
                 </div>
 
                 <div class="panel-body">
+
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('video_category_id', trans('news::news.video_category_id'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::select('video_category_id', $videoCategoryList , $record->video_category_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="row">
                             {!! Form::label('video_gallery_id', trans('news::news.video_gallery_id'),['class'=> 'col-lg-2 control-label']) !!}

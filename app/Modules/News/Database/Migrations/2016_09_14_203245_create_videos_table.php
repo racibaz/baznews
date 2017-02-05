@@ -15,6 +15,7 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('video_category_id')->nullable();
             $table->unsignedInteger('video_gallery_id')->nullable();
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
@@ -30,7 +31,8 @@ class CreateVideosTable extends Migration
             $table->softDeletes();
 
             // Keys
-            $table->foreign('video_gallery_id')->references('id')->on('video_galleries')->onDelete('set null')->onUpdate('set null');
+            $table->foreign('video_category_id')->references('id')->on('video_categories')->onDelete('set null');
+            $table->foreign('video_gallery_id')->references('id')->on('video_galleries')->onDelete('set null');
         });
 
         Schema::create('news_videos', function (Blueprint $table) {

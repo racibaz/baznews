@@ -35,9 +35,13 @@ class VideoGalleryController extends Controller
             $firstVideo = $videoGallery->videos->first();
 
             $videoRepository = new VideoRepository();
-            $lastVideos = $videoRepository->orderBy('updated_at','desc')->limit(6)->findAll();
+            $lastVideos = $videoRepository->orderBy('updated_at','desc')->findAll()->take(6);
 
             $videoCount = $videoRepository->where('is_active',1)->findAll()->count();
+
+            /*todo random methodu verilen parametre kadar kayıt yoksa hata veriyor.
+             *
+             * */
             $randomVideos = $videoRepository->where('is_active',1)->findAll()->random(3);
 
             $videoCategoryRepository = new VideoCategoryRepository();

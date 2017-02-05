@@ -38,6 +38,11 @@ class VideoCategory extends Model
         return $this->hasMany('App\Modules\News\Models\VideoGallery');
     }
 
+    public function videos()
+    {
+        return $this->hasMany('App\Modules\News\Models\Video');
+    }
+
     public static function validate($input) {
         $rules = array(
             'name'                     => 'required',

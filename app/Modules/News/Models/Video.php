@@ -33,8 +33,13 @@ class Video extends Model
      *
      *
      * */
-    protected $fillable = ['video_gallery_id', 'name', 'slug', 'subtitle', 'thumbnail', 'file', 'link', 'content', 'keywords', 'order', 'is_active'];
+    protected $fillable = [ 'video_category_id', 'video_gallery_id', 'name', 'slug', 'subtitle', 'thumbnail', 'file', 'link', 'content', 'keywords', 'order', 'is_active'];
     protected $dates = ['created_at','updated_at','deleted_at'];
+
+    public function video_category()
+    {
+        return $this->belongsTo('App\Modules\News\Models\VideoCategory');
+    }
 
     public function video_gallery()
     {

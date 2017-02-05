@@ -3,6 +3,8 @@
 namespace App\Modules\News\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Modules\News\Models\VideoCategory;
+use App\Modules\News\Repositories\VideoCategoryRepository;
 use App\Modules\News\Repositories\VideoRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
@@ -22,8 +24,10 @@ class VideoController extends Controller
 
         return Cache::remember('video:'.$id, 100, function() use($id) {
 
+            $categoryVideos = null;
+
             $video = $this->repo
-                ->with(['video_gallery','tags'])
+                ->with(['video_category', 'video_gallery','tags'])
                 ->where('is_active', 1)
                 ->findBy('id',$id);
 
@@ -33,9 +37,6 @@ class VideoController extends Controller
 
             $firstVideo = $videoGallery->videos->first();
 
-            $lastVideo = $videoGallery->videos
-                ->take(-1)
-                ->first();
 
             $nextVideo = $videoGallery->videos->filter(function($galleryVideo) use($video){
 
@@ -53,6 +54,14 @@ class VideoController extends Controller
 
             $otherGalleryVideos = $this->repo->whereNotIn('id', (array) $video->id)->findAll();
 
+            $lastestVideos = $this->repo->orderBy('updated_at', 'desc')->findAll()->take(10);
+
+            if(!empty($video->video_category)) {
+                $categoryVideos = $video->video_category->videos->where('is_active', 1)->take(10);
+            }
+
+
+
             //todo is set video's videocategory area for video category relations
             if(!empty($videoGallery->video_category)) {
                 $videoGallery->video_category;
@@ -65,7 +74,9 @@ class VideoController extends Controller
                 'tags',
                 'previousVideo',
                 'nextVideo',
-                'otherGalleryVideos'
+                'otherGalleryVideos',
+                'lastestVideos',
+                'categoryVideos',
             ]))->render();
         });
 
