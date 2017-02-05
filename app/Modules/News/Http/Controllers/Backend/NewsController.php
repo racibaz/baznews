@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
+use phpDocumentor\Reflection\Types\Integer;
 
 class NewsController extends Controller
 {
@@ -708,6 +709,13 @@ class NewsController extends Controller
 
         Session::flash('flash_message', trans('common.force_deleted'));
         return redirect()->back();
+    }
+
+
+    public function forgetCache()
+    {
+        $this->repo->forgetCache();
+        return Redirect::back();
     }
 
 

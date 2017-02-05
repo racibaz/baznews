@@ -4,9 +4,16 @@
     <div class="row">
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
-                <a href="{{ route('photo_gallery.create') }}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> {{ trans('common.create') }}
-                </a>
+                @if(Auth::user()->can('create-photogallery'))
+                    <a href="{{ route('photo_gallery.create') }}" class="btn btn-success">
+                        <i class="fa fa-plus"></i> {{ trans('common.create') }}
+                    </a>
+                @endif
+                @if(Auth::user()->can('forgetCache-photogallery'))
+                    <a href="{{ route('forget_photo_gallery_cache') }}" class="btn btn-info">
+                        <i class="fa fa-plus"></i> {{ trans('news::photo_gallery.forget_photo_gallery_cache') }}
+                    </a>
+                @endif
             </div>
             <div class="box">
                 <div class="box-header">

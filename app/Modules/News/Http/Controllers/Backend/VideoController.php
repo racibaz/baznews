@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Library\Uploader;
 use App\Models\Tag;
 use App\Modules\News\Models\Video;
+use App\Modules\News\Models\VideoCategory;
 use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\VideoRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
+use Pbmedia\LaravelFFMpeg\FFMpeg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -79,6 +81,7 @@ class VideoController extends Controller
     public function edit(Video $record)
     {
         $tagIDs = [];
+        $videoCategoryList = VideoCategory::videoCategoryList();
         $videoGalleryList = VideoGallery::videoGalleryList();
         $tagList = Tag::tagList();
 
@@ -86,8 +89,29 @@ class VideoController extends Controller
             $tagIDs[$index] = $tag->id;
         }
 
+//        $media = FFMpeg::open(asset('1.pm4'));
+//        $frame = $media->getFrameFromString('00:00:03.37');
+//        dd($frame);
+
+
+
+
+
+//        $ffmpeg = new FFMpeg();
+
+
+
+//        FFMpeg::fromDisk('videos')
+//            ->open('1.mp4')
+//            ->getFrameFromSeconds(10)
+//            ->export()
+//            ->toDisk(public_path())
+//            ->save('FrameAt10sec.png');
+
+
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
             'record',
+            'videoCategoryList',
             'videoGalleryList',
             'tagList',
             'tagIDs',
@@ -112,9 +136,21 @@ class VideoController extends Controller
     {
         $input = Input::all();
 
+        /*todo
+         *
+         * migrate schema da set null ve cascade parametrelerini demememe rağmen
+         * null olarak kayıt yaptırmaya çalıştığmızda hata veriyor.
+        */
+        if(empty($input['video_category_id']))
+            unset($input['video_category_id']);
+
+        if(empty($input['video_gallery_id']))
+            unset($input['video_gallery_id']);
+
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         $v = Video::validate($input);
+
 
         if ($v->fails()) {
             return Redirect::back()
@@ -164,6 +200,31 @@ class VideoController extends Controller
                     Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
                         ->resize(457, 250)
                         ->save(public_path('videos/'. $result[1]->id .'/257x250_' . $document_name));
+
+
+
+
+
+
+//                    $ffmpeg = FFMpeg::create();
+//                    $video = $ffmpeg->open('video.mpg');
+//                    $video
+//                        ->filters()
+//                        ->resize(new FFMpeg\Coordinate\Dimension(320, 240))
+//                        ->synchronize();
+//                    $video
+//                        ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(10))
+//                        ->save('frame.jpg');
+//                    $video
+//                        ->save(new FFMpeg\Format\Video\X264(), 'export-x264.mp4')
+//                        ->save(new FFMpeg\Format\Video\WMV(), 'export-wmv.wmv')
+//                        ->save(new FFMpeg\Format\Video\WebM(), 'export-webm.webm');
+
+
+
+
+
+
                 }
 
 

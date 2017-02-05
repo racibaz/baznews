@@ -3,6 +3,8 @@
 namespace App\Modules\News\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Modules\News\Models\VideoCategory;
+use App\Modules\News\Repositories\VideoCategoryRepository;
 use App\Modules\News\Repositories\VideoRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
@@ -18,27 +20,46 @@ class VideoController extends Controller
 
     public function getVideoBySlug($slug)
     {
-        return Cache::remember('video:'.$slug, 100, function() use($slug) {
+        $id =  substr(strrchr($slug, '-'), 1 );
 
-            $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
+        return Cache::remember('video:'.$id, 100, function() use($id) {
+
+            $categoryVideos = null;
 
             $video = $this->repo
-                ->with(['video_gallery','tags'])
+                ->with(['video_category', 'video_gallery','tags'])
                 ->where('is_active', 1)
-                ->findBy('slug',$slug);
+                ->findBy('id',$id);
 
 
             $videoGallery = $video->video_gallery;
             $tags = $video->tags;
 
-            $previousVideoID =  $video::where('order', '<', $video->order)->min('id');
-            $nextVideoID =  $video::where('order', '>', $video->order)->min('id');
+            $firstVideo = $videoGallery->videos->first();
 
-            $previousVideo = $this->repo->with(['video_gallery'])->find($previousVideoID);
-            $nextVideo = $this->repo->with(['video_gallery'])->find($nextVideoID);
 
+            $nextVideo = $videoGallery->videos->filter(function($galleryVideo) use($video){
+
+                return $galleryVideo->id > $video->id;
+            })->first();
+
+            $nextVideo = !isset($nextVideo) ? $firstVideo : $nextVideo;
+
+            $previousVideo = $videoGallery->videos->filter(function($galleryVideo) use($video){
+
+                return $galleryVideo->id < $video->id;
+            })->first();
+
+            $previousVideo = !isset($previousVideo) ? $firstVideo : $previousVideo;
 
             $otherGalleryVideos = $this->repo->whereNotIn('id', (array) $video->id)->findAll();
+
+            $lastestVideos = $this->repo->orderBy('updated_at', 'desc')->findAll()->take(10);
+
+            if(!empty($video->video_category)) {
+                $categoryVideos = $video->video_category->videos->where('is_active', 1)->take(10);
+            }
+
 
 
             //todo is set video's videocategory area for video category relations
@@ -46,13 +67,16 @@ class VideoController extends Controller
                 $videoGallery->video_category;
             }
 
+
             return Theme::view('news::frontend.video.video', compact([
                 'video',
                 'videoGallery',
                 'tags',
                 'previousVideo',
                 'nextVideo',
-                'otherGalleryVideos'
+                'otherGalleryVideos',
+                'lastestVideos',
+                'categoryVideos',
             ]))->render();
         });
 

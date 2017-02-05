@@ -360,4 +360,11 @@ class PhotoGalleryController extends Controller
     }
 
 
+    public function forgetCache()
+    {
+        $this->repo->forgetCache();
+        return Redirect::back();
+    }
+
+
 }

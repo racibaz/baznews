@@ -42,20 +42,25 @@
                                         controls preload="auto" width="640" height="264"
                                         poster="http://video-js.zencoder.com/oceans-clip.png"
                                         data-setup='{"example_option":true}'>
-                                        <source src="{{url($video->file)}}" type="video/mp4" />
-                                        {{--<source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm" />--}}
+
+
+                                        <source src="{{asset('video_gallery/' . $video_gallery->id . '/videos/' . $video->file)}}" type="video/mp4" />
+                                        <source src="{{asset('video_gallery/' . $video_gallery->id . '/videos/' . $video->file)}}" type="video/webm" />
                                         {{--<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />--}}
                                         <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
                                     </video>
                                 @elseif(!empty($video->link))
-                                    <video
-                                        id="{{$video->id}}"
-                                        class="video-js vjs-default-skin"
-                                        controls
-                                        width="640" height="264"
-                                        data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'>
+
+                                    {!! $video->link !!}
+
+                                    {{--<video--}}
+                                        {{--id="{{$video->id}}"--}}
+                                        {{--class="video-js vjs-default-skin"--}}
+                                        {{--controls--}}
+                                        {{--width="640" height="264"--}}
+                                        {{--data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'>--}}
                                         {{--data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'--}}
-                                    </video>
+                                    {{--</video>--}}
                                 @endif
 
                                 {!! Form::text('subtitle/'. $video->id, $video->subtitle, ['placeholder' => trans('news::video_gallery.subtitle') ,'class' => 'form-control']) !!}
@@ -72,7 +77,7 @@
     </div><!-- end row -->
 
 
-    {!! Form::open(['route' => 'addMultiVideos','method' => 'post', 'class' => 'dropzone', 'id' => 'addVideos', 'files' => 'true']) !!}
+    {!! Form::open(['route' => 'addMultiVideos','method' => 'post', 'class' => 'dropzone', 'id' => 'addVideos', 'files' => 'true','enctype' => 'multipart/form-data']) !!}
 
         {{ csrf_field() }}
 
@@ -93,7 +98,7 @@
     <script>
         Dropzone.options.addVideos = {
 
-            maxFileSize: 12,
+            maxFileSize: 120,
             acceptedFiles : 'video/*',
             success: function (file, response) {
 

@@ -51,35 +51,22 @@
 
                             <div class="player">
 
-                                {{--@if(!empty($video->thumbnail))--}}
-                                    {{--<video id="{{$video->id}}"--}}
-                                           {{--class="video-js vjs-default-skin"--}}
-                                           {{--controls preload="auto"--}}
-                                           {{--poster="http://video-js.zencoder.com/oceans-clip.png"--}}
-                                           {{--data-setup='{"example_option":true}'>--}}
-                                        {{--<source src="{{url($video->file)}}" type="video/mp4" />--}}
-                                        {{--<source src="{{url($video->file)}}" type="video/webm" />--}}
-                                        {{--<source src="{{url($video->file)}}" type="video/ogg" />--}}
-                                        {{--<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />--}}
-                                        {{--<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>--}}
-                                    {{--</video>--}}
-                                {{--@elseif(!empty($video->link))--}}
-                                    {{--<video--}}
-                                            {{--id="{{$video->id}}"--}}
-                                            {{--class="video-js vjs-default-skin"--}}
-                                            {{--controls--}}
-                                            {{--data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'--}}
-                                            {{--data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'>--}}
-                                    {{--</video>--}}
-                                {{--@endif--}}
+                                @if(!empty($video->file))
+                                    <video id="{{$video->id}}"
+                                           class="video-js vjs-default-skin"
+                                           controls preload="auto" width="640" height="264"
+                                           poster="http://video-js.zencoder.com/oceans-clip.png"
+                                           data-setup='{"example_option":true}'>
 
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/mp4" />
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/webm" />
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/ogg" />
 
-                                <video
-                                        id="{{$video->id}}"
-                                        class="video-js vjs-default-skin"
-                                        controls
-                                        data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'>
-                                </video>
+                                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                                    </video>
+                                @elseif(!empty($video->link))
+                                    {!! $video->link !!}
+                                @endif
 
                             </div>
 
@@ -309,112 +296,56 @@
             <div class="videos">
                 <div class="title-section">
                     <h1>
-                        <span>Categories Other Videos</span>
+                        <span>Lastest Videos</span>
                         <a href="video-details.html" class="btn btn-primary btn-xs m-v-btn">Daha fazla</a>
                     </h1>
                 </div><!-- /.title-section -->
                 <div class="row">
 
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
+                    @foreach($lastestVideos  as $lastestVideo)
 
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="#">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="#">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="video-details.html">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
-
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="r-box">
-                            <a href="#">
-                                <img src="img/video-manset/related-img.jpg" alt="">
-                                <i class="icon"></i>
-                                <span class="c-text">
-                            Cras Nullam Vulputate Cras
-                        </span>
-                            </a>
-                        </div><!-- /.r-box -->
-                    </div><!-- /. -->
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <div class="r-box">
+                                <a href="{{route('show_videos',['slug' => $lastestVideo->slug ])}}">
+                                    {{--<img src="{{ asset('videos/' . $lastVideo->id . '/165x90_' . $lastVideo->thumbnail)}}"   />--}}
+                                    <img src="img/video-manset/related-img.jpg" alt="">
+                                    <i class="icon"></i>
+                                    <span class="c-text">{{$lastestVideo->name}}</span>
+                                </a>
+                            </div><!-- /.r-box -->
+                        </div><!-- /. -->
+                    @endforeach
 
                 </div><!-- /.row -->
             </div><!-- /.videos -->
+
+            @if($categoryVideos)
+                <div class="videos">
+                    <div class="title-section">
+                        <h1>
+                            <span>Categories Other Videos</span>
+                            <a href="video-details.html" class="btn btn-primary btn-xs m-v-btn">Daha fazla</a>
+                        </h1>
+                    </div><!-- /.title-section -->
+                    <div class="row">
+                        @foreach($categoryVideos  as $categoryVideo)
+
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <div class="r-box">
+                                    <a href="{{route('show_videos',['slug' => $categoryVideo->slug ])}}">
+                                        {{--<img src="{{ asset('videos/' . $lastVideo->id . '/165x90_' . $lastVideo->thumbnail)}}"   />--}}
+                                        <img src="img/video-manset/related-img.jpg" alt="">
+                                        <i class="icon"></i>
+                                        <span class="c-text">{{$categoryVideo->name}}</span>
+                                    </a>
+                                </div><!-- /.r-box -->
+                            </div><!-- /. -->
+
+                        @endforeach
+                    </div><!-- /.row -->
+                </div><!-- /.videos -->
+            @endif
+
         </div>
     </article><!-- /.article -->
 
