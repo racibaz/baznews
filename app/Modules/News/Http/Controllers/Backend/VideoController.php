@@ -10,12 +10,12 @@ use App\Modules\News\Models\VideoCategory;
 use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\VideoRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Pbmedia\LaravelFFMpeg\FFMpeg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
+use Lakshmajim\Thumbnail\Facade\Thumbnail;
 
 class VideoController extends Controller
 {
@@ -88,25 +88,6 @@ class VideoController extends Controller
         foreach ($record->tags as $index => $tag){
             $tagIDs[$index] = $tag->id;
         }
-
-//        $media = FFMpeg::open(asset('1.pm4'));
-//        $frame = $media->getFrameFromString('00:00:03.37');
-//        dd($frame);
-
-
-
-
-
-//        $ffmpeg = new FFMpeg();
-
-
-
-//        FFMpeg::fromDisk('videos')
-//            ->open('1.mp4')
-//            ->getFrameFromSeconds(10)
-//            ->export()
-//            ->toDisk(public_path())
-//            ->save('FrameAt10sec.png');
 
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
@@ -206,19 +187,39 @@ class VideoController extends Controller
 
 
 
-//                    $ffmpeg = FFMpeg::create();
-//                    $video = $ffmpeg->open('video.mpg');
-//                    $video
-//                        ->filters()
-//                        ->resize(new FFMpeg\Coordinate\Dimension(320, 240))
-//                        ->synchronize();
-//                    $video
-//                        ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(10))
-//                        ->save('frame.jpg');
-//                    $video
-//                        ->save(new FFMpeg\Format\Video\X264(), 'export-x264.mp4')
-//                        ->save(new FFMpeg\Format\Video\WMV(), 'export-wmv.wmv')
-//                        ->save(new FFMpeg\Format\Video\WebM(), 'export-webm.webm');
+
+                    $thumbnail_path   = asset('video_gallery/' . $record->video_gallery_id . '/photos') ;
+
+                    $video_path       = asset('video_gallery/' . $record->video_gallery_id . '/videos/' . $record->file);
+
+
+                    // set thumbnail image name
+                    $thumbnail_image  = asset('thumbnail_time.jpg');
+
+                    // set the thumbnail image "palyback" video button
+                    $water_mark       = public_path() . '/player.png';
+
+                    // get video length and process it
+                    // assign the value to time_to_image (which will get screenshot of video at that specified seconds)
+                    $time_to_image    = floor(1000/2);
+
+
+
+                    $thumbnail_status = Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image,160,128,$time_to_image,$water_mark,true);
+
+
+                    dd($thumbnail_status);
+
+
+                    if($thumbnail_status)
+                    {
+                        echo "Thumbnail generated";
+                    }
+                    else
+                    {
+                        echo "thumbnail generation has failed";
+                    }
+
 
 
 

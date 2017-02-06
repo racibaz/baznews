@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
+use Lakshmajim\Thumbnail\Facade\Thumbnail;
 
 class VideoGalleryController extends Controller
 {
@@ -213,6 +214,44 @@ class VideoGalleryController extends Controller
         list($status, $instance) = $videoRepo->update($video->id,[
             'name' => $name
         ]);
+
+
+
+
+
+
+        $thumbnail_path   = public_path() . '/video_gallery/' . 1 . '/photos';
+
+        $video_path       = public_path() . '/video_gallery/' . 1 . '/videos/' . $video->file;
+
+        // set thumbnail image name
+        $thumbnail_image  = 'thumbnail_time' . ".jpg";
+
+        // set the thumbnail image "palyback" video button
+        $water_mark       = public_path() . '/player.png';
+
+        // get video length and process it
+        // assign the value to time_to_image (which will get screenshot of video at that specified seconds)
+        $time_to_image    = floor(1000/2);
+
+
+
+        $thumbnail_status = Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image,160,128,$time_to_image,$water_mark,true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         return $video;
     }

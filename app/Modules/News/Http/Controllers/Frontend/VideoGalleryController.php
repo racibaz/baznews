@@ -41,8 +41,19 @@ class VideoGalleryController extends Controller
 
             /*todo random methodu verilen parametre kadar kayıt yoksa hata veriyor.
              *
+             * Geçici çözüm olarak 3 ten fazla kayıt yoksa gösterilmiyor.
              * */
-            $randomVideos = $videoRepository->where('is_active',1)->findAll()->random(3);
+
+            if($videoCount > 3){
+
+                $randomVideos = $videoRepository
+                    ->where('is_active',1)
+                    ->findAll()
+                    ->random(3);
+            }else{
+                $randomVideos = null;
+            }
+
 
             $videoCategoryRepository = new VideoCategoryRepository();
             $videoCategories = $videoCategoryRepository->where('is_cuff',1)->where('is_active',1)->findAll();

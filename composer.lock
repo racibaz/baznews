@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e10892a766dabccdc76dc3db0f5585e",
+    "content-hash": "29191240cb1599f46bc3d9f9f551dee8",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -1432,6 +1432,51 @@
             "time": "2017-01-25T12:10:19+00:00"
         },
         {
+            "name": "lakshmajim/thumbnail",
+            "version": "v1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lakshmajim/Thumbnail.git",
+                "reference": "582a76925737f64235d5960a1585bdaefa58eb03"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lakshmajim/Thumbnail/zipball/582a76925737f64235d5960a1585bdaefa58eb03",
+                "reference": "582a76925737f64235d5960a1585bdaefa58eb03",
+                "shasum": ""
+            },
+            "require": {
+                "php-ffmpeg/php-ffmpeg": "~0.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lakshmajim\\Thumbnail\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "lakshmajim",
+                    "email": "lakshmaji9@gmail.com"
+                }
+            ],
+            "description": "Thumbnails for videos",
+            "keywords": [
+                "Thumbnails",
+                "composer",
+                "ffmpeg",
+                "laravel",
+                "screenshot",
+                "thumbnail",
+                "video"
+            ],
+            "time": "2017-01-31T07:06:43+00:00"
+        },
+        {
             "name": "laravel-notification-channels/pusher-push-notifications",
             "version": "1.0.2",
             "source": {
@@ -2448,60 +2493,6 @@
             "time": "2016-11-07T23:38:38+00:00"
         },
         {
-            "name": "pbmedia/laravel-ffmpeg",
-            "version": "1.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pascalbaljetmedia/laravel-ffmpeg.git",
-                "reference": "9a290e5587ec948b00a9a33e74da9f32a3809c56"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pascalbaljetmedia/laravel-ffmpeg/zipball/9a290e5587ec948b00a9a33e74da9f32a3809c56",
-                "reference": "9a290e5587ec948b00a9a33e74da9f32a3809c56",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/config": "^5.1",
-                "illuminate/filesystem": "^5.1",
-                "illuminate/log": "^5.1",
-                "league/flysystem": "^1.0",
-                "php": "^7.0",
-                "php-ffmpeg/php-ffmpeg": "~0.6",
-                "symfony/process": "^2.5|^3.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9.5",
-                "phpunit/phpunit": "5.*",
-                "scrutinizer/ocular": "^1.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Pbmedia\\LaravelFFMpeg\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Pascal Baljet",
-                    "email": "pascal@pascalbaljetmedia.com",
-                    "homepage": "http://www.pascalbaljetmedia.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "FFMpeg for Laravel 5.1 and higher",
-            "homepage": "https://github.com/pbmedia/laravel-ffmpeg",
-            "keywords": [
-                "laravel-ffmpeg",
-                "pbmedia"
-            ],
-            "time": "2017-01-29T14:54:45+00:00"
-        },
-        {
             "name": "php-ffmpeg/php-ffmpeg",
             "version": "0.8.0",
             "source": {
@@ -3296,16 +3287,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "4.4.7",
+            "version": "4.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "5720c41fa58fd14f157c93fb31b80243ecb13063"
+                "reference": "a586f84620daaa46a7a2de93b9ca939df99653cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/5720c41fa58fd14f157c93fb31b80243ecb13063",
-                "reference": "5720c41fa58fd14f157c93fb31b80243ecb13063",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/a586f84620daaa46a7a2de93b9ca939df99653cb",
+                "reference": "a586f84620daaa46a7a2de93b9ca939df99653cb",
                 "shasum": ""
             },
             "require": {
@@ -3358,7 +3349,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2017-02-04T16:12:28+00:00"
+            "time": "2017-02-06T13:48:00+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -3580,7 +3571,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -3640,7 +3631,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -5299,16 +5290,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.10",
+            "version": "5.7.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "bf0804199f516fe80ffcc48ac6d4741c49baeb6e"
+                "reference": "a6ad2472daba76b0689042b7709f86d4f06bcaab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/bf0804199f516fe80ffcc48ac6d4741c49baeb6e",
-                "reference": "bf0804199f516fe80ffcc48ac6d4741c49baeb6e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a6ad2472daba76b0689042b7709f86d4f06bcaab",
+                "reference": "a6ad2472daba76b0689042b7709f86d4f06bcaab",
                 "shasum": ""
             },
             "require": {
@@ -5377,7 +5368,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-02-04T09:03:53+00:00"
+            "time": "2017-02-05T15:31:31+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -5953,16 +5944,16 @@
         },
         {
             "name": "symfony/class-loader",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/class-loader.git",
-                "reference": "0152f7a47acd564ca62c652975c2b32ac6d613a6"
+                "reference": "2847d56f518ad5721bf85aa9174b3aa3fd12aa03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/class-loader/zipball/0152f7a47acd564ca62c652975c2b32ac6d613a6",
-                "reference": "0152f7a47acd564ca62c652975c2b32ac6d613a6",
+                "url": "https://api.github.com/repos/symfony/class-loader/zipball/2847d56f518ad5721bf85aa9174b3aa3fd12aa03",
+                "reference": "2847d56f518ad5721bf85aa9174b3aa3fd12aa03",
                 "shasum": ""
             },
             "require": {
@@ -6005,7 +5996,7 @@
             ],
             "description": "Symfony ClassLoader Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-10T14:14:38+00:00"
+            "time": "2017-01-21T17:06:35+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -6118,16 +6109,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "50eadbd7926e31842893c957eca362b21592a97d"
+                "reference": "e1718c6bf57e1efbb8793ada951584b2ab27775b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/50eadbd7926e31842893c957eca362b21592a97d",
-                "reference": "50eadbd7926e31842893c957eca362b21592a97d",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/e1718c6bf57e1efbb8793ada951584b2ab27775b",
+                "reference": "e1718c6bf57e1efbb8793ada951584b2ab27775b",
                 "shasum": ""
             },
             "require": {
@@ -6169,7 +6160,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-03T13:51:32+00:00"
+            "time": "2017-01-21T17:06:35+00:00"
         }
     ],
     "aliases": [],

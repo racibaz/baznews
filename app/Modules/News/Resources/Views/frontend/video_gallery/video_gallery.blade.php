@@ -86,18 +86,19 @@
                     </h1>
                 </div><!-- /.title-section -->
                 <div class="row">
-
-                    @foreach($randomVideos as $randomVideo)
-                        <div class="col-md-2 col-sm-4 col-xs-6">
-                            <div class="r-box">
-                                <a href="{{route('show_videos',['slug' => $randomVideo->slug ])}}">
-                                    <img src="{{ asset('videos/' . $randomVideo->id . '/165x90_' . $randomVideo->thumbnail)}}"   />
-                                    <i class="icon"></i>
-                                    <span class="c-text">{{$randomVideo->name}}</span>
-                                </a>
-                            </div><!-- /.r-box -->
-                        </div><!-- /. -->
-                    @endforeach
+                    @if($randomVideos)
+                        @foreach($randomVideos as $randomVideo)
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <div class="r-box">
+                                    <a href="{{route('show_videos',['slug' => $randomVideo->slug ])}}">
+                                        <img src="{{ asset('videos/' . $randomVideo->id . '/165x90_' . $randomVideo->thumbnail)}}"   />
+                                        <i class="icon"></i>
+                                        <span class="c-text">{{$randomVideo->name}}</span>
+                                    </a>
+                                </div><!-- /.r-box -->
+                            </div><!-- /. -->
+                        @endforeach
+                    @endif
                 </div><!-- /.row -->
             </div><!-- /.videos -->
 
