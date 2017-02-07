@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-02-05.
+    * Generated on 2017-02-07.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -100,11 +100,12 @@ namespace PHPSTORM_META {
             'arrilot.widget-group-collection' instanceof \Arrilot\Widgets\WidgetGroupCollection,
             'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
+            'thumbnail' instanceof \Lakshmajim\Thumbnail\Thumbnail,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
-            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
+            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\PusherBroadcaster,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
@@ -278,11 +279,12 @@ namespace PHPSTORM_META {
             'arrilot.widget-group-collection' instanceof \Arrilot\Widgets\WidgetGroupCollection,
             'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
+            'thumbnail' instanceof \Lakshmajim\Thumbnail\Thumbnail,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
-            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
+            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\PusherBroadcaster,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
@@ -456,11 +458,12 @@ namespace PHPSTORM_META {
             'arrilot.widget-group-collection' instanceof \Arrilot\Widgets\WidgetGroupCollection,
             'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
+            'thumbnail' instanceof \Lakshmajim\Thumbnail\Thumbnail,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
-            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
+            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\PusherBroadcaster,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
@@ -634,11 +637,12 @@ namespace PHPSTORM_META {
             'arrilot.widget-group-collection' instanceof \Arrilot\Widgets\WidgetGroupCollection,
             'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
+            'thumbnail' instanceof \Lakshmajim\Thumbnail\Thumbnail,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
-            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
+            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\PusherBroadcaster,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,

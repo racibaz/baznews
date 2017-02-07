@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.30 on 2017-02-05.
+ * Generated for Laravel 5.3.30 on 2017-02-07.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -13959,6 +13959,53 @@ namespace {
         public static function getDrivers(){
             //Method inherited from \Illuminate\Support\Manager            
             return \Laravel\Socialite\SocialiteManager::getDrivers();
+        }
+        
+    }
+
+
+    class Thumbnail extends \Lakshmajim\Thumbnail\Facade\Thumbnail{
+        
+        /**
+         * Create Thumbnail Image
+         * 
+         * Create a new image from video source based on the specified parameters.
+         * This method will allows video to convert to image.
+         * This method will add watermark to image
+         *
+         * @access public
+         * @since Method available since Release 1.0.0
+         * @param \Lakshmajim\Thumbnail\video_path  Video resource source path
+         * @param \Lakshmajim\Thumbnail\storage_path  Image resource destination path
+         * @param \Lakshmajim\Thumbnail\thumbnail_name  Image name for output
+         * @param \Lakshmajim\Thumbnail\height  [optional]
+         * @param \Lakshmajim\Thumbnail\width  [optional]
+         * @param \Lakshmajim\Thumbnail\tts  Time to take screenshot                 [optional]
+         * @param \Lakshmajim\Thumbnail\water_mark  Thmbnail paly button image              [optional]
+         * @param \Lakshmajim\Thumbnail\wm  if true the only it inserts play button [optional]
+         * @author lakshmajim <lakshmajee88@gmail.com>
+         * @return boolean 
+         * @static 
+         */
+        public static function getThumbnail($video_path, $storage_path, $thumnail_name, $height = 320, $width = 240, $tts = 50, $water_mark = '', $wm = false){
+            return \Lakshmajim\Thumbnail\Thumbnail::getThumbnail($video_path, $storage_path, $thumnail_name, $height, $width, $tts, $water_mark, $wm);
+        }
+        
+        /**
+         * Clips the given video
+         * 
+         * Create a new clipped video from the given video
+         *
+         * @access public
+         * @since Method available since Release 1.4.1
+         * @param \Lakshmajim\Thumbnail\src  Video resource source path
+         * @param \Lakshmajim\Thumbnail\dest  Video resource destination path
+         * @author lakshmajim <lakshmajee88@gmail.com>
+         * @return boolean 
+         * @static 
+         */
+        public static function clip($src, $dest){
+            return \Lakshmajim\Thumbnail\Thumbnail::clip($src, $dest);
         }
         
     }

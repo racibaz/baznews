@@ -13,9 +13,9 @@ use Caffeinated\Themes\Facades\Theme;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 
 class VideoGalleryController extends Controller
@@ -111,9 +111,6 @@ class VideoGalleryController extends Controller
                 $result = $this->repo->update($record->id,$input);
             } else {
                 $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
             }
             if ($result[0]) {
 
@@ -221,7 +218,7 @@ class VideoGalleryController extends Controller
 
     public function updateGalleryVideos(Request $request)
     {
-        $subtitle = $content = null;
+        $subtitle = $content = $order = $isActive = $link =   null;
 
         $inputs = Input::all();
 
@@ -260,6 +257,58 @@ class VideoGalleryController extends Controller
                 }else if($field == 'content'){
 
                     $content = $inputs[$key];
+
+                }else if($field == 'link'){
+
+                    $link = $inputs[$key];
+
+                }else if($field == 'order'){
+
+                    $order = $inputs[$key];
+
+                }else if($field == 'is_active'){
+
+                    $isActive = $inputs[$key] == "on" ? true : false;
+
+                }else if($field == 'thumbnail'){
+
+                    $record = Video::find($id);
+
+                    $oldPath = !empty($record->thumbnail) ? $record->thumbnail : null;
+                    $document_name = $inputs['thumbnail/'. $record->id]->getClientOriginalName();
+                    $destination = '/video_gallery/'. $record->video_gallery_id .'/photos';
+                    Uploader::fileUpload($record , 'thumbnail', $inputs['thumbnail/'. $record->id] , $destination , $document_name);
+                    Uploader::removeFile($oldPath);
+
+
+                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                        ->resize(58,58)
+                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/58x58_' . $document_name));
+
+                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                        ->resize(497,358)
+                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/497x358_' . $document_name));
+
+                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                        ->resize(658,404)
+                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/658x404_' . $document_name));
+
+                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                        ->resize(224,195)
+                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/224x195_' . $document_name));
+
+                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                        ->resize(165,90)
+                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/165x90_' . $document_name));
+
+                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                        ->resize(457,250)
+                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/257x250_' . $document_name));
+
+                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                        ->resize(213, 116)
+                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/213x116_' . $document_name));
+
                 }
 
                 if(is_numeric($id)){
@@ -269,20 +318,18 @@ class VideoGalleryController extends Controller
                     //video silinmemiş ise işleme devam ediyoruz.
                     if(!empty($video)){
                         //ikisinden biri boş ise önceki değerini veriyoruz.
-                        $video->subtitle =  htmlentities($subtitle) ? htmlentities($subtitle) : $video->subtitle;
-                        $video->content =  htmlentities($content) ? htmlentities($content) : $video->content;
+                        $video->subtitle =  $subtitle ? $subtitle : $video->subtitle;
+                        $video->content =  $content ? $content : $video->content;
+                        $video->link =  $link ? $link : $video->link;
+                        $video->order =  $order ? $order : $video->order;
+                        $video->is_active =  $isActive == true ? true : false;
                         $video->save();
                     }
-
                 }
-
                 //değişkenleri temizliyoruz.
-                $subtitle = null;
-                $content = null;
+                $subtitle = $content = $link = $order = $isActive = null;
             }
-
         }
-
         return Redirect::back();
     }
 
