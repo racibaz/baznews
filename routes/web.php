@@ -107,6 +107,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     ]]);
 
     Route::resource('advertisement', 'Backend\AdvertisementController');
+    Route::resource('widget_group', 'Backend\WidgetGroupController');
 
 });
 
