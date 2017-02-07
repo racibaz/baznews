@@ -1,5 +1,10 @@
 /node_modules
 /public/storage
+/public/video_gallery
+/public/video
+/public/photos
+/public/images
+/public/gallery
 /vendor
 /.idea
 Homestead.json

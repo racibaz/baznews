@@ -10,8 +10,8 @@
                     </a>
                 @endif
                 @if(Auth::user()->can('forgetCache-videogallery'))
-                    <a href="{{ route('forget_photo_gallery_cache') }}" class="btn btn-info">
-                        <i class="fa fa-plus"></i> {{ trans('news::photo_gallery.forget_photo_gallery_cache') }}
+                    <a href="{{ route('forget_video_gallery_cache') }}" class="btn btn-info">
+                        <i class="fa fa-plus"></i> {{ trans('news::video_gallery.forget_video_gallery_cache') }}
                     </a>
                 @endif
             </div>

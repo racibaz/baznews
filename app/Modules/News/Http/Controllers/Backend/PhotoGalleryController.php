@@ -335,8 +335,8 @@ class PhotoGalleryController extends Controller
                     if(isset($photo->id)){
 
                         //ikisinden biri boş ise önceki değerini veriyoruz.
-                        $photo->subtitle =  htmlentities($subtitle) ? htmlentities($subtitle) : $photo->subtitle;
-                        $photo->content =  htmlentities($content) ? htmlentities($content) : $photo->content;
+                        $photo->subtitle =  $subtitle ? $subtitle : $photo->subtitle;
+                        $photo->content =  $content ? $content : $photo->content;
                         $photo->save();
                     }
                 }
