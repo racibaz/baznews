@@ -52,9 +52,9 @@ class VideoController extends Controller
 
             $previousVideo = !isset($previousVideo) ? $firstVideo : $previousVideo;
 
-            $otherGalleryVideos = $this->repo->whereNotIn('id', (array) $video->id)->findAll();
+            $otherGalleryVideos = $this->repo->where('is_active',1)->whereNotIn('id', [$video->id])->findAll()->take(10);
 
-            $lastestVideos = $this->repo->orderBy('updated_at', 'desc')->findAll()->take(10);
+            $lastestVideos = $this->repo->orderBy('updated_at', 'desc')->findAll()->take(20);
 
             if(!empty($video->video_category)) {
                 $categoryVideos = $video->video_category->videos->where('is_active', 1)->take(10);

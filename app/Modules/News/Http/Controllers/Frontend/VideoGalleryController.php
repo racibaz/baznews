@@ -5,7 +5,6 @@ namespace App\Modules\News\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use App\Modules\News\Repositories\VideoCategoryRepository;
 use App\Modules\News\Repositories\VideoGalleryRepository as Repo;
-use App\Modules\News\Repositories\VideoRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
@@ -20,52 +19,32 @@ class VideoGalleryController extends Controller
 
     public function getVideoGalleryBySlug($slug)
     {
-
         $id =  substr(strrchr($slug, '-'), 1 );
 
         return Cache::remember('video_gallery:'.$id, 100, function() use($id) {
 
             $videoGallery = $this->repo
+                ->with(['video_category', 'videos'])
                 ->where('is_active', 1)
                 ->findBy('id',$id);
 
-
+            $otherGalleries = $videoGallery->video_category->video_galleries->where('is_active',1)->where('id', '<>', $videoGallery->id)->take(10);
 
             $galleryVideos = $videoGallery->videos;
             $firstVideo = $videoGallery->videos->first();
+            $lastVideoGalleries = $this->repo->orderBy('updated_at','desc')->findAll()->take(6);
 
-            $videoRepository = new VideoRepository();
-            $lastVideos = $videoRepository->orderBy('updated_at','desc')->findAll()->take(6);
-
-            $videoCount = $videoRepository->where('is_active',1)->findAll()->count();
-
-            /*todo random methodu verilen parametre kadar kayıt yoksa hata veriyor.
-             *
-             * Geçici çözüm olarak 3 ten fazla kayıt yoksa gösterilmiyor.
-             * */
-
-            if($videoCount > 3){
-
-                $randomVideos = $videoRepository
-                    ->where('is_active',1)
-                    ->findAll()
-                    ->random(3);
-            }else{
-                $randomVideos = null;
-            }
-
-
-            $videoCategoryRepository = new VideoCategoryRepository();
-            $videoCategories = $videoCategoryRepository->where('is_cuff',1)->where('is_active',1)->findAll();
+            $videoCategoryRepo = new VideoCategoryRepository();
+            $videoCategories = $videoCategoryRepo->where('is_cuff',1)->where('is_active',1)->findAll();
 
             //todo will be must Popular Videos area
             //todo how to increment hit area?(redis cache)
 
             return Theme::view('news::frontend.video_gallery.video_gallery', compact([
                 'videoGallery',
-                'galleryVideos',
+                'otherGalleries',
                 'firstVideo',
-                'lastVideos',
+                'lastVideoGalleries',
                 'randomVideos',
                 'videoCategories',
             ]))->render();
