@@ -11,5 +11,8 @@ return [
     'active' => 'Aktif',
     'passive' => 'Pasif',
     'status' => 'Durum',
+    'login' => 'Giriş Yap',
+    'register' => 'Kayıt Ol',
+
 
 ];

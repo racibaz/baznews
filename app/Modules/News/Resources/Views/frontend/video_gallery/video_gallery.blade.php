@@ -36,14 +36,14 @@
                     <div class="col col-md-5">
                         <div class="mini-card-boxes">
                             <div class="row">
-                                @foreach($galleryVideos as $video)
+                                @foreach($otherGalleries as $gallery)
                                     <div class="col col-md-6 col-xs-6">
                                             <div class="mini-box">
-                                                <a href="{{route('show_videos',['slug' => $video->slug ])}}">
-                                                    <img src="{{ asset('video_gallery/' . $videoGallery->id . '/photos/224x195_' . $videoGallery->thumbnail)}}" />
+                                                <a href="{{route('show_videos',['slug' => $gallery->videos->first()->slug ])}}">
+                                                    <img src="{{ asset('video_gallery/' . $gallery->id . '/photos/224x195_' . $gallery->thumbnail)}}" />
                                                     <div class="video-title">
                                                         <h3>
-                                                            <span>{{$video->title}}</span>
+                                                            <span>{{$gallery->title}}</span>
                                                         </h3>
                                                     </div>
                                                 </a>
@@ -64,13 +64,13 @@
 
             <div class="videos">
                 <div class="row">
-                    @foreach($lastVideos as $lastVideo)
+                    @foreach($lastVideoGalleries as $lastVideoGallery)
                         <div class="col-md-2 col-sm-4 col-xs-6">
                             <div class="r-box">
-                                <a href="{{route('show_videos',['slug' => $lastVideo->slug ])}}">
-                                    <img src="{{ asset('videos/' . $lastVideo->id . '/165x90_' . $lastVideo->thumbnail)}}"   />
+                                <a href="{{route('show_video_gallery',['slug' => $lastVideoGallery->slug ])}}">
+                                    <img src="{{ asset('video_gallery/' . $lastVideoGallery->id . '/photos/58x58_' . $lastVideoGallery->thumbnail)}}" />
                                     <i class="icon"></i>
-                                    <span class="c-text">{{$lastVideo->name}}</span>
+                                    <span class="c-text">{{$lastVideoGallery->title}}</span>
                                 </a>
                             </div>
                         </div><!-- /.col -->
@@ -86,19 +86,19 @@
                     </h1>
                 </div><!-- /.title-section -->
                 <div class="row">
-                    @if($randomVideos)
-                        @foreach($randomVideos as $randomVideo)
-                            <div class="col-md-2 col-sm-4 col-xs-6">
-                                <div class="r-box">
-                                    <a href="{{route('show_videos',['slug' => $randomVideo->slug ])}}">
-                                        <img src="{{ asset('videos/' . $randomVideo->id . '/165x90_' . $randomVideo->thumbnail)}}"   />
-                                        <i class="icon"></i>
-                                        <span class="c-text">{{$randomVideo->name}}</span>
-                                    </a>
-                                </div><!-- /.r-box -->
-                            </div><!-- /. -->
-                        @endforeach
-                    @endif
+                    {{--@if($randomVideos)--}}
+                        {{--@foreach($randomVideos as $randomVideo)--}}
+                            {{--<div class="col-md-2 col-sm-4 col-xs-6">--}}
+                                {{--<div class="r-box">--}}
+                                    {{--<a href="{{route('show_videos',['slug' => $randomVideo->slug ])}}">--}}
+                                        {{--<img src="{{ asset('videos/' . $randomVideo->id . '/165x90_' . $randomVideo->thumbnail)}}"   />--}}
+                                        {{--<i class="icon"></i>--}}
+                                        {{--<span class="c-text">{{$randomVideo->name}}</span>--}}
+                                    {{--</a>--}}
+                                {{--</div><!-- /.r-box -->--}}
+                            {{--</div><!-- /. -->--}}
+                        {{--@endforeach--}}
+                    {{--@endif--}}
                 </div><!-- /.row -->
             </div><!-- /.videos -->
 

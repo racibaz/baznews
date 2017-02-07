@@ -111,13 +111,14 @@
 
                             @foreach($otherGalleryVideos as $otherGalleryVideo)
                                 <div class="video-link">
-                                    <a href="#">
+                                    <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
                                         <div class="hold">
-                                            <img src="img/video-manset/sidebar-video-img.jpg" alt="58 bedenden 38'e düştü!" title="58 bedenden 38'e düştü!">
+                                            <img src="{{ asset('video_gallery/' . $otherGalleryVideo->video_gallery_id . '/photos/58x58_' . $otherGalleryVideo->thumbnail)}}"
+                                                 alt="{{$otherGalleryVideo->title}}" title="{{$otherGalleryVideo->title}}"/>
                                             <i class="icon play"></i>
                                         </div>
                                         <span class="title">{{$otherGalleryVideo->name}}</span>
-                                        <span class="time visible-lg">SAĞLIK - {{$otherGalleryVideo->updated_at}}</span>
+                                        <span class="time visible-lg"> {{$otherGalleryVideo->updated_at}}</span>
                                     </a>
                                 </div><!-- /.video-link -->
                             @endforeach
@@ -307,8 +308,10 @@
                         <div class="col-md-2 col-sm-4 col-xs-6">
                             <div class="r-box">
                                 <a href="{{route('show_videos',['slug' => $lastestVideo->slug ])}}">
-                                    {{--<img src="{{ asset('videos/' . $lastVideo->id . '/165x90_' . $lastVideo->thumbnail)}}"   />--}}
-                                    <img src="img/video-manset/related-img.jpg" alt="">
+
+                                    <img src="{{ asset('video_gallery/' . $lastestVideo->video_gallery_id . '/photos/58x58_' . $lastestVideo->thumbnail)}}"
+                                         alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
+
                                     <i class="icon"></i>
                                     <span class="c-text">{{$lastestVideo->name}}</span>
                                 </a>

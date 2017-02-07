@@ -11,11 +11,10 @@ use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\VideoRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
-use Lakshmajim\Thumbnail\Facade\Thumbnail;
 
 class VideoController extends Controller
 {
@@ -181,51 +180,6 @@ class VideoController extends Controller
                     Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
                         ->resize(457, 250)
                         ->save(public_path('videos/'. $result[1]->id .'/257x250_' . $document_name));
-
-
-
-
-
-
-
-                    $thumbnail_path   = asset('video_gallery/' . $record->video_gallery_id . '/photos') ;
-
-                    $video_path       = asset('video_gallery/' . $record->video_gallery_id . '/videos/' . $record->file);
-
-
-                    // set thumbnail image name
-                    $thumbnail_image  = asset('thumbnail_time.jpg');
-
-                    // set the thumbnail image "palyback" video button
-                    $water_mark       = public_path() . '/player.png';
-
-                    // get video length and process it
-                    // assign the value to time_to_image (which will get screenshot of video at that specified seconds)
-                    $time_to_image    = floor(1000/2);
-
-
-
-                    $thumbnail_status = Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image,160,128,$time_to_image,$water_mark,true);
-
-
-                    dd($thumbnail_status);
-
-
-                    if($thumbnail_status)
-                    {
-                        echo "Thumbnail generated";
-                    }
-                    else
-                    {
-                        echo "thumbnail generation has failed";
-                    }
-
-
-
-
-
-
-
                 }
 
 

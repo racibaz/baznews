@@ -17,7 +17,7 @@
         <div class="col-md-6">
             <div id="gallery-videos">
                 <ul>
-                    {!! Form::open(['route' => 'updateGalleryVideos','method' => 'post']) !!}
+                    {!! Form::open(['route' => 'updateGalleryVideos','method' => 'post', 'files' => 'true']) !!}
 
                         @foreach($video_gallery->videos as $video)
                             <li>
@@ -63,8 +63,32 @@
                                     {{--</video>--}}
                                 @endif
 
-                                {!! Form::text('subtitle/'. $video->id, $video->subtitle, ['placeholder' => trans('news::video_gallery.subtitle') ,'class' => 'form-control']) !!}
-                                {!! Form::textarea('content/'. $video->id, $video->content, ['placeholder' => trans('news::video_gallery.subtitle') ,'class' => 'form-control']) !!}
+                                {!! Form::text('subtitle/'. $video->id, $video->subtitle, ['placeholder' => trans('news::video.subtitle') ,'class' => 'form-control']) !!}
+                                {!! Form::textarea('content/'. $video->id, $video->content, ['placeholder' => trans('news::video.content') ,'class' => 'form-control']) !!}
+                                {!! Form::number('order/'. $video->id, $video->order, ['placeholder' => trans('news::video.order') ,'class' => 'form-control']) !!}
+                                {!! Form::text('link/'. $video->id, $video->link, ['placeholder' => trans('news::video.link') ,'class' => 'form-control']) !!}
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        {{trans('news::common.status')}}
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <div class="checkbox i-checks">
+                                                <label>
+                                                    {!! Form::checkbox('is_active/' . $video->id, null , $video->is_active) !!}
+                                                    <i></i> {{trans('news::common.is_active')}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {!! Form::file('thumbnail/'. $video->id) !!}
+                                <div>
+                                    <img src="{{ asset('video_gallery/' . $video_gallery->id . '/photos/213x116_' . $video->thumbnail)}}" />
+                                </div>
+
+
+
                             </li>
                         @endforeach
 
