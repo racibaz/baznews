@@ -19,21 +19,25 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a href="{!! route('login') !!}">{{trans('common.login')}}</a>
-                <a href="{!! route('register') !!}">{{trans('common.register')}}</a>
-
                 <a class="navbar-brand" href="{!! route('index') !!}">
                     <img src="{{ Theme::asset($activeTheme . '::img/news-theme-logo.jpg') }}" alt="Logo" width="130" height="120" />
                 </a>
-                <div class="search pull-right">
 
-                    {!! Form::open(array('route' => 'search', 'method' => 'post','class' => 'form')) !!}
-                        {!!  Form::text('q', null, ['class' => 'ft','onblur'=>"if(this.value=='') this.value='Ara.';","onfocus"=>"if(this.value=='Ara.') this.value='';"]) !!}
-                        {{--<input type="q" value="Ara." onblur="if(this.value=='') this.value='Ara.';" onfocus="if(this.value=='Ara.') this.value='';" class="ft">--}}
-                        <input type="submit" value="" class="fs">
-                    {!!Form::close() !!}
+                <div class="pull-right">
+                    <div class="search pull-left">
 
+                        {!! Form::open(array('route' => 'search', 'method' => 'post','class' => 'form')) !!}
+                            {!!  Form::text('q', null, ['placeholder'=>'Ara.','class' => 'ft','onblur'=>"if(this.value=='') this.value='Ara.';","onfocus"=>"if(this.value=='Ara.') this.value='';"]) !!}
+                            {{--<input type="q" value="Ara." onblur="if(this.value=='') this.value='Ara.';" onfocus="if(this.value=='Ara.') this.value='';" class="ft">--}}
+                            <input type="submit" value="" class="fs">
+                        {!!Form::close() !!}
+                    </div>
+                    <div class="login-btns btn-group pull-left">
+                        <a href="{!! route('login') !!}" class="btn btn-success"><i class="glyphicon glyphicon-log-in"></i> {{trans('common.login')}}</a>
+                        <a href="{!! route('register') !!}" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> {{trans('common.register')}}</a>
+                    </div>
                 </div>
+
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->

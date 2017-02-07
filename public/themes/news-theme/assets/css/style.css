@@ -132,13 +132,36 @@ body {
     margin-bottom: -2px; }
 
 /* ==========================================================================
+   Login Buttons
+   ========================================================================== */
+    .login-btns{
+        margin-top: 30px;
+    }
+    .login-btns .btn{
+        border-radius: 0;
+    }
+    .login-btns .btn-success{
+        background-color: #EA4748;
+        border-color: #EA4748;
+    }
+    .login-btns .btn-primary{
+        background-color: #C8C8C8;
+        border-color: #C8C8C8;
+    }
+
+   /* ==========================================================================
+   End Login Buttons
+   ========================================================================== */
+/* ==========================================================================
    Searchbox
    ========================================================================== */
 .search {
     background: #fafafa;
     width: 230px;
     float: right;
-    margin-top: 30px; }
+    margin-top: 30px;
+    margin-right: 15px;
+}
 .search .ft {
     background: none;
     padding: 5px;
@@ -919,14 +942,21 @@ footer .footer-bottom .cpy {
 /* ==========================================================================
    New Content
    ========================================================================== */
+#new-content .new-img {
+    background: url(../img/no-image.png)0 0 no-repeat;
+    background-size: cover;
+}
 #new-content .new-img img {
-    width: 100%; }
-
-#new-content .content {
-    padding: 0 30px; }
+    width: 100%;
+    min-height: 343px;
+}
 #new-content .content h1.ct-title {
     font-size: 24px;
-    color: #696969; }
+    color: #696969;
+}
+#new-content .content .ct-text{
+    padding: 0 20px;
+}
 #new-content .content .ct-text p {
     font-size: 14px;
     color: #929292;
