@@ -3,6 +3,7 @@
 namespace App\Modules\News\Database\Seeds;
 
 use App\Models\Setting;
+use App\Models\WidgetGroup;
 use WidgetManagersTableSeeder;
 use Illuminate\Database\Seeder;
 
@@ -115,5 +116,241 @@ class NewsDatabaseSeeder extends Seeder
                 'is_active'                   => 1
             ]);
         }
+
+
+        $widget_group = WidgetGroup::where('name','news_content_header')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'news_content_header',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','news_content_side_bar')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'news_content_side_bar',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','news_content_center')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'news_content_center',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','news_content_center')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'news_content_center',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','news_content_right_bar')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'news_content_right_bar',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','news_content_footer')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'news_content_footer',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','news_content_fixed_footer')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'news_content_fixed_footer',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','photo_content_header')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'photo_content_header',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','photo_content_header')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'photo_content_header',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','photo_content_side_bar')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'photo_content_side_bar',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','photo_content_center')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'photo_content_center',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','photo_content_right_bar')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'photo_content_right_bar',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','photo_content_footer')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'photo_content_footer',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','photo_content_fixed_footer')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'photo_content_fixed_footer',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','video_content_header')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'video_content_header',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','video_content_side_bar')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'video_content_side_bar',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','video_content_center')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'video_content_center',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','video_content_right_bar')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'video_content_right_bar',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','video_content_footer')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'video_content_footer',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','video_content_fixed_footer')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'video_content_fixed_footer',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','archive_content_header')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'archive_content_header',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','archive_content_side_bar')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'archive_content_side_bar',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','archive_content_center')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'archive_content_center',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','archive_content_right_bar')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'archive_content_right_bar',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','archive_content_footer')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'archive_content_footer',
+                'is_active' => 1
+            ]);
+        }
+
+        $widget_group = WidgetGroup::where('name','archive_content_fixed_footer')->first();
+        if(empty($widget_group))
+        {
+            WidgetGroup::create([
+                'name' => 'archive_content_fixed_footer',
+                'is_active' => 1
+            ]);
+        }
+
     }
 }
