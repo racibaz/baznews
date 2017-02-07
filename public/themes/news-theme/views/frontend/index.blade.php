@@ -309,7 +309,12 @@
                         </div><!-- /rabpanel -->
                     </div><!-- /.nw-sm-img -->
                     <div class="nw-sm-img">
-                        {{Cache::get('right_blok_1')}}
+                        {{--{{Cache::get('right_blok_1')}}--}}
+                        @foreach($widgets as $widget)
+                            @widget($widget['namespace'])
+                            <br />
+                        @endforeach
+
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
