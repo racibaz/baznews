@@ -355,7 +355,7 @@
                         <div id="m_pg1" class="pager">
                             @foreach($videoGalleries as $videoGallery)
                                 <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct">
-                                    <a href="{{route('show_videos',['slug' => $videoGallery->videos->first()->slug ])}}">
+                                    <a href="{{route('show_video_gallery',['slug' => $videoGallery->videos->first()->slug ])}}">
                                         <img src="{{ asset('video_gallery/' . $videoGallery->id . '/photos/58x58_' . $videoGallery->thumbnail)}}" /></a>
                                 </span></a>
                             @endforeach
