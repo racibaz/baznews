@@ -41,7 +41,9 @@ class WidgetManagerController extends Controller
     {
         $records = $this->repo->findAll();
 
-        $widgets = WidgetManager::getEnableModuleWidgets();
+        $moduleWidgets = WidgetManager::getEnableModuleWidgets();
+        $coreWidgetss = WidgetManager::getCoreWidgets();
+        $widgets = array_merge($coreWidgetss,$moduleWidgets);
 
         $widgetGroupList = WidgetManager::$widgetGroups;
 
@@ -128,7 +130,6 @@ class WidgetManagerController extends Controller
         $group = $index['group'];
 
         $widget = WidgetManager::getWidgetInfo($widgetSlug);
-
 
         $trashedWidget = $this->repo->withTrashed()->where('slug',$widgetSlug)->first();
         if(!empty($trashedWidget)){

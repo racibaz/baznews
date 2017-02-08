@@ -102,6 +102,39 @@ class WidgetManager extends Model
     {
         $widget = [];
 
+
+        //module un widgets.json file yolu
+        $widgetsJsonFilePath = base_path('app/Widgets/widgets.json');
+
+        $jsonFile = file_get_contents($widgetsJsonFilePath);
+
+        $jsonIterator = new RecursiveIteratorIterator(
+            new RecursiveArrayIterator(json_decode($jsonFile, true)),
+            RecursiveIteratorIterator::SELF_FIRST);
+
+
+        foreach ($jsonIterator as $key  => $val)
+        {
+            if(is_array($val)) {
+                $widgetName = $key;
+                //echo "$key:\n";
+            } else {
+
+                if($key === 'slug' && $val === $widgetSlug){
+
+                    foreach ($jsonIterator as $key => $val)
+                    {
+                        $widget[$key] = $val;
+                    }
+                }
+            }
+        }
+
+        //Eğer widget sistemin core unda tanımlanmış ise modüllere bakmıyor.
+        if(count($widget) > 0)
+            return $widget;
+
+
         foreach (Module::all() as $module)
         {
             //module pasif ise widget bilgilerini almıyoruz.
@@ -137,6 +170,40 @@ class WidgetManager extends Model
         }
 
         return $widget;
+    }
+
+    public static function getCoreWidgets()
+    {
+        $widgets =[];
+
+        //module un widgets.json file yolu
+        $widgetsJsonFilePath = base_path('app/Widgets/widgets.json');
+
+        $jsonFile = file_get_contents($widgetsJsonFilePath);
+
+        $jsonIterator = new RecursiveIteratorIterator(
+            new RecursiveArrayIterator(json_decode($jsonFile, true)),
+            RecursiveIteratorIterator::SELF_FIRST);
+
+
+        /*Module widget larını listelerken module ismini dizileri ayrıştırmak için kullanıyoruz.
+         * Burda ise module ismi olmadığı için widget in property ismini kullanmak için
+         * "$val" değikeni dizi iken "$key" değişkeni json ın property ismi oluyor.
+         * Bizde bu yönlenle hem "$key" in dizi oluğ olmadığını kontrol ediyoruz
+         * hem de "$key" in property ismini alıyoruz.
+         * */
+
+        foreach ($jsonIterator as $key  => $val)
+        {
+            if(is_array($val)) {
+                $widgetName = $key;
+                //echo "$key:\n";
+            } else {
+                $widgets[$widgetName][$key] = $val;
+            }
+        }
+
+        return $widgets;
     }
 
 

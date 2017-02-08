@@ -33,9 +33,7 @@ class RecommendationNews extends AbstractWidget
     public function run()
     {
         return Cache::remember('recommendationNewsItems', 10, function()  {
-
             $recommendationNewsRepository = new RecommendationNewsRepository();
-
             $recommendationNewsItems = $recommendationNewsRepository->with(['news'])
                                     ->where('is_active', 1)
                                     ->where('is_cuff', 1)

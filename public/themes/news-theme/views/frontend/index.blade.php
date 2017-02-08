@@ -314,7 +314,6 @@
                             @widget($widget['namespace'])
                             <br />
                         @endforeach
-
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
