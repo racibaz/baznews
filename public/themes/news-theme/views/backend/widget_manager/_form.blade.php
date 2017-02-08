@@ -77,7 +77,7 @@
                             {!! Form::label('group', "Group",['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::select('group', $widgetGroups, $record->group, ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
+                                {!! Form::select('group', $widgetGroupList, $record->group, ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

@@ -29,7 +29,7 @@ class WidgetManager extends Model
      * @var array
      */
     protected $fillable = [
-        'widget_group_id',
+//        'widget_group_id',
         'name',
         'slug',
         'namespace',
@@ -49,7 +49,7 @@ class WidgetManager extends Model
 
     public static function validate($input) {
         $rules = array(
-            'widget_group_id'               => 'required',
+//            'widget_group_id'               => 'required',
             'name'                          => 'required|string',
             'namespace'                     => 'required',
             'position'                      => 'required|numeric',

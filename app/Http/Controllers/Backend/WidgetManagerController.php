@@ -52,7 +52,8 @@ class WidgetManagerController extends Controller
     public function create()
     {
         $record = $this->repo->createModel();
-        $widgetGroupList = WidgetGroup::widgetGroupList();
+//        $widgetGroupList = WidgetGroup::widgetGroupList();
+        $widgetGroupList = WidgetManager::$widgetGroups;
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'widgetGroupList']));
     }
 
@@ -71,7 +72,8 @@ class WidgetManagerController extends Controller
 
     public function edit(WidgetManager $record)
     {
-        $widgetGroupList = WidgetGroup::widgetGroupList();
+//        $widgetGroupList = WidgetGroup::widgetGroupList();
+        $widgetGroupList = WidgetManager::$widgetGroups;
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'widgetGroupList']));
     }
 
