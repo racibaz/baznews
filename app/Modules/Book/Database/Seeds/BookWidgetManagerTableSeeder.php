@@ -18,11 +18,11 @@ class BookWidgetManagerTableSeeder extends Seeder
         if(empty($widget))
         {
             WidgetManager::create([
+                'widget_group_id' => 4,
                 'name'          => 'RecentBooks',
-                'slug'          => 'recent_books',
+                'slug'          => str_slug('RecentBooks'),
                 'namespace'     => '\App\Modules\Book\Widgets\RecentBooks',
                 'position'      => 2,
-                'group'         => 'rightbar',
                 'is_active'     => 1
             ]);
         }

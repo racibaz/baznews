@@ -4,18 +4,17 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\WidgetGroup;
-use App\Models\WidgetManager;
-use App\Repositories\WidgetManagerRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
+use App\Repositories\WidgetGroupRepository as Repo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use Redirect;
+use Session;
+use Theme;
 
-class WidgetManagerController extends Controller
+class WidgetGroupController extends Controller
 {
     private $repo;
-    private $view = 'widget_manager.';
+    private $view = 'widget_group.';
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
@@ -41,17 +40,15 @@ class WidgetManagerController extends Controller
     {
         $records = $this->repo->findAll();
 
-        $widgets = WidgetManager::getEnableModuleWidgets();
-
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records', 'widgets'));
+        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
     }
 
 
     public function create()
     {
         $record = $this->repo->createModel();
-        $widgetGroupList = WidgetGroup::widgetGroupList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'widgetGroupList']));
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
@@ -61,26 +58,25 @@ class WidgetManagerController extends Controller
     }
 
 
-    public function show(WidgetManager $record)
+    public function show(WidgetGroup $record)
     {
         return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
     }
 
 
-    public function edit(WidgetManager $record)
+    public function edit(WidgetGroup $record)
     {
-        $widgetGroupList = WidgetGroup::widgetGroupList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'widgetGroupList']));
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
-    public function update(Request $request, WidgetManager $record)
+    public function update(Request $request, WidgetGroup $record)
     {
         return $this->save($record);
     }
 
 
-    public function destroy(WidgetManager $record)
+    public function destroy(WidgetGroup $record)
     {
         $this->repo->delete($record->id);
         return redirect()->route($this->redirectRouteName . $this->view .'index');
@@ -92,7 +88,7 @@ class WidgetManagerController extends Controller
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = WidgetManager::validate($input);
+        $v = WidgetGroup::validate($input);
 
         if ($v->fails()) {
             return Redirect::back()
@@ -115,36 +111,4 @@ class WidgetManagerController extends Controller
             }
         }
     }
-
-
-    public function addWidgetActivation($widgetSlug)
-    {
-        $widget = WidgetManager::getWidgetInfo($widgetSlug);
-
-        $trashedWidget = $this->repo->withTrashed()->where('slug',$widgetSlug)->first();
-        if(!empty($trashedWidget)){
-            $trashedWidget->restore();
-            $this->repo->forgetCache();
-        }
-
-        $widgetManagaer =[];
-        $widgetManagaer['widget_group_id']  = 4;
-        $widgetManagaer['name']     = $widget['name'];
-        $widgetManagaer['slug']       = $widget['slug'];
-        $widgetManagaer['namespace']  = $widget['namespace'];
-        $widgetManagaer['position']   = 1;
-        $widgetManagaer['is_active']  = 1;
-
-        $record = $this->repo->findBy('slug',$widgetSlug);
-
-        if(isset($record->id)) {
-            return Redirect::back()
-                ->withErrors(trans('widget.widget_is_exists'));
-        }else{
-            $this->repo->create($widgetManagaer);
-        }
-
-        return Redirect::back();
-    }
-
 }

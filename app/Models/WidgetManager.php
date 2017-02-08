@@ -23,29 +23,36 @@ class WidgetManager extends Model
         'fixed_footer' =>  'fixed_footer',
     ];
 
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
+        'widget_group_id',
         'name',
         'slug',
         'namespace',
         'position',
-        'group',
         'is_active',
     ];
 
     protected $dates = ['created_at','updated_at','deleted_at'];
 
 
+    public function widget_group()
+    {
+        return $this->belongsTo('App\Models\WidgetGroup','widget_group_id');
+    }
+
+
     public static function validate($input) {
         $rules = array(
+            'widget_group_id'               => 'required',
             'name'                          => 'required|string',
             'namespace'                     => 'required',
             'position'                      => 'required|numeric',
-            'group'                         => 'required',
         );
         return Validator::make($input, $rules);
     }
@@ -54,7 +61,6 @@ class WidgetManager extends Model
     {
         return WidgetManager::where('is_active',1)->get();
     }
-
 
     public static function getEnableModuleWidgets()
     {

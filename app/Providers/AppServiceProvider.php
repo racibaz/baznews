@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Events\UserRegistered;
 use App\Models\Setting;
 use App\Models\User;
+use App\Models\WidgetGroup;
 use App\Models\WidgetManager;
 use App\Repositories\AdvertisementRepository;
 use App\Repositories\MenuRepository;
@@ -70,8 +71,18 @@ class AppServiceProvider extends ServiceProvider
                 });
             });
 
+            /*todo
+             *
+             * widget_manager , widget group ile ilişkili olduğunda performans açısından sorun olabilir
+             * bunu için widger manager a string olarak değer versek nasıl olur?
+             * widget alanlarında sorgulamaları nasıl yapmammız gerekiyor?
+             * */
+
             View::share('widgets', WidgetManager::where('is_active',1)->get());
 
+            $widgetGroups = WidgetGroup::with(['widget_managers'])
+                ->where('is_active',1)
+                ->get();
 
             //Cache::tags('settings')->flush();
             //Cache::flush();

@@ -1127,6 +1127,50 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        //widgetgroup
+        $widgetgroup1 = Permission::create([
+            'name'          => 'index-widgetgroup',
+            'display_name'  => 'widgetgroup Listeleme',
+            'is_active'     => 1,
+        ]);
+
+        $widgetgroup2 = Permission::create([
+            'name'          => 'create-widgetgroup',
+            'display_name'  => 'widgetgroup Oluşturma',
+            'is_active'     => 1,
+        ]);
+
+        $widgetgroup3 = Permission::create([
+            'name'          => 'edit-widgetgroup',
+            'display_name'  => 'widgetgroup Düzenleme',
+            'is_active'     => 1,
+        ]);
+
+        $widgetgroup4 = Permission::create([
+            'name'          => 'destroy-widgetgroup',
+            'display_name'  => 'widgetgroup Silme',
+            'is_active'     => 1,
+        ]);
+
+        $widgetgroup5 = Permission::create([
+            'name'          => 'show-widgetgroup',
+            'display_name'  => 'widgetgroup Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $widgetgroup6 = Permission::create([
+            'name'          => 'update-widgetgroup',
+            'display_name'  => 'widgetgroup update',
+            'is_active'     => 1,
+        ]);
+
+        $widgetgroup7 = Permission::create([
+            'name'          => 'store-widgetgroup',
+            'display_name'  => 'widgetgroup store',
+            'is_active'     => 1,
+        ]);
+
+
 
 
 
@@ -1315,6 +1359,13 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($advertisement5);
         $super_admin->permissions()->attach($advertisement6);
         $super_admin->permissions()->attach($advertisement7);
+        $super_admin->permissions()->attach($widgetgroup1);
+        $super_admin->permissions()->attach($widgetgroup2);
+        $super_admin->permissions()->attach($widgetgroup3);
+        $super_admin->permissions()->attach($widgetgroup4);
+        $super_admin->permissions()->attach($widgetgroup5);
+        $super_admin->permissions()->attach($widgetgroup6);
+        $super_admin->permissions()->attach($widgetgroup7);
 
     }
 }

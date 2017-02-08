@@ -16,6 +16,14 @@ class BoxCuffNews extends AbstractWidget
      */
     protected $config = [];
 
+
+    /**
+     * The number of seconds before each reload.
+     *
+     * @var int|float
+     */
+    public $reloadTimeout = 10;
+
     /**
      * Treat this method as a controller action.
      * Return view() or other content to display.
