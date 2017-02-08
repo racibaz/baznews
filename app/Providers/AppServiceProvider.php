@@ -77,12 +77,7 @@ class AppServiceProvider extends ServiceProvider
              * bunu için widger manager a string olarak değer versek nasıl olur?
              * widget alanlarında sorgulamaları nasıl yapmammız gerekiyor?
              * */
-
-            View::share('widgets', WidgetManager::where('is_active',1)->get());
-
-            $widgetGroups = WidgetGroup::with(['widget_managers'])
-                ->where('is_active',1)
-                ->get();
+            View::share('widgets', WidgetManager::where('is_active',1)->orderBy('position','asc')->get() );
 
             //Cache::tags('settings')->flush();
             //Cache::flush();

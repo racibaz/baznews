@@ -14,7 +14,6 @@ class WidgetManager extends Model
     use SoftDeletes;
 
     public static $widgetGroups = [
-
         'header' =>  'header',
         'side_bar' => 'side_bar',
         'center' => 'center',
@@ -34,6 +33,7 @@ class WidgetManager extends Model
         'name',
         'slug',
         'namespace',
+        'group',
         'position',
         'is_active',
     ];

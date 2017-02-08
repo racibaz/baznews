@@ -15,16 +15,17 @@ class CreateWidgetManagersTable extends Migration
     {
         Schema::create('widget_managers', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('widget_group_id');
+//            $table->unsignedInteger('widget_group_id');
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->string('namespace');
+            $table->string('group')->nullable();
             $table->smallInteger('position')->nullable();
             $table->boolean('is_active');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('widget_group_id')->references('id')->on('widget_groups')->onDelete('cascade')->onUpdate('cascade');
+//            $table->foreign('widget_group_id')->references('id')->on('widget_groups')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -43,7 +43,9 @@ class WidgetManagerController extends Controller
 
         $widgets = WidgetManager::getEnableModuleWidgets();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records', 'widgets'));
+        $widgetGroupList = WidgetManager::$widgetGroups;
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact('records', 'widgets','widgetGroupList' ));
     }
 
 
@@ -117,21 +119,28 @@ class WidgetManagerController extends Controller
     }
 
 
-    public function addWidgetActivation($widgetSlug)
+    public function addWidgetActivation(Request $request)
     {
+        $index = Input::all();
+        $widgetSlug = $index['widgetSlug'];
+        $group = $index['group'];
+
         $widget = WidgetManager::getWidgetInfo($widgetSlug);
+
 
         $trashedWidget = $this->repo->withTrashed()->where('slug',$widgetSlug)->first();
         if(!empty($trashedWidget)){
             $trashedWidget->restore();
             $this->repo->forgetCache();
+            return Redirect::back();
         }
 
         $widgetManagaer =[];
-        $widgetManagaer['widget_group_id']  = 4;
+//        $widgetManagaer['widget_group_id']  = 4;
         $widgetManagaer['name']     = $widget['name'];
         $widgetManagaer['slug']       = $widget['slug'];
         $widgetManagaer['namespace']  = $widget['namespace'];
+        $widgetManagaer['group']  = $group;
         $widgetManagaer['position']   = 1;
         $widgetManagaer['is_active']  = 1;
 
