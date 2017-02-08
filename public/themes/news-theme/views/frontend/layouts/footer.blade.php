@@ -20,13 +20,15 @@
                                 </div>
                                 <div class="m-ct">
                                     <ul class="mn">
-                                        @foreach(\Illuminate\Support\Facades\Cache::get('menus') as $menu)
-                                            @if(!empty($menu->url))
-                                                <li><a href="{{$menu->url}}" target="_blank"><i class="fa fa-book"></i>{!! $menu->name !!}</a></li>
-                                            @elseif(!empty($menu->page->id))
-                                                <li><a href="{!! route('page',['slug' => $menu->page->slug ]) !!}" title="{{$menu->name}}"><i class="fa fa-book"></i>{!! $menu->name !!}</a></li>
-                                            @endif
-                                        @endforeach
+                                        @if(Cache::has('menus'))
+                                            @foreach(\Illuminate\Support\Facades\Cache::get('menus') as $menu)
+                                                @if(!empty($menu->url))
+                                                    <li><a href="{{$menu->url}}" target="_blank"><i class="fa fa-book"></i>{!! $menu->name !!}</a></li>
+                                                @elseif(!empty($menu->page->id))
+                                                    <li><a href="{!! route('page',['slug' => $menu->page->slug ]) !!}" title="{{$menu->name}}"><i class="fa fa-book"></i>{!! $menu->name !!}</a></li>
+                                                @endif
+                                            @endforeach
+                                        @endif
                                     </ul>
                                 </div><!-- /.m-ct -->
                             </div><!-- /.ft-m -->
