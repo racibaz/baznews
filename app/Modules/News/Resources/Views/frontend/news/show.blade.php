@@ -62,8 +62,8 @@
 
 
                             <h4>İlişkili Haberler</h4>
-                            @foreach($record->related_news as $news)
-                                {{$news->title}}
+                            @foreach($relatedNewsItems as $relatedNews)
+                                {{$relatedNews->title}}
                             @endforeach
 
                             <h4>Haberin Video Galerileri</h4>

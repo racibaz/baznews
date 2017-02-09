@@ -102,7 +102,7 @@ class News extends Model
 
     public function related_news()
     {
-        return $this->hasMany(RelatedNews::class);
+        return $this->hasMany('App\Modules\News\Models\RelatedNews');
     }
 
     public function country()

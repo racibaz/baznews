@@ -13,7 +13,7 @@ class RelatedNews extends Model
 
     public function news()
     {
-        return $this->belongsToMany(News::class);
+        return $this->belongsTo('App\Modules\News\Models\News', 'news_id');
     }
 
     public static function validate($input) {
