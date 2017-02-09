@@ -85,44 +85,29 @@
                 <div class="col-md-4">
                     <div class="sidebar">
 
-                        <div class="sidebar-video">
-                            <div class="title-section">
-                                <h1>
-                                    <span>Next Video</span>
-                                </h1>
-                            </div>
-                            <div class="video-link">
-                                {{--<a href="#">--}}
-                                {{--<div class="hold">--}}
-                                {{--<img src="img/video-manset/sidebar-video-img.jpg" alt="{{$nextVideo->name}}" title="{{$nextVideo->name}}">--}}
-                                {{--<i class="icon play"></i>--}}
-                                {{--</div>--}}
-                                {{--<span class="title">{{$nextVideo->name}}</span>--}}
-                                {{--<span class="time visible-lg">SAĞLIK - {{$nextVideo->updated_at}}</span>--}}
-                                {{--</a>--}}
-                            </div>
-                        </div><!-- /.sidebar-video -->
 
                         <div class="sidebar-video">
                             <div class="title-section">
                                 <h1>
-                                    <span>you may also be interested in</span>
+                                    <span>Galerinin Diğer Videoları</span>
                                 </h1>
                             </div>
+                            <div class="video-list-body">
+                                @foreach($otherGalleryVideos as $otherGalleryVideo)
+                                    <div class="video-link">
+                                        <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
+                                            <div class="hold">
+                                                <img src="{{ asset('video_gallery/' . $otherGalleryVideo->video_gallery_id . '/photos/58x58_' . $otherGalleryVideo->thumbnail)}}"
+                                                     alt="{{$otherGalleryVideo->title}}" title="{{$otherGalleryVideo->title}}"/>
+                                                <i class="icon play"></i>
+                                            </div>
+                                            <span class="title">{{$otherGalleryVideo->name}}</span>
+                                            <span class="time visible-lg"> {{$otherGalleryVideo->updated_at}}</span>
+                                        </a>
+                                    </div><!-- /.video-link -->
+                                @endforeach
+                            </div>
 
-                            @foreach($otherGalleryVideos as $otherGalleryVideo)
-                                <div class="video-link">
-                                    <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
-                                        <div class="hold">
-                                            <img src="{{ asset('video_gallery/' . $otherGalleryVideo->video_gallery_id . '/photos/58x58_' . $otherGalleryVideo->thumbnail)}}"
-                                                 alt="{{$otherGalleryVideo->title}}" title="{{$otherGalleryVideo->title}}"/>
-                                            <i class="icon play"></i>
-                                        </div>
-                                        <span class="title">{{$otherGalleryVideo->name}}</span>
-                                        <span class="time visible-lg"> {{$otherGalleryVideo->updated_at}}</span>
-                                    </a>
-                                </div><!-- /.video-link -->
-                            @endforeach
                         </div><!-- /.sidebar-video -->
 
                         <div class="nw-sm-img">
