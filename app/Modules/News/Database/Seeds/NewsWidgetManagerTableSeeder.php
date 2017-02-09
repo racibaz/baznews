@@ -20,7 +20,7 @@ class NewsWidgetManagerTableSeeder extends Seeder
             WidgetManager::create([
 //                'widget_group_id' => 4,
                 'name'          => 'RecommendationNews',
-                'slug'          => str_slug('RecommendationNews'),
+                'slug'          => 'recommendation_news',
                 'namespace'     => '\App\Modules\News\Widgets\RecommendationNews',
                 'group'         => 'right_bar',
                 'position'      => 1,

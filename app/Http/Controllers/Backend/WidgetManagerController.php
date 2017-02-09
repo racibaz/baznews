@@ -45,6 +45,8 @@ class WidgetManagerController extends Controller
         $coreWidgetss = WidgetManager::getCoreWidgets();
         $widgets = array_merge($coreWidgetss,$moduleWidgets);
 
+//        dd($widgets);
+
         $widgetGroupList = WidgetManager::$widgetGroups;
 
         return Theme::view($this->getViewName(__FUNCTION__),compact('records', 'widgets','widgetGroupList' ));
@@ -140,12 +142,12 @@ class WidgetManagerController extends Controller
 
         $widgetManagaer =[];
 //        $widgetManagaer['widget_group_id']  = 4;
-        $widgetManagaer['name']     = $widget['name'];
-        $widgetManagaer['slug']       = $widget['slug'];
-        $widgetManagaer['namespace']  = $widget['namespace'];
-        $widgetManagaer['group']  = $group;
-        $widgetManagaer['position']   = 1;
-        $widgetManagaer['is_active']  = 1;
+        $widgetManagaer['name']         = $widget['name'];
+        $widgetManagaer['slug']         = $widget['slug'];
+        $widgetManagaer['namespace']    = $widget['namespace'];
+        $widgetManagaer['group']        = $group;
+        $widgetManagaer['position']     = 1;
+        $widgetManagaer['is_active']    = 1;
 
         $record = $this->repo->findBy('slug',$widgetSlug);
 

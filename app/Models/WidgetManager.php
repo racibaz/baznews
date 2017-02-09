@@ -87,10 +87,10 @@ class WidgetManager extends Model
             foreach ($jsonIterator as $key => $val)
             {
                 if(is_array($val)) {
-                    //echo "$key:\n";
+                    $widgetName = $key;
                 } else {
 
-                    $widgets[$module['basename']][$key] = $val;
+                    $widgets[$widgetName][$key] = $val;
                 }
             }
         }
@@ -101,7 +101,6 @@ class WidgetManager extends Model
     public static function getWidgetInfo($widgetSlug)
     {
         $widget = [];
-
 
         //module un widgets.json file yolu
         $widgetsJsonFilePath = base_path('app/Widgets/widgets.json');
@@ -155,19 +154,29 @@ class WidgetManager extends Model
             foreach ($jsonIterator as $key => $val)
             {
                 if(is_array($val)) {
-                    //echo "$key:\n";
+                    $widgetName = $key;
                 } else {
 
                     if($key === 'slug' && $val === $widgetSlug){
 
-                        foreach ($jsonIterator as $key => $val)
+                        foreach ($jsonIterator as $subKey => $subVal)
                         {
-                            $widget[$key] = $val;
+                            if(is_array($subVal)){
+                                $currentWidgetName = $subKey;
+                            }
+
+                            /*Bir module de birden fazla widget var ise
+                             *onun için yukarıda "slug" üzerinden eşleştirme yapmış olsak da tekrar kontrol ediyoruz.
+                             * */
+                            if($widgetName === $currentWidgetName){
+                                $widget[$subKey] = $subVal;
+                            }
                         }
                     }
                 }
             }
         }
+
 
         return $widget;
     }

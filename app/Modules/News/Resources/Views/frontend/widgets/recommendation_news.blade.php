@@ -1,7 +1,7 @@
 <div class="widget">
     <div class="title-section">
         <h1>
-            <span>{{trans('news.widget_title')}}</span>
+            <span>{{trans('news.recommendation_news_widget_title')}}</span>
         </h1>
     </div>
     <ul>
