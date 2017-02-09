@@ -101,6 +101,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    Route::get('ping', 'Backend\PingController@edit')->name('ping');
+    Route::post('ping.update', 'Backend\PingController@update')->name('ping.update');
 
     Route::resource('account', 'Backend\AccountController', ['only' => [
         'edit', 'update','show'

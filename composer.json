@@ -29,7 +29,8 @@
         "laravel/socialite": "^2.0",
         "laravel/scout": "^1.1",
         "algolia/algoliasearch-client-php": "^1.11",
-        "laravel-notification-channels/pusher-push-notifications": "^1.0"
+        "laravel-notification-channels/pusher-push-notifications": "^1.0",
+        "geerlingguy/ping": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

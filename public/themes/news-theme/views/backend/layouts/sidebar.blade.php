@@ -210,14 +210,13 @@
             <li><a href="{!! route('module_manager.index') !!}"><i class="fa fa-book"></i> <span>Modül Yönetimi</span></a></li>
             <li><a href="{!! route('widget_manager.index') !!}"><i class="fa fa-book"></i> <span>Widget Yönetimi</span></a></li>
             <li><a href="{!! route('theme_manager.index') !!}"><i class="fa fa-book"></i> <span>Tema Yönetimi</span></a></li>
+            <li><a href="{!! route('ping') !!}"><i class="fa fa-book"></i> <span>Ping Servisleri</span></a></li>
+
 
             @foreach( Module::all() as $module)
-
                 @if(Module::isEnabled($module['slug']))
-
                     {!! Theme::view( $module['slug'] .'::backend.route_list.route_list') !!}
                 @endif
-
             @endforeach
 
 
