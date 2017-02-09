@@ -134,24 +134,24 @@ body {
 /* ==========================================================================
    Login Buttons
    ========================================================================== */
-    .login-btns{
-        margin-top: 30px;
-    }
-    .login-btns .btn{
-        border-radius: 0;
-    }
-    .login-btns .btn-success{
-        background-color: #EA4748;
-        border-color: #EA4748;
-    }
-    .login-btns .btn-primary{
-        background-color: #C8C8C8;
-        border-color: #C8C8C8;
-    }
+.login-btns{
+    margin-top: 30px;
+}
+.login-btns .btn{
+    border-radius: 0;
+}
+.login-btns .btn-success{
+    background-color: #EA4748;
+    border-color: #EA4748;
+}
+.login-btns .btn-primary{
+    background-color: #C8C8C8;
+    border-color: #C8C8C8;
+}
 
-   /* ==========================================================================
-   End Login Buttons
-   ========================================================================== */
+/* ==========================================================================
+End Login Buttons
+========================================================================== */
 /* ==========================================================================
    Searchbox
    ========================================================================== */
