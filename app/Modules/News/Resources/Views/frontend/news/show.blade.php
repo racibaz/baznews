@@ -58,7 +58,7 @@
                                 <br />
 
                             <h4>Haber Kaynağı</h4>
-                            {{$record->news_source}}
+                            {{$record->news_source->name}}
 
 
                             <h4>İlişkili Haberler</h4>
