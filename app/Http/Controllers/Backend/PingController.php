@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 
+use App\Jobs\Ping\SendPing;
 use JJG\Ping;
 use Redirect;
 use Session;
@@ -55,6 +56,9 @@ class PingController extends Controller
 
     public function edit(Request $request)
     {
+
+        //dispatch(new SendPing());
+
         $record = \App\Models\Ping::first();
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }

@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/algolia/algoliasearch-client-php.git",
-                "reference": "dd0f04de8e33b091f546fd02e0d54311473c1e1f"
+                "reference": "80b7d51229f604325c29bf81f2b04ef412a9b969"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/dd0f04de8e33b091f546fd02e0d54311473c1e1f",
-                "reference": "dd0f04de8e33b091f546fd02e0d54311473c1e1f",
+                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/80b7d51229f604325c29bf81f2b04ef412a9b969",
+                "reference": "80b7d51229f604325c29bf81f2b04ef412a9b969",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
             ],
             "description": "Algolia Search API Client for PHP",
             "homepage": "https://github.com/algolia/algoliasearch-client-php",
-            "time": "2016-12-21T14:12:19+00:00"
+            "time": "2017-02-07T12:48:11+00:00"
         },
         {
             "name": "arrilot/laravel-widgets",
@@ -217,23 +217,23 @@
         },
         {
             "name": "caffeinated/themes",
-            "version": "v3.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/themes.git",
-                "reference": "69f0211ac18756bececdab73d342204a607a5806"
+                "reference": "da133fd14d5a477026096627d82420f2f34481fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caffeinated/themes/zipball/69f0211ac18756bececdab73d342204a607a5806",
-                "reference": "69f0211ac18756bececdab73d342204a607a5806",
+                "url": "https://api.github.com/repos/caffeinated/themes/zipball/da133fd14d5a477026096627d82420f2f34481fc",
+                "reference": "da133fd14d5a477026096627d82420f2f34481fc",
                 "shasum": ""
             },
             "require": {
-                "illuminate/config": "5.3.*",
-                "illuminate/filesystem": "5.3.*",
-                "illuminate/support": "5.3.*",
-                "illuminate/view": "5.3.*",
+                "illuminate/config": "5.3.*|5.4.*",
+                "illuminate/filesystem": "5.3.*|5.4.*",
+                "illuminate/support": "5.3.*|5.4.*",
+                "illuminate/view": "5.3.*|5.4.*",
                 "php": ">=5.6.4"
             },
             "type": "library",
@@ -259,7 +259,7 @@
                 "laravel",
                 "themes"
             ],
-            "time": "2016-08-23T23:20:54+00:00"
+            "time": "2017-02-08T17:23:55+00:00"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -317,16 +317,16 @@
         },
         {
             "name": "cocur/slugify",
-            "version": "v2.3",
+            "version": "v2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cocur/slugify.git",
-                "reference": "57a00e06a382928e350cc7bbb13b19f1b8f4e73a"
+                "reference": "f11f22d4e60c408187c3efd8ac201c022a93cc3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/57a00e06a382928e350cc7bbb13b19f1b8f4e73a",
-                "reference": "57a00e06a382928e350cc7bbb13b19f1b8f4e73a",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/f11f22d4e60c408187c3efd8ac201c022a93cc3f",
+                "reference": "f11f22d4e60c408187c3efd8ac201c022a93cc3f",
                 "shasum": ""
             },
             "require": {
@@ -377,27 +377,27 @@
                 "slug",
                 "slugify"
             ],
-            "time": "2016-08-09T20:10:17+00:00"
+            "time": "2017-02-09T19:27:52+00:00"
         },
         {
             "name": "cviebrock/eloquent-sluggable",
-            "version": "4.2.0",
+            "version": "4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-                "reference": "972101cd0469633258299bba189a73f7f3ee411f"
+                "reference": "20e78e7cc68facc934034024daf1fbaae7ce0c90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/972101cd0469633258299bba189a73f7f3ee411f",
-                "reference": "972101cd0469633258299bba189a73f7f3ee411f",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/20e78e7cc68facc934034024daf1fbaae7ce0c90",
+                "reference": "20e78e7cc68facc934034024daf1fbaae7ce0c90",
                 "shasum": ""
             },
             "require": {
                 "cocur/slugify": "^2.3",
-                "illuminate/config": "5.1.* || 5.2.* || 5.3.* || 5.4.*",
-                "illuminate/database": "5.1.* || 5.2.* || 5.3.* || 5.4.*",
-                "illuminate/support": "5.1.* || 5.2.* || 5.3.* || 5.4.*",
+                "illuminate/config": "5.1.* || 5.2.* || 5.3.*",
+                "illuminate/database": "5.1.* || 5.2.* || 5.3.*",
+                "illuminate/support": "5.1.* || 5.2.* || 5.3.*",
                 "php": "^5.6 || ^7.0"
             },
             "require-dev": {
@@ -428,7 +428,7 @@
                 "laravel",
                 "slug"
             ],
-            "time": "2017-01-25T02:04:39+00:00"
+            "time": "2016-11-09T15:42:49+00:00"
         },
         {
             "name": "dingo/api",
@@ -1660,16 +1660,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.34",
+            "version": "1.0.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "469ad53c13ea19a0e54e3e5d70f61227ddcc0299"
+                "reference": "dda7f3ab94158a002d9846a97dc18ebfb7acc062"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/469ad53c13ea19a0e54e3e5d70f61227ddcc0299",
-                "reference": "469ad53c13ea19a0e54e3e5d70f61227ddcc0299",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/dda7f3ab94158a002d9846a97dc18ebfb7acc062",
+                "reference": "dda7f3ab94158a002d9846a97dc18ebfb7acc062",
                 "shasum": ""
             },
             "require": {
@@ -1739,7 +1739,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-01-30T17:41:17+00:00"
+            "time": "2017-02-09T11:33:58+00:00"
         },
         {
             "name": "league/fractal",
@@ -4937,16 +4937,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.11",
+            "version": "5.7.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a6ad2472daba76b0689042b7709f86d4f06bcaab"
+                "reference": "944600e244f80a5252679878553b95c63dbf978b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a6ad2472daba76b0689042b7709f86d4f06bcaab",
-                "reference": "a6ad2472daba76b0689042b7709f86d4f06bcaab",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/944600e244f80a5252679878553b95c63dbf978b",
+                "reference": "944600e244f80a5252679878553b95c63dbf978b",
                 "shasum": ""
             },
             "require": {
@@ -5015,7 +5015,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-02-05T15:31:31+00:00"
+            "time": "2017-02-08T05:54:05+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
