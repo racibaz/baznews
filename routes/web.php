@@ -87,7 +87,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('sitemap', 'Backend\SitemapController');
     Route::resource('rss', 'Backend\RssController');
 
-    Route::get('widget_manager/addWidgetActivation/{widgetSlug}', 'Backend\WidgetManagerController@addWidgetActivation')->name('addWidgetActivation');
+    Route::post('widget_manager/addWidgetActivation', 'Backend\WidgetManagerController@addWidgetActivation')->name('addWidgetActivation');
     Route::resource('widget_manager', 'Backend\WidgetManagerController');
 
     Route::get('theme_manager/themeActivationToggle/{themeSlug}', 'Backend\ThemeManagerController@themeActivationToggle')->name('themeActivationToggle');
@@ -101,6 +101,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    Route::get('ping', 'Backend\PingController@edit')->name('ping');
+    Route::post('ping.update', 'Backend\PingController@update')->name('ping.update');
 
     Route::resource('account', 'Backend\AccountController', ['only' => [
         'edit', 'update','show'

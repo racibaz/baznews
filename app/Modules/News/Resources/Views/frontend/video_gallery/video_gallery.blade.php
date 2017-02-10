@@ -5,56 +5,281 @@
     <article>
         <div class="container" id="container">
             <div class="row">
-                <div class="col col-md-12">
+                <div class="col-md-12">
                     <div class="last-time" id="son-dakika">
                         <h4>Son Dakika:</h4>
                         <a href="new-details.html">Tortor Cras Nibh Egestas Vestibulum</a>
                     </div>
                 </div>
             </div>
+            <div class="breadcrumbs">
+                <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \\
+                    <a href="{{route('show_video_gallery',['slug' => $videoGallery->slug ])}}">
+                        {{$videoGallery->title}}
+                    </a>   \\
+                    {{$video->name}}
+                </p>
+            </div>
 
-            <div class="big-title-section">
-                <h1>
-                    <span>{{$videoGallery->title}}</span>
-                </h1>
-            </div><!-- /.big-title-section -->
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="new-content">
+                        <div class="share-box">
+                            <ul class="nav nav-justified">
+                                <li>
+                                    <a class="btn btn-block btn-social btn-facebook">
+                                        <span class="fa fa-facebook"></span> Paylaş
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-block btn-social btn-twitter">
+                                        <span class="fa fa-twitter"></span> Paylaş
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-block btn-social btn-google">
+                                        <span class="fa fa-google-plus"></span> Paylaş
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-block btn-social btn-linkedin">
+                                        <span class="fa fa-linkedin"></span> Paylaş
+                                    </a>
+                                </li>
+                            </ul><!-- /.nav -->
+                        </div><!-- /.share-box -->
+                        <div class="playerbox">
 
-            <div class="video-main-show">
-                <div class="row">
-                    <div class="col col-md-7">
-                        <div class="main-box">
-                            <a href="{{route('show_videos',['slug' => $firstVideo->slug ])}}">
-                                <img src="{{ asset('video_gallery/' . $videoGallery->id . '/photos/658x404_' . $videoGallery->thumbnail)}}" />
-                                <div class="video-title">
-                                    <h3>
-                                        <span>{{$videoGallery->title}}</span>
-                                    </h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col col-md-5">
-                        <div class="mini-card-boxes">
-                            <div class="row">
-                                @foreach($otherGalleries as $gallery)
-                                    <div class="col col-md-6 col-xs-6">
-                                            <div class="mini-box">
-                                                <a href="{{route('show_videos',['slug' => $gallery->videos->first()->slug ])}}">
-                                                    <img src="{{ asset('video_gallery/' . $gallery->id . '/photos/224x195_' . $gallery->thumbnail)}}" />
-                                                    <div class="video-title">
-                                                        <h3>
-                                                            <span>{{$gallery->title}}</span>
-                                                        </h3>
-                                                    </div>
-                                                </a>
-                                            </div><!-- /.mini-box -->
-                                    </div><!-- /.col -->
+                            <div class="player">
+
+                                @if(!empty($video->file))
+                                    <video id="{{$video->id}}"
+                                           class="video-js vjs-default-skin"
+                                           controls preload="auto" width="640" height="264"
+                                           poster="http://video-js.zencoder.com/oceans-clip.png"
+                                           data-setup='{"example_option":true}'>
+
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/mp4" />
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/webm" />
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/ogg" />
+
+                                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                                    </video>
+                                @elseif(!empty($video->link))
+                                    {!! $video->link !!}
+                                @endif
+
+                            </div>
+
+                            <div class="description">
+                                <em>{{$videoGallery->title}} / {{$video->updated_at}}</em>
+                                <h1>{{$video->name}}</h1>
+                                <h2>{{$video->content}}</h2>
+                                @foreach($tags as $tag)
+                                    <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
                                 @endforeach
-                            </div><!-- /.row -->
-                        </div><!-- /.mini-card-boxes -->
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.video-main-show -->
+                            </div>
+                        </div>
+                    </div><!-- /.new-content -->
+                </div><!-- /.col-md-8 -->
+                <div class="col-md-4">
+                    <div class="sidebar">
+
+
+                        <div class="sidebar-video">
+                            <div class="title-section">
+                                <h1>
+                                    <span>Galerinin Diğer Videoları</span>
+                                </h1>
+                            </div>
+                            <div class="video-list-body">
+                                @foreach($otherGalleryVideos as $otherGalleryVideo)
+                                    <div class="video-link">
+                                        <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
+                                            <div class="hold">
+                                                <img src="{{ asset('video_gallery/' . $otherGalleryVideo->video_gallery_id . '/photos/58x58_' . $otherGalleryVideo->thumbnail)}}"
+                                                     alt="{{$otherGalleryVideo->title}}" title="{{$otherGalleryVideo->title}}"/>
+                                                <i class="icon play"></i>
+                                            </div>
+                                            <span class="title">{{$otherGalleryVideo->name}}</span>
+                                            <span class="time visible-lg"> {{$otherGalleryVideo->updated_at}}</span>
+                                        </a>
+                                    </div><!-- /.video-link -->
+                                @endforeach
+                            </div>
+
+                        </div><!-- /.sidebar-video -->
+
+                        <div class="nw-sm-img">
+                            <div role="tabpanel">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="video">
+                                        <ul class="new-list no-list slide-tab">
+                                            <li class="nw-bx no-list active">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">1</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">2</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">3</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">4</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">5</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                        </ul><!-- /.new-list -->
+                                    </div><!-- /.tab-pane -->
+                                    <div role="tabpanel" class="tab-pane" id="son_dakika">
+                                        <ul class="new-list no-list ">
+                                            <li class="nw-bx no-list active">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">1</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">2</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">3</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">4</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">5</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                        </ul><!-- /.new-list -->
+                                    </div><!-- /.tab-pane -->
+                                    <div role="tabpanel" class="tab-pane" id="cok_okunanlar">
+                                        <ul class="new-list no-list">
+                                            <li class="nw-bx no-list active">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">1</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">2</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">3</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">4</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
+                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
+                                    </span>
+                                                <span class="dec">5</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                        </ul><!-- /.new-list -->
+                                    </div><!-- /.tab-pane -->
+                                </div><!-- /.tab-content -->
+                            </div><!-- /rabpanel -->
+                        </div><!-- /.nw-sm-img -->
+                    </div>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
 
             <div class="title-section">
                 <h1>
@@ -64,13 +289,13 @@
 
             <div class="videos">
                 <div class="row">
-                    @foreach($lastVideoGalleries as $lastVideoGallery)
+                    @foreach($galleryVideos as $galleryVideo)
                         <div class="col-md-2 col-sm-4 col-xs-6">
                             <div class="r-box">
-                                <a href="{{route('show_video_gallery',['slug' => $lastVideoGallery->slug ])}}">
-                                    <img src="{{ asset('video_gallery/' . $lastVideoGallery->id . '/photos/58x58_' . $lastVideoGallery->thumbnail)}}" />
+                                <a href="{{route('show_video_gallery',['slug' => $galleryVideo->slug ])}}">
+                                    <img src="{{ asset('video_gallery/' . $galleryVideo->video_gallery_id . '/photos/58x58_' . $galleryVideo->thumbnail)}}" />
                                     <i class="icon"></i>
-                                    <span class="c-text">{{$lastVideoGallery->title}}</span>
+                                    <span class="c-text">{{$galleryVideo->title}}</span>
                                 </a>
                             </div>
                         </div><!-- /.col -->

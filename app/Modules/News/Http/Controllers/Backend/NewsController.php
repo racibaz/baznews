@@ -519,10 +519,15 @@ class NewsController extends Controller
 
             foreach ($input['related_news_ids'] as $in){
 
-                $relatedNews = new RelatedNews();
-                $relatedNews->news_id = $record->id;
-                $relatedNews->related_news_id =  $in;
-                $relatedNews->save();
+                $record->related_news()->create([
+                    'related_news_id' => $in,
+                ]);
+
+
+//                $relatedNews = new RelatedNews();
+//                $relatedNews->news_id = $record->id;
+//                $relatedNews->related_news_id =  $in;
+//                $relatedNews->save();
             }
         }
     }
@@ -710,7 +715,6 @@ class NewsController extends Controller
         Session::flash('flash_message', trans('common.force_deleted'));
         return redirect()->back();
     }
-
 
     public function forgetCache()
     {

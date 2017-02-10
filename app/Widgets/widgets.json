@@ -1,0 +1,10 @@
+{
+  "TagCloud": {
+    "name": "TagCloud",
+    "slug": "tag_cloud",
+    "module_name": "Core",
+    "namespace": "\\App\\Widgets\\TagCloud",
+    "version": "1.0",
+    "description": "Tag Cloud Widget."
+  }
+}

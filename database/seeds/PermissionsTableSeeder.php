@@ -1170,6 +1170,29 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        //ping
+        $ping1 = Permission::create([
+            'name'          => 'index-ping',
+            'display_name'  => 'ping Listeleme',
+            'is_active'     => 1,
+        ]);
+
+        $ping2 = Permission::create([
+            'name'          => 'edit-ping',
+            'display_name'  => 'ping Düzenleme',
+            'is_active'     => 1,
+        ]);
+
+        $ping3 = Permission::create([
+            'name'          => 'update-ping',
+            'display_name'  => 'ping update',
+            'is_active'     => 1,
+        ]);
+
+
+
+
+
 
 
 
@@ -1366,6 +1389,9 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($widgetgroup5);
         $super_admin->permissions()->attach($widgetgroup6);
         $super_admin->permissions()->attach($widgetgroup7);
+        $super_admin->permissions()->attach($ping1);
+        $super_admin->permissions()->attach($ping2);
+        $super_admin->permissions()->attach($ping3);
 
     }
 }

@@ -310,11 +310,10 @@
                     </div><!-- /.nw-sm-img -->
                     <div class="nw-sm-img">
                         {{--{{Cache::get('right_blok_1')}}--}}
-                        @foreach($widgets as $widget)
+                        @foreach($widgets->where('group','right_bar') as $widget )
                             @widget($widget['namespace'])
                             <br />
                         @endforeach
-
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -355,7 +354,7 @@
                         <div id="m_pg1" class="pager">
                             @foreach($videoGalleries as $videoGallery)
                                 <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct">
-                                    <a href="{{route('show_videos',['slug' => $videoGallery->videos->first()->slug ])}}">
+                                    <a href="{{route('show_video_gallery',['slug' => $videoGallery->videos->first()->slug ])}}">
                                         <img src="{{ asset('video_gallery/' . $videoGallery->id . '/photos/58x58_' . $videoGallery->thumbnail)}}" /></a>
                                 </span></a>
                             @endforeach

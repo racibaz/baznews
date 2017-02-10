@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RssTableSeeder::class);
         $this->call(WidgetManagersTableSeeder::class);
         $this->call(AdvertisementsTableSeeder::class);
-        $this->call(WidgetGroupTableSeeder::class);
+//        $this->call(WidgetGroupTableSeeder::class);
+        $this->call(PingsTableSeeder::class);
     }
 }

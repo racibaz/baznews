@@ -18,10 +18,11 @@ class ArticleWidgetManagerTableSeeder extends Seeder
         if(empty($widget))
         {
             WidgetManager::create([
-                'widget_group_id' => 4,
+//                'widget_group_id' => 4,
                 'name'          => 'RecentArticles',
                 'slug'          => str_slug('RecentArticles'),
                 'namespace'     => '\App\Modules\Article\Widgets\RecentArticles',
+                'group'         => 'right_bar',
                 'position'      => 3,
                 'is_active'     => 1
             ]);

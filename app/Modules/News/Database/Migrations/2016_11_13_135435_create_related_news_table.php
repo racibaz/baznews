@@ -15,6 +15,7 @@ class CreateRelatedNewsTable extends Migration
     {
         Schema::create('related_news', function (Blueprint $table) {
 
+            $table->increments('id');
             $table->unsignedInteger('news_id')->index();
             $table->unsignedInteger('related_news_id')->index();
 

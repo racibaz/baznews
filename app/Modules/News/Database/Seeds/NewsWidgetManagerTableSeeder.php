@@ -18,10 +18,11 @@ class NewsWidgetManagerTableSeeder extends Seeder
         if(empty($widget))
         {
             WidgetManager::create([
-                'widget_group_id' => 4,
+//                'widget_group_id' => 4,
                 'name'          => 'RecommendationNews',
-                'slug'          => str_slug('RecommendationNews'),
+                'slug'          => 'recommendation_news',
                 'namespace'     => '\App\Modules\News\Widgets\RecommendationNews',
+                'group'         => 'right_bar',
                 'position'      => 1,
                 'is_active'     => 1
             ]);

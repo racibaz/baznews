@@ -4,6 +4,7 @@ namespace App\Modules\News\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Modules\News\Models\News;
+use App\Modules\News\Models\RelatedNews;
 use App\Modules\News\Repositories\NewsCategoryRepository;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -55,6 +56,7 @@ class NewsController extends Controller
 
             $previousNews = null;
             $nextNews = null;
+            $relatedNews = [];
             //$newsSlug = htmlentities(strip_tags($newsSlug), ENT_QUOTES, 'UTF-8');
             $record = $this->repo
                                 ->with([
@@ -105,10 +107,19 @@ class NewsController extends Controller
                 $nextNews = News::where('id',$nextNewsID)->first();
             }
 
+
+
+            foreach ($record->related_news as $index => $related_news) {
+                array_push($relatedNews,$related_news->related_news_id);
+            }
+
+            $relatedNewsItems =  $this->repo->whereIn('id', $relatedNews)->findAll();
+
             return Theme::view('news::frontend.news.show', compact([
                 'record',
                 'previousNews',
                 'nextNews',
+                'relatedNewsItems',
             ]))->render();
         });
     }

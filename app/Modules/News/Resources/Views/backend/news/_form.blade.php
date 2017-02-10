@@ -54,10 +54,10 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('news_resource_id', trans('news::news.news_resource_id'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('news_resource_id', trans('news::news.news_source_id'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::select('news_resource_id', $newsSourceList , $record->news_resource_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
+                                {!! Form::select('news_source_id', $newsSourceList , $record->news_source_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

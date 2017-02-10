@@ -43,9 +43,6 @@ class SearchController extends Controller
         $newsRepo = new NewsRepository();
         $userNews = $newsRepo->where('user_id',$user->id)->findAll();
 
-
-
-
         return Theme::view($this->getViewName(__FUNCTION__),compact([
             'records',
             'user',

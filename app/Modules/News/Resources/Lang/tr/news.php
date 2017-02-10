@@ -3,7 +3,7 @@
 return [
     'country_id' => 'Ülke',
     'city_id' => 'Şehir',
-    'news_resource_id' => 'Haber Kaynağı',
+    'news_source_id' => 'Haber Kaynağı',
     'title' => 'Haber Başlığı',
     'slug' => 'Slug',
     'spot' => 'Haberin Spotu',

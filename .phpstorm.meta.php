@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-02-07.
+    * Generated on 2017-02-10.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -100,7 +100,6 @@ namespace PHPSTORM_META {
             'arrilot.widget-group-collection' instanceof \Arrilot\Widgets\WidgetGroupCollection,
             'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
-            'thumbnail' instanceof \Lakshmajim\Thumbnail\Thumbnail,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -279,7 +278,6 @@ namespace PHPSTORM_META {
             'arrilot.widget-group-collection' instanceof \Arrilot\Widgets\WidgetGroupCollection,
             'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
-            'thumbnail' instanceof \Lakshmajim\Thumbnail\Thumbnail,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -458,7 +456,6 @@ namespace PHPSTORM_META {
             'arrilot.widget-group-collection' instanceof \Arrilot\Widgets\WidgetGroupCollection,
             'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
-            'thumbnail' instanceof \Lakshmajim\Thumbnail\Thumbnail,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
@@ -637,7 +634,6 @@ namespace PHPSTORM_META {
             'arrilot.widget-group-collection' instanceof \Arrilot\Widgets\WidgetGroupCollection,
             'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
-            'thumbnail' instanceof \Lakshmajim\Thumbnail\Thumbnail,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,

@@ -14,7 +14,6 @@ class WidgetManager extends Model
     use SoftDeletes;
 
     public static $widgetGroups = [
-
         'header' =>  'header',
         'side_bar' => 'side_bar',
         'center' => 'center',
@@ -30,10 +29,11 @@ class WidgetManager extends Model
      * @var array
      */
     protected $fillable = [
-        'widget_group_id',
+//        'widget_group_id',
         'name',
         'slug',
         'namespace',
+        'group',
         'position',
         'is_active',
     ];
@@ -49,7 +49,7 @@ class WidgetManager extends Model
 
     public static function validate($input) {
         $rules = array(
-            'widget_group_id'               => 'required',
+//            'widget_group_id'               => 'required',
             'name'                          => 'required|string',
             'namespace'                     => 'required',
             'position'                      => 'required|numeric',
@@ -87,10 +87,10 @@ class WidgetManager extends Model
             foreach ($jsonIterator as $key => $val)
             {
                 if(is_array($val)) {
-                    //echo "$key:\n";
+                    $widgetName = $key;
                 } else {
 
-                    $widgets[$module['basename']][$key] = $val;
+                    $widgets[$widgetName][$key] = $val;
                 }
             }
         }
@@ -101,6 +101,38 @@ class WidgetManager extends Model
     public static function getWidgetInfo($widgetSlug)
     {
         $widget = [];
+
+        //module un widgets.json file yolu
+        $widgetsJsonFilePath = base_path('app/Widgets/widgets.json');
+
+        $jsonFile = file_get_contents($widgetsJsonFilePath);
+
+        $jsonIterator = new RecursiveIteratorIterator(
+            new RecursiveArrayIterator(json_decode($jsonFile, true)),
+            RecursiveIteratorIterator::SELF_FIRST);
+
+
+        foreach ($jsonIterator as $key  => $val)
+        {
+            if(is_array($val)) {
+                $widgetName = $key;
+                //echo "$key:\n";
+            } else {
+
+                if($key === 'slug' && $val === $widgetSlug){
+
+                    foreach ($jsonIterator as $key => $val)
+                    {
+                        $widget[$key] = $val;
+                    }
+                }
+            }
+        }
+
+        //Eğer widget sistemin core unda tanımlanmış ise modüllere bakmıyor.
+        if(count($widget) > 0)
+            return $widget;
+
 
         foreach (Module::all() as $module)
         {
@@ -122,21 +154,65 @@ class WidgetManager extends Model
             foreach ($jsonIterator as $key => $val)
             {
                 if(is_array($val)) {
-                    //echo "$key:\n";
+                    $widgetName = $key;
                 } else {
 
                     if($key === 'slug' && $val === $widgetSlug){
 
-                        foreach ($jsonIterator as $key => $val)
+                        foreach ($jsonIterator as $subKey => $subVal)
                         {
-                            $widget[$key] = $val;
+                            if(is_array($subVal)){
+                                $currentWidgetName = $subKey;
+                            }
+
+                            /*Bir module de birden fazla widget var ise
+                             *onun için yukarıda "slug" üzerinden eşleştirme yapmış olsak da tekrar kontrol ediyoruz.
+                             * */
+                            if($widgetName === $currentWidgetName){
+                                $widget[$subKey] = $subVal;
+                            }
                         }
                     }
                 }
             }
         }
 
+
         return $widget;
+    }
+
+    public static function getCoreWidgets()
+    {
+        $widgets =[];
+
+        //module un widgets.json file yolu
+        $widgetsJsonFilePath = base_path('app/Widgets/widgets.json');
+
+        $jsonFile = file_get_contents($widgetsJsonFilePath);
+
+        $jsonIterator = new RecursiveIteratorIterator(
+            new RecursiveArrayIterator(json_decode($jsonFile, true)),
+            RecursiveIteratorIterator::SELF_FIRST);
+
+
+        /*Module widget larını listelerken module ismini dizileri ayrıştırmak için kullanıyoruz.
+         * Burda ise module ismi olmadığı için widget in property ismini kullanmak için
+         * "$val" değikeni dizi iken "$key" değişkeni json ın property ismi oluyor.
+         * Bizde bu yönlenle hem "$key" in dizi oluğ olmadığını kontrol ediyoruz
+         * hem de "$key" in property ismini alıyoruz.
+         * */
+
+        foreach ($jsonIterator as $key  => $val)
+        {
+            if(is_array($val)) {
+                $widgetName = $key;
+                //echo "$key:\n";
+            } else {
+                $widgets[$widgetName][$key] = $val;
+            }
+        }
+
+        return $widgets;
     }
 
 
