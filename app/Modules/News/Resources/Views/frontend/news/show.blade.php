@@ -55,10 +55,13 @@
                         <div class="ct-text">
 
                             {!! $record->spot !!}
+
                             <br /><br /><br />
                             {!! $record->content !!}
                                 <br />
+                        </div><!-- /.ct-text -->
 
+                        <div class="r-box">
                             <h4>Haber Kaynağı</h4>
                             {{$record->news_source->name}}
 
@@ -110,10 +113,10 @@
                             @endforeach
 
 
+                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>
                             <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>
-                                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                                <div class="addthis_inline_share_toolbox"></div>
+                            <div class="addthis_inline_share_toolbox"></div>
                             @foreach($record->tags as $tag)
                                 <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
                                 {{--<a href="/tags/{{$tag->name}}">{{$tag->name}}</a>--}}
@@ -129,7 +132,8 @@
                                 <a href="{!! route('show_news', ['slug' => $previousNews->slug]) !!}">{{trans('news::news.previous_news')}}</a>
                                 <a href="{!! route('show_news', ['slug' => $nextNews->slug]) !!}">{{trans('news::news.next_news')}}</a>
                             @endif
-                        </div><!-- /.ct-text -->
+                        </div>
+
                     </div><!-- /.content -->
                 </div><!-- /.new-content -->
 

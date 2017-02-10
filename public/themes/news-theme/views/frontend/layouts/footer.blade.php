@@ -10,7 +10,6 @@
                 <div class="col-md-8">
                     <div class="row">
 
-
                         <div class="col-md-4">
                             <div class="ft-m">
                                 <div class="m-ttl">
