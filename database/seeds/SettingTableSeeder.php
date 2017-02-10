@@ -73,7 +73,7 @@ class SettingTableSeeder extends Seeder
 
         Setting::create([
             'attribute_key'               => 'page_refresh',
-            'attribute_value'             => '<meta http-equiv=\"refresh\" content=\"60\">',
+            'attribute_value'             => '<meta http-equiv=\"refresh\" content=\"1200\">',
         ]);
 
         Setting::create([
