@@ -17,10 +17,11 @@ class PhotoGalleriesTableSeeder extends Seeder
         PhotoGallery::create([
             'photo_category_id' => 1,
             'user_id' => 1,
-            'title' => 'ilk photo gallery',
-            'slug' => 'ilk_photo_gallery',
+            'title' => 'ilk photo gallery 1',
+            'slug' => 'ilk_photo_gallery-1',
             'description' => 'galeri tanım/not',
             'keywords' => 'ilk galeri',
+            'thumbnail' => '1.jpg',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -28,10 +29,11 @@ class PhotoGalleriesTableSeeder extends Seeder
         PhotoGallery::create([
             'photo_category_id' => 2,
             'user_id' => 1,
-            'title' => 'ikinci photo gallery',
-            'slug' => 'ikinci_photo_gallery',
+            'title' => 'ikinci photo gallery 2',
+            'slug' => 'ikinci_photo_gallery-2',
             'description' => 'galeri tanım/not',
             'keywords' => 'ikinci galeri',
+            'thumbnail' => '8.jpg',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -39,44 +41,48 @@ class PhotoGalleriesTableSeeder extends Seeder
         PhotoGallery::create([
             'photo_category_id' => 1,
             'user_id' => 1,
-            'title' => 'üç photo gallery',
-            'slug' => 'üç_photo_gallery',
+            'title' => 'üç photo gallery 3',
+            'slug' => 'uc_photo_gallery-3',
             'description' => 'galeri tanım/not',
             'keywords' => 'üç galeri',
-            'is_cuff' => 1,
+            'thumbnail' => '1.jpg',
+            'is_cuff' => 0,
             'is_active' => 1,
         ]);
 
         PhotoGallery::create([
             'photo_category_id' => 3,
             'user_id' => 1,
-            'title' => 'dört photo gallery',
-            'slug' => 'dört_photo_gallery',
+            'title' => 'dört photo gallery 4',
+            'slug' => 'dort_photo_gallery-4',
             'description' => 'galeri tanım/not',
             'keywords' => 'dört galeri',
-            'is_cuff' => 1,
+            'thumbnail' => '1.jpg',
+            'is_cuff' => 0,
             'is_active' => 1,
         ]);
 
         PhotoGallery::create([
             'photo_category_id' => 4,
             'user_id' => 1,
-            'title' => 'beş photo gallery',
-            'slug' => 'beş_photo_gallery',
+            'title' => 'beş photo gallery 5',
+            'slug' => 'bes_photo_gallery-5',
             'description' => 'galeri tanım/not',
             'keywords' => 'beş galeri',
-            'is_cuff' => 1,
+            'thumbnail' => '1.jpg',
+            'is_cuff' => 0,
             'is_active' => 1,
         ]);
 
         PhotoGallery::create([
             'photo_category_id' => 5,
             'user_id' => 2,
-            'title' => 'altı photo gallery',
-            'slug' => 'altı_photo_gallery',
+            'title' => 'altı photo gallery 6',
+            'slug' => 'alti_photo_gallery-6',
             'description' => 'galeri tanım/not',
             'keywords' => 'altı galeri',
-            'is_cuff' => 1,
+            'thumbnail' => '1.jpg',
+            'is_cuff' => 0,
             'is_active' => 1,
         ]);
     }
