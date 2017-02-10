@@ -40,8 +40,8 @@ class RelationsTableSeeder extends Seeder
 
 
         $news1->photo_galleries()->attach($photoGallery1);
-        $news1->photo_galleries()->attach($photoGallery2);
-        $news1->photo_galleries()->attach($photoGallery3);
+//        $news1->photo_galleries()->attach($photoGallery2);
+//        $news1->photo_galleries()->attach($photoGallery3);
         $news2->photo_galleries()->attach($photoGallery2);
         $news3->photo_galleries()->attach($photoGallery3);
         $news3->photo_galleries()->attach($photoGallery4);
@@ -49,15 +49,15 @@ class RelationsTableSeeder extends Seeder
 
 
         $news1->photos()->attach($photo1);
-        $news1->photos()->attach($photo2);
-        $news1->photos()->attach($photo3);
-        $news1->photos()->attach($photo4);
-        $news1->photos()->attach($photo5);
+//        $news1->photos()->attach($photo2);
+//        $news1->photos()->attach($photo3);
+//        $news1->photos()->attach($photo4);
+//        $news1->photos()->attach($photo5);
         $news2->photos()->attach($photo2);
         $news2->photos()->attach($photo3);
         $news2->photos()->attach($photo4);
-        $news3->photos()->attach($photo3);
-        $news3->photos()->attach($photo3);
+        $news3->photos()->attach($photo1);
+        $news3->photos()->attach($photo2);
         $news3->photos()->attach($photo3);
         $news4->photos()->attach($photo4);
 
@@ -77,25 +77,25 @@ class RelationsTableSeeder extends Seeder
 
 
         $news1->video_galleries()->attach($videoGallery1);
-        $news1->video_galleries()->attach($videoGallery2);
-        $news1->video_galleries()->attach($videoGallery3);
+//        $news1->video_galleries()->attach($videoGallery2);
+//        $news1->video_galleries()->attach($videoGallery3);
         $news2->video_galleries()->attach($videoGallery2);
         $news3->video_galleries()->attach($videoGallery3);
-        $news3->video_galleries()->attach($videoGallery4);
+//        $news3->video_galleries()->attach($videoGallery4);
         $news4->video_galleries()->attach($videoGallery5);
 
 
         $news1->videos()->attach($video1);
-        $news1->videos()->attach($video2);
-        $news1->videos()->attach($video3);
-        $news1->videos()->attach($video4);
-        $news1->videos()->attach($video5);
+//        $news1->videos()->attach($video2);
+//        $news1->videos()->attach($video3);
+//        $news1->videos()->attach($video4);
+//        $news1->videos()->attach($video5);
         $news2->videos()->attach($video2);
-        $news2->videos()->attach($video3);
-        $news2->videos()->attach($video4);
-        $news3->videos()->attach($video3);
-        $news3->videos()->attach($video3);
-        $news3->videos()->attach($video3);
+//        $news2->videos()->attach($video3);
+//        $news2->videos()->attach($video4);
+        $news3->videos()->attach($video1);
+//        $news3->videos()->attach($video2);
+//        $news3->videos()->attach($video3);
         $news4->videos()->attach($video4);
 
 

@@ -54,6 +54,8 @@
                         </span><!-- /.meta -->
                         <div class="ct-text">
 
+                            {!! $record->spot !!}
+                            <br /><br /><br />
                             {!! $record->content !!}
                                 <br />
 
@@ -78,7 +80,6 @@
 
                             <h4>Haberin videoları</h4>
                             @foreach($record->videos as $video)
-
                                 @if(!empty($video->file))
                                     <video id="{{$video->id}}"
                                            class="video-js vjs-default-skin"
