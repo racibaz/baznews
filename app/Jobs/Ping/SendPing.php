@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use JJG\Ping;
+use Log;
 
 class SendPing implements ShouldQueue
 {
@@ -31,19 +32,24 @@ class SendPing implements ShouldQueue
      */
     public function handle()
     {
-
         $ping = \App\Models\Ping::first();
 
-        $pingList = explode('/n' , $ping->ping_list);
+        $text = trim($ping->ping_list);
+        $textAr = preg_split('/[\n\r]+/', $text);
 
-        $host = 'www.google.com';
-        $ping = new Ping($host);
-        $latency = $ping->ping();
-        if ($latency !== false) {
-            print 'Latency is ' . $latency . ' ms';
-        }
-        else {
-            print 'Host could not be reached.';
+        // remove any extra \r characters
+        $textAr = array_filter($textAr, 'trim');
+
+        foreach ($textAr as $index => $host)
+        {
+            $ping = new Ping($host);
+            $latency = $ping->ping();
+            if ($latency !== false) {
+                Log::error('Latency is ' . $latency . ' ms : ' . $host);
+            }
+            else {
+                Log::error('Host could not be reached. : ' . $host);
+            }
         }
     }
 }
