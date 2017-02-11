@@ -13,9 +13,7 @@ class PingsTableSeeder extends Seeder
     public function run()
     {
         Ping::create([
-            'ping_list'                  => 'http://rpc.twingly.com/
-                                            ping.blogs.yandex.ru/RPC2
-                                            blogsearch.google.com/ping/RPC2'
+            'ping_list'                  => 'Bilgilendirme',
         ]);
     }
 }

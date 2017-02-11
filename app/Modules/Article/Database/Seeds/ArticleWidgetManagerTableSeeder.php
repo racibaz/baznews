@@ -20,7 +20,7 @@ class ArticleWidgetManagerTableSeeder extends Seeder
             WidgetManager::create([
 //                'widget_group_id' => 4,
                 'name'          => 'RecentArticles',
-                'slug'          => str_slug('RecentArticles'),
+                'slug'          => 'recent_articles',
                 'namespace'     => '\App\Modules\Article\Widgets\RecentArticles',
                 'group'         => 'right_bar',
                 'position'      => 3,

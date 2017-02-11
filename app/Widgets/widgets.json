@@ -6,5 +6,13 @@
     "namespace": "\\App\\Widgets\\TagCloud",
     "version": "1.0",
     "description": "Tag Cloud Widget."
+  },
+  "FacebookWidget": {
+    "name": "FacebookWidget",
+    "slug": "facebook_widget",
+    "module_name": "Core",
+    "namespace": "\\App\\Widgets\\FacebookWidget",
+    "version": "1.0",
+    "description": "FacebookWidget shows facebook embed code of settings table."
   }
 }

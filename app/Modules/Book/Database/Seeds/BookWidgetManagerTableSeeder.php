@@ -20,7 +20,7 @@ class BookWidgetManagerTableSeeder extends Seeder
             WidgetManager::create([
 //                'widget_group_id' => 4,
                 'name'          => 'RecentBooks',
-                'slug'          => str_slug('RecentBooks'),
+                'slug'          => 'recent_books',
                 'namespace'     => '\App\Modules\Book\Widgets\RecentBooks',
                 'group'         => 'right_bar',
                 'position'      => 2,
