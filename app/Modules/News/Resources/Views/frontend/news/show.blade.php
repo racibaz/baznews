@@ -18,121 +18,161 @@
         <div class="row">
             <div class="col-md-8">
                 <div id="new-content">
-                    <div class="share-box">
-                        <ul class="nav nav-justified">
-                            <li>
-                                <a class="btn btn-block btn-social btn-facebook">
-                                    <span class="fa fa-facebook"></span> Paylaş
-                                </a>
-                            </li>
-                            <li>
-                                <a class="btn btn-block btn-social btn-twitter">
-                                    <span class="fa fa-twitter"></span> Paylaş
-                                </a>
-                            </li>
-                            <li>
-                                <a class="btn btn-block btn-social btn-google">
-                                    <span class="fa fa-google-plus"></span> Paylaş
-                                </a>
-                            </li>
-                            <li>
-                                <a class="btn btn-block btn-social btn-linkedin">
-                                    <span class="fa fa-linkedin"></span> Paylaş
-                                </a>
-                            </li>
-                        </ul><!-- /.nav -->
-                    </div><!-- /.share-box -->
+                    <div class="meta">
+                        <a href="new-details.html" class="cat-title">World News.</a>
+                        <span class="timestamp">Oluşturma : {{ $record->created_at }} | Güncelleme: {{ $record->updated_at }}</span>
+                    </div><!-- /.meta -->
+                    <h1 class="news-title">{{ $record->title }}</h1>
+                    <div class="news-spot">
+                        <blockquote>
+                            <p>{!! $record->spot !!}</p>
+                        </blockquote>
+                    </div>
                     <div class="new-img">
                         <img src="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}" alt="{{$record->title}}">
+                        <div class="image-subtitle">Venison pancetta cupim shankle stri (Haber 7)</div>
                     </div>
                     <div class="content" id="content">
-                        <h1 class="ct-title">{{ $record->title }}</h1>
-                        <span class="meta">
-                            Ekleme Zamanı : {{ $record->created_at }} \\
-                            Güncelleme Zamanı : {{ $record->updated_at }}
-                            <a href="new-details.html">World News.</a>   \\   <a href="new-details.html">No Coments.</a>
-                        </span><!-- /.meta -->
-                        <div class="ct-text">
-
-                            {!! $record->spot !!}
-
-                            <br /><br /><br />
+                        <div class="news-text">
                             {!! $record->content !!}
-                                <br />
                         </div><!-- /.ct-text -->
-
-                        <div class="r-box">
-                            <h4>Haber Kaynağı</h4>
+                        <div class="new-source">
+                            <span>Haber Kaynağı: </span>
                             {{$record->news_source->name}}
+                        </div>
+                        <div class="relation-news">
+                            <div class="title-section">
+                                <h1>
+                                    <span>İlişkili Haberler</span>
+                                </h1>
+                            </div>
+                            <div class="news-body">
+                                <div class="row">
+                                    @foreach($relatedNewsItems as $relatedNews)
+                                        <div class="col-lg-3">
+                                            <div class="new-image">
+                                                <img src="{{asset('images/news_images/1/196x150_1.jpg')}}">
+                                            </div>
+                                            <div class="new-title">
+                                                {{$relatedNews->title}}
+                                            </div>
+                                        </div><!-- /.col -->
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div><!-- /.relation-news -->
 
+                        <div class="news-videos">
+                            <div class="title-section">
+                                <h1>
+                                    <span>Haberin Video Galerileri</span>
+                                </h1>
+                            </div>
+                            <div class="news-video-body">
+                                <div class="row">
+                                    @foreach($record->video_galleries as $video_gallery)
+                                    <div class="col-lg-3">
+                                        {{$video_gallery->title}}
+                                    </div>
+                                    @endforeach
+                                </div>
 
-                            <h4>İlişkili Haberler</h4>
-                            @foreach($relatedNewsItems as $relatedNews)
-                                {{$relatedNews->title}}
-                            @endforeach
+                            </div>
+                        </div><!-- /.news-videos -->
 
-                            <h4>Haberin Video Galerileri</h4>
-                            @foreach($record->video_galleries as $video_gallery)
-                                {{$video_gallery->title}}
-                            @endforeach
+                        <div class="news-photo-gallery">
+                            <div class="title-section">
+                                <h1>
+                                    <span>Haberin Photo Galerileri</span>
+                                </h1>
+                            </div>
+                            <div class="news-photo-gallery-body">
+                                <div class="row">
+                                    @foreach($record->photo_galleries as $photo_gallery)
+                                    <div class="col-lg-3">
+                                        {{$photo_gallery->title}}
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div><!-- /.news-photo-gallery -->
 
-                            <h4>Haberin Photo Galerileri</h4>
-                            @foreach($record->photo_galleries as $photo_gallery)
-                                {{$photo_gallery->title}}
-                            @endforeach
+                        <div class="news-videos">
+                            <div class="title-section">
+                                <h1>
+                                    <span>Haberin Videoları</span>
+                                </h1>
+                            </div>
+                            <div class="news-videos">
+                                <div class="row">
+                                    @foreach($record->videos as $video)
+                                    <div class="col-lg-12">
+                                            @if(!empty($video->file))
+                                                <video id="{{$video->id}}"
+                                                       class="video-js vjs-default-skin"
+                                                       controls preload="auto" width="640" height="264"
+                                                       poster="http://video-js.zencoder.com/oceans-clip.png"
+                                                       data-setup='{"example_option":true}'>
+                                                    <source src="{{url($video->file)}}" type="video/mp4" />
+                                                    <source src="{{url($video->file)}}" type="video/webm" />
+                                                    <source src="{{url($video->file)}}" type="video/ogg" />
+                                                    {{--<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />--}}
+                                                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                                                </video>
+                                            @elseif(!empty($video->link))
+                                                <video
+                                                        id="{{$video->id}}"
+                                                        class="video-js vjs-default-skin"
+                                                        controls
+                                                        width="640" height="264"
+                                                        {{--data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'--}}
+                                                        data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'>
+                                                </video>
+                                            @endif
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div class="news-photos">
+                            <div class="title-section">
+                                <h1>
+                                    <span>Haberin Resimleri</span>
+                                </h1>
+                            </div>
+                            <div class="news-photos-body">
+                                <div class="row">
+                                    @foreach($record->photos as $photo)
+                                        <div class="col-lg-3">
+                                            {{$photo->name}}
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
 
-                            <h4>Haberin videoları</h4>
-                            @foreach($record->videos as $video)
-                                @if(!empty($video->file))
-                                    <video id="{{$video->id}}"
-                                           class="video-js vjs-default-skin"
-                                           controls preload="auto" width="640" height="264"
-                                           poster="http://video-js.zencoder.com/oceans-clip.png"
-                                           data-setup='{"example_option":true}'>
-                                        <source src="{{url($video->file)}}" type="video/mp4" />
-                                        <source src="{{url($video->file)}}" type="video/webm" />
-                                        <source src="{{url($video->file)}}" type="video/ogg" />
-                                        {{--<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />--}}
-                                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-                                    </video>
-                                @elseif(!empty($video->link))
-                                    <video
-                                            id="{{$video->id}}"
-                                            class="video-js vjs-default-skin"
-                                            controls
-                                            width="640" height="264"
-                                            {{--data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'--}}
-                                            data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'>
-                                    </video>
-                                @endif
-                            @endforeach
-
-                            <h4>Haberin Resimleri </h4>
-                            @foreach($record->photos as $photo)
-                                {{$photo->name}}
-                            @endforeach
-
-
-                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>
-                            <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                            <div class="addthis_inline_share_toolbox"></div>
+                        <div class="tags-box">
                             @foreach($record->tags as $tag)
                                 <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
                                 {{--<a href="/tags/{{$tag->name}}">{{$tag->name}}</a>--}}
                             @endforeach
-
-                            @if($record->is_show_editor_profile)
-                                <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">{{$record->user->name}}</a>
-                                <div>{{$record->user->bio_note}}</div>
-                                <div>{{$record->user->facebook}}</div>
-                                <div>{{$record->user->web_site}}</div>
-                            @endif
-                            @if($record->is_show_previous_and_next_news)
-                                <a href="{!! route('show_news', ['slug' => $previousNews->slug]) !!}">{{trans('news::news.previous_news')}}</a>
-                                <a href="{!! route('show_news', ['slug' => $nextNews->slug]) !!}">{{trans('news::news.next_news')}}</a>
-                            @endif
                         </div>
+
+                        @if($record->is_show_editor_profile)
+                            <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">{{$record->user->name}}</a>
+                            <div>{{$record->user->bio_note}}</div>
+                            <div>{{$record->user->facebook}}</div>
+                            <div>{{$record->user->web_site}}</div>
+                        @endif
+                        @if($record->is_show_previous_and_next_news)
+                            <a href="{!! route('show_news', ['slug' => $previousNews->slug]) !!}">{{trans('news::news.previous_news')}}</a>
+                            <a href="{!! route('show_news', ['slug' => $nextNews->slug]) !!}">{{trans('news::news.next_news')}}</a>
+                        @endif
+
+                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>
+                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                        <div class="addthis_inline_share_toolbox"></div>
 
                     </div><!-- /.content -->
                 </div><!-- /.new-content -->
@@ -334,22 +374,14 @@
 
                     @foreach($widgets as $widget)
                         @widget($widget['namespace'])
-                        <br />
                     @endforeach
-
                     {{--@widgetGroup('right_bar')--}}
-
-
                 </div><!-- /.sidebar -->
             </div><!-- /.col -->
         </div><!-- /.row -->
 
     </article><!-- /.article -->
-
-
     <div class="fb-comment-embed" data-href="{{Redis::get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>
-
-
 @endsection
 
 
