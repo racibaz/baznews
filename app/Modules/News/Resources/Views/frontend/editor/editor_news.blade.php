@@ -2,10 +2,9 @@
 
 @section('content')
 
-
     <article class="container" id="container">
         <div class="breadcrumbs">
-            <p><a href="new-details.html">Home.</a>   \\   <a href="new-details.html">World News.</a>   \\   Single.</p>
+            <p><a href="new-details.html">Home.</a>  \\  <a href="new-details.html">World News.</a>   \\   Single.</p>
         </div>
         <div class="row">
             <div class="col-md-8">
