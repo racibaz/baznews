@@ -8,6 +8,6 @@
         <li>Dolar Alış : {{$usdBuying}}</li>
         <li>Dolar Satış : {{$usdSelling}}</li>
         <li>Euro Alış : {{$euroBuying}}</li>
-        <li>Euro Alış : {{$euroSelling}}</li>
+        <li>Euro Satış : {{$euroSelling}}</li>
     </ul>
 </div>
