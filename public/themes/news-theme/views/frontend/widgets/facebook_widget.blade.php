@@ -1,2 +1,1 @@
-<div class="fb-page" data-href="https://www.facebook.com/Ferid&#xfc;ddin-Attar-Hazretleri-969207149791176/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Ferid&#xfc;ddin-Attar-Hazretleri-969207149791176/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Ferid&#xfc;ddin-Attar-Hazretleri-969207149791176/">Feridüddin Attar Hazretleri</a></blockquote></div>
-
+{!!$facebookEmbedCode!!}

@@ -14,5 +14,13 @@
     "namespace": "\\App\\Widgets\\FacebookWidget",
     "version": "1.0",
     "description": "FacebookWidget shows facebook embed code of settings table."
+  },
+  "TwitterWidget": {
+    "name": "TwitterWidget",
+    "slug": "twitter_widget",
+    "module_name": "Core",
+    "namespace": "\\App\\Widgets\\TwitterWidget",
+    "version": "1.0",
+    "description": "TwitterWidget shows twitter embed code of settings table."
   }
 }

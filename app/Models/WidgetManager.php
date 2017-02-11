@@ -121,9 +121,18 @@ class WidgetManager extends Model
 
                 if($key === 'slug' && $val === $widgetSlug){
 
-                    foreach ($jsonIterator as $key => $val)
+                    foreach ($jsonIterator as $subKey => $subVal)
                     {
-                        $widget[$key] = $val;
+                        if(is_array($subVal)){
+                            $currentWidgetName = $subKey;
+                        }
+
+                        /*Bir module de birden fazla widget var ise
+                         *onun için yukarıda "slug" üzerinden eşleştirme yapmış olsak da tekrar kontrol ediyoruz.
+                         * */
+                        if($widgetName === $currentWidgetName){
+                            $widget[$subKey] = $subVal;
+                        }
                     }
                 }
             }

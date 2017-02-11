@@ -92,8 +92,27 @@ class SettingTableSeeder extends Seeder
         ]);
 
         Setting::create([
+            'attribute_key'               => 'facebook_embed_code',
+            'attribute_value'             => '<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.8&appId=712214338937575";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, \'script\', \'facebook-jssdk\'));</script>
+
+<div class="fb-page" data-href="https://www.facebook.com/RecepTayyipErdogan.Name/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/RecepTayyipErdogan.Name/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/RecepTayyipErdogan.Name/">Receptayyiperdogan.Name</a></blockquote></div>',
+        ]);
+
+        Setting::create([
             'attribute_key'               => 'twitter',
             'attribute_value'             => 'twitter account',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'twitter_embed_code',
+            'attribute_value'             => '<a class="twitter-timeline" href="https://twitter.com/RecaiCansiz">Tweets by RecaiCansiz</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>',
         ]);
 
         Setting::create([

@@ -140,13 +140,22 @@ class WidgetManagerController extends Controller
             return Redirect::back();
         }
 
+
+        /*
+         * sıralamaları position a göre yaptığımız için en son eklenen
+         *
+         * widget ın position değerini 1 arttırarak ekliyoruz.
+         * */
+        $widgetPosition = $this->repo->orderBy('position','desc')->findAll()->first();
+
+
         $widgetManagaer =[];
 //        $widgetManagaer['widget_group_id']  = 4;
         $widgetManagaer['name']         = $widget['name'];
         $widgetManagaer['slug']         = $widget['slug'];
         $widgetManagaer['namespace']    = $widget['namespace'];
         $widgetManagaer['group']        = $group;
-        $widgetManagaer['position']     = 1;
+        $widgetManagaer['position']     = $widgetPosition->position + 1;
         $widgetManagaer['is_active']    = 1;
 
         $record = $this->repo->findBy('slug',$widgetSlug);
