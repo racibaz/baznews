@@ -22,5 +22,13 @@
     "namespace": "\\App\\Widgets\\TwitterWidget",
     "version": "1.0",
     "description": "TwitterWidget shows twitter embed code of settings table."
+  },
+  "ExchangeRates": {
+    "name": "ExchangeRates",
+    "slug": "exchange_rates",
+    "module_name": "Core",
+    "namespace": "\\App\\Widgets\\ExchangeRates",
+    "version": "1.0",
+    "description": "ExchangeRates shows usd and euro exchange"
   }
 }
