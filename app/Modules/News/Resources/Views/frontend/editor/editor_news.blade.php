@@ -12,11 +12,21 @@
                 <div id="new-content">
                     <div class="content" id="content">
                         <h1 class="ct-title"> {{$user->name}} </h1>
-                        kullanıcı foto
+                        {{$user->bio_note}}
+                        {{$user->email}}
+                        {{$user->facebook}}
+                        {{$user->twitter}}
+                        {{$user->linkendin}}
+                        {{$user->youtube}}
+                        {{$user->web_site}}
                         <br />{{$user->bio_note}}<br />
                         <div class="ct-text">
                             @foreach($newsItems as $item)
-                                <a href="{!! route('show_news', ['slug' => $item->slug]) !!}">{{$item->title}}</a>
+                                <a href="{!! route('show_news', ['slug' => $item->slug]) !!}">
+                                    <img src="{{asset('images/news_images/' . $item->id . '/58x58_' . $item->thumbnail)}}">
+                                    {{$item->title}}
+                                    <br /> {{$item->spot}}
+                                </a>
                                 <br />
                             @endforeach
                         </div><!-- /.ct-text -->
