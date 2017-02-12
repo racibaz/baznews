@@ -76,6 +76,7 @@
 
                             <div class="col-lg-10">
                                 {!! Form::file('thumbnail') !!}
+                                <img id="preview" src="#" alt="">
                             </div>
                         </div>
                     </div>
@@ -178,6 +179,11 @@
 
 @section('css')
     <link href="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.min.css') }}" rel="stylesheet">
+
+    <style>
+        #preview {display: none;}
+        .display {display: block !important;}
+    </style>
 @endsection
 
 @section('js')
@@ -186,6 +192,25 @@
         $(function () {
             //Initialize Select2 Elements
             $(".select2").select2();
+        });
+    </script>
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                $( "#preview" ).addClass( "display" );
+                reader.onload = function (e) {
+                    $('#preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#thumbnail").change(function(){
+            readURL(this);
         });
     </script>
 @endsection

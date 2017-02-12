@@ -19,6 +19,7 @@ class ArticleDatabaseSeeder extends Seeder
         $this->call(AuthorsTableSeeder::class);
         $this->call(ArticlesTableSeeder::class);
         $this->call(ArticleWidgetManagerTableSeeder::class);
+        $this->call(PermissionTableSeeder::class);
 
 
 
