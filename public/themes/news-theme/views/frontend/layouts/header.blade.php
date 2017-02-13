@@ -1,5 +1,5 @@
 <!-- Header -->
-<header>
+<header id="header">
     <nav class="navbar">
         <div id="sticky-container" class="adverts">
             <div id="dfp-pageskin-sol" class="ads-left-160 ads" style="position: absolute;left: 85px;top: 0;">
