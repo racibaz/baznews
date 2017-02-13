@@ -204,6 +204,7 @@
             <li><a href="{!! route('page.index') !!}"><i class="fa fa-book"></i> <span>sabit sayfalar</span></a></li>
             <li><a href="{!! route('setting.index') !!}"><i class="fa fa-book"></i> <span>Genel Ayarlar</span></a></li>
             <li><a href="{!! route('tag.index') !!}"><i class="fa fa-book"></i> <span>Etiketler</span></a></li>
+            <li><a href="{!! route('advertisement.index') !!}"><i class="fa fa-book"></i> <span>Reklam Yönetimi</span></a></li>
             <li><a href="{!! route('announcement.index') !!}"><i class="fa fa-book"></i> <span>Duyurular</span></a></li>
             <li><a href="{!! route('sitemap.index') !!}"><i class="fa fa-book"></i> <span>Site Haritaları</span></a></li>
             <li><a href="{!! route('rss.index') !!}"><i class="fa fa-book"></i> <span>Rss ler</span></a></li>

@@ -18,6 +18,9 @@ class Advertisement extends Model
     protected $fillable = [
         'name',
         'code',
+        'description',
+        'photo',
+        'link',
         'is_active',
     ];
 
@@ -27,7 +30,9 @@ class Advertisement extends Model
     public static function validate($input) {
         $rules = array(
             'name'                          => 'required|max:255',
-            'code'                          => 'required',
+            'description'                   => 'max:255',
+            'photo'                         => 'image|max:255',
+            'link'                          => 'url',
         );
         return Validator::make($input, $rules);
     }
