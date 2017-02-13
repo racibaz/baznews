@@ -249,23 +249,33 @@ End Login Buttons
     border-bottom: 3px solid #ea4748; }
 
 /* ==========================================================================
-   Main Slider
+   Slider Paging
    ========================================================================== */
-.main-slider {
-    margin-bottom: 30px; }
-@media (max-width: 922px) {
-    .main-slider.spot {
-        display: none; } }
-.main-slider .bx-pager {
+.slider .slider-paging {
     text-align: left;
-    bottom: 0; }
-.main-slider .bx-pager.bx-default-pager a {
+    bottom: 0;
+}
+.slider .slider-paging ul{
+    display: block;
+    list-style:none;
+    padding: 0;
+    margin: 0;
+}
+.slider .slider-paging li {
+    list-style:none;
+    font-size: 19px;
+    line-height: 1.4em;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+.slider .slider-paging ul li > a {
     display: block;
     text-align: center;
     font-size: 13px;
     width: 38px;
     height: 26px;
-    margin: 0 1px;
+    margin: 0 1px 0 0;
     outline: 0;
     text-indent: 0;
     background-color: #ea4748;
@@ -273,11 +283,20 @@ End Login Buttons
     color: #ffffff;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    border-radius: 0; }
-.main-slider .bx-pager-item {
-    font-size: 19px;
-    line-height: 1.4em; }
+    border-radius: 0;
+}
+
+/* ==========================================================================
+   Main Slider
+   ========================================================================== */
+.main-slider {
+    margin-bottom: 30px; }
+@media (max-width: 922px) {
+    .main-slider.spot {
+        display: none;
+    }
+}
+
 .main-slider .bxslider li{
     background-color: #c8c8c8;
 }
@@ -1164,7 +1183,7 @@ footer .footer-bottom .cpy {
 .news-photos .news-photo-image{
     position: relative;
     margin-bottom: 30px;
-    padding-bottom: 38px;
+    padding-bottom: 37px;
 }
 .news-photos .news-photo-image img{
     width: 100%;

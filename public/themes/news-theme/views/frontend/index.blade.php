@@ -21,23 +21,33 @@
 
             <div class="row">
                 <div class="col-md-8">
-                    <div class="main-slider">
+                    <div class="main-slider slider">
                         <ul class="bxslider">
                             @foreach($mainCuffNewsItems as $mainCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
                                     <a href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
-                                        <img src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}" alt="News Logo" >
+                                        <img src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}" data-src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}" alt="News Logo" class="lazy-slider">
                                     </a>
                                 </li>
                             @endforeach
                         </ul>
+                        <div class="slider-paging">
+                            <ul class="main-slider-paging">
+                                @foreach($mainCuffNewsItems as $mainCuffNewsItem)
+                                    <li class="bx-pager-item">
+                                        <a data-slide-index="{{$mainCuffNewsItem->id}}" href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}" class="bx-pager-link">
+                                            {{$mainCuffNewsItem->id}}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4 hidden-xs">
                     <div class="main-slider spot">
                         <ul class="bxslider">
-
                             @foreach($boxCuffNewsItems as $boxCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
                                     <a href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
@@ -396,12 +406,12 @@
 
 
 @section('css')
-    {{--<link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">--}}
 
     {{--<link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">--}}
+
     <style type="text/css">
         .ticker {
-            width: 100%
+            width: 100%;
             margin: 10px auto;
         }
         /* The HTML list gets replaced with a single div,
@@ -415,57 +425,51 @@
 @endsection
 
 @section('js')
+    <script src="{{ Theme::asset($activeTheme . '::js/jquery.bxslider/jquery.bxslider.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/lazyload/lazyload.min.js') }}"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>--}}
 
-    {{--<script src="http://code.jquery.com/jquery.min.js"></script>--}}
-    {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>--}}
+    {{--<script src="https://js.pusher.com/3.2/pusher.min.js"></script>--}}
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>--}}
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>--}}
 
-    <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>
+    {{--<script>--}}
+        {{--// Enable pusher logging - don't include this in production--}}
+        {{--Pusher.logToConsole = true;--}}
 
-    <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+        {{--var pusher = new Pusher('72259496952df9087a50', {--}}
+            {{--cluster: 'eu',--}}
+            {{--encrypted: true--}}
+        {{--});--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>
+        {{--var channel = pusher.subscribe('test_channel');--}}
+        {{--channel.bind('my_event', function(data) {--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>
+{{--//                alert(data.title + ' ' + data.message );--}}
+{{--//            var n = noty({text: data.title + ' ' + data.message});--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>
-
-    <script>
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
-
-        var pusher = new Pusher('72259496952df9087a50', {
-            cluster: 'eu',
-            encrypted: true
-        });
-
-        var channel = pusher.subscribe('test_channel');
-        channel.bind('my_event', function(data) {
-
-//                alert(data.title + ' ' + data.message );
-//            var n = noty({text: data.title + ' ' + data.message});
-
-        });
-    </script>
+        {{--});--}}
+    {{--</script>--}}
 
     <script type="text/javascript">
-        $('document').ready(function () {
-            var slider = $('.bxslider').bxSlider({
-                mode:'fade',
-                speed:0,
-                auto: true,
-                nextText: '<i class="fa fa-angle-right"></i>',
-                prevText: '<i class="fa fa-angle-left"></i>',
-                onSliderLoad: function(){
-                    // do funky JS stuff here
-                    $('.bx-pager-link').on('hover',function (index) {
-                        console.log(index);
-                    });
-                    $('.bx-pager-link').on("mouseover", function(index){
-                        this.click();
-                    });
-                }
-            });
+
+        var n = $(".main-slider .bxslider").bxSlider({
+            mode: "fade",
+            pagerCustom: ".main-slider-paging",
+            nextText: '<i class="fa fa-angle-right"></i>',
+            prevText: '<i class="fa fa-angle-left"></i>'
+        });
+
+        $(".main-slider-paging .bx-pager-link").hover(function() {
+            var e = $(this).attr('data-slide-index');
+            n.goToSlide(e);
+        }, function() {
+            n.startAuto()
+        });
+
+
+        $(document).ready(function () {
+
             $('.bxcarousel').bxSlider({
                 slideWidth: 219,
                 minSlides: 2,
@@ -498,6 +502,7 @@
 
             $('.ticker').ticker();
         });
+
 
     </script>
 
