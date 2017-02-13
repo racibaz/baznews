@@ -23,6 +23,14 @@
     "version": "1.0",
     "description": "TwitterWidget shows twitter embed code of settings table."
   },
+  "InstagramWidget": {
+    "name": "InstagramWidget",
+    "slug": "instagram_widget",
+    "module_name": "Core",
+    "namespace": "\\App\\Widgets\\InstagramWidget",
+    "version": "1.0",
+    "description": "InstagramWidget shows instagram embed code of settings table."
+  },
   "ExchangeRates": {
     "name": "ExchangeRates",
     "slug": "exchange_rates",
