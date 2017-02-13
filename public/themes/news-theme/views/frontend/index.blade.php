@@ -21,7 +21,7 @@
 
             <div class="row">
                 <div class="col-md-8">
-                    <div class="main-slider slider">
+                    <div class="main-slider slider" id="manset-slider">
                         <ul class="bxslider">
                             @foreach($mainCuffNewsItems as $mainCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="col-md-4 hidden-xs">
-                    <div class="main-slider spot">
+                    <div class="main-slider spot" id="spot-slider">
                         <ul class="bxslider">
                             @foreach($boxCuffNewsItems as $boxCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
@@ -56,6 +56,17 @@
                                 </li>
                             @endforeach
                         </ul>
+                        <div class="slider-paging">
+                            <ul class="main-slider-paging">
+                                @foreach($boxCuffNewsItems as $boxCuffNewsItem)
+                                    <li class="bx-pager-item">
+                                        <a data-slide-index="{{$boxCuffNewsItem->id}}" href="{!! route('show_news', ['slug' => $boxCuffNewsItem->slug]) !!}" class="bx-pager-link">
+                                            {{$boxCuffNewsItem->id}}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -338,12 +349,12 @@
                     <div class="th-nw-slide">
                         <div id="m_pg1" class="pager">
                             @foreach($photoGalleries as $photoGallery)
-                                <a data-slide-index="0" href="" onmouseover="this.click()">
+                                <a data-slide-index="{{$photoGallery->id}}" href="#" class="bx-pager-link">
                                     <span class="img-ct"><img src="{{ asset('gallery/' . $photoGallery->id . '/photos/58x58_' . $photoGallery->thumbnail)}}" /></span>
                                 </a>
                             @endforeach
                         </div><!-- /.m-pg -->
-                        <ul class="slide m-slider1">
+                        <ul class="slide m-slider1" id="photo-gallery-slider">
                             @foreach($photoGalleries as $photoGallery)
                                 <li>
                                     <a href="{{route('show_photo_gallery',['slug' => $photoGallery->slug ])}}">
@@ -361,15 +372,16 @@
                         </h1>
                     </div>
                     <div class="th-nw-slide">
-                        <div id="m_pg1" class="pager">
+                        <div id="m_pg2" class="pager">
                             @foreach($videoGalleries as $videoGallery)
-                                <a data-slide-index="0" href="" onmouseover="this.click()"><span class="img-ct">
-                                    <a href="{{route('show_video_gallery',['slug' => $videoGallery->videos->first()->slug ])}}">
-                                        <img src="{{ asset('video_gallery/' . $videoGallery->id . '/photos/58x58_' . $videoGallery->thumbnail)}}" /></a>
-                                </span></a>
+                                <a data-slide-index="{{$videoGallery->id}}" href="{{route('show_video_gallery',['slug' => $videoGallery->videos->first()->slug ])}}" class="bx-pager-link">
+                                    <span class="img-ct">
+                                        <img src="{{ asset('video_gallery/' . $videoGallery->id . '/photos/58x58_' . $videoGallery->thumbnail)}}" />
+                                    </span>
+                                </a>
                             @endforeach
                         </div><!-- /.m-pg -->
-                        <ul class="slide m-slider1">
+                        <ul class="slide m-slider1" id="video-gallery-slider">
                             @foreach($videoGalleries as $videoGallery)
                                 <li>
                                     <a href="{{route('show_videos',['slug' => $videoGallery->videos->first()->slug ])}}">
@@ -426,7 +438,7 @@
 
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/jquery.bxslider/jquery.bxslider.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/lazyload/lazyload.min.js') }}"></script>
+    {{--<script src="{{ Theme::asset($activeTheme . '::js/lazyload/lazyload.min.js') }}"></script>--}}
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>--}}
 
     {{--<script src="https://js.pusher.com/3.2/pusher.min.js"></script>--}}
@@ -453,22 +465,61 @@
 
     <script type="text/javascript">
 
-        var n = $(".main-slider .bxslider").bxSlider({
-            mode: "fade",
-            pagerCustom: ".main-slider-paging",
-            nextText: '<i class="fa fa-angle-right"></i>',
-            prevText: '<i class="fa fa-angle-left"></i>'
-        });
+        (function($){
+            'use strict';
+            // jQuery code is in here
 
-        $(".main-slider-paging .bx-pager-link").hover(function() {
-            var e = $(this).attr('data-slide-index');
-            n.goToSlide(e);
-        }, function() {
-            n.startAuto()
-        });
+            var mansetSlider = $('#manset-slider .bxslider').bxSlider({
+                mode: "fade",
+                auto:true,
+                speed:0,
+                pagerCustom: "main-slider-paging",
+                nextText: '<i class="fa fa-angle-right"></i>',
+                prevText: '<i class="fa fa-angle-left"></i>'
+            });
 
+            sliderHoverAction('#manset-slider',mansetSlider);
 
-        $(document).ready(function () {
+            var spotSlide = $('#spot-slider .bxslider').bxSlider({
+                mode: "fade",
+                speed:0,
+                auto:true,
+                pagerCustom: "main-slider-paging",
+                nextText: '<i class="fa fa-angle-right"></i>',
+                prevText: '<i class="fa fa-angle-left"></i>'
+            });
+
+            sliderHoverAction('#spot-slider',spotSlide);
+
+            var imageSlider = $('#photo-gallery-slider').bxSlider({
+                mode:'fade',
+                speed:0,
+                pagerCustom: '#m_pg1',
+                nextText: '<i class="fa fa-angle-right"></i>',
+                prevText: '<i class="fa fa-angle-left"></i>'
+            });
+
+            sliderHoverAction('#m_pg1',imageSlider);
+
+            var videoSlider = $('#video-gallery-slider').bxSlider({
+                mode:'fade',
+                speed:0,
+                pagerCustom: '#m_pg2',
+                nextText: '<i class="fa fa-angle-right"></i>',
+                prevText: '<i class="fa fa-angle-left"></i>'
+            });
+
+            sliderHoverAction('#m_pg2',videoSlider);
+
+            function sliderHoverAction(e, t) {
+                $(e + " .bx-pager-link").hover(function() {
+                    var e = $(this).attr("data-slide-index");
+                    e != t.getCurrentSlide() && (t.goToSlide(e), t.stopAuto())
+                }, function() {
+                    t.startAuto()
+                })
+            }
+
 
             $('.bxcarousel').bxSlider({
                 slideWidth: 219,
@@ -480,20 +531,7 @@
                 nextText: '<i class="fa fa-angle-right"></i>',
                 prevText: '<i class="fa fa-angle-left"></i>'
             });
-            $('.m-slider1').bxSlider({
-                mode:'fade',
-                speed:0,
-                pagerCustom: '#m_pg1',
-                nextText: '<i class="fa fa-angle-right"></i>',
-                prevText: '<i class="fa fa-angle-left"></i>'
-            });
-            $('.m-slider2').bxSlider({
-                mode:'fade',
-                speed:0,
-                pagerCustom: '#m_pg2',
-                nextText: '<i class="fa fa-angle-right"></i>',
-                prevText: '<i class="fa fa-angle-left"></i>'
-            });
+
 
             $("#sticky-container").sticky({
                 topSpacing: $('header nav').outerHeight(),
@@ -501,7 +539,10 @@
             });
 
             $('.ticker').ticker();
-        });
+
+
+        })(jQuery);
+
 
 
     </script>
