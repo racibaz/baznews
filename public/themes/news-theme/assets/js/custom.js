@@ -5,7 +5,7 @@ var listSlide;
 var sTabLi = $('ul.slide-tab li');
 var sTabLen = $('ul.slide-tab');
 var newNumber = sTabLi.length / sTabLen.length;
-console.log(sTabLi.length +" - "+ sTabLen.length);
+//console.log(sTabLi.length +" - "+ sTabLen.length);
 
 
 
@@ -17,8 +17,8 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function () {
     sTabLi = $('ul.slide-tab li');
     sTabLen = $('ul.slide-tab').length;
     newNumber = sTabLi.length / sTabLen;
-    hoverNewList();
-    interval();
+    //hoverNewList();
+    //interval();
 });
 
 function interval() {
@@ -41,22 +41,26 @@ function hoverNewList() {
     });
 }
 
-hoverNewList();
-interval();
+//hoverNewList();
+//interval();
 
-$('.new-list-ct .new-list li a').hover(function () {
-    $('.new-list-ct .new-list li a').removeClass("active");
-    $(this).addClass("active");
-    var url = $(this).attr("href");
-    var img = $(this).data("img");
-    var title = $(this).data("title");
-    var time = $(this).data("time");
+//Üzerine gelince haber bilgileri resim üzerine basıyoruz.
+function newsCoverList(a) {
+    $(a+' .new-list li a').hover(function () {
+        $(this).parent().find('.new-list li a').removeClass("active");
+        $(this).addClass("active");
+        var url = $(this).attr("href");
+        var img = $(this).data("img");
+        var title = $(this).data("title");
+        var time = $(this).data("time");
 
-    $('.left-img-ct').css("background","url("+img+")");
-    $('.left-img-ct .full-link').attr("href",""+url+"");
-    $('.left-img-ct .new-title').html(title);
-    $('.left-img-ct .new-date .timeago').html(time);
-});
+        $('.left-img-ct').css("background","url("+img+")");
+        $('.left-img-ct .full-link').attr("href",""+url+"");
+        $('.left-img-ct .new-title').html(title);
+        $('.left-img-ct .new-date .timeago').html(time);
+    });
+}
+
 
 
 // ====Left Right Adverts====
@@ -65,10 +69,10 @@ var left =  $('#dfp-pageskin-sol').width();
 var right =  $('#dfp-160-kare-sag').width();
 var ct = $('#container').width();
 $(window).resize(function () {
-    adsSize();
+    //adsSize();
 });
 $(document).ready(function () {
-    adsSize();
+    //adsSize();
 });
 function adsSize() {
     ct = $('#container').width();
