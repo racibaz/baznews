@@ -65,6 +65,7 @@
 
                             <div class="col-lg-10">
                                 {!! Form::file('photo') !!}
+                                <img id="preview" src="#" alt="">
                             </div>
                         </div>
                     </div>
@@ -144,4 +145,33 @@
     </div><!-- end row -->
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->
+@endsection
+
+@section('css')
+    <style>
+        #preview {display: none;}
+        .display {display: block !important;}
+    </style>
+@endsection
+
+@section('js')
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                $( "#preview" ).addClass( "display" );
+                reader.onload = function (e) {
+                    $('#preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#photo").change(function(){
+            readURL(this);
+        });
+    </script>
 @endsection

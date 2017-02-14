@@ -139,6 +139,7 @@
 
                             <div class="col-lg-10">
                                 {!! Form::file('cuff_photo') !!}
+                                <img id="cuff_photo_preview" src="#" style="width:100px;height:100px;" alt="">
                             </div>
                         </div>
                     </div>
@@ -148,6 +149,7 @@
 
                             <div class="col-lg-10">
                                 {!! Form::file('thumbnail') !!}
+                                <img id="thumbnail_preview" src="#" style="width:100px;height:100px;" alt="">
                             </div>
                         </div>
                     </div>
@@ -635,6 +637,15 @@
 
 @section('css')
     <link href="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.min.css') }}" rel="stylesheet">
+
+    <style type="text/css">
+        #cuff_photo_preview {display: none;}
+        .display {display: block !important;}
+
+        #thumbnail_preview {display: none;}
+        .display {display: block !important;}
+    </style>
+
 @endsection
 
 
@@ -695,11 +706,37 @@
     </script>
 
     <script>
-
         $(function () {
             //Initialize Select2 Elements
             $(".select2").select2();
         });
     </script>
+
+
+
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                $( "#cuff_photo_preview" ).addClass( "display" );
+
+                reader.onload = function (e) {
+                    $('#cuff_photo_preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#cuff_photo").change(function(){
+            readURL(this);
+        });
+
+        $("#thumbnail").change(function(){
+            readURL(this);
+        });
+
+    </script>
+
 
 @endsection

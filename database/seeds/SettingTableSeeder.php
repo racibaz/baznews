@@ -116,6 +116,16 @@ class SettingTableSeeder extends Seeder
         ]);
 
         Setting::create([
+            'attribute_key'               => 'instagram',
+            'attribute_value'             => 'instagram account',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'instagram_embed_code',
+            'attribute_value'             => '<!-- SnapWidget --><iframe src="https://snapwidget.com/embed/335198" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:500px; height:125px"></iframe>',
+        ]);
+
+        Setting::create([
             'attribute_key'               => 'google_tag_manager_head_code',
             'attribute_value'             => 'xxxxxx',
         ]);

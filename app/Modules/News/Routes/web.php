@@ -59,6 +59,8 @@ Route::group(['prefix' => 'rss'], function() {
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
+    //todo gerek olursa news ve diğerleri için dashboard lar yapılacak.
+    Route::get('/news_dashboard', 'Backend\NewsDashboardController@index')->name('news_dashboard');
 
     Route::resource('news_category', 'Backend\NewsCategoryController');
 

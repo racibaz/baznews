@@ -330,7 +330,8 @@
                         </div><!-- /rabpanel -->
                     </div><!-- /.nw-sm-img -->
                     <div class="nw-sm-img">
-                        {{--{{Cache::get('right_blok_1')}}--}}
+                        {!!Cache::get('right_blok_1')!!}
+                        <br />
                         @foreach($widgets->where('group','right_bar') as $widget )
                             @widget($widget['namespace'])
                             <br />
