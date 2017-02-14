@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="col-md-4 hidden-xs">
-                    <div class="main-slider spot" id="spot-slider">
+                    <div class="main-slider slider" id="spot-slider">
                         <ul class="bxslider">
                             @foreach($boxCuffNewsItems as $boxCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
@@ -476,7 +476,19 @@
                 speed:0,
                 pagerCustom: "main-slider-paging",
                 nextText: '<i class="fa fa-angle-right"></i>',
-                prevText: '<i class="fa fa-angle-left"></i>'
+                prevText: '<i class="fa fa-angle-left"></i>',
+                onSliderLoad: function (currentIndex) {
+                    console.log(currentIndex);
+                    $('#manset-slider li:first-child .bx-pager-link').addClass('active');
+                },
+                onSlideAfter:function($slideElement, oldIndex, newIndex){
+                    $('#manset-slider .bx-pager-link').removeClass('active');
+                    $('#manset-slider .bx-pager-link').each(function () {
+                       if($(this).attr('data-slide-index')==oldIndex+1){
+                           $(this).addClass('active');
+                       }
+                    });
+                }
             });
 
             sliderHoverAction('#manset-slider',mansetSlider);
@@ -487,7 +499,18 @@
                 auto:true,
                 pagerCustom: "main-slider-paging",
                 nextText: '<i class="fa fa-angle-right"></i>',
-                prevText: '<i class="fa fa-angle-left"></i>'
+                prevText: '<i class="fa fa-angle-left"></i>',
+                onSliderLoad: function (currentIndex) {
+                    $('#spot-slider li:first-child .bx-pager-link').addClass('active');
+                },
+                onSlideAfter:function($slideElement, oldIndex, newIndex){
+                    $('#spot-slider .bx-pager-link').removeClass('active');
+                    $('#spot-slider .bx-pager-link').each(function () {
+                        if($(this).attr('data-slide-index')==oldIndex+1){
+                            $(this).addClass('active');
+                        }
+                    });
+                }
             });
 
             sliderHoverAction('#spot-slider',spotSlide);
@@ -513,9 +536,12 @@
             sliderHoverAction('#m_pg2',videoSlider);
 
             function sliderHoverAction(e, t) {
+                var dis = e;
                 $(e + " .bx-pager-link").hover(function() {
                     var e = $(this).attr("data-slide-index");
                     e != t.getCurrentSlide() && (t.goToSlide(e), t.stopAuto())
+                    $(dis + ' .bx-pager-link').removeClass('active');
+                    $(this).addClass('active');
                 }, function() {
                     t.startAuto()
                 })
