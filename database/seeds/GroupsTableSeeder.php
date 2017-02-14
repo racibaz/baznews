@@ -20,32 +20,20 @@ class GroupsTableSeeder extends Seeder
         ]);
 
         $group2 = Group::create([
-            'name'          => 'Yurt Müdürleri',
-            'description'   => 'Yurt Yöneticileri',
+            'name'          => 'Baş Editörler',
+            'description'   => 'Baş Editörler',
             'is_active'  => 1,
         ]);
 
         $group3 = Group::create([
-            'name'          => 'Birim  Yöneticileri',
-            'description'   => 'Birim Yöneticileri',
+            'name'          => 'Editörler',
+            'description'   => 'Editörler',
             'is_active'  => 1,
         ]);
 
         $group4 = Group::create([
-            'name'          => 'Ev Sorumlusu',
-            'description'   => 'Ev Sorumlusu',
-            'is_active'  => 1,
-        ]);
-
-        $group5 = Group::create([
-            'name'          => 'Personel',
-            'description'   => 'Personel',
-            'is_active'  => 1,
-        ]);
-
-        $group6 = Group::create([
-            'name'          => 'Öğrenci',
-            'description'   => 'Öğrenci',
+            'name'          => 'İçerik Sağlayıcılar',
+            'description'   => 'İçerik Sağlayıcılar',
             'is_active'  => 1,
         ]);
 
@@ -55,7 +43,7 @@ class GroupsTableSeeder extends Seeder
         $user3 = User::find(3);
 
         $group1->users()->attach($user1);
-        $group5->users()->attach($user2);
-        $group6->users()->attach($user3);
+        $group2->users()->attach($user2);
+        $group3->users()->attach($user3);
     }
 }
