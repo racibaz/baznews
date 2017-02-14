@@ -8,14 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <link href="{{ Theme::asset($activeTheme . '::css/bootstrap/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet">
-    <link href="{{ Theme::asset($activeTheme . '::js/bx-slider/jquery.bxslider.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::js/jquery.bxslider/jquery.bxslider.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ Theme::asset($activeTheme . '::css/bootstrap-social.css') }}" type="text/css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="{{ Theme::asset($activeTheme . '::css/style.css') }}" type="text/css" rel="stylesheet">
 
     @yield('css')
-
-
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,16 +49,14 @@
     <!-- Main Footer -->
     @include($activeTheme . '::frontend.layouts.footer')
 
+    <!-- jQuery library (served from Google) -->
+    <script src="{{ Theme::asset($activeTheme . '::js/jquery/jquery.js') }}"></script>
 
-    <script src="http://code.jquery.com/jquery.min.js"></script>
-    {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>--}}
-
-
-    <script src="{{ Theme::asset($activeTheme . '::js/bx-slider/jquery.bxslider.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/jquery.sticky.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::type/script.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+
     <script src="{{ Theme::asset($activeTheme . '::js/custom.js') }}"></script>
 
     @yield('js')
