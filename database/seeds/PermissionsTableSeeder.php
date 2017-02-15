@@ -446,6 +446,12 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $role8 = Permission::create([
+            'name'          => 'permission_role_store-role',
+            'display_name'  => 'role sayfasında permission kayıt etme yetkisi. ',
+            'is_active'     => 1,
+        ]);
+
         //tag
         $tag1 = Permission::create([
             'name'          => 'index-tag',
@@ -1230,6 +1236,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($role5);
         $super_admin->permissions()->attach($role6);
         $super_admin->permissions()->attach($role7);
+        $super_admin->permissions()->attach($role8);
         $super_admin->permissions()->attach($tag1);
         $super_admin->permissions()->attach($tag2);
         $super_admin->permissions()->attach($tag3);
