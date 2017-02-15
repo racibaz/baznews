@@ -166,14 +166,12 @@
                             <div class="news-photos-body">
                                 <div class="row">
                                     @foreach($record->photos as $photo)
-                                        <div class="col-lg-3">
+                                        <div class="col-lg-12">
                                             <div class="news-photo-image">
-                                                <a href="#">
-                                                    <img src="{{asset('images/news_images/4/196x150_4.jpg')}}">
-                                                    <div class="news-photo-title">
-                                                        {{$photo->name}}
-                                                    </div>
-                                                </a>
+                                                <img src="{{asset('images/news_images/4/196x150_4.jpg')}}">
+                                                <div class="news-photo-title">
+                                                    {{$photo->name}}
+                                                </div>
                                             </div>
                                         </div>
                                     @endforeach
@@ -254,7 +252,7 @@
             </div><!-- /.col-md-8 -->
             <div class="col-md-4">
                 <div class="sidebar">
-                    <div class="nw-sm-img">
+                    <div class="nw-sm-img ">
                         <div role="tabpanel">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
@@ -484,7 +482,7 @@
     <script src="js/app.js"></script>
 
     {{--<script src="http://vjs.zencdn.net/5.8.8/video.js"></script>--}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>--}}
     <script src="{{ Theme::asset($activeTheme . '::js/videojs/Vimeo.js') }}"></script>
 
 

@@ -338,8 +338,14 @@ End Login Buttons
    Main Post SLİDER
    ========================================================================== */
 #post-box-slider {
-    margin-bottom: 15px; }
-
+    margin-bottom: 15px;
+}
+#post-box-slider .bx-wrapper{
+    height:190px;
+}
+#post-box-slider .bx-wrapper .bx-viewport{
+    padding-bottom: 10px;
+}
 #post-box-slider .bx-wrapper .thumbnail {
     position: relative;
     padding: 0;
@@ -357,23 +363,20 @@ End Login Buttons
 }
 #post-box-slider .bx-wrapper .thumbnail .caption {
     position: absolute;
-    bottom: 10px;
+    bottom: -18px;
     left: 10px;
-    right: 0;
-    padding: 0;
-    color: #fff; }
-#post-box-slider .bx-wrapper .thumbnail .caption .mini-title {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #fff;
-    font-size: 12px;
-    color: #ea4748; }
+    right: 10px;
+    padding: 10px;
+    background-color: #e8e8e8;
+}
 #post-box-slider .bx-wrapper .thumbnail .caption .ct-title {
-    font-size: 11px;
-    display: inline-block;
-    padding: 5px 5px;
-    background-color: #ea4748;
-    overflow: hidden; }
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    color:#000;
+    font-weight: bold;
+    text-align: center;
+}
 #post-box-slider .bx-wrapper .thumbnail:hover {
     -webkit-box-shadow: 0 0 10px #000;
     -moz-box-shadow: 0 0 10px #000;

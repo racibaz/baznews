@@ -33,10 +33,10 @@
                         </ul>
                         <div class="slider-paging">
                             <ul class="main-slider-paging">
-                                @foreach($mainCuffNewsItems as $mainCuffNewsItem)
+                                @foreach($mainCuffNewsItems as $index => $mainCuffNewsItem)
                                     <li class="bx-pager-item">
-                                        <a data-slide-index="{{$mainCuffNewsItem->id}}" href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}" class="bx-pager-link">
-                                            {{$mainCuffNewsItem->id}}
+                                        <a data-slide-index="{{$index}}" href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}" class="bx-pager-link">
+                                            {{++$index}}
                                         </a>
                                     </li>
                                 @endforeach
@@ -58,10 +58,10 @@
                         </ul>
                         <div class="slider-paging">
                             <ul class="main-slider-paging">
-                                @foreach($boxCuffNewsItems as $boxCuffNewsItem)
+                                @foreach($boxCuffNewsItems as $index => $boxCuffNewsItem)
                                     <li class="bx-pager-item">
-                                        <a data-slide-index="{{$boxCuffNewsItem->id}}" href="{!! route('show_news', ['slug' => $boxCuffNewsItem->slug]) !!}" class="bx-pager-link">
-                                            {{$boxCuffNewsItem->id}}
+                                        <a data-slide-index="{{$index}}" href="{!! route('show_news', ['slug' => $boxCuffNewsItem->slug]) !!}" class="bx-pager-link">
+                                            {{++$index}}
                                         </a>
                                     </li>
                                 @endforeach
@@ -82,10 +82,7 @@
                                         <a href="{{ route('show_news', ['slug' => $miniCuffNewsItem->slug]) }}">
                                             <img src="{{ asset('images/news_images/' . $miniCuffNewsItem->id . '/196x150_' . $miniCuffNewsItem->thumbnail) }}" alt="Dummyİmage" >
                                             <div class="caption">
-                                                <span class="mini-title">{{$miniCuffNewsItem->small_title}}</span>
-                                                <span class="ct-title">
-                                        {{$miniCuffNewsItem->small_title}}
-                                    </span>
+                                                <span class="ct-title">{{$miniCuffNewsItem->small_title}}</span>
                                             </div>
                                         </a>
                                     </div>
@@ -100,10 +97,7 @@
                                     <a href="new-details.html">
                                         <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot1.jpg')}}" alt="Dummyİmage">
                                         <div class="caption">
-                                            <span class="mini-title">Consectetur Cras</span>
-                                            <span class="ct-title">
-                                        Maecenas faucibus mollis interdum.
-                                    </span>
+                                            <span class="ct-title">Maecenas faucibus mollis interdum.</span>
                                         </div>
                                     </a>
                                 </div>
@@ -440,7 +434,7 @@
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/jquery.bxslider/jquery.bxslider.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/custom.js') }}"></script>
+
 
     {{--<script src="{{ Theme::asset($activeTheme . '::js/lazyload/lazyload.min.js') }}"></script>--}}
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>--}}
@@ -486,9 +480,11 @@
                     $('#manset-slider li:first-child .bx-pager-link').addClass('active');
                 },
                 onSlideAfter:function($slideElement, oldIndex, newIndex){
+                    console.log("oldIndex"+oldIndex);
+                    console.log("newIndex"+newIndex);
                     $('#manset-slider .bx-pager-link').removeClass('active');
                     $('#manset-slider .bx-pager-link').each(function () {
-                       if($(this).attr('data-slide-index')==oldIndex+1){
+                       if($(this).attr('data-slide-index')==newIndex){
                            $(this).addClass('active');
                        }
                     });
@@ -512,7 +508,7 @@
                 onSlideAfter:function($slideElement, oldIndex, newIndex){
                     $('#spot-slider .bx-pager-link').removeClass('active');
                     $('#spot-slider .bx-pager-link').each(function () {
-                        if($(this).attr('data-slide-index')==oldIndex+1){
+                        if($(this).attr('data-slide-index')==newIndex){
                             $(this).addClass('active');
                         }
                     });
@@ -564,10 +560,10 @@
              Center Carousel Horizontal News Slider
              * --------------------------------------------------------*/
             $('.bxcarousel').bxSlider({
-                slideWidth: 219,
+                slideWidth: 217,
                 minSlides: 2,
                 maxSlides: 5,
-                slideMargin: 15,
+                slideMargin: 14,
                 auto:true,
                 pager:false,
                 nextText: '<i class="fa fa-angle-right"></i>',
