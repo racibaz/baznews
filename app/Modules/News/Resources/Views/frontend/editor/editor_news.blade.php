@@ -8,6 +8,14 @@
         </div>
         <div class="row">
             <div class="col-md-8">
+                <div class="news-cover">
+
+                </div>
+                <div class="news-title">
+
+                </div>
+                <div class="news-time"></div>
+
                 <div id="new-content">
                     <div class="content" id="content">
                         <h1 class="ct-title"> {{$user->name}} </h1>
