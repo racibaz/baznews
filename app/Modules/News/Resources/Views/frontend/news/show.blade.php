@@ -28,10 +28,21 @@
                             <p>{!! $record->spot !!}</p>
                         </blockquote>
                     </div>
-                    <div class="new-img">
-                        <img src="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}" alt="{{$record->title}}">
-                        <div class="image-subtitle">Venison pancetta cupim shankle stri (Haber 7)</div>
-                    </div>
+                    @if($record->news_type == 0 || $record->news_type == 1)
+                        <div class="new-img">
+                            <img src="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}" alt="{{$record->title}}">
+                            <div class="image-subtitle">Venison pancetta cupim shankle stri (Haber 7)</div>
+                        </div>
+                    @elseif($record->news_type == 2)
+                        photo_gallery
+                    @elseif($record->news_type == 3)
+                        video
+                    @elseif($record->news_type == 4)
+                        video_gallery
+                    @elseif($record->news_type == 5)
+                        sound
+                    @endif
+
                     <div class="content" id="content">
                         <div class="news-text">
                             {!! $record->content !!}
