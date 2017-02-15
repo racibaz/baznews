@@ -140,7 +140,7 @@
                                     @foreach($cuffNewsCategory->news->take(5) as $news)
                                         <li>
                                             <a href="{!! route('show_news', ['slug' => $news->slug]) !!}"
-                                               class="full-link active"
+                                               class="full-link"
                                                data-img="{{ asset('images/news_images/' . $news->id . '/220x310_' . $news->thumbnail) }}"
                                                data-title="{{$news->title}}"
                                                data-time="23 saat önce">
@@ -439,6 +439,9 @@
 
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/jquery.bxslider/jquery.bxslider.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/custom.js') }}"></script>
+
     {{--<script src="{{ Theme::asset($activeTheme . '::js/lazyload/lazyload.min.js') }}"></script>--}}
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>--}}
 
@@ -468,8 +471,10 @@
 
         (function($){
             'use strict';
-            // jQuery code is in here
 
+            /*--------------------------------------------------------
+                Home Page Main News Slider
+            * --------------------------------------------------------*/
             var mansetSlider = $('#manset-slider .bxslider').bxSlider({
                 mode: "fade",
                 auto:true,
@@ -477,8 +482,7 @@
                 pagerCustom: "main-slider-paging",
                 nextText: '<i class="fa fa-angle-right"></i>',
                 prevText: '<i class="fa fa-angle-left"></i>',
-                onSliderLoad: function (currentIndex) {
-                    console.log(currentIndex);
+                onSliderLoad: function () {
                     $('#manset-slider li:first-child .bx-pager-link').addClass('active');
                 },
                 onSlideAfter:function($slideElement, oldIndex, newIndex){
@@ -490,9 +494,11 @@
                     });
                 }
             });
-
             sliderHoverAction('#manset-slider',mansetSlider);
 
+            /*--------------------------------------------------------
+             Home Page Right News Slider
+             * --------------------------------------------------------*/
             var spotSlide = $('#spot-slider .bxslider').bxSlider({
                 mode: "fade",
                 speed:0,
@@ -500,7 +506,7 @@
                 pagerCustom: "main-slider-paging",
                 nextText: '<i class="fa fa-angle-right"></i>',
                 prevText: '<i class="fa fa-angle-left"></i>',
-                onSliderLoad: function (currentIndex) {
+                onSliderLoad: function () {
                     $('#spot-slider li:first-child .bx-pager-link').addClass('active');
                 },
                 onSlideAfter:function($slideElement, oldIndex, newIndex){
@@ -512,9 +518,11 @@
                     });
                 }
             });
-
             sliderHoverAction('#spot-slider',spotSlide);
 
+            /*--------------------------------------------------------
+             Home Page Photo Gallery Slider
+             * --------------------------------------------------------*/
             var imageSlider = $('#photo-gallery-slider').bxSlider({
                 mode:'fade',
                 speed:0,
@@ -522,8 +530,11 @@
                 nextText: '<i class="fa fa-angle-right"></i>',
                 prevText: '<i class="fa fa-angle-left"></i>'
             });
-
             sliderHoverAction('#m_pg1',imageSlider);
+
+            /*--------------------------------------------------------
+             Home Page Video Gallery Slider
+             * --------------------------------------------------------*/
 
             var videoSlider = $('#video-gallery-slider').bxSlider({
                 mode:'fade',
@@ -532,9 +543,11 @@
                 nextText: '<i class="fa fa-angle-right"></i>',
                 prevText: '<i class="fa fa-angle-left"></i>'
             });
-
             sliderHoverAction('#m_pg2',videoSlider);
 
+            /*--------------------------------------------------------
+             Slider Pagination Hover Function
+             * --------------------------------------------------------*/
             function sliderHoverAction(e, t) {
                 var dis = e;
                 $(e + " .bx-pager-link").hover(function() {
@@ -547,7 +560,9 @@
                 })
             }
 
-
+            /*--------------------------------------------------------
+             Center Carousel Horizontal News Slider
+             * --------------------------------------------------------*/
             $('.bxcarousel').bxSlider({
                 slideWidth: 219,
                 minSlides: 2,
@@ -559,14 +574,18 @@
                 prevText: '<i class="fa fa-angle-left"></i>'
             });
 
-
+            /*--------------------------------------------------------
+             Left - Right Advert Sticky
+             * --------------------------------------------------------*/
             $("#sticky-container").sticky({
                 topSpacing: $('header nav').outerHeight(),
                 bottomSpacing: $('.ads').outerHeight() + $('footer').outerHeight()
             });
 
+            /*--------------------------------------------------------
+             Last Minute News Ticker Slider
+             * --------------------------------------------------------*/
             $('.ticker').ticker();
-
 
         })(jQuery);
 
