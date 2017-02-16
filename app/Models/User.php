@@ -115,7 +115,7 @@ class User extends Authenticatable
 
                     $event = new Event();
                     $event->user_id = Auth::user()->id;
-                    $event->event = 'User Create';
+                    $event->event = 'User Created';
                     $user->events()->save($event);
                 });
 
@@ -131,7 +131,7 @@ class User extends Authenticatable
 
                     $event = new Event();
                     $event->user_id = Auth::user()->id;
-                    $event->event = 'User Delete';
+                    $event->event = 'User Deleted';
                     $user->events()->save($event);
                 });
 

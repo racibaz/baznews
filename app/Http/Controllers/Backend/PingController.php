@@ -56,8 +56,7 @@ class PingController extends Controller
 
     public function edit(Request $request)
     {
-
-        //dispatch(new SendPing());
+        dispatch(new SendPing());
 
         $record = \App\Models\Ping::first();
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
