@@ -111,11 +111,6 @@ class SettingTableSeeder extends Seeder
         ]);
 
         Setting::create([
-            'attribute_key'               => 'pinterest',
-            'attribute_value'             => 'pinterest account',
-        ]);
-
-        Setting::create([
             'attribute_key'               => 'twitter_embed_code',
             'attribute_value'             => '<a class="twitter-timeline" href="https://twitter.com/RecaiCansiz">Tweets by RecaiCansiz</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>',
         ]);
@@ -128,6 +123,16 @@ class SettingTableSeeder extends Seeder
         Setting::create([
             'attribute_key'               => 'instagram_embed_code',
             'attribute_value'             => '<!-- SnapWidget --><iframe src="https://snapwidget.com/embed/335198" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:500px; height:125px"></iframe>',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'pinterest',
+            'attribute_value'             => 'pinterest account',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'pinterest_embed_code',
+            'attribute_value'             => '<a data-pin-do="embedPin" data-pin-lang="tr" href="https://www.pinterest.com/pin/99360735500167749/"></a> <script async defer src="//assets.pinterest.com/js/pinit.js"></script>',
         ]);
 
         Setting::create([

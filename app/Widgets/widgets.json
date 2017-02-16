@@ -38,5 +38,13 @@
     "namespace": "\\App\\Widgets\\ExchangeRates",
     "version": "1.0",
     "description": "ExchangeRates shows usd and euro exchange"
+  },
+  "PinterestWidget": {
+    "name": "PinterestWidget",
+    "slug": "pinterest_widget",
+    "module_name": "Core",
+    "namespace": "\\App\\Widgets\\PinterestWidget",
+    "version": "1.0",
+    "description": "PinterestWidget shows piterest embed code of settings table."
   }
 }
