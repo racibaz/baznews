@@ -54,7 +54,6 @@
 
     <script src="{{ Theme::asset($activeTheme . '::js/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/jquery.sticky.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::type/script.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/custom.js') }}"></script>
 
     @yield('js')

@@ -198,41 +198,66 @@
                         </div>
 
                         @if($record->is_show_editor_profile)
-                            <div class="editor-box">
+                            <div class="author-box">
                                 <div class="title-section">
                                     <h1>
                                         <span>Haber Yazarı</span>
                                     </h1>
                                 </div>
-                                <div class="editor-detail">
-                                    <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">
-                                        <span class="editor-photo">
-                                            <img src="{{asset('images/news_images/4/58x58_4.jpg')}}">
-                                        </span>
-                                        <span class="editor-info">
-                                            <h2>{{$record->user->name}}</h2>
-                                            <p>{{$record->user->bio_note}}</p>
-                                        </span>
-                                    </a>
-                                    <div class="clearfix"></div>
-                                    <div class="other">
-                                        <a href="{{$record->user->facebook}}">Facebook Profili</a>
-                                        <a href="{{$record->user->web_site}}">Web Sitesi</a>
-                                    </div>
-                                </div>
+                                <div class="author-detail">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-3">
+                                            <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">
+                                                <div class="author-photo">
+                                                    <img src="{{asset('images/news_images/4/58x58_4.jpg')}}">
+                                                </div><!-- /editor-photo -->
+                                            </a>
+                                        </div><!-- /.col -->
+                                        <div class="col-lg-10 col-md-9">
+                                            <div class="author-info">
+                                                <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">
+                                                    <h2>{{$record->user->name}}</h2>
+                                                </a>
+                                                <div class="bio-text">
+                                                    <p>{{$record->user->bio_note}}Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                                                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                                                    </p>
+                                                </div>
+                                                <span class="bio-long-btn">Genişlet</span>
+                                            </div><!-- /.editor-info -->
+                                            <div class="links">
+                                                <ul class="nav nav-pills">
+                                                    <li>
+                                                        <a href="{{$record->user->facebook}}"><i class="fa fa-facebook"></i> Facebook Profili</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{$record->user->web_site}}"><i class="fa fa-globe"></i> Web Sitesi</a>
+                                                    </li>
+                                                </ul>
+                                            </div><!-- /.editor-info -->
+                                        </div><!-- /.col -->
+                                    </div><!-- /.row -->
+                                </div><!-- /.editor-detail -->
                             </div>
                         @endif
                         @if($record->is_show_previous_and_next_news)
                             <ul class="pager">
-                                <li class="previous"><a href="{!! route('show_news', ['slug' => $previousNews->slug]) !!}">{{trans('news::news.previous_news')}}</a></li>
-                                <li class="next"><a href="{!! route('show_news', ['slug' => $nextNews->slug]) !!}">{{trans('news::news.next_news')}}</a></li>
+                                <li class="previous"><a href="{!! route('show_news', ['slug' => $previousNews->slug]) !!}"><i class="fa fa-chevron-left "></i>{{trans('news::news.previous_news')}}</a></li>
+                                <li class="next"><a href="{!! route('show_news', ['slug' => $nextNews->slug]) !!}">{{trans('news::news.next_news')}} <i class="fa fa-chevron-right"></i></a></li>
                             </ul>
                         @endif
 
                         <!-- Go to www.addthis.com/dashboard to customize your tools -->
                         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>
                         <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                        <div class="addthis_inline_share_toolbox"></div>
+                        <div class="share-box">
+                            <div class="title-section">
+                                <h1>
+                                    <span>Paylaş</span>
+                                </h1>
+                            </div>
+                            <div class="addthis_inline_share_toolbox"></div>
+                        </div>
 
                     </div><!-- /.content -->
                 </div><!-- /.new-content -->
@@ -484,36 +509,50 @@
 
 
 @section('css')
-    <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
+    {{--<link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">--}}
 
     {{--<link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">--}}
 @endsection
 
 @section('js')
-    <script src="js/app.js"></script>
+    {{--<script src="js/app.js"></script>--}}
 
     {{--<script src="http://vjs.zencdn.net/5.8.8/video.js"></script>--}}
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>--}}
-    <script src="{{ Theme::asset($activeTheme . '::js/videojs/Vimeo.js') }}"></script>
+{{--    <script src="{{ Theme::asset($activeTheme . '::js/videojs/Vimeo.js') }}"></script>--}}
 
 
-    <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+    {{--<script src="https://js.pusher.com/3.2/pusher.min.js"></script>--}}
 
     {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>--}}
 
-    <link href="{{ Theme::asset($activeTheme . '::js/video-js/video-js.min.css') }}" rel="stylesheet">
-    <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.novtt.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
-    <script>
-        videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
-        videojs("video-js", {}, function(){
-            // Player (this) is initialized and ready.
+    {{--<link href="{{ Theme::asset($activeTheme . '::js/video-js/video-js.min.css') }}" rel="stylesheet">--}}
+    {{--<script src="{{ Theme::asset($activeTheme . '::js/video-js/video.novtt.js') }}"></script>--}}
+    {{--<script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>--}}
+    {{--<script>--}}
+        {{--videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"--}}
+        {{--videojs("video-js", {}, function(){--}}
+            {{--// Player (this) is initialized and ready.--}}
+        {{--});--}}
+    {{--</script>--}}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.bio-long-btn').click(function () {
+                if($('.bio-text.open').length > 0){
+                    console.log("Run..");
+                    $('.bio-text').removeClass('open');
+                    $(this).text("Genişlet");
+                }else {
+                    $(this).text("Daralt");
+                    $('.bio-text').addClass('open');
+                }
+            });
         });
     </script>
 @endsection

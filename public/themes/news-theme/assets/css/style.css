@@ -1,11 +1,5 @@
 @charset "UTF-8";
-/* ==========================================================================
-   Mixins..
-   ========================================================================== */
-/* Global Variables */
-/* ==========================================================================
-   END MİXİNS
-   ========================================================================== */
+
 * {
     outline: none;
     border: none; }
@@ -247,6 +241,9 @@ End Login Buttons
     background: #fff;
     margin: 0;
     left: 0;
+}
+.bx-wrapper img{
+    width: 100%;
 }
 .bx-wrapper .bx-controls-direction .bx-prev {
     padding: 0 10px; }
@@ -1038,10 +1035,10 @@ footer .footer-bottom .cpy {
     text-transform: uppercase;
 }
 #new-content .new-img .image-subtitle{
-    font-family: Georgia!important;
     background-color: #fff;
-    color: #888!important;
-    font-size: 1.6rem!important;
+    color: #888 !important;
+    font-size: 13px !important;
+    padding:3px 0;
 }
 #new-content .new-img .image-subtitle blockquote{
     padding: 1.857em;
@@ -1262,44 +1259,76 @@ footer .footer-bottom .cpy {
     font-weight:bold;
 }
 /* ==========================================================================
-    Editor
+    Author Detail
    ========================================================================== */
-.editor-box .editor-detail:after{
+.author-box{
+    background-color: #f0f0f0;
+    padding: 25px;
+}
+.author-box .title-section{
+    margin-top: 0;
+}
+.author-box .author-detail:after{
     display: block;
     clear: both;
     content: '';
 }
-.editor-box .editor-detail a{
-    display: block;
-    color: #000000;
-}
-.editor-box .editor-detail a .editor-photo{
-    float: left;
-    width: 73px;
-}
-.editor-box .editor-detail a:hover h2{
-    text-decoration: underline;
-}
-.editor-box .editor-detail a .editor-photo img{
+.author-box .author-detail .author-photo img{
+    width: 100%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
     margin-right: 15px;
 }
-.editor-box .editor-detail a .editor-info{
-    float: left;
-    width: 90%;
+.author-box .author-detail .author-info{
     margin-bottom: 10px;
 }
-.editor-box .editor-detail a .editor-info h2{
+
+.author-box .author-detail .author-info a h2{
+    font-weight: bold;
+    font-size: 16px;
+    color: #777777;
+    text-decoration: none;
     margin: 0 0 8px 0;
-    font-size: 20px;
 }
-.editor-box .editor-detail a .editor-info p{
+.author-box .author-detail .author-info a:hover h2{
+    color:#000000;
+    text-decoration: underline;
+}
+.author-box .author-detail .author-info .bio-text{
+    max-height: 36px;
+    overflow: hidden;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.author-box .author-detail .author-info .bio-text.open{
+    overflow: inherit;
+    max-height: inherit;
+}
+.author-box .author-detail .author-info .bio-long-btn{
     font-size:12px;
+    color:#00a7d0;
+    text-decoration: underline;
+    cursor: pointer;
 }
-.editor-box .editor-detail .other{
-    padding-left: 73px;
+.author-box .author-detail .author-info .bio-text p{
+    font-size: 12px;
+    color:#8a8a8a;
+}
+.author-box .author-detail .links .nav li{
+    margin-right:10px;
+}
+.author-box .author-detail .links .nav li > a{
+    background-color: #1D3244;
+    color: #fff;
+    padding: 4px 12px;
+    font-size: 12px;
+}
+.author-box .author-detail .links .nav li > a:hover{
+    background-color: #6399AC;
 }
 .pager li a{
     -webkit-border-radius: 0;
@@ -1461,9 +1490,17 @@ footer .footer-bottom .cpy {
     font-weight: bold;
     margin: 0 0 0 0; }
 .fav-news .nw-bx a {
-    display: block; }
+    display: block;
+}
 .fav-news .nw-bx img {
     width: 100%;
-    min-height: 100%; }
+    min-height: 100%;
+}
 
+/* ==========================================================================
+   Author Page
+   ========================================================================== */
+#author-content{
+
+}
 

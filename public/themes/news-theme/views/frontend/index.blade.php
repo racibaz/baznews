@@ -324,11 +324,11 @@
                         </div><!-- /rabpanel -->
                     </div><!-- /.nw-sm-img -->
                     <div class="nw-sm-img">
-                        {!!Cache::get('right_blok_1')!!}
-                        <br />
+                        <div class="advert">
+                            {!!Cache::get('right_blok_1')!!}
+                        </div>
                         @foreach($widgets->where('group','right_bar') as $widget )
                             @widget($widget['namespace'])
-                            <br />
                         @endforeach
                     </div>
                 </div><!-- /.col -->
@@ -480,8 +480,6 @@
                     $('#manset-slider li:first-child .bx-pager-link').addClass('active');
                 },
                 onSlideAfter:function($slideElement, oldIndex, newIndex){
-                    console.log("oldIndex"+oldIndex);
-                    console.log("newIndex"+newIndex);
                     $('#manset-slider .bx-pager-link').removeClass('active');
                     $('#manset-slider .bx-pager-link').each(function () {
                        if($(this).attr('data-slide-index')==newIndex){

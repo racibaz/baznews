@@ -8,24 +8,53 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <div class="news-cover">
 
-                </div>
-                <div class="news-title">
+                <div id="author-content">
+                    <div class="author-box">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <div class="author-img">
+                                    <img src="http://www.prforexperts.com.au/wp-content/uploads/2013/02/61.png" alt="Author Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-10">
+                                <div class="author-text">
+                                    <div class="author-name">
+                                        <h1>{{$user->name}}</h1>
+                                    </div>
+                                    <div class="auhor-bio">
+                                        <p>{{$user->bio_note}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                </div>
-                <div class="news-time"></div>
-
-                <div id="new-content">
-                    <div class="content" id="content">
-                        <h1 class="ct-title"> {{$user->name}} </h1>
-                        kullanıcı foto
-                        <br />{{$user->bio_note}}<br />
-                        <div class="ct-text">
+                    <div class="author-news">
+                        <div class="row">
                             @foreach($newsItems as $item)
-                                <a href="{!! route('show_news', ['slug' => $item->slug]) !!}">{{$item->title}}</a>
-                                <br />
+                            <div class="col-lg-4">
+                                <div class="aut-new">
+                                    <a href="{!! route('show_news', ['slug' => $item->slug]) !!}">
+                                        <div class="news-cover">
+                                            <img src="" alt="">
+                                            <div class="news-title">
+                                                {{$item->title}}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div><!-- /.col-lg-4 -->
                             @endforeach
+                        </div>
+                    </div>
+
+                    <div class="content" id="content">
+                        <h1 class="ct-title">  </h1>
+                        kullanıcı foto
+                        <br /><br />
+                        <div class="ct-text">
+
                         </div><!-- /.ct-text -->
                     </div><!-- /.content -->
                 </div><!-- /.new-content -->
@@ -200,19 +229,14 @@
                             </div><!-- /.tab-content -->
                         </div><!-- /rabpanel -->
                     </div><!-- /.nw-sm-img -->
+                    @foreach($widgets as $widget)
+                        @widget($widget['namespace'])
+                    @endforeach
                 </div>
             </div><!-- /.col -->
         </div><!-- /.row -->
 
     </article><!-- /.article -->
-
-    @foreach($widgets as $widget)
-
-        @widget($widget['namespace'])
-        <br />
-
-    @endforeach
-
 @endsection
 
 
