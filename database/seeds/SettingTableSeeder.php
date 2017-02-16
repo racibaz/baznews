@@ -111,6 +111,11 @@ class SettingTableSeeder extends Seeder
         ]);
 
         Setting::create([
+            'attribute_key'               => 'pinterest',
+            'attribute_value'             => 'pinterest account',
+        ]);
+
+        Setting::create([
             'attribute_key'               => 'twitter_embed_code',
             'attribute_value'             => '<a class="twitter-timeline" href="https://twitter.com/RecaiCansiz">Tweets by RecaiCansiz</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>',
         ]);

@@ -125,6 +125,15 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            {!! Form::label('pinterest', trans('user.pinterest'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('pinterest', $record->pinterest,['placeholder' => trans('user.pinterest'), 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {!! Form::label('linkedin', trans('user.linkedin'), ['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">

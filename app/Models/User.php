@@ -77,6 +77,7 @@ class User extends Authenticatable
         'cell_phone',
         'facebook',
         'twitter',
+        'pinterest',
         'linkedin',
         'youtube',
         'web_site',

@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('cell_phone')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
+            $table->string('pinterest')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('youtube')->nullable();
             $table->string('web_site')->nullable();
