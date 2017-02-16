@@ -179,7 +179,7 @@
                         <i class="fa fa-plus"></i> {{ trans('common.create') }}
                     </a>
                 @endif
-                @if(Auth::user()->can('forgetNewsCache-news'))
+                @if(Auth::user()->can('forgetCache-news'))
                     <a href="{{ route('forget_news_cache') }}" class="btn btn-info">
                         <i class="fa fa-plus"></i> {{ trans('news::news.forget_news_cache') }}
                     </a>
@@ -198,6 +198,13 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
+
+                    @foreach($statusList as $index => $status)
+                        <a href="{{route('news_statuses',[$index])}}">
+                            {{$status}} [ {{$newsCountByStatus[$index]}} ]
+                        </a>
+                    @endforeach
+
                     <table id="countries" class="table table-bnewsed table-hover">
                         <thead>
                         <tr>
