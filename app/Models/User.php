@@ -60,7 +60,6 @@ class User extends Authenticatable
     }
 
 
-
     /**
      * The attributes that are mass assignable.
      *
@@ -88,7 +87,7 @@ class User extends Authenticatable
         'IP',
         'last_login',
         'status',
-        'active',
+        'is_active',
     ];
 
     /**

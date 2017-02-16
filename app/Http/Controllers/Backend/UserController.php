@@ -121,7 +121,7 @@ class UserController extends Controller
     {
         $input = Input::all();
 
-//        $input['is_active'] = Input::get('is_active') == "on" ? true : false;
+        $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['sex'] = Input::get('sex') == "on" ? true : false;
 
         //kullanıcı email adresini guncellediğinde email adresini uniqe olduğu için
@@ -147,8 +147,7 @@ class UserController extends Controller
         } else {
 
             if (isset($record->id)) {
-
-                $input['password'] = $record->password;
+                $input['password'] = !empty($input['password']) ? bcrypt($input['password']) : $record->password;
                 $result = $this->repo->update($record->id, $input);
 
             } else {

@@ -35,7 +35,8 @@ class CreateUsersTable extends Migration
             $table->string('bio_note')->nullable();
             $table->string('IP')->nullable();
             $table->dateTime('last_login')->nullable();
-            $table->integer('status');
+            $table->integer('status')->default(0);
+            $table->boolean('is_active')->default(0);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

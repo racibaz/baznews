@@ -224,8 +224,8 @@
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
-                                        {!! Form::checkbox('status', null , $record->is_active) !!}
-                                        <i></i> {{trans('user.status')}}
+                                        {!! Form::checkbox('is_active', null , $record->is_active) !!}
+                                        <i></i> {{trans('common.is_active')}}
                                     </label>
                                 </div>
                             </div>
