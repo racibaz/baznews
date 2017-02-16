@@ -4,8 +4,8 @@ namespace App\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
 use Cache;
-use Redis;
 use Theme;
+use Illuminate\Support\Facades\Redis;
 
 class PinterestWidget extends AbstractWidget
 {
@@ -23,10 +23,9 @@ class PinterestWidget extends AbstractWidget
     public function run()
     {
         return Cache::remember('piterestWidget', 60, function()  {
-            $piterestEmbedCode = Redis::get('piterest_embed_code');
-            return Theme::view('frontend.widgets.piterest_widget',compact([
-                'config',
-                'piterestEmbedCode'
+            $pinterestEmbedCode = Redis::get('pinterest_embed_code');
+            return Theme::view('frontend.widgets.pinterest_widget',compact([
+                'pinterestEmbedCode'
             ]))->render();
         });
     }
