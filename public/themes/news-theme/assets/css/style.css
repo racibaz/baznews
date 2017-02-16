@@ -434,9 +434,12 @@ End Login Buttons
     padding: 10px;
     margin: 0 0 10px 0; }
 .img-new-list .new-list-ct .new-list li:last-child {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+}
+
 .img-new-list .new-list-ct .new-list li:hover {
-    border-bottom: 1px solid #ea4748; }
+    border-bottom: 1px solid #ea4748;
+}
 .img-new-list .new-list-ct .new-list li a.full-link:before {
     content: "";
     position: absolute;
@@ -448,9 +451,12 @@ End Login Buttons
     opacity: 0;
     -webkit-transition: .3s opacity,0.3s transform;
     -moz-transition: .3s opacity,0.3s transform;
-    transition: .3s opacity,0.3s transform; }
-.img-new-list .new-list-ct .new-list li a.full-link:hover:before, .img-new-list .new-list-ct .new-list li a.full-link.active:before {
-    opacity: 1; }
+    transition: .3s opacity,0.3s transform;
+}
+.img-new-list .new-list-ct .new-list li a.full-link:hover:before,
+.img-new-list .new-list-ct .new-list li a.full-link.active:before {
+    opacity: 1;
+}
 .img-new-list .new-list-ct .new-list li .new-ct h3.new-title {
     font-size: 14px;
     font-weight: bold;

@@ -120,7 +120,7 @@
                                 </h1>
                             </div>
                             <div class="new-list-ct">
-                                <div class="left-img-ct" style="background: {{ Theme::asset($activeTheme . '::img/example.jpg')}}">
+                                <div class="left-img-ct" style="background-image:{{ Theme::asset($activeTheme . '::img/example.jpg')}};backgroun-position:0 0; background-repeat: no-repeat;background-size: cover;">
                                     <a href="new-details.html" class="full-link"></a>
                                     <span class="shadow"></span>
                                     <div class="new-ct">
@@ -137,12 +137,12 @@
                                                class="full-link"
                                                data-img="{{ asset('images/news_images/' . $news->id . '/220x310_' . $news->thumbnail) }}"
                                                data-title="{{$news->title}}"
-                                               data-time="23 saat önce">
+                                               data-time="{{$news->updated_at}}">
                                             </a>
                                             <div class="new-ct">
                                                 <h3 class="new-title">{{$news->title}} </h3>
                                                 <time class="new-date">
-                                                    <span class="timeago" title="">{{$news->updated_at}}</span>
+                                                    <span class="timeago">{{$news->updated_at}}</span>
                                                 </time>
                                             </div>
                                         </li>
@@ -343,8 +343,8 @@
                     </div>
                     <div class="th-nw-slide">
                         <div id="m_pg1" class="pager">
-                            @foreach($photoGalleries as $photoGallery)
-                                <a data-slide-index="{{$photoGallery->id}}" href="#" class="bx-pager-link">
+                            @foreach($photoGalleries as $index => $photoGallery)
+                                <a data-slide-index="{{$index}}" href="#" class="bx-pager-link">
                                     <span class="img-ct"><img src="{{ asset('gallery/' . $photoGallery->id . '/photos/58x58_' . $photoGallery->thumbnail)}}" /></span>
                                 </a>
                             @endforeach
@@ -368,8 +368,8 @@
                     </div>
                     <div class="th-nw-slide">
                         <div id="m_pg2" class="pager">
-                            @foreach($videoGalleries as $videoGallery)
-                                <a data-slide-index="{{$videoGallery->id}}" href="{{route('show_video_gallery',['slug' => $videoGallery->videos->first()->slug ])}}" class="bx-pager-link">
+                            @foreach($videoGalleries as $index => $videoGallery)
+                                <a data-slide-index="{{$index}}" href="{{route('show_video_gallery',['slug' => $videoGallery->videos->first()->slug ])}}" class="bx-pager-link">
                                     <span class="img-ct">
                                         <img src="{{ asset('video_gallery/' . $videoGallery->id . '/photos/58x58_' . $videoGallery->thumbnail)}}" />
                                     </span>

@@ -46,21 +46,24 @@
      * --------------------------------------------------------*/
     function newsCoverList() {
 
-        $('.img-new-list .new-list li:first-child a').addClass('active');
+        $('.img-new-list .new-list-ct .new-list li:first-child').find('a').addClass('active');
 
-        $('.img-new-list').each(function () {
-            var $this = $(this);
-            $this.find('.new-list li a').removeClass("active");
-            $(this).addClass("active");
-            var url = $(this).find('li:first-child a').attr("href");
-            var img = $(this).find('li:first-child a').data("img");
-            var title = $(this).find('li:first-child a').data("title");
-            var time = $(this).find('li:first-child a').data("time");
+        $('.img-new-list').each(function (index) {
+            if(index == 0){
+                var $this = $(this);
+                $(this).find('li:first-child a').addClass("active");
+                var url = $(this).find('li:first-child a').attr("href");
+                var img = $(this).find('li:first-child a').data("img");
+                var title = $(this).find('li:first-child a').data("title");
+                var time = $(this).find('li:first-child a').data("time");
 
-            $this.find('.left-img-ct').css("background","url("+img+")");
-            $this.find('.left-img-ct .full-link').attr("href",""+url+"");
-            $this.find('.left-img-ct .new-title').html(title);
-            $this.find('.left-img-ct .new-date .timeago').html(time);
+                $this.find('.left-img-ct').css("background","url("+img+")");
+                $this.find('.left-img-ct').css("background-size","cover");
+                $this.find('.left-img-ct').css("background-repeat","no-repeat");
+                $this.find('.left-img-ct .full-link').attr("href",""+url+"");
+                $this.find('.left-img-ct .new-title').html(title);
+                $this.find('.left-img-ct .new-date .timeago').html(time);
+            }
         });
         $('.img-new-list .new-list li a').hover(function () {
             var $this = $(this).parent().parent().parent();
@@ -73,6 +76,8 @@
 
             $this.find('.left-img-ct').css("background","url("+img+")");
             $this.find('.left-img-ct .full-link').attr("href",""+url+"");
+            $this.find('.left-img-ct').css("background-size","cover");
+            $this.find('.left-img-ct').css("background-repeat","no-repeat");
             $this.find('.left-img-ct .new-title').html(title);
             $this.find('.left-img-ct .new-date .timeago').html(time);
         });
