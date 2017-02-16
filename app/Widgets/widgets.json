@@ -46,5 +46,13 @@
     "namespace": "\\App\\Widgets\\PinterestWidget",
     "version": "1.0",
     "description": "PinterestWidget shows piterest embed code of settings table."
+  },
+  "AccuWeatherWidget": {
+    "name": "AccuWeatherWidget",
+    "slug": "accu_weather_widget",
+    "module_name": "Core",
+    "namespace": "\\App\\Widgets\\AccuWeatherWidget",
+    "version": "1.0",
+    "description": "AccuWeatherWidget shows accu_weather_widget of settings table."
   }
 }

@@ -136,6 +136,11 @@ class SettingTableSeeder extends Seeder
         ]);
 
         Setting::create([
+            'attribute_key'               => 'weather_embed_code',
+            'attribute_value'             => '<a href="http://www.accuweather.com/en/tr/istanbul/318251/weather-forecast/318251" class="aw-widget-legal"></a><div id="awcc1487253526003" class="aw-widget-current"  data-locationkey="1-318251_1_AL" data-unit="c" data-language="en-us" data-useip="false" data-uid="awcc1487253526003"></div><script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>',
+        ]);
+
+        Setting::create([
             'attribute_key'               => 'google_tag_manager_head_code',
             'attribute_value'             => 'xxxxxx',
         ]);
