@@ -259,11 +259,15 @@ End Login Buttons
     text-indent: 0; }
 .bx-wrapper .bx-controls-direction .bx-prev .fa, .bx-wrapper .bx-controls-direction .bx-next .fa {
     color: #fff;
-    font-size: 32px; }
+    font-size: 32px;
+}
+.bx-wrapper img{
+    width: 100%;
+}
 
-/* ==========================================================================
-   Slider Paging
-   ========================================================================== */
+    /* ==========================================================================
+       Slider Paging
+       ========================================================================== */
 .slider {
     position: relative;
     margin-bottom: 30px;
@@ -538,7 +542,10 @@ End Login Buttons
    Image&Video Gallery Slider
    ========================================================================== */
 .th-nw-slide .slide {
-    padding: 0; }
+    display: block;
+    padding: 0;
+    margin: 0;
+}
 
 .th-nw-slide .pager {
     margin: 0; }
