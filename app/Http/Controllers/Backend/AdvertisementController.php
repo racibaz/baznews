@@ -41,7 +41,14 @@ class AdvertisementController extends Controller
     public function index()
     {
         $records = $this->repo->findAll();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        $advertisementAreaNames = $this->getThemeAdvertisementAreaName();
+        $activeTheme = Theme::getActive();
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact(
+           'records',
+            'advertisementAreaNames',
+            'activeTheme'
+        ));
     }
 
 
@@ -72,7 +79,6 @@ class AdvertisementController extends Controller
     public function edit(Advertisement $record)
     {
         $advertisementAreaNames = $this->getThemeAdvertisementAreaName();
-
         return Theme::view($this->getViewName(__FUNCTION__),compact([
             'record',
             'advertisementAreaNames'

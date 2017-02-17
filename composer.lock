@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee9f90095b73219e7e7dcea6f204cf0c",
+    "content-hash": "abd81bc215eb8ed8f489a351bde27637",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -1292,74 +1292,6 @@
             "time": "2017-02-11T08:05:48+00:00"
         },
         {
-            "name": "laravel-notification-channels/pusher-push-notifications",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-notification-channels/pusher-push-notifications.git",
-                "reference": "e4cdcf65a6bee8fd020018723e8549bcdf356e3b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-notification-channels/pusher-push-notifications/zipball/e4cdcf65a6bee8fd020018723e8549bcdf356e3b",
-                "reference": "e4cdcf65a6bee8fd020018723e8549bcdf356e3b",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/events": "5.3.*",
-                "illuminate/notifications": "5.3.*",
-                "illuminate/queue": "5.3.*",
-                "illuminate/support": "5.3.*",
-                "php": ">=5.6.4",
-                "pusher/pusher-php-server": "2.6.*"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9.5",
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "NotificationChannels\\PusherPushNotifications\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
-                },
-                {
-                    "name": "Marcel Pociot",
-                    "email": "hello@marcelpociot.com",
-                    "homepage": "http://marcelpociot.com"
-                },
-                {
-                    "name": "Sebastian De Deyne",
-                    "email": "sebastian@spatie.be",
-                    "homepage": "https://sebastiandedeyne.com"
-                },
-                {
-                    "name": "Mohamed Said",
-                    "email": "themsaid@gmail.com",
-                    "homepage": "https://themsaid.com"
-                }
-            ],
-            "description": "Pusher native Push Notifications driver.",
-            "homepage": "https://github.com/LaravelNotificationChannels/pusher-push-notifications",
-            "keywords": [
-                "laravel",
-                "notifications",
-                "pusher",
-                "pusher-push-notifications"
-            ],
-            "time": "2016-09-18T12:45:49+00:00"
-        },
-        {
             "name": "laravel/framework",
             "version": "v5.3.30",
             "source": {
@@ -2634,50 +2566,6 @@
             "time": "2017-01-15T17:54:13+00:00"
         },
         {
-            "name": "pusher/pusher-php-server",
-            "version": "2.6.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pusher/pusher-http-php.git",
-                "reference": "7101edc482d1b1de027abadd7a80a0d00222ef08"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/7101edc482d1b1de027abadd7a80a0d00222ef08",
-                "reference": "7101edc482d1b1de027abadd7a80a0d00222ef08",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=5.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "lib/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Library for interacting with the Pusher REST API",
-            "homepage": "https://github.com/pusher/pusher-php-server",
-            "keywords": [
-                "events",
-                "php-pusher-server",
-                "publish",
-                "pusher",
-                "realtime",
-                "rest",
-                "trigger"
-            ],
-            "time": "2016-12-22T10:46:28+00:00"
-        },
-        {
             "name": "ramsey/uuid",
             "version": "3.5.2",
             "source": {
@@ -2983,16 +2871,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "4.5.0",
+            "version": "4.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "d1485416154b123cadce3aadf34a58fd3fde52b6"
+                "reference": "e6345a28cbe7a09f17648782ddda8e115453441e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/d1485416154b123cadce3aadf34a58fd3fde52b6",
-                "reference": "d1485416154b123cadce3aadf34a58fd3fde52b6",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/e6345a28cbe7a09f17648782ddda8e115453441e",
+                "reference": "e6345a28cbe7a09f17648782ddda8e115453441e",
                 "shasum": ""
             },
             "require": {
@@ -3045,7 +2933,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2017-02-12T17:44:29+00:00"
+            "time": "2017-02-17T00:05:17+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -3095,16 +2983,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.5",
+            "version": "v5.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "cd142238a339459b10da3d8234220963f392540c"
+                "reference": "81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/cd142238a339459b10da3d8234220963f392540c",
-                "reference": "cd142238a339459b10da3d8234220963f392540c",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e",
+                "reference": "81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e",
                 "shasum": ""
             },
             "require": {
@@ -3145,7 +3033,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-12-29T10:02:40+00:00"
+            "time": "2017-02-13T07:52:53+00:00"
         },
         {
             "name": "symfony/console",
@@ -3267,7 +3155,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.2.3",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -3983,16 +3871,16 @@
         },
         {
             "name": "unisharp/laravel-filemanager",
-            "version": "1.6.4",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/UniSharp/laravel-filemanager.git",
-                "reference": "3716c85a09633ae96a73953ae8e3d0a907fb704e"
+                "reference": "f80d6623cb33c446e499c24de92f5d58a2678bf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/3716c85a09633ae96a73953ae8e3d0a907fb704e",
-                "reference": "3716c85a09633ae96a73953ae8e3d0a907fb704e",
+                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/f80d6623cb33c446e499c24de92f5d58a2678bf5",
+                "reference": "f80d6623cb33c446e499c24de92f5d58a2678bf5",
                 "shasum": ""
             },
             "require": {
@@ -4002,6 +3890,7 @@
             },
             "require-dev": {
                 "orchestra/testbench": "~3.0",
+                "phpspec/phpspec": "~2.1",
                 "phpunit/phpunit": "~4.8"
             },
             "suggest": {
@@ -4039,7 +3928,7 @@
                 "tinymce",
                 "upload"
             ],
-            "time": "2017-02-04T14:52:53+00:00"
+            "time": "2017-02-17T08:42:40+00:00"
         },
         {
             "name": "venturecraft/revisionable",
@@ -4261,16 +4150,16 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-ide-helper",
-            "version": "v2.2.3",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-ide-helper.git",
-                "reference": "a7fc2ec489aada6062d3a63ddc915004a21e38af"
+                "reference": "555d3e37009bdb78f5d8bcea6eb8a816529a5cfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/a7fc2ec489aada6062d3a63ddc915004a21e38af",
-                "reference": "a7fc2ec489aada6062d3a63ddc915004a21e38af",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/555d3e37009bdb78f5d8bcea6eb8a816529a5cfa",
+                "reference": "555d3e37009bdb78f5d8bcea6eb8a816529a5cfa",
                 "shasum": ""
             },
             "require": {
@@ -4323,7 +4212,7 @@
                 "phpstorm",
                 "sublime"
             ],
-            "time": "2017-01-05T21:20:42+00:00"
+            "time": "2017-02-13T19:20:12+00:00"
         },
         {
             "name": "barryvdh/reflection-docblock",
@@ -5591,7 +5480,7 @@
         },
         {
             "name": "symfony/class-loader",
-            "version": "v3.2.3",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/class-loader.git",
@@ -5756,16 +5645,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.3",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "e1718c6bf57e1efbb8793ada951584b2ab27775b"
+                "reference": "9724c684646fcb5387d579b4bfaa63ee0b0c64c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/e1718c6bf57e1efbb8793ada951584b2ab27775b",
-                "reference": "e1718c6bf57e1efbb8793ada951584b2ab27775b",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/9724c684646fcb5387d579b4bfaa63ee0b0c64c8",
+                "reference": "9724c684646fcb5387d579b4bfaa63ee0b0c64c8",
                 "shasum": ""
             },
             "require": {
@@ -5807,7 +5696,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-21T17:06:35+00:00"
+            "time": "2017-02-16T22:46:52+00:00"
         }
     ],
     "aliases": [],

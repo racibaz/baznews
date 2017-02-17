@@ -13,6 +13,20 @@
                 <div class="box-header">
                     <h3 class="box-title"><strong>{{trans('advertisement.management')}}</strong></h3>
                 </div>
+                <div>
+                    <ul>
+                        <h3> Active theme ({{$activeTheme}}) advertisement areas </h3>
+                        @foreach($advertisementAreaNames as $advertisementAreaName)
+                            <li>
+                                {{$advertisementAreaName['areaName']}} -- {{$advertisementAreaName['areaType']}}
+
+                                @if(in_array($advertisementAreaName['areaName'] , \App\Models\Advertisement::advertisements()->pluck('name')->toArray()))
+                                    <b>(ekli)</b>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <table id="countries" class="table table-bordered table-hover">

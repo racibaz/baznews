@@ -43,7 +43,7 @@ class News extends Model
     }
 
 
-    public static $newsTypes = ['Standard', 'Private News', 'Photo Gallery', 'Video', 'Video Gallery', 'Sound'];
+    public static $newsTypes = ['Standard', 'Private News', 'Internal News', 'Photo Gallery', 'Video', 'Video Gallery', 'Sound'];
 
     public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
 

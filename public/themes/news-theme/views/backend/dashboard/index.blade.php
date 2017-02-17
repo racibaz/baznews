@@ -14,5 +14,6 @@
   {{trans('page.passive_page_count')}} : {{$passivePageCount}} <br/>
   {{trans('menu.active_menu_count')}} : {{$activeMenuCount}} <br/>
   {{trans('menu.passive_menu_count')}} : {{$passiveMenuCount}} <br/>
-
+  {{trans('contact.passive_contact_message_count')}} : {{$passiveContactMessageCount}} <br/>
+  {{trans('advertisement.active_advertisement_count')}} : {{$activeAdsCount}} <br/>
 @endsection
