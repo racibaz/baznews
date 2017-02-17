@@ -32,16 +32,6 @@
                 @endif
 
                 <div class="panel-body">
-
-                    <ul>
-                        @foreach($advertisementAreaNames as $advertisementAreaName)
-                            <li>
-                                {{$advertisementAreaName['areaName']}} -- {{$advertisementAreaName['areaType']}}
-                            </li>
-                        @endforeach
-                    </ul>
-
-
                     <div class="form-group">
                         <div class="row">
                             {!! Form::label('name', trans('advertisement.name'),['class'=> 'col-lg-2 control-label']) !!}
@@ -66,25 +56,6 @@
 
                             <div class="col-lg-10">
                                 {!! Form::textarea('description', $record->description, ['placeholder' => trans('advertisement.description') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('photo', trans('advertisement.photo'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::file('photo') !!}
-                                <img id="preview" src="#" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('link', trans('advertisement.link'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::url('link', $record->link, ['placeholder' => trans('advertisement.link') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -115,33 +86,4 @@
     </div><!-- end row -->
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->
-@endsection
-
-@section('css')
-    <style>
-        #preview {display: none;}
-        .display {display: block !important;}
-    </style>
-@endsection
-
-@section('js')
-
-    <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                $( "#preview" ).addClass( "display" );
-                reader.onload = function (e) {
-                    $('#preview').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#photo").change(function(){
-            readURL(this);
-        });
-    </script>
 @endsection
