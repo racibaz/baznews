@@ -65,6 +65,29 @@
 
                                         <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
                                     </video>
+
+                                    <script type="application/ld+json">
+                                        {
+                                          "@context": "http://schema.org",
+                                          "@type": "VideoObject",
+                                          "name": "{{$video->title}}",
+                                          "description": "{{$video->description}}",
+                                          "thumbnailUrl": "{{Redis::get('url') . '/' . asset('video_gallery/' . $video->video_gallery_id . '/photos/' . $video->thumbnail)}}",
+                                          "uploadDate": "{{$video->updated_at}}",
+                                          "publisher": {
+                                            "@type": "Organization",
+                                            "name": "{{Redis::get('url')}}",
+                                            "logo": {
+                                              "@type": "ImageObject",
+                                              "url": "{{Redis::get('logo')}}"
+                                            }
+                                          },
+                                          "contentUrl": "https://www.example.com/video123.flv",
+                                          "embedUrl": "https://www.example.com/videoplayer.swf?video=123",
+                                          "interactionCount": "2347"
+                                        }
+                                    </script>
+
                                 @elseif(!empty($video->link))
                                     {!! $video->link !!}
                                 @endif
