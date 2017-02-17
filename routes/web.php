@@ -113,6 +113,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('ping', 'Backend\PingController@edit')->name('ping');
     Route::post('ping.update', 'Backend\PingController@update')->name('ping.update');
 
+    //admin tarafında accout işlemleri kaldırmak lazım
+    // kullanıcı frotend account kısmından işlemlerini yapabilir.
 //    Route::resource('account', 'Backend\AccountController', ['only' => [
 //        'edit', 'update','show'
 //    ]]);

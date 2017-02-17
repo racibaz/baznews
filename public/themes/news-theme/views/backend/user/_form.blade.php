@@ -168,16 +168,6 @@
                             </div>
                         </div>
                     </div>
-                    {{--<div class="form-group">--}}
-                        {{--<div class="row">--}}
-                            {{--{!! Form::label('avatar', trans('user.avatar'), ['class'=> 'col-lg-2 control-label']) !!}--}}
-
-                            {{--<div class="col-lg-10">--}}
-                                {{--{!! Form::text('avatar', $record->avatar, ['placeholder' => trans('user.avatar'), 'class' => 'form-control']) !!}--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-
                     @if(!empty($record->id))
                         <?php
                             $default = Redis::get('url') . "/default_user_avatar.jpg";

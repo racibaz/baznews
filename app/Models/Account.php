@@ -40,7 +40,6 @@ class Account extends Model
         'web_site',
         'sex',
         'blood_type',
-        'avatar',
         'bio_note',
         'IP',
     ];
@@ -128,7 +127,6 @@ class Account extends Model
             'linkedin'  => 'url|max:255',
             'youtube'   => 'url|max:255',
             'web_site'   => 'url|max:255',
-            'avatar' => 'image|max:255',
             'bio_note'  => 'string|max:255',
             'IP'    => 'ip',
             //todo cell_phone
