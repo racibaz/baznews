@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Mews\Purifier\Facades\Purifier;
 
 class AccountController extends Controller
 {
@@ -71,21 +72,29 @@ class AccountController extends Controller
     {
         $input = Input::all();
 
-        if(empty($input['password'])){
-            $input['password'] = $record->password;
-        }else{
-            $input['password'] = bcrypt($input['password']);
-        }
+        $input['password'] = empty($input['password']) ? $record->password : bcrypt($input['password']);
+
+        // İçeriklerde ki html tag leri temizliyoruz.
+        $input['facebook'] = strip_tags($input['facebook']);
+        $input['twitter'] = strip_tags($input['twitter']);
+        $input['pinterest'] = strip_tags($input['pinterest']);
+        $input['linkedin'] = strip_tags($input['linkedin']);
+        $input['youtube'] = strip_tags($input['youtube']);
+        $input['web_site'] = strip_tags($input['web_site']);
+        $input['bio_note'] = strip_tags($input['bio_note']);
 
         //kullanıcı email adresini guncellediğinde email adresini uniqe olduğu için
         //kendi email adresini daha önce kayıtlı olarak görüyor ve hata veriyor
         //bundan dolayı aynı ise burada unique validasyonunu atlamış oluyoruz.
         $rules = [
-            'password'                      => isset($record->id)  ?   'min:4|Confirmed' : 'required|min:4|Confirmed',
-            'password_confirmation'         => isset($record->id)  ? 'min:4' : 'required|min:4',
-            'web_site'  => 'url',
-            'avatar' => 'image|max:255',
+            'facebook'  => 'url|max:255',
+            'twitter'  => 'url|max:255',
+            'pinterest' => 'url|max:255',
+            'linkedin'  => 'url|max:255',
+            'youtube'   => 'url|max:255',
+            'web_site'   => 'url|max:255',
             'bio_note'  => 'string|max:255',
+            'IP'    => 'ip',
         ];
 
         $v = Validator::make($input, $rules);
@@ -112,4 +121,44 @@ class AccountController extends Controller
             }
         }
     }
+
+
+    public function changePasswordView()
+    {
+        $record = \Auth::user();
+        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+    }
+
+    public function changePassword(Request $request)
+    {
+        $input = Input::all();
+
+        $record = \Auth::user();
+
+        $rules = [
+            'password'                      => 'required|min:4|Confirmed',
+            'password_confirmation'         => 'required|min:4',
+        ];
+
+        $v = Validator::make($input, $rules);
+
+
+        if ($v->fails()) {
+            return Redirect::back()
+                ->withErrors($v)
+                ->withInput($input);
+        }
+
+        $input['password'] = bcrypt($input['password']);
+
+        list($result, $instance) = $this->repo->update($record->id, $input);
+
+        if($result) {
+            Session::flash('flash_message', trans('account.password_changed'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
+        }
+
+    }
+
+
 }

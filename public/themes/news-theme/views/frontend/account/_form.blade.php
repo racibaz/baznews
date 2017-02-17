@@ -78,24 +78,6 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    {!! Form::label('password', trans('user.password'), ['class'=> 'col-lg-2 control-label']) !!}
-
-                                    <div class="col-lg-10">
-                                    {!! Form::password('password', array('placeholder' => trans('user.password'), 'class'=>'form-control')) !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    {!! Form::label('password_confirmation', trans('user.password_confirmation') ,['class'=> 'col-lg-2 control-label']) !!}
-
-                                    <div class="col-lg-10">
-                                    {!! Form::password('password_confirmation', array('placeholder' => trans('user.password_confirmation'), 'class'=>'form-control')) !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
                                     {!! Form::label('country_id', "Ülke",['class'=> 'col-lg-2 control-label']) !!}
 
                                     <div class="col-lg-10">
@@ -141,6 +123,15 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
+                                    {!! Form::label('pinterest', trans('user.pinterest'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                                    <div class="col-lg-10">
+                                        {!! Form::text('pinterest', $record->pinterest,['placeholder' => trans('user.pinterest'), 'class' => 'form-control']) !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
                                     {!! Form::label('linkedin', trans('user.linkedin'), ['class'=> 'col-lg-2 control-label']) !!}
 
                                     <div class="col-lg-10">
@@ -175,6 +166,22 @@
                                     </div>
                                 </div>
                             </div>
+                            @if(!empty($record->id))
+                                <?php
+                                $default = Redis::get('url') . "/default_user_avatar.jpg";
+                                $size = 40;
+                                $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $record->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+                                ?>
+                                <div class="form-group">
+                                    <div class="row">
+                                        {!! Form::label('avatar', trans('user.avatar'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                                        <div class="col-lg-10">
+                                            <img src="<?php echo $grav_url; ?>" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="form-group">
                                 <div class="row">
                                     {!! Form::label('bio_note', trans('user.bio_note'), ['class'=> 'col-lg-2 control-label']) !!}

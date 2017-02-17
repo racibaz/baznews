@@ -33,12 +33,20 @@ Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');
 
 Route::get('/tags/{q}', 'Frontend\SearchController@tagSearch')->name('tag_search');
 
-Route::resource('account', 'Frontend\AccountController', ['only' => [
-    'index', 'edit', 'update','show'
-]]);
+
 
 Route::get(trans('route.contact'), 'Frontend\ContactController@index')->name('contact-index');
 Route::post(trans('route.contact'), 'Frontend\ContactController@store')->name('contact-store');
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('account.change_password_view', 'Frontend\AccountController@changePasswordView')->name('change_password_view');
+    Route::post('account.change_password', 'Frontend\AccountController@changePassword')->name('change_password');
+    Route::resource('account', 'Frontend\AccountController', ['only' => [
+        'index', 'edit', 'update','show'
+    ]]);
+});
+
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
@@ -105,9 +113,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('ping', 'Backend\PingController@edit')->name('ping');
     Route::post('ping.update', 'Backend\PingController@update')->name('ping.update');
 
-    Route::resource('account', 'Backend\AccountController', ['only' => [
-        'edit', 'update','show'
-    ]]);
+//    Route::resource('account', 'Backend\AccountController', ['only' => [
+//        'edit', 'update','show'
+//    ]]);
 
     Route::resource('advertisement', 'Backend\AdvertisementController');
     Route::resource('widget_group', 'Backend\WidgetGroupController');
