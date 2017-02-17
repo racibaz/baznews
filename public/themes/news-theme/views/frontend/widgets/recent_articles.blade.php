@@ -1,6 +1,17 @@
-<h1> Tavsiye Edilen Makaleler Widget </h1>
-<br />
-@foreach($recentArticles as $recentArticle)
+<div class="widget">
+    <div class="title-section">
+        <h1>
+            <span>Tavisye Edilen Makaleler</span>
+        </h1>
+    </div>
+    <div class="news-h-links">
+        <ul>
+            @foreach($recentArticles as $recentArticle)
+                <li>
+                    <a href="#">{{ $recentArticle->title }}</a>
+                </li>
 
-    {{ $recentArticle->title }} <br />
-@endforeach
+            @endforeach
+        </ul>
+    </div>
+</div>

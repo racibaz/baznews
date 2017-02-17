@@ -51,7 +51,7 @@
 
     <!-- jQuery library (served from Google) -->
     <script src="{{ Theme::asset($activeTheme . '::js/jquery/jquery.js') }}"></script>
-
+    <script src="{{ Theme::asset($activeTheme . '::js/jquery.bxslider/jquery.bxslider.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/jquery.sticky.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/custom.js') }}"></script>

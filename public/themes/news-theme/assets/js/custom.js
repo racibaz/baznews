@@ -94,10 +94,10 @@
     var right =  $('#dfp-160-kare-sag').width();
     var ct = $('#container').width();
     $(window).resize(function () {
-        //adsSize();
+        adsSize();
     });
     $(document).ready(function () {
-        //adsSize();
+        adsSize();
     });
     function adsSize() {
         ct = $('#container').width();
@@ -119,6 +119,25 @@
         topSpacing: $('header nav').outerHeight(),
         bottomSpacing: $('.ads').outerHeight() + $('footer').outerHeight()
     });
+
+
+    /*--------------------------------------------------------
+     Center Carousel Horizontal News Slider
+     * --------------------------------------------------------*/
+    if($('.books-slider').length > 0){
+        $('.books-slider').bxSlider({
+            slideWidth: 180,
+            minSlides: 2,
+            maxSlides: 5,
+            slideMargin: 0,
+            auto:true,
+            pager:false,
+            touchEnabled:true,
+            oneToOneTouch:true,
+            nextText: '<i class="fa fa-angle-right"></i>',
+            prevText: '<i class="fa fa-angle-left"></i>'
+        });
+    }
 
 })(jQuery);
 

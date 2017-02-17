@@ -432,7 +432,7 @@
 @endsection
 
 @section('js')
-    <script src="{{ Theme::asset($activeTheme . '::js/jquery.bxslider/jquery.bxslider.js') }}"></script>
+
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
 
 
