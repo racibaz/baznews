@@ -25,7 +25,7 @@
                         <ul class="bxslider">
                             @foreach($mainCuffNewsItems as $mainCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
-                                    <a href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
+                                    <a href="{!! !empty($mainCuffNewsItem->cuff_direct_link) ?  $mainCuffNewsItem->cuff_direct_link : route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
                                         <img src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}" data-src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}" alt="News Logo" class="lazy-slider">
                                     </a>
                                 </li>
@@ -35,7 +35,7 @@
                             <ul class="main-slider-paging">
                                 @foreach($mainCuffNewsItems as $index => $mainCuffNewsItem)
                                     <li class="bx-pager-item">
-                                        <a data-slide-index="{{$index}}" href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}" class="bx-pager-link">
+                                        <a data-slide-index="{{$index}}" href="{!! !empty($mainCuffNewsItem->cuff_direct_link) ?  $mainCuffNewsItem->cuff_direct_link : route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}" class="bx-pager-link">
                                             {{++$index}}
                                         </a>
                                     </li>
@@ -120,7 +120,7 @@
                                 </h1>
                             </div>
                             <div class="new-list-ct">
-                                <div class="left-img-ct" style="background: {{ Theme::asset($activeTheme . '::img/example.jpg')}}">
+                                <div class="left-img-ct" style="background-image:{{ Theme::asset($activeTheme . '::img/example.jpg')}};backgroun-position:0 0; background-repeat: no-repeat;background-size: cover;">
                                     <a href="new-details.html" class="full-link"></a>
                                     <span class="shadow"></span>
                                     <div class="new-ct">
@@ -137,12 +137,12 @@
                                                class="full-link"
                                                data-img="{{ asset('images/news_images/' . $news->id . '/220x310_' . $news->thumbnail) }}"
                                                data-title="{{$news->title}}"
-                                               data-time="23 saat önce">
+                                               data-time="{{$news->updated_at}}">
                                             </a>
                                             <div class="new-ct">
                                                 <h3 class="new-title">{{$news->title}} </h3>
                                                 <time class="new-date">
-                                                    <span class="timeago" title="">{{$news->updated_at}}</span>
+                                                    <span class="timeago">{{$news->updated_at}}</span>
                                                 </time>
                                             </div>
                                         </li>
@@ -324,11 +324,11 @@
                         </div><!-- /rabpanel -->
                     </div><!-- /.nw-sm-img -->
                     <div class="nw-sm-img">
-                        {!!Cache::get('right_blok_1')!!}
-                        <br />
+                        <div class="advert">
+                            {!!Cache::get('right_blok_1')!!}
+                        </div>
                         @foreach($widgets->where('group','right_bar') as $widget )
                             @widget($widget['namespace'])
-                            <br />
                         @endforeach
                     </div>
                 </div><!-- /.col -->
@@ -343,7 +343,9 @@
                     </div>
                     <div class="th-nw-slide">
                         <div id="m_pg1" class="pager">
+
                             @foreach($photoGalleries as $index =>  $photoGallery)
+
                                 <a data-slide-index="{{$index}}" href="#" class="bx-pager-link">
                                     <span class="img-ct"><img src="{{ asset('gallery/' . $photoGallery->id . '/photos/58x58_' . $photoGallery->thumbnail)}}" /></span>
                                 </a>
@@ -368,7 +370,7 @@
                     </div>
                     <div class="th-nw-slide">
                         <div id="m_pg2" class="pager">
-                            @foreach($videoGalleries as $index =>  $videoGallery)
+                            @foreach($videoGalleries as $index => $videoGallery)
                                 <a data-slide-index="{{$index}}" href="{{route('show_video_gallery',['slug' => $videoGallery->videos->first()->slug ])}}" class="bx-pager-link">
                                     <span class="img-ct">
                                         <img src="{{ asset('video_gallery/' . $videoGallery->id . '/photos/58x58_' . $videoGallery->thumbnail)}}" />
@@ -432,7 +434,7 @@
 @endsection
 
 @section('js')
-    <script src="{{ Theme::asset($activeTheme . '::js/jquery.bxslider/jquery.bxslider.js') }}"></script>
+
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
 
 
@@ -480,8 +482,6 @@
                     $('#manset-slider li:first-child .bx-pager-link').addClass('active');
                 },
                 onSlideAfter:function($slideElement, oldIndex, newIndex){
-                    console.log("oldIndex"+oldIndex);
-                    console.log("newIndex"+newIndex);
                     $('#manset-slider .bx-pager-link').removeClass('active');
                     $('#manset-slider .bx-pager-link').each(function () {
                        if($(this).attr('data-slide-index')==newIndex){

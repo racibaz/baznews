@@ -125,6 +125,15 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            {!! Form::label('pinterest', trans('user.pinterest'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('pinterest', $record->pinterest,['placeholder' => trans('user.pinterest'), 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {!! Form::label('linkedin', trans('user.linkedin'), ['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
@@ -159,21 +168,39 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('avatar', trans('user.avatar'), ['class'=> 'col-lg-2 control-label']) !!}
+                    {{--<div class="form-group">--}}
+                        {{--<div class="row">--}}
+                            {{--{!! Form::label('avatar', trans('user.avatar'), ['class'=> 'col-lg-2 control-label']) !!}--}}
 
-                            <div class="col-lg-10">
-                                {!! Form::text('avatar', $record->avatar, ['placeholder' => trans('user.avatar'), 'class' => 'form-control']) !!}
+                            {{--<div class="col-lg-10">--}}
+                                {{--{!! Form::text('avatar', $record->avatar, ['placeholder' => trans('user.avatar'), 'class' => 'form-control']) !!}--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+
+                    @if(!empty($record->id))
+                        <?php
+                            $default = Redis::get('url') . "/default_user_avatar.jpg";
+                            $size = 40;
+                            $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $record->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+                        ?>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('avatar', trans('user.avatar'), ['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    <img src="<?php echo $grav_url; ?>" alt="" />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
+
                     <div class="form-group">
                         <div class="row">
                             {!! Form::label('bio_note', trans('user.bio_note'), ['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('bio_note', $record->bio_note, ['placeholder' => trans('user.bio_note'), 'class' => 'form-control']) !!}
+                                {!! Form::textarea('bio_note', $record->bio_note, ['placeholder' => trans('user.bio_note'), 'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -198,7 +225,7 @@
                                 <div class="checkbox i-checks">
                                     <label>
                                         {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                        <i></i> {{trans('user.status')}}
+                                        <i></i> {{trans('common.is_active')}}
                                     </label>
                                 </div>
                             </div>

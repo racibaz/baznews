@@ -1,15 +1,16 @@
 @charset "UTF-8";
-/* ==========================================================================
-   Mixins..
-   ========================================================================== */
-/* Global Variables */
-/* ==========================================================================
-   END MİXİNS
-   ========================================================================== */
+
 * {
     outline: none;
-    border: none; }
-
+    border: none;
+}
+a{
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+}
 input, textarea {
     font-family: inherit;
     font-size: 13px;
@@ -248,6 +249,9 @@ End Login Buttons
     margin: 0;
     left: 0;
 }
+.bx-wrapper img{
+    width: 100%;
+}
 .bx-wrapper .bx-controls-direction .bx-prev {
     padding: 0 10px; }
 .bx-wrapper .bx-controls-direction .bx-next {
@@ -438,9 +442,12 @@ End Login Buttons
     padding: 10px;
     margin: 0 0 10px 0; }
 .img-new-list .new-list-ct .new-list li:last-child {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+}
+
 .img-new-list .new-list-ct .new-list li:hover {
-    border-bottom: 1px solid #ea4748; }
+    border-bottom: 1px solid #ea4748;
+}
 .img-new-list .new-list-ct .new-list li a.full-link:before {
     content: "";
     position: absolute;
@@ -452,9 +459,12 @@ End Login Buttons
     opacity: 0;
     -webkit-transition: .3s opacity,0.3s transform;
     -moz-transition: .3s opacity,0.3s transform;
-    transition: .3s opacity,0.3s transform; }
-.img-new-list .new-list-ct .new-list li a.full-link:hover:before, .img-new-list .new-list-ct .new-list li a.full-link.active:before {
-    opacity: 1; }
+    transition: .3s opacity,0.3s transform;
+}
+.img-new-list .new-list-ct .new-list li a.full-link:hover:before,
+.img-new-list .new-list-ct .new-list li a.full-link.active:before {
+    opacity: 1;
+}
 .img-new-list .new-list-ct .new-list li .new-ct h3.new-title {
     font-size: 14px;
     font-weight: bold;
@@ -863,29 +873,34 @@ End Login Buttons
     vertical-align: middle;
     margin-top: 0px;
     font-size: 13px;
-    font-weight: bold; }
+    font-weight: bold;
+}
 .sidebar-video .video-link .time {
     float: left;
     padding-left: 10px;
     color: #a8a8a8;
     font-style: normal;
     font-weight: 700;
-    font-size: 11px; }
+    font-size: 11px;
+}
 
 /* ==========================================================================
    WİDGET
    ========================================================================== */
-.widget {
-    margin-bottom: 15px; }
-.widget ul {
+.news-h-links {
+    margin-bottom: 15px;
+}
+.news-h-links ul {
     padding: 0;
     margin: 0;
-    list-style: none; }
-.widget ul li {
+    list-style: none;
+}
+.news-h-links ul li {
     padding: 0;
     margin: 0;
-    list-style: none; }
-.widget ul li a {
+    list-style: none;
+}
+.news-h-links ul li a {
     display: block;
     font-size: 14px;
     line-height: 1em;
@@ -894,10 +909,12 @@ End Login Buttons
     border-bottom: 1px solid #ccc;
     color: dimgrey;
     font-weight: bold;
-    text-decoration: none; }
-.widget ul li a:hover {
+    text-decoration: none;
+}
+.news-h-links ul li a:hover {
     color: #ea4748;
-    border-bottom: 1px solid #ea4748; }
+    border-bottom: 1px solid #ea4748;
+}
 
 /* ==========================================================================
    IMAGE GALLERY
@@ -1039,10 +1056,10 @@ footer .footer-bottom .cpy {
     text-transform: uppercase;
 }
 #new-content .new-img .image-subtitle{
-    font-family: Georgia!important;
     background-color: #fff;
-    color: #888!important;
-    font-size: 1.6rem!important;
+    color: #888 !important;
+    font-size: 13px !important;
+    padding:3px 0;
 }
 #new-content .new-img .image-subtitle blockquote{
     padding: 1.857em;
@@ -1064,10 +1081,13 @@ footer .footer-bottom .cpy {
 }
 #new-content .news-spot {
     font-family: Georgia;
-    font-size: 25px;
     line-height: 1.3;
     color: #888;
     font-style: italic;
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #eeeeee;
 }
 
 #new-content .content .news-text,
@@ -1263,44 +1283,77 @@ footer .footer-bottom .cpy {
     font-weight:bold;
 }
 /* ==========================================================================
-    Editor
+    Author Detail
    ========================================================================== */
-.editor-box .editor-detail:after{
+.author-box{
+    background-color: #f0f0f0;
+    padding: 25px;
+}
+.author-box .title-section{
+    margin-top: 0;
+}
+.author-box .author-detail:after{
     display: block;
     clear: both;
     content: '';
 }
-.editor-box .editor-detail a{
-    display: block;
-    color: #000000;
-}
-.editor-box .editor-detail a .editor-photo{
-    float: left;
-    width: 73px;
-}
-.editor-box .editor-detail a:hover h2{
-    text-decoration: underline;
-}
-.editor-box .editor-detail a .editor-photo img{
+.author-box .author-detail .author-photo img{
+    width: 100%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
     margin-right: 15px;
 }
-.editor-box .editor-detail a .editor-info{
-    float: left;
-    width: 90%;
+.author-box .author-detail .author-info{
     margin-bottom: 10px;
 }
-.editor-box .editor-detail a .editor-info h2{
+
+.author-box .author-detail .author-info a > h2,
+.author-box .author-detail .author-info h2{
+    font-weight: bold;
+    font-size: 16px;
+    color: #777777;
+    text-decoration: none;
     margin: 0 0 8px 0;
-    font-size: 20px;
 }
-.editor-box .editor-detail a .editor-info p{
+.author-box .author-detail .author-info a:hover h2{
+    color:#000000;
+    text-decoration: underline;
+}
+.author-box .author-detail .author-info .bio-text{
+    max-height: 36px;
+    overflow: hidden;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.author-box .author-detail .author-info .bio-text.open{
+    overflow: inherit;
+    max-height: inherit;
+}
+.author-box .author-detail .author-info .bio-long-btn{
     font-size:12px;
+    color:#00a7d0;
+    text-decoration: underline;
+    cursor: pointer;
 }
-.editor-box .editor-detail .other{
-    padding-left: 73px;
+.author-box .author-detail .author-info .bio-text p{
+    font-size: 12px;
+    color:#8a8a8a;
+}
+.author-box .author-detail .links .nav li{
+    margin-right:10px;
+}
+.author-box .author-detail .links .nav li > a{
+    background-color: #1D3244;
+    color: #fff;
+    padding: 4px 12px;
+    font-size: 12px;
+}
+.author-box .author-detail .links .nav li > a:hover{
+    background-color: #6399AC;
 }
 .pager li a{
     -webkit-border-radius: 0;
@@ -1462,9 +1515,72 @@ footer .footer-bottom .cpy {
     font-weight: bold;
     margin: 0 0 0 0; }
 .fav-news .nw-bx a {
-    display: block; }
+    display: block;
+}
 .fav-news .nw-bx img {
     width: 100%;
-    min-height: 100%; }
+    min-height: 100%;
+}
 
+/* ==========================================================================
+   News Box
+   ========================================================================== */
+.news-box{
+    margin-bottom: 30px;
+}
+.news-box .frame-image a{
+    display: block;
+}
+.news-box .frame-image a img{
+    width: 100%;
+}
+.news-box .news-right-txt{
+    padding:0 15px 15px 0;
+    background-color: #fff;
+}
 
+.news-box .news-right-txt a h2{
+    font-family: Arial, sans-serif !important;
+    font-size: 22px;
+    color: #000;
+    margin: 0;
+    font-weight: bold;
+}
+.news-box .news-right-txt a{
+    color: #000;
+}
+.news-box .news-right-txt .news-meta-left{
+    padding: 3px 5px 3px 0;
+}
+.news-box .news-right-txt .news-meta-left .meta-date{
+    color: #999;
+    font-size: 11px;
+    line-height: 1em;
+}
+.news-box .news-right-txt .news-excerpt{
+    max-height: 111px;
+    font-size: 14px;
+    line-height: 1.3em;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Book Widget
+   ========================================================================== */
+.books-widget .book{
+    padding:0 15px 15px 15px;
+}
+.books-widget .book .cover a img{
+    width: 100%;
+    border: 1px solid #E7E7E7;
+    padding: 3px;
+}
+.books-widget .book .name a{
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    font-size: 13px;
+    text-align: center;
+    margin: 10px 5px;
+}

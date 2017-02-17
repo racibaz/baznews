@@ -9,6 +9,7 @@ use App\Models\Event;
 use App\Models\Group;
 use App\Models\Role;
 use App\Models\User;
+use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
@@ -43,10 +44,23 @@ class UserController extends Controller
     }
 
 
-    public function index()
+    public function index($roleId = null)
     {
-        $records = $this->repo->findAll();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        $roleRepo = new RoleRepository();
+        $roles = $roleRepo->where('is_active',1)->findAll();
+
+        /*
+         * Kullanıcıları gelen role değerine göre listeliyoruz.
+         * */
+        if(is_numeric($roleId)) {
+            $records = $roleRepo
+                ->find($roleId)
+                ->users;
+        }else{
+            $records = $this->repo->findAll();
+        }
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact('records', 'roles'));
     }
 
 
@@ -107,7 +121,7 @@ class UserController extends Controller
     {
         $input = Input::all();
 
-        $input['status'] = Input::get('status') == "on" ? true : false;
+        $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['sex'] = Input::get('sex') == "on" ? true : false;
 
         //kullanıcı email adresini guncellediğinde email adresini uniqe olduğu için
@@ -133,8 +147,7 @@ class UserController extends Controller
         } else {
 
             if (isset($record->id)) {
-
-                $input['password'] = $record->password;
+                $input['password'] = !empty($input['password']) ? bcrypt($input['password']) : $record->password;
                 $result = $this->repo->update($record->id, $input);
 
             } else {

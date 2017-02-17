@@ -5,12 +5,55 @@
         </h1>
     </div>
 
-    <ul>
-        @foreach($recentBooks as $recentBook)
-            <li>
-                <span class="text">{{ $recentBook->name }} <br /></span>
-                <img src="{{ $recentBook->thumbnail }}">  <br />
-            </li>
-        @endforeach
-    </ul>
+    <div class="books-widget">
+        <ul class="books-slider">
+            @foreach($recentBooks as $recentBook)
+                <li>
+                    <div class="book">
+                        <div class="cover">
+                            <a href="#">
+                                {{--<img src="{{ $recentBook->thumbnail }}" alt="">--}}
+                                <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&width=165&isWatermarked=true" alt="">
+                            </a>
+                        </div>
+                        <div class="name">
+                            <a href="#">
+                                {{--<span>{{ $recentBook->name }}</span>--}}
+                                <span>Senden Önce Ben</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            @endforeach
+                <li>
+                    <div class="book">
+                        <div class="cover">
+                            <a href="#">
+                                <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&width=165&isWatermarked=true" alt="">
+                            </a>
+                        </div>
+                        <div class="name">
+                            <a href="#">
+                                <span>Senden Önce Ben</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="book">
+                        <div class="cover">
+                            <a href="#">
+                                <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&width=165&isWatermarked=true" alt="">
+                            </a>
+                        </div>
+                        <div class="name">
+                            <a href="#">
+                                <span>Senden Önce Ben</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+        </ul>
+    </div>
 </div>

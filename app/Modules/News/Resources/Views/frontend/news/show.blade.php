@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <article class="container" id="container">
+    <div class="container" id="container">
         <div class="breadcrumbs">
             <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \\
 
@@ -17,45 +17,47 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <div id="new-content">
-                    <div class="meta">
-                        <a href="new-details.html" class="cat-title">World News.</a>
-                        <span class="timestamp">Oluşturma : {{ $record->created_at }} | Güncelleme: {{ $record->updated_at }}</span>
-                    </div><!-- /.meta -->
-                    <h1 class="news-title">{{ $record->title }}</h1>
-                    <div class="news-spot">
-                        <blockquote>
+                <article>
+                    <div id="new-content">
+                        <div class="meta">
+                            <a href="new-details.html" class="cat-title">World News.</a>
+                            <span class="timestamp">Oluşturma : {{ $record->created_at }} | Güncelleme: {{ $record->updated_at }}</span>
+                        </div><!-- /.meta -->
+                        <h1 class="news-title">{{ $record->title }}</h1>
+                        <div class="news-spot">
                             <p>{!! $record->spot !!}</p>
-                        </blockquote>
-                    </div>
-                    @if($record->news_type == 0 || $record->news_type == 1)
-                        <div class="new-img">
-                            <img src="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}" alt="{{$record->title}}">
-                            <div class="image-subtitle">Venison pancetta cupim shankle stri (Haber 7)</div>
                         </div>
-                    @elseif($record->news_type == 2)
-                        photo_gallery
-                    @elseif($record->news_type == 3)
-                        video
-                    @elseif($record->news_type == 4)
-                        video_gallery
-                    @elseif($record->news_type == 5)
-                        sound
-                    @endif
+                        @if($record->news_type == 0 || $record->news_type == 1)
+                            <div class="new-img">
+                                <img src="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}" alt="{{$record->title}}">
+                                <div class="image-subtitle">Venison pancetta cupim shankle stri (Haber 7)</div>
+                            </div>
+                        @elseif($record->news_type == 2)
+                            iç haber
+                        @elseif($record->news_type == 3)
+                            photo gallery
+                        @elseif($record->news_type == 4)
+                            video
+                        @elseif($record->news_type == 5)
+                            video gallery
+                        @elseif($record->news_type == 6)
+                            sound
+                        @endif
 
-                    <div class="content" id="content">
-                        <div class="news-text">
-                            {!! $record->content !!}
-                        </div><!-- /.ct-text -->
-                        <div class="new-source">
-                            <span>Haber Kaynağı: </span>
-                            {{$record->news_source->name}}
-                        </div>
-                        <div class="relation-news">
-                            <div class="title-section">
-                                <h1>
-                                    <span>İlişkili Haberler</span>
-                                </h1>
+                        <div class="content" id="content">
+                            <div class="news-text">
+                                {!! $record->content !!}
+                            </div><!-- /.ct-text -->
+                            <div class="new-source">
+                                <span>Haber Kaynağı: </span>
+                                {{$record->news_source->name}}
+                            </div>
+                            <div class="relation-news">
+                                <div class="title-section">
+                                    <h1>
+                                        <span>İlişkili Haberler</span>
+                                    </h1>
+                                </div>
                             </div>
                             <div class="relation-news-body">
                                 <div class="row">
@@ -69,7 +71,6 @@
                                                     </div>
                                                 </a>
                                             </div>
-
                                         </div><!-- /.col -->
                                     @endforeach
                                 </div>
@@ -85,18 +86,18 @@
                             <div class="news-video-body">
                                 <div class="row">
                                     @foreach($record->video_galleries as $video_gallery)
-                                    <div class="col-lg-3">
-                                        <div class="news-video-image">
-                                            <a href="#">
-                                                <span class="play-icon"></span>
-                                                <img src="{{asset('images/news_images/2/196x150_2.jpg')}}">
-                                                <div class="news-video-title">
-                                                    <span>{{$video_gallery->title}}</span>
-                                                </div>
-                                            </a>
-                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="news-video-image">
+                                                <a href="#">
+                                                    <span class="play-icon"></span>
+                                                    <img src="{{asset('images/news_images/2/196x150_2.jpg')}}">
+                                                    <div class="news-video-title">
+                                                        <span>{{$video_gallery->title}}</span>
+                                                    </div>
+                                                </a>
+                                            </div>
 
-                                    </div>
+                                        </div>
                                     @endforeach
                                 </div>
 
@@ -112,16 +113,16 @@
                             <div class="news-photo-gallery-body">
                                 <div class="row">
                                     @foreach($record->photo_galleries as $photo_gallery)
-                                    <div class="col-lg-3 col-md-3 col-xs-4">
-                                        <div class="gallery-image">
-                                            <a href="#">
-                                                <img src="{{asset('images/news_images/3/196x150_3.jpg')}}">
-                                                <div class="gallery-title">
-                                                    {{$photo_gallery->title}}
-                                                </div>
-                                            </a>
+                                        <div class="col-lg-3 col-md-3 col-xs-4">
+                                            <div class="gallery-image">
+                                                <a href="#">
+                                                    <img src="{{asset('images/news_images/3/196x150_3.jpg')}}">
+                                                    <div class="gallery-title">
+                                                        {{$photo_gallery->title}}
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
                                     @endforeach
                                 </div>
                             </div>
@@ -136,7 +137,7 @@
                             <div class="news-videos">
                                 <div class="row">
                                     @foreach($record->videos as $video)
-                                    <div class="col-lg-12">
+                                        <div class="col-lg-12">
                                             @if(!empty($video->file))
                                                 <div class="video-box">
                                                     <video id="{{$video->id}}"
@@ -152,18 +153,18 @@
                                                     </video>
                                                 </div>
                                             @elseif(!empty($video->link))
-                                               <div class="video-box">
-                                                   <video
-                                                           id="{{$video->id}}"
-                                                           class="video-js vjs-default-skin"
-                                                           controls
-                                                           width="100%" height="264"
-                                                           {{--data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'--}}
-                                                           data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'>
-                                                   </video>
-                                               </div>
+                                                <div class="video-box">
+                                                    <video
+                                                            id="{{$video->id}}"
+                                                            class="video-js vjs-default-skin"
+                                                            controls
+                                                            width="100%" height="264"
+                                                            {{--data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'--}}
+                                                            data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'>
+                                                    </video>
+                                                </div>
                                             @endif
-                                    </div>
+                                        </div>
                                     @endforeach
                                 </div>
                             </div>
@@ -198,69 +199,92 @@
                         </div>
 
                         @if($record->is_show_editor_profile)
-                            <div class="editor-box">
+                            <div class="author-box">
                                 <div class="title-section">
                                     <h1>
                                         <span>Haber Yazarı</span>
                                     </h1>
                                 </div>
-                                <div class="editor-detail">
-                                    <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">
-                                        <span class="editor-photo">
-                                            <img src="{{asset('images/news_images/4/58x58_4.jpg')}}">
-                                        </span>
-                                        <span class="editor-info">
-                                            <h2>{{$record->user->name}}</h2>
-                                            <p>{{$record->user->bio_note}}</p>
-                                        </span>
-                                    </a>
-                                    <div class="clearfix"></div>
-                                    <div class="other">
-                                        <a href="{{$record->user->facebook}}">Facebook Profili</a>
-                                        <a href="{{$record->user->web_site}}">Web Sitesi</a>
-                                    </div>
-                                </div>
+                                <div class="author-detail">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-3">
+                                            <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">
+                                                <div class="author-photo">
+                                                    <img src="{{asset('images/news_images/4/58x58_4.jpg')}}">
+                                                </div><!-- /editor-photo -->
+                                            </a>
+                                        </div><!-- /.col -->
+                                        <div class="col-lg-10 col-md-9">
+                                            <div class="author-info">
+                                                <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">
+                                                    <h2>{{$record->user->name}}</h2>
+                                                </a>
+                                                <div class="bio-text">
+                                                    <p>{{$record->user->bio_note}}Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                                                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                                                    </p>
+                                                </div>
+                                                <span class="bio-long-btn">Genişlet</span>
+                                            </div><!-- /.editor-info -->
+                                            <div class="links">
+                                                <ul class="nav nav-pills">
+                                                    <li>
+                                                        <a href="{{$record->user->facebook}}"><i class="fa fa-facebook"></i> Facebook Profili</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{$record->user->web_site}}"><i class="fa fa-globe"></i> Web Sitesi</a>
+                                                    </li>
+                                                </ul>
+                                            </div><!-- /.editor-info -->
+                                        </div><!-- /.col -->
+                                    </div><!-- /.row -->
+                                </div><!-- /.editor-detail -->
                             </div>
                         @endif
                         @if($record->is_show_previous_and_next_news)
                             <ul class="pager">
-                                <li class="previous"><a href="{!! route('show_news', ['slug' => $previousNews->slug]) !!}">{{trans('news::news.previous_news')}}</a></li>
-                                <li class="next"><a href="{!! route('show_news', ['slug' => $nextNews->slug]) !!}">{{trans('news::news.next_news')}}</a></li>
+                                <li class="previous"><a href="{!! route('show_news', ['slug' => $previousNews->slug]) !!}"><i class="fa fa-chevron-left "></i>{{trans('news::news.previous_news')}}</a></li>
+                                <li class="next"><a href="{!! route('show_news', ['slug' => $nextNews->slug]) !!}">{{trans('news::news.next_news')}} <i class="fa fa-chevron-right"></i></a></li>
                             </ul>
-                        @endif
+                    @endif
 
-                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
                         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>
                         <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                        <div class="addthis_inline_share_toolbox"></div>
+                        <div class="share-box">
+                            <div class="title-section">
+                                <h1>
+                                    <span>Paylaş</span>
+                                </h1>
+                            </div>
+                            <div class="addthis_inline_share_toolbox"></div>
+                        </div>
 
                     </div><!-- /.content -->
-                </div><!-- /.new-content -->
+                    <div class="discus-box">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="disqus_thread"></div>
+                                <script>
+                                    var disqus_config = function () {
+                                        this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';
+                                        this.page.identifier = '{{$record->id}}';
+                                        this.page.title = '{{$record->title}}';
+                                    };
 
-                <div class="discus-box">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="disqus_thread"></div>
-                            <script>
-                                var disqus_config = function () {
-                                    this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';
-                                    this.page.identifier = '{{$record->id}}';
-                                    this.page.title = '{{$record->title}}';
-                                };
-
-                                (function() { // DON'T EDIT BELOW THIS LINE
-                                    var d = document, s = d.createElement('script');
-                                    s.src = '//baznews.disqus.com/embed.js';
-                                    s.setAttribute('data-timestamp', +new Date());
-                                    (d.head || d.body).appendChild(s);
-                                })();
-                            </script>
-                            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                        </div>
-                    </div><!-- Disqus Yorum Alanı -->
-                </div><!-- /.discus-box -->
-
-            </div><!-- /.col-md-8 -->
+                                    (function() { // DON'T EDIT BELOW THIS LINE
+                                        var d = document, s = d.createElement('script');
+                                        s.src = '//baznews.disqus.com/embed.js';
+                                        s.setAttribute('data-timestamp', +new Date());
+                                        (d.head || d.body).appendChild(s);
+                                    })();
+                                </script>
+                                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            </div>
+                        </div><!-- Disqus Yorum Alanı -->
+                    </div><!-- /.discus-box -->
+                </article>
+            </div><!-- /.new-content -->
             <div class="col-md-4">
                 <div class="sidebar">
                     <div class="nw-sm-img ">
@@ -438,9 +462,9 @@
                     {{--@widgetGroup('right_bar')--}}
                 </div><!-- /.sidebar -->
             </div><!-- /.col -->
-        </div><!-- /.row -->
+        </div><!-- /.col-md-8 -->
+    </div><!-- /.row -->
 
-    </article><!-- /.article -->
     <div class="fb-comment-embed" data-href="{{Redis::get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>
 @endsection
 
@@ -484,36 +508,50 @@
 
 
 @section('css')
-    <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
+    {{--<link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">--}}
 
     {{--<link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">--}}
 @endsection
 
 @section('js')
-    <script src="js/app.js"></script>
+    {{--<script src="js/app.js"></script>--}}
 
     {{--<script src="http://vjs.zencdn.net/5.8.8/video.js"></script>--}}
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>--}}
-    <script src="{{ Theme::asset($activeTheme . '::js/videojs/Vimeo.js') }}"></script>
+    {{--    <script src="{{ Theme::asset($activeTheme . '::js/videojs/Vimeo.js') }}"></script>--}}
 
 
-    <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+    {{--<script src="https://js.pusher.com/3.2/pusher.min.js"></script>--}}
 
     {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>--}}
 
-    <link href="{{ Theme::asset($activeTheme . '::js/video-js/video-js.min.css') }}" rel="stylesheet">
-    <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.novtt.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
-    <script>
-        videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
-        videojs("video-js", {}, function(){
-            // Player (this) is initialized and ready.
+    {{--<link href="{{ Theme::asset($activeTheme . '::js/video-js/video-js.min.css') }}" rel="stylesheet">--}}
+    {{--<script src="{{ Theme::asset($activeTheme . '::js/video-js/video.novtt.js') }}"></script>--}}
+    {{--<script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>--}}
+    {{--<script>--}}
+    {{--videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"--}}
+    {{--videojs("video-js", {}, function(){--}}
+    {{--// Player (this) is initialized and ready.--}}
+    {{--});--}}
+    {{--</script>--}}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.bio-long-btn').click(function () {
+                if($('.bio-text.open').length > 0){
+                    console.log("Run..");
+                    $('.bio-text').removeClass('open');
+                    $(this).text("Genişlet");
+                }else {
+                    $(this).text("Daralt");
+                    $('.bio-text').addClass('open');
+                }
+            });
         });
     </script>
 @endsection

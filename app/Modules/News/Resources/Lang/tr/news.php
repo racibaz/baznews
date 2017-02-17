@@ -22,4 +22,6 @@ return [
     'main_cuff' => 'Ana Manşet',
     'mini_cuff' => 'İkinci Manşet',
     'map' => 'Harita',
+    'previous_news' => ' Önceki Haber',
+    'next_news' => 'Sonraki Haber ',
 ];

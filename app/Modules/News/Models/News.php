@@ -43,7 +43,7 @@ class News extends Model
     }
 
 
-    public static $newsTypes = ['Standard', 'Private News', 'Photo Gallery', 'Video', 'Video Gallery', 'Sound'];
+    public static $newsTypes = ['Standard', 'Private News', 'Internal News', 'Photo Gallery', 'Video', 'Video Gallery', 'Sound'];
 
     public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
 
@@ -68,7 +68,7 @@ class News extends Model
     //is_draft taslak mı ekleneck
 
     protected $fillable = ['user_id', 'country_id', 'city_id', 'news_source_id',
-        'title', 'small_title','slug', 'spot', 'content', 'description', 'keywords', 'meta_tags', 'cuff_photo', 'thumbnail', 'video_embed',
+        'title', 'small_title','slug', 'spot', 'content', 'description', 'keywords', 'meta_tags', 'cuff_photo', 'thumbnail', 'cuff_direct_link', 'video_embed',
         'news_type',
         'hit', 'status', 'band_news', 'box_cuff', 'is_cuff','break_news', 'main_cuff' ,'mini_cuff' ,'map', 'is_comment', 'is_show_editor_profile', 'is_show_previous_and_next_news', 'is_active'];
 
@@ -148,6 +148,7 @@ class News extends Model
             'content' => 'Required',
             'cuff_photo' => 'image|max:255',
             'thumbnail' => 'image|max:255',
+            'cuff_direct_link' => 'url|max:255',
         );
         return Validator::make($input, $rules);
     }

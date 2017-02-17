@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advertisement;
 use App\Models\Announcement;
+use App\Models\Contact;
 use App\Models\Group;
 use App\Models\Menu;
 use App\Models\Page;
@@ -46,6 +48,10 @@ class DashboardController extends Controller
         $passiveMenuCount = Menu::where('is_active',0)->get()->count();
 
 
+        $passiveContactMessageCount = Contact::where('is_read',0)->get()->count();
+
+        $activeAdsCount = Advertisement::where('is_active',1)->get()->count();
+
         $userGroups = \Auth::user()->groups;
 
         $userGroupsAnnouncements = $userGroups->map(function($userGroup) {
@@ -67,6 +73,8 @@ class DashboardController extends Controller
             'passivePageCount',
             'activeMenuCount',
             'passiveMenuCount',
+            'passiveContactMessageCount',
+            'activeAdsCount',
             'userGroupsAnnouncements'
         ));
     }
