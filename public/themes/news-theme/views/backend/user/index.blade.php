@@ -19,6 +19,15 @@
                 <div class="box-header">
                     <h3 class="box-title"><strong>{{trans('user.management')}}</strong></h3>
                 </div>
+
+                <div>
+                    @foreach($roles as $index => $role)
+                        <a href="{{route('user_index_by_role',[$role->id])}}">
+                            {{$role->name}} ({{$role->users->count()}})
+                        </a>
+                    @endforeach
+                </div>
+
                 <!-- /.box-header -->
                 <div class="box-body">
                     <table id="users" class="table table-bordered table-hover table-data">

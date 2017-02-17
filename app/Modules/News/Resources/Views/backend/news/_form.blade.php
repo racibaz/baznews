@@ -155,6 +155,15 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            {!! Form::label('cuff_direct_link', trans('news::news.cuff_direct_link'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('cuff_direct_link', $record->cuff_direct_link, ['placeholder' => trans('news::news.cuff_direct_link') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {!! Form::label('video_embed', trans('news::news.video_embed'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">

@@ -25,7 +25,7 @@
                         <ul class="bxslider">
                             @foreach($mainCuffNewsItems as $mainCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
-                                    <a href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
+                                    <a href="{!! !empty($mainCuffNewsItem->cuff_direct_link) ?  $mainCuffNewsItem->cuff_direct_link : route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
                                         <img src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}" data-src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}" alt="News Logo" class="lazy-slider">
                                     </a>
                                 </li>
@@ -35,7 +35,7 @@
                             <ul class="main-slider-paging">
                                 @foreach($mainCuffNewsItems as $index => $mainCuffNewsItem)
                                     <li class="bx-pager-item">
-                                        <a data-slide-index="{{$index}}" href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}" class="bx-pager-link">
+                                        <a data-slide-index="{{$index}}" href="{!! !empty($mainCuffNewsItem->cuff_direct_link) ?  $mainCuffNewsItem->cuff_direct_link : route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}" class="bx-pager-link">
                                             {{++$index}}
                                         </a>
                                     </li>

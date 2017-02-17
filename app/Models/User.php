@@ -60,7 +60,6 @@ class User extends Authenticatable
     }
 
 
-
     /**
      * The attributes that are mass assignable.
      *
@@ -77,6 +76,7 @@ class User extends Authenticatable
         'cell_phone',
         'facebook',
         'twitter',
+        'pinterest',
         'linkedin',
         'youtube',
         'web_site',
@@ -87,7 +87,7 @@ class User extends Authenticatable
         'IP',
         'last_login',
         'status',
-        'active',
+        'is_active',
     ];
 
     /**
@@ -115,7 +115,7 @@ class User extends Authenticatable
 
                     $event = new Event();
                     $event->user_id = Auth::user()->id;
-                    $event->event = 'User Create';
+                    $event->event = 'User Created';
                     $user->events()->save($event);
                 });
 
@@ -131,7 +131,7 @@ class User extends Authenticatable
 
                     $event = new Event();
                     $event->user_id = Auth::user()->id;
-                    $event->event = 'User Delete';
+                    $event->event = 'User Deleted';
                     $user->events()->save($event);
                 });
 

@@ -58,24 +58,41 @@ class NewsController extends Controller
     }
 
 
-    public function index()
+    public function index($statusCode = null)
     {
         $statusList = [];
+        $newsCountByStatus = [];
         $statuses = News::$statuses;
         foreach ($statuses as  $index => $status){
             if(Auth::user()->can($status . '-news')){
                 $statusList[$index] =  $status;
+                $newsCountByStatus[$index] = $this->repo->where('status',$index)->findAll()->count();
             }
         }
 
 
-        $records = $this->repo->orderBy('updated_at', 'desc')->paginate(50);
+        //Status durumuna göre verileri getiriyoruz.
+        if(is_numeric($statusCode)) {
+
+            if(!key_exists($statusCode,$statusList)){
+                Log::warning('Not permission by news status code(' . $statusCode .')  admin.news.index  User id :  ' . Auth::user()->id);
+                Session::flash('error_message', trans('common.bad_request'));
+                return Redirect::back();
+            }
+
+            $records = $this->repo->orderBy('updated_at', 'desc')->where('status',$statusCode)->paginate(50);
+
+        }else{
+            $records = $this->repo->orderBy('updated_at', 'desc')->paginate(50);
+        }
+
         $newsCategoryList = NewsCategory::newsCategoryList();
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
             'records',
             'newsCategoryList',
             'statusList',
+            'newsCountByStatus',
         ]));
     }
 

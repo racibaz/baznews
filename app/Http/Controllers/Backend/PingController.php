@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Jobs\Ping\SendPing;
 use JJG\Ping;
+use Log;
 use Redirect;
 use Session;
 use Theme;
@@ -56,8 +57,26 @@ class PingController extends Controller
 
     public function edit(Request $request)
     {
+        dispatch(new SendPing());
 
-        //dispatch(new SendPing());
+        $ping = \App\Models\Ping::first();
+
+        $text = trim($ping->ping_list);
+        $textAr = preg_split('/[\n\r]+/', $text);
+
+        // remove any extra \r characters
+        $textAr = array_filter($textAr, 'trim');
+
+        foreach ($textAr as $index => $host) {
+            $ping = new Ping($host);
+            $latency = $ping->ping();
+            if ($latency !== false) {
+                Log::info('Latency is ' . $latency . ' ms : ' . $host);
+            } else {
+                Log::error('Host could not be reached. : ' . $host);
+            }
+        }
+
 
         $record = \App\Models\Ping::first();
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
