@@ -52,7 +52,6 @@ class DashboardController extends Controller
 
         $activeAdsCount = Advertisement::where('is_active',1)->get()->count();
 
-
         $userGroups = \Auth::user()->groups;
 
         $userGroupsAnnouncements = $userGroups->map(function($userGroup) {
