@@ -34,12 +34,14 @@
                             <div class="image-subtitle">Venison pancetta cupim shankle stri (Haber 7)</div>
                         </div>
                     @elseif($record->news_type == 2)
-                        photo_gallery
+                        iç haber
                     @elseif($record->news_type == 3)
-                        video
+                        photo gallery
                     @elseif($record->news_type == 4)
-                        video_gallery
+                        video
                     @elseif($record->news_type == 5)
+                        video gallery
+                    @elseif($record->news_type == 6)
                         sound
                     @endif
 
