@@ -11,34 +11,27 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="accounts" class="table table-bordered table-hover table-data">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>İsim</th>
-                                <th>mail</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('account.show', $record->name, $record, [] ) !!}</td>
-                                    <td>{{$record->email}}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! link_to_route('account.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>İsim</th>
-                                <th>Mail</th>
-                            </tr>
-                            </tfoot>
-                        </table>
+
+                        @if(!empty($record->id))
+                            <?php
+                            $default = Redis::get('url') . "/default_user_avatar.jpg";
+                            $size = 40;
+                            $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $record->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+                            ?>
+                            <img src="<?php echo $grav_url; ?>" alt="" />
+                        @endif
+
+                        <br />
+
+                        kullanıcı bilgileri...<br />
+                        {{$record->name}}<br />
+                        {{$record->email}}<br />
+
+                        {!! link_to_route('account.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                            <br />
+                        {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                            <br />
+
                     </div>
                     <!-- /.box-body -->
                 </div>
