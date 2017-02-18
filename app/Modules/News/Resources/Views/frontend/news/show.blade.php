@@ -17,20 +17,19 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <article>
+                <article class="module">
                     <div id="new-content">
                         <div class="meta">
                             <a href="new-details.html" class="cat-title">World News.</a>
                             <span class="timestamp">Oluşturma : {{ $record->created_at }} | Güncelleme: {{ $record->updated_at }}</span>
                         </div><!-- /.meta -->
                         <h1 class="news-title">{{ $record->title }}</h1>
-                        <div class="news-spot">
-                            <p>{!! $record->spot !!}</p>
-                        </div>
                         @if($record->news_type == 0 || $record->news_type == 1)
                             <div class="new-img">
                                 <img src="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}" alt="{{$record->title}}">
-                                <div class="image-subtitle">Venison pancetta cupim shankle stri (Haber 7)</div>
+                                <div class="image-subtitle">
+                                    Venison pancetta cupim shankle stri (Haber 7)
+                                </div>
                             </div>
                         @elseif($record->news_type == 2)
                             iç haber
@@ -45,19 +44,23 @@
                         @endif
 
                         <div class="content" id="content">
+                            <div class="news-spot">
+                                <p>{!! $record->spot !!}</p>
+                            </div>
                             <div class="news-text">
                                 {!! $record->content !!}
                             </div><!-- /.ct-text -->
                             <div class="new-source">
                                 <span>Haber Kaynağı: </span>
                                 {{$record->news_source->name}}
-                            </div>
-                            <div class="relation-news">
-                                <div class="title-section">
-                                    <h1>
-                                        <span>İlişkili Haberler</span>
-                                    </h1>
-                                </div>
+                            </div><!-- /.new-source -->
+                        </div><!-- /.content -->
+
+                        <div class="relation-news">
+                            <div class="title-section">
+                                <h1>
+                                    <span>İlişkili Haberler</span>
+                                </h1>
                             </div>
                             <div class="relation-news-body">
                                 <div class="row">
@@ -287,7 +290,7 @@
             </div><!-- /.new-content -->
             <div class="col-md-4">
                 <div class="sidebar">
-                    <div class="nw-sm-img ">
+                    <div class="nw-sm-img module">
                         <div role="tabpanel">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">

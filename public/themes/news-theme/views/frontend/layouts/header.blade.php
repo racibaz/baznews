@@ -9,9 +9,9 @@
                 <img src="{{ Theme::asset($activeTheme . '::img/ads-image1.jpeg')}}" alt="">
             </div>
         </div>
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header" id="navbar-header">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" id="navbar-header">
+            <div class="container">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-menu" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -27,9 +27,9 @@
                     <div class="search pull-left">
 
                         {!! Form::open(array('route' => 'search', 'method' => 'post','class' => 'form')) !!}
-                            {!!  Form::text('q', null, ['placeholder'=>'Ara.','class' => 'ft','onblur'=>"if(this.value=='') this.value='Ara.';","onfocus"=>"if(this.value=='Ara.') this.value='';"]) !!}
-                            {{--<input type="q" value="Ara." onblur="if(this.value=='') this.value='Ara.';" onfocus="if(this.value=='Ara.') this.value='';" class="ft">--}}
-                            <input type="submit" value="" class="fs">
+                        {!!  Form::text('q', null, ['placeholder'=>'Ara.','class' => 'ft','onblur'=>"if(this.value=='') this.value='Ara.';","onfocus"=>"if(this.value=='Ara.') this.value='';"]) !!}
+                        {{--<input type="q" value="Ara." onblur="if(this.value=='') this.value='Ara.';" onfocus="if(this.value=='Ara.') this.value='';" class="ft">--}}
+                        <input type="submit" value="" class="fs">
                         {!!Form::close() !!}
                     </div>
                     <div class="login-btns btn-group pull-left">
@@ -37,26 +37,28 @@
                         <a href="{!! route('register') !!}" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> {{trans('common.register')}}</a>
                     </div>
                 </div>
-
             </div>
-
+        </div><!-- /.navbar-header -->
+        <div class="menu">
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="main-navbar-menu">
-                <ul class="nav navbar-nav">
+                <div class="container">
+                    <ul class="nav navbar-nav">
 
-                    @foreach($cuffNewsCategories as $cuffNewsCategory)
-                        <li>
-                            <a href="{!! route('show_news_category', ['newsCategorySlug' => $cuffNewsCategory->slug]) !!}">{{$cuffNewsCategory->name}}</a>
-                        </li>
-                    @endforeach
+                        @foreach($cuffNewsCategories as $cuffNewsCategory)
+                            <li>
+                                <a href="{!! route('show_news_category', ['newsCategorySlug' => $cuffNewsCategory->slug]) !!}">{{$cuffNewsCategory->name}}</a>
+                            </li>
+                        @endforeach
 
                         {{--<li class="current"><a href="new-details.html">{{$cuffNewsCategory->title}}</a></li>--}}
-                    {{--<li><a href="new-details.html">SPOR</a></li>--}}
-                    {{--<li><a href="new-details.html">SİYASET</a></li>--}}
-                    {{--<li><a href="new-details.html">HAYAT</a></li>--}}
-                    {{--<li><a href="new-details.html">SAĞLIK</a></li>--}}
-                    {{--<li><a href="new-details.html">DİN</a></li>--}}
-                </ul>
+                        {{--<li><a href="new-details.html">SPOR</a></li>--}}
+                        {{--<li><a href="new-details.html">SİYASET</a></li>--}}
+                        {{--<li><a href="new-details.html">HAYAT</a></li>--}}
+                        {{--<li><a href="new-details.html">SAĞLIK</a></li>--}}
+                        {{--<li><a href="new-details.html">DİN</a></li>--}}
+                    </ul>
+                </div>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>

@@ -4,7 +4,7 @@
             <span>{{trans('news.recommendation_news_widget_title')}}</span>
         </h1>
     </div>
-    <div class="news-h-links">
+    <div class="news-h-links module">
         <ul>
             @foreach($recommendationNewsItems as $recommendationNewsItem)
                 <li><a href="{!! route('show_news', ['slug' => $recommendationNewsItem->news->slug]) !!}">{{$recommendationNewsItem->news->title}}</a></li>

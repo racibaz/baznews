@@ -220,26 +220,15 @@
                             </div><!-- /.tab-content -->
                         </div><!-- /rabpanel -->
                     </div><!-- /.nw-sm-img -->
+                    @foreach($widgets as $widget)
+                        @widget($widget['namespace'])
+                    @endforeach
                 </div>
             </div><!-- /.col -->
         </div><!-- /.row -->
 
     </article><!-- /.article -->
-
-
-
-
     <div class="fb-comment-embed" data-href="{{Redis::get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>
-
-
-    @foreach($widgets as $widget)
-
-        @widget($widget['namespace'])
-        <br />
-
-    @endforeach
-
-
     <div id="disqus_thread"></div>
     <script>
          var disqus_config = function () {

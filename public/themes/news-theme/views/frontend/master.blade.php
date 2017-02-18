@@ -26,15 +26,15 @@
 
 </head>
 <body>
-
+<div class="wrapper">
     {{--<div id="fb-root"></div>--}}
     {{--<script>(function(d, s, id) {--}}
-            {{--var js, fjs = d.getElementsByTagName(s)[0];--}}
-            {{--if (d.getElementById(id)) return;--}}
-            {{--js = d.createElement(s); js.id = id;--}}
-            {{--js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.8&appId=1837639056512329";--}}
-            {{--fjs.parentNode.insertBefore(js, fjs);--}}
-        {{--}(document, 'script', 'facebook-jssdk'));</script>--}}
+    {{--var js, fjs = d.getElementsByTagName(s)[0];--}}
+    {{--if (d.getElementById(id)) return;--}}
+    {{--js = d.createElement(s); js.id = id;--}}
+    {{--js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.8&appId=1837639056512329";--}}
+    {{--fjs.parentNode.insertBefore(js, fjs);--}}
+    {{--}(document, 'script', 'facebook-jssdk'));</script>--}}
 
     {{--{!!  Redis::get('google_tag_manager_body_code') !!}--}}
 
@@ -48,6 +48,8 @@
 
     <!-- Main Footer -->
     @include($activeTheme . '::frontend.layouts.footer')
+</div>
+
 
     <!-- jQuery library (served from Google) -->
     <script src="{{ Theme::asset($activeTheme . '::js/jquery/jquery.js') }}"></script>
