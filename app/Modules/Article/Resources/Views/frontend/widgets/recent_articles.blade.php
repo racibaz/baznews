@@ -4,11 +4,11 @@
             <span>Tavsiye Edilen Makaleler Widget </span>
         </h1>
     </div>
-    <div class="news-h-links">
+    <div class="news-h-links module">
         <ul>
             @foreach($recentArticles as $recentArticle)
                 <li>
-                    <span class="text">{{ $recentArticle->title }}</span>
+                    <a href="#"><span class="text">{{ $recentArticle->title }}</span></a>
                 </li>
             @endforeach
         </ul>

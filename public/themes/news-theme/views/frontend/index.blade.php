@@ -1,27 +1,27 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ticker last-time" id="son-dakika">
+                    <strong>Son Dakika:</strong>
+                    <ul>
+                        @foreach($breakNewsItems as $breakNewsItem)
+                            <li>
+                                <a href="{!! route('show_news', ['slug' => $breakNewsItem->slug]) !!}">{{$breakNewsItem->title}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <article>
         <div class="container" id="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="ticker last-time" id="son-dakika">
-                        <strong>Son Dakika:</strong>
-                        <ul>
-                            @foreach($breakNewsItems as $breakNewsItem)
-                                <li>
-                                    <a href="{!! route('show_news', ['slug' => $breakNewsItem->slug]) !!}">{{$breakNewsItem->title}}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
                 <div class="col-md-8">
-                    <div class="main-slider slider" id="manset-slider">
+                    <div class="main-slider slider module" id="manset-slider">
                         <ul class="bxslider">
                             @foreach($mainCuffNewsItems as $mainCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="col-md-4 hidden-xs">
-                    <div class="main-slider slider" id="spot-slider">
+                    <div class="main-slider slider module" id="spot-slider">
                         <ul class="bxslider">
                             @foreach($boxCuffNewsItems as $boxCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
@@ -103,6 +103,17 @@
                                 </div>
                                 <!-- /.thumbnail -->
                             </li>
+                            <li>
+                                <div class="thumbnail">
+                                    <a href="new-details.html">
+                                        <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot1.jpg')}}" alt="Dummyİmage">
+                                        <div class="caption">
+                                            <span class="ct-title">Maecenas faucibus mollis interdum.</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- /.thumbnail -->
+                            </li>
                             <!-- /.col -->
                         </ul>
                     </div>
@@ -113,13 +124,13 @@
             <div class="row">
                 <div class="col-md-8">
                     @foreach($cuffNewsCategories as $cuffNewsCategory)
-                        <div class="img-new-list">
+                        <div class="img-new-list ">
                             <div class="title-section">
                                 <h1>
                                     <span>{{$cuffNewsCategory->name}}</span>
                                 </h1>
                             </div>
-                            <div class="new-list-ct">
+                            <div class="new-list-ct module">
                                 <div class="left-img-ct" style="background-image:{{ Theme::asset($activeTheme . '::img/example.jpg')}};backgroun-position:0 0; background-repeat: no-repeat;background-size: cover;">
                                     <a href="new-details.html" class="full-link"></a>
                                     <span class="shadow"></span>
@@ -155,177 +166,179 @@
                 </div><!-- /.col -->
 
                 <div class="col-md-4">
-                    <div class="nw-sm-img">
-                        <div role="tabpanel">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active">
-                                    <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>
-                                </li>
-                            </ul>
+                    <div class="sidebar ">
+                        <div class="nw-sm-img module">
+                            <div role="tabpanel">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>
+                                    </li>
+                                </ul>
 
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="video">
-                                    <ul class="new-list no-list">
-                                        <li class="nw-bx no-list active">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="video">
+                                        <ul class="new-list no-list">
+                                            <li class="nw-bx no-list active">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">1</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                                <span class="dec">1</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">2</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                                <span class="dec">2</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">3</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                                <span class="dec">3</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">4</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                                <span class="dec">4</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">5</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                    </ul><!-- /.new-list -->
-                                </div><!-- /.tab-pane -->
-                                <div role="tabpanel" class="tab-pane" id="son_dakika">
-                                    <ul class="new-list no-list">
-                                        <li class="nw-bx no-list active">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                                <span class="dec">5</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                        </ul><!-- /.new-list -->
+                                    </div><!-- /.tab-pane -->
+                                    <div role="tabpanel" class="tab-pane" id="son_dakika">
+                                        <ul class="new-list no-list">
+                                            <li class="nw-bx no-list active">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">1</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                                <span class="dec">1</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">2</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                                <span class="dec">2</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">3</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                                <span class="dec">3</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">4</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                                <span class="dec">4</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">5</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                    </ul><!-- /.new-list -->
-                                </div><!-- /.tab-pane -->
+                                                <span class="dec">5</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                        </ul><!-- /.new-list -->
+                                    </div><!-- /.tab-pane -->
 
-                                <div role="tabpanel" class="tab-pane" id="cok_okunanlar">
-                                    <ul class="new-list no-list">
-                                        <li class="nw-bx no-list active">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                    <div role="tabpanel" class="tab-pane" id="cok_okunanlar">
+                                        <ul class="new-list no-list">
+                                            <li class="nw-bx no-list active">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">1</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                                <span class="dec">1</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">2</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                                <span class="dec">2</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">3</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                                <span class="dec">3</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">4</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
+                                                <span class="dec">4</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                            <li class="nw-bx no-list">
+                                                <a href="new-details.html" title="" class="full-link"></a>
+                                                <span class="imgwrap">
                                         <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
                                     </span>
-                                            <span class="dec">5</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                    </ul><!-- /.new-list -->
-                                </div><!-- /.tab-pane -->
-                            </div><!-- /.tab-content -->
-                        </div><!-- /rabpanel -->
-                    </div><!-- /.nw-sm-img -->
-                    <div class="nw-sm-img">
-                        <div class="advert">
-                            {!!Cache::get('right_blok_1')!!}
+                                                <span class="dec">5</span>
+                                                <div class="spot">Pellentesque Quam</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            </li>
+                                        </ul><!-- /.new-list -->
+                                    </div><!-- /.tab-pane -->
+                                </div><!-- /.tab-content -->
+                            </div><!-- /rabpanel -->
+                        </div><!-- /.nw-sm-img -->
+                        <div class="module">
+                            <div class="advert">
+                                {!!Cache::get('right_blok_1')!!}
+                            </div>
                         </div>
                         @foreach($widgets->where('group','right_bar') as $widget )
                             @widget($widget['namespace'])
@@ -341,7 +354,7 @@
                             <span>Galeri</span>
                         </h1>
                     </div>
-                    <div class="th-nw-slide">
+                    <div class="th-nw-slide module">
                         <div id="m_pg1" class="pager">
                             @foreach($photoGalleries as $index => $photoGallery)
                                 <a data-slide-index="{{$index}}" href="#" class="bx-pager-link">
@@ -366,7 +379,7 @@
                             <span>Video</span>
                         </h1>
                     </div>
-                    <div class="th-nw-slide">
+                    <div class="th-nw-slide module">
                         <div id="m_pg2" class="pager">
                             @foreach($videoGalleries as $index => $videoGallery)
                                 <a data-slide-index="{{$index}}" href="{{route('show_video_gallery',['slug' => $videoGallery->videos->first()->slug ])}}" class="bx-pager-link">
@@ -558,10 +571,10 @@
              Center Carousel Horizontal News Slider
              * --------------------------------------------------------*/
             $('.bxcarousel').bxSlider({
-                slideWidth: 217,
+                slideWidth: 228,
                 minSlides: 2,
                 maxSlides: 5,
-                slideMargin: 14,
+                slideMargin: 0,
                 auto:true,
                 pager:false,
                 nextText: '<i class="fa fa-angle-right"></i>',

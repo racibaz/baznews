@@ -4,13 +4,12 @@
             <span>Tavisye Edilen Makaleler</span>
         </h1>
     </div>
-    <div class="news-h-links">
+    <div class="news-h-links module">
         <ul>
             @foreach($recentArticles as $recentArticle)
                 <li>
                     <a href="#">{{ $recentArticle->title }}</a>
                 </li>
-
             @endforeach
         </ul>
     </div>

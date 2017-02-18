@@ -93,7 +93,7 @@
                                         <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>
+                                        <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son </a>
                                     </li>
                                     <li role="presentation">
                                         <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>
@@ -259,13 +259,15 @@
                                     <span>Link Title</span>
                                 </h1>
                             </div>
-                            <ul>
-                                <li><a href="#">Link1</a></li>
-                                <li><a href="#">Link2</a></li>
-                                <li><a href="#">Link3</a></li>
-                                <li><a href="#">Link4</a></li>
-                                <li><a href="#">Link5</a></li>
-                            </ul>
+                            <div class="news-h-links">
+                                <ul>
+                                    <li><a href="#">Link1</a></li>
+                                    <li><a href="#">Link2</a></li>
+                                    <li><a href="#">Link3</a></li>
+                                    <li><a href="#">Link4</a></li>
+                                    <li><a href="#">Link5</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

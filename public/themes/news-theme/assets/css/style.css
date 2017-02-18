@@ -36,6 +36,7 @@ input, textarea {
 
 body {
     font-family: 'Open Sans', sans-serif;
+    background-color: #f0f0f0;
 }
 
 .page-content {
@@ -67,8 +68,13 @@ body {
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 3; }
-
+    z-index: 3;
+}
+.module{
+    background: #fff;
+    padding: 5px;
+    border: 1px solid rgba(204, 204, 204, 0.73);
+}
 
 
 /* ==========================================================================
@@ -162,8 +168,12 @@ End Login Buttons
 
 @media only screen and (max-width: 1336px) {
     .adverts {
-        display: none; } }
-
+        display: none;
+    }
+}
+header{
+    background-color: #fff;
+}
 #navbar-header {
     width: 100%;
     float: none; }
@@ -203,26 +213,30 @@ End Login Buttons
 #main-navbar-menu {
     width: 100%;
     padding: 0;
-    border-bottom: 1px solid #ea4748; }
+    background-color: #ea4748;
+}
 @media only screen and (max-width: 480px) {
     #main-navbar-menu {
         padding-right: 15px;
-        padding-left: 15px; } }
-#main-navbar-menu > .navbar-nav > li > a {
-    padding: 10px;
+        padding-left: 15px;
+    }
+}
+#main-navbar-menu .navbar-nav > li > a {
+    padding: 13px 20px;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 15px;
+    color: #f7f7f7;
+    text-decoration: none;
+    border:none;
+}
+#main-navbar-menu .navbar-nav > li a:hover {
     color: #696969;
     text-decoration: none;
-    border-bottom: 3px solid #ffffff; }
-#main-navbar-menu > .navbar-nav > li a:hover {
+}
+#main-navbar-menu .navbar-nav > li.current > a {
     color: #696969;
     text-decoration: none;
-    border-bottom: 3px solid #ea4748; }
-#main-navbar-menu > .navbar-nav > li.current > a {
-    color: #696969;
-    text-decoration: none;
-    border-bottom: 3px solid #ea4748; }
+}
 /* ==========================================================================
    BXSLİDER DEFAULTS
    ========================================================================== */
@@ -237,7 +251,7 @@ End Login Buttons
     -webkit-box-shadow: none;
     box-shadow: none;
     border: 0;
-    background: #fff;
+    background: transparent;
     margin: 0;
 }
 .bx-wrapper .bx-viewport{
@@ -245,7 +259,7 @@ End Login Buttons
     -webkit-box-shadow: none;
     box-shadow: none;
     border: 0;
-    background: #fff;
+    background: transparent;
     margin: 0;
     left: 0;
 }
@@ -302,8 +316,8 @@ End Login Buttons
 .slider .slider-paging {
     text-align: left;
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 5px;
+    left: 5px;
 }
 .slider .slider-paging ul{
     display: block;
@@ -345,20 +359,21 @@ End Login Buttons
     margin-bottom: 15px;
 }
 #post-box-slider .bx-wrapper{
-    height:190px;
+
 }
 #post-box-slider .bx-wrapper .bx-viewport{
     padding-bottom: 10px;
 }
 #post-box-slider .bx-wrapper .thumbnail {
     position: relative;
-    padding: 0;
-    border: 0;
     margin: 6px 0;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
-    background-color: #ccc;
+    padding: 4px;
+    border:0;
+    border-right:1px solid #c0c0c0;
+
 }
 #post-box-slider .bx-wrapper .thumbnail img {
     margin: 0;
@@ -366,25 +381,22 @@ End Login Buttons
     width: 100%;
 }
 #post-box-slider .bx-wrapper .thumbnail .caption {
-    position: absolute;
-    bottom: -18px;
-    left: 10px;
-    right: 10px;
     padding: 10px;
-    background-color: #e8e8e8;
 }
 #post-box-slider .bx-wrapper .thumbnail .caption .ct-title {
     display: block;
     width: 100%;
     font-size: 16px;
-    color:#000;
+    color: #000;
     font-weight: bold;
     text-align: center;
+    line-height: 1em;
+    min-height: 38px;
+    text-transform: uppercase;
 }
 #post-box-slider .bx-wrapper .thumbnail:hover {
-    -webkit-box-shadow: 0 0 10px #000;
-    -moz-box-shadow: 0 0 10px #000;
-    box-shadow: 0 0 10px #000; }
+
+}
 #post-box-slider .bx-wrapper .thumbnail a {
     text-decoration: none;
     display: block;
@@ -394,7 +406,13 @@ End Login Buttons
    Spot Hover New List
    ========================================================================== */
 .img-new-list {
-    margin-bottom: 15px; }
+    margin-bottom: 15px;
+}
+.img-new-list .new-list-ct{
+    background: #fff;
+    padding: 5px;
+    border: 1px solid rgba(204, 204, 204, 0.73);
+}
 .img-new-list .new-list-ct:after {
     display: block;
     clear: both;
@@ -477,6 +495,7 @@ End Login Buttons
    ========================================================================== */
 .nw-sm-img{
     background-color: #fff;
+    margin-bottom: 15px;
 }
 .nw-sm-img .nav-tabs {
     border: 0; }
@@ -904,6 +923,10 @@ End Login Buttons
     font-weight: bold;
     text-decoration: none;
 }
+.news-h-links ul li:last-child a,
+.news-h-links ul li:last-child a:hover{
+    border-bottom:0;
+}
 .news-h-links ul li a:hover {
     color: #ea4748;
     border-bottom: 1px solid #ea4748;
@@ -1015,16 +1038,8 @@ footer .footer-bottom .cpy {
    ========================================================================== */
 .sidebar {
     position: relative;
-    min-height: 1400px; }
-.sidebar:before {
-    display: block;
-    content: '';
-    position: absolute;
-    left: -15px;
-    top: 38px;
-    width: 1px;
-    height: 100%;
-    border-left: 1px solid #ccc; }
+    min-height: 1400px;
+}
 
 /* ==========================================================================
    New Content
@@ -1082,7 +1097,9 @@ footer .footer-bottom .cpy {
     font-size: 17.5px;
     border-left: 5px solid #eeeeee;
 }
-
+#new-content .content{
+    padding:0 20px 20px 20px;
+}
 #new-content .content .news-text,
 #new-content .content .news-text p {
     font-family: Georgia;
@@ -1372,7 +1389,9 @@ footer .footer-bottom .cpy {
     font-size: 12px;
     color: #929292; }
 .breadcrumbs p a {
-    color: #696969; }
+    color: #696969;
+    font-weight:bold;
+}
 .breadcrumbs p a:hover {
     text-decoration: underline; }
 
@@ -1561,7 +1580,8 @@ footer .footer-bottom .cpy {
    Book Widget
    ========================================================================== */
 .books-widget .book{
-    padding:0 15px 15px 15px;
+    padding:0;
+    margin-bottom: 15px;
 }
 .books-widget .book .cover a img{
     width: 100%;
