@@ -42,9 +42,12 @@ class Menu extends Model
 
     public static function validate($input) {
         $rules = array(
-            'name'                     => 'Required',
-            'url'   => 'url',
-            'icon' => 'image|max:255',
+            'name' => 'Required',
+            '_lft' => 'integer',
+            '_rgt' => 'integer',
+            'page_id' => 'integer',
+            'url'   => 'url|max:255',
+            'icon' => 'mimes:ico,jpg,jpeg,png,gif,bmp',
             'order' => 'integer',
         );
         return Validator::make($input, $rules);

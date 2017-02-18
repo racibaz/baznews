@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Library\Uploader;
 use App\Models\Menu;
 use App\Models\Page;
 use App\Repositories\MenuRepository as Repo;
@@ -111,6 +112,20 @@ class MenuController extends Controller
                 }
             }
             if ($result) {
+
+                if(!empty($input['icon'])) {
+                    /*dosya isminden extension kısmını çıkartıyoruz.*/
+                    //dosyanın orjinal ismini alıyoruz(uzantılı).
+                    $originalFileName =  explode('.',  $input['icon']->getClientOriginalName());
+
+                    //uzantısını kayıt etmek için uzantısını değişkene atıyoruz.
+                    $extention = array_last($originalFileName);
+
+                    $document_name = $result[1]->id . '.' . $extention;
+                    $destination = '/icons/menus';
+                    Uploader::fileUpload($result[1] , 'icon', $input['icon'] , $destination , $document_name);
+                }
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {
