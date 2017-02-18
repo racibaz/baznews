@@ -64,6 +64,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
     Route::resource('news_category', 'Backend\NewsCategoryController');
 
+    /*
+     * todo
+     *
+     * laravel-filemanager middleware bizim checkperm le yapılması gerekiyor.
+     *
+     * */
+
+//    Route::filter('laravel-filemanager', function()
+//    {
+//        // check the current user
+//        if (!Entrust::can('create-post')) {
+//            return Redirect::to('admin');
+//        }
+//    });
+
+
     Route::get('news/showTrashedRecords/{trashedRecord}', 'Backend\NewsController@trashedNewsRestore')->name('trashedNewsRestore');
     Route::get('news/trashedNewsRestore', 'Backend\NewsController@showTrashedRecords')->name('showTrashedRecords');
     Route::delete('news.historyForceDelete/{historyForceDeleteRecordId}', 'Backend\NewsController@historyForceDelete')->name('historyForceDelete');
