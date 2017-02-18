@@ -162,7 +162,7 @@
                                     {!! Form::label('blood_type', trans('user.blood_type'), ['class'=> 'col-lg-2 control-label']) !!}
 
                                     <div class="col-lg-10">
-                                        {!! Form::text('blood_type', $record->blood_type, ['placeholder' => trans('user.blood_type'), 'class' => 'form-control']) !!}
+                                        {!! Form::select('blood_type', $bloodGroups , $record->blood_type , ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
                                     </div>
                                 </div>
                             </div>
@@ -206,4 +206,8 @@
             <!-- Main Content Element  End-->
         </div><!-- end container-fluid -->
     </article><!-- /.article -->
+@endsection
+
+@section('meta_tags')
+    <title> {{ $record->name }}  </title>
 @endsection

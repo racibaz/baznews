@@ -102,6 +102,16 @@ class User extends Authenticatable
     protected $dates = ['created_at','updated_at','deleted_at'];
 
 
+    public static  $bloodGroups = [
+        'AB RH+' => 'AB RH+',
+        'AB RH-' => 'AB RH-',
+        'A RH+' => 'A RH+',
+        'A RH-' => 'A RH-',
+        'B RH+' => 'B RH+',
+        'B RH-' => 'B RH-',
+        '0 RH+' => '0 RH+',
+        '0 RH-' => '0 RH-'
+    ];
 
     public static function boot()
     {
