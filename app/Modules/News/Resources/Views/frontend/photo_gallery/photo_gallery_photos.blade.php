@@ -36,8 +36,8 @@
                     <div class="text-center">
                         <ul class="pagination">
                             <li><a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk Sayfa</a></li>
-                            @foreach($galleryPhotos as $index => $photo)
-                                <li><a href="{{route('show_gallery_photos',['slug' => $photo->slug ])}}">{{++$index}}</a></li>
+                            @foreach($galleryPhotos as $index => $galleryPhoto)
+                                <li><a href="{{route('show_gallery_photos',['slug' => $galleryPhoto->slug ])}}">{{++$index}}</a></li>
                             @endforeach
                             <li><a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son Sayfa</a></li>
                         </ul>
