@@ -356,14 +356,16 @@
                     </div>
                     <div class="th-nw-slide module">
                         <div id="m_pg1" class="pager">
-                            @foreach($photoGalleries as $index => $photoGallery)
+
+                            @foreach($photoGalleries as $index =>  $photoGallery)
+
                                 <a data-slide-index="{{$index}}" href="#" class="bx-pager-link">
                                     <span class="img-ct"><img src="{{ asset('gallery/' . $photoGallery->id . '/photos/58x58_' . $photoGallery->thumbnail)}}" /></span>
                                 </a>
                             @endforeach
                         </div><!-- /.m-pg -->
                         <ul class="slide m-slider1" id="photo-gallery-slider">
-                            @foreach($photoGalleries as $photoGallery)
+                            @foreach($photoGalleries as $index =>  $photoGallery)
                                 <li>
                                     <a href="{{route('show_photo_gallery',['slug' => $photoGallery->slug ])}}">
                                         <img src="{{ asset('gallery/' . $photoGallery->id . '/photos/497x358_' . $photoGallery->thumbnail)}}" />
@@ -390,7 +392,7 @@
                             @endforeach
                         </div><!-- /.m-pg -->
                         <ul class="slide m-slider1" id="video-gallery-slider">
-                            @foreach($videoGalleries as $videoGallery)
+                            @foreach($videoGalleries as $index =>  $videoGallery)
                                 <li>
                                     <a href="{{route('show_videos',['slug' => $videoGallery->videos->first()->slug ])}}">
                                         <img src="{{ asset('video_gallery/' . $videoGallery->id . '/photos/497x358_' . $videoGallery->thumbnail)}}" />
