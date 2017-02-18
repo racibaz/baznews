@@ -12,6 +12,7 @@ use RecursiveIteratorIterator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 
 class AdvertisementController extends Controller
@@ -105,8 +106,12 @@ class AdvertisementController extends Controller
 
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
+        $rules = [
+            'name'                          => isset($record->id)  ? 'required|max:255' : 'required|max:255|unique:advertisements',
+            'description'                   => 'max:255',
+        ];
 
-        $v = Advertisement::validate($input);
+        $v = Validator::make($input, $rules);
 
         if ($v->fails()) {
             return Redirect::back()
