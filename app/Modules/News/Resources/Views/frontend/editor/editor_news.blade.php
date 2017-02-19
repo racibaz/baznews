@@ -33,10 +33,13 @@
                                     <div class="links">
                                         <ul class="nav nav-pills">
                                             <li>
-                                                <a href="{{$user->facebook}}"><i class="fa fa-facebook"></i> Facebook Profili</a>
+                                                <a href="{{$user->facebook}}"><i class="fa fa-facebook"></i></a>
                                             </li>
                                             <li>
-                                                <a href="{{$user->web_site}}"><i class="fa fa-globe"></i> Web Sitesi</a>
+                                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{$user->web_site}}"><i class="fa fa-globe"></i></a>
                                             </li>
                                         </ul>
                                     </div><!-- /.editor-info -->
@@ -54,7 +57,7 @@
                         <div class="row">
                             @foreach($newsItems as $item)
                             <div class="col-lg-12 col-sm-6 col-md-12">
-                                <div class="news-box">
+                                <div class="news-box module">
                                     <div class="row">
                                         <div class="col-lg-4 col-md-3 col-xs-4">
                                             <div class="frame-image">
@@ -86,7 +89,7 @@
             </div><!-- /.col-md-8 -->
             <div class="col-md-4">
                 <div class="sidebar">
-                    <div class="nw-sm-img">
+                    <div class="nw-sm-img module">
                         <div role="tabpanel">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">

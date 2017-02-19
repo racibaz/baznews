@@ -23,28 +23,30 @@
         </div>
         <div class="row">
             <div class="col-lg-8">
-                <div class="cat-posts module">
+                <div class="cat-posts">
                     <div class="title-section">
                         <h1>
                             <span>{{$newsCategory->name}}</span>
                         </h1>
                     </div><!-- /.title-section -->
-                    <div class="row">
-                        @foreach($records as $record)
-                            <div class="col-md-4 col-sm-4 col-xs-6">
-                                <div class="r-box">
-                                    <a href="{{ route('show_news', ['slug' => $record->slug]) }}">
-                                        <img src="{{asset('images/news_images/' . $record->id . '/165x90_' . $record->thumbnail)}}" alt="{{$record->title}}">
-                                        <span class="c-text">{{$record->title}}</span>
-                                    </a>
-                                </div><!-- /.r-box -->
-                            </div><!-- /. -->
-                        @endforeach
-                    </div><!-- /.row -->
+                    <div class="posts">
+                        <div class="row">
+                            @foreach($records as $record)
+                                <div class="col-md-4 col-sm-4 col-xs-6">
+                                    <div class="r-box module">
+                                        <a href="{{ route('show_news', ['slug' => $record->slug]) }}">
+                                            <img src="{{asset('images/news_images/' . $record->id . '/165x90_' . $record->thumbnail)}}" alt="{{$record->title}}">
+                                            <span class="c-text">{{$record->title}}</span>
+                                        </a>
+                                    </div><!-- /.r-box -->
+                                </div><!-- /. -->
+                            @endforeach
+                        </div><!-- /.row -->
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="sidebar module">
+                <div class="sidebar">
                     <div class="widget">
                         @foreach($widgets as $widget)
                             @widget($widget['namespace'])
@@ -71,19 +73,7 @@
     <meta name='summary' content=''>
 @endsection
 @section('css')
-    <style type="text/css">
-        .ticker {
-            width: 100%;
-            margin: 10px auto;
-        }
-        /* The HTML list gets replaced with a single div,
-           which contains the active ticker item, so you
-           can easily style that as well */
-        .ticker div {
-            display: inline-block;
-            word-wrap: break-word;
-        }
-    </style>
+{{--Css code--}}
 @endsection
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>

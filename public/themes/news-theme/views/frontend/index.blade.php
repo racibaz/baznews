@@ -431,19 +431,6 @@
 
     {{--<link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">--}}
 
-    <style type="text/css">
-        .ticker {
-            width: 100%;
-            margin: 10px auto;
-        }
-        /* The HTML list gets replaced with a single div,
-           which contains the active ticker item, so you
-           can easily style that as well */
-        .ticker div {
-            display: inline-block;
-            word-wrap: break-word;
-        }
-    </style>
 @endsection
 
 @section('js')
@@ -573,7 +560,7 @@
              Center Carousel Horizontal News Slider
              * --------------------------------------------------------*/
             $('.bxcarousel').bxSlider({
-                slideWidth: 228,
+                slideWidth: 232,
                 minSlides: 2,
                 maxSlides: 5,
                 slideMargin: 0,

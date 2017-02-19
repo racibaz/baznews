@@ -4,7 +4,7 @@
             <span>{{trans('news.box_cuff_widget_title')}}</span>
         </h1>
     </div>
-    <div class="news-h-links">
+    <div class="news-h-links module">
         <ul>
             @foreach($boxCuffNewsItmes as $boxCuffNewsItme)
                 <li><a href="{!! route('show_news', ['slug' => $boxCuffNewsItme->slug]) !!}">{{$boxCuffNewsItme->title}}</a></li>

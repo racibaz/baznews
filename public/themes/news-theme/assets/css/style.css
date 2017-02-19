@@ -75,6 +75,39 @@ body {
     padding: 5px;
     border: 1px solid rgba(204, 204, 204, 0.73);
 }
+.ads{
+    opacity:0;
+}
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+.sidebar {
+    position: relative;
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+}
+.row {
+    margin-right: -5px !important;
+    margin-left: -5px !important;
+}
+
+/* ==========================================================================
+   Ticker
+   ========================================================================== */
+.ticker {
+    width: 100%;
+    margin-bottom: 10px;
+}
+/* The HTML list gets replaced with a single div,
+   which contains the active ticker item, so you
+   can easily style that as well */
+.ticker div {
+    display: inline-block;
+    word-wrap: break-word;
+}
 
 
 /* ==========================================================================
@@ -83,17 +116,21 @@ body {
 .title-section {
     position: relative;
     border-bottom: 1px solid #e1e1e1;
-    margin: 15px 0 10px 0; }
+    margin: 0 0 10px 0;
+    padding: 10px 0 0 0;
+}
 .title-section h1, .title-section h2, .title-section h3, .title-section h4, .title-section h5 {
     color: #696969;
     font-size: 16px;
     font-weight: 700;
-    margin: 0; }
+    margin: 0;
+}
 .title-section h1 span, .title-section h2 span, .title-section h3 span, .title-section h4 span, .title-section h5 span {
     display: inline-block;
-    padding-bottom: 8px;
+    padding-bottom: 10px;
     padding-right: 5px;
-    border-bottom: 1px solid #f44336; }
+    border-bottom: 1px solid #f44336;
+}
 
 /* ==========================================================================
    Big Title box
@@ -106,13 +143,15 @@ body {
     font-size: 20px;
     font-weight: 700;
     margin: 0;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+}
 .big-title-section h1 span, .big-title-section h2 span, .big-title-section h3 span, .big-title-section h4 span, .big-title-section h5 span {
     display: inline-block;
     padding-bottom: 8px;
     padding-right: 5px;
     border-bottom: 3px solid #f44336;
-    margin-bottom: -2px; }
+    margin-bottom: -2px;
+}
 
 /* ==========================================================================
    Login Buttons
@@ -150,7 +189,8 @@ End Login Buttons
     padding: 5px;
     margin: 4px 0 0 10px;
     width: 150px;
-    color: #898989; }
+    color: #898989;
+}
 .search .fs {
     background: #ea4748 url(../img/search.png) no-repeat center;
     border: none;
@@ -163,8 +203,9 @@ End Login Buttons
 .navbar {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    border-radius: 0; }
+    border-radius: 0;
+    margin-bottom: 10px;
+}
 
 @media only screen and (max-width: 1336px) {
     .adverts {
@@ -176,36 +217,45 @@ header{
 }
 #navbar-header {
     width: 100%;
-    float: none; }
+    float: none;
+}
 #navbar-header::after {
     display: block;
     content: '';
-    clear: both; }
+    clear: both;
+}
 #navbar-header a.navbar-brand {
     width: 90px;
     height: 90px;
     padding: 0;
-    margin: 20px 0; }
+    margin: 20px 0;
+}
 #navbar-header a.navbar-brand img {
     width: 90px;
-    height: 90px; }
+    height: 90px;
+}
 #navbar-header .navbar-toggle {
     top: 60px;
     border: 1px solid #ccc;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    border-radius: 0; }
+    border-radius: 0;
+}
 @media only screen and (max-width: 480px) {
     #navbar-header .navbar-toggle {
         top: 22px;
-        margin-right: 0; } }
+        margin-right: 0;
+    }
+}
 #navbar-header .navbar-toggle .icon-bar {
-    border: 1px solid #ccc; }
+    border: 1px solid #ccc;
+}
 #navbar-header .navbar-toggle:hover {
-    border-color: #ea4748; }
+    border-color: #ea4748;
+}
 #navbar-header .navbar-toggle:hover .icon-bar {
-    border: 1px solid #ea4748; }
+    border: 1px solid #ea4748;
+}
 
 /* ==========================================================================
    Main Menü
@@ -288,7 +338,7 @@ header{
        ========================================================================== */
 .slider {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 @media (max-width: 922px) {
     .main-slider.spot {
@@ -360,17 +410,17 @@ header{
    Main Post SLİDER
    ========================================================================== */
 #post-box-slider {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 #post-box-slider .bx-wrapper{
 
 }
 #post-box-slider .bx-wrapper .bx-viewport{
-    padding-bottom: 10px;
+    padding-bottom: 0;
 }
 #post-box-slider .bx-wrapper .thumbnail {
     position: relative;
-    margin: 6px 0;
+    margin: 0;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
@@ -410,7 +460,7 @@ header{
    Spot Hover New List
    ========================================================================== */
 .img-new-list {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 .img-new-list .new-list-ct{
     background: #fff;
@@ -499,7 +549,7 @@ header{
    ========================================================================== */
 .nw-sm-img{
     background-color: #fff;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 .nw-sm-img .nav-tabs {
     border: 0; }
@@ -692,7 +742,9 @@ header{
 
 .videos .r-box {
     position: relative;
-    overflow: hidden; }
+    overflow: hidden;
+    margin-bottom: 10px;
+}
 .videos .r-box a i.icon {
     position: absolute;
     top: 40px;
@@ -730,7 +782,9 @@ header{
 
 .cat-posts .r-box {
     position: relative;
-    overflow: hidden; }
+    overflow: hidden;
+    margin-bottom: 10px;
+}
 .cat-posts .r-box a:hover {
     -webkit-box-shadow: 0 0 10px #000;
     -moz-box-shadow: 0 0 10px #000;
@@ -944,40 +998,59 @@ header{
    ========================================================================== */
 .image-gallery .img-container {
     position: relative; }
-
-.image-gallery .gallery-text {
+.image-gallery .gallery-details{
+    min-height: 431px;
+    margin-bottom: 10px;
+}
+.image-gallery .gallery-details .gallery-text {
     color: #666;
     font-size: 13px;
     overflow: hidden;
     padding-bottom: 5px;
-    position: relative; }
+    position: relative;
+}
 
-.image-gallery .time {
-    color: #777; }
+.image-gallery .gallery-details .time {
+    color: #777;
+}
 
 .image-gallery .pager {
     position: absolute;
-    width: 100%;
+    width: auto;
     top: 50%;
-    margin: 0; }
+    right: 0;
+    left: 0;
+    margin: 0;
+}
 .image-gallery .pager a.btn {
     border: 1px solid #c0c0c0;
     margin-top: -15px;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
-    -ms-border-radius: 0;
     border-radius: 0;
     font-size: 25px;
-    color: #ea4748; }
+    color: #ea4748;
+    background: rgba(255, 255, 255, 0.61);
+}
 .image-gallery .pager a.btn:hover {
     background-color: #1F3345;
     color: #fff;
-    border-color: #fff; }
+    border-color: #fff;
+}
 .image-gallery .pager a.btn.left {
-    float: left; }
+    float: left;
+    margin-left: 5px;
+}
 .image-gallery .pager a.btn.right {
-    float: right; }
-
+    float: right;
+    margin-right: 5px;
+}
+.image-gallery .pagination{
+    margin: 0;
+}
+.image-gallery .pagination > li{
+    display: inline-flex;
+}
 .image-gallery .pagination a {
     font-size: 12px;
     color: #ea4748; }
@@ -1040,13 +1113,6 @@ footer .footer-bottom .cpy {
     font-size: 11px;
     color: #989898; }
 
-/* ==========================================================================
-   Sidebar
-   ========================================================================== */
-.sidebar {
-    position: relative;
-    min-height: 1400px;
-}
 
 /* ==========================================================================
    New Content
@@ -1370,7 +1436,7 @@ footer .footer-bottom .cpy {
     font-size: 12px;
 }
 .author-box .author-detail .links .nav li > a:hover{
-    background-color: #6399AC;
+    background-color: #E3000F;
 }
 .pager li a{
     -webkit-border-radius: 0;
@@ -1389,7 +1455,7 @@ footer .footer-bottom .cpy {
    ========================================================================== */
 .breadcrumbs {
     border-bottom: 1px solid #dbdbdb;
-    margin-bottom: 15px; }
+    margin-bottom: 10px; }
 .breadcrumbs p {
     margin: 0 0 5px 0;
     padding: 0;
@@ -1545,7 +1611,7 @@ footer .footer-bottom .cpy {
    News Box
    ========================================================================== */
 .news-box{
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 .news-box .frame-image a{
     display: block;
@@ -1564,6 +1630,7 @@ footer .footer-bottom .cpy {
     color: #000;
     margin: 0;
     font-weight: bold;
+    line-height:1.3em;
 }
 .news-box .news-right-txt a{
     color: #000;
@@ -1586,9 +1653,11 @@ footer .footer-bottom .cpy {
 /* ==========================================================================
    Book Widget
    ========================================================================== */
+.books-widget{
+    margin-bottom: 10px;
+}
 .books-widget .book{
     padding:0;
-    margin-bottom: 15px;
 }
 .books-widget .book .cover a img{
     width: 100%;

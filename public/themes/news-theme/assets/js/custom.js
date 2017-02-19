@@ -96,7 +96,7 @@
     $(window).resize(function () {
         adsSize();
     });
-    $(document).ready(function () {
+    $('document').ready(function () {
         adsSize();
     });
     function adsSize() {
@@ -111,8 +111,8 @@
             size = (width - sum) / 2;
         }
         console.log("Size: "+size);
-        $('#dfp-160-kare-sag').css("right",size+"px").show();
-        $('#dfp-pageskin-sol').css("left",size+"px").show();
+        $('#dfp-160-kare-sag').css("right",size-10+"px").show();
+        $('#dfp-pageskin-sol').css("left",size-10+"px").show();
     }
 
     $("#sticky-container").sticky({

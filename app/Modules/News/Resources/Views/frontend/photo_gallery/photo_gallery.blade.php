@@ -13,38 +13,63 @@
                         </h1>
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-7">
-                    <div class="img-container">
-                        <a href="#">
+                    <div class="gallery">
+                        <div class="paging text-center module">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk Sayfa</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                @foreach($galleryPhotos as $index => $photo)
+                                    <li><a href="{{route('show_gallery_photos',['slug' => $photo->slug ])}}">{{++$index}}</a></li>
+                                @endforeach
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son Sayfa</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="img-container module">
                             <div class="img">
                                 <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}">
                                     <img src="{{ asset('gallery/' . $photoGallery->id . '/photos/' . $firstPhoto->file)}}" alt="{{$firstPhoto->name}}" class="img-responsive" />
                                 </a>
                             </div>
-                        </a>
-                        <div class="pager">
-
-                            <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}" class="btn left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-
-                            <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}" class="btn right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
+                            <div class="pager">
+                                <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}" class="btn left"><i class="fa fa-angle-left"></i></a>
+                                <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}" class="btn right"><i class="fa fa-angle-right"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="text-center">
-                        <ul class="pagination">
-                            <li><a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk Sayfa</a></li>
+                        <div class="paging text-center module">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk Sayfa</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}"><i class="fa fa-angle-left"></i></a>
+                                </li>
                                 @foreach($galleryPhotos as $index => $photo)
                                     <li><a href="{{route('show_gallery_photos',['slug' => $photo->slug ])}}">{{++$index}}</a></li>
                                 @endforeach
-                            <li><a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son Sayfa</a></li>
-                        </ul>
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son Sayfa</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <div class="gallery-details">
+                    <div class="gallery-details module">
                         <div class="gallery-text">
                             <p>{{$firstPhoto->content}}</p>
                         </div><!-- /.gallery-text -->
@@ -56,209 +81,217 @@
                     </div><!-- /.gallery-details -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
-            <div>
+        </div><!-- /.image-gallery -->
+        <div class="row">
+            <div class="col-lg-12">
                 @foreach($photoGallery->tags as $tag)
                     <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
                 @endforeach
             </div>
-            <div class="row">
-                <div class="col-md-7">
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="other-gallery">
                     <div class="f-posts">
                         <div class="title-section">
                             <h1>
                                 <span>{{trans('news::photo_gallery.other_galleries')}}</span>
                             </h1>
                         </div>
-                        <div class="row">
-                            @foreach($photoCategoryGalleries as $photoCategoryGallery)
-                                <div class="col col-md-4">
-                                    <a href="{{route('show_photo_gallery',['slug' => $photoCategoryGallery->slug ])}}" class="news">
+                        <div class="gallery-posts module">
+                            <div class="row">
+                                @foreach($photoCategoryGalleries as $photoCategoryGallery)
+                                    <div class="col-md-4">
+                                        <a href="{{route('show_photo_gallery',['slug' => $photoCategoryGallery->slug ])}}" class="news">
                                     <span class="pic">
                                         <img src="{{ asset('gallery/' . $photoCategoryGallery->id . '/photos/' . $photoCategoryGallery->thumbnail)}}" alt="{{$photoCategoryGallery->name}}"
                                              title="{{$photoCategoryGallery->title}}"/>
                                     </span>
-                                    </a>
-                                </div><!-- /.col-->
-                            @endforeach
-                        </div><!-- /.row -->
+                                        </a>
+                                    </div><!-- /.col-->
+                                @endforeach
+                            </div><!-- /.row -->
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-5">
-                    <div class="sidebar">
-                        <div class="nw-sm-img">
-                            <div role="tabpanel">
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active">
-                                        <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>
-                                    </li>
-                                </ul>
+            </div>
+            <div class="col-md-5">
+                <div class="sidebar">
+                    <div class="nw-sm-img module">
+                        <div role="tabpanel">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>
+                                </li>
+                            </ul>
 
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="video">
-                                        <ul class="new-list no-list">
-                                            <li class="nw-bx no-list active">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="video">
+                                    <ul class="new-list no-list">
+                                        <li class="nw-bx no-list active">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">1</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                            <li class="nw-bx no-list">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                            <span class="dec">1</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">2</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                            <li class="nw-bx no-list">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                            <span class="dec">2</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">3</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                            <li class="nw-bx no-list">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                            <span class="dec">3</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">4</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                            <li class="nw-bx no-list">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                            <span class="dec">4</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">5</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                        </ul><!-- /.new-list -->
-                                    </div><!-- /.tab-pane -->
-                                    <div role="tabpanel" class="tab-pane" id="son_dakika">
-                                        <ul class="new-list no-list">
-                                            <li class="nw-bx no-list active">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                            <span class="dec">5</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                    </ul><!-- /.new-list -->
+                                </div><!-- /.tab-pane -->
+                                <div role="tabpanel" class="tab-pane" id="son_dakika">
+                                    <ul class="new-list no-list">
+                                        <li class="nw-bx no-list active">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">1</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                            <li class="nw-bx no-list">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                            <span class="dec">1</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">2</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                            <li class="nw-bx no-list">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                            <span class="dec">2</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">3</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                            <li class="nw-bx no-list">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                            <span class="dec">3</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">4</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                            <li class="nw-bx no-list">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                            <span class="dec">4</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">5</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                        </ul><!-- /.new-list -->
-                                    </div><!-- /.tab-pane -->
+                                            <span class="dec">5</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                    </ul><!-- /.new-list -->
+                                </div><!-- /.tab-pane -->
 
-                                    <div role="tabpanel" class="tab-pane" id="cok_okunanlar">
-                                        <ul class="new-list no-list">
-                                            <li class="nw-bx no-list active">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                <div role="tabpanel" class="tab-pane" id="cok_okunanlar">
+                                    <ul class="new-list no-list">
+                                        <li class="nw-bx no-list active">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">1</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                            <li class="nw-bx no-list">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                            <span class="dec">1</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">2</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                            <li class="nw-bx no-list">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                            <span class="dec">2</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">3</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                            <li class="nw-bx no-list">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                            <span class="dec">3</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">4</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                            <li class="nw-bx no-list">
-                                                <a href="new-details.html" title="" class="full-link"></a>
-                                                <span class="imgwrap">
+                                            <span class="dec">4</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                        <li class="nw-bx no-list">
+                                            <a href="new-details.html" title="" class="full-link"></a>
+                                            <span class="imgwrap">
                                         <img src="img/mini-spot/d_296_2.jpg" alt="">
                                     </span>
-                                                <span class="dec">5</span>
-                                                <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                            </li>
-                                        </ul><!-- /.new-list -->
-                                    </div><!-- /.tab-pane -->
-                                </div><!-- /.tab-content -->
-                            </div><!-- /rabpanel -->
-                        </div><!-- /.nw-sm-img -->
-                        <div class="widget">
-                            <div class="title-section">
-                                <h1>
-                                    <span>Link Title</span>
-                                </h1>
-                            </div>
+                                            <span class="dec">5</span>
+                                            <div class="spot">Pellentesque Quam</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                        </li>
+                                    </ul><!-- /.new-list -->
+                                </div><!-- /.tab-pane -->
+                            </div><!-- /.tab-content -->
+                        </div><!-- /rabpanel -->
+                    </div><!-- /.nw-sm-img -->
+                    <div class="widget">
+                        <div class="title-section">
+                            <h1>
+                                <span>Link Title</span>
+                            </h1>
+                        </div>
+                        <div class="news-h-links module">
                             <ul>
                                 <li><a href="#">Link1</a></li>
                                 <li><a href="#">Link2</a></li>
@@ -296,26 +329,26 @@
 
 
 @section('css')
-    <link href="//vjs.zencdn.net/5.8/photo-js.min.css" rel="stylesheet">
+    {{--<link href="//vjs.zencdn.net/5.8/photo-js.min.css" rel="stylesheet">--}}
 
-    <link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">
+    {{--<link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">--}}
 @endsection
 
 @section('js')
-    <script src="js/app.js"></script>
+    {{--<script src="js/app.js"></script>--}}
 
-    <script src="http://vjs.zencdn.net/5.8.8/photo.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/photojs-youtube/2.1.1/Youtube.min.js"></script>
+    {{--<script src="http://vjs.zencdn.net/5.8.8/photo.js"></script>--}}
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/photojs-youtube/2.1.1/Youtube.min.js"></script>--}}
 
 
-    <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+    {{--<script src="https://js.pusher.com/3.2/pusher.min.js"></script>--}}
 
     {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>--}}
 
 @endsection

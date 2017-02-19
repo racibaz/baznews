@@ -14,37 +14,66 @@
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <div class="img-container">
-                        <a href="#">
+                    <div class="gallery">
+                        <div class="text-center module">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk Sayfa</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $previousPhoto->slug ])}}"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                @foreach($galleryPhotos as $index => $photo)
+                                    <li><a href="{{route('show_gallery_photos',['slug' => $photo->slug ])}}">{{++$index}}</a></li>
+                                @endforeach
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son Sayfa</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="img-container module">
                             <div class="img">
                                 <a href="{{route('show_gallery_photos',['slug' => $photo->slug ])}}">
                                     <img src="{{ asset('gallery/' . $photoGallery->id . '/photos/' . $photo->file)}}" alt="{{$photo->name}}" class="img-responsive" />
                                 </a>
                             </div>
-                        </a>
-                        <div class="pager">
+                            <div class="pager">
 
-                            <a href="{{route('show_gallery_photos',['slug' => $previousPhoto->slug ])}}" class="btn left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
+                                <a href="{{route('show_gallery_photos',['slug' => $previousPhoto->slug ])}}" class="btn left">
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
 
-                            <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}" class="btn right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
+                                <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}" class="btn right">
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="text-center">
-                        <ul class="pagination">
-                            <li><a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk Sayfa</a></li>
-                            @foreach($galleryPhotos as $index => $photo)
-                                <li><a href="{{route('show_gallery_photos',['slug' => $photo->slug ])}}">{{++$index}}</a></li>
-                            @endforeach
-                            <li><a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son Sayfa</a></li>
-                        </ul>
-                    </div>
-                </div>
+                        <div class="text-center module">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk Sayfa</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $previousPhoto->slug ])}}"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                @foreach($galleryPhotos as $index => $photo)
+                                    <li><a href="{{route('show_gallery_photos',['slug' => $photo->slug ])}}">{{++$index}}</a></li>
+                                @endforeach
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                                <li>
+                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son Sayfa</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div><!-- /.gallery -->
+                </div><!-- /.col -->
                 <div class="col-lg-5">
-                    <div class="gallery-details">
+                    <div class="gallery-details module">
                         <div class="gallery-text">
                             <p>{{$photo->content}}</p>
                         </div><!-- /.gallery-text -->
@@ -56,10 +85,14 @@
                     </div><!-- /.gallery-details -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
-            <div>
-                @foreach($photoGallery->tags as $tag)
-                    <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
-                @endforeach
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>
+                        @foreach($photoGallery->tags as $tag)
+                            <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
+                        @endforeach
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-7">
@@ -69,23 +102,25 @@
                                 <span>{{trans('news::photo_gallery.other_galleries')}}</span>
                             </h1>
                         </div>
-                        <div class="row">
-                            @foreach($photoCategoryGalleries as $photoCategoryGallery)
-                                <div class="col col-md-4">
-                                    <a href="{{route('show_photo_gallery',['slug' => $photoGallery->slug ])}}" class="news">
-                                    <span class="pic">
-                                        <img src="{{ asset('gallery/' . $photoCategoryGallery->id . '/photos/' . $photoCategoryGallery->thumbnail)}}" alt="{{$photoCategoryGallery->name}}"
-                                             title="{{$photoCategoryGallery->title}}"/>
-                                    </span>
-                                    </a>
-                                </div><!-- /.col-->
-                            @endforeach
-                        </div><!-- /.row -->
-                    </div>
+                        <div class="gallery-posts module">
+                            <div class="row">
+                                @foreach($photoCategoryGalleries as $photoCategoryGallery)
+                                    <div class="col-md-4">
+                                        <a href="{{route('show_photo_gallery',['slug' => $photoGallery->slug ])}}" class="news">
+                                            <div class="pic">
+                                                <img src="{{ asset('gallery/' . $photoCategoryGallery->id . '/photos/' . $photoCategoryGallery->thumbnail)}}" alt="{{$photoCategoryGallery->name}}"
+                                                     title="{{$photoCategoryGallery->title}}"/>
+                                            </div>
+                                        </a>
+                                    </div><!-- /.col-->
+                                @endforeach
+                            </div><!-- /.row -->
+                        </div><!-- /.gallery-post -->
+                    </div><!-- /.f-posts -->
                 </div>
                 <div class="col-md-5">
                     <div class="sidebar">
-                        <div class="nw-sm-img">
+                        <div class="nw-sm-img module">
                             <div role="tabpanel">
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
@@ -259,7 +294,7 @@
                                     <span>Link Title</span>
                                 </h1>
                             </div>
-                            <div class="news-h-links">
+                            <div class="news-h-links module">
                                 <ul>
                                     <li><a href="#">Link1</a></li>
                                     <li><a href="#">Link2</a></li>
