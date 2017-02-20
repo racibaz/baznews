@@ -20,7 +20,7 @@ class BookCategory extends Model
     public function sluggable() {
         return [
             'slug' => [
-                'source' => ['name']
+                'source' => ['name','id']
             ]
         ];
     }
@@ -37,6 +37,9 @@ class BookCategory extends Model
         $rules = array(
             'name' => 'required',
             'thumbnail' => 'image|max:255',
+            'description' => 'max:255',
+            'keywords' => 'max:255',
+            'order' => 'integer',
         );
         return Validator::make($input, $rules);
     }

@@ -4,13 +4,13 @@
     <div class="row">
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
-                <a href="{{ route('book.create') }}" class="btn btn-success">
+                <a href="{{ route('publisher.create') }}" class="btn btn-success">
                     <i class="fa fa-plus"></i> {{ trans('common.create') }}
                 </a>
             </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><strong>{{trans('book.management')}}</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('publisher.management')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -18,9 +18,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('book.name')}}</th>
-                            <th>{{trans('book.user_id')}}</th>
-                            <th>{{trans('book.is_cuff')}}</th>
+                            <th>{{trans('publisher.name')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </thead>
@@ -28,18 +26,13 @@
                             @foreach($records as $record)
                                 <tr>
                                     <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('book.show', $record->name , $record, [] ) !!}</td>
-                                    <td> {{$record->user->first_name}} </td>
-                                    <td> {{$record->is_cuff}} </td>
+                                    <td>{!! link_to_route('publisher.show', $record->name , $record, [] ) !!}</td>
                                     <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('book.destroy',  $record))) !!}
-
-                                            {!! link_to_route('book.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-
-
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('publisher.destroy',  $record))) !!}
+                                                {!! link_to_route('publisher.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                                {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
                                             {!! Form::close() !!}
                                         </div>
                                     </td>
@@ -49,9 +42,7 @@
                         <tfoot>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('book.name')}}</th>
-                            <th>{{trans('book.user_id')}}</th>
-                            <th>{{trans('book.is_cuff')}}</th>
+                            <th>{{trans('publisher.name')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </tfoot>

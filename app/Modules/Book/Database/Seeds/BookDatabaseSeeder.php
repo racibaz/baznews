@@ -14,12 +14,11 @@ class BookDatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(PublihersTableSeeder::class);
         $this->call(BookCategoriesTableSeeder::class);
         $this->call(BooksTableSeeder::class);
         $this->call(BookWidgetManagerTableSeeder::class);
         $this->call(PermissionTableSeeder::class);
-
-
 
 
         $setting = Setting::where('attribute_key','book_count')->first();

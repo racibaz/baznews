@@ -4,14 +4,10 @@ namespace App\Modules\Book\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
-use Venturecraft\Revisionable\RevisionableTrait;
 
-class Book extends Model
+class Publisher extends Model
 {
-    use SoftDeletes;
-    use RevisionableTrait;
     use Sluggable;
 
     /**
@@ -34,55 +30,40 @@ class Book extends Model
      */
     protected $fillable = [
         'user_id',
-        'publisher_id',
         'name',
         'slug',
         'link',
-        'thumbnail',
-        'photo',
-        'author',
         'description',
-        'ISBN',
-        'release_date',
-        'number_of_print',
-        'skin_type',
-        'paper_type',
-        'size',
-        'is_cuff',
         'is_active',
     ];
-
-    protected $dates = ['created_at','updated_at','deleted_at'];
-
 
     public function book_categories()
     {
         return $this->belongsToMany('App\Modules\Book\Models\BookCategory', 'book_categories_books', 'book_id', 'book_category_id');
     }
 
-    public function user()
+    public function cities()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->hasMany('App\Models\City');
     }
 
-    public function publisher()
+    public function books()
     {
-        return $this->belongsTo('App\Modules\Book\Models\Publisher','publisher_id');
+        return $this->hasMany('App\Modules\Book\Models\Book');
     }
+
 
     public static function validate($input) {
         $rules = array(
             'name' => 'required|min:4|max:255',
-            'link' => 'url',
-            'thumbnail' => 'image|max:255',
-            'photo' => 'image|max:255',
+            'link'  => 'url',
             'description' => 'max:255',
         );
         return Validator::make($input, $rules);
     }
 
-    public static function bookList()
+    public static function publisherList()
     {
-        return Book::where('is_active',1)->pluck('name','id');
+        return Publisher::where('is_active',1)->pluck('name','id');
     }
 }

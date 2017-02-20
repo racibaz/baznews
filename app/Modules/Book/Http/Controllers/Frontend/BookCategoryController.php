@@ -3,11 +3,11 @@
 namespace App\Modules\Book\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Book\Repositories\BookRepository as Repo;
+use App\Modules\Book\Repositories\BookCategoryRepository as Repo;
 use Cache;
 use Caffeinated\Themes\Facades\Theme;
 
-class BookController extends Controller
+class BookCategoryController extends Controller
 {
     public function __construct(Repo $repo)
     {
@@ -16,22 +16,18 @@ class BookController extends Controller
 
     public function show($slug)
     {
-        $id =  substr(strrchr($slug, '-'), 1 );
-
-        return Cache::remember('book:'.$id, 100, function() use($id) {
-
+        return Cache::remember('category_books:'.$slug, 100, function() use($slug) {
+            $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
             $record = $this->repo
                 ->with([
-                    'book_categories',
-                    'user',
+                    'books',
                 ])
                 ->where('is_active', 1)
-                ->findBy('id',$id);
+                ->findBy('slug',$slug);
 
-            return Theme::view('book::frontend.book.show', compact([
+            return Theme::view('book::frontend.book_category.show', compact([
                 'record',
             ]))->render();
         });
     }
-
 }

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('book::book.managment')}}</h3>
+            <h3 class="ls-top-header">{{trans('book::book.management')}}</h3>
             <!--Top header end -->
 
             <!--Top breadcrumb start -->
@@ -88,13 +88,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('publisher', trans('book::book.publisher'),['class'=> 'col-lg-2 control-label']) !!}
+                    <div class="row">
+                        {!! Form::label('publisher', trans('book::book.publisher'),['class'=> 'col-lg-2 control-label']) !!}
 
-                            <div class="col-lg-10">
-                                {!! Form::text('publisher', $record->publisher, ['placeholder' => trans('book::book.publisher') ,'class' => 'form-control']) !!}
-                            </div>
+                        <div class="col-lg-10">
+                            {!! Form::select('publisher_id', $publisherList , $record->publisher_id, ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="form-group">

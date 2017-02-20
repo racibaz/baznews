@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Library\Uploader;
 use App\Modules\Book\Models\Book;
 use App\Modules\Book\Models\BookCategory;
+use App\Modules\Book\Models\Publisher;
 use App\Modules\Book\Repositories\BookRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
@@ -46,15 +47,17 @@ class BookController extends Controller
 
     public function create()
     {
-        $newsCategoryIDs = [];
+        $bookCategoryIDs = [];
         $record = $this->repo->createModel();
         $bookCategoryList = BookCategory::bookCategoryList();
+        $publisherList = Publisher::publisherList();
 
         return Theme::view('book::' . $this->getViewName(__FUNCTION__),
             compact([
-                'newsCategoryIDs',
+                'bookCategoryIDs',
                 'record',
-                'bookCategoryList'
+                'bookCategoryList',
+                'publisherList'
             ]));
     }
 
@@ -73,9 +76,10 @@ class BookController extends Controller
 
     public function edit(Book $record)
     {
-        $newsCategoryIDs = [];
+        $bookCategoryIDs = [];
 
         $bookCategoryList = BookCategory::bookCategoryList();
+        $publisherList = Publisher::publisherList();
 
         foreach ($record->book_categories as $index => $book_category) {
             $bookCategoryIDs[$index] = $book_category->id;
@@ -85,7 +89,8 @@ class BookController extends Controller
             compact([
                 'record',
                 'bookCategoryList',
-                'bookCategoryIDs'
+                'publisherList',
+                'bookCategoryIDs',
             ]));
     }
 

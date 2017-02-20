@@ -6,10 +6,7 @@
     <div class="container" id="container">
         <div class="breadcrumbs">
             <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \
-                @foreach($record->book_categories as $bookCategory)
-                    <a href="{!! route('book_category', ['slug' => $bookCategory->slug]) !!}">{{$bookCategory->name}}</a> \
-                @endforeach
-                {{$record->name}}
+                <a href="{!! route('book_category', ['slug' => $record->slug]) !!}">{{$record->name}}</a>
             </p>
         </div>
         <div class="row">
@@ -17,9 +14,12 @@
                 <article class="module">
                     <div id="new-content">
                         {{$record->name}}
-
                         <br /><br /><br /><br />
-                        Kitap Detayları Gelecek.
+                        Kitap Kategori Detayları Gelecek.
+                        @foreach($record->books as $record)
+                            <a href="{!! route('book', ['slug' => $record->slug]) !!}">{{$record->name}} </a>
+                            <br />
+                        @endforeach
                     </div>
                 </article>
             </div><!-- /.new-content -->

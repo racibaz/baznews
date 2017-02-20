@@ -103,6 +103,48 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        //publisher
+        $publisher1 = Permission::create([
+            'name'          => 'index-publisher',
+            'display_name'  => 'publisher  Listeleme',
+            'is_active'     => 1,
+        ]);
+
+        $publisher2 = Permission::create([
+            'name'          => 'create-publisher',
+            'display_name'  => 'publisher Oluşturma',
+            'is_active'     => 1,
+        ]);
+
+        $publisher3 = Permission::create([
+            'name'          => 'edit-publisher',
+            'display_name'  => 'publisher Düzenleme',
+            'is_active'     => 1,
+        ]);
+
+        $publisher4 = Permission::create([
+            'name'          => 'destroy-publisher',
+            'display_name'  => 'publisher Silme',
+            'is_active'     => 1,
+        ]);
+
+        $publisher5 = Permission::create([
+            'name'          => 'show-publisher',
+            'display_name'  => 'publisher Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $publisher6 = Permission::create([
+            'name'          => 'update-publisher',
+            'display_name'  => 'publisher update',
+            'is_active'     => 1,
+        ]);
+
+        $publisher7 = Permission::create([
+            'name'          => 'store-publisher',
+            'display_name'  => 'publisher store',
+            'is_active'     => 1,
+        ]);
 
         $super_admin = Role::find(1);
 
@@ -122,6 +164,13 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($book_category6);
         $super_admin->permissions()->attach($book_category7);
 
+        $super_admin->permissions()->attach($publisher1);
+        $super_admin->permissions()->attach($publisher2);
+        $super_admin->permissions()->attach($publisher3);
+        $super_admin->permissions()->attach($publisher4);
+        $super_admin->permissions()->attach($publisher5);
+        $super_admin->permissions()->attach($publisher6);
+        $super_admin->permissions()->attach($publisher7);
 
     }
 }
