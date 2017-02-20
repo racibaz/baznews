@@ -900,7 +900,6 @@ header{
    ========================================================================== */
 .sidebar-video .video-list-body{
     max-height: 357px;
-    overflow: scroll;
     position: relative;
 }
 .sidebar-video{
