@@ -11,10 +11,12 @@
     <link href="{{ Theme::asset($activeTheme . '::js/jquery.bxslider/jquery.bxslider.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ Theme::asset($activeTheme . '::css/bootstrap-social.css') }}" type="text/css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link href="{{ Theme::asset($activeTheme . '::css/style.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::js/video-js/video-js.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
 
     @yield('css')
+
+    <link href="{{ Theme::asset($activeTheme . '::css/style.css') }}" type="text/css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

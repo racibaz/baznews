@@ -145,7 +145,9 @@
                                                 <div class="video-box">
                                                     <video id="{{$video->id}}"
                                                            class="video-js vjs-default-skin"
-                                                           controls preload="auto" width="100%" height="300"
+                                                           controls
+                                                           width="100%" height="400px"
+                                                           preload="auto"
                                                            poster=""
                                                            data-setup='{"example_option":true}'>
                                                         <source src="{{url($video->file)}}" type="video/mp4" />
@@ -161,7 +163,7 @@
                                                             id="{{$video->id}}"
                                                             class="video-js vjs-default-skin"
                                                             controls
-                                                            width="100%" height="264"
+                                                            width="100%" height="400px"
                                                             {{--data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'--}}
                                                             data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'>
                                                     </video>
@@ -511,38 +513,18 @@
 
 
 @section('css')
-    {{--<link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">--}}
 
-    {{--<link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">--}}
 @endsection
 
 @section('js')
-    {{--<script src="js/app.js"></script>--}}
-
-    {{--<script src="http://vjs.zencdn.net/5.8.8/video.js"></script>--}}
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>--}}
-    {{--    <script src="{{ Theme::asset($activeTheme . '::js/videojs/Vimeo.js') }}"></script>--}}
-
-
-    {{--<script src="https://js.pusher.com/3.2/pusher.min.js"></script>--}}
-
-    {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>--}}
-
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>--}}
-
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>--}}
-
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>--}}
-
-    {{--<link href="{{ Theme::asset($activeTheme . '::js/video-js/video-js.min.css') }}" rel="stylesheet">--}}
-    {{--<script src="{{ Theme::asset($activeTheme . '::js/video-js/video.novtt.js') }}"></script>--}}
-    {{--<script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>--}}
-    {{--<script>--}}
-    {{--videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"--}}
-    {{--videojs("video-js", {}, function(){--}}
-    {{--// Player (this) is initialized and ready.--}}
-    {{--});--}}
-    {{--</script>--}}
+    <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.novtt.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
+    <script>
+    videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
+    videojs("video-js", {}, function(){
+    // Player (this) is initialized and ready.
+    });
+    </script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('.bio-long-btn').click(function () {

@@ -429,39 +429,12 @@
 
 @section('css')
 
-    {{--<link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">--}}
 
 @endsection
 
 @section('js')
 
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
-
-
-    {{--<script src="{{ Theme::asset($activeTheme . '::js/lazyload/lazyload.min.js') }}"></script>--}}
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>--}}
-
-    {{--<script src="https://js.pusher.com/3.2/pusher.min.js"></script>--}}
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>--}}
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>--}}
-
-    {{--<script>--}}
-        {{--// Enable pusher logging - don't include this in production--}}
-        {{--Pusher.logToConsole = true;--}}
-
-        {{--var pusher = new Pusher('72259496952df9087a50', {--}}
-            {{--cluster: 'eu',--}}
-            {{--encrypted: true--}}
-        {{--});--}}
-
-        {{--var channel = pusher.subscribe('test_channel');--}}
-        {{--channel.bind('my_event', function(data) {--}}
-
-{{--//                alert(data.title + ' ' + data.message );--}}
-{{--//            var n = noty({text: data.title + ' ' + data.message});--}}
-
-        {{--});--}}
-    {{--</script>--}}
 
     <script type="text/javascript">
 
@@ -560,7 +533,7 @@
              Center Carousel Horizontal News Slider
              * --------------------------------------------------------*/
             $('.bxcarousel').bxSlider({
-                slideWidth: 232,
+                slideWidth: 228,
                 minSlides: 2,
                 maxSlides: 5,
                 slideMargin: 0,
