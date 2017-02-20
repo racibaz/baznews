@@ -4,7 +4,6 @@ namespace App\Modules\Book\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Library\Uploader;
-use App\Modules\Book\Models\Book;
 use App\Modules\Book\Models\BookCategory;
 use App\Modules\Book\Repositories\BookCategoryRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -12,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use Image;
 
 class BookCategoryController extends Controller
 {
@@ -39,8 +39,9 @@ class BookCategoryController extends Controller
 
     public function index()
     {
-        $records = $this->repo->findAll();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['records']));
+        $records = $this->repo->orderBy('updated_at', 'desc')->findAll();
+        $recordsTree = BookCategory::get()->toTree();
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['records','recordsTree']));
     }
 
 
@@ -64,14 +65,14 @@ class BookCategoryController extends Controller
     }
 
 
-    public function edit(Book $record)
+    public function edit(BookCategory $record)
     {
         $bookCategoryList = BookCategory::bookCategoryList();
         return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record','bookCategoryList']));
     }
 
 
-    public function update(Request $request, Book $record)
+    public function update(Request $request, BookCategory $record)
     {
         return $this->save($record);
     }
@@ -103,18 +104,20 @@ class BookCategoryController extends Controller
                 $result = $this->repo->update($record->id,$input);
             } else {
                 $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
             }
-            if ($result) {
+            if ($result[0]) {
 
                 if(!empty($input['thumbnail'])) {
+
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/images/books_category/'. $record->id . '/thumbnail';
-                    Uploader::fileUpload($record , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    $destination = '/images/books_category/'. $result[1]->id . '/original';
+                    Uploader::fileUpload($result[1]  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
+
+                    Image::make(public_path('images/books_category/' . $result[1]->id .'/original/'. $result[1]->thumbnail))
+                        ->fit(180, 275)
+                        ->save(public_path('images/books_category/' . $result[1]->id . '/180x275_' . $document_name));
                 }
 
                 Session::flash('flash_message', trans('common.message_model_updated'));

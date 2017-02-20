@@ -22,6 +22,7 @@ class CreateBookCategoriesTable extends Migration
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();
             $table->string('thumbnail')->nullable();
+            $table->integer('order')->nullable();
             $table->boolean('is_cuff');
             $table->boolean('is_active');
             $table->timestamps();

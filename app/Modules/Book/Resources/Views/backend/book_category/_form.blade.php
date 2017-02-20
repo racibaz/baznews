@@ -96,10 +96,10 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                {!! Form::label('hit', trans('book::book_category.hit'),['class'=> 'col-lg-2 control-label']) !!}
+                                {!! Form::label('order', trans('book::book_category.order'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::number('hit', $record->hit, ['placeholder' => trans('book::book_category.hit') ,'class' => 'form-control']) !!}
+                                    {!! Form::number('order', $record->order, ['placeholder' => trans('book::book_category.order') ,'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>

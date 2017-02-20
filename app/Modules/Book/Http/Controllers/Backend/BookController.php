@@ -46,8 +46,16 @@ class BookController extends Controller
 
     public function create()
     {
+        $newsCategoryIDs = [];
         $record = $this->repo->createModel();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
+        $bookCategoryList = BookCategory::bookCategoryList();
+
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__),
+            compact([
+                'newsCategoryIDs',
+                'record',
+                'bookCategoryList'
+            ]));
     }
 
 
@@ -94,7 +102,6 @@ class BookController extends Controller
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
-
     public function save($record)
     {
         $input = Input::all();
@@ -118,23 +125,33 @@ class BookController extends Controller
                     $result = true;
                 }
             }
-            if ($result) {
-
+            if ($result[0]) {
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/images/books/'. $record->id . '/thumbnail';
-                    Uploader::fileUpload($record , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    $destination = '/images/books/'. $result[1] ->id . '/original';
+                    Uploader::fileUpload($result[1]  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
                 }
 
                 if(!empty($input['photo'])) {
                     $oldPath = $record->photo;
                     $document_name = $input['photo']->getClientOriginalName();
-                    $destination = '/images/books/'. $record->id . '/photo';
-                    Uploader::fileUpload($record , 'photo', $input['photo'] , $destination , $document_name);
+                    $destination = '/images/books/'. $result[1]->id . '/photo';
+                    Uploader::fileUpload($result[1] , 'photo', $input['photo'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
                 }
+
+
+                /*
+                 * todo
+                 *
+                 * gerekirse crop işlemleri yapılabilinir.
+                 *
+                 * */
+
+
+                $this->book_book_categories_store($result[1],$input);
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
@@ -143,6 +160,13 @@ class BookController extends Controller
                     ->withErrors(trans('common.save_failed'))
                     ->withInput($input);
             }
+        }
+    }
+
+    public function book_book_categories_store(Book $record, $input)
+    {
+        if(isset($input['book_category_ids'])) {
+            $record->book_categories()->sync($input['book_category_ids']);
         }
     }
 }

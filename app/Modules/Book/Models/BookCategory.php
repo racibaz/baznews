@@ -26,7 +26,7 @@ class BookCategory extends Model
     }
 
     protected $table = 'book_categories';
-    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'thumbnail', 'is_cuff', 'is_active'];
+    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'thumbnail', 'order', 'is_cuff', 'is_active'];
 
     public function books()
     {
