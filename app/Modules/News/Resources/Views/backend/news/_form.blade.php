@@ -645,7 +645,7 @@
 
 
 @section('css')
-    <link href="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ Theme::asset( $activeTheme . '::AdminLTE/plugins/select2/select2.min.css') }}" rel="stylesheet">
 
     <style type="text/css">
         #cuff_photo_preview {display: none;}
@@ -661,7 +661,7 @@
 @section('js')
 
 
-    <script src="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ Theme::asset( $activeTheme . '::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
 
     {{--<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>--}}
 

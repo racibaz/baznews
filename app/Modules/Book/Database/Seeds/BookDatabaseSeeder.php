@@ -14,6 +14,7 @@ class BookDatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(BookCategoriesTableSeeder::class);
         $this->call(BooksTableSeeder::class);
         $this->call(BookWidgetManagerTableSeeder::class);
         $this->call(PermissionTableSeeder::class);

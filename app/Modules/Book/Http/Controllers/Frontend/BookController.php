@@ -27,7 +27,8 @@ class BookController extends Controller
 
     public function index()
     {
-        $books = Book::all();
+
+        $books = $this->repo->where('is_active',1)->findAll();
         return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['books']));
     }
 }

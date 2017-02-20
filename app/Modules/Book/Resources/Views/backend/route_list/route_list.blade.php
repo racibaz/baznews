@@ -1,1 +1,2 @@
-<li><a href="{!! route('book.index') !!}"><i class="fa fa-book"></i> <span>kitap</span></a></li>
+<li><a href="{!! route('book_category.index') !!}"><i class="fa fa-book"></i> <span>Kitap Kategorileri</span></a></li>
+<li><a href="{!! route('book.index') !!}"><i class="fa fa-book"></i> <span>Kitap</span></a></li>

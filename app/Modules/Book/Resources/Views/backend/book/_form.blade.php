@@ -207,12 +207,29 @@
                 {!! Form::close() !!}
             </div>
         </div>
+        <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('news::news.select_categories') }}</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        {!! Form::select('book_category_ids[]', $bookCategoryList , $bookCategoryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
     </div><!-- end row -->
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->
 @endsection
 
 @section('css')
+    <link href="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.min.css') }}" rel="stylesheet">
     <style>
         #preview {display: none;}
         .display {display: block !important;}
@@ -222,17 +239,15 @@
 
 @section('js')
 
-    {{--<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>--}}
+    <script src="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
 
-    {{--<script>--}}
-    {{--CKEDITOR.replace( 'content', {--}}
-    {{--filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',--}}
-    {{--filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',--}}
-    {{--filebrowserBrowseUrl: '/laravel-filemanager?type=Files',--}}
-    {{--filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'--}}
-    {{--});--}}
-    {{--</script>--}}
 
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $(".select2").select2();
+        });
+    </script>
 
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     {{--<textarea name="content" class="form-control my-editor">{!! old('content', $content) !!}</textarea>--}}

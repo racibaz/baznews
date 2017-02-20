@@ -23,8 +23,8 @@
                                 <li>
                                     <a href="{{route('show_gallery_photos',['slug' => $previousPhoto->slug ])}}"><i class="fa fa-angle-left"></i></a>
                                 </li>
-                                @foreach($galleryPhotos as $index => $photo)
-                                    <li><a href="{{route('show_gallery_photos',['slug' => $photo->slug ])}}">{{++$index}}</a></li>
+                                @foreach($galleryPhotos as $index => $galleryPhoto)
+                                    <li><a href="{{route('show_gallery_photos',['slug' => $galleryPhoto->slug ])}}">{{++$index}}</a></li>
                                 @endforeach
                                 <li>
                                     <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}"><i class="fa fa-angle-right"></i></a>
@@ -59,8 +59,8 @@
                                 <li>
                                     <a href="{{route('show_gallery_photos',['slug' => $previousPhoto->slug ])}}"><i class="fa fa-angle-left"></i></a>
                                 </li>
-                                @foreach($galleryPhotos as $index => $photo)
-                                    <li><a href="{{route('show_gallery_photos',['slug' => $photo->slug ])}}">{{++$index}}</a></li>
+                                @foreach($galleryPhotos as $index => $galleryPhoto)
+                                    <li><a href="{{route('show_gallery_photos',['slug' => $galleryPhoto->slug ])}}">{{++$index}}</a></li>
                                 @endforeach
                                 <li>
                                     <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}"><i class="fa fa-angle-right"></i></a>
