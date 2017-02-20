@@ -298,7 +298,7 @@
                         <div class="col-md-2 col-sm-4 col-xs-6">
                             <div class="r-box">
                                 <a href="{{route('show_video_gallery',['slug' => $galleryVideo->slug ])}}">
-                                    <img src="{{ asset('video_gallery/' . $galleryVideo->video_gallery_id . '/photos/58x58_' . $galleryVideo->thumbnail)}}" />
+                                    <img src="{{ asset('video_gallery/' . $galleryVideo->video_gallery_id . '/photos/196x150_' . $galleryVideo->thumbnail)}}" />
                                     <i class="icon"></i>
                                     <span class="c-text">{{$galleryVideo->title}}</span>
                                 </a>

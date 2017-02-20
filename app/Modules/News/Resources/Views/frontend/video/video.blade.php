@@ -308,19 +308,23 @@
                     @foreach($lastestVideos  as $lastestVideo)
 
                         <div class="col-md-2 col-sm-4 col-xs-6">
-                            <div class="r-box">
-                                <a href="{{route('show_videos',['slug' => $lastestVideo->slug ])}}">
+                            <div class="r-box module">
+                                <div class="box-img">
+                                    <a href="{{route('show_videos',['slug' => $lastestVideo->slug ])}}">
+                                        <img src="{{ asset('video_gallery/' . $lastestVideo->video_gallery_id . '/photos/497x358_' . $lastestVideo->thumbnail)}}" alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
+                                        <span class="icon"></span>
+                                    </a>
+                                </div>
+                                <div class="img-title">
+                                    <a href="{{route('show_videos',['slug' => $lastestVideo->slug ])}}">
+                                        {{$lastestVideo->name}}
+                                    </a>
+                                </div>
 
-                                    <img src="{{ asset('video_gallery/' . $lastestVideo->video_gallery_id . '/photos/58x58_' . $lastestVideo->thumbnail)}}"
-                                         alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
-
-                                    <i class="icon"></i>
-                                    <span class="c-text">{{$lastestVideo->name}}</span>
-                                </a>
                             </div><!-- /.r-box -->
                         </div><!-- /. -->
                     @endforeach
-
+                    <div class="clearfix"></div>
                 </div><!-- /.row -->
             </div><!-- /.videos -->
 
