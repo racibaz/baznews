@@ -35,7 +35,8 @@ input, textarea {
     width: auto; }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family: 'Titillium Web', sans-serif;
     background-color: #f0f0f0;
 }
 
@@ -1161,13 +1162,12 @@ footer .footer-bottom .cpy {
     margin:11px 0 10px 0;
 }
 #new-content .news-spot {
-    font-family: Georgia;
     line-height: 1.3;
     color: #888;
     font-style: italic;
     padding: 10px 20px;
     margin: 0 0 20px;
-    font-size: 17.5px;
+    font-size: 17px;
     border-left: 5px solid #eeeeee;
 }
 #new-content .content{
@@ -1175,9 +1175,8 @@ footer .footer-bottom .cpy {
 }
 #new-content .content .news-text,
 #new-content .content .news-text p {
-    font-family: Georgia;
-    font-size: 18px;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.5em;
     color: #555;
     margin-top: 0;
     margin-bottom: 15px;
@@ -1544,7 +1543,6 @@ footer .footer-bottom .cpy {
 .last-time {
     padding: 12px 20px;
     background: #f5d313;
-    margin-bottom: 15px;
     -webkit-animation: colorchange 2.9s infinite;
     /* Safari 4+ */
     -moz-animation: colorchange 2.9s infinite;

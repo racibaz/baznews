@@ -95,7 +95,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-8">
                     <div class="f-posts">
                         <div class="title-section">
                             <h1>
@@ -118,7 +118,7 @@
                         </div><!-- /.gallery-post -->
                     </div><!-- /.f-posts -->
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <div class="sidebar">
                         <div class="nw-sm-img module">
                             <div role="tabpanel">

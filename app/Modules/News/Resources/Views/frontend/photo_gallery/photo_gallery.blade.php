@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-7">
+                <div class="col-lg-8">
                     <div class="gallery">
                         <div class="paging text-center module">
                             <ul class="pagination">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <div class="gallery-details module">
                         <div class="gallery-text">
                             <p>{{$firstPhoto->content}}</p>
