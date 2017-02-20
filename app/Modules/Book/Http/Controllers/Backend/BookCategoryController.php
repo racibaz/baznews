@@ -6,17 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Library\Uploader;
 use App\Modules\Book\Models\Book;
 use App\Modules\Book\Models\BookCategory;
-use App\Modules\Book\Repositories\BookRepository as Repo;
+use App\Modules\Book\Repositories\BookCategoryRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 
-class BookController extends Controller
+class BookCategoryController extends Controller
 {
     private $repo;
-    private $view = 'book.';
+    private $view = 'book_category.';
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
@@ -47,7 +47,8 @@ class BookController extends Controller
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
+        $bookCategoryList = BookCategory::bookCategoryList();
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record','bookCategoryList']));
     }
 
 
@@ -57,7 +58,7 @@ class BookController extends Controller
     }
 
 
-    public function show(Book $record)
+    public function show(BookCategory $record)
     {
         return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['records']));
     }
@@ -65,20 +66,8 @@ class BookController extends Controller
 
     public function edit(Book $record)
     {
-        $newsCategoryIDs = [];
-
         $bookCategoryList = BookCategory::bookCategoryList();
-
-        foreach ($record->book_categories as $index => $book_category) {
-            $bookCategoryIDs[$index] = $book_category->id;
-        }
-
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),
-            compact([
-                'record',
-                'bookCategoryList',
-                'bookCategoryIDs'
-            ]));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record','bookCategoryList']));
     }
 
 
@@ -88,7 +77,7 @@ class BookController extends Controller
     }
 
 
-    public function destroy(Book $record)
+    public function destroy(BookCategory $record)
     {
         $this->repo->delete($record->id);
         return redirect()->route($this->redirectRouteName . $this->view .'index');
@@ -102,7 +91,7 @@ class BookController extends Controller
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
 
-        $v = Book::validate($input);
+        $v = BookCategory::validate($input);
 
         if ($v->fails()) {
             return Redirect::back()
@@ -123,16 +112,8 @@ class BookController extends Controller
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/images/books/'. $record->id . '/thumbnail';
+                    $destination = '/images/books_category/'. $record->id . '/thumbnail';
                     Uploader::fileUpload($record , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
-                    Uploader::removeFile($oldPath);
-                }
-
-                if(!empty($input['photo'])) {
-                    $oldPath = $record->photo;
-                    $document_name = $input['photo']->getClientOriginalName();
-                    $destination = '/images/books/'. $record->id . '/photo';
-                    Uploader::fileUpload($record , 'photo', $input['photo'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
                 }
 

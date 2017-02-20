@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Modules\News\Models;
+namespace App\Modules\Book\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
-use Venturecraft\Revisionable\RevisionableTrait;
 
-class NewsCategory extends Model
+class BookCategory extends Model
 {
-    use RevisionableTrait;
     use Sluggable;
     use NodeTrait;
 
@@ -27,12 +25,12 @@ class NewsCategory extends Model
         ];
     }
 
-    protected $table = 'news_categories';
-    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'thumbnail', 'is_cuff', 'is_active'];
+    protected $table = 'book_categories';
+    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'thumbnail', 'is_cuff', 'is_active'];
 
-    public function news()
+    public function books()
     {
-        return $this->belongsToMany('App\Modules\News\Models\News', 'news_categories_news', 'news_category_id', 'news_id');
+        return $this->belongsToMany('App\Modules\Book\Models\Book', 'book_categories_books', 'book_category_id', 'book_id');
     }
 
     public static function validate($input) {
@@ -43,8 +41,8 @@ class NewsCategory extends Model
         return Validator::make($input, $rules);
     }
 
-    public static function newsCategoryList()
+    public static function bookCategoryList()
     {
-        return NewsCategory::where('is_active',1)->pluck('name', 'id');
+        return BookCategory::where('is_active',1)->pluck('name', 'id');
     }
 }

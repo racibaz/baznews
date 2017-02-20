@@ -55,6 +55,11 @@ class Book extends Model
     protected $dates = ['created_at','updated_at','deleted_at'];
 
 
+    public function book_categories()
+    {
+        return $this->belongsToMany('App\Modules\Book\Models\BookCategory', 'book_categories_books', 'book_id', 'book_category_id');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\Models\User');

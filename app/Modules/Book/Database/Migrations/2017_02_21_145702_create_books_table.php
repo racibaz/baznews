@@ -38,6 +38,14 @@ class CreateBooksTable extends Migration
             //keys
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
+
+        Schema::create('book_categories_books', function (Blueprint $table) {
+            $table->unsignedInteger('book_category_id')->index();
+            $table->unsignedInteger('book_id')->index();
+
+            $table->foreign('book_category_id')->references('id')->on('book_categories')->onDelete('cascade');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+        });
     }
 
     /**
@@ -47,6 +55,7 @@ class CreateBooksTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('book_categories_books');
         Schema::dropIfExists('books');
     }
 }
