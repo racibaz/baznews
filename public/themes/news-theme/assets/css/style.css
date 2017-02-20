@@ -79,6 +79,11 @@ body {
 .ads{
     opacity:0;
 }
+.video-js .vjs-big-play-button{
+    left: 50%;
+    top:50%;
+    margin: -37px 0 0 -60px;
+}
 /* ==========================================================================
    Sidebar
    ========================================================================== */
@@ -281,11 +286,12 @@ header{
     border:none;
 }
 #main-navbar-menu .navbar-nav > li a:hover {
-    color: #696969;
+    background: #1d3347;
+    color: #ffffff;
     text-decoration: none;
 }
 #main-navbar-menu .navbar-nav > li.current > a {
-    color: #696969;
+    color: #192f42;
     text-decoration: none;
 }
 /* ==========================================================================
@@ -412,6 +418,7 @@ header{
    ========================================================================== */
 #post-box-slider {
     margin-bottom: 10px;
+    border:1px solid #c0c0c0;
 }
 #post-box-slider .bx-wrapper{
 
@@ -505,25 +512,28 @@ header{
 .img-new-list .new-list-ct .new-list li {
     display: block;
     list-style: none;
-    border: 1px solid #F5F5F5;
     position: relative;
     overflow: hidden;
     padding: 10px;
-    margin: 0 0 10px 0; }
+    margin: 0 0 10px 0;
+}
 .img-new-list .new-list-ct .new-list li:last-child {
     margin-bottom: 0;
 }
-
-.img-new-list .new-list-ct .new-list li:hover {
+.img-new-list .new-list-ct .new-list li > a {
+    display: block;
+    border: 1px solid #F5F5F5;
+}
+.img-new-list .new-list-ct .new-list li > a:hover {
     border-bottom: 1px solid #ea4748;
 }
 .img-new-list .new-list-ct .new-list li a.full-link:before {
     content: "";
     position: absolute;
-    left: 0;
-    top: 0;
+    left: -1px;
+    top: -1px;
     width: 5px;
-    height: 100%;
+    height: 58px;
     background-color: #ea4748;
     opacity: 0;
     -webkit-transition: .3s opacity,0.3s transform;
@@ -883,11 +893,14 @@ header{
     font-weight: 700; }
 .playerbox .description h2 {
     font-size: 16px;
-    line-height: 18px; }
+    line-height: 18px;
+}
+/* ==========================================================================
+   SİDEBAR VİDEO LİNKS
+   ========================================================================== */
 .sidebar-video .video-list-body{
-    max-height: 324px;
+    max-height: 357px;
     overflow: scroll;
-    padding: 18px;
     position: relative;
 }
 .sidebar-video{
@@ -907,7 +920,12 @@ header{
     color:white;
 }
 .sidebar-video .video-link {
-    margin-bottom: 15px; }
+    position: relative;
+    margin-bottom: 15px;
+}
+.sidebar-video .video-link:hover a span.icon{
+    opacity: 1;
+}
 .sidebar-video .video-link a {
     display: block;
     cursor: pointer; }
@@ -915,43 +933,48 @@ header{
     display: block;
     content: '';
     clear: both; }
-.sidebar-video .video-link a i.icon {
+.sidebar-video .video-link a span.icon {
     position: absolute;
-    top: 40px;
-    left: 50%;
+    top: 0;
     display: block;
-    width: 60px;
-    height: 60px;
-    background: url("../img/play.png") 0 0 no-repeat;
+    width: 100%;
+    height: 100%;
+    background: rgba(241, 241, 241, 0.7) url("../img/mini-play.png") center center no-repeat;
     z-index: 10;
-    margin-left: -30px;
-    margin-top: -30px;
+    margin: 0;
     opacity: 0;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -ms-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out; }
-.sidebar-video .video-link a:hover i.icon {
-    opacity: 1; }
+    transition: all .3s ease-in-out;
+}
 .sidebar-video .video-link .hold {
     position: relative;
-    float: left; }
+    height: 75px;
+    text-align: center;
+    overflow: hidden;
+}
+.sidebar-video .video-link .hold > img {
+    display: inline-block;
+    height: 75px;
+}
 .sidebar-video .video-link .title {
     color: #23262d;
-    float: left;
     display: block;
-    width: 220px;
-    height: 60px;
-    padding-left: 10px;
-    vertical-align: middle;
-    margin-top: 0px;
-    font-size: 13px;
+    font-size: 17px;
     font-weight: bold;
+    line-height: 1.0em;
+}
+.sidebar-video .video-link .excerpt{
+    color: #000000;
+    font-size: 12px;
+    display: block;
+    overflow: hidden;
+    max-height: 43px;
 }
 .sidebar-video .video-link .time {
-    float: left;
-    padding-left: 10px;
+    padding-left: 0;
     color: #a8a8a8;
     font-style: normal;
     font-weight: 700;
@@ -1346,11 +1369,6 @@ footer .footer-bottom .cpy {
 .news-videos .video-box{
     position: relative;
     margin-bottom: 30px;
-}
-.news-videos .video-box .vjs-big-play-button{
-    left: 50%;
-    top:50%;
-    margin: -37px 0 0 -60px;
 }
 /* ==========================================================================
     Tags

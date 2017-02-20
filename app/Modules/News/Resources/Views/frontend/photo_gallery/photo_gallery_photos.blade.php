@@ -13,7 +13,7 @@
                         </h1>
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-8">
                     <div class="gallery">
                         <div class="text-center module">
                             <ul class="pagination">
@@ -72,7 +72,7 @@
                         </div>
                     </div><!-- /.gallery -->
                 </div><!-- /.col -->
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <div class="gallery-details module">
                         <div class="gallery-text">
                             <p>{{$photo->content}}</p>
@@ -95,7 +95,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-lg-8">
                     <div class="f-posts">
                         <div class="title-section">
                             <h1>
@@ -118,7 +118,7 @@
                         </div><!-- /.gallery-post -->
                     </div><!-- /.f-posts -->
                 </div>
-                <div class="col-md-4">
+                <div class="col-lg-4">
                     <div class="sidebar">
                         <div class="nw-sm-img module">
                             <div role="tabpanel">

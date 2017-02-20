@@ -1,17 +1,29 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ticker last-time" id="son-dakika">
+                    <strong>Son Dakika:</strong>
+                    <ul>
+                        <li>
+                            <a href="#">Breaking News -1</a>
+                        </li>
+                        <li>
+                            <a href="#">Breaking News -1</a>
+                        </li>
+                        <li>
+                            <a href="#">Breaking News -1</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <article>
         <div class="container" id="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="last-time" id="son-dakika">
-                        <h4>Son Dakika:</h4>
-                        <a href="new-details.html">Tortor Cras Nibh Egestas Vestibulum</a>
-                    </div>
-                </div>
-            </div>
             <div class="breadcrumbs">
                 <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \\
                     <a href="{{route('show_video_gallery',['slug' => $videoGallery->slug ])}}">
@@ -23,38 +35,12 @@
             <div class="row">
                 <div class="col-md-8">
                     <div id="new-content">
-                        <div class="share-box">
-                            <ul class="nav nav-justified">
-                                <li>
-                                    <a class="btn btn-block btn-social btn-facebook">
-                                        <span class="fa fa-facebook"></span> Paylaş
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-block btn-social btn-twitter">
-                                        <span class="fa fa-twitter"></span> Paylaş
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-block btn-social btn-google">
-                                        <span class="fa fa-google-plus"></span> Paylaş
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-block btn-social btn-linkedin">
-                                        <span class="fa fa-linkedin"></span> Paylaş
-                                    </a>
-                                </li>
-                            </ul><!-- /.nav -->
-                        </div><!-- /.share-box -->
-                        <div class="playerbox">
-
+                        <div class="playerbox module">
                             <div class="player">
-
                                 @if(!empty($video->file))
                                     <video id="{{$video->id}}"
                                            class="video-js vjs-default-skin"
-                                           controls preload="auto" width="640" height="264"
+                                           controls preload="auto" width="100%" height="400px"
                                            poster="http://video-js.zencoder.com/oceans-clip.png"
                                            data-setup='{"example_option":true}'>
 
@@ -114,22 +100,33 @@
 
                             <div class="video-list-body">
                                 @foreach($otherGalleryVideos as $otherGalleryVideo)
-                                    <div class="video-link">
-                                        <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
-                                            <div class="hold">
-                                                <img src="{{ asset('video_gallery/' . $otherGalleryVideo->video_gallery_id . '/photos/58x58_' . $otherGalleryVideo->thumbnail)}}"
-                                                     alt="{{$otherGalleryVideo->title}}" title="{{$otherGalleryVideo->title}}"/>
-                                                <i class="icon play"></i>
+                                    <div class="video-link module">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
+                                                    <div class="hold">
+                                                        <img src="{{ asset('video_gallery/' . $otherGalleryVideo->video_gallery_id . '/photos/165x90_' . $otherGalleryVideo->thumbnail)}}"
+                                                             alt="{{$otherGalleryVideo->title}}" title="{{$otherGalleryVideo->title}}"/>
+                                                        <span class="icon play"></span>
+                                                    </div>
+                                                </a>
+                                            </div><!-- /.col -->
+                                            <div class="col-lg-9">
+                                                <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
+                                                    <span class="title">{{$otherGalleryVideo->name}}</span>
+                                                    <span class="excerpt">
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                    </span>
+                                                </a>
+                                                <span class="time visible-lg"> {{$otherGalleryVideo->updated_at}}</span>
                                             </div>
-                                            <span class="title">{{$otherGalleryVideo->name}}</span>
-                                            <span class="time visible-lg"> {{$otherGalleryVideo->updated_at}}</span>
-                                        </a>
+                                        </div><!-- /.row -->
                                     </div><!-- /.video-link -->
                                 @endforeach
                             </div>
                         </div><!-- /.sidebar-video -->
 
-                        <div class="nw-sm-img">
+                        <div class="nw-sm-img module">
                             <div role="tabpanel">
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
@@ -376,28 +373,34 @@
 
 @endsection
 
-
 @section('css')
-    <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
-
-    <link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}" type="text/css" rel="stylesheet">
 @endsection
 
 @section('js')
-    <script src="js/app.js"></script>
-
-    <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>
-
-
-    <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
-
-    {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>--}}
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.novtt.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
+    <script>
+        videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
+        videojs("video-js", {}, function(){
+            // Player (this) is initialized and ready.
+        });
+    </script>
+    <script src="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            /*--------------------------------------------------------
+             Last Minute News Ticker Slider
+             * --------------------------------------------------------*/
+            $('.ticker').ticker();
+            /*--------------------------------------------------------
+             mCustomScrollbar
+             * --------------------------------------------------------*/
+            $('.sidebar-video .video-list-body').mCustomScrollbar({
+                theme:"rounded-dark"
+            });
+        });
+    </script>
 
 @endsection
