@@ -17,41 +17,13 @@
                             </a>
                         </div>
                         <div class="name">
-                            <a href="{!! route('books', ['slug' => $recentBook->slug]) !!}">
+                            <a href="{!! route('book', ['slug' => $recentBook->slug]) !!}">
                                 <span>{{ $recentBook->name }}</span>
                             </a>
                         </div>
                     </div>
                 </li>
             @endforeach
-            {{--<li>--}}
-                {{--<div class="book">--}}
-                    {{--<div class="cover">--}}
-                        {{--<a href="#">--}}
-                            {{--<img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&width=165&isWatermarked=true" alt="">--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-                    {{--<div class="name">--}}
-                        {{--<a href="#">--}}
-                            {{--<span>Senden Önce Ben</span>--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<div class="book">--}}
-                    {{--<div class="cover">--}}
-                        {{--<a href="#">--}}
-                            {{--<img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&width=165&isWatermarked=true" alt="">--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-                    {{--<div class="name">--}}
-                        {{--<a href="#">--}}
-                            {{--<span>Senden Önce Ben</span>--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</li>--}}
         </ul>
     </div>
 </div>

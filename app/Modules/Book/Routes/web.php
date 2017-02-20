@@ -13,7 +13,7 @@
 
 
 
-Route::get('books/', 'Frontend\BookController@index')->name('books');
+Route::get('book/{slug}', 'Frontend\BookController@show')->name('book');
 
 Route::get('books_sitemap', 'Frontend\SitemapController@sitemap')->name('books_sitemap');
 
