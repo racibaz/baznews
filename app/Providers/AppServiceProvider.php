@@ -27,7 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         if(!app()->runningInConsole() ) {
 
             User::created(function ($user) {
@@ -85,15 +84,6 @@ class AppServiceProvider extends ServiceProvider
 
             //TODO cachelenecek
             View::share('activeTheme', Theme::getActive());
-
-
-//        User::observe(UserObserver::class);
-//        Country::observe(CountryObserver::class);
-//        City::observe(CityObserver::class);
-//        Role::observe(RoleObserver::class);
-//        Group::observe(GroupObserver::class);
-//        Permission::observe(PermissionObserver::class);
-//        Announcement::observe(AnnouncementObserver::class);
 
         }
 
