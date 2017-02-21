@@ -16,42 +16,24 @@ class BooksTableSeeder extends Seeder
     public function run()
     {
         $book1 = Book::create([
-                    'user_id'               => 1,
-                    'name'                  => 'kitap 1',
-                    'slug'                  => 'kitap slug',
-                    'link'                  => 'link',
-                    'thumbnail'             => 'thumbnail',
-        //            'photo',
-        //            'author',
-        //            'publisher',
-        //            'description',
-        //            'ISBN',
-        //            'release_date',
-        //            'number_of_print',
-        //            'skin_type',
-        //            'paper_type',
-        //            'size',
-                    'is_cuff'               => 1,
-                    'is_active'             => 1
+            'user_id'               => 1,
+            'publisher_id'          => 1,
+            'name'                  => 'kitap 1',
+            'slug'                  => 'kitap1-1',
+            'link'                  => 'link',
+            'thumbnail'             => 'thumbnail',
+            'is_cuff'               => 1,
+            'is_active'             => 1
                 ]);
 
 
         $book2 = Book::create([
             'user_id'               => 1,
+            'publisher_id'          => 1,
             'name'                  => 'kitap 2',
-            'slug'                  => 'kitap slug',
+            'slug'                  => 'kitap2-2',
             'link'                  => 'link',
             'thumbnail'             => 'thumbnail',
-            //            'photo',
-            //            'author',
-            //            'publisher',
-            //            'description',
-            //            'ISBN',
-            //            'release_date',
-            //            'number_of_print',
-            //            'skin_type',
-            //            'paper_type',
-            //            'size',
             'is_cuff'               => 1,
             'is_active'             => 1
         ]);
@@ -59,40 +41,22 @@ class BooksTableSeeder extends Seeder
 
         $book3 = Book::create([
             'user_id'               => 1,
+            'publisher_id'          => 1,
             'name'                  => 'kitap 3',
-            'slug'                  => 'kitap slug',
+            'slug'                  => 'kitap3-3',
             'link'                  => 'link',
             'thumbnail'             => 'thumbnail',
-            //            'photo',
-            //            'author',
-            //            'publisher',
-            //            'description',
-            //            'ISBN',
-            //            'release_date',
-            //            'number_of_print',
-            //            'skin_type',
-            //            'paper_type',
-            //            'size',
             'is_cuff'               => 1,
             'is_active'             => 1
         ]);
 
         $book4 = Book::create([
             'user_id'               => 1,
+            'publisher_id'          => 1,
             'name'                  => 'kitap 4',
-            'slug'                  => 'kitap slug',
+            'slug'                  => 'kitap4-4',
             'link'                  => 'link',
             'thumbnail'             => 'thumbnail',
-            //            'photo',
-            //            'author',
-            //            'publisher',
-            //            'description',
-            //            'ISBN',
-            //            'release_date',
-            //            'number_of_print',
-            //            'skin_type',
-            //            'paper_type',
-            //            'size',
             'is_cuff'               => 1,
             'is_active'             => 1
         ]);

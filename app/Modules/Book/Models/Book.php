@@ -22,7 +22,7 @@ class Book extends Model
     public function sluggable() {
         return [
             'slug' => [
-                'source' => ['name']
+                'source' => ['name','id']
             ]
         ];
     }
@@ -34,13 +34,13 @@ class Book extends Model
      */
     protected $fillable = [
         'user_id',
+        'publisher_id',
         'name',
         'slug',
         'link',
         'thumbnail',
         'photo',
         'author',
-        'publisher',
         'description',
         'ISBN',
         'release_date',
@@ -65,15 +65,23 @@ class Book extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    public function publisher()
+    {
+        return $this->belongsTo('App\Modules\Book\Models\Publisher','publisher_id');
+    }
+
     public static function validate($input) {
         $rules = array(
-            'name'                          => 'required|min:4|max:255',
+            'name' => 'required|min:4|max:255',
+            'link' => 'url',
+            'thumbnail' => 'image|max:255',
             'photo' => 'image|max:255',
+            'description' => 'max:255',
         );
         return Validator::make($input, $rules);
     }
 
-    public static function bookist()
+    public static function bookList()
     {
         return Book::where('is_active',1)->pluck('name','id');
     }
