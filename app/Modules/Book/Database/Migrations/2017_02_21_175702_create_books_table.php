@@ -36,7 +36,9 @@ class CreateBooksTable extends Migration
             $table->softDeletes();
 
             //keys
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
+            //todo user ilişkisi gözden geçirilecek
+//            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('book_publisher_id')->references('id')->on('book_publishers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('book_author_id')->references('id')->on('book_authors')->onDelete('cascade')->onUpdate('cascade');
         });

@@ -87,10 +87,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        {!! Form::label('publisher', trans('book::book.publisher'),['class'=> 'col-lg-2 control-label']) !!}
+                        {!! Form::label('book_publisher_id', trans('book::book.book_publisher_id'),['class'=> 'col-lg-2 control-label']) !!}
 
                         <div class="col-lg-10">
-                            {!! Form::select('publisher_id', $publisherList , $record->publisher_id, ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
+                            {!! Form::select('book_publisher_id', $bookPublisherList , $record->book_publisher_id, ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="form-group">

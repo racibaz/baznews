@@ -103,46 +103,46 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
-        //publisher
-        $publisher1 = Permission::create([
-            'name'          => 'index-publisher',
-            'display_name'  => 'publisher  Listeleme',
+        //bookpublisher
+        $bookpublisher1 = Permission::create([
+            'name'          => 'index-bookpublisher',
+            'display_name'  => 'bookpublisher  Listeleme',
             'is_active'     => 1,
         ]);
 
-        $publisher2 = Permission::create([
-            'name'          => 'create-publisher',
-            'display_name'  => 'publisher Oluşturma',
+        $bookpublisher2 = Permission::create([
+            'name'          => 'create-bookpublisher',
+            'display_name'  => 'bookpublisher Oluşturma',
             'is_active'     => 1,
         ]);
 
-        $publisher3 = Permission::create([
-            'name'          => 'edit-publisher',
-            'display_name'  => 'publisher Düzenleme',
+        $bookpublisher3 = Permission::create([
+            'name'          => 'edit-bookpublisher',
+            'display_name'  => 'bookpublisher Düzenleme',
             'is_active'     => 1,
         ]);
 
-        $publisher4 = Permission::create([
-            'name'          => 'destroy-publisher',
-            'display_name'  => 'publisher Silme',
+        $bookpublisher4 = Permission::create([
+            'name'          => 'destroy-bookpublisher',
+            'display_name'  => 'bookpublisher Silme',
             'is_active'     => 1,
         ]);
 
-        $publisher5 = Permission::create([
-            'name'          => 'show-publisher',
-            'display_name'  => 'publisher Gösterme',
+        $bookpublisher5 = Permission::create([
+            'name'          => 'show-bookpublisher',
+            'display_name'  => 'bookpublisher Gösterme',
             'is_active'     => 1,
         ]);
 
-        $publisher6 = Permission::create([
-            'name'          => 'update-publisher',
-            'display_name'  => 'publisher update',
+        $bookpublisher6 = Permission::create([
+            'name'          => 'update-bookpublisher',
+            'display_name'  => 'bookpublisher update',
             'is_active'     => 1,
         ]);
 
-        $publisher7 = Permission::create([
-            'name'          => 'store-publisher',
-            'display_name'  => 'publisher store',
+        $bookpublisher7 = Permission::create([
+            'name'          => 'store-bookpublisher',
+            'display_name'  => 'bookpublisher store',
             'is_active'     => 1,
         ]);
 
@@ -208,13 +208,13 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($book_category6);
         $super_admin->permissions()->attach($book_category7);
 
-        $super_admin->permissions()->attach($publisher1);
-        $super_admin->permissions()->attach($publisher2);
-        $super_admin->permissions()->attach($publisher3);
-        $super_admin->permissions()->attach($publisher4);
-        $super_admin->permissions()->attach($publisher5);
-        $super_admin->permissions()->attach($publisher6);
-        $super_admin->permissions()->attach($publisher7);
+        $super_admin->permissions()->attach($bookpublisher1);
+        $super_admin->permissions()->attach($bookpublisher2);
+        $super_admin->permissions()->attach($bookpublisher3);
+        $super_admin->permissions()->attach($bookpublisher4);
+        $super_admin->permissions()->attach($bookpublisher5);
+        $super_admin->permissions()->attach($bookpublisher6);
+        $super_admin->permissions()->attach($bookpublisher7);
 
         $super_admin->permissions()->attach($bookauthor1);
         $super_admin->permissions()->attach($bookauthor2);

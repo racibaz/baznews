@@ -62,7 +62,7 @@ class BookPublisher extends Model
         return Validator::make($input, $rules);
     }
 
-    public static function publisherList()
+    public static function bookPublisherList()
     {
         return BookPublisher::where('is_active',1)->pluck('name','id');
     }
