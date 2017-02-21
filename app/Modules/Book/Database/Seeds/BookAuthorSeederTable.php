@@ -16,8 +16,8 @@ class BookAuthorSeederTable extends Seeder
     {
         BookAuthor::create([
             'user_id' => 1,
-            'name' => 'Tahir Olgun',
-            'slug' => 'tahir-olgun',
+            'name' => 'Tahir Olgun 1',
+            'slug' => 'tahir-olgun-1',
             'link' => 'www.receptayyiperdogan.name',
             'thumbnail' => 'thumbnail',
             'bio_note' => 'yazar tanımı',
