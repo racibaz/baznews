@@ -5,7 +5,9 @@ namespace App\Modules\Book\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Library\Uploader;
 use App\Modules\Book\Models\Book;
+use App\Modules\Book\Models\BookAuthor;
 use App\Modules\Book\Models\BookCategory;
+use App\Modules\Book\Models\BookPublisher;
 use App\Modules\Book\Models\Publisher;
 use App\Modules\Book\Repositories\BookRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -50,14 +52,16 @@ class BookController extends Controller
         $bookCategoryIDs = [];
         $record = $this->repo->createModel();
         $bookCategoryList = BookCategory::bookCategoryList();
-        $publisherList = Publisher::publisherList();
+        $bookPublisherList = BookPublisher::bookPublisherList();
+        $bookAuthorList = BookAuthor::bookAuthorList();
 
         return Theme::view('book::' . $this->getViewName(__FUNCTION__),
             compact([
                 'bookCategoryIDs',
                 'record',
                 'bookCategoryList',
-                'publisherList'
+                'bookPublisherList',
+                'bookAuthorList'
             ]));
     }
 
@@ -79,7 +83,8 @@ class BookController extends Controller
         $bookCategoryIDs = [];
 
         $bookCategoryList = BookCategory::bookCategoryList();
-        $publisherList = Publisher::publisherList();
+        $bookPublisherList = BookPublisher::bookPublisherList();
+        $bookAuthorList = BookAuthor::bookAuthorList();
 
         foreach ($record->book_categories as $index => $book_category) {
             $bookCategoryIDs[$index] = $book_category->id;
@@ -89,11 +94,11 @@ class BookController extends Controller
             compact([
                 'record',
                 'bookCategoryList',
-                'publisherList',
+                'bookPublisherList',
                 'bookCategoryIDs',
+                'bookAuthorList'
             ]));
     }
-
 
     public function update(Request $request, Book $record)
     {
@@ -113,6 +118,7 @@ class BookController extends Controller
 
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
+//        $input['user_id'] = \Auth::user()->id;
 
         $v = Book::validate($input);
 
@@ -126,9 +132,6 @@ class BookController extends Controller
                 $result = $this->repo->update($record->id,$input);
             } else {
                 $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
             }
             if ($result[0]) {
                 if(!empty($input['thumbnail'])) {

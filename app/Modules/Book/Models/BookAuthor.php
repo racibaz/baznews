@@ -3,10 +3,10 @@
 namespace App\Modules\Book\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Validator;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 
-class Publisher extends Model
+class BookAuthor extends Model
 {
     use Sluggable;
 
@@ -23,6 +23,9 @@ class Publisher extends Model
         ];
     }
 
+
+    protected $table = 'book_authors';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -33,37 +36,28 @@ class Publisher extends Model
         'name',
         'slug',
         'link',
-        'description',
+        'thumbnail',
+        'bio_note',
+        'is_cuff',
         'is_active',
     ];
-
-    public function book_categories()
-    {
-        return $this->belongsToMany('App\Modules\Book\Models\BookCategory', 'book_categories_books', 'book_id', 'book_category_id');
-    }
-
-    public function cities()
-    {
-        return $this->hasMany('App\Models\City');
-    }
 
     public function books()
     {
         return $this->hasMany('App\Modules\Book\Models\Book');
     }
 
-
     public static function validate($input) {
         $rules = array(
             'name' => 'required|min:4|max:255',
-            'link'  => 'url',
-            'description' => 'max:255',
+            'link' => 'url',
+            'thumbnail' => 'image|max:255',
         );
         return Validator::make($input, $rules);
     }
 
-    public static function publisherList()
+    public static function bookAuthorList()
     {
-        return Publisher::where('is_active',1)->pluck('name','id');
+        return BookAuthor::where('is_active',1)->pluck('name','id');
     }
 }

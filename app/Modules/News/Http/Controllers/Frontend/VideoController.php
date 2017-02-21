@@ -3,8 +3,6 @@
 namespace App\Modules\News\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
-use App\Modules\News\Models\VideoCategory;
-use App\Modules\News\Repositories\VideoCategoryRepository;
 use App\Modules\News\Repositories\VideoRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;

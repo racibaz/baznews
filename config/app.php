@@ -178,6 +178,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         //3.parties
+        RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
+        \App\Providers\BaznewsServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
@@ -196,7 +198,7 @@ return [
         Arrilot\Widgets\ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
-        RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
+
 
     ],
 

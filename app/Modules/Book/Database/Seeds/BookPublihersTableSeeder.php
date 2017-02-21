@@ -2,10 +2,10 @@
 
 namespace App\Modules\Book\Database\Seeds;
 
-use App\Modules\Book\Models\Publisher;
+use App\Modules\Book\Models\BookPublisher;
 use Illuminate\Database\Seeder;
 
-class PublihersTableSeeder extends Seeder
+class BookPublihersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class PublihersTableSeeder extends Seeder
      */
     public function run()
     {
-        Publisher::create([
+        BookPublisher::create([
             'user_id' => 1,
             'name' => 'Timaş Yayınları',
             'link' => 'link',
@@ -22,7 +22,7 @@ class PublihersTableSeeder extends Seeder
             'is_active' => 1,
         ]);
 
-        Publisher::create([
+        BookPublisher::create([
             'user_id' => 1,
             'name' => 'Yayın Evi 2',
             'link' => 'link',
@@ -30,7 +30,7 @@ class PublihersTableSeeder extends Seeder
             'is_active' => 1,
         ]);
 
-        Publisher::create([
+        BookPublisher::create([
             'user_id' => 1,
             'name' => 'Yayın Evi 3',
             'link' => 'link',
@@ -38,7 +38,7 @@ class PublihersTableSeeder extends Seeder
             'is_active' => 1,
         ]);
 
-        Publisher::create([
+        BookPublisher::create([
             'user_id' => 1,
             'name' => 'Yayın Evi 4',
             'link' => 'link',

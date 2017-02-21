@@ -4,111 +4,107 @@
 
     <article class="container" id="container">
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="last-time" id="son-dakika">
-                    <h4>Son Dakika:</h4>
-                    <a href="new-details.html">Tortor Cras Nibh Egestas Vestibulum</a>
-                </div>
-            </div>
-        </div>
         <div class="image-gallery">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="title-section">
                         <h1>
-                            <span>Tristique Sollicitudin Porta Vehicula</span>
+                            <span>{{ !empty($photo->subtitle) ? $photo->subtitle : $photo->name}}</span>
                         </h1>
                     </div>
                 </div>
-                <div class="col-lg-7">
-                    <div class="img-container">
-                        <a href="#">
-                            <div class="img">
-                                <img src="img/img-gallery/cocuk.jpg" alt="" class="img-responsive">
-                            </div>
-                        </a>
-                        <div class="pager">
-                            <a href="" class="btn left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a href="" class="btn right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
+                <div class="col-lg-8">
+                    <div class="gallery">
+                        <div class="text-center module">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="{{route('show_photo',['slug' => $previousPhoto->slug ])}}"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                <li><a href="{{route('show_photo',['slug' => $photo->slug ])}}">{{$photo->name}}</a></li>
+                                <li>
+                                    <a href="{{route('show_photo',['slug' => $nextPhoto->slug ])}}"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="text-center">
-                        <ul class="pagination">
-                            <li><a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk Sayfa</a></li>
-                            @foreach($galleryPhotos as $index => $photo)
-                                <li><a href="{{route('show_gallery_photos',['slug' => $photo->slug ])}}">{{++$index}}</a></li>
-                            @endforeach
-                            <li><a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son Sayfa</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="gallery-details">
+                        <div class="img-container module">
+                            <div class="img">
+                                <a href="{{route('show_photo',['slug' => $photo->slug ])}}">
+                                    <img src="{{ asset('gallery/' . $photo->photo_gallery_id . '/photos/' . $photo->file)}}" alt="{{$photo->name}}" class="img-responsive" />
+                                </a>
+                            </div>
+                            <div class="pager">
+
+                                <a href="{{route('show_photo',['slug' => $previousPhoto->slug ])}}" class="btn left">
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+
+                                <a href="{{route('show_photo',['slug' => $nextPhoto->slug ])}}" class="btn right">
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text-center module">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="{{route('show_photo',['slug' => $previousPhoto->slug ])}}"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                <li><a href="{{route('show_photo',['slug' => $photo->slug ])}}">{{$photo->name}}</a></li>
+                                <li>
+                                    <a href="{{route('show_photo',['slug' => $nextPhoto->slug ])}}"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div><!-- /.gallery -->
+                </div><!-- /.col -->
+                <div class="col-lg-4">
+                    <div class="gallery-details module">
                         <div class="gallery-text">
-                            <p>
-                                Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
-                            </p>
+                            <p>{{$photo->content}}</p>
                         </div><!-- /.gallery-text -->
                         <div class="time">
                             <small>
-                                <i class="fa fa-clock-o"></i> 17 Aralık 2016, 03:42
+                                <i class="fa fa-clock-o"></i> {{$photo->updated_at}}
                             </small>
                         </div><!-- /.time -->
                     </div><!-- /.gallery-details -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
-
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-lg-12">
+                    <div>
+                        @foreach($photo->tags as $tag)
+                            <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
                     <div class="f-posts">
                         <div class="title-section">
                             <h1>
-                                <span>Other Gallery</span>
+                                <span>{{trans('news::photo_gallery.other_galleries')}}</span>
                             </h1>
                         </div>
-                        <div class="row">
-                            <div class="col col-md-4">
-                                <a href="" class="news">
-                    <span class="pic">
-                        <img src="http://image.cdn.haber7.com/haber/haber7/bigmanset/2016/50/mostar_koprusu_halep_icin_isiklandirildi_1481828232_2568.jpg" alt="Mostar Köprüsü Halep için ışıklandırıldı" title="Mostar Köprüsü Halep için ışıklandırıldı">
-                    </span>
-                                </a>
-                            </div><!-- /.col-->
-
-                            <div class="col col-md-4">
-                                <a href="" class="news">
-                    <span class="pic">
-                        <img src="http://image.cdn.haber7.com/haber/haber7/bigmanset/2016/50/mostar_koprusu_halep_icin_isiklandirildi_1481828232_2568.jpg" alt="Mostar Köprüsü Halep için ışıklandırıldı" title="Mostar Köprüsü Halep için ışıklandırıldı">
-                    </span>
-                                </a>
-                            </div><!-- /.col-->
-
-                            <div class="col col-md-4">
-                                <a href="" class="news">
-                    <span class="pic">
-                        <img src="http://image.cdn.haber7.com/haber/haber7/bigmanset/2016/50/mostar_koprusu_halep_icin_isiklandirildi_1481828232_2568.jpg" alt="Mostar Köprüsü Halep için ışıklandırıldı" title="Mostar Köprüsü Halep için ışıklandırıldı">
-                    </span>
-                                </a>
-                            </div><!-- /.col-->
-
-                            <div class="col col-md-4">
-                                <a href="" class="news">
-                    <span class="pic">
-                        <img src="http://image.cdn.haber7.com/haber/haber7/bigmanset/2016/50/mostar_koprusu_halep_icin_isiklandirildi_1481828232_2568.jpg" alt="Mostar Köprüsü Halep için ışıklandırıldı" title="Mostar Köprüsü Halep için ışıklandırıldı">
-                    </span>
-                                </a>
-                            </div><!-- /.col-->
-                        </div><!-- /.row -->
-                    </div>
+                        <div class="gallery-posts module">
+                            <div class="row">
+                                @foreach($lastPhotos as $lastPhoto)
+                                    <div class="col-md-4">
+                                        <a href="{{route('show_photo',['slug' => $lastPhoto->slug ])}}" class="news">
+                                            <div class="pic">
+                                                <img src="{{ asset('gallery/' . $lastPhoto->photo_gallery_id . '/photos/' . $lastPhoto->thumbnail)}}" alt="{{$lastPhoto->name}}"
+                                                     title="{{$lastPhoto->name}}"/>
+                                            </div>
+                                        </a>
+                                    </div><!-- /.col-->
+                                @endforeach
+                            </div><!-- /.row -->
+                        </div><!-- /.gallery-post -->
+                    </div><!-- /.f-posts -->
                 </div>
-                <div class="col-md-5">
+                <div class="col-lg-4">
                     <div class="sidebar">
-                        <div class="nw-sm-img">
+                        <div class="nw-sm-img module">
                             <div role="tabpanel">
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
@@ -116,7 +112,7 @@
                                         <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>
+                                        <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son </a>
                                     </li>
                                     <li role="presentation">
                                         <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>
@@ -282,13 +278,15 @@
                                     <span>Link Title</span>
                                 </h1>
                             </div>
-                            <ul>
-                                <li><a href="#">Link1</a></li>
-                                <li><a href="#">Link2</a></li>
-                                <li><a href="#">Link3</a></li>
-                                <li><a href="#">Link4</a></li>
-                                <li><a href="#">Link5</a></li>
-                            </ul>
+                            <div class="news-h-links module">
+                                <ul>
+                                    <li><a href="#">Link1</a></li>
+                                    <li><a href="#">Link2</a></li>
+                                    <li><a href="#">Link3</a></li>
+                                    <li><a href="#">Link4</a></li>
+                                    <li><a href="#">Link5</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -302,11 +300,11 @@
 
 
 @section('meta_tags')
-    <title> {{ $photoGallery->title }}  </title>
-    <meta name="keywords" content="{{$photoGallery->keywords}}"/>
-    <meta name="description" content="{{$photoGallery->description}}"/>
+    <title>{{$photo->name}}</title>
+    <meta name="keywords" content="{{$photo->keywords}}"/>
+    <meta name="description" content="{{$photo->description}}"/>
     <meta name='subtitle' content='This is my subtitle'>
-    <meta name='pagename' content='{{$photoGallery->title}}'>
+    <meta name='pagename' content='{{$photo->name}}'>
     <meta name='identifier-URL' content='http://www.websiteaddress.com'>
     <meta name='directory' content='submission'>
     <meta name='author' content='name, email@hotmail.com'>
@@ -314,7 +312,6 @@
     <meta name='abstract' content=''>
     <meta name='topic' content=''>
     <meta name='summary' content=''>
-
 @endsection
 
 

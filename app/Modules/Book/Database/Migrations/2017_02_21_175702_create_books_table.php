@@ -16,13 +16,13 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('publisher_id')->nullable();
+            $table->unsignedInteger('book_publisher_id')->nullable();
+            $table->unsignedInteger('book_author_id')->nullable();
             $table->string('name');
             $table->string('slug')->nullable()->unique();
             $table->string('link')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('photo')->nullable();
-            $table->string('author')->nullable();
             $table->text('description')->nullable();
             $table->string('ISBN')->nullable();
             $table->string('release_date')->nullable();
@@ -36,8 +36,11 @@ class CreateBooksTable extends Migration
             $table->softDeletes();
 
             //keys
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('publisher_id')->references('id')->on('publishers')->onDelete('cascade')->onUpdate('cascade');
+
+            //todo user ilişkisi gözden geçirilecek
+//            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('book_publisher_id')->references('id')->on('book_publishers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('book_author_id')->references('id')->on('book_authors')->onDelete('cascade')->onUpdate('cascade');
         });
 
         Schema::create('book_categories_books', function (Blueprint $table) {

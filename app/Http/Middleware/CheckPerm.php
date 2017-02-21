@@ -14,12 +14,13 @@ class CheckPerm
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $guard = null)
     {
-        if(!Auth::user()->can('index-admin')){
-            return response('Unauthorized.', 401);
+        if(Auth::check() && Auth::user()->can('index-admin')){
+            return $next($request);
         }
 
-        return $next($request);
+        \Log::warning('Unauthorized request IP :' . $request->ip());
+        return response('Unauthorized.', 401);
     }
 }

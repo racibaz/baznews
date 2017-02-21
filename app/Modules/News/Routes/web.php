@@ -32,7 +32,7 @@ Route::get('videos/{slug}', 'Frontend\VideoController@getVideoBySlug')->name('sh
 
 
 Route::get('photo_gallery/{slug}', 'Frontend\PhotoGalleryController@getPhotoGalleryBySlug')->name('show_photo_gallery');
-//Route::get('photo/{slug}', 'Frontend\PhotoController@getVideoBySlug')->name('show_photo');
+Route::get('photo/{slug}', 'Frontend\PhotoController@getPhotoBySlug')->name('show_photo');
 Route::get('gallery_photo/{slug}', 'Frontend\PhotoGalleryController@showGalleryPhotos')->name('show_gallery_photos');
 
 

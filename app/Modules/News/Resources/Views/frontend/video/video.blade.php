@@ -21,7 +21,6 @@
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container -->
-
     <article>
         <div class="container" id="container">
             <div class="breadcrumbs">

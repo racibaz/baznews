@@ -6,9 +6,6 @@
     <div class="container" id="container">
         <div class="breadcrumbs">
             <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \
-                @foreach($record->book_categories as $bookCategory)
-                    <a href="{!! route('book_category', ['slug' => $bookCategory->slug]) !!}">{{$bookCategory->name}}</a> \
-                @endforeach
                 {{$record->name}}
             </p>
         </div>
@@ -16,9 +13,15 @@
             <div class="col-md-8">
                 <article class="module">
                     <div id="new-content">
-                        kitap adı : {{$record->name}} <br />
-                        yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>
-                        yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>
+                        <br /><br /><br /><br />
+                        yazar adı : {{$record->name}}
+                        <br />
+                        kitapları
+                        <br />
+                        @foreach($record->books as $book)
+                            <a href="{!! route('book', ['slug' => $book->slug]) !!}">{{$book->name}}</a> \
+                        @endforeach
+
                         <br /><br /><br /><br />
                         Kitap Detayları Gelecek.
                     </div>

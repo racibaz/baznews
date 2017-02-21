@@ -3,20 +3,18 @@
 namespace App\Modules\Book\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Library\Uploader;
-use App\Modules\Book\Models\Publisher;
-use App\Modules\Book\Repositories\PublisherRepository as Repo;
+use App\Modules\Book\Models\BookAuthor;
+use App\Modules\Book\Repositories\BookAuthorRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
-use Image;
 
-class PublisherController extends Controller
+class BookAuthorController extends Controller
 {
     private $repo;
-    private $view = 'publisher.';
+    private $view = 'book_author.';
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
@@ -55,24 +53,24 @@ class PublisherController extends Controller
     }
 
 
-    public function show(Publisher $record)
+    public function show(BookAuthor $record)
     {
         return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['records']));
     }
 
 
-    public function edit(Publisher $record)
+    public function edit(BookAuthor $record)
     {
         return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
     }
 
-    public function update(Request $request, Publisher $record)
+    public function update(Request $request, BookAuthor $record)
     {
         return $this->save($record);
     }
 
 
-    public function destroy(Publisher $record)
+    public function destroy(BookAuthor $record)
     {
         $this->repo->delete($record->id);
         return redirect()->route($this->redirectRouteName . $this->view .'index');
@@ -83,9 +81,11 @@ class PublisherController extends Controller
     {
         $input = Input::all();
 
+        $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
+        $input['user_id'] = \Auth::user()->id;
 
-        $v = Publisher::validate($input);
+        $v = BookAuthor::validate($input);
 
         if ($v->fails()) {
             return Redirect::back()

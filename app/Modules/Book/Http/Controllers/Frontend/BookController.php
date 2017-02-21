@@ -23,6 +23,7 @@ class BookController extends Controller
             $record = $this->repo
                 ->with([
                     'book_categories',
+                    'book_author',
                     'user',
                 ])
                 ->where('is_active', 1)
@@ -33,5 +34,4 @@ class BookController extends Controller
             ]))->render();
         });
     }
-
 }
