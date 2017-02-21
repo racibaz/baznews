@@ -8,7 +8,7 @@
     <ul class="treeview-menu">
         <li><a href="{!! route('book_category.index') !!}"><i class="fa fa-book"></i> <span>Kitap Kategorileri</span></a></li>
         <li><a href="{!! route('book.index') !!}"><i class="fa fa-book"></i> <span>Kitap</span></a></li>
-        <li><a href="{!! route('publisher.index') !!}"><i class="fa fa-book"></i> <span>Yayıncılar</span></a></li>
+        <li><a href="{!! route('book_publisher.index') !!}"><i class="fa fa-book"></i> <span>Yayıncılar</span></a></li>
         <li><a href="{!! route('book_author.index') !!}"><i class="fa fa-book"></i> <span>Kitap Yazarları</span></a></li>
     </ul>
 </li>
