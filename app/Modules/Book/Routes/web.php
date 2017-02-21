@@ -16,6 +16,7 @@
 Route::get('book/{slug}', 'Frontend\BookController@show')->name('book');
 Route::get('book-category/{slug}', 'Frontend\BookCategoryController@show')->name('book_category');
 Route::get('book-author/{slug}', 'Frontend\BookAuthorController@show')->name('book_author');
+Route::get('book-publisher/{slug}', 'Frontend\BookPublisherController@show')->name('book_publisher');
 
 Route::get('books_sitemap', 'Frontend\SitemapController@sitemap')->name('books_sitemap');
 

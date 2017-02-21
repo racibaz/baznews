@@ -70,9 +70,9 @@ class Book extends Model
         return $this->belongsTo('App\Modules\Book\Models\BookAuthor','book_author_id');
     }
 
-    public function publisher()
+    public function book_publisher()
     {
-        return $this->belongsTo('App\Modules\Book\Models\Publisher','publisher_id');
+        return $this->belongsTo('App\Modules\Book\Models\BookPublisher','book_publisher_id');
     }
 
     public static function validate($input) {
