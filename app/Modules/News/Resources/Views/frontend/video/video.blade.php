@@ -21,7 +21,6 @@
             </div>
         </div>
     </div>
-
     <article>
         <div class="container" id="container">
             <div class="breadcrumbs">
