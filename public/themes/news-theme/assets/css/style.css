@@ -121,9 +121,10 @@ body {
    ========================================================================== */
 .title-section {
     position: relative;
-    border-bottom: 1px solid #e1e1e1;
+    background: #fff;
+    border: 1px solid #e1e1e1;
     margin: 0 0 10px 0;
-    padding: 10px 0 0 0;
+    padding: 0;
 }
 .title-section h1, .title-section h2, .title-section h3, .title-section h4, .title-section h5 {
     color: #696969;
@@ -133,10 +134,10 @@ body {
 }
 .title-section h1 span, .title-section h2 span, .title-section h3 span, .title-section h4 span, .title-section h5 span {
     display: inline-block;
-    padding-bottom: 10px;
-    padding-right: 5px;
+    padding: 10px 15px;
     border-bottom: 1px solid #f44336;
 }
+
 
 /* ==========================================================================
    Big Title box
