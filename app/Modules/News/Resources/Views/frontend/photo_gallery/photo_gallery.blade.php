@@ -9,7 +9,7 @@
                 <div class="col-lg-12">
                     <div class="title-section">
                         <h1>
-                            <span>{{ !empty($firstPhoto->subtitle) ? $firstPhoto->subtitle : $firstPhoto->name}}</span>
+                            <span>{{ !empty($firstPhoto->subtitle) ? $firstPhoto->subtitle : $firstPhoto->name}}</span> bla bla
                         </h1>
                     </div>
                 </div>

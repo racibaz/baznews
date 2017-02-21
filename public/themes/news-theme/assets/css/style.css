@@ -61,7 +61,8 @@ body {
     background: -o-linear-gradient(top, transparent 0, rgba(31, 31, 31, 0) 31%, rgba(61, 61, 61, 0.41) 61%, rgba(0, 0, 0, 0.95) 100%);
     background: -ms-linear-gradient(top, transparent 0, rgba(31, 31, 31, 0) 31%, rgba(61, 61, 61, 0.41) 61%, rgba(0, 0, 0, 0.95) 100%);
     background: linear-gradient(to bottom, transparent 0, rgba(31, 31, 31, 0) 31%, rgba(61, 61, 61, 0.41) 61%, rgba(0, 0, 0, 0.95) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000',endColorstr='#f2000000',GradientType=0); }
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000',endColorstr='#f2000000',GradientType=0);
+}
 
 .full-link {
     position: absolute;
@@ -90,8 +91,54 @@ body {
 .sidebar {
     position: relative;
 }
-
-.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+.col-lg-1,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-md-1,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-sm-1,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-xs-1,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9{
     padding-right: 5px !important;
     padding-left: 5px !important;
 }
@@ -99,7 +146,6 @@ body {
     margin-right: -5px !important;
     margin-left: -5px !important;
 }
-
 /* ==========================================================================
    Ticker
    ========================================================================== */
@@ -114,17 +160,20 @@ body {
     display: inline-block;
     word-wrap: break-word;
 }
-
-
 /* ==========================================================================
    Title box
    ========================================================================== */
 .title-section {
     position: relative;
-    background: #fff;
     border: 1px solid #e1e1e1;
     margin: 0 0 10px 0;
     padding: 0;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,f44336+0,f44336+42,ffffff+100 */
+    background: #f44336; /* Old browsers */
+    background: -moz-linear-gradient(left,  #f44336 0%, #f44336 0%, #f44336 42%, #ffffff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  #f44336 0%,#f44336 0%,#f44336 42%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  #f44336 0%,#f44336 0%,#f44336 42%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
 }
 .title-section h1, .title-section h2, .title-section h3, .title-section h4, .title-section h5 {
     color: #696969;
@@ -135,10 +184,8 @@ body {
 .title-section h1 span, .title-section h2 span, .title-section h3 span, .title-section h4 span, .title-section h5 span {
     display: inline-block;
     padding: 10px 15px;
-    border-bottom: 1px solid #f44336;
+    color:#FFFFFF;
 }
-
-
 /* ==========================================================================
    Big Title box
    ========================================================================== */
@@ -270,7 +317,13 @@ header{
 #main-navbar-menu {
     width: 100%;
     padding: 0;
-    background-color: #ea4748;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f44336+22,f44336+22,f44336+39,f44336+74,ffffff+100 */
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(left,  #ffffff 0%, #f44336 22%, #f44336 22%, #f44336 39%, #f44336 74%, #ffffff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  #ffffff 0%,#f44336 22%,#f44336 22%,#f44336 39%,#f44336 74%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  #ffffff 0%,#f44336 22%,#f44336 22%,#f44336 39%,#f44336 74%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+
 }
 @media only screen and (max-width: 480px) {
     #main-navbar-menu {
@@ -1031,6 +1084,9 @@ header{
 /* ==========================================================================
    IMAGE GALLERY
    ========================================================================== */
+.image-gallery .gallery{
+    margin-bottom: 10px;
+}
 .image-gallery .img-container {
     position: relative; }
 .image-gallery .gallery-details{
