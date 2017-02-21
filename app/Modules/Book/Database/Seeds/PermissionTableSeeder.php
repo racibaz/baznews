@@ -146,6 +146,50 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+
+        //bookauthor
+        $bookauthor1 = Permission::create([
+            'name'          => 'index-bookauthor',
+            'display_name'  => 'bookauthor  Listeleme',
+            'is_active'     => 1,
+        ]);
+
+        $bookauthor2 = Permission::create([
+            'name'          => 'create-bookauthor',
+            'display_name'  => 'bookauthor Oluşturma',
+            'is_active'     => 1,
+        ]);
+
+        $bookauthor3 = Permission::create([
+            'name'          => 'edit-bookauthor',
+            'display_name'  => 'bookauthor Düzenleme',
+            'is_active'     => 1,
+        ]);
+
+        $bookauthor4 = Permission::create([
+            'name'          => 'destroy-bookauthor',
+            'display_name'  => 'bookauthor Silme',
+            'is_active'     => 1,
+        ]);
+
+        $bookauthor5 = Permission::create([
+            'name'          => 'show-bookauthor',
+            'display_name'  => 'bookauthor Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $bookauthor6 = Permission::create([
+            'name'          => 'update-bookauthor',
+            'display_name'  => 'bookauthor update',
+            'is_active'     => 1,
+        ]);
+
+        $bookauthor7 = Permission::create([
+            'name'          => 'store-bookauthor',
+            'display_name'  => 'bookauthor store',
+            'is_active'     => 1,
+        ]);
+
         $super_admin = Role::find(1);
 
         $super_admin->permissions()->attach($book1);
@@ -171,6 +215,14 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($publisher5);
         $super_admin->permissions()->attach($publisher6);
         $super_admin->permissions()->attach($publisher7);
+
+        $super_admin->permissions()->attach($bookauthor1);
+        $super_admin->permissions()->attach($bookauthor2);
+        $super_admin->permissions()->attach($bookauthor3);
+        $super_admin->permissions()->attach($bookauthor4);
+        $super_admin->permissions()->attach($bookauthor5);
+        $super_admin->permissions()->attach($bookauthor6);
+        $super_admin->permissions()->attach($bookauthor7);
 
     }
 }

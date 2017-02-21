@@ -5,13 +5,13 @@
     <div class="row">
         <div class="col-md-12">
             <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('book::publisher.management')}}</h3>
+            <h3 class="ls-top-header">{{trans('book::book_publisher.management')}}</h3>
             <!--Top header end -->
 
             <!--Top breadcrumb start -->
             <ol class="breadcrumb">
                 <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('publisher.index') !!}"> {{ trans('book::publisher.news_categories') }} </a></li>
+                <li><a href="{!! URL::route('book_publisher.index') !!}"> {{ trans('book::book_publisher.news_categories') }} </a></li>
                 <li class="active"> {{ trans('book::common.add_update') }}</li>
             </ol>
             <!--Top breadcrumb start -->
@@ -26,28 +26,28 @@
                 </div>
 
                 @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['publisher.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+                    {!! Form::model($record, ['route' => ['book_publisher.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
                 @else
-                    {!! Form::open(['route' => 'publisher.store','method' => 'post', 'files' => 'true']) !!}
+                    {!! Form::open(['route' => 'book_publisher.store','method' => 'post', 'files' => 'true']) !!}
                 @endif
 
                 <div class="panel-body">
 
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('name', trans('book::publisher.name'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('name', trans('book::book_publisher.name'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('name', $record->name, ['placeholder' => trans('book::publisher.name') ,'class' => 'form-control']) !!}
+                                {!! Form::text('name', $record->name, ['placeholder' => trans('book::book_publisher.name') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('link', trans('book::publisher.link'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('link', trans('book::book_publisher.link'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('link', $record->link, ['placeholder' => trans('book::publisher.link') ,'class' => 'form-control']) !!}
+                                {!! Form::text('link', $record->link, ['placeholder' => trans('book::book_publisher.link') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

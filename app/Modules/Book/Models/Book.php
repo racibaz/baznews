@@ -35,12 +35,12 @@ class Book extends Model
     protected $fillable = [
         'user_id',
         'publisher_id',
+        'book_author_id',
         'name',
         'slug',
         'link',
         'thumbnail',
         'photo',
-        'author',
         'description',
         'ISBN',
         'release_date',
@@ -63,6 +63,11 @@ class Book extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function book_author()
+    {
+        return $this->belongsTo('App\Modules\Book\Models\BookAuthor','book_author_id');
     }
 
     public function publisher()

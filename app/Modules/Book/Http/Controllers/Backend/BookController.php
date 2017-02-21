@@ -5,6 +5,7 @@ namespace App\Modules\Book\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Library\Uploader;
 use App\Modules\Book\Models\Book;
+use App\Modules\Book\Models\BookAuthor;
 use App\Modules\Book\Models\BookCategory;
 use App\Modules\Book\Models\Publisher;
 use App\Modules\Book\Repositories\BookRepository as Repo;
@@ -51,13 +52,15 @@ class BookController extends Controller
         $record = $this->repo->createModel();
         $bookCategoryList = BookCategory::bookCategoryList();
         $publisherList = Publisher::publisherList();
+        $bookAuthorList = BookAuthor::bookAuthorList();
 
         return Theme::view('book::' . $this->getViewName(__FUNCTION__),
             compact([
                 'bookCategoryIDs',
                 'record',
                 'bookCategoryList',
-                'publisherList'
+                'publisherList',
+                'bookAuthorList'
             ]));
     }
 
@@ -80,6 +83,7 @@ class BookController extends Controller
 
         $bookCategoryList = BookCategory::bookCategoryList();
         $publisherList = Publisher::publisherList();
+        $bookAuthorList = BookAuthor::bookAuthorList();
 
         foreach ($record->book_categories as $index => $book_category) {
             $bookCategoryIDs[$index] = $book_category->id;
@@ -91,9 +95,9 @@ class BookController extends Controller
                 'bookCategoryList',
                 'publisherList',
                 'bookCategoryIDs',
+                'bookAuthorList'
             ]));
     }
-
 
     public function update(Request $request, Book $record)
     {
@@ -113,6 +117,7 @@ class BookController extends Controller
 
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
+        $input['user_id'] = \Auth::user()->id;
 
         $v = Book::validate($input);
 

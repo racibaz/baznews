@@ -6,7 +6,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
-class Publisher extends Model
+class BookPublisher extends Model
 {
     use Sluggable;
 
@@ -64,6 +64,6 @@ class Publisher extends Model
 
     public static function publisherList()
     {
-        return Publisher::where('is_active',1)->pluck('name','id');
+        return BookPublisher::where('is_active',1)->pluck('name','id');
     }
 }

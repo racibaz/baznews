@@ -205,11 +205,14 @@
             <li><a href="{!! route('setting.index') !!}"><i class="fa fa-book"></i> <span>Genel Ayarlar</span></a></li>
             <li><a href="{!! route('tag.index') !!}"><i class="fa fa-book"></i> <span>Etiketler</span></a></li>
             <li><a href="{!! route('advertisement.index') !!}"><i class="fa fa-book"></i> <span>Reklam Yönetimi</span></a></li>
+{{--            <li><a href="{!! route('language.index') !!}"><i class="fa fa-book"></i> <span>Dil Yönetimi</span></a></li>--}}
             <li><a href="{!! route('announcement.index') !!}"><i class="fa fa-book"></i> <span>Duyurular</span></a></li>
             <li><a href="{!! route('sitemap.index') !!}"><i class="fa fa-book"></i> <span>Site Haritaları</span></a></li>
             <li><a href="{!! route('rss.index') !!}"><i class="fa fa-book"></i> <span>Rss ler</span></a></li>
+            <li><a href="{!! route('event.index') !!}"><i class="fa fa-book"></i> <span>Olay Yönetimi</span></a></li>
             <li><a href="{!! route('module_manager.index') !!}"><i class="fa fa-book"></i> <span>Modül Yönetimi</span></a></li>
             <li><a href="{!! route('widget_manager.index') !!}"><i class="fa fa-book"></i> <span>Widget Yönetimi</span></a></li>
+            <li><a href="{!! route('widget_group.index') !!}"><i class="fa fa-book"></i> <span>Widget Group Yönetimi</span></a></li>
             <li><a href="{!! route('theme_manager.index') !!}"><i class="fa fa-book"></i> <span>Tema Yönetimi</span></a></li>
             <li><a href="{!! route('ping') !!}"><i class="fa fa-book"></i> <span>Ping Servisleri</span></a></li>
             <li class="header">MODULLER </li>
