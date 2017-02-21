@@ -17,10 +17,10 @@
                             <a href="#">Breaking News -1</a>
                         </li>
                     </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div><!-- /.ticker -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
 
     <article>
         <div class="container" id="container">
@@ -382,9 +382,10 @@
 @endsection
 
 @section('js')
+
     <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.novtt.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
-    <script>
+    <script type="text/javascript">
         videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
         videojs("video-js", {}, function(){
             // Player (this) is initialized and ready.
@@ -392,7 +393,8 @@
     </script>
     <script src="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
-    <script>
+    <script type="text/javascript">
+
         $(document).ready(function () {
             /*--------------------------------------------------------
              Last Minute News Ticker Slider

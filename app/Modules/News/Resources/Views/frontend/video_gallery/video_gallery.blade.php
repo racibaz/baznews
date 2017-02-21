@@ -1,17 +1,28 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ticker last-time" id="son-dakika">
+                    <strong>Son Dakika:</strong>
+                    <ul>
+                        <li>
+                            <a href="#">Breaking News -1</a>
+                        </li>
+                        <li>
+                            <a href="#">Breaking News -1</a>
+                        </li>
+                        <li>
+                            <a href="#">Breaking News -1</a>
+                        </li>
+                    </ul>
+                </div><!-- /.ticker -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
     <article>
         <div class="container" id="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="last-time" id="son-dakika">
-                        <h4>Son Dakika:</h4>
-                        <a href="new-details.html">Tortor Cras Nibh Egestas Vestibulum</a>
-                    </div>
-                </div>
-            </div>
             <div class="breadcrumbs">
                 <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \\
                     <a href="{{route('show_video_gallery',['slug' => $videoGallery->slug ])}}">
@@ -24,7 +35,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <div id="new-content">
-                        <div class="playerbox">
+                        <div class="playerbox module">
 
                             <div class="player">
 
@@ -83,12 +94,14 @@
                 </div><!-- /.col-md-8 -->
                 <div class="col-md-4">
                     <div class="sidebar">
+
                         <div class="sidebar-video">
                             <div class="title-section">
                                 <h1>
-                                    <span>Galerinin Diğer Videoları</span>
+                                    <span>Diğer Kategorinin Videoları</span>
                                 </h1>
                             </div>
+
                             <div class="video-list-body">
                                 @foreach($otherGalleryVideos as $otherGalleryVideo)
                                     <div class="video-link module">
@@ -105,6 +118,9 @@
                                             <div class="col-lg-9">
                                                 <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
                                                     <span class="title">{{$otherGalleryVideo->name}}</span>
+                                                    <span class="excerpt">
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                    </span>
                                                 </a>
                                                 <span class="time visible-lg"> {{$otherGalleryVideo->updated_at}}</span>
                                             </div>
@@ -112,10 +128,9 @@
                                     </div><!-- /.video-link -->
                                 @endforeach
                             </div>
-
                         </div><!-- /.sidebar-video -->
 
-                        <div class="nw-sm-img">
+                        <div class="nw-sm-img module">
                             <div role="tabpanel">
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
@@ -347,7 +362,7 @@
                         <div class="col-md-5 hero">
                             <div class="box">
                                 <a href="#">
-                                    <img alt="Nişantaşı'ndan tinerci yolunu kestiği adamı yaktı" width="100%" src="img/video-manset/tab-big-image.jpg">
+                                    <img alt="Nişantaşı'ndan tinerci yolunu kestiği adamı yaktı" width="100%" src="{{ asset('video_gallery/1/photos/497x358_1')}}">
                                     <span class="title">
                             <strong>Nişantaşı'ndan tinerci yolunu kestiği adamı yaktı</strong>
                         </span>
@@ -358,7 +373,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <a href="#">
-                                        <img width="100%" src="img/video-manset/tab-image.jpg">
+                                        <img width="100%" src="{{ asset('video_gallery/1/photos/497x358_1')}}">
                                     </a>
                                 </div>
                                 <div class="col-md-6">
@@ -371,7 +386,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <a href="#">
-                                        <img width="100%" src="img/video-manset/tab-image.jpg">
+                                        <img width="100%" src="{{ asset('video_gallery/1/photos/497x358_1')}}">
                                     </a>
                                 </div>
                                 <div class="col-md-6">
@@ -430,12 +445,30 @@
 @endsection
 
 @section('js')
+
     <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.novtt.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
+
     <script>
         videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
         videojs("video-js", {}, function(){
             // Player (this) is initialized and ready.
+        });
+    </script>
+    <script src="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*--------------------------------------------------------
+             Last Minute News Ticker Slider
+             * --------------------------------------------------------*/
+            $('.ticker').ticker();
+            /*--------------------------------------------------------
+             mCustomScrollbar
+             * --------------------------------------------------------*/
+            $('.sidebar-video .video-list-body').mCustomScrollbar({
+                theme:"rounded-dark"
+            });
         });
     </script>
 
