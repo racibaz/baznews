@@ -102,6 +102,55 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $article9 = Permission::create([
+            'name'          => 'Passive-article',
+            'display_name'  => 'article Passive',
+            'is_active'     => 1,
+        ]);
+
+
+        $article10 = Permission::create([
+            'name'          => 'Active-article',
+            'display_name'  => 'article Active',
+            'is_active'     => 1,
+        ]);
+
+
+        $article11 = Permission::create([
+            'name'          => 'Draft-article',
+            'display_name'  => 'article Draft',
+            'is_active'     => 1,
+        ]);
+
+
+        $article12 = Permission::create([
+            'name'          => 'On Air-article',
+            'display_name'  => 'article On Air',
+            'is_active'     => 1,
+        ]);
+
+
+        $article13 = Permission::create([
+            'name'          => 'Preparing-article',
+            'display_name'  => 'article Preparing',
+            'is_active'     => 1,
+        ]);
+
+
+        $article14 = Permission::create([
+            'name'          => 'Pending for Editor Approval-article',
+            'display_name'  => 'article Pending for Editor Approval',
+            'is_active'     => 1,
+        ]);
+
+        $article15 = Permission::create([
+            'name'          => 'Garbage-article',
+            'display_name'  => 'article Garbage',
+            'is_active'     => 1,
+        ]);
+
+
+
         //articlecategory
         $articlecategory1 = Permission::create([
             'name'          => 'index-articlecategory',
@@ -155,6 +204,14 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($article5);
         $super_admin->permissions()->attach($article6);
         $super_admin->permissions()->attach($article7);
+
+        $super_admin->permissions()->attach($article9);
+        $super_admin->permissions()->attach($article10);
+        $super_admin->permissions()->attach($article11);
+        $super_admin->permissions()->attach($article12);
+        $super_admin->permissions()->attach($article13);
+        $super_admin->permissions()->attach($article14);
+        $super_admin->permissions()->attach($article15);
         $super_admin->permissions()->attach($author1);
         $super_admin->permissions()->attach($author2);
         $super_admin->permissions()->attach($author3);

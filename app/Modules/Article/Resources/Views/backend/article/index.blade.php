@@ -10,10 +10,16 @@
             </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><strong>{{trans('article.managment')}}</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('article.management')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
+                    @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
+                    @foreach($statusList as $index => $status)
+                        <a href="{{route('article_statuses',[$index])}}">
+                            {{$status}} [ {{$articleCountByStatus[$index]}} ]
+                        </a>
+                    @endforeach
                     <table id="countries" class="table table-bordered table-hover">
                         <thead>
                         <tr>

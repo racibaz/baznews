@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Log;
 
 class ArticleController extends Controller
 {
@@ -40,29 +41,44 @@ class ArticleController extends Controller
     {
         return $this->redirectViewName . $this->view . $methodName;
     }
-    
-    public function index()
+
+    public function index($statusCode = null)
     {
-        $records = $this->repo->orderBy('updated_at', 'desc')->findAll();
-
-
-        DB::connection()->enableQueryLog();
-
-        if(Cache::has('articles'))
-        {
-
-            $records = Cache::get('articles');
-        }else
-        {
-            $records = Article::all();
-            Cache::store('redis')->put('articles', $records, 10);
+        $statusList = [];
+        $articleCountByStatus = [];
+        $statuses = Article::$statuses;
+        foreach ($statuses as  $index => $status){
+            if(Auth::user()->can($status . '-article')){
+                $statusList[$index] =  $status;
+                $articleCountByStatus[$index] = $this->repo->where('status',$index)->findAll()->count();
+            }
         }
 
-        $queries  = DB::getQueryLog();
-        print_r($queries);
 
+        //Status durumuna göre verileri getiriyoruz.
+        if(is_numeric($statusCode)) {
 
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['records']));
+            if(!key_exists($statusCode,$statusList)){
+                Log::warning('Not permission by news status code(' . $statusCode .')  admin.news.index  User id :  ' . Auth::user()->id);
+                Session::flash('error_message', trans('common.bad_request'));
+                return Redirect::back();
+            }
+
+            $records = $this->repo->orderBy('updated_at', 'desc')->where('status',$statusCode)->paginate(50);
+
+        }else{
+            $records = $this->repo->orderBy('updated_at', 'desc')->paginate(50);
+        }
+
+        $articleCategoryList = ArticleCategory::articleCategoryList();
+
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__),
+            compact([
+                'records',
+                'articleCategoryList',
+                'statusList',
+                'articleCountByStatus',
+            ]));
     }
 
 
