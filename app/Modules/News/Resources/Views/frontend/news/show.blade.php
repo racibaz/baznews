@@ -205,11 +205,6 @@
 
                         @if($record->is_show_editor_profile)
                             <div class="author-box">
-                                <div class="title-section">
-                                    <h1>
-                                        <span>Haber Yazarı</span>
-                                    </h1>
-                                </div>
                                 <div class="author-detail">
                                     <div class="row">
                                         <div class="col-lg-2 col-md-3">
@@ -234,10 +229,13 @@
                                             <div class="links">
                                                 <ul class="nav nav-pills">
                                                     <li>
-                                                        <a href="{{$record->user->facebook}}"><i class="fa fa-facebook"></i> Facebook Profili</a>
+                                                        <a href="{{$record->user->facebook}}"><i class="fa fa-facebook"></i></a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{$record->user->web_site}}"><i class="fa fa-globe"></i> Web Sitesi</a>
+                                                        <a href="{{$record->user->twitter}}"><i class="fa fa-twitter"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{$record->user->web_site}}"><i class="fa fa-globe"></i></a>
                                                     </li>
                                                 </ul>
                                             </div><!-- /.editor-info -->
