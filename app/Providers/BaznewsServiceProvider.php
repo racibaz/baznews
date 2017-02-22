@@ -22,7 +22,7 @@ class BaznewsServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = true;
+    protected $defer = false;
 
     /**
      * Bootstrap the application services.
@@ -31,7 +31,7 @@ class BaznewsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(!app()->runningInConsole() ) {
+        if(!app()->runningInConsole() && \Schema::hasTable('settings') && \Schema::hasTable('menus') && \Schema::hasTable('advertisements') && \Schema::hasTable('widgets') ) {
 
             User::created(function ($user) {
                 $token = $user->activationToken()->create([
@@ -85,10 +85,8 @@ class BaznewsServiceProvider extends ServiceProvider
             //Cache::tags('settings')->flush();
             //Cache::flush();
 
-
             //TODO cachelenecek
             View::share('activeTheme', Theme::getActive());
-
         }
     }
 
