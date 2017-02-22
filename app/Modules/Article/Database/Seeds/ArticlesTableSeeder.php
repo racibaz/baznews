@@ -16,9 +16,9 @@ class ArticlesTableSeeder extends Seeder
     {
         Article::create([
             'user_id'               => 1,
-            'author_id'             => 1,
-            'title'                 => 'makale1',
-            'slug'                  => 'makale1',
+            'article_author_id'             => 1,
+            'title'                 => 'makale 1',
+            'slug'                  => 'makale-1',
             'subtitle'              => 'makale1',
             'spot'                  => 'makale1',
             'content'               => 'makale1',
@@ -26,16 +26,16 @@ class ArticlesTableSeeder extends Seeder
             'keywords'              => 'makale1',
             'hit'                   => 1,
             'order'                 => 1,
-            'status'                => 0,
+            'status'                => 1,
             'is_cuff'               => 1,
             'is_active'             => 1,
         ]);
 
         Article::create([
             'user_id'               => 1,
-            'author_id'             => 1,
-            'title'                 => 'makale2',
-            'slug'                  => 'makale2',
+            'article_author_id'             => 1,
+            'title'                 => 'makale 2',
+            'slug'                  => 'makale-2',
             'subtitle'              => 'makale2',
             'spot'                  => 'makale2',
             'content'               => 'makale2',
@@ -50,9 +50,9 @@ class ArticlesTableSeeder extends Seeder
 
         Article::create([
             'user_id'               => 1,
-            'author_id'             => 1,
-            'title'                 => 'makale3',
-            'slug'                  => 'makale3',
+            'article_author_id'             => 1,
+            'title'                 => 'makale 3',
+            'slug'                  => 'makale-3',
             'subtitle'              => 'makale3',
             'spot'                  => 'makale3',
             'content'               => 'makale3',
@@ -67,9 +67,9 @@ class ArticlesTableSeeder extends Seeder
 
         Article::create([
             'user_id'               => 1,
-            'author_id'             => 1,
-            'title'                 => 'makale4',
-            'slug'                  => 'makale4',
+            'article_author_id'             => 1,
+            'title'                 => 'makale 4',
+            'slug'                  => 'makale-4',
             'subtitle'              => 'makale4',
             'spot'                  => 'makale4',
             'content'               => 'makale4',
@@ -77,7 +77,7 @@ class ArticlesTableSeeder extends Seeder
             'keywords'              => 'makale4',
             'hit'                   => 1,
             'order'                 => 1,
-            'status'                => 0,
+            'status'                => 1,
             'is_cuff'               => 1,
             'is_active'             => 1,
         ]);

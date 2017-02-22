@@ -3,8 +3,8 @@
 namespace App\Modules\Article\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Article\Models\Author;
-use App\Modules\Article\Repositories\AuthorRepository as Repo;
+use App\Modules\Article\Models\ArticleAuthor;
+use App\Modules\Article\Repositories\ArticleAuthorRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
-class AuthorController extends Controller
+class ArticleAuthorController extends Controller
 {
     private $repo;
-    private $view = 'author.';
+    private $view = 'article_author.';
     private $redirectViewName = 'backend.';
     private $redirectRouteName = '';
 
@@ -57,25 +57,25 @@ class AuthorController extends Controller
     }
 
 
-    public function show(Author $record)
+    public function show(ArticleAuthor $record)
     {
         return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
-    public function edit(Author $record)
+    public function edit(ArticleAuthor $record)
     {
         return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
-    public function update(Request $request, Author $record)
+    public function update(Request $request, ArticleAuthor $record)
     {
         return $this->save($record);
     }
 
 
-    public function destroy(Author $record)
+    public function destroy(ArticleAuthor $record)
     {
         $this->repo->delete($record->id);
         return redirect()->route($this->redirectRouteName . $this->view . 'index');
@@ -91,7 +91,7 @@ class AuthorController extends Controller
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['user_id'] = Auth::user()->id;
 
-        $v = Author::validate($input);
+        $v = ArticleAuthor::validate($input);
 
         if ($v->fails()) {
             return Redirect::back()
@@ -103,11 +103,8 @@ class AuthorController extends Controller
                 $result = $this->repo->update($record->id, $input);
             } else {
                 $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
             }
-            if ($result) {
+            if ($result[0]) {
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {

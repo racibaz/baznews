@@ -104,11 +104,8 @@ class ArticleCategoryController extends Controller
                 $result = $this->repo->update($record->id,$input);
             } else {
                 $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
             }
-            if ($result) {
+            if ($result[0]) {
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {

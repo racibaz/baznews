@@ -23,13 +23,16 @@ class Article extends Eloquent
     public function sluggable() {
         return [
             'slug' => [
-                'source' => ['title']
+                'source' => ['title','id']
             ]
         ];
     }
 
     protected $table = 'articles';
-    protected $fillable = ['user_id', 'author_id', 'title', 'slug', 'subtitle', 'spot', 'content', 'description', 'keywords', 'hit', 'order', 'status', 'is_cuff', 'is_active'];
+
+    public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
+
+    protected $fillable = ['user_id', 'article_author_id', 'title', 'slug', 'subtitle', 'spot', 'content', 'description', 'keywords', 'hit', 'order', 'status', 'is_cuff', 'is_active'];
     protected $dates = ['created_at','updated_at','deleted_at'];
 
     public function user()
@@ -37,9 +40,9 @@ class Article extends Eloquent
         return $this->belongsTo(User::class);
     }
 
-    public function author()
+    public function article_author()
     {
-        return $this->belongsTo(Author::class);
+        return $this->belongsTo(ArticleAuthor::class);
     }
 
     public function article_categories()
@@ -50,7 +53,7 @@ class Article extends Eloquent
     public static function validate($input) {
         $rules = array(
             'user_id' => 'required',
-            'author_id' => 'required',
+            'article_author_id' => 'required',
             'title' => 'required',
             'hit'   => 'integer',
             'order' => 'integer',

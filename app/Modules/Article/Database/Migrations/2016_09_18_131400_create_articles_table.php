@@ -16,7 +16,7 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('author_id');
+            $table->unsignedInteger('article_author_id');
             $table->string('title')->nullable()->unique();
             $table->string('slug')->nullable()->unique();
             $table->string('subtitle')->nullable();
@@ -34,7 +34,7 @@ class CreateArticlesTable extends Migration
 
             // Keys
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('article_author_id')->references('id')->on('article_authors')->onDelete('cascade')->onUpdate('cascade');
         });
 
         Schema::create('article_categories_articles', function (Blueprint $table) {

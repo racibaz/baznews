@@ -8,10 +8,9 @@ use Eloquent;
 use Illuminate\Support\Facades\Validator;
 use Venturecraft\Revisionable\RevisionableTrait;
 
-class Author extends Eloquent
+class ArticleAuthor extends Eloquent
 {
     use RevisionableTrait;
-
     use Sluggable;
 
     /**
@@ -22,12 +21,17 @@ class Author extends Eloquent
     public function sluggable() {
         return [
             'slug' => [
-                'source' => ['title']
+                'source' => ['name']
             ]
         ];
     }
-    protected $table = 'authors';
+    protected $table = 'article_authors';
     protected $fillable = ['user_id', 'name', 'slug', 'email', 'cv', 'photo', 'description', 'keywords', 'is_quotation', 'is_cuff', 'is_active'];
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 
     public function user()
     {
@@ -38,13 +42,17 @@ class Author extends Eloquent
         $rules = array(
             'user_id' => 'required',
             'name' => 'required',
+//            'email' => 'required|Between:3,64|email|Unique:article_authors',
+            'email' => 'required|Between:3,64|email',
             'photo' => 'image|max:255',
+            'description' => 'max:255',
+            'keywords' => 'max:255',
         );
         return Validator::make($input, $rules);
     }
 
-    public static function authorList()
+    public static function articleAuthorList()
     {
-        return Author::where('is_active',1)->pluck('name', 'id');
+        return ArticleAuthor::where('is_active',1)->pluck('name', 'id');
     }
 }

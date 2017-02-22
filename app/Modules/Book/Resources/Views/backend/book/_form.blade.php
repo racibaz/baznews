@@ -207,7 +207,7 @@
             <!-- general form elements disabled -->
             <div class="box box-warning">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{ trans('news::news.select_categories') }}</h3>
+                    <h3 class="box-title">{{ trans('book::book.select_categories') }}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">

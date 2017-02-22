@@ -8,11 +8,9 @@
         <ul>
             @foreach($recentArticles as $recentArticle)
                 <li>
-                    <a href="#"><span class="text">{{ $recentArticle->title }}</span></a>
+                    <a href="{{route('article',['slug' => $recentArticle->slug])}}"><span class="text">{{ $recentArticle->title }}</span></a>
                 </li>
             @endforeach
         </ul>
     </div>
-
-
 </div>

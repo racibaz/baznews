@@ -2,10 +2,10 @@
 
 namespace App\Modules\Article\Database\Seeds;
 
-use App\Modules\Article\Models\Author;
+use App\Modules\Article\Models\ArticleAuthor;
 use Illuminate\Database\Seeder;
 
-class AuthorsTableSeeder extends Seeder
+class ArticleAuthorsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class AuthorsTableSeeder extends Seeder
      */
     public function run()
     {
-        Author::create([
+        ArticleAuthor::create([
             'user_id'                   => 1,
             'name'                      => 'alınto yazar 1',
             'is_quotation'              => 1,
@@ -22,7 +22,7 @@ class AuthorsTableSeeder extends Seeder
             'is_active'                 => 1,
         ]);
 
-        Author::create([
+        ArticleAuthor::create([
             'user_id'                   => 1,
             'name'                      => 'alınto yazar 2',
             'is_quotation'              => 1,
@@ -30,7 +30,7 @@ class AuthorsTableSeeder extends Seeder
             'is_active'                 => 1,
         ]);
 
-        Author::create([
+        ArticleAuthor::create([
             'user_id'                   => 1,
             'name'                      => 'alınto yazar 3',
             'is_quotation'              => 1,

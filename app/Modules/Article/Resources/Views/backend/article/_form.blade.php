@@ -19,25 +19,25 @@
     </div>
     <!-- Main Content Element  Start-->
     <div class="row">
+
+        @if(isset($record->id))
+            {!! Form::model($record, ['route' => ['article.update', $record], 'method' => 'PATCH']) !!}
+        @else
+            {!! Form::open(['route' => 'article.store','method' => 'post']) !!}
+        @endif
+
         <div class="col-md-6">
             @include($activeTheme . '::backend.partials._rivisions', ['rivisions' => $record->revisionHistory])
             <div class="panel panel-light-blue">
                 <div class="panel-heading">
                     {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                 </div>
-
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['article.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'article.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
-
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('author_id', trans('article::article.author_id'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('article_author_id', trans('article::article.article_author_id'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::select('author_id', $authorList , $record->author_id , ['placeholder' => trans('article::common.please_choose'),'class' => 'form-control']) !!}
+                                {!! Form::select('article_author_id', $articleAuthorList , $record->article_author_id , ['placeholder' => trans('article::common.please_choose'),'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -127,7 +127,7 @@
                             {!! Form::label('status', trans('article::article.status'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::number('status', $record->status, ['placeholder' => trans('article::article.status') ,'class' => 'form-control']) !!}
+                                {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -165,62 +165,51 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
             </div>
-        </div>
-    </div><!-- end row -->
-
-
-    <div class="col-md-6">
-        <!-- general form elements disabled -->
-        <div class="box box-warning">
-            <div class="box-header with-border">
-                <h3 class="box-title">Role İzin Yonetimi</h3>
-            </div>
-
-            {!! Form::open(['route' => 'article_article_category_store','method' => 'post']) !!}
-
-                    <!-- /.box-header -->
-            <div class="box-body">
-                {{--<form role="form">--}}
-
-                {!!  Form::hidden('article_id', $record->id) !!}
-
-                @foreach($articleCategories as $articleCategory)
-                    <div class="form-group">
-                        {{ $articleCategory->name }} :
-                        {!! Form::checkbox($articleCategory->name, $articleCategory->id, in_array($articleCategory->name , $record->article_categories->pluck('name')->toArray())) !!}
-                    </div>
-                @endforeach
-
-                <div class="box-footer">
-                    {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
+        <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('article::article.select_categories') }}</h3>
                 </div>
-                {!! Form::close() !!}
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        {!! Form::select('article_category_ids[]', $articleCategoryList , $articleCategoryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
+                    </div>
+                </div>
+                <!-- /.box-body -->
             </div>
-            <!-- /.box-body -->
+            <!-- /.box -->
         </div>
-    <!-- /.box -->
-    </div>
-
+        {!! Form::close() !!}
+    </div><!-- end row -->
     <!-- Main Content Element  End-->
+
 </div><!-- end container-fluid -->
 
 @endsection
 
+@section('css')
+    <link href="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.min.css') }}" rel="stylesheet">
+    <style>
+        #preview {display: none;}
+        .display {display: block !important;}
+    </style>
+@endsection
+
+
 @section('js')
 
-    {{--<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>--}}
+    <script src="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
 
-    {{--<script>--}}
-        {{--CKEDITOR.replace( 'content', {--}}
-            {{--filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',--}}
-            {{--filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',--}}
-            {{--filebrowserBrowseUrl: '/laravel-filemanager?type=Files',--}}
-            {{--filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'--}}
-        {{--});--}}
-    {{--</script>--}}
 
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $(".select2").select2();
+        });
+    </script>
 
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     {{--<textarea name="content" class="form-control my-editor">{!! old('content', $content) !!}</textarea>--}}
@@ -260,5 +249,25 @@
 
         tinymce.init(editor_config);
     </script>
-@endsection
 
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                $( "#preview" ).addClass( "display" );
+                reader.onload = function (e) {
+                    $('#preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#thumbnail").change(function(){
+            readURL(this);
+        });
+    </script>
+
+@endsection

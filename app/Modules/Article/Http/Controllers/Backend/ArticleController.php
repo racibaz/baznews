@@ -4,18 +4,18 @@ namespace App\Modules\Article\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Article\Models\Article;
+use App\Modules\Article\Models\ArticleAuthor;
 use App\Modules\Article\Models\ArticleCategory;
-use App\Modules\Article\Models\Author;
 use App\Modules\Article\Repositories\ArticleRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use DB;
+use Mews\Purifier\Facades\Purifier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
-use Mews\Purifier\Facades\Purifier;
 
 class ArticleController extends Controller
 {
@@ -44,6 +44,8 @@ class ArticleController extends Controller
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->findAll();
+
+
         DB::connection()->enableQueryLog();
 
         if(Cache::has('articles'))
@@ -56,8 +58,6 @@ class ArticleController extends Controller
             Cache::store('redis')->put('articles', $records, 10);
         }
 
-
-
         $queries  = DB::getQueryLog();
         print_r($queries);
 
@@ -68,10 +68,26 @@ class ArticleController extends Controller
 
     public function create()
     {
-        $articleCategories = ArticleCategory::articleCategories();
-        $authorList = Author::authorList();
+        $articleCategoryIDs = [];
+        $articleCategoryList = ArticleCategory::articleCategoryList();
+        $articleAuthorList  = ArticleAuthor::articleAuthorList();
         $record = $this->repo->createModel();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'authorList', 'articleCategories']));
+        $statuses = Article::$statuses;
+
+        foreach ($statuses as  $index => $status){
+            if(Auth::user()->can($status . '-news')){
+                $statusList[$index] =  $status;
+            }
+        }
+
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__),
+            compact([
+                'record',
+                'articleCategoryIDs',
+                'articleCategoryList',
+                'articleAuthorList',
+                'statusList',
+            ]));
     }
 
 
@@ -89,9 +105,30 @@ class ArticleController extends Controller
 
     public function edit(Article $record)
     {
-        $articleCategories = ArticleCategory::articleCategories();
-        $authorList = Author::authorList();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'authorList', 'articleCategories']));
+        $articleCategoryIDs = [];
+        $articleCategoryList = ArticleCategory::articleCategoryList();
+        $articleAuthorList = ArticleAuthor::articleAuthorList();
+        $statuses = Article::$statuses;
+
+
+        foreach ($statuses as  $index => $status){
+            if(Auth::user()->can($status . '-news')){
+                $statusList[$index] =  $status;
+            }
+        }
+
+        foreach ($record->article_categories as $index => $article_category) {
+            $articleCategoryIDs[$index] = $article_category->id;
+        }
+
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__),
+            compact([
+                'record',
+                'articleCategoryIDs',
+                'articleCategoryList',
+                'articleAuthorList',
+                'statusList',
+            ]));
     }
 
 
@@ -129,11 +166,11 @@ class ArticleController extends Controller
                 $result = $this->repo->update($record->id, $input);
             } else {
                 $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
             }
-            if ($result) {
+            if ($result[0]) {
+
+                $this->article_article_categories_store($result[1],$input);
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {
@@ -144,20 +181,10 @@ class ArticleController extends Controller
         }
     }
 
-    public function article_article_category_store(Request $request)
+    public function article_article_categories_store(Article $record, $input)
     {
-        $input = Input::all();
-        $article_id = $input['article_id'];
-
-        unset($input['article_id']);
-        unset($input['_token']);
-
-        $article = Article::find($article_id);
-        //$role->permissons->sync($input);
-
-        $article->article_categories()->sync($input);
-
-        return Redirect::back();
+        if(isset($input['article_category_ids'])) {
+            $record->article_categories()->sync($input['article_category_ids']);
+        }
     }
-
 }

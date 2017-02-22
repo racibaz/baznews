@@ -3,7 +3,6 @@
 namespace App\Modules\Article\Database\Seeds;
 
 use App\Models\Setting;
-use WidgetManagersTableSeeder;
 use Illuminate\Database\Seeder;
 
 class ArticleDatabaseSeeder extends Seeder
@@ -16,7 +15,7 @@ class ArticleDatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(ArticleCategoriesTableSeeder::class);
-        $this->call(AuthorsTableSeeder::class);
+        $this->call(ArticleAuthorsTableSeeder::class);
         $this->call(ArticlesTableSeeder::class);
         $this->call(ArticleWidgetManagerTableSeeder::class);
         $this->call(PermissionTableSeeder::class);
@@ -32,11 +31,11 @@ class ArticleDatabaseSeeder extends Seeder
             ]);
         }
 
-        $setting = Setting::where('attribute_key','author_count')->first();
+        $setting = Setting::where('attribute_key','article_author_count')->first();
         if(empty($setting))
         {
             Setting::create([
-                'attribute_key'               => 'author_count',
+                'attribute_key'               => 'article_author_count',
                 'attribute_value'             => '5',
             ]);
         }
