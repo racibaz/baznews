@@ -93,7 +93,7 @@
                         <div class="sidebar-video">
                             <div class="title-section">
                                 <h1>
-                                    <span>Diğer Kategorinin Videoları</span>
+                                    <span>Diğer Videoları</span>
                                 </h1>
                             </div>
 
@@ -295,6 +295,7 @@
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
+
             <div class="videos">
                 <div class="title-section">
                     <h1>
@@ -353,7 +354,6 @@
                     </div><!-- /.row -->
                 </div><!-- /.videos -->
             @endif
-
         </div>
     </article><!-- /.article -->
 

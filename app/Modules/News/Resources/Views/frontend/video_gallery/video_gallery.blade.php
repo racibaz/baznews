@@ -98,7 +98,7 @@
                         <div class="sidebar-video">
                             <div class="title-section">
                                 <h1>
-                                    <span>Diğer Kategorinin Videoları</span>
+                                    <span>Galerinin Diğer Videoları</span>
                                 </h1>
                             </div>
 
@@ -301,122 +301,60 @@
                 </div><!-- /.col -->
             </div><!-- /.row -->
 
-            <div class="title-section">
-                <h1>
-                    <span>Last Videos</span>
-                </h1>
-            </div><!-- /.title-section -->
-
-            <div class="videos">
-                <div class="row">
-                    @foreach($galleryVideos as $galleryVideo)
-                        <div class="col-md-2 col-sm-4 col-xs-6">
-                            <div class="r-box">
-                                <a href="{{route('show_video_gallery',['slug' => $galleryVideo->slug ])}}">
-                                    <img src="{{ asset('video_gallery/' . $galleryVideo->video_gallery_id . '/photos/196x150_' . $galleryVideo->thumbnail)}}" />
-                                    <i class="icon"></i>
-                                    <span class="c-text">{{$galleryVideo->title}}</span>
-                                </a>
-                            </div>
-                        </div><!-- /.col -->
-                    @endforeach
-                </div><!-- /.row -->
-            </div><!-- /.related-videos -->
-
             <div class="videos">
                 <div class="title-section">
                     <h1>
-                        <span>Other Videos</span>
-                        <a href="video-details.html" class="btn btn-primary btn-xs m-v-btn">Daha fazla</a>
+                        <span>Gallery Other Videos</span>
                     </h1>
                 </div><!-- /.title-section -->
                 <div class="row">
-                    {{--@if($randomVideos)--}}
-                        {{--@foreach($randomVideos as $randomVideo)--}}
-                            {{--<div class="col-md-2 col-sm-4 col-xs-6">--}}
-                                {{--<div class="r-box">--}}
-                                    {{--<a href="{{route('show_videos',['slug' => $randomVideo->slug ])}}">--}}
-                                        {{--<img src="{{ asset('videos/' . $randomVideo->id . '/165x90_' . $randomVideo->thumbnail)}}"   />--}}
-                                        {{--<i class="icon"></i>--}}
-                                        {{--<span class="c-text">{{$randomVideo->name}}</span>--}}
-                                    {{--</a>--}}
-                                {{--</div><!-- /.r-box -->--}}
-                            {{--</div><!-- /. -->--}}
-                        {{--@endforeach--}}
-                    {{--@endif--}}
+                    @foreach($galleryVideos as $galleryVideo)
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <div class="r-box module">
+                                <div class="box-img">
+                                    <a href="{{route('show_video_gallery',['slug' => $galleryVideo->slug ])}}">
+                                        <img src="{{ asset('video_gallery/' . $galleryVideo->video_gallery_id . '/photos/497x358_' . $galleryVideo->thumbnail)}}" alt="{{$galleryVideo->name}}" title="{{$galleryVideo->name}}"/>
+                                        <span class="icon"></span>
+                                    </a>
+                                </div>
+                                <div class="img-title">
+                                    <a href="{{route('show_video_gallery',['slug' => $galleryVideo->slug ])}}">
+                                        {{$galleryVideo->name}}
+                                    </a>
+                                </div>
+                            </div><!-- /.r-box -->
+                        </div><!-- /. -->
+                    @endforeach
+                </div><!-- /.row -->
+            </div><!-- /.related-videos -->
+            <div class="videos">
+                <div class="title-section">
+                    <h1>
+                        <span>Lastest Videos</span>
+                        <a href="#" class="btn btn-primary btn-xs m-v-btn">Daha fazla</a>
+                    </h1>
+                </div><!-- /.title-section -->
+                <div class="row">
+                    @foreach($lastestVideos  as $lastestVideo)
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <div class="r-box module">
+                                <div class="box-img">
+                                    <a href="{{route('show_videos',['slug' => $lastestVideo->slug ])}}">
+                                        <img src="{{ asset('video_gallery/' . $lastestVideo->video_gallery_id . '/photos/497x358_' . $lastestVideo->thumbnail)}}" alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
+                                        <span class="icon"></span>
+                                    </a>
+                                </div>
+                                <div class="img-title">
+                                    <a href="{{route('show_videos',['slug' => $lastestVideo->slug ])}}">
+                                        {{$lastestVideo->name}}
+                                    </a>
+                                </div>
+                            </div><!-- /.r-box -->
+                        </div><!-- /. -->
+                    @endforeach
+                    <div class="clearfix"></div>
                 </div><!-- /.row -->
             </div><!-- /.videos -->
-
-            <div class="populars">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="title-section">
-                            <h1>
-                                <span>Popular Videos</span>
-                            </h1>
-                        </div><!-- /.title-section -->
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="videos">
-                        <div class="col-md-5 hero">
-                            <div class="box">
-                                <a href="#">
-                                    <img alt="Nişantaşı'ndan tinerci yolunu kestiği adamı yaktı" width="100%" src="{{ asset('video_gallery/1/photos/497x358_1')}}">
-                                    <span class="title">
-                            <strong>Nişantaşı'ndan tinerci yolunu kestiği adamı yaktı</strong>
-                        </span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-5 right">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a href="#">
-                                        <img width="100%" src="{{ asset('video_gallery/1/photos/497x358_1')}}">
-                                    </a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="#" class="title">
-                                        Alman televizyonu ZDF'den 2. Erdoğan skandalı
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a href="#">
-                                        <img width="100%" src="{{ asset('video_gallery/1/photos/497x358_1')}}">
-                                    </a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="#" class="title">
-                                        FETÖ sorumluları toplantı halindeyken yakalandı
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="videos hide">t1</div>
-                    <div class="videos hide">t2</div>
-                    <div class="videos hide">t3</div>
-                    <div class="videos hide">t4</div>
-                    <div class="videos hide">t5</div>
-                    <div class="videos hide">t6</div>
-                    <div class="col-md-2 visible-lg visible-md">
-                        <ul class="tabs">
-                            @foreach($videoCategories as $videoCategory)
-                                @if ($loop->first)
-                                    <li class="active"><a href="javascript:;">{{$videoCategory->name}}</a></li>
-                                @else
-                                    <li><a href="#">{{$videoCategory->name}}</a></li>
-                                @endif
-
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div><!-- /.populars -->
         </div>
     </article><!-- /.article -->
 
@@ -441,7 +379,7 @@
 
 
 @section('css')
-
+    <link href="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}" type="text/css" rel="stylesheet">
 @endsection
 
 @section('js')
