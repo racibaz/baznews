@@ -23,7 +23,7 @@
                 <a href="{!! route('show_photo_gallery', ['slug' => $photoGallery->slug]) !!}">{{$photoGallery->title}}</a>
             @endforeach
 
-            {{--todo video,photo ve varsa diğerleri yapılacak--}}
+            {{--TODO: video,photo ve varsa diğerleri yapılacak--}}
         </ul>
     </article>
 

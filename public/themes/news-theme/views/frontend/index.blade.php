@@ -437,13 +437,12 @@
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
 
     <script type="text/javascript">
-
         (function($){
             'use strict';
 
             /*--------------------------------------------------------
-                Home Page Main News Slider
-            * --------------------------------------------------------*/
+             Home Page Main News Slider
+             * --------------------------------------------------------*/
             var mansetSlider = $('#manset-slider .bxslider').bxSlider({
                 mode: "fade",
                 auto:true,
@@ -457,9 +456,9 @@
                 onSlideAfter:function($slideElement, oldIndex, newIndex){
                     $('#manset-slider .bx-pager-link').removeClass('active');
                     $('#manset-slider .bx-pager-link').each(function () {
-                       if($(this).attr('data-slide-index')==newIndex){
-                           $(this).addClass('active');
-                       }
+                        if($(this).attr('data-slide-index')==newIndex){
+                            $(this).addClass('active');
+                        }
                     });
                 }
             });
@@ -557,9 +556,6 @@
             $('.ticker').ticker();
 
         })(jQuery);
-
-
-
     </script>
 
 @endsection
