@@ -18,9 +18,9 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('biography.full_name')}}</th>
+                            <th>{{trans('biography.name')}}</th>
                             <th>{{trans('biography.order')}}</th>
-                            <th>{{trans('biography.hit')}}</th>
+                            <th>{{trans('biography.status')}}</th>
                             <th>{{trans('biography.is_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
@@ -29,9 +29,9 @@
                             @foreach($records as $record)
                                 <tr>
                                     <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('biography.show', $record->full_name , $record, [] ) !!}</td>
+                                    <td>{!! link_to_route('biography.show', $record->name , $record, [] ) !!}</td>
                                     <td> {{$record->order}} </td>
-                                    <td> {{$record->hit}} </td>
+                                    <td> {{$record->status}} </td>
                                     <td> {{$record->is_cuff}} </td>
                                     <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
@@ -50,9 +50,9 @@
                         <tfoot>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('biography.full_name')}}</th>
+                            <th>{{trans('biography.name')}}</th>
                             <th>{{trans('biography.order')}}</th>
-                            <th>{{trans('biography.hit')}}</th>
+                            <th>{{trans('biography.status')}}</th>
                             <th>{{trans('biography.is_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>

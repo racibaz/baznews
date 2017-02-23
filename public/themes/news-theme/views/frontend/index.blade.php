@@ -403,6 +403,9 @@
                     </div><!-- /.th-nw-slide -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
+            @foreach($widgets->where('group','center') as $widget )
+                @widget($widget['namespace'])
+            @endforeach
         </div>
     </article><!-- /.article -->
 

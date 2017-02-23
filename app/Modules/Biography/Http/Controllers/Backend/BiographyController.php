@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use Image;
 
 class BiographyController extends Controller
 {
@@ -103,18 +104,20 @@ class BiographyController extends Controller
                 $result = $this->repo->update($record->id, $input);
             } else {
                 $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
             }
-            if ($result) {
+            if ($result[0]) {
 
                 if(!empty($input['photo'])) {
                     $oldPath = $record->photo;
                     $document_name = $input['photo']->getClientOriginalName();
-                    $destination = '/images/biographies/'. $record->id;
-                    Uploader::fileUpload($record , 'photo', $input['photo'] , $destination , $document_name);
+                    $destination = '/images/biographies/'. $result[1]->id .'/thumbnail';
+                    Uploader::fileUpload($result[1], 'photo', $input['photo'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
+
+                    Image::make(public_path('images/biographies/' . $result[1]->id .'/thumbnail/'. $result[1]->photo))
+                        ->fit(104, 78)
+                        ->save(public_path('images/biographies/' . $result[1]->id . '/104x78_' . $document_name));
+
                 }
 
                 Session::flash('flash_message', trans('common.message_model_updated'));

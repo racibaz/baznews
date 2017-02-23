@@ -1,15 +1,8 @@
-<div class="widget">
-    <div class="title-section">
-        <h1>
-            <span>{{trans('biography.widget_title')}}</span>
-        </h1>
-    </div>
-    <ul>
-        @foreach($biographies as $biography)
-            <li>
-                {{ $biography->full_name }} <br />
-                <img src="{{ $biography->photo }}">  <br />
-            </li>
-        @endforeach
-    </ul>
-</div>
+<ul>
+    @foreach($biographies as $biography)
+        <li>
+            <a href="{!! route('biography', ['slug' => $biography->slug]) !!}">{{$biography->name}}</a>
+            <img src="{{ asset('images/biographies/' . $biography->id . '/104x78_' . $biography->photo) }}" alt="{{$biography->title}}">
+        </li>
+    @endforeach
+</ul>

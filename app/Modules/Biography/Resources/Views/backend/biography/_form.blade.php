@@ -32,12 +32,31 @@
                 @endif
 
                 <div class="panel-body">
+
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('full_name', trans('biography::biography.full_name'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('title', trans('biography::biography.title'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('full_name', $record->full_name, ['placeholder' => trans('biography::biography.full_name') ,'class' => 'form-control']) !!}
+                                {!! Form::text('title', $record->title, ['placeholder' => trans('biography::biography.title') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('spot', trans('biography::biography.spot'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('spot', $record->spot, ['placeholder' => trans('biography::biography.spot') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('name', trans('biography::biography.name'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('name', $record->name, ['placeholder' => trans('biography::biography.name') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

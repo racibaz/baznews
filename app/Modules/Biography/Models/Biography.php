@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Validator;
 class Biography extends Model
 {
     use RevisionableTrait;
-
     use Sluggable;
 
     /**
@@ -22,16 +21,16 @@ class Biography extends Model
     public function sluggable() {
         return [
             'slug' => [
-                'source' => ['full_name']
+                'source' => ['title','id']
             ]
         ];
     }
 
     protected $table = 'biographies';
     //todo biografiye title veya name alanı eklenecek
-    protected $fillable = ['user_id', 'full_name', 'slug', 'content', 'photo', 'description', 'keywords', 'order', 'hit', 'is_cuff', 'is_active'];
+    protected $fillable = ['user_id', 'title', 'spot', 'name', 'slug', 'content', 'photo', 'description', 'keywords', 'order', 'hit', 'status', 'is_cuff', 'is_active'];
 
-    public static $statuses = ['Pasif', 'Aktif', 'Taslak', 'Yayında', 'Hazırlanıyor', 'Editor Onayı İçin Beklemede', 'Çöpte'];
+    public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
 
 
     public function user()
@@ -41,11 +40,15 @@ class Biography extends Model
 
     public static function validate($input) {
         $rules = array(
-            'full_name' => 'required',
+            'title' => 'required|max:255',
+            'name' => 'required|max:255',
             'content' => 'required',
+            'photo' => 'image|max:255',
+            'description' => 'max:255',
+            'keywords' => 'max:255',
             'order' => 'integer',
             'hit' => 'integer',
-            'photo' => 'image|max:255',
+            'status' => 'integer',
         );
         return Validator::make($input, $rules);
     }

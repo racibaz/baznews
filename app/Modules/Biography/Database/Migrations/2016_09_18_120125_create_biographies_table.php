@@ -16,7 +16,9 @@ class CreateBiographiesTable extends Migration
         Schema::create('biographies', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('full_name')->unique();
+            $table->string('title')->unique();
+            $table->text('spot')->nullable();
+            $table->string('name')->unique();
             $table->string('slug')->nullable();
             $table->string('content')->nullable();
             $table->string('photo')->nullable();
@@ -24,6 +26,7 @@ class CreateBiographiesTable extends Migration
             $table->string('keywords')->nullable();
             $table->unsignedInteger('hit')->default(0);
             $table->unsignedInteger('order')->default(0);
+            $table->boolean('status')->default(false);
             $table->boolean('is_cuff')->default(false);
             $table->boolean('is_active')->default(false);
             $table->timestamps();

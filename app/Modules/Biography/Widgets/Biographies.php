@@ -5,6 +5,7 @@ namespace App\Modules\Biography\Widgets;
 use App\Modules\Biography\Repositories\BiographyRepository;
 use Arrilot\Widgets\AbstractWidget;
 use Caffeinated\Themes\Facades\Theme;
+use Redis;
 use Illuminate\Support\Facades\Cache;
 
 class Biographies extends AbstractWidget
@@ -26,6 +27,7 @@ class Biographies extends AbstractWidget
 
             $biograpRepository = new BiographyRepository();
             return  $biograpRepository
+                ->where('status', 1)
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
 //                ->take(Redis::get('biography_count'))
@@ -34,7 +36,6 @@ class Biographies extends AbstractWidget
                 ->get();
 
         });
-
         return Theme::view('biography::frontend.widgets.biographies', compact(['config','biographies']));
     }
 }
