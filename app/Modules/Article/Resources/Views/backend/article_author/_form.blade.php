@@ -5,13 +5,13 @@
     <div class="row">
         <div class="col-md-12">
             <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('article::author.managment')}}</h3>
+            <h3 class="ls-top-header">{{trans('article::article_author.management')}}</h3>
             <!--Top header end -->
 
             <!--Top breadcrumb start -->
             <ol class="breadcrumb">
                 <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('author.index') !!}"> {{ trans('article::author.article_categories') }} </a></li>
+                <li><a href="{!! URL::route('article_author.index') !!}"> {{ trans('article::article_author.article_categories') }} </a></li>
                 <li class="active"> {{ trans('article::common.add_update') }}</li>
             </ol>
             <!--Top breadcrumb start -->
@@ -26,51 +26,51 @@
                 </div>
 
                 @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['author.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+                    {!! Form::model($record, ['route' => ['article_author.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
                 @else
-                    {!! Form::open(['route' => 'author.store','method' => 'post', 'files' => 'true']) !!}
+                    {!! Form::open(['route' => 'article_author.store','method' => 'post', 'files' => 'true']) !!}
                 @endif
 
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('name', trans('article::author.name'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('name', trans('article::article_author.name'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('name', $record->name, ['placeholder' => trans('article::author.name') ,'class' => 'form-control']) !!}
+                                {!! Form::text('name', $record->name, ['placeholder' => trans('article::article_author.name') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('slug', trans('article::author.slug'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('slug', trans('article::article_author.slug'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('article::author.slug') ,'class' => 'form-control']) !!}
+                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('article::article_author.slug') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('email', trans('article::author.email'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('email', trans('article::article_author.email'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::email('email', $record->email, ['placeholder' => trans('article::author.email') ,'class' => 'form-control']) !!}
+                                {!! Form::email('email', $record->email, ['placeholder' => trans('article::article_author.email') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('cv', trans('article::author.cv'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('cv', trans('article::article_author.cv'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::textarea('cv', $record->cv, ['placeholder' => trans('article::author.cv') ,'class' => 'form-control']) !!}
+                                {!! Form::textarea('cv', $record->cv, ['placeholder' => trans('article::article_author.cv') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('photo', trans('article::author.photo'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('photo', trans('article::article_author.photo'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
                                 {!! Form::file('photo') !!}
@@ -80,30 +80,30 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('description', trans('article::author.description'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('description', trans('article::article_author.description'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('article::author.description') ,'class' => 'form-control']) !!}
+                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('article::article_author.description') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('keywords', trans('article::author.keywords'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('keywords', trans('article::article_author.keywords'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::textarea('keywords', $record->keywords, ['placeholder' => trans('article::author.keywords') ,'class' => 'form-control']) !!}
+                                {!! Form::textarea('keywords', $record->keywords, ['placeholder' => trans('article::article_author.keywords') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {{trans('article::author.is_quotation')}}
+                            {{trans('article::article_author.is_quotation')}}
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
                                         {!! Form::checkbox('is_quotation', null , $record->is_quotation) !!}
-                                        <i></i> {{trans('article::author.is_quotation')}}
+                                        <i></i> {{trans('article::article_author.is_quotation')}}
                                     </label>
                                 </div>
                             </div>

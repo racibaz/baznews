@@ -27,7 +27,7 @@ Route::group(['prefix' => 'rss'], function() {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
-    Route::resource('author', 'Backend\AuthorController');
+    Route::resource('article_author', 'Backend\ArticleAuthorController');
     Route::post('article.article_article_category_store', 'Backend\ArticleController@article_article_category_store')->name('article_article_category_store');
     Route::get('article.status/{status?}', 'Backend\ArticleController@index')->name('article_statuses');
     Route::resource('article', 'Backend\ArticleController');

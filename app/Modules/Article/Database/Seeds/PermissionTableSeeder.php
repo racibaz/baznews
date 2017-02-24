@@ -59,48 +59,6 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
-        //author
-        $author1 = Permission::create([
-            'name'          => 'index-author',
-            'display_name'  => 'author  Listeleme',
-            'is_active'     => 1,
-        ]);
-
-        $author2 = Permission::create([
-            'name'          => 'create-author',
-            'display_name'  => 'author Oluşturma',
-            'is_active'     => 1,
-        ]);
-
-        $author3 = Permission::create([
-            'name'          => 'edit-author',
-            'display_name'  => 'author Düzenleme',
-            'is_active'     => 1,
-        ]);
-
-        $author4 = Permission::create([
-            'name'          => 'destroy-author',
-            'display_name'  => 'author Silme',
-            'is_active'     => 1,
-        ]);
-
-        $author5 = Permission::create([
-            'name'          => 'show-author',
-            'display_name'  => 'author Gösterme',
-            'is_active'     => 1,
-        ]);
-
-        $author6 = Permission::create([
-            'name'          => 'update-author',
-            'display_name'  => 'author update',
-            'is_active'     => 1,
-        ]);
-
-        $author7 = Permission::create([
-            'name'          => 'store-author',
-            'display_name'  => 'author store',
-            'is_active'     => 1,
-        ]);
 
         $article9 = Permission::create([
             'name'          => 'Passive-article',
@@ -149,6 +107,49 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+
+        //articleauthor
+        $articleauthor1 = Permission::create([
+            'name'          => 'index-articleauthor',
+            'display_name'  => 'articleauthor  Listeleme',
+            'is_active'     => 1,
+        ]);
+
+        $articleauthor2 = Permission::create([
+            'name'          => 'create-articleauthor',
+            'display_name'  => 'articleauthor Oluşturma',
+            'is_active'     => 1,
+        ]);
+
+        $articleauthor3 = Permission::create([
+            'name'          => 'edit-articleauthor',
+            'display_name'  => 'articleauthor Düzenleme',
+            'is_active'     => 1,
+        ]);
+
+        $articleauthor4 = Permission::create([
+            'name'          => 'destroy-articleauthor',
+            'display_name'  => 'articleauthor Silme',
+            'is_active'     => 1,
+        ]);
+
+        $articleauthor5 = Permission::create([
+            'name'          => 'show-articleauthor',
+            'display_name'  => 'articleauthor Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $articleauthor6 = Permission::create([
+            'name'          => 'update-articleauthor',
+            'display_name'  => 'articleauthor update',
+            'is_active'     => 1,
+        ]);
+
+        $articleauthor7 = Permission::create([
+            'name'          => 'store-articleauthor',
+            'display_name'  => 'articleauthor store',
+            'is_active'     => 1,
+        ]);
 
 
         //articlecategory
@@ -212,13 +213,13 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($article13);
         $super_admin->permissions()->attach($article14);
         $super_admin->permissions()->attach($article15);
-        $super_admin->permissions()->attach($author1);
-        $super_admin->permissions()->attach($author2);
-        $super_admin->permissions()->attach($author3);
-        $super_admin->permissions()->attach($author4);
-        $super_admin->permissions()->attach($author5);
-        $super_admin->permissions()->attach($author6);
-        $super_admin->permissions()->attach($author7);
+        $super_admin->permissions()->attach($articleauthor1);
+        $super_admin->permissions()->attach($articleauthor2);
+        $super_admin->permissions()->attach($articleauthor3);
+        $super_admin->permissions()->attach($articleauthor4);
+        $super_admin->permissions()->attach($articleauthor5);
+        $super_admin->permissions()->attach($articleauthor6);
+        $super_admin->permissions()->attach($articleauthor7);
         $super_admin->permissions()->attach($articlecategory1);
         $super_admin->permissions()->attach($articlecategory2);
         $super_admin->permissions()->attach($articlecategory3);
