@@ -10,7 +10,9 @@ use App\Models\Group;
 use App\Models\Menu;
 use App\Models\Page;
 use App\Models\User;
+use Cache;
 use Theme;
+use Illuminate\Support\Facades\Auth;
 
 
 class DashboardController extends Controller
@@ -63,7 +65,6 @@ class DashboardController extends Controller
 
         //$announcements = Announcement::where('is_active',1)->orderBy('order','desc')->get();
 
-
         return Theme::view($this->getViewName(__FUNCTION__),compact(
             'activeUserCount',
             'passiveUserCount',
@@ -78,4 +79,18 @@ class DashboardController extends Controller
             'userGroupsAnnouncements'
         ));
     }
+
+
+    /*
+     * backend.partials._dashboard_route_list sayfasında bulunan linkleri yetkiye göre listeliyoruz.
+     * her defasında sorgulamamak için render la cache liyoruz.
+     * */
+    public function routeList()
+    {
+        return Cache::remember('admin_dashboard_links_user_id_' . Auth::user()->id, 1000, function () {
+            return Theme::view('backend.partials._dashboard_route_list')->render();
+        });
+
+    }
+
 }

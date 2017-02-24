@@ -48,11 +48,10 @@ class NewsController extends Controller
     }
 
 
-    public function show($newsSlug)
+    public function show($slug)
     {
-        $newsId =  substr(strrchr($newsSlug, '-'), 1 );
-
-        return Cache::remember('news:'.$newsId, 100, function() use($newsId) {
+        $id =  substr(strrchr($slug, '-'), 1 );
+        return Cache::remember('news:'.$id, 100, function() use($id) {
 
             $previousNews = null;
             $nextNews = null;
@@ -74,12 +73,11 @@ class NewsController extends Controller
                                 ])
                                 ->where('status', 1)
                                 ->where('is_active', 1)
-                                ->findBy('id',$newsId);
+                                ->findBy('id',$id);
 
             if($record->is_show_previous_and_next_news){
 
                 $previousNews = $this->repo
-
                     ->where('id', '<', $record->id)
                     ->where('status',1)
                     ->where('is_active',1)

@@ -1,1 +1,1 @@
-<li><a href="{!! route('biography.index') !!}"><i class="fa fa-book"></i> <span>Biyografi</span></a></li>
+@permission('index-biography'))<li><a href="{!! route('biography.index') !!}"><i class="fa fa-book"></i> <span>{{trans('biography::dashboard.biographies')}}</span></a></li>@endpermission
