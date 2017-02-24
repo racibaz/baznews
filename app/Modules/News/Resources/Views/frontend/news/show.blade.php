@@ -229,13 +229,22 @@
                                             <div class="links">
                                                 <ul class="nav nav-pills">
                                                     <li>
-                                                        <a href="{{$record->user->facebook}}"><i class="fa fa-facebook"></i></a>
+                                                        <a href="{{$record->user->web_site}}" target="_blank" ><i class="fa fa-globe"></i></a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{$record->user->twitter}}"><i class="fa fa-twitter"></i></a>
+                                                        <a href="{{$record->user->facebook}}" target="_blank" ><i class="fa fa-facebook"></i></a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{$record->user->web_site}}"><i class="fa fa-globe"></i></a>
+                                                        <a href="{{$record->user->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{$record->user->pinterest}}" target="_blank" ><i class="fa fa-pinterest"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{$record->user->linkedin}}" target="_blank" ><i class="fa fa-linkedin"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{$record->user->youtube}}" target="_blank" ><i class="fa fa-youtube"></i></a>
                                                     </li>
                                                 </ul>
                                             </div><!-- /.editor-info -->
@@ -264,28 +273,30 @@
                         </div>
 
                     </div><!-- /.content -->
-                    <div class="discus-box">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div id="disqus_thread"></div>
-                                <script>
-                                    var disqus_config = function () {
-                                        this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';
-                                        this.page.identifier = '{{$record->id}}';
-                                        this.page.title = '{{$record->title}}';
-                                    };
+                    @if($record->is_comment)
+                        <div class="discus-box">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="disqus_thread"></div>
+                                    <script>
+                                        var disqus_config = function () {
+                                            this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';
+                                            this.page.identifier = '{{$record->id}}';
+                                            this.page.title = '{{$record->title}}';
+                                        };
 
-                                    (function() { // DON'T EDIT BELOW THIS LINE
-                                        var d = document, s = d.createElement('script');
-                                        s.src = '//baznews.disqus.com/embed.js';
-                                        s.setAttribute('data-timestamp', +new Date());
-                                        (d.head || d.body).appendChild(s);
-                                    })();
-                                </script>
-                                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            </div>
-                        </div><!-- Disqus Yorum Alanı -->
-                    </div><!-- /.discus-box -->
+                                        (function() { // DON'T EDIT BELOW THIS LINE
+                                            var d = document, s = d.createElement('script');
+                                            s.src = '//baznews.disqus.com/embed.js';
+                                            s.setAttribute('data-timestamp', +new Date());
+                                            (d.head || d.body).appendChild(s);
+                                        })();
+                                    </script>
+                                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                                </div>
+                            </div><!-- Disqus Yorum Alanı -->
+                        </div><!-- /.discus-box -->
+                    @endif
                 </article>
             </div><!-- /.new-content -->
             <div class="col-md-4">

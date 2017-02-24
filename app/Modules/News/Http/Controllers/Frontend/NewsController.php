@@ -76,7 +76,6 @@ class NewsController extends Controller
                                 ->where('is_active', 1)
                                 ->findBy('id',$newsId);
 
-
             if($record->is_show_previous_and_next_news){
 
                 $previousNewsID = $this->repo
