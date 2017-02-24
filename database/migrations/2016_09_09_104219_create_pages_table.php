@@ -20,7 +20,8 @@ class CreatePagesTable extends Migration
             $table->text('content')->nullable();
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();
-            $table->boolean('is_active')->nullable();
+            $table->boolean('is_comment')->default(1);
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

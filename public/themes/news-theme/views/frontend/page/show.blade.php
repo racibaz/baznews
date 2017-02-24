@@ -31,30 +31,30 @@
                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
                 <div class="addthis_inline_share_toolbox"></div>
 
-                <div class="discus-box">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="disqus_thread"></div>
-                            <script>
-                                var disqus_config = function () {
-                                    this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';
-                                    this.page.identifier = 'page-{{$record->id}}';
-                                    this.page.title = '{{$record->title}}';
-                                };
+                @if($record->is_comment)
+                    <div class="discus-box">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="disqus_thread"></div>
+                                <script>
+                                    var disqus_config = function () {
+                                        this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';
+                                        this.page.identifier = 'page-{{$record->id}}';
+                                        this.page.title = '{{$record->title}}';
+                                    };
 
-                                (function() { // DON'T EDIT BELOW THIS LINE
-                                    var d = document, s = d.createElement('script');
-                                    s.src = '//baznews.disqus.com/embed.js';
-                                    s.setAttribute('data-timestamp', +new Date());
-                                    (d.head || d.body).appendChild(s);
-                                })();
-                            </script>
-                            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                        </div>
-                    </div><!-- Disqus Yorum Alanı -->
-                </div><!-- /.discus-box -->
-
-
+                                    (function() { // DON'T EDIT BELOW THIS LINE
+                                        var d = document, s = d.createElement('script');
+                                        s.src = '//baznews.disqus.com/embed.js';
+                                        s.setAttribute('data-timestamp', +new Date());
+                                        (d.head || d.body).appendChild(s);
+                                    })();
+                                </script>
+                                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            </div>
+                        </div><!-- Disqus Yorum Alanı -->
+                    </div><!-- /.discus-box -->
+                @endif
 
             </div>
             <div class="col-lg-4">
