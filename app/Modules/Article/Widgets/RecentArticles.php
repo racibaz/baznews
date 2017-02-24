@@ -25,8 +25,8 @@ class RecentArticles extends AbstractWidget
     {
         $recentArticles = Cache::remember('recentArticles', 10, function()  {
 
-            $articleRepository = new ArticleRepository();
-            return  $articleRepository->with(['article_categories', 'authors'])
+            $repo = new ArticleRepository();
+            return  $repo->with(['article_categories', 'article_authors'])
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
                 ->where('status', 1)
