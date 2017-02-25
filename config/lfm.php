@@ -24,7 +24,7 @@ return [
     */
 
     // If true, private folders will be created for each signed-in user.
-    'allow_multi_user' => true,
+    'allow_multi_user' => false,
 
     // The database column to identify a user. Make sure the value is unique.
     // Ex: When set to 'id', the private folder of user will be named as the user id.

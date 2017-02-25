@@ -71,46 +71,46 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
-        //contact_type
-        $contact_type1 = Permission::create([
-            'name'          => 'index-contact_type',
+        //contacttype
+        $contacttype1 = Permission::create([
+            'name'          => 'index-contacttype',
             'display_name'  => 'Dosya Listeleme',
             'is_active'     => 1,
         ]);
 
-        $contact_type2 = Permission::create([
-            'name'          => 'create-contact_type',
+        $contacttype2 = Permission::create([
+            'name'          => 'create-contacttype',
             'display_name'  => 'Dosya Oluşturma',
             'is_active'     => 1,
         ]);
 
-        $contact_type3 = Permission::create([
-            'name'          => 'edit-contact_type',
+        $contacttype3 = Permission::create([
+            'name'          => 'edit-contacttype',
             'display_name'  => 'Dosya Düzenleme',
             'is_active'     => 1,
         ]);
 
-        $contact_type4 = Permission::create([
-            'name'          => 'destroy-contact_type',
+        $contacttype4 = Permission::create([
+            'name'          => 'destroy-contacttype',
             'display_name'  => 'Dosya Silme',
             'is_active'     => 1,
         ]);
 
-        $contact_type5 = Permission::create([
-            'name'          => 'show-contact_type',
+        $contacttype5 = Permission::create([
+            'name'          => 'show-contacttype',
             'display_name'  => 'Dosya Gösterme',
             'is_active'     => 1,
         ]);
 
-        $contact_type6 = Permission::create([
-            'name'          => 'update-contact_type',
-            'display_name'  => 'contact_type update',
+        $contacttype6 = Permission::create([
+            'name'          => 'update-contacttype',
+            'display_name'  => 'contacttype update',
             'is_active'     => 1,
         ]);
 
-        $contact_type7 = Permission::create([
-            'name'          => 'store-contact_type',
-            'display_name'  => 'contact_type store',
+        $contacttype7 = Permission::create([
+            'name'          => 'store-contacttype',
+            'display_name'  => 'contacttype store',
             'is_active'     => 1,
         ]);
 
@@ -1286,13 +1286,13 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($city5);
         $super_admin->permissions()->attach($city6);
         $super_admin->permissions()->attach($city7);
-        $super_admin->permissions()->attach($contact_type1);
-        $super_admin->permissions()->attach($contact_type2);
-        $super_admin->permissions()->attach($contact_type3);
-        $super_admin->permissions()->attach($contact_type4);
-        $super_admin->permissions()->attach($contact_type5);
-        $super_admin->permissions()->attach($contact_type6);
-        $super_admin->permissions()->attach($contact_type7);
+        $super_admin->permissions()->attach($contacttype1);
+        $super_admin->permissions()->attach($contacttype2);
+        $super_admin->permissions()->attach($contacttype3);
+        $super_admin->permissions()->attach($contacttype4);
+        $super_admin->permissions()->attach($contacttype5);
+        $super_admin->permissions()->attach($contacttype6);
+        $super_admin->permissions()->attach($contacttype7);
         $super_admin->permissions()->attach($contact1);
         $super_admin->permissions()->attach($contact2);
         $super_admin->permissions()->attach($contact3);

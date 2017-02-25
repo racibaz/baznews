@@ -192,37 +192,11 @@
                     {{--<li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>--}}
                 {{--</ul>--}}
             {{--</li>--}}
-            <li><a href="{!! route('user.index') !!}"><i class="fa fa-book"></i> <span>Kullanıcılar</span></a></li>
-            <li><a href="{!! route('group.index') !!}"><i class="fa fa-book"></i> <span>gruplar</span></a></li>
-            <li><a href="{!! route('permission.index') !!}"><i class="fa fa-book"></i> <span>izinler</span></a></li>
-            <li><a href="{!! route('role.index') !!}"><i class="fa fa-book"></i> <span>roller</span></a></li>
-            <li><a href="{!! route('country.index') !!}"><i class="fa fa-book"></i> <span>ülke</span></a></li>
-            <li><a href="{!! route('city.index') !!}"><i class="fa fa-book"></i> <span>şehir</span></a></li>
-            <li><a href="{!! route('contact_type.index') !!}"><i class="fa fa-book"></i> <span>ileltişim türü</span></a></li>
-            <li><a href="{!! route('contact.index') !!}"><i class="fa fa-book"></i> <span>iletişim</span></a></li>
-            <li><a href="{!! route('menu.index') !!}"><i class="fa fa-book"></i> <span>menu</span></a></li>
-            <li><a href="{!! route('page.index') !!}"><i class="fa fa-book"></i> <span>sabit sayfalar</span></a></li>
-            <li><a href="{!! route('setting.index') !!}"><i class="fa fa-book"></i> <span>Genel Ayarlar</span></a></li>
-            <li><a href="{!! route('tag.index') !!}"><i class="fa fa-book"></i> <span>Etiketler</span></a></li>
-            <li><a href="{!! route('advertisement.index') !!}"><i class="fa fa-book"></i> <span>Reklam Yönetimi</span></a></li>
-{{--            <li><a href="{!! route('language.index') !!}"><i class="fa fa-book"></i> <span>Dil Yönetimi</span></a></li>--}}
-            <li><a href="{!! route('announcement.index') !!}"><i class="fa fa-book"></i> <span>Duyurular</span></a></li>
-            <li><a href="{!! route('sitemap.index') !!}"><i class="fa fa-book"></i> <span>Site Haritaları</span></a></li>
-            <li><a href="{!! route('rss.index') !!}"><i class="fa fa-book"></i> <span>Rss ler</span></a></li>
-            <li><a href="{!! route('event.index') !!}"><i class="fa fa-book"></i> <span>Olay Yönetimi</span></a></li>
-            <li><a href="{!! route('module_manager.index') !!}"><i class="fa fa-book"></i> <span>Modül Yönetimi</span></a></li>
-            <li><a href="{!! route('widget_manager.index') !!}"><i class="fa fa-book"></i> <span>Widget Yönetimi</span></a></li>
-            <li><a href="{!! route('widget_group.index') !!}"><i class="fa fa-book"></i> <span>Widget Group Yönetimi</span></a></li>
-            <li><a href="{!! route('theme_manager.index') !!}"><i class="fa fa-book"></i> <span>Tema Yönetimi</span></a></li>
-            <li><a href="{!! route('ping') !!}"><i class="fa fa-book"></i> <span>Ping Servisleri</span></a></li>
-            <li class="header">MODULLER </li>
-            @foreach( Module::all() as $module)
-                @if(Module::isEnabled($module['slug']))
-                    {!! Theme::view( $module['slug'] .'::backend.route_list.route_list') !!}
-                @endif
-            @endforeach
 
-
+            @php
+                $dashboard = new \App\Http\Controllers\Backend\DashboardController();
+                echo $dashboard->routeList();
+            @endphp
 
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>

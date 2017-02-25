@@ -56,153 +56,158 @@
                             </div><!-- /.new-source -->
                         </div><!-- /.content -->
 
-                        <div class="relation-news">
-                            <div class="title-section">
-                                <h1>
-                                    <span>İlişkili Haberler</span>
-                                </h1>
-                            </div>
-                            <div class="relation-news-body">
-                                <div class="row">
-                                    @foreach($relatedNewsItems as $relatedNews)
-                                        <div class="col-lg-3">
-                                            <div class="relation-news-image">
-                                                <a href="#">
-                                                    <img src="{{asset('images/news_images/1/196x150_1.jpg')}}">
-                                                    <div class="relation-news-title">
-                                                        {{$relatedNews->title}}
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div><!-- /.col -->
-                                    @endforeach
+                        @if($relatedNewsItems->count())
+                            <div class="relation-news">
+                                <div class="title-section">
+                                    <h1>
+                                        <span>İlişkili Haberler</span>
+                                    </h1>
                                 </div>
-                            </div>
-                        </div><!-- /.relation-news -->
-
-                        <div class="news-video-gallery">
-                            <div class="title-section">
-                                <h1>
-                                    <span>Haberin Video Galerileri</span>
-                                </h1>
-                            </div>
-                            <div class="news-video-body">
-                                <div class="row">
-                                    @foreach($record->video_galleries as $video_gallery)
-                                        <div class="col-lg-3">
-                                            <div class="news-video-image">
-                                                <a href="#">
-                                                    <span class="play-icon"></span>
-                                                    <img src="{{asset('images/news_images/2/196x150_2.jpg')}}">
-                                                    <div class="news-video-title">
-                                                        <span>{{$video_gallery->title}}</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-
-                                        </div>
-                                    @endforeach
+                                <div class="relation-news-body">
+                                    <div class="row">
+                                        @foreach($relatedNewsItems as $relatedNews)
+                                            <div class="col-lg-3">
+                                                <div class="relation-news-image">
+                                                    <a href="#">
+                                                        <img src="{{asset('images/news_images/1/196x150_1.jpg')}}">
+                                                        <div class="relation-news-title">
+                                                            {{$relatedNews->title}}
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div><!-- /.col -->
+                                        @endforeach
+                                    </div>
                                 </div>
-
-                            </div>
-                        </div><!-- /.news-videos -->
-
-                        <div class="news-photo-gallery">
-                            <div class="title-section">
-                                <h1>
-                                    <span>Haberin Photo Galerileri</span>
-                                </h1>
-                            </div>
-                            <div class="news-photo-gallery-body">
-                                <div class="row">
-                                    @foreach($record->photo_galleries as $photo_gallery)
-                                        <div class="col-lg-3 col-md-3 col-xs-4">
-                                            <div class="gallery-image">
-                                                <a href="#">
-                                                    <img src="{{asset('images/news_images/3/196x150_3.jpg')}}">
-                                                    <div class="gallery-title">
-                                                        {{$photo_gallery->title}}
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    @endforeach
+                            </div><!-- /.relation-news -->
+                        @endif
+                        @if($record->video_galleries->count())
+                            <div class="news-video-gallery">
+                                <div class="title-section">
+                                    <h1>
+                                        <span>Haberin Video Galerileri</span>
+                                    </h1>
                                 </div>
-                            </div>
-                        </div><!-- /.news-photo-gallery -->
+                                <div class="news-video-body">
+                                    <div class="row">
+                                        @foreach($record->video_galleries as $video_gallery)
+                                            <div class="col-lg-3">
+                                                <div class="news-video-image">
+                                                    <a href="#">
+                                                        <span class="play-icon"></span>
+                                                        <img src="{{asset('images/news_images/2/196x150_2.jpg')}}">
+                                                        <div class="news-video-title">
+                                                            <span>{{$video_gallery->title}}</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
 
-                        <div class="news-videos">
-                            <div class="title-section">
-                                <h1>
-                                    <span>Haberin Videoları</span>
-                                </h1>
-                            </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+
+                                </div>
+                            </div><!-- /.news-videos -->
+                        @endif
+                        @if($record->photo_galleries->count())
+                            <div class="news-photo-gallery">
+                                <div class="title-section">
+                                    <h1>
+                                        <span>Haberin Photo Galerileri</span>
+                                    </h1>
+                                </div>
+                                <div class="news-photo-gallery-body">
+                                    <div class="row">
+                                        @foreach($record->photo_galleries as $photo_gallery)
+                                            <div class="col-lg-3 col-md-3 col-xs-4">
+                                                <div class="gallery-image">
+                                                    <a href="#">
+                                                        <img src="{{asset('images/news_images/3/196x150_3.jpg')}}">
+                                                        <div class="gallery-title">
+                                                            {{$photo_gallery->title}}
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div><!-- /.news-photo-gallery -->
+                        @endif
+                        @if($record->videos->count())
                             <div class="news-videos">
-                                <div class="row">
-                                    @foreach($record->videos as $video)
-                                        <div class="col-lg-12">
-                                            @if(!empty($video->file))
-                                                <div class="video-box">
-                                                    <video id="{{$video->id}}"
-                                                           class="video-js vjs-default-skin"
-                                                           controls
-                                                           width="100%" height="400px"
-                                                           preload="auto"
-                                                           poster=""
-                                                           data-setup='{"example_option":true}'>
-                                                        <source src="{{url($video->file)}}" type="video/mp4" />
-                                                        <source src="{{url($video->file)}}" type="video/webm" />
-                                                        <source src="{{url($video->file)}}" type="video/ogg" />
-                                                        {{--<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />--}}
-                                                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-                                                    </video>
-                                                </div>
-                                            @elseif(!empty($video->link))
-                                                <div class="video-box">
-                                                    <video
-                                                            id="{{$video->id}}"
-                                                            class="video-js vjs-default-skin"
-                                                            controls
-                                                            width="100%" height="400px"
-                                                            {{--data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'--}}
-                                                            data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'>
-                                                    </video>
-                                                </div>
-                                            @endif
-                                        </div>
-                                    @endforeach
+                                <div class="title-section">
+                                    <h1>
+                                        <span>Haberin Videoları</span>
+                                    </h1>
+                                </div>
+                                <div class="news-videos">
+                                    <div class="row">
+                                        @foreach($record->videos as $video)
+                                            <div class="col-lg-12">
+                                                @if(!empty($video->file))
+                                                    <div class="video-box">
+                                                        <video id="{{$video->id}}"
+                                                               class="video-js vjs-default-skin"
+                                                               controls
+                                                               width="100%" height="400px"
+                                                               preload="auto"
+                                                               poster=""
+                                                               data-setup='{"example_option":true}'>
+                                                            <source src="{{url($video->file)}}" type="video/mp4" />
+                                                            <source src="{{url($video->file)}}" type="video/webm" />
+                                                            <source src="{{url($video->file)}}" type="video/ogg" />
+                                                            {{--<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />--}}
+                                                            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                                                        </video>
+                                                    </div>
+                                                @elseif(!empty($video->link))
+                                                    <div class="video-box">
+                                                        <video
+                                                                id="{{$video->id}}"
+                                                                class="video-js vjs-default-skin"
+                                                                controls
+                                                                width="100%" height="400px"
+                                                                {{--data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{url($video->link)}}"}] }'--}}
+                                                                data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'>
+                                                        </video>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="news-photos">
-                            <div class="title-section">
-                                <h1>
-                                    <span>Haberin Resimleri</span>
-                                </h1>
-                            </div>
-                            <div class="news-photos-body">
-                                <div class="row">
-                                    @foreach($record->photos as $photo)
-                                        <div class="col-lg-12">
-                                            <div class="news-photo-image">
-                                                <img src="{{asset('images/news_images/4/196x150_4.jpg')}}">
-                                                <div class="news-photo-title">
-                                                    {{$photo->name}}
+                        @endif
+                        @if($record->photos->count())
+                            <div class="news-photos">
+                                <div class="title-section">
+                                    <h1>
+                                        <span>Haberin Resimleri</span>
+                                    </h1>
+                                </div>
+                                <div class="news-photos-body">
+                                    <div class="row">
+                                        @foreach($record->photos as $photo)
+                                            <div class="col-lg-12">
+                                                <div class="news-photo-image">
+                                                    <img src="{{asset('images/news_images/4/196x150_4.jpg')}}">
+                                                    <div class="news-photo-title">
+                                                        {{$photo->name}}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
 
                         <div class="tags-box">
                             @foreach($record->tags as $tag)
                                 <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
-                                {{--<a href="/tags/{{$tag->name}}">{{$tag->name}}</a>--}}
                             @endforeach
                         </div>
-
                         @if($record->is_show_editor_profile)
                             <div class="author-box">
                                 <div class="author-detail">
@@ -229,13 +234,22 @@
                                             <div class="links">
                                                 <ul class="nav nav-pills">
                                                     <li>
-                                                        <a href="{{$record->user->facebook}}"><i class="fa fa-facebook"></i></a>
+                                                        <a href="{{$record->user->web_site}}" target="_blank" ><i class="fa fa-globe"></i></a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{$record->user->twitter}}"><i class="fa fa-twitter"></i></a>
+                                                        <a href="{{$record->user->facebook}}" target="_blank" ><i class="fa fa-facebook"></i></a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{$record->user->web_site}}"><i class="fa fa-globe"></i></a>
+                                                        <a href="{{$record->user->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{$record->user->pinterest}}" target="_blank" ><i class="fa fa-pinterest"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{$record->user->linkedin}}" target="_blank" ><i class="fa fa-linkedin"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{$record->user->youtube}}" target="_blank" ><i class="fa fa-youtube"></i></a>
                                                     </li>
                                                 </ul>
                                             </div><!-- /.editor-info -->
@@ -264,28 +278,30 @@
                         </div>
 
                     </div><!-- /.content -->
-                    <div class="discus-box">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div id="disqus_thread"></div>
-                                <script>
-                                    var disqus_config = function () {
-                                        this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';
-                                        this.page.identifier = '{{$record->id}}';
-                                        this.page.title = '{{$record->title}}';
-                                    };
+                    @if($record->is_comment)
+                        <div class="discus-box">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="disqus_thread"></div>
+                                    <script>
+                                        var disqus_config = function () {
+                                            this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';
+                                            this.page.identifier = '{{$record->id}}';
+                                            this.page.title = '{{$record->title}}';
+                                        };
 
-                                    (function() { // DON'T EDIT BELOW THIS LINE
-                                        var d = document, s = d.createElement('script');
-                                        s.src = '//baznews.disqus.com/embed.js';
-                                        s.setAttribute('data-timestamp', +new Date());
-                                        (d.head || d.body).appendChild(s);
-                                    })();
-                                </script>
-                                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            </div>
-                        </div><!-- Disqus Yorum Alanı -->
-                    </div><!-- /.discus-box -->
+                                        (function() { // DON'T EDIT BELOW THIS LINE
+                                            var d = document, s = d.createElement('script');
+                                            s.src = '//baznews.disqus.com/embed.js';
+                                            s.setAttribute('data-timestamp', +new Date());
+                                            (d.head || d.body).appendChild(s);
+                                        })();
+                                    </script>
+                                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                                </div>
+                            </div><!-- Disqus Yorum Alanı -->
+                        </div><!-- /.discus-box -->
+                    @endif
                 </article>
             </div><!-- /.new-content -->
             <div class="col-md-4">

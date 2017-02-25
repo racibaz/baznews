@@ -33,13 +33,22 @@
                                     <div class="links">
                                         <ul class="nav nav-pills">
                                             <li>
-                                                <a href="{{$user->facebook}}"><i class="fa fa-facebook"></i></a>
+                                                <a href="{{$user->web_site}}" target="_blank"><i class="fa fa-globe"></i></a>
                                             </li>
                                             <li>
-                                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                                <a href="{{$user->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
                                             </li>
                                             <li>
-                                                <a href="{{$user->web_site}}"><i class="fa fa-globe"></i></a>
+                                                <a href="{{$user->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{$user->pinterest}}" target="_blank"><i class="fa fa-pinterest"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{$user->linkedin}}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{$user->youtube}}" target="_blank"><i class="fa fa-youtube"></i></a>
                                             </li>
                                         </ul>
                                     </div><!-- /.editor-info -->

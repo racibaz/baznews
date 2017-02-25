@@ -11,7 +11,8 @@
             <div class="col-md-8">
                 <article class="module">
                     <div id="new-content">
-                        {{$record->name}}
+                        {{$record->name}} <br />
+                        {{$record->cv}}
                         <br /><br /><br /><br />
                         Makale Yazarı Detayları Gelecek.
                         @foreach($record->articles as $record)

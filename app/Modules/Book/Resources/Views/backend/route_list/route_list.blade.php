@@ -6,9 +6,10 @@
             </span>
     </a>
     <ul class="treeview-menu">
-        <li><a href="{!! route('book_category.index') !!}"><i class="fa fa-book"></i> <span>Kitap Kategorileri</span></a></li>
-        <li><a href="{!! route('book.index') !!}"><i class="fa fa-book"></i> <span>Kitap</span></a></li>
-        <li><a href="{!! route('book_publisher.index') !!}"><i class="fa fa-book"></i> <span>Yayıncılar</span></a></li>
-        <li><a href="{!! route('book_author.index') !!}"><i class="fa fa-book"></i> <span>Kitap Yazarları</span></a></li>
+        @permission('index-bookcategory'))<li><a href="{!! route('book_category.index') !!}"><i class="fa fa-book"></i> <span>{{trans('book::dashboard.book_categories')}}</span></a></li>@endpermission
+        @permission('index-book'))<li><a href="{!! route('book.index') !!}"><i class="fa fa-book"></i> <span>{{trans('book::dashboard.books')}}</span></a></li>@endpermission
+        @permission('index-bookpublisher'))<li><a href="{!! route('book_publisher.index') !!}"><i class="fa fa-book"></i> <span>{{trans('book::dashboard.book_publishers')}}</span></a></li>@endpermission
+        @permission('index-bookauthor'))<li><a href="{!! route('book_author.index') !!}"><i class="fa fa-book"></i> <span>{{trans('book::dashboard.book_authors')}}</span></a></li>@endpermission
+
     </ul>
 </li>

@@ -2,13 +2,13 @@
 
 namespace App\Modules\Article\Widgets;
 
-use App\Modules\Article\Repositories\ArticleRepository;
+use App\Modules\Article\Repositories\ArticleAuthorRepository;
 use Arrilot\Widgets\AbstractWidget;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
 
-class RecentArticles extends AbstractWidget
+class ArticleAuthors extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -23,18 +23,17 @@ class RecentArticles extends AbstractWidget
      */
     public function run()
     {
-        $recentArticles = Cache::remember('recentArticles', 10, function()  {
+        $articleAuthors = Cache::remember('articleAuthors', 10, function()  {
 
-            $repo = new ArticleRepository();
-            return  $repo->with(['article_categories', 'article_authors'])
+            $repo = new ArticleAuthorRepository();
+            return  $repo->with(['articles'])
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
-                ->where('status', 1)
-                ->take(Redis::get('recent_article_widget_list_count'))
-                ->orderBy('order','desc')
+                ->take(Redis::get('article_authors_widget_list_count'))
+//                ->take(10)
+                ->orderBy('updated_at','desc')
                 ->get();
         });
-
-        return Theme::view('article::frontend.widgets.recent_articles', compact(['recentArticles']));
+        return Theme::view('article::frontend.widgets.article_authors', compact(['articleAuthors']));
     }
 }

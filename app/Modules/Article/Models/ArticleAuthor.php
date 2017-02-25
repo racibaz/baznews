@@ -21,7 +21,7 @@ class ArticleAuthor extends Eloquent
     public function sluggable() {
         return [
             'slug' => [
-                'source' => ['name']
+                'source' => ['name','id']
             ]
         ];
     }
@@ -40,10 +40,9 @@ class ArticleAuthor extends Eloquent
 
     public static function validate($input) {
         $rules = array(
-            'user_id' => 'required',
+            'user_id' => 'integer',
             'name' => 'required',
-//            'email' => 'required|Between:3,64|email|Unique:article_authors',
-            'email' => 'required|Between:3,64|email',
+            'email' => 'email',
             'photo' => 'image|max:255',
             'description' => 'max:255',
             'keywords' => 'max:255',

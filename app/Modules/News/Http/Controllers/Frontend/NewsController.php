@@ -48,11 +48,10 @@ class NewsController extends Controller
     }
 
 
-    public function show($newsSlug)
+    public function show($slug)
     {
-        $newsId =  substr(strrchr($newsSlug, '-'), 1 );
-
-        return Cache::remember('news:'.$newsId, 100, function() use($newsId) {
+        $id =  substr(strrchr($slug, '-'), 1 );
+        return Cache::remember('news:'.$id, 100, function() use($id) {
 
             $previousNews = null;
             $nextNews = null;
@@ -74,37 +73,30 @@ class NewsController extends Controller
                                 ])
                                 ->where('status', 1)
                                 ->where('is_active', 1)
-                                ->findBy('id',$newsId);
-
+                                ->findBy('id',$id);
 
             if($record->is_show_previous_and_next_news){
 
-                $previousNewsID = $this->repo
+                $previousNews = $this->repo
                     ->where('id', '<', $record->id)
                     ->where('status',1)
                     ->where('is_active',1)
-                    ->max('id');
+                    ->findAll()
+                    ->last();
 
-                //todo $previousNews = $this->repo->find($previousNewsID);
-                /*
-                 * formatında null değeri veriyor.
-                 *
-                 * $previousNews = $this->repo->where('id',$previousNewsID)->first();
-                   $previousNews = News::where('id',$previousNewsID)->first();
-                 *
-                 * farkı nedir bakılacak...
-                 * */
-                //$previousNews = $this->repo->where('id',$previousNewsID)->first();
-                $previousNews = News::where('id',$previousNewsID)->first();
+                if(empty($previousNews))
+                    $previousNews = $this->repo->where('status',1)->where('is_active',1)->findAll()->last();
 
-                $nextNewsID = $this->repo
-                    ->where('id', '>', $record->id)
+
+                $nextNews = $this->repo
+                    ->where('id', '>' ,$record->id)
                     ->where('status',1)
                     ->where('is_active',1)
-                    ->min('id');
+                    ->findAll()
+                    ->first();
 
-                //$nextNews = $this->repo->where('id',$nextNewsID)->first();
-                $nextNews = News::where('id',$nextNewsID)->first();
+                if(empty($nextNews))
+                    $nextNews =$this->repo->where('status',1)->where('is_active',1)->findAll()->first();
             }
 
 

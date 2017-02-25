@@ -166,22 +166,22 @@
                     </div>
                 </div>
             </div>
-        <div class="col-md-6">
-            <!-- general form elements disabled -->
-            <div class="box box-warning">
-                <div class="box-header with-border">
-                    <h3 class="box-title">{{ trans('article::article.select_categories') }}</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="form-group">
-                        {!! Form::select('article_category_ids[]', $articleCategoryList , $articleCategoryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
+            <div class="col-md-6">
+                <!-- general form elements disabled -->
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{ trans('article::article.select_categories') }}</h3>
                     </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            {!! Form::select('article_category_ids[]', $articleCategoryList , $articleCategoryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
+                <!-- /.box -->
             </div>
-            <!-- /.box -->
-        </div>
         {!! Form::close() !!}
     </div><!-- end row -->
     <!-- Main Content Element  End-->
@@ -191,7 +191,7 @@
 @endsection
 
 @section('css')
-    <link href="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme .'::AdminLTE/plugins/select2/select2.min.css') }}" rel="stylesheet">
     <style>
         #preview {display: none;}
         .display {display: block !important;}
@@ -201,7 +201,7 @@
 
 @section('js')
 
-    <script src="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme .'::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
 
 
     <script>
