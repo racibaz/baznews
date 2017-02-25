@@ -19,7 +19,7 @@ class CreateArticleAuthorsTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->nullable();
             $table->string('email')->nullable();
-            $table->string('cv')->nullable();
+            $table->text('cv')->nullable();
             $table->string('photo')->nullable();
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();

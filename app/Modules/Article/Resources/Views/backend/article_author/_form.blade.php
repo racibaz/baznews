@@ -19,18 +19,16 @@
     </div>
     <!-- Main Content Element  Start-->
     <div class="row">
+        @if(isset($record->id))
+            {!! Form::model($record, ['route' => ['article_author.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+        @else
+            {!! Form::open(['route' => 'article_author.store','method' => 'post', 'files' => 'true']) !!}
+        @endif
         <div class="col-md-6">
             <div class="panel panel-light-blue">
                 <div class="panel-heading">
                     {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                 </div>
-
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['article_author.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'article_author.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
-
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="row">
@@ -143,15 +141,32 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
             </div>
         </div>
+        <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('article::article_author.user_id') }}</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        {!! Form::select('user_id', $userList , $record->user_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        {!! Form::close() !!}
     </div><!-- end row -->
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->
 @endsection
 
 @section('css')
+    <link href="{{ Theme::asset($activeTheme .'::AdminLTE/plugins/select2/select2.min.css') }}" rel="stylesheet">
     <style>
         #preview {display: none;}
         .display {display: block !important;}
@@ -159,6 +174,15 @@
 @endsection
 
 @section('js')
+
+    <script src="{{ Theme::asset($activeTheme .'::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
+
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $(".select2").select2();
+        });
+    </script>
 
     <script>
         function readURL(input) {

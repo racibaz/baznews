@@ -30,7 +30,7 @@ class RecentArticles extends AbstractWidget
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
                 ->where('status', 1)
-                ->take(Redis::get('recommendation_news'))
+                ->take(Redis::get('recent_article_widget_list_count'))
                 ->orderBy('order','desc')
                 ->get();
         });

@@ -4,10 +4,11 @@ namespace App\Modules\Article\Widgets;
 
 use App\Modules\Article\Repositories\ArticleAuthorRepository;
 use Arrilot\Widgets\AbstractWidget;
-use Cache;
-use Theme;
+use Caffeinated\Themes\Facades\Theme;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redis;
 
-class ArticleAuthor extends AbstractWidget
+class ArticleAuthors extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -28,9 +29,9 @@ class ArticleAuthor extends AbstractWidget
             return  $repo->with(['articles'])
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
-//                ->take(Redis::get('recommendation_news')
-                ->take(10)
-                ->orderBy('update_at','desc')
+                ->take(Redis::get('article_authors_widget_list_count'))
+//                ->take(10)
+                ->orderBy('updated_at','desc')
                 ->get();
         });
         return Theme::view('article::frontend.widgets.article_authors', compact(['articleAuthors']));

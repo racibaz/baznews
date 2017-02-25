@@ -3,14 +3,18 @@
 namespace App\Modules\Article\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Library\Uploader;
+use App\Models\User;
 use App\Modules\Article\Models\ArticleAuthor;
 use App\Modules\Article\Repositories\ArticleAuthorRepository as Repo;
+use App\Repositories\UserRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use Image;
 
 class ArticleAuthorController extends Controller
 {
@@ -47,7 +51,9 @@ class ArticleAuthorController extends Controller
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record']));
+        $userList = User::userList();
+
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record','userList']));
     }
 
 
@@ -65,7 +71,8 @@ class ArticleAuthorController extends Controller
 
     public function edit(ArticleAuthor $record)
     {
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record']));
+        $userList = User::userList();
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record','userList']));
     }
 
 
@@ -89,7 +96,16 @@ class ArticleAuthorController extends Controller
         $input['is_quotation'] = Input::get('is_quotation') == "on" ? true : false;
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
-        $input['user_id'] = Auth::user()->id;
+
+        if(!empty($input['user_id'])){
+
+            $userRepo = new UserRepository();
+            $user = $userRepo->find($input['user_id']);
+
+            $input['name'] = $user->name;
+            $input['slug'] = $user->slug;
+            $input['email'] = $user->email;
+        }
 
         $v = ArticleAuthor::validate($input);
 
@@ -105,6 +121,19 @@ class ArticleAuthorController extends Controller
                 $result = $this->repo->create($input);
             }
             if ($result[0]) {
+
+                if(!empty($input['photo'])) {
+                    $oldPath = $record->photo;
+                    $document_name = $input['photo']->getClientOriginalName();
+                    $destination = '/images/article_author_images/'. $result[1]->id .'/original';
+                    Uploader::fileUpload($result[1] , 'photo', $input['photo'] , $destination , $document_name);
+                    Uploader::removeFile($oldPath);
+
+                    Image::make(public_path('images/article_author_images/' . $result[1]->id .'/original/'. $result[1]->photo))
+                        ->fit(58, 58)
+                        ->save(public_path('images/article_author_images/' . $result[1]->id . '/58x58_' . $document_name));
+                }
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {

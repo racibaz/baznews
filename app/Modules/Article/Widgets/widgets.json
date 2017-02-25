@@ -6,5 +6,13 @@
     "namespace": "\\App\\Modules\\Article\\Widgets\\RecentArticles",
     "version": "1.0",
     "description": "Recent Articles Widgets"
+  },
+  "ArticleAuthors": {
+    "name": "ArticleAuthors",
+    "slug": "article_authors",
+    "module_name": "Article",
+    "namespace": "\\App\\Modules\\Article\\Widgets\\ArticleAuthors",
+    "version": "1.0",
+    "description": "Article Authors List Widget"
   }
 }

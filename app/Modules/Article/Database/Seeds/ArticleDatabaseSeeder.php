@@ -39,5 +39,23 @@ class ArticleDatabaseSeeder extends Seeder
                 'attribute_value'             => '5',
             ]);
         }
+
+        $setting = Setting::where('attribute_key','recent_article_widget_list_count')->first();
+        if(empty($setting))
+        {
+            Setting::create([
+                'attribute_key'               => 'recent_article_widget_list_count',
+                'attribute_value'             => '5',
+            ]);
+        }
+
+        $setting = Setting::where('attribute_key','article_authors_widget_list_count')->first();
+        if(empty($setting))
+        {
+            Setting::create([
+                'attribute_key'               => 'article_authors_widget_list_count',
+                'attribute_value'             => '5',
+            ]);
+        }
     }
 }
