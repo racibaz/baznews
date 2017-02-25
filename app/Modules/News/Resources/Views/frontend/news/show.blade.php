@@ -206,10 +206,8 @@
                         <div class="tags-box">
                             @foreach($record->tags as $tag)
                                 <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
-                                {{--<a href="/tags/{{$tag->name}}">{{$tag->name}}</a>--}}
                             @endforeach
                         </div>
-
                         @if($record->is_show_editor_profile)
                             <div class="author-box">
                                 <div class="author-detail">

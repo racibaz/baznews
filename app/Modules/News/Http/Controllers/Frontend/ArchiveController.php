@@ -3,12 +3,12 @@
 namespace App\Modules\News\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
 use App\Modules\News\Models\News;
-use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Repositories\NewsRepository as Repo;
+use App\Repositories\TagRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
@@ -34,26 +34,25 @@ class ArchiveController extends Controller
 
             $datetime = $years . '-' . $months . '-' . $days;
 
-//            $records = $this->repo->where('is_active',1)
-//                                    ->where('status',1)
-//                                    ->where('created_at','>=',$datetime . ' 00:00:00')
-//                                    ->where('created_at','<=',$datetime . ' 23:59:-59')
-//                                    ->get();
+            $records = $this->repo->where('is_active',1)
+                                    ->where('status',1)
+                                    ->where('updated_at','>=',$datetime . ' 00:00:00')
+                                    ->where('updated_at','<=',$datetime . ' 23:59:-59')
+                                    ->get();
 
 
-            $records = News::where('is_active',1)
-                            ->where('status',1)
-                            ->whereBetween('created_at', [$datetime . ' 00:00:00',$datetime . ' 23:59:-59'])
-                            ->get();
+//            $records = News::where('is_active',1)
+//                            ->where('status',1)
+//                            ->whereBetween('created_at', [$datetime . ' 00:00:00',$datetime . ' 23:59:-59'])
+//                            ->get();
         }
 
 
-//        $newsCategoryList = Cache::remember('newsCategoryList', 100, function() {
-//
-//            return NewsCategory::newsCategoryList();
-//        });
+        $tagRepo = new TagRepository();
+        $tags = $tagRepo->orderBy('updated_at','desc')->simplePaginate(15);
 
-        return Theme::view('news::frontend.archive',compact(['records']));
+
+        return Theme::view('news::frontend.archive',compact(['records','tags']));
 
 
         /*

@@ -124,6 +124,15 @@
                             </div>
                         </div>
                     </div><!-- end row -->
+
+                    <div class="tags-box">
+                        @foreach($tags as $tag)
+                            <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
+                        @endforeach
+                    </div>
+
+                    {{ $tags->links() }}
+
                     @if(isset($records))
                         <div class="row">
                             <div class="col-xs-12">
