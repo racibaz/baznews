@@ -8,6 +8,7 @@ use App\Modules\News\Models\News;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Repositories\TagRepository;
 use Caffeinated\Themes\Facades\Theme;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
@@ -26,13 +27,13 @@ class ArchiveController extends Controller
     public function index(Request $request)
     {
         $records = [];
-        $years = $request->years;
-        $months = $request->months;
-        $days = $request->days;
+        $year = $request->years;
+        $month = $request->months;
+        $day = $request->days;
 
-        if(!empty($years) && !empty($months) && !empty($days)){
+        if(!empty($year) && !empty($month) && !empty($day)){
 
-            $datetime = $years . '-' . $months . '-' . $days;
+            $datetime = $year . '-' . $month . '-' . $day;
 
             $records = $this->repo->where('is_active',1)
                                     ->where('status',1)
@@ -52,7 +53,11 @@ class ArchiveController extends Controller
         $tags = $tagRepo->orderBy('updated_at','desc')->simplePaginate(15);
 
 
-        return Theme::view('news::frontend.archive',compact(['records','tags']));
+        return Theme::view('news::frontend.archive',
+            compact([
+                'records',
+                'tags',
+            ]));
 
 
         /*
