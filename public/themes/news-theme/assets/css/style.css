@@ -76,6 +76,9 @@ body {
     background: #fff;
     padding: 5px;
     border: 1px solid rgba(204, 204, 204, 0.73);
+    -webkit-box-shadow: 0 0 5px 0 #e2e3e4;
+    -moz-box-shadow: 0 0 5px 0 #e2e3e4;
+    box-shadow: 0 0 5px 0 #e2e3e4;
 }
 .ads{
     opacity:0;
@@ -226,9 +229,6 @@ body {
 }
 
 /* ==========================================================================
-End Login Buttons
-========================================================================== */
-/* ==========================================================================
    Searchbox
    ========================================================================== */
 .search {
@@ -240,10 +240,15 @@ End Login Buttons
 }
 .search .ft {
     background: none;
-    padding: 5px;
-    margin: 4px 0 0 10px;
-    width: 150px;
+    padding: 5px 10px;
+    margin: 0;
+    width: 187px;
+    height: 34px;
     color: #898989;
+    border: 1px solid #F0F0F0
+}
+.search .ft:focus{
+    border: 1px solid #d0211d;
 }
 .search .fs {
     background: #ea4748 url(../img/search.png) no-repeat center;
@@ -490,6 +495,9 @@ header{
     border:0;
     border-right:1px solid #c0c0c0;
 
+}
+#post-box-slider .bx-wrapper .thumbnail:hover{
+    background-color: #f5f5f5;
 }
 #post-box-slider .bx-wrapper .thumbnail img {
     margin: 0;
@@ -1755,4 +1763,24 @@ footer .footer-bottom .cpy {
     font-size: 13px;
     text-align: center;
     margin: 10px 5px;
+}
+
+/* ==========================================================================
+   Tags Page
+   ========================================================================== */
+.tag-header{
+    padding: 10px 16px;
+    margin-bottom: 10px;
+}
+.tag-header h1{
+    font-size:16px;
+    font-weight: 600;
+    margin: 0;
+}
+.tag-header h1 .label{
+    display: inline-block;
+    font-size: 13px;
+    background-color: #fff;
+    color:#000000;
+    border:1px solid #000000;
 }
