@@ -3,29 +3,16 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use Caffeinated\Themes\Facades\Theme;
-use Log;
-use Route;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Log;
+use Route;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-
-    /**
-     * Controller constructor.
-     *
-     * Set Caffeinated\Themes Plugin theme name
-     *
-     */
-    public function __construct()
-    {
-//        Theme::setActive('news-theme');
-    }
 
     public function permisson_check()
     {
@@ -42,10 +29,8 @@ class Controller extends BaseController
 
         if(!Auth::user()->can($methodName . '-' . $classModelName)){
             Log::warning('Yetkisiz Alana Girmeye Çalışıldı. ' . 'Kişi : ' . Auth::user()->UserFullName() . '  IP :' . Auth::user()->getUserIp() );
-            //dd('yetkisiz');
             abort(403, 'Unauthorized action.');
         }
         return true;
     }
-
 }

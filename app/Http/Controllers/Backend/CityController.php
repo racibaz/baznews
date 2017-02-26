@@ -12,37 +12,22 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
-class CityController extends Controller
+class CityController extends BackendController
 {
-    private $repo;
-    private $view = 'city.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'city.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
     }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
-    }
-
 
     public function index()
     {
         $records = $this->repo->findAll();
         return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
     }
-
 
     public function create()
     {
@@ -66,11 +51,9 @@ class CityController extends Controller
 
     public function edit(City $record)
     {
-     //   Mapper::map(50, 0, ['marker' => false]);
         $countries = Country::countryList();
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'countries']));
     }
-
 
     public function update(Request $request, City $record)
     {
@@ -88,7 +71,6 @@ class CityController extends Controller
     public function save($record)
     {
         $input = Input::all();
-
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         $v = City::validate($input);
@@ -100,14 +82,12 @@ class CityController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result) {
+
+            if ($status) {
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {

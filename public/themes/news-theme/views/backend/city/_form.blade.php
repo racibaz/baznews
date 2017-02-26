@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('city.managment')}}</h3>
+            <h3 class="ls-top-header">{{trans('city.management')}}</h3>
             <!--Top header end -->
 
             <!--Top breadcrumb start -->
@@ -52,8 +52,6 @@
                             </div>
                         </div>
                     </div>
-                    {!! Mapper::render() !!}
-
                     <div class="form-group">
                         <div class="row">
                             {{trans('common.status')}}

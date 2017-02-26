@@ -2,13 +2,55 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Modules\News\Models\News;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
+use Auth;
+use Log;
+use Route;
 
 class BackendController extends Controller
 {
+    protected $view, $redirectViewName, $redirectRouteName;
+
+    /**
+     * Controller constructor.
+     *
+     * Set permisson_check method
+     *
+     */
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->checkPermission();
+            return $next($request);
+        });
+    }
+
+    public function checkPermission()
+    {
+        $route =  Route::getCurrentRoute()->getAction();
+        $routePathParts = explode('@',$route['controller']);
+
+        $controllerPathParts = explode('\\',$routePathParts[0]);
+        $partCount = count($controllerPathParts);
+        $controllerName = $controllerPathParts[$partCount - 1];
+        $methodName = $routePathParts[1];
+
+//        foreach (explode('\\', $controllerName) as $className) {}
+        $classModelName = strtolower(substr($controllerName, 0 , -10));
+        if(!Auth::user()->can($methodName . '-' . $classModelName)){
+            Log::warning('Yetkisiz Alana Girmeye Çalışıldı. ' . 'Kişi : ' . Auth::user()->UserFullName() . '  IP :' . Auth::user()->getUserIp() );
+            abort(403, 'Unauthorized action.');
+        }
+        return true;
+    }
+
+
+    public function getViewName($methodName)
+    {
+        return $this->redirectViewName . $this->view . $methodName;
+    }
+
+
 
     //todo genel birşey yapılacak
     public function toggleBooleanType( $record, string $key)
