@@ -14,18 +14,20 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <article class="module">
-                    <div id="new-content">
-                        Makale adı : {{$record->title}} <br />
-                        Makalenin Yazarı :
+                <article class="article-content module">
+                    <h1 class="article-title">{{$record->title}}</h1>
+                    <div class="author">
+                        <span>Yazar : </span>
                         <a href="{!! route('article_author', ['slug' => $record->article_author->slug]) !!}">{{$record->article_author->name}}</a>
-                        <br />
+                    </div>
+                    <div class="content">
 
-
+                        <p>Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod.</p>
+                        <p>Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas sed diam eget risus varius blandit sit amet non magna. Curabitur blandit tempus porttitor. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
 
                         {{--yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>--}}
                         {{--yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>--}}
-                        <br /><br /><br /><br />
+                        <br>
                         Kitap Detayları Gelecek.
                     </div>
                 </article>

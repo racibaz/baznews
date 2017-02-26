@@ -2,28 +2,40 @@
 
 @section('content')
 
-
-    <article class="container" id="container">
-
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="last-time" id="son-dakika">
-                    <h4>Son Dakika:</h4>
-                    <a href="new-details.html">Tortor Cras Nibh Egestas Vestibulum</a>
+                <div class="ticker last-time" id="son-dakika">
+                    <strong>Son Dakika:</strong>
+                    <ul>
+                        <li>
+                            <a href="#">Breaking News - 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Breaking News - 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Breaking News - 3</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
+    <article class="container" id="container">
 
         <div class="row">
             <div class="col-md-8">
-                <div class="page-content">
-                    <h1>{{$record->name}}</h1>
-
-                    {{$record->created_at}}
-                    {{$record->updated_at}}
-
-                    <br />
-                    {!! $record->content !!}
+                <div class="page-content module">
+                    <h1 class="page-title">{{$record->name}}</h1>
+                    <div class="time">
+                        <i class="fa fa-clock-o"></i>
+                        <span>{{$record->created_at}}</span>
+                        <span>{{$record->updated_at}}</span>
+                    </div>
+                    <div class="content">
+                        {!! $record->content !!}
+                    </div>
                 </div>
 
                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
@@ -101,4 +113,17 @@
     <meta property="article:published_time" content="{{$record->created_at}}">
     {{--<meta property="article:author" content="">--}}
 
+@endsection
+
+@section('js')
+    <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+    <script type="text/javascript">
+        (function($){
+            'use strict';
+            /*--------------------------------------------------------
+             Last Minute News Ticker Slider
+             * --------------------------------------------------------*/
+            $('.ticker').ticker();
+        })(jQuery);
+    </script>
 @endsection

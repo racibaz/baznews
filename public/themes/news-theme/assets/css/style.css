@@ -1784,3 +1784,44 @@ footer .footer-bottom .cpy {
     color:#000000;
     border:1px solid #000000;
 }
+/* ==========================================================================
+   Pages
+   ========================================================================== */
+.page-content{
+    margin-bottom: 10px;
+}
+.page-content h1.page-title{
+    padding: 0 15px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.page-content .content{
+    padding: 15px 15px;
+}
+.page-content .time{
+    padding: 0 15px;
+    color: #ccd0d2;
+    font-size :12px;
+}
+
+/* ==========================================================================
+   Article
+   ========================================================================== */
+.article-content{
+    margin-bottom: 10px;
+}
+.article-content{
+    margin-bottom: 10px;
+}
+.article-content h1.article-title{
+    padding: 0 15px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.article-content .author{
+    margin: 0 15px;
+}
+.article-content .content{
+    padding: 15px 15px;
+}
+

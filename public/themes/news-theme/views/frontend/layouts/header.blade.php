@@ -22,6 +22,11 @@
                 <a class="navbar-brand" href="{!! route('index') !!}">
                     <img src="{{ Theme::asset($activeTheme . '::img/news-theme-logo.jpg') }}" alt="Logo" width="130" height="120" />
                 </a>
+                <div class="pull-left">
+                    <div class="header-advert">
+                        <img src="" alt="">
+                    </div>
+                </div>
 
                 <div class="pull-right">
                     <div class="search pull-left">
