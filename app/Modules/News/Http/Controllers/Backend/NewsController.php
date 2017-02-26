@@ -21,7 +21,6 @@ use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Repositories\TagRepository;
 use Caffeinated\Themes\Facades\Theme;
-use Mapper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
