@@ -1090,6 +1090,21 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+
+        //backend
+        $backend1 = Permission::create([
+            'name'          => 'removeCacheKey-backend',
+            'display_name'  => 'Cache Silme',
+            'is_active'     => 1,
+        ]);
+
+        $backend2 = Permission::create([
+            'name'          => 'removeHomePageCache-backend',
+            'display_name'  => 'removeHomePageCache Silme',
+            'is_active'     => 1,
+        ]);
+
+
         //advertisement
         $advertisement1 = Permission::create([
             'name'          => 'index-advertisement',
@@ -1382,6 +1397,8 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($setting15);
         $super_admin->permissions()->attach($setting16);
         $super_admin->permissions()->attach($setting17);
+        $super_admin->permissions()->attach($backend1);
+        $super_admin->permissions()->attach($backend2);
         $super_admin->permissions()->attach($advertisement1);
         $super_admin->permissions()->attach($advertisement2);
         $super_admin->permissions()->attach($advertisement3);

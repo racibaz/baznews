@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
+use Illuminate\Support\Facades\Redis;
 
 class WidgetManager extends Model
 {
@@ -41,11 +42,37 @@ class WidgetManager extends Model
     protected $dates = ['created_at','updated_at','deleted_at'];
 
 
+    public static function boot()
+    {
+        parent::boot();
+
+        if(!app()->runningInConsole() ) {
+
+            static::created(function () {
+
+                Redis::del('laravel:homePage');
+            });
+
+            static::updated(function () {
+
+                Redis::del('laravel:homePage');
+
+            });
+
+            static::deleted(function () {
+
+                Redis::del('laravel:homePage');
+            });
+
+        }
+    }
+
+
+
     public function widget_group()
     {
         return $this->belongsTo('App\Models\WidgetGroup','widget_group_id');
     }
-
 
     public static function validate($input) {
         $rules = array(
@@ -223,7 +250,5 @@ class WidgetManager extends Model
 
         return $widgets;
     }
-
-
 
 }

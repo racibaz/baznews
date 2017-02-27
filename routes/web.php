@@ -79,6 +79,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('contact_type', 'Backend\ContactTypeController');
     Route::resource('contact', 'Backend\ContactController');
 
+    Route::get('remove_home_page_cache', 'Backend\BackendController@removeHomePageCache')->name('removeHomePageCache');
+    Route::get('remove_cache_key/{cacheName}', 'Backend\BackendController@removeCacheKey')->name('removeCacheKey');
+
     Route::get('setting/configCache', 'Backend\SettingController@configCache')->name('configCache');
     Route::get('setting/configClear', 'Backend\SettingController@configClear')->name('configClear');
     Route::get('setting/routeClear', 'Backend\SettingController@routeClear')->name('routeClear');
