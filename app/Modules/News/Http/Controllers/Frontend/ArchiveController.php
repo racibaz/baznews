@@ -35,17 +35,17 @@ class ArchiveController extends Controller
 
             $datetime = $year . '-' . $month . '-' . $day;
 
-            $records = $this->repo->where('is_active',1)
-                                    ->where('status',1)
-                                    ->where('updated_at','>=',$datetime . ' 00:00:00')
-                                    ->where('updated_at','<=',$datetime . ' 23:59:-59')
-                                    ->get();
+//            $records = $this->repo->where('is_active',1)
+//                                    ->where('status',1)
+//                                    ->where('updated_at','>=',$datetime . ' 00:00:00')
+//                                    ->where('updated_at','<=',$datetime . ' 23:59:-59')
+//                                    ->get();
 
 
-//            $records = News::where('is_active',1)
-//                            ->where('status',1)
-//                            ->whereBetween('created_at', [$datetime . ' 00:00:00',$datetime . ' 23:59:-59'])
-//                            ->get();
+            $records = News::where('is_active',1)
+                            ->where('status',1)
+                            ->whereBetween('created_at', [$datetime . ' 00:00:00',$datetime . ' 23:59:-59'])
+                            ->get();
         }
 
 
