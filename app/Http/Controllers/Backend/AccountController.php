@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Account;
 use App\Models\City;
 use App\Models\Country;
@@ -16,28 +15,15 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
-class AccountController extends Controller
+class AccountController extends BackendController
 {
-    private $repo;
-    private $view = 'account.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'account.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
-    }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
     }
 
     public function show(Account $record)
@@ -80,12 +66,12 @@ class AccountController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             }
 
-            if ($result) {
+            if ($status) {
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'show', $record);
+                return Redirect::route($this->redirectRouteName . $this->view . 'show', $instance);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))
