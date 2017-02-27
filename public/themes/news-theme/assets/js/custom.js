@@ -96,7 +96,7 @@
     $(window).resize(function () {
         adsSize();
     });
-    $('document').ready(function () {
+    $(window).load(function () {
         adsSize();
     });
     function adsSize() {
@@ -121,7 +121,7 @@
     $(window).scroll(function () {
         if($(window).scrollTop()>178){
             $("#sticky-container").sticky({
-                topSpacing: 10,
+                topSpacing: 0,
                 bottomSpacing: ( $('.ads').outerHeight() + $('footer').outerHeight())+80
             });
         }else{

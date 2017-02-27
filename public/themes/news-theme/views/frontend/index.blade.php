@@ -164,9 +164,10 @@
                         <!-- /.image-banner-list -->
                     @endforeach
 
-                    <div class="advert-center">
+                    <div class="advert-center module">
                         <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Center">
                     </div>
+
                 </div><!-- /.col -->
 
                 <div class="col-md-4">
@@ -409,9 +410,11 @@
                     </div><!-- /.th-nw-slide -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
-            @foreach($widgets->where('group','center') as $widget )
-                @widget($widget['namespace'])
-            @endforeach
+            <div class="widgets-center">
+                @foreach($widgets->where('group','center') as $widget )
+                    @widget($widget['namespace'])
+                @endforeach
+            </div>
         </div>
     </article><!-- /.article -->
 
