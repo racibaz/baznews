@@ -1,14 +1,14 @@
+<div id="sticky-container" class="adverts">
+    <div id="dfp-pageskin-sol" class="ads-left-160 ads">
+        <img src="{{ Theme::asset($activeTheme . '::img/ads-image1.jpeg')}}" alt="">
+    </div>
+    <div id="dfp-160-kare-sag" class="ads-right-160 ads">
+        <img src="{{ Theme::asset($activeTheme . '::img/ads-image1.jpeg')}}" alt="">
+    </div>
+</div>
 <!-- Header -->
 <header id="header">
     <nav class="navbar">
-        <div id="sticky-container" class="adverts">
-            <div id="dfp-pageskin-sol" class="ads-left-160 ads" style="position: absolute;left: 85px;top: 0;">
-                <img src="{{ Theme::asset($activeTheme . '::img/ads-image1.jpeg')}}" alt="">
-            </div>
-            <div id="dfp-160-kare-sag" class="ads-right-160 ads" style="position: absolute; right: 84px; top: 0;">
-                <img src="{{ Theme::asset($activeTheme . '::img/ads-image1.jpeg')}}" alt="">
-            </div>
-        </div>
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header" id="navbar-header">
             <div class="container">
@@ -22,26 +22,28 @@
                 <a class="navbar-brand" href="{!! route('index') !!}">
                     <img src="{{ Theme::asset($activeTheme . '::img/news-theme-logo.jpg') }}" alt="Logo" width="130" height="120" />
                 </a>
-                <div class="pull-left">
-                    <div class="header-advert">
-                        <img src="" alt="">
-                    </div>
-                </div>
 
-                <div class="pull-right">
-                    <div class="search pull-left">
-
+                <div class="pull-right hright">
+                    <div class="search">
                         {!! Form::open(array('route' => 'search', 'method' => 'post','class' => 'form')) !!}
                         {!!  Form::text('q', null, ['placeholder'=>'Ara.','class' => 'ft','onblur'=>"if(this.value=='') this.value='Ara.';","onfocus"=>"if(this.value=='Ara.') this.value='';"]) !!}
                         {{--<input type="q" value="Ara." onblur="if(this.value=='') this.value='Ara.';" onfocus="if(this.value=='Ara.') this.value='';" class="ft">--}}
                         <input type="submit" value="" class="fs">
                         {!!Form::close() !!}
                     </div>
-                    <div class="login-btns btn-group pull-left">
-                        <a href="{!! route('login') !!}" class="btn btn-success"><i class="glyphicon glyphicon-log-in"></i> {{trans('common.login')}}</a>
-                        <a href="{!! route('register') !!}" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> {{trans('common.register')}}</a>
-                    </div>
+                    <div class="login-btns">
+                        <div class="btn-group">
+                            <a href="{!! route('login') !!}" class="btn btn-success"><i class="glyphicon glyphicon-log-in"></i> {{trans('common.login')}}</a>
+                            <a href="{!! route('register') !!}" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> {{trans('common.register')}}</a>
+                        </div><!-- /.btn-group -->
+                    </div><!-- /.login-btns -->
+                </div><!-- /.hright -->
+
+                <div class="advert-header pull-right">
+                    <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Header">
                 </div>
+
+
             </div>
         </div><!-- /.navbar-header -->
         <div class="menu">
@@ -68,4 +70,3 @@
         </div><!-- /.container-fluid -->
     </nav>
 </header>
-<!-- /.container -->

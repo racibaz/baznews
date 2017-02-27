@@ -113,14 +113,21 @@
         console.log("Size: "+size);
         $('#dfp-160-kare-sag').css("right",size-10+"px").show();
         $('#dfp-pageskin-sol').css("left",size-10+"px").show();
+        $('.ads').css('opacity','1');
     }
 
-    $("#sticky-container").sticky({
-        topSpacing: $('header nav').outerHeight(),
-        bottomSpacing: $('.ads').outerHeight() + $('footer').outerHeight()
+
+
+    $(window).scroll(function () {
+        if($(window).scrollTop()>178){
+            $("#sticky-container").sticky({
+                topSpacing: 10,
+                bottomSpacing: ( $('.ads').outerHeight() + $('footer').outerHeight())+80
+            });
+        }else{
+            $("#sticky-container").unstick();
+        }
     });
-
-
     /*--------------------------------------------------------
      Center Carousel Horizontal News Slider
      * --------------------------------------------------------*/

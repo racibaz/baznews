@@ -163,10 +163,14 @@
                         </div><!-- /.col-md-8 -->
                         <!-- /.image-banner-list -->
                     @endforeach
+
+                    <div class="advert-center">
+                        <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Center">
+                    </div>
                 </div><!-- /.col -->
 
                 <div class="col-md-4">
-                    <div class="sidebar ">
+                    <div class="sidebar">
                         <div class="nw-sm-img module">
                             <div role="tabpanel">
                                 <!-- Nav tabs -->
@@ -336,7 +340,9 @@
                             </div><!-- /rabpanel -->
                         </div><!-- /.nw-sm-img -->
                         <div class="module">
-                            <div class="advert">
+                            <div class="advert advert-right">
+                                <img src="{{ Theme::asset($activeTheme . '::img/advert-images/336x280.png') }}" alt="Advert Sidebar">
+                                <br>
                                 {!!Cache::get('right_blok_1')!!}
                             </div>
                         </div>
@@ -543,14 +549,6 @@
                 pager:false,
                 nextText: '<i class="fa fa-angle-right"></i>',
                 prevText: '<i class="fa fa-angle-left"></i>'
-            });
-
-            /*--------------------------------------------------------
-             Left - Right Advert Sticky
-             * --------------------------------------------------------*/
-            $("#sticky-container").sticky({
-                topSpacing: $('header nav').outerHeight(),
-                bottomSpacing: $('.ads').outerHeight() + $('footer').outerHeight()
             });
 
             /*--------------------------------------------------------

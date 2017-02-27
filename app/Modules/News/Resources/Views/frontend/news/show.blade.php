@@ -474,7 +474,15 @@
                             </div><!-- /.tab-content -->
                         </div><!-- /rabpanel -->
                     </div><!-- /.nw-sm-img -->
-
+                    <div class="module">
+                        <div class="module">
+                            <div class="advert advert-right">
+                                <img src="{{ Theme::asset($activeTheme . '::img/advert-images/336x280.png') }}" alt="Advert Sidebar">
+                                <br>
+                                {!!Cache::get('right_blok_1')!!}
+                            </div>
+                        </div>
+                    </div>
                     @foreach($widgets as $widget)
                         @widget($widget['namespace'])
                     @endforeach
