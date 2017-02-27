@@ -20,6 +20,12 @@
                         <span class="bio-title">Nazım Hikmet</span>
                     </a>
                 </li>
+                <li>
+                    <a href="#">
+                        <span class="bio-img"><img src="http://lorempixel.com/output/fashion-q-g-70-70-8.jpg" alt="" class="img-circle"></span>
+                        <span class="bio-title">Nazım Hikmet</span>
+                    </a>
+                </li>
         </ul>
     </div>
 </div>

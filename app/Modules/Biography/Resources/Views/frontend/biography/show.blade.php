@@ -12,11 +12,18 @@
         <div class="row">
             <div class="col-md-8">
                 <article class="module">
-                    <div id="new-content">
-                        Kişi  adı : {{$record->name}} <br />
-                        Kişi  biyografisi : {{$record->content}} <br />
-                        <br /><br /><br /><br />
-                        Biyografi Detayları Gelecek.
+                    <div class="bio-content">
+                        <div class="bio-profile">
+                            <div class="bio-img">
+                                <img src="{{ asset('images/biographies/' . $record->id . '/104x78_' . $record->photo) }}" alt="{{$record->title}}" class="img-responsive">
+                            </div>
+                            <div class="bio-name">
+                                <h1>{{$record->name}} </h1>
+                            </div>
+                        </div>
+                        <div class="content">
+                            {{$record->content}}
+                        </div>
                     </div>
                 </article>
             </div><!-- /.new-content -->

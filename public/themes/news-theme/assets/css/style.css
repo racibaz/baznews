@@ -1884,6 +1884,9 @@ footer .footer-bottom .cpy {
     list-style:none;
     margin-bottom: 10px;
 }
+.bio-box ul > li:last-child{
+    margin-bottom: 0;
+}
 .bio-box ul > li > a{
     position: relative;
     display: block;
@@ -1938,4 +1941,36 @@ footer .footer-bottom .cpy {
 }
 .widgets-center .bio-box ul > li > a span.bio-title{
     width: 100%;
+    padding-top: 5px;
+}
+
+.bio-content .bio-profile{
+    border:1px solid #dbdfe1;
+    background-color: #eff2f5;
+    color:#000;
+}
+.bio-content .bio-profile:after{
+    display: block;
+    content: '';
+    clear: both;
+}
+.bio-content .bio-profile .bio-img{
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin-right:10px;
+    overflow: hidden;
+    border-radius:50%;
+}
+.bio-content .bio-profile .bio-img img{
+    width: 80px;
+}
+.bio-content .bio-profile .bio-name{
+    float: left;
+}
+.bio-content .bio-profile .bio-name h1{
+    font-size: 20px;
+}
+.bio-content .content{
+    padding: 15px;
 }
