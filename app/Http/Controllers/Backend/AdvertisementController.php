@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
 use App\Repositories\AdvertisementRepository as Repo;
-use Cache;
 use Caffeinated\Themes\Facades\Theme;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
@@ -15,29 +13,16 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 
-class AdvertisementController extends Controller
+class AdvertisementController extends BackendController
 {
-    private $repo;
-    private $view = 'advertisement.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'advertisement.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
     }
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
-    }
-
 
     public function index()
     {
@@ -120,16 +105,14 @@ class AdvertisementController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result) {
+
+            if ($status) {
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))

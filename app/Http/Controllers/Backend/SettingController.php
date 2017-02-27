@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Jobs\BackUp\BackUpClean;
 use App\Jobs\BackUp\GetBackUp;
-use App\Jobs\Cache\FlushAllCache;
 use App\Jobs\DB\RepairMysqlTables;
 use App\Models\Setting;
 use App\Repositories\SettingRepository as Repo;
@@ -19,28 +17,15 @@ use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
-class SettingController extends Controller
+class SettingController extends BackendController
 {
-    private $repo;
-    private $view = 'setting.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'setting.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
-    }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
     }
 
 
@@ -62,7 +47,14 @@ class SettingController extends Controller
         //$records = Setting::all();
 
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records', 'routeCollection', 'themes', 'activeTheme', 'modules', 'modulesCount'));
+        return Theme::view($this->getViewName(__FUNCTION__),
+            compact(
+                'records',
+                'routeCollection',
+                'themes',
+                'activeTheme',
+                'modules',
+                'modulesCount'));
     }
 
 
@@ -107,7 +99,6 @@ class SettingController extends Controller
     public function save($record)
     {
         $input = Input::all();
-
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         
         $v = Setting::validate($input);
@@ -119,16 +110,14 @@ class SettingController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result) {
+
+            if ($status) {
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))

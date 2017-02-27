@@ -13,26 +13,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 
-class PingController extends Controller
+class PingController extends BackendController
 {
-    private $repo;
-    private $view = 'ping.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct()
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-    }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
+        $this->view = 'ping.';
+        $this->redirectViewName = 'backend.';
     }
 
     public function index()
