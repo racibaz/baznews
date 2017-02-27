@@ -2,6 +2,7 @@
 
 namespace App\Modules\Book\Http\Controllers\Backend;
 
+use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Controller;
 use App\Library\Uploader;
 use App\Modules\Book\Models\BookCategory;
@@ -13,28 +14,15 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use Image;
 
-class BookCategoryController extends Controller
+class BookCategoryController extends BackendController
 {
-    private $repo;
-    private $view = 'book_category.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'book_category.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
-    }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
     }
 
     public function index()
@@ -101,27 +89,28 @@ class BookCategoryController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result[0]) {
+
+            if ($status) {
 
                 if(!empty($input['thumbnail'])) {
 
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/images/books_category/'. $result[1]->id . '/original';
-                    Uploader::fileUpload($result[1]  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    $destination = '/images/books_category/'. $instance->id . '/original';
+                    Uploader::fileUpload($instance  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
-                    Image::make(public_path('images/books_category/' . $result[1]->id .'/original/'. $result[1]->thumbnail))
+                    Image::make(public_path('images/books_category/' . $instance->id .'/original/'. $instance->thumbnail))
                         ->fit(180, 275)
-                        ->save(public_path('images/books_category/' . $result[1]->id . '/180x275_' . $document_name));
+                        ->save(public_path('images/books_category/' . $instance->id . '/180x275_' . $document_name));
                 }
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))

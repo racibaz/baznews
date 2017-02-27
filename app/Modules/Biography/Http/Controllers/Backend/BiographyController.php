@@ -2,7 +2,7 @@
 
 namespace App\Modules\Biography\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Backend\BackendController;
 use App\Library\Uploader;
 use App\Modules\Biography\Models\Biography;
 use App\Modules\Biography\Repositories\BiographyRepository as Repo;
@@ -14,22 +14,14 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use Image;
 
-class BiographyController extends Controller
+class BiographyController extends BackendController
 {
-    private $repo;
-    private $view = 'biography.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'biography.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
     }
 
@@ -101,27 +93,27 @@ class BiographyController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id, $input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result[0]) {
+
+            if ($status) {
 
                 if(!empty($input['photo'])) {
                     $oldPath = $record->photo;
                     $document_name = $input['photo']->getClientOriginalName();
-                    $destination = '/images/biographies/'. $result[1]->id .'/thumbnail';
-                    Uploader::fileUpload($result[1], 'photo', $input['photo'] , $destination , $document_name);
+                    $destination = '/images/biographies/'. $instance->id .'/thumbnail';
+                    Uploader::fileUpload($instance, 'photo', $input['photo'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
-                    Image::make(public_path('images/biographies/' . $result[1]->id .'/thumbnail/'. $result[1]->photo))
+                    Image::make(public_path('images/biographies/' . $instance->id .'/thumbnail/'. $instance->photo))
                         ->fit(104, 78)
-                        ->save(public_path('images/biographies/' . $result[1]->id . '/104x78_' . $document_name));
-
+                        ->save(public_path('images/biographies/' . $instance->id . '/104x78_' . $document_name));
                 }
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))

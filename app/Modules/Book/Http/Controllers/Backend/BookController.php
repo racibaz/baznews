@@ -2,42 +2,28 @@
 
 namespace App\Modules\Book\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Backend\BackendController;
 use App\Library\Uploader;
 use App\Modules\Book\Models\Book;
 use App\Modules\Book\Models\BookAuthor;
 use App\Modules\Book\Models\BookCategory;
 use App\Modules\Book\Models\BookPublisher;
-use App\Modules\Book\Models\Publisher;
 use App\Modules\Book\Repositories\BookRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 
-class BookController extends Controller
+class BookController extends BackendController
 {
-    private $repo;
-    private $view = 'book.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'book.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
-    }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
     }
 
     public function index()
@@ -129,24 +115,25 @@ class BookController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result[0]) {
+
+            if ($status) {
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/images/books/'. $result[1] ->id . '/original';
-                    Uploader::fileUpload($result[1]  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    $destination = '/images/books/'. $instance->id . '/original';
+                    Uploader::fileUpload($instance  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
                 }
 
                 if(!empty($input['photo'])) {
                     $oldPath = $record->photo;
                     $document_name = $input['photo']->getClientOriginalName();
-                    $destination = '/images/books/'. $result[1]->id . '/photo';
-                    Uploader::fileUpload($result[1] , 'photo', $input['photo'] , $destination , $document_name);
+                    $destination = '/images/books/'. $instance->id . '/photo';
+                    Uploader::fileUpload($instance , 'photo', $input['photo'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
                 }
 
@@ -159,7 +146,7 @@ class BookController extends Controller
                  * */
 
 
-                $this->book_book_categories_store($result[1],$input);
+                $this->bookBookCategoriesStore($instance,$input);
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
@@ -171,7 +158,7 @@ class BookController extends Controller
         }
     }
 
-    public function book_book_categories_store(Book $record, $input)
+    public function bookBookCategoriesStore(Book $record, $input)
     {
         if(isset($input['book_category_ids'])) {
             $record->book_categories()->sync($input['book_category_ids']);

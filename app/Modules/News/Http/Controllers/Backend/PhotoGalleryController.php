@@ -2,7 +2,7 @@
 
 namespace App\Modules\News\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Backend\BackendController;
 use App\Library\Uploader;
 use App\Models\Tag;
 use App\Modules\News\Models\Photo;
@@ -16,31 +16,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 
-class PhotoGalleryController extends Controller
+class PhotoGalleryController extends BackendController
 {
-    private $repo;
-    private $view = 'photo_gallery.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'photo_gallery.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
-    }
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
     }
 
 
@@ -115,7 +102,6 @@ class PhotoGalleryController extends Controller
     public function save($record)
     {
         $input = Input::all();
-
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['user_id'] = Auth::user()->id;
@@ -129,11 +115,12 @@ class PhotoGalleryController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result[0]) {
+
+            if ($status) {
 
                 //todo form tarafında foto yüklemesini kaldırdım
                 //çünkü galeri resimlerini gösterirken "gallery/gallery_slug/thumbnail" olduğu için
@@ -141,25 +128,25 @@ class PhotoGalleryController extends Controller
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/gallery/'. $result[1]->id .'/photos';
-                    Uploader::fileUpload($result[1] , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    $destination = '/gallery/'. $instance->id .'/photos';
+                    Uploader::fileUpload($instance, 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
 
-                    Image::make(public_path('gallery/'. $result[1]->id .'/photos/'. $result[1]->thumbnail))
+                    Image::make(public_path('gallery/'. $instance->id .'/photos/'. $instance->thumbnail))
                         ->resize(58,58)
-                        ->save(public_path('gallery/'. $result[1]->id .'/photos/58x58_' . $document_name));
+                        ->save(public_path('gallery/'. $instance->id .'/photos/58x58_' . $document_name));
 
-                    Image::make(public_path('gallery/'. $result[1]->id .'/photos/'. $result[1]->thumbnail))
+                    Image::make(public_path('gallery/'. $instance->id .'/photos/'. $instance->thumbnail))
                         ->resize(497,358)
-                        ->save(public_path('gallery/'. $result[1]->id .'/photos/497x358_' . $document_name));
+                        ->save(public_path('gallery/'. $instance->id .'/photos/497x358_' . $document_name));
                 }
 
 
-                $this->tags_photo_gallery_store($result[1],$input);
+                $this->tagsPhotoGalleryStore($instance,$input);
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))
@@ -175,6 +162,7 @@ class PhotoGalleryController extends Controller
 
         return Theme::view('news::' . $this->redirectViewName . $this->view . 'add_multi_photos_view', compact(['photo_gallery']));
     }
+
 
     //TODO YOUTUBE CLONE EĞİTİMİNDE Kİ GİBİ YAPILACAK JOB,QUEUE VS..
     public function addMultiPhotos(Request $request)
@@ -236,7 +224,6 @@ class PhotoGalleryController extends Controller
 
         return $photo;
     }
-
 
 
     public function updateGalleryPhotos(Request $request)
@@ -352,7 +339,7 @@ class PhotoGalleryController extends Controller
     }
 
 
-    public function tags_photo_gallery_store(PhotoGallery $record, $input)
+    public function tagsPhotoGalleryStore(PhotoGallery $record, $input)
     {
         if(isset($input['tags_ids'])) {
             $record->tags()->sync($input['tags_ids']);

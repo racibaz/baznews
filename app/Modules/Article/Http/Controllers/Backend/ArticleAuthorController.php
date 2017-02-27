@@ -2,7 +2,7 @@
 
 namespace App\Modules\Article\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Backend\BackendController;
 use App\Library\Uploader;
 use App\Models\User;
 use App\Modules\Article\Models\ArticleAuthor;
@@ -10,36 +10,21 @@ use App\Modules\Article\Repositories\ArticleAuthorRepository as Repo;
 use App\Repositories\UserRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use Image;
 
-class ArticleAuthorController extends Controller
+class ArticleAuthorController extends BackendController
 {
-    private $repo;
-    private $view = 'article_author.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'article_author.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
     }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
-    }
-
 
     public function index()
     {
@@ -116,26 +101,27 @@ class ArticleAuthorController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id, $input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result[0]) {
+
+            if ($status) {
 
                 if(!empty($input['photo'])) {
                     $oldPath = $record->photo;
                     $document_name = $input['photo']->getClientOriginalName();
-                    $destination = '/images/article_author_images/'. $result[1]->id .'/original';
-                    Uploader::fileUpload($result[1] , 'photo', $input['photo'] , $destination , $document_name);
+                    $destination = '/images/article_author_images/'. $instance->id .'/original';
+                    Uploader::fileUpload($instance , 'photo', $input['photo'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
-                    Image::make(public_path('images/article_author_images/' . $result[1]->id .'/original/'. $result[1]->photo))
+                    Image::make(public_path('images/article_author_images/' . $instance->id .'/original/'. $instance->photo))
                         ->fit(58, 58)
-                        ->save(public_path('images/article_author_images/' . $result[1]->id . '/58x58_' . $document_name));
+                        ->save(public_path('images/article_author_images/' . $instance->id . '/58x58_' . $document_name));
                 }
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))

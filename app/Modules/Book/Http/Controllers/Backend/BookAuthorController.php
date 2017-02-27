@@ -2,7 +2,7 @@
 
 namespace App\Modules\Book\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Backend\BackendController;
 use App\Modules\Book\Models\BookAuthor;
 use App\Modules\Book\Repositories\BookAuthorRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -11,28 +11,15 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
-class BookAuthorController extends Controller
+class BookAuthorController extends BackendController
 {
-    private $repo;
-    private $view = 'book_author.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'book_author.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
-    }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
     }
 
     public function index()
@@ -94,14 +81,14 @@ class BookAuthorController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result[0]) {
 
+            if ($status) {
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))
