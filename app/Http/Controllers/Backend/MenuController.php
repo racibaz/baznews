@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Library\Uploader;
 use App\Models\Menu;
 use App\Models\Page;
@@ -13,28 +12,15 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
-class MenuController extends Controller
+class MenuController extends BackendController
 {
-    private $repo;
-    private $view = 'menu.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'menu.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
-    }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
     }
 
 
@@ -104,14 +90,12 @@ class MenuController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result) {
+
+            if ($status) {
 
                 if(!empty($input['icon'])) {
                     /*dosya isminden extension kısmını çıkartıyoruz.*/
@@ -121,9 +105,9 @@ class MenuController extends Controller
                     //uzantısını kayıt etmek için uzantısını değişkene atıyoruz.
                     $extention = array_last($originalFileName);
 
-                    $document_name = $result[1]->id . '.' . $extention;
+                    $document_name = $instance->id . '.' . $extention;
                     $destination = '/icons/menus';
-                    Uploader::fileUpload($result[1] , 'icon', $input['icon'] , $destination , $document_name);
+                    Uploader::fileUpload($instance , 'icon', $input['icon'] , $destination , $document_name);
                 }
 
                 Session::flash('flash_message', trans('common.message_model_updated'));

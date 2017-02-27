@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\ModuleManager;
 use App\Repositories\ModuleManagerRepository as Repo;
 use Caffeinated\Modules\Facades\Module;
@@ -13,28 +12,15 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
 
-class ModuleManagerController extends Controller
+class ModuleManagerController extends BackendController
 {
-    private $repo;
-    private $view = 'module_manager.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'module_manager.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
-    }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
     }
 
     public function index()
@@ -102,16 +88,14 @@ class ModuleManagerController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
-                if (!empty($result)) {
-                    $result = true;
-                }
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result) {
+
+            if ($status) {
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $status);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))

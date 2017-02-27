@@ -19,28 +19,15 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 
-class UserController extends Controller
+class UserController extends BackendController
 {
-    private $repo;
-    private $view = 'user.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'user.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
-    }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
     }
 
 
@@ -71,6 +58,7 @@ class UserController extends Controller
         $cities = City::cityList();
         $roles = Role::roleList();
         $groups = Group::groupList();
+
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups']));
     }
 
@@ -84,9 +72,7 @@ class UserController extends Controller
     public function show(User $record)
     {
         $revisions = $record->getUserRevisions($record->id);
-
         //$events = $record->events();
-
         $events = Event::where('user_id',$record->id)->get();
 
         return Theme::view($this->getViewName(__FUNCTION__),compact('record', 'revisions', 'events'));
@@ -99,6 +85,7 @@ class UserController extends Controller
         $cities = City::cityList();
         $roles = Role::roleList();
         $groups = Group::groupList();
+
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups']));
     }
 
@@ -148,19 +135,17 @@ class UserController extends Controller
 
             if (isset($record->id)) {
                 $input['password'] = !empty($input['password']) ? bcrypt($input['password']) : $record->password;
-                $result = $this->repo->update($record->id, $input);
-
+                list($status, $instance) = $this->repo->update($record->id, $input);
             } else {
-                $result = $this->repo->create($input);
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result[0]) {
+            if ($status) {
 
-                $this->role_user_store($result[1],$input);
-
-                $this->group_user_store($result[1],$input);
+                $this->roleUserStore($instance,$input);
+                $this->groupUserStore($instance,$input);
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))
@@ -170,12 +155,12 @@ class UserController extends Controller
     }
 
 
-    public function role_user_store(User $record, $input)
+    public function roleUserStore(User $record, $input)
     {
         $record->roles()->sync($input['role_user_store_']);
     }
 
-    public function group_user_store(User $record, $input)
+    public function groupUserStore(User $record, $input)
     {
         $record->groups()->sync($input['group_user_store_']);
     }
