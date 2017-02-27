@@ -79,22 +79,20 @@
 
                                             <div class="col-lg-10">
 
-                                                {!!  Form::selectMonth('months') !!}
-
-                                                {{--<select id="months" class="form-control">--}}
-                                                {{--<option value="1">{{trans('setting.january')}}</option>--}}
-                                                {{--<option value="2">{{trans('setting.february')}}</option>--}}
-                                                {{--<option value="3">{{trans('setting.march')}}</option>--}}
-                                                {{--<option value="4">{{trans('setting.may')}}</option>--}}
-                                                {{--<option value="5">{{trans('setting.april')}}</option>--}}
-                                                {{--<option value="6">{{trans('setting.june')}}</option>--}}
-                                                {{--<option value="7">{{trans('setting.july')}}</option>--}}
-                                                {{--<option value="8">{{trans('setting.august')}}</option>--}}
-                                                {{--<option value="9">{{trans('setting.september')}}</option>--}}
-                                                {{--<option value="10">{{trans('setting.october')}}</option>--}}
-                                                {{--<option value="11">{{trans('setting.november')}}</option>--}}
-                                                {{--<option value="12">{{trans('setting.december')}}</option>--}}
-                                                {{--</select>--}}
+                                                <select id="months" name="months" class="form-control">
+                                                <option value="1">{{trans('setting.january')}}</option>
+                                                <option value="2">{{trans('setting.february')}}</option>
+                                                <option value="3">{{trans('setting.march')}}</option>
+                                                <option value="4">{{trans('setting.may')}}</option>
+                                                <option value="5">{{trans('setting.april')}}</option>
+                                                <option value="6">{{trans('setting.june')}}</option>
+                                                <option value="7">{{trans('setting.july')}}</option>
+                                                <option value="8">{{trans('setting.august')}}</option>
+                                                <option value="9">{{trans('setting.september')}}</option>
+                                                <option value="10">{{trans('setting.october')}}</option>
+                                                <option value="11">{{trans('setting.november')}}</option>
+                                                <option value="12">{{trans('setting.december')}}</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -104,11 +102,11 @@
                                             {!! Form::label('years', trans('news::archive.datetime'),['class'=> 'col-lg-2 control-label']) !!}
 
                                             <div class="col-lg-10">
-                                                {!! Form::text('years', null,['class'=> 'col-lg-2 control-label']) !!}
-                                                {{--<select id="years" class="form-control">--}}
-                                                {{--<option value="2017">2017</option>--}}
-                                                {{--<option value="2016">2016</option>--}}
-                                                {{--</select>--}}
+                                                {{--{!! Form::text('years', null,['class'=> 'col-lg-2 control-label']) !!}--}}
+                                                <select id="years" name="years" class="form-control">
+                                                    <option value="2017">2017</option>
+                                                    <option value="2016">2016</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
