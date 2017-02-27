@@ -14,5 +14,13 @@
     "namespace": "\\App\\Modules\\News\\Widgets\\BoxCuffNews",
     "version": "1.0",
     "description": "BoxCuffNews News Widget."
+  },
+  "NewsArchive": {
+    "name": "NewsArchive",
+    "slug": "news_archive",
+    "module_name": "NewsArchive",
+    "namespace": "\\App\\Modules\\News\\Widgets\\NewsArchive",
+    "version": "1.0",
+    "description": "NewsArchive Widget."
   }
 }

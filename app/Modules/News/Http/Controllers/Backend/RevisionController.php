@@ -2,13 +2,10 @@
 
 namespace App\Modules\News\Http\Controllers\Backend;
 
+use App\Http\Controllers\Backend\BackendController;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-class RevisionController extends Controller
+class RevisionController extends BackendController
 {
 
     private $repo;

@@ -2,8 +2,7 @@
 
 namespace App\Modules\News\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Jobs\File\ImageUpload;
+use App\Http\Controllers\Backend\BackendController;
 use App\Library\Uploader;
 use App\Models\City;
 use App\Models\Country;
@@ -29,33 +28,19 @@ use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
-use phpDocumentor\Reflection\Types\Integer;
 
-class NewsController extends Controller
+class NewsController extends BackendController
 {
-    private $repo;
-    private $view = 'news.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
     private $oldPath;
 
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'news.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
     }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
-    }
-
 
     public function index($statusCode = null)
     {
@@ -338,66 +323,64 @@ class NewsController extends Controller
         } else {
 
             if (isset($record->id)) {
-
-                $result = $this->repo->update($record->id,$input);
-
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
+                list($status, $instance) = $this->repo->create($input);
             }
 
-            if ($result[0]) {
+            if ($status) {
 
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/images/news_images/'. $result[1]->id .'/thumbnail';
-                    Uploader::fileUpload($result[1] , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    $destination = '/images/news_images/'. $instance->id .'/thumbnail';
+                    Uploader::fileUpload($instance , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
 
-                    Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
+                    Image::make(public_path('images/news_images/' . $instance->id .'/thumbnail/'. $instance->thumbnail))
                         ->fit(58, 58)
-                        ->save(public_path('images/news_images/' . $result[1]->id . '/58x58_' . $document_name));
+                        ->save(public_path('images/news_images/' . $instance->id . '/58x58_' . $document_name));
 
-                    Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
+                    Image::make(public_path('images/news_images/' . $instance->id .'/thumbnail/'. $instance->thumbnail))
                         ->fit(165, 90)
-                        ->save(public_path('images/news_images/' . $result[1]->id . '/165x90_' . $document_name));
+                        ->save(public_path('images/news_images/' . $instance->id . '/165x90_' . $document_name));
 
-                    Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
+                    Image::make(public_path('images/news_images/' . $instance->id .'/thumbnail/'. $instance->thumbnail))
                         ->fit(196, 150)
-                        ->save(public_path('images/news_images/' . $result[1]->id . '/196x150_' . $document_name));
+                        ->save(public_path('images/news_images/' . $instance->id . '/196x150_' . $document_name));
 
-                    Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
+                    Image::make(public_path('images/news_images/' . $instance->id .'/thumbnail/'. $instance->thumbnail))
                         ->fit(220, 310)
-                        ->save(public_path('images/news_images/' . $result[1]->id . '/220x310_' . $document_name));
+                        ->save(public_path('images/news_images/' . $instance->id . '/220x310_' . $document_name));
 
-                    Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
+                    Image::make(public_path('images/news_images/' . $instance->id .'/thumbnail/'. $instance->thumbnail))
                         ->fit(322, 265)
-                        ->save(public_path('images/news_images/' . $result[1]->id . '/322x265_' . $document_name));
+                        ->save(public_path('images/news_images/' . $instance->id . '/322x265_' . $document_name));
 
-                    Image::make(public_path('images/news_images/' . $result[1]->id .'/thumbnail/'. $result[1]->thumbnail))
+                    Image::make(public_path('images/news_images/' . $instance->id .'/thumbnail/'. $instance->thumbnail))
                         ->fit(497, 358)
-                        ->save(public_path('images/news_images/' . $result[1]->id . '/497x358_' . $document_name));
+                        ->save(public_path('images/news_images/' . $instance->id . '/497x358_' . $document_name));
                 }
 
                 if(!empty($input['cuff_photo'])) {
                     $oldPath = $record->cuff_photo;
                     $document_name = $input['cuff_photo']->getClientOriginalName();
-                    $destination = '/images/news_images/'. $result[1]->id .'/cuff_photo' ;
-                    Uploader::fileUpload($result[1] , 'cuff_photo', $input['cuff_photo'] , $destination , $document_name);
+                    $destination = '/images/news_images/'. $instance->id .'/cuff_photo' ;
+                    Uploader::fileUpload($instance , 'cuff_photo', $input['cuff_photo'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
                 }
 
 
-                $this->news_news_categories_store($result[1],$input);
-                $this->future_news_store($result[1],$input);
-                $this->recommendation_news_store($result[1],$input);
-                $this->related_news_news_store($result[1],$input);
-                $this->tags_news_store($result[1],$input);
-                $this->news_photo_galleries_store($result[1],$input);
-                $this->news_video_galleries_store($result[1],$input);
-                $this->news_videos_store($result[1],$input);
-                $this->news_photos_store($result[1],$input);
+                $this->newsNewsCategoriesStore($instance,$input);
+                $this->futureNewsStore($instance,$input);
+                $this->recommendationNewsStore($instance,$input);
+                $this->relatedNewsNewsStore($instance,$input);
+                $this->tagsNewsStore($instance,$input);
+                $this->newsPhotoGalleriesStore($instance,$input);
+                $this->newsVideoGalleriesStore($instance,$input);
+                $this->newsVideosStore($instance,$input);
+                $this->newsPhotosStore($instance,$input);
 
 
 
@@ -420,10 +403,10 @@ class NewsController extends Controller
 
                         if(strpos($input['content'], $tag->name)){
 
-                            $isExistTag = $result[1]->tags->where('name',$tag->name)->first();
+                            $isExistTag = $instance->tags->where('name',$tag->name)->first();
 
                             if(empty($isExistTag))
-                                $result[1]->tags()->attach($tag->id);
+                                $instance->tags()->attach($tag->id);
                         }
                     }
                 }
@@ -432,7 +415,7 @@ class NewsController extends Controller
                 //$this->dispatch(new ImageUploader($record, $input['thumbnail'], $destination, $document_name, $document_name));
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))
@@ -442,14 +425,14 @@ class NewsController extends Controller
     }
 
 
-    public function news_news_categories_store(News $record, $input)
+    public function newsNewsCategoriesStore(News $record, $input)
     {
         if(isset($input['news_category_ids'])) {
             $record->news_categories()->sync($input['news_category_ids']);
         }
     }
 
-    public function future_news_store(News $record, $input)
+    public function futureNewsStore(News $record, $input)
     {
         $input['future_news__is_active'] = Input::get('future_news__is_active') == "on" ? true : false;
 
@@ -483,7 +466,7 @@ class NewsController extends Controller
 
     }
 
-    public function recommendation_news_store(News $record, $input)
+    public function recommendationNewsStore(News $record, $input)
     {
 
         if(empty($record)){
@@ -525,7 +508,7 @@ class NewsController extends Controller
 
     }
 
-    public function related_news_news_store(News $record, $input)
+    public function relatedNewsNewsStore(News $record, $input)
     {
 //        $record->related_news()->sync($input['related_news_ids']);
 
@@ -548,35 +531,35 @@ class NewsController extends Controller
         }
     }
 
-    public function tags_news_store(News $record, $input)
+    public function tagsNewsStore(News $record, $input)
     {
         if(isset($input['tags_ids'])) {
             $record->tags()->sync($input['tags_ids']);
         }
     }
 
-    public function news_photo_galleries_store(News $record, $input)
+    public function newsPhotoGalleriesStore(News $record, $input)
     {
         if(isset($input['photo_gallery_ids'])) {
             $record->photo_galleries()->sync($input['photo_gallery_ids']);
         }
     }
 
-    public function news_video_galleries_store(News $record, $input)
+    public function newsVideoGalleriesStore(News $record, $input)
     {
         if(isset($input['video_gallery_ids'])) {
             $record->video_galleries()->sync($input['video_gallery_ids']);
         }
     }
 
-    public function news_videos_store(News $record, $input)
+    public function newsVideosStore(News $record, $input)
     {
         if(isset($input['videos_ids'])) {
             $record->videos()->sync($input['videos_ids']);
         }
     }
 
-    public function news_photos_store(News $record, $input)
+    public function newsPhotosStore(News $record, $input)
     {
         if(isset($input['photos_ids'])) {
             $record->photos()->sync($input['photos_ids']);

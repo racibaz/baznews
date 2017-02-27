@@ -2,42 +2,29 @@
 
 namespace App\Modules\Article\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Backend\BackendController;
 use App\Modules\Article\Models\Article;
 use App\Modules\Article\Models\ArticleAuthor;
 use App\Modules\Article\Models\ArticleCategory;
 use App\Modules\Article\Repositories\ArticleRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
+use Mews\Purifier\Facades\Purifier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Mews\Purifier\Facades\Purifier;
+use Illuminate\Support\Facades\Input;
 
-class ArticleController extends Controller
+class ArticleController extends BackendController
 {
-    private $repo;
-    private $view = 'article.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'article.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
-    }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
     }
 
     public function index($statusCode = null)
@@ -177,16 +164,17 @@ class ArticleController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id, $input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result[0]) {
 
-                $this->article_article_categories_store($result[1],$input);
+            if ($status) {
+
+                $this->articleArticleCategoriesStore($instance,$input);
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))
@@ -195,7 +183,7 @@ class ArticleController extends Controller
         }
     }
 
-    public function article_article_categories_store(Article $record, $input)
+    public function articleArticleCategoriesStore(Article $record, $input)
     {
         if(isset($input['article_category_ids'])) {
             $record->article_categories()->sync($input['article_category_ids']);

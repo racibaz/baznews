@@ -2,7 +2,7 @@
 
 namespace App\Modules\News\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Backend\BackendController;
 use App\Library\Uploader;
 use App\Models\Tag;
 use App\Modules\News\Models\Video;
@@ -16,28 +16,15 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 
-class VideoController extends Controller
+class VideoController extends BackendController
 {
-    private $repo;
-    private $view = 'video.';
-    private $redirectViewName = 'backend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
-        $this->middleware(function ($request, $next) {
+        parent::__construct();
 
-            $this->permisson_check();
-
-            return $next($request);
-        });
-
+        $this->view = 'video.';
+        $this->redirectViewName = 'backend.';
         $this->repo= $repo;
-    }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
     }
 
 
@@ -139,51 +126,50 @@ class VideoController extends Controller
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                list($status, $instance) = $this->repo->update($record->id,$input);
             } else {
-                $result = $this->repo->create($input);
+                list($status, $instance) = $this->repo->create($input);
             }
-            if ($result[0]) {
 
+            if ($status) {
 
                 //todo video yüklenebilecek.
                 //file
-
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/videos/'. $result[1]->id;
-                    Uploader::fileUpload($result[1] , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    $destination = '/videos/'. $instance->id;
+                    Uploader::fileUpload($instance , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($destination . '/' . $oldPath);
 
 
-                    Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
+                    Image::make(public_path('videos/'. $instance->id .'/'. $instance->thumbnail))
                         ->resize(58, 58)
-                        ->save(public_path('videos/'. $result[1]->id .'/58x58_' . $document_name));
+                        ->save(public_path('videos/'. $instance->id .'/58x58_' . $document_name));
 
-                    Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
+                    Image::make(public_path('videos/'. $instance->id .'/'. $instance->thumbnail))
                         ->resize(497, 358)
-                        ->save(public_path('videos/'. $result[1]->id .'/497x358_' . $document_name));
+                        ->save(public_path('videos/'. $instance->id .'/497x358_' . $document_name));
 
-                    Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
+                    Image::make(public_path('videos/'. $instance->id .'/'. $instance->thumbnail))
                         ->resize(658, 404)
-                        ->save(public_path('videos/'. $result[1]->id .'/658x404_' . $document_name));
+                        ->save(public_path('videos/'. $instance->id .'/658x404_' . $document_name));
 
-                    Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
+                    Image::make(public_path('videos/'. $instance->id .'/'. $instance->thumbnail))
                         ->resize(224, 195)
-                        ->save(public_path('videos/'. $result[1]->id .'/224x195_' . $document_name));
+                        ->save(public_path('videos/'. $instance->id .'/224x195_' . $document_name));
 
-                    Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
+                    Image::make(public_path('videos/'. $instance->id .'/'. $instance->thumbnail))
                         ->resize(165, 90)
-                        ->save(public_path('videos/'. $result[1]->id .'/165x90_' . $document_name));
+                        ->save(public_path('videos/'. $instance->id .'/165x90_' . $document_name));
 
-                    Image::make(public_path('videos/'. $result[1]->id .'/'. $result[1]->thumbnail))
+                    Image::make(public_path('videos/'. $instance->id .'/'. $instance->thumbnail))
                         ->resize(457, 250)
-                        ->save(public_path('videos/'. $result[1]->id .'/257x250_' . $document_name));
+                        ->save(public_path('videos/'. $instance->id .'/257x250_' . $document_name));
                 }
 
 
-                $this->tags_video_store($result[1],$input);
+                $this->tagsVideoStore($instance,$input);
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
@@ -196,16 +182,11 @@ class VideoController extends Controller
     }
 
 
-
-    public function tags_video_store(Video $record, $input)
+    public function tagsVideoStore(Video $record, $input)
     {
         if(isset($input['tags_ids'])) {
             $record->tags()->sync($input['tags_ids']);
         }
     }
-
-
-
-
 
 }
