@@ -40,7 +40,7 @@ class ArticleAuthor extends Eloquent
 
     public static function validate($input) {
         $rules = array(
-            'user_id' => 'integer',
+//            'user_id' => 'integer',
             'name' => 'required',
             'email' => 'email',
             'photo' => 'image|max:255',

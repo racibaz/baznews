@@ -143,22 +143,26 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <!-- general form elements disabled -->
-            <div class="box box-warning">
-                <div class="box-header with-border">
-                    <h3 class="box-title">{{ trans('article::article_author.user_id') }}</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="form-group">
-                        {!! Form::select('user_id', $userList , $record->user_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+
+        @if(empty($record->user_id)  || (!empty($record->id) && !empty($record->user_id)) )
+            <div class="col-md-6">
+                <!-- general form elements disabled -->
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{ trans('article::article_author.user_id') }}</h3>
                     </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            {!! Form::select('user_id', $userList , $record->user_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
+                <!-- /.box -->
             </div>
-            <!-- /.box -->
-        </div>
+        @endif
+
         {!! Form::close() !!}
     </div><!-- end row -->
     <!-- Main Content Element  End-->

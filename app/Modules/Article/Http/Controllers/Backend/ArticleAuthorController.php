@@ -87,12 +87,32 @@ class ArticleAuthorController extends BackendController
             $userRepo = new UserRepository();
             $user = $userRepo->find($input['user_id']);
 
+            $input['user_id'] = $user->id;
             $input['name'] = $user->name;
             $input['slug'] = $user->slug;
             $input['email'] = $user->email;
+        }else{
+
+            //user_id seçilmediyse db ye null değeri göndermek için null değeri veriyoruz.
+            $input['user_id'] = null;
         }
 
         $v = ArticleAuthor::validate($input);
+
+        //Makale yazarı daha önce eklenmiş mi? Eğer eklenmiş ise hata mesajı gönderiyoruz.
+        $articleAuthor = $this->repo
+            ->orWhere('name',$input['name'])
+            ->orWhere('slug',$input['slug'])
+            ->orWhere('email',$input['email'])
+            ->first();
+
+        if($articleAuthor){
+            $v->errors()->add('Duplicate', 'Duplicate Article Author found!');
+            return Redirect::back()
+                ->withErrors($v)
+                ->withInput($input);
+        }
+
 
         if ($v->fails()) {
             return Redirect::back()

@@ -15,7 +15,7 @@ class CreateArticleAuthorsTable extends Migration
     {
         Schema::create('article_authors', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->nullable();
             $table->string('name')->unique();
             $table->string('slug')->nullable();
             $table->string('email')->nullable();
