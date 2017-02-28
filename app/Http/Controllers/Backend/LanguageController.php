@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Country;
-use App\Repositories\CountryRepository as Repo;
+use App\Models\Language;
+use App\Repositories\LanguageRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
-class CountryController extends BackendController
+class LanguageController extends BackendController
 {
     public function __construct(Repo $repo)
     {
         parent::__construct();
 
-        $this->view = 'country.';
+        $this->view = 'language.';
         $this->redirectViewName = 'backend.';
         $this->repo= $repo;
     }
@@ -41,25 +41,25 @@ class CountryController extends BackendController
     }
 
 
-    public function show(Country $record)
+    public function show(Language $record)
     {
         return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
     }
 
 
-    public function edit(Country $record)
+    public function edit(Language $record)
     {
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
-    public function update(Request $request, Country $record)
+    public function update(Request $request, Language $record)
     {
         return $this->save($record);
     }
 
 
-    public function destroy(Country $record)
+    public function destroy(Language $record)
     {
         $this->repo->delete($record->id);
         return redirect()->route($this->redirectRouteName . $this->view .'index');
@@ -71,7 +71,7 @@ class CountryController extends BackendController
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = Country::validate($input);
+        $v = Language::validate($input);
 
         if ($v->fails()) {
             return Redirect::back()
