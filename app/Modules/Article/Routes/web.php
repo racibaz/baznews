@@ -27,4 +27,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('article.status/{status?}', 'Backend\ArticleController@index')->name('article_statuses');
     Route::resource('article', 'Backend\ArticleController');
     Route::resource('article_category', 'Backend\ArticleCategoryController');
+    Route::resource('article_setting', 'Backend\ArticleSettingController');
 });

@@ -195,6 +195,49 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        //articlesetting
+        $articlesetting1 = Permission::create([
+            'name'          => 'index-articlesetting',
+            'display_name'  => 'articlesetting  Listeleme',
+            'is_active'     => 1,
+        ]);
+
+        $articlesetting2 = Permission::create([
+            'name'          => 'create-articlesetting',
+            'display_name'  => 'articlesetting Oluşturma',
+            'is_active'     => 1,
+        ]);
+
+        $articlesetting3 = Permission::create([
+            'name'          => 'edit-articlesetting',
+            'display_name'  => 'articlesetting Düzenleme',
+            'is_active'     => 1,
+        ]);
+
+        $articlesetting4 = Permission::create([
+            'name'          => 'destroy-articlesetting',
+            'display_name'  => 'articlesetting Silme',
+            'is_active'     => 1,
+        ]);
+
+        $articlesetting5 = Permission::create([
+            'name'          => 'show-articlesetting',
+            'display_name'  => 'articlesetting Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $articlesetting6 = Permission::create([
+            'name'          => 'update-articlesetting',
+            'display_name'  => 'articlesetting update',
+            'is_active'     => 1,
+        ]);
+
+        $articlesetting7 = Permission::create([
+            'name'          => 'store-articlesetting',
+            'display_name'  => 'articlesetting store',
+            'is_active'     => 1,
+        ]);
+
 
         $super_admin = Role::find(1);
 
@@ -227,6 +270,13 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($articlecategory5);
         $super_admin->permissions()->attach($articlecategory6);
         $super_admin->permissions()->attach($articlecategory7);
+        $super_admin->permissions()->attach($articlesetting1);
+        $super_admin->permissions()->attach($articlesetting2);
+        $super_admin->permissions()->attach($articlesetting3);
+        $super_admin->permissions()->attach($articlesetting4);
+        $super_admin->permissions()->attach($articlesetting5);
+        $super_admin->permissions()->attach($articlesetting6);
+        $super_admin->permissions()->attach($articlesetting7);
 
     }
 }

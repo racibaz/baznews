@@ -26,6 +26,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('article_author', 'App\Modules\Article\Models\ArticleAuthor');
         Route::model('article', 'App\Modules\Article\Models\Article');
         Route::model('article_category', 'App\Modules\Article\Models\ArticleCategory');
+        Route::model('article_setting', 'App\Modules\Article\Models\ArticleSetting');
 
         parent::boot();
     }
