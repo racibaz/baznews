@@ -31,5 +31,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('book_category', 'Backend\BookCategoryController');
     Route::resource('book_publisher', 'Backend\BookPublisherController');
     Route::resource('book_author', 'Backend\BookAuthorController');
+    Route::resource('book_setting', 'Backend\BookSettingController');
 });
 

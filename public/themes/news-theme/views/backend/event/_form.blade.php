@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('event.managment')}}</h3>
+            <h3 class="ls-top-header">{{trans('event.management')}}</h3>
             <!--Top header end -->
 
             <!--Top breadcrumb start -->

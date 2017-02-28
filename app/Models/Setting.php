@@ -22,6 +22,15 @@ class Setting extends Model
     public static function validate($input) {
         $rules = array(
             'attribute_key' => 'required',
+            'title' => 'max:255',
+            'slogan' => 'max:255',
+            'description' => 'max:255',
+            'keywords'=> 'max:255',
+            'logo' => 'image',
+            'url' => 'url',
+            'rss_count' => 'integer',
+            'rss_cache_life_time' => 'integer',
+            'sitemap_count' => 'integer',
         );
         return Validator::make($input, $rules);
     }

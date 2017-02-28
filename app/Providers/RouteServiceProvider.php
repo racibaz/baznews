@@ -51,6 +51,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('account', 'App\Models\Account');
         Route::model('advertisement', 'App\Models\Advertisement');
         Route::model('widget_group', 'App\Models\WidgetGroup');
+        Route::model('language', 'App\Models\Language');
         
     }
 

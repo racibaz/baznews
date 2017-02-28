@@ -2,7 +2,7 @@
 
 return [
     'name' => 'Sayfa İsmi',
-    'managment' => 'Sayfa Yönetimi',
+    'management' => 'Sayfa Yönetimi',
     'page' => 'Sayfa',
     'slug' => 'Slug',
     'description' => 'Tanım',

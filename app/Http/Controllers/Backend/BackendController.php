@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Support\Facades\Redis;
 use Log;
 use Route;
 
@@ -50,6 +51,18 @@ class BackendController extends Controller
         return $this->redirectViewName . $this->view . $methodName;
     }
 
+
+    public function removeCacheKey($cacheName)
+    {
+        Redis::del($cacheName);
+        return \Redirect::back();
+    }
+
+    public function removeHomePageCache()
+    {
+        Redis::del(config('cache.prefix') .':homePage');
+        return \Redirect::back();
+    }
 
 
     //todo genel birşey yapılacak

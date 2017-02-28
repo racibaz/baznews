@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <!--Top header start-->
-                <h3 class="ls-top-header">{{trans('setting.managment')}}</h3>
+                <h3 class="ls-top-header">{{trans('setting.management')}}</h3>
                 <!--Top header end -->
 
                 <!--Top breadcrumb start -->
@@ -28,7 +28,9 @@
                     <div class="panel-body">
                         <ul>
                             @foreach($redisKeys as $index => $redisKey)
-                                <li>{{ $index  . '-  ' .  $redisKey}}</li> <br />
+                                <li><a href="{!! URL::route('removeCacheKey',['cacheName' => $redisKey]) !!}"> {{ trans('common.remove_cache') }} </a>
+                                    {{ ++$index  . '-  ' .  $redisKey}}
+                                </li> <br />
                             @endforeach
                         </ul>
 

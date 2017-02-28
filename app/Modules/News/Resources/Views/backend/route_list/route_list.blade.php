@@ -18,5 +18,6 @@
         @permission('index-videocategory'))<li><a href="{!! route('video_category.index') !!}"><i class="fa fa-book"></i> <span>{{trans('news::dashboard.video_category')}}</span></a></li>@endpermission
         @permission('index-videogallery'))<li><a href="{!! route('video_gallery.index') !!}"><i class="fa fa-book"></i> <span>{{trans('news::dashboard.video_gallery')}}</span></a></li>@endpermission
         @permission('index-video'))<li><a href="{!! route('video.index') !!}"><i class="fa fa-book"></i> <span>{{trans('news::dashboard.video')}}</span></a></li>@endpermission
+        @permission('index-newssetting'))<li><a href="{!! route('news_setting.index') !!}"><i class="fa fa-book"></i> <span>{{trans('news::dashboard.news_settings')}}</span></a></li>@endpermission
     </ul>
 </li>

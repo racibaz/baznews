@@ -668,6 +668,51 @@ class PermissionsTableSeeder extends Seeder
 
 
 
+        //newssetting
+        $newssetting1 = Permission::create([
+            'name'          => 'index-newssetting',
+            'display_name'  => 'newssetting  Listeleme',
+            'is_active'     => 1,
+        ]);
+
+        $newssetting2 = Permission::create([
+            'name'          => 'create-newssetting',
+            'display_name'  => 'newssetting Oluşturma',
+            'is_active'     => 1,
+        ]);
+
+        $newssetting3 = Permission::create([
+            'name'          => 'edit-newssetting',
+            'display_name'  => 'newssetting Düzenleme',
+            'is_active'     => 1,
+        ]);
+
+        $newssetting4 = Permission::create([
+            'name'          => 'destroy-newssetting',
+            'display_name'  => 'newssetting Silme',
+            'is_active'     => 1,
+        ]);
+
+        $newssetting5 = Permission::create([
+            'name'          => 'show-newssetting',
+            'display_name'  => 'newssetting Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $newssetting6 = Permission::create([
+            'name'          => 'update-newssetting',
+            'display_name'  => 'newssetting update',
+            'is_active'     => 1,
+        ]);
+
+        $newssetting7 = Permission::create([
+            'name'          => 'store-newssetting',
+            'display_name'  => 'newssetting  store',
+            'is_active'     => 1,
+        ]);
+
+
+
         $first_user = User::find(1);
         $super_admin = Role::find(1);
 
@@ -776,6 +821,13 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($video5);
         $super_admin->permissions()->attach($video6);
         $super_admin->permissions()->attach($video7);
+        $super_admin->permissions()->attach($newssetting1);
+        $super_admin->permissions()->attach($newssetting2);
+        $super_admin->permissions()->attach($newssetting3);
+        $super_admin->permissions()->attach($newssetting4);
+        $super_admin->permissions()->attach($newssetting5);
+        $super_admin->permissions()->attach($newssetting6);
+        $super_admin->permissions()->attach($newssetting7);
 
     }
 }

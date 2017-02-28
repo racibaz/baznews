@@ -20,7 +20,7 @@ class IndexController extends Controller
 
     public function index()
     {
-          return Cache::remember('home-page', 100, function() {
+          return Cache::remember('homePage', 100, function() {
 
              $newsRepository = new NewsRepository();
              $breakNewsItems    =  $newsRepository->where('break_news', 1)->where('status', 1)->limit(Redis::get('break_news'))->findAll();

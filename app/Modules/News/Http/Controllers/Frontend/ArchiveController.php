@@ -22,14 +22,14 @@ class ArchiveController extends Controller
     {
         $this->repo = $repo;
     }
-
-//    public function index( $years = null, $months = null, $days = null, $news_category = null, Request $request)
+    
     public function index(Request $request)
     {
         $records = [];
         $year = $request->years;
         $month = $request->months;
         $day = $request->days;
+
 
         if(!empty($year) && !empty($month) && !empty($day)){
 

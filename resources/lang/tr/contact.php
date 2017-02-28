@@ -4,7 +4,7 @@ return [
     'contact_type_id' => 'İletişim Türü',
     'subject' => 'Konu',
     'contacts' => 'İletişim Listesi',
-    'managment' => 'İletişim Yönetimi',
+    'management' => 'İletişim Yönetimi',
     'full_name' => 'Adı Soayadı',
     'content' => 'İçerik',
     'email' => 'E-Posta',

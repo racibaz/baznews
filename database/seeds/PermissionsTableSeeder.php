@@ -1090,6 +1090,21 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+
+        //backend
+        $backend1 = Permission::create([
+            'name'          => 'removeCacheKey-backend',
+            'display_name'  => 'Cache Silme',
+            'is_active'     => 1,
+        ]);
+
+        $backend2 = Permission::create([
+            'name'          => 'removeHomePageCache-backend',
+            'display_name'  => 'removeHomePageCache Silme',
+            'is_active'     => 1,
+        ]);
+
+
         //advertisement
         $advertisement1 = Permission::create([
             'name'          => 'index-advertisement',
@@ -1195,6 +1210,49 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+
+        //language
+        $language1 = Permission::create([
+            'name'          => 'index-language',
+            'display_name'  => 'Dosya Listeleme',
+            'is_active'     => 1,
+        ]);
+
+        $language2 = Permission::create([
+            'name'          => 'create-language',
+            'display_name'  => 'Dosya Oluşturma',
+            'is_active'     => 1,
+        ]);
+
+        $language3 = Permission::create([
+            'name'          => 'edit-language',
+            'display_name'  => 'Dosya Düzenleme',
+            'is_active'     => 1,
+        ]);
+
+        $language4 = Permission::create([
+            'name'          => 'destroy-language',
+            'display_name'  => 'Dosya Silme',
+            'is_active'     => 1,
+        ]);
+
+        $language5 = Permission::create([
+            'name'          => 'show-language',
+            'display_name'  => 'Dosya Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $language6 = Permission::create([
+            'name'          => 'update-language',
+            'display_name'  => 'language update',
+            'is_active'     => 1,
+        ]);
+
+        $language7 = Permission::create([
+            'name'          => 'store-language',
+            'display_name'  => 'language store',
+            'is_active'     => 1,
+        ]);
 
 
 
@@ -1382,6 +1440,8 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($setting15);
         $super_admin->permissions()->attach($setting16);
         $super_admin->permissions()->attach($setting17);
+        $super_admin->permissions()->attach($backend1);
+        $super_admin->permissions()->attach($backend2);
         $super_admin->permissions()->attach($advertisement1);
         $super_admin->permissions()->attach($advertisement2);
         $super_admin->permissions()->attach($advertisement3);
@@ -1399,6 +1459,13 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($ping1);
         $super_admin->permissions()->attach($ping2);
         $super_admin->permissions()->attach($ping3);
+        $super_admin->permissions()->attach($language1);
+        $super_admin->permissions()->attach($language2);
+        $super_admin->permissions()->attach($language3);
+        $super_admin->permissions()->attach($language4);
+        $super_admin->permissions()->attach($language5);
+        $super_admin->permissions()->attach($language6);
+        $super_admin->permissions()->attach($language7);
 
     }
 }

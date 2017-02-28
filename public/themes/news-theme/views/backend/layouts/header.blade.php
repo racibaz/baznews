@@ -19,6 +19,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
+                @permission('removeHomePageCache-backend'))<li class="header"><a href="{!! URL::route('removeHomePageCache') !!}"> {{ trans('backend.remove_home_page_cache') }} </a></li>@endpermission
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>

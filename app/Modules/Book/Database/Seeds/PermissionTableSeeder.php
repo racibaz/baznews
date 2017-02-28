@@ -190,6 +190,49 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        //booksetting
+        $booksetting1 = Permission::create([
+            'name'          => 'index-booksetting',
+            'display_name'  => 'booksetting  Listeleme',
+            'is_active'     => 1,
+        ]);
+
+        $booksetting2 = Permission::create([
+            'name'          => 'create-booksetting',
+            'display_name'  => 'booksetting Oluşturma',
+            'is_active'     => 1,
+        ]);
+
+        $booksetting3 = Permission::create([
+            'name'          => 'edit-booksetting',
+            'display_name'  => 'booksetting Düzenleme',
+            'is_active'     => 1,
+        ]);
+
+        $booksetting4 = Permission::create([
+            'name'          => 'destroy-booksetting',
+            'display_name'  => 'booksetting Silme',
+            'is_active'     => 1,
+        ]);
+
+        $booksetting5 = Permission::create([
+            'name'          => 'show-booksetting',
+            'display_name'  => 'booksetting Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $booksetting6 = Permission::create([
+            'name'          => 'update-booksetting',
+            'display_name'  => 'booksetting update',
+            'is_active'     => 1,
+        ]);
+
+        $booksetting7 = Permission::create([
+            'name'          => 'store-booksetting',
+            'display_name'  => 'booksetting store',
+            'is_active'     => 1,
+        ]);
+
         $super_admin = Role::find(1);
 
         $super_admin->permissions()->attach($book1);
@@ -223,6 +266,14 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($bookauthor5);
         $super_admin->permissions()->attach($bookauthor6);
         $super_admin->permissions()->attach($bookauthor7);
+
+        $super_admin->permissions()->attach($booksetting1);
+        $super_admin->permissions()->attach($booksetting2);
+        $super_admin->permissions()->attach($booksetting3);
+        $super_admin->permissions()->attach($booksetting4);
+        $super_admin->permissions()->attach($booksetting5);
+        $super_admin->permissions()->attach($booksetting6);
+        $super_admin->permissions()->attach($booksetting7);
 
     }
 }
