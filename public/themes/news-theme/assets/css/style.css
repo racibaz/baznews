@@ -1914,10 +1914,16 @@ footer .footer-bottom .cpy {
     clear: both;
 }
 .bio-box ul > li > a span.bio-img{
+    position: relative;
     width:70px;
     height:70px;
     overflow:hidden;
     margin-right:10px;
+    border-radius: 50%;
+    text-align: center;
+}
+.bio-box ul > li > a span.bio-img img{
+    height:100%
 }
 .bio-box ul > li > a span.bio-title{
     padding-top: 22px;
@@ -1948,6 +1954,7 @@ footer .footer-bottom .cpy {
     border:1px solid #dbdfe1;
     background-color: #eff2f5;
     color:#000;
+    padding: 15px;
 }
 .bio-content .bio-profile:after{
     display: block;
@@ -1963,14 +1970,32 @@ footer .footer-bottom .cpy {
     border-radius:50%;
 }
 .bio-content .bio-profile .bio-img img{
-    width: 80px;
+    height: 100%;
 }
-.bio-content .bio-profile .bio-name{
+.bio-content .bio-profile .bio-detail{
     float: left;
 }
-.bio-content .bio-profile .bio-name h1{
-    font-size: 20px;
+.bio-content .bio-profile .bio-detail h1{
+    font-size: 26px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.bio-content .bio-profile .bio-detail .bio-social a{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    padding-top: 3px;
+    text-align: center;
+    background-color: #3e7f98;
+    color: #fff;
+}
+.bio-content .bio-profile .bio-detail .bio-social a:hover{
+    background-color: #f44336;
 }
 .bio-content .content{
     padding: 15px;
+    font-size: 14px;
+}
+.bio-content .content h2{
+    font-size: 18px;
 }
