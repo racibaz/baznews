@@ -4,15 +4,13 @@ namespace App\Modules\Article\Http\Controllers\Backend;
 
 
 use App\Http\Controllers\Backend\BackendController;
-use App\Models\Setting;
-use App\Modules\Article\Models\Article;
 use App\Modules\Article\Models\ArticleSetting;
-use App\Modules\Article\Repositories\ArticleSettingRepository as Repo;
+use App\Repositories\SettingRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Input;
 
 class ArticleSettingController extends BackendController
 {
@@ -36,12 +34,9 @@ class ArticleSettingController extends BackendController
     }
 
 
-    public function create()
-    {
 
-    }
 
-    public function edit(Setting $record)
+    public function edit(ArticleSetting $record)
     {
 
         return Theme::view('article::' . $this->getViewName(__FUNCTION__),
@@ -51,13 +46,13 @@ class ArticleSettingController extends BackendController
     }
 
 
-    public function update(Request $request, Setting $record)
+    public function update(Request $request, ArticleSetting $record)
     {
         return $this->save($record);
     }
 
 
-    public function destroy(Setting $record)
+    public function destroy(ArticleSetting $record)
     {
         $this->repo->delete($record->id);
         return redirect()->route($this->redirectRouteName . $this->view . 'index');
@@ -71,8 +66,6 @@ class ArticleSettingController extends BackendController
     public function save($record)
     {
         $input = Input::all();
-
-        dd($input);
 
         $v = ArticleSetting::validate($input);
 

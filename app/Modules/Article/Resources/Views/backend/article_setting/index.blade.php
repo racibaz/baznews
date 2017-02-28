@@ -24,12 +24,7 @@
                     <div class="panel-heading">
                         {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                     </div>
-
-                    @if(isset($record->id))
-                        {!! Form::model($record, ['route' => ['article_setting.update', $record], 'method' => 'PATCH']) !!}
-                    @else
-                        {!! Form::open(['route' => 'article_setting.store','method' => 'post']) !!}
-                    @endif
+                    {!! Form::open(['route' => 'article_setting.store','method' => 'post']) !!}
 
                     <div class="panel-body">
                         <div class="form-group">
@@ -46,7 +41,7 @@
                                 {!! Form::label('article_author_count', trans('article::article_setting.article_author_count'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::number('article_count', $records->where('attribute_key','article_author_count')->first()->attribute_value, ['placeholder' => trans('article::article_setting.article_author_count') ,'class' => 'form-control']) !!}
+                                    {!! Form::number('article_author_count', $records->where('attribute_key','article_author_count')->first()->attribute_value, ['placeholder' => trans('article::article_setting.article_author_count') ,'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>

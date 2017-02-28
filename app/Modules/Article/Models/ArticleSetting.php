@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ArticleSetting extends Model
 {
-    protected $table = 'settings';
+
 
     public $timestamps = false;
     /**
@@ -16,18 +16,19 @@ class ArticleSetting extends Model
      * @var array
      */
     protected $fillable = [
-        'attribute_key',
-        'attribute_value',
-        'is_active',
+        'article_count',
+        'article_author_count',
+        'recent_article_widget_list_count',
+        'article_authors_widget_list_count'
     ];
 
     public static function validate($input) {
         $rules = array(
 //            'attribute_key' => 'required',
-            'article_authors_widget_list_count' => 'integer',
             'article_count' => 'integer',
             'article_author_count' => 'integer',
             'recent_article_widget_list_count' => 'integer',
+            'article_authors_widget_list_count' => 'integer',
         );
         return Validator::make($input, $rules);
     }
