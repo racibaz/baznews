@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'managment' => 'Fotoğtaf Galerisi Yönetimi',
+    'management' => 'Fotoğtaf Galerisi Yönetimi',
     'photo_galleries' => 'Fotoğraf Galerileri',
     'title' => 'Başlık',
     'slug' => 'Slug',

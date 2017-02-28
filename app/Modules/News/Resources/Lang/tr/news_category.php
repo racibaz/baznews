@@ -11,6 +11,6 @@ return [
     'icon' => 'Icon',
     'is_cuff' => 'Manşet',
     'news_categories' => 'Haber Kategorileri Listesi',
-    'managment' => 'Haber Kategorileri Yönetimi',
+    'management' => 'Haber Kategorileri Yönetimi',
     'keywords' => 'Anahtar Kelimler',
 ];

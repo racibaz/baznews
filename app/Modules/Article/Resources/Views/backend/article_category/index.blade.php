@@ -10,7 +10,7 @@
             </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><strong>{{trans('article_category.managment')}}</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('article_category.management')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('news::news_source.managment')}}</h3>
+            <h3 class="ls-top-header">{{trans('news::news_source.management')}}</h3>
             <!--Top header end -->
 
             <!--Top breadcrumb start -->

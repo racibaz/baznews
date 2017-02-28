@@ -3,6 +3,6 @@
 return [
     'name' => 'Şehir İsmi',
     'countries' => 'Ülkeler',
-    'managment' => 'Şehir Yönetimi',
+    'management' => 'Şehir Yönetimi',
     'city_form' => 'Kullanıcı Formu',
 ];

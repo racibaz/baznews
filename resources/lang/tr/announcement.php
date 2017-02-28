@@ -19,7 +19,7 @@ return [
     |
     */
 
-    'managment'             => 'Duyuru Yönetimi',
+    'management'             => 'Duyuru Yönetimi',
     'title'=>'Başlık',
     'description' => 'Tanım',
     'order' => 'Sırası',

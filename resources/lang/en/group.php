@@ -19,7 +19,7 @@ return [
     |
     */
 
-    'managment' => 'Group Yönetimi',
+    'management' => 'Group Yönetimi',
     'name'                    => 'Grup Adı',
     'description'             => 'Tanımı',
 
