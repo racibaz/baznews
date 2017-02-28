@@ -26,36 +26,7 @@ class ArticleSettingController extends BackendController
     public function index()
     {
         $records = $this->repo->findAll();
-
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__),
-            compact([
-                'records',
-            ]));
-    }
-
-
-
-
-    public function edit(ArticleSetting $record)
-    {
-
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__),
-            compact([
-                'record',
-            ]));
-    }
-
-
-    public function update(Request $request, ArticleSetting $record)
-    {
-        return $this->save($record);
-    }
-
-
-    public function destroy(ArticleSetting $record)
-    {
-        $this->repo->delete($record->id);
-        return redirect()->route($this->redirectRouteName . $this->view . 'index');
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['records',]));
     }
 
     public function store(Request $request)

@@ -122,6 +122,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::post('video.tags_video_store', 'Backend\VideoController@tags_video_store')->name('tags_video_store');
     Route::resource('video', 'Backend\VideoController');
     Route::resource('recommendation_news', 'Backend\RecommendationNewsController');
+    Route::resource('news_setting', 'Backend\NewsSettingController');
 
 });
 

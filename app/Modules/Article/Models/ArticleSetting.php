@@ -24,7 +24,6 @@ class ArticleSetting extends Model
 
     public static function validate($input) {
         $rules = array(
-//            'attribute_key' => 'required',
             'article_count' => 'integer',
             'article_author_count' => 'integer',
             'recent_article_widget_list_count' => 'integer',
