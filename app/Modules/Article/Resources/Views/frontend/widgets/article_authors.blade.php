@@ -6,6 +6,10 @@
     </div>
     <div class="news-h-links module">
         <ul>
+
+            <li><a href="{{route('article_authors')}}">{{trans('article::article.article_authors')}}</a></li>
+            <br />
+
             @foreach($articleAuthors as $articleAuthor)
                 <li>
                     <a href="{{route('article_author',['slug' => $articleAuthor->slug])}}">

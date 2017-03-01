@@ -23,14 +23,13 @@ class ArticleAuthors extends AbstractWidget
      */
     public function run()
     {
-        $articleAuthors = Cache::remember('articleAuthors', 10, function()  {
+        $articleAuthors = Cache::remember('articleAuthorsWidget', 100, function()  {
 
             $repo = new ArticleAuthorRepository();
             return  $repo->with(['articles'])
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
                 ->take(Redis::get('article_authors_widget_list_count'))
-//                ->take(10)
                 ->orderBy('updated_at','desc')
                 ->get();
         });

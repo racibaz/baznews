@@ -14,6 +14,20 @@ class ArticleAuthorController extends Controller
         $this->repo= $repo;
     }
 
+    public function index()
+    {
+        return Cache::remember('articleAuthors', 100, function() {
+
+            $records = $this->repo
+                ->where('is_active', 1)
+                ->findAll();
+
+            return Theme::view('article::frontend.article_author.index', compact([
+                'records',
+            ]))->render();
+        });
+    }
+
     public function show($slug)
     {
         $id =  substr(strrchr($slug, '-'), 1 );

@@ -14,6 +14,7 @@
 Route::get('article/{slug}', 'Frontend\ArticleController@show')->name('article');
 Route::get('article-category/{slug}', 'Frontend\ArticleCategoryController@show')->name('article_category');
 Route::get('article-author/{slug}', 'Frontend\ArticleAuthorController@show')->name('article_author');
+Route::get('article-authors', 'Frontend\ArticleAuthorController@index')->name('article_authors');
 Route::get('articles_sitemap', 'Frontend\SitemapController@sitemap')->name('articles_sitemap');
 
 Route::group(['prefix' => 'rss'], function() {
