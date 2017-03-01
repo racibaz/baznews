@@ -15,13 +15,36 @@
         <div class="row">
             <div class="col-md-8">
                 <article class="module">
-                    <div id="new-content">
-                        kitap adı : {{$record->name}} <br />
-                        yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>
-                        yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>
-                        <br /><br /><br /><br />
-                        Kitap Detayları Gelecek.
-                    </div>
+                    <div id="book-detail">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="book-img">
+                                    <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
+                                </div>
+
+                            </div>
+                            <div class="col-md-8">
+                                <div class="book-name">
+                                    <h1>
+                                        {{$record->name}}
+                                    </h1>
+                                </div>
+                                <div class="book-author">
+                                    <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">
+                                        <span>{{$record->book_author->name}}</span>
+                                    </a>
+                                </div>
+                                <div class="book-publisher">
+                                    <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">
+                                        <span>{{$record->book_publisher->name}}</span>
+                                    </a>
+                                </div>
+                                <div class="book-desc">
+                                    {{$record->description}}
+                                </div>
+                            </div>
+                        </div><!-- /.row -->
+                    </div><!-- /#book-detail -->
                 </article>
             </div><!-- /.new-content -->
             <div class="col-md-4">

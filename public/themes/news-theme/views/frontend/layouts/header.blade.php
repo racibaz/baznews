@@ -24,19 +24,30 @@
                 </a>
 
                 <div class="pull-right hright">
+
+                    <div class="login-btns">
+                        <div class="btn-group">
+                            <a href="{!! route('login') !!}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-log-in"></i> {{trans('common.login')}}</a>
+                            <a href="{!! route('register') !!}" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i> {{trans('common.register')}}</a>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown">
+                                   <i class="fa fa-language"></i> Türkçe <span class="caret"></span></button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">English</a></li>
+                                    <li class="active"><a href="#">Türkçe</a></li>
+                                </ul>
+                            </div>
+                        </div><!-- /.btn-group -->
+                    </div><!-- /.login-btns -->
+
                     <div class="search">
                         {!! Form::open(array('route' => 'search', 'method' => 'post','class' => 'form')) !!}
                         {!!  Form::text('q', null, ['placeholder'=>'Ara.','class' => 'ft','onblur'=>"if(this.value=='') this.value='Ara.';","onfocus"=>"if(this.value=='Ara.') this.value='';"]) !!}
                         {{--<input type="q" value="Ara." onblur="if(this.value=='') this.value='Ara.';" onfocus="if(this.value=='Ara.') this.value='';" class="ft">--}}
                         <input type="submit" value="" class="fs">
                         {!!Form::close() !!}
-                    </div>
-                    <div class="login-btns">
-                        <div class="btn-group">
-                            <a href="{!! route('login') !!}" class="btn btn-success"><i class="glyphicon glyphicon-log-in"></i> {{trans('common.login')}}</a>
-                            <a href="{!! route('register') !!}" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> {{trans('common.register')}}</a>
-                        </div><!-- /.btn-group -->
-                    </div><!-- /.login-btns -->
+                    </div><!-- /.search -->
+
                 </div><!-- /.hright -->
 
                 <div class="advert-header pull-right">

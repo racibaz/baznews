@@ -220,7 +220,7 @@ body {
     background: #fafafa;
     width: 230px;
     float: right;
-    margin-top: 20px;
+    margin-top: 35px;
     margin-bottom: 10px;
 }
 .search .ft {
@@ -260,7 +260,7 @@ body {
    Login Buttons
    ========================================================================== */
 .login-btns{
-    margin-top: 10px;
+    margin-top: 20px;
     text-align: right;
 }
 .login-btns .btn{
@@ -1998,4 +1998,37 @@ footer .footer-bottom .cpy {
 }
 .bio-content .content h2{
     font-size: 18px;
+}
+
+/* ==========================================================================
+   Book Detail
+   ========================================================================== */
+#book-detail{
+    background: url("../img/book-left-bg.png")left top repeat-y;
+}
+#book-detail .book-img{
+    padding: 15px;
+    text-align: center;
+    border-right: 1px solid #c9cccf;
+}
+#book-detail .book-name{
+    border-bottom: 1px solid #e4e4e4;
+    line-height: 45px;
+    margin-bottom: 15px;
+}
+#book-detail .book-name h1{
+    font-size: 30px;
+}
+#book-detail .book-author > a{
+    font-size:12px;
+    font-weight: bold;
+    color: #999999;
+    text-decoration: none;
+}
+#book-detail .book-publisher > a{
+    text-decoration: none;
+    color: #999999;
+}
+#book-detail .book-publisher{
+    margin-bottom: 15px;
 }
