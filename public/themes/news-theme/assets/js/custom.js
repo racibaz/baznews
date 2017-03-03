@@ -115,9 +115,6 @@
         $('#dfp-pageskin-sol').css("left",size-10+"px").show();
         $('.ads').css('opacity','1');
     }
-
-
-
     $(window).scroll(function () {
         if($(window).scrollTop()>178){
             $("#sticky-container").sticky({
