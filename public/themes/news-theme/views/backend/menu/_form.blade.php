@@ -100,6 +100,15 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
+                                {!! Form::label('route', trans('menu.route'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::select('route', $linkList , $record->route , ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
                                 {!! Form::label('icon', trans('menu.icon'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">

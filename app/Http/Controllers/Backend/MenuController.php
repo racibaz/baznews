@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Library\Uploader;
+use App\Models\Link;
 use App\Models\Menu;
 use App\Models\Page;
 use App\Repositories\MenuRepository as Repo;
@@ -37,7 +38,9 @@ class MenuController extends BackendController
         $record = $this->repo->createModel();
         $menuList = Menu::menuList();
         $pageList = Page::pageList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'menuList', 'pageList']));
+        $linkList = Link::getLinksWithType();
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'menuList', 'pageList','linkList']));
     }
 
 
@@ -57,7 +60,9 @@ class MenuController extends BackendController
     {
         $menuList = Menu::menuList();
         $pageList = Page::pageList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'menuList', 'pageList']));
+        $linkList = Link::getLinksWithType();
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'menuList', 'pageList','linkList']));
     }
 
 
@@ -77,9 +82,7 @@ class MenuController extends BackendController
     public function save($record)
     {
         $input = Input::all();
-
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
-
 
         $v = Menu::validate($input);
 

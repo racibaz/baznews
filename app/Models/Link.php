@@ -28,4 +28,29 @@ class Link extends Model
         );
         return Validator::make($input, $rules);
     }
+
+    public static function linksList()
+    {
+        return self::pluck('url','url');
+    }
+
+    public static function getLinksWithType()
+    {
+        $linkList = [];
+
+        foreach (self::all() as $key => $value){
+
+            //get polymorphic table type name
+            $typeArray = explode('\\',$value->linkable_type);
+            $type = end($typeArray);
+            //route larda ki kullanıma uygun hale getiriyoruz.
+            $type = str_replace( '_', '-', snake_case($type)) ;
+
+
+            $linkList[$type . '/'. $value->url] = $type. '/'. $value->url;
+        }
+
+        return $linkList;
+    }
+
 }
