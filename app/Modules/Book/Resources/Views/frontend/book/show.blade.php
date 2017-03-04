@@ -21,7 +21,6 @@
                                 <div class="book-img">
                                     <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
                                 </div>
-
                             </div>
                             <div class="col-md-8">
                                 <div class="book-name">
