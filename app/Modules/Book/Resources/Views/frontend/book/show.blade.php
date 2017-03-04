@@ -23,23 +23,25 @@
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <div class="book-name">
-                                    <h1>
-                                        {{$record->name}}
-                                    </h1>
-                                </div>
-                                <div class="book-author">
-                                    <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">
-                                        <span>{{$record->book_author->name}}</span>
-                                    </a>
-                                </div>
-                                <div class="book-publisher">
-                                    <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">
-                                        <span>{{$record->book_publisher->name}}</span>
-                                    </a>
-                                </div>
-                                <div class="book-desc">
-                                    {{$record->description}}
+                                <div class="detail-bar">
+                                    <div class="book-name">
+                                        <h1>
+                                            {{$record->name}}
+                                        </h1>
+                                    </div>
+                                    <div class="book-author">
+                                        <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">
+                                            <span>{{$record->book_author->name}}</span>
+                                        </a>
+                                    </div>
+                                    <div class="book-publisher">
+                                        <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">
+                                            <span>{{$record->book_publisher->name}}</span>
+                                        </a>
+                                    </div>
+                                    <div class="book-desc">
+                                        {{$record->description}}
+                                    </div>
                                 </div>
                             </div>
                         </div><!-- /.row -->
