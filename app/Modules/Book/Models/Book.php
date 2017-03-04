@@ -81,7 +81,6 @@ class Book extends Model
             'link' => 'url',
             'thumbnail' => 'image|max:255',
             'photo' => 'image|max:255',
-            'description' => 'max:255',
         );
         return Validator::make($input, $rules);
     }
