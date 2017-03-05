@@ -112,8 +112,7 @@
                                 {!! Form::label('icon', trans('menu.icon'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::file('icon') !!}
-                                    <img id="preview" src="#" alt="">
+                                    {!! Form::text('icon', $record->icon, ['placeholder' => trans('menu.icon') ,'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>

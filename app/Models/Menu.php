@@ -48,7 +48,7 @@ class Menu extends Model
             'page_id' => 'integer',
             'url'   => 'url|max:255',
             'route'   => 'max:255',
-            'icon' => 'mimes:ico,jpg,jpeg,png,gif,bmp',
+            'icon' => 'max:255',
             'order' => 'integer',
         );
         return Validator::make($input, $rules);

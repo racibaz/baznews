@@ -99,20 +99,6 @@ class MenuController extends BackendController
             }
 
             if ($status) {
-
-                if(!empty($input['icon'])) {
-                    /*dosya isminden extension kısmını çıkartıyoruz.*/
-                    //dosyanın orjinal ismini alıyoruz(uzantılı).
-                    $originalFileName =  explode('.',  $input['icon']->getClientOriginalName());
-
-                    //uzantısını kayıt etmek için uzantısını değişkene atıyoruz.
-                    $extention = array_last($originalFileName);
-
-                    $document_name = $instance->id . '.' . $extention;
-                    $destination = '/icons/menus';
-                    Uploader::fileUpload($instance , 'icon', $input['icon'] , $destination , $document_name);
-                }
-
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {
