@@ -225,8 +225,7 @@
                                                     <h2>{{$record->user->name}}</h2>
                                                 </a>
                                                 <div class="bio-text">
-                                                    <p>{{$record->user->bio_note}}Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                                                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                                                    <p>{{$record->user->bio_note}}
                                                     </p>
                                                 </div>
                                                 <span class="bio-long-btn">Genişlet</span>
@@ -266,16 +265,16 @@
                     @endif
 
                     <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>
-                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                        <div class="share-box">
-                            <div class="title-section">
-                                <h1>
-                                    <span>Paylaş</span>
-                                </h1>
-                            </div>
-                            <div class="addthis_inline_share_toolbox"></div>
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="share-box">
+                        <div class="title-section">
+                            <h1>
+                                <span>Paylaş</span>
+                            </h1>
                         </div>
+                        <div class="addthis_inline_share_toolbox"></div>
+                    </div>
 
                     </div><!-- /.content -->
                     @if($record->is_comment)
@@ -542,10 +541,10 @@
     <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.novtt.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
     <script>
-    videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
-    videojs("video-js", {}, function(){
-    // Player (this) is initialized and ready.
-    });
+        videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
+        videojs("video-js", {}, function(){
+            // Player (this) is initialized and ready.
+        });
     </script>
     <script type="text/javascript">
         $(document).ready(function () {

@@ -29,14 +29,6 @@
                         <div class="btn-group">
                             <a href="{!! route('login') !!}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-log-in"></i> {{trans('common.login')}}</a>
                             <a href="{!! route('register') !!}" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i> {{trans('common.register')}}</a>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown">
-                                   <i class="fa fa-language"></i> Türkçe <span class="caret"></span></button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">English</a></li>
-                                    <li class="active"><a href="#">Türkçe</a></li>
-                                </ul>
-                            </div>
                         </div><!-- /.btn-group -->
                     </div><!-- /.login-btns -->
 
@@ -55,7 +47,7 @@
                 </div>
 
 
-            </div>
+            </div><!-- /.container -->
         </div><!-- /.navbar-header -->
         <div class="menu">
             <!-- Collect the nav links, forms, and other content for toggling -->
