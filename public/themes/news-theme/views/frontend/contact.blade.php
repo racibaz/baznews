@@ -6,11 +6,14 @@
     <article class="container" id="container">
         <div class="row">
             <div class="col-lg-7">
-                <div class="contact-form" style="padding: 15px;">
+                <div class="title-section">
+                    <h1>
+                        <span>{{trans('contact.contact_form')}}</span>
+                    </h1>
+                </div>
+                <div class="contact-form module">
                     <form action="{{route('contact-store')}}" method="post" role="form">
                         {{Form::token()}}
-
-                        <legend>{{trans('contact.contact_form')}}</legend>
 
                         <div class="form-group">
                             <label for="contact_type_id">{{trans('contact.contact_type_id')}}</label>
@@ -44,6 +47,39 @@
 
                         <button type="submit" class="btn btn-primary">{{trans('contact.submit')}}</button>
                     </form>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="title-section">
+                    <h1>
+                        <span>İletişim Bilgileri</span>
+                    </h1>
+                </div>
+                <div class="contact-details module">
+                    <address>
+                        <p><strong>Adres:</strong> Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    </address>
+                    <p><strong>Mail:</strong> <a href="#">mail@mailto.com</a></p>
+                    <p><strong>Phone:</strong> (878) 989 99 99</p>
+                </div>
+                <div class="title-section">
+                    <h1>
+                        <span>Haritada Bulun</span>
+                    </h1>
+                </div>
+                <div class="map module">
+                    <div id="map" style="height: 300px;"></div>
+                    <script>
+                        var map;
+                        function initMap() {
+                            map = new google.maps.Map(document.getElementById('map'), {
+                                center: {lat: -34.397, lng: 150.644},
+                                zoom: 8
+                            });
+                        }
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQyh_MHfabaWQcFxME6egd1zcMr2eIeCk&callback=initMap"
+                            async defer></script>
                 </div>
             </div>
         </div>
