@@ -13,24 +13,29 @@
             <div class="col-md-8">
                 <article class="module">
                     <div class="bio-content">
-                        <div class="bio-profile">
-                            <div class="bio-img">
-                                <img src="{{ asset('images/biographies/' . $record->id . '/104x78_' . $record->photo) }}" alt="{{$record->title}}" class="img-responsive">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="bio-profile">
+                                    <div class="bio-img">
+                                        <img src="{{ asset('images/biographies/' . $record->id . '/104x78_' . $record->photo) }}" alt="{{$record->title}}">
+                                    </div>
+                                    <div class="bio-detail">
+                                        <h1 class="bio-name">{{$record->name}} </h1>
+                                        <div class="bio-social">
+                                            <a href="#"><i class="fa fa-facebook"></i></a>
+                                            <a href="#"><i class="fa fa-twitter"></i></a>
+                                        </div>
+                                    </div>
+                                </div><!-- /.bio-profile -->
                             </div>
-                            <div class="bio-detail">
-                                <h1 class="bio-name">{{$record->name}} </h1>
-                                <div class="bio-social">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                </div>
+                            <div class="col-md-8">
+                                <div class="content">
+                                    <h2>{{$record->title}}</h2>
+                                    {{$record->content}}
+                                </div><!-- /.content -->
                             </div>
-                        </div>
-
-                        <div class="content">
-                            <h2>{{$record->title}}</h2>
-                            {{$record->content}}
-                        </div>
-                    </div>
+                        </div><!-- /.bio-content -->
+                    </div><!-- /.module -->
                 </article>
             </div><!-- /.new-content -->
             <div class="col-md-4">
