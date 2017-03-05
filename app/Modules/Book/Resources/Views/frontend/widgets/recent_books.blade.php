@@ -11,7 +11,7 @@
                 <li>
                     <div class="book">
                         <div class="cover">
-                            <a href="#">
+                            <a href="{!! route('book', ['slug' => $recentBook->slug]) !!}">
                                 {{--<img src="{{ $recentBook->thumbnail }}" alt="">--}}
                                 <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&width=165&isWatermarked=true" alt="">
                             </a>
