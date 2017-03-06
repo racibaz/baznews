@@ -411,6 +411,7 @@ class NewsController extends BackendController
                     }
                 }
 
+                //todo tüm cache ler silinmemeli.
                 Redis::flushall();
                 //$this->dispatch(new ImageUploader($record, $input['thumbnail'], $destination, $document_name, $document_name));
 

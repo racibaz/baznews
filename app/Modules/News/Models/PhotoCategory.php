@@ -2,6 +2,7 @@
 
 namespace App\Modules\News\Models;
 
+use App\Models\Link;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -11,10 +12,34 @@ use Venturecraft\Revisionable\RevisionableTrait;
 class PhotoCategory extends Model
 {
     use RevisionableTrait;
-
     use Sluggable;
-
     use NodeTrait;
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($record) {
+            if($record->is_active) {
+                $link = new Link();
+                $link->url = $record->slug;
+                $record->links()->save($link);
+            }
+        });
+
+        static::updated(function ($record) {
+            if($record->is_active) {
+                $link = Link::where('linkable_id', $record->id)->where('linkable_type', PhotoCategory::class)->first();
+                $link->url = $record->slug;
+                $record->links()->save($link);
+            }
+        });
+
+        static::deleted(function ($record) {
+            $link = Link::where('linkable_id', $record->id)->where('linkable_type', PhotoCategory::class)->first();
+            $record->links()->delete($link);
+        });
+    }
 
     /**
      * Return the sluggable configuration array for this model.
@@ -40,6 +65,11 @@ class PhotoCategory extends Model
     public function photo_galleries()
     {
         return $this->hasMany('App\Modules\News\Models\PhotoGallery');
+    }
+
+    public function links()
+    {
+        return $this->morphMany(Link::class, 'linkable');
     }
 
     public static function validate($input) {

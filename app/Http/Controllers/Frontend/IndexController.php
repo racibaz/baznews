@@ -63,7 +63,6 @@ class IndexController extends Controller
                 'boxCuffNewsItems',
                 'cuffNewsCategories',
                 'modules',
-                'menus',
                 'photoGalleries',
                 'videoGalleries',
                 'recommendationNewsItems',

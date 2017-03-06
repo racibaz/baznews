@@ -19,25 +19,15 @@
                                 </div>
                                 <div class="m-ct">
                                     <ul class="mn">
-                                        @if(Cache::has('menus'))
-                                            @foreach(\Illuminate\Support\Facades\Cache::get('menus') as $menu)
-                                                @if(!empty($menu->url))
-                                                    <li>
-                                                        @if($menu->icon)
-                                                            <img src="{{asset('icons/menus/' . $menu->icon)}}"  alt="{{$menu->name}}"/>
-                                                        @endif
-                                                        <a href="{{$menu->url}}" target="_blank">{!! $menu->name !!}</a>
-                                                    </li>
-                                                @elseif(!empty($menu->page->id))
-                                                    <li>
-                                                        @if($menu->icon)
-                                                            <img src="{{asset('icons/menus/' . $menu->icon)}}"  alt="{{$menu->name}}"/>
-                                                        @endif
-                                                        <a href="{!! route('page',['slug' => $menu->page->slug ]) !!}" title="{{$menu->name}}">{!! $menu->name !!}</a>
-                                                    </li>
-                                                @endif
-                                            @endforeach
-                                        @endif
+                                        @foreach(Cache::get('menus') as $menu)
+                                            @if(!empty($menu->route))
+                                                <li><a href="{{ Redis::get('url') . '/' . $menu->route}}" target="_blank">{!! $menu->icon !!} {{$menu->name}}</a></li>
+                                            @elseif(!empty($menu->url))
+                                                <li><a href="{{$menu->url}}" target="_blank">{!! $menu->icon !!} {{$menu->name }}</a></li>
+                                            @elseif(!empty($menu->page->id))
+                                                <li><a href="{!! route('page',['slug' => $menu->page->slug ]) !!}" title="{{$menu->name}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
+                                            @endif
+                                        @endforeach
                                     </ul>
                                 </div><!-- /.m-ct -->
                             </div><!-- /.ft-m -->

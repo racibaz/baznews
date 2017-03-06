@@ -21,6 +21,7 @@ class CreateMenusTable extends Migration
             $table->string('name');
             $table->string('slug')->nullable();
             $table->string('url')->nullable();
+            $table->string('route')->nullable();
             $table->string('icon')->nullable();
             $table->string('order')->nullable();
             $table->boolean('is_active')->nullable();
