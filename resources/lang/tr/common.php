@@ -13,6 +13,7 @@ return [
     'status' => 'Durum',
     'login' => 'Giriş Yap',
     'register' => 'Kayıt Ol',
+    'please_choose' => 'Seçiniz'
 
 
 ];

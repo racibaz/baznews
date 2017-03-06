@@ -143,5 +143,15 @@
         });
     }
 
+    $('#main-navbar-menu ul.nav li.dropdown').hover(function() {
+        $(this).addClass("open");
+        $(this).find('.dropdown-toggle').attr('aria-expanded','true');
+        // $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+    }, function() {
+        $(this).removeClass("open");
+        $(this).find('.dropdown-toggle').attr('aria-expanded','false');
+        // $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+    });
+
 })(jQuery);
 

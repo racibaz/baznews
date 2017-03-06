@@ -359,6 +359,20 @@ header{
     color: #192f42;
     text-decoration: none;
 }
+#main-navbar-menu .navbar-nav .dropdown.open > a{
+    background: #1d3347;
+    color: #ffffff;
+    text-decoration: none;
+}
+#main-navbar-menu .navbar-nav .dropdown > a:focus{
+    background-color: transparent;
+    text-decoration: none;
+}
+#main-navbar-menu .navbar-nav .dropdown > a:hover{
+    background: #1d3347;
+    color: #ffffff;
+    text-decoration: none;
+}
 /* ==========================================================================
    BXSLİDER DEFAULTS
    ========================================================================== */
@@ -2147,5 +2161,23 @@ footer .footer-bottom .cpy {
 }
 .contact-details{
     padding: 15px;
+    margin-bottom: 10px;
+}
+.contact-form .form-control,
+.contact-form input[type=select].form-control{
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+.contact-form .form-control:focus{
+    border-color:#F44336;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgb(244, 67, 54);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgb(244, 67, 54);
+}
+.rss-links{
+    padding: 15px;
+}
+.rss-links h2{
+    margin-top: 0;
     margin-bottom: 10px;
 }

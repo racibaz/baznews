@@ -362,6 +362,7 @@
                                 </div>
                             </div><!-- /.r-box -->
                         </div><!-- /. -->
+                        <div style="clear: both" class="eng_rows_seperator"></div>
                     @endforeach
                 </div><!-- /.row -->
             </div><!-- /.related-videos -->
