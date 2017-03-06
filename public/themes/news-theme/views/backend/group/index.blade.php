@@ -19,7 +19,7 @@
                     <thead>
                     <tr>
                         <th>{!! trans('group.name') !!}</th>
-                        <th>{!! trans('group.description') !!}</th>
+                        <th>{!! trans('group.user_count') !!}</th>
                         <th>{!! trans('common.is_active') !!}</th>
                         <th>{!! trans('common.control') !!}</th>
                     </tr>
@@ -30,7 +30,7 @@
                             <td class="sorting_1">
                                 {!! link_to_route('group.show', $record->name, $record, [] ) !!}
                             </td>
-                            <td>{{$record->description }}</td>
+                            <td>{{$record->users->count()}}</td>
                             <td>{{$record->is_active }}</td>
                             <td>
                                 <div class="btn-group">
@@ -46,7 +46,7 @@
                     <tfoot>
                     <tr>
                         <th>{!! trans('group.name') !!}</th>
-                        <th>{!! trans('group.description') !!}</th>
+                        <th>{!! trans('group.user_count') !!}</th>
                         <th>{!! trans('common.is_active') !!}</th>
                         <th>{!! trans('common.control') !!}</th>
                     </tr>
