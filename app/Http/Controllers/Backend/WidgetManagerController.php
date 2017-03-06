@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Models\WidgetGroup;
 use App\Models\WidgetManager;
 use App\Repositories\WidgetManagerRepository as Repo;
+use Cache;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Input;
 
 class WidgetManagerController extends BackendController
 {
@@ -152,6 +151,7 @@ class WidgetManagerController extends BackendController
             $this->repo->create($widgetManagaer);
         }
 
+        Cache::tags('homePage')->flush();
         return Redirect::back();
     }
 

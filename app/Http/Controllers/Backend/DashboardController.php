@@ -4,15 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
-use App\Models\Announcement;
 use App\Models\Contact;
 use App\Models\Group;
 use App\Models\Menu;
 use App\Models\Page;
 use App\Models\User;
 use Cache;
-use Theme;
 use Illuminate\Support\Facades\Auth;
+use Theme;
 
 
 class DashboardController extends Controller

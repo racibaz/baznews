@@ -9,7 +9,6 @@ use App\Modules\News\Repositories\NewsRepository;
 use App\Modules\News\Repositories\PhotoGalleryRepository;
 use App\Modules\News\Repositories\RecommendationNewsRepository;
 use App\Modules\News\Repositories\VideoGalleryRepository;
-use App\Repositories\MenuRepository;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
@@ -20,7 +19,7 @@ class IndexController extends Controller
 
     public function index()
     {
-          return Cache::remember('homePage', 100, function() {
+          return Cache::tags(['homePage'])->remember('homePage', 100, function() {
 
              $newsRepository = new NewsRepository();
              $breakNewsItems    =  $newsRepository->where('break_news', 1)->where('status', 1)->limit(Redis::get('break_news'))->findAll();
@@ -49,9 +48,7 @@ class IndexController extends Controller
                  Redis::set('widgets', $widgets);
              }
 
-
              $pageSetting = Setting::all();
-
              $modules = Module::enabled();
 
             return Theme::view('frontend.index',compact(
@@ -70,16 +67,5 @@ class IndexController extends Controller
             ))->render();
 
         });
-
-//        $records =  Cache::remember('index', 10, function() {
-//
-//            $records = News::where('is_active',1)->get();
-//
-//            return $records;
-//        });
-
-        //return $this->response->collection($records, new BookTransformer() )->setStatusCode(200);
-
-       // return Theme::view('frontend.index',compact('records'));
     }
 }
