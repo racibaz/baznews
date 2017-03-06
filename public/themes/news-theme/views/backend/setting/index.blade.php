@@ -80,15 +80,6 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                {!! Form::label('static_meta_tags', trans('setting.static_meta_tags'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('static_meta_tags', $records->where('attribute_key','static_meta_tags')->first()->attribute_value, ['placeholder' => trans('setting.static_meta_tags') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
                                 {!! Form::label('timezone', trans('setting.timezone'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
@@ -250,24 +241,6 @@
 
                                 <div class="col-lg-10">
                                     {!! Form::textarea('weather_embed_code', $records->where('attribute_key','weather_embed_code')->first()->attribute_value, ['placeholder' => trans('setting.weather_embed_code') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('google_tag_manager_head_code', trans('setting.google_tag_manager_head_code'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('google_tag_manager_head_code', $records->where('attribute_key','google_tag_manager_head_code')->first()->attribute_value, ['placeholder' => trans('setting.google_tag_manager_head_code') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('google_tag_manager_body_code', trans('setting.google_tag_manager_body_code'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('google_tag_manager_body_code', $records->where('attribute_key','google_tag_manager_body_code')->first()->attribute_value, ['placeholder' => trans('setting.google_tag_manager_body_code') ,'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>

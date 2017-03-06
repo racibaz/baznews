@@ -3,7 +3,6 @@
 <head>
 
     @yield('meta_tags')
-    {!! Redis::get('static_meta_tags') !!}
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -25,7 +24,6 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    {{--{!!  Redis::get('google_tag_manager_head_code') !!}--}}
     {!! Redis::get('head_code') !!}
 </head>
 <body>
@@ -48,7 +46,6 @@
 
     @yield('content')
 
-
     <!-- Main Footer -->
     @include($activeTheme . '::frontend.layouts.footer')
 </div>
@@ -63,7 +60,6 @@
     {!! Redis::get('footer_code') !!}
 
     @yield('js')
-
 
 </body>
 </html>

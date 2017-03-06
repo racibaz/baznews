@@ -189,11 +189,6 @@ class SettingController extends BackendController
             $this->repo->update($record->id,['attribute_value' => $input['footer_code']]);
         }
 
-        if(!empty($input['static_meta_tags'])){
-            $record = $this->repo->findBy('attribute_key', 'static_meta_tags');
-            $this->repo->update($record->id,['attribute_value' => $input['static_meta_tags']]);
-        }
-
         if(!empty($input['timezone'])){
             $record = $this->repo->findBy('attribute_key', 'timezone');
             $this->repo->update($record->id,['attribute_value' => $input['timezone']]);
@@ -242,16 +237,6 @@ class SettingController extends BackendController
         if(!empty($input['weather_embed_code'])){
             $record = $this->repo->findBy('attribute_key', 'weather_embed_code');
             $this->repo->update($record->id,['attribute_value' => $input['weather_embed_code']]);
-        }
-
-        if(!empty($input['google_tag_manager_head_code'])){
-            $record = $this->repo->findBy('attribute_key', 'google_tag_manager_head_code');
-            $this->repo->update($record->id,['attribute_value' => $input['google_tag_manager_head_code']]);
-        }
-
-        if(!empty($input['google_tag_manager_body_code'])){
-            $record = $this->repo->findBy('attribute_key', 'google_tag_manager_body_code');
-            $this->repo->update($record->id,['attribute_value' => $input['google_tag_manager_body_code']]);
         }
 
         if(!empty($input['disqus'])){
