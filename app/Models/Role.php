@@ -16,7 +16,7 @@ class Role extends EntrustRole
 {
     protected $fillable = [
         'name',
-        'label',
+        'display_name',
         'is_active',
     ];
 
@@ -59,6 +59,4 @@ class Role extends EntrustRole
         //return Role::lists('name','id');
         return Role::all();
     }
-
-
 }

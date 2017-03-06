@@ -23,7 +23,7 @@
                 <div>
                     @foreach($roles as $index => $role)
                         <a href="{{route('user_index_by_role',[$role->id])}}">
-                            {{$role->name}} ({{$role->users->count()}})
+                            {{$role->display_name}} ({{$role->users->count()}})
                         </a>
                     @endforeach
                 </div>

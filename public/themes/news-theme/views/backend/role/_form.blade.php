@@ -17,6 +17,11 @@
             <!--Top breadcrumb start -->
         </div>
     </div>
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['role.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'role.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
     <!-- Main Content Element  Start-->
     <div class="row">
         <div class="col-md-6">
@@ -24,21 +29,23 @@
                 <div class="panel-heading">
                     {{--<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                 </div>
-
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['role.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'role.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
-
                 <div class="panel-body">
-
                     <div class="form-group">
                         <div class="row">
+                            Değiştirilken dikkat edilmesi gerekiyor gibilerine mesaj yazılmalı.
+                            Kendi super_admin ise user_admin role ismini değiştirdiğinde yetkileri gidecektir.
                             {!! Form::label('name', trans('role.name'),['class'=> 'col-lg-2 control-label']) !!}
-
                             <div class="col-lg-10">
                                 {!! Form::text('name', $record->name, ['placeholder' => trans('role.name') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('display_name', trans('role.display_name'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('display_name', $record->display_name, ['placeholder' => trans('role.display_name') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -63,43 +70,35 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
             </div>
         </div>
-    </div><!-- end row -->
-
-    <div class="col-md-6">
-        <!-- general form elements disabled -->
-        <div class="box box-warning">
-            <div class="box-header with-border">
-                <h3 class="box-title">Role İzin Yonetimi</h3>
-            </div>
-
-        {!! Form::open(['route' => 'permission_role_store','method' => 'post']) !!}
-
-        <!-- /.box-header -->
-            <div class="box-body">
-                {{--<form role="form">--}}
-
-                {!!  Form::hidden('role_id', $record->id) !!}
-
-                @foreach($perms as $perm)
-                    <div class="form-group">
-                        {{ $perm->name }} :
-                        {!! Form::checkbox($perm->name, $perm->id, in_array($perm->name , $record->permissions->pluck('name')->toArray())) !!}
-                    </div>
-                @endforeach
-
-                <div class="box-footer">
-                    {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
+        <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Role İzin Yonetimi</h3>
                 </div>
-                {!! Form::close() !!}
+            <!-- /.box-header -->
+                <div class="box-body">
+                    {{--<form role="form">--}}
+
+                    {!!  Form::hidden('role_id', $record->id) !!}
+
+                    @foreach($perms as $index => $perm)
+                        <div class="form-group">
+                            {{ ++$index }} :
+                            {!! Form::checkbox('permission_role_store_[]', $perm->id, in_array($perm->id , $record->permissions->pluck('id')->toArray())) !!} :
+                            {{ $perm->name }}  --- {{ $perm->display_name }}
+                        </div>
+                    @endforeach
+                </div>
+                <!-- /.box-body -->
             </div>
-            <!-- /.box-body -->
+            <!-- /.box -->
         </div>
-        <!-- /.box -->
-    </div>
-    <!-- Main Content Element  End-->
+        <!-- Main Content Element  End-->
+    </div><!-- end row -->
+    {!! Form::close() !!}
 </div><!-- end container-fluid -->
 @endsection
 @section('js')

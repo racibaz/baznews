@@ -73,7 +73,6 @@ class RoleController extends BackendController
     public function save($record)
     {
         $input = Input::all();
-
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         $v = Role::validate($input);
@@ -91,6 +90,9 @@ class RoleController extends BackendController
             }
 
             if ($status) {
+
+                $this->permissionRoleStore($instance,$input);
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
             } else {
@@ -102,21 +104,10 @@ class RoleController extends BackendController
     }
 
 
-    public function permission_role_store(Request $request)
+    public function permissionRoleStore(Role $record, $input)
     {
-        $input = Input::all();
-        $role_id = $input['role_id'];
-
-        unset($input['role_id']);
-        unset($input['_token']);
-
-        $role = Role::find($role_id);
-        //$role->permissons->sync($input);
-
-        $role->permissions()->sync($input);
-
-        return Redirect::back();
+        if(isset($input['permission_role_store_'])) {
+            $record->permissions()->sync($input['permission_role_store_']);
+        }
     }
-
-
 }
