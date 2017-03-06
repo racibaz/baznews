@@ -43,7 +43,7 @@ class Biography extends Model
             'title' => 'required|max:255',
             'name' => 'required|max:255',
             'content' => 'required',
-            'photo' => 'image|max:255',
+            'photo' => 'image',
             'description' => 'max:255',
             'keywords' => 'max:255',
             'order' => 'integer',

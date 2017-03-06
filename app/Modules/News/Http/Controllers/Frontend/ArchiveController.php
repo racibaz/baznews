@@ -3,12 +3,10 @@
 namespace App\Modules\News\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tag;
 use App\Modules\News\Models\News;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Repositories\TagRepository;
 use Caffeinated\Themes\Facades\Theme;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;

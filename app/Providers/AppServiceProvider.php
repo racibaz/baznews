@@ -51,7 +51,6 @@ class AppServiceProvider extends ServiceProvider
 
 
                     Cache::remember('menus', 10, function () {
-
                         $menuRepository = new MenuRepository();
                         return  $menuRepository->with(['page'])->where('is_active', 1)->orderBy('order','asc')->findAll();
                     });

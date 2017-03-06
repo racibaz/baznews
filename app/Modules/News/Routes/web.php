@@ -26,7 +26,7 @@ Route::get('archive/{years?}/{months?}/{days?}', 'Frontend\ArchiveController@ind
 Route::post(trans('news::route.search'), 'Frontend\SearchController@index')->name('search');
 
 Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sitemap');
-Route::get('category/{slug}', 'Frontend\NewsCategoryController@getNewsByNewsCategorySlug')->name('show_news_category');
+Route::get('news-category/{slug}', 'Frontend\NewsCategoryController@getNewsByNewsCategorySlug')->name('show_news_category');
 Route::get('video_galleries/{slug}', 'Frontend\VideoGalleryController@getVideoGalleryBySlug')->name('show_video_gallery');
 Route::get('videos/{slug}', 'Frontend\VideoController@getVideoBySlug')->name('show_videos');
 

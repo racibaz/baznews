@@ -111,6 +111,69 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
+                                {!! Form::label('abstract_text', trans('setting.abstract_text'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::textarea('abstract_text', $records->where('attribute_key','abstract_text')->first()->attribute_value, ['placeholder' => trans('setting.abstract_text') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('footer_text', trans('setting.footer_text'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::textarea('footer_text', $records->where('attribute_key','footer_text')->first()->attribute_value, ['placeholder' => trans('setting.footer_text') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('contact', trans('setting.contact'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::textarea('contact', $records->where('attribute_key','contact')->first()->attribute_value, ['placeholder' => trans('setting.contact') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('copyright', trans('setting.copyright'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::textarea('copyright', $records->where('attribute_key','copyright')->first()->attribute_value, ['placeholder' => trans('setting.copyright') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('url', trans('setting.url'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::text('url', $records->where('attribute_key','url')->first()->attribute_value, ['placeholder' => trans('setting.url') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('head_code', trans('setting.head_code'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::textarea('head_code', $records->where('attribute_key','head_code')->first()->attribute_value, ['placeholder' => trans('setting.head_code') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('footer_code', trans('setting.footer_code'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::textarea('footer_code', $records->where('attribute_key','footer_code')->first()->attribute_value, ['placeholder' => trans('setting.footer_code') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
                                 {!! Form::label('facebook', trans('setting.facebook'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
@@ -214,51 +277,6 @@
 
                                 <div class="col-lg-10">
                                     {!! Form::textarea('disqus', $records->where('attribute_key','disqus')->first()->attribute_value, ['placeholder' => trans('setting.disqus') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('abstract_text', trans('setting.abstract_text'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('abstract_text', $records->where('attribute_key','abstract_text')->first()->attribute_value, ['placeholder' => trans('setting.abstract_text') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('footer_text', trans('setting.footer_text'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('footer_text', $records->where('attribute_key','footer_text')->first()->attribute_value, ['placeholder' => trans('setting.footer_text') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('contact', trans('setting.contact'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('contact', $records->where('attribute_key','contact')->first()->attribute_value, ['placeholder' => trans('setting.contact') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('copyright', trans('setting.copyright'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('copyright', $records->where('attribute_key','copyright')->first()->attribute_value, ['placeholder' => trans('setting.copyright') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('url', trans('setting.url'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::text('url', $records->where('attribute_key','url')->first()->attribute_value, ['placeholder' => trans('setting.url') ,'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>

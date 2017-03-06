@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Library\Uploader;
+use App\Models\Link;
 use App\Models\Menu;
 use App\Models\Page;
 use App\Repositories\MenuRepository as Repo;
@@ -37,7 +38,9 @@ class MenuController extends BackendController
         $record = $this->repo->createModel();
         $menuList = Menu::menuList();
         $pageList = Page::pageList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'menuList', 'pageList']));
+        $linkList = Link::getLinksWithType();
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'menuList', 'pageList','linkList']));
     }
 
 
@@ -57,7 +60,9 @@ class MenuController extends BackendController
     {
         $menuList = Menu::menuList();
         $pageList = Page::pageList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'menuList', 'pageList']));
+        $linkList = Link::getLinksWithType();
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'menuList', 'pageList','linkList']));
     }
 
 
@@ -77,9 +82,7 @@ class MenuController extends BackendController
     public function save($record)
     {
         $input = Input::all();
-
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
-
 
         $v = Menu::validate($input);
 
@@ -96,20 +99,6 @@ class MenuController extends BackendController
             }
 
             if ($status) {
-
-                if(!empty($input['icon'])) {
-                    /*dosya isminden extension kısmını çıkartıyoruz.*/
-                    //dosyanın orjinal ismini alıyoruz(uzantılı).
-                    $originalFileName =  explode('.',  $input['icon']->getClientOriginalName());
-
-                    //uzantısını kayıt etmek için uzantısını değişkene atıyoruz.
-                    $extention = array_last($originalFileName);
-
-                    $document_name = $instance->id . '.' . $extention;
-                    $destination = '/icons/menus';
-                    Uploader::fileUpload($instance , 'icon', $input['icon'] , $destination , $document_name);
-                }
-
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
             } else {

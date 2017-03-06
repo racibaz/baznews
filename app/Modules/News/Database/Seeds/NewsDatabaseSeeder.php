@@ -4,7 +4,6 @@ namespace App\Modules\News\Database\Seeds;
 
 use App\Models\Setting;
 use App\Models\WidgetGroup;
-use WidgetManagersTableSeeder;
 use Illuminate\Database\Seeder;
 
 class NewsDatabaseSeeder extends Seeder

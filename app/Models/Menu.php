@@ -27,7 +27,7 @@ class Menu extends Model
         ];
     }
 
-    protected $fillable = ['parent_id', '_lft', '_rgt', 'page_id', 'name', 'slug', 'url', 'icon', 'order' ,'is_active'];
+    protected $fillable = ['parent_id', '_lft', '_rgt', 'page_id', 'name', 'slug', 'url', 'route', 'icon', 'order' ,'is_active'];
     protected $dates = ['created_at','updated_at','deleted_at'];
 
     public function page()
@@ -47,7 +47,8 @@ class Menu extends Model
             '_rgt' => 'integer',
             'page_id' => 'integer',
             'url'   => 'url|max:255',
-            'icon' => 'mimes:ico,jpg,jpeg,png,gif,bmp',
+            'route'   => 'max:255',
+            'icon' => 'max:255',
             'order' => 'integer',
         );
         return Validator::make($input, $rules);

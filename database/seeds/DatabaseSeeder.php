@@ -31,5 +31,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdvertisementsTableSeeder::class);
 //        $this->call(WidgetGroupTableSeeder::class);
         $this->call(PingsTableSeeder::class);
+        $this->call(LinksTableSeeder::class);
     }
 }
