@@ -994,6 +994,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $modulemanager9 = Permission::create([
+            'name'          => 'moduleRollback-modulemanager',
+            'display_name'  => 'moduleRollback',
+            'is_active'     => 1,
+        ]);
+
+        $modulemanager10 = Permission::create([
+            'name'          => 'moduleRefreshAndSeed-modulemanager',
+            'display_name'  => 'moduleRefreshAndSeed',
+            'is_active'     => 1,
+        ]);
+
         //setting
         $setting1 = Permission::create([
             'name'          => 'index-setting',
@@ -1425,6 +1437,8 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($modulemanager6);
         $super_admin->permissions()->attach($modulemanager7);
         $super_admin->permissions()->attach($modulemanager8);
+        $super_admin->permissions()->attach($modulemanager9);
+        $super_admin->permissions()->attach($modulemanager10);
         $super_admin->permissions()->attach($widgetmanager1);
         $super_admin->permissions()->attach($widgetmanager2);
         $super_admin->permissions()->attach($widgetmanager3);

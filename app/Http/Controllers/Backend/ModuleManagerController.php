@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\ModuleManager;
 use App\Repositories\ModuleManagerRepository as Repo;
+use Cache;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -106,14 +108,35 @@ class ModuleManagerController extends BackendController
 
     public function moduleActivationToggle($moduleSlug)
     {
-
         if (Module::isEnabled($moduleSlug) )  {
-
             Module::disable($moduleSlug);
-            return Redirect::back();
+
+        }else{
+            Module::enable($moduleSlug);
         }
 
-        Module::enable($moduleSlug);
+        //Route Listesi cache lerini siliyoruz.
+        Cache::tags('routeList')->flush();
+
         return Redirect::back();
     }
+
+
+    public function moduleRollback($moduleSlug)
+    {
+        Artisan::call('php artisan module:migrate:rollback ' . $moduleSlug);
+        return Redirect::back();
+    }
+
+
+    public function moduleRefreshAndSeed($moduleSlug)
+    {
+        Artisan::call('php artisan module:migrate:refresh ' . $moduleSlug . ' --seed');
+        return Redirect::back();
+    }
+
+
+
+
+
 }

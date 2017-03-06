@@ -87,7 +87,7 @@ class DashboardController extends Controller
      * */
     public function routeList()
     {
-        return Cache::remember('admin_dashboard_links_user_id_' . Auth::user()->id, 1000, function () {
+        return Cache::tags(['routeList'])->remember('admin_dashboard_links_user_id_' . Auth::user()->id, 1000, function () {
             return Theme::view('backend.partials._dashboard_route_list')->render();
         });
 
