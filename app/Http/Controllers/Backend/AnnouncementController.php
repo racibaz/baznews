@@ -117,6 +117,9 @@ class AnnouncementController extends BackendController
             }
 
             if ($status) {
+
+                $this->announcementGroupStore($instance, $input);
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
             } else {
@@ -127,25 +130,12 @@ class AnnouncementController extends BackendController
         }
     }
 
-    public function announcement_group_store(Request $request)
+    public function announcementGroupStore(Announcement $record, $input)
     {
-        $input = Input::all();
-        $announcement_id = $input['announcement_id'];
-
-        unset($input['announcement_id']);
-        unset($input['_token']);
-
-        if(count($input) < 1){
-            return Redirect::back();
-            //TODO HATA MESAJI VERİLECEK
+        if(isset($input['announcement_group_store_'])) {
+            $record->groups()->sync($input['announcement_group_store_']);
         }
-
-        $announcement = Announcement::find($announcement_id);
-        $announcement->groups()->sync($input);
-
-        return Redirect::back();
     }
-
 
     public function announcement_list()
     {
@@ -153,7 +143,7 @@ class AnnouncementController extends BackendController
         $user_groups = Auth::user()->groups;
         /*
          * Kullanıcının bulunduğu grupları alıyoruz sonrasında bu gruplara
-         * bağlı olan dokümanları alıyoruz.
+         * bağlı olan duyuruları alıyoruz.
          */
 
         foreach($user_groups as $group){

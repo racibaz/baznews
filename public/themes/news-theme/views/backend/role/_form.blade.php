@@ -81,9 +81,6 @@
             <!-- /.box-header -->
                 <div class="box-body">
                     {{--<form role="form">--}}
-
-                    {!!  Form::hidden('role_id', $record->id) !!}
-
                     @foreach($perms as $index => $perm)
                         <div class="form-group">
                             {{ ++$index }} :
