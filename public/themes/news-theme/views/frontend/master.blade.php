@@ -26,7 +26,7 @@
     <![endif]-->
 
     {{--{!!  Redis::get('google_tag_manager_head_code') !!}--}}
-
+    {!! Redis::get('head_code') !!}
 </head>
 <body>
 <div class="wrapper">
@@ -60,6 +60,7 @@
     <script src="{{ Theme::asset($activeTheme . '::js/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/jquery.sticky.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/custom.js') }}"></script>
+    {!! Redis::get('footer_code') !!}
 
     @yield('js')
 

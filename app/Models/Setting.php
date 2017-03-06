@@ -21,7 +21,7 @@ class Setting extends Model
 
     public static function validate($input) {
         $rules = array(
-            'attribute_key' => 'required',
+//            'attribute_key' => 'required',
             'title' => 'max:255',
             'slogan' => 'max:255',
             'description' => 'max:255',

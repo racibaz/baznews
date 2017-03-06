@@ -87,6 +87,46 @@ class SettingTableSeeder extends Seeder
         ]);
 
         Setting::create([
+            'attribute_key'               => 'abstract_text',
+            'attribute_value'             => 'abstract_text ler ',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'footer_text',
+            'attribute_value'             => 'site alt yazısı',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'contact',
+            'attribute_value'             => 'iletişim bilgileri',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'copyright',
+            'attribute_value'             => 'copyright yazısı',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'slogan',
+            'attribute_value'             => 'Sloganımız',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'url',
+            'attribute_value'             => 'http://www.baznews.com',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'head_code',
+            'attribute_value'             => 'head codes ',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'footer_code',
+            'attribute_value'             => 'footer codes',
+        ]);
+
+        Setting::create([
             'attribute_key'               => 'facebook',
             'attribute_value'             => 'face account',
         ]);
@@ -154,36 +194,6 @@ class SettingTableSeeder extends Seeder
         Setting::create([
             'attribute_key'               => 'disqus',
             'attribute_value'             => 'disqus account',
-        ]);
-
-        Setting::create([
-            'attribute_key'               => 'abstract_text',
-            'attribute_value'             => 'abstract_text ler ',
-        ]);
-
-        Setting::create([
-            'attribute_key'               => 'footer_text',
-            'attribute_value'             => 'site alt yazısı',
-        ]);
-
-        Setting::create([
-            'attribute_key'               => 'contact',
-            'attribute_value'             => 'iletişim bilgileri',
-        ]);
-
-        Setting::create([
-            'attribute_key'               => 'copyright',
-            'attribute_value'             => 'copyright yazısı',
-        ]);
-
-        Setting::create([
-            'attribute_key'               => 'slogan',
-            'attribute_value'             => 'Sloganımız',
-        ]);
-
-        Setting::create([
-            'attribute_key'               => 'url',
-            'attribute_value'             => 'http://www.baznews.com',
         ]);
 
         Setting::create([

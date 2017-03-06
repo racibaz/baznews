@@ -153,6 +153,42 @@ class SettingController extends BackendController
             }
         }
 
+        if(!empty($input['abstract_text'])){
+            $record = $this->repo->findBy('attribute_key', 'abstract_text');
+            $this->repo->update($record->id,['attribute_value' => $input['abstract_text']]);
+        }
+
+        if(!empty($input['footer_text'])){
+            $record = $this->repo->findBy('attribute_key', 'footer_text');
+            $this->repo->update($record->id,['attribute_value' => $input['footer_text']]);
+        }
+
+        if(!empty($input['contact'])){
+            $record = $this->repo->findBy('attribute_key', 'contact');
+            $this->repo->update($record->id,['attribute_value' => $input['contact']]);
+        }
+
+        if(!empty($input['copyright'])){
+            $record = $this->repo->findBy('attribute_key', 'copyright');
+            $this->repo->update($record->id,['attribute_value' => $input['copyright']]);
+        }
+
+        if(!empty($input['url'])){
+            $record = $this->repo->findBy('attribute_key', 'url');
+            $this->repo->update($record->id,['attribute_value' => $input['url']]);
+        }
+
+
+        if(!empty($input['head_code'])){
+            $record = $this->repo->findBy('attribute_key', 'head_code');
+            $this->repo->update($record->id,['attribute_value' => $input['head_code']]);
+        }
+
+        if(!empty($input['footer_code'])){
+            $record = $this->repo->findBy('attribute_key', 'footer_code');
+            $this->repo->update($record->id,['attribute_value' => $input['footer_code']]);
+        }
+
         if(!empty($input['static_meta_tags'])){
             $record = $this->repo->findBy('attribute_key', 'static_meta_tags');
             $this->repo->update($record->id,['attribute_value' => $input['static_meta_tags']]);
@@ -221,31 +257,6 @@ class SettingController extends BackendController
         if(!empty($input['disqus'])){
             $record = $this->repo->findBy('attribute_key', 'disqus');
             $this->repo->update($record->id,['attribute_value' => $input['disqus']]);
-        }
-
-        if(!empty($input['abstract_text'])){
-            $record = $this->repo->findBy('attribute_key', 'abstract_text');
-            $this->repo->update($record->id,['attribute_value' => $input['abstract_text']]);
-        }
-
-        if(!empty($input['footer_text'])){
-            $record = $this->repo->findBy('attribute_key', 'footer_text');
-            $this->repo->update($record->id,['attribute_value' => $input['footer_text']]);
-        }
-
-        if(!empty($input['contact'])){
-            $record = $this->repo->findBy('attribute_key', 'contact');
-            $this->repo->update($record->id,['attribute_value' => $input['contact']]);
-        }
-
-        if(!empty($input['copyright'])){
-            $record = $this->repo->findBy('attribute_key', 'copyright');
-            $this->repo->update($record->id,['attribute_value' => $input['copyright']]);
-        }
-
-        if(!empty($input['url'])){
-            $record = $this->repo->findBy('attribute_key', 'url');
-            $this->repo->update($record->id,['attribute_value' => $input['url']]);
         }
 
         if(!empty($input['rss_count'])){
