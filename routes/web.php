@@ -119,6 +119,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
     Route::get('remove_home_page_cache', 'Backend\BackendController@removeHomePageCache')->name('removeHomePageCache');
     Route::get('remove_cache_key/{cacheName}', 'Backend\BackendController@removeCacheKey')->name('removeCacheKey');
-
 });
 
