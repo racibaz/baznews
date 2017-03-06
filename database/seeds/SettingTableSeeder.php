@@ -20,6 +20,20 @@ class SettingTableSeeder extends Seeder
         ]);
 
         Setting::create([
+            'attribute_key'               => 'country',
+            'attribute_value'             => 'turkey',
+            'description'                 => 'Country name',
+            'is_active'                   => 1,
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'city',
+            'attribute_value'             => 'Istanbul',
+            'description'                 => 'City name',
+            'is_active'                   => 1,
+        ]);
+
+        Setting::create([
             'attribute_key'               => 'title',
             'attribute_value'             => 'BazNews Haber Scripti',
         ]);

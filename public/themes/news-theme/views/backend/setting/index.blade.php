@@ -35,8 +35,23 @@
 
                         <div class="form-group">
                             <div class="row">
+                                {!! Form::label('country', trans('setting.country'),['class'=> 'col-lg-2 control-label']) !!}
+                                <div class="col-lg-10">
+                                    {!! Form::select('country', $countryList , $records->where('attribute_key','country')->first()->attribute_value , ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('city', trans('setting.city'),['class'=> 'col-lg-2 control-label']) !!}
+                                <div class="col-lg-10">
+                                    {!! Form::select('city', $cityList , $records->where('attribute_key','city')->first()->attribute_value , ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
                                 {!! Form::label('language_code', trans('setting.language_code'),['class'=> 'col-lg-2 control-label']) !!}
-
                                 <div class="col-lg-10">
                                     {!! Form::select('language_code', $languageList , $records->where('attribute_key','language_code')->first()->attribute_value , ['class' => 'form-control']) !!}
                                 </div>

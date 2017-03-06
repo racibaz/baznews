@@ -30,7 +30,8 @@
         "laravel/scout": "^1.1",
         "algolia/algoliasearch-client-php": "^1.11",
         "geerlingguy/ping": "^1.1",
-        "rachidlaasri/laravel-installer": "1.5"
+        "rachidlaasri/laravel-installer": "1.5",
+        "brotzka/laravel-dotenv-editor": "2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

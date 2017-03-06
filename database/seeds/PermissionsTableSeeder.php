@@ -14,6 +14,14 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
+
+        //env file
+        $env1 = Permission::create([
+            'name'          => 'changes-env',
+            'display_name'  => 'Changes the Env file.',
+            'is_active'     => 1,
+        ]);
+
         //dashboard
         $dashboard1 = Permission::create([
             'name'          => 'index-admin',
@@ -1266,6 +1274,7 @@ class PermissionsTableSeeder extends Seeder
 
         $super_admin->users()->attach($first_user);
 
+        $super_admin->permissions()->attach($env1);
         $super_admin->permissions()->attach($dashboard1);
         $super_admin->permissions()->attach($dashboard2);
         $super_admin->permissions()->attach($user1);

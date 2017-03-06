@@ -6,6 +6,8 @@ use App\Jobs\BackUp\BackUpClean;
 use App\Jobs\BackUp\GetBackUp;
 use App\Jobs\DB\RepairMysqlTables;
 use App\Library\Uploader;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Language;
 use App\Models\Setting;
 use App\Repositories\SettingRepository as Repo;
@@ -41,13 +43,14 @@ class SettingController extends BackendController
 
         $timezoneList = [];
         $records = $this->repo->findAll();
-
+        $languageList = Language::languageList();
+        $countryList = Country::countryList();
+        $cityList = City::cityList();
         $routeCollection = Route::getRoutes();
         $themes = Theme::all();
         $activeTheme = Theme::getActive();
         $modules = Module::all();
         $modulesCount = Module::count();
-        $languageList = Language::languageList();
 
         //SelectBox içerisinde value değerinin seçilebilmesi için key yerine value değerini atıyoruz.
         foreach(DateTimeZone::listIdentifiers() as $key => $value) $timezoneList[$value] = $value;
@@ -57,12 +60,14 @@ class SettingController extends BackendController
         return Theme::view($this->getViewName(__FUNCTION__),
             compact(
                 'records',
+                'languageList',
+                'countryList',
+                'cityList',
                 'routeCollection',
                 'themes',
                 'activeTheme',
                 'modules',
                 'modulesCount',
-                'languageList',
                 'timezoneList',
                 'logo'
             ));
