@@ -9,7 +9,7 @@
                 <div class="col-lg-12">
                     <div class="title-section">
                         <h1>
-                            <span>{{ !empty($firstPhoto->subtitle) ? $firstPhoto->subtitle : $firstPhoto->name}}</span> bla bla
+                            <span>{{ !empty($firstPhoto->subtitle) ? $firstPhoto->subtitle : $firstPhoto->name}}</span>
                         </h1>
                     </div>
                 </div>
@@ -66,19 +66,64 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                </div>
+                    </div><!-- /.gallery -->
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="share-box">
+                        <div class="title-section">
+                            <h1>
+                                <span>Paylaş</span>
+                            </h1>
+                        </div>
+                        <div class="addthis_inline_share_toolbox"></div>
+                    </div><!-- /.share-box -->
+
+                    {{--@if($record->is_comment)--}}
+                    <div class="discus-box">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="disqus_thread"></div>
+                                <script>
+                                    {{--var disqus_config = function () {--}}
+                                            {{--this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';--}}
+                                            {{--this.page.identifier = '{{$record->id}}';--}}
+                                            {{--this.page.title = '{{$record->title}}';--}}
+                                            {{--};--}}
+
+                                    (function() { // DON'T EDIT BELOW THIS LINE
+                                        var d = document, s = d.createElement('script');
+                                        s.src = '//baznews.disqus.com/embed.js';
+                                        s.setAttribute('data-timestamp', +new Date());
+                                        (d.head || d.body).appendChild(s);
+                                    })();
+                                </script>
+                                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            </div>
+                        </div><!-- Disqus Yorum Alanı -->
+                    </div><!-- /.discus-box -->
+                    {{--@endif--}}
+
+                </div><!-- /.row -->
                 <div class="col-lg-4">
                     <div class="gallery-details module">
-                        <div class="gallery-text">
-                            <p>{{$firstPhoto->content}}</p>
-                        </div><!-- /.gallery-text -->
-                        <div class="time">
-                            <small>
-                                <i class="fa fa-clock-o"></i> {{$firstPhoto->updated_at}}
-                            </small>
-                        </div><!-- /.time -->
+                        <div class="details">
+                            <div class="time">
+                                <small>
+                                    <i class="fa fa-clock-o"></i> {{$firstPhoto->updated_at}}
+                                </small>
+                            </div><!-- /.time -->
+                            <div class="gallery-text">
+                                <p>{{$firstPhoto->content}}</p>
+                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean lacinia bibendum nulla sed consectetur. Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Etiam porta sem malesuada magna mollis euismod.</p>
+                            </div><!-- /.gallery-text -->
+                        </div>
+                        <div class="advert advert-right">
+                            <img src="http://baznews.app/themes/news-theme/assets/img/advert-images/336x280.png" alt="Advert Sidebar">
+                        </div>
+
                     </div><!-- /.gallery-details -->
+
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.image-gallery -->
@@ -103,10 +148,10 @@
                                 @foreach($photoCategoryGalleries as $photoCategoryGallery)
                                     <div class="col-md-4">
                                         <a href="{{route('show_photo_gallery',['slug' => $photoCategoryGallery->slug ])}}" class="news">
-                                    <span class="pic">
-                                        <img src="{{ asset('gallery/' . $photoCategoryGallery->id . '/photos/' . $photoCategoryGallery->thumbnail)}}" alt="{{$photoCategoryGallery->name}}"
-                                             title="{{$photoCategoryGallery->title}}"/>
-                                    </span>
+                                            <span class="pic">
+                                                <img src="{{ asset('gallery/' . $photoCategoryGallery->id . '/photos/' . $photoCategoryGallery->thumbnail)}}" alt="{{$photoCategoryGallery->name}}"
+                                                     title="{{$photoCategoryGallery->title}}"/>
+                                            </span>
                                         </a>
                                     </div><!-- /.col-->
                                 @endforeach

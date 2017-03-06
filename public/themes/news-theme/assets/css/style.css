@@ -955,6 +955,9 @@ header{
 /* ==========================================================================
    VİDEO DETAİLS
    ========================================================================== */
+.playerbox{
+    margin-bottom: 10px;
+}
 .playerbox .description {
     padding: 0 15px; }
 .playerbox .description em {
@@ -1106,14 +1109,15 @@ header{
 .image-gallery .img-container {
     position: relative; }
 .image-gallery .gallery-details{
-    min-height: 431px;
     margin-bottom: 10px;
+}
+.image-gallery .gallery-details .details{
+    padding: 10px;
 }
 .image-gallery .gallery-details .gallery-text {
     color: #666;
     font-size: 13px;
     overflow: hidden;
-    padding-bottom: 5px;
     position: relative;
 }
 
@@ -1950,6 +1954,9 @@ footer .footer-bottom .cpy {
     padding-top: 5px;
 }
 
+/* ==========================================================================
+   Biography Detail
+   ========================================================================== */
 .bio-content .bio-profile{
     border:1px solid #dbdfe1;
     background-color: #eff2f5;
@@ -1962,18 +1969,16 @@ footer .footer-bottom .cpy {
     clear: both;
 }
 .bio-content .bio-profile .bio-img{
-    width: 80px;
-    height: 80px;
-    float: left;
+    width: 100%;
+    text-align: center;
     margin-right:10px;
     overflow: hidden;
-    border-radius:50%;
 }
 .bio-content .bio-profile .bio-img img{
     height: 100%;
 }
 .bio-content .bio-profile .bio-detail{
-    float: left;
+    text-align: center;
 }
 .bio-content .bio-profile .bio-detail h1{
     font-size: 26px;
@@ -1998,26 +2003,28 @@ footer .footer-bottom .cpy {
 }
 .bio-content .content h2{
     font-size: 18px;
+    margin-top: 0;
 }
 
 /* ==========================================================================
    Book Detail
    ========================================================================== */
-#book-detail .book-img {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,cccccc+100;Gren+3D */
-    background: #eeeeee; /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #eeeeee 0%, #cccccc 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, #eeeeee 0%,#cccccc 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg, #eeeeee 0%,#cccccc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
 #book-detail .book-img{
     padding: 15px;
     text-align: center;
-    border-right: 1px solid #c9cccf;
 }
 #book-detail .detail-bar{
-    border-left : 1px solid #c9cccf;
+    padding: 10px;
+}
+#book-detail .detail-bar:before {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #c9cccf;
 }
 #book-detail .book-name{
     border-bottom: 1px solid #e4e4e4;
@@ -2033,10 +2040,112 @@ footer .footer-bottom .cpy {
     color: #999999;
     text-decoration: none;
 }
+#book-detail .book-author > a:hover{
+    color: #E3000F;
+}
 #book-detail .book-publisher > a{
     text-decoration: none;
     color: #999999;
 }
+#book-detail .book-publisher > a:hover{
+    color: #E3000F;
+}
 #book-detail .book-publisher{
     margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   Author Books
+   ========================================================================== */
+.author-books{
+    padding: 5px;
+}
+.author-books .book{
+    border:1px solid #c9cccf;
+}
+.author-books .book-img img{
+    width: 100%;
+}
+.author-books .books h2{
+    font-size:16px;
+    border-bottom:1px solid #c9cccf;
+    padding-bottom: 5px;
+}
+.author-books .books a{
+    color: #767a7c;
+}
+.author-books .books a span{
+    display: block;
+}
+.author-books .books a span.book-name{
+    text-align: center;
+    padding:7px;
+}
+
+/* ==========================================================================
+   Publish Books
+   ========================================================================== */
+.publish-books{
+    padding: 5px;
+}
+.publish-books .book{
+    border:1px solid #c9cccf;
+}
+.publish-books .books h2{
+    font-size:16px;
+    border-bottom:1px solid #c9cccf;
+    padding-bottom: 5px;
+}
+.publish-books .book-img img{
+    width: 100%;
+}
+.publish-books .books a{
+    color: #767a7c;
+}
+.publish-books .books a span{
+    display: block;
+}
+.publish-books .books a span.book-name{
+    text-align: center;
+    padding:7px;
+}
+
+/* ==========================================================================
+   Category Books
+   ========================================================================== */
+
+.cat-books{
+    padding: 5px;
+}
+.cat-books .book{
+    border:1px solid #c9cccf;
+}
+.cat-books .books h2{
+    font-size:16px;
+    border-bottom:1px solid #c9cccf;
+    padding-bottom: 5px;
+}
+.cat-books .book-img img{
+    width: 100%;
+}
+.cat-books .books a{
+    color: #767a7c;
+}
+.cat-books .books a span{
+    display: block;
+}
+.cat-books .books a span.book-name{
+    text-align: center;
+    padding:7px;
+}
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+.contact-form{
+    padding: 15px;
+}
+.contact-details{
+    padding: 15px;
+    margin-bottom: 10px;
 }

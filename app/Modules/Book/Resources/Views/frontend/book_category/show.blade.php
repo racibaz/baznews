@@ -12,15 +12,32 @@
         <div class="row">
             <div class="col-md-8">
                 <article class="module">
-                    <div id="new-content">
-                        {{$record->name}}
-                        <br /><br /><br /><br />
-                        Kitap Kategori Detayları Gelecek.
-                        @foreach($record->books as $record)
-                            <a href="{!! route('book', ['slug' => $record->slug]) !!}">{{$record->name}} </a>
-                            <br />
-                        @endforeach
-                    </div>
+                    <div class="cat-books">
+                        <div class="publish-name">
+                            <h1>
+                                <span>{{$record->name}}</span>
+                            </h1>
+                        </div>
+                        <div class="books">
+                            <h2>Kategori Kitapları</h2>
+                            <div class="row">
+                                @foreach($record->books as $record)
+                                    <div class="col-md-2">
+                                        <div class="book">
+                                            <a href="{!! route('book', ['slug' => $record->slug]) !!}">
+                                                <span class="book-img">
+                                                    <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="" class="img-responsive">
+                                                </span>
+                                                <span class="book-name">
+                                                    {{$record->name}}
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div><!-- /.books -->
+                        </div>
+                    </div><!-- /.cat-books -->
                 </article>
             </div><!-- /.new-content -->
             <div class="col-md-4">

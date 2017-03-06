@@ -12,18 +12,31 @@
         <div class="row">
             <div class="col-md-8">
                 <article class="module">
-                    <div id="new-content">
-                        <br /><br /><br /><br />
-                        yazar adı : {{$record->name}}
-                        <br />
-                        kitapları
-                        <br />
-                        @foreach($record->books as $book)
-                            <a href="{!! route('book', ['slug' => $book->slug]) !!}">{{$book->name}}</a> \
-                        @endforeach
-
-                        <br /><br /><br /><br />
-                        Kitap Detayları Gelecek.
+                    <div class="author-books">
+                        <div class="author-name">
+                            <h1>
+                                <span>{{$record->name}}</span>
+                            </h1>
+                        </div>
+                        <div class="books">
+                            <h2>Yazarın Kitapları</h2>
+                            <div class="row">
+                                @foreach($record->books as $book)
+                                    <div class="col-md-2">
+                                        <div class="book">
+                                            <a href="{!! route('book', ['slug' => $book->slug]) !!}">
+                                                <span class="book-img">
+                                                    <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="" class="img-responsive">
+                                                </span>
+                                                    <span class="book-name">
+                                                    {{$book->name}}
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </article>
             </div><!-- /.new-content -->
