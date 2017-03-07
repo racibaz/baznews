@@ -144,15 +144,6 @@ class NewsDatabaseSeeder extends Seeder
             ]);
         }
 
-        $widget_group = WidgetGroup::where('name','news_content_center')->first();
-        if(empty($widget_group))
-        {
-            WidgetGroup::create([
-                'name' => 'news_content_center',
-                'is_active' => 1
-            ]);
-        }
-
         $widget_group = WidgetGroup::where('name','news_content_right_bar')->first();
         if(empty($widget_group))
         {

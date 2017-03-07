@@ -15,7 +15,6 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-
         //article
         $article1 = Permission::create([
             'name'          => 'index-article',

@@ -124,14 +124,14 @@ class ModuleManagerController extends BackendController
 
     public function moduleRollback($moduleSlug)
     {
-        Artisan::call('php artisan module:migrate:rollback ' . $moduleSlug);
+        Artisan::call('module:migrate:rollback ' . $moduleSlug . ' --force');
         return Redirect::back();
     }
 
 
     public function moduleRefreshAndSeed($moduleSlug)
     {
-        Artisan::call('php artisan module:migrate:refresh ' . $moduleSlug . ' --seed');
+        Artisan::call('module:migrate  ' . $moduleSlug. ' --force');
         return Redirect::back();
     }
 
