@@ -52,8 +52,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
+            'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -103,6 +102,7 @@ class RegisterController extends Controller
 
     /**
      * Obtain the user information from GitHub,Google,Facebook,Twitter
+     * https://www.youtube.com/watch?v=T49xhjxFNX4
      *
      * @return Response
      */
