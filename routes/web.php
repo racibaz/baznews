@@ -25,8 +25,9 @@ Route::get(trans('route.page') . '/{slug}', 'Frontend\PageController@show')->nam
 Route::get('/activate/token/{token}', 'Auth\ActivationController@activate')->name('auth.activate');
 Route::get('/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
 
-Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider')->name('login_socialite');
-Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCallback')->name('register_socialite');
+Route::get('/login/{service}', 'Auth\SocialLoginController@redirect');
+Route::get('/login/{service}/callback', 'Auth\SocialLoginController@callback');
+
 
 Route::get('sitemap.xml', 'Frontend\SitemapController@sitemaps')->name('sitemaps');
 Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');

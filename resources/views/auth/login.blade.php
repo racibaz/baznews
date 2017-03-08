@@ -8,17 +8,9 @@
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
 
-                    <div>
-                        <a href="{{route('login_socialite',['provider' => 'facebook'])}}">Facebook Giriş</a>
-                        <a href="{{route('login_socialite',['provider' => 'twitter'])}}">Twitter Giriş</a>
-                        <a href="{{route('login_socialite',['provider' => 'google'])}}">Google Giriş</a>
-                    </div>
-                    <div>
-                        <a href="{{route('register_socialite',['provider' => 'facebook'])}}">Facebook Kayıt</a>
-                        <a href="{{route('register_socialite',['provider' => 'twitter'])}}">Twitter Kayıt</a>
-                        <a href="{{route('register_socialite',['provider' => 'google'])}}">Google Kayıt</a>
-                    </div>
-
+                    <a href="{{ url('/login/facebook') }}" class="btn btn-default">Facebook</a>
+                    <a href="{{ url('/login/twitter') }}" class="btn btn-default">Twitter</a>
+                    <a href="{{ url('/login/google') }}" class="btn btn-default">Google</a>
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}

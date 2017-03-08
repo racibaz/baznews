@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('city_id')->nullable();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('slug')->nullable();
             $table->string('cell_phone')->nullable();
             $table->string('facebook')->nullable();

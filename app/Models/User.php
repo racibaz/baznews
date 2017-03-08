@@ -183,9 +183,14 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Country');
     }
 
-    public function social_providers()
+    public function social()
     {
-        return $this->hasMany(SocialProvider::class);
+        return $this->hasMany(UserSocial::class);
+    }
+
+    public function hasSocialLinked($service)
+    {
+        return (bool) $this->social->where('service', $service)->count();
     }
 
     public function attachments()
