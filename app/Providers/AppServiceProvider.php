@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
 //            if(!app()->runningInConsole()) {
 
                 User::created(function ($user) {
-                    if(!$user->active){
+                    if($user->status === 2){
                         $token = $user->activationToken()->create([
                             'token' => str_random(128),
                         ]);

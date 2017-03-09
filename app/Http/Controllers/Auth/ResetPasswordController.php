@@ -38,7 +38,7 @@ class ResetPasswordController extends Controller
      */
     protected function sendResetResponse($response)
     {
-        if (!$this->guard()->user()->active) {
+        if ($this->guard()->user()->status === 2) {
             $this->guard()->logout();
             return redirect('/login')->withInfo('Your password has been changed but you still need to activate.');
         }

@@ -39,7 +39,7 @@ class BackendController extends Controller
 //        foreach (explode('\\', $controllerName) as $className) {}
         $classModelName = strtolower(substr($controllerName, 0 , -10));
         if(!Auth::user()->can($methodName . '-' . $classModelName)){
-            Log::warning('Yetkisiz Alana Girmeye Çalışıldı. ' . 'Kişi : ' . Auth::user()->UserFullName() . '  IP :' . Auth::user()->getUserIp() );
+            Log::warning('Yetkisiz Alana Girmeye Çalışıldı. ' . 'Kişi : ' . Auth::user()->name . '  IP :' . Auth::user()->getUserIp() );
             abort(403, 'Unauthorized action.');
         }
         return true;

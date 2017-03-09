@@ -31,7 +31,6 @@ class UsersTableSeeder extends Seeder
 //            'sex' => 1,
 //            'IP' => 'avatar',
             'status' => 1,
-            'active' => 1,
         ]);
 
 
@@ -51,7 +50,6 @@ class UsersTableSeeder extends Seeder
 //            'sex' => 1,
 //            'IP' => 'avatar',
             'status' => 1,
-            'active' => 1,
         ]);
 
 
@@ -71,7 +69,6 @@ class UsersTableSeeder extends Seeder
 //            'sex' => 1,
 //            'IP' => '1213123',
             'status' => 1,
-            'active' => 1,
         ]);
         
     }

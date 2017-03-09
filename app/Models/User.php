@@ -87,8 +87,6 @@ class User extends Authenticatable
         'IP',
         'last_login',
         'status',
-        'is_active',
-        'active',
     ];
 
     /**
@@ -101,6 +99,9 @@ class User extends Authenticatable
     ];
 
     protected $dates = ['created_at','updated_at','deleted_at'];
+
+
+    public static $statuses = ['Passive', 'Active', 'Preparing Email Activation', 'Garbage'];
 
 
     public static  $bloodGroups = [
@@ -211,11 +212,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Modules\News\Models\VideoGallery');
     }
 
-    public static function UserFullName()
-    {
-        return Auth::user()->name;
-    }
-
     public static function userList()
     {
         return User::where('status',1)->pluck('name', 'id');
@@ -248,7 +244,7 @@ class User extends Authenticatable
 
     public static function getAllUsers()
     {
-        return User::where('is_active',1)->get();
+        return User::where('status',1)->get();
     }
 
     public static  function getUsersByGroupId($group_id){

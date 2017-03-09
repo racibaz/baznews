@@ -11,6 +11,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository as Repo;
+use Auth;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -53,13 +54,21 @@ class UserController extends BackendController
 
     public function create()
     {
+        $statusList = [];
+
         $record = $this->repo->createModel();
         $countries = Country::countryList();
         $cities = City::cityList();
         $roles = Role::roleList();
         $groups = Group::groupList();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups']));
+        foreach (User::$statuses as  $index => $status){
+            if(Auth::user()->can($status . '-user')){
+                $statusList[$index] =  $status;
+            }
+        }
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups', 'statusList']));
     }
 
 
@@ -81,12 +90,20 @@ class UserController extends BackendController
 
     public function edit(User $record)
     {
+        $statusList = [];
+
         $countries = Country::countryList();
         $cities = City::cityList();
         $roles = Role::roleList();
         $groups = Group::groupList();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups']));
+        foreach (User::$statuses as  $index => $status){
+            if(Auth::user()->can($status . '-user')){
+                $statusList[$index] =  $status;
+            }
+        }
+
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups', 'statusList']));
     }
 
 

@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\SocialProvider;
-use App\Models\User;
-use Laravel\Socialite\Facades\Socialite;
-use Validator;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -70,8 +68,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'active' => false,
-            'status' => 0
+            'status' => 2
         ]);
     }
 

@@ -30,7 +30,7 @@ class SocialLoginController extends Controller
             $user = User::create([
                 'name' => $serviceUser->getName(),
                 'email' => $serviceUser->getEmail(),
-                'active' => true
+                'status' => 1
             ]);
         }
 

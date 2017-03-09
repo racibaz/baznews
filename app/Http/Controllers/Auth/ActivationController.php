@@ -14,7 +14,7 @@ class ActivationController extends Controller
     public function activate(ActivationToken $token)
     {
         $token->user()->update([
-            'active' => true
+            'status' => 1
         ]);
 
         $token->delete();
@@ -28,7 +28,7 @@ class ActivationController extends Controller
     {
         $user = User::byEmail($request->email)->firstOrFail();
 
-        if ($user->active) {
+        if ($user->status === 0 || $user->status === 1) {
             return redirect('/');
         }
 

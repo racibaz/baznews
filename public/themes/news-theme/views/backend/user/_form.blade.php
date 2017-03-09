@@ -210,14 +210,10 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {{trans('user.status')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                        <i></i> {{trans('common.is_active')}}
-                                    </label>
-                                </div>
+                            {!! Form::label('status', trans('news::news.status'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
