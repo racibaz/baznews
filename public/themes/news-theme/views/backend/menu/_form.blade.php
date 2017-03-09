@@ -109,6 +109,21 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
+                                {!! Form::label('target', trans('menu.target'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::select('target', [
+                                                                '_blank' => '_blank',
+                                                                '_self' => '_self',
+                                                                '_parent' => '_parent',
+                                                                '_top' => '_top',
+                                                                ],
+                                                                $record->target, ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
                                 {!! Form::label('icon', trans('menu.icon'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">

@@ -12,6 +12,21 @@ class MenuTableSeeder extends Seeder
      */
     public function run()
     {
+
+        Menu::create([
+            'parent_id'                 => null,
+            '_lft'                      => 1,
+            '_rgt'                      => 1,
+            'name'                      => 'Homepage',
+            'slug'                      => 'homepage',
+            'url'                       => 'http://baznews.app',
+            'target'                    => '_blank',
+            'icon'                      => '<i class="fa fa-home" aria-hidden="true"></i>',
+            'order'                     => 1,
+            'is_active'                 => 1,
+        ]);
+
+
         Menu::create([
             'parent_id'                 => null,
             '_lft'                      => 1,

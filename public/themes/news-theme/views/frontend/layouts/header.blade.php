@@ -56,11 +56,11 @@
                     <ul class="nav navbar-nav">
                         @foreach(Cache::get('menus') as $menu)
                             @if(!empty($menu->route))
-                                <li><a href="{{ Redis::get('url') . '/' . $menu->route}}" target="_blank">{!! $menu->icon !!} {{$menu->name}}</a></li>
+                                <li><a href="{{ Redis::get('url') . '/' . $menu->route}}" target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
                             @elseif(!empty($menu->url))
-                                <li><a href="{{$menu->url}}" target="_blank">{!! $menu->name !!}</a></li>
+                                <li><a href="{{$menu->url}}" target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}} </a></li>
                             @elseif(!empty($menu->page->id))
-                                <li><a href="{!! route('page',['slug' => $menu->page->slug ]) !!}" title="{{$menu->name}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
+                                <li><a href="{!! route('page',['slug' => $menu->page->slug ]) !!}" title="{{$menu->name}}" target="{{$menu->target}}" >{!! $menu->icon !!} {{$menu->name}}</a></li>
                             @endif
                         @endforeach
                         <li class="dropdown">
