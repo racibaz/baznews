@@ -10,6 +10,11 @@ a{
     -o-transition: 0.5s;
     -ms-transition: 0.5s;
     transition: 0.5s;
+    text-decoration: none;
+    color: #000000;
+}
+a:hover{
+    color: #f44336;
 }
 input, textarea {
     font-family: inherit;
@@ -2180,4 +2185,22 @@ footer .footer-bottom .cpy {
 .rss-links h2{
     margin-top: 0;
     margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   Account
+   ========================================================================== */
+.account{
+    padding: 15px;
+}
+.account h2.account-name{
+    font-size:19px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.account .btn-group{
+    margin-top: 6px;
+}
+.account .account-img{
+    margin-bottom: 6px;
 }
