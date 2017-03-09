@@ -31,7 +31,7 @@ class GoogleAccountLinked extends Mailable
      */
     public function build()
     {
-        return $this->subject('GitHub account linked')->view('email.social.google_linked')->with([
+        return $this->subject('Google account linked')->view('email.social.google_linked')->with([
             'user' => $this->user
         ]);
     }

@@ -12,26 +12,34 @@
                     <!-- /.box-header -->
                     <div class="box-body">
 
-                        @if(!empty($record->id))
-                            <?php
-                            $default = Redis::get('url') . "/default_user_avatar.jpg";
-                            $size = 40;
-                            $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $record->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
-                            ?>
-                            <img src="<?php echo $grav_url; ?>" alt="" />
+                        @if(empty($record->password))
+
+                            Şirenizi girdikten sonra işleminiz tamamlanacaktır.
+                            <br />
+                            {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                            <br />
+                        @else
+                            @if(!empty($record->id))
+                                <?php
+                                $default = Redis::get('url') . "/default_user_avatar.jpg";
+                                $size = 40;
+                                $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $record->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+                                ?>
+                                <img src="<?php echo $grav_url; ?>" alt="" />
+                            @endif
+
+                            <br />
+
+                            kullanıcı bilgileri...<br />
+                            {{$record->name}}<br />
+                            {{$record->email}}<br />
+
+                            {!! link_to_route('account.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                            <br />
+                            {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                            <br />
+
                         @endif
-
-                        <br />
-
-                        kullanıcı bilgileri...<br />
-                        {{$record->name}}<br />
-                        {{$record->email}}<br />
-
-                        {!! link_to_route('account.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                            <br />
-                        {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                            <br />
-
                     </div>
                     <!-- /.box-body -->
                 </div>

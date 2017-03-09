@@ -31,7 +31,7 @@ class FacebookAccountLinked extends Mailable
      */
     public function build()
     {
-        return $this->subject('GitHub account linked')->view('email.social.facebook_linked')->with([
+        return $this->subject('Facebook account linked')->view('email.social.facebook_linked')->with([
             'user' => $this->user
         ]);
     }

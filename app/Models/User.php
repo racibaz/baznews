@@ -88,6 +88,7 @@ class User extends Authenticatable
         'last_login',
         'status',
         'is_active',
+        'active',
     ];
 
     /**

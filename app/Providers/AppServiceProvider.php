@@ -28,11 +28,13 @@ class AppServiceProvider extends ServiceProvider
 //            if(!app()->runningInConsole()) {
 
                 User::created(function ($user) {
-                    $token = $user->activationToken()->create([
-                        'token' => str_random(128),
-                    ]);
+                    if(!$user->active){
+                        $token = $user->activationToken()->create([
+                            'token' => str_random(128),
+                        ]);
 
-                    event(new UserRegistered($user));
+                        event(new UserRegistered($user));
+                    }
                 });
 
                 //DB::getSchemaBuilder()->getColumnListing('settings');
