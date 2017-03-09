@@ -3,41 +3,53 @@
 @section('content')
     <article class="container" id="container">
         <div class="row">
-            <div class="col-xs-12">
-
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title"><strong>{{trans('account.management')}}</strong></h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-
-                        @if(!empty($record->id))
-                            <?php
-                            $default = Redis::get('url') . "/default_user_avatar.jpg";
-                            $size = 40;
-                            $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $record->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
-                            ?>
-                            <img src="<?php echo $grav_url; ?>" alt="" />
-                        @endif
-
-                        <br />
-
-                        kullanıcı bilgileri...<br />
-                        {{$record->name}}<br />
-                        {{$record->email}}<br />
-
-                        {!! link_to_route('account.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                            <br />
-                        {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                            <br />
-
-                    </div>
-                    <!-- /.box-body -->
+            <div class="col-md-8">
+                <div class="title-section">
+                    <h1><span>{{trans('account.management')}}</span></h1>
                 </div>
-                <!-- /.box -->
+                <div class="module">
+                    <div class="account">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="account-img text-center">
+                                    @if(!empty($record->id))
+                                        <?php
+                                        $default = Redis::get('url') . "/default_user_avatar.jpg";
+                                        $size = 40;
+                                        $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $record->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+                                        ?>
+                                        <img src="<?php echo $grav_url; ?>" alt="" class="img-rounded"/>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-left">
+                                    <h2 class="account-name"><i class="fa fa-user"></i> {{$record->name}} </h2>
+                                    <p><i class="fa fa-envelope"></i> <a href="mailto:{{$record->email}}">{{$record->email}}</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="text-center">
+                                    <div class="btn-group">
+                                        {!! link_to_route('account.edit', trans('account.edit'), $record, ['class' => 'btn btn-primary'] ) !!}
+                                        {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-info'] ) !!}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.account -->
+                </div>
             </div>
             <!-- /.col -->
+            <div class="col-md-4">
+                <div class="title-section">
+                    <h1><span>Sidebar</span></h1>
+                </div>
+                <div class="module">
+                    sidebar
+                </div>
+            </div>
         </div>
     </article><!-- /.article -->
 @endsection
