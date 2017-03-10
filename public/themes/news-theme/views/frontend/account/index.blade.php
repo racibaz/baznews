@@ -62,3 +62,6 @@
         </div>
     </article><!-- /.article -->
 @endsection
+@section('meta_tags')
+    <title> {{ $record->name }}  </title>
+@endsection
