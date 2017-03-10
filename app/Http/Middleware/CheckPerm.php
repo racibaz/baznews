@@ -22,6 +22,6 @@ class CheckPerm
         }
 
         \Log::warning('Unauthorized request IP :' . $request->ip());
-        return response('Unauthorized.', 401);
+        return redirect('/login');
     }
 }
