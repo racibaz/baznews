@@ -38,13 +38,15 @@ class VideoController extends BackendController
     public function create()
     {
         $tagIDs = [];
-        $videoGalleryList = VideoGallery::videoGalleryList();
-        $record = $this->repo->createModel();
 
+        $record = $this->repo->createModel();
+        $videoCategoryList = VideoCategory::videoCategoryList();
+        $videoGalleryList = VideoGallery::videoGalleryList();
         $tagList = Tag::tagList();
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
             'record',
+            'videoCategoryList',
             'videoGalleryList',
             'tagList',
             'tagIDs',

@@ -45,6 +45,8 @@ class LoginController extends Controller
     /**
      * The user has been authenticated.
      *
+     * user statuses 0 => 'Passive', 1 => 'Active' , 2 => 'Preparing Email Activation', 3 => 'Garbage'
+     *
      * @param  \Illuminate\Http\Request  $request
      * @param  mixed  $user
      * @return mixed
@@ -53,9 +55,11 @@ class LoginController extends Controller
     {
         $this->dispatch(new UpdateLastLogin($user, Carbon::now()));
 
-        if (!$user->active) {
+        if ($user->status === 0) {
             Auth::logout();
-
+            return redirect('/login')->withError('Your Account is Passive Mode');
+        }elseif ($user->status === 2){
+            Auth::logout();
             return redirect('/login')->withError('Please activate your account. <a href="' . route('auth.activate.resend') . '?email=' . $user->email . '">Resend</a>');
         }
     }

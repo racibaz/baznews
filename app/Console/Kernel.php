@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\FutureNewsCommand::class,
-        Commands\SystemMigrate::class,
+        Commands\BaznewsInstall::class,
     ];
 
     /**
