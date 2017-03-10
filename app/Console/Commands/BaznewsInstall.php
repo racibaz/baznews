@@ -5,14 +5,14 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Redis;
 
-class SystemMigrate extends Command
+class BaznewsInstall extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'baznews:migrate';
+    protected $signature = 'baznews:install';
 
     /**
      * The console command description.
