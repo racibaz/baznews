@@ -31,10 +31,19 @@
                             <div class="col-md-7">
                                 <div class="text-center">
                                     <div class="btn-group">
+                                        @permission('index-admin')
+                                            <a href="{{route('dashboard')}}">
+                                                <span>{{trans('dashboard.show_account_page')}}</span>
+                                            </a>
+                                        @endpermission
+
                                         {!! link_to_route('account.edit', trans('account.edit'), $record, ['class' => 'btn btn-primary'] ) !!}
                                         {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-info'] ) !!}
-                                    </div>
 
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('logout',  $record))) !!}
+                                            {!! Form::submit('Çık', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>
