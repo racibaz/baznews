@@ -39,10 +39,17 @@
 
                                         {!! link_to_route('account.edit', trans('account.edit'), $record, ['class' => 'btn btn-primary'] ) !!}
                                         {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-info'] ) !!}
+                                        <br />
+                                        <a href="{{ url('/logout') }}"
+                                           onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
 
-                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('logout',  $record))) !!}
-                                            {!! Form::submit('Çık', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                        {!! Form::close() !!}
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>

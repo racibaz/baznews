@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Zizaco\Entrust\Entrust;
 use Illuminate\Support\Facades\Auth;
 
 class CheckPerm
