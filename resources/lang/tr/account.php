@@ -22,4 +22,6 @@ return [
     'management'             => 'Hesap Yönetimi',
     'change_password'        => 'Parola Değiştir',
     'edit'        => 'Hesap Bilgilerini Güncelle',
+    'password'        => 'Parola',
+
 ];

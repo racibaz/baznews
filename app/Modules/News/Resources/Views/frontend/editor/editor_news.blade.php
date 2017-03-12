@@ -3,9 +3,19 @@
 @section('content')
 
     <article class="container" id="container">
-        <div class="breadcrumbs">
-            <p><a href="new-details.html">Home.</a>  \\  <a href="new-details.html">World News.</a>   \\   Single.</p>
-        </div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">Başlık</a>
+            </li>
+            <li>
+                <a href="#">
+                    Haber Kategorisi
+                </a>
+            </li>
+            <li>
+                En Son Sayfa Adı
+            </li>
+        </ol>
         <div class="row">
             <div class="col-md-8">
                 <div id="author-content">

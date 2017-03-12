@@ -10,7 +10,7 @@
                 <div class="module">
                     <div class="account">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-7">
                                 <div class="account-img text-center">
                                     @if(!empty($record->id))
                                         <?php
@@ -21,27 +21,24 @@
                                         <img src="<?php echo $grav_url; ?>" alt="" class="img-rounded"/>
                                     @endif
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="text-left">
+                                <div class="text-center">
                                     <h2 class="account-name"><i class="fa fa-user"></i> {{$record->name}} </h2>
-                                    <p><i class="fa fa-envelope"></i> <a href="mailto:{{$record->email}}">{{$record->email}}</a></p>
+                                    <p><i class="fa fa-envelope"></i>  {{$record->email}}</p>
+                                    {!! link_to_route('account.edit', trans('account.edit'), $record, ['class' => 'btn btn-primary'] ) !!}
+                                    {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-info'] ) !!}
                                 </div>
                             </div>
-                            <div class="col-md-7">
-                                <div class="text-center">
-                                    <div class="btn-group">
-                                        @permission('index-admin')
-                                            <a href="{{route('dashboard')}}">
-                                                <span>{{trans('dashboard.show_account_page')}}</span>
-                                            </a>
-                                        @endpermission
-                                        {!! link_to_route('account.edit', trans('account.edit'), $record, ['class' => 'btn btn-primary'] ) !!}
-                                        {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-info'] ) !!}
-                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('logout',  $record))) !!}
-                                            {!! Form::submit('Çık', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                        {!! Form::close() !!}
-                                    </div>
+                            <div class="col-md-5">
+                                <div class="account-buttons">
+                                    @permission('index-admin')
+                                    <a href="{{route('dashboard')}}" class="btn btn-success btn-lg btn-block">
+                                        <i class="fa fa-window-restore"></i><span>  {{trans('dashboard.show_account_page')}}</span>
+                                    </a>
+                                    @endpermission
+
+                                    {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('logout',  $record))) !!}
+                                    {!! Form::submit('Çıkış Yap', ['class' => 'btn btn-danger btn-block','data-toggle'=>'confirmation']) !!}
+                                    {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>

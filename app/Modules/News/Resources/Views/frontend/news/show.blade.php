@@ -4,23 +4,26 @@
 
 
     <div class="container" id="container">
-        <div class="breadcrumbs">
-            <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \\
-
-                @foreach($record->news_categories as $newsCategory )
+        <ol class="breadcrumb">
+            <li>
+                <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+            </li>
+            @foreach($record->news_categories as $newsCategory )
+                <li>
                     <a href="{!! route('show_news_category', ['slug' => $newsCategory->slug]) !!}">
                         {{$newsCategory->name}}
-                    </a>   \\
-                @endforeach
+                    </a>
+                </li>
+            @endforeach
+            <li>
                 {{$record->title}}
-            </p>
-        </div>
+            </li>
+        </ol>
         <div class="row">
             <div class="col-md-8">
                 <article class="module">
                     <div id="new-content">
                         <div class="meta">
-                            <a href="new-details.html" class="cat-title">World News.</a>
                             <span class="timestamp">Oluşturma : {{ $record->created_at }} | Güncelleme: {{ $record->updated_at }}</span>
                         </div><!-- /.meta -->
                         <h1 class="news-title">{{ $record->title }}</h1>
