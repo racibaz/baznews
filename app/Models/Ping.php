@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Validator;
 use Illuminate\Database\Eloquent\Model;
 
 class Ping extends Model
 {
+    use Eventable;
+
     /**
      * The attributes that are mass assignable.
      *

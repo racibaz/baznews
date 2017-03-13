@@ -3,11 +3,14 @@
 namespace App\Modules\News\Models;
 
 use App\Models\User;
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class RecommendationNews extends Model
 {
+    use Eventable;
+
     protected $table = 'recommendation_news';
 
     protected $fillable = [

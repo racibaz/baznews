@@ -9,11 +9,14 @@
 namespace App\Models;
 
 
+use App\Traits\Eventable;
 use Zizaco\Entrust\EntrustPermission;
 use Illuminate\Support\Facades\Validator;
 
 class Permission extends EntrustPermission
 {
+    use Eventable;
+
     protected $fillable = [
         'name',
         'display_name',
@@ -26,12 +29,6 @@ class Permission extends EntrustPermission
     {
         return $this->belongsToMany('App\Models\Role','permission_role','permission_id', 'role_id');
     }
-
-    public function events()
-    {
-        return $this->morphMany(Event::class, 'eventable');
-    }
-
 
     public static function validate($input) {
         $rules = array(

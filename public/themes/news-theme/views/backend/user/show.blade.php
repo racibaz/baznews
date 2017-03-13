@@ -163,7 +163,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($events as $event)
+                        @foreach($events as $index => $event)
                             <tr>
                                 <td>{{$event->id}}</td>
                                 <td>{{$event->eventable_type }}</td>

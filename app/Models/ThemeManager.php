@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class ThemeManager extends Model
 {
+    use Eventable;
     use Sluggable;
 
     public $table = 'modules';
@@ -35,7 +37,6 @@ class ThemeManager extends Model
         'order',
         'is_active',
     ];
-
 
     public static function validate($input) {
         $rules = array(

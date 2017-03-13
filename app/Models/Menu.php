@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,6 +13,7 @@ class Menu extends Model
 {
     use Sluggable;
     use NodeTrait;
+    use Eventable;
     use SoftDeletes;
 
     /**
@@ -33,11 +35,6 @@ class Menu extends Model
     public function page()
     {
         return $this->belongsTo('App\Models\Page');
-    }
-
-    public function events()
-    {
-        return $this->morphMany(Event::class, 'eventable');
     }
 
     public static function validate($input) {

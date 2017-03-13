@@ -3,6 +3,7 @@
 namespace App\Modules\Biography\Models;
 
 use App\Models\User;
+use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Venturecraft\Revisionable\RevisionableTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Biography extends Model
 {
+    use Eventable;
     use RevisionableTrait;
     use Sluggable;
 

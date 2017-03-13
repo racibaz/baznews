@@ -3,6 +3,7 @@
 namespace App\Modules\News\Models;
 
 use App\Models\User;
+use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,6 +13,7 @@ use Venturecraft\Revisionable\RevisionableTrait;
 
 class News extends Model
 {
+    use Eventable;
     use SoftDeletes;
     use Searchable;
     use RevisionableTrait;

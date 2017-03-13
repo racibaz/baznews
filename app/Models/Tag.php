@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Validator;
 use Laravel\Scout\Searchable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Validator;
 
 class Tag extends Model
 {
+    use Eventable;
     use Searchable;
     use Sluggable;
 

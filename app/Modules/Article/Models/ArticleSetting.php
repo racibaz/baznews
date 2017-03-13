@@ -2,12 +2,14 @@
 
 namespace App\Modules\Article\Models;
 
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class ArticleSetting extends Model
 {
 
+    use Eventable;
 
     public $timestamps = false;
     /**

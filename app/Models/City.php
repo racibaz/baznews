@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class City extends Model
 {
+    use Eventable;
     /**
      * The attributes that are mass assignable.
      *
@@ -28,7 +30,7 @@ class City extends Model
         return $this->hasMany('App\Models\User');
     }
 
-    //modules news
+    //todo soyutlaştırılmalı modules news
     public function news()
     {
         return $this->hasMany('App\Modules\News\Models\News');

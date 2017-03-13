@@ -81,8 +81,8 @@ class UserController extends BackendController
     public function show(User $record)
     {
         $revisions = $record->getUserRevisions($record->id);
-        //$events = $record->events();
-        $events = Event::where('user_id',$record->id)->get();
+//        $events = $record->events;
+        $events = Event::where('user_id',$record->id)->orderBy('updated_at', 'desc')->get();
 
         return Theme::view($this->getViewName(__FUNCTION__),compact('record', 'revisions', 'events'));
     }

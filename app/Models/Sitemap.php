@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class Sitemap extends Model
 {
+    use Eventable;
 
     protected $table = 'sitemaps';
     

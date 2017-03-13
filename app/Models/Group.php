@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
 
 class Group extends Model
 {
+    use Eventable;
     use SoftDeletes;
 
     protected $fillable = [

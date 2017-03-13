@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class WidgetGroup extends Model
 {
+    use Eventable;
+
     /**
      * The attributes that are mass assignable.
      *

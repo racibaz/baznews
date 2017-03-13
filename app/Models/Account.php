@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Request;
 use Venturecraft\Revisionable\Revision;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Account extends Model
 {
+    use Eventable;
     use EntrustUserTrait;
     use Notifiable;
 
@@ -93,11 +95,6 @@ class Account extends Model
     public function activationToken()
     {
         return $this->hasOne(ActivationToken::class);
-    }
-
-    public function events()
-    {
-        return $this->morphMany(Event::class, 'eventable');
     }
 
     public static function getAllUsers()

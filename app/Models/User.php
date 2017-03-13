@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Modules\Biography\Models\Biography;
 use App\Modules\Book\Models\Book;
 use App\Modules\News\Models\RecommendationNews;
+use App\Traits\Eventable;
 use Cache;
 use Config;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Validator;
 
 class User extends Authenticatable
 {
+    use Eventable;
     use Notifiable;
     use Sluggable;
 
@@ -115,44 +117,6 @@ class User extends Authenticatable
         '0 RH-' => '0 RH-'
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-
-        if(!app()->runningInConsole() ) {
-
-            if(Auth::check()){
-
-                static::created(function ($user) {
-
-                    $event = new Event();
-                    $event->user_id = Auth::user()->id;
-                    $event->event = 'User Created';
-                    $user->events()->save($event);
-                });
-
-                static::updated(function ($user) {
-
-                    $event = new Event();
-                    $event->user_id = Auth::user()->id;
-                    $event->event = 'User Updated';
-                    $user->events()->save($event);
-                });
-
-                static::deleted(function ($user) {
-
-                    $event = new Event();
-                    $event->user_id = Auth::user()->id;
-                    $event->event = 'User Deleted';
-                    $user->events()->save($event);
-                });
-
-            }
-
-        }
-    }
-
-
     public function groups()
     {
         //return $this->belongsToMany('App\Group');
@@ -235,11 +199,6 @@ class User extends Authenticatable
     public function activationToken()
     {
         return $this->hasOne(ActivationToken::class);
-    }
-
-    public function events()
-    {
-        return $this->morphMany(Event::class, 'eventable');
     }
 
     public static function getAllUsers()
