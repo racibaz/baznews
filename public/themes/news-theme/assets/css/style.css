@@ -26,8 +26,6 @@ input, textarea {
     transition: background-color .3s ease, border .3s ease, color .3s ease, opacity .3s ease-in-out; }
 
 .button, input[type="submit"], button {
-    background: #80B600;
-    color: #fff;
     cursor: pointer;
     height: auto;
     overflow: visible;
@@ -891,21 +889,30 @@ header{
     position: relative;
     overflow: hidden;
     margin-bottom: 10px;
+    height:200px;
+}
+.cat-posts .r-box:hover{
+    -webkit-box-shadow: 0px 0px 20px -35px #000;
+    -moz-box-shadow: 0 0 5px 0 #000;
+    box-shadow: 0 0 5px 0 #000;
+}
+.cat-posts .r-box > a{
+    display:block;
 }
 .cat-posts .r-box a:hover {
-    -webkit-box-shadow: 0 0 10px #000;
-    -moz-box-shadow: 0 0 10px #000;
-    box-shadow: 0 0 10px #000; }
+    text-decoration:none;
+}
 .cat-posts .r-box a img {
     width: 100%; }
 .cat-posts .r-box a span.c-text {
     display: block;
-    font-size: 13px;
+    font-size: 16px;
     color: #717171;
     padding: 5px 0;
     font-weight: bold;
-    z-index: 9; }
-
+    z-index: 9;
+    padding: 10px 10px;
+}
 /* ==========================================================================
    POPULAR VİDEOS
    ========================================================================== */
@@ -1576,20 +1583,24 @@ footer .footer-bottom .cpy {
 /* ==========================================================================
    Breadcrumbs
    ========================================================================== */
-.breadcrumbs {
+.breadcrumb {
     border-bottom: 1px solid #dbdbdb;
-    margin-bottom: 10px; }
-.breadcrumbs p {
-    margin: 0 0 5px 0;
-    padding: 0;
-    font-size: 12px;
-    color: #929292; }
-.breadcrumbs p a {
+    margin-bottom: 10px;
+    background-color:transparent;
+    padding-left:0;
+
+}
+.breadcrumb a,.breadcrumb li {
+    font-size:12px;
     color: #696969;
     font-weight:bold;
 }
-.breadcrumbs p a:hover {
-    text-decoration: underline; }
+.breadcrumb li {
+    font-weight:bold;
+}
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
 
 /* ==========================================================================
    Share Box
@@ -2203,4 +2214,63 @@ footer .footer-bottom .cpy {
 }
 .account .account-img{
     margin-bottom: 6px;
+}
+.account .account-buttons{
+    width: 200px;
+    margin: 0 auto;
+}
+.account .account-buttons .btn{
+    margin-bottom:5px;
+}
+
+.user-password{
+    padding: 15px;
+}
+.user-password .btn{
+    background-color: #EA4748;
+    border-color: #EA4748;
+}
+.form-group:last-child{
+    margin-bottom: 0;
+}
+.form-control{
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+.form-control:focus{
+    border-color:#E3000F;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.btn{
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0;
+}
+
+.account-edit .module{
+    padding: 15px;
+}
+.select2 .selection .select2-selection{
+    border:1px solid #ccc;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    height: 34px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.select2-container .select2-selection--single .select2-selection__rendered{
+    padding: 2px 11px;
+}
+.select2.select2-container--open .select2-selection{
+    border:1px solid #E92735;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    height: 31px;
 }
