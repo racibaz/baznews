@@ -32,6 +32,8 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
         $this->removeEventsTableItems();
 
         $this->removeTaggableTableItems();
+
+        $this->removeLinksTableItems();
     }
 
     public function modelRemoveSeedAndRelations()
@@ -183,5 +185,11 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
         DB::table('taggables')->where('taggable_type', ArticleAuthor::class)->delete();
         DB::table('taggables')->where('taggable_type', ArticleCategory::class)->delete();
         DB::table('taggables')->where('taggable_type', ArticleSetting::class)->delete();
+    }
+
+
+    public function removeLinksTableItems()
+    {
+        DB::table('links')->where('linkable_type', ArticleCategory::class)->delete();
     }
 }

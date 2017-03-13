@@ -28,6 +28,8 @@ class BookModelRemoveSeedsAndRelations extends Migration
     public function down()
     {
         $this->modelRemoveSeedAndRelations();
+
+        $this->removeLinksTableItems();
     }
 
 
@@ -157,6 +159,7 @@ class BookModelRemoveSeedsAndRelations extends Migration
         DB::table('events')->where('eventable_type', BookSetting::class)->delete();
     }
 
+
     public function removeTaggableTableItems()
     {
         DB::table('taggables')->where('taggable_type', Book::class)->delete();
@@ -164,5 +167,10 @@ class BookModelRemoveSeedsAndRelations extends Migration
         DB::table('taggables')->where('taggable_type', BookCategory::class)->delete();
         DB::table('taggables')->where('taggable_type', BookPublisher::class)->delete();
         DB::table('taggables')->where('taggable_type', BookSetting::class)->delete();
+    }
+
+    public function removeLinksTableItems()
+    {
+        DB::table('links')->where('linkable_type', BookCategory::class)->delete();
     }
 }

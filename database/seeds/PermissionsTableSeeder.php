@@ -995,8 +995,8 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         $modulemanager9 = Permission::create([
-            'name'          => 'moduleRollback-modulemanager',
-            'display_name'  => 'moduleRollback',
+            'name'          => 'moduleReset-modulemanager',
+            'display_name'  => 'moduleReset',
             'is_active'     => 1,
         ]);
 

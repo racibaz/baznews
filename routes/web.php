@@ -74,7 +74,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('tag', 'Backend\TagController');
     Route::resource('event', 'Backend\EventController');
     Route::get('module_manager/moduleActivationToggle/{moduleSlug}', 'Backend\ModuleManagerController@moduleActivationToggle')->name('moduleActivationToggle');
-    Route::get('module_manager/moduleRollback/{moduleSlug}', 'Backend\ModuleManagerController@moduleRollback')->name('moduleRollback');
+    Route::get('module_manager/moduleReset/{moduleSlug}', 'Backend\ModuleManagerController@moduleReset')->name('moduleReset');
     Route::get('module_manager/moduleRefreshAndSeed/{moduleSlug}', 'Backend\ModuleManagerController@moduleRefreshAndSeed')->name('moduleRefreshAndSeed');
     Route::resource('module_manager', 'Backend\ModuleManagerController');
     Route::resource('sitemap', 'Backend\SitemapController');

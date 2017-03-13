@@ -24,11 +24,12 @@
 
                                 @if(Module::isEnabled($module['slug']))
                                     {!! link_to_route('moduleActivationToggle', \Caffeinated\Modules\Facades\Module::isEnabled($module['slug']) ? 'Aktif' : 'Pasif' , $module['slug'], [] ) !!}
+                                    | {!! link_to_route('moduleReset', 'moduleReset' , $module['slug'], [] ) !!}
                                 @else
                                     {!! link_to_route('moduleActivationToggle', \Caffeinated\Modules\Facades\Module::isEnabled($module['slug']) ? 'Aktif' : 'Pasif' , $module['slug'], [] ) !!}
-                                    {!! link_to_route('moduleRefreshAndSeed', 'moduleRefreshAndSeed' , $module['slug'], [] ) !!}  |
-                                    {!! link_to_route('moduleRollback', 'moduleRollback' , $module['slug'], [] ) !!}
+                                    {!! link_to_route('moduleRefreshAndSeed', 'moduleRefreshAndSeed' , $module['slug'], [] ) !!}
                                 @endif
+
                             </li> <br />
                         @endforeach
                         </ul>

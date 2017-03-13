@@ -122,16 +122,33 @@ class ModuleManagerController extends BackendController
     }
 
 
-    public function moduleRollback($moduleSlug)
+    public function moduleReset($moduleSlug)
     {
-        Artisan::call('module:migrate:rollback ' . $moduleSlug . ' --force');
+        Artisan::call('module:migrate:reset', [
+            'slug' => $moduleSlug,
+            '--force' => true,
+        ]);
+
+        $this->moduleActivationToggle($moduleSlug);
+
         return Redirect::back();
     }
 
 
     public function moduleRefreshAndSeed($moduleSlug)
     {
-        Artisan::call('module:migrate  ' . $moduleSlug. ' --force');
+        Artisan::call('module:migrate', [
+            'slug' => $moduleSlug,
+            '--force' => true,
+        ]);
+
+        Artisan::call('module:seed', [
+            'slug' => $moduleSlug,
+            '--force' => true,
+        ]);
+
+        $this->moduleActivationToggle($moduleSlug);
+
         return Redirect::back();
     }
 
