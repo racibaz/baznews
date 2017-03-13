@@ -70,8 +70,8 @@ class PageController extends BackendController
     public function save($record)
     {
         $input = Input::all();
-
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
+        $input['is_comment'] = Input::get('is_comment') == "on" ? true : false;
         
 
         $v = Page::validate($input);

@@ -20,6 +20,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('page.name')}}</th>
+                            <th>{{trans('page.is_comment')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </thead>
@@ -28,15 +29,13 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('page.show', $record->name , $record, [] ) !!}</td>
+                                    <td>{!!$record->is_comment ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('page.destroy',  $record))) !!}
-
-                                            {!! link_to_route('page.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-
-
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                                {!! link_to_route('page.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                                {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
                                             {!! Form::close() !!}
                                         </div>
                                     </td>
@@ -47,6 +46,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('page.name')}}</th>
+                            <th>{{trans('page.is_comment')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </tfoot>
