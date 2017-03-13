@@ -41,6 +41,8 @@ class NewsModelRemoveSeedsAndRelations extends Migration
         $this->removeEventsTableItems();
 
         $this->removeTaggableTableItems();
+
+        $this->removeLinksTableItems();
     }
 
     public function modelRemoveSeedAndRelations()
@@ -524,5 +526,12 @@ class NewsModelRemoveSeedsAndRelations extends Migration
         DB::table('taggables')->where('taggable_type', Video::class)->delete();
         DB::table('taggables')->where('taggable_type', VideoCategory::class)->delete();
         DB::table('taggables')->where('taggable_type', VideoGallery::class)->delete();
+    }
+
+    public function removeLinksTableItems()
+    {
+        DB::table('links')->where('linkable_type', NewsCategory::class)->delete();
+        DB::table('links')->where('linkable_type', PhotoCategory::class)->delete();
+        DB::table('links')->where('linkable_type', VideoCategory::class)->delete();
     }
 }

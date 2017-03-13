@@ -26,7 +26,7 @@
                                     <td>{{$record->id}}</td>
                                     <td> {{ $record->eventable_type }} </td>
                                     <td> {{ $record->eventable_id }} </td>
-                                    <td>{!! link_to_route('user.show', $record->user->first_name , $record, [] ) !!}</td>
+                                    <td>{!! link_to_route('user.show', $record->user->name , $record, [] ) !!}</td>
                                     <td> {{ $record->event }} </td>
                                     <td>
                                         <div class="btn-group">

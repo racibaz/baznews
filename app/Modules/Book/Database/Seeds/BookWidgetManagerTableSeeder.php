@@ -21,6 +21,7 @@ class BookWidgetManagerTableSeeder extends Seeder
 //                'widget_group_id' => 4,
                 'name'          => 'RecentBooks',
                 'slug'          => 'recent_books',
+                'module_name'   => 'Book',
                 'namespace'     => '\App\Modules\Book\Widgets\RecentBooks',
                 'group'         => 'right_bar',
                 'position'      => 2,

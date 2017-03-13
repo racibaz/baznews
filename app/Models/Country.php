@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class Country extends Model
 {
-
+    use Eventable;
     /**
      * The attributes that are mass assignable.
      *

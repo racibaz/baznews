@@ -2,7 +2,9 @@
 
 namespace App\Modules\Article\Models;
 
+use App\Models\Event;
 use App\Models\User;
+use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,6 +13,7 @@ use Venturecraft\Revisionable\RevisionableTrait;
 
 class Article extends Eloquent
 {
+    use Eventable;
     use SoftDeletes;
     use RevisionableTrait;
     use Sluggable;

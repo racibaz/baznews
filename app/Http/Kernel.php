@@ -57,5 +57,6 @@ class Kernel extends HttpKernel
         'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
         'checkperm' => \App\Http\Middleware\CheckPerm::class,
         'social' => \App\Http\Middleware\Social::class,
+        'envFileChange' => \App\Http\Middleware\EnvFileChange::class,
     ];
 }

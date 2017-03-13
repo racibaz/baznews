@@ -2,11 +2,14 @@
 
 namespace App\Modules\News\Models;
 
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class NewsSetting extends Model
 {
+    use Eventable;
+
     public $timestamps = false;
     /**
      * The attributes that are mass assignable.

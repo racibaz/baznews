@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 
 class UserSocial extends Model

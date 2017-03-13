@@ -21,6 +21,7 @@ class NewsWidgetManagerTableSeeder extends Seeder
 //                'widget_group_id' => 4,
                 'name'          => 'RecommendationNews',
                 'slug'          => 'recommendation_news',
+                'module_name'   => 'News',
                 'namespace'     => '\App\Modules\News\Widgets\RecommendationNews',
                 'group'         => 'right_bar',
                 'position'      => 1,

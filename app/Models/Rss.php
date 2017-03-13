@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class Rss extends Model
 {
+    use Eventable;
+
     protected $table = 'rss';
 
     protected $fillable = [

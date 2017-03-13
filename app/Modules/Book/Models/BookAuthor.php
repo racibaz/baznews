@@ -2,12 +2,14 @@
 
 namespace App\Modules\Book\Models;
 
+use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Validator;
 use Illuminate\Database\Eloquent\Model;
 
 class BookAuthor extends Model
 {
+    use Eventable;
     use Sluggable;
 
     /**

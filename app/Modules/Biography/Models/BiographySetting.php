@@ -2,11 +2,14 @@
 
 namespace App\Modules\Biography\Models;
 
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Validation\Validator;
 
 class BiographySetting extends Model
 {
+    use Eventable;
+
     public $timestamps = false;
     /**
      * The attributes that are mass assignable.

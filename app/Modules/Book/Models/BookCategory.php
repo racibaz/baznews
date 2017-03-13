@@ -3,6 +3,7 @@
 namespace App\Modules\Book\Models;
 
 use App\Models\Link;
+use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class BookCategory extends Model
 {
+    use Eventable;
     use Sluggable;
     use NodeTrait;
 

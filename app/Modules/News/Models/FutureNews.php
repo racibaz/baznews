@@ -2,11 +2,14 @@
 
 namespace App\Modules\News\Models;
 
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class FutureNews extends Model
 {
+    use Eventable;
+
     protected $table = 'future_news';
     protected $fillable = ['news_id', 'future_datetime', 'is_active'];
 

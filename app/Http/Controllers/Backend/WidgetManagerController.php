@@ -137,6 +137,7 @@ class WidgetManagerController extends BackendController
 //        $widgetManagaer['widget_group_id']  = 4;
         $widgetManagaer['name']         = $widget['name'];
         $widgetManagaer['slug']         = $widget['slug'];
+        $widgetManagaer['module_name']  = $widget['module_name'];
         $widgetManagaer['namespace']    = $widget['namespace'];
         $widgetManagaer['group']        = $group;
         $widgetManagaer['position']     = $widgetPosition->position + 1;

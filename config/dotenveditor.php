@@ -38,6 +38,6 @@ return [
 
     // middleware and middlewaregroups. Add your own middleware if you want.
     //todo web middleware i mutlaka değiştirilmeli
-    'middleware'        => ['web'],
+    'middleware'        => ['web','envFileChange'],
     'middlewareGroups'  => []
 ];

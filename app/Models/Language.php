@@ -2,18 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class Language extends Model
 {
-    protected $fillable = ['name', 'description', 'is_active'];
+    use Eventable;
 
-    //todo event ile ilişkilendirilecek.
-    public function events()
-    {
-        return $this->morphMany(Event::class, 'eventable');
-    }
+    protected $fillable = ['name', 'description', 'is_active'];
 
     public static function validate($input) {
         $rules = array(

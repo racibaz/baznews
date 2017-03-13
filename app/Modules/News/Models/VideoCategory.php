@@ -3,6 +3,7 @@
 namespace App\Modules\News\Models;
 
 use App\Models\Link;
+use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -11,6 +12,7 @@ use Venturecraft\Revisionable\RevisionableTrait;
 
 class VideoCategory extends Model
 {
+    use Eventable;
     use RevisionableTrait;
     use Sluggable;
     use NodeTrait;

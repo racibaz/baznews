@@ -2,11 +2,14 @@
 
 namespace App\Modules\News\Models;
 
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class RelatedNews extends Model
 {
+    use Eventable;
+
     protected $table = 'related_news';
     public $timestamps = false;
     protected $fillable = ['news_id', 'related_news_id'];

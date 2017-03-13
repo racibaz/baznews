@@ -18,6 +18,7 @@ class CreateWidgetManagersTable extends Migration
 //            $table->unsignedInteger('widget_group_id');
             $table->string('name')->unique();
             $table->string('slug')->unique();
+            $table->string('module_name')->nullable();
             $table->string('namespace');
             $table->string('group')->nullable();
             $table->smallInteger('position')->nullable();

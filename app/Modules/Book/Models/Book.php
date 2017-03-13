@@ -2,6 +2,7 @@
 
 namespace App\Modules\Book\Models;
 
+use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,6 +11,7 @@ use Venturecraft\Revisionable\RevisionableTrait;
 
 class Book extends Model
 {
+    use Eventable;
     use SoftDeletes;
     use RevisionableTrait;
     use Sluggable;

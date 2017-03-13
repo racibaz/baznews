@@ -20,7 +20,7 @@ class EnvFileChange
             return $next($request);
         }
 
-        \Log::warning('Unauthorized request IP :' . $request->ip());
-        return response('Unauthorized.', 401);
+        \Log::warning('Unauthorized .env file request IP :' . $request->ip());
+        return redirect('/login');
     }
 }

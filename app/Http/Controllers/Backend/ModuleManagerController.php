@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\ModuleManager;
+use App\Models\WidgetManager;
 use App\Repositories\ModuleManagerRepository as Repo;
+use App\Repositories\WidgetManagerRepository;
 use Cache;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
@@ -122,21 +124,53 @@ class ModuleManagerController extends BackendController
     }
 
 
-    public function moduleRollback($moduleSlug)
+    public function moduleReset($moduleSlug)
     {
-        Artisan::call('module:migrate:rollback ' . $moduleSlug . ' --force');
+        Artisan::call('module:migrate:reset', [
+            'slug' => $moduleSlug,
+            '--force' => true,
+        ]);
+
+        $module = Module::where('slug', $moduleSlug)->toArray();
+        $this->widgetDeleteByModuleName($module['name']);
+
+        $this->moduleActivationToggle($moduleSlug);
+
+        Cache::tags('homePage')->flush();
+
         return Redirect::back();
     }
 
 
     public function moduleRefreshAndSeed($moduleSlug)
     {
-        Artisan::call('module:migrate  ' . $moduleSlug. ' --force');
+        Artisan::call('module:migrate', [
+            'slug' => $moduleSlug,
+            '--force' => true,
+        ]);
+
+        Artisan::call('module:seed', [
+            'slug' => $moduleSlug,
+            '--force' => true,
+        ]);
+
+        $this->moduleActivationToggle($moduleSlug);
+
+        Cache::tags('homePage')->flush();
+
         return Redirect::back();
     }
 
 
+    /*
+     * //Bu model de soft delete kullanıdğımız için forceDelete methodu ile tamammen siliyoruz.
+     *
+     * */
+    public function widgetDeleteByModuleName($moduleName)
+    {
+        $widgetManagerRepo = new WidgetManagerRepository();
+        $widget = $widgetManagerRepo->findBy('module_name', $moduleName);
+        $widget->forceDelete();
 
-
-
+    }
 }

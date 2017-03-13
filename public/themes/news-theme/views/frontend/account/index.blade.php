@@ -28,17 +28,28 @@
                                     {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-info'] ) !!}
                                 </div>
                             </div>
-                            <div class="col-md-5">
-                                <div class="account-buttons">
-                                    @permission('index-admin')
-                                    <a href="{{route('dashboard')}}" class="btn btn-success btn-lg btn-block">
-                                        <i class="fa fa-window-restore"></i><span>  {{trans('dashboard.show_account_page')}}</span>
-                                    </a>
-                                    @endpermission
+                            <div class="col-md-7">
+                                <div class="text-center">
+                                    <div class="btn-group">
+                                        @permission('index-admin')
+                                            <a href="{{route('dashboard')}}">
+                                                <span>{{trans('dashboard.show_account_page')}}</span>
+                                            </a>
+                                        @endpermission
 
-                                    {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('logout',  $record))) !!}
-                                    {!! Form::submit('Çıkış Yap', ['class' => 'btn btn-danger btn-block','data-toggle'=>'confirmation']) !!}
-                                    {!! Form::close() !!}
+                                        {!! link_to_route('account.edit', trans('account.edit'), $record, ['class' => 'btn btn-primary'] ) !!}
+                                        {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-info'] ) !!}
+                                        <br />
+                                        <a href="{{ url('/logout') }}"
+                                           onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

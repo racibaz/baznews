@@ -2,6 +2,7 @@
 
 namespace App\Modules\News\Models;
 
+use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
@@ -9,8 +10,8 @@ use Venturecraft\Revisionable\RevisionableTrait;
 
 class PhotoGallery extends Model
 {
+    use Eventable;
     use RevisionableTrait;
-
     use Sluggable;
 
     /**

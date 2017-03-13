@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 
 class SocialProvider extends Model
 {
-    protected  $fillable = ['provider_id','provider'];
+    use Eventable;
 
+    protected  $fillable = ['provider_id','provider'];
 
     function user()
     {

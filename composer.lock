@@ -163,16 +163,16 @@
         },
         {
             "name": "brotzka/laravel-dotenv-editor",
-            "version": "v2.0.6",
+            "version": "v2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Brotzka/laravel-dotenv-editor.git",
-                "reference": "6f9abb43faab098b34896a89cf048b5be607e4c5"
+                "reference": "360a86c06450f07d5c9efbf9a2b4462dd0094039"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Brotzka/laravel-dotenv-editor/zipball/6f9abb43faab098b34896a89cf048b5be607e4c5",
-                "reference": "6f9abb43faab098b34896a89cf048b5be607e4c5",
+                "url": "https://api.github.com/repos/Brotzka/laravel-dotenv-editor/zipball/360a86c06450f07d5c9efbf9a2b4462dd0094039",
+                "reference": "360a86c06450f07d5c9efbf9a2b4462dd0094039",
                 "shasum": ""
             },
             "require": {
@@ -200,7 +200,7 @@
                 "dotenv-editor",
                 "laravel"
             ],
-            "time": "2017-01-27T07:12:33+00:00"
+            "time": "2017-03-11T10:41:52+00:00"
         },
         {
             "name": "caffeinated/modules",
@@ -422,23 +422,23 @@
         },
         {
             "name": "cviebrock/eloquent-sluggable",
-            "version": "4.1.2",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-                "reference": "20e78e7cc68facc934034024daf1fbaae7ce0c90"
+                "reference": "972101cd0469633258299bba189a73f7f3ee411f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/20e78e7cc68facc934034024daf1fbaae7ce0c90",
-                "reference": "20e78e7cc68facc934034024daf1fbaae7ce0c90",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/972101cd0469633258299bba189a73f7f3ee411f",
+                "reference": "972101cd0469633258299bba189a73f7f3ee411f",
                 "shasum": ""
             },
             "require": {
                 "cocur/slugify": "^2.3",
-                "illuminate/config": "5.1.* || 5.2.* || 5.3.*",
-                "illuminate/database": "5.1.* || 5.2.* || 5.3.*",
-                "illuminate/support": "5.1.* || 5.2.* || 5.3.*",
+                "illuminate/config": "5.1.* || 5.2.* || 5.3.* || 5.4.*",
+                "illuminate/database": "5.1.* || 5.2.* || 5.3.* || 5.4.*",
+                "illuminate/support": "5.1.* || 5.2.* || 5.3.* || 5.4.*",
                 "php": "^5.6 || ^7.0"
             },
             "require-dev": {
@@ -469,7 +469,7 @@
                 "laravel",
                 "slug"
             ],
-            "time": "2016-11-09T15:42:49+00:00"
+            "time": "2017-01-25T02:04:39+00:00"
         },
         {
             "name": "dingo/api",
@@ -1975,16 +1975,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.22.0",
+            "version": "1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "bad29cb8d18ab0315e6c477751418a82c850d558"
+                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bad29cb8d18ab0315e6c477751418a82c850d558",
-                "reference": "bad29cb8d18ab0315e6c477751418a82c850d558",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1e044bc4b34e91743943479f1be7a1d5eb93add0",
+                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0",
                 "shasum": ""
             },
             "require": {
@@ -2049,7 +2049,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2016-11-26T00:15:39+00:00"
+            "time": "2017-03-13T07:08:03+00:00"
         },
         {
             "name": "mtdowling/cron-expression",
@@ -3239,7 +3239,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -5569,7 +5569,7 @@
         },
         {
             "name": "symfony/class-loader",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/class-loader.git",
@@ -5734,7 +5734,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Eventable;
 use Caffeinated\Modules\Facades\Module;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Redis;
 
 class WidgetManager extends Model
 {
+    use Eventable;
     use SoftDeletes;
 
     public static $widgetGroups = [
@@ -33,6 +35,7 @@ class WidgetManager extends Model
 //        'widget_group_id',
         'name',
         'slug',
+        'module_name',
         'namespace',
         'group',
         'position',
