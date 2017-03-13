@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\ModuleManager;
+use App\Models\WidgetManager;
 use App\Repositories\ModuleManagerRepository as Repo;
+use App\Repositories\WidgetManagerRepository;
 use Cache;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
@@ -129,7 +131,12 @@ class ModuleManagerController extends BackendController
             '--force' => true,
         ]);
 
+        $module = Module::where('slug', $moduleSlug)->toArray();
+        $this->widgetDeleteByModuleName($module['name']);
+
         $this->moduleActivationToggle($moduleSlug);
+
+        Cache::tags('homePage')->flush();
 
         return Redirect::back();
     }
@@ -149,11 +156,21 @@ class ModuleManagerController extends BackendController
 
         $this->moduleActivationToggle($moduleSlug);
 
+        Cache::tags('homePage')->flush();
+
         return Redirect::back();
     }
 
 
+    /*
+     * //Bu model de soft delete kullanıdğımız için forceDelete methodu ile tamammen siliyoruz.
+     *
+     * */
+    public function widgetDeleteByModuleName($moduleName)
+    {
+        $widgetManagerRepo = new WidgetManagerRepository();
+        $widget = $widgetManagerRepo->findBy('module_name', $moduleName);
+        $widget->forceDelete();
 
-
-
+    }
 }

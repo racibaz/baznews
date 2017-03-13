@@ -21,6 +21,7 @@ class ArticleWidgetManagerTableSeeder extends Seeder
 //                'widget_group_id' => 4,
                 'name'          => 'RecentArticles',
                 'slug'          => 'recent_articles',
+                'module_name'   => 'Article',
                 'namespace'     => '\App\Modules\Article\Widgets\RecentArticles',
                 'group'         => 'right_bar',
                 'position'      => 3,

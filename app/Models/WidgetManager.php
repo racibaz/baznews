@@ -35,6 +35,7 @@ class WidgetManager extends Model
 //        'widget_group_id',
         'name',
         'slug',
+        'module_name',
         'namespace',
         'group',
         'position',
