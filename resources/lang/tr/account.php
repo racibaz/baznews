@@ -23,5 +23,6 @@ return [
     'change_password'        => 'Parola Değiştir',
     'edit'        => 'Hesap Bilgilerini Güncelle',
     'password'        => 'Parola',
+    'logout'        => 'Çıkış Yap',
 
 ];
