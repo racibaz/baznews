@@ -6,13 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\ContactType;
 use App\Repositories\ContactRepository as Repo;
-use App\Repositories\ContactTypeRepository;
 use Cache;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Support\Facades\Input;
 use Redirect;
 use Request;
 use Session;
+use Illuminate\Support\Facades\Input;
 
 class ContactController extends Controller
 {
@@ -23,7 +22,7 @@ class ContactController extends Controller
 
     public function index()
     {
-        return Cache::remember('contact-page', 1000, function() {
+        return Cache::remember('contactPage', 1000, function() {
 
             $contactTypeList = ContactType::contacctTypeList();
             return Theme::view('frontend.contact',compact('contactTypeList'))->render();
@@ -42,7 +41,7 @@ class ContactController extends Controller
                 ->withInput($input);
         }
 
-        list($status, $result) = $this->repo->create([
+        $result = $this->repo->create([
                 'full_name' => strip_tags($input['full_name']),
                 'email' => strip_tags($input['email']),
                 'phone' => strip_tags($input['phone']),
@@ -52,9 +51,10 @@ class ContactController extends Controller
                 'status' => 0
             ]);
 
-        if ($status) {
-            Session::flash('flash_message', trans('common.message_model_updated'));
-            return Redirect::back();
+
+        if ($result) {
+            Session::flash('success_messages', trans('contact.your_message_posted'));
+            return Redirect::route('contact-index');
         } else {
             return Redirect::back()
                 ->withErrors(trans('common.save_failed'))

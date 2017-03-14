@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Validator;
 
 class Contact extends Model
 {
-    use Eventable;
     use SoftDeletes;
 
     /**
@@ -40,7 +39,7 @@ class Contact extends Model
         $rules = array(
             'contact_type_id'                  => 'integer',
             'subject'                          => 'required|min:3|max:255',
-            'email'                            => 'required|email',
+            'email'                            => 'required|email|max:255',
             'content'                          => 'required|string',
             'IP'                               => 'ip'
         );
