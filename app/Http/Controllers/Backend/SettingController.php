@@ -146,14 +146,14 @@ class SettingController extends BackendController
 
         if(!empty($input['logo'])){
             $record = $this->repo->findBy('attribute_key', 'logo');
-            list($status, $instance) = $this->repo->update($record->id,['attribute_value' => $input['logo']]);
+            $result = $this->repo->update($record->id,['attribute_value' => $input['logo']]);
 
-            if($status) {
+            if($result) {
 
                 $oldPath = $record->attribute_value;
                 $document_name = $input['logo']->getClientOriginalName();
                 $destination = '';
-                Uploader::fileUpload($instance  , 'attribute_value', $input['logo'] , $destination , $document_name);
+                Uploader::fileUpload($result  , 'attribute_value', $input['logo'] , $destination , $document_name);
                 Uploader::removeFile($oldPath);
             }
         }

@@ -152,17 +152,17 @@ class UserController extends BackendController
 
             if (isset($record->id)) {
                 $input['password'] = !empty($input['password']) ? bcrypt($input['password']) : $record->password;
-                list($status, $instance) = $this->repo->update($record->id, $input);
+                $result = $this->repo->update($record->id, $input);
             } else {
-                list($status, $instance) = $this->repo->create($input);
+                $result = $this->repo->create($input);
             }
-            if ($status) {
+            if ($result) {
 
-                $this->roleUserStore($instance,$input);
-                $this->groupUserStore($instance,$input);
+                $this->roleUserStore($result,$input);
+                $this->groupUserStore($result,$input);
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))
@@ -174,12 +174,14 @@ class UserController extends BackendController
 
     public function roleUserStore(User $record, $input)
     {
-        $record->roles()->sync($input['role_user_store_']);
+        if(isset($input['role_user_store_']))
+            $record->roles()->sync($input['role_user_store_']);
     }
 
     public function groupUserStore(User $record, $input)
     {
-        $record->groups()->sync($input['group_user_store_']);
+        if(isset($input['group_user_store_']))
+            $record->groups()->sync($input['group_user_store_']);
     }
 
 

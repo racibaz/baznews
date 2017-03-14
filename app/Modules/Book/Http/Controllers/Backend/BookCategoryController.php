@@ -89,28 +89,28 @@ class BookCategoryController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                list($status, $instance) = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id,$input);
             } else {
-                list($status, $instance) = $this->repo->create($input);
+                $result = $this->repo->create($input);
             }
 
-            if ($status) {
+            if ($result) {
 
                 if(!empty($input['thumbnail'])) {
 
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/images/books_category/'. $instance->id . '/original';
-                    Uploader::fileUpload($instance  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    $destination = '/images/books_category/'. $result->id . '/original';
+                    Uploader::fileUpload($result  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
-                    Image::make(public_path('images/books_category/' . $instance->id .'/original/'. $instance->thumbnail))
+                    Image::make(public_path('images/books_category/' . $result->id .'/original/'. $result->thumbnail))
                         ->fit(180, 275)
-                        ->save(public_path('images/books_category/' . $instance->id . '/180x275_' . $document_name));
+                        ->save(public_path('images/books_category/' . $result->id . '/180x275_' . $document_name));
                 }
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))

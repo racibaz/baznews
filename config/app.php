@@ -199,6 +199,7 @@ return [
         Laravel\Scout\ScoutServiceProvider::class,
         RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
         Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class
 
 
     ],
