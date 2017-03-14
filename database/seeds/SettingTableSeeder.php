@@ -84,6 +84,11 @@ class SettingTableSeeder extends Seeder
         ]);
 
         Setting::create([
+            'attribute_key'               => 'user_contract',
+            'attribute_value'             => 'user_contract',
+        ]);
+
+        Setting::create([
             'attribute_key'               => 'url',
             'attribute_value'             => 'http://www.baznews.com',
         ]);

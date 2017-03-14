@@ -77,6 +77,15 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
+                                {!! Form::label('user_contract', trans('setting.user_contract'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::textarea('user_contract', $records->where('attribute_key','user_contract')->first()->attribute_value, ['placeholder' => trans('setting.slogan') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
                                 {!! Form::label('description', trans('setting.description'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
@@ -453,7 +462,7 @@
                         <h1> Route List </h1>
                         <div id="routes">
                             @foreach ($routeCollection as $value)
-                                {{$value->getPath()}} <br />
+                                {{$value->uri()}} <br />
                             @endforeach
                         </div>
 
