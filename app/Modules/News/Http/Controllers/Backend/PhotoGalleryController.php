@@ -115,12 +115,12 @@ class PhotoGalleryController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                list($status, $instance) = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id,$input);
             } else {
-                list($status, $instance) = $this->repo->create($input);
+                $result = $this->repo->create($input);
             }
 
-            if ($status) {
+            if ($result) {
 
                 //todo form tarafında foto yüklemesini kaldırdım
                 //çünkü galeri resimlerini gösterirken "gallery/gallery_slug/thumbnail" olduğu için
@@ -128,25 +128,25 @@ class PhotoGalleryController extends BackendController
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/gallery/'. $instance->id .'/photos';
-                    Uploader::fileUpload($instance, 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    $destination = '/gallery/'. $result->id .'/photos';
+                    Uploader::fileUpload($result, 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
 
-                    Image::make(public_path('gallery/'. $instance->id .'/photos/'. $instance->thumbnail))
+                    Image::make(public_path('gallery/'. $result->id .'/photos/'. $result->thumbnail))
                         ->resize(58,58)
-                        ->save(public_path('gallery/'. $instance->id .'/photos/58x58_' . $document_name));
+                        ->save(public_path('gallery/'. $result->id .'/photos/58x58_' . $document_name));
 
-                    Image::make(public_path('gallery/'. $instance->id .'/photos/'. $instance->thumbnail))
+                    Image::make(public_path('gallery/'. $result->id .'/photos/'. $result->thumbnail))
                         ->resize(497,358)
-                        ->save(public_path('gallery/'. $instance->id .'/photos/497x358_' . $document_name));
+                        ->save(public_path('gallery/'. $result->id .'/photos/497x358_' . $document_name));
                 }
 
 
-                $this->tagsPhotoGalleryStore($instance,$input);
+                $this->tagsPhotoGalleryStore($result,$input);
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))
@@ -218,7 +218,7 @@ class PhotoGalleryController extends BackendController
          *
          * */
         $photoRepo = new PhotoRepository();
-        list($status, $instance) = $photoRepo->update($photo->id,[
+        $result = $photoRepo->update($photo->id,[
             'name' => $name
         ]);
 
