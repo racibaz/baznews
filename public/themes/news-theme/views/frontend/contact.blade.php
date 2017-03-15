@@ -108,11 +108,4 @@
     <meta name='subtitle' content='This is my subtitle'>
     <meta name='category' content=''>
     <meta name='pagename' content='jQuery Tools, Tutorials and Resources - O Reilly Media'>
-    <meta name='identifier-URL' content='http://www.websiteaddress.com'>
-    <meta name='directory' content='submission'>
-    <meta name='author' content='name, email@hotmail.com'>
-    <meta name='subject' content='your website s subject'>
-    <meta name='abstract' content=''>
-    <meta name='topic' content=''>
-    <meta name='summary' content=''>
 @endsection

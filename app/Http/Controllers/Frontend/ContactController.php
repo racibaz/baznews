@@ -43,6 +43,7 @@ class ContactController extends Controller
 
         $result = $this->repo->create([
                 'full_name' => strip_tags($input['full_name']),
+                'subject' => strip_tags($input['subject']),
                 'email' => strip_tags($input['email']),
                 'phone' => strip_tags($input['phone']),
                 'content' => strip_tags($input['content']),
