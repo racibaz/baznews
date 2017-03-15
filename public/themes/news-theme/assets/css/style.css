@@ -2325,7 +2325,7 @@ ul.news-list li .text .title > a h3{
 ul.news-list li .text .excerpt{
     display: block;
     overflow: hidden;
-    min-height: 32px;
+    min-height: 40px;
 }
 ul.news-list li .text span.timeago {
     opacity: .8;
