@@ -8,10 +8,10 @@ use App\Models\ContactType;
 use App\Repositories\ContactRepository as Repo;
 use Cache;
 use Caffeinated\Themes\Facades\Theme;
+use Illuminate\Support\Facades\Input;
 use Redirect;
 use Request;
 use Session;
-use Illuminate\Support\Facades\Input;
 
 class ContactController extends Controller
 {
@@ -22,11 +22,11 @@ class ContactController extends Controller
 
     public function index()
     {
-        return Cache::remember('contactPage', 1000, function() {
-
-            $contactTypeList = ContactType::contacctTypeList();
-            return Theme::view('frontend.contact',compact('contactTypeList'))->render();
+        $contactTypeList =  Cache::remember('contactTypeList', 1000, function() {
+            return ContactType::contacctTypeList();
         });
+
+        return Theme::view('frontend.contact',compact('contactTypeList'));
     }
 
     public function store(Request $request)

@@ -27,8 +27,7 @@
                         </div>
                     @endif
 
-                    {!! Form::open(['route' => 'contact-store','method' => 'post', 'files' => 'true']) !!}
-
+                    {!! Form::open(['route' => 'contact-store','method' => 'post']) !!}
                         {{Form::token()}}
 
                         <div class="form-group">
