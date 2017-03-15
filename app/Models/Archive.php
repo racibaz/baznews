@@ -20,7 +20,7 @@ class Archive extends Model
 
     public static function validate($input) {
         $rules = array(
-            'name'                          => 'required|min:4|max:255',
+            'name' => 'required|min:4|max:255',
         );
         return Validator::make($input, $rules);
     }

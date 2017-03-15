@@ -46,6 +46,7 @@ class Tag extends Model
         'name'
     ];
 
+    //todo module news
     public function news()
     {
         return $this->morphedByMany('App\Modules\News\Models\News', 'taggable');
@@ -68,7 +69,7 @@ class Tag extends Model
 
     public static function validate($input) {
         $rules = array(
-            'name'                          => 'required|min:1|max:255',
+            'name' => 'required|min:1|max:255',
         );
         return Validator::make($input, $rules);
     }

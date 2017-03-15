@@ -46,7 +46,7 @@ class BookAuthor extends Model
 
     public function books()
     {
-        return $this->hasMany('App\Modules\Book\Models\Book');
+        return $this->hasMany(Book::class);
     }
 
     public static function validate($input) {

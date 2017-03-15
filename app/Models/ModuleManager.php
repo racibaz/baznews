@@ -40,14 +40,9 @@ class ModuleManager extends Model
 
     public static function validate($input) {
         $rules = array(
-            'name'                    => 'required',
+            'name' => 'required',
             'order' => 'integer',
         );
         return Validator::make($input, $rules);
     }
-
-//    public static function cityList()
-//    {
-//        return City::where('is_active',1)->pluck('name','id');
-//    }
 }

@@ -57,7 +57,7 @@ class BookCategory extends Model
 
     public function books()
     {
-        return $this->belongsToMany('App\Modules\Book\Models\Book', 'book_categories_books', 'book_category_id', 'book_id');
+        return $this->belongsToMany(Book::class, 'book_categories_books', 'book_category_id', 'book_id');
     }
 
     public function links()

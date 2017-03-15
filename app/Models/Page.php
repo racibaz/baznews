@@ -17,13 +17,13 @@ class Page extends Model
 
     public function menus()
     {
-        return $this->hasMany('App\Models\Menu');
+        return $this->hasMany(Menu::class);
     }
 
     public static function validate($input) {
         $rules = array(
-            'name'                     => 'Required',
-            'keywords'                  => 'string|min:2|max:255',
+            'name' => 'Required',
+            'keywords' => 'string|min:2|max:255',
         );
         return Validator::make($input, $rules);
     }

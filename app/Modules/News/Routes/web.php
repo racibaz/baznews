@@ -11,11 +11,8 @@
 |
 */
 
-
 Route::pattern('slug', '[a-z0-9-]+');
-
 Route::get('news/{slug}', 'Frontend\NewsController@show')->name('show_news');
-
 Route::get('archive/{years?}/{months?}/{days?}', 'Frontend\ArchiveController@index')
     ->name('archive_index')
     ->where('years', '[0-9]+')
@@ -29,16 +26,10 @@ Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sit
 Route::get('news-category/{slug}', 'Frontend\NewsCategoryController@getNewsByNewsCategorySlug')->name('show_news_category');
 Route::get('video_galleries/{slug}', 'Frontend\VideoGalleryController@getVideoGalleryBySlug')->name('show_video_gallery');
 Route::get('videos/{slug}', 'Frontend\VideoController@getVideoBySlug')->name('show_videos');
-
-
 Route::get('photo_gallery/{slug}', 'Frontend\PhotoGalleryController@getPhotoGalleryBySlug')->name('show_photo_gallery');
 Route::get('photo/{slug}', 'Frontend\PhotoController@getPhotoBySlug')->name('show_photo');
 Route::get('gallery_photo/{slug}', 'Frontend\PhotoGalleryController@showGalleryPhotos')->name('show_gallery_photos');
-
-
 Route::get('editor-profile/{slug}', 'Frontend\EditorController@showProfile')->name('editor-profile');
-
-
 
 Route::group(['prefix' => 'rss'], function() {
 
@@ -54,8 +45,6 @@ Route::group(['prefix' => 'rss'], function() {
     //TODO XSS script sorunu olur mu? test edilecek gerekli önlemler alınacak
     Route::get('news_category/{category_name}', 'Frontend\RssController@getNewsCategoryRssRender')->name('rss/category');
 });
-
-
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
@@ -101,31 +90,24 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('news', 'Backend\NewsController');
     Route::resource('news_source', 'Backend\NewsSourceController');
     Route::resource('future_news', 'Backend\FutureNewsController');
-
     Route::get('photo_gallery/add_multi_photos_view/{photo_gallery_id}', 'Backend\PhotoGalleryController@addMultiPhotosView')->name('add_multi_photos_view');
     Route::post('photo_gallery/add_multi_photos', 'Backend\PhotoGalleryController@addMultiPhotos')->name('addMultiPhotos');
     Route::post('photo_gallery/updateGalleryPhotos', 'Backend\PhotoGalleryController@updateGalleryPhotos')->name('updateGalleryPhotos');
     Route::get('photo_gallery/forget_photo_gallery_cache', 'Backend\PhotoGalleryController@forgetCache')->name('forget_photo_gallery_cache');
     Route::resource('photo_gallery', 'Backend\PhotoGalleryController');
-
     Route::resource('photo', 'Backend\PhotoController');
     Route::resource('photo_category', 'Backend\PhotoCategoryController');
     Route::resource('video_category', 'Backend\VideoCategoryController');
-
-
     Route::get('video_gallery/add_multi_videos_view/{video_gallery_id}', 'Backend\VideoGalleryController@addMultiVideosView')->name('add_multi_videos_view');
     Route::post('video_gallery/add_multi_videos', 'Backend\VideoGalleryController@addMultiVideos')->name('addMultiVideos');
     Route::post('video_gallery/updateGalleryVideos', 'Backend\VideoGalleryController@updateGalleryVideos')->name('updateGalleryVideos');
     Route::get('video_gallery/forget_video_gallery_cache', 'Backend\VideoGalleryController@forgetCache')->name('forget_video_gallery_cache');
     Route::resource('video_gallery', 'Backend\VideoGalleryController');
-
     Route::post('video.tags_video_store', 'Backend\VideoController@tags_video_store')->name('tags_video_store');
     Route::resource('video', 'Backend\VideoController');
     Route::resource('recommendation_news', 'Backend\RecommendationNewsController');
     Route::resource('news_setting', 'Backend\NewsSettingController');
-
 });
-
 
 Route::group(['prefix' => 'news'], function() {
     Route::get('/', function() {

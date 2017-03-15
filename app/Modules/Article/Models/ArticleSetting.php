@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Validator;
 
 class ArticleSetting extends Model
 {
-
     use Eventable;
 
     public $timestamps = false;

@@ -59,7 +59,7 @@ class Book extends Model
 
     public function book_categories()
     {
-        return $this->belongsToMany('App\Modules\Book\Models\BookCategory', 'book_categories_books', 'book_id', 'book_category_id');
+        return $this->belongsToMany(BookCategory::class, 'book_categories_books', 'book_id', 'book_category_id');
     }
 
     public function user()
@@ -69,12 +69,12 @@ class Book extends Model
 
     public function book_author()
     {
-        return $this->belongsTo('App\Modules\Book\Models\BookAuthor','book_author_id');
+        return $this->belongsTo(BookAuthor::class,'book_author_id');
     }
 
     public function book_publisher()
     {
-        return $this->belongsTo('App\Modules\Book\Models\BookPublisher','book_publisher_id');
+        return $this->belongsTo(BookPublisher::class,'book_publisher_id');
     }
 
     public static function validate($input) {

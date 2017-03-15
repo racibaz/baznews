@@ -38,8 +38,8 @@ class City extends Model
 
     public static function validate($input) {
         $rules = array(
-            'country_id'                    => 'required',
-            'name'                          => 'required|min:4|max:255',
+            'country_id' => 'required',
+            'name' => 'required|min:4|max:255',
         );
         return Validator::make($input, $rules);
     }

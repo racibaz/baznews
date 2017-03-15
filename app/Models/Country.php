@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Modules\News\Models\News;
 use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
@@ -21,24 +22,24 @@ class Country extends Model
 
     public function cities()
     {
-        return $this->hasMany('App\Models\City');
+        return $this->hasMany(City::class);
     }
 
     public function users()
     {
-        return $this->hasMany('App\Models\User');
+        return $this->hasMany(User::class);
     }
 
-    //modules news
+    //todo modules news
     public function news()
     {
-        return $this->hasMany('App\Modules\News\Models\News');
+        return $this->hasMany(News::class);
     }
 
 
     public static function validate($input) {
         $rules = array(
-            'name'                          => 'required|min:4|max:255',
+            'name' => 'required|min:4|max:255',
         );
         return Validator::make($input, $rules);
     }

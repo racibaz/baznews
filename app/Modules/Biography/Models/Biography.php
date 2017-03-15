@@ -29,7 +29,6 @@ class Biography extends Model
     }
 
     protected $table = 'biographies';
-    //todo biografiye title veya name alanı eklenecek
     protected $fillable = ['user_id', 'title', 'spot', 'name', 'slug', 'content', 'photo', 'description', 'keywords', 'order', 'hit', 'status', 'is_cuff', 'is_active'];
 
     public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
@@ -57,6 +56,6 @@ class Biography extends Model
 
     public static function biographyList()
     {
-        return Biography::where('is_active',1)->pluck('full_name', 'id');
+        return Biography::where('is_active',1)->pluck('name', 'id');
     }
 }

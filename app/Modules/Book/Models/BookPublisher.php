@@ -2,6 +2,7 @@
 
 namespace App\Modules\Book\Models;
 
+use App\Models\City;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
@@ -41,24 +42,25 @@ class BookPublisher extends Model
 
     public function book_categories()
     {
-        return $this->belongsToMany('App\Modules\Book\Models\BookCategory', 'book_categories_books', 'book_id', 'book_category_id');
+        return $this->belongsToMany(BookCategory::class, 'book_categories_books', 'book_id', 'book_category_id');
     }
 
+    //todo core bağımlılığı
     public function cities()
     {
-        return $this->hasMany('App\Models\City');
+        return $this->hasMany(City::class);
     }
 
     public function books()
     {
-        return $this->hasMany('App\Modules\Book\Models\Book');
+        return $this->hasMany(Book::class);
     }
 
 
     public static function validate($input) {
         $rules = array(
             'name' => 'required|min:4|max:255',
-            'link'  => 'url',
+            'link' => 'url',
             'description' => 'max:255',
         );
         return Validator::make($input, $rules);

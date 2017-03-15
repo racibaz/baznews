@@ -62,12 +62,12 @@ class VideoCategory extends Model
 
     public function video_galleries()
     {
-        return $this->hasMany('App\Modules\News\Models\VideoGallery');
+        return $this->hasMany(VideoGallery::class);
     }
 
     public function videos()
     {
-        return $this->hasMany('App\Modules\News\Models\Video');
+        return $this->hasMany(Video::class);
     }
 
     public function links()
@@ -77,8 +77,8 @@ class VideoCategory extends Model
 
     public static function validate($input) {
         $rules = array(
-            'name'                     => 'required',
-            'hit'   => 'integer',
+            'name' => 'required',
+            'hit' => 'integer',
             'icon' => 'image|max:255',
         );
         return Validator::make($input, $rules);

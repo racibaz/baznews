@@ -59,14 +59,9 @@ class PhotoCategory extends Model
     protected $table = 'photo_categories';
     protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'icon', 'is_cuff', 'is_active'];
 
-//    public function news()
-//    {
-//        return $this->belongsToMany('App\Modules\News\Models\NewsCategory', 'news_categories_news', 'news_category_id', 'news_id');
-//    }
-
     public function photo_galleries()
     {
-        return $this->hasMany('App\Modules\News\Models\PhotoGallery');
+        return $this->hasMany(PhotoGallery::class);
     }
 
     public function links()
@@ -76,7 +71,7 @@ class PhotoCategory extends Model
 
     public static function validate($input) {
         $rules = array(
-            'name'                     => 'required',
+            'name' => 'required',
             'icon' => 'image|max:255',
         );
         return Validator::make($input, $rules);

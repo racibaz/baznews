@@ -17,12 +17,12 @@ class WidgetManager extends Model
     use SoftDeletes;
 
     public static $widgetGroups = [
-        'header' =>  'header',
+        'header' => 'header',
         'side_bar' => 'side_bar',
         'center' => 'center',
-        'right_bar' =>  'right_bar',
-        'footer' =>  'footer',
-        'fixed_footer' =>  'fixed_footer',
+        'right_bar' => 'right_bar',
+        'footer' => 'footer',
+        'fixed_footer' => 'fixed_footer',
     ];
 
 
@@ -74,15 +74,14 @@ class WidgetManager extends Model
 
     public function widget_group()
     {
-        return $this->belongsTo('App\Models\WidgetGroup','widget_group_id');
+        return $this->belongsTo(WidgetGroup::class,'widget_group_id');
     }
 
     public static function validate($input) {
         $rules = array(
-//            'widget_group_id'               => 'required',
-            'name'                          => 'required|string',
-            'namespace'                     => 'required',
-            'position'                      => 'required|numeric',
+            'name' => 'required|string',
+            'namespace' => 'required',
+            'position' => 'required|numeric',
         );
         return Validator::make($input, $rules);
     }
@@ -104,7 +103,7 @@ class WidgetManager extends Model
                 continue;
             }
 
-            //module un widgets.json file yolu
+            //module's widgets.json file path
             $moduleWidgetsJsonFilePath = base_path('app/Modules/' . $module['basename'] . '/Widgets/widgets.json');
 
             $jsonFile = file_get_contents($moduleWidgetsJsonFilePath);
@@ -180,7 +179,7 @@ class WidgetManager extends Model
                 continue;
             }
 
-            //module un widgets.json file yolu
+            //module's widgets.json file path
             $moduleWidgetsJsonFilePath = base_path('app/Modules/' . $module['basename'] . '/Widgets/widgets.json');
 
             $jsonFile = file_get_contents($moduleWidgetsJsonFilePath);

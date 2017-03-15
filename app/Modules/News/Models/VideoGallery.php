@@ -31,9 +31,10 @@ class VideoGallery extends Model
 
     public function news()
     {
-        return $this->belongsToMany('App\Modules\News\Models\News');
+        return $this->belongsToMany(News::class);
     }
 
+    //todo core model
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -41,12 +42,12 @@ class VideoGallery extends Model
 
     public function video_category()
     {
-        return $this->belongsTo('App\Modules\News\Models\VideoCategory');
+        return $this->belongsTo(VideoCategory::class);
     }
 
     public function videos()
     {
-        return $this->hasMany('App\Modules\News\Models\Video');
+        return $this->hasMany(Video::class);
     }
 
     public static function validate($input) {

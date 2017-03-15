@@ -14,7 +14,6 @@
 
 Route::get('biography/{slug}', 'Frontend\BiographyController@show')->name('biography');
 
-
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('biography', 'Backend\BiographyController');
 });

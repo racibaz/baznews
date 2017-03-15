@@ -14,7 +14,7 @@ class NewsSource extends Model
 
     public function news()
     {
-        return $this->hasMany('App\Modules\News\Models\News');
+        return $this->hasMany(News::class);
     }
 
     public static function validate($input) {
