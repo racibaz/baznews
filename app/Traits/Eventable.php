@@ -4,12 +4,6 @@ namespace App\Traits;
 use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 
-/**
- * Created by PhpStorm.
- * User: recai.cansiz
- * Date: 13.3.2017
- * Time: 10:14
- */
 trait Eventable
 {
     public static function bootEventable()

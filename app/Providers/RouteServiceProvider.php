@@ -23,9 +23,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-        Route::pattern('id', '[0-9]+');
-
         parent::boot();
 
         Route::model('country', 'App\Models\Country');
@@ -52,7 +49,6 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('advertisement', 'App\Models\Advertisement');
         Route::model('widget_group', 'App\Models\WidgetGroup');
         Route::model('language', 'App\Models\Language');
-        
     }
 
     /**

@@ -13,6 +13,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::pattern('id', '[0-9]+');
+
 Route::get('/', 'Frontend\IndexController@index')->name('index');
 Route::get('/home', 'HomeController@index');
 Route::get(trans('route.page') . '/{slug}', 'Frontend\PageController@show')->name('page');
