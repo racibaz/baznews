@@ -28,29 +28,22 @@
                                     {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-info'] ) !!}
                                 </div>
                             </div>
-                            <div class="col-md-7">
-                                <div class="text-center">
-                                    <div class="btn-group">
-                                        @permission('index-admin')
-                                            <a href="{{route('dashboard')}}">
-                                                <span>{{trans('dashboard.show_account_page')}}</span>
-                                            </a>
-                                        @endpermission
-
-                                        {!! link_to_route('account.edit', trans('account.edit'), $record, ['class' => 'btn btn-primary'] ) !!}
-                                        {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-info'] ) !!}
-                                        <br />
-                                        <a href="{{ url('/logout') }}"
-                                           onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </div>
-                                </div>
+                            <div class="col-md-5">
+                                <p>
+                                    @permission('index-admin')
+                                    <a href="{{route('dashboard')}}" class="btn btn-success btn-block">
+                                        <i class="fa fa-window-restore"></i> {{trans('dashboard.show_account_page')}}
+                                    </a>
+                                    @endpermission
+                                </p>
+                                <p>
+                                    <a href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="btn btn-danger btn-block">
+                                        <i class="fa fa-sign-out"></i>{{trans('account.logout')}}
+                                    </a>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                                </p>
                             </div>
                         </div>
                     </div><!-- /.account -->

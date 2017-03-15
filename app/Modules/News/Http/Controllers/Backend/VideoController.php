@@ -128,50 +128,50 @@ class VideoController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                list($status, $instance) = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id,$input);
             } else {
-                list($status, $instance) = $this->repo->create($input);
+                $result = $this->repo->create($input);
             }
 
-            if ($status) {
+            if ($result) {
 
                 //todo video yüklenebilecek.
                 //file
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/videos/'. $instance->id;
-                    Uploader::fileUpload($instance , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    $destination = '/videos/'. $result->id;
+                    Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($destination . '/' . $oldPath);
 
 
-                    Image::make(public_path('videos/'. $instance->id .'/'. $instance->thumbnail))
+                    Image::make(public_path('videos/'. $result->id .'/'. $result->thumbnail))
                         ->resize(58, 58)
-                        ->save(public_path('videos/'. $instance->id .'/58x58_' . $document_name));
+                        ->save(public_path('videos/'. $result->id .'/58x58_' . $document_name));
 
-                    Image::make(public_path('videos/'. $instance->id .'/'. $instance->thumbnail))
+                    Image::make(public_path('videos/'. $result->id .'/'. $result->thumbnail))
                         ->resize(497, 358)
-                        ->save(public_path('videos/'. $instance->id .'/497x358_' . $document_name));
+                        ->save(public_path('videos/'. $result->id .'/497x358_' . $document_name));
 
-                    Image::make(public_path('videos/'. $instance->id .'/'. $instance->thumbnail))
+                    Image::make(public_path('videos/'. $result->id .'/'. $result->thumbnail))
                         ->resize(658, 404)
-                        ->save(public_path('videos/'. $instance->id .'/658x404_' . $document_name));
+                        ->save(public_path('videos/'. $result->id .'/658x404_' . $document_name));
 
-                    Image::make(public_path('videos/'. $instance->id .'/'. $instance->thumbnail))
+                    Image::make(public_path('videos/'. $result->id .'/'. $result->thumbnail))
                         ->resize(224, 195)
-                        ->save(public_path('videos/'. $instance->id .'/224x195_' . $document_name));
+                        ->save(public_path('videos/'. $result->id .'/224x195_' . $document_name));
 
-                    Image::make(public_path('videos/'. $instance->id .'/'. $instance->thumbnail))
+                    Image::make(public_path('videos/'. $result->id .'/'. $result->thumbnail))
                         ->resize(165, 90)
-                        ->save(public_path('videos/'. $instance->id .'/165x90_' . $document_name));
+                        ->save(public_path('videos/'. $result->id .'/165x90_' . $document_name));
 
-                    Image::make(public_path('videos/'. $instance->id .'/'. $instance->thumbnail))
+                    Image::make(public_path('videos/'. $result->id .'/'. $result->thumbnail))
                         ->resize(457, 250)
-                        ->save(public_path('videos/'. $instance->id .'/257x250_' . $document_name));
+                        ->save(public_path('videos/'. $result->id .'/257x250_' . $document_name));
                 }
 
 
-                $this->tagsVideoStore($instance,$input);
+                $this->tagsVideoStore($result,$input);
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);

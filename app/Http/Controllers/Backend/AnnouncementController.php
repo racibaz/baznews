@@ -111,17 +111,17 @@ class AnnouncementController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                list($status, $instance) = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id,$input);
             } else {
-                list($status, $instance) = $this->repo->create($input);
+                $result = $this->repo->create($input);
             }
 
-            if ($status) {
+            if ($result) {
 
-                $this->announcementGroupStore($instance, $input);
+                $this->announcementGroupStore($result, $input);
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))

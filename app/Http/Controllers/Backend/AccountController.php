@@ -66,12 +66,12 @@ class AccountController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                list($status, $instance) = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id,$input);
             }
 
-            if ($status) {
+            if ($result) {
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'show', $instance);
+                return Redirect::route($this->redirectRouteName . $this->view . 'show', $result);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))

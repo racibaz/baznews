@@ -93,27 +93,27 @@ class BiographyController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                list($status, $instance) = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id,$input);
             } else {
-                list($status, $instance) = $this->repo->create($input);
+                $result = $this->repo->create($input);
             }
 
-            if ($status) {
+            if ($result) {
 
                 if(!empty($input['photo'])) {
                     $oldPath = $record->photo;
                     $document_name = $input['photo']->getClientOriginalName();
-                    $destination = '/images/biographies/'. $instance->id .'/thumbnail';
-                    Uploader::fileUpload($instance, 'photo', $input['photo'] , $destination , $document_name);
+                    $destination = '/images/biographies/'. $result->id .'/thumbnail';
+                    Uploader::fileUpload($result, 'photo', $input['photo'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
-                    Image::make(public_path('images/biographies/' . $instance->id .'/thumbnail/'. $instance->photo))
+                    Image::make(public_path('images/biographies/' . $result->id .'/thumbnail/'. $result->photo))
                         ->fit(104, 78)
-                        ->save(public_path('images/biographies/' . $instance->id . '/104x78_' . $document_name));
+                        ->save(public_path('images/biographies/' . $result->id . '/104x78_' . $document_name));
                 }
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))

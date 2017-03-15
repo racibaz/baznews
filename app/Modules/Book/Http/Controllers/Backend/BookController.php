@@ -115,25 +115,25 @@ class BookController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                list($status, $instance) = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id,$input);
             } else {
-                list($status, $instance) = $this->repo->create($input);
+                $result = $this->repo->create($input);
             }
 
-            if ($status) {
+            if ($result) {
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/images/books/'. $instance->id . '/original';
-                    Uploader::fileUpload($instance  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    $destination = '/images/books/'. $result->id . '/original';
+                    Uploader::fileUpload($result  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
                 }
 
                 if(!empty($input['photo'])) {
                     $oldPath = $record->photo;
                     $document_name = $input['photo']->getClientOriginalName();
-                    $destination = '/images/books/'. $instance->id . '/photo';
-                    Uploader::fileUpload($instance , 'photo', $input['photo'] , $destination , $document_name);
+                    $destination = '/images/books/'. $result->id . '/photo';
+                    Uploader::fileUpload($result , 'photo', $input['photo'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
                 }
 
@@ -146,7 +146,7 @@ class BookController extends BackendController
                  * */
 
 
-                $this->bookBookCategoriesStore($instance,$input);
+                $this->bookBookCategoriesStore($result,$input);
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);

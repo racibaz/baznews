@@ -323,64 +323,64 @@ class NewsController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                list($status, $instance) = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id,$input);
             } else {
-                list($status, $instance) = $this->repo->create($input);
+                $result = $this->repo->create($input);
             }
 
-            if ($status) {
+            if ($result) {
 
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/images/news_images/'. $instance->id .'/thumbnail';
-                    Uploader::fileUpload($instance , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    $destination = '/images/news_images/'. $result->id .'/thumbnail';
+                    Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
 
-                    Image::make(public_path('images/news_images/' . $instance->id .'/thumbnail/'. $instance->thumbnail))
+                    Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
                         ->fit(58, 58)
-                        ->save(public_path('images/news_images/' . $instance->id . '/58x58_' . $document_name));
+                        ->save(public_path('images/news_images/' . $result->id . '/58x58_' . $document_name));
 
-                    Image::make(public_path('images/news_images/' . $instance->id .'/thumbnail/'. $instance->thumbnail))
+                    Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
                         ->fit(165, 90)
-                        ->save(public_path('images/news_images/' . $instance->id . '/165x90_' . $document_name));
+                        ->save(public_path('images/news_images/' . $result->id . '/165x90_' . $document_name));
 
-                    Image::make(public_path('images/news_images/' . $instance->id .'/thumbnail/'. $instance->thumbnail))
+                    Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
                         ->fit(196, 150)
-                        ->save(public_path('images/news_images/' . $instance->id . '/196x150_' . $document_name));
+                        ->save(public_path('images/news_images/' . $result->id . '/196x150_' . $document_name));
 
-                    Image::make(public_path('images/news_images/' . $instance->id .'/thumbnail/'. $instance->thumbnail))
+                    Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
                         ->fit(220, 310)
-                        ->save(public_path('images/news_images/' . $instance->id . '/220x310_' . $document_name));
+                        ->save(public_path('images/news_images/' . $result->id . '/220x310_' . $document_name));
 
-                    Image::make(public_path('images/news_images/' . $instance->id .'/thumbnail/'. $instance->thumbnail))
+                    Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
                         ->fit(322, 265)
-                        ->save(public_path('images/news_images/' . $instance->id . '/322x265_' . $document_name));
+                        ->save(public_path('images/news_images/' . $result->id . '/322x265_' . $document_name));
 
-                    Image::make(public_path('images/news_images/' . $instance->id .'/thumbnail/'. $instance->thumbnail))
+                    Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
                         ->fit(497, 358)
-                        ->save(public_path('images/news_images/' . $instance->id . '/497x358_' . $document_name));
+                        ->save(public_path('images/news_images/' . $result->id . '/497x358_' . $document_name));
                 }
 
                 if(!empty($input['cuff_photo'])) {
                     $oldPath = $record->cuff_photo;
                     $document_name = $input['cuff_photo']->getClientOriginalName();
-                    $destination = '/images/news_images/'. $instance->id .'/cuff_photo' ;
-                    Uploader::fileUpload($instance , 'cuff_photo', $input['cuff_photo'] , $destination , $document_name);
+                    $destination = '/images/news_images/'. $result->id .'/cuff_photo' ;
+                    Uploader::fileUpload($result , 'cuff_photo', $input['cuff_photo'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
                 }
 
 
-                $this->newsNewsCategoriesStore($instance,$input);
-                $this->futureNewsStore($instance,$input);
-                $this->recommendationNewsStore($instance,$input);
-                $this->relatedNewsNewsStore($instance,$input);
-                $this->tagsNewsStore($instance,$input);
-                $this->newsPhotoGalleriesStore($instance,$input);
-                $this->newsVideoGalleriesStore($instance,$input);
-                $this->newsVideosStore($instance,$input);
-                $this->newsPhotosStore($instance,$input);
+                $this->newsNewsCategoriesStore($result,$input);
+                $this->futureNewsStore($result,$input);
+                $this->recommendationNewsStore($result,$input);
+                $this->relatedNewsNewsStore($result,$input);
+                $this->tagsNewsStore($result,$input);
+                $this->newsPhotoGalleriesStore($result,$input);
+                $this->newsVideoGalleriesStore($result,$input);
+                $this->newsVideosStore($result,$input);
+                $this->newsPhotosStore($result,$input);
 
 
 
@@ -403,10 +403,10 @@ class NewsController extends BackendController
 
                         if(strpos($input['content'], $tag->name)){
 
-                            $isExistTag = $instance->tags->where('name',$tag->name)->first();
+                            $isExistTag = $result->tags->where('name',$tag->name)->first();
 
                             if(empty($isExistTag))
-                                $instance->tags()->attach($tag->id);
+                                $result->tags()->attach($tag->id);
                         }
                     }
                 }
@@ -416,7 +416,7 @@ class NewsController extends BackendController
                 //$this->dispatch(new ImageUploader($record, $input['thumbnail'], $destination, $document_name, $document_name));
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $instance);
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))
