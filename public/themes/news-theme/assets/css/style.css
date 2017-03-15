@@ -2281,3 +2281,55 @@ footer .footer-bottom .cpy {
 .select2-container--default .select2-selection--single .select2-selection__arrow{
     height: 31px;
 }
+
+/* ==========================================================================
+   Widget News List
+   ========================================================================== */
+ul.news-list{
+    display:block;
+    list-style-image:none;
+    padding: 0;
+    margin: 0;
+}
+ul.news-list li{
+    list-style:none;
+    display:block;
+    margin-bottom: 10px;
+}
+ul.news-list li:after{
+    display: block;
+    clear: both;
+    content:'';
+}
+ul.news-list li .imgwrap{
+    float: left;
+    width:100px;
+    overflow: hidden;
+    margin-right:10px;
+}
+ul.news-list li .imgwrap img{
+    width: 100%;
+}
+ul.news-list li .text{
+    overflow: hidden;
+}
+ul.news-list li .text .title{
+    display: block;
+    overflow: hidden;
+}
+ul.news-list li .text .title > a h3{
+    margin: 0;
+    font-weight:bold;
+    font-size:14px;
+}
+ul.news-list li .text .excerpt{
+    display: block;
+    overflow: hidden;
+    min-height: 32px;
+}
+ul.news-list li .text span.timeago {
+    opacity: .8;
+    color: #757575;
+    font-size: 11px;
+    text-align: right;
+}
