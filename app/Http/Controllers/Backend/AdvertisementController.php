@@ -41,8 +41,8 @@ class AdvertisementController extends BackendController
     public function create()
     {
         $advertisementAreaNames = $this->getThemeAdvertisementAreaName();
-
         $record = $this->repo->createModel();
+
         return Theme::view($this->getViewName(__FUNCTION__),compact([
             'record',
             'advertisementAreaNames'
@@ -88,7 +88,6 @@ class AdvertisementController extends BackendController
     public function save($record)
     {
         $input = Input::all();
-
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         $rules = [
