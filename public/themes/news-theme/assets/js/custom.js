@@ -125,6 +125,10 @@
             $("#sticky-container").unstick();
         }
     });
+
+    $(".sticky-sidebar").sticky({
+        bottomSpacing:100
+    });
     /*--------------------------------------------------------
      Center Carousel Horizontal News Slider
      * --------------------------------------------------------*/
