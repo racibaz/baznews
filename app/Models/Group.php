@@ -22,23 +22,23 @@ class Group extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsToMany(User::class);
     }
 
     public function roles()
     {
-        return $this->belongsToMany('App\Models\Role');
+        return $this->belongsToMany(Role::class);
     }
 
     public function announcements()
     {
-        return $this->belongsToMany('App\Models\Announcement');
+        return $this->belongsToMany(Announcement::class);
     }
 
     public static function validate($input) {
         $rules = array(
-            'name'                    => 'required|max:255',
-            'description'             => 'max:255',
+            'name' => 'required|max:255',
+            'description' => 'max:255',
         );
         return Validator::make($input, $rules);
     }

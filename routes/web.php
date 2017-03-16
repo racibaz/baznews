@@ -13,30 +13,22 @@
 
 use Illuminate\Support\Facades\Route;
 
-//Auth::loginUsingId(1);
-//Route::auth();
-
-Auth::routes();
+Route::pattern('id', '[0-9]+');
 
 Route::get('/', 'Frontend\IndexController@index')->name('index');
 Route::get('/home', 'HomeController@index');
 Route::get(trans('route.page') . '/{slug}', 'Frontend\PageController@show')->name('page');
-
 Route::get('/activate/token/{token}', 'Auth\ActivationController@activate')->name('auth.activate');
 Route::get('/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
-
 Route::get('/login/{service}', 'Auth\SocialLoginController@redirect');
 Route::get('/login/{service}/callback', 'Auth\SocialLoginController@callback');
-
-
 Route::get('sitemap.xml', 'Frontend\SitemapController@sitemaps')->name('sitemaps');
 Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');
-
 Route::get('/tags/{q}', 'Frontend\SearchController@tagSearch')->name('tag_search');
-
 Route::get(trans('route.contact'), 'Frontend\ContactController@index')->name('contact-index');
 Route::post(trans('route.contact'), 'Frontend\ContactController@store')->name('contact-store');
 
+Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('account.change_password_view', 'Frontend\AccountController@changePasswordView')->name('change_password_view');
@@ -46,14 +38,11 @@ Route::group(['middleware' => 'auth'], function () {
     ]]);
 });
 
-
-
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
     Route::get('/', 'Backend\DashboardController@index')->name('dashboard');
     Route::get('index', 'Backend\DashboardController@index');
     Route::get('dashboard', 'Backend\DashboardController@index');
-
     Route::get('user/trashedUserRestore/{trashedRecord}', 'Backend\UserController@trashedUserRestore')->name('trashedUserRestore');
     Route::get('user/showTrashedRecords', 'Backend\UserController@showTrashedRecords')->name('showTrashedUserRecords');
     Route::delete('user.historyForceDelete/{historyForceDeleteRecordId}', 'Backend\UserController@historyForceDelete')->name('userHistoryForceDelete');
@@ -79,31 +68,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('module_manager', 'Backend\ModuleManagerController');
     Route::resource('sitemap', 'Backend\SitemapController');
     Route::resource('rss', 'Backend\RssController');
-
     Route::post('widget_manager/addWidgetActivation', 'Backend\WidgetManagerController@addWidgetActivation')->name('addWidgetActivation');
     Route::resource('widget_manager', 'Backend\WidgetManagerController');
-
     Route::get('theme_manager/themeActivationToggle/{themeSlug}', 'Backend\ThemeManagerController@themeActivationToggle')->name('themeActivationToggle');
     Route::resource('theme_manager', 'Backend\ThemeManagerController');
-
     Route::post('announcement.announcement_establishment_store', 'Backend\AnnouncementController@announcement_establishment_store')->name('announcement_establishment_store');
     Route::post('announcement.list_to_show', 'Backend\AnnouncementController@list_to_show')->name('list_to_show');
-//    Route::get('user_operation/{user_id}', 'UserController@user_operation')->name('user_operation');
-
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('ping', 'Backend\PingController@edit')->name('ping');
     Route::post('ping.update', 'Backend\PingController@update')->name('ping.update');
-
-    //admin tarafında accout işlemleri kaldırmak lazım
-    // kullanıcı frotend account kısmından işlemlerini yapabilir.
-//    Route::resource('account', 'Backend\AccountController', ['only' => [
-//        'edit', 'update','show'
-//    ]]);
-
-
     Route::resource('widget_group', 'Backend\WidgetGroupController');
     Route::resource('language', 'Backend\LanguageController');
-
     Route::get('setting/configCache', 'Backend\SettingController@configCache')->name('configCache');
     Route::get('setting/configClear', 'Backend\SettingController@configClear')->name('configClear');
     Route::get('setting/routeClear', 'Backend\SettingController@routeClear')->name('routeClear');
@@ -114,8 +89,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('setting/getAllRedisKey', 'Backend\SettingController@getAllRedisKey')->name('getAllRedisKey');
     Route::get('setting/flushAllCache', 'Backend\SettingController@flushAllCache')->name('flushAllCache');
     Route::resource('setting', 'Backend\SettingController');
-
     Route::get('remove_home_page_cache', 'Backend\BackendController@removeHomePageCache')->name('removeHomePageCache');
     Route::get('remove_cache_key/{cacheName}', 'Backend\BackendController@removeCacheKey')->name('removeCacheKey');
 });
-

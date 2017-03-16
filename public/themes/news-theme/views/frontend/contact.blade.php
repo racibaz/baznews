@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <article class="container" id="container">
         <div class="row">
             <div class="col-lg-7">
@@ -12,7 +11,23 @@
                     </h1>
                 </div>
                 <div class="contact-form module">
-                    <form action="{{route('contact-store')}}" method="post" role="form">
+
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if(Session::has('success_messages'))
+                        <div class="alert alert-success">
+                            {{ Session::get('success_messages') }}
+                        </div>
+                    @endif
+
+                    {!! Form::open(['route' => 'contact-store','method' => 'post']) !!}
                         {{Form::token()}}
 
                         <div class="form-group">
@@ -46,7 +61,8 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary">{{trans('contact.submit')}}</button>
-                    </form>
+
+                    {!! Form::close() !!}
                 </div>
             </div>
             <div class="col-lg-5">
@@ -57,10 +73,8 @@
                 </div>
                 <div class="contact-details module">
                     <address>
-                        <p><strong>Adres:</strong> Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        {!! Redis::get('contact') !!}
                     </address>
-                    <p><strong>Mail:</strong> <a href="#">mail@mailto.com</a></p>
-                    <p><strong>Phone:</strong> (878) 989 99 99</p>
                 </div>
                 <div class="title-section">
                     <h1>
@@ -73,7 +87,7 @@
                         var map;
                         function initMap() {
                             map = new google.maps.Map(document.getElementById('map'), {
-                                center: {lat: -34.397, lng: 150.644},
+                                center: {lat: {{Redis::get('latitude')}}, lng: {{Redis::get('longitude')}}},
                                 zoom: 8
                             });
                         }
@@ -94,11 +108,4 @@
     <meta name='subtitle' content='This is my subtitle'>
     <meta name='category' content=''>
     <meta name='pagename' content='jQuery Tools, Tutorials and Resources - O Reilly Media'>
-    <meta name='identifier-URL' content='http://www.websiteaddress.com'>
-    <meta name='directory' content='submission'>
-    <meta name='author' content='name, email@hotmail.com'>
-    <meta name='subject' content='your website s subject'>
-    <meta name='abstract' content=''>
-    <meta name='topic' content=''>
-    <meta name='summary' content=''>
 @endsection

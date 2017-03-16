@@ -2,7 +2,6 @@
 
 namespace App\Modules\Article\Models;
 
-use App\Models\Event;
 use App\Models\User;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -50,7 +49,7 @@ class Article extends Eloquent
 
     public function article_categories()
     {
-        return $this->belongsToMany('App\Modules\Article\Models\ArticleCategory', 'article_categories_articles', 'article_id', 'article_category_id');
+        return $this->belongsToMany(ArticleCategory::class, 'article_categories_articles', 'article_id', 'article_category_id');
     }
 
     public static function validate($input) {

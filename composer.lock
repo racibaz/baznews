@@ -2769,12 +2769,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rinvex/repository.git",
-                "reference": "dbd1966da0c560d1dd8cb97231a3a295871550b0"
+                "reference": "a793a8a73ce851c7731ed01c572f5c602ec7f827"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rinvex/repository/zipball/dbd1966da0c560d1dd8cb97231a3a295871550b0",
-                "reference": "dbd1966da0c560d1dd8cb97231a3a295871550b0",
+                "url": "https://api.github.com/repos/rinvex/repository/zipball/a793a8a73ce851c7731ed01c572f5c602ec7f827",
+                "reference": "a793a8a73ce851c7731ed01c572f5c602ec7f827",
                 "shasum": ""
             },
             "require": {
@@ -2838,7 +2838,7 @@
                 "repository",
                 "rinvex"
             ],
-            "time": "2017-03-08T01:21:03+00:00"
+            "time": "2017-03-14T15:50:26+00:00"
         },
         {
             "name": "roumen/feed",
@@ -2943,16 +2943,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "4.7.0",
+            "version": "4.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "36785f0c0a580b83073d62eea0bd813ce9b56b6c"
+                "reference": "5f231d431fb791d988ea4d36f6945a3be4e7fb4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/36785f0c0a580b83073d62eea0bd813ce9b56b6c",
-                "reference": "36785f0c0a580b83073d62eea0bd813ce9b56b6c",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/5f231d431fb791d988ea4d36f6945a3be4e7fb4d",
+                "reference": "5f231d431fb791d988ea4d36f6945a3be4e7fb4d",
                 "shasum": ""
             },
             "require": {
@@ -3005,7 +3005,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2017-03-14T10:07:26+00:00"
+            "time": "2017-03-14T19:35:02+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -4900,16 +4900,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.15",
+            "version": "5.7.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b99112aecc01f62acf3d81a3f59646700a1849e5"
+                "reference": "dafc78e2a7d12139b0e97078d1082326bd09363d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b99112aecc01f62acf3d81a3f59646700a1849e5",
-                "reference": "b99112aecc01f62acf3d81a3f59646700a1849e5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/dafc78e2a7d12139b0e97078d1082326bd09363d",
+                "reference": "dafc78e2a7d12139b0e97078d1082326bd09363d",
                 "shasum": ""
             },
             "require": {
@@ -4978,7 +4978,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-03-02T15:22:43+00:00"
+            "time": "2017-03-15T13:02:34+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

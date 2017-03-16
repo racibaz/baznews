@@ -57,22 +57,17 @@ class Account extends Model
 
     public function city()
     {
-        return $this->belongsTo('App\Models\City');
+        return $this->belongsTo(City::class);
     }
 
     public function country()
     {
-        return $this->belongsTo('App\Models\Country');
+        return $this->belongsTo(Country::class);
     }
 
     public function social_providers()
     {
         return $this->hasMany(SocialProvider::class);
-    }
-
-    public function attachments()
-    {
-        return $this->morphMany('App\Models\Attachment', 'attachmentable');
     }
 
     //modules news
@@ -108,7 +103,6 @@ class Account extends Model
         return $group->users;
     }
 
-
     public static function getUserRevisions($user_id)
     {
         return Revision::where('user_id',$user_id)->get();
@@ -116,16 +110,16 @@ class Account extends Model
 
     public static function validate($input) {
         $rules = array(
-            'password'                      => 'required|min:4|Confirmed',
-            'password_confirmation'         => 'required|min:4',
-            'facebook'  => 'url|max:255',
-            'twitter'  => 'url|max:255',
+            'password' => 'required|min:4|Confirmed',
+            'password_confirmation' => 'required|min:4',
+            'facebook' => 'url|max:255',
+            'twitter' => 'url|max:255',
             'pinterest' => 'url|max:255',
-            'linkedin'  => 'url|max:255',
-            'youtube'   => 'url|max:255',
-            'web_site'   => 'url|max:255',
-            'bio_note'  => 'string|max:255',
-            'IP'    => 'ip',
+            'linkedin' => 'url|max:255',
+            'youtube' => 'url|max:255',
+            'web_site' => 'url|max:255',
+            'bio_note' => 'string|max:255',
+            'IP' => 'ip',
             //todo cell_phone
             //todo email alanı kontrol edilmeli
         );

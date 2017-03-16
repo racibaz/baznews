@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Traits\Eventable;
-use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,12 +22,12 @@ class WidgetGroup extends Model
 
     public function widget_managers()
     {
-        return $this->hasMany('App\Models\WidgetManager');
+        return $this->hasMany(WidgetManager::class);
     }
 
     public static function validate($input) {
         $rules = array(
-            'name'                          => 'required|string',
+            'name' => 'required|string',
         );
         return Validator::make($input, $rules);
     }

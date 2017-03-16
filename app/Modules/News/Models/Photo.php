@@ -34,7 +34,7 @@ class Photo extends Model
 
     public function news()
     {
-        return $this->belongsToMany('App\Modules\News\Models\News', 'news_photos', 'photo_id', 'news_id');
+        return $this->belongsToMany(News::class, 'news_photos', 'photo_id', 'news_id');
     }
 
     public function photo_gallery()
@@ -42,6 +42,7 @@ class Photo extends Model
         return $this->belongsTo(PhotoGallery::class);
     }
 
+    //todo core model
     public function tags()
     {
         return $this->morphToMany('App\Models\Tag', 'taggable');

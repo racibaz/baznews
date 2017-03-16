@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Events\ModelCRUD;
+use App\Events\UserRegistered;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,13 @@ class UserObserver
      */
     public function created(User $user)
     {
-        //
+        if($user->status === 2){
+            $token = $user->activationToken()->create([
+                'token' => str_random(128),
+            ]);
+
+            event(new UserRegistered($user));
+        }
     }
 
 

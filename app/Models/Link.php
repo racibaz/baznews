@@ -13,7 +13,6 @@ class Link extends Model
         'linkable_type',
     ];
 
-
     /**
      * Get all of the owning linkable models.
      */
@@ -43,9 +42,8 @@ class Link extends Model
             //get polymorphic table type name
             $typeArray = explode('\\',$value->linkable_type);
             $type = end($typeArray);
-            //route larda ki kullanıma uygun hale getiriyoruz.
+            //replace for route usage
             $type = str_replace( '_', '-', snake_case($type)) ;
-
 
             $linkList[$type . '/'. $value->url] = $type. '/'. $value->url;
         }

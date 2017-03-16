@@ -40,13 +40,8 @@ class ThemeManager extends Model
 
     public static function validate($input) {
         $rules = array(
-            'name'                    => 'required'
+            'name' => 'required'
         );
         return Validator::make($input, $rules);
     }
-
-//    public static function cityList()
-//    {
-//        return City::where('is_active',1)->pluck('name','id');
-//    }
 }

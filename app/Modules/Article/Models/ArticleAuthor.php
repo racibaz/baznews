@@ -2,7 +2,6 @@
 
 namespace App\Modules\Article\Models;
 
-use App\Models\Event;
 use App\Models\User;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -43,7 +42,6 @@ class ArticleAuthor extends Eloquent
 
     public static function validate($input) {
         $rules = array(
-//            'user_id' => 'integer',
             'name' => 'required',
             'email' => 'email',
             'photo' => 'image|max:255',

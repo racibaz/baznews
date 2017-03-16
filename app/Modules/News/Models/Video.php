@@ -29,25 +29,20 @@ class Video extends Model
         ];
     }
 
-    /*
-     * Alt yazı
-     * Alternatif metin
-     *
-     *
-     * */
     protected $fillable = [ 'video_category_id', 'video_gallery_id', 'name', 'slug', 'subtitle', 'thumbnail', 'file', 'link', 'content', 'keywords', 'order', 'is_active'];
     protected $dates = ['created_at','updated_at','deleted_at'];
 
     public function video_category()
     {
-        return $this->belongsTo('App\Modules\News\Models\VideoCategory');
+        return $this->belongsTo(VideoCategory::class);
     }
 
     public function video_gallery()
     {
-        return $this->belongsTo('App\Modules\News\Models\VideoGallery');
+        return $this->belongsTo(VideoGallery::class);
     }
 
+    //todo core model
     public function tags()
     {
         return $this->morphToMany('App\Models\Tag', 'taggable');

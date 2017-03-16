@@ -27,14 +27,14 @@ class Permission extends EntrustPermission
 
     public function roles()
     {
-        return $this->belongsToMany('App\Models\Role','permission_role','permission_id', 'role_id');
+        return $this->belongsToMany(Role::class,'permission_role','permission_id', 'role_id');
     }
 
     public static function validate($input) {
         $rules = array(
-            'name'                    => 'required|max:255',
-            'display_name'            => 'max:255',
-            'description'             => 'max:255',
+            'name' => 'required|max:255',
+            'display_name' => 'max:255',
+            'description' => 'max:255',
         );
         return Validator::make($input, $rules);
     }

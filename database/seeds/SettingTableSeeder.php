@@ -70,7 +70,12 @@ class SettingTableSeeder extends Seeder
 
         Setting::create([
             'attribute_key'               => 'contact',
-            'attribute_value'             => 'iletişim bilgileri',
+            'attribute_value'             => '
+                    <address>
+                        <p><strong>Adres:</strong> Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    </address>
+                    <p><strong>Mail:</strong> <a href="#">mail@mailto.com</a></p>
+                    <p><strong>Phone:</strong> (878) 989 99 99</p>',
         ]);
 
         Setting::create([
@@ -81,6 +86,11 @@ class SettingTableSeeder extends Seeder
         Setting::create([
             'attribute_key'               => 'slogan',
             'attribute_value'             => 'Sloganımız',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'user_contract',
+            'attribute_value'             => 'user_contract',
         ]);
 
         Setting::create([
@@ -182,5 +192,14 @@ class SettingTableSeeder extends Seeder
             'attribute_value'             => 'video/avi,video/mpeg,video/quicktime,avi,mov,mp4,3gp,3gp2,wmv,flv',
         ]);
 
+        Setting::create([
+            'attribute_key'               => 'latitude',
+            'attribute_value'             => '41.0082',
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'longitude',
+            'attribute_value'             => '28.9784',
+        ]);
     }
 }

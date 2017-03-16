@@ -17,12 +17,12 @@ class ContactType extends Model
 
     public function contacts()
     {
-        return $this->hasMany('App\Models\Contact');
+        return $this->hasMany(Contact::class);
     }
 
     public static function validate($input) {
         $rules = array(
-            'name'                     => 'Required',
+            'name'  => 'Required',
         );
         return Validator::make($input, $rules);
     }

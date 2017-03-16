@@ -30,12 +30,12 @@ class Announcement extends Model
 
     public function groups()
     {
-        return $this->belongsToMany('App\Models\Group');
+        return $this->belongsToMany(Group::class);
     }
 
     public static function validate($input) {
         $rules = array(
-            'title'                    => 'required|max:255',
+            'title' => 'required|max:255',
             'order' => 'integer',
         );
 

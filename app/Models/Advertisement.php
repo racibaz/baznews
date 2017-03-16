@@ -24,8 +24,8 @@ class Advertisement extends Model
 
     public static function validate($input) {
         $rules = array(
-            'name'                          => 'required|max:255|unique:advertisements',
-            'description'                   => 'max:255',
+            'name' => 'required|max:255|unique:advertisements',
+            'description' => 'max:255',
         );
         return Validator::make($input, $rules);
     }

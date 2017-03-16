@@ -37,13 +37,8 @@ class Event extends Model
 
     public static function validate($input) {
         $rules = array(
-            'user_id'                          => 'required',
+            'user_id' => 'required',
         );
         return Validator::make($input, $rules);
     }
-
-//    public static function countryList()
-//    {
-//        return Country::where('is_active',1)->pluck('name','id');
-//    }
 }

@@ -9,14 +9,13 @@ use App\Traits\Eventable;
 use Cache;
 use Config;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Venturecraft\Revisionable\Revision;
-use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
+use Venturecraft\Revisionable\Revision;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
@@ -24,10 +23,7 @@ class User extends Authenticatable
     use Notifiable;
     use Sluggable;
 
-    /*Oluşan trait hatası
-     *
-     *
-     * Çöüzümü :
+    /*trait error solved
      *
      * http://stackoverflow.com/questions/25064470/collisions-with-other-trait-methods
      * https://github.com/Zizaco/entrust/issues/428
@@ -126,27 +122,17 @@ class User extends Authenticatable
     public function roles()
     {
         //return $this->belongsToMany('App\Role');
-        return $this->belongsToMany('App\Models\Role','role_user','user_id', 'role_id');
+        return $this->belongsToMany(Role::class,'role_user','user_id', 'role_id');
     }
-
-
-//
-//    /**
-//     * Get all of the owning imageable models.
-//     */
-//    public function userable()
-//    {
-//        return $this->morphTo();
-//    }
 
     public function city()
     {
-        return $this->belongsTo('App\Models\City');
+        return $this->belongsTo(City::class);
     }
 
     public function country()
     {
-        return $this->belongsTo('App\Models\Country');
+        return $this->belongsTo(Country::class);
     }
 
     public function social()
@@ -159,18 +145,13 @@ class User extends Authenticatable
         return (bool) $this->social->where('service', $service)->count();
     }
 
-    public function attachments()
-    {
-        return $this->morphMany('App\Models\Attachment', 'attachmentable');
-    }
-
-    //modules news
+    //todo modules news
     public function photo_galleries()
     {
         return $this->hasMany('App\Modules\News\Models\PhotoGallery');
     }
 
-    //modules news
+    //todo modules news
     public function video_galleries()
     {
         return $this->hasMany('App\Modules\News\Models\VideoGallery');
@@ -220,12 +201,12 @@ class User extends Authenticatable
 
     public static function validate($input) {
         $rules = array(
-            'name'                          => 'required|max:255',
-            'email'                         => 'required|Between:3,64|email|Unique:users',
-            'password'                      => 'required|min:4|Confirmed',
-            'password_confirmation'         => 'required|min:4',
-            'web_site'  => 'url',
-            'bio_note'  => 'string|max:255',
+            'name' => 'required|max:255',
+            'email' => 'required|Between:3,64|email|Unique:users',
+            'password' => 'required|min:4|Confirmed',
+            'password_confirmation' => 'required|min:4',
+            'web_site' => 'url',
+            'bio_note' => 'string|max:255',
         );
 
         return Validator::make($input, $rules);

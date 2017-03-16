@@ -19,8 +19,8 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('contact.name')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('contact.subject')}}</th>
+                            <th>{{trans('common.is_read')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,11 +32,8 @@
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('contact.destroy',  $record))) !!}
-
-                                            {!! link_to_route('contact.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-
-
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                                {!! link_to_route('contact.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                                {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
                                             {!! Form::close() !!}
                                         </div>
                                     </td>
@@ -46,8 +43,8 @@
                         <tfoot>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('contact.name')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('contact.subject')}}</th>
+                            <th>{{trans('common.is_read')}}</th>
                         </tr>
                         </tfoot>
                     </table>

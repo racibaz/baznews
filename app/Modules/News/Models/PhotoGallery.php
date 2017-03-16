@@ -32,9 +32,10 @@ class PhotoGallery extends Model
 
     public function news()
     {
-        return $this->belongsToMany('App\Modules\News\Models\News', 'news_photo_galleries', 'photo_gallery_id', 'news_id');
+        return $this->belongsToMany(News::class, 'news_photo_galleries', 'photo_gallery_id', 'news_id');
     }
 
+    //todo core model
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -42,7 +43,7 @@ class PhotoGallery extends Model
 
     public function photo_category()
     {
-        return $this->belongsTo('App\Modules\News\Models\PhotoCategory');
+        return $this->belongsTo(PhotoCategory::class);
     }
 
     public function photos()
@@ -50,6 +51,7 @@ class PhotoGallery extends Model
         return $this->hasMany(Photo::class);
     }
 
+    //todo core model
     public function tags()
     {
         return $this->morphToMany('App\Models\Tag', 'taggable');

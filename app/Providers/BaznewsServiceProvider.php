@@ -31,25 +31,28 @@ class BaznewsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(!app()->runningInConsole() && \Schema::hasTable('settings') && \Schema::hasTable('menus') && \Schema::hasTable('advertisements') && \Schema::hasTable('widgets') ) {
+        if(!app()->runningInConsole() && \Schema::hasTable('settings')) {
+//            if(!app()->runningInConsole()) {
 
             User::created(function ($user) {
-                $token = $user->activationToken()->create([
-                    'token' => str_random(128),
-                ]);
+                if($user->status === 2){
+                    $token = $user->activationToken()->create([
+                        'token' => str_random(128),
+                    ]);
 
-                event(new UserRegistered($user));
+                    event(new UserRegistered($user));
+                }
             });
 
             //DB::getSchemaBuilder()->getColumnListing('settings');
 
 
-            Cache::remember('settings', 10, function () {
+            Cache::tags('settings')->remember('settings', 10, function () {
 
                 $settings = Setting::all();
 
                 foreach ($settings as $setting) {
-//                    Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
+//                        Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
                     Redis::set($setting->attribute_key, $setting->attribute_value);
                     //Redis::expire($setting->attribute_key, 1);
                 }
@@ -57,7 +60,6 @@ class BaznewsServiceProvider extends ServiceProvider
 
 
                 Cache::remember('menus', 10, function () {
-
                     $menuRepository = new MenuRepository();
                     return  $menuRepository->with(['page'])->where('is_active', 1)->orderBy('order','asc')->findAll();
                 });
@@ -68,7 +70,7 @@ class BaznewsServiceProvider extends ServiceProvider
                     $advertisements =  $advertisementRepository->where('is_active', 1)->findAll();
 
                     foreach ($advertisements as $advertisement) {
-//                     Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
+                        //                     Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
                         Cache::forever($advertisement->name, $advertisement->code);
                     }
                 });
@@ -84,6 +86,7 @@ class BaznewsServiceProvider extends ServiceProvider
 
             //Cache::tags('settings')->flush();
             //Cache::flush();
+
 
             //TODO cachelenecek
             View::share('activeTheme', Theme::getActive());

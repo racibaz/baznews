@@ -54,7 +54,6 @@ class AccountController extends BackendController
     public function save($record)
     {
         $input = Input::all();
-
         $result = null;
 
         $v = Account::validate($input);
