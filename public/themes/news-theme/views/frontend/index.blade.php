@@ -121,14 +121,18 @@
                 </div>
             </div><!-- /.row -->
 
-            <div class="row">
+            <div class="row" id="home_center">
                 <div class="col-md-8">
                     @foreach($cuffNewsCategories as $cuffNewsCategory)
                         <div class="img-new-list ">
                             <div class="title-section">
+                                <div class="pull-right">
+                                    <a href="#" class="btn btn-primary">Tüm Haberler</a>
+                                </div>
                                 <h1>
                                     <span>{{$cuffNewsCategory->name}}</span>
                                 </h1>
+
                             </div>
                             <div class="new-list-ct module">
                                 <div class="left-img-ct" style="background-image:{{ Theme::asset($activeTheme . '::img/example.jpg')}};backgroun-position:0 0; background-repeat: no-repeat;background-size: cover;">
@@ -171,7 +175,7 @@
                 </div><!-- /.col -->
 
                 <div class="col-md-4">
-                    <div class="sidebar">
+                    <div class="sidebar sticky-sidebar">
                         <div class="nw-sm-img module">
                             <div role="tabpanel">
                                 <!-- Nav tabs -->
@@ -221,8 +225,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">4</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -230,8 +234,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">5</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -243,8 +247,8 @@
                                             <li class="nw-bx no-list active">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">1</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -252,8 +256,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">2</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -261,8 +265,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">3</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -270,8 +274,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">4</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -279,8 +283,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">5</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -293,8 +297,8 @@
                                             <li class="nw-bx no-list active">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">1</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -302,8 +306,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">2</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -311,8 +315,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">3</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -320,8 +324,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">4</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -329,8 +333,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">5</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -340,12 +344,10 @@
                                 </div><!-- /.tab-content -->
                             </div><!-- /rabpanel -->
                         </div><!-- /.nw-sm-img -->
-                        <div class="module">
-                            <div class="advert advert-right">
-                                <img src="{{ Theme::asset($activeTheme . '::img/advert-images/336x280.png') }}" alt="Advert Sidebar">
-                                <br>
-                                {!!Cache::get('right_blok_1')!!}
-                            </div>
+                        <div class="advert advert-right module">
+                            <img src="{{ Theme::asset($activeTheme . '::img/advert-images/336x280.png') }}" alt="Advert Sidebar">
+                            <br>
+                            {!!Cache::get('right_blok_1')!!}
                         </div>
                         @foreach($widgets->where('group','right_bar') as $widget )
                             @widget($widget['namespace'])
