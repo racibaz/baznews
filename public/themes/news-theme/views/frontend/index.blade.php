@@ -121,57 +121,63 @@
                 </div>
             </div><!-- /.row -->
 
-            <div class="row">
+            <div class="row" id="home_center">
                 <div class="col-md-8">
-                    @foreach($cuffNewsCategories as $cuffNewsCategory)
-                        <div class="img-new-list ">
-                            <div class="title-section">
-                                <h1>
-                                    <span>{{$cuffNewsCategory->name}}</span>
-                                </h1>
-                            </div>
-                            <div class="new-list-ct module">
-                                <div class="left-img-ct" style="background-image:{{ Theme::asset($activeTheme . '::img/example.jpg')}};backgroun-position:0 0; background-repeat: no-repeat;background-size: cover;">
-                                    <a href="new-details.html" class="full-link"></a>
-                                    <span class="shadow"></span>
-                                    <div class="new-ct">
-                                        <h3 class="new-title">Dapibus Ridiculus Ultricies Ornare Consectetur1</h3>
-                                        <time class="new-date">
-                                            <span class="timeago" title="">11 saat önce</span>
-                                        </time>
+                    <div class="center-content">
+                        @foreach($cuffNewsCategories as $cuffNewsCategory)
+                            <div class="img-new-list ">
+                                <div class="title-section">
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-primary">Tüm Haberler</a>
                                     </div>
-                                </div>
-                                <ul class="new-list">
-                                    @foreach($cuffNewsCategory->news->take(5) as $news)
-                                        <li>
-                                            <a href="{!! route('show_news', ['slug' => $news->slug]) !!}"
-                                               class="full-link"
-                                               data-img="{{ asset('images/news_images/' . $news->id . '/220x310_' . $news->thumbnail) }}"
-                                               data-title="{{$news->title}}"
-                                               data-time="{{$news->updated_at}}">
-                                            </a>
-                                            <div class="new-ct">
-                                                <h3 class="new-title">{{$news->title}} </h3>
-                                                <time class="new-date">
-                                                    <span class="timeago">{{$news->updated_at}}</span>
-                                                </time>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div><!-- /.new-list-ct -->
-                        </div><!-- /.col-md-8 -->
-                        <!-- /.image-banner-list -->
-                    @endforeach
+                                    <h1>
+                                        <span>{{$cuffNewsCategory->name}}</span>
+                                    </h1>
 
-                    <div class="advert-center module">
-                        <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Center">
+                                </div>
+                                <div class="new-list-ct module">
+                                    <div class="left-img-ct" style="background-image:{{ Theme::asset($activeTheme . '::img/example.jpg')}};backgroun-position:0 0; background-repeat: no-repeat;background-size: cover;">
+                                        <a href="new-details.html" class="full-link"></a>
+                                        <span class="shadow"></span>
+                                        <div class="new-ct">
+                                            <h3 class="new-title">Dapibus Ridiculus Ultricies Ornare Consectetur1</h3>
+                                            <time class="new-date">
+                                                <span class="timeago" title="">11 saat önce</span>
+                                            </time>
+                                        </div>
+                                    </div>
+                                    <ul class="new-list">
+                                        @foreach($cuffNewsCategory->news->take(5) as $news)
+                                            <li>
+                                                <a href="{!! route('show_news', ['slug' => $news->slug]) !!}"
+                                                   class="full-link"
+                                                   data-img="{{ asset('images/news_images/' . $news->id . '/220x310_' . $news->thumbnail) }}"
+                                                   data-title="{{$news->title}}"
+                                                   data-time="{{$news->updated_at}}">
+                                                </a>
+                                                <div class="new-ct">
+                                                    <h3 class="new-title">{{$news->title}} </h3>
+                                                    <time class="new-date">
+                                                        <span class="timeago">{{$news->updated_at}}</span>
+                                                    </time>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div><!-- /.new-list-ct -->
+                            </div><!-- /.col-md-8 -->
+                            <!-- /.image-banner-list -->
+                        @endforeach
+
+                        <div class="advert-center module">
+                            <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Center">
+                        </div>
                     </div>
 
                 </div><!-- /.col -->
 
                 <div class="col-md-4">
-                    <div class="sidebar">
+                    <div class="sidebar sticky-sidebar">
                         <div class="nw-sm-img module">
                             <div role="tabpanel">
                                 <!-- Nav tabs -->
@@ -221,8 +227,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">4</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -230,8 +236,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">5</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -243,8 +249,8 @@
                                             <li class="nw-bx no-list active">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">1</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -252,8 +258,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">2</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -261,8 +267,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">3</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -270,8 +276,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">4</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -279,8 +285,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">5</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -293,8 +299,8 @@
                                             <li class="nw-bx no-list active">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">1</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -302,8 +308,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">2</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -311,8 +317,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">3</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -320,8 +326,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">4</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -329,8 +335,8 @@
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
                                                 <span class="imgwrap">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
-                                    </span>
+                                                    <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                                                </span>
                                                 <span class="dec">5</span>
                                                 <div class="spot">Pellentesque Quam</div>
                                                 <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -340,16 +346,15 @@
                                 </div><!-- /.tab-content -->
                             </div><!-- /rabpanel -->
                         </div><!-- /.nw-sm-img -->
-                        <div class="module">
-                            <div class="advert advert-right">
-                                <img src="{{ Theme::asset($activeTheme . '::img/advert-images/336x280.png') }}" alt="Advert Sidebar">
-                                <br>
-                                {!!Cache::get('right_blok_1')!!}
-                            </div>
+                        <div class="advert advert-right module">
+                            <img src="{{ Theme::asset($activeTheme . '::img/advert-images/336x280.png') }}" alt="Advert Sidebar">
+                            <br>
+                            {!!Cache::get('right_blok_1')!!}
                         </div>
                         @foreach($widgets->where('group','right_bar') as $widget )
                             @widget($widget['namespace'])
                         @endforeach
+
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -447,6 +452,8 @@
 @section('js')
 
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
 
     <script type="text/javascript">
         (function($){
@@ -558,8 +565,14 @@
              Last Minute News Ticker Slider
              * --------------------------------------------------------*/
             $('.ticker').ticker();
-
         })(jQuery);
+
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#home_center .col-md-4').theiaStickySidebar();
+        });
     </script>
 
 @endsection

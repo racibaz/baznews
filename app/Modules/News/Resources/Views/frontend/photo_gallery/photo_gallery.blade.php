@@ -14,8 +14,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-8">
+            <div class="row" id="home_content">
+                <div class="col-md-8">
                     <div class="gallery">
                         <div class="paging text-center module">
                             <ul class="pagination">
@@ -105,7 +105,7 @@
                     {{--@endif--}}
 
                 </div><!-- /.row -->
-                <div class="col-lg-4">
+                <div class="col-md-4" id="photo_sidebar">
                     <div class="gallery-details module">
                         <div class="details">
                             <div class="time">
@@ -395,5 +395,16 @@
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>--}}
 
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>--}}
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script>
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#home_center .col-md-4').theiaStickySidebar();
+            jQuery('#photo_sidebar').theiaStickySidebar();
+        });
+    </script>
 
 @endsection
