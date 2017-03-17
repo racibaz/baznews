@@ -177,7 +177,7 @@
                 </div><!-- /.col -->
 
                 <div class="col-md-4">
-                    <div class="sidebar sticky-sidebar">
+                    <div class="sidebar">
                         <div class="nw-sm-img module">
                             <div role="tabpanel">
                                 <!-- Nav tabs -->

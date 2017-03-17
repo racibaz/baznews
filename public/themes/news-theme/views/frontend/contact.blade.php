@@ -4,7 +4,7 @@
 
     <article class="container" id="container">
         <div class="row">
-            <div class="col-lg-7">
+            <div class="col-lg-7" id="content">
                 <div class="title-section">
                     <h1>
                         <span>{{trans('contact.contact_form')}}</span>
@@ -65,7 +65,7 @@
                     {!! Form::close() !!}
                 </div>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-5" id="sidebar">
                 <div class="title-section">
                     <h1>
                         <span>İletişim Bilgileri</span>
@@ -108,4 +108,16 @@
     <meta name='subtitle' content='This is my subtitle'>
     <meta name='category' content=''>
     <meta name='pagename' content='jQuery Tools, Tutorials and Resources - O Reilly Media'>
+@endsection
+@section('js')
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script>
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#sidebar,#content').theiaStickySidebar();
+        });
+    </script>
 @endsection

@@ -23,16 +23,22 @@
     </div><!-- /.container -->
     <article>
         <div class="container" id="container">
-            <div class="breadcrumbs">
-                <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \\
-                    <a href="{{route('show_video_gallery',['slug' => $videoGallery->slug ])}}">
-                        {{$videoGallery->title}}
-                    </a>   \\
-                    {{$video->name}}
-                </p>
-            </div>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+                </li>
 
-            <div class="row">
+                <li>
+                    <a href="{!! route('show_news_category', ['slug' => $videoGallery->slug]) !!}">
+                        {{$videoGallery->title}}
+                    </a>
+                </li>
+
+                <li>
+                    {{$video->name}}
+                </li>
+            </ol>
+            <div class="row" id="home_center">
                 <div class="col-md-8">
                     <div id="new-content">
                         <div class="playerbox module">
@@ -434,6 +440,9 @@
     </script>
     <script src="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             /*--------------------------------------------------------
@@ -446,6 +455,12 @@
             $('.sidebar-video .video-list-body').mCustomScrollbar({
                 theme:"rounded-dark"
             });
+        });
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#home_center .col-md-4').theiaStickySidebar();
         });
     </script>
 

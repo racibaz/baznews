@@ -19,7 +19,7 @@
                 {{$record->title}}
             </li>
         </ol>
-        <div class="row" id="">
+        <div class="row" id="home_center">
             <div class="col-md-8">
                 <article class="module">
                     <div id="new-content">

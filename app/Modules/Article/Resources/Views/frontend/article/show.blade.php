@@ -4,16 +4,23 @@
 
 
     <div class="container" id="container">
-        <div class="breadcrumbs">
-            <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \
-                @foreach($record->article_categories as $articleCategory)
-                    <a href="{!! route('article_category', ['slug' => $articleCategory->slug]) !!}">{{$articleCategory->name}}</a> \
-                @endforeach
+        <ol class="breadcrumb">
+            <li>
+                <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+            </li>
+            @foreach($record->article_categories as $articleCategory)
+            <li>
+                <a href="{!! route('show_news_category', ['slug' => $articleCategory->slug]) !!}">
+                    {{$articleCategory->name}}
+                </a>
+            </li>
+            @endforeach
+            <li>
                 {{$record->name}}
-            </p>
-        </div>
+            </li>
+        </ol>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8" id="content">
                 <article class="article-content module">
                     <h1 class="article-title">{{$record->title}}</h1>
                     <div class="author">
@@ -32,7 +39,7 @@
                     </div>
                 </article>
             </div><!-- /.new-content -->
-            <div class="col-md-4">
+            <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
                     @foreach($widgets as $widget)
                         @widget($widget['namespace'])
@@ -76,4 +83,7 @@
     <meta property="og:image" content="{{asset('images/books/' . $record->id . '/original/' .$record->thumbnail)}}"/>
     <meta property="article:published_time" content="{{$record->created_at}}">
     <meta property="article:author" content="">
+@endsection
+@section('js')
+
 @endsection
