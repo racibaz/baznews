@@ -23,14 +23,19 @@
     </div><!-- /.container -->
     <article>
         <div class="container" id="container">
-            <div class="breadcrumbs">
-                <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \\
-                    <a href="{{route('show_video_gallery',['slug' => $videoGallery->slug ])}}">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+                </li>
+                <li>
+                    <a href="{!! route('show_news_category', ['slug' => $videoGallery->slug]) !!}">
                         {{$videoGallery->title}}
-                    </a>   \\
+                    </a>
+                </li>
+                <li>
                     {{$video->name}}
-                </p>
-            </div>
+                </li>
+            </ol>
             <div class="row">
                 <div class="col-md-8">
                     <div id="new-content">
@@ -123,7 +128,7 @@
                         {{--@endif--}}
                     </div><!-- /.new-content -->
                 </div><!-- /.col-md-8 -->
-                <div class="col-md-4">
+                <div class="col-md-4" id="video_sidebar">
                     <div class="sidebar">
 
                         <div class="sidebar-video">
@@ -428,6 +433,8 @@
     </script>
     <script src="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -441,6 +448,13 @@
             $('.sidebar-video .video-list-body').mCustomScrollbar({
                 theme:"rounded-dark"
             });
+        });
+
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#video_sidebar').theiaStickySidebar();
         });
     </script>
 

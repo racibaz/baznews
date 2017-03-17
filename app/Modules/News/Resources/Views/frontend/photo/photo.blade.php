@@ -114,8 +114,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-8">
+            <div class="row" id="home_center">
+                <div class="col-md-8">
                     <div class="f-posts">
                         <div class="title-section">
                             <h1>
@@ -138,7 +138,7 @@
                         </div><!-- /.gallery-post -->
                     </div><!-- /.f-posts -->
                 </div>
-                <div class="col-lg-4">
+                <div class="col-md-4">
                     <div class="sidebar">
                         <div class="nw-sm-img module">
                             <div role="tabpanel">
@@ -373,5 +373,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>
-
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script>
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#home_center .col-md-4').theiaStickySidebar({
+            });
+        });
+    </script>
 @endsection

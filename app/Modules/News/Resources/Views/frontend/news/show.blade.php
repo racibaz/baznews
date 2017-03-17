@@ -19,7 +19,7 @@
                 {{$record->title}}
             </li>
         </ol>
-        <div class="row">
+        <div class="row" id="">
             <div class="col-md-8">
                 <article class="module">
                     <div id="new-content">
@@ -543,6 +543,8 @@
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.novtt.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script>
         videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
         videojs("video-js", {}, function(){
@@ -560,6 +562,13 @@
                     $(this).text("Daralt");
                     $('.bio-text').addClass('open');
                 }
+            });
+        });
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#home_center .col-md-4').theiaStickySidebar({
             });
         });
     </script>
