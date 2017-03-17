@@ -449,6 +449,8 @@
 @section('js')
 
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
 
     <script type="text/javascript">
         (function($){
@@ -560,6 +562,14 @@
              Last Minute News Ticker Slider
              * --------------------------------------------------------*/
             $('.ticker').ticker();
+
+            /*--------------------------------------------------------
+             Sticky Sidebar
+             * --------------------------------------------------------*/
+            $('.leftSidebar, .content, .rightSidebar')
+                .theiaStickySidebar({
+                    additionalMarginTop: 30
+                });
 
         })(jQuery);
     </script>
