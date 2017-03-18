@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Jobs\Ping\SendPing;
+use Carbon\Carbon;
 use JJG\Ping;
 use Log;
 use Redirect;
@@ -45,7 +46,10 @@ class PingController extends BackendController
 
     public function edit(Request $request)
     {
-        dispatch(new SendPing());
+        $pingJob = (new SendPing())
+            ->delay(Carbon::now()->addMinutes(10));
+
+        dispatch($pingJob);
 
         $ping = \App\Models\Ping::first();
 
