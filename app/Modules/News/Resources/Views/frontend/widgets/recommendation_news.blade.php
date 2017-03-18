@@ -23,7 +23,7 @@
                         </div><!-- /.title -->
                         <div class="excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
                         <time class="new-date">
-                            <span class="timeago">2017-02-25 23:07:46</span>
+                            <span class="timeago">{{$recommendationNewsItem->news->updated_at->diffForHumans() }}</span>
                         </time>
                     </div><!-- /.text -->
                 </li>

@@ -153,12 +153,12 @@
                                                    class="full-link"
                                                    data-img="{{ asset('images/news_images/' . $news->id . '/220x310_' . $news->thumbnail) }}"
                                                    data-title="{{$news->title}}"
-                                                   data-time="{{$news->updated_at}}">
+                                                   data-time="{{$news->updated_at->diffForHumans() }}">
                                                 </a>
                                                 <div class="new-ct">
                                                     <h3 class="new-title">{{$news->title}} </h3>
                                                     <time class="new-date">
-                                                        <span class="timeago">{{$news->updated_at}}</span>
+                                                        <span class="timeago">{{$news->updated_at->diffForHumans() }}</span>
                                                     </time>
                                                 </div>
                                             </li>
