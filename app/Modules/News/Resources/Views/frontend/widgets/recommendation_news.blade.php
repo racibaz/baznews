@@ -10,15 +10,13 @@
                 <li class="module">
                     <div class="imgwrap">
                         <a href="{!! route('show_news', ['slug' => $recommendationNewsItem->news->slug]) !!}">
-                            <img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">
+                            <img src="{{ asset('images/news_images/' . $recommendationNewsItem->news->id . '/58x58_' . $recommendationNewsItem->news->thumbnail )}}" alt="{{ $recommendationNewsItem->news->title }}" >
                         </a>
                     </div><!-- /imgwrap -->
                     <div class="text">
                         <div class="title">
                             <a href="{!! route('show_news', ['slug' => $recommendationNewsItem->news->slug]) !!}">
-                                <h3>
-                                    {{$recommendationNewsItem->news->title}}
-                                </h3>
+                                <h3>{{$recommendationNewsItem->news->title}}</h3>
                             </a>
                         </div><!-- /.title -->
                         <div class="excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
