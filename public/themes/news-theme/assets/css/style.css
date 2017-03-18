@@ -1896,7 +1896,37 @@ footer .footer-bottom .cpy {
 .article-content .content{
     padding: 15px 15px;
 }
-
+/* ==========================================================================
+   Author Article
+   ========================================================================== */
+.author-article .articles ul.article-list{
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+.author-article .articles ul.article-list li{
+    display: block;
+    width: 100%;
+}
+.author-article .articles ul.article-list li > a > h3.title{
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight:bold;
+}
+.author-article .articles ul.article-list li > a{
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #ecebeb;
+    text-decoration: none;
+}
+.author-article .articles ul.article-list li:last-child > a{
+    border:0;
+}
+.author-article .articles ul.article-list li > a > .time {
+    float: right;
+    font-size:12px;
+}
 /* ==========================================================================
    Adverts
    ========================================================================== */

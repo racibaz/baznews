@@ -28,16 +28,50 @@
                         <a href="{!! route('article_author', ['slug' => $record->article_author->slug]) !!}">{{$record->article_author->name}}</a>
                     </div>
                     <div class="content">
-
                         <p>Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod.</p>
                         <p>Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas sed diam eget risus varius blandit sit amet non magna. Curabitur blandit tempus porttitor. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-
-                        {{--yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>--}}
-                        {{--yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>--}}
-                        <br>
-                        Kitap Detayları Gelecek.
+{{--                        yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>--}}
+{{--                        yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>--}}
                     </div>
                 </article>
+                <div class="author-article">
+                    <div class="title-section">
+                        <h3>
+                            <span>Yazarın Diğer Makaleleri</span>
+                        </h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="articles module">
+                                <ul class="article-list">
+                                    <li>
+                                        <a href="#">
+                                            <span class="time">
+                                                <i class="fa fa-clock-o"></i> 12 Mart
+                                            </span>
+                                            <h3 class="title">
+                                                Yazarın makale başlığı
+                                            </h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="time">
+                                                <i class="fa fa-clock-o"></i> 12 Mart
+                                            </span>
+
+                                            <h3 class="title">
+                                                Yazarın makale başlığı
+                                            </h3>
+                                        </a>
+                                    </li>
+
+
+                                </ul><!-- /.article-list -->
+                            </div><!-- /.articles -->
+                        </div><!-- /.col-md-12 -->
+                    </div><!-- /.row -->
+                </div><!-- /.author-article -->
             </div><!-- /.new-content -->
             <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
