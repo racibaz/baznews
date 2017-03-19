@@ -95,6 +95,9 @@ class NewsSettingController extends BackendController
             $this->repo->update($record->id, ['attribute_value' => $input['is_show_previous_and_next_news']]);
         }
 
+        $this->removeCacheTags(['News']);
+        $this->removeHomePageCache();
+
         Session::flash('flash_message', trans('common.message_model_updated'));
         return Redirect::route($this->redirectRouteName . $this->view . 'index');
     }

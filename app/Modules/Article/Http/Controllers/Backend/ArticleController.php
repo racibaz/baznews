@@ -142,6 +142,10 @@ class ArticleController extends BackendController
     public function destroy(Article $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['ArticleController', 'Article']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
@@ -172,6 +176,10 @@ class ArticleController extends BackendController
             if ($result) {
 
                 $this->articleArticleCategoriesStore($result,$input);
+
+
+                $this->removeCacheTags(['ArticleController', 'Article']);
+                $this->removeHomePageCache();
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);

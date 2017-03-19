@@ -30,7 +30,7 @@ class BoxCuffNews extends AbstractWidget
      */
     public function run()
     {
-        return Cache::remember('boxCuffNews', 10, function()  {
+        return Cache::tags(['Widget', 'News', 'BoxCuffNews'])->rememberForever('BoxCuffNews', function()  {
             $newsRepository = new NewsRepository();
             $boxCuffNewsItmes = $newsRepository
                 ->where('is_active', 1)

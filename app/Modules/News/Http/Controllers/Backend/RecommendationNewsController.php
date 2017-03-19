@@ -72,6 +72,10 @@ class RecommendationNewsController extends BackendController
     public function destroy(RecommendationNews $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['NewsController']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -97,6 +101,13 @@ class RecommendationNewsController extends BackendController
             }
 
             if ($result) {
+
+                /*
+                 * Delete home page cache and related caches
+                 * */
+                $this->removeCacheTags(['NewsController']);
+                $this->removeHomePageCache();
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {

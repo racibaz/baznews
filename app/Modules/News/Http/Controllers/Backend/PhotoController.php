@@ -67,6 +67,10 @@ class PhotoController extends BackendController
     public function destroy(Photo $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['PhotoController']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -91,6 +95,14 @@ class PhotoController extends BackendController
             }
 
             if ($result) {
+
+
+                /*
+                 * Delete home page cache and related caches
+                 * */
+                $this->removeCacheTags(['PhotoController']);
+                $this->removeHomePageCache();
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {

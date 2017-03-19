@@ -20,7 +20,7 @@ class VideoController extends Controller
     {
         $id =  substr(strrchr($slug, '-'), 1 );
 
-        return Cache::remember('video:'.$id, 100, function() use($id) {
+        return Cache::tags(['VideoController', 'News', 'video'])->rememberForever('video:'.$id, function() use($id) {
 
             $categoryVideos = null;
 

@@ -24,7 +24,7 @@ class PhotoController extends Controller
     {
         $id =  substr(strrchr($slug, '-'), 1 );
 
-        return Cache::remember('photo:'.$id, 100, function() use($id) {
+        return Cache::tags(['PhotoController', 'News', 'photo'])->rememberForever('photo:'.$id, function() use($id) {
 
             $photo = $this->repo->with(['tags'])->where('is_active',1)->find($id);
 

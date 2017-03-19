@@ -16,7 +16,7 @@ class PageController extends Controller
 
     public function show($slug)
     {
-        return Cache::remember('page:'.$slug, 100, function() use($slug) {
+        return Cache::tags(['PageController', 'Page', 'page'])->rememberForever('page:'.$slug, function() use($slug) {
 
             $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
             $record = $this->repo

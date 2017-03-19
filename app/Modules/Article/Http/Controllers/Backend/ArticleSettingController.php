@@ -67,6 +67,9 @@ class ArticleSettingController extends BackendController
         }
 
 
+        $this->removeCacheTags(['Article']);
+        $this->removeHomePageCache();
+
         Session::flash('flash_message', trans('common.message_model_updated'));
         return Redirect::route($this->redirectRouteName . $this->view . 'index');
     }

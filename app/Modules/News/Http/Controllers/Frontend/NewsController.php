@@ -3,9 +3,6 @@
 namespace App\Modules\News\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Modules\News\Models\News;
-use App\Modules\News\Models\RelatedNews;
-use App\Modules\News\Repositories\NewsCategoryRepository;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
@@ -51,12 +48,11 @@ class NewsController extends Controller
     public function show($slug)
     {
         $id =  substr(strrchr($slug, '-'), 1 );
-        return Cache::remember('news:'.$id, 100, function() use($id) {
+        return Cache::tags(['NewsController', 'News', 'news'])->rememberForever('news:'.$id, function() use($id) {
 
             $previousNews = null;
             $nextNews = null;
             $relatedNews = [];
-            //$newsSlug = htmlentities(strip_tags($newsSlug), ENT_QUOTES, 'UTF-8');
             $record = $this->repo
                                 ->with([
                                     'news_categories',

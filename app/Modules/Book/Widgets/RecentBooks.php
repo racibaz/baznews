@@ -24,7 +24,7 @@ class RecentBooks extends AbstractWidget
      */
     public function run()
     {
-        $recentBooks = Cache::remember('recentBooks', 10, function()  {
+        $recentBooks = Cache::tags(['Widget', 'Book', 'RecentBooks'])->rememberForever('recentBooks', function()  {
 
             $bookRepository = new BookRepository();
             return  $bookRepository

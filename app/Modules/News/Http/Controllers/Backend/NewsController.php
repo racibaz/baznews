@@ -262,6 +262,10 @@ class NewsController extends BackendController
     public function destroy(News $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['News']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -406,11 +410,9 @@ class NewsController extends BackendController
                     }
                 }
 
-                /*
-                 * Delete homa page cache and news caches
-                 * */
-                Cache::forget('news:' . $result->id);
-                Cache::tags('homePage')->flush();
+                $this->removeCacheKey('news:' . $result->id);
+                $this->removeCacheTags(['News']);
+                $this->removeHomePageCache();
 
                 /*
                  *Send a job for ping with delay 10 minutes
@@ -722,12 +724,4 @@ class NewsController extends BackendController
         Session::flash('flash_message', trans('common.force_deleted'));
         return redirect()->back();
     }
-
-    public function forgetCache()
-    {
-        $this->repo->forgetCache();
-        return Redirect::back();
-    }
-
-
 }

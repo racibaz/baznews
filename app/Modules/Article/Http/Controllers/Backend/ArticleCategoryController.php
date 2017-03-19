@@ -68,6 +68,10 @@ class ArticleCategoryController extends BackendController
     public function destroy(ArticleCategory $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['ArticleCategoryController']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -94,6 +98,11 @@ class ArticleCategoryController extends BackendController
             }
 
             if ($result) {
+
+
+                $this->removeCacheTags(['ArticleCategoryController']);
+                $this->removeHomePageCache();
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {

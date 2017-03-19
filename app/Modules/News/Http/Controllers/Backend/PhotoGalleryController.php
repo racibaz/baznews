@@ -95,6 +95,10 @@ class PhotoGalleryController extends BackendController
     public function destroy(PhotoGallery $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['PhotoGalleryController']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -144,6 +148,14 @@ class PhotoGalleryController extends BackendController
 
 
                 $this->tagsPhotoGalleryStore($result,$input);
+
+
+                /*
+                 * Delete home page cache and related caches
+                 * */
+                $this->removeCacheTags(['PhotoGalleryController']);
+                $this->removeHomePageCache();
+
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
@@ -335,6 +347,14 @@ class PhotoGalleryController extends BackendController
 
         }
 
+
+        /*
+         * Delete home page cache and related caches
+         * */
+        $this->removeCacheTags(['PhotoGalleryController']);
+        $this->removeHomePageCache();
+
+
         return Redirect::back();
     }
 
@@ -345,13 +365,4 @@ class PhotoGalleryController extends BackendController
             $record->tags()->sync($input['tags_ids']);
         }
     }
-
-
-    public function forgetCache()
-    {
-        $this->repo->forgetCache();
-        return Redirect::back();
-    }
-
-
 }

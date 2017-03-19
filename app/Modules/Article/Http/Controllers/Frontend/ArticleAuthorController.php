@@ -16,7 +16,7 @@ class ArticleAuthorController extends Controller
 
     public function index()
     {
-        return Cache::remember('articleAuthors', 100, function() {
+        return Cache::tags(['ArticleAuthorController', 'Article', 'articleAuthors'])->rememberForever('articleAuthors', function() {
 
             $records = $this->repo
                 ->where('is_active', 1)
@@ -31,7 +31,7 @@ class ArticleAuthorController extends Controller
     public function show($slug)
     {
         $id =  substr(strrchr($slug, '-'), 1 );
-        return Cache::remember('articleAuthor:'.$id, 100, function() use($id) {
+        return Cache::tags(['ArticleAuthorController', 'Article', 'articleAuthor'])->rememberForever('articleAuthor:'.$id, function() use($id) {
 
             $record = $this->repo
                 ->with([

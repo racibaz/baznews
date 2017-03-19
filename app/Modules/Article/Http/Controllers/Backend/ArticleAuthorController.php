@@ -70,6 +70,10 @@ class ArticleAuthorController extends BackendController
     public function destroy(ArticleAuthor $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['ArticleAuthorController']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
@@ -139,6 +143,10 @@ class ArticleAuthorController extends BackendController
                         ->fit(58, 58)
                         ->save(public_path('images/article_author_images/' . $result->id . '/58x58_' . $document_name));
                 }
+
+
+                $this->removeCacheTags(['ArticleAuthorController']);
+                $this->removeHomePageCache();
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);

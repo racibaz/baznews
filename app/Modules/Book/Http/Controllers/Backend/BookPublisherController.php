@@ -60,6 +60,10 @@ class BookPublisherController extends BackendController
     public function destroy(BookPublisher $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['BookPublisherController']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -86,6 +90,15 @@ class BookPublisherController extends BackendController
             }
 
             if ($result) {
+
+
+                /*
+                 * Delete related caches
+                 * */
+                $this->removeCacheTags(['BookPublisherController']);
+                $this->removeHomePageCache();
+
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {

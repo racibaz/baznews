@@ -22,7 +22,7 @@ class PhotoGalleryController extends Controller
     {
         $id =  substr(strrchr($slug, '-'), 1 );
 
-        return Cache::remember('photo_gallery:'.$id, 100, function() use($id) {
+        return Cache::tags(['PhotoGalleryController', 'News', 'photo_gallery'])->rememberForever('photo_gallery:'.$id, function() use($id) {
 
             //$slug = htmlentities(strip_tags($id), ENT_QUOTES, 'UTF-8');
             $photoGallery = $this->repo
@@ -37,18 +37,6 @@ class PhotoGalleryController extends Controller
             $lastPhoto = $photoGallery->photos
                 ->take(-1)
                 ->first();
-
-
-//            $nextPhoto = $photoGallery->photos
-//                    ->splice(1, 1)
-//                    ->first();
-
-
-//            $nextPhoto = $photoGallery->photos
-//                ->forPage(2, 1)
-//                ->first();
-
-
 
             $nextPhoto = $photoGallery->photos->filter(function($photo) use($firstPhoto){
 
@@ -69,8 +57,6 @@ class PhotoGalleryController extends Controller
             $photoCategoryGalleries = $this->getPhotoGalleriesFormPhotoCategory($photoGallery->photo_category->id);
             //mevcutta gösterilen foto galeriyi collection dan siliyoruz.
             $photoCategoryGalleries = $photoCategoryGalleries->except($photoGallery->id);
-
-
 
 
             //todo will be must Popular photos area
@@ -94,7 +80,7 @@ class PhotoGalleryController extends Controller
     {
         $id =  substr(strrchr($slug, '-'), 1 );
 
-        return Cache::remember('showGalleryPhotos:'.$id, 100, function() use($id) {
+        return Cache::tags(['PhotoGalleryController', 'News', 'showGalleryPhoto'])->rememberForever('showGalleryPhoto:'.$id, function() use($id) {
 
 
             $photoRepository = new PhotoRepository();
@@ -157,7 +143,7 @@ class PhotoGalleryController extends Controller
 
     public function getPhotoGalleriesFormPhotoCategory($id)
     {
-        return Cache::remember('PhotoGalleriesFormPhotoCategory:'.$id, 100, function() use($id) {
+        return Cache::tags(['PhotoGalleryController', 'News', 'photoGalleriesFormPhotoCategory'])->rememberForever('photoGalleriesFormPhotoCategory:'.$id, function() use($id) {
 
             $photoCategoryRepository = new PhotoCategoryRepository();
             $photoCategory = $photoCategoryRepository

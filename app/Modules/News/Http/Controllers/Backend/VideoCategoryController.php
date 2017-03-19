@@ -68,6 +68,10 @@ class VideoCategoryController extends BackendController
     public function destroy(VideoCategory $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['VideoController', 'VideoGalleryController']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -93,6 +97,14 @@ class VideoCategoryController extends BackendController
             }
 
             if ($result) {
+
+                /*
+                 * Delete home page cache and related caches
+                 * */
+                $this->removeCacheKey('photo:' . $result->id);
+                $this->removeCacheTags(['VideoController', 'VideoGalleryController']);
+                $this->removeHomePageCache();
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {

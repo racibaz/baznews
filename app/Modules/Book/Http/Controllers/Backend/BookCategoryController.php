@@ -69,6 +69,10 @@ class BookCategoryController extends BackendController
     public function destroy(BookCategory $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['BookCategoryController']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -108,6 +112,14 @@ class BookCategoryController extends BackendController
                         ->fit(180, 275)
                         ->save(public_path('images/books_category/' . $result->id . '/180x275_' . $document_name));
                 }
+
+
+                /*
+                 * Delete related caches
+                 * */
+                $this->removeCacheTags(['BookCategoryController']);
+                $this->removeHomePageCache();
+
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);

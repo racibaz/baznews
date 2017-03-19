@@ -32,7 +32,7 @@ class RecommendationNews extends AbstractWidget
      */
     public function run()
     {
-        return Cache::remember('recommendationNewsItems', 10, function()  {
+        return Cache::tags(['Widget', 'News', 'RecommendationNews'])->rememberForever('recommendationNewsItems', function()  {
             $reComNewsRepo = new RecommendationNewsRepository();
             $recommendationNewsItems = $reComNewsRepo->with(['news'])
                                     ->where('is_active', 1)
