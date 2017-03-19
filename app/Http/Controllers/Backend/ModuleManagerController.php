@@ -103,6 +103,7 @@ class ModuleManagerController extends BackendController
 
             if ($status) {
 
+                $this->removeCacheTags(['routeList']);
                 $this->removeHomePageCache();
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
@@ -143,7 +144,8 @@ class ModuleManagerController extends BackendController
 
         $this->moduleActivationToggle($moduleSlug);
 
-        Cache::tags('homePage')->flush();
+        $this->removeCacheTags(['routeList']);
+        $this->removeHomePageCache();
 
         return Redirect::back();
     }
@@ -163,7 +165,8 @@ class ModuleManagerController extends BackendController
 
         $this->moduleActivationToggle($moduleSlug);
 
-        Cache::tags('homePage')->flush();
+        $this->removeCacheTags(['routeList']);
+        $this->removeHomePageCache();
 
         return Redirect::back();
     }
