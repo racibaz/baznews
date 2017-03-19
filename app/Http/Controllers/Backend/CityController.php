@@ -22,12 +22,18 @@ class CityController extends BackendController
         $this->repo= $repo;
     }
 
+    /**
+     * @return \View
+     */
     public function index()
     {
         $records = $this->repo->findAll();
         return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
     }
 
+    /**
+     * @return \View
+     */
     public function create()
     {
         $countries = Country::countryList();
@@ -35,31 +41,56 @@ class CityController extends BackendController
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'countries']));
     }
 
-
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         return $this->save($this->repo->createModel());
     }
 
 
+    /**
+     * @param \App\Models\City $record
+     *
+     * @return \View
+     */
     public function show(City $record)
     {
         return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
     }
 
 
+    /**
+     * @param \App\Models\City $record
+     *
+     * @return \View
+     */
     public function edit(City $record)
     {
         $countries = Country::countryList();
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'countries']));
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\City $record
+     *
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, City $record)
     {
         return $this->save($record);
     }
 
 
+    /**
+     * @param \App\Models\City $record
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(City $record)
     {
         $this->repo->delete($record->id);
@@ -67,6 +98,11 @@ class CityController extends BackendController
     }
 
 
+    /**
+     * @param $record
+     *
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function save($record)
     {
         $input = Input::all();
