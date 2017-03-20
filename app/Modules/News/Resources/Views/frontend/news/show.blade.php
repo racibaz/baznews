@@ -19,7 +19,7 @@
                 {{$record->title}}
             </li>
         </ol>
-        <div class="row" id="">
+        <div class="row" id="home_center">
             <div class="col-md-8">
                 <article class="module">
                     <div id="new-content">
@@ -568,8 +568,7 @@
          Sticky Sidebar
          * --------------------------------------------------------*/
         jQuery(document).ready(function() {
-            jQuery('#home_center .col-md-4').theiaStickySidebar({
-            });
+            jQuery('#home_center .col-md-4').theiaStickySidebar();
         });
     </script>
 @endsection

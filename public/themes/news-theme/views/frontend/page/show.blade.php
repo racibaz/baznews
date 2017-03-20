@@ -22,10 +22,25 @@
             </div>
         </div>
     </div>
+
     <article class="container" id="container">
 
+        <ol class="breadcrumb">
+            <li>
+                <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+            </li>
+            <li>
+                <a href="{!! route('show_news_category', ['slug' => $record->slug]) !!}">
+                    {{$record->name}}
+                </a>
+            </li>
+            <li>
+                {{$record->title}}
+            </li>
+        </ol>
+
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8" id="content">
                 <div class="page-content module">
                     <h1 class="page-title">{{$record->name}}</h1>
                     <div class="time">
@@ -69,7 +84,7 @@
                 @endif
 
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4" id="sidebar">
                 <div class="sidebar">
                     <div class="widget">
                         @foreach($widgets as $widget)
@@ -117,6 +132,8 @@
 
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script type="text/javascript">
         (function($){
             'use strict';
@@ -125,5 +142,11 @@
              * --------------------------------------------------------*/
             $('.ticker').ticker();
         })(jQuery);
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#sidebar,#content').theiaStickySidebar();
+        });
     </script>
 @endsection
