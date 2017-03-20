@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <article class="module">
+                <article class="books module">
                     <div class="author-books">
                         <div class="author-name">
                             <h1>
@@ -28,7 +28,7 @@
                                                 <span class="book-img">
                                                     <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="" class="img-responsive">
                                                 </span>
-                                                    <span class="book-name">
+                                                <span class="book-name">
                                                     {{$book->name}}
                                                 </span>
                                             </a>
@@ -39,6 +39,23 @@
                         </div>
                     </div>
                 </article>
+                <div class="other-books">
+                    <div class="title-section">
+                        <h3>
+                            <span>Diğer Kitapları</span>
+                        </h3>
+                    </div>
+                    <div class="module">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <a href="#" class="thumbnail">
+                                    <img data-src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div><!-- /.other-books -->
+                </div>
+
             </div><!-- /.new-content -->
             <div class="col-md-4">
                 <div class="sidebar">

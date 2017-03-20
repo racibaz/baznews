@@ -1889,41 +1889,53 @@ footer .footer-bottom .cpy {
     padding: 0 15px;
     margin-top: 15px;
     margin-bottom: 5px;
+    font-size:20px;
+    font-weight: bold;
 }
 .article-content .author{
     margin: 0 15px;
 }
 .article-content .content{
     padding: 15px 15px;
+    font-size: 15px;
+    line-height: 1.3em;
 }
+
 /* ==========================================================================
-   Author Article
+   Articles
    ========================================================================== */
-.author-article .articles ul.article-list{
+.articles{
+    margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   SubList
+   ========================================================================== */
+ul.sub-list{
     margin: 0;
     padding-left: 0;
     list-style: none;
 }
-.author-article .articles ul.article-list li{
+ul.sub-list li{
     display: block;
     width: 100%;
 }
-.author-article .articles ul.article-list li > a > h3.title{
+ul.sub-list li > a > h3.title{
     margin: 0;
     padding: 0;
     font-size: 14px;
     font-weight:bold;
 }
-.author-article .articles ul.article-list li > a{
+ul.sub-list li > a{
     display: block;
     padding: 10px;
     border-bottom: 1px solid #ecebeb;
     text-decoration: none;
 }
-.author-article .articles ul.article-list li:last-child > a{
+ul.sub-list li:last-child > a{
     border:0;
 }
-.author-article .articles ul.article-list li > a > .time {
+ul.sub-list li > a > .time {
     float: right;
     font-size:12px;
 }
@@ -2100,6 +2112,9 @@ footer .footer-bottom .cpy {
 /* ==========================================================================
    Book Detail
    ========================================================================== */
+.books{
+    margin-bottom: 10px;
+}
 #book-detail .book-img{
     padding: 15px;
     text-align: center;
@@ -2144,7 +2159,25 @@ footer .footer-bottom .cpy {
 #book-detail .book-publisher{
     margin-bottom: 15px;
 }
-
+/* ==========================================================================
+   Book List
+   ========================================================================== */
+.book-list .thumbnail{
+    text-decoration: none;
+    margin-bottom: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+.book-list .thumbnail:hover{
+    border-color:#E92735;
+}
+.book-list .thumbnail .caption h3{
+    margin: 0;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+}
 /* ==========================================================================
    Author Books
    ========================================================================== */

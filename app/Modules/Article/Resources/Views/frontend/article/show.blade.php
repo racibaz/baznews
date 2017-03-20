@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="articles module">
-                                <ul class="article-list">
+                                <ul class="sub-list">
                                     <li>
                                         <a href="#">
                                             <span class="time">
@@ -65,13 +65,15 @@
                                             </h3>
                                         </a>
                                     </li>
-
-
-                                </ul><!-- /.article-list -->
+                                </ul><!-- /.sub-list -->
                             </div><!-- /.articles -->
                         </div><!-- /.col-md-12 -->
                     </div><!-- /.row -->
                 </div><!-- /.author-article -->
+                <div class="advert-center module">
+                    <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Center">
+                </div>
+
             </div><!-- /.new-content -->
             <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
@@ -119,5 +121,14 @@
     <meta property="article:author" content="">
 @endsection
 @section('js')
-
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script>
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#content,#sidebar').theiaStickySidebar();
+        });
+    </script>
 @endsection

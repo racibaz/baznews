@@ -568,8 +568,7 @@
          Sticky Sidebar
          * --------------------------------------------------------*/
         jQuery(document).ready(function() {
-            jQuery('#home_center .col-md-4').theiaStickySidebar({
-            });
+            jQuery('#home_center .col-md-4').theiaStickySidebar();
         });
     </script>
 @endsection

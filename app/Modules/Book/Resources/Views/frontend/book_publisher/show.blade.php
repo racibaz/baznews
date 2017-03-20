@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <article class="module">
+                <article class="books module">
                     <div class="publish-books">
                         <div class="publish-name">
                             <h1>
@@ -39,6 +39,21 @@
                         </div>
                     </div><!-- /.publish-books -->
                 </article>
+                <div class="other-books module">
+                    <ul class="sub-list">
+                        <li>
+                            <a href="#">
+                                <span class="time">
+                                    <i class="fa fa-clock-o"></i> 12 Mart
+                                </span>
+
+                                <h3 class="title">
+                                    Book Name
+                                </h3>
+                            </a>
+                        </li>
+                    </ul><!-- /.sub-list -->
+                </div><!-- /.other-books -->
             </div><!-- /.new-content -->
             <div class="col-md-4">
                 <div class="sidebar">

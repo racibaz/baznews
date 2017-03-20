@@ -16,21 +16,46 @@
             </li>
         </ol>
         <div class="row">
-            <div class="col-md-8">
-                <article class="module">
-                    <div id="new-content">
-                        {{$record->name}} <br />
+            <div class="col-md-8" id="content">
+                <article class="article-content module">
+                    <h1 class="article-title">{{$record->name}}</h1>
+                    <div class="content">
                         {{$record->cv}}
-                        <br /><br /><br /><br />
-                        Makale Yazarı Detayları Gelecek.
-                        @foreach($record->articles as $record)
-                            <a href="{!! route('article', ['slug' => $record->slug]) !!}">{{$record->title}} </a>
-                            <br />
-                        @endforeach
+                        Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id elit non mi porta gravida at eget metus.
                     </div>
                 </article>
+                <div class="author-article">
+                    <div class="title-section">
+                        <h3>
+                            <span>Yazarın Makaleleri</span>
+                        </h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="articles module">
+                                <ul class="sub-list">
+                                    @foreach($record->articles as $record)
+                                        <li>
+                                            <a href="{!! route('article', ['slug' => $record->slug]) !!}">
+                                                <span class="time">
+                                                    <i class="fa fa-clock-o"></i> 12 Mart
+                                                </span>
+                                                <h3 class="title">
+                                                    {{$record->title}}
+                                                </h3>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul><!-- /.article-list -->
+                            </div><!-- /.articles -->
+                        </div><!-- /.col-md-12 -->
+                    </div><!-- /.row -->
+                </div><!-- /.author-article -->
+                <div class="advert-center module">
+                    <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Center">
+                </div>
             </div><!-- /.new-content -->
-            <div class="col-md-4">
+            <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
                     @foreach($widgets as $widget)
                         @widget($widget['namespace'])
@@ -84,7 +109,7 @@
          Sticky Sidebar
          * --------------------------------------------------------*/
         jQuery(document).ready(function() {
-            jQuery('#sidebar,#content').theiaStickySidebar();
+            jQuery('#content,#sidebar').theiaStickySidebar();
         });
     </script>
 @endsection
