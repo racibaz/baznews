@@ -93,29 +93,6 @@
                                 <!-- /.col -->
                             @endforeach
 
-
-                            <li>
-                                <div class="thumbnail">
-                                    <a href="new-details.html">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot1.jpg')}}" alt="Dummyİmage">
-                                        <div class="caption">
-                                            <span class="ct-title">Maecenas faucibus mollis interdum.</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- /.thumbnail -->
-                            </li>
-                            <li>
-                                <div class="thumbnail">
-                                    <a href="new-details.html">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot1.jpg')}}" alt="Dummyİmage">
-                                        <div class="caption">
-                                            <span class="ct-title">Maecenas faucibus mollis interdum.</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- /.thumbnail -->
-                            </li>
                             <!-- /.col -->
                         </ul>
                     </div>
