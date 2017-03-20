@@ -19,7 +19,7 @@
                                 <h3>{{$recommendationNewsItem->news->title}}</h3>
                             </a>
                         </div><!-- /.title -->
-                        <div class="excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                        <div class="excerpt">{{$recommendationNewsItem->news->spot}}</div>
                         <time class="new-date">
                             <span class="timeago">{{$recommendationNewsItem->news->updated_at->diffForHumans() }}</span>
                         </time>
