@@ -240,23 +240,13 @@ class NewsModelRemoveSeedsAndRelations extends Migration
         if(!empty(Permission::where('name','toggleBooleanType-news')->first()))
             Permission::where('name','toggleBooleanType-news')->first()->delete();
 
-        if(!empty(Permission::where('name','Passive-news')->first()))
-            Permission::where('name','Passive-news')->first()->delete();
 
-        if(!empty(Permission::where('name','Active-news')->first()))
-            Permission::where('name','Active-news')->first()->delete();
+        foreach (News::$statuses as $status){
 
-        if(!empty(Permission::where('name','Draft-news')->first()))
-            Permission::where('name','Draft-news')->first()->delete();
+            if(!empty(Permission::where('name',$status . '-news')->first()))
+                Permission::where('name', $status . '-news')->first()->delete();
+        };
 
-        if(!empty(Permission::where('name','On Air-news')->first()))
-            Permission::where('name','On Air-news')->first()->delete();
-
-        if(!empty(Permission::where('name','Preparing-news')->first()))
-            Permission::where('name','Preparing-news')->first()->delete();
-
-        if(!empty(Permission::where('name','Pending for Editor Approval-news')->first()))
-            Permission::where('name','Pending for Editor Approval-news')->first()->delete();
 
         if(!empty(Permission::where('name','statusToggle-news')->first()))
             Permission::where('name','statusToggle-news')->first()->delete();

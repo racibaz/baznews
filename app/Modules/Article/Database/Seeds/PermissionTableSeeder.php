@@ -4,6 +4,7 @@ namespace App\Modules\Article\Database\Seeds;
 
 use App\Models\Permission;
 use App\Models\Role;
+use App\Modules\Article\Models\Article;
 use Illuminate\Database\Seeder;
 
 class PermissionTableSeeder extends Seeder
@@ -58,54 +59,14 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        foreach (Article::$statuses as $status){
 
-        $article9 = Permission::create([
-            'name'          => 'Passive-article',
-            'display_name'  => 'article Passive',
-            'is_active'     => 1,
-        ]);
-
-
-        $article10 = Permission::create([
-            'name'          => 'Active-article',
-            'display_name'  => 'article Active',
-            'is_active'     => 1,
-        ]);
-
-
-        $article11 = Permission::create([
-            'name'          => 'Draft-article',
-            'display_name'  => 'article Draft',
-            'is_active'     => 1,
-        ]);
-
-
-        $article12 = Permission::create([
-            'name'          => 'On Air-article',
-            'display_name'  => 'article On Air',
-            'is_active'     => 1,
-        ]);
-
-
-        $article13 = Permission::create([
-            'name'          => 'Preparing-article',
-            'display_name'  => 'article Preparing',
-            'is_active'     => 1,
-        ]);
-
-
-        $article14 = Permission::create([
-            'name'          => 'Pending for Editor Approval-article',
-            'display_name'  => 'article Pending for Editor Approval',
-            'is_active'     => 1,
-        ]);
-
-        $article15 = Permission::create([
-            'name'          => 'Garbage-article',
-            'display_name'  => 'article Garbage',
-            'is_active'     => 1,
-        ]);
-
+            $article[$status] = Permission::create([
+                'name'          => $status . '-article',
+                'display_name'  => 'Article status ' . $status,
+                'is_active'     => 1,
+            ]);
+        }
 
         //articleauthor
         $articleauthor1 = Permission::create([
@@ -248,13 +209,10 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($article6);
         $super_admin->permissions()->attach($article7);
 
-        $super_admin->permissions()->attach($article9);
-        $super_admin->permissions()->attach($article10);
-        $super_admin->permissions()->attach($article11);
-        $super_admin->permissions()->attach($article12);
-        $super_admin->permissions()->attach($article13);
-        $super_admin->permissions()->attach($article14);
-        $super_admin->permissions()->attach($article15);
+        foreach (Article::$statuses as $status){
+            $super_admin->permissions()->attach($article[$status]);
+        };
+
         $super_admin->permissions()->attach($articleauthor1);
         $super_admin->permissions()->attach($articleauthor2);
         $super_admin->permissions()->attach($articleauthor3);

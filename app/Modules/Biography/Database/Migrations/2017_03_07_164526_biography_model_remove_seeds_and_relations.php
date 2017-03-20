@@ -56,6 +56,12 @@ class BiographyModelRemoveSeedsAndRelations extends Migration
         if(!empty(Permission::where('name','store-biography')->first()))
             Permission::where('name','store-biography')->first()->delete();
 
+        foreach (Biography::$statuses as $status){
+
+            if(!empty(Permission::where('name',$status . '-biography')->first()))
+                Permission::where('name', $status . '-biography')->first()->delete();
+        };
+
         //biographysetting
         if(!empty(Permission::where('name','index-biographysetting')->first()))
             Permission::where('name','index-biographysetting')->first()->delete();

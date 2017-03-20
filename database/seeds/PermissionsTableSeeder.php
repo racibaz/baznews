@@ -368,6 +368,15 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        foreach (User::$statuses as $status){
+
+            $user[$status] = Permission::create([
+                'name'          => $status . '-user',
+                'display_name'  => 'user status ' . $status,
+                'is_active'     => 1,
+            ]);
+        }
+
         //Group
         $group1 = Permission::create([
             'name'          => 'index-group',
@@ -1301,6 +1310,11 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($user10);
         $super_admin->permissions()->attach($user11);
         $super_admin->permissions()->attach($user12);
+
+        foreach (User::$statuses as $status){
+            $super_admin->permissions()->attach($user[$status]);
+        }
+
         $super_admin->permissions()->attach($group1);
         $super_admin->permissions()->attach($group2);
         $super_admin->permissions()->attach($group3);

@@ -5,6 +5,7 @@ namespace App\Modules\News\Database\Seeds;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
+use App\Modules\News\Models\News;
 use Illuminate\Database\Seeder;
 
 class PermissionsTableSeeder extends Seeder
@@ -194,83 +195,45 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
-
         $news9 = Permission::create([
-            'name'          => 'Passive-news',
-            'display_name'  => 'news Passive',
-            'is_active'     => 1,
-        ]);
-
-
-        $news10 = Permission::create([
-            'name'          => 'Active-news',
-            'display_name'  => 'news Active',
-            'is_active'     => 1,
-        ]);
-
-
-        $news11 = Permission::create([
-            'name'          => 'Draft-news',
-            'display_name'  => 'news Draft',
-            'is_active'     => 1,
-        ]);
-
-
-        $news12 = Permission::create([
-            'name'          => 'On Air-news',
-            'display_name'  => 'news On Air',
-            'is_active'     => 1,
-        ]);
-
-
-        $news13 = Permission::create([
-            'name'          => 'Preparing-news',
-            'display_name'  => 'news Preparing',
-            'is_active'     => 1,
-        ]);
-
-
-        $news14 = Permission::create([
-            'name'          => 'Pending for Editor Approval-news',
-            'display_name'  => 'news Pending for Editor Approval',
-            'is_active'     => 1,
-        ]);
-
-        $news15 = Permission::create([
-            'name'          => 'Garbage-news',
-            'display_name'  => 'news Garbage',
-            'is_active'     => 1,
-        ]);
-
-        $news16 = Permission::create([
             'name'          => 'statusToggle-news',
             'display_name'  => 'news statusToggle ',
             'is_active'     => 1,
         ]);
 
-        $news17 = Permission::create([
+        $news10 = Permission::create([
             'name'          => 'showTrashedRecords-news',
             'display_name'  => 'news showTrashedRecords ',
             'is_active'     => 1,
         ]);
 
-        $news18 = Permission::create([
+        $news11 = Permission::create([
             'name'          => 'trashedNewsRestore-news',
             'display_name'  => 'news trashedNewsRestore',
             'is_active'     => 1,
         ]);
 
-        $news19 = Permission::create([
+        $news12 = Permission::create([
             'name'          => 'historyForceDelete-news',
             'display_name'  => 'news historyForceDelete',
             'is_active'     => 1,
         ]);
 
-        $news20 = Permission::create([
+        $news13 = Permission::create([
             'name'          => 'forgetCache-news',
             'display_name'  => 'news forgetNewsCache',
             'is_active'     => 1,
         ]);
+
+
+        foreach (News::$statuses as $status){
+
+            $news[$status] = Permission::create([
+                'name'          => $status . '-news',
+                'display_name'  => 'News status ' . $status,
+                'is_active'     => 1,
+            ]);
+        }
 
         //newswidgetmanager
         $newswidgetmanager1 = Permission::create([
@@ -750,13 +713,11 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($news11);
         $super_admin->permissions()->attach($news12);
         $super_admin->permissions()->attach($news13);
-        $super_admin->permissions()->attach($news14);
-        $super_admin->permissions()->attach($news15);
-        $super_admin->permissions()->attach($news16);
-        $super_admin->permissions()->attach($news17);
-        $super_admin->permissions()->attach($news18);
-        $super_admin->permissions()->attach($news19);
-        $super_admin->permissions()->attach($news20);
+
+        foreach (News::$statuses as $status){
+            $super_admin->permissions()->attach($news[$status]);
+        };
+
         $super_admin->permissions()->attach($newswidgetmanager1);
         $super_admin->permissions()->attach($newswidgetmanager2);
         $super_admin->permissions()->attach($newswidgetmanager3);

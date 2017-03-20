@@ -38,6 +38,7 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
 
     public function modelRemoveSeedAndRelations()
     {
+
         //setting
         if(!empty(Setting::where('attribute_key','article_count')->first()))
             Setting::where('attribute_key','article_count')->first()->delete();
@@ -79,29 +80,11 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
         if(!empty(Permission::where('name','store-article')->first()))
             Permission::where('name','store-article')->first()->delete();
 
-        if(!empty(Permission::where('name','Passive-article')->first()))
-            Permission::where('name','Passive-article')->first()->delete();
+        foreach (Article::$statuses as $status){
 
-        if(!empty(Permission::where('name','Active-article')->first()))
-            Permission::where('name','Active-article')->first()->delete();
-
-        if(!empty(Permission::where('name','Draft-article')->first()))
-            Permission::where('name','Draft-article')->first()->delete();
-
-        if(!empty(Permission::where('name','Preparing-article')->first()))
-            Permission::where('name','Preparing-article')->first()->delete();
-
-        if(!empty(Permission::where('name','On Air-article')->first()))
-            Permission::where('name','On Air-article')->first()->delete();
-
-        if(!empty(Permission::where('name','Preparing-article')->first()))
-            Permission::where('name','Preparing-article')->first()->delete();
-
-        if(!empty(Permission::where('name','Pending for Editor Approval-article')->first()))
-            Permission::where('name','Pending for Editor Approval-article')->first()->delete();
-
-        if(!empty(Permission::where('name','Garbage-article')->first()))
-            Permission::where('name','Garbage-article')->first()->delete();
+            if(!empty(Permission::where('name',$status . '-article')->first()))
+                Permission::where('name', $status . '-article')->first()->delete();
+        };
 
         //articleauthor
         if(!empty(Permission::where('name','index-articleauthor')->first()))
