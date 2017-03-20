@@ -1,17 +1,18 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
-
-
     <div class="container" id="container">
-        <div class="breadcrumbs">
-            <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \
+        <ol class="breadcrumb">
+            <li>
+                <a href="{!! route('index') !!}">{{trans('news.common')}}</a>
+            </li>
+            <li>
                 {{$record->name}}
-            </p>
-        </div>
+            </li>
+        </ol>
         <div class="row">
-            <div class="col-md-8">
-                <article class="books module">
+            <div class="col-md-8" id="content">
+                <article class="module">
                     <div class="author-books">
                         <div class="author-name">
                             <h1>
@@ -20,25 +21,25 @@
                         </div>
                         <div class="books">
                             <h2>Yazarın Kitapları</h2>
-                            <div class="row">
-                                @foreach($record->books as $book)
-                                    <div class="col-md-2">
-                                        <div class="book">
-                                            <a href="{!! route('book', ['slug' => $book->slug]) !!}">
-                                                <span class="book-img">
-                                                    <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="" class="img-responsive">
-                                                </span>
-                                                <span class="book-name">
-                                                    {{$book->name}}
-                                                </span>
-                                            </a>
-                                        </div>
+
+                            <div class="book-list">
+                                <div class="row">
+                                    @foreach($record->books as $book)
+                                    <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                        <a href="{!! route('book', ['slug' => $book->slug]) !!}" class="thumbnail">
+                                            <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
+                                            <div class="caption">
+                                                <h3>{{$book->name}}</h3>
+                                            </div>
+                                        </a>
                                     </div>
-                                @endforeach
-                            </div>
+                                    @endforeach
+                                </div><!-- /.row -->
+                            </div><!-- /.book-list -->
                         </div>
                     </div>
                 </article>
+
                 <div class="other-books">
                     <div class="title-section">
                         <h3>
@@ -46,18 +47,35 @@
                         </h3>
                     </div>
                     <div class="module">
-                        <div class="row">
-                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                <a href="#" class="thumbnail">
-                                    <img data-src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div><!-- /.other-books -->
-                </div>
+                        <div class="book-list">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                    <a href="#" class="thumbnail">
+                                        <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
+                                        <div class="caption">
+                                            <h3>Title</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                                    <a href="#" class="thumbnail">
+                                        <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
+                                        <div class="caption">
+                                            <h3>Title</h3>
+                                        </div>
+                                    </a>
+                                </div><!-- /.col -->
+                            </div><!-- /.row -->
+                        </div><!-- /.book-list -->
+                    </div>
+                </div><!-- /.other-books -->
+
+                <div class="advert-center module">
+                    <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Center">
+                </div><!-- /.advert-center -->
 
             </div><!-- /.new-content -->
-            <div class="col-md-4">
+            <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
                     @foreach($widgets as $widget)
                         @widget($widget['namespace'])
@@ -101,4 +119,16 @@
     <meta property="og:image" content="{{asset('images/books/' . $record->id . '/original/' .$record->thumbnail)}}"/>
     <meta property="article:published_time" content="{{$record->created_at}}">
     <meta property="article:author" content="">
+@endsection
+@section('js')
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script>
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#content,#sidebar').theiaStickySidebar();
+        });
+    </script>
 @endsection

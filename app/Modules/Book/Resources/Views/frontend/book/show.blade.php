@@ -10,7 +10,7 @@
             </li>
             @foreach($record->book_categories as $bookCategory )
                 <li>
-                    <a href="{!! route('show_news_category', ['slug' => $bookCategory->slug]) !!}">
+                    <a href="{!! route('book_category', ['slug' => $bookCategory->slug]) !!}">
                         {{$bookCategory->name}}
                     </a>
                 </li>
@@ -21,6 +21,7 @@
         </ol>
         <div class="row">
             <div class="col-md-8" id="content">
+
                 <article class="books module">
                     <div id="book-detail">
                         <div class="row">
@@ -54,6 +55,7 @@
                         </div><!-- /.row -->
                     </div><!-- /#book-detail -->
                 </article>
+
                 <div class="other-books">
                     <div class="title-section">
                         <h3>
@@ -80,9 +82,14 @@
                                     </a>
                                 </div>
                             </div>
-                        </div><!-- /.book-list -->
-                    </div><!-- /.other-books -->
-                </div>
+                        </div>
+                    </div><!-- /.book-list -->
+                </div><!-- /.other-books -->
+
+                <div class="advert-center module">
+                    <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Center">
+                </div><!-- /.advert-center -->
+
             </div><!-- /.new-content -->
             <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
@@ -100,7 +107,7 @@
 
 
 @section('meta_tags')
-    <title> {{ $record->name }}  </title>
+    <title> {{ $record->name }} </title>
     <meta name="keywords" content="{{$record->keywords}}"/>
     <meta name="description" content="{{$record->description}}"/>
     <meta name='robots' content='index,follow'>

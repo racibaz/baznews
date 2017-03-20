@@ -122,7 +122,7 @@
             </div><!-- /.row -->
 
             <div class="row" id="home_center">
-                <div class="col-md-8">
+                <div class="col-md-8" id="content">
                     <div class="center-content">
                         @foreach($cuffNewsCategories as $cuffNewsCategory)
                             <div class="img-new-list ">
@@ -176,7 +176,7 @@
 
                 </div><!-- /.col -->
 
-                <div class="col-md-4">
+                <div class="col-md-4" id="sidebar">
                     <div class="sidebar">
                         <div class="nw-sm-img module">
                             <div role="tabpanel">
@@ -571,7 +571,7 @@
          Sticky Sidebar
          * --------------------------------------------------------*/
         jQuery(document).ready(function() {
-            jQuery('#home_center .col-md-4').theiaStickySidebar();
+            jQuery('#content,#sidebar').theiaStickySidebar();
         });
     </script>
 

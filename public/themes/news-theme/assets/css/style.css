@@ -82,6 +82,7 @@ body {
     -webkit-box-shadow: 0 0 5px 0 #e2e3e4;
     -moz-box-shadow: 0 0 5px 0 #e2e3e4;
     box-shadow: 0 0 5px 0 #e2e3e4;
+    margin-bottom: 10px;
 }
 .ads{
     opacity:0;
@@ -906,12 +907,11 @@ header{
    Category Lİst Posts
    ========================================================================== */
 .cat-posts a.title {
-    font-weight: bold; }
-
+    font-weight: bold;
+}
 .cat-posts .r-box {
     position: relative;
     overflow: hidden;
-    margin-bottom: 10px;
 }
 .cat-posts .r-box > a{
     display:block;
@@ -2112,9 +2112,6 @@ ul.sub-list li > a > .time {
 /* ==========================================================================
    Book Detail
    ========================================================================== */
-.books{
-    margin-bottom: 10px;
-}
 #book-detail .book-img{
     padding: 15px;
     text-align: center;
@@ -2172,17 +2169,27 @@ ul.sub-list li > a > .time {
 .book-list .thumbnail:hover{
     border-color:#E92735;
 }
+.book-list .thumbnail .caption{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
 .book-list .thumbnail .caption h3{
     margin: 0;
-    font-size: 15px;
+    font-size: 12px;
     text-align: center;
     font-weight: bold;
 }
 /* ==========================================================================
    Author Books
    ========================================================================== */
-.author-books{
-    padding: 5px;
+
+.author-books .author-name{
+    padding: 10px;
+}
+.author-books .author-name h1{
+    font-size:28px;
+    margin: 0;
 }
 .author-books .book{
     border:1px solid #c9cccf;
@@ -2193,7 +2200,9 @@ ul.sub-list li > a > .time {
 .author-books .books h2{
     font-size:16px;
     border-bottom:1px solid #c9cccf;
-    padding-bottom: 5px;
+    padding: 10px;
+    margin-top: 0;
+    margin-bottom: 5px;
 }
 .author-books .books a{
     color: #767a7c;
@@ -2212,13 +2221,21 @@ ul.sub-list li > a > .time {
 .publish-books{
     padding: 5px;
 }
+.publish-books .publish-name{
+    margin: 10px;
+}
+.publish-books .publish-name h1{
+    font-size:28px;
+}
 .publish-books .book{
     border:1px solid #c9cccf;
 }
 .publish-books .books h2{
     font-size:16px;
     border-bottom:1px solid #c9cccf;
-    padding-bottom: 5px;
+    padding: 10px;
+    margin-top: 0;
+    margin-bottom:5px;
 }
 .publish-books .book-img img{
     width: 100%;
@@ -2239,7 +2256,13 @@ ul.sub-list li > a > .time {
    ========================================================================== */
 
 .cat-books{
-    padding: 5px;
+    margin-bottom: 10px;
+}
+.cat-books .cat-name {
+    margin: 10px;
+}
+.cat-books .cat-name h1{
+    font-size: 28px;
 }
 .cat-books .book{
     border:1px solid #c9cccf;
@@ -2247,7 +2270,9 @@ ul.sub-list li > a > .time {
 .cat-books .books h2{
     font-size:16px;
     border-bottom:1px solid #c9cccf;
-    padding-bottom: 5px;
+    padding: 10px;
+    margin-top: 0;
+    margin-bottom:5px;
 }
 .cat-books .book-img img{
     width: 100%;
