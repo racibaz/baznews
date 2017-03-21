@@ -3,10 +3,10 @@
     <!-- Logo -->
     <a href="{!! route('dashboard') !!}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>{!! Redis::get('title') !!} </b></span>
+        <span class="logo-mini"><b>{!! Cache::tags('Setting')->get('title') !!} </b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>{!! Redis::get('title') !!} </b></span>
-        <span class="logo-lg"> {!! Redis::get('title') !!}  </span>
+        <span class="logo-lg"><b>{!! Cache::tags('Setting')->get('title') !!} </b></span>
+        <span class="logo-lg"> {!! Cache::tags('Setting')->get('title') !!}  </span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->

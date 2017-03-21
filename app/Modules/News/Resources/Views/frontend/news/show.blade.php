@@ -284,7 +284,22 @@
                         <div class="discus-box">
                             <div class="row">
                                 <div class="col-md-12">
-                                    {!! Cache::tags('Setting')->get('disqus') !!}
+                                    {{--{!! Cache::tags('Setting')->get('disqus') !!}--}}
+                                    <div id="disqus_thread"></div>
+                                    <script>
+                                        var disqus_config = function () {
+                                            this.page.url = '{{Cache::tags('Setting')->get('url')}}/{{$record->slug}}';
+                                            this.page.identifier = '{{$record->slug}}';
+                                            this.page.title = '{{$record->title}}';
+                                        };
+                                        (function() { // DON'T EDIT BELOW THIS LINE
+                                            var d = document, s = d.createElement('script');
+                                            s.src = 'https://baznews.disqus.com/embed.js';
+                                            s.setAttribute('data-timestamp', +new Date());
+                                            (d.head || d.body).appendChild(s);
+                                        })();
+                                    </script>
+
                                 </div>
                             </div>
                         </div><!-- /.discus-box -->
@@ -493,15 +508,6 @@
     @else
         <meta name='robots' content='index,follow'>
     @endif
-    <meta name='subtitle' content='This is my subtitle'>
-    <meta name='pagename' content='{{$record->title}}'>
-    <meta name='identifier-URL' content='http://www.websiteaddress.com'>
-    <meta name='directory' content='submission'>
-    <meta name='author' content='name, email@hotmail.com'>
-    <meta name='subject' content='your website s subject'>
-    <meta name='abstract' content=''>
-    <meta name='topic' content=''>
-    <meta name='summary' content=''>
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="{{Cache::tags('Setting')->get('twitter_account')}}">
