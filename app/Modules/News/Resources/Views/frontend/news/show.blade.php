@@ -284,24 +284,9 @@
                         <div class="discus-box">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div id="disqus_thread"></div>
-                                    <script>
-                                        var disqus_config = function () {
-                                            this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';
-                                            this.page.identifier = '{{$record->id}}';
-                                            this.page.title = '{{$record->title}}';
-                                        };
-
-                                        (function() { // DON'T EDIT BELOW THIS LINE
-                                            var d = document, s = d.createElement('script');
-                                            s.src = '//baznews.disqus.com/embed.js';
-                                            s.setAttribute('data-timestamp', +new Date());
-                                            (d.head || d.body).appendChild(s);
-                                        })();
-                                    </script>
-                                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                                    {!! Cache::tags('Setting')->get('disqus') !!}
                                 </div>
-                            </div><!-- Disqus Yorum Alanı -->
+                            </div>
                         </div><!-- /.discus-box -->
                     @endif
                 </article>
@@ -494,7 +479,7 @@
         </div><!-- /.col-md-8 -->
     </div><!-- /.row -->
 
-    <div class="fb-comment-embed" data-href="{{Redis::get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>
+    <div class="fb-comment-embed" data-href="{{ Cache::tags('Setting')->get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>
 @endsection
 
 
@@ -519,14 +504,14 @@
     <meta name='summary' content=''>
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="{{Redis::get('twitter_account')}}">
+    <meta name="twitter:site" content="{{Cache::tags('Setting')->get('twitter_account')}}">
     <meta name="twitter:title" content="{{$record->title}}">
     <meta name="twitter:description" content="{{$record->description}}">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $record->title }} " />
-    <meta property="og:url" content="{{Redis::get('url')}}" />
-    <meta property="og:site_name" content="{{Redis::get('title')}}" />
+    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}" />
+    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}" />
     <meta property="og:description" content="{{$record->description}}" />
     <meta property="fb:app_id" content="671303379704288">
     <meta property="og:image" content="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}"/>

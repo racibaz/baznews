@@ -61,14 +61,14 @@
                                           "@type": "VideoObject",
                                           "name": "{{$video->title}}",
                                           "description": "{{$video->description}}",
-                                          "thumbnailUrl": "{{Redis::get('url') . '/' . asset('video_gallery/' . $video->video_gallery_id . '/photos/' . $video->thumbnail)}}",
+                                          "thumbnailUrl": "{{Cache::tags('Setting')->get('url') . '/' . asset('video_gallery/' . $video->video_gallery_id . '/photos/' . $video->thumbnail)}}",
                                           "uploadDate": "{{$video->updated_at}}",
                                           "publisher": {
                                             "@type": "Organization",
-                                            "name": "{{Redis::get('url')}}",
+                                            "name": "{{Cache::tags('Setting')->get('url')}}",
                                             "logo": {
                                               "@type": "ImageObject",
-                                              "url": "{{Redis::get('logo')}}"
+                                              "url": "{{Cache::tags('Setting')->get('logo')}}"
                                             }
                                           },
                                           "contentUrl": "https://www.example.com/video123.flv",
@@ -109,7 +109,7 @@
                                     <div id="disqus_thread"></div>
                                     <script>
                                         {{--var disqus_config = function () {--}}
-                                                {{--this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';--}}
+                                                {{--this.page.url = '{{Cache::tags('Setting')->get('url')}}/{{$record->slug}}';--}}
                                                 {{--this.page.identifier = '{{$record->id}}';--}}
                                                 {{--this.page.title = '{{$record->title}}';--}}
                                                 {{--};--}}

@@ -51,7 +51,7 @@
         </div><!-- /.col-md-8 -->
     </div><!-- /.row -->
 
-    {{--<div class="fb-comment-embed" data-href="{{Redis::get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>--}}
+    {{--<div class="fb-comment-embed" data-href="{{Cache::tags('Setting')->get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>--}}
 @endsection
 
 
@@ -71,14 +71,14 @@
     <meta name='summary' content=''>
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="{{Redis::get('twitter_account')}}">
+    <meta name="twitter:site" content="{{Cache::tags('Setting')->get('twitter_account')}}">
     <meta name="twitter:title" content="{{$record->name}}">
     <meta name="twitter:description" content="{{$record->description}}">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $record->name }} " />
-    <meta property="og:url" content="{{Redis::get('url')}}" />
-    <meta property="og:site_name" content="{{Redis::get('title')}}" />
+    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}" />
+    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}" />
     <meta property="og:description" content="{{$record->description}}" />
     <meta property="fb:app_id" content="671303379704288">
     <meta property="og:image" content="{{asset('images/books/' . $record->id . '/original/' .$record->thumbnail)}}"/>

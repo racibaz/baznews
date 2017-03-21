@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     @foreach ($books as $book)
         <url>
-            <loc>https://www.baznews.app/{{ $book->slug }}</loc>
+            <loc>{{Cache::tags('Setting')->get('url')}}/{{ $book->slug }}</loc>
             <lastmod>{{ $book->updated_at }}</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>

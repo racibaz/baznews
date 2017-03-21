@@ -65,7 +65,7 @@
                                 <div id="disqus_thread"></div>
                                 <script>
                                     var disqus_config = function () {
-                                        this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';
+                                        this.page.url = '{{Cache::tags('Setting')->get('url')}}/{{$record->slug}}';
                                         this.page.identifier = 'page-{{$record->id}}';
                                         this.page.title = '{{$record->title}}';
                                     };
@@ -114,14 +114,14 @@
     <meta name='summary' content=''>
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="{{Redis::get('twitter_account')}}">
+    <meta name="twitter:site" content="{{Cache::tags('Setting')->get('twitter_account')}}">
     <meta name="twitter:title" content="{{$record->title}}">
     <meta name="twitter:description" content="{{$record->description}}">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $record->title }} " />
-    <meta property="og:url" content="{{Redis::get('url')}}" />
-    <meta property="og:site_name" content="{{Redis::get('title')}}" />
+    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}" />
+    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}" />
     <meta property="og:description" content="{{$record->description}}" />
     <meta property="fb:app_id" content="671303379704288">
     {{--<meta property="og:image" content="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}"/>--}}

@@ -3,7 +3,7 @@
 
     @foreach($sitemaps as $index => $sitemap)
             <sitemap>
-                <loc>https://www.baznews.app/{{ $sitemap->url }}</loc>
+                <loc>{{Cache::tags('Setting')->get('url')}}/{{ $sitemap->url }}</loc>
                 <lastmod>{{ $sitemap->last_modified }}</lastmod>
             </sitemap>
     @endforeach

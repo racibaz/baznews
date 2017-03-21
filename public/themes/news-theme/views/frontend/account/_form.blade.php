@@ -147,7 +147,7 @@
                         </div>
                         @if(!empty($record->id))
                             <?php
-                            $default = Redis::get('url') . "/default_user_avatar.jpg";
+                            $default = Cache::tags('Setting')->get('url') . "/default_user_avatar.jpg";
                             $size = 40;
                             $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $record->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
                             ?>

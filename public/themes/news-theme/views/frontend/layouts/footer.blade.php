@@ -19,9 +19,9 @@
                                 </div>
                                 <div class="m-ct">
                                     <ul class="mn">
-                                        @foreach(Cache::get('menus') as $menu)
+                                        @foreach(Cache::tags(['Setting', 'Menu'])->get('menus') as $menu)
                                             @if(!empty($menu->route))
-                                                <li><a href="{{ Redis::get('url') . '/' . $menu->route}}" target="_blank">{!! $menu->icon !!} {{$menu->name}}</a></li>
+                                                <li><a href="{{ Cache::tags('Setting')->get('url') . '/' . $menu->route}}" target="_blank">{!! $menu->icon !!} {{$menu->name}}</a></li>
                                             @elseif(!empty($menu->url))
                                                 <li><a href="{{$menu->url}}" target="_blank">{!! $menu->icon !!} {{$menu->name }}</a></li>
                                             @elseif(!empty($menu->page->id))
@@ -73,7 +73,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="cpy text-center">
-                        <span>{{Redis::get('copyright')}}</span>
+                        <span>{{Cache::tags('Setting')->get('copyright')}}</span>
                     </div>
                 </div>
             </div>
