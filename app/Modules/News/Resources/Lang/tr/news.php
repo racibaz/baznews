@@ -24,6 +24,4 @@ return [
     'map' => 'Harita',
     'previous_news' => ' Önceki Haber',
     'next_news' => 'Sonraki Haber ',
-    'box_cuff_widget_title' => 'Manşet Haberleri',
-    'news_archive' => 'Haber Arşivi'
 ];

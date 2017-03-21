@@ -5,7 +5,6 @@ namespace App\Modules\Biography\Widgets;
 use App\Modules\Biography\Repositories\BiographyRepository;
 use Arrilot\Widgets\AbstractWidget;
 use Caffeinated\Themes\Facades\Theme;
-use Redis;
 use Illuminate\Support\Facades\Cache;
 
 class Biographies extends AbstractWidget
@@ -23,7 +22,7 @@ class Biographies extends AbstractWidget
      */
     public function run()
     {
-        $biographies = Cache::remember('biograhies', 10, function()  {
+        $biographies = Cache::tags(['Widget', 'Biography', 'biography'])->rememberForever('biography', function()  {
 
             $biograpRepository = new BiographyRepository();
             return  $biograpRepository

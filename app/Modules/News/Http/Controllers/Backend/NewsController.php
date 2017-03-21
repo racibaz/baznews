@@ -3,6 +3,7 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Jobs\Ping\SendPing;
 use App\Library\Uploader;
 use App\Models\City;
 use App\Models\Country;
@@ -20,8 +21,10 @@ use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Repositories\TagRepository;
 use Caffeinated\Themes\Facades\Theme;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Redis;
@@ -259,6 +262,10 @@ class NewsController extends BackendController
     public function destroy(News $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['News']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -278,6 +285,9 @@ class NewsController extends BackendController
         $input['is_show_editor_profile'] = Input::get('is_show_editor_profile') == "on" ? true : false;
         $input['is_show_previous_and_next_news'] = Input::get('is_show_previous_and_next_news') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
+
+        $ping = Input::get('is_ping') == "on" ? true : false;
+        unset($input['is_ping']);
 
 
         /*
@@ -301,17 +311,6 @@ class NewsController extends BackendController
                 }
             }
         }
-
-
-//        if(empty($input['slug']) && $record->id > 0 ) {
-//            $slug = SlugService::createSlug(News::class, 'slug', $input['title']);
-//            $input['slug'] = $slug;
-//        }else {
-//            $input['slug'] = Str::slug($input['slug']);
-//        }
-
-
-
 
 
         $v = News::validate($input);
@@ -411,9 +410,19 @@ class NewsController extends BackendController
                     }
                 }
 
-                //todo tüm cache ler silinmemeli.
-                Redis::flushall();
-                //$this->dispatch(new ImageUploader($record, $input['thumbnail'], $destination, $document_name, $document_name));
+                $this->removeCacheKey('news:' . $result->id);
+                $this->removeCacheTags(['News']);
+                $this->removeHomePageCache();
+
+                /*
+                 *Send a job for ping with delay 10 minutes
+                 * */
+                if($ping == true && $result->status == 1){
+                    $pingJob = (new SendPing())
+                        ->delay(Carbon::now()->addMinutes(10));
+
+                    dispatch($pingJob);
+                }
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
@@ -640,7 +649,7 @@ class NewsController extends BackendController
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records', 'newsCategoryList']));
     }
 
-    public function toggleBooleanType(int $news_id, string $key)
+    public function toggleBooleanType($news_id, $key)
     {
         $value = null;
         $record = $this->repo->find($news_id);
@@ -715,12 +724,4 @@ class NewsController extends BackendController
         Session::flash('flash_message', trans('common.force_deleted'));
         return redirect()->back();
     }
-
-    public function forgetCache()
-    {
-        $this->repo->forgetCache();
-        return Redirect::back();
-    }
-
-
 }

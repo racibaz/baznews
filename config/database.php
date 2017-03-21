@@ -110,6 +110,8 @@ return [
 
     'redis' => [
 
+        'client' => 'predis',
+
         'cluster' => false,
 
         'default' => [
@@ -117,6 +119,7 @@ return [
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
             'database' => 0,
+            'read_write_timeout' => 60,
         ],
 
     ],

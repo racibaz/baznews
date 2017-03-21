@@ -343,6 +343,19 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            {{trans('news::common.is_ping')}}
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <div class="checkbox i-checks">
+                                    <label>
+                                        {!! Form::checkbox('is_ping', null , false) !!}
+                                        <i></i> {{trans('news::common.is_ping')}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {{trans('news::common.status')}}
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">

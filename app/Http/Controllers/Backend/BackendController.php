@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
 use Log;
 use Route;
@@ -54,14 +55,18 @@ class BackendController extends Controller
 
     public function removeCacheKey($cacheName)
     {
-        Redis::del($cacheName);
-        return \Redirect::back();
+        Cache::forget($cacheName);
+    }
+
+    //array $cachetags
+    public function removeCacheTags($cachetags)
+    {
+        Cache::tags($cachetags)->flush();
     }
 
     public function removeHomePageCache()
     {
-        Redis::del(config('cache.prefix') .':homePage');
-        return \Redirect::back();
+        Cache::tags('homePage')->flush();
     }
 
 

@@ -4,51 +4,43 @@
 
 
     <div class="container" id="container">
-        <ol class="breadcrumb">
-            <li>
-                <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
-            </li>
-
-            <li>
-                <a href="{!! route('book_category', ['slug' => $record->slug]) !!}">
-                    {{$record->name}}
-                </a>
-            </li>
-        </ol>
+        <div class="breadcrumbs">
+            <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \
+                <a href="{!! route('book_category', ['slug' => $record->slug]) !!}">{{$record->name}}</a>
+            </p>
+        </div>
         <div class="row">
-            <div class="col-md-8" id="content">
-                <article>
-                    <div class="cat-books module">
-                        <div class="cat-name">
+            <div class="col-md-8">
+                <article class="module">
+                    <div class="cat-books">
+                        <div class="publish-name">
                             <h1>
                                 <span>{{$record->name}}</span>
                             </h1>
                         </div>
                         <div class="books">
                             <h2>Kategori Kitapları</h2>
-                            <div class="book-list">
-                                <div class="row">
-                                    @foreach($record->books as $record)
-                                    <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
-                                        <a href="{!! route('book', ['slug' => $record->slug]) !!}" class="thumbnail">
-                                            <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="" class="img-responsive">
-                                            <div class="caption">
-                                                <h3>{{$record->name}}</h3>
-                                            </div>
-                                        </a>
+                            <div class="row">
+                                @foreach($record->books as $record)
+                                    <div class="col-md-2">
+                                        <div class="book">
+                                            <a href="{!! route('book', ['slug' => $record->slug]) !!}">
+                                                <span class="book-img">
+                                                    <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="" class="img-responsive">
+                                                </span>
+                                                <span class="book-name">
+                                                    {{$record->name}}
+                                                </span>
+                                            </a>
+                                        </div>
                                     </div>
-                                    @endforeach
-                                </div><!-- /.row -->
-                            </div><!-- /.book-list -->
-                        </div><!-- /.books -->
+                                @endforeach
+                            </div><!-- /.books -->
+                        </div>
                     </div><!-- /.cat-books -->
                 </article>
-                <div class="advert-center module">
-                    <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Center">
-                </div><!-- /.advert-center -->
-
             </div><!-- /.new-content -->
-            <div class="col-md-4" id="sidebar">
+            <div class="col-md-4">
                 <div class="sidebar">
                     @foreach($widgets as $widget)
                         @widget($widget['namespace'])
@@ -92,16 +84,4 @@
     <meta property="og:image" content="{{asset('images/books/' . $record->id . '/original/' .$record->thumbnail)}}"/>
     <meta property="article:published_time" content="{{$record->created_at}}">
     <meta property="article:author" content="">
-@endsection
-@section('js')
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
-    <script>
-        /*--------------------------------------------------------
-         Sticky Sidebar
-         * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
-            jQuery('#content,#sidebar').theiaStickySidebar();
-        });
-    </script>
 @endsection

@@ -17,7 +17,7 @@ class ArticleController extends Controller
     public function show($slug)
     {
         $id =  substr(strrchr($slug, '-'), 1 );
-        return Cache::remember('article:'.$id, 100, function() use($id) {
+        return Cache::tags(['ArticleController', 'Article', 'article'])->rememberForever('article:'.$id, function() use($id) {
 
             $record = $this->repo
                 ->with([

@@ -52,6 +52,10 @@ class BiographySettingController extends BackendController
             $this->repo->update($record->id,['attribute_value' => $input['biography_count']]);
         }
 
+
+        $this->removeCacheTags(['Biography']);
+        $this->removeHomePageCache();
+
         Session::flash('flash_message', trans('common.message_model_updated'));
         return Redirect::route($this->redirectRouteName . $this->view . 'index');
     }

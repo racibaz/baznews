@@ -51,7 +51,10 @@ class BookSettingController extends BackendController
             $record = $this->repo->findBy('attribute_key', 'book_count');
             $this->repo->update($record->id,['attribute_value' => $input['book_count']]);
         }
-        
+
+        $this->removeCacheTags(['Book']);
+        $this->removeHomePageCache();
+
         Session::flash('flash_message', trans('common.message_model_updated'));
         return Redirect::route($this->redirectRouteName . $this->view . 'index');
     }

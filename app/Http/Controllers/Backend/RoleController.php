@@ -93,6 +93,8 @@ class RoleController extends BackendController
 
                 $this->permissionRoleStore($result,$input);
 
+                $this->removeCacheTags(['routeList']);
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {

@@ -16,7 +16,7 @@ class BookCategoryController extends Controller
 
     public function show($slug)
     {
-        return Cache::remember('categoryBooks:'.$slug, 100, function() use($slug) {
+        return Cache::tags(['BookCategoryController', 'Book', 'bookCategory'])->rememberForever('bookCategory:'.$slug, function() use($slug) {
             $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
             $record = $this->repo
                 ->with([

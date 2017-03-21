@@ -17,7 +17,7 @@ class BiographyController extends Controller
     public function show($slug)
     {
         $id =  substr(strrchr($slug, '-'), 1 );
-        return Cache::remember('biography:'.$id, 100, function() use($id) {
+        return Cache::tags(['BiographyController', 'Biography', 'biography'])->rememberForever('biography:'.$id, function() use($id) {
             $record = $this->repo
                 ->with([
                     'user',

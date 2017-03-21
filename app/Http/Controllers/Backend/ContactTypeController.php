@@ -64,6 +64,9 @@ class ContactTypeController extends BackendController
     public function destroy(ContactType $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['ContactType']);
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -88,6 +91,9 @@ class ContactTypeController extends BackendController
             }
 
             if ($result) {
+
+                $this->removeCacheTags(['ContactType']);
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {

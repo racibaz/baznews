@@ -97,6 +97,10 @@ class VideoController extends BackendController
     public function destroy(Video $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['VideoController']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -172,6 +176,12 @@ class VideoController extends BackendController
 
 
                 $this->tagsVideoStore($result,$input);
+
+                /*
+                 * Delete home page cache and related caches
+                 * */
+                $this->removeCacheTags(['VideoController']);
+                $this->removeHomePageCache();
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);

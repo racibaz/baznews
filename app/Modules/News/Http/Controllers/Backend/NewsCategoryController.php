@@ -69,6 +69,10 @@ class NewsCategoryController extends BackendController
     public function destroy(NewsCategory $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['NewsCategoryController', 'News']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -94,6 +98,10 @@ class NewsCategoryController extends BackendController
             }
 
             if ($result) {
+
+                $this->removeCacheTags(['NewsCategoryController', 'News']);
+                $this->removeHomePageCache();
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {

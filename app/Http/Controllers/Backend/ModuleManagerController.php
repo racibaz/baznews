@@ -74,6 +74,10 @@ class ModuleManagerController extends BackendController
     public function destroy(ModuleManager $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['routeList']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -98,6 +102,10 @@ class ModuleManagerController extends BackendController
             }
 
             if ($status) {
+
+                $this->removeCacheTags(['routeList']);
+                $this->removeHomePageCache();
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $status);
             } else {
@@ -117,8 +125,8 @@ class ModuleManagerController extends BackendController
             Module::enable($moduleSlug);
         }
 
-        //Route Listesi cache lerini siliyoruz.
-        Cache::tags('routeList')->flush();
+        $this->removeCacheTags(['routeList']);
+        $this->removeHomePageCache();
 
         return Redirect::back();
     }
@@ -136,7 +144,8 @@ class ModuleManagerController extends BackendController
 
         $this->moduleActivationToggle($moduleSlug);
 
-        Cache::tags('homePage')->flush();
+        $this->removeCacheTags(['routeList']);
+        $this->removeHomePageCache();
 
         return Redirect::back();
     }
@@ -156,7 +165,8 @@ class ModuleManagerController extends BackendController
 
         $this->moduleActivationToggle($moduleSlug);
 
-        Cache::tags('homePage')->flush();
+        $this->removeCacheTags(['routeList']);
+        $this->removeHomePageCache();
 
         return Redirect::back();
     }
@@ -171,6 +181,8 @@ class ModuleManagerController extends BackendController
         $widgetManagerRepo = new WidgetManagerRepository();
         $widget = $widgetManagerRepo->findBy('module_name', $moduleName);
         $widget->forceDelete();
+        $this->removeCacheTags(['Widget']);
+        $this->removeHomePageCache();
 
     }
 }

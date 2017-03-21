@@ -18,7 +18,7 @@ class BookAuthorController extends Controller
     {
         $id =  substr(strrchr($slug, '-'), 1 );
 
-        return Cache::remember('bookAuthor:'.$id, 100, function() use($id) {
+        return Cache::tags(['BookAuthorController', 'Book', 'bookAuthor'])->rememberForever('bookAuthor:'.$id, function() use($id) {
 
             $record = $this->repo
                 ->with([

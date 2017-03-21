@@ -72,6 +72,10 @@ class BiographyController extends BackendController
     public function destroy(Biography $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['BiographyController', 'Biography']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
@@ -111,6 +115,10 @@ class BiographyController extends BackendController
                         ->fit(104, 78)
                         ->save(public_path('images/biographies/' . $result->id . '/104x78_' . $document_name));
                 }
+
+
+                $this->removeCacheTags(['BiographyController', 'Biography']);
+                $this->removeHomePageCache();
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);

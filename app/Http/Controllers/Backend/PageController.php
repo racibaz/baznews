@@ -63,6 +63,10 @@ class PageController extends BackendController
     public function destroy(Page $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['Page']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -89,6 +93,10 @@ class PageController extends BackendController
             }
 
             if ($result) {
+
+                $this->removeCacheTags(['Page']);
+                $this->removeHomePageCache();
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {

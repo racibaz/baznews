@@ -60,6 +60,10 @@ class BookAuthorController extends BackendController
     public function destroy(BookAuthor $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['BookAuthorController']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -87,6 +91,13 @@ class BookAuthorController extends BackendController
             }
 
             if ($result) {
+
+                /*
+                 * Delete related caches
+                 * */
+                $this->removeCacheTags(['BookAuthorController']);
+                $this->removeHomePageCache();
+
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
             } else {

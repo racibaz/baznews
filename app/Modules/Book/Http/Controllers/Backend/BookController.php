@@ -95,6 +95,10 @@ class BookController extends BackendController
     public function destroy(Book $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['Book']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -147,6 +151,14 @@ class BookController extends BackendController
 
 
                 $this->bookBookCategoriesStore($result,$input);
+
+
+                /*
+                 * Delete related caches
+                 * */
+                $this->removeCacheTags(['Book']);
+                $this->removeHomePageCache();
+
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);

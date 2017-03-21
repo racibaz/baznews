@@ -48,6 +48,7 @@ class SendPing implements ShouldQueue
             } else {
                 Log::error('Host could not be reached. : ' . $host);
             }
+            unset($ping);
         }
     }
 }

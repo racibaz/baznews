@@ -32,6 +32,7 @@ class NewsCategoryController extends Controller
     }
 
 
+    //todo çalışıyor mu?
     public function getNewsByNewsCategorySlug($newsCategorySlug)
     {
         return Cache::remember('news:'.$newsCategorySlug, 100, function() use($newsCategorySlug) {
@@ -55,7 +56,7 @@ class NewsCategoryController extends Controller
 
     public function show($newsCategorySlug)
     {
-        return Cache::remember('news:'.$newsCategorySlug, 100, function() use($newsCategorySlug) {
+        return Cache::tags(['NewsCategoryController', 'News', 'newsCategory'])->rememberForever('newsCategory:'.$newsCategorySlug, function() use($newsCategorySlug) {
 
             $newsCategorySlug = htmlentities(strip_tags($newsCategorySlug), ENT_QUOTES, 'UTF-8');
             $record = $this->repo

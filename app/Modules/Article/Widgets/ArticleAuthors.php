@@ -23,7 +23,7 @@ class ArticleAuthors extends AbstractWidget
      */
     public function run()
     {
-        $articleAuthors = Cache::remember('articleAuthorsWidget', 100, function()  {
+        $articleAuthors = Cache::tags(['Widget', 'Article', 'articleAuthorsWidget'])->rememberForever('articleAuthorsWidget', function()  {
 
             $repo = new ArticleAuthorRepository();
             return  $repo->with(['articles'])

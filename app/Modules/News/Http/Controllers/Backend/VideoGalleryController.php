@@ -73,6 +73,10 @@ class VideoGalleryController extends BackendController
     public function destroy(VideoGallery $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['VideoGalleryController']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
 
@@ -98,7 +102,7 @@ class VideoGalleryController extends BackendController
                 $result = $this->repo->create($input);
             }
 
-            if ($status) {
+            if ($result) {
 
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
@@ -136,6 +140,13 @@ class VideoGalleryController extends BackendController
                         ->resize(213, 116)
                         ->save(public_path('video_gallery/'. $result->id .'/photos/213x116_' . $document_name));
                 }
+
+
+                /*
+                 * Delete home page cache and related caches
+                 * */
+                $this->removeCacheTags(['VideoGalleryController']);
+                $this->removeHomePageCache();
 
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
@@ -316,15 +327,10 @@ class VideoGalleryController extends BackendController
                 $subtitle = $content = $link = $order = $isActive = null;
             }
         }
+
+        $this->removeCacheTags(['VideoGalleryController']);
+        $this->removeHomePageCache();
+
         return Redirect::back();
     }
-
-
-    public function forgetCache()
-    {
-        $this->repo->forgetCache();
-        return Redirect::back();
-    }
-
-
 }
