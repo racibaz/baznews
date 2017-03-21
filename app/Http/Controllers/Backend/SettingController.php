@@ -244,6 +244,11 @@ class SettingController extends BackendController
             $this->repo->update($record->id,['attribute_value' => $input['weather_embed_code']]);
         }
 
+        if(!empty($input['addthis'])){
+            $record = $this->repo->findBy('attribute_key', 'addthis');
+            $this->repo->update($record->id,['attribute_value' => $input['addthis']]);
+        }
+
         if(!empty($input['disqus'])){
             $record = $this->repo->findBy('attribute_key', 'disqus');
             $this->repo->update($record->id,['attribute_value' => $input['disqus']]);
