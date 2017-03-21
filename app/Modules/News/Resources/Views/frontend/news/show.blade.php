@@ -262,10 +262,10 @@
                         @endif
                         @if($record->is_show_previous_and_next_news)
                             <ul class="pager">
-                                <li class="previous"><a href="{!! route('show_news', ['slug' => $previousNews->slug]) !!}"><i class="fa fa-chevron-left "></i>{{trans('news::news.previous_news')}}</a></li>
-                                <li class="next"><a href="{!! route('show_news', ['slug' => $nextNews->slug]) !!}">{{trans('news::news.next_news')}} <i class="fa fa-chevron-right"></i></a></li>
+                                <li class="previous"><a href="{!! route('show_news', ['slug' => $previousNews->slug]) !!}"><i class="fa fa-chevron-left "></i>{{ $previousNews->title }}</a></li>
+                                <li class="next"><a href="{!! route('show_news', ['slug' => $nextNews->slug]) !!}">{{ $nextNews->title }} <i class="fa fa-chevron-right"></i></a></li>
                             </ul>
-                    @endif
+                        @endif
 
                     <!-- Go to www.addthis.com/dashboard to customize your tools -->
                     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>

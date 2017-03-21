@@ -21,6 +21,7 @@ class NewsTableSeeder extends Seeder
             'city_id'                           => 1,
             'news_source_id'                  => 1,
             'title'                             => 'İlk Haber 1',
+            'small_title'                       => 'İlk Haber 1',
             'slug'                              => 'ilk_haber-1',
             'spot'                              => 'Spicy jalapeno bacon ipsum dolor amet pork salami shankle meatloaf. Venison pancetta cupim shankle strip steak capicola biltong t-bone pork pork belly cow ground round hamburger short loin.',
             'content'                           => 'Spicy jalapeno bacon ipsum dolor amet salami pastrami beef pork chop shankle shoulder, ball tip hamburger spare ribs pork loin turkey cow. Salami chicken ham hock drumstick tenderloin, shank jerky tongue beef ribs. Meatball short ribs jowl, prosciutto picanha sausage drumstick andouille ribeye bacon bresaola flank short loin tail. Andouille chicken cow shoulder swine. Meatloaf jowl pancetta, brisket beef ribs turkey chicken pork belly. Beef ribs sirloin spare ribs cupim cow kevin turkey. Sirloin bresaola short loin hamburger turkey brisket jerky.
@@ -49,7 +50,7 @@ Does your lorem ipsum text long for something a little meatier? Give our generat
             'is_show_previous_and_next_news'    => 1,
             'main_cuff'                         => 1,
             'mini_cuff'                         => 1,
-            'map_text'                               => 'koordinatlar',
+            'map_text'                          => 'koordinatlar',
             'is_active'                         => 1
         ]);
 
@@ -59,6 +60,7 @@ Does your lorem ipsum text long for something a little meatier? Give our generat
             'city_id'                           => 1,
             'news_source_id'                  => 1,
             'title'                             => 'İkinci Haber 2',
+            'small_title'                       => 'İkinci Haber 2',
             'slug'                              => 'ikinci_haber-2',
             'spot'                              => 'Spicy jalapeno bacon ipsum dolor amet pork salami shankle meatloaf. Venison pancetta cupim shankle strip steak capicola biltong t-bone pork pork belly cow ground round hamburger short loin.',
             'content'                           => 'Spicy jalapeno bacon ipsum dolor amet salami pastrami beef pork chop shankle shoulder, ball tip hamburger spare ribs pork loin turkey cow. Salami chicken ham hock drumstick tenderloin, shank jerky tongue beef ribs. Meatball short ribs jowl, prosciutto picanha sausage drumstick andouille ribeye bacon bresaola flank short loin tail. Andouille chicken cow shoulder swine. Meatloaf jowl pancetta, brisket beef ribs turkey chicken pork belly. Beef ribs sirloin spare ribs cupim cow kevin turkey. Sirloin bresaola short loin hamburger turkey brisket jerky.
@@ -81,13 +83,12 @@ Does your lorem ipsum text long for something a little meatier? Give our generat
             'band_news'                         => 1,
             'box_cuff'                          => 1,
             'is_cuff'                           => 1,
-            'break_news'                        => 1,
             'is_comment'                        => 1,
             'is_show_editor_profile'            => 1,
             'is_show_previous_and_next_news'    => 1,
             'main_cuff'                         => 1,
             'mini_cuff'                         => 1,
-            'map_text'                               => 'koordinatlar',
+            'map_text'                          => 'koordinatlar',
             'is_active'                         => 1
         ]);
 
@@ -97,6 +98,7 @@ Does your lorem ipsum text long for something a little meatier? Give our generat
             'city_id'                           => 1,
             'news_source_id'                  => 1,
             'title'                             => 'Üç Haber 3',
+            'small_title'                       => 'Üç Haber 3',
             'slug'                              => 'Üç_haber-3',
             'spot'                              => 'Spicy jalapeno bacon ipsum dolor amet pork salami shankle meatloaf. Venison pancetta cupim shankle strip steak capicola biltong t-bone pork pork belly cow ground round hamburger short loin.',
             'content'                           => 'Spicy jalapeno bacon ipsum dolor amet salami pastrami beef pork chop shankle shoulder, ball tip hamburger spare ribs pork loin turkey cow. Salami chicken ham hock drumstick tenderloin, shank jerky tongue beef ribs. Meatball short ribs jowl, prosciutto picanha sausage drumstick andouille ribeye bacon bresaola flank short loin tail. Andouille chicken cow shoulder swine. Meatloaf jowl pancetta, brisket beef ribs turkey chicken pork belly. Beef ribs sirloin spare ribs cupim cow kevin turkey. Sirloin bresaola short loin hamburger turkey brisket jerky.
@@ -119,13 +121,12 @@ Does your lorem ipsum text long for something a little meatier? Give our generat
             'band_news'                         => 1,
             'box_cuff'                          => 1,
             'is_cuff'                           => 1,
-            'break_news'                        => 1,
             'is_comment'                        => 1,
             'is_show_editor_profile'            => 1,
             'is_show_previous_and_next_news'    => 1,
             'main_cuff'                         => 1,
             'mini_cuff'                         => 1,
-            'map_text'                               => 'koordinatlar',
+            'map_text'                          => 'koordinatlar',
             'is_active'                         => 1
         ]);
 
@@ -135,6 +136,7 @@ Does your lorem ipsum text long for something a little meatier? Give our generat
             'city_id'                           => 1,
             'news_source_id'                  => 1,
             'title'                             => 'Dört Haber 4',
+            'small_title'                       => 'Dört Haber 4',
             'slug'                              => 'Dört_haber-4',
             'spot'                              => 'Spicy jalapeno bacon ipsum dolor amet pork salami shankle meatloaf. Venison pancetta cupim shankle strip steak capicola biltong t-bone pork pork belly cow ground round hamburger short loin.',
             'content'                           => 'Spicy jalapeno bacon ipsum dolor amet salami pastrami beef pork chop shankle shoulder, ball tip hamburger spare ribs pork loin turkey cow. Salami chicken ham hock drumstick tenderloin, shank jerky tongue beef ribs. Meatball short ribs jowl, prosciutto picanha sausage drumstick andouille ribeye bacon bresaola flank short loin tail. Andouille chicken cow shoulder swine. Meatloaf jowl pancetta, brisket beef ribs turkey chicken pork belly. Beef ribs sirloin spare ribs cupim cow kevin turkey. Sirloin bresaola short loin hamburger turkey brisket jerky.
@@ -157,7 +159,6 @@ Does your lorem ipsum text long for something a little meatier? Give our generat
             'band_news'                         => 1,
             'box_cuff'                          => 1,
             'is_cuff'                           => 1,
-            'break_news'                        => 1,
             'is_comment'                        => 1,
             'is_show_editor_profile'            => 1,
             'is_show_previous_and_next_news'    => 1,

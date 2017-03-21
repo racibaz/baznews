@@ -4,16 +4,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="ticker last-time" id="son-dakika">
-                    <strong>Son Dakika:</strong>
-                    <ul>
-                        @foreach($breakNewsItems as $breakNewsItem)
-                            <li>
-                                <a href="{!! route('show_news', ['slug' => $breakNewsItem->slug]) !!}">{{$breakNewsItem->title}}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
+                @if($breakNewsItems->count() > 0)
+                    <div class="ticker last-time" id="son-dakika">
+                        <strong>{{ trans('news::news.breaking_news') }}</strong>
+                        <ul>
+                            @foreach($breakNewsItems as $breakNewsItem)
+                                <li>
+                                    <a href="{!! route('show_news', ['slug' => $breakNewsItem->slug]) !!}">{{$breakNewsItem->title}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -91,29 +93,6 @@
                                 <!-- /.col -->
                             @endforeach
 
-
-                            <li>
-                                <div class="thumbnail">
-                                    <a href="new-details.html">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot1.jpg')}}" alt="Dummyİmage">
-                                        <div class="caption">
-                                            <span class="ct-title">Maecenas faucibus mollis interdum.</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- /.thumbnail -->
-                            </li>
-                            <li>
-                                <div class="thumbnail">
-                                    <a href="new-details.html">
-                                        <img src="{{ Theme::asset($activeTheme . '::img/spot/mini-spot1.jpg')}}" alt="Dummyİmage">
-                                        <div class="caption">
-                                            <span class="ct-title">Maecenas faucibus mollis interdum.</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- /.thumbnail -->
-                            </li>
                             <!-- /.col -->
                         </ul>
                     </div>
@@ -128,12 +107,13 @@
                             <div class="img-new-list ">
                                 <div class="title-section">
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-primary">Tüm Haberler</a>
+                                        <a href="{{ route('show_news_category', $cuffNewsCategory->slug) }}" class="btn btn-primary">{{ trans('news::news_category.show_more') }}</a>
                                     </div>
                                     <h1>
-                                        <span>{{$cuffNewsCategory->name}}</span>
+                                        <span>
+                                            <a href="{{ route('show_news_category', $cuffNewsCategory->slug) }}"> {{ $cuffNewsCategory->name }} </a>
+                                        </span>
                                     </h1>
-
                                 </div>
                                 <div class="new-list-ct module">
                                     <div class="left-img-ct" style="background-image:{{ Theme::asset($activeTheme . '::img/example.jpg')}};backgroun-position:0 0; background-repeat: no-repeat;background-size: cover;">
@@ -153,12 +133,12 @@
                                                    class="full-link"
                                                    data-img="{{ asset('images/news_images/' . $news->id . '/220x310_' . $news->thumbnail) }}"
                                                    data-title="{{$news->title}}"
-                                                   data-time="{{$news->updated_at}}">
+                                                   data-time="{{$news->updated_at->diffForHumans() }}">
                                                 </a>
                                                 <div class="new-ct">
                                                     <h3 class="new-title">{{$news->title}} </h3>
                                                     <time class="new-date">
-                                                        <span class="timeago">{{$news->updated_at}}</span>
+                                                        <span class="timeago">{{$news->updated_at->diffForHumans() }}</span>
                                                     </time>
                                                 </div>
                                             </li>

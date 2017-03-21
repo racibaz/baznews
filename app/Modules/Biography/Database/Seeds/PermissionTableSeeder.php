@@ -4,6 +4,7 @@ namespace App\Modules\Biography\Database\Seeds;
 
 use App\Models\Permission;
 use App\Models\Role;
+use App\Modules\Biography\Models\Biography;
 use Illuminate\Database\Seeder;
 
 class PermissionTableSeeder extends Seeder
@@ -58,6 +59,15 @@ class PermissionTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        foreach (Biography::$statuses as $status){
+
+            $biography[$status] = Permission::create([
+                'name'          => $status . '-biography',
+                'display_name'  => 'Biography status ' . $status,
+                'is_active'     => 1,
+            ]);
+        }
+
         //biographysetting
         $biographysetting1 = Permission::create([
             'name'          => 'index-biographysetting',
@@ -110,6 +120,12 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($biography5);
         $super_admin->permissions()->attach($biography6);
         $super_admin->permissions()->attach($biography7);
+
+        foreach (Biography::$statuses as $status){
+            $super_admin->permissions()->attach($biography[$status]);
+        };
+
+
         $super_admin->permissions()->attach($biographysetting1);
         $super_admin->permissions()->attach($biographysetting2);
         $super_admin->permissions()->attach($biographysetting3);

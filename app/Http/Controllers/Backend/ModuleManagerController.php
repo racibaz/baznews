@@ -180,7 +180,11 @@ class ModuleManagerController extends BackendController
     {
         $widgetManagerRepo = new WidgetManagerRepository();
         $widget = $widgetManagerRepo->findBy('module_name', $moduleName);
-        $widget->forceDelete();
+
+
+        if(isset($widget))
+            $widget->forceDelete();
+
         $this->removeCacheTags(['Widget']);
         $this->removeHomePageCache();
 

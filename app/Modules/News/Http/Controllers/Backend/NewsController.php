@@ -410,7 +410,6 @@ class NewsController extends BackendController
                     }
                 }
 
-                $this->removeCacheKey('news:' . $result->id);
                 $this->removeCacheTags(['News']);
                 $this->removeHomePageCache();
 
@@ -661,6 +660,9 @@ class NewsController extends BackendController
 
         $this->repo->update($record->id,[$key => $value]);
 
+        $this->removeCacheTags(['News']);
+        $this->removeHomePageCache();
+
         return Redirect::back();
     }
 
@@ -679,6 +681,9 @@ class NewsController extends BackendController
 
         $this->repo->update($record->id,['status' => $input['status']]);
 
+        $this->removeCacheTags(['News']);
+        $this->removeHomePageCache();
+        
         return Redirect::back();
     }
 

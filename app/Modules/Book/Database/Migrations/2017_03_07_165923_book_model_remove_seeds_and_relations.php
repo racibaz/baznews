@@ -61,6 +61,7 @@ class BookModelRemoveSeedsAndRelations extends Migration
         if(!empty(Permission::where('name','store-book')->first()))
             Permission::where('name','store-book')->first()->delete();
 
+
         //book_category
         if(!empty(Permission::where('name','index-bookcategory')->first()))
             Permission::where('name','index-bookcategory')->first()->delete();

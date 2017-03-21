@@ -20,7 +20,7 @@
 @permission('index-widgetgroup'))<li><a href="{!! route('widget_group.index') !!}"><i class="fa fa-book"></i> <span>{{trans('dashboard.widget_groups')}}</span></a></li>@endpermission
 @permission('index-thememanager'))<li><a href="{!! route('theme_manager.index') !!}"><i class="fa fa-book"></i> <span>{{trans('dashboard.theme_managers')}}</span></a></li>@endpermission
 @permission('index-ping'))<li><a href="{!! route('ping') !!}"><i class="fa fa-book"></i> <span>{{trans('dashboard.pings')}}</span></a></li>@endpermission
-@permission('changes-env'))<li><a href="admin/enveditor"><i class="fa fa-book"></i> <span>{{trans('dashboard.changes_env_file')}}</span></a></li>@endpermission
+@permission('changes-env'))<li><a href="enveditor"><i class="fa fa-book"></i> <span>{{trans('dashboard.changes_env_file')}}</span></a></li>@endpermission
 
 
 <li class="header">MODULLER </li>
