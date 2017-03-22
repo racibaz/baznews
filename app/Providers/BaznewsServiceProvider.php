@@ -45,31 +45,17 @@ class BaznewsServiceProvider extends ServiceProvider
 
             //DB::getSchemaBuilder()->getColumnListing('settings');
 
-
             Cache::tags('Setting')->rememberForever('settings', function () {
 
-                $settings = Setting::all();
-
-                foreach ($settings as $setting) {
-                        Cache::tags('Setting')->forever($setting->attribute_key, $setting->attribute_value);
-//                    Redis::set($setting->attribute_key, $setting->attribute_value);
+                foreach (Setting::all() as $setting) {
+                    Cache::tags('Setting')->forever($setting->attribute_key, $setting->attribute_value);
                 }
-
 
                 Cache::tags(['Setting', 'Menu'])->rememberForever('menus', function () {
                     $menuRepository = new MenuRepository();
                     return  $menuRepository->with(['page'])->where('is_active', 1)->orderBy('order','asc')->findAll();
                 });
 
-                Cache::tags(['Setting', 'Advertisement'])->rememberForever('advertisements', function () {
-
-                    $advertisementRepository = new AdvertisementRepository();
-                    $advertisements =  $advertisementRepository->where('is_active', 1)->findAll();
-
-                    foreach ($advertisements as $advertisement) {
-                        Cache::tags('Setting', 'Advertisement')->forever($advertisement->name, $advertisement->code);
-                    }
-                });
             });
 
 

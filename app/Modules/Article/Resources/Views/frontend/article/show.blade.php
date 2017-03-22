@@ -48,18 +48,18 @@
 
 
 @section('meta_tags')
-    <title> {{ $record->name }}  </title>
+    <title> {{ $record->title }}  </title>
     <meta name="keywords" content="{{$record->keywords}}"/>
     <meta name="description" content="{{$record->description}}"/>
     <meta name='robots' content='index,follow'>
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="{{Cache::tags('Setting')->get('twitter_account')}}">
-    <meta name="twitter:title" content="{{$record->name}}">
+    <meta name="twitter:title" content="{{$record->title}}">
     <meta name="twitter:description" content="{{$record->description}}">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ $record->name }} " />
+    <meta property="og:title" content="{{ $record->title }} " />
     <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}" />
     <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}" />
     <meta property="og:description" content="{{$record->description}}" />

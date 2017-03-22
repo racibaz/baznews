@@ -267,19 +267,14 @@
                             </ul>
                         @endif
 
-                    {{--{!! Cache::tags('Setting')->get('addthis') !!}--}}
-                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>
-                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
                     <div class="share-box">
                         <div class="title-section">
                             <h1>
-                                <span>Paylaş</span>
+                                <span>{{trans('common.share')}}</span>
                             </h1>
                         </div>
-                        <div class="addthis_inline_share_toolbox"></div>
+                        {!! Cache::tags('Setting')->get('addthis') !!}
                     </div>
-
                     </div><!-- /.content -->
                     @if($record->is_comment)
                         <div class="discus-box">
