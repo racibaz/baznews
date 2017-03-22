@@ -58,16 +58,7 @@
     <meta name="keywords" content="{{$record->keywords}}"/>
     <meta name="description" content="{{$record->description}}"/>
     <meta name='robots' content='index,follow'>
-    <meta name='subtitle' content='This is my subtitle'>
-    <meta name='pagename' content='{{$record->name}}'>
-    <meta name='identifier-URL' content='http://www.websiteaddress.com'>
-    <meta name='directory' content='submission'>
-    <meta name='author' content='name, email@hotmail.com'>
-    <meta name='subject' content='your website s subject'>
-    <meta name='abstract' content=''>
-    <meta name='topic' content=''>
-    <meta name='summary' content=''>
-
+    
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="{{Cache::tags('Setting')->get('twitter_account')}}">
     <meta name="twitter:title" content="{{$record->name}}">
