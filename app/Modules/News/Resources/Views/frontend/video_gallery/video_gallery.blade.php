@@ -90,7 +90,7 @@
                                 @endforeach
                             </div>
                         </div>
-                        
+
                         <div class="share-box">
                             <div class="title-section">
                                 <h1>
