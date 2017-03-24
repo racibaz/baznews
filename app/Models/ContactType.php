@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Validator;
 
 class ContactType extends Model
 {
@@ -18,13 +17,6 @@ class ContactType extends Model
     public function contacts()
     {
         return $this->hasMany(Contact::class);
-    }
-
-    public static function validate($input) {
-        $rules = array(
-            'name'  => 'Required',
-        );
-        return Validator::make($input, $rules);
     }
 
     public static function contacctTypeList()

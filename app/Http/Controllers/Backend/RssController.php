@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\RssRequest;
 use App\Models\Rss;
 use App\Repositories\RssRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -36,7 +37,7 @@ class RssController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(RssRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -54,7 +55,7 @@ class RssController extends BackendController
     }
 
 
-    public function update(Request $request, Rss $record)
+    public function update(RssRequest $request, Rss $record)
     {
         return $this->save($record);
     }
@@ -72,28 +73,19 @@ class RssController extends BackendController
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = Rss::validate($input);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
-            }
-
-            if ($result) {
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+        if ($result) {
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }

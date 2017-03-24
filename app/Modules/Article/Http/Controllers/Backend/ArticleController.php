@@ -3,6 +3,7 @@
 namespace App\Modules\Article\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Modules\Article\Http\Requests\ArticleRequest;
 use App\Modules\Article\Models\Article;
 use App\Modules\Article\Models\ArticleAuthor;
 use App\Modules\Article\Models\ArticleCategory;
@@ -92,7 +93,7 @@ class ArticleController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -133,7 +134,7 @@ class ArticleController extends BackendController
     }
 
 
-    public function update(Request $request, Article $record)
+    public function update(ArticleRequest $request, Article $record)
     {
         return $this->save($record);
     }
@@ -159,35 +160,26 @@ class ArticleController extends BackendController
         $input['user_id'] = Auth::user()->id;
         $input['content'] = Purifier::clean(Input::get('content'));
 
-        $v = Article::validate($input);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
-            }
+        if ($result) {
 
-            if ($result) {
-
-                $this->articleArticleCategoriesStore($result,$input);
+            $this->articleArticleCategoriesStore($result,$input);
 
 
-                $this->removeCacheTags(['ArticleController', 'Article']);
-                $this->removeHomePageCache();
+            $this->removeCacheTags(['ArticleController', 'Article']);
+            $this->removeHomePageCache();
 
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 

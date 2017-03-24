@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use App\Models\ContactType;
 use App\Repositories\ContactRepository as Repo;
@@ -38,7 +39,7 @@ class ContactController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -57,7 +58,7 @@ class ContactController extends BackendController
     }
 
 
-    public function update(Request $request, Contact $record)
+    public function update(ContactRequest $request, Contact $record)
     {
         return $this->save($record);
     }
@@ -76,28 +77,19 @@ class ContactController extends BackendController
         $input['is_read'] = Input::get('is_read') == "on" ? true : false;
         $input['IP'] = Auth::user()->getUserIp();
 
-        $v = Contact::validate($input);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
-            }
-
-            if ($result) {
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+        if ($result) {
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }

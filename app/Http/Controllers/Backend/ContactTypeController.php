@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactTypeRequest;
 use App\Models\ContactType;
 use App\Repositories\ContactTypeRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -37,7 +38,7 @@ class ContactTypeController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(ContactTypeRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -55,7 +56,7 @@ class ContactTypeController extends BackendController
     }
 
 
-    public function update(Request $request, ContactType $record)
+    public function update(ContactTypeRequest $request, ContactType $record)
     {
         return $this->save($record);
     }
@@ -76,31 +77,22 @@ class ContactTypeController extends BackendController
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = ContactType::validate($input);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
-            }
+        if ($result) {
 
-            if ($result) {
+            $this->removeCacheTags(['ContactType']);
 
-                $this->removeCacheTags(['ContactType']);
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }

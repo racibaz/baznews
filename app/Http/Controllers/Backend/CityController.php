@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\CityRequest;
+use App\Http\Requests\SaveCity;
 use App\Models\City;
 use App\Models\Country;
 use App\Repositories\CityRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -41,12 +42,12 @@ class CityController extends BackendController
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'countries']));
     }
 
+
     /**
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return $this|\Illuminate\Http\RedirectResponse
+     * @param CityRequest $request
+     * @return CityController|\Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(CityRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -74,13 +75,13 @@ class CityController extends BackendController
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'countries']));
     }
 
+
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\City $record
-     *
-     * @return $this|\Illuminate\Http\RedirectResponse
+     * @param CityRequest $request
+     * @param City $record
+     * @return CityController|\Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, City $record)
+    public function update(CityRequest $request, City $record)
     {
         return $this->save($record);
     }
@@ -108,28 +109,19 @@ class CityController extends BackendController
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = City::validate($input);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
-            }
-
-            if ($result) {
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+        if ($result) {
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }

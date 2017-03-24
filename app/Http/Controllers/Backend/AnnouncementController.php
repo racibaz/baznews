@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\AnnouncementRequest;
 use App\Models\Announcement;
 use App\Repositories\AnnouncementRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -62,7 +63,7 @@ class AnnouncementController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(AnnouncementRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -84,7 +85,7 @@ class AnnouncementController extends BackendController
     }
 
 
-    public function update(Request $request, Announcement $record)
+    public function update(AnnouncementRequest $request, Announcement $record)
     {
         return $this->save($record);
     }
@@ -102,31 +103,22 @@ class AnnouncementController extends BackendController
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = Announcement::validate($input);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
-            }
+        if ($result) {
 
-            if ($result) {
+            $this->announcementGroupStore($result, $input);
 
-                $this->announcementGroupStore($result, $input);
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 

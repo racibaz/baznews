@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\SavePage;
 use App\Models\Page;
 use App\Repositories\PageRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rule;
 
 class PageController extends BackendController
 {
@@ -76,9 +79,17 @@ class PageController extends BackendController
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['is_comment'] = Input::get('is_comment') == "on" ? true : false;
-        
 
-        $v = Page::validate($input);
+        $rules = array(
+            'name' => 'required',
+            'slug' => [
+                'required',
+                Rule::unique('pages')->ignore($record->id),
+            ],
+            'description' => 'string|max:255',
+            'keywords' => 'string|max:255',
+        );
+        $v = Validator::make($input, $rules);
 
         if ($v->fails()) {
             return Redirect::back()
@@ -87,7 +98,7 @@ class PageController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id, $input);
             } else {
                 $result = $this->repo->create($input);
             }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\AdvertisementRequest;
 use App\Models\Advertisement;
 use App\Repositories\AdvertisementRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rule;
 
 class AdvertisementController extends BackendController
 {
@@ -90,11 +92,14 @@ class AdvertisementController extends BackendController
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $rules = [
-            'name'                          => isset($record->id)  ? 'required|max:255' : 'required|max:255|unique:advertisements',
-            'description'                   => 'max:255',
-        ];
-
+        $rules = array(
+            'name' => [
+                'required',
+                'max:255',
+                Rule::unique('advertisements')->ignore($record->id),
+            ],
+            'description' => 'max:255',
+        );
         $v = Validator::make($input, $rules);
 
         if ($v->fails()) {
@@ -104,7 +109,7 @@ class AdvertisementController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id, $input);
             } else {
                 $result = $this->repo->create($input);
             }
@@ -119,7 +124,6 @@ class AdvertisementController extends BackendController
             }
         }
     }
-
 
     // advertisement types https://support.google.com/adsense/answer/6002621?hl=en
     protected function getThemeAdvertisementAreaName()

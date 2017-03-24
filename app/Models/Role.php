@@ -11,7 +11,6 @@ namespace App\Models;
 
 use App\Traits\Eventable;
 use Zizaco\Entrust\EntrustRole;
-use Illuminate\Support\Facades\Validator;
 
 class Role extends EntrustRole
 {
@@ -22,16 +21,6 @@ class Role extends EntrustRole
         'display_name',
         'is_active',
     ];
-
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required|max:255',
-            'display_name' => 'max:255',
-            'description' => 'max:255',
-        );
-
-        return Validator::make($input, $rules);
-    }
 
     public function groups()
     {

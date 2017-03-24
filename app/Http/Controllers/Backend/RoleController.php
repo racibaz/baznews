@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\RoleRequest;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Repositories\RoleRepository as Repo;
@@ -38,7 +39,7 @@ class RoleController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -57,7 +58,7 @@ class RoleController extends BackendController
     }
 
 
-    public function update(Request $request, Role $record)
+    public function update(RoleRequest $request, Role $record)
     {
         return $this->save($record);
     }
@@ -75,33 +76,23 @@ class RoleController extends BackendController
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = Role::validate($input);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
-            }
+        if ($result) {
 
-            if ($result) {
+            $this->permissionRoleStore($result,$input);
+            $this->removeCacheTags(['routeList']);
 
-                $this->permissionRoleStore($result,$input);
-
-                $this->removeCacheTags(['routeList']);
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 

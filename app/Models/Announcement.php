@@ -6,7 +6,6 @@ namespace App\Models;
 use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Validator;
 
 class Announcement extends Model
 {
@@ -32,14 +31,4 @@ class Announcement extends Model
     {
         return $this->belongsToMany(Group::class);
     }
-
-    public static function validate($input) {
-        $rules = array(
-            'title' => 'required|max:255',
-            'order' => 'integer',
-        );
-
-        return Validator::make($input, $rules);
-    }
-    
 }

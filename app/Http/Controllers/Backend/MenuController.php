@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\MenuRequest;
 use App\Library\Uploader;
 use App\Models\Link;
 use App\Models\Menu;
@@ -44,7 +45,7 @@ class MenuController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(MenuRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -66,7 +67,7 @@ class MenuController extends BackendController
     }
 
 
-    public function update(Request $request, Menu $record)
+    public function update(MenuRequest $request, Menu $record)
     {
         return $this->save($record);
     }
@@ -87,31 +88,22 @@ class MenuController extends BackendController
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = Menu::validate($input);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
-            }
+        if ($result) {
 
-            if ($result) {
+            $this->removeHomePageCache();
 
-                $this->removeHomePageCache();
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }

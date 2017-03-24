@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Validator;
 
 class Page extends Model
 {
@@ -18,14 +17,6 @@ class Page extends Model
     public function menus()
     {
         return $this->hasMany(Menu::class);
-    }
-
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'Required',
-            'keywords' => 'string|min:2|max:255',
-        );
-        return Validator::make($input, $rules);
     }
 
     public static function pageList()

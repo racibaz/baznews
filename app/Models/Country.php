@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Modules\News\Models\News;
 use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 
 class Country extends Model
 {
@@ -34,14 +33,6 @@ class Country extends Model
     public function news()
     {
         return $this->hasMany(News::class);
-    }
-
-
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required|min:4|max:255',
-        );
-        return Validator::make($input, $rules);
     }
 
     public static function countryList()
