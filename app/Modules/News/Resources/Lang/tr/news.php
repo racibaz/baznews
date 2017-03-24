@@ -26,5 +26,6 @@ return [
     'next_news' => 'Sonraki Haber ',
     'recommendation_news_widget_title' => 'Önerilen Haberler',
     'breaking_news' => 'Son Dakika:',
+    'news_archive'=>'Haber Arşiv'
 
 ];

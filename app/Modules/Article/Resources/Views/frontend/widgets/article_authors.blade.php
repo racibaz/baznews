@@ -1,20 +1,24 @@
 <div class="widget">
     <div class="title-section">
-        <h1>
+        <div class="pull-right">
+            <a href="{{route('article_authors')}}" class="btn btn-primary">{{trans('article::article.article_authors')}}</a>
+        </div>
+        <h3>
             <span>Yazarlar Widget </span>
-        </h1>
+        </h3>
     </div>
-    <div class="news-h-links module">
+    <div class="news-h-links avatar-links  module">
         <ul>
-
-            <li><a href="{{route('article_authors')}}">{{trans('article::article.article_authors')}}</a></li>
-            <br />
-
             @foreach($articleAuthors as $articleAuthor)
                 <li>
                     <a href="{{route('article_author',['slug' => $articleAuthor->slug])}}">
-                        <img src="{{ asset('images/article_author_images/' . $articleAuthor->id . '/58x58_' . $articleAuthor->photo)}}">
-                        <span class="text">{{ $articleAuthor->name }}</span>
+                        <div class="item-left">
+                            <img src="{{ asset('images/article_author_images/' . $articleAuthor->id . '/58x58_' . $articleAuthor->photo)}}">
+                        </div>
+                        <div class="item-inner">
+                            <h2>{{ $articleAuthor->name }}</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur</p>
+                        </div>
                     </a>
                 </li>
             @endforeach

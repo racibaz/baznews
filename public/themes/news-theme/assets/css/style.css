@@ -173,7 +173,8 @@ body {
 .title-section {
     position: relative;
     border: 1px solid #e1e1e1;
-    margin: 0 0 10px 0;
+    border-bottom: 0;
+    margin: 0;
     padding: 0;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,f44336+0,f44336+42,ffffff+100 */
     background: #f44336; /* Old browsers */
@@ -786,7 +787,7 @@ header{
 .th-nw-slide .pager a.active:after {
     display: block;
     position: absolute;
-    bottom: -15px;
+    bottom: -13px;
     left: 35px;
     z-index: 1;
     content: '\25bc';
@@ -1163,6 +1164,38 @@ header{
 .news-h-links ul li a:hover {
     color: #ea4748;
     border-bottom: 1px solid #ea4748;
+}
+.news-h-links ul li a:after{
+    display: block;
+    clear: both;
+    content: '';
+}
+/*Avatar Links*/
+.avatar-links li a > .item-left{
+    margin: 2px 16px 2px 0;
+    float: left;
+}
+.avatar-links li a > .item-left img{
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.avatar-links li a > .item-inner {
+    float: left;
+}
+.avatar-links li a > .item-inner h2{
+    margin: 0 0 2px;
+    font-size: 1.7rem;
+    font-weight: normal;
+}
+.avatar-links li a > .item-inner p{
+    overflow: inherit;
+    margin: 0 0 2px;
+    font-size: 1.4rem;
+    line-height: normal;
+    text-overflow: inherit;
+    color: #8e9093;
 }
 
 /* ==========================================================================
@@ -1998,7 +2031,6 @@ ul.sub-list li > a > .time {
 .bio-box ul > li{
     display: block;
     list-style:none;
-    margin-bottom: 10px;
 }
 .bio-box ul > li:last-child{
     margin-bottom: 0;
@@ -2007,22 +2039,19 @@ ul.sub-list li > a > .time {
     position: relative;
     display: block;
     width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    border-bottom: 1px solid #ccc;
     padding: 10px;
     font-size:16px;
     font-weight:bold;
-    color:#989898;
+    color:#333;
     text-decoration:none;
-
+}
+.bio-box ul > li:last-child > a{
+    border:none;
 }
 .bio-box ul > li > a:hover{
     background-color: #f0f0f0;
     color:#000;
-}
-.bio-box ul > li > a span{
-    display: block;
-    float: left;
 }
 .bio-box ul > li > a:after{
     display: block;
@@ -2031,18 +2060,30 @@ ul.sub-list li > a > .time {
 }
 .bio-box ul > li > a span.bio-img{
     position: relative;
-    width:70px;
-    height:70px;
+    width: 35px;
+    height: 35px;
     overflow:hidden;
     margin-right:10px;
     border-radius: 50%;
     text-align: center;
+    display: block;
+    float: left;
 }
 .bio-box ul > li > a span.bio-img img{
     height:100%
 }
-.bio-box ul > li > a span.bio-title{
-    padding-top: 22px;
+.bio-box ul > li > a > .bio-detail{
+    float: left;
+}
+.bio-box ul > li > a > .bio-detail span.bio-excerpt,
+.bio-box ul > li > a > .bio-detail span.bio-title{
+    display: block;
+    width: 100%;
+    line-height: 1.3;
+}
+.bio-box ul > li > a > .bio-detail span.bio-excerpt{
+    color:#ccc;
+    font-size: 12px;
 }
 .widgets-center .bio-box ul > li{
     float: left;

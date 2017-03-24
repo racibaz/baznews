@@ -32,18 +32,18 @@
                                             {!! Form::label('months', trans('news::archive.datetime'),['class'=> 'col-lg-2 control-label']) !!}
                                             <div class="col-lg-10">
                                                 <select id="months" name="months" class="form-control">
-                                                <option value="1">{{trans('setting.january')}}</option>
-                                                <option value="2">{{trans('setting.february')}}</option>
-                                                <option value="3">{{trans('setting.march')}}</option>
-                                                <option value="4">{{trans('setting.may')}}</option>
-                                                <option value="5">{{trans('setting.april')}}</option>
-                                                <option value="6">{{trans('setting.june')}}</option>
-                                                <option value="7">{{trans('setting.july')}}</option>
-                                                <option value="8">{{trans('setting.august')}}</option>
-                                                <option value="9">{{trans('setting.september')}}</option>
-                                                <option value="10">{{trans('setting.october')}}</option>
-                                                <option value="11">{{trans('setting.november')}}</option>
-                                                <option value="12">{{trans('setting.december')}}</option>
+                                                    <option value="1">{{trans('setting.january')}}</option>
+                                                    <option value="2">{{trans('setting.february')}}</option>
+                                                    <option value="3">{{trans('setting.march')}}</option>
+                                                    <option value="4">{{trans('setting.april')}}</option>
+                                                    <option value="5">{{trans('setting.may')}}</option>
+                                                    <option value="6">{{trans('setting.june')}}</option>
+                                                    <option value="7">{{trans('setting.july')}}</option>
+                                                    <option value="8">{{trans('setting.august')}}</option>
+                                                    <option value="9">{{trans('setting.september')}}</option>
+                                                    <option value="10">{{trans('setting.october')}}</option>
+                                                    <option value="11">{{trans('setting.november')}}</option>
+                                                    <option value="12">{{trans('setting.december')}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -66,7 +66,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-offset-2 col-lg-10">
-                                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.search')}}</button>
+                                                <button class="btn btn-success" type="submit"><i class="fa fa-search"></i> {{trans('common.search')}}</button>
                                             </div>
                                         </div>
                                     </div>
