@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\CountryRequest;
 use App\Models\Country;
 use App\Repositories\CountryRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -35,7 +36,7 @@ class CountryController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(CountryRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -53,7 +54,7 @@ class CountryController extends BackendController
     }
 
 
-    public function update(Request $request, Country $record)
+    public function update(CountryRequest $request, Country $record)
     {
         return $this->save($record);
     }
@@ -71,28 +72,19 @@ class CountryController extends BackendController
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = Country::validate($input);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
-            }
-
-            if ($result) {
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+        if ($result) {
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }

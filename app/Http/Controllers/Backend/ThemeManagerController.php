@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Jobs\Cache\FlushAllCache;
 use App\Models\ThemeManager;
 use App\Repositories\ThemeManagerRepository as Repo;
+use Cache;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
@@ -116,8 +114,8 @@ class ThemeManagerController extends BackendController
         //todo çalışmıyor.
 //        $this->dispatch(new FlushAllCache());
 
-        //tüm cache leri siliyoruz
-        Redis::flushall();
+        //Delete all cache
+        Cache::flush();
 
 
         Log::info('Theme changed to the '. $themeSlug);
@@ -187,7 +185,5 @@ class ThemeManagerController extends BackendController
             return false;
         }
     }
-
-
 
 }

@@ -6,7 +6,6 @@ use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 
 class Tag extends Model
 {
@@ -67,16 +66,8 @@ class Tag extends Model
         return $this->morphedByMany('App\Modules\News\Models\Video', 'taggable');
     }
 
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required|min:1|max:255',
-        );
-        return Validator::make($input, $rules);
-    }
-
     public static function tagList()
     {
         return Tag::pluck('name','id');
     }
-
 }

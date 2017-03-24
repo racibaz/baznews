@@ -59,22 +59,33 @@ class BackendController extends Controller
     }
 
 
+    /**
+     * @param $methodName
+     * @return string
+     */
     public function getViewName($methodName)
     {
         return $this->redirectViewName . $this->view . $methodName;
     }
 
 
+    /**
+     * @param $cacheName
+     */
     public function removeCacheKey($cacheName)
     {
         Cache::forget($cacheName);
     }
 
-    //array $cachetags
+
+    /**
+     * @param $cachetags
+     */
     public function removeCacheTags($cachetags)
     {
         Cache::tags($cachetags)->flush();
     }
+
 
     public function removeHomePageCache()
     {

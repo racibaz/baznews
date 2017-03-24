@@ -8,7 +8,9 @@ use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rule;
 
 class GroupController extends BackendController
 {
@@ -70,10 +72,18 @@ class GroupController extends BackendController
     public function save($record)
     {
         $input = Input::all();
-
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = Group::validate($input);
+        $rules = array(
+            'name' => [
+                'required',
+                'max:255',
+                Rule::unique('groups')->ignore($record->id),
+            ],
+            'description' => 'max:255',
+        );
+
+        $v = Validator::make($input, $rules);
 
         if ($v->fails()) {
             return Redirect::back()

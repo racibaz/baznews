@@ -6,7 +6,6 @@ use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Validator;
 use Kalnoy\Nestedset\NodeTrait;
 
 class Menu extends Model
@@ -35,20 +34,6 @@ class Menu extends Model
     public function page()
     {
         return $this->belongsTo('App\Models\Page');
-    }
-
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'Required',
-            '_lft' => 'integer',
-            '_rgt' => 'integer',
-            'page_id' => 'integer',
-            'url'   => 'url|max:255',
-            'route'   => 'max:255',
-            'icon' => 'max:255',
-            'order' => 'integer',
-        );
-        return Validator::make($input, $rules);
     }
 
     public static function menuList()
