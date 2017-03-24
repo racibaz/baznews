@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\AdvertisementRepository;
 use Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
@@ -23,6 +24,17 @@ class BackendController extends Controller
     {
         $this->middleware(function ($request, $next) {
             $this->checkPermission();
+
+            Cache::tags(['Setting', 'Advertisement'])->rememberForever('advertisements', function () {
+
+                $advertisementRepository = new AdvertisementRepository();
+                $advertisements =  $advertisementRepository->where('is_active', 1)->findAll();
+
+                foreach ($advertisements as $advertisement) {
+                    Cache::tags('Setting', 'Advertisement')->forever($advertisement->name, $advertisement->code);
+                }
+            });
+
             return $next($request);
         });
     }

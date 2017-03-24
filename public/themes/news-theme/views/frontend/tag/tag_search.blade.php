@@ -295,12 +295,8 @@
                 </div>
             </div>
         </div>
-
-
     </article>
-
 @endsection
-
 
 @section('meta_tags')
     <title> {{ $search }}  </title>
@@ -317,16 +313,15 @@
     <meta name='summary' content=''>
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="{{Redis::get('twitter_account')}}">
+    <meta name="twitter:site" content="{{Cache::tags('Setting')->get('twitter_account')}}">
     <meta name="twitter:title" content="{{$search}}">
     <meta name="twitter:description" content="{{$search}}">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $search }} " />
-    <meta property="og:url" content="{{Redis::get('url')}}" />
-    <meta property="og:site_name" content="{{Redis::get('title')}}" />
+    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}" />
+    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}" />
     <meta property="og:description" content="{{$search}}" />
     <meta property="fb:app_id" content="671303379704288">
     <meta property="article:author" content="">
-
 @endsection

@@ -267,41 +267,37 @@
                             </ul>
                         @endif
 
-                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>
-                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
                     <div class="share-box">
                         <div class="title-section">
                             <h1>
-                                <span>Paylaş</span>
+                                <span>{{trans('common.share')}}</span>
                             </h1>
                         </div>
-                        <div class="addthis_inline_share_toolbox"></div>
+                        {!! Cache::tags('Setting')->get('addthis') !!}
                     </div>
-
                     </div><!-- /.content -->
                     @if($record->is_comment)
                         <div class="discus-box">
                             <div class="row">
                                 <div class="col-md-12">
+                                    {{--{!! Cache::tags('Setting')->get('disqus') !!}--}}
                                     <div id="disqus_thread"></div>
                                     <script>
                                         var disqus_config = function () {
-                                            this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';
-                                            this.page.identifier = '{{$record->id}}';
+                                            this.page.url = '{{Cache::tags('Setting')->get('url')}}/{{$record->slug}}';
+                                            this.page.identifier = '{{$record->slug}}';
                                             this.page.title = '{{$record->title}}';
                                         };
-
                                         (function() { // DON'T EDIT BELOW THIS LINE
                                             var d = document, s = d.createElement('script');
-                                            s.src = '//baznews.disqus.com/embed.js';
+                                            s.src = 'https://baznews.disqus.com/embed.js';
                                             s.setAttribute('data-timestamp', +new Date());
                                             (d.head || d.body).appendChild(s);
                                         })();
                                     </script>
-                                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
                                 </div>
-                            </div><!-- Disqus Yorum Alanı -->
+                            </div>
                         </div><!-- /.discus-box -->
                     @endif
                 </article>
@@ -494,7 +490,7 @@
         </div><!-- /.col-md-8 -->
     </div><!-- /.row -->
 
-    <div class="fb-comment-embed" data-href="{{Redis::get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>
+    <div class="fb-comment-embed" data-href="{{ Cache::tags('Setting')->get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>
 @endsection
 
 
@@ -508,25 +504,16 @@
     @else
         <meta name='robots' content='index,follow'>
     @endif
-    <meta name='subtitle' content='This is my subtitle'>
-    <meta name='pagename' content='{{$record->title}}'>
-    <meta name='identifier-URL' content='http://www.websiteaddress.com'>
-    <meta name='directory' content='submission'>
-    <meta name='author' content='name, email@hotmail.com'>
-    <meta name='subject' content='your website s subject'>
-    <meta name='abstract' content=''>
-    <meta name='topic' content=''>
-    <meta name='summary' content=''>
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="{{Redis::get('twitter_account')}}">
+    <meta name="twitter:site" content="{{Cache::tags('Setting')->get('twitter_account')}}">
     <meta name="twitter:title" content="{{$record->title}}">
     <meta name="twitter:description" content="{{$record->description}}">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $record->title }} " />
-    <meta property="og:url" content="{{Redis::get('url')}}" />
-    <meta property="og:site_name" content="{{Redis::get('title')}}" />
+    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}" />
+    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}" />
     <meta property="og:description" content="{{$record->description}}" />
     <meta property="fb:app_id" content="671303379704288">
     <meta property="og:image" content="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}"/>

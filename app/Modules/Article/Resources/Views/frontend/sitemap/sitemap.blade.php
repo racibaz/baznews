@@ -4,7 +4,7 @@
 
     @foreach ($articles as $article)
         <url>
-            <loc>https://www.baznews.app/{{ $article->slug }}</loc>
+            <loc>{{Cache::tags('Setting')->get('url')}}/{{ $article->slug }}</loc>
             <news:news>
                 <news:publication>
                     <news:name>{{$article->title}}</news:name>

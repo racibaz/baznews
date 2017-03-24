@@ -73,7 +73,7 @@
                 </div>
                 <div class="contact-details module">
                     <address>
-                        {!! Redis::get('contact') !!}
+                        {!! Cache::tags('Setting')->get('contact') !!}
                     </address>
                 </div>
                 <div class="title-section">
@@ -87,7 +87,7 @@
                         var map;
                         function initMap() {
                             map = new google.maps.Map(document.getElementById('map'), {
-                                center: {lat: {{Redis::get('latitude')}}, lng: {{Redis::get('longitude')}}},
+                                center: {lat: {{Cache::tags('Setting')->get('latitude')}}, lng: {{Cache::tags('Setting')->get('longitude')}}},
                                 zoom: 8
                             });
                         }
@@ -100,13 +100,10 @@
     </article><!-- /.article -->
 @endsection
 
-
 @section('meta_tags')
-    <title> {{ Redis::get('title') }}  </title>
-    <meta name="keywords" content="{{ Redis::get('keywords') }}"/>
-    <meta name="description" content="{{ Redis::get('description') }}"/>
-    <meta name='subtitle' content='This is my subtitle'>
-    <meta name='category' content=''>
+    <title> {{ Cache::tags('Setting')->get('title') }}  </title>
+    <meta name="keywords" content="{{ Cache::tags('Setting')->get('keywords') }}"/>
+    <meta name="description" content="{{ Cache::tags('Setting')->get('description') }}"/>
     <meta name='pagename' content='jQuery Tools, Tutorials and Resources - O Reilly Media'>
 @endsection
 @section('js')

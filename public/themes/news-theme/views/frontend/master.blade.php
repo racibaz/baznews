@@ -24,7 +24,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    {!! Redis::get('head_code') !!}
+    {!! Cache::tags('Setting')->get('head_code') !!}
 </head>
 <body>
 <div class="wrapper">
@@ -37,7 +37,7 @@
     {{--fjs.parentNode.insertBefore(js, fjs);--}}
     {{--}(document, 'script', 'facebook-jssdk'));</script>--}}
 
-    {{--{!!  Redis::get('google_tag_manager_body_code') !!}--}}
+    {{--{!!  Cache::tags('Setting')->get('google_tag_manager_body_code') !!}--}}
 
     <!-- Main Header -->
     @include($activeTheme . '::frontend.layouts.header')
@@ -50,14 +50,13 @@
     @include($activeTheme . '::frontend.layouts.footer')
 </div>
 
-
     <!-- jQuery library (served from Google) -->
     <script src="{{ Theme::asset($activeTheme . '::js/jquery/jquery.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/jquery.bxslider/jquery.bxslider.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/jquery.sticky.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/custom.js') }}"></script>
-    {!! Redis::get('footer_code') !!}
+    {!! Cache::tags('Setting')->get('footer_code') !!}
 
     @yield('js')
 

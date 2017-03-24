@@ -270,6 +270,15 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
+                                {!! Form::label('addthis', trans('setting.addthis'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::textarea('addthis', $records->where('attribute_key','addthis')->first()->attribute_value, ['placeholder' => trans('setting.addthis') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
                                 {!! Form::label('disqus', trans('setting.disqus'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">

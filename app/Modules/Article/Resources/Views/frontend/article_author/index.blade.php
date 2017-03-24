@@ -28,6 +28,6 @@
         </div><!-- /.col-md-8 -->
     </div><!-- /.row -->
 
-    {{--<div class="fb-comment-embed" data-href="{{Redis::get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>--}}
+    {{--<div class="fb-comment-embed" data-href="{{Cache::tags('Setting')->get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>--}}
 @endsection
 

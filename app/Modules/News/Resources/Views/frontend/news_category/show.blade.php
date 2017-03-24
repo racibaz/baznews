@@ -228,7 +228,7 @@
         </div><!-- /.row -->
 
     </article><!-- /.article -->
-    <div class="fb-comment-embed" data-href="{{Redis::get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>
+    <div class="fb-comment-embed" data-href="{{Cache::tags('Setting')->get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>
     <div id="disqus_thread"></div>
     <script>
          var disqus_config = function () {
@@ -254,22 +254,11 @@
     <title> {{ $record->title }}  </title>
     <meta name="keywords" content="{{$record->keywords}}"/>
     <meta name="description" content="{{$record->description}}"/>
-    <meta name='subtitle' content='This is my subtitle'>
-    <meta name='pagename' content='{{$record->title}}'>
-    <meta name='identifier-URL' content='http://www.websiteaddress.com'>
-    <meta name='directory' content='submission'>
-    <meta name='author' content='name, email@hotmail.com'>
-    <meta name='subject' content='your website s subject'>
-    <meta name='abstract' content=''>
-    <meta name='topic' content=''>
-    <meta name='summary' content=''>
-
 @endsection
 
 
 @section('css')
     <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
-
     <link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">
 @endsection
 
@@ -278,7 +267,6 @@
 
     <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>
-
 
     <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 

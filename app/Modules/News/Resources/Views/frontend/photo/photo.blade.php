@@ -73,7 +73,7 @@
                                 <div id="disqus_thread"></div>
                                 <script>
                                     {{--var disqus_config = function () {--}}
-                                            {{--this.page.url = '{{Redis::get('url')}}/{{$record->slug}}';--}}
+                                            {{--this.page.url = '{{Cache::tags('Setting')->get('url')}}/{{$record->slug}}';--}}
                                             {{--this.page.identifier = '{{$record->id}}';--}}
                                             {{--this.page.title = '{{$record->title}}';--}}
                                             {{--};--}}

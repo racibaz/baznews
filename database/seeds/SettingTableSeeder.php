@@ -163,6 +163,11 @@ class SettingTableSeeder extends Seeder
         ]);
 
         Setting::create([
+            'attribute_key'               => 'addthis',
+            'attribute_value'             => 'addthis account js',
+        ]);
+
+        Setting::create([
             'attribute_key'               => 'disqus',
             'attribute_value'             => 'disqus account',
         ]);

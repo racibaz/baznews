@@ -32,7 +32,6 @@ class BaznewsServiceProvider extends ServiceProvider
     public function boot()
     {
         if(!app()->runningInConsole() && \Schema::hasTable('settings')) {
-//            if(!app()->runningInConsole()) {
 
             User::created(function ($user) {
                 if($user->status === 2){
@@ -46,35 +45,19 @@ class BaznewsServiceProvider extends ServiceProvider
 
             //DB::getSchemaBuilder()->getColumnListing('settings');
 
+            Cache::tags('Setting')->rememberForever('settings', function () {
 
-            Cache::tags('settings')->remember('settings', 10, function () {
-
-                $settings = Setting::all();
-
-                foreach ($settings as $setting) {
-//                        Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
-                    Redis::set($setting->attribute_key, $setting->attribute_value);
-                    //Redis::expire($setting->attribute_key, 1);
+                foreach (Setting::all() as $setting) {
+                    Cache::tags('Setting')->forever($setting->attribute_key, $setting->attribute_value);
                 }
-                //return 'setting';
 
-
-                Cache::remember('menus', 10, function () {
+                Cache::tags(['Setting', 'Menu'])->rememberForever('menus', function () {
                     $menuRepository = new MenuRepository();
                     return  $menuRepository->with(['page'])->where('is_active', 1)->orderBy('order','asc')->findAll();
                 });
 
-                Cache::remember('advertisements', 10, function () {
-
-                    $advertisementRepository = new AdvertisementRepository();
-                    $advertisements =  $advertisementRepository->where('is_active', 1)->findAll();
-
-                    foreach ($advertisements as $advertisement) {
-                        //                     Cache::tags(['settings'])->put($setting->attribute_key, $setting->attribute_value, 10);
-                        Cache::forever($advertisement->name, $advertisement->code);
-                    }
-                });
             });
+
 
             /*todo
              *

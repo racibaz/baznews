@@ -406,25 +406,12 @@
 
 
 @section('meta_tags')
-    <title> {{ Redis::get('title') }}  </title>
-    <meta name="keywords" content="{{ Redis::get('keywords') }}"/>
-    <meta name="description" content="{{ Redis::get('description') }}"/>
-    <meta name='subtitle' content='This is my subtitle'>
-    <meta name='category' content=''>
-    <meta name='pagename' content='jQuery Tools, Tutorials and Resources - O Reilly Media'>
-    <meta name='identifier-URL' content='http://www.websiteaddress.com'>
-    <meta name='directory' content='submission'>
-    <meta name='author' content='name, email@hotmail.com'>
-    <meta name='subject' content='your website s subject'>
-    <meta name='abstract' content=''>
-    <meta name='topic' content=''>
-    <meta name='summary' content=''>
+    <title> {{ Cache::tags('Setting')->get('title') }}  </title>
+    <meta name="keywords" content="{{ Cache::tags('Setting')->get('keywords') }}"/>
+    <meta name="description" content="{{ Cache::tags('Setting')->get('description') }}"/>
 @endsection
 
-
 @section('css')
-
-
 @endsection
 
 @section('js')
