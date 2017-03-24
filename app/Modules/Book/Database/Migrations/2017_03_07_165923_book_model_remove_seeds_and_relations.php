@@ -39,6 +39,9 @@ class BookModelRemoveSeedsAndRelations extends Migration
         if(!empty(Setting::where('attribute_key','book_count')->first()))
             Setting::where('attribute_key','book_count')->first()->delete();
 
+        $settingRepo = new \App\Repositories\SettingRepository();
+        $settingRepo->forgetCache();
+
         //book
         if(!empty(Permission::where('name','index-book')->first()))
             Permission::where('name','index-book')->first()->delete();
@@ -149,6 +152,9 @@ class BookModelRemoveSeedsAndRelations extends Migration
 
         if(!empty(Permission::where('name','store-booksetting')->first()))
             Permission::where('name','store-booksetting')->first()->delete();
+
+        $permissionRepo = new \App\Repositories\PermissionRepository();
+        $permissionRepo->forgetCache();
     }
 
     public function removeEventsTableItems()
@@ -158,6 +164,9 @@ class BookModelRemoveSeedsAndRelations extends Migration
         DB::table('events')->where('eventable_type', BookCategory::class)->delete();
         DB::table('events')->where('eventable_type', BookPublisher::class)->delete();
         DB::table('events')->where('eventable_type', BookSetting::class)->delete();
+
+        $repo = new \App\Repositories\EventRepository();
+        $repo->forgetCache();
     }
 
 
@@ -168,6 +177,9 @@ class BookModelRemoveSeedsAndRelations extends Migration
         DB::table('taggables')->where('taggable_type', BookCategory::class)->delete();
         DB::table('taggables')->where('taggable_type', BookPublisher::class)->delete();
         DB::table('taggables')->where('taggable_type', BookSetting::class)->delete();
+
+        $repo = new \App\Repositories\TagRepository();
+        $repo->forgetCache();
     }
 
     public function removeLinksTableItems()

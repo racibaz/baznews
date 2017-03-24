@@ -18,7 +18,7 @@ class BiographyModelRemoveSeedsAndRelations extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the model data.
      *
      * @return void
      */
@@ -83,18 +83,29 @@ class BiographyModelRemoveSeedsAndRelations extends Migration
 
         if(!empty(Permission::where('name','store-biographysetting')->first()))
             Permission::where('name','store-biographysetting')->first()->delete();
+
+
+        $permissionRepo = new \App\Repositories\PermissionRepository();
+        $permissionRepo->forgetCache();
+
     }
 
     public function removeEventsTableItems()
     {
         DB::table('events')->where('eventable_type', Biography::class)->delete();
         DB::table('events')->where('eventable_type', BiographySetting::class)->delete();
+
+        $repo = new \App\Repositories\EventRepository();
+        $repo->forgetCache();
     }
 
     public function removeTaggableTableItems()
     {
         DB::table('taggables')->where('taggable_type', Biography::class)->delete();
         DB::table('taggables')->where('taggable_type', BiographySetting::class)->delete();
+
+        $repo = new \App\Repositories\TagRepository();
+        $repo->forgetCache();
     }
 
 }

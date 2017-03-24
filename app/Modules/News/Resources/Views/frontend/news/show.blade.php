@@ -267,35 +267,20 @@
                             </ul>
                         @endif
 
-                    <div class="share-box">
-                        <div class="title-section">
-                            <h1>
-                                <span>{{trans('common.share')}}</span>
-                            </h1>
+                        <div class="share-box">
+                            <div class="title-section">
+                                <h1>
+                                    <span>{{trans('common.share')}}</span>
+                                </h1>
+                            </div>
+                            {!! Cache::tags('Setting')->get('addthis') !!}
                         </div>
-                        {!! Cache::tags('Setting')->get('addthis') !!}
-                    </div>
                     </div><!-- /.content -->
                     @if($record->is_comment)
                         <div class="discus-box">
                             <div class="row">
                                 <div class="col-md-12">
-                                    {{--{!! Cache::tags('Setting')->get('disqus') !!}--}}
-                                    <div id="disqus_thread"></div>
-                                    <script>
-                                        var disqus_config = function () {
-                                            this.page.url = '{{Cache::tags('Setting')->get('url')}}/{{$record->slug}}';
-                                            this.page.identifier = '{{$record->slug}}';
-                                            this.page.title = '{{$record->title}}';
-                                        };
-                                        (function() { // DON'T EDIT BELOW THIS LINE
-                                            var d = document, s = d.createElement('script');
-                                            s.src = 'https://baznews.disqus.com/embed.js';
-                                            s.setAttribute('data-timestamp', +new Date());
-                                            (d.head || d.body).appendChild(s);
-                                        })();
-                                    </script>
-
+                                    {!! Cache::tags('Setting')->get('disqus') !!}
                                 </div>
                             </div>
                         </div><!-- /.discus-box -->

@@ -6,6 +6,7 @@ use App\Modules\Article\Models\Article;
 use App\Modules\Article\Models\ArticleAuthor;
 use App\Modules\Article\Models\ArticleCategory;
 use App\Modules\Article\Models\ArticleSetting;
+use App\Repositories\SettingRepository;
 use Illuminate\Database\Migrations\Migration;
 
 class ArticleModelRemoveSeedsAndRelations extends Migration
@@ -21,7 +22,7 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the model data.
      *
      * @return void
      */
@@ -38,7 +39,6 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
 
     public function modelRemoveSeedAndRelations()
     {
-
         //setting
         if(!empty(Setting::where('attribute_key','article_count')->first()))
             Setting::where('attribute_key','article_count')->first()->delete();
@@ -57,6 +57,9 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
 
         if(!empty(Setting::where('attribute_key','article_count')->first()))
             Setting::where('attribute_key','article_count')->first()->delete();
+
+        $settingRepo = new SettingRepository();
+        $settingRepo->forgetCache();
 
         //article
         if(!empty(Permission::where('name','index-article')->first()))
@@ -151,6 +154,10 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
 
         if(!empty(Permission::where('name','store-articlesetting')->first()))
             Permission::where('name','store-articlesetting')->first()->delete();
+
+
+        $permissionRepo = new \App\Repositories\PermissionRepository();
+        $permissionRepo->forgetCache();
     }
 
 
@@ -160,6 +167,9 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
         DB::table('events')->where('eventable_type', ArticleAuthor::class)->delete();
         DB::table('events')->where('eventable_type', ArticleCategory::class)->delete();
         DB::table('events')->where('eventable_type', ArticleSetting::class)->delete();
+
+        $repo = new \App\Repositories\EventRepository();
+        $repo->forgetCache();
     }
 
     public function removeTaggableTableItems()
@@ -168,6 +178,9 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
         DB::table('taggables')->where('taggable_type', ArticleAuthor::class)->delete();
         DB::table('taggables')->where('taggable_type', ArticleCategory::class)->delete();
         DB::table('taggables')->where('taggable_type', ArticleSetting::class)->delete();
+
+        $repo = new \App\Repositories\TagRepository();
+        $repo->forgetCache();
     }
 
 

@@ -319,22 +319,11 @@
     <title> {{ $photoGallery->title }}  </title>
     <meta name="keywords" content="{{$photoGallery->keywords}}"/>
     <meta name="description" content="{{$photoGallery->description}}"/>
-    <meta name='subtitle' content='This is my subtitle'>
-    <meta name='pagename' content='{{$photoGallery->title}}'>
-    <meta name='identifier-URL' content='http://www.websiteaddress.com'>
-    <meta name='directory' content='submission'>
-    <meta name='author' content='name, email@hotmail.com'>
-    <meta name='subject' content='your website s subject'>
-    <meta name='abstract' content=''>
-    <meta name='topic' content=''>
-    <meta name='summary' content=''>
-
 @endsection
 
 
 @section('css')
     <link href="//vjs.zencdn.net/5.8/photo-js.min.css" rel="stylesheet">
-
     <link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">
 @endsection
 

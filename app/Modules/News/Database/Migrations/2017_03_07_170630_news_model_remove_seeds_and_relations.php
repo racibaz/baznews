@@ -75,6 +75,10 @@ class NewsModelRemoveSeedsAndRelations extends Migration
         if(!empty(Setting::where('attribute_key','is_show_previous_and_next_news')->first()))
             Setting::where('attribute_key','is_show_previous_and_next_news')->first()->delete();
 
+        $settingRepo = new \App\Repositories\SettingRepository();
+        $settingRepo->forgetCache();
+
+
         //widget_groups
         if(!empty(WidgetGroup::where('name','news_content_header')->first()))
             WidgetGroup::where('name','news_content_header')->first()->delete();
@@ -147,6 +151,9 @@ class NewsModelRemoveSeedsAndRelations extends Migration
 
         if(!empty(WidgetGroup::where('name','archive_content_fixed_footer')->first()))
             WidgetGroup::where('name','archive_content_fixed_footer')->first()->delete();
+
+        $widgetRepo = new \App\Repositories\WidgetGroupRepository();
+        $widgetRepo->forgetCache();
 
 
         //futurenews
@@ -484,6 +491,9 @@ class NewsModelRemoveSeedsAndRelations extends Migration
 
         if(!empty(Permission::where('name','store-newssetting')->first()))
             Permission::where('name','store-newssetting')->first()->delete();
+
+        $permissionRepo = new \App\Repositories\PermissionRepository();
+        $permissionRepo->forgetCache();
     }
 
     public function removeEventsTableItems()
@@ -500,6 +510,9 @@ class NewsModelRemoveSeedsAndRelations extends Migration
         DB::table('events')->where('eventable_type', Video::class)->delete();
         DB::table('events')->where('eventable_type', VideoCategory::class)->delete();
         DB::table('events')->where('eventable_type', VideoGallery::class)->delete();
+
+        $repo = new \App\Repositories\EventRepository();
+        $repo->forgetCache();
     }
 
     public function removeTaggableTableItems()
@@ -516,6 +529,9 @@ class NewsModelRemoveSeedsAndRelations extends Migration
         DB::table('taggables')->where('taggable_type', Video::class)->delete();
         DB::table('taggables')->where('taggable_type', VideoCategory::class)->delete();
         DB::table('taggables')->where('taggable_type', VideoGallery::class)->delete();
+
+        $repo = new \App\Repositories\TagRepository();
+        $repo->forgetCache();
     }
 
     public function removeLinksTableItems()

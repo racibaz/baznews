@@ -91,42 +91,23 @@
                             </div>
                         </div>
 
-                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=oldu67"></script>
-                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
                         <div class="share-box">
                             <div class="title-section">
                                 <h1>
-                                    <span>Paylaş</span>
+                                    <span>{{trans('common.share')}}</span>
                                 </h1>
                             </div>
-                            <div class="addthis_inline_share_toolbox"></div>
-                        </div><!-- /.share-box -->
-
-                        {{--@if($record->is_comment)--}}
-                            <div class="discus-box">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div id="disqus_thread"></div>
-                                        <script>
-                                            {{--var disqus_config = function () {--}}
-                                                {{--this.page.url = '{{Cache::tags('Setting')->get('url')}}/{{$record->slug}}';--}}
-                                                {{--this.page.identifier = '{{$record->id}}';--}}
-                                                {{--this.page.title = '{{$record->title}}';--}}
-                                            {{--};--}}
-
-                                            (function() { // DON'T EDIT BELOW THIS LINE
-                                                var d = document, s = d.createElement('script');
-                                                s.src = '//baznews.disqus.com/embed.js';
-                                                s.setAttribute('data-timestamp', +new Date());
-                                                (d.head || d.body).appendChild(s);
-                                            })();
-                                        </script>
-                                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                                    </div>
-                                </div><!-- Disqus Yorum Alanı -->
-                            </div><!-- /.discus-box -->
-                        {{--@endif--}}
+                            {!! Cache::tags('Setting')->get('addthis') !!}
+                        </div>
+                    {{--@if($record->is_comment)--}}
+                        {{--<div class="discus-box">--}}
+                            {{--<div class="row">--}}
+                                {{--<div class="col-md-12">--}}
+                                    {{--{!! Cache::tags('Setting')->get('disqus') !!}--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div><!-- /.discus-box -->--}}
+                    {{--@endif--}}
 
                     </div><!-- /.new-content -->
                 </div><!-- /.col-md-8 -->
