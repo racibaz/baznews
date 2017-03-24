@@ -192,25 +192,34 @@ body {
     font-weight: 700;
     margin: 0;
 }
-.title-section h1 span,
-.title-section h2 span,
-.title-section h3 span,
-.title-section h4 span,
-.title-section h5 span {
+.title-section h1 > a,
+.title-section h2 > a,
+.title-section h3 > a,
+.title-section h4 > a,
+.title-section h5 > a {
+    display: inline-block;
+    padding: 10px 15px;
+    color:#FFFFFF;
+}
+.title-section h1 > span,
+.title-section h2 > span,
+.title-section h3 > span,
+.title-section h4 > span,
+.title-section h5 > span {
     display: inline-block;
     padding: 10px 15px;
     color:#FFFFFF;
 }
 .title-section .btn{
-    background-color: #5c91a7;
+    background-color: #a23f44;
+    border: 1px solid #a23f44;
     color: #fff;
     padding: 2px 6px;
-    border: 1px solid #5c91a7;
     margin: 6px;
 }
 .title-section .btn:hover{
-    background-color: #14465a;
-    border: 1px solid #14465a;
+    background-color: #9F191F;
+    border: 1px solid #9F191F;
 }
 /* ==========================================================================
    Big Title box
@@ -2430,14 +2439,14 @@ ul.news-list li .text .title{
     overflow: hidden;
 }
 ul.news-list li .text .title > a h3{
-    margin: 0;
     font-weight:bold;
-    font-size:14px;
+    font-size:15px;
+    margin:5px 0;
 }
 ul.news-list li .text .excerpt{
     display: block;
     overflow: hidden;
-    min-height: 40px;
+    max-height: 55px;
     font-size: 12px;
 }
 ul.news-list li .text span.timeago {

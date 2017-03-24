@@ -13,4 +13,5 @@ return [
     'news_categories' => 'Haber Kategorileri Listesi',
     'management' => 'Haber Kategorileri Yönetimi',
     'keywords' => 'Anahtar Kelimler',
+    'show_more' => 'Daha Fazla'
 ];

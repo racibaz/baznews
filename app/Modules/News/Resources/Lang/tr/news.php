@@ -24,4 +24,7 @@ return [
     'map' => 'Harita',
     'previous_news' => ' Önceki Haber',
     'next_news' => 'Sonraki Haber ',
+    'recommendation_news_widget_title' => 'Önerilen Haberler',
+    'breaking_news' => 'Son Dakika:',
+
 ];

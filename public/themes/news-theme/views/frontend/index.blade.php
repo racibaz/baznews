@@ -109,11 +109,9 @@
                                     <div class="pull-right">
                                         <a href="{{ route('show_news_category', $cuffNewsCategory->slug) }}" class="btn btn-primary">{{ trans('news::news_category.show_more') }}</a>
                                     </div>
-                                    <h1>
-                                        <span>
-                                            <a href="{{ route('show_news_category', $cuffNewsCategory->slug) }}"> {{ $cuffNewsCategory->name }} </a>
-                                        </span>
-                                    </h1>
+                                    <h3>
+                                        <a href="{{ route('show_news_category', $cuffNewsCategory->slug) }}"><span> {{ $cuffNewsCategory->name }} </span></a>
+                                    </h3>
                                 </div>
                                 <div class="new-list-ct module">
                                     <div class="left-img-ct" style="background-image:{{ Theme::asset($activeTheme . '::img/example.jpg')}};backgroun-position:0 0; background-repeat: no-repeat;background-size: cover;">
