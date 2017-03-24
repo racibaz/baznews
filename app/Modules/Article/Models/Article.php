@@ -52,17 +52,6 @@ class Article extends Eloquent
         return $this->belongsToMany(ArticleCategory::class, 'article_categories_articles', 'article_id', 'article_category_id');
     }
 
-    public static function validate($input) {
-        $rules = array(
-            'user_id' => 'required',
-            'article_author_id' => 'required',
-            'title' => 'required',
-            'hit'   => 'integer',
-            'order' => 'integer',
-        );
-        return Validator::make($input, $rules);
-    }
-
     public static function articleList()
     {
         return Article::where('is_active',1)->pluck('title', 'id');

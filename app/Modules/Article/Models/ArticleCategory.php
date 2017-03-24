@@ -66,15 +66,6 @@ class ArticleCategory extends Model
         return $this->morphMany(Link::class, 'linkable');
     }
 
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'Required',
-            'hit' => 'integer',
-            'icon' => 'image|max:255',
-        );
-        return Validator::make($input, $rules);
-    }
-
     public static function articleCategoryList()
     {
         return ArticleCategory::where('is_active',1)->pluck('name', 'id');
