@@ -4,136 +4,117 @@
 
     <article class="container" id="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8" id="content">
                 <div class="page-content">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="panel panel-light-blue">
-                                <div class="panel-heading">
-                                    {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
-                                </div>
-
-                                @if($datetime){{$datetime->formatLocalized('%A %d %B %Y') }}@endif
-
+                        <div class="col-md-12">
+                            <div class="title-section">
+                                <h1>
+                                    <span>
+                                        @if($datetime){{$datetime->formatLocalized('%A %d %B %Y') }}@endif
+                                    </span>
+                                </h1>
+                            </div><!-- /.title-section -->
+                            <div class="archive-search-form module">
                                 {!! Form::open(['route' => 'archive_index','method' => 'get']) !!}
-
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            {!! Form::label('days', trans('news::archive.datetime'),['class'=> 'col-lg-2 control-label']) !!}
-                                            <div class="col-lg-10">
-                                                {!!  Form::selectRange('days', 1, 31) !!}
-                                            </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            {!! Form::label('days', trans('news::archive.day'),['class'=> 'control-label']) !!}
+                                            {!! Form::selectRange('days', 1, 31,1,['class'=>'form-control']) !!}
                                         </div>
                                     </div>
-
-                                    <div class="form-group">
-                                        <div class="row">
-                                            {!! Form::label('months', trans('news::archive.datetime'),['class'=> 'col-lg-2 control-label']) !!}
-                                            <div class="col-lg-10">
-                                                <select id="months" name="months" class="form-control">
-                                                    <option value="1">{{trans('setting.january')}}</option>
-                                                    <option value="2">{{trans('setting.february')}}</option>
-                                                    <option value="3">{{trans('setting.march')}}</option>
-                                                    <option value="4">{{trans('setting.april')}}</option>
-                                                    <option value="5">{{trans('setting.may')}}</option>
-                                                    <option value="6">{{trans('setting.june')}}</option>
-                                                    <option value="7">{{trans('setting.july')}}</option>
-                                                    <option value="8">{{trans('setting.august')}}</option>
-                                                    <option value="9">{{trans('setting.september')}}</option>
-                                                    <option value="10">{{trans('setting.october')}}</option>
-                                                    <option value="11">{{trans('setting.november')}}</option>
-                                                    <option value="12">{{trans('setting.december')}}</option>
-                                                </select>
-                                            </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            {{--{!! Form::text('years', null,['class'=> 'col-lg-2 control-label']) !!}--}}
+                                            {!! Form::label('years', trans('news::archive.year'),['class'=> 'control-label']) !!}
+                                            <select id="years" name="years" class="form-control">
+                                                <option value="2017">2017</option>
+                                                <option value="2016">2016</option>
+                                            </select>
                                         </div>
                                     </div>
-
-                                    <div class="form-group">
-                                        <div class="row">
-                                            {!! Form::label('years', trans('news::archive.datetime'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                            <div class="col-lg-10">
-                                                {{--{!! Form::text('years', null,['class'=> 'col-lg-2 control-label']) !!}--}}
-                                                <select id="years" name="years" class="form-control">
-                                                    <option value="2017">2017</option>
-                                                    <option value="2016">2016</option>
-                                                </select>
-                                            </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {!! Form::label('months', trans('news::archive.month'),['class'=> 'control-label']) !!}
+                                            <select id="months" name="months" class="form-control">
+                                                <option value="1">{{trans('news::setting.january')}}</option>
+                                                <option value="2">{{trans('news::setting.february')}}</option>
+                                                <option value="3">{{trans('news::setting.march')}}</option>
+                                                <option value="4">{{trans('news::setting.may')}}</option>
+                                                <option value="5">{{trans('news::setting.april')}}</option>
+                                                <option value="6">{{trans('news::setting.june')}}</option>
+                                                <option value="7">{{trans('news::setting.july')}}</option>
+                                                <option value="8">{{trans('news::setting.august')}}</option>
+                                                <option value="9">{{trans('news::setting.september')}}</option>
+                                                <option value="10">{{trans('news::setting.october')}}</option>
+                                                <option value="11">{{trans('news::setting.november')}}</option>
+                                                <option value="12">{{trans('news::setting.december')}}</option>
+                                            </select>
                                         </div>
                                     </div>
-
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-lg-offset-2 col-lg-10">
-                                                <button class="btn btn-success" type="submit"><i class="fa fa-search"></i> {{trans('common.search')}}</button>
-                                            </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <button class="btn btn-success btn-block" type="submit" style="margin-top: 25px;"><i class="fa fa-search"></i> {{trans('news::common.search')}}</button>
                                         </div>
                                     </div>
                                 </div>
+
                                 {!! Form::close() !!}
-                            </div>
-                        </div>
-                    </div><!-- end row -->
+                            </div><!-- /.archşve-search -->
 
-                    <div class="tags-box">
-                        @foreach($tags as $tag)
-                            <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
-                        @endforeach
-                    </div>
+                            <div class="tags-box">
+                                @foreach($tags as $tag)
+                                    <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
+                                @endforeach
+                            </div><!-- /.tag-box -->
+                        </div><!-- /.col-md-12 -->
+                    </div><!-- /.row -->
 
-                    {{ $tags->links() }}
+
+
+
 
                     @if(isset($records))
                         <div class="row">
-                            <div class="col-xs-12">
-                                <div class="box">
-                                    <div class="box-header">
-                                        <h3 class="box-title"><strong>{{trans('news.archive')}}</strong></h3>
-                                    </div>
-                                    <!-- /.box-header -->
-                                    <div class="box-body">
-                                        sayfalama
-                                        <table id="countries" class="table table-bnewsed table-hover">
-                                            <thead>
+                            <div class="col-md-12">
+                                <div class="title-section">
+                                    <h2>
+                                        <span>{{trans('news::news.archive_news')}}</span>
+                                    </h2>
+                                </div><!-- /.title-section -->
+                                <div class="archive-news-list module">
+                                    <table id="countries" class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>{{trans('news::news.image')}}</th>
+                                            <th>{{trans('news::news.title')}}</th>
+                                            <th>{{trans('news::news.spot')}}</th>
+                                            <th>{{trans('news::news.hit')}}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($records as $index => $record)
                                             <tr>
-                                                <th>#</th>
-                                                <th>{{trans('news.title')}}</th>
-                                                <th>{{trans('news.spot')}}</th>
-                                                <th>{{trans('news.hit')}}</th>
+                                                <td>{{$index++}}</td>
+                                                <!-- TODO : Haberin resmine link verilmeli.. -->
+                                                <td><img src="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}" width="100px" alt="{{$record->title}}"></td>
+                                                <td>{!! link_to_route('news.show', $record->title , $record, [] ) !!}</td>
+                                                <td width="50%"><span style="display: block;max-height:20px;overflow: hidden;">{!! link_to_route('news.show', $record->spot , $record, [] ) !!}</span></td>
+                                                <td> {{$record->hit}} </td>
                                             </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($records as $index => $record)
-                                                <tr>
-                                                    <td>{{$index++}}</td>
-                                                    <td>{!! link_to_route('news.show', $record->title , $record, [] ) !!}</td>
-                                                    <td> {{$record->spot}} </td>
-                                                    <td> {{$record->hit}} </td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                            <tfoot>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>{{trans('news.title')}}</th>
-                                                <th>{{trans('news.spot')}}</th>
-                                                <th>{{trans('news.hit')}}</th>
-                                            </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                    <!-- /.box-body -->
-                                </div>
-                                <!-- /.box -->
-                                <!-- /.box -->
-                            </div>
-                            <!-- /.col -->
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                    {{ $tags->links() }}
+                                </div><!-- /.archive-news -->
+                            </div><!-- /.col -->
                         </div>
                     @endif
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4" id="sidebar">
                 <div class="sidebar">
                     <div class="widget">
                         @foreach($widgets as $widget)
@@ -148,14 +129,14 @@
 @endsection
 
 @section('js')
-    <!-- bootstrap datepicker -->-
-    <script src="{{ Theme::asset($activeTheme . '::AdminLTE//plugins/datepicker/bootstrap-datepicker.js') }}"></script>
-
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script>
-        //Date picker
-        $('#datetime').datepicker({
-            dateFormat: 'yy-mm-dd',
-            autoclose: true
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#sidebar,#content').theiaStickySidebar();
         });
     </script>
 @endsection

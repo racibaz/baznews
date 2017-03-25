@@ -1559,7 +1559,12 @@ footer .footer-bottom .cpy {
     Tags
    ========================================================================== */
 .tags-box{
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+.tags-box:after{
+    display: block;
+    clear: both;
+    content:'';
 }
 .tags-box a{
     padding:5px 10px;
@@ -2501,4 +2506,10 @@ ul.news-list li .text span.timeago {
    ========================================================================== */
 .archive-widget .row:first-child .form-group{
     margin-bottom: 10px;
+}
+.archive-search-form .row:first-child .form-group{
+    margin-bottom: 10px;
+}
+.archive-news-list .pagination{
+    margin: 0;
 }

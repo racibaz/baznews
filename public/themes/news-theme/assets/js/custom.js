@@ -134,8 +134,8 @@
      * --------------------------------------------------------*/
     if($('.books-slider').length > 0){
         $('.books-slider').bxSlider({
-            slideWidth: 210,
-            minSlides: 2,
+            slideWidth: 140,
+            minSlides: 3,
             maxSlides: 5,
             slideMargin: 0,
             auto:true,
