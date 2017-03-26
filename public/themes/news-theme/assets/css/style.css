@@ -1928,25 +1928,42 @@ footer .footer-bottom .cpy {
    ========================================================================== */
 .article-content{
     margin-bottom: 10px;
+    padding: 20px;
 }
-.article-content{
+.article-head:after{
+    display: block;
+    clear: both;
+    content: '';
+}
+.article-head .author-img{
+    float: left;
+    width: 60px;
+    height: 60px;
     margin-bottom: 10px;
 }
-.article-content h1.article-title{
-    padding: 0 15px;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-size:20px;
-    font-weight: bold;
+.article-head .article-detail{
+    float: left;
+    padding-left: 10px;
 }
-.article-content .author{
-    margin: 0 15px;
+.article-head .article-detail .author-name > a h2{
+    font-size: 17px;
+    color:#00a7d0;
+    margin: 0;
 }
-.article-content .content{
-    padding: 15px 15px;
-    font-size: 15px;
-    line-height: 1.3em;
+.article-head .article-detail .author-name > a{
+    display: inline-block;
+    color:#00a7d0;
+    margin-bottom:20px;
 }
+.article-head .article-detail .article-title > a h1{
+    font-size: 20px;
+    margin: 0;
+    color: #000000;
+}
+.article-head .article-detail .article-title > a{
+    color: #000000;
+}
+
 
 /* ==========================================================================
    Articles

@@ -4,32 +4,55 @@
 
 
     <div class="container" id="container">
-        <div class="breadcrumbs">
-            <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \
-                @foreach($record->article_categories as $articleCategory)
-                    <a href="{!! route('article_category', ['slug' => $articleCategory->slug]) !!}">{{$articleCategory->name}}</a> \
-                @endforeach
+        <ol class="breadcrumb">
+            <li>
+                <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+            </li>
+            @foreach($record->article_categories as $articleCategory)
+                <li>
+                    <a href="{!! route('show_news_category', ['slug' => $articleCategory->slug]) !!}">
+                        {{$articleCategory->name}}
+                    </a>
+                </li>
+            @endforeach
+            <li>
                 {{$record->name}}
-            </p>
-        </div>
+            </li>
+        </ol>
         <div class="row">
             <div class="col-md-8">
                 <article class="article-content module">
-                    <h1 class="article-title">{{$record->title}}</h1>
-                    <div class="author">
-                        <span>Yazar : </span>
-                        <a href="{!! route('article_author', ['slug' => $record->article_author->slug]) !!}">{{$record->article_author->name}}</a>
-                    </div>
-                    <div class="content">
 
-                        <p>Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod.</p>
-                        <p>Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas sed diam eget risus varius blandit sit amet non magna. Curabitur blandit tempus porttitor. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-
-                        {{--yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>--}}
-                        {{--yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>--}}
-                        <br>
-                        Kitap Detayları Gelecek.
+                    <div class="article-head">
+                        <div class="author-img">
+                            <a href="{!! route('article_author', ['slug' => $record->article_author->slug]) !!}" title="Author Name">
+                                <img src="https://placeimg.com/60/60/people/grayscale" alt="Author Name">
+                            </a>
+                        </div>
+                        <div class="article-detail">
+                            <div class="author-name">
+                                <a href="{!! route('article_author', ['slug' => $record->article_author->slug]) !!}">
+                                    <h2>{{$record->article_author->name}}</h2>
+                                </a>
+                            </div>
+                            <div class="article-title">
+                                <a href="#">
+                                    <h1>{{$record->title}}</h1>
+                                </a>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="article-body-text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi assumenda autem dolor
+                            doloremque dolores dolorum enim ipsa maxime minima necessitatibus nemo nesciunt quaerat,
+                            quam quidem ratione reiciendis veniam voluptatibus!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur, cumque dicta
+                            distinctio dolores enim est eveniet explicabo facilis harum hic molestiae nobis officiis
+                            quos, soluta tempore vero voluptas, voluptatem!</p>
+                    </div>
+                    {{--yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>--}}
+                    {{--yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>--}}
                 </article>
             </div><!-- /.new-content -->
             <div class="col-md-4">
