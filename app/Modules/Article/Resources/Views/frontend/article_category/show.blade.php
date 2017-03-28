@@ -9,17 +9,48 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <article class="module">
-                    <div id="new-content">
-                        {{$record->name}}
-                        <br /><br /><br /><br />
-                        Makale Kategori Detayları Gelecek.
-                        @foreach($record->articles as $record)
-                            <a href="{!! route('article', ['slug' => $record->slug]) !!}">{{$record->title}} </a>
-                            <br />
-                        @endforeach
+                <article class="article module">
+                    <div class="article-head">
+                        <div class="article-detail">
+                            <div class="author-name">
+                                <h2>{{$record->name}}</h2>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="article-content">
+                        {{$record->cv}}
+                    </div>
+                    {{--yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>--}}
+                    {{--yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>--}}
                 </article>
+
+                <div class="other-article">
+                    <div class="title-section">
+                        <h2>
+                            <span>Diğer Makaleler</span>
+                        </h2>
+                    </div>
+                    <div class="module">
+                        <ul class="article-list">
+                            @foreach($record->articles as $record)
+                                <li>
+                                    <div class="article-title pull-left">
+                                        <a href="{!! route('article', ['slug' => $record->slug]) !!}">
+                                            <span>{{$record->title}}</span>
+                                        </a>
+                                    </div>
+                                    <div class="time pull-right">
+                                        <a href="{!! route('article', ['slug' => $record->slug]) !!}">
+                                            <i class="fa fa-clock-o"></i>
+                                            <span>{{Carbon\Carbon::parse($record->created_at)->format('d-m-Y')}}</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
             </div><!-- /.new-content -->
             <div class="col-md-4">
                 <div class="sidebar">

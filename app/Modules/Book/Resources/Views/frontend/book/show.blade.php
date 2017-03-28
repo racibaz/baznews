@@ -47,6 +47,25 @@
                         </div><!-- /.row -->
                     </div><!-- /#book-detail -->
                 </article>
+                <div class="other-books">
+                    <div class="title-section">
+                        <h2><span>Diğer Kitaplar</span></h2>
+                    </div>
+                    <div class="book-list module">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <a href="#" class="thumbnail">
+                                    <div class="thumbnail">
+                                        <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
+                                        <div class="caption">
+                                            <h3>Kitap 1</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.book-list -->
+                </div><!-- /.other-books -->
             </div><!-- /.new-content -->
             <div class="col-md-4">
                 <div class="sidebar">
