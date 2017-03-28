@@ -1926,44 +1926,78 @@ footer .footer-bottom .cpy {
 /* ==========================================================================
    Article
    ========================================================================== */
-.article-content{
+.article{
     margin-bottom: 10px;
     padding: 20px;
 }
-.article-head:after{
+.article .article-head{
+    margin-bottom: 15px;
+}
+.article .article-head:after{
     display: block;
     clear: both;
     content: '';
 }
-.article-head .author-img{
+.article .article-head .author-img{
     float: left;
     width: 60px;
     height: 60px;
     margin-bottom: 10px;
 }
-.article-head .article-detail{
+.article .article-head .article-detail{
     float: left;
     padding-left: 10px;
 }
-.article-head .article-detail .author-name > a h2{
+.article .article-head .article-detail .author-name > a h2{
     font-size: 17px;
     color:#00a7d0;
     margin: 0;
 }
-.article-head .article-detail .author-name > a{
+.article .article-head .article-detail .author-name > a{
     display: inline-block;
     color:#00a7d0;
     margin-bottom:20px;
 }
-.article-head .article-detail .article-title > a h1{
+.article .article-head .article-detail .article-title > a h1{
     font-size: 20px;
     margin: 0;
     color: #000000;
 }
-.article-head .article-detail .article-title > a{
+.article .article-head .article-detail .article-title > a{
     color: #000000;
 }
+.article .article-content p{
+    font-size:15px;
+}
 
+.other-article ul.article-list {
+    list-style:none;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.other-article ul.article-list li:after{
+    display: block;
+    clear: both;
+    content: '';
+}
+.other-article ul.article-list li{
+    list-style-image:none;
+    display: block;
+    padding: 10px;
+    border-bottom:1px solid #ccc;
+}
+.other-article ul.article-list li:last-child{
+    border:0;
+}
+.other-article ul.article-list li > .article-title > a{
+    font-size:15px;
+    font-weight: bold;
+}
+.other-article ul.article-list li > .time > a{
+    font-size:11px;
+    color:#ccc;
+}
 
 /* ==========================================================================
    Articles
