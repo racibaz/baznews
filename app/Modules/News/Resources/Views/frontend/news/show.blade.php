@@ -118,29 +118,27 @@
                             </ul>
                         @endif
 
-
-                        <div class="share-box">
-                            <div class="title-section">
-                                <h1>
-                                    <span>{{trans('news::common.share')}}</span>
-                                </h1>
-                            </div>
-                            {!! Cache::tags('Setting')->get('addthis') !!}
-                        </div>
-
-                        @if($record->is_comment)
-                            <div class="discus-box">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        {!! Cache::tags('Setting')->get('disqus') !!}
-                                    </div>
-                                </div>
-                            </div><!-- /.discus-box -->
-                        @endif
-
                     </div><!-- /.content -->
 
                 </article><!-- /.news-article -->
+                <div class="share-box">
+                    <div class="title-section">
+                        <h1>
+                            <span>{{trans('news::common.share')}}</span>
+                        </h1>
+                    </div>
+                    {!! Cache::tags('Setting')->get('addthis') !!}
+                </div>
+
+                @if($record->is_comment)
+                    <div class="discus-box">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {!! Cache::tags('Setting')->get('disqus') !!}
+                            </div>
+                        </div>
+                    </div><!-- /.discus-box -->
+                @endif
 
                 @if($relatedNewsItems->count())
                     <div class="relation-news">

@@ -4,25 +4,42 @@
 
 
     <div class="container" id="container">
-        <div class="breadcrumbs">
-            <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \
-                @foreach($record->book_categories as $bookCategory)
-                    <a href="{!! route('book_category', ['slug' => $bookCategory->slug]) !!}">{{$bookCategory->name}}</a> \
-                @endforeach
+        <ol class="breadcrumb">
+            <li>
+                <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+            </li>
+            @foreach($record->book_categories as $bookCategory)
+                <li>
+                    <a href="{!! route('book_category', ['slug' => $bookCategory->slug]) !!}">
+                        {{$bookCategory->name}}
+                    </a>
+                </li>
+            @endforeach
+            <li>
                 {{$record->name}}
-            </p>
-        </div>
+            </li>
+        </ol>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8" id="content">
                 <article class="module">
                     <div id="book-detail">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="book-img">
                                     <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
                                 </div>
+                                <div class="detail">
+                                    <ul class="nav">
+                                        <li><strong>ISBN:</strong><span>{{$record->ISBN}}</span></li>
+                                        <li><strong>Yayın Tarihi:</strong><span>{{$record->release_date}}</span></li>
+                                        <li><strong>Sayfa Sayısı:</strong><span>{{$record->number_of_print}}</span></li>
+                                        <li><strong>Renk:</strong><span>{{$record->skin_type}}</span></li>
+                                        <li><strong>Kağıt Tipi:</strong><span>{{$record->paper_typr}}</span></li>
+                                        <li><strong>Öçüleri:</strong><span>{{$record->size}}</span></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-9">
                                 <div class="detail-bar">
                                     <div class="book-name">
                                         <h1>
@@ -53,13 +70,27 @@
                     </div>
                     <div class="book-list module">
                         <div class="row">
-                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                 <a href="#" class="thumbnail">
-                                    <div class="thumbnail">
-                                        <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
-                                        <div class="caption">
-                                            <h3>Kitap 1</h3>
-                                        </div>
+                                    <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
+                                    <div class="caption">
+                                        <h3>Kitap 1</h3>
+                                    </div>
+                                </a>
+                            </div><!-- /.col -->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <a href="#" class="thumbnail">
+                                    <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
+                                    <div class="caption">
+                                        <h3>Kitap 1</h3>
+                                    </div>
+                                </a>
+                            </div><!-- /.col -->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <a href="#" class="thumbnail">
+                                    <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
+                                    <div class="caption">
+                                        <h3>Kitap 1</h3>
                                     </div>
                                 </a>
                             </div><!-- /.col -->
@@ -67,7 +98,7 @@
                     </div><!-- /.book-list -->
                 </div><!-- /.other-books -->
             </div><!-- /.new-content -->
-            <div class="col-md-4">
+            <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
                     @foreach($widgets as $widget)
                         @widget($widget['namespace'])
@@ -102,4 +133,17 @@
     <meta property="og:image" content="{{asset('images/books/' . $record->id . '/original/' .$record->thumbnail)}}"/>
     <meta property="article:published_time" content="{{$record->created_at}}">
     <meta property="article:author" content="">
+@endsection
+@section('js')
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script type="text/javascript">
+
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#sidebar,#content').theiaStickySidebar();
+        });
+    </script>
 @endsection

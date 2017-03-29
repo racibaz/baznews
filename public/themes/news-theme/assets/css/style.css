@@ -1196,6 +1196,7 @@ header{
     line-height: normal;
     text-overflow: inherit;
     color: #8e9093;
+    font-weight: 400;
 }
 
 /* ==========================================================================
@@ -1645,6 +1646,10 @@ footer .footer-bottom .cpy {
 .author-box .author-detail .links .nav li > a:hover{
     background-color: #E3000F;
 }
+.pager{
+    margin-top: 10px;
+    margin-bottom:0;
+}
 .pager li a{
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -1876,7 +1881,6 @@ footer .footer-bottom .cpy {
 }
 .books-widget .book .name a{
     color: #000;
-    font-weight: bold;
     text-decoration: none;
     display: block;
     font-size: 13px;
@@ -1928,7 +1932,6 @@ footer .footer-bottom .cpy {
    ========================================================================== */
 .article{
     margin-bottom: 10px;
-    padding: 20px;
 }
 .article .article-head{
     margin-bottom: 15px;
@@ -2219,8 +2222,21 @@ ul.sub-list li > a > .time {
    Book Detail
    ========================================================================== */
 #book-detail .book-img{
-    padding: 15px;
-    text-align: center;
+    padding: 8px;
+}
+#book-detail .detail .nav{
+    margin-left: 8px;
+}
+#book-detail .detail .nav li{
+    font-size:12px;
+}
+#book-detail .detail .nav li strong{
+    font-size:12px;
+}
+#book-detail .detail .nav li span{
+    font-size:11px;
+    color: #6f6f6f;
+    margin-left: 6px;
 }
 #book-detail .detail-bar{
     padding: 10px;
@@ -2278,6 +2294,7 @@ ul.sub-list li > a > .time {
 .book-list .thumbnail .caption{
     display: block;
     width: 100%;
+    max-height: 22px;
     overflow: hidden;
 }
 .book-list .thumbnail .caption h3{
@@ -2289,13 +2306,49 @@ ul.sub-list li > a > .time {
 /* ==========================================================================
    Author Books
    ========================================================================== */
-
-.author-books .author-name{
+.author-books .author-head{
+    padding: 15px;
+}
+.author-books .author-head:after{
+    display: block;
+    clear:both;
+    content:'';
+}
+.author-books .author-head .author-img{
+    float: left;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.author-books .author-head .author-img img{
+    display: block;
+    width: 100%;
+}
+.author-books .author-head .detail{
+    float: left;
+    width: 90%;
     padding: 10px;
 }
-.author-books .author-name h1{
+.author-books .author-head .author-name{
+    margin-bottom: 10px;
+}
+.author-books .author-head .author-name h1{
     font-size:28px;
     margin: 0;
+}
+.author-books .author-head .author-bio{
+    overflow: hidden;
+    max-height: 93px;
+}
+.author-books .author-head .author-bio,
+.author-books .author-head .author-bio p{
+    font-size: 13px;
+    color: #9c9c9c;
 }
 .author-books .book{
     border:1px solid #c9cccf;

@@ -8,7 +8,7 @@
             <p><a href="new-details.html">Home.</a>   \\   <a href="new-details.html">World News.</a>   \\   Single.</p>
         </div>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8" id="content">
                 <div id="new-content">
                     <div class="share-box">
                         <ul class="nav nav-justified">
@@ -50,7 +50,7 @@
                     </div><!-- /.content -->
                 </div><!-- /.new-content -->
             </div><!-- /.col-md-8 -->
-            <div class="col-md-4">
+            <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
                     <div class="nw-sm-img">
                         <div role="tabpanel">
@@ -266,4 +266,15 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>
 
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script type="text/javascript">
+
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#sidebar,#content').theiaStickySidebar();
+        });
+    </script>
 @endsection

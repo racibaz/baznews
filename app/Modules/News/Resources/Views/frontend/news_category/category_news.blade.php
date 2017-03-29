@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-8" id="content">
                 <div class="cat-posts">
                     <div class="title-section">
                         <h1>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4" id="sidebar">
                 <div class="sidebar">
                     <div class="widget">
                         @foreach($widgets as $widget)
@@ -79,6 +79,8 @@
 @endsection
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script type="text/javascript">
         (function($) {
             'use strict';
@@ -89,5 +91,12 @@
             $('.ticker').ticker();
 
         })(jQuery);
+
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#sidebar,#content').theiaStickySidebar();
+        });
     </script>
 @endsection

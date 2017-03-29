@@ -17,7 +17,7 @@
             </li>
         </ol>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8" id="content">
                 <div id="author-content">
 
                     <div class="author-box">
@@ -106,7 +106,7 @@
                     </div>
                 </div><!-- /.new-content -->
             </div><!-- /.col-md-8 -->
-            <div class="col-md-4">
+            <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
                     <div class="nw-sm-img module">
                         <div role="tabpanel">
@@ -299,5 +299,15 @@
 @endsection
 
 @section('js')
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script type="text/javascript">
 
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#sidebar,#content').theiaStickySidebar();
+        });
+    </script>
 @endsection
