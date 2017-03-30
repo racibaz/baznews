@@ -4,15 +4,18 @@
 
 
     <div class="container" id="container">
-        <div class="breadcrumbs">
-            <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \
+        <ol class="breadcrumb">
+            <li>
+                <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+            </li>
+            <li>
                 {{$record->name}}
-            </p>
-        </div>
+            </li>
+        </ol>
         <div class="row">
-            <div class="col-md-8">
-                <article class="module">
-                    <div class="bio-content">
+            <div class="col-md-8" id="content">
+                <article>
+                    <div class="bio-content module">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="bio-profile">
@@ -37,8 +40,44 @@
                         </div><!-- /.bio-content -->
                     </div><!-- /.module -->
                 </article>
+                <div class="other-bio">
+                    <div class="title-section">
+                        <h2>
+                            <span>Diğer Biyografiler</span>
+                        </h2>
+                    </div>
+                    <div class="bio-box module">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <span class="bio-img"><img src="http://lorempixel.com/output/fashion-q-g-70-70-8.jpg" alt="" class="img-responsive"></span>
+                                    <div class="bio-detail">
+                                        <span class="bio-title">Nazım Hikmet</span>
+                                        <span class="bio-excerpt">Yazar,Şair Flan Filan..</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="bio-img"><img src="http://lorempixel.com/output/fashion-q-g-70-70-8.jpg" alt="" class="img-responsive"></span>
+                                    <div class="bio-detail">
+                                        <span class="bio-title">Nazım Hikmet</span>
+                                        <span class="bio-excerpt">Yazar,Şair Flan Filan..</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div><!-- /.other-bio -->
+                </div><!-- /.other-bio -->
+
+                <div class="module">
+                    <div class="advert advert-center">
+                        <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Sidebar" class="img-responsive">
+                    </div>
+                </div>
+
             </div><!-- /.new-content -->
-            <div class="col-md-4">
+            <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
                     @foreach($widgets as $widget)
                         @widget($widget['namespace'])
@@ -73,4 +112,17 @@
     <meta property="og:image" content="{{asset('images/books/' . $record->id . '/original/' .$record->thumbnail)}}"/>
     <meta property="article:published_time" content="{{$record->created_at}}">
     <meta property="article:author" content="">
+@endsection
+@section('js')
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script type="text/javascript">
+
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#sidebar,#content').theiaStickySidebar();
+        });
+    </script>
 @endsection
