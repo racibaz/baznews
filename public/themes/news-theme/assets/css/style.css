@@ -2240,6 +2240,7 @@ ul.sub-list li > a > .time {
 }
 #book-detail .detail-bar{
     padding: 10px;
+    min-height:400px;
 }
 #book-detail .detail-bar:before {
     display: block;
