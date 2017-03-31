@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.15 on 2017-03-16.
+ * Generated for Laravel 5.4.16 on 2017-03-31.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1082,6 +1082,20 @@ namespace Illuminate\Support\Facades {
         {
             //Method inherited from \Illuminate\Container\Container            
             return \Illuminate\Foundation\Application::factory($abstract);
+        }
+        
+        /**
+         * Resolve the given type with the given parameter overrides.
+         *
+         * @param string $abstract
+         * @param array $parameters
+         * @return mixed 
+         * @static 
+         */
+        public static function makeWith($abstract, $parameters)
+        {
+            //Method inherited from \Illuminate\Container\Container            
+            return \Illuminate\Foundation\Application::makeWith($abstract, $parameters);
         }
         
         /**
@@ -3408,11 +3422,11 @@ namespace Illuminate\Support\Facades {
         /**
          * Get an option from the configuration options.
          *
-         * @param string $option
+         * @param string|null $option
          * @return mixed 
          * @static 
          */
-        public static function getConfig($option)
+        public static function getConfig($option = null)
         {
             //Method inherited from \Illuminate\Database\Connection            
             return \Illuminate\Database\MySqlConnection::getConfig($option);
@@ -10549,6 +10563,21 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Get the rendered content of the view based on a given condition.
+         *
+         * @param bool $condition
+         * @param string $view
+         * @param array $data
+         * @param array $mergeData
+         * @return string 
+         * @static 
+         */
+        public static function renderWhen($condition, $view, $data = array(), $mergeData = array())
+        {
+            return \Illuminate\View\Factory::renderWhen($condition, $view, $data, $mergeData);
+        }
+        
+        /**
          * Get the rendered contents of a partial from a loop.
          *
          * @param string $view
@@ -13438,226 +13467,6 @@ namespace Laravel\Socialite\Facades {
     }         
 }
     
-namespace Brotzka\DotenvEditor {
-
-    class DotenvEditorFacade {
-        
-        /**
-         * Returns the current backup-path
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getBackupPath()
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::getBackupPath();
-        }
-        
-        /**
-         * Set a new backup-path.
-         * 
-         * The new directory will be created if it doesn't exist
-         *
-         * @param $path
-         * @return bool 
-         * @static 
-         */
-        public static function setBackupPath($path)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::setBackupPath($path);
-        }
-        
-        /**
-         * Checks, if a given key exists in your .env-file.
-         * 
-         * Returns false or true
-         *
-         * @param $key
-         * @return bool 
-         * @static 
-         */
-        public static function keyExists($key)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::keyExists($key);
-        }
-        
-        /**
-         * Returns the value matching to a given key.
-         * 
-         * Returns false, if key does not exist.
-         *
-         * @param $key
-         * @return mixed 
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function getValue($key)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::getValue($key);
-        }
-        
-        /**
-         * Activate or deactivate the AutoBackup-Functionality
-         *
-         * @param $onOff
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function setAutoBackup($onOff)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::setAutoBackup($onOff);
-        }
-        
-        /**
-         * Checks, if Autobackup is enabled
-         *
-         * @return bool 
-         * @static 
-         */
-        public static function AutoBackupEnabled()
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::AutoBackupEnabled();
-        }
-        
-        /**
-         * Used to create a backup of the current .env.
-         * 
-         * Will be assigned with the current timestamp.
-         *
-         * @return bool 
-         * @static 
-         */
-        public static function createBackup()
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::createBackup();
-        }
-        
-        /**
-         * Restores the latest backup or a backup from a given timestamp.
-         * 
-         * Restores the latest version when no timestamp is given.
-         *
-         * @param null $timestamp
-         * @return string 
-         * @static 
-         */
-        public static function restoreBackup($timestamp = null)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::restoreBackup($timestamp);
-        }
-        
-        /**
-         * Returns an array with all available backups.
-         * 
-         * Array contains the formatted and unformatted version of each backup.
-         * Throws exception, if no backups were found.
-         *
-         * @return array 
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function getBackupVersions()
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::getBackupVersions();
-        }
-        
-        /**
-         * Returns filename and path for the given timestamp
-         *
-         * @param $timestamp
-         * @return string 
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function getBackupFile($timestamp)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::getBackupFile($timestamp);
-        }
-        
-        /**
-         * Delete the given backup-file
-         *
-         * @param $timestamp
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function deleteBackup($timestamp)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::deleteBackup($timestamp);
-        }
-        
-        /**
-         * Returns the content of a given backup file
-         * or the content of the current env file.
-         *
-         * @param null $timestamp
-         * @return array 
-         * @static 
-         */
-        public static function getContent($timestamp = null)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::getContent($timestamp);
-        }
-        
-        /**
-         * Returns the given .env as JSON array containing all entries as object
-         * with key and value
-         *
-         * @param null $timestamp
-         * @return string 
-         * @static 
-         */
-        public static function getAsJson($timestamp = null)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::getAsJson($timestamp);
-        }
-        
-        /**
-         * Change the given values of the current env file.
-         * 
-         * If the given key(s) is/are not found, nothing happens.
-         *
-         * @param array $data
-         * @return bool 
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function changeEnv($data = array())
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::changeEnv($data);
-        }
-        
-        /**
-         * Add data to the current env file.
-         * 
-         * Data will be placed at the end.
-         *
-         * @param array $data
-         * @return bool 
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function addData($data = array())
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::addData($data);
-        }
-        
-        /**
-         * Delete one or more entries from the env file.
-         *
-         * @param array $data
-         * @return bool 
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function deleteData($data = array())
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::deleteData($data);
-        }
-        
-    }         
-}
-    
     
 namespace {
 
@@ -13768,20 +13577,6 @@ namespace {
         public static function removedScopes()
         {
             return \Illuminate\Database\Eloquent\Builder::removedScopes();
-        }
-        
-        /**
-         * Apply the callback's query changes if the given "value" is true.
-         *
-         * @param bool $value
-         * @param \Closure $callback
-         * @param \Closure $default
-         * @return $this 
-         * @static 
-         */
-        public static function when($value, $callback, $default = null)
-        {
-            return \Illuminate\Database\Eloquent\Builder::when($value, $callback, $default);
         }
         
         /**
@@ -13943,18 +13738,6 @@ namespace {
         }
         
         /**
-         * Execute the query and get the first result.
-         *
-         * @param array $columns
-         * @return \Illuminate\Database\Eloquent\Model|static|null 
-         * @static 
-         */
-        public static function first($columns = array())
-        {
-            return \Illuminate\Database\Eloquent\Builder::first($columns);
-        }
-        
-        /**
          * Execute the query and get the first result or throw an exception.
          *
          * @param array $columns
@@ -14040,19 +13823,6 @@ namespace {
         }
         
         /**
-         * Chunk the results of the query.
-         *
-         * @param int $count
-         * @param callable $callback
-         * @return bool 
-         * @static 
-         */
-        public static function chunk($count, $callback)
-        {
-            return \Illuminate\Database\Eloquent\Builder::chunk($count, $callback);
-        }
-        
-        /**
          * Chunk the results of a query by comparing numeric IDs.
          *
          * @param int $count
@@ -14065,19 +13835,6 @@ namespace {
         public static function chunkById($count, $callback, $column = null, $alias = null)
         {
             return \Illuminate\Database\Eloquent\Builder::chunkById($count, $callback, $column, $alias);
-        }
-        
-        /**
-         * Execute a callback over each item while chunking.
-         *
-         * @param callable $callback
-         * @param int $count
-         * @return bool 
-         * @static 
-         */
-        public static function each($callback, $count = 1000)
-        {
-            return \Illuminate\Database\Eloquent\Builder::each($callback, $count);
         }
         
         /**
@@ -14288,6 +14045,58 @@ namespace {
         }
         
         /**
+         * Chunk the results of the query.
+         *
+         * @param int $count
+         * @param callable $callback
+         * @return bool 
+         * @static 
+         */
+        public static function chunk($count, $callback)
+        {
+            return \Illuminate\Database\Eloquent\Builder::chunk($count, $callback);
+        }
+        
+        /**
+         * Execute a callback over each item while chunking.
+         *
+         * @param callable $callback
+         * @param int $count
+         * @return bool 
+         * @static 
+         */
+        public static function each($callback, $count = 1000)
+        {
+            return \Illuminate\Database\Eloquent\Builder::each($callback, $count);
+        }
+        
+        /**
+         * Execute the query and get the first result.
+         *
+         * @param array $columns
+         * @return mixed 
+         * @static 
+         */
+        public static function first($columns = array())
+        {
+            return \Illuminate\Database\Eloquent\Builder::first($columns);
+        }
+        
+        /**
+         * Apply the callback's query changes if the given "value" is true.
+         *
+         * @param mixed $value
+         * @param \Closure $callback
+         * @param \Closure $default
+         * @return mixed 
+         * @static 
+         */
+        public static function when($value, $callback, $default = null)
+        {
+            return \Illuminate\Database\Eloquent\Builder::when($value, $callback, $default);
+        }
+        
+        /**
          * Add a relationship count / exists condition to the query.
          *
          * @param string $relation
@@ -14356,7 +14165,7 @@ namespace {
          * @return \Illuminate\Database\Eloquent\Builder|static 
          * @static 
          */
-        public static function orWhereHas($relation, $callback, $operator = '>=', $count = 1)
+        public static function orWhereHas($relation, $callback = null, $operator = '>=', $count = 1)
         {
             return \Illuminate\Database\Eloquent\Builder::orWhereHas($relation, $callback, $operator, $count);
         }
@@ -14578,6 +14387,18 @@ namespace {
         public static function crossJoin($table, $first = null, $operator = null, $second = null)
         {
             return \Illuminate\Database\Query\Builder::crossJoin($table, $first, $operator, $second);
+        }
+        
+        /**
+         * Pass the query to a given callback.
+         *
+         * @param \Closure $callback
+         * @return \Illuminate\Database\Query\Builder 
+         * @static 
+         */
+        public static function tap($callback)
+        {
+            return \Illuminate\Database\Query\Builder::tap($callback);
         }
         
         /**
@@ -15108,6 +14929,18 @@ namespace {
         public static function orderBy($column, $direction = 'asc')
         {
             return \Illuminate\Database\Query\Builder::orderBy($column, $direction);
+        }
+        
+        /**
+         * Add a descending "order by" clause to the query.
+         *
+         * @param string $column
+         * @return $this 
+         * @static 
+         */
+        public static function orderByDesc($column)
+        {
+            return \Illuminate\Database\Query\Builder::orderByDesc($column);
         }
         
         /**
@@ -15681,8 +15514,6 @@ namespace {
     class AsyncWidget extends \Arrilot\Widgets\AsyncFacade {}
     
     class Socialite extends \Laravel\Socialite\Facades\Socialite {}
-    
-    class DotenvEditor extends \Brotzka\DotenvEditor\DotenvEditorFacade {}
     
 }
 

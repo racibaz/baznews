@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 
 class NewsController extends BackendController
@@ -312,8 +314,18 @@ class NewsController extends BackendController
             }
         }
 
-
-        $v = News::validate($input);
+        $rules = array(
+            'title' => 'required',
+            'slug' => [
+                Rule::unique('news')->ignore($record->id),
+            ],
+            'spot' => 'required',
+            'content' => 'required',
+            'cuff_photo' => 'image|max:255',
+            'thumbnail' => 'image|max:255',
+            'cuff_direct_link' => 'url|max:255',
+        );
+        $v = Validator::make($input, $rules);
 
         if ($v->fails()) {
             return Redirect::back()

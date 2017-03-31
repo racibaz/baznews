@@ -204,16 +204,16 @@
         },
         {
             "name": "caffeinated/modules",
-            "version": "v4.1.5",
+            "version": "v4.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/modules.git",
-                "reference": "5295ebeb54ce5fc72084a52766d98c750b64f993"
+                "reference": "e58a340cc2dcc93f35ab73e1a8a0f23a079eaa3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caffeinated/modules/zipball/5295ebeb54ce5fc72084a52766d98c750b64f993",
-                "reference": "5295ebeb54ce5fc72084a52766d98c750b64f993",
+                "url": "https://api.github.com/repos/caffeinated/modules/zipball/e58a340cc2dcc93f35ab73e1a8a0f23a079eaa3e",
+                "reference": "e58a340cc2dcc93f35ab73e1a8a0f23a079eaa3e",
                 "shasum": ""
             },
             "require": {
@@ -254,7 +254,7 @@
                 "laravel",
                 "modules"
             ],
-            "time": "2017-01-25T17:21:36+00:00"
+            "time": "2017-03-28T15:54:24+00:00"
         },
         {
             "name": "caffeinated/themes",
@@ -304,16 +304,16 @@
         },
         {
             "name": "cocur/slugify",
-            "version": "v2.4",
+            "version": "v2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cocur/slugify.git",
-                "reference": "f11f22d4e60c408187c3efd8ac201c022a93cc3f"
+                "reference": "e8167e9a3236044afebd6e8ab13ebeb3ec9ca145"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/f11f22d4e60c408187c3efd8ac201c022a93cc3f",
-                "reference": "f11f22d4e60c408187c3efd8ac201c022a93cc3f",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/e8167e9a3236044afebd6e8ab13ebeb3ec9ca145",
+                "reference": "e8167e9a3236044afebd6e8ab13ebeb3ec9ca145",
                 "shasum": ""
             },
             "require": {
@@ -333,7 +333,7 @@
                 "symfony/config": "~2.4|~3.0",
                 "symfony/dependency-injection": "~2.4|~3.0",
                 "symfony/http-kernel": "~2.4|~3.0",
-                "twig/twig": "~1.12",
+                "twig/twig": "~1.26|~2.0",
                 "zendframework/zend-modulemanager": "~2.2",
                 "zendframework/zend-servicemanager": "~2.2",
                 "zendframework/zend-view": "~2.2"
@@ -364,20 +364,20 @@
                 "slug",
                 "slugify"
             ],
-            "time": "2017-02-09T19:27:52+00:00"
+            "time": "2017-03-23T21:52:55+00:00"
         },
         {
             "name": "cviebrock/eloquent-sluggable",
-            "version": "4.2.1",
+            "version": "4.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-                "reference": "c576e7b5e2ed038172c7aead618456a45cd73d0b"
+                "reference": "08a8c7f02120b481e5856b518f0351c95259e305"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/c576e7b5e2ed038172c7aead618456a45cd73d0b",
-                "reference": "c576e7b5e2ed038172c7aead618456a45cd73d0b",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/08a8c7f02120b481e5856b518f0351c95259e305",
+                "reference": "08a8c7f02120b481e5856b518f0351c95259e305",
                 "shasum": ""
             },
             "require": {
@@ -416,7 +416,7 @@
                 "laravel",
                 "slug"
             ],
-            "time": "2017-02-01T21:56:08+00:00"
+            "time": "2017-03-23T19:14:22+00:00"
         },
         {
             "name": "dingo/api",
@@ -772,16 +772,16 @@
         },
         {
             "name": "erusev/parsedown",
-            "version": "1.6.1",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/erusev/parsedown.git",
-                "reference": "20ff8bbb57205368b4b42d094642a3e52dac85fb"
+                "reference": "1bf24f7334fe16c88bf9d467863309ceaf285b01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown/zipball/20ff8bbb57205368b4b42d094642a3e52dac85fb",
-                "reference": "20ff8bbb57205368b4b42d094642a3e52dac85fb",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/1bf24f7334fe16c88bf9d467863309ceaf285b01",
+                "reference": "1bf24f7334fe16c88bf9d467863309ceaf285b01",
                 "shasum": ""
             },
             "require": {
@@ -810,7 +810,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2016-11-02T15:56:58+00:00"
+            "time": "2017-03-29T16:04:15+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -1004,16 +1004,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855"
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/0d6c7ca039329247e4f0f8f8f6506810e8248855",
-                "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
                 "shasum": ""
             },
             "require": {
@@ -1065,7 +1065,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-02-27T10:51:17+00:00"
+            "time": "2017-03-20T17:10:46+00:00"
         },
         {
             "name": "intervention/image",
@@ -1272,16 +1272,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.4.15",
+            "version": "v5.4.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ecc6468b8af30b77566a8519ce8898740ef691d7"
+                "reference": "6cf379ec34d08bcdc9c7183e369a8fdf04ade80d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ecc6468b8af30b77566a8519ce8898740ef691d7",
-                "reference": "ecc6468b8af30b77566a8519ce8898740ef691d7",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/6cf379ec34d08bcdc9c7183e369a8fdf04ade80d",
+                "reference": "6cf379ec34d08bcdc9c7183e369a8fdf04ade80d",
                 "shasum": ""
             },
             "require": {
@@ -1397,7 +1397,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-03-02T14:41:40+00:00"
+            "time": "2017-03-21T19:34:41+00:00"
         },
         {
             "name": "laravel/scout",
@@ -1461,16 +1461,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "01588748beef55ad5dd4f172d235548d3a6be79a"
+                "reference": "441e0d467319044e4913b1748382d427795416e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/01588748beef55ad5dd4f172d235548d3a6be79a",
-                "reference": "01588748beef55ad5dd4f172d235548d3a6be79a",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/441e0d467319044e4913b1748382d427795416e9",
+                "reference": "441e0d467319044e4913b1748382d427795416e9",
                 "shasum": ""
             },
             "require": {
@@ -1511,7 +1511,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2017-02-01T13:43:56+00:00"
+            "time": "2017-03-27T19:43:19+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1627,16 +1627,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.36",
+            "version": "1.0.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d9c1698582dfbfbd092ec9c5c3325f862cdb3297"
+                "reference": "78b5cc4feb61a882302df4fbaf63b7662e5e4ccd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d9c1698582dfbfbd092ec9c5c3325f862cdb3297",
-                "reference": "d9c1698582dfbfbd092ec9c5c3325f862cdb3297",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/78b5cc4feb61a882302df4fbaf63b7662e5e4ccd",
+                "reference": "78b5cc4feb61a882302df4fbaf63b7662e5e4ccd",
                 "shasum": ""
             },
             "require": {
@@ -1706,7 +1706,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-03-18T16:02:30+00:00"
+            "time": "2017-03-22T15:43:14+00:00"
         },
         {
             "name": "league/fractal",
@@ -2526,16 +2526,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.2",
+            "version": "v0.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "97113db4107a4126bef933b60fea6dbc9f615d41"
+                "reference": "1dd4bbbc64d71e7ec075ffe82b42d9e096dc8d5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/97113db4107a4126bef933b60fea6dbc9f615d41",
-                "reference": "97113db4107a4126bef933b60fea6dbc9f615d41",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/1dd4bbbc64d71e7ec075ffe82b42d9e096dc8d5e",
+                "reference": "1dd4bbbc64d71e7ec075ffe82b42d9e096dc8d5e",
                 "shasum": ""
             },
             "require": {
@@ -2595,7 +2595,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-03-01T00:13:29+00:00"
+            "time": "2017-03-19T21:40:44+00:00"
         },
         {
             "name": "rachidlaasri/laravel-installer",
@@ -2635,16 +2635,16 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.6.0",
+            "version": "3.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "0b7bdfb180e72c8d76e75a649ced67e392201458"
+                "reference": "4ae32dd9ab8860a4bbd750ad269cba7f06f7934e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/0b7bdfb180e72c8d76e75a649ced67e392201458",
-                "reference": "0b7bdfb180e72c8d76e75a649ced67e392201458",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/4ae32dd9ab8860a4bbd750ad269cba7f06f7934e",
+                "reference": "4ae32dd9ab8860a4bbd750ad269cba7f06f7934e",
                 "shasum": ""
             },
             "require": {
@@ -2656,9 +2656,9 @@
             },
             "require-dev": {
                 "apigen/apigen": "^4.1",
-                "codeception/aspect-mock": "1.0.0",
+                "codeception/aspect-mock": "^1.0 | ^2.0",
                 "doctrine/annotations": "~1.2.0",
-                "goaop/framework": "1.0.0-alpha.2",
+                "goaop/framework": "1.0.0-alpha.2 | ^1.0 | ^2.1",
                 "ircmaxell/random-lib": "^1.1",
                 "jakub-onderka/php-parallel-lint": "^0.9.0",
                 "mockery/mockery": "^0.9.4",
@@ -2713,7 +2713,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2017-03-18T15:38:09+00:00"
+            "time": "2017-03-26T20:37:53+00:00"
         },
         {
             "name": "rap2hpoutre/laravel-log-viewer",
@@ -2769,12 +2769,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rinvex/repository.git",
-                "reference": "a793a8a73ce851c7731ed01c572f5c602ec7f827"
+                "reference": "ef157ef5db728a756ecf57cddb8ea02584c42873"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rinvex/repository/zipball/a793a8a73ce851c7731ed01c572f5c602ec7f827",
-                "reference": "a793a8a73ce851c7731ed01c572f5c602ec7f827",
+                "url": "https://api.github.com/repos/rinvex/repository/zipball/ef157ef5db728a756ecf57cddb8ea02584c42873",
+                "reference": "ef157ef5db728a756ecf57cddb8ea02584c42873",
                 "shasum": ""
             },
             "require": {
@@ -2838,20 +2838,20 @@
                 "repository",
                 "rinvex"
             ],
-            "time": "2017-03-14T15:50:26+00:00"
+            "time": "2017-03-22T13:52:39+00:00"
         },
         {
             "name": "roumen/feed",
-            "version": "v2.10.4",
+            "version": "v2.10.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RoumenDamianoff/laravel-feed.git",
-                "reference": "900594412cab37515b2b53c8953af1201024e48d"
+                "reference": "ffbdb58f2ef41c7cb5d3bcd0aec2273e8eabc58b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RoumenDamianoff/laravel-feed/zipball/900594412cab37515b2b53c8953af1201024e48d",
-                "reference": "900594412cab37515b2b53c8953af1201024e48d",
+                "url": "https://api.github.com/repos/RoumenDamianoff/laravel-feed/zipball/ffbdb58f2ef41c7cb5d3bcd0aec2273e8eabc58b",
+                "reference": "ffbdb58f2ef41c7cb5d3bcd0aec2273e8eabc58b",
                 "shasum": ""
             },
             "require": {
@@ -2875,7 +2875,7 @@
             "authors": [
                 {
                     "name": "Roumen Damianoff",
-                    "email": "roumen@dawebs.com",
+                    "email": "roumen@crimsson.com",
                     "homepage": "https://roumen.it",
                     "role": "Developer"
                 }
@@ -2889,7 +2889,7 @@
                 "laravel",
                 "rss"
             ],
-            "time": "2016-07-17T13:06:35+00:00"
+            "time": "2017-03-22T17:31:36+00:00"
         },
         {
             "name": "spatie/db-dumper",
@@ -2943,16 +2943,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "4.7.1",
+            "version": "4.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "5f231d431fb791d988ea4d36f6945a3be4e7fb4d"
+                "reference": "af89b1f128f7d5c94bb27c923603dfd25c779692"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/5f231d431fb791d988ea4d36f6945a3be4e7fb4d",
-                "reference": "5f231d431fb791d988ea4d36f6945a3be4e7fb4d",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/af89b1f128f7d5c94bb27c923603dfd25c779692",
+                "reference": "af89b1f128f7d5c94bb27c923603dfd25c779692",
                 "shasum": ""
             },
             "require": {
@@ -3005,7 +3005,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2017-03-14T19:35:02+00:00"
+            "time": "2017-03-31T14:10:21+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -3940,16 +3940,16 @@
         },
         {
             "name": "unisharp/laravel-filemanager",
-            "version": "v1.7.0",
+            "version": "v1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/UniSharp/laravel-filemanager.git",
-                "reference": "f80d6623cb33c446e499c24de92f5d58a2678bf5"
+                "reference": "df97c5c7bf43eb0660f13fdc16a0efefc534311a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/f80d6623cb33c446e499c24de92f5d58a2678bf5",
-                "reference": "f80d6623cb33c446e499c24de92f5d58a2678bf5",
+                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/df97c5c7bf43eb0660f13fdc16a0efefc534311a",
+                "reference": "df97c5c7bf43eb0660f13fdc16a0efefc534311a",
                 "shasum": ""
             },
             "require": {
@@ -3997,7 +3997,7 @@
                 "tinymce",
                 "upload"
             ],
-            "time": "2017-02-17T08:42:40+00:00"
+            "time": "2017-03-23T06:55:16+00:00"
         },
         {
             "name": "venturecraft/revisionable",

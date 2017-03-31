@@ -7,7 +7,6 @@ use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Validator;
 use Laravel\Scout\Searchable;
 use Venturecraft\Revisionable\RevisionableTrait;
 
@@ -121,18 +120,6 @@ class News extends Model
     public function tags()
     {
         return $this->morphToMany('App\Models\Tag', 'taggable');
-    }
-
-    public static function validate($input) {
-        $rules = array(
-            'title' => 'Required',
-            'spot' => 'Required',
-            'content' => 'Required',
-            'cuff_photo' => 'image|max:255',
-            'thumbnail' => 'image|max:255',
-            'cuff_direct_link' => 'url|max:255',
-        );
-        return Validator::make($input, $rules);
     }
 
     public function scopeStatus($query, $flag)
