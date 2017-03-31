@@ -148,7 +148,7 @@
                         @endforeach
 
                         <div class="advert-center module">
-                            <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Center">
+                            <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Center" class="img-responsive">
                         </div>
                     </div>
 

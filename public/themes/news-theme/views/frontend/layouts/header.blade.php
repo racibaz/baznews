@@ -43,7 +43,7 @@
                 </div><!-- /.hright -->
 
                 <div class="advert-header pull-right">
-                    <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Header">
+                    <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Header" class="img-responsive">
                 </div>
 
 
