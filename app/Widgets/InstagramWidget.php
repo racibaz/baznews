@@ -4,7 +4,6 @@ namespace App\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
 use Cache;
-use Illuminate\Support\Facades\Redis;
 use Theme;
 
 class InstagramWidget extends AbstractWidget
@@ -22,8 +21,8 @@ class InstagramWidget extends AbstractWidget
      */
     public function run()
     {
-        return Cache::remember('InstagramWidget', 60, function()  {
-            $instagramEmbedCode = Redis::get('instagram_embed_code');
+        return Cache::tags(['Widget', 'Core', 'InstagramWidget'])->rememberForever('InstagramWidget', function()  {
+            $instagramEmbedCode = Cache::get('instagram_embed_code');
             return Theme::view('frontend.widgets.instagram_widget',compact([
                 'instagramEmbedCode'
             ]))->render();

@@ -10,7 +10,8 @@ class ExchangeRates extends AbstractWidget
 {
     public function run()
     {
-        return Cache::remember('exchangeRates', 60, function()  {
+        return Cache::tags(['Widget', 'Core', 'ExchangeRates'])->rememberForever('ExchangeRates', function()  {
+
             $connect_web = simplexml_load_file('http://www.tcmb.gov.tr/kurlar/today.xml');
 
             $usdBuying = $connect_web->Currency[0]->BanknoteBuying;

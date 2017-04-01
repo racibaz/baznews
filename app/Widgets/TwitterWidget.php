@@ -4,7 +4,6 @@ namespace App\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
 use Cache;
-use Illuminate\Support\Facades\Redis;
 use Theme;
 
 class TwitterWidget extends AbstractWidget
@@ -22,8 +21,8 @@ class TwitterWidget extends AbstractWidget
      */
     public function run()
     {
-        return Cache::remember('twitterWidget', 60, function()  {
-            $twitterEmbedCode = Redis::get('twitter_embed_code');
+        return Cache::tags(['Widget', 'Core', 'TwitterWidget'])->rememberForever('TwitterWidget', function()  {
+            $twitterEmbedCode = Cache::get('twitter_embed_code');
             return Theme::view('frontend.widgets.twitter_widget',compact([
                 'config',
                 'twitterEmbedCode'
