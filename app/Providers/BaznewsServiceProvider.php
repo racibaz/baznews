@@ -6,12 +6,10 @@ use App\Events\UserRegistered;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\WidgetManager;
-use App\Repositories\AdvertisementRepository;
 use App\Repositories\MenuRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\View;
 
 class BaznewsServiceProvider extends ServiceProvider
@@ -73,7 +71,9 @@ class BaznewsServiceProvider extends ServiceProvider
 
             //TODO cachelenecek
             View::share('activeTheme', Theme::getActive());
+
         }
+
     }
 
     /**

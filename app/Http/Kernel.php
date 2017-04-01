@@ -58,5 +58,6 @@ class Kernel extends HttpKernel
         'checkperm' => \App\Http\Middleware\CheckPerm::class,
         'social' => \App\Http\Middleware\Social::class,
         'envFileChange' => \App\Http\Middleware\EnvFileChange::class,
+        'canInstall' => \RachidLaasri\LaravelInstaller\Middleware\canInstall::class,
     ];
 }
