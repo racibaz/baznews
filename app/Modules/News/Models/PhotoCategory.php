@@ -6,9 +6,8 @@ use App\Models\Link;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 use Venturecraft\Revisionable\RevisionableTrait;
+use Illuminate\Database\Eloquent\Model;
 
 class PhotoCategory extends Model
 {
@@ -67,14 +66,6 @@ class PhotoCategory extends Model
     public function links()
     {
         return $this->morphMany(Link::class, 'linkable');
-    }
-
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required',
-            'icon' => 'image|max:255',
-        );
-        return Validator::make($input, $rules);
     }
 
     public static function photoCategoryList()

@@ -5,7 +5,6 @@ namespace App\Modules\News\Models;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 use Venturecraft\Revisionable\RevisionableTrait;
 
 class VideoGallery extends Model
@@ -48,15 +47,6 @@ class VideoGallery extends Model
     public function videos()
     {
         return $this->hasMany(Video::class);
-    }
-
-    public static function validate($input) {
-        $rules = array(
-            'user_id' => 'required',
-            'title' => 'required',
-            'thumbnail' => 'image|max:255',
-        );
-        return Validator::make($input, $rules);
     }
 
     public static function videoGalleryList()

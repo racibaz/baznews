@@ -48,14 +48,6 @@ class Photo extends Model
         return $this->morphToMany('App\Models\Tag', 'taggable');
     }
 
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required',
-            'file' => 'image|max:255',
-        );
-        return Validator::make($input, $rules);
-    }
-
     public static function photoList()
     {
         return Photo::where('is_active',1)->pluck('name', 'id');

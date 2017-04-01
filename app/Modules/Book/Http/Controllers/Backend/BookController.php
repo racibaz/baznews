@@ -13,7 +13,9 @@ use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rule;
 
 class BookController extends BackendController
 {
@@ -110,7 +112,16 @@ class BookController extends BackendController
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
 //        $input['user_id'] = \Auth::user()->id;
 
-        $v = Book::validate($input);
+        $rules = array(
+            'name' => 'required|min:4|max:255',
+            'slug' => [
+                Rule::unique('books')->ignore($record->id),
+            ],
+            'link' => 'url',
+            'thumbnail' => 'image|max:255',
+            'photo' => 'image|max:255',
+        );
+        $v = Validator::make($input, $rules);
 
         if ($v->fails()) {
             return Redirect::back()

@@ -11,7 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rule;
 use Image;
 
 class BiographyController extends BackendController
@@ -88,7 +90,21 @@ class BiographyController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['user_id'] = Auth::user()->id;
 
-        $v = Biography::validate($input);
+        $rules = array(
+            'title' => 'required|max:255',
+            'name' => 'required|max:255',
+            'slug' => [
+                Rule::unique('biographies')->ignore($record->id),
+            ],
+            'content' => 'required',
+            'photo' => 'image',
+            'description' => 'max:255',
+            'keywords' => 'max:255',
+            'order' => 'integer',
+            'hit' => 'integer',
+            'status' => 'integer',
+        );
+        $v = Validator::make($input, $rules);
 
         if ($v->fails()) {
             return Redirect::back()

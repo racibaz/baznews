@@ -56,16 +56,6 @@ class BookPublisher extends Model
         return $this->hasMany(Book::class);
     }
 
-
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required|min:4|max:255',
-            'link' => 'url',
-            'description' => 'max:255',
-        );
-        return Validator::make($input, $rules);
-    }
-
     public static function bookPublisherList()
     {
         return BookPublisher::where('is_active',1)->pluck('name','id');

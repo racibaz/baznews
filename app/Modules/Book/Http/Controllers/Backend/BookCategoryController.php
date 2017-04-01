@@ -11,7 +11,9 @@ use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rule;
 use Image;
 
 class BookCategoryController extends BackendController
@@ -84,7 +86,17 @@ class BookCategoryController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
 
-        $v = BookCategory::validate($input);
+        $rules = array(
+            'name' => 'required|min:4|max:255',
+            'slug' => [
+                Rule::unique('book_categories')->ignore($record->id),
+            ],
+            'thumbnail' => 'image|max:255',
+            'description' => 'max:255',
+            'keywords' => 'max:255',
+            'order' => 'integer',
+        );
+        $v = Validator::make($input, $rules);
 
         if ($v->fails()) {
             return Redirect::back()

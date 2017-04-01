@@ -109,8 +109,7 @@
                             {!! Form::label('icon', trans('news::video_category.icon'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::file('icon') !!}
-                                <img id="preview" src="#" alt="">
+                                {!! Form::text('icon', $record->icon, ['placeholder' => trans('news::video_category.icon') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
