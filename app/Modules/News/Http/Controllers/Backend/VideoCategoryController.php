@@ -9,7 +9,9 @@ use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rule;
 
 class VideoCategoryController extends BackendController
 {
@@ -82,7 +84,17 @@ class VideoCategoryController extends BackendController
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = VideoCategory::validate($input);
+        $rules = array(
+            'name' => 'required',
+            'slug' => [
+                Rule::unique('video_categories')->ignore($record->id),
+            ],
+            'description' => 'required|max:255',
+            'keywords' => 'required|max:255',
+            'hit' => 'integer',
+            'icon' => 'max:255',
+        );
+        $v = Validator::make($input, $rules);
 
         if ($v->fails()) {
             return Redirect::back()

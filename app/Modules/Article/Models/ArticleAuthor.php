@@ -40,17 +40,6 @@ class ArticleAuthor extends Eloquent
         return $this->belongsTo(User::class);
     }
 
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required',
-            'email' => 'email',
-            'photo' => 'image|max:255',
-            'description' => 'max:255',
-            'keywords' => 'max:255',
-        );
-        return Validator::make($input, $rules);
-    }
-
     public static function articleAuthorList()
     {
         return ArticleAuthor::where('is_active',1)->pluck('name', 'id');

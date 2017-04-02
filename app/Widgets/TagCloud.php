@@ -4,6 +4,7 @@ namespace App\Widgets;
 
 use App\Repositories\TagRepository;
 use Arrilot\Widgets\AbstractWidget;
+use Cache;
 use Caffeinated\Themes\Facades\Theme;
 
 class TagCloud extends AbstractWidget
@@ -21,12 +22,15 @@ class TagCloud extends AbstractWidget
      */
     public function run()
     {
-        $tagRepo = new TagRepository();
-        $tags = $tagRepo->take(5)->orderBy('updated_at','desc')->get();
+        return Cache::tags(['Widget', 'Core', 'TagCloud'])->rememberForever('TagCloud', function()  {
 
-        return Theme::view('frontend.widgets.tag_cloud',compact([
-            'config',
-            'tags'
-        ]))->render();
+            $tagRepo = new TagRepository();
+            $tags = $tagRepo->take(5)->orderBy('updated_at','desc')->get();
+
+            return Theme::view('frontend.widgets.tag_cloud',compact([
+                'config',
+                'tags'
+            ]))->render();
+        });
     }
 }

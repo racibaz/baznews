@@ -12,7 +12,9 @@ use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rule;
 use Image;
 
 class ArticleAuthorController extends BackendController
@@ -101,7 +103,17 @@ class ArticleAuthorController extends BackendController
             $input['user_id'] = null;
         }
 
-        $v = ArticleAuthor::validate($input);
+        $rules = array(
+            'name' => 'required',
+            'slug' => [
+                Rule::unique('article_authors')->ignore($record->id),
+            ],
+            'email' => 'email',
+            'photo' => 'image|max:255',
+            'description' => 'max:255',
+            'keywords' => 'max:255',
+        );
+        $v = Validator::make($input, $rules);
 
         //Makale yazarı daha önce eklenmiş mi? Eğer eklenmiş ise hata mesajı gönderiyoruz.
         $articleAuthor = $this->repo

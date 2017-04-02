@@ -5,7 +5,6 @@ namespace App\Widgets;
 use Arrilot\Widgets\AbstractWidget;
 use Cache;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Support\Facades\Redis;
 
 class FacebookWidget extends AbstractWidget
 {
@@ -30,8 +29,8 @@ class FacebookWidget extends AbstractWidget
      */
     public function run()
     {
-        return Cache::remember('facebookWidget', 60, function()  {
-            $facebookEmbedCode = Redis::get('facebook_embed_code');
+        return Cache::tags(['Widget', 'Core', 'FacebookWidget'])->rememberForever('FacebookWidget', function()  {
+            $facebookEmbedCode = Cache::get('facebook_embed_code');
             return Theme::view('frontend.widgets.facebook_widget',compact([
                 'facebookEmbedCode'
             ]))->render();

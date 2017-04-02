@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rule;
 
 class ArticleController extends BackendController
 {
@@ -93,7 +95,7 @@ class ArticleController extends BackendController
     }
 
 
-    public function store(ArticleRequest $request)
+    public function store(Request $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -134,7 +136,7 @@ class ArticleController extends BackendController
     }
 
 
-    public function update(ArticleRequest $request, Article $record)
+    public function update(Request $request, Article $record)
     {
         return $this->save($record);
     }
@@ -160,26 +162,50 @@ class ArticleController extends BackendController
         $input['user_id'] = Auth::user()->id;
         $input['content'] = Purifier::clean(Input::get('content'));
 
-        if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
-        } else {
-            $result = $this->repo->create($input);
-        }
 
-        if ($result) {
+        $rules = array(
+            'user_id' => 'required',
+            'article_author_id' => 'required',
+            'title' => 'required',
+            'subtitle' => 'max:255',
+            'spot' => 'max:255',
+            'slug' => [
+                Rule::unique('articles')->ignore($record->id),
+            ],
+            'description' => 'max:255',
+            'keywords' => 'max:255',
+            'hit'   => 'integer',
+            'order' => 'integer',
+        );
+        $v = Validator::make($input, $rules);
 
-            $this->articleArticleCategoriesStore($result,$input);
-
-
-            $this->removeCacheTags(['ArticleController', 'Article']);
-            $this->removeHomePageCache();
-
-            Session::flash('flash_message', trans('common.message_model_updated'));
-            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-        } else {
+        if ($v->fails()) {
             return Redirect::back()
-                ->withErrors(trans('common.save_failed'))
+                ->withErrors($v)
                 ->withInput($input);
+        } else {
+
+            if (isset($record->id)) {
+                $result = $this->repo->update($record->id, $input);
+            } else {
+                $result = $this->repo->create($input);
+            }
+
+            if ($result) {
+
+                $this->articleArticleCategoriesStore($result, $input);
+
+
+                $this->removeCacheTags(['ArticleController', 'Article']);
+                $this->removeHomePageCache();
+
+                Session::flash('flash_message', trans('common.message_model_updated'));
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+            } else {
+                return Redirect::back()
+                    ->withErrors(trans('common.save_failed'))
+                    ->withInput($input);
+            }
         }
     }
 

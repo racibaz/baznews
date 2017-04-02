@@ -75,15 +75,6 @@ class VideoCategory extends Model
         return $this->morphMany(Link::class, 'linkable');
     }
 
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required',
-            'hit' => 'integer',
-            'icon' => 'image|max:255',
-        );
-        return Validator::make($input, $rules);
-    }
-
     public static function videoCategoryList()
     {
         return VideoCategory::where('is_active',1)->pluck('name', 'id');

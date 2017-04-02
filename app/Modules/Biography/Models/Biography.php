@@ -7,7 +7,6 @@ use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Venturecraft\Revisionable\RevisionableTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 
 class Biography extends Model
 {
@@ -37,21 +36,6 @@ class Biography extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public static function validate($input) {
-        $rules = array(
-            'title' => 'required|max:255',
-            'name' => 'required|max:255',
-            'content' => 'required',
-            'photo' => 'image',
-            'description' => 'max:255',
-            'keywords' => 'max:255',
-            'order' => 'integer',
-            'hit' => 'integer',
-            'status' => 'integer',
-        );
-        return Validator::make($input, $rules);
     }
 
     public static function biographyList()

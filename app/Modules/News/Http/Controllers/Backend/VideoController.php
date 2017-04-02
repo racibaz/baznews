@@ -13,7 +13,9 @@ use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 
 class VideoController extends BackendController
@@ -122,7 +124,17 @@ class VideoController extends BackendController
 
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = Video::validate($input);
+        $rules = array(
+            'name' => 'required|max:255',
+            'slug' => [
+                Rule::unique('videos')->ignore($record->id),
+            ],
+            'subtitle' => 'max:255',
+            'file' => 'image|max:255',
+            'keywords' => 'required|max:255',
+            'order' => 'integer',
+        );
+        $v = Validator::make($input, $rules);
 
 
         if ($v->fails()) {

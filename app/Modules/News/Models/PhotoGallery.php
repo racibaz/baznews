@@ -5,7 +5,6 @@ namespace App\Modules\News\Models;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 use Venturecraft\Revisionable\RevisionableTrait;
 
 class PhotoGallery extends Model
@@ -55,15 +54,6 @@ class PhotoGallery extends Model
     public function tags()
     {
         return $this->morphToMany('App\Models\Tag', 'taggable');
-    }
-
-    public static function validate($input) {
-        $rules = array(
-            'user_id' => 'required',
-            'title' => 'required',
-            'thumbnail' => 'image|max:255',
-        );
-        return Validator::make($input, $rules);
     }
 
     public static function photoGalleryList()

@@ -77,16 +77,6 @@ class Book extends Model
         return $this->belongsTo(BookPublisher::class,'book_publisher_id');
     }
 
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required|min:4|max:255',
-            'link' => 'url',
-            'thumbnail' => 'image|max:255',
-            'photo' => 'image|max:255',
-        );
-        return Validator::make($input, $rules);
-    }
-
     public static function bookList()
     {
         return Book::where('is_active',1)->pluck('name','id');

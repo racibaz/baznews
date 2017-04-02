@@ -48,15 +48,6 @@ class Video extends Model
         return $this->morphToMany('App\Models\Tag', 'taggable');
     }
 
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required',
-            'order' => 'integer',
-            'thumbnail' => 'image|max:255',
-        );
-        return Validator::make($input, $rules);
-    }
-
     public static function videoList()
     {
         return Video::where('is_active',1)->pluck('name', 'id');

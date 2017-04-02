@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\PageRequest;
 use App\Http\Requests\SavePage;
 use App\Models\Page;
 use App\Repositories\PageRepository as Repo;
@@ -83,7 +84,6 @@ class PageController extends BackendController
         $rules = array(
             'name' => 'required',
             'slug' => [
-                'required',
                 Rule::unique('pages')->ignore($record->id),
             ],
             'description' => 'string|max:255',

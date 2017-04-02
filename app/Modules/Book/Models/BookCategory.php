@@ -65,17 +65,6 @@ class BookCategory extends Model
         return $this->morphMany(Link::class, 'linkable');
     }
 
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required',
-            'thumbnail' => 'image|max:255',
-            'description' => 'max:255',
-            'keywords' => 'max:255',
-            'order' => 'integer',
-        );
-        return Validator::make($input, $rules);
-    }
-
     public static function bookCategoryList()
     {
         return BookCategory::where('is_active',1)->pluck('name', 'id');

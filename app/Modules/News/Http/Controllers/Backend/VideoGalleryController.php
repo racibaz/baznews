@@ -15,7 +15,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 
 class VideoGalleryController extends BackendController
@@ -88,7 +90,17 @@ class VideoGalleryController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['user_id'] = Auth::user()->id;
 
-        $v = VideoGallery::validate($input);
+        $rules = array(
+            'user_id' => 'required',
+            'title' => 'required|max:255',
+            'slug' => [
+                Rule::unique('video_galleries')->ignore($record->id),
+            ],
+            'description' => 'required|max:255',
+            'keywords' => 'required|max:255',
+            'thumbnail' => 'image|max:255',
+        );
+        $v = Validator::make($input, $rules);
 
         if ($v->fails()) {
             return Redirect::back()
