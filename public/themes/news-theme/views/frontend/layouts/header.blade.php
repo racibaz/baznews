@@ -20,7 +20,7 @@
                 </button>
 
                 <a class="navbar-brand" href="{!! route('index') !!}">
-                    <img src="{{ Theme::asset($activeTheme . '::img/news-theme-logo.jpg') }}" alt="Logo" width="130" height="120" />
+                    <img src="{{ Theme::asset($activeTheme . '::img/news-theme-logo.jpg') }}" alt="Logo" width="130" height="120" class="img-responsive" />
                 </a>
 
                 <div class="pull-right hright">
@@ -42,7 +42,7 @@
 
                 </div><!-- /.hright -->
 
-                <div class="advert-header pull-right">
+                <div class="advert-header pull-right hidden-xs">
                     <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Header" class="img-responsive">
                 </div>
 

@@ -325,7 +325,7 @@
                             </div><!-- /rabpanel -->
                         </div><!-- /.nw-sm-img -->
                         <div class="advert advert-right module">
-                            <img src="{{ Theme::asset($activeTheme . '::img/advert-images/336x280.png') }}" alt="Advert Sidebar">
+                            <img src="{{ Theme::asset($activeTheme . '::img/advert-images/336x280.png') }}" alt="Advert Sidebar" class="img-responsive">
                             <br>
                             {!!Cache::get('right_blok_1')!!}
                         </div>

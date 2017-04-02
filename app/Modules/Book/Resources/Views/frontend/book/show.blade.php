@@ -70,7 +70,7 @@
                     </div>
                     <div class="book-list module">
                         <div class="row">
-                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
                                 <a href="#" class="thumbnail">
                                     <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
                                     <div class="caption">
@@ -78,7 +78,7 @@
                                     </div>
                                 </a>
                             </div><!-- /.col -->
-                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
                                 <a href="#" class="thumbnail">
                                     <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
                                     <div class="caption">
@@ -86,7 +86,7 @@
                                     </div>
                                 </a>
                             </div><!-- /.col -->
-                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
                                 <a href="#" class="thumbnail">
                                     <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
                                     <div class="caption">

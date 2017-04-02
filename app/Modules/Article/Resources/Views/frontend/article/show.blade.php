@@ -21,7 +21,7 @@
         </ol>
         <div class="row">
             <div class="col-md-8" id="content">
-                <article class="article module">
+                <article class="article article-section module">
 
                     <div class="article-head">
                         <div class="author-img">
@@ -64,7 +64,7 @@
                     <div class="module">
                         <ul class="article-list">
                            <li>
-                               <div class="article-title pull-left">
+                               <div class="title pull-left">
                                    <a href="#">
                                        <span>Makale 1</span>
                                    </a>
@@ -77,7 +77,7 @@
                                </div>
                            </li>
                             <li>
-                                <div class="article-title pull-left">
+                                <div class="title pull-left">
                                     <a href="#">
                                         <span>Makale 1</span>
                                     </a>
