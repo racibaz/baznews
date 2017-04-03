@@ -19,7 +19,7 @@ class ModuleServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../Resources/Lang', 'news');
         $this->loadViewsFrom(__DIR__.'/../Resources/Views', 'news');
 
-        if(!app()->runningInConsole() ) {
+        if(!app()->runningInConsole() && \Schema::hasTable('settings')) {
 
             Cache::remember('cuffNewsCategories', 10, function () {
 
