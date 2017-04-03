@@ -1,7 +1,7 @@
 <li class="treeview">
     <a href="#">
         <i class="fa fa-file-text-o"></i>
-        <span>{{trans('article::dashboard.article_authors')}}</span>
+        <span>{{trans('article::dashboard.article_manager')}}</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>

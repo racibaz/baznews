@@ -22,11 +22,11 @@ return [
     'users'             => 'Kullanıcılar',
     'groups'            => 'Gruplar',
     'permissions'       => 'İzinler',
-    'roles'             => 'Roller',
+    'roles'             => 'Rol Yönetimi',
     'countries'         => 'Ülkeler',
     'cities'            => 'İller',
     'contact_types'     => 'İletişim Yöntemleri',
-    'contacts'          => 'Kişiler',
+    'contacts'          => 'İletişim Yönetimi',
     'menus'             => 'Menüler',
     'pages'             => 'Sayfalar',
     'settings'          => 'Ayarlar',
@@ -45,5 +45,6 @@ return [
     'changes_env_file'  => 'ENV Yönetimi',
     'search'  => 'Ara',
     'show_account_page'  => 'Kullanıcı Bilgilerini Göster',
+    'remove_home_page_cache' => 'Önbelleği Temizle'
 
 ];
