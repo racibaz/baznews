@@ -19,6 +19,31 @@ return [
     |
     */
 
-    'show_account_page'             => 'Yönetim Paneli',
+    'users'             => 'Kullanıcılar',
+    'groups'            => 'Gruplar',
+    'permissions'       => 'İzinler',
+    'roles'             => 'Roller',
+    'countries'         => 'Ülkeler',
+    'cities'            => 'İller',
+    'contact_types'     => 'İletişim Yöntemleri',
+    'contacts'          => 'Kişiler',
+    'menus'             => 'Menüler',
+    'pages'             => 'Sayfalar',
+    'settings'          => 'Ayarlar',
+    'tags'              => 'Etiketler',
+    'advertisements'    => 'Reklamlar',
+    'announcements'     => 'Duyurular',
+    'sitemaps'          => 'Site Haritası',
+    'rss'               => 'RSS Yönetimi',
+    'events'            => 'Etkinlikler',
+    'module_managers'   => 'Modül Yönetimi',
+    'widget_managers'   => 'Widget Yönetimi',
+    'widget_groups'     => 'Widget Grupları',
+    'theme_managers'    => 'Tema Yönetimi',
+    'pings'             => 'Ping',
+    'logs'              => 'Log Yönetimi',
+    'changes_env_file'  => 'ENV Yönetimi',
+    'search'  => 'Ara',
+    'show_account_page'  => 'Kullanıcı Bilgilerini Göster',
 
 ];

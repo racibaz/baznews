@@ -7,7 +7,7 @@
  */
 
 return[
-    'module_name'=>'Haberler',
+    'news_manager'=>'Haber Yönetimi',
     'news'=>'Haberler',
     'news_categories'=>'Haber Kategorileri',
     'future_news'=>'Zamanlanmış Haberler',

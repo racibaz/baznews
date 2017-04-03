@@ -7,6 +7,7 @@
  */
 
 return[
+    'article_manager'=>'Yazar Yönetimi',
     'article_authors'=>'Yazar Yazıları',
     'authors'=>'Yazarlar',
     'articles'=>'Yazılar',

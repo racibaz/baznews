@@ -3,6 +3,8 @@
 return [
 
     'users' => 'kullanıcılar',
+    'account' => 'Hesap Sahibinin Adı',
+    'case' => 'Online',
     'slug' => 'Slug',
     'cell_phone' => 'Cep Telefonu',
     'sex' => 'Cinsiyet',
