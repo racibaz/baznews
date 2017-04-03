@@ -148,7 +148,7 @@
                         @endforeach
 
                         <div class="advert-center module">
-                            <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Center">
+                            <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Center" class="img-responsive">
                         </div>
                     </div>
 
@@ -325,7 +325,7 @@
                             </div><!-- /rabpanel -->
                         </div><!-- /.nw-sm-img -->
                         <div class="advert advert-right module">
-                            <img src="{{ Theme::asset($activeTheme . '::img/advert-images/336x280.png') }}" alt="Advert Sidebar">
+                            <img src="{{ Theme::asset($activeTheme . '::img/advert-images/336x280.png') }}" alt="Advert Sidebar" class="img-responsive">
                             <br>
                             {!!Cache::get('right_blok_1')!!}
                         </div>

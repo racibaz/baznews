@@ -12,20 +12,18 @@
         </ol>
         <div class="row">
             <div class="col-md-8" id="content">
-                <article class="article module">
+                <article class="article-author module">
 
-                    <div class="article-head">
+                    <div class="author-head">
                         <div class="author-img">
                             <img src="https://placeimg.com/60/60/people/grayscale" alt="Author Name">
                         </div>
-                        <div class="article-detail">
-                            <div class="author-name">
-                                <h2>{{$record->name}}</h2>
-                            </div>
+                        <div class="author-name">
+                            <h1>{{$record->name}}</h1>
                         </div>
                     </div>
 
-                    <div class="article-content">
+                    <div class="author-bio">
                         {{$record->cv}}
                     </div>
                     {{--yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>--}}
@@ -42,7 +40,7 @@
                         <ul class="article-list">
                             @foreach($record->articles as $record)
                             <li>
-                                <div class="article-title pull-left">
+                                <div class="title pull-left">
                                     <a href="{!! route('article', ['slug' => $record->slug]) !!}">
                                         <span>{{$record->title}}</span>
                                     </a>

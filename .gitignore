@@ -12,3 +12,5 @@
 Homestead.json
 Homestead.yaml
 .env
+resources/backups/
+.gitignore
