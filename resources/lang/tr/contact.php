@@ -12,5 +12,6 @@ return [
     'is_read'   => 'Okundu / Okunmadı',
     'contact_form' => 'İletişim Formu',
     'submit' => 'Gönder',
+    'passive_contact_message_count' => 'Pasif İletişim Mesajı Sayısı',
 
 ];

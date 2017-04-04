@@ -29,7 +29,7 @@ return [
     'contacts'          => 'İletişim Yönetimi',
     'menus'             => 'Menüler',
     'pages'             => 'Sayfalar',
-    'settings'          => 'Ayarlar',
+    'settings'          => 'Genel Ayarlar',
     'tags'              => 'Etiketler',
     'advertisements'    => 'Reklamlar',
     'announcements'     => 'Duyurular',

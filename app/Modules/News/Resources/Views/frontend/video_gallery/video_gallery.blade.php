@@ -23,15 +23,19 @@
     </div><!-- /.container -->
     <article>
         <div class="container" id="container">
-            <div class="breadcrumbs">
-                <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \\
-                    <a href="{{route('show_video_gallery',['slug' => $videoGallery->slug ])}}">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+                </li>
+                <li>
+                    <a href="{!! route('show_news_category', ['slug' => $videoGallery->slug]) !!}">
                         {{$videoGallery->title}}
-                    </a>   \\
+                    </a>
+                </li>
+                <li>
                     {{$video->name}}
-                </p>
-            </div>
-
+                </li>
+            </ol>
             <div class="row">
                 <div class="col-md-8">
                     <div id="new-content">
@@ -342,8 +346,7 @@
                                     </a>
                                 </div>
                             </div><!-- /.r-box -->
-                        </div><!-- /. -->
-                        <div style="clear: both" class="eng_rows_seperator"></div>
+                        </div><!-- /.col -->
                     @endforeach
                 </div><!-- /.row -->
             </div><!-- /.related-videos -->

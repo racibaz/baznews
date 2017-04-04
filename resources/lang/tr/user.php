@@ -20,4 +20,6 @@ return [
     'password_confirmation' => 'Şifre Tekrarı',
     'management' => 'Kullanıcı Yönetimi',
     'user_form' => 'Kullanıcı Formu',
+    'active_user_count' => 'Aktif Kullanıcı Sayısı',
+    'passive_user_count' => 'Pasif Kullanıcı Sayısı',
 ];

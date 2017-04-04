@@ -51,7 +51,7 @@
                 {{--<li class="active">Dashboard</li>--}}
             {{--</ol>--}}
         {{--</section>--}}
-
+        @yield('content-header')
         <!-- Main content -->
         <section class="content">
             @include($activeTheme .'::backend.partials._messages')

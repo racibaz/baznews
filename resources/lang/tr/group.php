@@ -22,6 +22,8 @@ return [
     'management' => 'Group Yönetimi',
     'name'                    => 'Grup Adı',
     'description'             => 'Tanımı',
+    'active_group_count'      => 'Aktif Grup Sayısı',
+    'passive_group_count'      => 'Pasif Grup Sayısı',
 
 
 ];
