@@ -1,17 +1,28 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('user.user_management')}}
+            <small>{{trans('user.trushed_management')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href=""><i class="fa fa-home"></i> {{trans('dashboard.name')}}</a></li>
+            <li><a href="{{ route('user.index') }}"><i class="fa fa-users"></i> {{trans('user.users')}}</a></li>
+            <li class="active"><i class="fa fa-user-times"></i> {{trans('user.trushed_management')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <div class="row">
         <div class="col-xs-12">
-
-            <div style="margin-bottom: 20px;">
+            <p>
                 @if(Auth::user()->can('showTrashedRecords-user'))
                     <a href="{{ route('user.index') }}" class="btn btn-info">
-                        <i class="fa fa-plus"></i> {{ trans('user.trashed_user') }}
+                        <i class="fa fa-users"></i> {{ trans('user.users') }}
                     </a>
                 @endif
-            </div>
+            </p>
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title"><strong>{{trans('user.trushed_management')}}</strong></h3>
@@ -22,8 +33,8 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>İsim</th>
-                            <th>mail</th>
+                            <th>{{trans('user.name_surname')}}</th>
+                            <th>{{trans('user.mail')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,8 +58,8 @@
                         <tfoot>
                         <tr>
                             <th>#</th>
-                            <th>İsim</th>
-                            <th>Mail</th>
+                            <th>{{trans('user.name_surname')}}</th>
+                            <th>{{trans('user.mail')}}</th>
                         </tr>
                         </tfoot>
                     </table>

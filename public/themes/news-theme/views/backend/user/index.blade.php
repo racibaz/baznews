@@ -6,8 +6,9 @@
             <small>{{trans('user.user_list_title')}}</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> {{trans('dashboard.name')}}</a></li>
+            <li><a href="#"><i class="fa fa-home"></i> {{trans('dashboard.name')}}</a></li>
             <li class="active">{{trans('user.user_management')}}</li>
+            <li class="active">{{trans('user.user_list_title')}}</li>
         </ol>
     </section>
 @endsection
