@@ -7,14 +7,15 @@
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
     "gulp": "^3.9.1",
+    "icheck": "^1.0.2",
     "jquery": "^3.1.0",
+    "laravel-elixir": "*",
     "laravel-elixir-vue": "^0.1.8",
     "laravel-elixir-webpack-official": "^1.0.2",
     "lodash": "^4.14.0",
     "video.js": "^5.12.6",
     "vue": "^1.0.26",
-    "vue-resource": "^0.9.3",
-    "laravel-elixir": "*"
+    "vue-resource": "^0.9.3"
   },
   "dependencies": {
     "dev": "^0.1.3",
