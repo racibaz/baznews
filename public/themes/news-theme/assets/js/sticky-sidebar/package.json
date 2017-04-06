@@ -1,0 +1,90 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "theia-sticky-sidebar",
+        "scope": null,
+        "escapedName": "theia-sticky-sidebar",
+        "name": "theia-sticky-sidebar",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/PROJELER/baznews"
+    ]
+  ],
+  "_from": "theia-sticky-sidebar@latest",
+  "_id": "theia-sticky-sidebar@1.6.0",
+  "_inCache": true,
+  "_location": "/theia-sticky-sidebar",
+  "_nodeVersion": "7.2.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/theia-sticky-sidebar-1.6.0.tgz_1480944517008_0.8138484577648342"
+  },
+  "_npmUser": {
+    "name": "liviu.mirea",
+    "email": "liviu.mirea@wecodepixels.com"
+  },
+  "_npmVersion": "4.0.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "theia-sticky-sidebar",
+    "scope": null,
+    "escapedName": "theia-sticky-sidebar",
+    "name": "theia-sticky-sidebar",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/theia-sticky-sidebar/-/theia-sticky-sidebar-1.6.0.tgz",
+  "_shasum": "a385c11297eee3cdd6de93a0d48146bb462f8397",
+  "_shrinkwrap": null,
+  "_spec": "theia-sticky-sidebar",
+  "_where": "/home/PROJELER/baznews",
+  "authors": [
+    "WeCodePixels <contact@wecodepixels.com>"
+  ],
+  "bugs": {
+    "url": "https://github.com/WeCodePixels/theia-sticky-sidebar/issues"
+  },
+  "dependencies": {
+    "jquery": ">=1.7.0"
+  },
+  "description": "Glues your website's sidebars, making them permanently visible while scrolling.",
+  "devDependencies": {
+    "css-element-queries": "*",
+    "gulp": "^3.9.1",
+    "gulp-concat": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "a385c11297eee3cdd6de93a0d48146bb462f8397",
+    "tarball": "https://registry.npmjs.org/theia-sticky-sidebar/-/theia-sticky-sidebar-1.6.0.tgz"
+  },
+  "gitHead": "2e15719f541338020fb831344fa46365e94ae0c5",
+  "homepage": "https://github.com/WeCodePixels/theia-sticky-sidebar#readme",
+  "license": "MIT",
+  "main": "dist/theia-sticky-sidebar.js",
+  "maintainers": [
+    {
+      "name": "liviu.mirea",
+      "email": "liviu.mirea@wecodepixels.com"
+    }
+  ],
+  "name": "theia-sticky-sidebar",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WeCodePixels/theia-sticky-sidebar.git"
+  },
+  "scripts": {},
+  "version": "1.6.0"
+}

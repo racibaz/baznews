@@ -7,11 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <link href="{{ Theme::asset($activeTheme . '::css/bootstrap/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet">
-    <link href="{{ Theme::asset($activeTheme . '::js/jquery.bxslider/jquery.bxslider.css') }}" type="text/css" rel="stylesheet">
-    <link href="{{ Theme::asset($activeTheme . '::css/bootstrap-social.css') }}" type="text/css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="{{ Theme::asset($activeTheme . '::js/bxslider/dist/jquery.bxslider.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ Theme::asset($activeTheme . '::js/video-js/video-js.min.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&amp;subset=latin-ext" rel="stylesheet">
+    {{--<link href="https://fonts.googleapis.com/css?family=Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&amp;subset=latin-ext" rel="stylesheet">--}}
 
     @yield('css')
 
@@ -52,7 +51,7 @@
 
     <!-- jQuery library (served from Google) -->
     <script src="{{ Theme::asset($activeTheme . '::js/jquery/jquery.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/jquery.bxslider/jquery.bxslider.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/bxslider/dist/jquery.bxslider.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/jquery.sticky.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/custom.js') }}"></script>

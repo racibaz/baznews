@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "admin-lte",
+        "raw": "admin-lte@^2.3.11",
         "scope": null,
         "escapedName": "admin-lte",
         "name": "admin-lte",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
+        "rawSpec": "^2.3.11",
+        "spec": ">=2.3.11 <3.0.0",
+        "type": "range"
       },
-      "/home/vagrant/Code/baznews"
+      "/home/PROJELER/baznews"
     ]
   ],
-  "_from": "admin-lte@latest",
+  "_from": "admin-lte@>=2.3.11 <3.0.0",
   "_id": "admin-lte@2.3.11",
   "_inCache": true,
   "_location": "/admin-lte",
@@ -29,23 +29,22 @@
   "_npmVersion": "3.10.8",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "admin-lte",
+    "raw": "admin-lte@^2.3.11",
     "scope": null,
     "escapedName": "admin-lte",
     "name": "admin-lte",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
+    "rawSpec": "^2.3.11",
+    "spec": ">=2.3.11 <3.0.0",
+    "type": "range"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/admin-lte/-/admin-lte-2.3.11.tgz",
   "_shasum": "da56dcd34d42e9ef1af362be15520a053a9d43db",
   "_shrinkwrap": null,
-  "_spec": "admin-lte",
-  "_where": "/home/vagrant/Code/baznews",
+  "_spec": "admin-lte@^2.3.11",
+  "_where": "/home/PROJELER/baznews",
   "bugs": {
     "url": "https://github.com/almasaeed2010/AdminLTE/issues"
   },
