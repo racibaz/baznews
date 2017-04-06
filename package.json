@@ -5,6 +5,8 @@
     "dev": "gulp watch"
   },
   "devDependencies": {
+    "admin-lte": "^2.3.11",
+    "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
     "gulp": "^3.9.1",
     "icheck": "^1.0.2",
