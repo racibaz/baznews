@@ -29,7 +29,7 @@ return [
     'contacts'          => 'İletişim Yönetimi',
     'menus'             => 'Menüler',
     'pages'             => 'Sayfalar',
-    'settings'          => 'Ayarlar',
+    'settings'          => 'Genel Ayarlar',
     'tags'              => 'Etiketler',
     'advertisements'    => 'Reklamlar',
     'announcements'     => 'Duyurular',
@@ -44,7 +44,8 @@ return [
     'logs'              => 'Log Yönetimi',
     'changes_env_file'  => 'ENV Yönetimi',
     'search'  => 'Ara',
+    'name'  => 'Ana Sayfa',
     'show_account_page'  => 'Kullanıcı Bilgilerini Göster',
-    'remove_home_page_cache' => 'Önbelleği Temizle'
+    'remove_home_page_cache' => 'Ana Sayfa Önbelleği Temizle'
 
 ];

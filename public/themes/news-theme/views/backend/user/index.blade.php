@@ -1,5 +1,16 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('user.user_management')}}
+            <small>{{trans('user.user_list_title')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> {{trans('dashboard.name')}}</a></li>
+            <li class="active">{{trans('user.user_management')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <div class="row">
@@ -7,35 +18,37 @@
 
             <div style="margin-bottom: 20px;">
                 <a href="{{ route('user.create') }}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> {{ trans('common.create') }}
+                    <i class="fa fa-user-plus"></i> {{ trans('user.user_add') }}
                 </a>
                 @if(Auth::user()->can('showTrashedRecords-user'))
                     <a href="{{ route('showTrashedUserRecords') }}" class="btn btn-info">
-                        <i class="fa fa-plus"></i> {{ trans('user.trashed_user') }}
+                        <i class="fa fa-trash"></i> {{ trans('user.trashed_user') }}
                     </a>
                 @endif
             </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><strong>{{trans('user.management')}}</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('user.user_list_title')}}</strong></h3>
                 </div>
-
-                <div>
-                    @foreach($roles as $index => $role)
-                        <a href="{{route('user_index_by_role',[$role->id])}}">
-                            {{$role->display_name}} ({{$role->users->count()}})
-                        </a>
-                    @endforeach
-                </div>
-
                 <!-- /.box-header -->
                 <div class="box-body">
+                    <div class="user-roles" style="margin-bottom: 15px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @foreach($roles as $index => $role)
+                                    <a href="{{route('user_index_by_role',[$role->id])}}" class="btn btn-primary">
+                                        <i class="fa fa-plus"></i> {{$role->display_name}} <span class="badge">{{$role->users->count()}}</span>
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                     <table id="users" class="table table-bordered table-hover table-data">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>İsim</th>
-                            <th>mail</th>
+                            <th>{{trans('user.name_surname')}}</th>
+                            <th>{{trans('user.mail')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,8 +60,8 @@
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('user.destroy',  $record))) !!}
-                                            {!! link_to_route('user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                            {!! link_to_route('user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-sm'] ) !!}
+                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-sm','data-toggle'=>'confirmation']) !!}
                                             {!! Form::close() !!}
                                         </div>
                                     </td>
@@ -58,8 +71,8 @@
                         <tfoot>
                         <tr>
                             <th>#</th>
-                            <th>İsim</th>
-                            <th>Mail</th>
+                            <th>{{trans('user.name_surname')}}</th>
+                            <th>{{trans('user.mail')}}</th>
                         </tr>
                         </tfoot>
                     </table>

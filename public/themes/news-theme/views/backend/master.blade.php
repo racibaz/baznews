@@ -21,6 +21,8 @@
          folder instead of downloading all of them to reduce the load. -->
     <link href="{{ Theme::asset($activeTheme .'::AdminLTE/dist/css/skins/_all-skins.min.css') }}" rel="stylesheet">
 
+    <link href="{{ Theme::asset($activeTheme .'::js/icheck/skins/all.css') }}" rel="stylesheet">
+
     @yield('css')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -51,7 +53,7 @@
                 {{--<li class="active">Dashboard</li>--}}
             {{--</ol>--}}
         {{--</section>--}}
-
+        @yield('content-header')
         <!-- Main content -->
         <section class="content">
             @include($activeTheme .'::backend.partials._messages')
@@ -280,6 +282,9 @@
 <script src="{{ Theme::asset($activeTheme .'::AdminLTE/plugins/chartjs/Chart.min.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{--<script src="{{ Theme::asset($activeTheme .'::AdminLTE/dist/js/pages/dashboard2.js') }}"></script>--}}
+
+<script src="{{ Theme::asset($activeTheme .'::js/icheck/icheck.min.js') }}"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="{{ Theme::asset($activeTheme .'::AdminLTE/dist/js/demo.js') }}"></script>
 
@@ -288,6 +293,16 @@
 
 
 <script src="/js/vendor.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input[type=checkbox]').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square',
+            increaseArea: '20%' // optional
+        });
+    });
+</script>
 
 @yield('js')
 
