@@ -3,12 +3,6 @@
  * ---------------
  */
 
-// Import variables and mixins as a reference for separate plugins version
-@import (reference) "../bootstrap-less/mixins";
-@import (reference) "../bootstrap-less/variables";
-@import (reference) "variables";
-@import (reference) "mixins";
-
 //Signle select
 .select2-container--default,
 .select2-selection {
@@ -18,7 +12,7 @@
     outline: none;
   }
   .select2-selection--single {
-    border: 1px solid @gray-lte;
+    border: 1px solid @gray;
     border-radius: @input-radius;
     padding: 6px 12px;
     height: 34px;
@@ -30,7 +24,7 @@
 }
 
 .select2-dropdown {
-  border: 1px solid @gray-lte;
+  border: 1px solid @gray;
   border-radius: @input-radius;
 }
 
@@ -69,7 +63,7 @@
 .select2-dropdown,
 .select2-search--inline {
   .select2-search__field {
-    border: 1px solid @gray-lte;
+    border: 1px solid @gray;
     &:focus {
       outline: none;
       border: 1px solid @light-blue;
@@ -92,14 +86,14 @@
 //Multiple select
 .select2-container--default {
   .select2-selection--multiple {
-    border: 1px solid @gray-lte;
+    border: 1px solid @gray;
     border-radius: @input-radius;
     &:focus {
       border-color: @light-blue;
     }
   }
   &.select2-container--focus .select2-selection--multiple {
-    border-color: @gray-lte;
+    border-color: @gray;
   }
 }
 

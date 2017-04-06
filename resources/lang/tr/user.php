@@ -2,7 +2,7 @@
 
 return [
 
-    'users' => 'Kullanıcılar',
+    'users' => 'kullanıcılar',
     'account' => 'Hesap Sahibinin Adı',
     'case' => 'Online',
     'slug' => 'Slug',
@@ -22,7 +22,6 @@ return [
     'user_management' => 'Kullanıcı Yönetimi',
     'user_form' => 'Kullanıcı Formu',
     'user_add' => 'Kullanıcı Ekle',
-    'user_info' => 'Kullanıcı Bilgisi',
     'user_list_title' => 'Kullanıcı Listesi',
     'user_add_title' => 'Kullanıcı Ekle',
     'name_surname' => 'Ad Soyad',
@@ -31,20 +30,4 @@ return [
     'active_user_count' => 'Aktif Kullanıcı Sayısı',
     'passive_user_count' => 'Pasif Kullanıcı Sayısı',
     'user_edit_create' => 'Kullanıcı Ekle/Düzenle',
-    //Kullanıcı Detay - Revizyonlar
-    'user_revisions' => 'Kullanıcı Revizyonları',
-    'revisionable_type' => 'Tipi',
-    'revisionable_id' => 'Id',
-    'key' => 'Key',
-    'old_value' => 'Eski Değer',
-    'new_value' => 'Yeni Değer',
-    'created_at' => 'Oluşturma',
-    'updated_at' => 'Düzenleme',
-    'is_active' => 'Aktif/Pasif',
-    //Kullanıcı Detay - Etkinlikler
-    'user_events' => 'Kullanıcı Etkinliği',
-    'eventable_type' => 'Tipi',
-    'eventable_id' => 'Id',
-    'event_name' => 'Etkinlik Adı',
-    'trushed_management' => 'Silinmiş Kullanıcılar',
 ];

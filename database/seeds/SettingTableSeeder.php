@@ -99,16 +99,6 @@ class SettingTableSeeder extends Seeder
         ]);
 
         Setting::create([
-            'attribute_key'               => 'google_recaptcha_site_key',
-            'attribute_value'             => '6Leo2RsUAAAAAJtI0Mc6lqd2Nme25F2xLg3r5CER',
-        ]);
-
-        Setting::create([
-            'attribute_key'               => 'google_recaptcha_secret_key',
-            'attribute_value'             => '6Leo2RsUAAAAAEPPstzkGLtPV3W8IDsaYjtdIIib',
-        ]);
-
-        Setting::create([
             'attribute_key'               => 'head_code',
             'attribute_value'             => 'head codes ',
         ]);

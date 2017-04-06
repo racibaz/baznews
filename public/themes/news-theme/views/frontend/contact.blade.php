@@ -60,8 +60,6 @@
                             <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
                         </div>
 
-                        <div class="g-recaptcha" data-sitekey="{{Cache::tags('Setting')->get('google_recaptcha_site_key')}}"></div>
-
                         <button type="submit" class="btn btn-primary">{{trans('contact.submit')}}</button>
 
                     {!! Form::close() !!}
@@ -109,7 +107,6 @@
     <meta name='pagename' content='jQuery Tools, Tutorials and Resources - O Reilly Media'>
 @endsection
 @section('js')
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script>

@@ -33,20 +33,6 @@ class ContactController extends Controller
     {
         $input = Input::all();
 
-//        /*
-//         * https://www.kaplankomputing.com/blog/tutorials/recaptcha-php-demo-tutorial/
-//         * */
-        $secret = Cache::tags('Setting')->get('google_recaptcha_secret_key');
-        $response=$_POST["g-recaptcha-response"];
-        $verify=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secret}&response={$response}");
-        $captcha_success=json_decode($verify);
-
-        if ($captcha_success->success==false) {
-            return Redirect::back()
-                ->withErrors(trans('common.save_failed'))
-                ->withInput($input);
-        }
-
         $v = Contact::validate($input);
 
         if ($v->fails()) {
@@ -56,7 +42,6 @@ class ContactController extends Controller
         }
 
         $result = $this->repo->create([
-                'contact_type_id' => strip_tags($input['contact_type_id']),
                 'full_name' => strip_tags($input['full_name']),
                 'subject' => strip_tags($input['subject']),
                 'email' => strip_tags($input['email']),
@@ -67,6 +52,7 @@ class ContactController extends Controller
                 'status' => 0
             ]);
 
+
         if ($result) {
             Session::flash('success_messages', trans('contact.your_message_posted'));
             return Redirect::route('contact-index');
@@ -75,5 +61,7 @@ class ContactController extends Controller
                 ->withErrors(trans('common.save_failed'))
                 ->withInput($input);
         }
+
     }
+
 }

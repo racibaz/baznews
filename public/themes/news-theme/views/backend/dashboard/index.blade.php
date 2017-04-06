@@ -2,10 +2,12 @@
 @section('content-header')
     <section class="content-header">
         <h1>
-            {{trans('dashboard.home_page')}}
+            Dashboard
+            <small>Control panel</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i>{{trans('dashboard.home_page')}}</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
         </ol>
     </section>
 @endsection
@@ -19,37 +21,14 @@
                     <h3 class="widget-user-username" style="margin: 0;"><i class="fa fa-bullhorn"></i> Duyurular</h3>
                 </div>
                 <div class="box-footer no-padding" style="max-height: 400px;overflow: scroll;">
-                    <ul class="nav nav-stacked" id="announce-list">
+                    <ul class="nav nav-stacked">
                         @foreach($userGroupsAnnouncements as $userGroupsAnnouncement)
-                            <li id="announce-{{$userGroupsAnnouncement->id}}" class="announce" data-id="announce-{{$userGroupsAnnouncement->id}}">
-                                <a href="#announce-modal" data-id="announce-{{$userGroupsAnnouncement->id}}" data-toggle="modal">{{$userGroupsAnnouncement->title}}<span class="pull-right badge bg-blue">{{$userGroupsAnnouncement->show_time}}</span></a>
-                                <div class="list-data" data-offset="{{$userGroupsAnnouncement->order}}" style="display: none;" data-id="announce-{{$userGroupsAnnouncement->id}}">
-                                    <div class="title">{{$userGroupsAnnouncement->title}}</div>
-                                    <div class="description">{{$userGroupsAnnouncement->description}}</div>
-                                </div>
-                            </li>
+                            <li><a href="#">{{$userGroupsAnnouncement->title}}<span class="pull-right badge bg-blue">1</span></a></li>
                         @endforeach
                     </ul>
-                </div><!-- /.box-footer -->
-            </div><!-- /.box -->
-            <div class="modal fade" id="announce-modal">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title"></h4>
-                        </div>
-                        <div class="modal-body">
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('dashboard.close')}}</button>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-        </div><!-- /.col -->
-
+                </div>
+            </div>
+        </div>
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-4 col-xs-6">
@@ -200,26 +179,4 @@
     </div>
     <!-- /.row -->
 
-@endsection
-@section('js')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#announce-modal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget); // Button that triggered the modal
-                var dataid = button.data('id'); // Extract info from data-* attributes
-                var title ="",description="";
-                $('.announce').each(function () {
-                   var currentId = $(this).find('.list-data').data('id');
-                   if(dataid === currentId){
-                       title = $(this).find('.list-data .title').html();
-                       description = $(this).find('.list-data .description').html();
-                   }
-                });
-
-                var modal = $(this);
-                modal.find('.modal-title').html(title);
-                modal.find('.modal-body').html(description);
-            })
-        });
-    </script>
 @endsection
