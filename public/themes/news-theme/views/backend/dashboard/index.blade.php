@@ -16,7 +16,7 @@
             <div class="box box-widget">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
                 <div class="widget-user-header bg-yellow" style="padding: 20px 15px;">
-                    <h3 class="widget-user-username" style="margin: 0;"><i class="fa fa-bullhorn"></i> Duyurular</h3>
+                    <h3 class="widget-user-username" style="margin: 0;"><i class="fa fa-bullhorn"></i> {{trans('dashboard.announcements')}}</h3>
                 </div>
                 <div class="box-footer no-padding" style="max-height: 400px;overflow: scroll;">
                     <ul class="nav nav-stacked" id="announce-list">
@@ -37,10 +37,13 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title"></h4>
+                            <h4 class="modal-title">
+                                <i class="fa fa-bullhorn"></i> {{trans('dashboard.announcements')}}
+                            </h4>
                         </div>
                         <div class="modal-body">
-
+                            <h2 class="title" style="margin: 0 0 10px 0;"></h2>
+                            <div class="m-content"></div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('dashboard.close')}}</button>
@@ -217,8 +220,8 @@
                 });
 
                 var modal = $(this);
-                modal.find('.modal-title').html(title);
-                modal.find('.modal-body').html(description);
+                modal.find('.title').html(title);
+                modal.find('.m-content').html(description);
             })
         });
     </script>
