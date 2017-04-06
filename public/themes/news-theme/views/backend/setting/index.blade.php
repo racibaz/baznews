@@ -171,6 +171,24 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
+                                {!! Form::label('google_recaptcha_site_key', trans('setting.google_recaptcha_site_key'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::text('google_recaptcha_site_key', $records->where('attribute_key','google_recaptcha_site_key')->first()->attribute_value, ['placeholder' => trans('setting.google_recaptcha_site_key') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                {!! Form::label('google_recaptcha_secret_key', trans('setting.google_recaptcha_secret_key'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::text('google_recaptcha_secret_key', $records->where('attribute_key','google_recaptcha_secret_key')->first()->attribute_value, ['placeholder' => trans('setting.google_recaptcha_secret_key') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
                                 {!! Form::label('head_code', trans('setting.head_code'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
