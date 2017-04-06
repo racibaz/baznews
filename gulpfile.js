@@ -1,5 +1,4 @@
 var elixir = require('laravel-elixir');
-
 // require('laravel-elixir-vue');
 
 /*
@@ -27,6 +26,7 @@ elixir(function (mix) {
     // ],'public/js/vendor.js');
 
     mix.copy('node_modules/icheck/**', 'public/themes/news-theme/assets/js/icheck');
+    mix.copy('node_modules/admin-lte/**', 'public/themes/news-theme/assets/AdminLTE');
 });
 
 

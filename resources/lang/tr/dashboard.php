@@ -44,8 +44,9 @@ return [
     'logs'              => 'Log Yönetimi',
     'changes_env_file'  => 'ENV Yönetimi',
     'search'  => 'Ara',
-    'name'  => 'Ana Sayfa',
+    'home_page'  => 'Ana Sayfa',
     'show_account_page'  => 'Kullanıcı Bilgilerini Göster',
-    'remove_home_page_cache' => 'Ana Sayfa Önbelleği Temizle'
+    'remove_home_page_cache' => 'Ana Sayfa Önbelleği Temizle',
+    'close' => 'Kapat'
 
 ];
