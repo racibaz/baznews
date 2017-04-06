@@ -3,7 +3,7 @@
 @section('content')
     <article class="container" id="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="title-section">
                     <h1><span>{{trans('account.management')}}</span></h1>
                 </div>
@@ -50,14 +50,6 @@
                 </div>
             </div>
             <!-- /.col -->
-            <div class="col-md-4">
-                <div class="title-section">
-                    <h1><span>Sidebar</span></h1>
-                </div>
-                <div class="module">
-                    sidebar
-                </div>
-            </div>
         </div>
     </article><!-- /.article -->
 @endsection
