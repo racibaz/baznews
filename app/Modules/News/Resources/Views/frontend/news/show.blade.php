@@ -37,7 +37,7 @@
                         @elseif($record->news_type == 3)
                             photo gallery
                         @elseif($record->news_type == 4)
-                            video
+                            {!! $record->video_embed !!}
                         @elseif($record->news_type == 5)
                             video gallery
                         @elseif($record->news_type == 6)
