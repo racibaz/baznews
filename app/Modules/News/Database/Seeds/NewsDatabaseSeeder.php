@@ -117,6 +117,17 @@ class NewsDatabaseSeeder extends Seeder
         }
 
 
+        $setting = Setting::where('attribute_key','is_url_shortener')->first();
+        if(empty($setting))
+        {
+            Setting::create([
+                'attribute_key'               => 'is_url_shortener',
+                'attribute_value'             => "1",
+                'is_active'                   => 1
+            ]);
+        }
+
+
         $widget_group = WidgetGroup::where('name','news_content_header')->first();
         if(empty($widget_group))
         {

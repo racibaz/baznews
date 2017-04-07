@@ -7,6 +7,7 @@ use App\Jobs\Ping\SendPing;
 use App\Library\Uploader;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Setting;
 use App\Models\Tag;
 use App\Modules\News\Models\FutureNews;
 use App\Modules\News\Models\News;
@@ -22,15 +23,16 @@ use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Repositories\TagRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Carbon\Carbon;
+use Mremi\UrlShortener\Model\Link;
+use Mremi\UrlShortener\Provider\Google\GoogleProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 
@@ -272,6 +274,10 @@ class NewsController extends BackendController
     }
 
 
+    /**
+     * @param $record
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function save($record)
     {
         $input = Input::all();
@@ -320,6 +326,7 @@ class NewsController extends BackendController
                 Rule::unique('news')->ignore($record->id),
             ],
             'spot' => 'required',
+            'short_link' => 'string|max:255',
             'content' => 'required',
             'cuff_photo' => 'image|max:255',
             'thumbnail' => 'image|max:255',
@@ -392,6 +399,30 @@ class NewsController extends BackendController
                 $this->newsVideoGalleriesStore($result,$input);
                 $this->newsVideosStore($result,$input);
                 $this->newsPhotosStore($result,$input);
+
+
+
+                /*
+                 * slug değişmiş ise google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
+                 *
+                 * */
+                if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+
+                    $link = new Link;
+//                    $link->setLongUrl(Cache::tags(['Setting'])->get('url') . ' /' . $result->slug);
+                  $link->setLongUrl('http://www.baznews.app/' . $result->slug );
+
+                    $googleProvider = new GoogleProvider(
+                        Cache::tags(['Setting'])->get('google_url_shortener_key'),
+                        array('connect_timeout' => 1, 'timeout' => 1)
+                    );
+
+                    $result->short_url = $googleProvider->shorten($link);
+                    $result->save();
+                }
+
+
+
 
 
 

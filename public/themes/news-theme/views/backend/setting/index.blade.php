@@ -189,6 +189,15 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
+                                {!! Form::label('google_url_shortener_key', trans('setting.google_url_shortener_key'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    {!! Form::text('google_url_shortener_key', $records->where('attribute_key','google_url_shortener_key')->first()->attribute_value, ['placeholder' => trans('setting.google_url_shortener_key') ,'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
                                 {!! Form::label('head_code', trans('setting.head_code'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
