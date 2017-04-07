@@ -1,0 +1,105 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "bxslider",
+        "scope": null,
+        "escapedName": "bxslider",
+        "name": "bxslider",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/PROJELER/baznews"
+    ]
+  ],
+  "_from": "bxslider@latest",
+  "_id": "bxslider@4.2.11",
+  "_inCache": true,
+  "_location": "/bxslider",
+  "_nodeVersion": "6.3.1",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/bxslider-4.2.11.tgz_1488981551612_0.8190578608773649"
+  },
+  "_npmUser": {
+    "name": "stevenwanderski",
+    "email": "steven.wanderski@gmail.com"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "bxslider",
+    "scope": null,
+    "escapedName": "bxslider",
+    "name": "bxslider",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/bxslider/-/bxslider-4.2.11.tgz",
+  "_shasum": "1cd3cd76ee40fc1918af9d228de591fb638d85a5",
+  "_shrinkwrap": null,
+  "_spec": "bxslider",
+  "_where": "/home/PROJELER/baznews",
+  "author": {
+    "name": "Steven Wanderski",
+    "email": "steven@bxcreative.com",
+    "url": "http://stevenwanderski.com"
+  },
+  "bugs": {
+    "url": "https://github.com/stevenwanderski/bxslider-4/issues"
+  },
+  "dependencies": {},
+  "description": "Touch enabled jQuery plugin for creating responsive carousels and sliders.",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "1cd3cd76ee40fc1918af9d228de591fb638d85a5",
+    "tarball": "https://registry.npmjs.org/bxslider/-/bxslider-4.2.11.tgz"
+  },
+  "engines": {
+    "node": ">=0.10.28"
+  },
+  "gitHead": "1dbcd4debd585ffa51be08fb034575f5935fe83c",
+  "homepage": "http://bxslider.com",
+  "keywords": [
+    "responsive",
+    "carousel",
+    "bxslider",
+    "jQuery",
+    "plugin"
+  ],
+  "license": {
+    "type": "MIT",
+    "url": "http://opensource.org/licenses/MIT"
+  },
+  "maintainers": [
+    {
+      "name": "nucleartux",
+      "email": "nucleartux@gmail.com"
+    },
+    {
+      "name": "stevenwanderski",
+      "email": "steven.wanderski@gmail.com"
+    }
+  ],
+  "name": "bxslider",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevenwanderski/bxslider-4/bxslider-4.git"
+  },
+  "scripts": {},
+  "version": "4.2.11"
+}
