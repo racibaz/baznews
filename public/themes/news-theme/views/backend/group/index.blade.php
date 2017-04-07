@@ -42,7 +42,13 @@
                                 {!! link_to_route('group.show', $record->name, $record, [] ) !!}
                             </td>
                             <td><span class="badge bg-yellow">{{$record->users->count()}}</span></td>
-                            <td><?php if($record->is_active===1){echo ('<span class="badge bg-green">'.trans('group.active').'</span>');}else{ echo ('<span class="badge bg-red">'.trans('group.passive').'</span>');}  ?></td>
+                            <td>
+                                @if($record->is_active)
+                                    <span class="badge bg-green">{{trans('group.active')}}</span>
+                                    @else
+                                    <span class="badge bg-red">{{trans('group.passive')}}</span>
+                                @endif
+                            </td>
                             <td>
                                 <div class="btn-group">
                                     {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('group.destroy',  $record))) !!}
