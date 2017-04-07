@@ -1518,9 +1518,12 @@ footer .footer-bottom .cpy {
 /* ==========================================================================
    News Video Gallery
    ========================================================================== */
+.news-video-gallery{
+    padding-bottom: 0;
+}
 .news-video-gallery .news-video-image{
     position: relative;
-    margin-bottom: 30px;
+    margin: 5px;
     padding-bottom: 38px;
 }
 .news-video-gallery .news-video-image img{
@@ -1562,9 +1565,12 @@ footer .footer-bottom .cpy {
 /* ==========================================================================
    News Photo Gallery
    ========================================================================== */
+.news-photo-gallery{
+    padding-bottom:0;
+}
 .news-photo-gallery .gallery-image{
     position: relative;
-    margin-bottom: 30px;
+    margin:5px;
     padding-bottom: 38px;
 }
 .news-photo-gallery .gallery-image img{
@@ -1591,7 +1597,7 @@ footer .footer-bottom .cpy {
    ========================================================================== */
 .news-photos .news-photo-image{
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
     padding-bottom: 37px;
 }
 .news-photos .news-photo-image img{

@@ -1,10 +1,21 @@
 @extends($activeTheme . '::backend.master')
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('group.management')}}
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li class="active">{{trans('group.management')}}</li>
+        </ol>
+    </section>
 
+@endsection
 @section('content')
 
     <div style="margin-bottom: 20px;">
         <a href="{{ route('group.create') }}" class="btn btn-success">
-            <i class="fa fa-plus"></i> {{ trans('common.create') }}
+            <i class="fa fa-plus"></i> {{ trans('group.add_group') }}
         </a>
     </div>
     <div class="box">
@@ -20,8 +31,8 @@
                     <tr>
                         <th>{!! trans('group.name') !!}</th>
                         <th>{!! trans('group.user_count') !!}</th>
-                        <th>{!! trans('common.is_active') !!}</th>
-                        <th>{!! trans('common.control') !!}</th>
+                        <th>{!! trans('group.is_active') !!}</th>
+                        <th>{!! trans('group.edit_remove') !!}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,8 +41,8 @@
                             <td class="sorting_1">
                                 {!! link_to_route('group.show', $record->name, $record, [] ) !!}
                             </td>
-                            <td>{{$record->users->count()}}</td>
-                            <td>{{$record->is_active }}</td>
+                            <td><span class="badge bg-yellow">{{$record->users->count()}}</span></td>
+                            <td><?php if($record->is_active===1){echo ('<span class="badge bg-green">'.trans('group.active').'</span>');}else{ echo ('<span class="badge bg-red">'.trans('group.passive').'</span>');}  ?></td>
                             <td>
                                 <div class="btn-group">
                                     {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('group.destroy',  $record))) !!}
@@ -47,8 +58,8 @@
                     <tr>
                         <th>{!! trans('group.name') !!}</th>
                         <th>{!! trans('group.user_count') !!}</th>
-                        <th>{!! trans('common.is_active') !!}</th>
-                        <th>{!! trans('common.control') !!}</th>
+                        <th>{!! trans('group.is_active') !!}</th>
+                        <th>{!! trans('group.edit_remove') !!}</th>
                     </tr>
                     </tfoot>
                 </table>
