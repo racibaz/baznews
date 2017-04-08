@@ -193,6 +193,11 @@ class SettingController extends BackendController
             $this->repo->update($record->id,['attribute_value' => $input['google_recaptcha_secret_key']]);
         }
 
+        if(!empty($input['google_url_shortener_key'])){
+            $record = $this->repo->findBy('attribute_key', 'google_url_shortener_key');
+            $this->repo->update($record->id,['attribute_value' => $input['google_url_shortener_key']]);
+        }
+
         if(!empty($input['head_code'])){
             $record = $this->repo->findBy('attribute_key', 'head_code');
             $this->repo->update($record->id,['attribute_value' => $input['head_code']]);
