@@ -19,13 +19,17 @@ class ModuleServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../Resources/Lang', 'news');
         $this->loadViewsFrom(__DIR__.'/../Resources/Views', 'news');
 
-        if(!app()->runningInConsole() && \Schema::hasTable('settings')) {
+        if(!app()->runningInConsole()) {
 
-            Cache::remember('cuffNewsCategories', 10, function () {
+            Cache::tags('NewsCategory', 'News')->rememberForever('cuffNewsCategories', function () {
+
+                if(! \Schema::hasTable('news')) {
+                    return null;
+                }
 
                 $newsCategoryRepository = new NewsCategoryRepository();
                 $cuffNewsCategories = $newsCategoryRepository->with(['news'])->where('is_cuff', 1)->where('is_active', 1)->findAll();
-                View::share('cuffNewsCategories', $cuffNewsCategories);
+                return View::share('cuffNewsCategories', $cuffNewsCategories);
             });
         }
     }
