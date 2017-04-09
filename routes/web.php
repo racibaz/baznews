@@ -74,7 +74,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('theme_manager', 'Backend\ThemeManagerController');
     Route::post('announcement.announcement_establishment_store', 'Backend\AnnouncementController@announcement_establishment_store')->name('announcement_establishment_store');
     Route::post('announcement.list_to_show', 'Backend\AnnouncementController@list_to_show')->name('list_to_show');
-    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs');
     Route::get('ping', 'Backend\PingController@edit')->name('ping');
     Route::post('ping.update', 'Backend\PingController@update')->name('ping.update');
     Route::resource('widget_group', 'Backend\WidgetGroupController');

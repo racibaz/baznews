@@ -29,7 +29,7 @@ class BaznewsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(!app()->runningInConsole() && \Schema::hasTable('settings')) {
+        if(!app()->runningInConsole()) {
 
             User::created(function ($user) {
                 if($user->status === 2){
@@ -73,7 +73,6 @@ class BaznewsServiceProvider extends ServiceProvider
             View::share('activeTheme', Theme::getActive());
 
         }
-
     }
 
     /**

@@ -12,7 +12,6 @@ use App\Modules\News\Repositories\VideoGalleryRepository;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
 
 class IndexController extends Controller
 {
@@ -20,6 +19,10 @@ class IndexController extends Controller
     public function index()
     {
           return Cache::tags(['homePage'])->rememberForever('homePage', function() {
+
+              if(!\Schema::hasTable('news')) {
+                  return null;
+              }
 
              $newsRepository = new NewsRepository();
              $breakNewsItems    =  $newsRepository->where('break_news', 1)->where('status', 1)->limit(Cache::tags('Setting')->get('break_news'))->findAll();
