@@ -1,29 +1,49 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('menu.management')}}
+            <small>{{trans('menu.menu_list')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('menu.index') !!}"> {{trans('menu.management')}}</a></li>
+            <li class="active">{{trans('menu.menu_list')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <div class="row">
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
                 <a href="{{ route('menu.create') }}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> {{ trans('common.create') }}
+                    <i class="fa fa-plus"></i> {{ trans('menu.menu_create') }}
                 </a>
             </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><strong>{{trans('menu.management')}}</strong></h3>
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><strong>{{trans('menu.menu_list')}}</strong></h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
 
                     @include($activeTheme . '::backend.partials.tree',$recordsTree)
 
-                    <table id="example2" class="table table-bordered table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>{{trans('menu.name')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('menu.is_active')}}</th>
+                            <th>{{trans('menu.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,7 +67,8 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('menu.name')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('menu.is_active')}}</th>
+                            <th>{{trans('menu.edit_delete')}}</th>
                         </tr>
                         </tfoot>
                     </table>

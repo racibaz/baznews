@@ -21,6 +21,8 @@
          folder instead of downloading all of them to reduce the load. -->
     <link href="{{ Theme::asset($activeTheme .'::AdminLTE/dist/css/skins/_all-skins.min.css') }}" rel="stylesheet">
 
+    <link href="{{ Theme::asset($activeTheme .'::js/summernote/dist/summernote.css') }}" rel="stylesheet">
+
     <link href="{{ Theme::asset($activeTheme .'::js/icheck/skins/all.css') }}" rel="stylesheet">
 
     @yield('css')
@@ -283,7 +285,11 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{--<script src="{{ Theme::asset($activeTheme .'::AdminLTE/dist/js/pages/dashboard2.js') }}"></script>--}}
 
+<!-- İCHECK -->
 <script src="{{ Theme::asset($activeTheme .'::js/icheck/icheck.min.js') }}"></script>
+<!-- SUMMERNOTE -->
+<script src="{{ Theme::asset($activeTheme .'::js/summernote/dist/summernote.min.js') }}"></script>
+
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ Theme::asset($activeTheme .'::AdminLTE/dist/js/demo.js') }}"></script>

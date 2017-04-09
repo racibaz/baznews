@@ -1,86 +1,92 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('menu.management')}}
+            <small>{{$record->name}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('menu.index') !!}"> {{trans('menu.management')}}</a></li>
+            <li class="active">{{$record->name}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <!--Top header start-->
-                <h3 class="ls-top-header">Kullanıcılar</h3>
-                <!--Top header end -->
 
-                <!--Top breadcrumb start -->
-                <ol class="breadcrumb">
-                    <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                    <li>Kullanıcılar</li>
-                    <li class="active">{{$record->first_name}}</li>
-                </ol>
-                <!--Top breadcrumb start -->
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div style="margin-bottom: 20px;">
-                    {{ link_to_route('admin.user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-md'] ) }}
-                </div>
-            </div><!-- end col-md-12 -->
-        </div><!-- end row -->
-        <!-- Main Content Element  Start-->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="panel panel-light-blue">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">{{$record->first_name}}</h3>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('menu.name').' > '.$record->name}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
                     </div>
-                    <div class="panel-body">
-                        <div class="table-responsive ls-table">
-                            <table class="table table-bordered table-bottomless table-hover ">
-                                <thead>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" style="display: block;">
+                    <div class="table-responsive">
+                        <table class="table table-bordered able-hover">
+                            <tbody>
                                 <tr>
-                                    <th width="20%">Tanım</th>
-                                    <th width="80%">Bilgi</th>
+                                    <td width="20%"><b>{{trans('menu.name')}}:</b></td>
+                                    <td width="80%">{{$record->name}}</td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th>Ad Soyad</th>
-                                        <td>{{$record->first_name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>E-Posta</th>
-                                        <td>{{$record->email}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rolleri</th>
-                                        <td>
-                                            @foreach($record->roles as $role)
-                                                <span class="label label-default">{{$role->name}}</span>
-                                            @endforeach
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Grupları</th>
-                                        <td>
-                                            @foreach($record->groups as $group)
-                                                <span class="label label-default">{{$group->name}}</span>
-                                            @endforeach
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Aktif/Pasif</th>
-                                        <td>{!!$record->is_active ? '<label class="badge badge-green">Aktif</label>' : '<label class="badge badge-brown">Pasif</label>'!!}</td>
-                                    </tr>
+                                <tr>
+                                    <td><b>{{trans('menu.parent_menu')}}:</b></td>
+                                    <td>{{$record->parent_id}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{trans('menu.site_page')}}:</b></td>
+                                    <td>{{$record->parent_id}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{trans('menu.sort_left')}}:</b></td>
+                                    <td>{{$record->_lft}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{trans('menu.sort_right')}}:</b></td>
+                                    <td>{{$record->_rgt}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{trans('menu.site_page')}}:</b></td>
+                                    <td>{{$record->page_id}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{trans('menu.slug')}}:</b></td>
+                                    <td>{{$record->slug}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{trans('menu.url')}}:</b></td>
+                                    <td>{{$record->url}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{trans('menu.category')}}:</b></td>
+                                    <td>{{$record->route}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{trans('menu.target')}}:</b></td>
+                                    <td>{{$record->target}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{trans('menu.order')}}:</b></td>
+                                    <td>{{$record->order}}</td>
+                                </tr>
 
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
-        </div><!-- end row -->
-        <!-- Main Content Element  End-->
-    </div><!-- container-fluid -->
+                <!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- .col-md-6 -->
 
+    </div>
 
 @endsection
 

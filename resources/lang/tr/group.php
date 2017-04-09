@@ -30,6 +30,8 @@ return [
     'user_count'      => 'Kullanıcı Sayısı',
     'active'      => 'Aktif',
     'passive'      => 'Pasif',
+    'group_add_edit'      => 'Grup Oluştur/Düzenle',
+    'show'      => 'Grup Detay',
 
 
 ];

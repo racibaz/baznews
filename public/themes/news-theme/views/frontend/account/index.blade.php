@@ -32,7 +32,7 @@
                                 <p>
                                     @permission('index-admin')
                                     <a href="{{route('dashboard')}}" class="btn btn-success btn-block">
-                                        <i class="fa fa-window-restore"></i> {{trans('dashboard.show_account_page')}}
+                                        <i class="fa fa-window-restore"></i> {{trans('account.show_dashboard')}}
                                     </a>
                                     @endpermission
                                 </p>

@@ -14,7 +14,11 @@ return [
     'login' => 'Giriş Yap',
     'register' => 'Kayıt Ol',
     'please_choose' => 'Seçiniz',
-    'logout' => 'Çıkış Yap'
+    'logout' => 'Çıkış Yap',
+    //Genel Mesajlar
+    'message_model_updated' => 'Kayıt İşlemi Başarılı',
+    'save_failed' => 'Kayıt İşlemi Hatalı'
+
 
 
 ];

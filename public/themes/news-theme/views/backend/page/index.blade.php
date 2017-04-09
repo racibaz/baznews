@@ -1,17 +1,35 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('page.management')}}
+            <small>{{trans('page.page_list')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('page.index') !!}"> {{trans('page.management')}}</a></li>
+            <li class="active">{{trans('page.page_list')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <div class="row">
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
                 <a href="{{ route('page.create') }}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> {{ trans('common.create') }}
+                    <i class="fa fa-plus"></i> {{ trans('page.page_create') }}
                 </a>
             </div>
             <div class="box">
-                <div class="box-header">
+                <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{trans('page.management')}}</strong></h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -21,7 +39,8 @@
                             <th>#</th>
                             <th>{{trans('page.name')}}</th>
                             <th>{{trans('page.is_comment')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('page.is_active')}}</th>
+                            <th>{{trans('page.edit_create')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,7 +66,8 @@
                             <th>#</th>
                             <th>{{trans('page.name')}}</th>
                             <th>{{trans('page.is_comment')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('page.is_active')}}</th>
+                            <th>{{trans('page.edit_create')}}</th>
                         </tr>
                         </tfoot>
                     </table>

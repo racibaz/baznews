@@ -50,6 +50,7 @@
                             <th>#</th>
                             <th>{{trans('user.name_surname')}}</th>
                             <th>{{trans('user.mail')}}</th>
+                            <th>{{trans('user.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -74,6 +75,7 @@
                             <th>#</th>
                             <th>{{trans('user.name_surname')}}</th>
                             <th>{{trans('user.mail')}}</th>
+                            <th>{{trans('user.edit_delete')}}</th>
                         </tr>
                         </tfoot>
                     </table>

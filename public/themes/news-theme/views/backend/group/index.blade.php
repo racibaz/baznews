@@ -9,7 +9,6 @@
             <li class="active">{{trans('group.management')}}</li>
         </ol>
     </section>
-
 @endsection
 @section('content')
 
@@ -26,7 +25,7 @@
         <div class="box-body">
 
             <div class="table-responsive">
-                <table id="groups" class="table table-bordered table-hover table-data">
+                <table id="groups" class="table table-bordered table-hover" style="margin-bottom: 0;">
                     <thead>
                     <tr>
                         <th>{!! trans('group.name') !!}</th>
