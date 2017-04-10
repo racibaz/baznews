@@ -61,6 +61,15 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            {!! Form::label('short_url', trans('article::article.short_url'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('short_url', $record->short_url, ['placeholder' => trans('article::article.short_url') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {!! Form::label('subtitle', trans('article::article.subtitle'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">

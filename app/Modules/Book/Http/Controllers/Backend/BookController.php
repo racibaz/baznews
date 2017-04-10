@@ -3,13 +3,16 @@
 namespace App\Modules\Book\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Library\Link\LinkShortener;
 use App\Library\Uploader;
+use App\Models\Setting;
 use App\Modules\Book\Models\Book;
 use App\Modules\Book\Models\BookAuthor;
 use App\Modules\Book\Models\BookCategory;
 use App\Modules\Book\Models\BookPublisher;
 use App\Modules\Book\Repositories\BookRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
+use Mremi\UrlShortener\Model\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -163,6 +166,17 @@ class BookController extends BackendController
 
                 $this->bookBookCategoriesStore($result,$input);
 
+
+                /*
+                 * slug değişmiş ise ve link kısaltmaya izin verilmişse google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
+                 *
+                 * */
+                if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+
+                    $linkShortener = new LinkShortener(new Link);
+                    $result->short_url = $linkShortener->linkShortener($result->slug);
+                    $result->save();
+                }
 
                 /*
                  * Delete related caches

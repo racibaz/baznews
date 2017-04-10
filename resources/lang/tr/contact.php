@@ -9,7 +9,7 @@ return [
     'content' => 'İçerik',
     'email' => 'E-Posta',
     'phone' => 'Telefon Numarası',
-    'is_read'   => 'Okundu / Okunmadı',
+    'is_read' => 'Okundu / Okunmadı',
     'contact_form' => 'İletişim Formu',
     'submit' => 'Gönder',
     'passive_contact_message_count' => 'Pasif İletişim Mesajı Sayısı',
@@ -17,6 +17,4 @@ return [
     'read' => 'Okundu',
     'unread' => 'Okunmadı',
     'edit_delete' => 'Düzenle/Sil',
-
-
 ];

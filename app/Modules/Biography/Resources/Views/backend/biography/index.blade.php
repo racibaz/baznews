@@ -30,6 +30,7 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('biography.show', $record->name , $record, [] ) !!}</td>
+                                    <td> {{$record->short_url}} </td>
                                     <td> {{$record->order}} </td>
                                     <td> {{$record->status}} </td>
                                     <td> {{$record->is_cuff}} </td>
@@ -51,6 +52,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('biography.name')}}</th>
+                            <th>{{trans('biography.short_url')}}</th>
                             <th>{{trans('biography.order')}}</th>
                             <th>{{trans('biography.status')}}</th>
                             <th>{{trans('biography.is_cuff')}}</th>

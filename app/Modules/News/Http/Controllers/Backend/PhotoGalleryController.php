@@ -3,7 +3,9 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Library\Link\LinkShortener;
 use App\Library\Uploader;
+use App\Models\Setting;
 use App\Models\Tag;
 use App\Modules\News\Models\Photo;
 use App\Modules\News\Models\PhotoCategory;
@@ -12,6 +14,7 @@ use App\Modules\News\Repositories\PhotoGalleryRepository as Repo;
 use App\Modules\News\Repositories\PhotoRepository;
 use Caffeinated\Themes\Facades\Theme;
 use League\Flysystem\Exception;
+use Mremi\UrlShortener\Model\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -159,6 +162,19 @@ class PhotoGalleryController extends BackendController
 
 
                 $this->tagsPhotoGalleryStore($result,$input);
+
+
+                /*
+                 * slug değişmiş ise ve link kısaltmaya izin verilmişse
+                 * google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
+                 *
+                 * */
+                if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+
+                    $linkShortener = new LinkShortener(new Link);
+                    $result->short_url = $linkShortener->linkShortener($result->slug);
+                    $result->save();
+                }
 
 
                 /*

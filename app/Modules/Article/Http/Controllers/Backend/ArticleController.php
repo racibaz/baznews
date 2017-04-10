@@ -3,6 +3,8 @@
 namespace App\Modules\Article\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Library\Link\LinkShortener;
+use App\Models\Setting;
 use App\Modules\Article\Http\Requests\ArticleRequest;
 use App\Modules\Article\Models\Article;
 use App\Modules\Article\Models\ArticleAuthor;
@@ -10,6 +12,7 @@ use App\Modules\Article\Models\ArticleCategory;
 use App\Modules\Article\Repositories\ArticleRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Mews\Purifier\Facades\Purifier;
+use Mremi\UrlShortener\Model\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -195,6 +198,18 @@ class ArticleController extends BackendController
 
                 $this->articleArticleCategoriesStore($result, $input);
 
+
+                /*
+                 * slug değişmiş ise ve link kısaltmaya izin verilmişse
+                 * google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
+                 *
+                 * */
+                if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+
+                    $linkShortener = new LinkShortener(new Link);
+                    $result->short_url = $linkShortener->linkShortener($result->slug);
+                    $result->save();
+                }
 
                 $this->removeCacheTags(['ArticleController', 'Article']);
                 $this->removeHomePageCache();

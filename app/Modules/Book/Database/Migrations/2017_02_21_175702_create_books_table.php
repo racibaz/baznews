@@ -20,6 +20,7 @@ class CreateBooksTable extends Migration
             $table->unsignedInteger('book_author_id')->nullable();
             $table->string('name');
             $table->string('slug')->nullable()->unique();
+            $table->string('short_url')->nullable();
             $table->string('link')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('photo')->nullable();

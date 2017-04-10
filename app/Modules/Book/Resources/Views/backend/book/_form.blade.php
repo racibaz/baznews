@@ -53,6 +53,15 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            {!! Form::label('short_url', trans('book::book.short_url'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('short_url', $record->short_url, ['placeholder' => trans('book::book.short_url') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {!! Form::label('link', trans('book::book.link'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
