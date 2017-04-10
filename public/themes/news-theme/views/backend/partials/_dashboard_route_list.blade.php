@@ -17,7 +17,7 @@
 @permission('index-widgetgroup')<li><a href="{!! route('widget_group.index') !!}"><i class="fa fa-archive"></i> <span>{{trans('dashboard.widget_groups')}}</span></a></li>@endpermission
 @permission('index-thememanager')<li><a href="{!! route('theme_manager.index') !!}"><i class="fa fa-file-code-o"></i> <span>{{trans('dashboard.theme_managers')}}</span></a></li>@endpermission
 @permission('index-ping')<li><a href="{!! route('ping') !!}"><i class="fa fa-bullseye"></i> <span>{{trans('dashboard.pings')}}</span></a></li>@endpermission
-@permission('index-log')<li><a href="admin/logs"><i class="fa fa-list-ul"></i> <span>{{trans('dashboard.logs')}}</span></a></li>@endpermission
+@permission('index-log')<li><a href="{!! route('logs') !!}"><i class="fa fa-list-ul"></i> <span>{{trans('dashboard.logs')}}</span></a></li>@endpermission
 @permission('changes-env')<li><a href="admin/enveditor"><i class="fa fa-code-fork"></i> <span>{{trans('dashboard.changes_env_file')}}</span></a></li>@endpermission
 <li class="header"><i class="fa fa-cogs"></i>  GENEL AYARLAR</li>
 @permission('index-country')<li><a href="{!! route('country.index') !!}"><i class="fa fa-globe"></i> <span>{{trans('dashboard.countries')}}</span></a></li>@endpermission

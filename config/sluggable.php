@@ -45,11 +45,7 @@ return [
      */
 
     'method' => function( $string, $sep ) {
-        return str_slug(
-            str_replace(
-                ['ü','ö','ğ','ç','ş','Ü','Ö','Ğ','Ç','Ş','İ'],
-                ['u','o','g','c','s','u','O','g','c','s','i'],
-            $string));
+        return str_slug(\Patchwork\Utf8::toAscii($string));
     },
 
     /**

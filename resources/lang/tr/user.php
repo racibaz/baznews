@@ -31,7 +31,11 @@ return [
     'active_user_count' => 'Aktif Kullanıcı Sayısı',
     'passive_user_count' => 'Pasif Kullanıcı Sayısı',
     'user_edit_create' => 'Kullanıcı Ekle/Düzenle',
+    'edit_delete'=>'Düzenle/Sil',
+    'adress'=>'Adres',
     //Kullanıcı Detay - Revizyonlar
+
+    'about' => 'Kullanıcı Hakkında',
     'user_revisions' => 'Kullanıcı Revizyonları',
     'revisionable_type' => 'Tipi',
     'revisionable_id' => 'Id',
@@ -47,4 +51,6 @@ return [
     'eventable_id' => 'Id',
     'event_name' => 'Etkinlik Adı',
     'trushed_management' => 'Silinmiş Kullanıcılar',
+    'please_choose'=>'Lütfen Seçiniz..'
+
 ];

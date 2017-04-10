@@ -1,86 +1,56 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('contact.management')}}
+            <small>{{$record->subject}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('contact.index') !!}"> {{trans('contact.management')}}</a></li>
+            <li class="active">{{$record->subject}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{$record->subject}}</h3>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <!--Top header start-->
-                <h3 class="ls-top-header">Kullanıcılar</h3>
-                <!--Top header end -->
-
-                <!--Top breadcrumb start -->
-                <ol class="breadcrumb">
-                    <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                    <li>Kullanıcılar</li>
-                    <li class="active">{{$record->first_name}}</li>
-                </ol>
-                <!--Top breadcrumb start -->
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <strong>{{trans('contact.full_name')}}:</strong>
+                    <p class="text-muted">{{$record->full_name}}</p>
+                    <hr>
+                    <strong>{{trans('contact.subject')}}:</strong>
+                    <p class="text-muted">{{$record->subject}}</p>
+                    <hr>
+                    <strong>{{trans('contact.content')}}:</strong>
+                    <div style="padding: 10px;border: 1px solid #c5c5c5; background-color: #e6eaec;border-radius: 3px;">
+                        <p class="text-muted">{!!$record->content!!}</p>
+                    </div>
+                    <hr>
+                    <strong>{{trans('contact.email')}}:</strong>
+                    <p class="text-muted">{{$record->email}}</p>
+                    <hr>
+                    <strong>{{trans('contact.phone')}}:</strong>
+                    <p class="text-muted">{{$record->phone}}</p>
+                    <hr>
+                    <strong>{{trans('contact.is_read')}}:</strong>
+                    <p class="text-muted">{!!$record->is_read ? '<label class="badge bg-green">' . trans('contact.read') . '</label>' : '<label class="badge bg-brown">' . trans('contact.unread') . '</label>'!!}</p>
+                    <hr>
+                </div>
+                <!-- /.box-body -->
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div style="margin-bottom: 20px;">
-                    {{ link_to_route('admin.user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-md'] ) }}
-                </div>
-            </div><!-- end col-md-12 -->
-        </div><!-- end row -->
-        <!-- Main Content Element  Start-->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="panel panel-light-blue">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">{{$record->first_name}}</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="table-responsive ls-table">
-                            <table class="table table-bordered table-bottomless table-hover ">
-                                <thead>
-                                <tr>
-                                    <th width="20%">Tanım</th>
-                                    <th width="80%">Bilgi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th>Ad Soyad</th>
-                                        <td>{{$record->first_name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>E-Posta</th>
-                                        <td>{{$record->email}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rolleri</th>
-                                        <td>
-                                            @foreach($record->roles as $role)
-                                                <span class="label label-default">{{$role->name}}</span>
-                                            @endforeach
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Grupları</th>
-                                        <td>
-                                            @foreach($record->groups as $group)
-                                                <span class="label label-default">{{$group->name}}</span>
-                                            @endforeach
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Aktif/Pasif</th>
-                                        <td>{!!$record->is_active ? '<label class="badge badge-green">Aktif</label>' : '<label class="badge badge-brown">Pasif</label>'!!}</td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- end row -->
-        <!-- Main Content Element  End-->
-    </div><!-- container-fluid -->
-
-
+    </div>
 @endsection
 

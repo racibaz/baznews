@@ -1,22 +1,19 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('page.management')}}
+            <small>{{trans('page.edit_create')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('page.index') !!}"> {{trans('page.management')}}</a></li>
+            <li class="active">{{trans('page.edit_create')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('page.management')}}</h3>
-            <!--Top header end -->
-
-            <!--Top breadcrumb start -->
-            <ol class="breadcrumb">
-                <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('page.index') !!}"> {{ trans('page.pages') }} </a></li>
-                <li class="active"> {{ trans('common.add_update') }}</li>
-            </ol>
-            <!--Top breadcrumb start -->
-        </div>
-    </div>
     <!-- Main Content Element  Start-->
     <div class="row">
         <div class="col-md-6">

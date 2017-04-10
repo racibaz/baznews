@@ -6,8 +6,9 @@
             <small>{{trans('user.user_list_title')}}</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i> {{trans('dashboard.name')}}</a></li>
-            <li class="active">{{$record->first_name}}</li>
+            <li><a href="#"><i class="fa fa-home"></i> {{trans('dashboard.home_page')}}</a></li>
+            <li>{{trans('user.user_management')}}</li>
+            <li class="active">{{$record->name}}</li>
         </ol>
     </section>
 @endsection
@@ -23,34 +24,23 @@
     <div class="row">
         <div class="col-md-3">
             <div class="box box-default">
-                <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('user.user_info')}}</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                    <!-- /.box-tools -->
-                </div>
                 <!-- /.box-header -->
-                <div class="box-body">
+                <div class="box-body box-profile">
+                    <?php
+                    $default = Redis::get('url') . "/default_user_avatar.jpg";
+                    $size = 150;
+                    $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $record->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+                    ?>
+
+                    <img class="profile-user-img img-responsive img-circle" src="<?php echo $grav_url; ?>" alt="{{$record->name}}"/>
+
+                    <h3 class="profile-username text-center">{{$record->name}}</h3>
+
+                    <p class="text-muted text-center">{{$record->email}}</p>
+
                     <div class="table-responsive ls-table">
                         <table class="table table-bordered table-bottomless table-hover " style="margin-bottom: 0;">
-                            <thead>
-                            <tr>
-                                <th width="20%">Tanım</th>
-                                <th width="80%">Bilgi</th>
-                            </tr>
-                            </thead>
                             <tbody>
-                            <tr>
-                                <th>Ad Soyad</th>
-                                <td>{{$record->name}}</td>
-                            </tr>
-                            <tr>
-                                <th>E-Posta</th>
-                                <td>{{$record->email}}</td>
-                            </tr>
                             <tr>
                                 <th>Rolleri</th>
                                 <td>
@@ -69,15 +59,33 @@
                             </tr>
                             <tr>
                                 <th>Aktif/Pasif</th>
-                                <td>{!!$record->is_active ? '<label class="badge badge-green">Aktif</label>' : '<label class="badge badge-brown">Pasif</label>'!!}</td>
+                                <td>{!!$record->status ? '<label class="badge bg-green">Aktif</label>' : '<label class="badge bg-brown">Pasif</label>'!!}</td>
                             </tr>
 
                             </tbody>
                         </table>
-                    </div>
+                    </div><!-- /.box-profile -->
+                </div><!-- /.box -->
+            </div><!-- /.box -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('user.about')}}</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> {{trans('user.adress')}}</strong>
+
+                    <p class="text-muted">{{$record->country_id}} , {{$record->city_id}}</p>
+
+                    <hr>
+
+                    <strong><i class="fa fa-file-text-o margin-r-5"></i> {{trans('user.bio_note')}} </strong>
+
+                    <p>{{$record->bio_note}}</p>
                 </div>
                 <!-- /.box-body -->
-            </div><!-- /.box -->
+            </div>
         </div><!-- /.col -->
         <div class="col-md-9">
             <div class="row">

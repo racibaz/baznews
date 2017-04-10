@@ -24,5 +24,6 @@ return [
     'edit'        => 'Hesap Bilgilerini Güncelle',
     'password'        => 'Parola',
     'logout'        => 'Çıkış Yap',
+    'show_dashboard'=> 'Yönetim Paneli',
 
 ];

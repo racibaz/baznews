@@ -2,27 +2,29 @@
 
 @section('content')
 
+    <!-- Main content -->
+
     @if(isset($record->id))
         {!! Form::model($record, ['route' => ['group.update', $record], 'method' => 'PATCH']) !!}
     @else
         {!! Form::open(['route' => 'group.store','method' => 'post']) !!}
     @endif
 
-
-    <!-- Main content -->
-
     <div class="row">
-
         <div class="col-md-6">
             <!-- general form elements disabled -->
-            <div class="box box-warning">
-                <div class="box-header with-border">
-                    <h3 class="ls-top-header">{{trans('group.management')}}</h3>
+            <div class="box box-default">
+                <div class="box-header">
+                    <h3 class="box-title">{{trans('group.management')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                {{--<form group="form">--}}
-
                 <!-- text input -->
                     <div class="form-group">
                         {!! Form::label('name', trans('group.name')) !!}
@@ -40,10 +42,9 @@
                             {!! trans('common.is_active') !!}
                         </label>
                     </div>
-                    <div class="box-footer">
-                        {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
-                    </div>
-                    {!! Form::close() !!}
+                </div>
+                <div class="box-footer">
+                    {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -52,5 +53,5 @@
 
     </div>
     <!-- /.content -->
-
+    {!! Form::close() !!}
 @endsection

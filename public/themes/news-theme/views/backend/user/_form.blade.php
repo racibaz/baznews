@@ -103,7 +103,7 @@
 
                             <div class="form-group">
                                 {!! Form::label('bio_note', trans('user.bio_note'), ['class'=> 'control-label']) !!}
-                                {!! Form::textarea('bio_note', $record->bio_note, ['placeholder' => trans('user.bio_note'), 'class' => 'form-control']) !!}
+                                {!! Form::textarea('bio_note', $record->bio_note, ['placeholder' => trans('user.bio_note'), 'class' => 'form-control summernote','rows'=>'10']) !!}
                             </div>
                             <div class="form-group">
                                 <label for="0">
@@ -186,7 +186,7 @@
         <div class="col-md-3">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Kaydet</h3>
+                    <h3 class="box-title">Durum</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -198,13 +198,16 @@
                 <div class="box-body">
                     <div class="form-group">
                         {!! Form::label('status', trans('news::news.status'),['class'=> 'control-label']) !!}
-                        {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
+                        {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('user.please_choose'),'class' => 'form-control']) !!}
                     </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
                     <div class="form-group">
                         <button class="btn btn-success pull-right" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div>
-                <!-- /.box-body -->
+                <!-- /.box-footer -->
             </div>
             <!-- /.box -->
             <div class="box box-default">
@@ -261,4 +264,12 @@
     </div>
     {!! Form::close() !!}
     <!-- Main Content Element  End-->
+@endsection
+
+@section('js')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.summernote').summernote();
+        });
+    </script>
 @endsection

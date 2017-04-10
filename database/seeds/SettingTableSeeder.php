@@ -109,6 +109,11 @@ class SettingTableSeeder extends Seeder
         ]);
 
         Setting::create([
+            'attribute_key'               => 'google_url_shortener_key',
+            'attribute_value'             => 'AIzaSyAPVwwgJY6Z-43N-Rpq74jQ37g_YwnZPJI',
+        ]);
+
+        Setting::create([
             'attribute_key'               => 'head_code',
             'attribute_value'             => 'head codes ',
         ]);

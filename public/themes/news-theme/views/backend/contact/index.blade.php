@@ -1,5 +1,17 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('contact.management')}}
+            <small>{{trans('contact.contact_list')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('contact.index') !!}"> {{trans('contact.management')}}</a></li>
+            <li class="active">{{trans('contact.contact_list')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <div class="row">
@@ -11,7 +23,7 @@
             </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><strong>{{trans('contact.management')}}</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('contact.contact_list')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -20,7 +32,8 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('contact.subject')}}</th>
-                            <th>{{trans('common.is_read')}}</th>
+                            <th>{{trans('contact.is_read')}}</th>
+                            <th>{{trans('contact.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -28,7 +41,7 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('contact.show', $record->subject , $record, [] ) !!}</td>
-                                    <td>{!!$record->is_read ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->is_read ? '<label class="badge bg-green">' . trans('contact.read') . '</label>' : '<label class="badge bg-brown">' . trans('contact.unread') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('contact.destroy',  $record))) !!}
@@ -44,7 +57,8 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('contact.subject')}}</th>
-                            <th>{{trans('common.is_read')}}</th>
+                            <th>{{trans('contact.is_read')}}</th>
+                            <th>{{trans('contact.edit_delete')}}</th>
                         </tr>
                         </tfoot>
                     </table>
