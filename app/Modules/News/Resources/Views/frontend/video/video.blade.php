@@ -99,7 +99,7 @@
                             {!! Cache::tags('Setting')->get('addthis') !!}
                         </div><!-- /.share-box -->
 
-                        @if($record->is_comment)
+                        @if($video->is_comment)
                             <div class="discus-box">
                                 <div class="row">
                                     <div class="col-md-12">

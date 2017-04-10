@@ -118,12 +118,25 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {{trans('news::common.status')}}
+                            {{trans('common.is_comment')}}
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <div class="checkbox i-checks">
+                                    <label>
+                                        {!! Form::checkbox('is_comment', null , $record->is_comment) !!}
+                                        <i></i> {{trans('common.is_comment')}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {{trans('common.status')}}
                             <div class="col-lg-offset-2 col-lg-10">
                                 <div class="checkbox i-checks">
                                     <label>
                                         {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                        <i></i> {{trans('news::common.is_active')}}
+                                        <i></i> {{trans('common.is_active')}}
                                     </label>
                                 </div>
                             </div>

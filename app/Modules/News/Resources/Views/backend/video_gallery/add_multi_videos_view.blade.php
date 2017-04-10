@@ -70,12 +70,25 @@
 
                                 <div class="form-group">
                                     <div class="row">
-                                        {{trans('news::common.status')}}
+                                        {{trans('common.is_comment')}}
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <div class="checkbox i-checks">
+                                                <label>
+                                                    {!! Form::checkbox('is_comment/' . $video->id, null , $video->is_comment) !!}
+                                                    <i></i> {{trans('common.is_comment')}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        {{trans('common.status')}}
                                         <div class="col-lg-offset-2 col-lg-10">
                                             <div class="checkbox i-checks">
                                                 <label>
                                                     {!! Form::checkbox('is_active/' . $video->id, null , $video->is_active) !!}
-                                                    <i></i> {{trans('news::common.is_active')}}
+                                                    <i></i> {{trans('common.is_active')}}
                                                 </label>
                                             </div>
                                         </div>
@@ -86,9 +99,6 @@
                                 <div>
                                     <img src="{{ asset('video_gallery/' . $video_gallery->id . '/photos/213x116_' . $video->thumbnail)}}" />
                                 </div>
-
-
-
                             </li>
                         @endforeach
 
