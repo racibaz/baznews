@@ -210,7 +210,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('news.title')}}</th>
-                            <th>{{trans('news.hit')}}</th>
+                            <th>{{trans('news.short_url')}}</th>
                             <th>{{trans('news.status')}}</th>
                             <th>{{trans('news.band_news')}}</th>
                             <th>{{trans('news.box_cuff')}}</th>
@@ -227,7 +227,7 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('news.show', $record->title , $record, [] ) !!}</td>
-                                    <td> {{$record->hit}} </td>
+                                    <td> {{$record->short_url}} </td>
                                     <td>
                                         {{--<a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'status']) !!}">{{$record->status}}</a>--}}
                                         {!! Form::open(['route' => 'status_toggle','method' => 'post']) !!}
@@ -277,7 +277,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('news.title')}}</th>
-                            <th>{{trans('news.hit')}}</th>
+                            <th>{{trans('news.short_url')}}</th>
                             <th>{{trans('news.status')}}</th>
                             <th>{{trans('news.band_news')}}</th>
                             <th>{{trans('news.box_cuff')}}</th>

@@ -4,6 +4,7 @@ namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
 use App\Jobs\Ping\SendPing;
+use App\Library\Link\LinkShortener;
 use App\Library\Uploader;
 use App\Models\City;
 use App\Models\Country;
@@ -403,27 +404,15 @@ class NewsController extends BackendController
 
 
                 /*
-                 * slug değişmiş ise google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
+                 * slug değişmiş ise ve link kısaltmaya izin verilmişse google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
                  *
                  * */
                 if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
 
-                    $link = new Link;
-//                    $link->setLongUrl(Cache::tags(['Setting'])->get('url') . ' /' . $result->slug);
-                  $link->setLongUrl('http://www.baznews.app/' . $result->slug );
-
-                    $googleProvider = new GoogleProvider(
-                        Cache::tags(['Setting'])->get('google_url_shortener_key'),
-                        array('connect_timeout' => 1, 'timeout' => 1)
-                    );
-
-                    $result->short_url = $googleProvider->shorten($link);
+                    $linkShortener = new LinkShortener(new Link);
+                    $result->short_url = $linkShortener->linkShortener($result->slug);
                     $result->save();
                 }
-
-
-
-
 
 
                 /*

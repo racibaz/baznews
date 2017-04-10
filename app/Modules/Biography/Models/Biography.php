@@ -28,7 +28,7 @@ class Biography extends Model
     }
 
     protected $table = 'biographies';
-    protected $fillable = ['user_id', 'title', 'spot', 'name', 'slug', 'content', 'photo', 'description', 'keywords', 'order', 'hit', 'status', 'is_cuff', 'is_active'];
+    protected $fillable = ['user_id', 'title', 'spot', 'name', 'slug', 'short_url', 'content', 'photo', 'description', 'keywords', 'order', 'hit', 'status', 'is_cuff', 'is_active'];
 
     public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
 

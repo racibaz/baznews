@@ -4,10 +4,9 @@ namespace App\Modules\Book\Models;
 
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Venturecraft\Revisionable\RevisionableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Validator;
-use Venturecraft\Revisionable\RevisionableTrait;
 
 class Book extends Model
 {
@@ -40,6 +39,7 @@ class Book extends Model
         'book_author_id',
         'name',
         'slug',
+        'short_url',
         'link',
         'thumbnail',
         'photo',

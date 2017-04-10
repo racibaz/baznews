@@ -19,6 +19,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('book.name')}}</th>
+                            <th>{{trans('book.short_url')}}</th>
                             <th>{{trans('book.is_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
@@ -28,6 +29,7 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('book.show', $record->name , $record, [] ) !!}</td>
+                                    <td> {{$record->short_url}} </td>
                                     <td> {{$record->is_cuff}} </td>
                                     <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
@@ -45,6 +47,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('book.name')}}</th>
+                            <th>{{trans('book.short_url')}}</th>
                             <th>{{trans('book.is_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>

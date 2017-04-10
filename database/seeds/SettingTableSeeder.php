@@ -93,9 +93,10 @@ class SettingTableSeeder extends Seeder
             'attribute_value'             => 'user_contract',
         ]);
 
+        //$url = \Illuminate\Support\Facades\Route::current()->domain();
         Setting::create([
             'attribute_key'               => 'url',
-            'attribute_value'             => 'http://www.baznews.com',
+            'attribute_value'             => 'http://www.baznews.app',
         ]);
 
         Setting::create([

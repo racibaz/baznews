@@ -20,6 +20,7 @@ class CreateBiographiesTable extends Migration
             $table->text('spot')->nullable();
             $table->string('name')->unique();
             $table->string('slug')->nullable();
+            $table->string('short_url')->nullable();
             $table->string('content')->nullable();
             $table->string('photo')->nullable();
             $table->string('description')->nullable();

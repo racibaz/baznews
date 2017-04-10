@@ -19,6 +19,7 @@ class CreateVideoGalleriesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('title');
             $table->string('slug')->nullable();
+            $table->string('short_url')->nullable();
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();
             $table->string('thumbnail')->nullable();

@@ -27,6 +27,7 @@
                             <th>{{trans('article.user_id')}}</th>
                             <th>{{trans('article.author_id')}}</th>
                             <th>{{trans('article.title')}}</th>
+                            <th>{{trans('article.short_url')}}</th>
                             <th>{{trans('article.order')}}</th>
                             <th>{{trans('article.hit')}}</th>
                             <th>{{trans('article.is_cuff')}}</th>
@@ -40,6 +41,7 @@
                                     <td>{{$record->user_id}}</td>
                                     <td>{{$record->author_id}}</td>
                                     <td>{!! link_to_route('article.show', $record->title , $record, [] ) !!}</td>
+                                    <td> {{$record->short_url}} </td>
                                     <td> {{$record->order}} </td>
                                     <td> {{$record->hit}} </td>
                                     <td> {{$record->is_cuff}} </td>
@@ -63,6 +65,7 @@
                             <th>{{trans('article.user_id')}}</th>
                             <th>{{trans('article.author_id')}}</th>
                             <th>{{trans('article.title')}}</th>
+                            <th>{{trans('article.short_url')}}</th>
                             <th>{{trans('article.order')}}</th>
                             <th>{{trans('article.hit')}}</th>
                             <th>{{trans('article.is_cuff')}}</th>

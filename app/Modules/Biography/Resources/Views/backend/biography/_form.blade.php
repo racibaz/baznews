@@ -71,6 +71,15 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            {!! Form::label('short_slug', trans('biography::biography.short_slug'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::text('short_slug', $record->short_slug, ['placeholder' => trans('biography::biography.short_slug') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             {!! Form::label('content', trans('biography::biography.content'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">

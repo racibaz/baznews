@@ -26,6 +26,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('video_gallery.title')}}</th>
+                            <th>{{trans('video_gallery.short_url')}}</th>
                             <th>{{trans('video_gallery.is_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
@@ -35,6 +36,7 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('video_gallery.show', $record->title , $record, [] ) !!}</td>
+                                    <td>{{$record->short_url}}</td>
                                     <td>{!!$record->is_cuff ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>

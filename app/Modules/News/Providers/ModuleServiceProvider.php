@@ -29,7 +29,7 @@ class ModuleServiceProvider extends ServiceProvider
 
                 $newsCategoryRepository = new NewsCategoryRepository();
                 $cuffNewsCategories = $newsCategoryRepository->with(['news'])->where('is_cuff', 1)->where('is_active', 1)->findAll();
-                View::share('cuffNewsCategories', $cuffNewsCategories);
+                return View::share('cuffNewsCategories', $cuffNewsCategories);
             });
         }
     }

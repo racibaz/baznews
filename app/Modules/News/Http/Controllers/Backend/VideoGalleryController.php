@@ -3,7 +3,9 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Library\Link\LinkShortener;
 use App\Library\Uploader;
+use App\Models\Setting;
 use App\Modules\News\Models\Video;
 use App\Modules\News\Models\VideoCategory;
 use App\Modules\News\Models\VideoGallery;
@@ -11,6 +13,7 @@ use App\Modules\News\Repositories\VideoGalleryRepository as Repo;
 use App\Modules\News\Repositories\VideoRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Exception;
+use Mremi\UrlShortener\Model\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -153,6 +156,18 @@ class VideoGalleryController extends BackendController
                         ->save(public_path('video_gallery/'. $result->id .'/photos/213x116_' . $document_name));
                 }
 
+
+                /*
+                 * slug değişmiş ise ve link kısaltmaya izin verilmişse
+                 * google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
+                 *
+                 * */
+                if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+
+                    $linkShortener = new LinkShortener(new Link);
+                    $result->short_url = $linkShortener->linkShortener($result->slug);
+                    $result->save();
+                }
 
                 /*
                  * Delete home page cache and related caches
