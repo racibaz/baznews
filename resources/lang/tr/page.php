@@ -12,8 +12,9 @@ return [
     'passive_page_count' => 'Pasif Sayfa Sayısı',
     'edit_create' => 'Oluştur/Düzenle',
     'page_list' => 'Sayfa Listesi',
-    'page_create' => 'Sayfa Listesi',
+    'page_create' => 'Sayfa Oluştur',
     'is_active' => 'Atkif/Pasif',
-    'is_comment' => 'Yorum'
+    'is_comment' => 'Yorum',
+    'status' => 'Durum'
 
 ];

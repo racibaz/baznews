@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.17 on 2017-04-09.
+ * Generated for Laravel 5.4.17 on 2017-04-10.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -13473,6 +13473,226 @@ namespace Laravel\Socialite\Facades {
     }         
 }
     
+namespace Brotzka\DotenvEditor {
+
+    class DotenvEditorFacade {
+        
+        /**
+         * Returns the current backup-path
+         *
+         * @return mixed 
+         * @static 
+         */
+        public static function getBackupPath()
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::getBackupPath();
+        }
+        
+        /**
+         * Set a new backup-path.
+         * 
+         * The new directory will be created if it doesn't exist
+         *
+         * @param $path
+         * @return bool 
+         * @static 
+         */
+        public static function setBackupPath($path)
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::setBackupPath($path);
+        }
+        
+        /**
+         * Checks, if a given key exists in your .env-file.
+         * 
+         * Returns false or true
+         *
+         * @param $key
+         * @return bool 
+         * @static 
+         */
+        public static function keyExists($key)
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::keyExists($key);
+        }
+        
+        /**
+         * Returns the value matching to a given key.
+         * 
+         * Returns false, if key does not exist.
+         *
+         * @param $key
+         * @return mixed 
+         * @throws DotEnvException
+         * @static 
+         */
+        public static function getValue($key)
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::getValue($key);
+        }
+        
+        /**
+         * Activate or deactivate the AutoBackup-Functionality
+         *
+         * @param $onOff
+         * @throws DotEnvException
+         * @static 
+         */
+        public static function setAutoBackup($onOff)
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::setAutoBackup($onOff);
+        }
+        
+        /**
+         * Checks, if Autobackup is enabled
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function AutoBackupEnabled()
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::AutoBackupEnabled();
+        }
+        
+        /**
+         * Used to create a backup of the current .env.
+         * 
+         * Will be assigned with the current timestamp.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function createBackup()
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::createBackup();
+        }
+        
+        /**
+         * Restores the latest backup or a backup from a given timestamp.
+         * 
+         * Restores the latest version when no timestamp is given.
+         *
+         * @param null $timestamp
+         * @return string 
+         * @static 
+         */
+        public static function restoreBackup($timestamp = null)
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::restoreBackup($timestamp);
+        }
+        
+        /**
+         * Returns an array with all available backups.
+         * 
+         * Array contains the formatted and unformatted version of each backup.
+         * Throws exception, if no backups were found.
+         *
+         * @return array 
+         * @throws DotEnvException
+         * @static 
+         */
+        public static function getBackupVersions()
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::getBackupVersions();
+        }
+        
+        /**
+         * Returns filename and path for the given timestamp
+         *
+         * @param $timestamp
+         * @return string 
+         * @throws DotEnvException
+         * @static 
+         */
+        public static function getBackupFile($timestamp)
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::getBackupFile($timestamp);
+        }
+        
+        /**
+         * Delete the given backup-file
+         *
+         * @param $timestamp
+         * @throws DotEnvException
+         * @static 
+         */
+        public static function deleteBackup($timestamp)
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::deleteBackup($timestamp);
+        }
+        
+        /**
+         * Returns the content of a given backup file
+         * or the content of the current env file.
+         *
+         * @param null $timestamp
+         * @return array 
+         * @static 
+         */
+        public static function getContent($timestamp = null)
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::getContent($timestamp);
+        }
+        
+        /**
+         * Returns the given .env as JSON array containing all entries as object
+         * with key and value
+         *
+         * @param null $timestamp
+         * @return string 
+         * @static 
+         */
+        public static function getAsJson($timestamp = null)
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::getAsJson($timestamp);
+        }
+        
+        /**
+         * Change the given values of the current env file.
+         * 
+         * If the given key(s) is/are not found, nothing happens.
+         *
+         * @param array $data
+         * @return bool 
+         * @throws DotEnvException
+         * @static 
+         */
+        public static function changeEnv($data = array())
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::changeEnv($data);
+        }
+        
+        /**
+         * Add data to the current env file.
+         * 
+         * Data will be placed at the end.
+         *
+         * @param array $data
+         * @return bool 
+         * @throws DotEnvException
+         * @static 
+         */
+        public static function addData($data = array())
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::addData($data);
+        }
+        
+        /**
+         * Delete one or more entries from the env file.
+         *
+         * @param array $data
+         * @return bool 
+         * @throws DotEnvException
+         * @static 
+         */
+        public static function deleteData($data = array())
+        {
+            return \Brotzka\DotenvEditor\DotenvEditor::deleteData($data);
+        }
+        
+    }         
+}
+    
     
 namespace {
 
@@ -15520,6 +15740,8 @@ namespace {
     class AsyncWidget extends \Arrilot\Widgets\AsyncFacade {}
     
     class Socialite extends \Laravel\Socialite\Facades\Socialite {}
+    
+    class DotenvEditor extends \Brotzka\DotenvEditor\DotenvEditorFacade {}
     
 }
 

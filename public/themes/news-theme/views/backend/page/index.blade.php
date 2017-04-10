@@ -15,7 +15,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-lg-12">
             <div style="margin-bottom: 20px;">
                 <a href="{{ route('page.create') }}" class="btn btn-success">
                     <i class="fa fa-plus"></i> {{ trans('page.page_create') }}
@@ -48,8 +48,8 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('page.show', $record->name , $record, [] ) !!}</td>
-                                    <td>{!!$record->is_comment ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->is_comment ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('page.destroy',  $record))) !!}
