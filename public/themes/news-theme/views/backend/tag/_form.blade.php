@@ -1,37 +1,38 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('tag.management')}}
+            <small>{{trans('tag.create_update')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('tag.index') !!}"> {{trans('tag.management')}}</a></li>
+            <li class="active">{{trans('tag.create_update')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('tag.management')}}</h3>
-            <!--Top header end -->
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['tag.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'tag.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
 
-            <!--Top breadcrumb start -->
-            <ol class="breadcrumb">
-                <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('tag.index') !!}"> {{ trans('tag.countries') }} </a></li>
-                <li class="active"> {{ trans('common.add_update') }}</li>
-            </ol>
-            <!--Top breadcrumb start -->
-        </div>
-    </div>
-    <!-- Main Content Element  Start-->
     <div class="row">
         <div class="col-md-6">
-            <div class="panel panel-light-blue">
-                <div class="panel-heading">
-                    {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('tag.create_update')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
                 </div>
-
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['tag.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'tag.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
-
-                <div class="panel-body">
+                <!-- /.box-header -->
+                <div class="box-body">
 
                     <div class="form-group">
                         <div class="row">
@@ -59,10 +60,11 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                <!-- /.box-body -->
             </div>
         </div>
-    </div><!-- end row -->
+    </div>
+    {!! Form::close() !!}
     <!-- Main Content Element  End-->
-</div><!-- end container-fluid -->
+
 @endsection

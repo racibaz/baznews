@@ -19,6 +19,13 @@ return [
     |
     */
 
-    'tag_cloud_widget'             => 'Etiket Bulutu',
+    'tag_cloud_widget' => 'Etiket Bulutu',
+    'management' => 'Etiket Yönetimi',
+    'create_update' => 'Ekle/Düzenle',
+    'create' => 'Etiket Oluştur',
+    'tag_list' => 'Etiket Listesi',
+    'name' => 'Etiket Adı',
+    'slug' => 'Slug',
+    'is_active' => 'Aktif/Pasif',
 
 ];

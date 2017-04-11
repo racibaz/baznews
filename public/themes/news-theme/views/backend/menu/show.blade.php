@@ -29,9 +29,9 @@
                     <!-- /.box-tools -->
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body" style="display: block;">
+                <div class="box-body" style="padding: 0;">
                     <div class="table-responsive">
-                        <table class="table table-bordered able-hover">
+                        <table class="table table-bordered table-hover" style="margin: 0;">
                             <tbody>
                                 <tr>
                                     <td width="20%"><b>{{trans('menu.name')}}:</b></td>

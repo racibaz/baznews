@@ -26,27 +26,35 @@
                     <!-- /.box-tools -->
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body">
-                    <strong>{{trans('contact.full_name')}}:</strong>
-                    <p class="text-muted">{{$record->full_name}}</p>
-                    <hr>
-                    <strong>{{trans('contact.subject')}}:</strong>
-                    <p class="text-muted">{{$record->subject}}</p>
-                    <hr>
-                    <strong>{{trans('contact.content')}}:</strong>
-                    <div style="padding: 10px;border: 1px solid #c5c5c5; background-color: #e6eaec;border-radius: 3px;">
-                        <p class="text-muted">{!!$record->content!!}</p>
-                    </div>
-                    <hr>
-                    <strong>{{trans('contact.email')}}:</strong>
-                    <p class="text-muted">{{$record->email}}</p>
-                    <hr>
-                    <strong>{{trans('contact.phone')}}:</strong>
-                    <p class="text-muted">{{$record->phone}}</p>
-                    <hr>
-                    <strong>{{trans('contact.is_read')}}:</strong>
-                    <p class="text-muted">{!!$record->is_read ? '<label class="badge bg-green">' . trans('contact.read') . '</label>' : '<label class="badge bg-brown">' . trans('contact.unread') . '</label>'!!}</p>
-                    <hr>
+                <div class="box-body" style="padding: 0;">
+                    <table class="table table-bordered table-hover" style="margin: 0;">
+                        <tbody>
+                        <tr>
+                            <th width="20%">{{trans('contact.full_name')}}:</th>
+                            <td>{{$record->full_name}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{trans('contact.subject')}}:</th>
+                            <td>{{$record->subject}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{trans('contact.content')}}:</th>
+                            <td>{!!$record->content!!}</td>
+                        </tr>
+                        <tr>
+                            <th>{{trans('contact.email')}}:</th>
+                            <td>{{$record->email}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{trans('contact.phone')}}:</th>
+                            <td>{{$record->phone}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{trans('contact.is_read')}}:</th>
+                            <td>{!!$record->is_read ? '<label class="badge bg-green">' . trans('contact.read') . '</label>' : '<label class="badge bg-brown">' . trans('contact.unread') . '</label>'!!}</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <!-- /.box-body -->
             </div>

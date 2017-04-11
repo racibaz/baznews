@@ -64,7 +64,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 {!! Form::label('keywords', trans('page.keywords'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('keywords', $record->keywords, ['placeholder' => trans('page.keywords') ,'class' => 'form-control summernote']) !!}
+                                {!! Form::textarea('keywords', $record->keywords, ['placeholder' => trans('page.keywords') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 {!! Form::label('description', trans('page.description'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('page.description') ,'class' => 'form-control summernote']) !!}
+                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('page.description') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
