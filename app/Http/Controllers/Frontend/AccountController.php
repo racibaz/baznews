@@ -10,13 +10,11 @@ use App\Models\Event;
 use App\Models\User;
 use App\Repositories\AccountRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Mews\Purifier\Facades\Purifier;
 
 class AccountController extends Controller
 {
@@ -132,6 +130,11 @@ class AccountController extends Controller
         return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
     }
 
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function changePassword(Request $request)
     {
         $input = Input::all();
@@ -161,7 +164,7 @@ class AccountController extends Controller
             return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
         }
 
+        Session::flash('flash_message', trans('account.password_not_changed'));
+        return Redirect::back();
     }
-
-
 }

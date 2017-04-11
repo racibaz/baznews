@@ -7,12 +7,14 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckPerm
 {
+
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param $request
+     * @param Closure $next
+     * @param null $guard
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|mixed
      */
     public function handle($request, Closure $next, $guard = null)
     {

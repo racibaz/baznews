@@ -5,10 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Repositories\AdvertisementRepository;
 use Auth;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
 use Log;
 use Route;
+use Illuminate\Support\Facades\Cache;
 
 class BackendController extends Controller
 {
@@ -31,7 +30,7 @@ class BackendController extends Controller
                 $advertisements =  $advertisementRepository->where('is_active', 1)->findAll();
 
                 foreach ($advertisements as $advertisement) {
-                    Cache::tags('Setting', 'Advertisement')->forever($advertisement->name, $advertisement->code);
+                    Cache::tags(['Setting', 'Advertisement'])->forever($advertisement->name, $advertisement->code);
                 }
             });
 
@@ -39,6 +38,13 @@ class BackendController extends Controller
         });
     }
 
+
+    /**
+     *
+     * Check user permission with controller name and method name
+     *
+     * @return bool
+     */
     public function checkPermission()
     {
         $route =  Route::getCurrentRoute()->getAction();
@@ -49,7 +55,6 @@ class BackendController extends Controller
         $controllerName = $controllerPathParts[$partCount - 1];
         $methodName = $routePathParts[1];
 
-//        foreach (explode('\\', $controllerName) as $className) {}
         $classModelName = strtolower(substr($controllerName, 0 , -10));
         if(!Auth::user()->can($methodName . '-' . $classModelName)){
             Log::warning('Yetkisiz Alana Girmeye Çalışıldı. ' . 'Kişi : ' . Auth::user()->name . '  IP :' . Auth::user()->getUserIp() );

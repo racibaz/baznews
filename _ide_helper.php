@@ -5026,34 +5026,6 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Log a message to the logs.
-         *
-         * @param string $level
-         * @param string $message
-         * @param array $context
-         * @return void 
-         * @static 
-         */
-        public static function log($level, $message, $context = array())
-        {
-            \Illuminate\Log\Writer::log($level, $message, $context);
-        }
-        
-        /**
-         * Dynamically pass log calls into the writer.
-         *
-         * @param string $level
-         * @param string $message
-         * @param array $context
-         * @return void 
-         * @static 
-         */
-        public static function write($level, $message, $context = array())
-        {
-            \Illuminate\Log\Writer::write($level, $message, $context);
-        }
-        
-        /**
          * Register a file log handler.
          *
          * @param string $path
@@ -5063,7 +5035,7 @@ namespace Illuminate\Support\Facades {
          */
         public static function useFiles($path, $level = 'debug')
         {
-            \Illuminate\Log\Writer::useFiles($path, $level);
+            \Bugsnag\BugsnagLaravel\LaravelLogger::useFiles($path, $level);
         }
         
         /**
@@ -5077,81 +5049,22 @@ namespace Illuminate\Support\Facades {
          */
         public static function useDailyFiles($path, $days = 0, $level = 'debug')
         {
-            \Illuminate\Log\Writer::useDailyFiles($path, $days, $level);
+            \Bugsnag\BugsnagLaravel\LaravelLogger::useDailyFiles($path, $days, $level);
         }
         
         /**
-         * Register a Syslog handler.
-         *
-         * @param string $name
-         * @param string $level
-         * @param mixed $facility
-         * @return \Psr\Log\LoggerInterface 
-         * @static 
-         */
-        public static function useSyslog($name = 'laravel', $level = 'debug', $facility = 8)
-        {
-            return \Illuminate\Log\Writer::useSyslog($name, $level, $facility);
-        }
-        
-        /**
-         * Register an error_log handler.
+         * Log a message to the logs.
          *
          * @param string $level
-         * @param int $messageType
+         * @param mixed $message
+         * @param array $context
          * @return void 
          * @static 
          */
-        public static function useErrorLog($level = 'debug', $messageType = 0)
+        public static function log($level, $message, $context = array())
         {
-            \Illuminate\Log\Writer::useErrorLog($level, $messageType);
-        }
-        
-        /**
-         * Register a new callback handler for when a log event is triggered.
-         *
-         * @param \Closure $callback
-         * @return void 
-         * @throws \RuntimeException
-         * @static 
-         */
-        public static function listen($callback)
-        {
-            \Illuminate\Log\Writer::listen($callback);
-        }
-        
-        /**
-         * Get the underlying Monolog instance.
-         *
-         * @return \Monolog\Logger 
-         * @static 
-         */
-        public static function getMonolog()
-        {
-            return \Illuminate\Log\Writer::getMonolog();
-        }
-        
-        /**
-         * Get the event dispatcher instance.
-         *
-         * @return \Illuminate\Contracts\Events\Dispatcher 
-         * @static 
-         */
-        public static function getEventDispatcher()
-        {
-            return \Illuminate\Log\Writer::getEventDispatcher();
-        }
-        
-        /**
-         * Set the event dispatcher instance.
-         *
-         * @param \Illuminate\Contracts\Events\Dispatcher $dispatcher
-         * @return void 
-         * @static 
-         */
-        public static function setEventDispatcher($dispatcher)
-        {
-            \Illuminate\Log\Writer::setEventDispatcher($dispatcher);
+            //Method inherited from \Bugsnag\PsrLogger\BugsnagLogger            
+            \Bugsnag\BugsnagLaravel\LaravelLogger::log($level, $message, $context);
         }
         
     }         
@@ -13487,221 +13400,163 @@ namespace Laravel\Socialite\Facades {
     }         
 }
     
-namespace Brotzka\DotenvEditor {
+namespace Bugsnag\BugsnagLaravel\Facades {
 
-    class DotenvEditorFacade {
+    class Bugsnag {
         
         /**
-         * Returns the current backup-path
-         *
-         * @return mixed 
-         * @static 
-         */
-        public static function getBackupPath()
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::getBackupPath();
-        }
-        
-        /**
-         * Set a new backup-path.
+         * Make a new client instance.
          * 
-         * The new directory will be created if it doesn't exist
+         * If you don't pass in a key, we'll try to read it from the env variables.
          *
-         * @param $path
-         * @return bool 
+         * @param string|null $apiKey your bugsnag api key
+         * @param string|null $endpoint your bugsnag endpoint
+         * @param bool $default if we should register our default callbacks
+         * @return static 
          * @static 
          */
-        public static function setBackupPath($path)
+        public static function make($apiKey = null, $endpoint = null, $defaults = true)
         {
-            return \Brotzka\DotenvEditor\DotenvEditor::setBackupPath($path);
+            return \Bugsnag\Client::make($apiKey, $endpoint, $defaults);
         }
         
         /**
-         * Checks, if a given key exists in your .env-file.
+         * Make a new guzzle client instance.
+         *
+         * @param string|null $base
+         * @param array $options
+         * @return \GuzzleHttp\ClientInterface 
+         * @static 
+         */
+        public static function makeGuzzle($base = null, $options = array())
+        {
+            return \Bugsnag\Client::makeGuzzle($base, $options);
+        }
+        
+        /**
+         * Get the config instance.
+         *
+         * @return \Bugsnag\Configuration 
+         * @static 
+         */
+        public static function getConfig()
+        {
+            return \Bugsnag\Client::getConfig();
+        }
+        
+        /**
+         * Regsier a new notification callback.
+         *
+         * @param callable $callback
+         * @return $this 
+         * @static 
+         */
+        public static function registerCallback($callback)
+        {
+            return \Bugsnag\Client::registerCallback($callback);
+        }
+        
+        /**
+         * Regsier all our default callbacks.
+         *
+         * @return $this 
+         * @static 
+         */
+        public static function registerDefaultCallbacks()
+        {
+            return \Bugsnag\Client::registerDefaultCallbacks();
+        }
+        
+        /**
+         * Record the given breadcrumb.
+         *
+         * @param string $name the name of the breadcrumb
+         * @param string|null $type the type of breadcrumb
+         * @param array $metaData additional information about the breadcrumb
+         * @return void 
+         * @static 
+         */
+        public static function leaveBreadcrumb($name, $type = null, $metaData = array())
+        {
+            \Bugsnag\Client::leaveBreadcrumb($name, $type, $metaData);
+        }
+        
+        /**
+         * Clear all recorded breadcrumbs.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function clearBreadcrumbs()
+        {
+            \Bugsnag\Client::clearBreadcrumbs();
+        }
+        
+        /**
+         * Notify Bugsnag of a non-fatal/handled throwable.
+         *
+         * @param \Throwable $throwable the throwable to notify Bugsnag about
+         * @param callable|null $callback the customization callback
+         * @return void 
+         * @static 
+         */
+        public static function notifyException($throwable, $callback = null)
+        {
+            \Bugsnag\Client::notifyException($throwable, $callback);
+        }
+        
+        /**
+         * Notify Bugsnag of a non-fatal/handled error.
+         *
+         * @param string $name the name of the error, a short (1 word) string
+         * @param string $message the error message
+         * @param callable|null $callback the customization callback
+         * @return void 
+         * @static 
+         */
+        public static function notifyError($name, $message, $callback = null)
+        {
+            \Bugsnag\Client::notifyError($name, $message, $callback);
+        }
+        
+        /**
+         * Notify Bugsnag of the given error report.
          * 
-         * Returns false or true
+         * This may simply involve queuing it for later if we're batching.
          *
-         * @param $key
-         * @return bool 
+         * @param \Bugsnag\Report $report the error report to send
+         * @param callable|null $callback the customization callback
+         * @return void 
          * @static 
          */
-        public static function keyExists($key)
+        public static function notify($report, $callback = null)
         {
-            return \Brotzka\DotenvEditor\DotenvEditor::keyExists($key);
+            \Bugsnag\Client::notify($report, $callback);
         }
         
         /**
-         * Returns the value matching to a given key.
-         * 
-         * Returns false, if key does not exist.
+         * Notify Bugsnag of a deployment.
          *
-         * @param $key
-         * @return mixed 
-         * @throws DotEnvException
+         * @param string|null $repository the repository from which you are deploying the code
+         * @param string|null $branch the source control branch from which you are deploying
+         * @param string|null $revision the source control revision you are currently deploying
+         * @return void 
          * @static 
          */
-        public static function getValue($key)
+        public static function deploy($repository = null, $branch = null, $revision = null)
         {
-            return \Brotzka\DotenvEditor\DotenvEditor::getValue($key);
+            \Bugsnag\Client::deploy($repository, $branch, $revision);
         }
         
         /**
-         * Activate or deactivate the AutoBackup-Functionality
+         * Flush any buffered reports.
          *
-         * @param $onOff
-         * @throws DotEnvException
+         * @return void 
          * @static 
          */
-        public static function setAutoBackup($onOff)
+        public static function flush()
         {
-            return \Brotzka\DotenvEditor\DotenvEditor::setAutoBackup($onOff);
-        }
-        
-        /**
-         * Checks, if Autobackup is enabled
-         *
-         * @return bool 
-         * @static 
-         */
-        public static function AutoBackupEnabled()
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::AutoBackupEnabled();
-        }
-        
-        /**
-         * Used to create a backup of the current .env.
-         * 
-         * Will be assigned with the current timestamp.
-         *
-         * @return bool 
-         * @static 
-         */
-        public static function createBackup()
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::createBackup();
-        }
-        
-        /**
-         * Restores the latest backup or a backup from a given timestamp.
-         * 
-         * Restores the latest version when no timestamp is given.
-         *
-         * @param null $timestamp
-         * @return string 
-         * @static 
-         */
-        public static function restoreBackup($timestamp = null)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::restoreBackup($timestamp);
-        }
-        
-        /**
-         * Returns an array with all available backups.
-         * 
-         * Array contains the formatted and unformatted version of each backup.
-         * Throws exception, if no backups were found.
-         *
-         * @return array 
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function getBackupVersions()
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::getBackupVersions();
-        }
-        
-        /**
-         * Returns filename and path for the given timestamp
-         *
-         * @param $timestamp
-         * @return string 
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function getBackupFile($timestamp)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::getBackupFile($timestamp);
-        }
-        
-        /**
-         * Delete the given backup-file
-         *
-         * @param $timestamp
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function deleteBackup($timestamp)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::deleteBackup($timestamp);
-        }
-        
-        /**
-         * Returns the content of a given backup file
-         * or the content of the current env file.
-         *
-         * @param null $timestamp
-         * @return array 
-         * @static 
-         */
-        public static function getContent($timestamp = null)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::getContent($timestamp);
-        }
-        
-        /**
-         * Returns the given .env as JSON array containing all entries as object
-         * with key and value
-         *
-         * @param null $timestamp
-         * @return string 
-         * @static 
-         */
-        public static function getAsJson($timestamp = null)
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::getAsJson($timestamp);
-        }
-        
-        /**
-         * Change the given values of the current env file.
-         * 
-         * If the given key(s) is/are not found, nothing happens.
-         *
-         * @param array $data
-         * @return bool 
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function changeEnv($data = array())
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::changeEnv($data);
-        }
-        
-        /**
-         * Add data to the current env file.
-         * 
-         * Data will be placed at the end.
-         *
-         * @param array $data
-         * @return bool 
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function addData($data = array())
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::addData($data);
-        }
-        
-        /**
-         * Delete one or more entries from the env file.
-         *
-         * @param array $data
-         * @return bool 
-         * @throws DotEnvException
-         * @static 
-         */
-        public static function deleteData($data = array())
-        {
-            return \Brotzka\DotenvEditor\DotenvEditor::deleteData($data);
+            \Bugsnag\Client::flush();
         }
         
     }         
@@ -15755,7 +15610,7 @@ namespace {
     
     class Socialite extends \Laravel\Socialite\Facades\Socialite {}
     
-    class DotenvEditor extends \Brotzka\DotenvEditor\DotenvEditorFacade {}
+    class Bugsnag extends \Bugsnag\BugsnagLaravel\Facades\Bugsnag {}
     
 }
 

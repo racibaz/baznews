@@ -25,8 +25,9 @@ class CreateVideosTable extends Migration
             $table->string('link')->nullable();
             $table->text('content')->nullable();
             $table->string('keywords')->nullable();
-            $table->unsignedInteger('order')->nullable();
-            $table->boolean('is_active')->nullable();
+            $table->unsignedInteger('order')->default(0);
+            $table->boolean('is_comment');
+            $table->boolean('is_active');
             $table->timestamps();
             $table->softDeletes();
 

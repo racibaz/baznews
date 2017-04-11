@@ -29,42 +29,35 @@ class VideoController extends Controller
                 ->where('is_active', 1)
                 ->findBy('id',$id);
 
+            abort_if(empty($video), 404, trans('common.not_found'));
 
             $videoGallery = $video->video_gallery;
             $tags = $video->tags;
 
             $firstVideo = $videoGallery->videos->first();
 
-
             $nextVideo = $videoGallery->videos->filter(function($galleryVideo) use($video){
-
                 return $galleryVideo->id > $video->id;
             })->first();
 
             $nextVideo = !isset($nextVideo) ? $firstVideo : $nextVideo;
 
             $previousVideo = $videoGallery->videos->filter(function($galleryVideo) use($video){
-
                 return $galleryVideo->id < $video->id;
             })->first();
 
             $previousVideo = !isset($previousVideo) ? $firstVideo : $previousVideo;
-
             $otherGalleryVideos = $this->repo->where('is_active',1)->whereNotIn('id', [$video->id])->findAll()->take(10);
-
             $lastestVideos = $this->repo->orderBy('updated_at', 'desc')->findAll()->take(20);
 
             if(!empty($video->video_category)) {
                 $categoryVideos = $video->video_category->videos->where('is_active', 1)->take(10);
             }
 
-
-
             //todo is set video's videocategory area for video category relations
             if(!empty($videoGallery->video_category)) {
                 $videoGallery->video_category;
             }
-
 
             return Theme::view('news::frontend.video.video', compact([
                 'video',

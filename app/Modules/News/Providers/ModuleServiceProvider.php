@@ -21,7 +21,7 @@ class ModuleServiceProvider extends ServiceProvider
 
         if(!app()->runningInConsole()) {
 
-            Cache::tags('NewsCategory', 'News')->rememberForever('cuffNewsCategories', function () {
+            Cache::tags(['NewsCategory', 'News'])->rememberForever('cuffNewsCategories', function () {
 
                 if(! \Schema::hasTable('news')) {
                     return null;
@@ -29,7 +29,7 @@ class ModuleServiceProvider extends ServiceProvider
 
                 $newsCategoryRepository = new NewsCategoryRepository();
                 $cuffNewsCategories = $newsCategoryRepository->with(['news'])->where('is_cuff', 1)->where('is_active', 1)->findAll();
-                return View::share('cuffNewsCategories', $cuffNewsCategories);
+                View::share('cuffNewsCategories', $cuffNewsCategories);
             });
         }
     }

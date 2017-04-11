@@ -7,7 +7,6 @@ use App\Models\Announcement;
 use App\Repositories\AnnouncementRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -15,6 +14,10 @@ use Illuminate\Support\Facades\Input;
 
 class AnnouncementController extends BackendController
 {
+    /**
+     * AnnouncementController constructor.
+     * @param Repo $repo
+     */
     public function __construct(Repo $repo)
     {
         parent::__construct();

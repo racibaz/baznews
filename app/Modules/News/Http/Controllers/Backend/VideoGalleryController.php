@@ -227,6 +227,7 @@ class VideoGalleryController extends BackendController
             'name'              => $name,
             'slug'              => str_slug($name),
             'file'              => $fileName,
+            'is_comment'        => 1,
             'is_active'         => 1
         ]);
 
@@ -242,7 +243,7 @@ class VideoGalleryController extends BackendController
 
     public function updateGalleryVideos(Request $request)
     {
-        $subtitle = $content = $order = $isActive = $link =   null;
+        $subtitle = $content = $order = $isComment = $isActive = $link =   null;
 
         $inputs = Input::all();
 
@@ -264,6 +265,7 @@ class VideoGalleryController extends BackendController
                 $field = $fields[0];
                 $id = $fields[1];
 
+
                 if($field == 'delete'){
                     try{
                         $video =  Video::find($id)->delete();
@@ -274,27 +276,32 @@ class VideoGalleryController extends BackendController
                         //todo log yazılacak
                     }
 
-                }else if($field == 'subtitle'){
+                }else if($field == 'subtitle') {
 
                     $subtitle = $inputs[$key];
 
-                }else if($field == 'content'){
+                }else if($field == 'content') {
 
                     $content = $inputs[$key];
 
-                }else if($field == 'link'){
+                }else if($field == 'link') {
 
                     $link = $inputs[$key];
 
-                }else if($field == 'order'){
+                }else if($field == 'order') {
 
                     $order = $inputs[$key];
 
-                }else if($field == 'is_active'){
+                }else if($field == 'is_comment') {
+
+                    //todo is_comment ve is_active hatası birinden biri oluyor ikisi de olmalı.
+                    $isComment = $inputs[$key] == "on" ? true : false;
+
+                }else if($field == 'is_active') {
 
                     $isActive = $inputs[$key] == "on" ? true : false;
 
-                }else if($field == 'thumbnail'){
+                }else if($field == 'thumbnail') {
 
                     $record = Video::find($id);
 
@@ -332,7 +339,6 @@ class VideoGalleryController extends BackendController
                     Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
                         ->resize(213, 116)
                         ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/213x116_' . $document_name));
-
                 }
 
                 if(is_numeric($id)){
@@ -346,12 +352,13 @@ class VideoGalleryController extends BackendController
                         $video->content =  $content ? $content : $video->content;
                         $video->link =  $link ? $link : $video->link;
                         $video->order =  $order ? $order : $video->order;
+                        $video->is_comment =  $isComment == true ? true : false;
                         $video->is_active =  $isActive == true ? true : false;
                         $video->save();
                     }
                 }
                 //değişkenleri temizliyoruz.
-                $subtitle = $content = $link = $order = $isActive = null;
+                $subtitle = $content = $link = $order = $isComment = $isActive = null;
             }
         }
 

@@ -167,8 +167,7 @@ return [
          * Package Service Providers...
          */
 
-        //
-
+        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -263,6 +262,7 @@ return [
         'AsyncWidget'  => Arrilot\Widgets\AsyncFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
+        'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
 
         ////TODO  THEME İN COMPONET GİBİ BİRŞEY VARDI ONA BAKILACAK
     ],

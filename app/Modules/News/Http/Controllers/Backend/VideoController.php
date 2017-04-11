@@ -122,6 +122,7 @@ class VideoController extends BackendController
         if(empty($input['video_gallery_id']))
             unset($input['video_gallery_id']);
 
+        $input['is_comment'] = Input::get('is_comment') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         $rules = array(
