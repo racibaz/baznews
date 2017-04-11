@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Redis;
 
 class BaznewsInstall extends Command
 {
@@ -31,10 +30,11 @@ class BaznewsInstall extends Command
         parent::__construct();
     }
 
+
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return bool
      */
     public function handle()
     {
@@ -44,5 +44,7 @@ class BaznewsInstall extends Command
         \Artisan::call('module:seed');
         \Artisan::call('migrate', ['--path' => 'vendor/venturecraft/revisionable/src/migrations']);
         \Cache::flush();
+
+        return true;
     }
 }

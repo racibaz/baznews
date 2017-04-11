@@ -21,7 +21,7 @@ class ModuleServiceProvider extends ServiceProvider
 
         if(!app()->runningInConsole()) {
 
-            Cache::tags('NewsCategory', 'News')->rememberForever('cuffNewsCategories', function () {
+            Cache::tags(['NewsCategory', 'News'])->rememberForever('cuffNewsCategories', function () {
 
                 if(! \Schema::hasTable('news')) {
                     return null;

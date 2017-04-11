@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\CityRequest;
-use App\Http\Requests\SaveCity;
 use App\Models\City;
 use App\Models\Country;
 use App\Repositories\CityRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
@@ -101,7 +99,6 @@ class CityController extends BackendController
 
     /**
      * @param $record
-     *
      * @return $this|\Illuminate\Http\RedirectResponse
      */
     public function save($record)
@@ -117,9 +114,9 @@ class CityController extends BackendController
 
         if ($result) {
             Session::flash('flash_message', trans('common.message_model_updated'));
-            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+            return redirect()->route($this->redirectRouteName . $this->view . 'index', $result);
         } else {
-            return Redirect::back()
+            return redirect()->back()
                 ->withErrors(trans('common.save_failed'))
                 ->withInput($input);
         }
