@@ -1,37 +1,36 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('setting.general')}}
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li class="active"><a href="{!! URL::route('setting.index') !!}"> {{trans('setting.general')}}</a></li>
+        </ol>
+    </section>
+@endsection
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <!--Top header start-->
-                <h3 class="ls-top-header">{{trans('setting.management')}}</h3>
-                <!--Top header end -->
+    <!-- Main Content Element  Start-->
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['setting.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'setting.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
+    <div class="row">
+        <div class="col-md-5" id="content">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{trans('setting.general')}}</h3>
 
-                <!--Top breadcrumb start -->
-                <ol class="breadcrumb">
-                    <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                    <li><a href="{!! URL::route('setting.index') !!}"> {{ trans('setting.settings') }} </a></li>
-                    <li class="active"> {{ trans('common.add_update') }}</li>
-                </ol>
-                <!--Top breadcrumb start -->
-            </div>
-        </div>
-        <!-- Main Content Element  Start-->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="panel panel-light-blue">
-                    <div class="panel-heading">
-                        {{--<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
                     </div>
-
-                    @if(isset($record->id))
-                        {!! Form::model($record, ['route' => ['setting.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                    @else
-                        {!! Form::open(['route' => 'setting.store','method' => 'post', 'files' => 'true']) !!}
-                    @endif
-
-                    <div class="panel-body">
+                    <!-- /.box-header -->
+                    <div class="box-body">
 
                         <div class="form-group">
                             <div class="row">
@@ -62,7 +61,7 @@
                                 {!! Form::label('title', trans('setting.title'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                {!! Form::text('title', $records->where('attribute_key','title')->first()->attribute_value, ['placeholder' => trans('setting.title') ,'class' => 'form-control']) !!}
+                                    {!! Form::text('title', $records->where('attribute_key','title')->first()->attribute_value, ['placeholder' => trans('setting.title') ,'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>
@@ -80,7 +79,7 @@
                                 {!! Form::label('user_contract', trans('setting.user_contract'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::textarea('user_contract', $records->where('attribute_key','user_contract')->first()->attribute_value, ['placeholder' => trans('setting.slogan') ,'class' => 'form-control']) !!}
+                                    {!! Form::textarea('user_contract', $records->where('attribute_key','user_contract')->first()->attribute_value, ['placeholder' => trans('setting.slogan') ,'class' => 'form-control summernote']) !!}
                                 </div>
                             </div>
                         </div>
@@ -138,7 +137,7 @@
                                 {!! Form::label('footer_text', trans('setting.footer_text'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::textarea('footer_text', $records->where('attribute_key','footer_text')->first()->attribute_value, ['placeholder' => trans('setting.footer_text') ,'class' => 'form-control']) !!}
+                                    {!! Form::textarea('footer_text', $records->where('attribute_key','footer_text')->first()->attribute_value, ['placeholder' => trans('setting.footer_text') ,'class' => 'form-control summernote']) !!}
                                 </div>
                             </div>
                         </div>
@@ -147,7 +146,7 @@
                                 {!! Form::label('contact', trans('setting.contact'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::textarea('contact', $records->where('attribute_key','contact')->first()->attribute_value, ['placeholder' => trans('setting.contact') ,'class' => 'form-control']) !!}
+                                    {!! Form::textarea('contact', $records->where('attribute_key','contact')->first()->attribute_value, ['placeholder' => trans('setting.contact') ,'class' => 'form-control summernote']) !!}
                                 </div>
                             </div>
                         </div>
@@ -214,78 +213,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('facebook', trans('setting.facebook'),['class'=> 'col-lg-2 control-label']) !!}
 
-                                <div class="col-lg-10">
-                                {!! Form::textarea('facebook', $records->where('attribute_key','facebook')->first()->attribute_value, ['placeholder' => trans('setting.facebook') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('facebook_embed_code', trans('setting.facebook_embed_code'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('facebook_embed_code', $records->where('attribute_key','facebook_embed_code')->first()->attribute_value, ['placeholder' => trans('setting.facebook_embed_code') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('twitter', trans('setting.twitter'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('twitter', $records->where('attribute_key','twitter')->first()->attribute_value, ['placeholder' => trans('setting.twitter') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('twitter_embed_code', trans('setting.twitter_embed_code'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('twitter_embed_code', $records->where('attribute_key','twitter_embed_code')->first()->attribute_value, ['placeholder' => trans('setting.twitter_embed_code') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('instagram', trans('setting.instagram'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('instagram', $records->where('attribute_key','instagram')->first()->attribute_value, ['placeholder' => trans('setting.instagram') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('instagram_embed_code', trans('setting.instagram_embed_code'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('instagram_embed_code', $records->where('attribute_key','instagram_embed_code')->first()->attribute_value, ['placeholder' => trans('setting.instagram_embed_code') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('pinterest', trans('setting.pinterest'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('pinterest', $records->where('attribute_key','pinterest')->first()->attribute_value, ['placeholder' => trans('setting.pinterest') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('pinterest_embed_code', trans('setting.pinterest_embed_code'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::textarea('pinterest_embed_code', $records->where('attribute_key','pinterest_embed_code')->first()->attribute_value, ['placeholder' => trans('setting.pinterest_embed_code') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
                         <div class="form-group">
                             <div class="row">
                                 {!! Form::label('weather_embed_code', trans('setting.weather_embed_code'),['class'=> 'col-lg-2 control-label']) !!}
@@ -386,148 +314,261 @@
                             </div>
                         </div>
 
-                        {{--<div class="form-group">--}}
-                            {{--<div class="row">--}}
-                                {{--{!! Form::label('attribute_value', trans('setting.attribute_value'),['class'=> 'col-lg-2 control-label']) !!}--}}
 
-                                {{--<div class="col-lg-10">--}}
-                                    {{--{!! Form::textarea('attribute_value', $record->attribute_value, ['placeholder' => trans('setting.attribute_value') ,'class' => 'form-control']) !!}--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<div class="row">--}}
-                                {{--{!! Form::label('description', trans('setting.description'),['class'=> 'col-lg-2 control-label']) !!}--}}
 
-                                {{--<div class="col-lg-10">--}}
-                                    {{--{!! Form::textarea('description', $record->description, ['placeholder' => trans('setting.description') ,'class' => 'form-control']) !!}--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<div class="row">--}}
-                                {{--{{trans('common.status')}}--}}
-                                {{--<div class="col-lg-offset-2 col-lg-10">--}}
-                                    {{--<div class="checkbox i-checks">--}}
-                                        {{--<label>--}}
-                                            {{--{!! Form::checkbox('is_active', null , $record->is_active) !!}--}}
-                                            {{--<i></i> {{trans('common.is_active')}}--}}
-                                        {{--</label>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-lg-offset-2 col-lg-10">
-                                    <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div><!-- end row -->
-        <div class="row">
-            <div class="col-xs-12">
-                <div style="margin-bottom: 20px;">
-                    <a href="{{ route('setting.create') }}" class="btn btn-success">
-                        <i class="fa fa-plus"></i> {{ trans('common.create') }}
-                    </a>
-                </div>
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title"><strong>{{trans('setting.management')}}</strong></h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <table id="example2" class="table table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>{{trans('setting.attribute_key')}}</th>
-                                <th>{{trans('setting.attribute_value')}}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($records as $record)
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('setting.show', $record->attribute_key , $record, [] ) !!}</td>
-                                    <td> {{ $record->attribute_value  }} </td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('setting.destroy',  $record))) !!}
-                                            {!! link_to_route('setting.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>{{trans('setting.attribute_key')}}</th>
-                                <th>{{trans('setting.attribute_value')}}</th>
-                            </tr>
-                            </tfoot>
-                        </table>
-
-                        <div>
-
-                            <br /><br /><br />
-                            <ul>
-                                <li><a href="{!! route('repairMysqlTables') !!}"> <span>Mysql Tabloları Onar</span></a></li>
-                                <li><a href="{!! route('getAllRedisKey') !!}"> <span>Cache Verileri Göster</span></a></li>
-                                <li><a href="{!! route('flushAllCache') !!}"> <span>Cache Verilerini Sil</span></a></li>
-                                <li><a href="{!! route('getBackUp') !!}"> <span>Backup Al</span></a></li>
-                                <li><a href="{!! route('backUpClean') !!}"> <span>Backup ları Sil</span></a></li>
-                                <li><a href="{!! route('viewClear') !!}"> <span>View Cache lerini Temizle</span></a></li>
-                                <li><a href="{!! route('routeClear') !!}"> <span>Route Cache lerini Temizle</span></a></li>
-                                <li><a href="{!! route('configClear') !!}"> <span>Konfigirasyon Ayarlarını lerini Temizle</span></a></li>
-                                <li><a href="{!! route('configCache') !!}"> <span>Konfigirasyon Ayarlarını lerini Cache le</span></a></li>
-                            </ul>
-                            <br /><br />
-                        </div>
-
-                        <div>
-                            <h1>activeTheme :</h1> {{$activeTheme}} <br>
-                            <h1> themes : </h1>
-                            @foreach($themes as $theme)
-                                {{$theme}} <br />
-                            @endforeach
-                            <br><br><br><br><br>
-
-                            <h1> modulesCount : </h1> {{$modulesCount}}
-                            <br>
-                            <h1> modules : </h1>
-                            <br>
-                            @foreach($modules as $module)
-                                {{$module['basename']}} <br />
-                            @endforeach
-
-                            <br><br><br><br><br>
-                        </div>
-
-                        <h1> Route List </h1>
-                        <div id="routes">
-                            @foreach ($routeCollection as $value)
-                                {{$value->uri()}} <br />
-                            @endforeach
-                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>
-                <!-- /.box -->
-                <!-- /.box -->
+        </div><!-- /.col-md-6 -->
+        <div class="col-md-4" id="content2">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('setting.social_connect')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('facebook', trans('setting.facebook'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::textarea('facebook', $records->where('attribute_key','facebook')->first()->attribute_value, ['placeholder' => trans('setting.facebook') ,'class' => 'form-control','rows'=>'2']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('facebook_embed_code', trans('setting.facebook_embed_code'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::textarea('facebook_embed_code', $records->where('attribute_key','facebook_embed_code')->first()->attribute_value, ['placeholder' => trans('setting.facebook_embed_code') ,'class' => 'form-control','rows'=>'4']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('twitter', trans('setting.twitter'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::textarea('twitter', $records->where('attribute_key','twitter')->first()->attribute_value, ['placeholder' => trans('setting.twitter') ,'class' => 'form-control','rows'=>'2']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('twitter_embed_code', trans('setting.twitter_embed_code'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::textarea('twitter_embed_code', $records->where('attribute_key','twitter_embed_code')->first()->attribute_value, ['placeholder' => trans('setting.twitter_embed_code') ,'class' => 'form-control','rows'=>'4']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('instagram', trans('setting.instagram'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::textarea('instagram', $records->where('attribute_key','instagram')->first()->attribute_value, ['placeholder' => trans('setting.instagram') ,'class' => 'form-control','rows'=>'2']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('instagram_embed_code', trans('setting.instagram_embed_code'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::textarea('instagram_embed_code', $records->where('attribute_key','instagram_embed_code')->first()->attribute_value, ['placeholder' => trans('setting.instagram_embed_code') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('pinterest', trans('setting.pinterest'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::textarea('pinterest', $records->where('attribute_key','pinterest')->first()->attribute_value, ['placeholder' => trans('setting.pinterest') ,'class' => 'form-control','rows'=>'2']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            {!! Form::label('pinterest_embed_code', trans('setting.pinterest_embed_code'),['class'=> 'col-lg-2 control-label']) !!}
+
+                            <div class="col-lg-10">
+                                {!! Form::textarea('pinterest_embed_code', $records->where('attribute_key','pinterest_embed_code')->first()->attribute_value, ['placeholder' => trans('setting.pinterest_embed_code') ,'class' => 'form-control','rows'=>'2']) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col-md-6 -->
+        <div class="col-md-3" id="sidebar">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('setting.status')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    {{--<div class="form-group">--}}
+                    {{--<div class="row">--}}
+                    {{--{!! Form::label('attribute_value', trans('setting.attribute_value'),['class'=> 'col-lg-2 control-label']) !!}--}}
+
+                    {{--<div class="col-lg-10">--}}
+                    {{--{!! Form::textarea('attribute_value', $record->attribute_value, ['placeholder' => trans('setting.attribute_value') ,'class' => 'form-control']) !!}--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="form-group">--}}
+                    {{--<div class="row">--}}
+                    {{--{!! Form::label('description', trans('setting.description'),['class'=> 'col-lg-2 control-label']) !!}--}}
+
+                    {{--<div class="col-lg-10">--}}
+                    {{--{!! Form::textarea('description', $record->description, ['placeholder' => trans('setting.description') ,'class' => 'form-control']) !!}--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="form-group">--}}
+                    {{--<div class="row">--}}
+                    {{--{{trans('common.status')}}--}}
+                    {{--<div class="col-lg-offset-2 col-lg-10">--}}
+                    {{--<div class="checkbox i-checks">--}}
+                    {{--<label>--}}
+                    {{--{!! Form::checkbox('is_active', null , $record->is_active) !!}--}}
+                    {{--<i></i> {{trans('common.is_active')}}--}}
+                    {{--</label>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                </div>
+                <div class="box-footer">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <button class="btn btn-success pull-right" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-footer -->
+
+                <!-- /.box-body -->
             </div>
-            <!-- /.col -->
         </div>
-        <!-- Main Content Element  End-->
-    </div><!-- end container-fluid -->
+    </div><!-- end row -->
+    {!! Form::close() !!}
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div style="margin-bottom: 20px;">
+                <a href="{{ route('setting.create') }}" class="btn btn-success">
+                    <i class="fa fa-plus"></i> {{ trans('common.create') }}
+                </a>
+            </div>
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"><strong>{{trans('setting.general')}}</strong></h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{trans('setting.attribute_key')}}</th>
+                            <th>{{trans('setting.attribute_value')}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($records as $record)
+                            <tr>
+                                <td>{{$record->id}}</td>
+                                <td>{!! link_to_route('setting.show', $record->attribute_key , $record, [] ) !!}</td>
+                                <td> {{ $record->attribute_value  }} </td>
+                                <td>
+                                    <div class="btn-group">
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('setting.destroy',  $record))) !!}
+                                        {!! link_to_route('setting.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>{{trans('setting.attribute_key')}}</th>
+                            <th>{{trans('setting.attribute_value')}}</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                    <div>
+
+                        <br /><br /><br />
+                        <ul>
+                            <li><a href="{!! route('repairMysqlTables') !!}"> <span>Mysql Tabloları Onar</span></a></li>
+                            <li><a href="{!! route('getAllRedisKey') !!}"> <span>Cache Verileri Göster</span></a></li>
+                            <li><a href="{!! route('flushAllCache') !!}"> <span>Cache Verilerini Sil</span></a></li>
+                            <li><a href="{!! route('getBackUp') !!}"> <span>Backup Al</span></a></li>
+                            <li><a href="{!! route('backUpClean') !!}"> <span>Backup ları Sil</span></a></li>
+                            <li><a href="{!! route('viewClear') !!}"> <span>View Cache lerini Temizle</span></a></li>
+                            <li><a href="{!! route('routeClear') !!}"> <span>Route Cache lerini Temizle</span></a></li>
+                            <li><a href="{!! route('configClear') !!}"> <span>Konfigirasyon Ayarlarını lerini Temizle</span></a></li>
+                            <li><a href="{!! route('configCache') !!}"> <span>Konfigirasyon Ayarlarını lerini Cache le</span></a></li>
+                        </ul>
+                        <br /><br />
+                    </div>
+
+                    <div>
+                        <h1>activeTheme :</h1> {{$activeTheme}} <br>
+                        <h1> themes : </h1>
+                        @foreach($themes as $theme)
+                            {{$theme}} <br />
+                        @endforeach
+                        <br><br><br><br><br>
+
+                        <h1> modulesCount : </h1> {{$modulesCount}}
+                        <br>
+                        <h1> modules : </h1>
+                        <br>
+                        @foreach($modules as $module)
+                            {{$module['basename']}} <br />
+                        @endforeach
+
+                        <br><br><br><br><br>
+                    </div>
+
+                    <h1> Route List </h1>
+                    <div id="routes">
+                        @foreach ($routeCollection as $value)
+                            {{$value->uri()}} <br />
+                        @endforeach
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- Main Content Element  End-->
 @endsection
 
 @section('css')
@@ -536,53 +577,10 @@
         .display {display: block !important;}
     </style>
 @endsection
-
 @section('js')
-
-
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    {{--<textarea name="content" class="form-control my-editor">{!! old('content', $content) !!}</textarea>--}}
-    <script>
-        var editor_config = {
-            path_absolute : "/",
-            selector: "textarea.contact",
-            plugins: [
-                "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-                "searchreplace wordcount visualblocks visualchars code fullscreen",
-                "insertdatetime media nonbreaking save table contextmenu directionality",
-                "emoticons template paste textcolor colorpicker textpattern"
-            ],
-            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-            relative_urls: false,
-            file_browser_callback : function(field_name, url, type, win) {
-                var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
-                var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
-
-                var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
-                if (type == 'image') {
-                    cmsURL = cmsURL + "&type=Images";
-                } else {
-                    cmsURL = cmsURL + "&type=Files";
-                }
-
-                tinyMCE.activeEditor.windowManager.open({
-                    file : cmsURL,
-                    title : 'Filemanager',
-                    width : x * 0.8,
-                    height : y * 0.8,
-                    resizable : "yes",
-                    close_previous : "no"
-                });
-            }
-        };
-
-        tinymce.init(editor_config);
-    </script>
-
-
-
-
-    <script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script type="text/javascript">
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -590,15 +588,23 @@
                 $( "#preview" ).addClass( "display" );
                 reader.onload = function (e) {
                     $('#preview').attr('src', e.target.result);
-                }
+                };
 
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
         $("#logo").change(function(){
             readURL(this);
         });
+        $(document).ready(function() {
+            $('.summernote').summernote();
+        });
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#sidebar,#content,#content2').theiaStickySidebar();
+        });
+
     </script>
 @endsection
-
