@@ -1451,16 +1451,16 @@
         },
         {
             "name": "kalnoy/nestedset",
-            "version": "4.2.3",
+            "version": "v4.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lazychaser/laravel-nestedset.git",
-                "reference": "b2f6af877ac5656337867b7664e52da3a1decf90"
+                "reference": "16653f7e708fdd3f5c208877fe8a7b2272f1bd6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lazychaser/laravel-nestedset/zipball/b2f6af877ac5656337867b7664e52da3a1decf90",
-                "reference": "b2f6af877ac5656337867b7664e52da3a1decf90",
+                "url": "https://api.github.com/repos/lazychaser/laravel-nestedset/zipball/16653f7e708fdd3f5c208877fe8a7b2272f1bd6c",
+                "reference": "16653f7e708fdd3f5c208877fe8a7b2272f1bd6c",
                 "shasum": ""
             },
             "require": {
@@ -1501,7 +1501,7 @@
                 "nested sets",
                 "nsm"
             ],
-            "time": "2017-04-08T06:43:55+00:00"
+            "time": "2017-04-12T17:32:55+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3285,16 +3285,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "4.8.1",
+            "version": "4.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "2201d96e4db23ea99cdcec2f60161f4931175f5d"
+                "reference": "3e569490ae9c8ce694a9e4e8f7022c4a590595b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/2201d96e4db23ea99cdcec2f60161f4931175f5d",
-                "reference": "2201d96e4db23ea99cdcec2f60161f4931175f5d",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/3e569490ae9c8ce694a9e4e8f7022c4a590595b7",
+                "reference": "3e569490ae9c8ce694a9e4e8f7022c4a590595b7",
                 "shasum": ""
             },
             "require": {
@@ -3306,7 +3306,7 @@
                 "illuminate/support": "~5.3.28|~5.4.0",
                 "league/flysystem": "^1.0.27",
                 "php": "^7.0",
-                "spatie/db-dumper": "^2.3",
+                "spatie/db-dumper": "^2.5",
                 "spatie/temporary-directory": "^1.1",
                 "symfony/finder": "^3.0"
             },
@@ -3347,7 +3347,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2017-04-06T09:04:59+00:00"
+            "time": "2017-04-11T07:27:19+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -4888,16 +4888,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe"
+                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/5a5a9fc8025a08d8919be87d6884d5a92520cefe",
-                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8e6e04167378abf1ddb4d3522d8755c5fd90d102",
+                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102",
                 "shasum": ""
             },
             "require": {
@@ -4926,7 +4926,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2017-01-26T22:05:40+00:00"
+            "time": "2017-04-12T18:52:22+00:00"
         },
         {
             "name": "phpspec/prophecy",
