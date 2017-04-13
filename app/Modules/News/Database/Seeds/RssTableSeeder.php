@@ -2,10 +2,9 @@
 
 namespace App\Modules\News\Database\Seeds;
 
-use App\Models\Sitemap;
 use Illuminate\Database\Seeder;
 
-class SitemapsTableSeeder extends Seeder
+class RssTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,12 +13,39 @@ class SitemapsTableSeeder extends Seeder
      */
     public function run()
     {
-        Sitemap::create([
-            'name'          => 'Haberler',
-            'url'           => 'news_sitemap',
-            'last_modified' => \Carbon\Carbon::now(),
-            'order'         => 3,
-            'is_active'     => 1,
+        \App\Models\Rss::create([
+            'name'              => 'Manşetler Haberler',
+            'url'               => 'rss/box_cuff',
+            'order'             => 1,
+            'is_active'         => 1
+        ]);
+
+        \App\Models\Rss::create([
+            'name'              => 'Son Dakika Haberler',
+            'url'               => 'rss/break_news',
+            'order'             => 2,
+            'is_active'         => 1
+        ]);
+
+        \App\Models\Rss::create([
+            'name'              => 'Band Haberler',
+            'url'               => 'rss/band_news',
+            'order'             => 3,
+            'is_active'         => 1
+        ]);
+
+        \App\Models\Rss::create([
+            'name'              => 'Ana Manşetler',
+            'url'               => 'rss/main_cuff',
+            'order'             => 1,
+            'is_active'         => 1
+        ]);
+
+        \App\Models\Rss::create([
+            'name'              => 'İkinci Manşetler',
+            'url'               => 'rss/mini_cuff',
+            'order'             => 1,
+            'is_active'         => 1
         ]);
     }
 }

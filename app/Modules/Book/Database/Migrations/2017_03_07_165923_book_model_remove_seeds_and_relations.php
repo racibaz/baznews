@@ -30,6 +30,8 @@ class BookModelRemoveSeedsAndRelations extends Migration
         $this->modelRemoveSeedAndRelations();
 
         $this->removeLinksTableItems();
+
+        $this->removeSitemapsTableItems();
     }
 
 
@@ -185,5 +187,12 @@ class BookModelRemoveSeedsAndRelations extends Migration
     public function removeLinksTableItems()
     {
         DB::table('links')->where('linkable_type', BookCategory::class)->delete();
+    }
+
+    public function  removeSitemapsTableItems()
+    {
+        DB::table('sitemaps')
+            ->where('url', 'books_sitemap')
+            ->delete();
     }
 }

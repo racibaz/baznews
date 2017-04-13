@@ -35,6 +35,8 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
         $this->removeTaggableTableItems();
 
         $this->removeLinksTableItems();
+
+        $this->removeSitemapsTableItems();
     }
 
     public function modelRemoveSeedAndRelations()
@@ -160,7 +162,6 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
         $permissionRepo->forgetCache();
     }
 
-
     public function removeEventsTableItems()
     {
         DB::table('events')->where('eventable_type', Article::class)->delete();
@@ -183,9 +184,15 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
         $repo->forgetCache();
     }
 
-
     public function removeLinksTableItems()
     {
         DB::table('links')->where('linkable_type', ArticleCategory::class)->delete();
+    }
+
+    public function  removeSitemapsTableItems()
+    {
+        DB::table('sitemaps')
+            ->where('url', 'articles_sitemap')
+            ->delete();
     }
 }
