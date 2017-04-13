@@ -13,7 +13,6 @@ Homestead.json
 Homestead.yaml
 .env
 resources/backups/
-.gitignore
 .phpstorm.meta.php
 _ide_helper.php
 composer.lock
