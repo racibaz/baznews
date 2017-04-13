@@ -43,6 +43,10 @@ class NewsModelRemoveSeedsAndRelations extends Migration
         $this->removeTaggableTableItems();
 
         $this->removeLinksTableItems();
+
+        $this->removeSitemapsTableItems();
+
+        $this->removeRssTableItems();
     }
 
     public function modelRemoveSeedAndRelations()
@@ -539,5 +543,36 @@ class NewsModelRemoveSeedsAndRelations extends Migration
         DB::table('links')->where('linkable_type', NewsCategory::class)->delete();
         DB::table('links')->where('linkable_type', PhotoCategory::class)->delete();
         DB::table('links')->where('linkable_type', VideoCategory::class)->delete();
+    }
+
+    public function  removeSitemapsTableItems()
+    {
+        DB::table('sitemaps')
+            ->where('url', 'news_sitemap')
+            ->delete();
+    }
+
+    public function  removeRssTableItems()
+    {
+        DB::table('rss')
+            ->where('url', 'rss/box_cuff')
+            ->delete();
+
+        DB::table('rss')
+            ->where('url', 'rss/break_news')
+            ->delete();
+
+        DB::table('rss')
+            ->where('url', 'rss/band_news')
+            ->delete();
+
+        DB::table('rss')
+            ->where('url', 'rss/main_cuff')
+            ->delete();
+
+        DB::table('rss')
+            ->where('url', 'rss/mini_cuff')
+            ->delete();
+
     }
 }

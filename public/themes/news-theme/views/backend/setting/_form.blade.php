@@ -1,37 +1,36 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('setting.management')}}
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li class="active"><a href="{!! URL::route('setting.management') !!}"> {{trans('setting.management')}}</a></li>
+        </ol>
+    </section>
+@endsection
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('setting.management')}}</h3>
-            <!--Top header end -->
-
-            <!--Top breadcrumb start -->
-            <ol class="breadcrumb">
-                <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('setting.index') !!}"> {{ trans('setting.settings') }} </a></li>
-                <li class="active"> {{ trans('common.add_update') }}</li>
-            </ol>
-            <!--Top breadcrumb start -->
-        </div>
-    </div>
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['setting.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'setting.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
     <!-- Main Content Element  Start-->
     <div class="row">
         <div class="col-md-6">
-            <div class="panel panel-light-blue">
-                <div class="panel-heading">
-                    {{--<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('setting.management')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
                 </div>
-
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['setting.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'setting.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
-
-                <div class="panel-body">
+                <!-- /.box-header -->
+                <div class="box-body">
 
                     <div class="form-group">
                         <div class="row">
@@ -81,10 +80,26 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                <!-- /.box-body -->
             </div>
         </div>
     </div><!-- end row -->
+    {!! Form::close() !!}
     <!-- Main Content Element  End-->
-</div><!-- end container-fluid -->
+
+@endsection
+@section('js')
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.summernote').summernote();
+        });
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#sidebar,#content').theiaStickySidebar();
+        });
+    </script>
 @endsection
