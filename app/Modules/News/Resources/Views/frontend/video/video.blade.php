@@ -28,7 +28,7 @@
                     <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
                 </li>
                 <li>
-                    <a href="{!! route('show_news_category', ['slug' => $videoGallery->slug]) !!}">
+                    <a href="{!! route('show_video_gallery', ['slug' => $videoGallery->slug]) !!}">
                         {{$videoGallery->title}}
                     </a>
                 </li>

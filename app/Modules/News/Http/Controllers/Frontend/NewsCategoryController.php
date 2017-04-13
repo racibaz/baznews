@@ -27,21 +27,24 @@ class NewsCategoryController extends Controller
 
     public function index()
     {
-        $records = $this->repo->orderBy('updated_at', 'desc')->findAll();
+        $records = $this->repo->where('is_active',1)->orderBy('updated_at', 'desc')->findAll();
         return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
     //todo çalışıyor mu?
+    //show ile aynı biri silinmeli.
     public function getNewsByNewsCategorySlug($newsCategorySlug)
     {
-        return Cache::remember('news:'.$newsCategorySlug, 100, function() use($newsCategorySlug) {
+
+        return Cache::tags(['NewsCategoryController', 'News', 'NewsCategory'])->rememberForever('news:'.$newsCategorySlug,
+
+            function() use($newsCategorySlug) {
 
             $newsCategorySlug = htmlentities(strip_tags($newsCategorySlug), ENT_QUOTES, 'UTF-8');
             $newsCategory = $this->repo
                     ->where('is_active', 1)
                     ->findBy('slug',$newsCategorySlug);
-
 
             $records = $newsCategory->news;
 
@@ -56,7 +59,9 @@ class NewsCategoryController extends Controller
 
     public function show($newsCategorySlug)
     {
-        return Cache::tags(['NewsCategoryController', 'News', 'newsCategory'])->rememberForever('newsCategory:'.$newsCategorySlug, function() use($newsCategorySlug) {
+        return Cache::tags(['NewsCategoryController', 'News', 'newsCategory'])->rememberForever('newsCategory:'.$newsCategorySlug,
+
+            function() use($newsCategorySlug) {
 
             $newsCategorySlug = htmlentities(strip_tags($newsCategorySlug), ENT_QUOTES, 'UTF-8');
             $record = $this->repo
