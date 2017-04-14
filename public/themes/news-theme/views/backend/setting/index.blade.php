@@ -167,33 +167,22 @@
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_2">
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('google_recaptcha_site_key', trans('setting.google_recaptcha_site_key'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {!! Form::label('google_recaptcha_site_key', trans('setting.google_recaptcha_site_key'),['class'=> 'control-label']) !!}
                                     {!! Form::text('google_recaptcha_site_key', $records->where('attribute_key','google_recaptcha_site_key')->first()->attribute_value, ['placeholder' => trans('setting.google_recaptcha_site_key') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div><!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('google_recaptcha_secret_key', trans('setting.google_recaptcha_secret_key'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    {!! Form::label('google_recaptcha_secret_key', trans('setting.google_recaptcha_secret_key'),['class'=> 'control-label']) !!}
                                     {!! Form::text('google_recaptcha_secret_key', $records->where('attribute_key','google_recaptcha_secret_key')->first()->attribute_value, ['placeholder' => trans('setting.google_recaptcha_secret_key') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div><!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('google_url_shortener_key', trans('setting.google_url_shortener_key'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    {!! Form::label('google_url_shortener_key', trans('setting.google_url_shortener_key'),['class'=> 'control-label']) !!}
                                     {!! Form::text('google_url_shortener_key', $records->where('attribute_key','google_url_shortener_key')->first()->attribute_value, ['placeholder' => trans('setting.google_url_shortener_key') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div><!-- /.form-group -->
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-md-12 -->
+                        </div><!-- /.row -->
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_3">
@@ -346,19 +335,25 @@
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_7">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     {!! Form::label('rss_count', trans('setting.rss_count'),['class'=> 'control-label']) !!}
                                     {!! Form::number('rss_count', $records->where('attribute_key','rss_count')->first()->attribute_value, ['placeholder' => trans('setting.rss_count') ,'class' => 'form-control']) !!}
                                 </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     {!! Form::label('rss_cache_life_time', trans('setting.rss_cache_life_time'),['class'=> 'control-label']) !!}
                                     {!! Form::number('rss_cache_life_time', $records->where('attribute_key','rss_cache_life_time')->first()->attribute_value, ['placeholder' => trans('setting.rss_cache_life_time') ,'class' => 'form-control']) !!}
                                 </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     {!! Form::label('rss_cache_life_time', trans('setting.rss_cache_life_time'),['class'=> 'control-label']) !!}
                                     {!! Form::number('rss_cache_life_time', $records->where('attribute_key','rss_cache_life_time')->first()->attribute_value, ['placeholder' => trans('setting.rss_cache_life_time') ,'class' => 'form-control']) !!}
                                 </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     {!! Form::label('sitemap_count', trans('setting.sitemap_count'),['class'=> 'control-label']) !!}
                                     {!! Form::number('sitemap_count', $records->where('attribute_key','sitemap_count')->first()->attribute_value, ['placeholder' => trans('setting.sitemap_count') ,'class' => 'form-control']) !!}
@@ -373,10 +368,17 @@
                                     <br>
                                     {!! Form::text('allow_video_formats', $records->where('attribute_key','allow_video_formats')->first()->attribute_value, ['placeholder' => trans('setting.allow_video_formats') ,'class' => 'form-control tagsinput']) !!}
                                 </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-12">
+                                <hr>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('latitude', trans('setting.latitude'),['class'=> 'control-label']) !!}
                                     {!! Form::text('latitude', $records->where('attribute_key','latitude')->first()->attribute_value, ['placeholder' => trans('setting.latitude') ,'class' => 'form-control']) !!}
                                 </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('longitude', trans('setting.longitude'),['class'=> 'control-label']) !!}
                                     {!! Form::text('longitude', $records->where('attribute_key','longitude')->first()->attribute_value, ['placeholder' => trans('setting.longitude') ,'class' => 'form-control']) !!}
@@ -441,12 +443,12 @@
                         <a class="list-group-item" href="{!! route('repairMysqlTables') !!}"><i class="fa fa-thumbs-o-up"></i> <span>Mysql Tabloları Onar</span></a>
                         <a class="list-group-item" href="{!! route('getAllRedisKey') !!}"><i class="fa fa-list-alt"></i> <span>Cache Verileri Göster</span></a>
                         <a class="list-group-item" href="{!! route('flushAllCache') !!}"><i class="fa fa-trash-o"></i> <span>Cache Verilerini Sil</span></a>
-                        <a class="list-group-item" href="{!! route('getBackUp') !!}"> <i class="fa fa-trash-o"></i> <span>Backup Al</span></a>
+                        <a class="list-group-item" href="{!! route('getBackUp') !!}"> <i class="fa fa-cloud-download"></i> <span>Backup Al</span></a>
                         <a class="list-group-item" href="{!! route('backUpClean') !!}"> <i class="fa fa-trash-o"></i> <span>Backup ları Sil</span></a>
-                        <a class="list-group-item" href="{!! route('viewClear') !!}"> <i class="fa fa-trash-o"></i> <span>View Cache lerini Temizle</span></a>
-                        <a class="list-group-item" href="{!! route('routeClear') !!}"> <i class="fa fa-trash-o"></i> <span>Route Cache lerini Temizle</span></a>
-                        <a class="list-group-item" href="{!! route('configClear') !!}"> <i class="fa fa-trash-o"></i> <span>Konfigirasyon Ayarlarını lerini Temizle</span></a>
-                        <a class="list-group-item" href="{!! route('configCache') !!}"><i class="fa fa-trash-o"></i>  <span>Konfigirasyon Ayarlarını lerini Cache le</span></a>
+                        <a class="list-group-item" href="{!! route('viewClear') !!}"> <i class="fa fa-trash-o"></i> <span>View Ön Belleğini Temizle</span></a>
+                        <a class="list-group-item" href="{!! route('routeClear') !!}"> <i class="fa fa-trash-o"></i> <span>Route Ön Belleğini Temizle</span></a>
+                        <a class="list-group-item" href="{!! route('configClear') !!}"> <i class="fa fa-trash-o"></i> <span>Konfigürasyon Ayarlarını Temizle</span></a>
+                        <a class="list-group-item" href="{!! route('configCache') !!}"><i class="fa fa-trash-o"></i>  <span>Konfigürasyon Ayarlarını Ön Belleğe Al</span></a>
                     </div>
                 </div>
                 <div class="box-footer">
@@ -626,19 +628,19 @@
             if($(this).attr('href')==="#tab_3" && t3 === 0){
                 setTimeout(function () {
                     codemirrore1();
-                },500);
+                },100);
                 t3=1;
             }
             if($(this).attr('href')==="#tab_5" && t5 === 0){
                 setTimeout(function () {
                     codemirrore2();
-                },500);
+                },100);
                 t5=1;
             }
             if($(this).attr('href')==="#tab_6" && t6 === 0){
                 setTimeout(function () {
                     codemirrore3();
-                },500);
+                },100);
                 t6=1;
             }
         });

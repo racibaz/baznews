@@ -47,7 +47,7 @@ return [
     'longitude'=> 'longitude',
     'social_connect'=> 'Sosyal Medya',
     'status'=> 'Durum',
-    'header_footer'=> 'Header/Footer',
+    'header_footer'=> 'Header&Footer',
     'config_list'=> 'Ayar Listesi',
     'change'=> 'Değiştir',
     'remove'=> 'Sil',
