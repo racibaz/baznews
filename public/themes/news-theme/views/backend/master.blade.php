@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- jvectormap -->
     <link href="{{ Theme::asset($activeTheme .'::AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet">
+    @yield('css')
     <!-- Theme style -->
     <link href="{{ Theme::asset($activeTheme .'::AdminLTE/dist/css/AdminLTE.min.css') }}" rel="stylesheet">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -24,8 +25,6 @@
     <link href="{{ Theme::asset($activeTheme .'::js/summernote/dist/summernote.css') }}" rel="stylesheet">
 
     <link href="{{ Theme::asset($activeTheme .'::js/icheck/skins/all.css') }}" rel="stylesheet">
-
-    @yield('css')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -290,15 +289,8 @@
 <!-- SUMMERNOTE -->
 <script src="{{ Theme::asset($activeTheme .'::js/summernote/dist/summernote.min.js') }}"></script>
 
-
 <!-- AdminLTE for demo purposes -->
 <script src="{{ Theme::asset($activeTheme .'::AdminLTE/dist/js/demo.js') }}"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.3/vue.common.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.common.js"></script>
-
-
-<script src="/js/vendor.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {

@@ -10,6 +10,13 @@
         </ol>
     </section>
 @endsection
+@section('css')
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/codemirror/lib/codemirror.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/codemirror/theme/monokai.css') }}">
+@endsection
 @section('content')
     <!-- Main Content Element  Start-->
     @if(isset($record->id))
@@ -18,7 +25,7 @@
         {!! Form::open(['route' => 'setting.store','method' => 'post', 'files' => 'true']) !!}
     @endif
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-sm-7 col-md-9" id="content">
             <!-- Custom Tabs -->
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
@@ -32,30 +39,29 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('country', trans('setting.country'),['class'=> 'col-lg-2 control-label']) !!}
-                                <div class="col-lg-10">
-                                    {!! Form::select('country', $countryList , $records->where('attribute_key','country')->first()->attribute_value , ['class' => 'form-control']) !!}
-                                </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    {!! Form::label('country', trans('setting.country'),['class'=> 'control-label']) !!}
+                                    {!! Form::select('country', $countryList , $records->where('attribute_key','country')->first()->attribute_value , ['class' => 'form-control select2']) !!}
+                                </div><!-- /.form-group -->
                             </div>
-                        </div><!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('city', trans('setting.city'),['class'=> 'col-lg-2 control-label']) !!}
-                                <div class="col-lg-10">
-                                    {!! Form::select('city', $cityList , $records->where('attribute_key','city')->first()->attribute_value , ['class' => 'form-control']) !!}
-                                </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    {!! Form::label('city', trans('setting.city'),['class'=> 'control-label']) !!}
+                                    {!! Form::select('city', $cityList , $records->where('attribute_key','city')->first()->attribute_value , ['class' => 'form-control select2']) !!}
+                                </div><!-- /.form-group -->
                             </div>
-                        </div><!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('language_code', trans('setting.language_code'),['class'=> 'col-lg-2 control-label']) !!}
-                                <div class="col-lg-10">
-                                    {!! Form::select('language_code', $languageList , $records->where('attribute_key','language_code')->first()->attribute_value , ['class' => 'form-control']) !!}
-                                </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    {!! Form::label('language_code', trans('setting.language_code'),['class'=> 'control-label']) !!}
+                                    {!! Form::select('language_code', $languageList , $records->where('attribute_key','language_code')->first()->attribute_value , ['class' => 'form-control select2']) !!}
+                                </div><!-- /.form-group -->
                             </div>
-                        </div><!-- /.form-group -->
+                        </div>
+
+
+
                         <div class="form-group">
                             <div class="row">
                                 {!! Form::label('title', trans('setting.title'),['class'=> 'col-lg-2 control-label']) !!}
@@ -98,7 +104,7 @@
                                 {!! Form::label('keywords', trans('setting.keywords'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::text('keywords', $records->where('attribute_key','keywords')->first()->attribute_value, ['placeholder' => trans('setting.keywords') ,'class' => 'form-control']) !!}
+                                    {!! Form::text('keywords', $records->where('attribute_key','keywords')->first()->attribute_value, ['placeholder' => trans('setting.keywords') ,'class' => 'form-control tagsinput']) !!}
                                 </div>
                             </div>
                         </div><!-- /.form-group -->
@@ -107,7 +113,7 @@
                                 {!! Form::label('timezone', trans('setting.timezone'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::select('timezone', $timezoneList , $records->where('attribute_key','timezone')->first()->attribute_value , ['class' => 'form-control']) !!}
+                                    {!! Form::select('timezone', $timezoneList , $records->where('attribute_key','timezone')->first()->attribute_value , ['class' => 'form-control select2']) !!}
                                 </div>
                             </div>
                         </div><!-- /.form-group -->
@@ -116,11 +122,16 @@
                                 {!! Form::label('logo', trans('setting.logo'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    <img src="{!! asset($logo->attribute_value) !!}">
-                                    <br />
-                                    {!! Form::file('logo') !!}
-                                    <img id="preview" src="#" alt="">
-                                    <br />
+
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                            <img  id="preview" data-src="{!! asset($logo->attribute_value) !!}" src="{!! asset($logo->attribute_value) !!}" alt="">
+                                        </div>
+                                        <div>
+                                            <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('setting.file_choose')}}</span><span class="fileinput-exists">{{trans('setting.change')}}</span>{!! Form::file('logo',['class'=>'fileinput']) !!}</span>
+                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('setting.remove')}}</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div><!-- /.form-group -->
@@ -278,7 +289,7 @@
                                 {!! Form::label('weather_embed_code', trans('setting.weather_embed_code'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::textarea('weather_embed_code', $records->where('attribute_key','weather_embed_code')->first()->attribute_value, ['placeholder' => trans('setting.weather_embed_code') ,'class' => 'form-control']) !!}
+                                    {!! Form::textarea('weather_embed_code', $records->where('attribute_key','weather_embed_code')->first()->attribute_value, ['placeholder' => trans('setting.weather_embed_code') ,'class' => 'form-control','id'=>'weather_code']) !!}
                                 </div>
                             </div>
                         </div><!-- /.form-group -->
@@ -287,7 +298,7 @@
                                 {!! Form::label('addthis', trans('setting.addthis'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::textarea('addthis', $records->where('attribute_key','addthis')->first()->attribute_value, ['placeholder' => trans('setting.addthis') ,'class' => 'form-control']) !!}
+                                    {!! Form::textarea('addthis', $records->where('attribute_key','addthis')->first()->attribute_value, ['placeholder' => trans('setting.addthis') ,'class' => 'form-control','id'=>'addthis_code']) !!}
                                 </div>
                             </div>
                         </div><!-- /.form-group -->
@@ -296,7 +307,7 @@
                                 {!! Form::label('disqus', trans('setting.disqus'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::textarea('disqus', $records->where('attribute_key','disqus')->first()->attribute_value, ['placeholder' => trans('setting.disqus') ,'class' => 'form-control']) !!}
+                                    {!! Form::textarea('disqus', $records->where('attribute_key','disqus')->first()->attribute_value, ['placeholder' => trans('setting.disqus') ,'class' => 'form-control','id'=>'disqus_code']) !!}
                                 </div>
                             </div>
                         </div><!-- /.form-group -->
@@ -308,7 +319,7 @@
                                 {!! Form::label('head_code', trans('setting.head_code'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::textarea('head_code', $records->where('attribute_key','head_code')->first()->attribute_value, ['placeholder' => trans('setting.head_code') ,'class' => 'form-control']) !!}
+                                    {!! Form::textarea('head_code', $records->where('attribute_key','head_code')->first()->attribute_value, ['placeholder' => trans('setting.head_code') ,'class' => 'form-control','id'=>'head_code']) !!}
                                 </div>
                             </div>
                         </div><!-- /.form-group -->
@@ -317,7 +328,7 @@
                                 {!! Form::label('footer_code', trans('setting.footer_code'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::textarea('footer_code', $records->where('attribute_key','footer_code')->first()->attribute_value, ['placeholder' => trans('setting.footer_code') ,'class' => 'form-control']) !!}
+                                    {!! Form::textarea('footer_code', $records->where('attribute_key','footer_code')->first()->attribute_value, ['placeholder' => trans('setting.footer_code') ,'class' => 'form-control','id'=>'footer_code']) !!}
                                 </div>
                             </div>
                         </div><!-- /.form-group -->
@@ -334,78 +345,45 @@
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_7">
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('rss_count', trans('setting.rss_count'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {!! Form::label('rss_count', trans('setting.rss_count'),['class'=> 'control-label']) !!}
                                     {!! Form::number('rss_count', $records->where('attribute_key','rss_count')->first()->attribute_value, ['placeholder' => trans('setting.rss_count') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div><!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('rss_cache_life_time', trans('setting.rss_cache_life_time'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    {!! Form::label('rss_cache_life_time', trans('setting.rss_cache_life_time'),['class'=> 'control-label']) !!}
                                     {!! Form::number('rss_cache_life_time', $records->where('attribute_key','rss_cache_life_time')->first()->attribute_value, ['placeholder' => trans('setting.rss_cache_life_time') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div><!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('rss_cache_life_time', trans('setting.rss_cache_life_time'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    {!! Form::label('rss_cache_life_time', trans('setting.rss_cache_life_time'),['class'=> 'control-label']) !!}
                                     {!! Form::number('rss_cache_life_time', $records->where('attribute_key','rss_cache_life_time')->first()->attribute_value, ['placeholder' => trans('setting.rss_cache_life_time') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div><!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('sitemap_count', trans('setting.sitemap_count'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    {!! Form::label('sitemap_count', trans('setting.sitemap_count'),['class'=> 'control-label']) !!}
                                     {!! Form::number('sitemap_count', $records->where('attribute_key','sitemap_count')->first()->attribute_value, ['placeholder' => trans('setting.sitemap_count') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div><!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('allow_photo_formats', trans('setting.allow_photo_formats'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::text('allow_photo_formats', $records->where('attribute_key','allow_photo_formats')->first()->attribute_value, ['placeholder' => trans('setting.allow_photo_formats') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div><!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('allow_video_formats', trans('setting.allow_video_formats'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::text('allow_video_formats', $records->where('attribute_key','allow_video_formats')->first()->attribute_value, ['placeholder' => trans('setting.allow_video_formats') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div><!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('latitude', trans('setting.latitude'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    {!! Form::label('allow_photo_formats', trans('setting.allow_photo_formats'),['class'=> 'control-label']) !!}
+                                    <br>
+                                    {!! Form::text('allow_photo_formats', $records->where('attribute_key','allow_photo_formats')->first()->attribute_value, ['placeholder' => trans('setting.allow_photo_formats') ,'class' => 'form-control tagsinput']) !!}
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    {!! Form::label('allow_video_formats', trans('setting.allow_video_formats'),['class'=> 'control-label']) !!}
+                                    <br>
+                                    {!! Form::text('allow_video_formats', $records->where('attribute_key','allow_video_formats')->first()->attribute_value, ['placeholder' => trans('setting.allow_video_formats') ,'class' => 'form-control tagsinput']) !!}
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    {!! Form::label('latitude', trans('setting.latitude'),['class'=> 'control-label']) !!}
                                     {!! Form::text('latitude', $records->where('attribute_key','latitude')->first()->attribute_value, ['placeholder' => trans('setting.latitude') ,'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div><!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('longitude', trans('setting.longitude'),['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    {!! Form::label('longitude', trans('setting.longitude'),['class'=> 'control-label']) !!}
                                     {!! Form::text('longitude', $records->where('attribute_key','longitude')->first()->attribute_value, ['placeholder' => trans('setting.longitude') ,'class' => 'form-control']) !!}
-                                </div>
+                                </div><!-- /.form-group -->
                             </div>
-                        </div><!-- /.form-group -->
+                        </div>
+
                     </div>
                 </div>
                 <!-- /.tab-content -->
@@ -413,7 +391,7 @@
             </div>
             <!-- nav-tabs-custom -->
         </div>
-        <div class="col-md-3" id="sidebar">
+        <div class="col-sm-5 col-md-3" id="sidebar">
             <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{trans('setting.status')}}</h3>
@@ -600,30 +578,75 @@
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/lib/codemirror.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/javascript/javascript.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/smarty/smarty.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/css/css.js') }}"></script>
     <script type="text/javascript">
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                $( "#preview" ).addClass( "display" );
-                reader.onload = function (e) {
-                    $('#preview').attr('src', e.target.result);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        $("#logo").change(function(){
-            readURL(this);
-        });
         $(document).ready(function() {
             $('.summernote').summernote();
+            $('.fileinput').fileinput();
+            $('.select2').select2();
+            $('.tagsinput').tagsinput();
+        });
+        function codemirrore1() {
+            var a=document.getElementById("facebook_embed_code");
+            var b=document.getElementById("twitter_embed_code");
+            var c=document.getElementById("instagram_embed_code");
+            var j=document.getElementById("pinterest_embed_code");
+            CodeMirror.fromTextArea(a,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
+            CodeMirror.fromTextArea(b,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
+            CodeMirror.fromTextArea(c,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
+            CodeMirror.fromTextArea(j,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
+        }
+        function codemirrore2() {
+            var d=document.getElementById("weather_code");
+            var e=document.getElementById("addthis_code");
+            var f=document.getElementById("disqus_code");
+            CodeMirror.fromTextArea(d,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
+            CodeMirror.fromTextArea(e,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
+            CodeMirror.fromTextArea(f,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
+        }
+        function codemirrore3() {
+            var g=document.getElementById("head_code");
+            var h=document.getElementById("footer_code");
+            CodeMirror.fromTextArea(g,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
+            CodeMirror.fromTextArea(h,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
+        }
+        var t3=0,t5=0,t6=0;
+        $(window).resize(function () {
+            $('.select2').select2();
+            $('.tagsinput').tagsinput();
+        });
+        $('.nav-tabs li a').click(function () {
+            if($(this).attr('href')==="#tab_3" && t3 === 0){
+                setTimeout(function () {
+                    codemirrore1();
+                },500);
+                t3=1;
+            }
+            if($(this).attr('href')==="#tab_5" && t5 === 0){
+                setTimeout(function () {
+                    codemirrore2();
+                },500);
+                t5=1;
+            }
+            if($(this).attr('href')==="#tab_6" && t6 === 0){
+                setTimeout(function () {
+                    codemirrore3();
+                },500);
+                t6=1;
+            }
         });
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
         jQuery(document).ready(function() {
-            jQuery('#sidebar,#content,#content2').theiaStickySidebar();
+            jQuery('#sidebar,#content').theiaStickySidebar();
         });
 
     </script>
