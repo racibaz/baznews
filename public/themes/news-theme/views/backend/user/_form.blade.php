@@ -271,5 +271,7 @@
         $(document).ready(function() {
             $('.summernote').summernote();
         });
+        //active menu
+        activeMenu('user_management','user');
     </script>
 @endsection

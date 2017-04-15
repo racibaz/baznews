@@ -21,4 +21,6 @@ return [
     'active_theme' => 'Aktif Tema',
     'edit_delete' => 'Düzenle/Sil',
     'is_active' => 'Aktif/Pasif',
+    'type' => 'Tipi',
+    'added' => 'Eklenmiş',
 ];

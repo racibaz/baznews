@@ -196,5 +196,7 @@
         $("#icon").change(function(){
             readURL(this);
         });
+        //active menu
+        activeMenu('menu_management','');
     </script>
 @endsection

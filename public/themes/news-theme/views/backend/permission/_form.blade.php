@@ -54,5 +54,10 @@
 
     </div>
     <!-- /.content -->
-
+@endsection
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('permission','user_management');
+    </script>
 @endsection

@@ -3,12 +3,10 @@
     <section class="content-header">
         <h1>
             {{trans('advertisement.management')}}
-            <small>{{trans('advertisement.add_advert')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('advertisement.index') !!}"> {{trans('advertisement.management')}}</a></li>
-            <li class="active">{{trans('advertisement.add_advert')}}</li>
         </ol>
     </section>
 @endsection
@@ -85,6 +83,7 @@
                         <thead>
                         <tr>
                             <th>{{trans('advertisement.area_name')}}</th>
+                            <th>{{trans('advertisement.type')}}</th>
                             <th>{{trans('advertisement.status')}}</th>
                         </tr>
                         </thead>
@@ -92,10 +91,10 @@
                         @foreach($advertisementAreaNames as $advertisementAreaName)
                             <tr>
                                 <td>{{$advertisementAreaName['areaName']}}</td>
+                                <td>{{$advertisementAreaName['areaType']}}</td>
                                 <td>
-                                    {{$advertisementAreaName['areaType']}}
                                     @if(in_array($advertisementAreaName['areaName'] , \App\Models\Advertisement::advertisements()->pluck('name')->toArray()))
-                                        <b>(ekli)</b>
+                                        <span class="badge bg-green"><i class="fa fa-check"></i>  {{trans('advertisement.added')}}</span>
                                     @endif
                                 </td>
                             </tr>
@@ -113,6 +112,10 @@
             </div>
         </div>
     </div>
-
-
+@endsection
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('advertisement','');
+    </script>
 @endsection

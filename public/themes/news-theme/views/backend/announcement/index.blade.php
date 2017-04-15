@@ -50,6 +50,10 @@
         </div>
         <!-- /.box-body -->
     </div>
-
 @endsection
-
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('announcement','');
+    </script>
+@endsection

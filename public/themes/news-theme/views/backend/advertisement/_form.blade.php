@@ -108,5 +108,7 @@
         jQuery(window).load(function () {
             codemirrore1();
         });
+        //active menu
+        activeMenu('advertisement','');
     </script>
 @endsection

@@ -291,6 +291,7 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ Theme::asset($activeTheme .'::AdminLTE/dist/js/demo.js') }}"></script>
+<script src="{{ Theme::asset($activeTheme .'::js/functions.js') }}"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {

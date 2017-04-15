@@ -115,5 +115,7 @@
                 }
             });
         });
+        //active menu
+        activeMenu('role','user_management');
     </script>
-@stop
+@endsection
