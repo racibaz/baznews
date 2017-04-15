@@ -146,5 +146,7 @@
         jQuery(document).ready(function() {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
+        //active menu
+        activeMenu('page','');
     </script>
 @endsection

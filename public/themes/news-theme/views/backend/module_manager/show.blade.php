@@ -80,7 +80,11 @@
         </div><!-- end row -->
         <!-- Main Content Element  End-->
     </div><!-- container-fluid -->
-
-
+@endsection
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('module_manager','');
+    </script>
 @endsection
 

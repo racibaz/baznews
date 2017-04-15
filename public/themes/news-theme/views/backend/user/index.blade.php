@@ -6,7 +6,7 @@
             <small>{{trans('user.user_list_title')}}</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i> {{trans('dashboard.name')}}</a></li>
+            <li><a href="{{route('dashboard')}}"><i class="fa fa-home"></i></a></li>
             <li class="active">{{trans('user.user_management')}}</li>
             <li class="active">{{trans('user.user_list_title')}}</li>
         </ol>
@@ -526,6 +526,10 @@
         </div>
         <!-- /.col -->
     </div>
-
-
+@endsection
+@section('js')
+    <script type="text/javascript">
+        //Menü active code...
+        activeMenu('user_management','user');
+    </script>
 @endsection

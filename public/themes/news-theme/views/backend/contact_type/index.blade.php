@@ -59,6 +59,10 @@
         </div>
         <!-- /.col -->
     </div>
-
-
+@endsection
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('contact_type','');
+    </script>
 @endsection

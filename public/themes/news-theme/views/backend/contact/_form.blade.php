@@ -124,5 +124,7 @@
         $(document).ready(function() {
             $('.summernote').summernote();
         });
+        //active menu
+        activeMenu('','contact');
     </script>
 @endsection

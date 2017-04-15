@@ -74,4 +74,9 @@
     </div>
 
 @endsection
-
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('user_management','group');
+    </script>
+@endsection

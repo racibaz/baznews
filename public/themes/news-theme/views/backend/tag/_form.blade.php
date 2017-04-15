@@ -66,5 +66,10 @@
     </div>
     {!! Form::close() !!}
     <!-- Main Content Element  End-->
-
+@endsection
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('tag','');
+    </script>
 @endsection

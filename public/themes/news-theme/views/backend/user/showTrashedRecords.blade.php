@@ -71,3 +71,10 @@
         <!-- /.col -->
     </div>
 @endsection
+@section('js')
+    <script type="text/javascript">
+        //Menü active code...
+        //active menu
+        activeMenu('user_management','user');
+    </script>
+@endsection

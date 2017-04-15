@@ -57,3 +57,9 @@
         <!-- /.col -->
     </div>
 @endsection
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('role','user_management');
+    </script>
+@endsection

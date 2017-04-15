@@ -85,8 +85,11 @@
                 <!-- /.box-body -->
             </div><!-- /.box -->
         </div><!-- .col-md-6 -->
-
     </div>
-
 @endsection
-
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('menu_management','');
+    </script>
+@endsection

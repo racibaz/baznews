@@ -54,3 +54,9 @@
     <!-- Main Content Element  End-->
 </div><!-- end container-fluid -->
 @endsection
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('ping','general_setting');
+    </script>
+@endsection

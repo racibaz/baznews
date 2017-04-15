@@ -650,6 +650,7 @@
         jQuery(document).ready(function() {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
-
+        //active menu
+        activeMenu('setting','general_setting');
     </script>
 @endsection
