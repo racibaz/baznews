@@ -3,7 +3,7 @@
     <!-- Logo -->
     <a href="{!! route('dashboard') !!}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>{!! Cache::tags('Setting')->get('title') !!} </b></span>
+        <span class="logo-mini"><b>{{substr(Cache::tags('Setting')->get('title'),0,1)}} </b></span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>{!! Cache::tags('Setting')->get('title') !!} </b></span>
         <span class="logo-lg"> {!! Cache::tags('Setting')->get('title') !!}  </span>
@@ -19,7 +19,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
-                @permission('removeHomePageCache-backend'))<li class="header"><a href="{!! URL::route('removeHomePageCache') !!}"><i class="fa fa-trash-o"></i> {{ trans('dashboard.remove_home_page_cache') }} </a></li>@endpermission
+                @permission('removeHomePageCache-backend')<li class="header"><a href="{!! URL::route('removeHomePageCache') !!}"><i class="fa fa-trash-o"></i> {{ trans('dashboard.remove_home_page_cache') }} </a></li>@endpermission
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>

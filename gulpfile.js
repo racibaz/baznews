@@ -36,6 +36,10 @@ elixir(function (mix) {
     mix.copy('node_modules/theia-sticky-sidebar/**', 'public/themes/news-theme/assets/js/sticky-sidebar');
     mix.copy('node_modules/video.js/**', 'public/themes/news-theme/assets/js/video-js');
     mix.copy('node_modules/summernote/**', 'public/themes/news-theme/assets/js/summernote');
+    mix.copy('node_modules/bootstrap-tagsinput/**', 'public/themes/news-theme/assets/js/bootstrap-tagsinput');
+    mix.copy('node_modules/jasny-bootstrap/**', 'public/themes/news-theme/assets/js/jasny-bootstrap');
+    mix.copy('node_modules/select2/**', 'public/themes/news-theme/assets/js/select2');
+    mix.copy('node_modules/codemirror/**', 'public/themes/news-theme/assets/js/codemirror');
 
     //CSS Component
     mix.copy('node_modules/components-font-awesome/**', 'public/themes/news-theme/assets/css/font-awesome');

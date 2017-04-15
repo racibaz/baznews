@@ -1,38 +1,46 @@
 {
   "_args": [
     [
-      "jquery-mousewheel@^3.1.13",
-      "/home/vagrant/PROJELER/baznews"
+      {
+        "raw": "jquery-mousewheel",
+        "scope": null,
+        "escapedName": "jquery-mousewheel",
+        "name": "jquery-mousewheel",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/PROJELER/baznews"
     ]
   ],
-  "_from": "jquery-mousewheel@>=3.1.13 <4.0.0",
+  "_from": "jquery-mousewheel@latest",
   "_id": "jquery-mousewheel@3.1.13",
   "_inCache": true,
-  "_installable": true,
   "_location": "/jquery-mousewheel",
   "_npmUser": {
-    "email": "dave.methvin@gmail.com",
-    "name": "dmethvin"
+    "name": "dmethvin",
+    "email": "dave.methvin@gmail.com"
   },
   "_npmVersion": "1.4.28",
   "_phantomChildren": {},
   "_requested": {
-    "name": "jquery-mousewheel",
-    "raw": "jquery-mousewheel@^3.1.13",
-    "rawSpec": "^3.1.13",
+    "raw": "jquery-mousewheel",
     "scope": null,
-    "spec": ">=3.1.13 <4.0.0",
-    "type": "range"
+    "escapedName": "jquery-mousewheel",
+    "name": "jquery-mousewheel",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
   },
   "_requiredBy": [
-    "/",
-    "/malihu-custom-scrollbar-plugin"
+    "#USER",
+    "/"
   ],
   "_resolved": "https://registry.npmjs.org/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz",
   "_shasum": "06f0335f16e353a695e7206bf50503cb523a6ee5",
   "_shrinkwrap": null,
-  "_spec": "jquery-mousewheel@^3.1.13",
-  "_where": "/home/vagrant/PROJELER/baznews",
+  "_spec": "jquery-mousewheel",
+  "_where": "/home/PROJELER/baznews",
   "author": {
     "name": "jQuery Foundation and other contributors",
     "url": "https://github.com/jquery/jquery-mousewheel/blob/master/AUTHORS.txt"
@@ -86,16 +94,16 @@
   "main": "./jquery.mousewheel.js",
   "maintainers": [
     {
-      "email": "substack@gmail.com",
-      "name": "substack"
+      "name": "substack",
+      "email": "substack@gmail.com"
     },
     {
-      "email": "hello.brandon@aaron.sh",
-      "name": "brandonaaron"
+      "name": "brandonaaron",
+      "email": "hello.brandon@aaron.sh"
     },
     {
-      "email": "dave.methvin@gmail.com",
-      "name": "dmethvin"
+      "name": "dmethvin",
+      "email": "dave.methvin@gmail.com"
     }
   ],
   "name": "jquery-mousewheel",
