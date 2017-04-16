@@ -26,7 +26,7 @@
 </li>
 <li class="treeview" data-name="widget_management">
     <a href="#">
-        <i class="fa fa-cogs"></i> <span>{{trans('dashboard.widget_management')}}</span>
+        <i class="fa fa-th-large"></i> <span>{{trans('dashboard.widget_management')}}</span>
         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
     </a>
     <ul class="treeview-menu">

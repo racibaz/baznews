@@ -1,5 +1,17 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('event.management')}}
+            <small>{{trans('event.event_list')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('event.index') !!}"> {{trans('event.management')}}</a></li>
+            <li>{{trans('event.event_list')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <div class="row">
@@ -18,16 +30,17 @@
                             <th>{{trans('event.eventable_id')}}</th>
                             <th>{{trans('event.user_id')}}</th>
                             <th>{{trans('event.event')}}</th>
+                            <th>{{trans('event.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach($records as $record)
                                 <tr>
                                     <td>{{$record->id}}</td>
-                                    <td> {{ $record->eventable_type }} </td>
-                                    <td> {{ $record->eventable_id }} </td>
+                                    <td>{!! link_to_route('event.show',$record->event , $record, [] ) !!} </td>
+                                    <td>{{$record->eventable_id}} </td>
+                                    <td>{{$record->eventable_type}}</td>
                                     <td>{!! link_to_route('user.show', $record->user->name , $record, [] ) !!}</td>
-                                    <td> {{ $record->event }} </td>
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('event.destroy',  $record))) !!}
@@ -42,15 +55,6 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>{{trans('event.eventable_type')}}</th>
-                            <th>{{trans('event.eventable_id')}}</th>
-                            <th>{{trans('event.user_id')}}</th>
-                            <th>{{trans('event.event')}}</th>
-                        </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->

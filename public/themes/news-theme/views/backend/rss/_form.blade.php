@@ -1,39 +1,39 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('rss.management')}}
+            <small>{{trans('rss.create_edit')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('announcement.index') !!}"> {{trans('rss.management')}}</a></li>
+            <li>{{trans('rss.create_edit')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('rss.management')}}</h3>
-            <!--Top header end -->
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['rss.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'rss.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
 
-            <!--Top breadcrumb start -->
-            <ol class="breadcrumb">
-                <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('rss.index') !!}"> {{ trans('rss.rsss') }} </a></li>
-                <li class="active"> {{ trans('common.add_update') }}</li>
-            </ol>
-            <!--Top breadcrumb start -->
-        </div>
-    </div>
     <!-- Main Content Element  Start-->
     <div class="row">
         <div class="col-md-6">
-            <div class="panel panel-light-blue">
-                <div class="panel-heading">
-                    {{--<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('rss.create_edit')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
                 </div>
-
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['rss.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'rss.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
-
-                <div class="panel-body">
-
-
+                <!-- /.box-header -->
+                <div class="box-body">
                     <div class="form-group">
                         <div class="row">
                             {!! Form::label('name', trans('rss.name'),['class'=> 'col-lg-2 control-label']) !!}
@@ -64,14 +64,14 @@
 
                     <div class="form-group">
                         <div class="row">
-                            {{trans('common.status')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                        <i></i> {{trans('common.is_active')}}
-                                    </label>
-                                </div>
+                            <div class="col-md-2">
+                                <b>{{trans('common.status')}}</b>
+                            </div>
+                            <div class="col-md-10">
+                                <label>
+                                    {!! Form::checkbox('is_active', null , $record->is_active) !!}
+                                    {{trans('common.is_active')}}
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -83,12 +83,13 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
-            </div>
+                <!-- /.box-body -->
+            </div><!-- /.box-default -->
         </div>
     </div><!-- end row -->
     <!-- Main Content Element  End-->
-</div><!-- end container-fluid -->
+
+    {!! Form::close() !!}
 @endsection
 @section('js')
     <script type="text/javascript">

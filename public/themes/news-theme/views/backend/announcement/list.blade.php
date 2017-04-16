@@ -1,5 +1,15 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('advertisement.management')}}
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('advertisement.index') !!}"> {{trans('advertisement.management')}}</a></li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <div class="box">
@@ -19,12 +29,8 @@
                     <tbody>
                     @foreach($records as $record)
                         <tr>
-                            <td >
-                                {{$record->title}}
-                            </td>
-                            <td>
-                                {{$record->description}}
-                            </td>
+                            <td>{{$record->title}}</td>
+                            <td>{{$record->description}}</td>
                         </tr>
                     @endforeach
                     </tbody>
