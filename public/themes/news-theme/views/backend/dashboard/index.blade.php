@@ -222,7 +222,9 @@
                 var modal = $(this);
                 modal.find('.title').html(title);
                 modal.find('.m-content').html(description);
-            })
+            });
+            //active menu
+            activeMenu('home','');
         });
     </script>
 @endsection

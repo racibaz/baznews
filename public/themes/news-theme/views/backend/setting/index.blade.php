@@ -10,13 +10,6 @@
         </ol>
     </section>
 @endsection
-@section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/codemirror/lib/codemirror.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/codemirror/theme/monokai.css') }}">
-@endsection
 @section('content')
     <!-- Main Content Element  Start-->
     @if(isset($record->id))
@@ -570,12 +563,12 @@
     </div><!-- /.modal -->
     <!-- Main Content Element  End-->
 @endsection
-
 @section('css')
-    <style>
-        #preview {display: none;}
-        .display {display: block !important;}
-    </style>
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/codemirror/lib/codemirror.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/codemirror/theme/monokai.css') }}">
 @endsection
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>

@@ -49,7 +49,7 @@
                             {!! Form::label('parent_id', trans('menu.parent_menu'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::select('parent_id', $menuList , $record->parent_id , ['placeholder' => trans('menu.please_choose'),'class' => 'form-control']) !!}
+                                {!! Form::select('parent_id', $menuList , $record->parent_id , ['placeholder' => trans('menu.please_choose'),'class' => 'form-control select2']) !!}
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                             {!! Form::label('page_id', trans('menu.site_page'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::select('page_id', $pageList , $record->page_id , ['placeholder' => trans('menu.please_choose'),'class' => 'form-control']) !!}
+                                {!! Form::select('page_id', $pageList , $record->page_id , ['placeholder' => trans('menu.please_choose'),'class' => 'form-control select2']) !!}
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                             {!! Form::label('route', trans('menu.category'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::select('route', $linkList , $record->route , ['placeholder' => trans('menu.please_choose'),'class' => 'form-control']) !!}
+                                {!! Form::select('route', $linkList , $record->route , ['placeholder' => trans('menu.please_choose'),'class' => 'form-control select2']) !!}
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                                                             '_parent' => '_parent',
                                                             '_top' => '_top',
                                                             ],
-                                                            $record->target, ['placeholder' => trans('menu.please_choose'),'class' => 'form-control']) !!}
+                                                            $record->target, ['placeholder' => trans('menu.please_choose'),'class' => 'form-control select2']) !!}
                             </div>
                         </div>
                     </div>
@@ -168,35 +168,16 @@
     </div><!-- end row -->
     <!-- Main Content Element  End-->
 {!! Form::close() !!}
-
 @endsection
 @section('css')
-    <style>
-        #preview {display: none;}
-        .display {display: block !important;}
-    </style>
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
 @endsection
-
 @section('js')
-
+    <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
     <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                $( "#preview" ).addClass( "display" );
-                reader.onload = function (e) {
-                    $('#preview').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#icon").change(function(){
-            readURL(this);
-        });
         //active menu
         activeMenu('menu_management','');
+        //select2
+        $('.select2').select2();
     </script>
 @endsection

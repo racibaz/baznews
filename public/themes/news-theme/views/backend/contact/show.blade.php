@@ -64,6 +64,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('contact','');
+        activeMenu('contact_management','');
     </script>
 @endsection

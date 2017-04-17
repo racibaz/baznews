@@ -125,6 +125,6 @@
             $('.summernote').summernote();
         });
         //active menu
-        activeMenu('','contact');
+        activeMenu('','contact_management');
     </script>
 @endsection

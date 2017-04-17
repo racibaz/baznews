@@ -1,3 +1,4 @@
+<li data-name="home"><a href="/admin"><i class="fa fa-home"></i> <span>{{trans('dashboard.home_page')}}</span></a></li>
 <li class="treeview" data-name="user_management">
     <a href="#">
         <i class="fa fa-users"></i> <span>{{trans('dashboard.user_management')}}</span>
