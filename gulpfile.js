@@ -40,6 +40,8 @@ elixir(function (mix) {
     mix.copy('node_modules/jasny-bootstrap/**', 'public/themes/news-theme/assets/js/jasny-bootstrap');
     mix.copy('node_modules/select2/**', 'public/themes/news-theme/assets/js/select2');
     mix.copy('node_modules/codemirror/**', 'public/themes/news-theme/assets/js/codemirror');
+    mix.copy('node_modules/eonasdan-bootstrap-datetimepicker/**', 'public/themes/news-theme/assets/js/bootstrap-datetimepicker');
+    mix.copy('node_modules/moment/**', 'public/themes/news-theme/assets/js/moment');
 
     //CSS Component
     mix.copy('node_modules/components-font-awesome/**', 'public/themes/news-theme/assets/css/font-awesome');

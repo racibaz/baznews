@@ -19,10 +19,17 @@ return [
     |
     */
 
-    'management'             => 'Duyuru Yönetimi',
-    'title'=>'Başlık',
+    'management' => 'Duyuru Yönetimi',
+    'announce_list' => 'Duyuru Listesi',
+    'title' => 'Başlık',
     'description' => 'Tanım',
     'order' => 'Sırası',
     'show_time' => 'Son Gösterilme Tarihi',
-    'list'      => 'Duyuru Listesi',
+    'list' => 'Duyuru Listesi',
+    'is_active' => 'Aktif/Pasif',
+    'edit_delete' => 'Düzenle/Sil',
+    'create_edit' => 'Duyuru Ekle/Düzenle',
+    'view_group' => 'Duyurunun Görüntülendiği Gruplar',
+    'active' => 'Aktif',
+    'passive' => 'Pasif',
 ];
