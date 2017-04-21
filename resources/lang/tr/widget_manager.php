@@ -11,8 +11,10 @@ return [
     'management' => 'Widget Yönetimi',
     'list' => 'Widget Listesi',
     'widget_active' => 'Widget Etkinleştir',
-    'widget_group' => 'Widget Grup Seçiniz',
+    'widget_group' => 'Widget Grup',
+    'widget_group_choose' => 'Widget Grup Seçiniz',
     'position' => 'Pozisyon',
     'edit_delete' => 'Düzenle/Sil',
     'create_edit' => 'Oluştur/Düzenle',
+    'is_active' => 'Durum',
 ];

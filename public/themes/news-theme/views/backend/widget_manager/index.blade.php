@@ -30,7 +30,7 @@
                             <h3 class="box-title">{{trans('widget_manager.module_name')}}: {{$widget['module_name']}} ({{$widget['name']}})</h3>
 
                             <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i> Detay
                                 </button>
                             </div>
                             <!-- /.box-tools -->
@@ -40,23 +40,37 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        {!! Form::select('group', $widgetGroupList , null, ['placeholder' => trans('widget_manager.widget_group'),'class'=>'form-control']) !!}
+                                        {!! Form::select('group', $widgetGroupList , null, ['placeholder' => trans('widget_manager.widget_group_choose'),'class'=>'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('widget_manager.widget_active')}}</button>
+                                        <button class="btn btn-success btn-block" type="submit"><i class="fa fa-check-square-o"></i> {{trans('widget_manager.widget_active')}}</button>
                                     </div>
                                 </div>
                             </div>
-
-                            <ul class="nav">
-                                {{Form::hidden('widgetSlug',$widget['slug'])}}
-                                <li><b>{{trans('widget_manager.name')}}:</b> {{$widget['name']}}</li>
-                                <li><b>{{trans('widget_manager.slug')}}:</b> {{$widget['slug']}}</li>
-                                <li><b>{{trans('widget_manager.namespace')}}:</b> {{$widget['namespace']}}</li>
-                                <li><b>{{trans('widget_manager.version')}}:</b> {{$widget['version']}}</li>
-                                <li><b>{{trans('widget_manager.description')}}:</b> {{$widget['description']}}</li>
+                            {{Form::hidden('widgetSlug',$widget['slug'])}}
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-text">
+                                    <b>{{trans('widget_manager.name')}}: </b>
+                                    {{$widget['name']}}
+                                </li>
+                                <li class="list-group-item list-group-item-text">
+                                    <b>{{trans('widget_manager.slug')}}: </b>
+                                    {{$widget['slug']}}
+                                </li>
+                                <li class="list-group-item list-group-item-text">
+                                    <b>{{trans('widget_manager.namespace')}}: </b>
+                                    {{$widget['namespace']}}
+                                </li>
+                                <li class="list-group-item list-group-item-text">
+                                    <b>{{trans('widget_manager.version')}}: </b>
+                                    {{$widget['version']}}
+                                </li>
+                                <li class="list-group-item list-group-item-text">
+                                    <b>{{trans('widget_manager.description')}}: </b>
+                                    {{$widget['description']}}
+                                </li>
                             </ul>
                         </div>
                         <!-- /.box-body -->
