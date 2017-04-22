@@ -8,12 +8,9 @@ use App\Repositories\AdvertisementRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rule;
 
 class AdvertisementController extends BackendController
 {
@@ -52,7 +49,7 @@ class AdvertisementController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(AdvertisementRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -74,7 +71,7 @@ class AdvertisementController extends BackendController
     }
 
 
-    public function update(Request $request, Advertisement $record)
+    public function update(AdvertisementRequest $request, Advertisement $record)
     {
         return $this->save($record);
     }
@@ -92,36 +89,19 @@ class AdvertisementController extends BackendController
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $rules = array(
-            'name' => [
-                'required',
-                'max:255',
-                Rule::unique('advertisements')->ignore($record->id),
-            ],
-            'description' => 'max:255',
-        );
-        $v = Validator::make($input, $rules);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id, $input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id, $input);
-            } else {
-                $result = $this->repo->create($input);
-            }
-
-            if ($result) {
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+        if ($result) {
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 

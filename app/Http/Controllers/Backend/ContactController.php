@@ -7,7 +7,6 @@ use App\Models\Contact;
 use App\Models\ContactType;
 use App\Repositories\ContactRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
