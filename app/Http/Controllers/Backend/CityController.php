@@ -115,10 +115,11 @@ class CityController extends BackendController
         if ($result) {
             Session::flash('flash_message', trans('common.message_model_updated'));
             return redirect()->route($this->redirectRouteName . $this->view . 'index', $result);
-        } else {
-            return redirect()->back()
-                ->withErrors(trans('common.save_failed'))
-                ->withInput($input);
         }
+
+        return redirect()->back()
+            ->withErrors(trans('common.save_failed'))
+            ->withInput($input);
+
     }
 }
