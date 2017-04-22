@@ -44,9 +44,7 @@ return [
      *    'method' => array('Str','slug'),
      */
 
-    'method' => function( $string, $sep ) {
-        return str_slug(\Patchwork\Utf8::toAscii($string));
-    },
+    'method'          => null,
 
     /**
      * Separator to use when generating slugs.  Defaults to a hyphen.
