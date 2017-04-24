@@ -1,14 +1,21 @@
 {
   "_args": [
     [
-      "jquery@^3.1.0",
-      "/home/vagrant/PROJELER/baznews"
+      {
+        "raw": "jquery@^1.8.3 || ^2.0 || ^3.0",
+        "scope": null,
+        "escapedName": "jquery",
+        "name": "jquery",
+        "rawSpec": "^1.8.3 || ^2.0 || ^3.0",
+        "spec": ">=1.8.3 <2.0.0||>=2.0.0 <3.0.0||>=3.0.0 <4.0.0",
+        "type": "range"
+      },
+      "/home/vagrant/Code/baznews/node_modules/eonasdan-bootstrap-datetimepicker"
     ]
   ],
-  "_from": "jquery@>=3.1.0 <4.0.0",
+  "_from": "jquery@>=1.8.3 <2.0.0||>=2.0.0 <3.0.0||>=3.0.0 <4.0.0",
   "_id": "jquery@3.2.1",
   "_inCache": true,
-  "_installable": true,
   "_location": "/jquery",
   "_nodeVersion": "7.7.3",
   "_npmOperationalInternal": {
@@ -16,28 +23,30 @@
     "tmp": "tmp/jquery-3.2.1.tgz_1490036530067_0.19497186387889087"
   },
   "_npmUser": {
-    "email": "4timmywil@gmail.com",
-    "name": "timmywil"
+    "name": "timmywil",
+    "email": "4timmywil@gmail.com"
   },
   "_npmVersion": "4.4.4",
   "_phantomChildren": {},
   "_requested": {
-    "name": "jquery",
-    "raw": "jquery@^3.1.0",
-    "rawSpec": "^3.1.0",
+    "raw": "jquery@^1.8.3 || ^2.0 || ^3.0",
     "scope": null,
-    "spec": ">=3.1.0 <4.0.0",
+    "escapedName": "jquery",
+    "name": "jquery",
+    "rawSpec": "^1.8.3 || ^2.0 || ^3.0",
+    "spec": ">=1.8.3 <2.0.0||>=2.0.0 <3.0.0||>=3.0.0 <4.0.0",
     "type": "range"
   },
   "_requiredBy": [
     "#DEV:/",
+    "/eonasdan-bootstrap-datetimepicker",
     "/theia-sticky-sidebar"
   ],
   "_resolved": "https://registry.npmjs.org/jquery/-/jquery-3.2.1.tgz",
   "_shasum": "5c4d9de652af6cd0a770154a631bba12b015c787",
   "_shrinkwrap": null,
-  "_spec": "jquery@^3.1.0",
-  "_where": "/home/vagrant/PROJELER/baznews",
+  "_spec": "jquery@^1.8.3 || ^2.0 || ^3.0",
+  "_where": "/home/vagrant/Code/baznews/node_modules/eonasdan-bootstrap-datetimepicker",
   "author": {
     "name": "JS Foundation and other contributors",
     "url": "https://github.com/jquery/jquery/blob/3.2.1/AUTHORS.txt"
@@ -46,6 +55,7 @@
     "url": "https://github.com/jquery/jquery/issues"
   },
   "commitplease": {
+    "nohook": true,
     "components": [
       "Docs",
       "Tests",
@@ -72,7 +82,6 @@
       "Wrap"
     ],
     "markerPattern": "^((clos|fix|resolv)(e[sd]|ing))|^(refs?)",
-    "nohook": true,
     "ticketPattern": "^((Closes|Fixes) ([a-zA-Z]{2,}-)[0-9]+)|^(Refs? [^#])"
   },
   "dependencies": {},
@@ -127,20 +136,20 @@
   "main": "dist/jquery.js",
   "maintainers": [
     {
-      "email": "dave.methvin@gmail.com",
-      "name": "dmethvin"
+      "name": "dmethvin",
+      "email": "dave.methvin@gmail.com"
     },
     {
-      "email": "m.goleb@gmail.com",
-      "name": "mgol"
+      "name": "mgol",
+      "email": "m.goleb@gmail.com"
     },
     {
-      "email": "scott.gonzalez@gmail.com",
-      "name": "scott.gonzalez"
+      "name": "scott.gonzalez",
+      "email": "scott.gonzalez@gmail.com"
     },
     {
-      "email": "4timmywil@gmail.com",
-      "name": "timmywil"
+      "name": "timmywil",
+      "email": "4timmywil@gmail.com"
     }
   ],
   "name": "jquery",

@@ -13,33 +13,33 @@ use Illuminate\Http\Request;
 |
 */
 
-
-$api = app('Dingo\Api\Routing\Router');
-
-
-
-//$api->version('v1', function ($api) {
-$api->version('v1', ['middleware' => 'api.throttle', 'limit' => 100, 'expires' => 5], function ($api) {
-
-    //$api->get('users/{id}', 'App\Api\Controllers\UserController@show');
-
-
-//    $api->resource('article', 'App\Modules\Article\Http\Controllers\Api\ArticleController', ['only' => [
-//        'index', 'show'
-//    ]]);
-
-
-    $api->get('articles/{count?}', 'App\Modules\Article\Http\Controllers\Api\ArticleController@getArticles');
-    $api->get('getArticleById/{id}', 'App\Modules\Article\Http\Controllers\Api\ArticleController@getArticleById');
-
-
-
-    $api->get('article_categories', 'App\Modules\Article\Http\Controllers\Api\ArticleController@getArticleCategories');
-    $api->get('authors/{count?}', 'App\Modules\Article\Http\Controllers\Api\AuthorController@getAuthors')->where('count', '[0-9]+');
-
-});
-
-
-Route::get('/article', function (Request $request) {
-    // return $request->article();
-})->middleware('auth:api');
+//
+//$api = app('Dingo\Api\Routing\Router');
+//
+//
+//
+////$api->version('v1', function ($api) {
+//$api->version('v1', ['middleware' => 'api.throttle', 'limit' => 100, 'expires' => 5], function ($api) {
+//
+//    //$api->get('users/{id}', 'App\Api\Controllers\UserController@show');
+//
+//
+////    $api->resource('article', 'App\Modules\Article\Http\Controllers\Api\ArticleController', ['only' => [
+////        'index', 'show'
+////    ]]);
+//
+//
+//    $api->get('articles/{count?}', 'App\Modules\Article\Http\Controllers\Api\ArticleController@getArticles');
+//    $api->get('getArticleById/{id}', 'App\Modules\Article\Http\Controllers\Api\ArticleController@getArticleById');
+//
+//
+//
+//    $api->get('article_categories', 'App\Modules\Article\Http\Controllers\Api\ArticleController@getArticleCategories');
+//    $api->get('authors/{count?}', 'App\Modules\Article\Http\Controllers\Api\AuthorController@getAuthors')->where('count', '[0-9]+');
+//
+//});
+//
+//
+//Route::get('/article', function (Request $request) {
+//    // return $request->article();
+//})->middleware('auth:api');

@@ -14,6 +14,12 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
+
+                    <div>
+                        <passport-clients></passport-clients>
+                        <passport-authorized-clients></passport-authorized-clients>
+                        <passport-personal-access-tokens></passport-personal-access-tokens>
+                    </div>
                     <table id="cities" class="table table-bordered table-hover table-data">
                         <thead>
                         <tr>

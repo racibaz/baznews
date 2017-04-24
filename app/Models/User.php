@@ -9,6 +9,7 @@ use App\Traits\Eventable;
 use Cache;
 use Config;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -22,6 +23,7 @@ class User extends Authenticatable
     use Eventable;
     use Notifiable;
     use Sluggable;
+    use HasApiTokens;
 
     /*trait error solved
      *
