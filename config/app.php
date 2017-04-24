@@ -191,7 +191,6 @@ return [
         Mews\Purifier\PurifierServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
-        Dingo\Api\Provider\LaravelServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Arrilot\Widgets\ServiceProvider::class,
@@ -199,7 +198,8 @@ return [
         Laravel\Scout\ScoutServiceProvider::class,
         RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
         Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
-        Laravel\Tinker\TinkerServiceProvider::class
+        Laravel\Tinker\TinkerServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
 
 
     ],

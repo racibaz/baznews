@@ -2,6 +2,7 @@
   "_args": [
     [
       {
+<<<<<<< HEAD
         "raw": "icheck",
         "scope": null,
         "escapedName": "icheck",
@@ -11,6 +12,17 @@
         "type": "tag"
       },
       "/home/PROJELER/baznews"
+=======
+        "raw": "icheck@^1.0.2",
+        "scope": null,
+        "escapedName": "icheck",
+        "name": "icheck",
+        "rawSpec": "^1.0.2",
+        "spec": ">=1.0.2 <2.0.0",
+        "type": "range"
+      },
+      "/home/vagrant/Code/baznews"
+>>>>>>> recai
     ]
   ],
   "_from": "icheck@latest",
@@ -25,6 +37,7 @@
   "_npmVersion": "2.7.5",
   "_phantomChildren": {},
   "_requested": {
+<<<<<<< HEAD
     "raw": "icheck",
     "scope": null,
     "escapedName": "icheck",
@@ -32,6 +45,15 @@
     "rawSpec": "",
     "spec": "latest",
     "type": "tag"
+=======
+    "raw": "icheck@^1.0.2",
+    "scope": null,
+    "escapedName": "icheck",
+    "name": "icheck",
+    "rawSpec": "^1.0.2",
+    "spec": ">=1.0.2 <2.0.0",
+    "type": "range"
+>>>>>>> recai
   },
   "_requiredBy": [
     "#DEV:/",
@@ -40,8 +62,13 @@
   "_resolved": "https://registry.npmjs.org/icheck/-/icheck-1.0.2.tgz",
   "_shasum": "06d08da3d47ae448c153b2639b86e9ad7fdf7128",
   "_shrinkwrap": null,
+<<<<<<< HEAD
   "_spec": "icheck",
   "_where": "/home/PROJELER/baznews",
+=======
+  "_spec": "icheck@^1.0.2",
+  "_where": "/home/vagrant/Code/baznews",
+>>>>>>> recai
   "author": {
     "name": "Damir Sultanov",
     "email": "info@fronteed.com",

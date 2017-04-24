@@ -2,6 +2,7 @@
   "_args": [
     [
       {
+<<<<<<< HEAD
         "raw": "jquery-ticker",
         "scope": null,
         "escapedName": "jquery-ticker",
@@ -11,6 +12,17 @@
         "type": "tag"
       },
       "/home/PROJELER/baznews"
+=======
+        "raw": "jquery-ticker@^1.0.0",
+        "scope": null,
+        "escapedName": "jquery-ticker",
+        "name": "jquery-ticker",
+        "rawSpec": "^1.0.0",
+        "spec": ">=1.0.0 <2.0.0",
+        "type": "range"
+      },
+      "/home/vagrant/Code/baznews"
+>>>>>>> recai
     ]
   ],
   "_from": "jquery-ticker@latest",
@@ -29,6 +41,7 @@
   "_npmVersion": "3.10.10",
   "_phantomChildren": {},
   "_requested": {
+<<<<<<< HEAD
     "raw": "jquery-ticker",
     "scope": null,
     "escapedName": "jquery-ticker",
@@ -36,6 +49,15 @@
     "rawSpec": "",
     "spec": "latest",
     "type": "tag"
+=======
+    "raw": "jquery-ticker@^1.0.0",
+    "scope": null,
+    "escapedName": "jquery-ticker",
+    "name": "jquery-ticker",
+    "rawSpec": "^1.0.0",
+    "spec": ">=1.0.0 <2.0.0",
+    "type": "range"
+>>>>>>> recai
   },
   "_requiredBy": [
     "#USER",
@@ -44,8 +66,13 @@
   "_resolved": "https://registry.npmjs.org/jquery-ticker/-/jquery-ticker-1.0.0.tgz",
   "_shasum": "4ef94a5b9f0143d15d08d4b7afeee4c7dd99ee46",
   "_shrinkwrap": null,
+<<<<<<< HEAD
   "_spec": "jquery-ticker",
   "_where": "/home/PROJELER/baznews",
+=======
+  "_spec": "jquery-ticker@^1.0.0",
+  "_where": "/home/vagrant/Code/baznews",
+>>>>>>> recai
   "dependencies": {},
   "description": "A lightweight jQuery plugin for animating a simple news ticker",
   "devDependencies": {},

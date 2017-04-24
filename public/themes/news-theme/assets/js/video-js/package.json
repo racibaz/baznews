@@ -2,6 +2,7 @@
   "_args": [
     [
       {
+<<<<<<< HEAD
         "raw": "video.js@^5.12.6",
         "scope": null,
         "escapedName": "video.js",
@@ -15,12 +16,27 @@
   ],
   "_from": "video.js@>=5.12.6 <6.0.0",
   "_id": "video.js@5.19.1",
+=======
+        "raw": "video.js@^5.6.0",
+        "scope": null,
+        "escapedName": "video.js",
+        "name": "video.js",
+        "rawSpec": "^5.6.0",
+        "spec": ">=5.6.0 <6.0.0",
+        "type": "range"
+      },
+      "/home/vagrant/Code/baznews/node_modules/videojs-youtube"
+    ]
+  ],
+  "_from": "video.js@>=5.6.0 <6.0.0",
+  "_id": "video.js@5.19.2",
+>>>>>>> recai
   "_inCache": true,
   "_location": "/video.js",
   "_nodeVersion": "4.4.3",
   "_npmOperationalInternal": {
     "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/video.js-5.19.1.tgz_1490643030411_0.015809083124622703"
+    "tmp": "tmp/video.js-5.19.2.tgz_1492117839050_0.11199025134555995"
   },
   "_npmUser": {
     "name": "gkatsev",
@@ -29,12 +45,21 @@
   "_npmVersion": "2.15.6",
   "_phantomChildren": {},
   "_requested": {
+<<<<<<< HEAD
     "raw": "video.js@^5.12.6",
     "scope": null,
     "escapedName": "video.js",
     "name": "video.js",
     "rawSpec": "^5.12.6",
     "spec": ">=5.12.6 <6.0.0",
+=======
+    "raw": "video.js@^5.6.0",
+    "scope": null,
+    "escapedName": "video.js",
+    "name": "video.js",
+    "rawSpec": "^5.6.0",
+    "spec": ">=5.6.0 <6.0.0",
+>>>>>>> recai
     "type": "range"
   },
   "_requiredBy": [
@@ -42,11 +67,16 @@
     "#USER",
     "/videojs-youtube"
   ],
-  "_resolved": "https://registry.npmjs.org/video.js/-/video.js-5.19.1.tgz",
-  "_shasum": "5d6407aebd078bf4c4f94183f840a53388c34f25",
+  "_resolved": "https://registry.npmjs.org/video.js/-/video.js-5.19.2.tgz",
+  "_shasum": "849d6b1e5fc2cb23ea7b17cd79b25800f61d87e5",
   "_shrinkwrap": null,
+<<<<<<< HEAD
   "_spec": "video.js@^5.12.6",
   "_where": "/home/PROJELER/baznews",
+=======
+  "_spec": "video.js@^5.6.0",
+  "_where": "/home/vagrant/Code/baznews/node_modules/videojs-youtube",
+>>>>>>> recai
   "author": {
     "name": "Steve Heffernan"
   },
@@ -149,10 +179,10 @@
   },
   "directories": {},
   "dist": {
-    "shasum": "5d6407aebd078bf4c4f94183f840a53388c34f25",
-    "tarball": "https://registry.npmjs.org/video.js/-/video.js-5.19.1.tgz"
+    "shasum": "849d6b1e5fc2cb23ea7b17cd79b25800f61d87e5",
+    "tarball": "https://registry.npmjs.org/video.js/-/video.js-5.19.2.tgz"
   },
-  "gitHead": "3c77005bec422cb08d5f436ae5f12ca4c7099ee3",
+  "gitHead": "d2d8f8f45f2051fb3a07130e09596a666eac00c2",
   "homepage": "http://videojs.com",
   "keywords": [
     "flash",
@@ -192,7 +222,7 @@
     "test": "grunt test"
   },
   "style": "./dist/video-js.css",
-  "version": "5.19.1",
+  "version": "5.19.2",
   "vjsstandard": {
     "ignore": [
       "**/Gruntfile.js",

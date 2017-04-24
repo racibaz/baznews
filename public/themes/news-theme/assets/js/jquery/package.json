@@ -2,6 +2,7 @@
   "_args": [
     [
       {
+<<<<<<< HEAD
         "raw": "jquery@^3.1.0",
         "scope": null,
         "escapedName": "jquery",
@@ -11,9 +12,20 @@
         "type": "range"
       },
       "/home/PROJELER/baznews"
+=======
+        "raw": "jquery@^1.8.3 || ^2.0 || ^3.0",
+        "scope": null,
+        "escapedName": "jquery",
+        "name": "jquery",
+        "rawSpec": "^1.8.3 || ^2.0 || ^3.0",
+        "spec": ">=1.8.3 <2.0.0||>=2.0.0 <3.0.0||>=3.0.0 <4.0.0",
+        "type": "range"
+      },
+      "/home/vagrant/Code/baznews/node_modules/eonasdan-bootstrap-datetimepicker"
+>>>>>>> recai
     ]
   ],
-  "_from": "jquery@>=3.1.0 <4.0.0",
+  "_from": "jquery@>=1.8.3 <2.0.0||>=2.0.0 <3.0.0||>=3.0.0 <4.0.0",
   "_id": "jquery@3.2.1",
   "_inCache": true,
   "_location": "/jquery",
@@ -29,6 +41,7 @@
   "_npmVersion": "4.4.4",
   "_phantomChildren": {},
   "_requested": {
+<<<<<<< HEAD
     "raw": "jquery@^3.1.0",
     "scope": null,
     "escapedName": "jquery",
@@ -39,12 +52,31 @@
   },
   "_requiredBy": [
     "#DEV:/"
+=======
+    "raw": "jquery@^1.8.3 || ^2.0 || ^3.0",
+    "scope": null,
+    "escapedName": "jquery",
+    "name": "jquery",
+    "rawSpec": "^1.8.3 || ^2.0 || ^3.0",
+    "spec": ">=1.8.3 <2.0.0||>=2.0.0 <3.0.0||>=3.0.0 <4.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "/eonasdan-bootstrap-datetimepicker",
+    "/theia-sticky-sidebar"
+>>>>>>> recai
   ],
   "_resolved": "https://registry.npmjs.org/jquery/-/jquery-3.2.1.tgz",
   "_shasum": "5c4d9de652af6cd0a770154a631bba12b015c787",
   "_shrinkwrap": null,
+<<<<<<< HEAD
   "_spec": "jquery@^3.1.0",
   "_where": "/home/PROJELER/baznews",
+=======
+  "_spec": "jquery@^1.8.3 || ^2.0 || ^3.0",
+  "_where": "/home/vagrant/Code/baznews/node_modules/eonasdan-bootstrap-datetimepicker",
+>>>>>>> recai
   "author": {
     "name": "JS Foundation and other contributors",
     "url": "https://github.com/jquery/jquery/blob/3.2.1/AUTHORS.txt"

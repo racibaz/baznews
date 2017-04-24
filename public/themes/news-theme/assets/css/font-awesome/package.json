@@ -2,6 +2,7 @@
   "_args": [
     [
       {
+<<<<<<< HEAD
         "raw": "components-font-awesome",
         "scope": null,
         "escapedName": "components-font-awesome",
@@ -11,6 +12,17 @@
         "type": "tag"
       },
       "/home/PROJELER/baznews"
+=======
+        "raw": "components-font-awesome@^4.7.0",
+        "scope": null,
+        "escapedName": "components-font-awesome",
+        "name": "components-font-awesome",
+        "rawSpec": "^4.7.0",
+        "spec": ">=4.7.0 <5.0.0",
+        "type": "range"
+      },
+      "/home/vagrant/Code/baznews"
+>>>>>>> recai
     ]
   ],
   "_from": "components-font-awesome@latest",
@@ -29,6 +41,7 @@
   "_npmVersion": "3.8.6",
   "_phantomChildren": {},
   "_requested": {
+<<<<<<< HEAD
     "raw": "components-font-awesome",
     "scope": null,
     "escapedName": "components-font-awesome",
@@ -36,6 +49,15 @@
     "rawSpec": "",
     "spec": "latest",
     "type": "tag"
+=======
+    "raw": "components-font-awesome@^4.7.0",
+    "scope": null,
+    "escapedName": "components-font-awesome",
+    "name": "components-font-awesome",
+    "rawSpec": "^4.7.0",
+    "spec": ">=4.7.0 <5.0.0",
+    "type": "range"
+>>>>>>> recai
   },
   "_requiredBy": [
     "#USER",
@@ -44,8 +66,13 @@
   "_resolved": "https://registry.npmjs.org/components-font-awesome/-/components-font-awesome-4.7.0.tgz",
   "_shasum": "a7550094b6e2cb5cd7dce49c405771c533e9cfe1",
   "_shrinkwrap": null,
+<<<<<<< HEAD
   "_spec": "components-font-awesome",
   "_where": "/home/PROJELER/baznews",
+=======
+  "_spec": "components-font-awesome@^4.7.0",
+  "_where": "/home/vagrant/Code/baznews",
+>>>>>>> recai
   "bugs": {
     "url": "https://github.com/components/font-awesome/issues"
   },

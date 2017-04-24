@@ -2,6 +2,7 @@
   "_args": [
     [
       {
+<<<<<<< HEAD
         "raw": "bootstrap@^3.3.7",
         "scope": null,
         "escapedName": "bootstrap",
@@ -11,9 +12,20 @@
         "type": "range"
       },
       "/home/PROJELER/baznews"
+=======
+        "raw": "bootstrap@^3.3",
+        "scope": null,
+        "escapedName": "bootstrap",
+        "name": "bootstrap",
+        "rawSpec": "^3.3",
+        "spec": ">=3.3.0 <4.0.0",
+        "type": "range"
+      },
+      "/home/vagrant/Code/baznews/node_modules/eonasdan-bootstrap-datetimepicker"
+>>>>>>> recai
     ]
   ],
-  "_from": "bootstrap@>=3.3.7 <4.0.0",
+  "_from": "bootstrap@>=3.3.0 <4.0.0",
   "_id": "bootstrap@3.3.7",
   "_inCache": true,
   "_location": "/bootstrap",
@@ -29,6 +41,7 @@
   "_npmVersion": "2.15.8",
   "_phantomChildren": {},
   "_requested": {
+<<<<<<< HEAD
     "raw": "bootstrap@^3.3.7",
     "scope": null,
     "escapedName": "bootstrap",
@@ -39,12 +52,31 @@
   },
   "_requiredBy": [
     "#DEV:/"
+=======
+    "raw": "bootstrap@^3.3",
+    "scope": null,
+    "escapedName": "bootstrap",
+    "name": "bootstrap",
+    "rawSpec": "^3.3",
+    "spec": ">=3.3.0 <4.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "/eonasdan-bootstrap-datetimepicker",
+    "/summernote"
+>>>>>>> recai
   ],
   "_resolved": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.7.tgz",
   "_shasum": "5a389394549f23330875a3b150656574f8a9eb71",
   "_shrinkwrap": null,
+<<<<<<< HEAD
   "_spec": "bootstrap@^3.3.7",
   "_where": "/home/PROJELER/baznews",
+=======
+  "_spec": "bootstrap@^3.3",
+  "_where": "/home/vagrant/Code/baznews/node_modules/eonasdan-bootstrap-datetimepicker",
+>>>>>>> recai
   "author": {
     "name": "Twitter, Inc."
   },

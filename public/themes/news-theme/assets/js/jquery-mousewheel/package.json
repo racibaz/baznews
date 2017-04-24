@@ -2,6 +2,7 @@
   "_args": [
     [
       {
+<<<<<<< HEAD
         "raw": "jquery-mousewheel",
         "scope": null,
         "escapedName": "jquery-mousewheel",
@@ -11,6 +12,17 @@
         "type": "tag"
       },
       "/home/PROJELER/baznews"
+=======
+        "raw": "jquery-mousewheel@^3.1.13",
+        "scope": null,
+        "escapedName": "jquery-mousewheel",
+        "name": "jquery-mousewheel",
+        "rawSpec": "^3.1.13",
+        "spec": ">=3.1.13 <4.0.0",
+        "type": "range"
+      },
+      "/home/vagrant/Code/baznews"
+>>>>>>> recai
     ]
   ],
   "_from": "jquery-mousewheel@latest",
@@ -24,6 +36,7 @@
   "_npmVersion": "1.4.28",
   "_phantomChildren": {},
   "_requested": {
+<<<<<<< HEAD
     "raw": "jquery-mousewheel",
     "scope": null,
     "escapedName": "jquery-mousewheel",
@@ -35,12 +48,31 @@
   "_requiredBy": [
     "#USER",
     "/"
+=======
+    "raw": "jquery-mousewheel@^3.1.13",
+    "scope": null,
+    "escapedName": "jquery-mousewheel",
+    "name": "jquery-mousewheel",
+    "rawSpec": "^3.1.13",
+    "spec": ">=3.1.13 <4.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/",
+    "/malihu-custom-scrollbar-plugin",
+    "/select2"
+>>>>>>> recai
   ],
   "_resolved": "https://registry.npmjs.org/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz",
   "_shasum": "06f0335f16e353a695e7206bf50503cb523a6ee5",
   "_shrinkwrap": null,
+<<<<<<< HEAD
   "_spec": "jquery-mousewheel",
   "_where": "/home/PROJELER/baznews",
+=======
+  "_spec": "jquery-mousewheel@^3.1.13",
+  "_where": "/home/vagrant/Code/baznews",
+>>>>>>> recai
   "author": {
     "name": "jQuery Foundation and other contributors",
     "url": "https://github.com/jquery/jquery-mousewheel/blob/master/AUTHORS.txt"
