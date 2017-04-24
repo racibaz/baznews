@@ -1,5 +1,17 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('permission.management')}}
+            <small>{{trans('permission.create_edit')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('permission.index') !!}">{{trans('permission.management')}}</a></li>
+            <li class="active">{{trans('permission.create_edit')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     @if(isset($record->id))
@@ -12,29 +24,23 @@
     <div class="row">
         <div class="col-md-6">
             <!-- general form elements disabled -->
-            <div class="box box-warning">
+            <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>İzin Ekle / Düzenle</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('permission.create_edit')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                {{--<form permission="form">--}}
-
-                <!-- text input -->
                     <div class="form-group">
                         {!! Form::label('name', trans('permission.name')) !!}
                         {!! Form::text('name', null, ['class' => 'form-control','required']) !!}
-                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('display_name', trans('permission.display_name')) !!}
                         {!! Form::text('display_name', null, ['class' => 'form-control','required']) !!}
-                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('description', trans('permission.description')) !!}
                         {!! Form::textarea('description', null, ['class' => 'form-control','required']) !!}
-                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
                         <label>
@@ -42,18 +48,14 @@
                             {!! trans('common.is_active') !!}
                         </label>
                     </div>
-                    <div class="box-footer">
+                    <div class="form-group">
                         {!! Form::submit('Kaydet', ['class' => 'btn btn-success']) !!}
                     </div>
-                    {!! Form::close() !!}
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-        </div>
-
-    </div>
-    <!-- /.content -->
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row-->
+    {!! Form::close() !!}
 @endsection
 @section('js')
     <script type="text/javascript">

@@ -15,12 +15,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- jvectormap -->
     <link href="{{ Theme::asset($activeTheme .'::AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet">
-    @yield('css')
     <!-- Theme style -->
+
+    @yield('css')
+
     <link href="{{ Theme::asset($activeTheme .'::AdminLTE/dist/css/AdminLTE.min.css') }}" rel="stylesheet">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
+    <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
     <link href="{{ Theme::asset($activeTheme .'::AdminLTE/dist/css/skins/_all-skins.min.css') }}" rel="stylesheet">
+
 
     <link href="{{ Theme::asset($activeTheme .'::js/summernote/dist/summernote.css') }}" rel="stylesheet">
 
@@ -33,7 +35,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 <div class="wrapper">
 
     <!-- Main Header -->
