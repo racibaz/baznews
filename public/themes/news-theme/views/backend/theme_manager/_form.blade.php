@@ -1,5 +1,17 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('theme_manager.management')}}
+            <small>{{trans('theme_manager.list')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('theme_manager.index') !!}"> {{trans('theme_manager.management')}}</a></li>
+            <li class="active">{{trans('theme_manager.create_edit')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 <div class="container-fluid">
     <div class="row">

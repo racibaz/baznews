@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('module_manager.management')}}
-            <small>{{trans('menu.edit_create')}}</small>
+            <small>{{$record->name}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('module_manager.index') !!}"> {{trans('module_manager.management')}}</a></li>
-            <li class="active">{{trans('module_manager.edit_create')}}</li>
+            <li class="active">{{$record->name}}</li>
         </ol>
     </section>
 @endsection
@@ -17,7 +17,7 @@
         <div class="col-md-6">
             <div class="box box-default box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Expandable</h3>
+                    <h3 class="box-title">{{$record->name}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
