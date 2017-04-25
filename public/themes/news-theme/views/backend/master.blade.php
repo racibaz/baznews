@@ -267,7 +267,7 @@
 
 
 <!-- jQuery 2.2.3 -->
-<script src="{{ Theme::asset($activeTheme .'::AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+<script src="{{ Theme::asset($activeTheme .'::js/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ Theme::asset($activeTheme .'::AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- FastClick -->
@@ -294,6 +294,9 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ Theme::asset($activeTheme .'::AdminLTE/dist/js/demo.js') }}"></script>
 <script src="{{ Theme::asset($activeTheme .'::js/functions.js') }}"></script>
+
+<!-- Vue.js App -->
+{{--<script src="{{ asset('/js/app.js') }}"></script>--}}
 
 <script type="text/javascript">
     $(document).ready(function () {

@@ -13,17 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-$api = app('Dingo\Api\Routing\Router');
-
-
-
-$api->version('v1', function ($api) {
-
-    $api->get('/', 'App\Modules\News\Http\Controllers\Api\NewsController@dashboard');
-    $api->get('news/{count?}', 'App\Modules\News\Http\Controllers\Api\NewsController@getNews')->where('count', '[0-9]+');
-    $api->get('getNewsById/{id}', 'App\Modules\News\Http\Controllers\Api\NewsController@getNewsById')->where('id', '[0-9]+');
-
-});
+//$api = app('Dingo\Api\Routing\Router');
+//
+//
+//
+//$api->version('v1', function ($api) {
+//
+//    $api->get('/', 'App\Modules\News\Http\Controllers\Api\NewsController@dashboard');
+//    $api->get('news/{count?}', 'App\Modules\News\Http\Controllers\Api\NewsController@getNews')->where('count', '[0-9]+');
+//    $api->get('getNewsById/{id}', 'App\Modules\News\Http\Controllers\Api\NewsController@getNewsById')->where('id', '[0-9]+');
+//
+//});
 
 
 
