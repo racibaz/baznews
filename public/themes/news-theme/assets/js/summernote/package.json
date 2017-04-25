@@ -1,21 +1,14 @@
 {
   "_args": [
     [
-      {
-        "raw": "summernote@^0.8.3",
-        "scope": null,
-        "escapedName": "summernote",
-        "name": "summernote",
-        "rawSpec": "^0.8.3",
-        "spec": ">=0.8.3 <0.9.0",
-        "type": "range"
-      },
-      "/home/vagrant/Code/baznews"
+      "summernote",
+      "/home/vagrant/PROJELER/baznews"
     ]
   ],
-  "_from": "summernote@>=0.8.3 <0.9.0",
+  "_from": "summernote@latest",
   "_id": "summernote@0.8.3",
   "_inCache": true,
+  "_installable": true,
   "_location": "/summernote",
   "_nodeVersion": "7.6.0",
   "_npmOperationalInternal": {
@@ -23,19 +16,18 @@
     "tmp": "tmp/summernote-0.8.3.tgz_1491054324491_0.023299585096538067"
   },
   "_npmUser": {
-    "name": "hackerwins",
-    "email": "susukang98@gmail.com"
+    "email": "susukang98@gmail.com",
+    "name": "hackerwins"
   },
   "_npmVersion": "4.1.2",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "summernote@^0.8.3",
-    "scope": null,
-    "escapedName": "summernote",
     "name": "summernote",
-    "rawSpec": "^0.8.3",
-    "spec": ">=0.8.3 <0.9.0",
-    "type": "range"
+    "raw": "summernote",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
   },
   "_requiredBy": [
     "/"
@@ -43,11 +35,11 @@
   "_resolved": "https://registry.npmjs.org/summernote/-/summernote-0.8.3.tgz",
   "_shasum": "48ec5952a17c16d7a94538df9f93cd729faf2bdf",
   "_shrinkwrap": null,
-  "_spec": "summernote@^0.8.3",
-  "_where": "/home/vagrant/Code/baznews",
+  "_spec": "summernote",
+  "_where": "/home/vagrant/PROJELER/baznews",
   "author": {
-    "name": "hackerwins",
-    "email": "<susukang98@gmail.com"
+    "email": "<susukang98@gmail.com",
+    "name": "hackerwins"
   },
   "bugs": {
     "url": "https://github.com/summernote/summernote/issues"
@@ -107,8 +99,8 @@
   "main": "dist/summernote.js",
   "maintainers": [
     {
-      "name": "hackerwins",
-      "email": "susukang98@gmail.com"
+      "email": "susukang98@gmail.com",
+      "name": "hackerwins"
     }
   ],
   "name": "summernote",

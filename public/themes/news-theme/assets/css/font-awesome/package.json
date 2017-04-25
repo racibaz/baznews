@@ -1,33 +1,14 @@
 {
   "_args": [
     [
-      {
-<<<<<<< HEAD
-        "raw": "components-font-awesome",
-        "scope": null,
-        "escapedName": "components-font-awesome",
-        "name": "components-font-awesome",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
-      },
-      "/home/PROJELER/baznews"
-=======
-        "raw": "components-font-awesome@^4.7.0",
-        "scope": null,
-        "escapedName": "components-font-awesome",
-        "name": "components-font-awesome",
-        "rawSpec": "^4.7.0",
-        "spec": ">=4.7.0 <5.0.0",
-        "type": "range"
-      },
-      "/home/vagrant/Code/baznews"
->>>>>>> recai
+      "components-font-awesome@^4.7.0",
+      "/home/vagrant/PROJELER/baznews"
     ]
   ],
-  "_from": "components-font-awesome@latest",
+  "_from": "components-font-awesome@>=4.7.0 <5.0.0",
   "_id": "components-font-awesome@4.7.0",
   "_inCache": true,
+  "_installable": true,
   "_location": "/components-font-awesome",
   "_nodeVersion": "5.11.1",
   "_npmOperationalInternal": {
@@ -35,44 +16,27 @@
     "tmp": "tmp/components-font-awesome-4.7.0.tgz_1477392998859_0.5197321109008044"
   },
   "_npmUser": {
-    "name": "robloach",
-    "email": "robloach@gmail.com"
+    "email": "robloach@gmail.com",
+    "name": "robloach"
   },
   "_npmVersion": "3.8.6",
   "_phantomChildren": {},
   "_requested": {
-<<<<<<< HEAD
-    "raw": "components-font-awesome",
-    "scope": null,
-    "escapedName": "components-font-awesome",
     "name": "components-font-awesome",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
-=======
     "raw": "components-font-awesome@^4.7.0",
-    "scope": null,
-    "escapedName": "components-font-awesome",
-    "name": "components-font-awesome",
     "rawSpec": "^4.7.0",
+    "scope": null,
     "spec": ">=4.7.0 <5.0.0",
     "type": "range"
->>>>>>> recai
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/components-font-awesome/-/components-font-awesome-4.7.0.tgz",
   "_shasum": "a7550094b6e2cb5cd7dce49c405771c533e9cfe1",
   "_shrinkwrap": null,
-<<<<<<< HEAD
-  "_spec": "components-font-awesome",
-  "_where": "/home/PROJELER/baznews",
-=======
   "_spec": "components-font-awesome@^4.7.0",
-  "_where": "/home/vagrant/Code/baznews",
->>>>>>> recai
+  "_where": "/home/vagrant/PROJELER/baznews",
   "bugs": {
     "url": "https://github.com/components/font-awesome/issues"
   },
@@ -93,12 +57,12 @@
   "main": "css/font-awesome.css",
   "maintainers": [
     {
-      "name": "ducin",
-      "email": "tomasz.ducin@gmail.com"
+      "email": "tomasz.ducin@gmail.com",
+      "name": "ducin"
     },
     {
-      "name": "robloach",
-      "email": "robloach@gmail.com"
+      "email": "robloach@gmail.com",
+      "name": "robloach"
     }
   ],
   "name": "components-font-awesome",

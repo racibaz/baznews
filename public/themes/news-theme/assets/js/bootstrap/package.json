@@ -1,33 +1,14 @@
 {
   "_args": [
     [
-      {
-<<<<<<< HEAD
-        "raw": "bootstrap@^3.3.7",
-        "scope": null,
-        "escapedName": "bootstrap",
-        "name": "bootstrap",
-        "rawSpec": "^3.3.7",
-        "spec": ">=3.3.7 <4.0.0",
-        "type": "range"
-      },
-      "/home/PROJELER/baznews"
-=======
-        "raw": "bootstrap@^3.3",
-        "scope": null,
-        "escapedName": "bootstrap",
-        "name": "bootstrap",
-        "rawSpec": "^3.3",
-        "spec": ">=3.3.0 <4.0.0",
-        "type": "range"
-      },
-      "/home/vagrant/Code/baznews/node_modules/eonasdan-bootstrap-datetimepicker"
->>>>>>> recai
+      "bootstrap@^3.3.7",
+      "/home/vagrant/PROJELER/baznews/node_modules/summernote"
     ]
   ],
-  "_from": "bootstrap@>=3.3.0 <4.0.0",
+  "_from": "bootstrap@>=3.3.7 <4.0.0",
   "_id": "bootstrap@3.3.7",
   "_inCache": true,
+  "_installable": true,
   "_location": "/bootstrap",
   "_nodeVersion": "4.4.7",
   "_npmOperationalInternal": {
@@ -35,48 +16,28 @@
     "tmp": "tmp/bootstrap-3.3.7.tgz_1469462979154_0.42421583621762693"
   },
   "_npmUser": {
-    "name": "twbs",
-    "email": "getbootstrap@gmail.com"
+    "email": "getbootstrap@gmail.com",
+    "name": "twbs"
   },
   "_npmVersion": "2.15.8",
   "_phantomChildren": {},
   "_requested": {
-<<<<<<< HEAD
-    "raw": "bootstrap@^3.3.7",
-    "scope": null,
-    "escapedName": "bootstrap",
     "name": "bootstrap",
+    "raw": "bootstrap@^3.3.7",
     "rawSpec": "^3.3.7",
+    "scope": null,
     "spec": ">=3.3.7 <4.0.0",
     "type": "range"
   },
   "_requiredBy": [
-    "#DEV:/"
-=======
-    "raw": "bootstrap@^3.3",
-    "scope": null,
-    "escapedName": "bootstrap",
-    "name": "bootstrap",
-    "rawSpec": "^3.3",
-    "spec": ">=3.3.0 <4.0.0",
-    "type": "range"
-  },
-  "_requiredBy": [
     "#DEV:/",
-    "/eonasdan-bootstrap-datetimepicker",
     "/summernote"
->>>>>>> recai
   ],
   "_resolved": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.7.tgz",
   "_shasum": "5a389394549f23330875a3b150656574f8a9eb71",
   "_shrinkwrap": null,
-<<<<<<< HEAD
   "_spec": "bootstrap@^3.3.7",
-  "_where": "/home/PROJELER/baznews",
-=======
-  "_spec": "bootstrap@^3.3",
-  "_where": "/home/vagrant/Code/baznews/node_modules/eonasdan-bootstrap-datetimepicker",
->>>>>>> recai
+  "_where": "/home/vagrant/PROJELER/baznews/node_modules/summernote",
   "author": {
     "name": "Twitter, Inc."
   },
@@ -136,18 +97,18 @@
   "gitHead": "0b9c4a4007c44201dce9a6cc1a38407005c26c86",
   "homepage": "http://getbootstrap.com",
   "jspm": {
+    "files": [
+      "css",
+      "fonts",
+      "js"
+    ],
     "main": "js/bootstrap",
     "shim": {
       "js/bootstrap": {
         "deps": "jquery",
         "exports": "$"
       }
-    },
-    "files": [
-      "css",
-      "fonts",
-      "js"
-    ]
+    }
   },
   "keywords": [
     "css",
@@ -163,8 +124,8 @@
   "main": "./dist/js/npm",
   "maintainers": [
     {
-      "name": "twbs",
-      "email": "bigj95t+bsnpm@gmail.com"
+      "email": "bigj95t+bsnpm@gmail.com",
+      "name": "twbs"
     }
   ],
   "name": "bootstrap",
