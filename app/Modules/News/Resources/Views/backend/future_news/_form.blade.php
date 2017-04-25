@@ -2,76 +2,65 @@
 @section('content-header')
     <section class="content-header">
         <h1>
-            {{trans('future_news.management')}}
-            <small>{{trans('future_news.create_edit')}}</small>
+            {{trans('news::future_news.management')}}
+            <small>{{trans('news::future_news.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{!! URL::route('future_news::future_news.index') !!}">{{trans('future_news.management')}}</a></li>
-            <li class="active">{{trans('future_news::future_news.create_edit')}}</li>
+            <li><a href="{!! URL::route('future_news.index') !!}">{{trans('news::future_news.management')}}</a></li>
+            <li class="active">{{trans('news::future_news.create_edit')}}</li>
         </ol>
     </section>
 @endsection
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <!--Top header start-->
-                <h3 class="ls-top-header">{{trans('future_news::future_news.management')}}</h3>
-            <!--Top header end -->
-
-            <!--Top breadcrumb start -->
-            <ol class="breadcrumb">
-                <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('future_news.index') !!}"> {{ trans('future_news::future_news.future_news_list') }} </a></li>
-                <li class="active"> {{ trans('future_news::common.add_update') }}</li>
-            </ol>
-            <!--Top breadcrumb start -->
-        </div>
-    </div>
     <!-- Main Content Element  Start-->
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['future_news.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'future_news.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
     <div class="row">
         <div class="col-md-6">
-            <div class="panel panel-light-blue">
-                <div class="panel-heading">
-                    {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('news::future_news.edit_create')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
                 </div>
-
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['future_news.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'future_news.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
-
-                <div class="panel-body">
+                <!-- /.box-header -->
+                <div class="box-body">
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('news_id', trans('future_news::future_news.news_id'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('news_id', trans('news::future_news.news_title'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::select('news_id', $newsAllList , $record->news_id , ['placeholder' => trans('future_news::common.please_choose'),'class' => 'form-control']) !!}
+                                {!! Form::select('news_id', $newsAllList , $record->news_id , ['placeholder' => trans('news::future_news.please_choose'),'class' => 'form-control select2']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('future_datetime', trans('future_news::future_news.future_datetime'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('future_datetime', trans('news::future_news.future_datetime'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('future_datetime', $record->future_datetime, ['placeholder' => trans('future_news::future_news.future_datetime') ,'class' => 'form-control']) !!}
+                                {!! Form::text('future_datetime', $record->future_datetime, ['placeholder' => trans('news::future_news.future_datetime') ,'class' => 'form-control','id'=>'show_time']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {{trans('future_news::common.status')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                        <i></i> {{trans('future_news::common.is_active')}}
-                                    </label>
-                                </div>
+                            <div class="col-lg-2">
+                                <b>{{trans('news::future_news.status')}}</b>
+                            </div>
+                            <div class="col-lg-10">
+                                <label>
+                                    {!! Form::checkbox('is_active', null , $record->is_active) !!}
+                                    <i></i> {{trans('news::future_news.is_active')}}
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -83,10 +72,34 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                <!-- /.box-body -->
             </div>
         </div>
     </div><!-- end row -->
+
     <!-- Main Content Element  End-->
-</div><!-- end container-fluid -->
+    {!! Form::close() !!}
+@endsection
+@section('css')
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
+    <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+@endsection
+@section('js')
+    <script src="{{ Theme::asset($activeTheme .'::js/moment/min/moment.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme .'::js/moment/locale/tr.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
+    <script type="text/javascript">
+        //active menu
+        $(function () {
+            //Date range picker with time picker
+            $('#show_time').datetimepicker({
+                format:'YYYY-MM-DD HH:mm:ss',
+                locale:'tr'
+            });
+        });
+        //active menu
+        $('.select2').select2();
+        activeMenu('news_management','future_news');
+    </script>
 @endsection

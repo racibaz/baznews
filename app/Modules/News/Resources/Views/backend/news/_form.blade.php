@@ -1,5 +1,17 @@
 @extends($activeTheme .'::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('news::future_news.management')}}
+            <small>{{$record->news->title}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('future_news.index') !!}">{{trans('news::future_news.management')}}</a></li>
+            <li class="active">{{$record->news->title}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 <div class="container-fluid">
     <div class="row">

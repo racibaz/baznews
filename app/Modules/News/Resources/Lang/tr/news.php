@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'management' => 'Haber Yönetimi',
+    'news_create' => 'Haber Ekle',
+    'list' => 'Haber Listesi',
+    'please_choose' => 'Lütfen Seçiniz',
+    'filter_search' => 'Filtrele Ara',
+    'news_category' => 'Haber Kategorisi',
+    'statistic' => 'İstatistik',
     'country_id' => 'Ülke',
     'city_id' => 'Şehir',
     'news_source_id' => 'Haber Kaynağı',
@@ -29,6 +36,14 @@ return [
     'news_archive'=>'Haber Arşiv',
     'archive_news'=>'Arşiv Haberleri',
     'image'=>'Haber Resmi',
+    'forget_news_cache'=>'Haber Önbelleğini Temizle',
+    'trashed_news'=>'Silinmiş Haberler',
+    'start_date'=>'Başlangıç Tarihi',
+    'end_date'=>'Bitiş Tarihi',
+    'is_active'=>'Aktif/Pasif',
+    'short_url'=>'Kısa URL',
+    'get_news'=>'Haberleri Getir',
+    'edit_delete'=>'Düzenle/Sil',
 
 
 ];

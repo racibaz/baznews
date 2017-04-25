@@ -1,6 +1,8 @@
-<div class="col-sm-4">
-    <div aria-live="polite" role="status" id="example1_info" class="dataTables_info">
-        {{trans('common.pagination',['total' => $records->total(),'count' => $records->count()])}}
-    </div>
+<div class="pull-left">
+    <span><b>{{trans('common.all_records')}}</b></span>{{$records->total()}}
+    <span><b>{{trans('common.list_records')}}</b></span>{{$records->count()}}
 </div>
-<div class="col-sm-4">{!! $records->render() !!}</div>
+<div class="pull-right">
+    {!! $records->render() !!}
+</div>
+
