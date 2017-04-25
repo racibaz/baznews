@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\ModuleManagerRequest;
 use App\Models\ModuleManager;
 use App\Models\WidgetManager;
 use App\Repositories\ModuleManagerRepository as Repo;
@@ -47,7 +48,7 @@ class ModuleManagerController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(ModuleManagerRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -65,7 +66,7 @@ class ModuleManagerController extends BackendController
     }
 
 
-    public function update(Request $request, ModuleManager $record)
+    public function update(ModuleManagerRequest $request, ModuleManager $record)
     {
         return $this->save($record);
     }

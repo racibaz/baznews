@@ -9,6 +9,7 @@ use App\Repositories\CityRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\View;
 
 class CityController extends BackendController
 {
@@ -28,6 +29,8 @@ class CityController extends BackendController
     {
         $records = $this->repo->findAll();
         return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        //return view('developer.index');
+
     }
 
     /**

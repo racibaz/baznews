@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Event;
@@ -72,7 +73,7 @@ class UserController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -106,7 +107,7 @@ class UserController extends BackendController
     }
 
 
-    public function update(Request $request, User $record)
+    public function update(UserRequest $request, User $record)
     {
         return $this->save($record);
     }
@@ -127,46 +128,24 @@ class UserController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['sex'] = Input::get('sex') == "on" ? true : false;
 
-        //kullanıcı email adresini guncellediğinde email adresini uniqe olduğu için
-        //kendi email adresini daha önce kayıtlı olarak görüyor ve hata veriyor
-        //bundan dolayı aynı ise burada unique validasyonunu atlamış oluyoruz.
-        $rules = [
-            'name'                          => 'required|max:255',
-            'email'                         => $input['email'] == $record['email'] ?  'Required|Between:3,64|email' : 'required|string|Between:3,64|Unique:users',
-            'password'                      => isset($record->id)  ?   'min:4|Confirmed' : 'required|min:4|Confirmed',
-            'password_confirmation'         => isset($record->id)  ? 'min:4' : 'required|min:4',
-            'web_site'  => 'url',
-            'avatar' => 'image|max:255',
-            'bio_note'  => 'string|max:255',
-        ];
 
-        $v = Validator::make($input, $rules);
-
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $input['password'] = !empty($input['password']) ? bcrypt($input['password']) : $record->password;
+            $result = $this->repo->update($record->id, $input);
         } else {
+            $result = $this->repo->create($input);
+        }
+        if ($result) {
 
-            if (isset($record->id)) {
-                $input['password'] = !empty($input['password']) ? bcrypt($input['password']) : $record->password;
-                $result = $this->repo->update($record->id, $input);
-            } else {
-                $result = $this->repo->create($input);
-            }
-            if ($result) {
+            $this->roleUserStore($result,$input);
+            $this->groupUserStore($result,$input);
 
-                $this->roleUserStore($result,$input);
-                $this->groupUserStore($result,$input);
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 

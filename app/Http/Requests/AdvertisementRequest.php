@@ -57,6 +57,5 @@ class AdvertisementRequest extends FormRequest
             }
             default:break;
         }
-
     }
 }

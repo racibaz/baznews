@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class RoleRequest extends FormRequest
+class GroupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -37,7 +37,7 @@ class RoleRequest extends FormRequest
                     'name' => [
                         'required',
                         'max:255',
-                        Rule::unique('roles'),
+                        Rule::unique('groups'),
                     ],
                     'display_name' => 'max:255',
                     'description' => 'max:255',
@@ -46,12 +46,12 @@ class RoleRequest extends FormRequest
             case 'PUT':
             case 'PATCH':
             {
-                $id = $this->route('role')->id;
+                $id = $this->route('group')->id;
                 return [
                     'name' => [
                         'required',
                         'max:255',
-                        Rule::unique('roles')->ignore($id),
+                        Rule::unique('groups')->ignore($id),
                     ],
                     'display_name' => 'max:255',
                     'description' => 'max:255',

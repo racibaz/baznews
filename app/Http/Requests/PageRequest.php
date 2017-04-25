@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class RoleRequest extends FormRequest
+class PageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -34,27 +34,25 @@ class RoleRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'name' => [
-                        'required',
-                        'max:255',
-                        Rule::unique('roles'),
+                    'name' => 'required',
+                    'slug' => [
+                        Rule::unique('pages'),
                     ],
-                    'display_name' => 'max:255',
-                    'description' => 'max:255',
+                    'description' => 'string|max:255',
+                    'keywords' => 'string|max:255',
                 ];
             }
             case 'PUT':
             case 'PATCH':
             {
-                $id = $this->route('role')->id;
+                $id = $this->route('page')->id;
                 return [
-                    'name' => [
-                        'required',
-                        'max:255',
-                        Rule::unique('roles')->ignore($id),
+                    'name' => 'required',
+                    'slug' => [
+                        Rule::unique('pages')->ignore($id),
                     ],
-                    'display_name' => 'max:255',
-                    'description' => 'max:255',
+                    'description' => 'string|max:255',
+                    'keywords' => 'string|max:255',
                 ];
             }
             default:break;

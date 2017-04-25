@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class RoleRequest extends FormRequest
+class ModuleManagerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -34,27 +34,25 @@ class RoleRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'name' => [
-                        'required',
+                    'name' => 'required',
+                    'slug' => [
                         'max:255',
-                        Rule::unique('roles'),
+                        Rule::unique('modules'),
                     ],
-                    'display_name' => 'max:255',
-                    'description' => 'max:255',
+                    'order' => 'integer',
                 ];
             }
             case 'PUT':
             case 'PATCH':
             {
-                $id = $this->route('role')->id;
+                $id = $this->route('module_manager')->id;
                 return [
-                    'name' => [
-                        'required',
+                    'name' => 'required',
+                    'slug' => [
                         'max:255',
-                        Rule::unique('roles')->ignore($id),
+                        Rule::unique('modules')->ignore($id),
                     ],
-                    'display_name' => 'max:255',
-                    'description' => 'max:255',
+                    'order' => 'integer',
                 ];
             }
             default:break;

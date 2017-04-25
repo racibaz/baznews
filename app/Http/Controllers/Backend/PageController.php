@@ -40,7 +40,7 @@ class PageController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(PageRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -58,7 +58,7 @@ class PageController extends BackendController
     }
 
 
-    public function update(Request $request, Page $record)
+    public function update(PageRequest $request, Page $record)
     {
         return $this->save($record);
     }
@@ -81,40 +81,25 @@ class PageController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['is_comment'] = Input::get('is_comment') == "on" ? true : false;
 
-        $rules = array(
-            'name' => 'required',
-            'slug' => [
-                Rule::unique('pages')->ignore($record->id),
-            ],
-            'description' => 'string|max:255',
-            'keywords' => 'string|max:255',
-        );
-        $v = Validator::make($input, $rules);
 
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id, $input);
         } else {
-
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id, $input);
-            } else {
-                $result = $this->repo->create($input);
-            }
-
-            if ($result) {
-
-                $this->removeCacheTags(['Page']);
-                $this->removeHomePageCache();
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            $result = $this->repo->create($input);
         }
+
+        if ($result) {
+
+            $this->removeCacheTags(['Page']);
+            $this->removeHomePageCache();
+
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
+        }
+
     }
 }

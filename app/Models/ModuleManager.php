@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 
 class ModuleManager extends Model
 {
@@ -38,11 +37,4 @@ class ModuleManager extends Model
         'is_active',
     ];
 
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required',
-            'order' => 'integer',
-        );
-        return Validator::make($input, $rules);
-    }
 }

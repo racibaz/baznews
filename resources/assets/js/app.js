@@ -13,8 +13,6 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
-
 Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue')
@@ -30,6 +28,8 @@ Vue.component(
     require('./components/passport/PersonalAccessTokens.vue')
 );
 
+console.log('recai');
+
 const app = new Vue({
-    el: '#content'
+    el: '#app'
 });

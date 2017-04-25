@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\GroupRequest;
 use App\Models\Group;
 use App\Repositories\GroupRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -38,7 +39,7 @@ class GroupController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(GroupRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -56,7 +57,7 @@ class GroupController extends BackendController
     }
 
 
-    public function update(Request $request, Group $record)
+    public function update(GroupRequest $request, Group $record)
     {
         return $this->save($record);
     }
