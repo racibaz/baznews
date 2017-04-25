@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "jasny-bootstrap",
+        "raw": "jasny-bootstrap@3.1.3",
         "scope": null,
         "escapedName": "jasny-bootstrap",
         "name": "jasny-bootstrap",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
+        "rawSpec": "3.1.3",
+        "spec": "3.1.3",
+        "type": "version"
       },
-      "/home/PROJELER/baznews"
+      "/Users/aliduman/Desktop/PROJELER/baznews"
     ]
   ],
-  "_from": "jasny-bootstrap@latest",
+  "_from": "jasny-bootstrap@3.1.3",
   "_id": "jasny-bootstrap@3.1.3",
   "_inCache": true,
   "_location": "/jasny-bootstrap",
@@ -25,13 +25,13 @@
   "_npmVersion": "2.11.3",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "jasny-bootstrap",
+    "raw": "jasny-bootstrap@3.1.3",
     "scope": null,
     "escapedName": "jasny-bootstrap",
     "name": "jasny-bootstrap",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
+    "rawSpec": "3.1.3",
+    "spec": "3.1.3",
+    "type": "version"
   },
   "_requiredBy": [
     "#USER",
@@ -40,8 +40,8 @@
   "_resolved": "https://registry.npmjs.org/jasny-bootstrap/-/jasny-bootstrap-3.1.3.tgz",
   "_shasum": "b072a681d50c649762c9543c7a6093d9baa2f87b",
   "_shrinkwrap": null,
-  "_spec": "jasny-bootstrap",
-  "_where": "/home/PROJELER/baznews",
+  "_spec": "jasny-bootstrap@3.1.3",
+  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "author": {
     "name": "Arnold Daniels"
   },
