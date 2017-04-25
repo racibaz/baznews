@@ -28,8 +28,8 @@ class CityController extends BackendController
     public function index()
     {
         $records = $this->repo->findAll();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
-        //return view('developer.index');
+//        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        return view('developer.index');
 
     }
 
