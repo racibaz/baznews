@@ -39,12 +39,21 @@ class AdvertisementController extends BackendController
 
     public function create()
     {
+        $advertisementList = [];
         $advertisementAreaNames = $this->getThemeAdvertisementAreaName();
+
+        foreach ($advertisementAreaNames as $index => $advertisementAreaName){
+            if(!in_array($advertisementAreaName['areaName'] , \App\Models\Advertisement::advertisements()->pluck('name')->toArray())){
+                $advertisementList[$advertisementAreaName['areaName']] = $advertisementAreaName['areaName'];
+            }
+        }
+
         $record = $this->repo->createModel();
 
         return Theme::view($this->getViewName(__FUNCTION__),compact([
             'record',
-            'advertisementAreaNames'
+            'advertisementAreaNames',
+            'advertisementList'
         ]));
     }
 
@@ -63,10 +72,18 @@ class AdvertisementController extends BackendController
 
     public function edit(Advertisement $record)
     {
+        $advertisementList = [];
         $advertisementAreaNames = $this->getThemeAdvertisementAreaName();
+
+        foreach ($advertisementAreaNames as $index => $advertisementAreaName){
+            if(!in_array($advertisementAreaName['areaName'] , \App\Models\Advertisement::advertisements()->pluck('name')->toArray())){
+                $advertisementList[$advertisementAreaName['areaName']] = $advertisementAreaName['areaName'];
+            }
+        }
+
         return Theme::view($this->getViewName(__FUNCTION__),compact([
             'record',
-            'advertisementAreaNames'
+            'advertisementList'
         ]));
     }
 
