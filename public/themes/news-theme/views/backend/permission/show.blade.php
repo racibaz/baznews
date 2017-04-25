@@ -1,34 +1,51 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('permission.management')}}
+            <small>{{$record->name}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('permission.index') !!}">{{trans('permission.management')}}</a></li>
+            <li class="active">{{$record->name}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <!-- Main content -->
     <div class="row">
         <div class="col-md-6">
             <!-- general form elements disabled -->
-            <div class="box box-warning">
+            <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{$record->name}}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    {{--<form permission="form">--}}
 
-                    <div class="form-group">
-                        {!! Form::label('name', trans('permission.name')) !!}
-                        : {{$record->name}}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('display_name', trans('permission.display_name')) !!}
-                        : {{$record->display_name}}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('description', trans('permission.description')) !!}
-                        : {{$record->description}}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('is_active', trans('permission.is_active')) !!}
-                        : {{$record->is_active}}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th width="20%">{{trans('permission.name')}}:</th>
+                                <td>{{$record->name}}</td>
+                            </tr>
+                            <tr>
+                                <th>{{trans('permission.display_name')}}:</th>
+                                <td>{!! $record->display_name !!}</td>
+                            </tr>
+                            <tr>
+                                <th>{{trans('permission.description')}}:</th>
+                                <td>{!! $record->description !!}</td>
+                            </tr>
+                            <tr>
+                                <th>{{trans('permission.is_active')}}:</th>
+                                <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('permission.active').'</span>' : '<span class="badge bg-gray">'.trans('permission.passive').'</span>'!!}</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <!-- /.box-body -->

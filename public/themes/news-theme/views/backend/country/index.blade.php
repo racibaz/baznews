@@ -1,12 +1,24 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('country.management')}}
+            <small>{{trans('country.list')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('country.index') !!}">{{trans('country.management')}}</a></li>
+            <li class="active">{{trans('country.list')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <div class="row">
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
                 <a href="{{ route('country.create') }}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> {{ trans('common.create') }}
+                    <i class="fa fa-plus"></i> {{ trans('country.create') }}
                 </a>
             </div>
             <div class="box">
@@ -20,7 +32,8 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('country.name')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('country.is_active')}}</th>
+                            <th>{{trans('country.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -28,7 +41,7 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('country.show', $record->name , $record, [] ) !!}</td>
-                                    <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('country.destroy',  $record))) !!}
@@ -43,13 +56,6 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>{{trans('country.name')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
-                        </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->
@@ -60,6 +66,7 @@
         <!-- /.col -->
     </div>
 @endsection
+
 @section('js')
     <script type="text/javascript">
         //active menu

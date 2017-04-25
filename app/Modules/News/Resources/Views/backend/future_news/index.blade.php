@@ -1,11 +1,24 @@
 @extends($activeTheme .'::backend.master')
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('news::future_news.management')}}
+            <small>{{trans('news::future_news.create_edit')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('future_news.index') !!}">{{trans('news::future_news.management')}}</a></li>
+            <li class="active">{{trans('news::future_news.create_edit')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <div class="row">
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
                 <a href="{{ route('future_news.create') }}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> {{ trans('common.create') }}
+                    <i class="fa fa-plus"></i> {{ trans('news::future_news.news_create') }}
                 </a>
             </div>
             <div class="box">
@@ -18,10 +31,10 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('future_news.news')}}</th>
-                            <th>{{trans('news.status')}}</th>
-                            <th>{{trans('future_news.future_datetime')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('news::future_news.news_title')}}</th>
+                            <th>{{trans('news::future_news.status')}}</th>
+                            <th>{{trans('news::future_news.future_datetime')}}</th>
+                            <th>{{trans('news::future_news.is_active')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -31,7 +44,7 @@
                                     <td>{!! link_to_route('future_news.show', $record->news->title , $record, [] ) !!}</td>
                                     <td> {{$record->news->status}} </td>
                                     <td> {{$record->future_datetime}} </td>
-                                    <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('future_news.destroy',  $record))) !!}
@@ -46,15 +59,6 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>{{trans('future_news.news')}}</th>
-                            <th>{{trans('news.status')}}</th>
-                            <th>{{trans('future_news.future_datetime')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
-                        </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->

@@ -1,21 +1,14 @@
 {
   "_args": [
     [
-      {
-        "raw": "eonasdan-bootstrap-datetimepicker@^4.17.47",
-        "scope": null,
-        "escapedName": "eonasdan-bootstrap-datetimepicker",
-        "name": "eonasdan-bootstrap-datetimepicker",
-        "rawSpec": "^4.17.47",
-        "spec": ">=4.17.47 <5.0.0",
-        "type": "range"
-      },
-      "/home/vagrant/Code/baznews"
+      "eonasdan-bootstrap-datetimepicker",
+      "/home/vagrant/PROJELER/baznews"
     ]
   ],
-  "_from": "eonasdan-bootstrap-datetimepicker@>=4.17.47 <5.0.0",
+  "_from": "eonasdan-bootstrap-datetimepicker@latest",
   "_id": "eonasdan-bootstrap-datetimepicker@4.17.47",
   "_inCache": true,
+  "_installable": true,
   "_location": "/eonasdan-bootstrap-datetimepicker",
   "_nodeVersion": "6.9.2",
   "_npmOperationalInternal": {
@@ -23,19 +16,18 @@
     "tmp": "tmp/eonasdan-bootstrap-datetimepicker-4.17.47.tgz_1488292283595_0.6669068618211895"
   },
   "_npmUser": {
-    "name": "eonasdan",
-    "email": "me@eonasdan.com"
+    "email": "me@eonasdan.com",
+    "name": "eonasdan"
   },
   "_npmVersion": "4.1.1",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "eonasdan-bootstrap-datetimepicker@^4.17.47",
-    "scope": null,
-    "escapedName": "eonasdan-bootstrap-datetimepicker",
     "name": "eonasdan-bootstrap-datetimepicker",
-    "rawSpec": "^4.17.47",
-    "spec": ">=4.17.47 <5.0.0",
-    "type": "range"
+    "raw": "eonasdan-bootstrap-datetimepicker",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
   },
   "_requiredBy": [
     "/"
@@ -43,8 +35,8 @@
   "_resolved": "https://registry.npmjs.org/eonasdan-bootstrap-datetimepicker/-/eonasdan-bootstrap-datetimepicker-4.17.47.tgz",
   "_shasum": "7a49970044065276e7965efd16f822735219e735",
   "_shrinkwrap": null,
-  "_spec": "eonasdan-bootstrap-datetimepicker@^4.17.47",
-  "_where": "/home/vagrant/Code/baznews",
+  "_spec": "eonasdan-bootstrap-datetimepicker",
+  "_where": "/home/vagrant/PROJELER/baznews",
   "author": {
     "name": "Jonathan Peterson"
   },
@@ -90,8 +82,8 @@
   "main": "src/js/bootstrap-datetimepicker.js",
   "maintainers": [
     {
-      "name": "eonasdan",
-      "email": "eonasdan@outlook.com"
+      "email": "eonasdan@outlook.com",
+      "name": "eonasdan"
     }
   ],
   "name": "eonasdan-bootstrap-datetimepicker",

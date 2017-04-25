@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-04-24.
+    * Generated on 2017-04-25.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -89,6 +89,8 @@ namespace PHPSTORM_META {
             'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
             'brotzka-dotenveditor' instanceof \Brotzka\DotenvEditor\DotenvEditor,
+            'League\OAuth2\Server\AuthorizationServer' instanceof \League\OAuth2\Server\AuthorizationServer,
+            'League\OAuth2\Server\ResourceServer' instanceof \League\OAuth2\Server\ResourceServer,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'queue' instanceof \Illuminate\Queue\QueueManager,
             'queue.connection' instanceof \Illuminate\Queue\RedisQueue,
@@ -103,7 +105,6 @@ namespace PHPSTORM_META {
             'redis' instanceof \Illuminate\Redis\RedisManager,
             'redis.connection' instanceof \Illuminate\Redis\Connections\PredisConnection,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
-            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'command.cache.clear' instanceof \Illuminate\Cache\Console\ClearCommand,
             'command.cache.forget' instanceof \Illuminate\Cache\Console\ForgetCommand,
@@ -261,6 +262,8 @@ namespace PHPSTORM_META {
             'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
             'brotzka-dotenveditor' instanceof \Brotzka\DotenvEditor\DotenvEditor,
+            'League\OAuth2\Server\AuthorizationServer' instanceof \League\OAuth2\Server\AuthorizationServer,
+            'League\OAuth2\Server\ResourceServer' instanceof \League\OAuth2\Server\ResourceServer,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'queue' instanceof \Illuminate\Queue\QueueManager,
             'queue.connection' instanceof \Illuminate\Queue\RedisQueue,
@@ -275,7 +278,6 @@ namespace PHPSTORM_META {
             'redis' instanceof \Illuminate\Redis\RedisManager,
             'redis.connection' instanceof \Illuminate\Redis\Connections\PredisConnection,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
-            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'command.cache.clear' instanceof \Illuminate\Cache\Console\ClearCommand,
             'command.cache.forget' instanceof \Illuminate\Cache\Console\ForgetCommand,
@@ -433,6 +435,8 @@ namespace PHPSTORM_META {
             'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
             'brotzka-dotenveditor' instanceof \Brotzka\DotenvEditor\DotenvEditor,
+            'League\OAuth2\Server\AuthorizationServer' instanceof \League\OAuth2\Server\AuthorizationServer,
+            'League\OAuth2\Server\ResourceServer' instanceof \League\OAuth2\Server\ResourceServer,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'queue' instanceof \Illuminate\Queue\QueueManager,
             'queue.connection' instanceof \Illuminate\Queue\RedisQueue,
@@ -447,7 +451,6 @@ namespace PHPSTORM_META {
             'redis' instanceof \Illuminate\Redis\RedisManager,
             'redis.connection' instanceof \Illuminate\Redis\Connections\PredisConnection,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
-            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'command.cache.clear' instanceof \Illuminate\Cache\Console\ClearCommand,
             'command.cache.forget' instanceof \Illuminate\Cache\Console\ForgetCommand,
@@ -605,6 +608,8 @@ namespace PHPSTORM_META {
             'command.widget.make' instanceof \Arrilot\Widgets\Console\WidgetMakeCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
             'brotzka-dotenveditor' instanceof \Brotzka\DotenvEditor\DotenvEditor,
+            'League\OAuth2\Server\AuthorizationServer' instanceof \League\OAuth2\Server\AuthorizationServer,
+            'League\OAuth2\Server\ResourceServer' instanceof \League\OAuth2\Server\ResourceServer,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'queue' instanceof \Illuminate\Queue\QueueManager,
             'queue.connection' instanceof \Illuminate\Queue\RedisQueue,
@@ -619,7 +624,6 @@ namespace PHPSTORM_META {
             'redis' instanceof \Illuminate\Redis\RedisManager,
             'redis.connection' instanceof \Illuminate\Redis\Connections\PredisConnection,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
-            'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'command.cache.clear' instanceof \Illuminate\Cache\Console\ClearCommand,
             'command.cache.forget' instanceof \Illuminate\Cache\Console\ForgetCommand,

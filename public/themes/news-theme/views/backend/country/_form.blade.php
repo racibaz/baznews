@@ -1,74 +1,60 @@
 @extends($activeTheme . '::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('country.management')}}
+            <small>{{trans('country.create_edit')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('country.index') !!}">{{trans('country.management')}}</a></li>
+            <li class="active">{{trans('country.create_edit')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('country.management')}}</h3>
-            <!--Top header end -->
 
-            <!--Top breadcrumb start -->
-            <ol class="breadcrumb">
-                <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('country.index') !!}"> {{ trans('country.countries') }} </a></li>
-                <li class="active"> {{ trans('common.add_update') }}</li>
-            </ol>
-            <!--Top breadcrumb start -->
-        </div>
-    </div>
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['country.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'country.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
     <!-- Main Content Element  Start-->
     <div class="row">
         <div class="col-md-6">
-            <div class="panel panel-light-blue">
-                <div class="panel-heading">
-                    {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
+
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('country.create_edit')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
                 </div>
-
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['country.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'country.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
-
-                <div class="panel-body">
-
+                <!-- /.box-header -->
+                <div class="box-body">
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('name', trans('country.name'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('name', $record->name, ['placeholder' => trans('country.name') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
+                        {!! Form::label('name', trans('country.name'),['class'=> 'control-label']) !!}
+                        {!! Form::text('name', $record->name, ['placeholder' => trans('country.name') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            {{trans('common.status')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                        <i></i> {{trans('common.is_active')}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                        <label>
+                            {!! Form::checkbox('is_active', null , $record->is_active) !!}
+                            {{trans('common.is_active')}}
+                        </label>
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
-                            </div>
-                        </div>
+                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div>
-                {!! Form::close() !!}
-            </div>
+                <!-- /.box-body -->
+            </div><!-- /.box .box-default -->
         </div>
     </div><!-- end row -->
     <!-- Main Content Element  End-->
-</div><!-- end container-fluid -->
+    {!! Form::close() !!}
 @endsection
 @section('js')
     <script type="text/javascript">
