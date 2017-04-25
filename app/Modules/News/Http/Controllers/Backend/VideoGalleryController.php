@@ -13,6 +13,7 @@ use App\Modules\News\Repositories\VideoGalleryRepository as Repo;
 use App\Modules\News\Repositories\VideoRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Exception;
+use Illuminate\Support\Facades\Log;
 use Mremi\UrlShortener\Model\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -269,11 +270,13 @@ class VideoGalleryController extends BackendController
                 if($field == 'delete'){
                     try{
                         $video =  Video::find($id)->delete();
-                        //TODO video nun dosyaları da silinecek.
+
+                        //todo video, video gallery listesinden çıkarılmalı.
+                        //$result = Video::deleteVideoFiles($video);
                         continue;
                     }catch (Exception $e)
                     {
-                        //todo log yazılacak
+                        //
                     }
 
                 }else if($field == 'subtitle') {

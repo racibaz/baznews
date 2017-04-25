@@ -98,6 +98,8 @@ class VideoController extends BackendController
 
     public function destroy(Video $record)
     {
+
+        $result = Video::deleteVideoFiles($record);
         $this->repo->delete($record->id);
 
         $this->removeCacheTags(['VideoController']);
