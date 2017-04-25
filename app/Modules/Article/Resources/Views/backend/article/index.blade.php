@@ -24,12 +24,9 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('article.user_id')}}</th>
                             <th>{{trans('article.author_id')}}</th>
                             <th>{{trans('article.title')}}</th>
-                            <th>{{trans('article.short_url')}}</th>
                             <th>{{trans('article.order')}}</th>
-                            <th>{{trans('article.hit')}}</th>
                             <th>{{trans('article.is_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
@@ -38,12 +35,9 @@
                             @foreach($records as $record)
                                 <tr>
                                     <td>{{$record->id}}</td>
-                                    <td>{{$record->user_id}}</td>
-                                    <td>{{$record->author_id}}</td>
+                                    <td>{{$record->article_author->name}}</td>
                                     <td>{!! link_to_route('article.show', $record->title , $record, [] ) !!}</td>
-                                    <td> {{$record->short_url}} </td>
                                     <td> {{$record->order}} </td>
-                                    <td> {{$record->hit}} </td>
                                     <td> {{$record->is_cuff}} </td>
                                     <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
@@ -62,12 +56,9 @@
                         <tfoot>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('article.user_id')}}</th>
                             <th>{{trans('article.author_id')}}</th>
                             <th>{{trans('article.title')}}</th>
-                            <th>{{trans('article.short_url')}}</th>
                             <th>{{trans('article.order')}}</th>
-                            <th>{{trans('article.hit')}}</th>
                             <th>{{trans('article.is_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>
                         </tr>
