@@ -26,7 +26,6 @@
         "arrilot/laravel-widgets": "^3.6",
         "algolia/algoliasearch-client-php": "^1.11",
         "geerlingguy/ping": "^1.1",
-        "rachidlaasri/laravel-installer": "1.5",
         "brotzka/laravel-dotenv-editor": "2.*",
         "laravelcollective/html": "^5.4",
         "laravel/scout": "^3.0",
