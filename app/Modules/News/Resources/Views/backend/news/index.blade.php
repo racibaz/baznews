@@ -279,17 +279,12 @@
                         <div class="col-lg-12">
                             @foreach($statusList as $index => $status)
                                 <a href="{{route('news_statuses',[$index])}}" class="btn btn-primary">
-                                    {{$status}} [ {{$newsCountByStatus[$index]}} ]
+                                    {{$status}} <span class="badge">{{$newsCountByStatus[$index]}}</span>
                                 </a>
                             @endforeach
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
-                        </div>
-                    </div>
+                    @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>
@@ -320,33 +315,47 @@
                                         {!! Form::open(['route' => 'status_toggle','method' => 'post']) !!}
                                         {!! Form::hidden('recordId',$record->id) !!}
                                         <div class="input-group input-group-sm">
-                                            {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('news::news.please_choose'),'class' => 'form-control']) !!}
+                                            {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('news::news.please_choose'),'class' => 'form-control select2']) !!}
                                             <span class="input-group-btn">
-                                                {!! Form::submit(trans('news::news.get_news'), ['class' => 'btn btn-primary btn-flat']) !!}
+                                                {!! Form::submit(trans('news::news.done'), ['class' => 'btn btn-primary btn-flat']) !!}
                                             </span>
                                         </div>
                                         {!! Form::close() !!}
                                     </td>
                                     <td>
-                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'band_news']) !!}">{{$record->band_news}}</a>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'band_news']) !!}">
+                                            {!! $record->band_news ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                        </a>
                                     </td>
                                     <td>
-                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'box_cuff']) !!}">{{$record->box_cuff}}</a>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'box_cuff']) !!}">
+                                            {!! $record->box_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                        </a>
                                     </td>
                                     <td>
-                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'is_cuff']) !!}">{{$record->is_cuff}}</a>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'is_cuff']) !!}">
+                                            {!! $record->is_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                        </a>
                                     </td>
                                     <td>
-                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'break_news']) !!}">{{$record->break_news}}</a>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'break_news']) !!}">
+                                            {!! $record->break_news ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                        </a>
                                     </td>
                                     <td>
-                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'is_comment']) !!}">{{$record->is_comment}}</a>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'is_comment']) !!}">
+                                            {!! $record->is_comment ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                        </a>
                                     </td>
                                     <td>
-                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'main_cuff']) !!}">{{$record->main_cuff}}</a>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'main_cuff']) !!}">
+                                            {!! $record->main_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                        </a>
                                     </td>
                                     <td>
-                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'mini_cuff']) !!}">{{$record->mini_cuff}}</a>
+                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'mini_cuff']) !!}">
+                                            {!! $record->mini_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                        </a>
                                     </td>
                                     <td>
                                         <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'is_active']) !!}">
@@ -366,15 +375,10 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
-                        </div>
-                    </div>
+                    @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
                 </div>
                 <!-- /.box-body -->
             </div>
-            <!-- /.box -->
             <!-- /.box -->
         </div>
         <!-- /.col -->
@@ -383,6 +387,13 @@
 @section('css')
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
     <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+    <style>
+        .input-group-sm>.form-control,
+        .input-group-sm>.input-group-addon,
+        .input-group-sm>.input-group-btn>.btn{
+            height: 34px;
+        }
+    </style>
 @endsection
 @section('js')
     <script src="{{ Theme::asset($activeTheme .'::js/moment/min/moment.min.js') }}"></script>
@@ -415,6 +426,6 @@
         });
         //active menu
 
-        activeMenu('news_management','menu');
+        activeMenu('news_management','news');
     </script>
 @endsection
