@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "select2@4.0.3",
+        "raw": "select2@^4.0.3",
         "scope": null,
         "escapedName": "select2",
         "name": "select2",
-        "rawSpec": "4.0.3",
-        "spec": "4.0.3",
-        "type": "version"
+        "rawSpec": "^4.0.3",
+        "spec": ">=4.0.3 <5.0.0",
+        "type": "range"
       },
-      "/Users/aliduman/Desktop/PROJELER/baznews"
+      "/home/vagrant/Code/baznews"
     ]
   ],
-  "_from": "select2@4.0.3",
+  "_from": "select2@>=4.0.3 <5.0.0",
   "_id": "select2@4.0.3",
   "_inCache": true,
   "_location": "/select2",
@@ -28,23 +28,22 @@
   "_npmVersion": "1.4.28",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "select2@4.0.3",
+    "raw": "select2@^4.0.3",
     "scope": null,
     "escapedName": "select2",
     "name": "select2",
-    "rawSpec": "4.0.3",
-    "spec": "4.0.3",
-    "type": "version"
+    "rawSpec": "^4.0.3",
+    "spec": ">=4.0.3 <5.0.0",
+    "type": "range"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/select2/-/select2-4.0.3.tgz",
   "_shasum": "207733fe91eacb9cb1a13f12463401f472449e0f",
   "_shrinkwrap": null,
-  "_spec": "select2@4.0.3",
-  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
+  "_spec": "select2@^4.0.3",
+  "_where": "/home/vagrant/Code/baznews",
   "author": {
     "name": "Kevin Brown",
     "url": "https://github.com/kevin-brown"

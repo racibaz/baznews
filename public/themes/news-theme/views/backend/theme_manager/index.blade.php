@@ -35,7 +35,7 @@
                         @foreach($themes as $theme)
                             <div class="col-md-3 col-lg-2">
                                 <div class="thumbnail">
-                                    <img src="{{ asset('/theme-thumb.png')}}" alt="">
+                                    <img src="{{ asset('themes/' . $theme . '/theme-thumb.png')}}" alt="">
                                     <div class="caption">
                                         <h3>{{$theme}}
                                             @if($activeTheme == $theme)

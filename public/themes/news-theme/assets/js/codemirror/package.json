@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "codemirror@5.25.2",
+        "raw": "codemirror@^5.25.0",
         "scope": null,
         "escapedName": "codemirror",
         "name": "codemirror",
-        "rawSpec": "5.25.2",
-        "spec": "5.25.2",
-        "type": "version"
+        "rawSpec": "^5.25.0",
+        "spec": ">=5.25.0 <6.0.0",
+        "type": "range"
       },
-      "/Users/aliduman/Desktop/PROJELER/baznews"
+      "/home/vagrant/Code/baznews"
     ]
   ],
-  "_from": "codemirror@5.25.2",
+  "_from": "codemirror@>=5.25.0 <6.0.0",
   "_id": "codemirror@5.25.2",
   "_inCache": true,
   "_location": "/codemirror",
@@ -29,23 +29,22 @@
   "_npmVersion": "3.10.8",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "codemirror@5.25.2",
+    "raw": "codemirror@^5.25.0",
     "scope": null,
     "escapedName": "codemirror",
     "name": "codemirror",
-    "rawSpec": "5.25.2",
-    "spec": "5.25.2",
-    "type": "version"
+    "rawSpec": "^5.25.0",
+    "spec": ">=5.25.0 <6.0.0",
+    "type": "range"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/codemirror/-/codemirror-5.25.2.tgz",
   "_shasum": "8c77677ca9c9248d757d3a07ed1e89a8404850b7",
   "_shrinkwrap": null,
-  "_spec": "codemirror@5.25.2",
-  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
+  "_spec": "codemirror@^5.25.0",
+  "_where": "/home/vagrant/Code/baznews",
   "bugs": {
     "url": "http://github.com/codemirror/CodeMirror/issues"
   },

@@ -12,7 +12,6 @@
     "icheck": "^1.0.2",
     "laravel-elixir": "^6.0.0-9",
     "laravel-elixir-vue": "^0.1.8",
-    "laravel-elixir-webpack-official": "^1.0.2",
     "video.js": "^5.12.6",
     "vue": "^2.1.10",
     "axios": "^0.15.3",
@@ -20,8 +19,8 @@
     "jquery": "^3.1.1",
     "laravel-mix": "0.*",
     "laravel-elixir-vue-2": "^0.2.0",
-    "lodash": "^4.16.2",
-    "vue-resource": "^1.0.3"
+    "vue-resource": "^1.0.3",
+    "lodash": "^4.17.4"
   },
   "dependencies": {
     "bootstrap-tagsinput": "^0.7.1",

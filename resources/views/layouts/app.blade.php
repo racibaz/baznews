@@ -20,7 +20,7 @@
         ]); ?>
     </script>
 </head>
-<body id="app">
+<body>
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -81,5 +81,6 @@
     @yield('content')
 <!-- Scripts -->
 <script src="/js/app.js"></script>
+
 </body>
 </html>

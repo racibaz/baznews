@@ -30,11 +30,11 @@ class ThemeManagerController extends BackendController
         $activeTheme = Theme::getActive();
         $records = $this->repo->findAll();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(
+        return Theme::view($this->getViewName(__FUNCTION__),compact([
             'records',
             'themes',
             'activeTheme'
-        ));
+        ]));
     }
 
     public function create()

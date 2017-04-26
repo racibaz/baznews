@@ -1,27 +1,35 @@
 {
   "_args": [
     [
-      "icheck@^1.0.2",
-      "/home/vagrant/PROJELER/baznews"
+      {
+        "raw": "icheck@^1.0.2",
+        "scope": null,
+        "escapedName": "icheck",
+        "name": "icheck",
+        "rawSpec": "^1.0.2",
+        "spec": ">=1.0.2 <2.0.0",
+        "type": "range"
+      },
+      "/home/vagrant/Code/baznews"
     ]
   ],
   "_from": "icheck@>=1.0.2 <2.0.0",
   "_id": "icheck@1.0.2",
   "_inCache": true,
-  "_installable": true,
   "_location": "/icheck",
   "_nodeVersion": "0.12.2",
   "_npmUser": {
-    "email": "sisley.justin@gmail.com",
-    "name": "justinsisley"
+    "name": "justinsisley",
+    "email": "sisley.justin@gmail.com"
   },
   "_npmVersion": "2.7.5",
   "_phantomChildren": {},
   "_requested": {
-    "name": "icheck",
     "raw": "icheck@^1.0.2",
-    "rawSpec": "^1.0.2",
     "scope": null,
+    "escapedName": "icheck",
+    "name": "icheck",
+    "rawSpec": "^1.0.2",
     "spec": ">=1.0.2 <2.0.0",
     "type": "range"
   },
@@ -32,10 +40,10 @@
   "_shasum": "06d08da3d47ae448c153b2639b86e9ad7fdf7128",
   "_shrinkwrap": null,
   "_spec": "icheck@^1.0.2",
-  "_where": "/home/vagrant/PROJELER/baznews",
+  "_where": "/home/vagrant/Code/baznews",
   "author": {
-    "email": "info@fronteed.com",
     "name": "Damir Sultanov",
+    "email": "info@fronteed.com",
     "url": "http://fronteed.com/"
   },
   "bugs": {
@@ -55,8 +63,8 @@
   "main": "icheck.js",
   "maintainers": [
     {
-      "email": "sisley.justin@gmail.com",
-      "name": "justinsisley"
+      "name": "justinsisley",
+      "email": "sisley.justin@gmail.com"
     }
   ],
   "name": "icheck",

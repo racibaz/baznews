@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "video.js@5.19.2",
+        "raw": "video.js@^5.6.0",
         "scope": null,
         "escapedName": "video.js",
         "name": "video.js",
-        "rawSpec": "5.19.2",
-        "spec": "5.19.2",
-        "type": "version"
+        "rawSpec": "^5.6.0",
+        "spec": ">=5.6.0 <6.0.0",
+        "type": "range"
       },
-      "/Users/aliduman/Desktop/PROJELER/baznews"
+      "/home/vagrant/Code/baznews/node_modules/videojs-youtube"
     ]
   ],
-  "_from": "video.js@5.19.2",
+  "_from": "video.js@>=5.6.0 <6.0.0",
   "_id": "video.js@5.19.2",
   "_inCache": true,
   "_location": "/video.js",
@@ -29,24 +29,23 @@
   "_npmVersion": "2.15.6",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "video.js@5.19.2",
+    "raw": "video.js@^5.6.0",
     "scope": null,
     "escapedName": "video.js",
     "name": "video.js",
-    "rawSpec": "5.19.2",
-    "spec": "5.19.2",
-    "type": "version"
+    "rawSpec": "^5.6.0",
+    "spec": ">=5.6.0 <6.0.0",
+    "type": "range"
   },
   "_requiredBy": [
-    "#USER",
-    "/",
+    "#DEV:/",
     "/videojs-youtube"
   ],
   "_resolved": "https://registry.npmjs.org/video.js/-/video.js-5.19.2.tgz",
   "_shasum": "849d6b1e5fc2cb23ea7b17cd79b25800f61d87e5",
   "_shrinkwrap": null,
-  "_spec": "video.js@5.19.2",
-  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
+  "_spec": "video.js@^5.6.0",
+  "_where": "/home/vagrant/Code/baznews/node_modules/videojs-youtube",
   "author": {
     "name": "Steve Heffernan"
   },
