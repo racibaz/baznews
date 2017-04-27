@@ -78,6 +78,13 @@ return [
     'change'=>'Değiştir',
     'remove'=>'Kaldır',
     'select_image'=>'Resmi Seçin',
+    'other_content'=>'Diğer İçerikler',
+    'changed_timeline'=>'Değiştirme Zaman Tüneli',
+    'close'=>'Kapat',
+    'trashed_news_list'=>'Silinmiş Haber Listesi',
+    'back_index_page'=>'Haberler Sayfasına Dön',
+    'trashed_news_restore'=>'Silinmiş Haberi Geri Al',
+    'search'=>'Ara',
 
 
 ];

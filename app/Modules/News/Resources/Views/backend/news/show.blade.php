@@ -19,7 +19,7 @@
                 <div class="box-header with-border">
                     <i class="fa fa-globe"></i>
 
-                    <h3 class="box-title">{{trans('news::news.content')}}</h3>
+                    <h3 class="box-title">{{$record->title}}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -40,17 +40,10 @@
                 </div>
                 <!-- /.box-body -->
             </div>
-        </div>
-        <div class="col-lg-5">
-            <div class="box box-default box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title">{{$record->title}}</h3>
 
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                    <!-- /.box-tools -->
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('news::news.other_content')}}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -58,31 +51,7 @@
                         <table class="table table-hover">
                             <tbody>
                             <tr>
-                                <th>{{trans('news::news.id')}}</th>
-                                <td>{{$record->id}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('news::news.user_id')}}</th>
-                                <td>{{$record->user_id}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('news::news.country_id')}}</th>
-                                <td>{{$record->country_id}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('news::news.city_id')}}</th>
-                                <td>{{$record->city_id}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('news::news.news_source_id')}}</th>
-                                <td>{{$record->news_source_id}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('news::news.title')}}</th>
-                                <td>{{$record->title}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('news::news.small_title')}}</th>
+                                <th width="20%">{{trans('news::news.small_title')}}</th>
                                 <td>{{$record->small_title}}</td>
                             </tr>
                             <tr>
@@ -105,6 +74,43 @@
                                 <th>{{trans('news::news.meta_tags')}}</th>
                                 <td>{{$record->meta_tags}}</td>
                             </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+        </div>
+        <div class="col-lg-5">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('news::news.other_settings')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th width="20%">{{trans('news::news.country_id')}}</th>
+                                <td>{{$record->country_id}}</td>
+                            </tr>
+                            <tr>
+                                <th>{{trans('news::news.city_id')}}</th>
+                                <td>{{$record->city_id}}</td>
+                            </tr>
+                            <tr>
+                                <th>{{trans('news::news.news_source_id')}}</th>
+                                <td>{{$record->news_source_id}}</td>
+                            </tr>
+
                             <tr>
                                 <th>{{trans('news::news.cuff_photo')}}</th>
                                 <td>{{$record->cuff_photo}}</td>
@@ -126,68 +132,52 @@
                                 <td>{{$record->news_type}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.map_text')}}</th>
-                                <td>{{$record->map_text}}</td>
-                            </tr>
-                            <tr>
                                 <th>{{trans('news::news.hit')}}</th>
                                 <td>{{$record->hit}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.status')}}</th>
-                                <td>{{$record->status}}</td>
+                                <td>{!! $record->status ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.band_news')}}</th>
-                                <td>{{$record->band_news}}</td>
+                                <td>{!! $record->band_news ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.box_cuff')}}</th>
-                                <td>{{$record->box_cuff}}</td>
+                                <td>{!! $record->box_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.is_cuff')}}</th>
-                                <td>{{$record->is_cuff}}</td>
+                                <td>{!! $record->is_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.break_news')}}</th>
-                                <td>{{$record->break_news}}</td>
+                                <td>{!! $record->break_news ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.main_cuff')}}</th>
-                                <td>{{$record->main_cuff}}</td>
+                                <td>{!! $record->main_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.mini_cuff')}}</th>
-                                <td>{{$record->mini_cuff}}</td>
+                                <td>{!! $record->mini_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.is_comment')}}</th>
-                                <td>{{$record->is_comment}}</td>
+                                <td>{!! $record->is_comment ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.is_show_editor_profile')}}</th>
-                                <td>{{$record->is_show_editor_profile}}</td>
+                                <td>{!! $record->is_show_editor_profile ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.is_show_previous_and_next_news')}}</th>
-                                <td>{!! $record->is_show_previous_and_next_news ? '<span class="badge bg-green>"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning>"><i class="fa fa-times"></i></span></span>' !!}</td>
+                                <td>{!! $record->is_show_previous_and_next_news ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.is_active')}}</th>
-                                <td>{!! $record->is_active ? '<span class="badge bg-green>">'.trans('news::news.active').'</span>':'<span class="badge bg-warning>">'.trans('news::news.passive').'</span>'!!}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('news::news.created_at')}}</th>
-                                <td>{{$record->created_at}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('news::news.updated_at')}}</th>
-                                <td>{{$record->updated_at}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('news::news.deleted_at')}}</th>
-                                <td>{{$record->deleted_a}}</td>
+                                <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('news::news.active').'</span>':'<span class="badge bg-warning">'.trans('news::news.passive').'</span>'!!}</td>
                             </tr>
                             </tbody>
                         </table>

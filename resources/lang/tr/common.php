@@ -20,4 +20,5 @@ return [
     'save_failed' => 'Kayıt İşlemi Hatalı',
     'all_records' => 'Tüm Kayıtlar',
     'list_records' => 'Listelenen Kayıtlar',
+    'model_resorted' => 'Model Başarılı Şekilde Geri Alındı',
 ];

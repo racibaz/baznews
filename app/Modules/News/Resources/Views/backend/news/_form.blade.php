@@ -20,11 +20,26 @@
         {!! Form::open(['route' => 'news.store','method' => 'post', 'files' => 'true','enctype' => 'multipart/form-data']) !!}
     @endif
     <!-- Main Content Element  Start-->
-    @include($activeTheme . '::backend.partials._rivisions', ['rivisions' => $record->revisionHistory])
 
+    <div class="modal fade" id="activity-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">{{trans('news::news.changed_timeline')}}</h4>
+                </div>
+                <div class="modal-body">
+                    @include($activeTheme . '::backend.partials._rivisions', ['rivisions' => $record->revisionHistory])
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('news::news.close')}}</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <div class="row">
         <div class="col-lg-8" id="content">
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-file-text"></i>  {{trans('news::news.content')}}</h3>
 
@@ -137,6 +152,7 @@
                 </div><!-- /.box-body -->
                 <div class="box-footer">
                     <div class="form-group">
+                        <a class="btn btn-primary" data-toggle="modal" href="#activity-modal"><i class="fa fa-clock-o"></i>   {{trans('news::news.changed_timeline')}}</a>
                         <button class="btn btn-success btn-lg pull-right" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div><!-- /.box-footer -->
@@ -156,14 +172,14 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 {!! Form::label('keywords', trans('news::news.keywords'),['class'=> 'control-label','style'=>'width:100%']) !!}
-                                {!! Form::textarea('keywords', $record->keywords, ['placeholder' => trans('news::news.keywords') ,'class' => 'form-control tagsinput']) !!}
+                                {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('news::news.keywords') ,'class' => 'form-control tagsinput']) !!}
                             </div>
                         </div><!-- /.col-lg-12 -->
                     </div>
                 </div>
                 <!-- /.box-body -->
             </div><!-- /.box -->
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-calendar"></i> {{ trans('news::news.future_datetime') }}</h3>
                 </div>
@@ -183,7 +199,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-list-ul"></i>  {{ trans('news::news.categories') }}</h3>
                 </div>
@@ -197,7 +213,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-cogs"></i>  {{trans('news::news.other_settings')}}</h3>
 
@@ -288,7 +304,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-map-pin"></i>  {{trans('news::news.location')}}</h3>
 
@@ -317,7 +333,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-image"></i>  {{trans('news::news.thumbnail_image')}}</h3>
 
@@ -359,7 +375,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-image"></i>  {{ trans('news::news.photos') }}</h3>
                 </div>
@@ -373,7 +389,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-file-video-o"></i>  {{ trans('news::news.videos') }}</h3>
                 </div>
@@ -387,7 +403,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="glyphicon glyphicon-facetime-video"></i> {{ trans('news::news.video_galleries') }}</h3>
                 </div>
@@ -401,7 +417,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-image"></i> {{ trans('news::news.photo_galleries') }}</h3>
                 </div>
@@ -415,7 +431,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-tags"></i>  {{ trans('news::news.tags') }}</h3>
                 </div>
@@ -430,7 +446,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-refresh"></i>  {{ trans('news::news.related_news') }}</h3>
                 </div>
@@ -444,7 +460,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-globe"></i>  {{ trans('news::news.recommendation_news') }}</h3>
                 </div>

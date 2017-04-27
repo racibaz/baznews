@@ -215,7 +215,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                {!! Form::submit(trans('common.search'), ['class' => 'btn btn-primary']) !!}
+                                {!! Form::submit(trans('news::news.search'), ['class' => 'btn btn-primary']) !!}
                             </div>
                         </div><!-- /.col-lg-12 -->
                     </div><!-- /.row -->
@@ -247,7 +247,7 @@
         <div class="col-lg-12">
             @if(Auth::user()->can('create-news'))
             <div class="form-group pull-left">
-                <a href="{{ route('news.create') }}" class="btn btn-success">
+                <a href="{{ route('news.create') }}" class="btn btn-success btn-lg">
                     <i class="fa fa-plus"></i> {{ trans('news::news.news_create') }}
                 </a>
             </div>
