@@ -15,4 +15,12 @@ return[
     'is_active'=>'Aktif/Pasif',
     'news_create'=>'Haber Oluştur',
     'create_edit'=>'Oluştur/Düzenle',
+    'news_not_live'=>'Haber Yayında Değil',
+    'news_live'=>'Haber Yayında',
+    'active'=>'Aktif',
+    'passive'=>'Pasif',
+    'edit_create'=>'Düzenle/Sil',
+    'please_choose'=>'Lütfen Seçiniz',
+
+
 ];

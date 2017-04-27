@@ -6,14 +6,14 @@
             <div style="margin-bottom: 20px;">
                 @if(Auth::user()->can('showTrashedRecords-news'))
                     <a href="{{ route('news.index') }}" class="btn btn-info">
-                        <i class="fa fa-plus"></i> {{ trans('news.index') }}
+                        <i class="fa fa-angle-left"></i>&nbsp;&nbsp;{{ trans('news::news.back_index_page') }}
                     </a>
                 @endif
 
             </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><strong>{{trans('news.trashed_news_management')}}</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('news::news.trashed_news_list')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -22,16 +22,16 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('news.title')}}</th>
-                            <th>{{trans('news.hit')}}</th>
-                            <th>{{trans('news.band_news')}}</th>
-                            <th>{{trans('news.box_cuff')}}</th>
-                            <th>{{trans('news.is_cuff')}}</th>
-                            <th>{{trans('news.break_news')}}</th>
-                            <th>{{trans('news.is_comment')}}</th>
-                            <th>{{trans('news.main_cuff')}}</th>
-                            <th>{{trans('news.mini_cuff')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('news::news.title')}}</th>
+                            <th>{{trans('news::news.hit')}}</th>
+                            <th>{{trans('news::news.band_news')}}</th>
+                            <th>{{trans('news::news.box_cuff')}}</th>
+                            <th>{{trans('news::news.is_cuff')}}</th>
+                            <th>{{trans('news::news.break_news')}}</th>
+                            <th>{{trans('news::news.is_comment')}}</th>
+                            <th>{{trans('news::news.main_cuff')}}</th>
+                            <th>{{trans('news::news.mini_cuff')}}</th>
+                            <th>{{trans('news::common.is_active')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -41,36 +41,50 @@
                                 <td>{!! link_to_route('news.show', $trashedRecord->title , $trashedRecord, [] ) !!}</td>
                                 <td> {{$trashedRecord->hit}} </td>
                                 <td>
-                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'band_news']) !!}">{{$trashedRecord->band_news}}</a>
+                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'band_news']) !!}">
+                                        {!! $trashedRecord->band_news ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                    </a>
                                 </td>
                                 <td>
-                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'box_cuff']) !!}">{{$trashedRecord->box_cuff}}</a>
+                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'box_cuff']) !!}">
+                                        {!! $trashedRecord->box_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                    </a>
                                 </td>
                                 <td>
-                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'is_cuff']) !!}">{{$trashedRecord->is_cuff}}</a>
+                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'is_cuff']) !!}">
+                                        {!! $trashedRecord->is_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                    </a>
                                 </td>
                                 <td>
-                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'break_news']) !!}">{{$trashedRecord->break_news}}</a>
+                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'break_news']) !!}">
+                                        {!! $trashedRecord->break_news ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                    </a>
                                 </td>
                                 <td>
-                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'is_comment']) !!}">{{$trashedRecord->is_comment}}</a>
+                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'is_comment']) !!}">
+                                        {!! $trashedRecord->is_comment ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                    </a>
                                 </td>
                                 <td>
-                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'main_cuff']) !!}">{{$trashedRecord->main_cuff}}</a>
+                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'main_cuff']) !!}">
+                                        {!! $trashedRecord->main_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                    </a>
                                 </td>
                                 <td>
-                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'mini_cuff']) !!}">{{$trashedRecord->mini_cuff}}</a>
+                                    <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'mini_cuff']) !!}">
+                                        {!! $trashedRecord->mini_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
+                                    </a>
                                 </td>
                                 <td>
                                     <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'is_active']) !!}">
-                                        {!!$trashedRecord->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}
+                                        {!!$trashedRecord->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}
                                     </a>
                                 </td>
                                 <td>
                                     <div class="btn-group">
                                         {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('historyForceDelete',  $trashedRecord->id ))) !!}
                                             {!! Form::hidden('historyForceDeleteRecordId', $trashedRecord->id) !!}
-                                        {!! link_to_route('trashedNewsRestore', trans('news.trashed_news_restore'), $trashedRecord->id, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! link_to_route('trashedNewsRestore', trans('news::news.trashed_news_restore'), $trashedRecord->id, ['class' => 'btn btn-primary btn-xs'] ) !!}
                                         {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
                                         {!! Form::close() !!}
                                     </div>
@@ -78,21 +92,6 @@
                             </tr>
                         @endforeach
                         </tbody>
-                        <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>{{trans('news.title')}}</th>
-                            <th>{{trans('news.hit')}}</th>
-                            <th>{{trans('news.band_news')}}</th>
-                            <th>{{trans('news.box_cuff')}}</th>
-                            <th>{{trans('news.is_cuff')}}</th>
-                            <th>{{trans('news.break_news')}}</th>
-                            <th>{{trans('news.is_comment')}}</th>
-                            <th>{{trans('news.main_cuff')}}</th>
-                            <th>{{trans('news.mini_cuff')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
-                        </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->
@@ -103,4 +102,10 @@
         <!-- /.col -->
     </div>
 
+@endsection
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('news','news_management');
+    </script>
 @endsection

@@ -1,164 +1,165 @@
 @extends($activeTheme .'::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('news::photo.management')}}
+            <small>{{trans('news::photo.news_create_edit')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('photo.index') !!}">{{trans('news::photo.management')}}</a></li>
+            <li class="active">{{trans('news::photo.news_create_edit')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('news::photo.management')}}</h3>
-            <!--Top header end -->
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['photo.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'photo.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
 
-            <!--Top breadcrumb start -->
-            <ol class="breadcrumb">
-                <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('photo.index') !!}"> {{ trans('news::photo.news_categories') }} </a></li>
-                <li class="active"> {{ trans('news::common.add_update') }}</li>
-            </ol>
-            <!--Top breadcrumb start -->
-        </div>
-    </div>
     <!-- Main Content Element  Start-->
     <div class="row">
-        <div class="col-md-6">
-            <div class="panel panel-light-blue">
-                <div class="panel-heading">
-                    {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
+        <div class="col-lg-8" id="content">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('news::photo.news_create_edit')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
                 </div>
-
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['photo.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'photo.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
-
-                <div class="panel-body">
+                <!-- /.box-header -->
+                <div class="box-body">
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('photo_gallery_id', trans('news::news.photo_gallery_id'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::select('photo_gallery_id', $photoGalleryList , $record->photo_gallery_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
-                            </div>
-                        </div>
+                        {!! Form::label('name', trans('news::photo.name'),['class'=> 'control-label']) !!}
+                        {!! Form::text('name', $record->name, ['placeholder' => trans('news::photo.name') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('name', trans('news::photo.name'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('name', $record->name, ['placeholder' => trans('news::photo.name') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
+                        {!! Form::label('photo_gallery_id', trans('news::photo.photo_gallery'),['class'=> 'control-label']) !!}
+                        {!! Form::select('photo_gallery_id', $photoGalleryList , $record->photo_gallery_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('slug', trans('news::photo.slug'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
+                        {!! Form::label('description', trans('news::photo.description'),['class'=> 'control-label']) !!}
+                        {!! Form::text('description', $record->description, ['placeholder' => trans('news::photo.description') ,'class' => 'form-control']) !!}
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                {!! Form::label('slug', trans('news::photo.slug'),['class'=> 'control-label']) !!}
                                 {!! Form::text('slug', $record->url, ['placeholder' => trans('news::photo.slug') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('file', trans('news::photo.file'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::file('file') !!}
-                                <img id="preview" src="#" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('link', trans('news::photo.link'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                {!! Form::label('link', trans('news::photo.link'),['class'=> 'control-label']) !!}
                                 {!! Form::text('link', $record->link, ['placeholder' => trans('news::photo.link') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('description', trans('news::photo.description'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('description', $record->description, ['placeholder' => trans('news::photo.description') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('keywords', trans('news::photo.keywords'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('news::photo.keywords') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('order', trans('news::photo.order'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                {!! Form::label('order', trans('news::photo.order'),['class'=> 'control-label']) !!}
                                 {!! Form::number('order', $record->order, ['placeholder' => trans('news::photo.order') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <div class="row">
-                            {{trans('news::common.status')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                        <i></i> {{trans('news::common.is_active')}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                        <label>
+                            {!! Form::checkbox('is_active', null , $record->is_active) !!}
+                            {{trans('news::common.is_active')}}
+                        </label>
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-4" id="sidebar">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('news::photo.photo')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        {!! Form::label('file', trans('news::photo.file'),['class'=> 'control-label','style'=>'width:100%']) !!}
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                            <div>
+                                <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('news::photo.select_image')}}</span><span class="fileinput-exists">{{trans('news::photo.change')}}</span>{!! Form::file('file') !!}</span>
+                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('news::photo.remove')}}</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
-            </div>
-        </div>
+                <!-- /.box-body -->
+            </div><!-- /.box -->
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('news::photo.keywords')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        {!! Form::label('keywords', trans('news::photo.keywords'),['class'=> 'control-label','style'=>'width:100%']) !!}
+                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('news::photo.keywords') ,'class' => 'form-control tagsinput']) !!}
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col-lg-6 -->
+
     </div><!-- end row -->
     <!-- Main Content Element  End-->
-</div><!-- end container-fluid -->
+    {!! Form::close() !!}
 @endsection
 
 @section('css')
-    <style>
-        #preview {display: none;}
-        .display {display: block !important;}
-    </style>
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 @endsection
-
 @section('js')
-
-    <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                $( "#preview" ).addClass( "display" );
-                reader.onload = function (e) {
-                    $('#preview').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#file").change(function(){
-            readURL(this);
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.fileinput').fileinput();
+            $('.select2').select2();
+            $('.tagsinput').tagsinput();
         });
+        $(window).resize(function () {
+            $('.select2').select2();
+            $('.tagsinput').tagsinput();
+        });
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#sidebar,#content').theiaStickySidebar();
+        });
+        //active menu
+        activeMenu('photo','news_management');
     </script>
 @endsection
