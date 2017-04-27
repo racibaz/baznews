@@ -29,7 +29,7 @@ class CityController extends BackendController
     {
         $records = $this->repo->findAll();
 //        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
-        return view('developer.index');
+        return view('home');
 
     }
 
