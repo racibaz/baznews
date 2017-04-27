@@ -15,13 +15,6 @@
 @section('content')
     <div class="row">
         <div class="col-xs-12">
-            <div id="cityy" >
-                <passport-clients></passport-clients>
-                <passport-authorized-clients></passport-authorized-clients>
-                <passport-personal-access-tokens></passport-personal-access-tokens>
-            </div>
-        </div>
-        <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
                 <a href="{{ route('city.create') }}" class="btn btn-success">
                     <i class="fa fa-plus"></i> {{ trans('city.create') }}

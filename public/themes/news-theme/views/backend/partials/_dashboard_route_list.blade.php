@@ -47,8 +47,7 @@
 @permission('index-event')<li data-name="event"><a href="{!! route('event.index') !!}"><i class="fa fa-calendar"></i> <span>{{trans('dashboard.events')}}</span></a></li>@endpermission
 @permission('index-modulemanager')<li data-name="module_manager"><a href="{!! route('module_manager.index') !!}"><i class="fa fa-th"></i> <span>{{trans('dashboard.module_managers')}}</span></a></li>@endpermission
 @permission('index-thememanager')<li data-name="theme_manager"><a href="{!! route('theme_manager.index') !!}"><i class="fa fa-file-code-o"></i> <span>{{trans('dashboard.theme_managers')}}</span></a></li>@endpermission
-
-
+@permission('index-apimanager')<li data-name="api_manager"><a href="{!! route('api_manager') !!}"><i class="fa fa-file-code-o"></i> <span>{{trans('dashboard.api_manager')}}</span></a></li>@endpermission
 
 
 <li class="header">MODÜLLER</li>

@@ -1284,6 +1284,12 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
 
+        //api_manager
+        $api_manager = Permission::create([
+            'name'          => 'index-apimanager',
+            'display_name'  => 'API Management',
+            'is_active'     => 1,
+        ]);
 
 
 
@@ -1503,6 +1509,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($language5);
         $super_admin->permissions()->attach($language6);
         $super_admin->permissions()->attach($language7);
+        $super_admin->permissions()->attach($api_manager);
 
     }
 }
