@@ -1,81 +1,69 @@
 @extends($activeTheme .'::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('news::news_source.management')}}
+            <small>{{trans('news::news_source.create_edit')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('news_source.index') !!}">{{trans('news::news_source.management')}}</a></li>
+            <li class="active">{{trans('news::news_source.create_edit')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('news::news_source.management')}}</h3>
-            <!--Top header end -->
-
-            <!--Top breadcrumb start -->
-            <ol class="breadcrumb">
-                <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('news_source.index') !!}"> {{ trans('news::news_source.news_categories') }} </a></li>
-                <li class="active"> {{ trans('news::common.add_update') }}</li>
-            </ol>
-            <!--Top breadcrumb start -->
-        </div>
-    </div>
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['news_source.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'news_source.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
     <!-- Main Content Element  Start-->
     <div class="row">
         <div class="col-md-6">
-            <div class="panel panel-light-blue">
-                <div class="panel-heading">
-                    {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('news::news_source.create_edit')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
                 </div>
-
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['news_source.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'news_source.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
-
-                <div class="panel-body">
-
+                <!-- /.box-header -->
+                <div class="box-body">
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('name', trans('news::news_source.name'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('name', $record->name, ['placeholder' => trans('news::news_source.name') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
+                        {!! Form::label('name', trans('news::news_source.name'),['class'=> 'control-label']) !!}
+                        {!! Form::text('name', $record->name, ['placeholder' => trans('news::news_source.name') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('url', trans('news::news_source.url'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('url', $record->url, ['placeholder' => trans('news::news_source.url') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
+                        {!! Form::label('url', trans('news::news_source.url'),['class'=> 'control-label']) !!}
+                        {!! Form::text('url', $record->url, ['placeholder' => trans('news::news_source.url') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            {{trans('news::common.status')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                        <i></i> {{trans('news::common.is_active')}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
-                            </div>
-                        </div>
+                        <label>
+                            {!! Form::checkbox('is_active', null , $record->is_active) !!}
+                            {{trans('news::common.is_active')}}
+                        </label>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <div class="form-group">
+                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div><!-- end row -->
+    {!! Form::close() !!}
     <!-- Main Content Element  End-->
-</div><!-- end container-fluid -->
+@endsection
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('news_source','news_management');
+    </script>
 @endsection

@@ -537,6 +537,6 @@
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
         //active menu
-        activeMenu('setting','general_setting');
+        activeMenu('news','news_management');
     </script>
 @endsection

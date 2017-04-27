@@ -10,6 +10,7 @@ return[
     'news_manager'=>'Haber Yönetimi',
     'news'=>'Haberler',
     'news_categories'=>'Haber Kategorileri',
+    'news_settings'=>'Haber Ayarları',
     'future_news'=>'Zamanlanmış Haberler',
     'news_source'=>'Haber Kaynakları',
     'photo_category'=>'Fotoğraf Kategorileri',
@@ -18,7 +19,6 @@ return[
     'video_category'=>'Video Kategorileri',
     'video_gallery'=>'Video Galerileri',
     'video'=>'Videolar',
-    'news_settings'=>'Video Ayarları',
 
 
 ];
