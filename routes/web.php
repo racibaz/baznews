@@ -89,7 +89,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('setting/getAllRedisKey', 'Backend\SettingController@getAllRedisKey')->name('getAllRedisKey');
     Route::get('setting/flushAllCache', 'Backend\SettingController@flushAllCache')->name('flushAllCache');
     Route::resource('setting', 'Backend\SettingController');
-    Route::get('remove_home_page_cache', 'Backend\BackendController@removeHomePageCache')->name('removeHomePageCache');
+    Route::get('remove_home_page_cache', 'Backend\BackendController@removeHomePageCacheWithRedirect')->name('removeHomePageCache');
     Route::get('remove_cache_key/{cacheName}', 'Backend\BackendController@removeCacheKey')->name('removeCacheKey');
 
     Route::get('api_manager', 'Backend\ApiManagerController@index')->name('api_manager');

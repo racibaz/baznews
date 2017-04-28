@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\AdvertisementRepository;
-use Auth;
-use Log;
-use Route;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Route;
 
 class BackendController extends Controller
 {
@@ -85,6 +85,7 @@ class BackendController extends Controller
 
     /**
      * @param $cachetags
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function removeCacheTags($cachetags)
     {
@@ -95,6 +96,13 @@ class BackendController extends Controller
     public function removeHomePageCache()
     {
         Cache::tags('homePage')->flush();
+    }
+
+    public function removeHomePageCacheWithRedirect()
+    {
+        $this->removeHomePageCache();
+
+        return redirect()->route('dashboard');
     }
 
 

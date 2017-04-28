@@ -1133,6 +1133,11 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $backend3 = Permission::create([
+            'name'          => 'removeHomePageCacheWithRedirect-backend',
+            'display_name'  => 'removeHomePageCacheWithRedirect Silme',
+            'is_active'     => 1,
+        ]);
 
         //advertisement
         $advertisement1 = Permission::create([
@@ -1485,6 +1490,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($setting17);
         $super_admin->permissions()->attach($backend1);
         $super_admin->permissions()->attach($backend2);
+        $super_admin->permissions()->attach($backend3);
         $super_admin->permissions()->attach($advertisement1);
         $super_admin->permissions()->attach($advertisement2);
         $super_admin->permissions()->attach($advertisement3);
