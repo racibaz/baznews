@@ -14,6 +14,7 @@ return[
     'future_news'=>'Zamanlanmış Haberler',
     'news_source'=>'Haber Kaynakları',
     'photo_category'=>'Fotoğraf Kategorileri',
+    'photo_gallery'=>'Fotoğraf Galerileri',
     'photo'=>'Fotoğraflar',
     'recommendation_news'=>'Önerilen Haberler',
     'video_category'=>'Video Kategorileri',

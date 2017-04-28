@@ -13,6 +13,7 @@
         @permission('index-futurenews')<li data-name="future_news"><a href="{!! route('future_news.index') !!}"><i class="fa fa-newspaper-o"></i> <span>{{trans('news::dashboard.future_news')}}</span></a></li>@endpermission
         @permission('index-newssource')<li data-name="news_source"><a href="{!! route('news_source.index') !!}"><i class="fa fa-road"></i> <span>{{trans('news::dashboard.news_source')}}</span></a></li>@endpermission
         @permission('index-photocategory')<li data-name="photo_category"><a href="{!! route('photo_category.index') !!}"><i class="fa fa-list-ul"></i> <span>{{trans('news::dashboard.photo_category')}}</span></a></li>@endpermission
+        @permission('index-photogallery')<li data-name="photo_gallery"><a href="{!! route('photo_gallery.index') !!}"><i class="fa fa-list-ul"></i> <span>{{trans('news::dashboard.photo_gallery')}}</span></a></li>@endpermission
         @permission('index-newssetting')<li data-name="news_setting"><a href="{!! route('news_setting.index') !!}"><i class="fa fa-cog"></i> <span>{{trans('news::dashboard.news_settings')}}</span></a></li>@endpermission
         @permission('index-photo')<li data-name="photo"><a href="{!! route('photo.index') !!}"><i class="fa fa-photo"></i> <span>{{trans('news::dashboard.photo')}}</span></a></li>@endpermission
         @permission('index-recommendationnews')<li data-name="recommendation_news"><a href="{!! route('recommendation_news.index') !!}"><i class="fa fa-check-circle"></i> <span>{{trans('news::dashboard.recommendation_news')}}</span></a></li>@endpermission

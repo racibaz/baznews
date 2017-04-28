@@ -22,7 +22,7 @@
     <!-- Main Content Element  Start-->
     <div class="row">
         <div class="col-lg-8" id="content">
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{trans('news::photo.news_create_edit')}}</h3>
 
@@ -81,7 +81,7 @@
             </div><!-- /.box -->
         </div><!-- /.col-lg-6 -->
         <div class="col-lg-4" id="sidebar">
-            <div class="box box-default">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{trans('news::photo.photo')}}</h3>
 

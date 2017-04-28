@@ -1,155 +1,117 @@
 @extends($activeTheme .'::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('news::photo_gallery.management')}}
+            <small>{{trans('news::photo_category.create_edit')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('photo_gallery.index') !!}">{{trans('news::photo_gallery.management')}}</a></li>
+            <li class="active">{{trans('news::photo_gallery.create_edit')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('news::photo_gallery.management')}}</h3>
-            <!--Top header end -->
-
-            <!--Top breadcrumb start -->
-            <ol class="breadcrumb">
-                <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('photo_gallery.index') !!}"> {{ trans('news::photo_gallery.photo_galleries') }} </a></li>
-                <li class="active"> {{ trans('news::common.add_update') }}</li>
-            </ol>
-            <!--Top breadcrumb start -->
-        </div>
-    </div>
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['photo_gallery.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'photo_gallery.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
     <!-- Main Content Element  Start-->
     <div class="row">
+        <div class="col-lg-6">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('news::photo_category.news_create_edit')}}</h3>
 
-        @if(isset($record->id))
-            {!! Form::model($record, ['route' => ['photo_gallery.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-        @else
-            {!! Form::open(['route' => 'photo_gallery.store','method' => 'post', 'files' => 'true']) !!}
-        @endif
-
-        <div class="col-md-6">
-            <div class="panel panel-light-blue">
-                <div class="panel-heading">
-                    {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
                 </div>
-                <div class="panel-body">
+                <!-- /.box-header -->
+                <div class="box-body">
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('photo_category_id', trans('news::news.photo_category_id'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::select('photo_category_id', $photoCategories , $record->photo_category_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
-                            </div>
-                        </div>
+                        {!! Form::label('photo_category_id', trans('news::photo_gallery.photo_category_id'),['class'=> 'control-label']) !!}
+                        {!! Form::select('photo_category_id', $photoCategories , $record->photo_category_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('title', trans('news::photo_gallery.title'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('title', $record->name, ['placeholder' => trans('news::photo_gallery.title') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
+                        {!! Form::label('title', trans('news::photo_gallery.title'),['class'=> 'control-label']) !!}
+                        {!! Form::text('title', $record->name, ['placeholder' => trans('news::photo_gallery.title') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('slug', trans('news::photo_gallery.slug'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('news::photo_gallery.slug') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
+                        {!! Form::label('slug', trans('news::photo_gallery.slug'),['class'=> 'control-label']) !!}
+                        {!! Form::text('slug', $record->slug, ['placeholder' => trans('news::photo_gallery.slug') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('short_url', trans('news::photo_gallery.short_url'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('short_url', $record->short_url, ['placeholder' => trans('news::photo_gallery.short_url') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
+                        {!! Form::label('short_url', trans('news::photo_gallery.short_url'),['class'=> 'control-label']) !!}
+                        {!! Form::text('short_url', $record->short_url, ['placeholder' => trans('news::photo_gallery.short_url') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('description', trans('news::photo_gallery.description'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('news::photo_gallery.description') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
+                        {!! Form::label('description', trans('news::photo_gallery.description'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('news::photo_gallery.description') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('keywords', trans('news::photo_gallery.keywords'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::textarea('keywords', $record->keywords, ['placeholder' => trans('news::photo_gallery.keywords') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
+                        {!! Form::label('keywords', trans('news::photo_gallery.keywords'),['class'=> 'control-label']) !!}
+                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('news::photo_gallery.keywords') ,'class' => 'form-control tagsinput']) !!}
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('thumbnail', trans('news::photo_gallery.thumbnail'),['class'=> 'col-lg-2 control-label']) !!}
+                        {!! Form::label('thumbnail', trans('news::photo_gallery.thumbnail'),['class'=> 'control-label','style'=>'width:100%;']) !!}
 
-
-                            <div class="col-lg-10">
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                                 <img src="{{asset('/gallery/' . $record->id . '/photos/' . $record->thumbnail)}}">
                             </div>
+                            <div>
+                                <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('news::photo_gallery.select_image')}}</span><span class="fileinput-exists">{{trans('news::photo_gallery.change')}}</span>{!! Form::file('thumbnail') !!}</span>
+                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('news::photo_gallery.remove')}}</a>
+                            </div>
+                        </div>
+                    </div>
 
-                            {{--<div class="col-lg-10">--}}
-                                {{--{!! Form::file('thumbnail') !!}--}}
-                            {{--</div>--}}
-                        </div>
-                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col-lg-6 -->
+
+        <div class="col-md-6">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('news::photo_gallery.status') }}</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
                     <div class="form-group">
-                        <div class="row">
+                        <label>
+                            {!! Form::checkbox('is_cuff', null , $record->is_cuff) !!}
                             {{trans('news::photo_gallery.is_cuff')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('is_cuff', null , $record->is_cuff) !!}
-                                        <i></i> {{trans('news::photo_gallery.is_cuff')}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                        </label>
                     </div>
                     <div class="form-group">
-                        <div class="row">
-                            {{trans('news::common.status')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                        <i></i> {{trans('news::common.is_active')}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                        <label>
+                            {!! Form::checkbox('is_active', null , $record->is_active) !!}
+                            {{trans('news::common.is_active')}}
+                        </label>
                     </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
                     <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
-                            </div>
-                        </div>
+                        <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div>
             </div>
-        </div>
+            <!-- /.box -->
 
-        <div class="col-md-6">
-            <!-- general form elements disabled -->
-            <div class="box box-warning">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('news::photo_gallery.tags') }}</h3>
                 </div>
-
                 <!-- /.box-header -->
                 <div class="box-body">
-                    {{--<form role="form">--}}
-
                     {!!  Form::hidden('photo_gallery_id', $record->id) !!}
-
                     <div class="form-group">
                         <div class="row">
                             {!! Form::label('tags', trans('news::photo_gallery.tags'),['class'=> 'col-lg-2 control-label']) !!}
@@ -159,31 +121,33 @@
                             </div>
                         </div>
                     </div>
-                    <div class="box-footer">
-                    </div>
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
         </div>
-
-        {!! Form::close() !!}
-
     </div><!-- end row -->
     <!-- Main Content Element  End-->
-</div><!-- end container-fluid -->
+    {!! Form::close() !!}
 @endsection
-
 @section('css')
-    <link href="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
 @endsection
-
 @section('js')
-    <script src="{{ Theme::asset('default-theme::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
     <script>
-        $(function () {
-            //Initialize Select2 Elements
-            $(".select2").select2();
+        $(document).ready(function() {
+            $('.fileinput').fileinput();
+            $('.select2').select2();
+            $('.tagsinput').tagsinput();
         });
+        $(window).resize(function () {
+            $('.select2').select2();
+            $('.tagsinput').tagsinput();
+        });
+        //active menu
+        activeMenu('photo_gallery','news_management');
     </script>
 @endsection
