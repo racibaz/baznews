@@ -88,7 +88,7 @@ class PhotoController extends BackendController
                 Rule::unique('photo_galleries')->ignore($record->id),
             ],
             'subtitle' => 'max:255',
-            'file' => 'image|max:255',
+            'file' => 'image',
             'keywords' => 'required|max:255',
             'order' => 'integer',
         );

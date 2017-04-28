@@ -329,8 +329,9 @@ class NewsController extends BackendController
             'spot' => 'required',
             'short_link' => 'string|max:255',
             'content' => 'required',
-            'cuff_photo' => 'image|max:255',
-            'thumbnail' => 'image|max:255',
+            'cuff_photo' => 'image',
+//            'mimes:jpeg,bmp,png'
+            'thumbnail' => 'image',
             'cuff_direct_link' => 'url|max:255',
         );
         $v = Validator::make($input, $rules);
