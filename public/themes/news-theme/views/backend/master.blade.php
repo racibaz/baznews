@@ -307,7 +307,7 @@
 <script src="{{ Theme::asset($activeTheme .'::js/functions.js') }}"></script>
 
 <!-- Vue.js App -->
-<script src="{{ asset('js/app.js') }}"></script>
+{{--<script src="{{ asset('js/app.js') }}"></script>--}}
 
 <script type="text/javascript">
     $(document).ready(function () {
