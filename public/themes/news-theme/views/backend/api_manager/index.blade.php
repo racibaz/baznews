@@ -17,3 +17,7 @@
     <passport-authorized-clients></passport-authorized-clients>
     <passport-personal-access-tokens></passport-personal-access-tokens>
 @endsection
+@section('js')
+    <!-- Vue.js App -->
+    <script src="{{ asset('js/app.js') }}"></script>
+@endsection
