@@ -74,8 +74,8 @@
                             @foreach($photo_gallery->photos as $photo)
                             <tr>
                                 <td><a href="{{asset('gallery/' . $photo_gallery->id . '/photos/' . $photo->file)}}" class="thumbnail" style="display: block;overflow: hidden;height:120px;width:120px;"><img src="{{asset('gallery/' . $photo_gallery->id . '/photos/' . $photo->file)}}" height="73"></a></td>
-                                <td>{!! Form::text('subtitle/'. $photo->id, $photo->subtitle, ['placeholder' => trans('news::photo_gallery.subtitle') ,'class' => 'form-control']) !!}</td>
-                                <td>{!! Form::textarea('content/'. $photo->id, $photo->content, ['placeholder' => trans('news::photo_gallery.subtitle') ,'class' => 'form-control','rows'=>'2']) !!}</td>
+                                <td>{!! Form::text('subtitle/'. $photo->id, $photo->subtitle, ['placeholder' => trans('news::photo_gallery.title') ,'class' => 'form-control']) !!}</td>
+                                <td>{!! Form::textarea('content/'. $photo->id, $photo->content, ['placeholder' => trans('news::photo_gallery.content') ,'class' => 'form-control','rows'=>'2']) !!}</td>
                                 <td>
                                     <label>
                                         {!! Form::checkbox('delete/' . $photo->id, null , null) !!}
@@ -84,7 +84,7 @@
                                 </td>
                                 <td>
                                     <label>
-                                        {!! Form::radio('is_cuff_thumbnail', $photo->id, $photo->file == $photo_gallery->thumbnail ? true : false ) !!}
+                                        {!! Form::checkbox('is_cuff_thumbnail', $photo->id, $photo->file == $photo_gallery->thumbnail ? true : false ) !!}
                                         {{trans('news::photo_gallery.is_photo_gallery_cuff_thumbnail')}}
                                     </label>
                                 </td>
