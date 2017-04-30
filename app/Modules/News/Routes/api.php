@@ -1,33 +1,28 @@
 <?php
 
-use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your module. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
+    Route::get('news/{id}', 'Api\NewsController@show');
+});
 
-//$api = app('Dingo\Api\Routing\Router');
+
+//Route::group(['prefix' => 'v1'], function () {
 //
+//    Route::get('news/{id}', 'App\Modules\News\Http\Controllers\Api\NewsController@news');
 //
+//    Route::get('/', 'TopicController@index');
+//    Route::get('/{topic}', 'TopicController@show');
+//    Route::post('/', 'TopicController@store')->middleware('auth:api');
+//    Route::patch('/{topic}', 'TopicController@update')->middleware('auth:api');
+//    Route::delete('/{topic}', 'TopicController@destroy')->middleware('auth:api');
 //
-//$api->version('v1', function ($api) {
+//    Route::group(['prefix' => '/{topic}/posts'], function () {
+//        Route::post('/', 'PostController@store')->middleware('auth:api');
+//        Route::patch('/{post}', 'PostController@update')->middleware('auth:api');
+//        Route::delete('/{post}', 'PostController@destroy')->middleware('auth:api');
 //
-//    $api->get('/', 'App\Modules\News\Http\Controllers\Api\NewsController@dashboard');
-//    $api->get('news/{count?}', 'App\Modules\News\Http\Controllers\Api\NewsController@getNews')->where('count', '[0-9]+');
-//    $api->get('getNewsById/{id}', 'App\Modules\News\Http\Controllers\Api\NewsController@getNewsById')->where('id', '[0-9]+');
-//
+//        Route::group(['prefix' => '/{post}/likes'], function () {
+//            Route::post('/', 'PostLikeController@store')->middleware('auth:api');
+//        });
+//    });
 //});
-
-
-
-
-//Route::get('/news', function (Request $request) {
-//    // return $request->news();
-//})->middleware('auth:api');

@@ -199,6 +199,7 @@ return [
         Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
+        Spatie\Fractal\FractalServiceProvider::class,
     ],
 
     /*
@@ -260,6 +261,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
         'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
+        'Fractal' => Spatie\Fractal\FractalFacade::class,
 
         ////TODO  THEME İN COMPONET GİBİ BİRŞEY VARDI ONA BAKILACAK
     ],
