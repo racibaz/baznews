@@ -3,18 +3,31 @@
 namespace App\Modules\News\Transformers;
 
 use App\Modules\News\Models\News;
+use App\Modules\News\Repositories\NewsRepository;
 use App\Transformers\CityTransformer;
 use App\Transformers\CountryTransformer;
 use App\Transformers\UserTransformer;
 use League\Fractal\TransformerAbstract;
+use Illuminate\Support\Facades\Cache;
 
 class NewsTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['user', 'country', 'city', 'news_source'];
+    protected $availableIncludes = [
+        'user',
+        'country',
+        'city',
+        'news_source',
+        'news_categories',
+        'photo_galleries',
+        'video_galleries',
+        'photos',
+        'videos',
+        'related_news'
+    ];
 
     public function transform(News $record)
     {
-        return [
+        $data = [
             'id' => (int) $record->id,
             'title' => $record->title,
             'small_title' => $record->small_title,
@@ -30,23 +43,36 @@ class NewsTransformer extends TransformerAbstract
             'cuff_direct_link' => $record->cuff_direct_link,
             'video_embed' => $record->video_embed,
             'news_type' => $record->news_type,
-            'map_text' => $record->map_text,
-            'hit' => $record->hit,
-            'status' => $record->status,
-            'band_news' => $record->band_news,
-            'box_cuff' => $record->box_cuff,
-            'is_cuff' => $record->is_cuff,
-            'break_news' => $record->break_news,
-            'main_cuff' => $record->main_cuff,
-            'mini_cuff' => $record->mini_cuff,
             'is_comment' => $record->is_comment,
             'is_show_editor_profile' => $record->is_show_editor_profile,
             'is_show_previous_and_next_news' => $record->is_show_previous_and_next_news,
-            'is_active' => $record->is_active,
             'created_at' => $record->created_at,
             'updated_at' => $record->updated_at,
-            'deleted_at' => $record->deleted_at,
         ];
+
+        if($record->is_show_previous_and_next_news){
+
+            $newsRepo = new NewsRepository();
+            $previousNews = $newsRepo->previousNews($record);
+            if(empty($previousNews))
+                $previousNews = $newsRepo->lastRecord($record);
+
+            $data['previous_news'] = [
+                'title' =>  $previousNews->title,
+                'link' =>  route('show_news', ['slug' => $previousNews->slug]),
+            ];
+
+            $nextNews = $newsRepo->nextNews($record);
+            if(empty($nextNews))
+                $nextNews = $newsRepo->firstRecord();
+
+            $data['next_news'] = [
+                'title' =>  $nextNews->title,
+                'link' =>  route('show_news', ['slug' => $nextNews->slug]),
+            ];
+        }
+
+        return $data;
     }
 
     public function includeUser(News $record)
@@ -69,8 +95,33 @@ class NewsTransformer extends TransformerAbstract
         return $this->item($record->news_source, new NewsSourceTransformer);
     }
 
-//    public function includePosts(Topic $topic)
-//    {
-//        return $this->collection($topic->posts, new PostTransformer);
-//    }
+    public function includeNewsCategories(News $record)
+    {
+        return $this->collection($record->news_categories, new NewsCategoryTransformer);
+    }
+
+    public function includePhotoGalleries(News $record)
+    {
+        return $this->collection($record->photo_galleries, new PhotoGalleryTransformer);
+    }
+
+    public function includeVideoGalleries(News $record)
+    {
+        return $this->collection($record->video_galleries, new VideoGalleryTransformer);
+    }
+
+    public function includePhotos(News $record)
+    {
+        return $this->collection($record->photos, new PhotoTransformer);
+    }
+
+    public function includeVideos(News $record)
+    {
+        return $this->collection($record->videos, new VideoTransformer);
+    }
+
+    public function includeRelatedNews(News $record)
+    {
+        return $this->collection($record->related_news, new RelatedNewsTransformer);
+    }
 }

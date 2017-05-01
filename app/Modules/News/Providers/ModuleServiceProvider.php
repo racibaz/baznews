@@ -23,10 +23,6 @@ class ModuleServiceProvider extends ServiceProvider
 
             Cache::tags(['NewsCategory', 'News'])->rememberForever('cuffNewsCategories', function () {
 
-                if(! \Schema::hasTable('news')) {
-                    return null;
-                }
-
                 $newsCategoryRepository = new NewsCategoryRepository();
                 $cuffNewsCategories = $newsCategoryRepository->with(['news'])->where('is_cuff', 1)->where('is_active', 1)->findAll();
                 View::share('cuffNewsCategories', $cuffNewsCategories);

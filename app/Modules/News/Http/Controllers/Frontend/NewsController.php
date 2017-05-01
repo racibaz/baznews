@@ -24,27 +24,6 @@ class NewsController extends Controller
         return $this->redirectViewName . $this->view . $methodName;
     }
 
-
-    public function index()
-    {
-        $records = $this->repo->orderBy('updated_at', 'desc')->findAll();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
-    }
-
-
-    public function getNewsBySlug($slug)
-    {
-        return Cache::remember('news:'.$slug, 100, function() use($slug) {
-
-            $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
-            $record = $this->repo->where('status', 1)->findBy('slug',$slug);
-
-            return Theme::view('news::frontend.news.getNewsBySlug', compact(['record']))->render();
-        });
-
-    }
-
-
     public function show($slug)
     {
         $id =  substr(strrchr($slug, '-'), 1 );
@@ -52,7 +31,6 @@ class NewsController extends Controller
 
             $previousNews = null;
             $nextNews = null;
-            $relatedNews = [];
             $record = $this->repo
                                 ->with([
                                     'news_categories',
@@ -73,35 +51,18 @@ class NewsController extends Controller
 
             if($record->is_show_previous_and_next_news){
 
-                $previousNews = $this->repo
-                    ->where('id', '<', $record->id)
-                    ->where('status',1)
-                    ->where('is_active',1)
-                    ->findAll()
-                    ->last();
+                $previousNews = $this->repo->previousNews($record);
 
                 if(empty($previousNews))
-                    $previousNews = $this->repo->where('status',1)->where('is_active',1)->findAll()->last();
+                    $previousNews = $this->repo->lastRecord($record);
 
-
-                $nextNews = $this->repo
-                    ->where('id', '>' ,$record->id)
-                    ->where('status',1)
-                    ->where('is_active',1)
-                    ->findAll()
-                    ->first();
+                $nextNews = $this->repo->nextNews($record);
 
                 if(empty($nextNews))
-                    $nextNews =$this->repo->where('status',1)->where('is_active',1)->findAll()->first();
+                    $nextNews = $this->repo->firstRecord();
             }
 
-
-
-            foreach ($record->related_news as $index => $related_news) {
-                array_push($relatedNews,$related_news->related_news_id);
-            }
-
-            $relatedNewsItems =  $this->repo->whereIn('id', $relatedNews)->findAll();
+            $relatedNewsItems =  $this->repo->relatedNews($record);
 
             return Theme::view('news::frontend.news.show', compact([
                 'record',
@@ -111,6 +72,4 @@ class NewsController extends Controller
             ]))->render();
         });
     }
-
-
 }

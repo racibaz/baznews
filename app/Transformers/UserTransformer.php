@@ -11,7 +11,14 @@ class UserTransformer extends TransformerAbstract
     {
         return [
             'id' => (int) $record->id,
-            'name' =>  $record->name
+            'name' =>  $record->name,
+            'facebook' =>  $record->facebook,
+            'twitter' =>  $record->twitter,
+            'pinterest' =>  $record->pinterest,
+            'linkedin' =>  $record->linkedin,
+            'youtube' =>  $record->youtube,
+            'web_site' =>  $record->web_site,
+            'bio_note' =>  $record->bio_note,
         ];
     }
 }
