@@ -136,4 +136,5 @@ class News extends Model
     {
         return News::pluck('title', 'id');
     }
+
 }

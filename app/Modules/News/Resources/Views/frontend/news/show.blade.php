@@ -121,7 +121,7 @@
                     </div><!-- /.content -->
 
                 </article><!-- /.news-article -->
-                @if($relatedNewsItems->count())
+                @if($relatedNewsItems)
                     <div class="relation-news">
                         <div class="title-section">
                             <h1>

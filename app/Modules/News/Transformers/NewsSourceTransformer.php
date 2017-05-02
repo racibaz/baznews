@@ -10,8 +10,9 @@ class NewsSourceTransformer extends TransformerAbstract
     public function transform(NewsSource $record)
     {
         return [
-            'id' => (int) $record->id,
-            'name' =>  $record->name
+            'id' =>  $record->id,
+            'name' =>  $record->name,
+            'url' =>  $record->url,
         ];
     }
 }

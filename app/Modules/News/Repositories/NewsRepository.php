@@ -10,4 +10,74 @@ class NewsRepository extends EloquentRepository
 
     protected $model = 'App\Modules\News\Models\News';
 
+    public function previousNews($record)
+    {
+        $previousNews = $this
+            ->where('id', '<', $record->id)
+            ->where('status',1)
+            ->where('is_active',1)
+            ->findAll()
+            ->last();
+
+        if(!empty($previousNews))
+            return $previousNews;
+        else
+            return null;
+    }
+
+    public function nextNews($record)
+    {
+        $nextNews = $this
+            ->where('id', '>' ,$record->id)
+            ->where('status',1)
+            ->where('is_active',1)
+            ->findAll()
+            ->first();
+
+        if(!empty($nextNews))
+            return $nextNews;
+        else
+            return null;
+    }
+
+
+    public function lastRecord()
+    {
+        return $this
+            ->where('status',1)
+            ->where('is_active',1)
+            ->findAll()
+            ->last();
+    }
+
+
+    public function firstRecord()
+    {
+        return $this
+            ->where('status',1)
+            ->where('is_active',1)
+            ->findAll()
+            ->first();
+    }
+
+
+    public function relatedNews($record): ?array
+    {
+        $relatedNews = [];
+        //filter veya map vs.. ye dönüştürülebilinir.
+        foreach ($record->related_news as $related_news) {
+            array_push($relatedNews, $related_news->related_news_id);
+        }
+
+        //todo sadece belirli alanlar getirilebilinir.
+        $relatedNewsItems =  $this->whereIn('id', $relatedNews)->findAll();
+
+        if($relatedNewsItems->count())
+            return $relatedNewsItems;
+        else
+            return null;
+    }
+
+
+
 }
