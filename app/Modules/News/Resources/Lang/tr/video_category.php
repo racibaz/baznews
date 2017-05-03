@@ -7,14 +7,14 @@
  */
 
 return[
-    'name'=>'Video Adı',
+    'name'=>'Video Kategori Adı',
     'create'=>'Videolar',
     'tags'=>'Etiketler',
     'create_edit'=>'Oluştur/Düzenle',
     'is_comment'=>'Yorum Yaz',
     'status'=>'Durum',
-    'list'=>'Video Listesi',
-    'management'=>'Video Yönetimi',
+    'list'=>'Video Kategori Listesi',
+    'management'=>'Video Kategori Yönetimi',
     'video_category_id'=>'Video Kategorisi',
     'video_gallery_id'=>'Video Galerisi',
     'order'=>'Sıralama',
@@ -33,4 +33,10 @@ return[
     'change'=>'Değiştir',
     'file'=>'Dosya',
     'subtitle'=>'Altyazı',
+    'icon'=>'İkon',
+    'hit'=>'Hit',
+    'description'=>'Tanım',
+    '_lft'=>'Sol',
+    '_rgt'=>'Sağ',
+    'parent_id'=>'Üst Kategori',
 ];

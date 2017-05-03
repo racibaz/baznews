@@ -19,10 +19,10 @@
         {!! Form::open(['route' => 'video.store','method' => 'post', 'files' => 'true']) !!}
     @endif
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8" id="content">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Expandable</h3>
+                    <h3 class="box-title">{{trans('news::video.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -50,7 +50,7 @@
                         {!! Form::text('slug', $record->url, ['placeholder' => trans('news::video.slug') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('thumbnail', trans('news::video.thumbnail'),['class'=> 'control-label']) !!}
+                        {!! Form::label('thumbnail', trans('news::video.thumbnail'),['class'=> 'control-label','style'=>'width:100%;']) !!}
 
                         <div class="fileinput fileinput-new" data-provides="fileinput">
                             <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
@@ -69,8 +69,8 @@
                         {!! Form::textarea('content', $record->content, ['placeholder' => trans('news::video.content') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('keywords', trans('news::video.keywords'),['class'=> 'control-label']) !!}
-                        {!! Form::textarea('keywords', $record->keywords, ['placeholder' => trans('news::video.keywords') ,'class' => 'form-control']) !!}
+                        {!! Form::label('keywords', trans('news::video.keywords'),['class'=> 'control-label','style'=>'width:100%']) !!}
+                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('news::video.keywords') ,'class' => 'form-control tagsinput']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('order', trans('news::video.order'),['class'=> 'control-label']) !!}
@@ -80,7 +80,7 @@
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div><!-- /.col-lg-6 -->
-        <div class="col-lg-4">
+        <div class="col-lg-4" id="sidebar">
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('news::video.status') }}</h3>
@@ -102,7 +102,7 @@
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                            <i></i> {{trans('news::video.is_active')}}
+                            {{trans('news::video.is_active')}}
                         </label>
                     </div>
                 </div><!-- /.box-body -->
@@ -118,14 +118,30 @@
     {!! Form::close() !!}
 @endsection
 @section('css')
-    <link href="{{ Theme::asset($activeTheme.'::AdminLTE/plugins/select2/select2.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme.'::AdminLTE/plugins/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme.'::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme.'::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 @endsection
 @section('js')
+    <script src="{{ Theme::asset($activeTheme.'::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme.'::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme.'::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme.'::js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme.'::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
     <script>
         $(function () {
             //Initialize Select2 Elements
             $(".select2").select2();
+            $('.fileinput').fileinput();
+            $('.tagsinput').tagsinput();
+            /*--------------------------------------------------------
+             Sticky Sidebar
+             * --------------------------------------------------------*/
+            jQuery(document).ready(function() {
+                jQuery('#sidebar,#content').theiaStickySidebar();
+            });
+            //active menu
+            activeMenu('video','news_management');
         });
     </script>
 @endsection

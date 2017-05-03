@@ -1,4 +1,17 @@
 @extends($activeTheme .'::backend.master')
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('news::video_category.management')}}
+            <small>{{trans('news::video_category.list')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('video_category.index') !!}">{{trans('news::video_category.management')}}</a></li>
+            <li class="active">{{trans('news::video_category.list')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <div class="row">
@@ -10,7 +23,7 @@
             </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><strong>{{trans('video_category.management')}}</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('news::video_category.list')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -20,11 +33,12 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('video_category.name')}}</th>
-                            <th>{{trans('video_category.parent_id')}}</th>
-                            <th>{{trans('video_category.hit')}}</th>
-                            <th>{{trans('video_category.is_cuff')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('news::video_category.name')}}</th>
+                            <th>{{trans('news::video_category.parent_id')}}</th>
+                            <th>{{trans('news::video_category.hit')}}</th>
+                            <th>{{trans('news::video_category.is_cuff')}}</th>
+                            <th>{{trans('news::video_category.is_active')}}</th>
+                            <th>{{trans('news::video_category.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -35,7 +49,7 @@
                                     <td> {{$record->parent_id}} </td>
                                     <td> {{$record->hit}} </td>
                                     <td> {{$record->is_cuff}} </td>
-                                    <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('video_category.destroy',  $record))) !!}
@@ -50,16 +64,6 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>{{trans('video_category.name')}}</th>
-                            <th>{{trans('video_category.parent_id')}}</th>
-                            <th>{{trans('video_category.hit')}}</th>
-                            <th>{{trans('video_category.is_cuff')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
-                        </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->
@@ -69,4 +73,12 @@
         </div>
         <!-- /.col -->
     </div>
+@endsection
+@section('js')
+    <script>
+        $(function () {
+            //active menu
+            activeMenu('video_category','news_management');
+        });
+    </script>
 @endsection
