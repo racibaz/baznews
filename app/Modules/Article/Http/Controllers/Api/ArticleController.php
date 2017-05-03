@@ -7,101 +7,92 @@ use App\Modules\Article\Models\ArticleCategory;
 use App\Modules\Article\Transformers\ArticleCategoryTransformer;
 use App\Modules\Article\Transformers\ArticleTransformer;
 use Carbon\Carbon;
-use Dingo\Api\Routing\Helpers;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
 use App\Modules\Article\Repositories\ArticleRepository as Repo;
+use Illuminate\Support\Facades\Input;
 
 
 class ArticleController extends Controller
 {
-    use Helpers;
 
+    private $repo;
 
-
+    public function __construct(Repo $repo)
+    {
+        $this->repo = $repo;
+    }
 
     public function index()
     {
-        $expiresAt = Carbon::now()->addMinutes(10);
+        $input = Input::all();
+        $sort = isset($input['sort']) ? $input['sort'] : 'id';
+        $sortType = isset($input['sort_type']) ? $input['sort_type'] : 'asc';
+        $filters = isset($input['filters']) ? $input['filters'] : "*";
 
-        $records = Cache::remember('users', $expiresAt, function() {
+        return Cache::tags('Article','Api')->rememberForever('api.article.' . $sort . $sortType . $filters , function() use ($sort, $sortType, $filters) {
 
-            return   $this->repo->orderBy('updated_at', 'desc')->findAll();
+            if($filters == "*")
+                $filters = ["*"];
+            else
+                $filters = explode(',', $filters);
 
+            try{
+                $records = $this->repo
+                    ->where('status', 1)
+                    ->where('is_active', 1)
+                    ->orderBy($sort, $sortType)
+                    ->findAll($filters);
+
+                return  fractal()
+                    ->collection($records)
+                    ->parseIncludes([
+                        'user',
+                        'article_author',
+                        'article_categories'
+                    ])
+                    ->transformWith(new ArticleTransformer)
+                    ->toArray();
+
+            }catch (ModelNotFoundException $e){
+
+                return response()->setStatusCode(404);
+            }
         });
 
-        return $this->response->collection($records, new ArticleTransformer() )->setStatusCode(200);
-
     }
-
-
-    public function getArticles($count = null)
-    {
-        //DB::connection()->enableQueryLog();
-
-        $expiresAt = Carbon::now()->addMinutes(10);
-
-//        $records = Cache::remember('art', $expiresAt, function($count) {
-//
-//            if($count != null) {
-//
-//                return  Article::where('is_active',1)->take($count)->orderBy('updated_at', 'desc')->get();
-//
-//            }else {
-//
-//                return  Article::where('is_active',1)->orderBy('updated_at', 'desc')->get();
-//            }
-//
-//        });
-
-
-
-
-
-
-
-        if(Cache::has('articles'))
-        {
-
-            $records = Cache::get('articles');
-        }else
-        {
-            if($count != null) {
-
-                $records =   Article::where('is_active',1)->orderBy('updated_at', 'desc')->take($count)->get();
-
-            }else {
-                $records =  Article::where('is_active',1)->orderBy('updated_at', 'desc')->get();
-            }
-            Cache::store('redis')->put('articles', $records, 10);
-        }
-
-        //$queries  = DB::getQueryLog();
-        //print_r($queries);
-        return $this->response->collection($records, new ArticleTransformer() )->setStatusCode(200);
-    }
-
-
 
     public function show($id)
     {
-        $records = $this->repo->orderBy('updated_at', 'desc')->findAll();
+        return Cache::tags('Article','Api')->rememberForever('api.articleItem'.$id, function() use ($id) {
 
-        return $this->response->collection($records, new ArticleTransformer() )->setStatusCode(200);
-    }
+            try{
+                $record = $this->repo
+                    ->with([
+                        'user',
+                        'article_author',
+                        'article_categories',
+                    ])
+                    ->where('status', 1)
+                    ->where('is_active', 1)
+                    ->findBy('id',$id);
 
-    public function getArticleById($id)
-    {
-        $record = $this->repo->find($id);
 
-        return $this->response->item($record, new ArticleTransformer() )->setStatusCode(200);
-    }
+                return  fractal()
+                    ->item($record)
+                    ->parseIncludes([
+                        'user',
+                        'article_author',
+                        'article_categories',
+                    ])
+                    ->transformWith(new ArticleTransformer)
+                    ->toArray();
 
-    public function getArticleCategories()
-    {
-        $records = ArticleCategory::all();
+            }catch (ModelNotFoundException $e){
 
-        return $this->response->collection($records, new ArticleCategoryTransformer() )->setStatusCode(200);
+                return response()->setStatusCode(404);
+            }
+        });
     }
 }

@@ -7,6 +7,7 @@ use App\Modules\News\Transformers\NewsTransformer;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Cache;
 use App\Modules\News\Repositories\NewsRepository as Repo;
+use Illuminate\Support\Facades\Input;
 
 class NewsController extends Controller
 {
@@ -15,6 +16,40 @@ class NewsController extends Controller
     public function __construct(Repo $repo)
     {
         $this->repo = $repo;
+    }
+
+    public function index()
+    {
+        $input = Input::all();
+
+        $sort = isset($input['sort']) ? $input['sort'] : 'id';
+        $sortType = isset($input['sort_type']) ? $input['sort_type'] : 'asc';
+        $filters = isset($input['filters']) ? $input['filters'] : "*";
+
+        return Cache::tags('News','Api')->rememberForever('api.news.' . $sort . $sortType . $filters, function() use ($sort, $sortType, $filters) {
+
+            if($filters == "*")
+                $filters = ["*"];
+            else
+                $filters = explode(',', $filters);
+
+            try{
+                $records = $this->repo
+                    ->where('status', 1)
+                    ->where('is_active', 1)
+                    ->orderBy($sort, $sortType)
+                    ->findAll($filters);
+
+                return  fractal()
+                    ->collection($records)
+                    ->transformWith(new NewsTransformer())
+                    ->toJson();
+
+            }catch (ModelNotFoundException $e){
+
+                return response()->setStatusCode(404);
+            }
+        });
     }
 
     public function show($id)
