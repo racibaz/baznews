@@ -73,32 +73,12 @@
 
     {!! Form::close() !!}
 @endsection
-
 @section('css')
-    <style>
-        #preview {display: none;}
-        .display {display: block !important;}
-    </style>
+
 @endsection
-
 @section('js')
-
-    <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                $( "#preview" ).addClass( "display" );
-                reader.onload = function (e) {
-                    $('#preview').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#icon").change(function(){
-            readURL(this);
-        });
+    <script type="text/javascript">
+        //active menu
+        activeMenu('news_setting','news_management');
     </script>
 @endsection

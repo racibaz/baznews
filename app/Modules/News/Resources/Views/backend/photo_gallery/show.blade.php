@@ -25,10 +25,6 @@
                         <table class="table table-hover">
                             <tbody>
                             <tr>
-                                <th width="20%">{{trans('news::photo_gallery.id')}}</th>
-                                <td>{{$record->id}}</td>
-                            </tr>
-                            <tr>
                                 <th>{{trans('news::photo_gallery.photo_category_id')}}</th>
                                 <td>{{$record->photo_category_id}}</td>
                             </tr>

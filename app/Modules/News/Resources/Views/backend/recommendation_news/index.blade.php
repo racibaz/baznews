@@ -1,16 +1,29 @@
 @extends($activeTheme .'::backend.master')
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('news::recommendation_news.management')}}
+            <small>{{trans('news::recommendation_news.create_edit')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('recommendation_news.index') !!}">{{trans('news::recommendation_news.management')}}</a></li>
+            <li class="active">{{trans('news::recommendation_news.create_edit')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <div class="row">
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
                 <a href="{{ route('recommendation_news.create') }}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> {{ trans('common.create') }}
+                    <i class="fa fa-plus"></i> {{ trans('news::recommendation_news.create') }}
                 </a>
             </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><strong>{{trans('recommendation_news.management')}}</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('news::recommendation_news.management')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -18,11 +31,12 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('recommendation_news.news_id')}}</th>
-                            <th>{{trans('recommendation_news.user_id')}}</th>
-                            <th>{{trans('common.order')}}</th>
-                            <th>{{trans('common.is_cuff')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('news::recommendation_news.news_id')}}</th>
+                            <th>{{trans('news::recommendation_news.user_id')}}</th>
+                            <th>{{trans('news::recommendation_news.order')}}</th>
+                            <th>{{trans('news::recommendation_news.is_cuff')}}</th>
+                            <th>{{trans('news::recommendation_news.is_active')}}</th>
+                            <th>{{trans('news::recommendation_news.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,14 +46,13 @@
                                     <td>{!! link_to_route('recommendation_news.show', $record->news->title , $record, [] ) !!}</td>
                                     <td> {{$record->user->first_name}} </td>
                                     <td> {{$record->order }} </td>
-                                    <td>{!!$record->is_cuff ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('recommendation_news.destroy',  $record))) !!}
 
                                             {!! link_to_route('recommendation_news.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-
 
                                             {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
                                             {!! Form::close() !!}
@@ -48,16 +61,6 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>{{trans('recommendation_news.news_id')}}</th>
-                            <th>{{trans('recommendation_news.user_id')}}</th>
-                            <th>{{trans('common.order')}}</th>
-                            <th>{{trans('common.is_cuff')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
-                        </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->
@@ -67,4 +70,10 @@
         </div>
         <!-- /.col -->
     </div>
+@endsection
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('recommendation_news','news_management');
+    </script>
 @endsection
