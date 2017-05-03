@@ -4,7 +4,7 @@ namespace App\Modules\Article\Http\Controllers\Api;
 
 use App\Modules\Article\Models\Author;
 use App\Modules\Article\Repositories\AuthorRepository as Repo;
-use App\Modules\Article\Transformers\AuthorTransformer;
+use App\Modules\Article\Transformers\ArticleAuthorTransformer;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Cache;
@@ -33,6 +33,6 @@ class AuthorController extends Controller
             return $records;
         });
 
-        return $this->response->collection($records, new AuthorTransformer() )->setStatusCode(200);
+        return $this->response->collection($records, new ArticleAuthorTransformer() )->setStatusCode(200);
     }
 }

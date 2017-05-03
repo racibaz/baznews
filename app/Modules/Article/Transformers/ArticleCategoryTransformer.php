@@ -7,25 +7,20 @@ use League\Fractal\TransformerAbstract;
 
 class ArticleCategoryTransformer extends TransformerAbstract
 {
-
-    protected $defaultIncludes = [
+    protected $availableIncludes = [
         'articles'
     ];
 
     public function transform(ArticleCategory $record)
     {
         return [
-            'id' => (int) $record->id,
-            'name'  => $record->name,
-            'slug'  => $record->slug
+            'id' => $record->id,
+            'name' => $record->name
         ];
     }
 
     public function includeArticles(ArticleCategory $record)
     {
-        $articles = $record->articles;
-
-        return $this->collection($articles, new ArticleTransformer());
+        return $this->collection($record->articles, new ArticleTransformer);
     }
-
 }

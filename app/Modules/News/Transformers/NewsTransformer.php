@@ -8,7 +8,6 @@ use App\Transformers\CityTransformer;
 use App\Transformers\CountryTransformer;
 use App\Transformers\UserTransformer;
 use League\Fractal\TransformerAbstract;
-use Illuminate\Support\Facades\Cache;
 
 class NewsTransformer extends TransformerAbstract
 {
@@ -48,6 +47,7 @@ class NewsTransformer extends TransformerAbstract
             'is_show_previous_and_next_news' => $record->is_show_previous_and_next_news,
             'created_at' => $record->created_at,
             'updated_at' => $record->updated_at,
+//            'diff_human' => $record->updated_at->diffForHumans()
         ];
 
         if($record->is_show_previous_and_next_news){
@@ -59,7 +59,7 @@ class NewsTransformer extends TransformerAbstract
 
             $data['previous_news'] = [
                 'title' =>  $previousNews->title,
-                'link' =>  route('show_news', ['slug' => $previousNews->slug]),
+                'link' =>  '/api/v1/news/'. $previousNews->id,
             ];
 
             $nextNews = $newsRepo->nextNews($record);
@@ -68,7 +68,7 @@ class NewsTransformer extends TransformerAbstract
 
             $data['next_news'] = [
                 'title' =>  $nextNews->title,
-                'link' =>  route('show_news', ['slug' => $nextNews->slug]),
+                'link' =>  '/api/v1/news/'. $nextNews->id,
             ];
         }
 

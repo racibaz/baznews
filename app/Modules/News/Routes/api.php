@@ -3,6 +3,7 @@
 
 Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
     Route::get('news/{id}', 'Api\NewsController@show');
+    Route::get('news', 'Api\NewsController@index');
 });
 
 
