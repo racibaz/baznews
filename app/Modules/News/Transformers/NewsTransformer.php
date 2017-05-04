@@ -29,24 +29,24 @@ class NewsTransformer extends TransformerAbstract
         $data = [
             'id' => $record->id,
             'title' => $record->title,
-            'small_title' => $record->small_title,
+            'smallTitle' => $record->small_title,
             'slug' => $record->slug,
-            'short_url' => $record->short_url,
+            'shortUrl' => $record->short_url,
             'spot' => $record->spot,
             'content' => $record->content,
             'description' => $record->description,
             'keywords' => $record->keywords,
-            'meta_tags' => $record->meta_tags,
-            'cuff_photo' => $record->cuff_photo,
+            'metaTags' => $record->meta_tags,
+            'cuffPhoto' => $record->cuff_photo,
             'thumbnail' => $record->thumbnail,
-            'cuff_direct_link' => $record->cuff_direct_link,
-            'video_embed' => $record->video_embed,
-            'news_type' => $record->news_type,
-            'is_comment' => $record->is_comment,
-            'is_show_editor_profile' => $record->is_show_editor_profile,
-            'is_show_previous_and_next_news' => $record->is_show_previous_and_next_news,
-            'created_at' => $record->created_at,
-            'updated_at' => $record->updated_at,
+            'cuffDirectLink' => $record->cuff_direct_link,
+            'videoEmbed' => $record->video_embed,
+            'newsType' => $record->news_type,
+            'isComment' => $record->is_comment,
+            'isShowEditorProfile' => $record->is_show_editor_profile,
+            'isShowPreviousAndNextNews' => $record->is_show_previous_and_next_news,
+            'createdAt' => $record->created_at,
+            'updatedAt' => $record->updated_at,
 //            'diff_human' => $record->updated_at->diffForHumans()
         ];
 
@@ -57,7 +57,7 @@ class NewsTransformer extends TransformerAbstract
             if(empty($previousNews))
                 $previousNews = $newsRepo->lastRecord($record);
 
-            $data['previous_news'] = [
+            $data['previousNews'] = [
                 'title' =>  $previousNews->title,
                 'link' =>  '/api/v1/news/'. $previousNews->id,
             ];
@@ -66,7 +66,7 @@ class NewsTransformer extends TransformerAbstract
             if(empty($nextNews))
                 $nextNews = $newsRepo->firstRecord();
 
-            $data['next_news'] = [
+            $data['nextNews'] = [
                 'title' =>  $nextNews->title,
                 'link' =>  '/api/v1/news/'. $nextNews->id,
             ];

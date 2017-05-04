@@ -5,9 +5,9 @@ namespace App\Modules\News\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Modules\News\Transformers\NewsTransformer;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use App\Modules\News\Repositories\NewsRepository as Repo;
-use Illuminate\Support\Facades\Input;
 
 class NewsController extends Controller
 {
@@ -18,15 +18,17 @@ class NewsController extends Controller
         $this->repo = $repo;
     }
 
-    public function index()
+    public function index(Request  $request )
     {
-        $input = Input::all();
+        $sort = $request->get('sort', 'id');
+        $sortType = $request->get('sort_type', 'asc');
+        $filters = $request->get('filters', '*');
+        $page = $request->get('page', 1);
+        $pageEntries  = $request->get('pageEntries', 10);
 
-        $sort = isset($input['sort']) ? $input['sort'] : 'id';
-        $sortType = isset($input['sort_type']) ? $input['sort_type'] : 'asc';
-        $filters = isset($input['filters']) ? $input['filters'] : "*";
 
-        return Cache::tags('News','Api')->rememberForever('api.news.' . $sort . $sortType . $filters, function() use ($sort, $sortType, $filters) {
+        return Cache::tags('News','Api')->rememberForever('api.news.index.' . $sort . $sortType . $filters . $page . $pageEntries,
+            function() use ($sort, $sortType, $filters, $page, $pageEntries) {
 
             if($filters == "*")
                 $filters = ["*"];
@@ -38,12 +40,12 @@ class NewsController extends Controller
                     ->where('status', 1)
                     ->where('is_active', 1)
                     ->orderBy($sort, $sortType)
-                    ->findAll($filters);
+                    ->paginate($pageEntries,$filters,'page',$page);
 
                 return  fractal()
                     ->collection($records)
-                    ->transformWith(new NewsTransformer())
-                    ->toJson();
+                    ->transformWith(new NewsTransformer)
+                    ->toArray();
 
             }catch (ModelNotFoundException $e){
 
@@ -52,43 +54,26 @@ class NewsController extends Controller
         });
     }
 
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        return Cache::tags('News','Api')->rememberForever('api.newsItem'.$id, function() use ($id) {
+        $with  = $request->get('with', '');
+
+        return Cache::tags('News','Api')->rememberForever('api.news.show' . $id . $with, function() use ($id, $with) {
+
+            if($with != '')
+                $with = explode(',', $with);
+
 
             try{
                 $record = $this->repo
-                    ->with([
-                        'news_categories',
-                        'photo_galleries',
-                        'video_galleries',
-                        'photos',
-                        'videos',
-                        'related_news',
-                        'country',
-                        'city',
-                        'news_source',
-                        'tags',
-                        'user'
-                    ])
+                    ->with($with)
                     ->where('status', 1)
                     ->where('is_active', 1)
                     ->findBy('id',$id);
 
                 return  fractal()
                     ->item($record)
-                    ->parseIncludes([
-                        ($record->is_show_editor_profile) ? 'user': '',
-                        ($record->country) ? 'country': '',
-                        ($record->city) ? 'city': '',
-                        ($record->news_source) ? 'news_source': '',
-                        'news_categories',
-                        ($record->video_galleries->count()) ? 'video_galleries': '',
-                        ($record->photo_galleries->count()) ? 'photo_galleries': '',
-                        ($record->photos->count()) ? 'photos': '',
-                        ($record->videos->count()) ? 'videos': '',
-                        ($record->related_news->count()) ? 'related_news': ''
-                    ])
+                    ->parseIncludes($with)
                     ->transformWith(new NewsTransformer())
                     ->toArray();
 

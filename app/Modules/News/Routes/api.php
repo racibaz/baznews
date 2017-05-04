@@ -1,9 +1,11 @@
 <?php
 
 
+
 Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
-    Route::get('news/{id}', 'Api\NewsController@show');
+
     Route::get('news', 'Api\NewsController@index');
+    Route::get('news/{id}', 'Api\NewsController@show');
 
     Route::get('news_category', 'Api\NewsCategoryController@index');
     Route::get('news_category/{id}/', 'Api\NewsCategoryController@show');
