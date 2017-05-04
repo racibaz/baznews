@@ -27,7 +27,7 @@ class NewsTransformer extends TransformerAbstract
     public function transform(News $record)
     {
         $data = [
-            'id' => (int) $record->id,
+            'id' => $record->id,
             'title' => $record->title,
             'small_title' => $record->small_title,
             'slug' => $record->slug,

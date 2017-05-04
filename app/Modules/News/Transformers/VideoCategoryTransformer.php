@@ -7,12 +7,12 @@ use League\Fractal\TransformerAbstract;
 
 class VideoCategoryTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['video_gallery', 'videos'];
+    protected $availableIncludes = ['video_galleries', 'videos'];
 
     public function transform(VideoCategory $record)
     {
         return [
-            'id' => (int) $record->id,
+            'id' => $record->id,
             'name' => $record->name,
             'slug' => $record->slug,
             'description' => $record->description,
@@ -22,7 +22,7 @@ class VideoCategoryTransformer extends TransformerAbstract
         ];
     }
 
-    public function includeVideoGallery(VideoCategory $record)
+    public function includeVideoGalleries(VideoCategory $record)
     {
         return $this->collection($record->video_galleries, new VideoGalleryTransformer);
     }
