@@ -12,7 +12,7 @@ class VideoTransformer extends TransformerAbstract
     public function transform(Video $record)
     {
         return [
-            'id' => (int) $record->id,
+            'id' =>  $record->id,
             'name' =>  $record->name,
             'slug' =>  $record->slug,
             'short_url' =>  $record->short_url,

@@ -60,8 +60,9 @@ class NewsRepository extends EloquentRepository
             ->first();
     }
 
-
-    public function relatedNews($record): ?array
+//todo php versiyon farkından dolayı "?" hata veriyor.
+//    public function relatedNews($record): ?array
+    public function relatedNews($record): array
     {
         $relatedNews = [];
         //filter veya map vs.. ye dönüştürülebilinir.
