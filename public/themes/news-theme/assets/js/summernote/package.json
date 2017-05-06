@@ -10,7 +10,7 @@
         "spec": ">=0.8.3 <0.9.0",
         "type": "range"
       },
-      "/home/vagrant/Code/baznews"
+      "/home/vagrant/PROJELER/baznews"
     ]
   ],
   "_from": "summernote@>=0.8.3 <0.9.0",
@@ -44,7 +44,7 @@
   "_shasum": "48ec5952a17c16d7a94538df9f93cd729faf2bdf",
   "_shrinkwrap": null,
   "_spec": "summernote@^0.8.3",
-  "_where": "/home/vagrant/Code/baznews",
+  "_where": "/home/vagrant/PROJELER/baznews",
   "author": {
     "name": "hackerwins",
     "email": "<susukang98@gmail.com"

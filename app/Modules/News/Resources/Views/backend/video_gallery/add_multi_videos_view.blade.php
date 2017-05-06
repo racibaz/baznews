@@ -14,7 +14,7 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css" />
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/dropzone/dist/min/dropzone.min.css') }}" />
     <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
 @endsection
 
@@ -32,7 +32,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <div class="row">
+            <div class="row" id="galleryVideos">
                 @foreach($video_gallery->videos as $video)
                 <div class="col-lg-4">
                     <div class="video-container" style="background-color: #000;margin-bottom: 15px;">
@@ -45,6 +45,15 @@
             </div>
         </div>
         <!-- /.box-body -->
+    </div>
+
+    <div class="form-group">
+        {!! Form::open(['route' => 'addMultiVideos','method' => 'post', 'class' => 'dropzone', 'id' => 'addVideos', 'files' => 'true','enctype' => 'multipart/form-data']) !!}
+
+        {{ csrf_field() }}
+
+        {!! Form::hidden('video_gallery_id', $video_gallery->id) !!}
+        {!! Form::close() !!}
     </div>
 
     <div class="box box-solid">
@@ -167,12 +176,6 @@
             {!! Form::close() !!}
         </div><!-- /.box-body -->
     </div><!-- /.box -->
-    {!! Form::open(['route' => 'addMultiVideos','method' => 'post', 'class' => 'dropzone', 'id' => 'addVideos', 'files' => 'true','enctype' => 'multipart/form-data']) !!}
-
-        {{ csrf_field() }}
-
-        {!! Form::hidden('video_gallery_id', $video_gallery->id) !!}
-    {!! Form::close() !!}
 
 @endsection
 
@@ -182,14 +185,13 @@
     <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/videojs/Vimeo.js') }}"></script>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
-
+    <script src="{{ Theme::asset($activeTheme . '::js/dropzone/dist/min/dropzone.min.js') }}"></script>
     <script>
         Dropzone.options.addVideos = {
 
             maxFileSize: 120,
             acceptedFiles : 'video/*',
+            dictDefaultMessage: '{{trans('news::video_gallery.drag_files')}}',
             success: function (file, response) {
 
                 if(file.status === 'success'){
@@ -208,12 +210,18 @@
             },
             handleSuccess: function (response) {
 
-                var $videoList = $('#gallery-videos ul');
-                var videoSrc = baseUrl + '/' + response.file;
-                $($videoList).append('<li> <a href="' + videoSrc + '"><img src="' + $videoSrc + '"></a></li>');
+                var $videoList = $('#galleryVideos');
+                var videoSrc = response.file;
+                $($videoList).append('<div class="col-lg-4"> ' +
+                    '<div class="video-container" style="background-color: #000;margin-bottom: 15px;"> ' +
+                    '<video width="100%" height="240" controls style="display: table-cell;"> ' +
+                    '<source src="{{asset('video_gallery/' . $video_gallery->id . '/videos')}}/'+videoSrc+'" type="video/mp4"> ' +
+                '</video> ' +
+                '</div> ' +
+                '</div>');
             }
         };
-
+        //active menu
+        activeMenu('video_category','news_management');
     </script>
-
 @endsection

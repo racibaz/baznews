@@ -20,5 +20,6 @@ return[
     'is_comment' => 'Yorum Yapılsın',
     'delete_video' => 'Videoyu Sil',
     'updateSubtitleAndContent' => 'İçerik ve Başlığı Güncelle',
+    'drag_files' => 'Dosyayı Buraya Sürükleyin',
 
 ];

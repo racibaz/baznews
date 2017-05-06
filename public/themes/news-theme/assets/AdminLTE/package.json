@@ -10,7 +10,7 @@
         "spec": ">=2.3.11 <3.0.0",
         "type": "range"
       },
-      "/home/vagrant/Code/baznews"
+      "/home/PROJELER/baznews"
     ]
   ],
   "_from": "admin-lte@>=2.3.11 <3.0.0",
@@ -44,7 +44,7 @@
   "_shasum": "da56dcd34d42e9ef1af362be15520a053a9d43db",
   "_shrinkwrap": null,
   "_spec": "admin-lte@^2.3.11",
-  "_where": "/home/vagrant/Code/baznews",
+  "_where": "/home/PROJELER/baznews",
   "bugs": {
     "url": "https://github.com/almasaeed2010/AdminLTE/issues"
   },

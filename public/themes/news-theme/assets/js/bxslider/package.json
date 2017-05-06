@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "bxslider@^4.2.11",
+        "raw": "bxslider",
         "scope": null,
         "escapedName": "bxslider",
         "name": "bxslider",
-        "rawSpec": "^4.2.11",
-        "spec": ">=4.2.11 <5.0.0",
-        "type": "range"
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
       },
-      "/home/vagrant/Code/baznews"
+      "/home/PROJELER/baznews"
     ]
   ],
-  "_from": "bxslider@>=4.2.11 <5.0.0",
+  "_from": "bxslider@latest",
   "_id": "bxslider@4.2.11",
   "_inCache": true,
   "_location": "/bxslider",
@@ -29,22 +29,23 @@
   "_npmVersion": "3.10.3",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "bxslider@^4.2.11",
+    "raw": "bxslider",
     "scope": null,
     "escapedName": "bxslider",
     "name": "bxslider",
-    "rawSpec": "^4.2.11",
-    "spec": ">=4.2.11 <5.0.0",
-    "type": "range"
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/bxslider/-/bxslider-4.2.11.tgz",
   "_shasum": "1cd3cd76ee40fc1918af9d228de591fb638d85a5",
   "_shrinkwrap": null,
-  "_spec": "bxslider@^4.2.11",
-  "_where": "/home/vagrant/Code/baznews",
+  "_spec": "bxslider",
+  "_where": "/home/PROJELER/baznews",
   "author": {
     "name": "Steven Wanderski",
     "email": "steven@bxcreative.com",

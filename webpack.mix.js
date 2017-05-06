@@ -17,8 +17,8 @@ mix.js('resources/assets/js/app.js', 'js/') .sass('resources/assets/sass/app.scs
 
 //JS Component Copy
 mix.copy('node_modules/icheck/**', 'public/themes/news-theme/assets/js/icheck');
-mix.copy('node_modules/admin-lte/**', 'public/themes/news-theme/assets/AdminLTE');
-mix.copy('node_modules/bootstrap/**', 'public/themes/news-theme/assets/js/bootstrap');
+//mix.copy('node_modules/admin-lte/**', 'public/themes/news-theme/assets/AdminLTE');
+//mix.copy('node_modules/bootstrap/**', 'public/themes/news-theme/assets/js/bootstrap');
 mix.copy('node_modules/jquery/**', 'public/themes/news-theme/assets/js/jquery');
 mix.copy('node_modules/jquery-mousewheel/**', 'public/themes/news-theme/assets/js/jquery-mousewheel');
 mix.copy('node_modules/jquery-ticker/**', 'public/themes/news-theme/assets/js/jquery-ticker-master');

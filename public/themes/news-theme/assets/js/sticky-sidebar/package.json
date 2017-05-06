@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "theia-sticky-sidebar@^1.6.0",
+        "raw": "theia-sticky-sidebar",
         "scope": null,
         "escapedName": "theia-sticky-sidebar",
         "name": "theia-sticky-sidebar",
-        "rawSpec": "^1.6.0",
-        "spec": ">=1.6.0 <2.0.0",
-        "type": "range"
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
       },
-      "/home/vagrant/Code/baznews"
+      "/home/PROJELER/baznews"
     ]
   ],
-  "_from": "theia-sticky-sidebar@>=1.6.0 <2.0.0",
+  "_from": "theia-sticky-sidebar@latest",
   "_id": "theia-sticky-sidebar@1.6.0",
   "_inCache": true,
   "_location": "/theia-sticky-sidebar",
@@ -29,22 +29,23 @@
   "_npmVersion": "4.0.3",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "theia-sticky-sidebar@^1.6.0",
+    "raw": "theia-sticky-sidebar",
     "scope": null,
     "escapedName": "theia-sticky-sidebar",
     "name": "theia-sticky-sidebar",
-    "rawSpec": "^1.6.0",
-    "spec": ">=1.6.0 <2.0.0",
-    "type": "range"
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/theia-sticky-sidebar/-/theia-sticky-sidebar-1.6.0.tgz",
   "_shasum": "a385c11297eee3cdd6de93a0d48146bb462f8397",
   "_shrinkwrap": null,
-  "_spec": "theia-sticky-sidebar@^1.6.0",
-  "_where": "/home/vagrant/Code/baznews",
+  "_spec": "theia-sticky-sidebar",
+  "_where": "/home/PROJELER/baznews",
   "authors": [
     "WeCodePixels <contact@wecodepixels.com>"
   ],

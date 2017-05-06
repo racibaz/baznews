@@ -10,7 +10,7 @@
         "spec": ">=4.17.47 <5.0.0",
         "type": "range"
       },
-      "/home/vagrant/Code/baznews"
+      "/home/vagrant/PROJELER/baznews"
     ]
   ],
   "_from": "eonasdan-bootstrap-datetimepicker@>=4.17.47 <5.0.0",
@@ -44,7 +44,7 @@
   "_shasum": "7a49970044065276e7965efd16f822735219e735",
   "_shrinkwrap": null,
   "_spec": "eonasdan-bootstrap-datetimepicker@^4.17.47",
-  "_where": "/home/vagrant/Code/baznews",
+  "_where": "/home/vagrant/PROJELER/baznews",
   "author": {
     "name": "Jonathan Peterson"
   },

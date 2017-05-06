@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "malihu-custom-scrollbar-plugin@^3.1.5",
+        "raw": "malihu-custom-scrollbar-plugin",
         "scope": null,
         "escapedName": "malihu-custom-scrollbar-plugin",
         "name": "malihu-custom-scrollbar-plugin",
-        "rawSpec": "^3.1.5",
-        "spec": ">=3.1.5 <4.0.0",
-        "type": "range"
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
       },
-      "/home/vagrant/Code/baznews"
+      "/home/PROJELER/baznews"
     ]
   ],
-  "_from": "malihu-custom-scrollbar-plugin@>=3.1.5 <4.0.0",
+  "_from": "malihu-custom-scrollbar-plugin@latest",
   "_id": "malihu-custom-scrollbar-plugin@3.1.5",
   "_inCache": true,
   "_location": "/malihu-custom-scrollbar-plugin",
@@ -28,22 +28,23 @@
   "_npmVersion": "1.4.28",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "malihu-custom-scrollbar-plugin@^3.1.5",
+    "raw": "malihu-custom-scrollbar-plugin",
     "scope": null,
     "escapedName": "malihu-custom-scrollbar-plugin",
     "name": "malihu-custom-scrollbar-plugin",
-    "rawSpec": "^3.1.5",
-    "spec": ">=3.1.5 <4.0.0",
-    "type": "range"
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/malihu-custom-scrollbar-plugin/-/malihu-custom-scrollbar-plugin-3.1.5.tgz",
   "_shasum": "310cecc5e59415a1c29e9dfb5d2b6e01d66a29ef",
   "_shrinkwrap": null,
-  "_spec": "malihu-custom-scrollbar-plugin@^3.1.5",
-  "_where": "/home/vagrant/Code/baznews",
+  "_spec": "malihu-custom-scrollbar-plugin",
+  "_where": "/home/PROJELER/baznews",
   "author": {
     "name": "malihu",
     "url": "http://manos.malihu.gr"
