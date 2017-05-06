@@ -1,4 +1,17 @@
 @extends($activeTheme .'::backend.master')
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('news::video_gallery.management')}}
+            <small>{{trans('news::video_gallery.create_edit')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('video_gallery.index') !!}">{{trans('news::video_gallery.management')}}</a></li>
+            <li class="active">{{trans('news::video_gallery.create_edit')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <div class="row">
@@ -17,7 +30,7 @@
             </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><strong>{{trans('video_gallery.management')}}</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('news::video_gallery.management')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -25,10 +38,11 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('video_gallery.title')}}</th>
-                            <th>{{trans('video_gallery.short_url')}}</th>
-                            <th>{{trans('video_gallery.is_cuff')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('news::video_gallery.title')}}</th>
+                            <th>{{trans('news::video_gallery.short_url')}}</th>
+                            <th>{{trans('news::video_gallery.is_cuff')}}</th>
+                            <th>{{trans('news::video_gallery.is_active')}}</th>
+                            <th>{{trans('news::video_gallery.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -37,12 +51,12 @@
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('video_gallery.show', $record->title , $record, [] ) !!}</td>
                                     <td>{{$record->short_url}}</td>
-                                    <td>{!!$record->is_cuff ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('video_gallery.destroy',  $record))) !!}
-                                                {!! link_to_route('add_multi_videos_view', trans('common.add_multi_videosView'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                                {!! link_to_route('add_multi_videos_view', trans('news::video_gallery.add_multi_videosView'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
                                                 {!! link_to_route('video_gallery.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
                                                 {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
                                             {!! Form::close() !!}
@@ -51,14 +65,6 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>{{trans('video_gallery.title')}}</th>
-                            <th>{{trans('video_gallery.is_cuff')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
-                        </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->
@@ -69,3 +75,9 @@
         <!-- /.col -->
     </div>
 @endsection
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('video_category','news_management');
+    </script>
+@stop
