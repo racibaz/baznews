@@ -8,6 +8,7 @@
 
 return[
     'management' => 'Video Galeri Yönetimi',
+    'video_gallery_create' => 'Video Galeri Oluştur',
     'title' => 'Video Başlığı',
     'short_url' => 'Kısa URL',
     'is_cuff' => 'Manşet',
@@ -21,5 +22,11 @@ return[
     'delete_video' => 'Videoyu Sil',
     'updateSubtitleAndContent' => 'İçerik ve Başlığı Güncelle',
     'drag_files' => 'Dosyayı Buraya Sürükleyin',
+    'list' => 'Video Galeri Listesi',
+    'video_category_id' => 'Video Kategorisi',
+    'slug' => 'Slug',
+    'keywords' => 'Anahtar Kelimeler',
+    'description' => 'Açıklama',
+    'status' => 'Durum',
 
 ];

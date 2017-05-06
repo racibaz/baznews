@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('news::video_gallery.management')}}
-            <small>{{trans('news::video_gallery.create_edit')}}</small>
+            <small>{{trans('news::video_gallery.list')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('video_gallery.index') !!}">{{trans('news::video_gallery.management')}}</a></li>
-            <li class="active">{{trans('news::video_gallery.create_edit')}}</li>
+            <li class="active">{{trans('news::video_gallery.list')}}</li>
         </ol>
     </section>
 @endsection
@@ -30,7 +30,7 @@
             </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><strong>{{trans('news::video_gallery.management')}}</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('news::video_gallery.list')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -78,6 +78,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('video_category','news_management');
+        activeMenu('video_gallery','news_management');
     </script>
 @stop

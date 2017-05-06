@@ -16,6 +16,17 @@
 @section('css')
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/dropzone/dist/min/dropzone.min.css') }}" />
     <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
+    <style type="text/css">
+        .video-js{
+            width: 100%;
+            height: 300px;
+        }
+        .video-js .vjs-big-play-button{
+            left: 50%;
+            top:50%;
+            margin: -20px 0 0 -45px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -34,10 +45,16 @@
         <div class="box-body">
             <div class="row" id="galleryVideos">
                 @foreach($video_gallery->videos as $video)
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="video-container" style="background-color: #000;margin-bottom: 15px;">
-                        <video width="100%" height="240" controls style="display: table-cell;">
+                        <video id="{{$video->id}}"
+                               class="video-js vjs-default-skin"
+                               controls preload="auto"
+                               poster="{{ asset('video_gallery/' . $video_gallery->id . '/photos/213x116_' . $video->thumbnail)}}"
+                               data-setup='{"example_option":true}'>
                             <source src="{{asset('video_gallery/' . $video_gallery->id . '/videos/' . $video->file)}}" type="video/mp4">
+                            <source src="{{asset('video_gallery/' . $video_gallery->id . '/videos/' . $video->file)}}" type="video/webm" />
+                            {{--<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />--}}
                         </video>
                     </div>
                 </div>
@@ -141,7 +158,6 @@
                                             <source src="{{asset('video_gallery/' . $video_gallery->id . '/videos/' . $video->file)}}" type="video/mp4" />
                                             <source src="{{asset('video_gallery/' . $video_gallery->id . '/videos/' . $video->file)}}" type="video/webm" />
                                             {{--<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />--}}
-                                            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
                                         </video>
                                     @elseif(!empty($video->link))
 
@@ -222,6 +238,6 @@
             }
         };
         //active menu
-        activeMenu('video_category','news_management');
+        activeMenu('video_gallery','news_management');
     </script>
 @endsection
