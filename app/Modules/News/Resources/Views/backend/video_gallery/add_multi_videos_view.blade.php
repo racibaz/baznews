@@ -12,23 +12,6 @@
         </ol>
     </section>
 @endsection
-
-@section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/dropzone/dist/min/dropzone.min.css') }}" />
-    <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
-    <style type="text/css">
-        .video-js{
-            width: 100%;
-            height: 300px;
-        }
-        .video-js .vjs-big-play-button{
-            left: 50%;
-            top:50%;
-            margin: -20px 0 0 -45px;
-        }
-    </style>
-@endsection
-
 @section('content')
 
     <div class="box box-solid">
@@ -96,9 +79,11 @@
                             </div>
                         </a>
                         <div class="caption">
-                            <p>
-                                {!! Form::file('thumbnail/'. $video->id) !!}
-                            </p>
+                            <div class="fileinput fileinput-new input-group" data-provides="fileinput" style="margin-bottom: 15px;">
+                                <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                                <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">{{trans('news::video.select_image')}}</span><span class="fileinput-exists">{{trans('news::video.change')}}</span>{!! Form::file('thumbnail/'. $video->id) !!}</span>
+                                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('news::video.remove')}}</a>
+                            </div>
                             <p>
                                 <label>
                                     {!! Form::checkbox('delete/' . $video->id, null , null) !!}
@@ -194,14 +179,28 @@
     </div><!-- /.box -->
 
 @endsection
-
-
+@section('css')
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/dropzone/dist/min/dropzone.min.css') }}" />
+    <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme.'::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <style type="text/css">
+        .video-js{
+            width: 100%;
+            height: 300px;
+        }
+        .video-js .vjs-big-play-button{
+            left: 50%;
+            top:50%;
+            margin: -20px 0 0 -45px;
+        }
+    </style>
+@endsection
 @section('js')
-
     <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/videojs/Vimeo.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/dropzone/dist/min/dropzone.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
     <script>
         Dropzone.options.addVideos = {
 

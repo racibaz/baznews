@@ -66,15 +66,6 @@
                                 <th>{{trans('news::video_gallery.is_active')}}</th>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
-                            <tr>
-                                <th>{{trans('news::video_gallery.created_at')}}</th>
-                                <td>{{$record->created_at}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('news::video_gallery.updated_at')}}</th>
-                                <td>{{$record->updated_at}}</td>
-                            </tr>
-
                             </tbody>
                         </table>
                     </div>
