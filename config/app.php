@@ -200,6 +200,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         Spatie\Fractal\FractalServiceProvider::class,
+        Unlu\Laravel\Api\ApiQueryBuilderServiceProvider::class,
     ],
 
     /*
