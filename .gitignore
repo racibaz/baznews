@@ -16,3 +16,5 @@ resources/backups/
 .phpstorm.meta.php
 _ide_helper.php
 composer.lock
+/storage/oauth-private.key
+/storage/oauth-public.key
