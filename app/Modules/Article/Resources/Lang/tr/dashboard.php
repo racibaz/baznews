@@ -7,10 +7,10 @@
  */
 
 return[
-    'article_manager'=>'Yazar Yönetimi',
-    'article_authors'=>'Yazar Yazıları',
-    'authors'=>'Yazarlar',
-    'articles'=>'Yazılar',
-    'article_categories'=>'Yazı Kategorileri',
-    'article_settings'=>'Yazı Ayarları',
+    'article_manager'=>'Makale Yönetimi',
+    'article_authors'=>'Yazar Makaleleri',
+    'authors'=>'Alıntı Yazarlar',
+    'articles'=>'Makaleler',
+    'article_categories'=>'Makale Kategorileri',
+    'article_settings'=>'Makale Ayarları',
 ];

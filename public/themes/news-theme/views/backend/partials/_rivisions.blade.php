@@ -21,7 +21,20 @@
             <h3 class="timeline-header">{{ $history->userResponsible()->first_name }}</h3>
 
             <div class="timeline-body">
-                changed {{ $history->fieldName() }} from {{ $history->oldValue() }} to {{ $history->newValue() }}
+                <h2>changed -> {{ $history->fieldName() }} </h2>
+                <p>
+                    from
+                </p>
+                <pre>
+                    {{ $history->oldValue() }}
+                </pre>
+                <p>
+                    to
+                </p>
+                <pre>
+                    {{ $history->newValue() }}
+                </pre>
+
             </div>
 
             {{--<div class="timeline-footer">--}}

@@ -1,155 +1,84 @@
 @extends($activeTheme .'::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('article::article_author.management')}}
+            <small>{{trans('article::article_author.edit_delete')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('article_author.index') !!}">{{trans('article::article_author.management')}}</a></li>
+            <li class="active">{{trans('article::article_author.edit_delete')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
-<div class="container-fluid">
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['article_author.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'article_author.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
+
     <div class="row">
-        <div class="col-md-12">
-            <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('article::article_author.management')}}</h3>
-            <!--Top header end -->
+        <div class="col-lg-8" id="content">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Title</h3>
 
-            <!--Top breadcrumb start -->
-            <ol class="breadcrumb">
-                <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('article_author.index') !!}"> {{ trans('article::article_author.article_categories') }} </a></li>
-                <li class="active"> {{ trans('article::common.add_update') }}</li>
-            </ol>
-            <!--Top breadcrumb start -->
-        </div>
-    </div>
-    <!-- Main Content Element  Start-->
-    <div class="row">
-        @if(isset($record->id))
-            {!! Form::model($record, ['route' => ['article_author.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-        @else
-            {!! Form::open(['route' => 'article_author.store','method' => 'post', 'files' => 'true']) !!}
-        @endif
-        <div class="col-md-6">
-            <div class="panel panel-light-blue">
-                <div class="panel-heading">
-                    {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
-                </div>
-                <div class="panel-body">
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('name', trans('article::article_author.name'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('name', $record->name, ['placeholder' => trans('article::article_author.name') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('slug', trans('article::article_author.slug'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('article::article_author.slug') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('email', trans('article::article_author.email'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::email('email', $record->email, ['placeholder' => trans('article::article_author.email') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('cv', trans('article::article_author.cv'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::textarea('cv', $record->cv, ['placeholder' => trans('article::article_author.cv') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('photo', trans('article::article_author.photo'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::file('photo') !!}
-                                <img id="preview" src="#" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('description', trans('article::article_author.description'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('article::article_author.description') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('keywords', trans('article::article_author.keywords'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::textarea('keywords', $record->keywords, ['placeholder' => trans('article::article_author.keywords') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {{trans('article::article_author.is_quotation')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('is_quotation', null , $record->is_quotation) !!}
-                                        <i></i> {{trans('article::article_author.is_quotation')}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {{trans('article::common.status')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('is_cuff', null , $record->is_cuff) !!}
-                                        <i></i> {{trans('article::common.is_cuff')}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {{trans('article::common.status')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                        <i></i> {{trans('article::common.is_active')}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
-                            </div>
-                        </div>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fa fa-times"></i></button>
                     </div>
                 </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        {!! Form::label('name', trans('article::article_author.name'),['class'=> 'control-label']) !!}
+                        {!! Form::text('name', $record->name, ['placeholder' => trans('article::article_author.name') ,'class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('slug', trans('article::article_author.slug'),['class'=> 'control-label']) !!}
+                        {!! Form::text('slug', $record->slug, ['placeholder' => trans('article::article_author.slug') ,'class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('email', trans('article::article_author.email'),['class'=> 'control-label']) !!}
+                        {!! Form::email('email', $record->email, ['placeholder' => trans('article::article_author.email') ,'class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('cv', trans('article::article_author.cv'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('cv', $record->cv, ['placeholder' => trans('article::article_author.cv') ,'class' => 'form-control summernote']) !!}
+
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('photo', trans('article::article_author.photo'),['class'=> 'control-label','style'=>'width:100%']) !!}
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                            <div>
+                                <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('article::article_author.select_image')}}</span><span class="fileinput-exists">{{trans('article::article_author.change')}}</span>{!! Form::file('photo') !!}</span>
+                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('article::article_author.remove')}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('description', trans('article::article_author.description'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('article::article_author.description') ,'class' => 'form-control','rows'=>'3']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('keywords', trans('article::article_author.keywords'),['class'=> 'control-label','style'=>'width:100%']) !!}
+                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('article::article_author.keywords') ,'class' => 'form-control tagsinput']) !!}
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
             </div>
         </div>
-
+        <div class="col-lg-4" id="sidebar">
         @if(empty($record->user_id)  || (!empty($record->id) && !empty($record->user_id)) )
-            <div class="col-md-6">
-                <!-- general form elements disabled -->
-                <div class="box box-warning">
+            <!-- general form elements disabled -->
+                <div class="box box-solid">
                     <div class="box-header with-border">
-                        <h3 class="box-title">{{ trans('article::article_author.user_id') }}</h3>
+                        <h3 class="box-title">{{ trans('article::article_author.user_name') }}</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -160,50 +89,84 @@
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
+            @endif
+
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('article::article_author.status') }}</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        <label>
+                            {!! Form::checkbox('is_quotation', null , $record->is_quotation) !!}
+                            {{trans('article::article_author.is_quotation')}}
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            {!! Form::checkbox('is_cuff', null , $record->is_cuff) !!}
+                            {{trans('article::article_author.is_cuff')}}
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            {!! Form::checkbox('is_active', null , $record->is_active) !!}
+                            {{trans('article::article_author.is_active')}}
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
             </div>
-        @endif
-
-        {!! Form::close() !!}
-    </div><!-- end row -->
-    <!-- Main Content Element  End-->
-</div><!-- end container-fluid -->
+            <!-- /.box -->
+        </div>
+    </div>
+    {!! Form::close() !!}
 @endsection
-
 @section('css')
-    <link href="{{ Theme::asset($activeTheme .'::AdminLTE/plugins/select2/select2.min.css') }}" rel="stylesheet">
-    <style>
-        #preview {display: none;}
-        .display {display: block !important;}
-    </style>
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 @endsection
-
 @section('js')
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme .'::js/moment/min/moment.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme .'::js/moment/locale/tr.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.summernote').summernote({
+                height: 300,                 // set editor height
+                minHeight: null,             // set minimum height of editor
+                maxHeight: null,             // set maximum height of editor
+                focus: true                  // set focus to editable area after initializing summernote
+            });
+            $('.fileinput').fileinput();
+            $('.select2').select2();
+            $('.tagsinput').tagsinput();
+            //active menu
+            activeMenu('authors','article_management');
 
-    <script src="{{ Theme::asset($activeTheme .'::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
-
-    <script>
-        $(function () {
-            //Initialize Select2 Elements
-            $(".select2").select2();
         });
-    </script>
-
-    <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                $( "#preview" ).addClass( "display" );
-                reader.onload = function (e) {
-                    $('#preview').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#photo").change(function(){
-            readURL(this);
+        $(window).resize(function () {
+            $('.select2').select2();
+            $('.tagsinput').tagsinput();
+        });
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function() {
+            jQuery('#sidebar,#content').theiaStickySidebar();
         });
     </script>
 @endsection
