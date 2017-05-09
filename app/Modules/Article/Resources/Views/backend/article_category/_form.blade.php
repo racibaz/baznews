@@ -74,7 +74,7 @@
             </div><!-- /.box -->
         </div><!-- /.col-lg-8 -->
         <div class="col-lg-4">
-            <div class="box box-solid" id="sağlık raporu">
+            <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('article::article_category.status')}}</h3>
 
@@ -146,6 +146,6 @@
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
         //active menu
-        activeMenu('article_author','article_management');
+        activeMenu('article_categories','article_management');
     </script>
 @endsection
