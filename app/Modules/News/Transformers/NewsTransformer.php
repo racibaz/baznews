@@ -11,8 +11,6 @@ use League\Fractal\TransformerAbstract;
 
 class NewsTransformer extends TransformerAbstract
 {
-
-    protected  $baseUrl = '/api/v1/news/';
     protected $availableIncludes = [
         'user',
         'country',
@@ -29,30 +27,39 @@ class NewsTransformer extends TransformerAbstract
     public function transform(News $record)
     {
         $data = [
-            'id' => $record->id,
-            'title' => $record->title,
-            'smallTitle' => $record->small_title,
-            'slug' => $record->slug,
-            'shortUrl' => $record->short_url,
-            'spot' => $record->spot,
-            'content' => $record->content,
-            'description' => $record->description,
-            'keywords' => $record->keywords,
-            'metaTags' => $record->meta_tags,
-            'cuffPhoto' => $record->cuff_photo,
-            'thumbnail' => $record->thumbnail,
-            'cuffDirectLink' => $record->cuff_direct_link,
-            'videoEmbed' => $record->video_embed,
-            'newsType' => $record->news_type,
-            'isComment' => $record->is_comment,
-            'isShowEditorProfile' => $record->is_show_editor_profile,
-            'isShowPreviousAndNextNews' => $record->is_show_previous_and_next_news,
-            'createdAt' => $record->created_at,
-            'updatedAt' => $record->updated_at,
-//            'diff_human' => $record->updated_at->diffForHumans()
-            '_links' => [
-                'self' => $this->baseUrl. $record->id,
-            ],
+            'id' => (int) $record->id,
+            'title' => (string) $record->title,
+            'smallTitle' => (string) $record->small_title,
+            'slug' => (string) $record->slug,
+            'shortUrl' => (string) $record->short_url,
+            'spot' => (string) $record->spot,
+            'content' => (string) $record->content,
+            'description' => (string) $record->description,
+            'keywords' => (string) $record->keywords,
+            'metaTags' => (string) $record->meta_tags,
+            'cuffPhoto' => (string) $record->cuff_photo,
+            'thumbnail' => (string) $record->thumbnail,
+            'cuffDirectLink' => (string) $record->cuff_direct_link,
+            'videoEmbed' => (string) $record->video_embed,
+            'newsType' => (int) $record->news_type,
+            'isComment' => (bool) $record->is_comment,
+            'isShowEditorProfile' => (bool) $record->is_show_editor_profile,
+            'isShowPreviousAndNextNews' => (string) $record->is_show_previous_and_next_news,
+            'createdAt' => (string) $record->created_at,
+            'updatedAt' => (string) $record->updated_at,
+            'diff_human' => $record->updated_at->diffForHumans(),
+
+            'links' => [
+                [
+                    'rel' => 'self',
+                    'href' => route('news.show', $record->id),
+                ],
+                [
+                    'rel' => 'news.categories',
+                    //todo burada kaldım.
+//                    'href' => route('products.categories.index', $record->id),
+                ],
+            ]
         ];
 
         if ($record->is_show_previous_and_next_news) {
@@ -64,7 +71,7 @@ class NewsTransformer extends TransformerAbstract
 
             $data['previousNews'] = [
                 'title' => $previousNews->title,
-                'link' => $this->baseUrl . $previousNews->id,
+                'href' => route('news.show', $previousNews->id),
             ];
 
             $nextNews = $newsRepo->nextNews($record);
@@ -73,60 +80,45 @@ class NewsTransformer extends TransformerAbstract
 
             $data['nextNews'] = [
                 'title' => $nextNews->title,
-                'link' => $this->baseUrl . $nextNews->id,
+                'href' => route('news.show', $previousNews->id),
             ];
         }
 
         return $data;
     }
 
-    public function includeUser(News $record)
+    public static function originalAttribute($index)
     {
-        return $this->item($record->user, new UserTransformer);
+        $attributes = [
+            'id' => 'id',
+            'title' => 'name',
+            'description' => 'description',
+            'picture' => 'image',
+            'seller' => 'seller_id',
+            'status' => 'status',
+            'creationDate' => 'created_at',
+            'lastChange' => 'updated_at',
+            'diffHuman' => 'diff_human',
+        ];
+
+        return isset($attributes[$index]) ? $attributes[$index] : null;
     }
 
-    public function includeCountry(News $record)
+    public static function transformedAttribute($index)
     {
-        return $this->item($record->country, new CountryTransformer);
-    }
+        $attributes = [
+            'id' => 'identifier',
+            'name' => 'title',
+            'description' => 'details',
+            'quantity' => 'stock',
+            'status' => 'situation',
+            'image' => 'picture',
+            'seller_id' => 'seller',
+            'created_at' => 'creationDate',
+            'updated_at' => 'lastChange',
+            'deleted_at' => 'deletedDate',
+        ];
 
-    public function includeCity(News $record)
-    {
-        return $this->item($record->city, new CityTransformer);
-    }
-
-    public function includeNewsSource(News $record)
-    {
-        return $this->item($record->news_source, new NewsSourceTransformer);
-    }
-
-    public function includeNewsCategories(News $record)
-    {
-        return $this->collection($record->news_categories, new NewsCategoryTransformer);
-    }
-
-    public function includePhotoGalleries(News $record)
-    {
-        return $this->collection($record->photo_galleries, new PhotoGalleryTransformer);
-    }
-
-    public function includeVideoGalleries(News $record)
-    {
-        return $this->collection($record->video_galleries, new VideoGalleryTransformer);
-    }
-
-    public function includePhotos(News $record)
-    {
-        return $this->collection($record->photos, new PhotoTransformer);
-    }
-
-    public function includeVideos(News $record)
-    {
-        return $this->collection($record->videos, new VideoTransformer);
-    }
-
-    public function includeRelatedNews(News $record)
-    {
-        return $this->collection($record->related_news, new RelatedNewsTransformer);
+        return isset($attributes[$index]) ? $attributes[$index] : null;
     }
 }
