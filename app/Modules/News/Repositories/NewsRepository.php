@@ -2,6 +2,7 @@
 
 namespace App\Modules\News\Repositories;
 
+use App\Modules\News\Transformers\NewsTransformer;
 use Rinvex\Repository\Repositories\EloquentRepository;
 
 class NewsRepository extends EloquentRepository

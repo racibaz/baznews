@@ -4,15 +4,7 @@
 
 Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
 
-    Route::get('news', 'Api\NewsController@index');
-    Route::get('news/{id}', 'Api\NewsController@show');
-
-    Route::get('news_category', 'Api\NewsCategoryController@index');
-    Route::get('news_category/{id}/', 'Api\NewsCategoryController@show');
-//    Route::get('news_category/{id}/news/{news_id?}', 'Api\NewsCategoryController@show');
-
-    Route::get('videos', 'Api\VideoController@index');
-    Route::get('videos/{id}', 'Api\VideoController@show');
+    Route::resource('news', 'Api\NewsController', ['only' => ['index', 'show']]);
 
 });
 

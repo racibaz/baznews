@@ -3,6 +3,7 @@
 namespace App\Modules\News\Models;
 
 use App\Models\User;
+use App\Modules\News\Transformers\NewsTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,7 @@ class News extends Model
     use Searchable;
     use RevisionableTrait;
     use Sluggable;
+
 
     /**
      * Return the sluggable configuration array for this model.
@@ -42,7 +44,7 @@ class News extends Model
     }
 
     protected $table = 'news';
-
+    public $transformer = NewsTransformer::class;
     public static $newsTypes = ['Standard', 'Private News', 'Internal News', 'Photo Gallery', 'Video', 'Video Gallery', 'Sound'];
     public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
     protected $fillable = ['user_id', 'country_id', 'city_id', 'news_source_id',
