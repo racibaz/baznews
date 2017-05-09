@@ -63,8 +63,8 @@
                         <div class="fileinput fileinput-new" data-provides="fileinput">
                             <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
                             <div>
-                                <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('biography.save_image')}}</span><span class="fileinput-exists">{{trans('biography.change')}}</span>{!! Form::file('photo') !!}</span>
-                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('biography.remove')}}</a>
+                                <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('biography::biography.select_image')}}</span><span class="fileinput-exists">{{trans('biography::biography.change')}}</span>{!! Form::file('photo') !!}</span>
+                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('biography::biography.remove')}}</a>
                             </div>
                         </div>
                     </div>

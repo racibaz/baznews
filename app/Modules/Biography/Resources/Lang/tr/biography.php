@@ -22,7 +22,7 @@ return[
     'hit'=>'Hit',
     'is_cuff'=>'Manşet',
     'is_active'=>'Aktif/Pasif',
-    'save_image'=>'Fotoğrafı Kaydet',
+    'select_image'=>'Resim Seç',
     'remove'=>'Kaldır',
     'change'=>'Değiştir',
 ];
