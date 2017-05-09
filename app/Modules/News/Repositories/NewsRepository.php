@@ -62,7 +62,7 @@ class NewsRepository extends EloquentRepository
 
 //todo php versiyon farkından dolayı "?" hata veriyor.
 //    public function relatedNews($record): ?array
-    public function relatedNews($record): array
+    public function relatedNews($record)
     {
         $relatedNews = [];
         //filter veya map vs.. ye dönüştürülebilinir.
