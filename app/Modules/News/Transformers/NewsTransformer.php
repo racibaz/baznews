@@ -11,6 +11,8 @@ use League\Fractal\TransformerAbstract;
 
 class NewsTransformer extends TransformerAbstract
 {
+
+    protected  $baseUrl = '/api/v1/news/';
     protected $availableIncludes = [
         'user',
         'country',
@@ -48,27 +50,30 @@ class NewsTransformer extends TransformerAbstract
             'createdAt' => $record->created_at,
             'updatedAt' => $record->updated_at,
 //            'diff_human' => $record->updated_at->diffForHumans()
+            '_links' => [
+                'self' => $this->baseUrl. $record->id,
+            ],
         ];
 
-        if($record->is_show_previous_and_next_news){
+        if ($record->is_show_previous_and_next_news) {
 
             $newsRepo = new NewsRepository();
             $previousNews = $newsRepo->previousNews($record);
-            if(empty($previousNews))
+            if (empty($previousNews))
                 $previousNews = $newsRepo->lastRecord($record);
 
             $data['previousNews'] = [
-                'title' =>  $previousNews->title,
-                'link' =>  '/api/v1/news/'. $previousNews->id,
+                'title' => $previousNews->title,
+                'link' => $this->baseUrl . $previousNews->id,
             ];
 
             $nextNews = $newsRepo->nextNews($record);
-            if(empty($nextNews))
+            if (empty($nextNews))
                 $nextNews = $newsRepo->firstRecord();
 
             $data['nextNews'] = [
-                'title' =>  $nextNews->title,
-                'link' =>  '/api/v1/news/'. $nextNews->id,
+                'title' => $nextNews->title,
+                'link' => $this->baseUrl . $nextNews->id,
             ];
         }
 
