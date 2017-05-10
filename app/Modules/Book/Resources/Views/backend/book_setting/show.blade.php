@@ -68,7 +68,7 @@
                                     {{--</tr>--}}
                                     {{--<tr>--}}
                                         {{--<th>Aktif/Pasif</th>--}}
-                                        {{--<td>{!!$record->is_active ? '<label class="badge badge-green">Aktif</label>' : '<label class="badge badge-brown">Pasif</label>'!!}</td>--}}
+                                        {{--<td>{!!$record->is_active ? '<label class="badge bg-green">Aktif</label>' : '<label class="badge badge-brown">Pasif</label>'!!}</td>--}}
                                     {{--</tr>--}}
 
                                 {{--</tbody>--}}
