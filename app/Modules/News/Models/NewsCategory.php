@@ -3,6 +3,7 @@
 namespace App\Modules\News\Models;
 
 use App\Models\Link;
+use App\Modules\News\Transformers\NewsCategoryTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
@@ -57,6 +58,7 @@ class NewsCategory extends Model
     }
 
     protected $table = 'news_categories';
+    public $transformer = NewsCategoryTransformer::class;
     protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'thumbnail', 'is_cuff', 'is_active'];
 
     public function news()

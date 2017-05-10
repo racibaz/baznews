@@ -2,6 +2,7 @@
 
 namespace App\Modules\News\Models;
 
+use App\Modules\News\Transformers\PhotoTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
@@ -27,7 +28,7 @@ class Photo extends Model
             ]
         ];
     }
-    
+    public $transformer = PhotoTransformer::class;
     protected $fillable = ['photo_gallery_id', 'name', 'subtitle', 'slug', 'file', 'link','content', 'keywords', 'order', 'is_active'];
     protected $dates = ['created_at','updated_at','deleted_at'];
 

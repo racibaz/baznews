@@ -3,6 +3,7 @@
 namespace App\Modules\News\Models;
 
 use App\Models\Link;
+use App\Modules\News\Transformers\VideoCategoryTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
@@ -56,6 +57,7 @@ class VideoCategory extends Model
     }
 
     protected $table = 'video_categories';
+    public $transformer = VideoCategoryTransformer::class;
     protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'icon', 'is_cuff', 'is_active'];
 
 

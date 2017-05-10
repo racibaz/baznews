@@ -2,6 +2,7 @@
 
 namespace App\Modules\News\Models;
 
+use App\Modules\News\Transformers\NewsSourceTransformer;
 use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\Validator;
 class NewsSource extends Model
 {
     use Eventable;
+
+    public $transformer = NewsSourceTransformer::class;
 
     protected $fillable = ['name', 'url', 'is_active'];
 

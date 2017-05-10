@@ -7,33 +7,36 @@ use League\Fractal\TransformerAbstract;
 
 class VideoTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['video_gallery', 'video_category'];
-
     public function transform(Video $record)
     {
         return [
-            'id' =>  $record->id,
-            'name' =>  $record->name,
-            'slug' =>  $record->slug,
-            'short_url' =>  $record->short_url,
-            'subtitle' =>  $record->subtitle,
-            'thumbnail' =>  $record->thumbnail,
-            'file' =>  $record->file,
-            'link' =>  $record->link,
-            'content' =>  $record->content,
-            'keywords' =>  $record->keywords,
-            'order' =>  $record->order,
-            'is_comment' =>  $record->is_comment
+            'id' =>  (int) $record->id,
+            'name' => (string) $record->name,
+            'slug' => (string) $record->slug,
+            'short_url' => (string) $record->short_url,
+            'subtitle' => (string) $record->subtitle,
+            'thumbnail' => (string) $record->thumbnail,
+            'file' => (string) $record->file,
+            'link' => (string) $record->link,
+            'content' => (string) $record->content,
+            'keywords' => (string) $record->keywords,
+            'order' => (int) $record->order,
+            'is_comment' => (bool) $record->is_comment,
+            'links' => [
+                [
+                    'rel' => 'self',
+                    'href' => route('video.show', $record->id),
+                ],
+                //todo eğer yoksa koşul konulmalı....
+                [
+                    'rel' => 'videoCategory',
+                    'href' => route('video_categories.show', $record->video_category_id),
+                ],
+                [
+                    'rel' => 'videoGallery',
+                    'href' => route('video_galleries.show', $record->video_gallery_id),
+                ],
+            ]
         ];
-    }
-
-    public function includeVideoGallery(Video $record)
-    {
-        return $this->item($record->video_gallery, new VideoGalleryTransformer);
-    }
-
-    public function includeVideoCategory(Video $record)
-    {
-        return $this->item($record->video_category, new VideoCategoryTransformer);
     }
 }

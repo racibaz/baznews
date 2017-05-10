@@ -4,26 +4,10 @@ namespace App\Modules\News\Transformers;
 
 use App\Modules\News\Models\News;
 use App\Modules\News\Repositories\NewsRepository;
-use App\Transformers\CityTransformer;
-use App\Transformers\CountryTransformer;
-use App\Transformers\UserTransformer;
 use League\Fractal\TransformerAbstract;
 
 class NewsTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = [
-        'user',
-        'country',
-        'city',
-        'news_source',
-        'news_categories',
-        'photo_galleries',
-        'video_galleries',
-        'photos',
-        'videos',
-        'related_news'
-    ];
-
     public function transform(News $record)
     {
         $data = [
@@ -44,23 +28,58 @@ class NewsTransformer extends TransformerAbstract
             'newsType' => (int) $record->news_type,
             'isComment' => (bool) $record->is_comment,
             'isShowEditorProfile' => (bool) $record->is_show_editor_profile,
-            'isShowPreviousAndNextNews' => (string) $record->is_show_previous_and_next_news,
+            'isShowPreviousAndNextNews' => (bool) $record->is_show_previous_and_next_news,
             'createdAt' => (string) $record->created_at,
             'updatedAt' => (string) $record->updated_at,
-            'diff_human' => $record->updated_at->diffForHumans(),
-
+            'diff_human' => (string) $record->updated_at->diffForHumans(),
             'links' => [
                 [
                     'rel' => 'self',
                     'href' => route('news.show', $record->id),
                 ],
                 [
+                    'rel' => 'user',
+                    'href' => route('users.show', $record->user_id),
+                ],
+                [
+                    'rel' => 'country',
+                    'href' => route('countries.show', $record->country_id),
+                ],
+                [
+                    'rel' => 'city',
+                    'href' => route('cities.show', $record->city_id),
+                ],
+                [
+                    'rel' => 'newsSource',
+                    'href' => route('news_sources.show', $record->news_source_id),
+                ],
+                [
+                    'rel' => 'news.photoGalleries',
+                    'href' => route('news.photo_galleries.index', $record->id),
+                ],
+                [
+                    'rel' => 'news.videoGalleries',
+                    'href' => route('news.video_galleries.index', $record->id),
+                ],
+                [
                     'rel' => 'news.categories',
-                    //todo burada kaldım.
-//                    'href' => route('products.categories.index', $record->id),
+                    'href' => route('news.categories.index', $record->id),
+                ],
+                [
+                    'rel' => 'news.videos',
+                    'href' => route('news.videos.index', $record->id),
+                ],
+                [
+                    'rel' => 'news.photos',
+                    'href' => route('news.photos.index', $record->id),
+                ],
+                [
+                    'rel' => 'news.relatedNews',
+                    'href' => route('news.related_news.index', $record->id),
                 ],
             ]
         ];
+
 
         if ($record->is_show_previous_and_next_news) {
 

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Modules\News\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\ApiController;
-use App\Modules\News\Repositories\NewsRepository as Repo;
+use App\Models\User;
+use App\Repositories\UserRepository as Repo;
 
-class NewsController extends ApiController
+class UserController extends ApiController
 {
     private $repo;
 
@@ -21,4 +22,8 @@ class NewsController extends ApiController
         return $this->showAll($this->repo->findAll());
     }
 
+    public function show(User $record)
+    {
+        return $this->showOne($record);
+    }
 }
