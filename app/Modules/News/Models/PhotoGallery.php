@@ -2,6 +2,7 @@
 
 namespace App\Modules\News\Models;
 
+use App\Modules\News\Transformers\PhotoGalleryTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
@@ -25,7 +26,7 @@ class PhotoGallery extends Model
             ]
         ];
     }
-
+    public $transformer = PhotoGalleryTransformer::class;
     protected $fillable = ['photo_category_id', 'user_id', 'title', 'slug', 'short_url', 'description', 'keywords', 'thumbnail', 'is_cuff','is_active'];
 
 

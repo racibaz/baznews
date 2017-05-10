@@ -2,6 +2,7 @@
 
 namespace App\Modules\News\Models;
 
+use App\Modules\News\Transformers\VideoTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
@@ -30,6 +31,8 @@ class Video extends Model
             ]
         ];
     }
+
+    public $transformer = VideoTransformer::class;
 
     protected $fillable = [
         'video_category_id',
