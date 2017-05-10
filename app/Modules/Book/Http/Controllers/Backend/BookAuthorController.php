@@ -44,7 +44,7 @@ class BookAuthorController extends BackendController
 
     public function show(BookAuthor $record)
     {
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['records']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 
