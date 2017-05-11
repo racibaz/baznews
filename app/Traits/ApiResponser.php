@@ -25,6 +25,12 @@ trait ApiResponser
     }
     protected function showAll(Collection $collection, $code = 200)
     {
+        //Veri cachelenmiş ise diğer işlemlere girmeden veriyi gönderiyoruz.
+        if($this->isDataCached()){
+            $collection = $this->isDataCached();
+            return $this->successResponse($collection, $code);
+        }
+
         if ($collection->isEmpty()) {
             return $this->successResponse(['data' => $collection], $code);
         }
@@ -39,8 +45,15 @@ trait ApiResponser
     }
     protected function showOne(Model $instance, $code = 200)
     {
+        //Veri cachelenmiş ise diğer işlemlere girmeden veriyi gönderiyoruz.
+        if($this->isDataCached()){
+            $collection = $this->isDataCached();
+            return $this->successResponse($collection, $code);
+        }
+
         $transformer = $instance->transformer;
         $instance = $this->transformData($instance, $transformer);
+        $instance = $this->cacheResponse($instance);
         return $this->successResponse($instance, $code);
     }
     protected function showMessage($message, $code = 200)
@@ -90,8 +103,18 @@ trait ApiResponser
     }
     protected function cacheResponse($data)
     {
-        return Cache::tags('Api')->rememberForever(request()->url(), function() use($data) {
+        return Cache::tags('Api')->rememberForever(request()->fullUrl(), function() use($data) {
             return $data;
         });
     }
+    protected function isDataCached()
+    {
+        if(Cache::tags(['Api'])->has(request()->fullUrl())){
+            return Cache::tags(['Api'])->get(request()->fullUrl());
+        }
+
+        return false;
+    }
+
+
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api\City;
+namespace App\Modules\News\Http\Controllers\Api\VideoCategory;
 
 use App\Http\Controllers\ApiController;
-use App\Models\City;
-use App\Repositories\CityRepository as Repo;
+use App\Modules\News\Models\VideoCategory;
+use App\Modules\News\Repositories\NewsRepository as Repo;
 
-class CityController extends ApiController
+class VideoCategoryController extends ApiController
 {
     private $repo;
 
@@ -22,7 +22,7 @@ class CityController extends ApiController
         return $this->showAll($this->repo->findAll());
     }
 
-    public function show(City $record)
+    public function show(VideoCategory $record)
     {
         return $this->showOne($record);
     }

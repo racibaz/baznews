@@ -3,23 +3,35 @@
 namespace App\Modules\News\Transformers;
 
 use App\Modules\News\Models\RelatedNews;
-use App\Modules\News\Models\Video;
 use League\Fractal\TransformerAbstract;
 
 class RelatedNewsTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['news'];
-
     public function transform(RelatedNews $record)
     {
         return [
             'news_id' =>  $record->news_id,
-            'related_news_id' => $record->related_news_id
+            'related_news_id' => $record->related_news_id,
+            'links' => [
+                [
+                    'rel' => 'self',
+                    'href' => route('related_news.show', $record->id),
+                ],
+                [
+                    'rel' => 'news',
+                    'href' => route('related_news.news.index', $record->id),
+                ]
+            ]
         ];
     }
 
-    public function includeNews(Video $record)
+    public static function originalAttribute($index)
     {
-        return $this->item($record->news, new NewsTransformer);
+        $attributes = [
+            'news_id' => 'news_id',
+            'related_news_id' => 'related_news_id',
+        ];
+
+        return isset($attributes[$index]) ? $attributes[$index] : null;
     }
 }

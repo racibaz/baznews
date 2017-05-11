@@ -108,9 +108,3 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('recommendation_news', 'Backend\RecommendationNewsController');
     Route::resource('news_setting', 'Backend\NewsSettingController');
 });
-
-Route::group(['prefix' => 'news'], function() {
-    Route::get('/', function() {
-        dd('This is the News module index page. Build something great!');
-    });
-});

@@ -13,6 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/biography', function (Request $request) {
-    // return $request->biography();
-})->middleware('auth:api');
+

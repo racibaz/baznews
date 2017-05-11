@@ -7,26 +7,54 @@ use League\Fractal\TransformerAbstract;
 
 class PhotoTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['photo_gallery'];
-
     public function transform(Photo $record)
     {
         return [
-            'id' =>  $record->id,
-            'name' =>  $record->name,
-            'slug' =>  $record->slug,
-            'subtitle' =>  $record->subtitle,
-            'thumbnail' =>  $record->thumbnail,
-            'file' =>  $record->file,
-            'link' =>  $record->link,
-            'content' =>  $record->content,
-            'keywords' =>  $record->keywords,
-            'order' =>  $record->order,
+            'id' => (int) $record->id,
+            'name' => (string) $record->name,
+            'slug' => (string) $record->slug,
+            'subtitle' => (string) $record->subtitle,
+            'thumbnail' => (string) $record->thumbnail,
+            'file' => (string) $record->file,
+            'link' => (string) $record->link,
+            'content' => (string) $record->content,
+            'keywords' => (string) $record->keywords,
+            'order' => (int) $record->order,
+            'createdAt' => (string) $record->created_at,
+            'updatedAt' => (string) $record->updated_at,
+            'diff_human' => (string) $record->updated_at->diffForHumans(),
+            'links' => [
+                [
+                    'rel' => 'self',
+                    'href' => route('photos.show', $record->id),
+                ],
+                [
+                    'rel' => 'photoGalleries',
+                    'href' => route('photo_galleries.show', $record->id),
+                ],
+                [
+                    'rel' => 'photos.news',
+                    'href' => route('photos.news.index', $record->id),
+                ],
+            ]
         ];
     }
 
-    public function includePhotoGallery(Photo $record)
+    public static function originalAttribute($index)
     {
-        return $this->item($record->photo_gallery, new PhotoGalleryTransformer);
+        $attributes = [
+            'id' => 'id',
+            'title' => 'name',
+            'slug' => 'slug',
+            'picture' => 'thumbnail',
+            'link' => 'link',
+            'order' => 'order',
+            'active' => 'is_active',
+            'creationDate' => 'created_at',
+            'lastChange' => 'updated_at',
+            'diffHuman' => 'diff_human',
+        ];
+
+        return isset($attributes[$index]) ? $attributes[$index] : null;
     }
 }

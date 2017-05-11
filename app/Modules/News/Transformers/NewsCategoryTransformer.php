@@ -21,6 +21,9 @@ class NewsCategoryTransformer extends TransformerAbstract
             'hit'  => (int) $record->hit,
             'thumbnail'  => (string) $record->thumbnail,
             'is_cuff'  => (bool) $record->is_cuff,
+            'createdAt' => (string) $record->created_at,
+            'updatedAt' => (string) $record->updated_at,
+            'diff_human' => (string) $record->updated_at->diffForHumans(),
             'links' => [
                 [
                     'rel' => 'self',
@@ -39,32 +42,16 @@ class NewsCategoryTransformer extends TransformerAbstract
     {
         $attributes = [
             'id' => 'id',
+            'parent' => 'parent_id',
             'title' => 'name',
+            'slug' => 'slug',
             'description' => 'description',
             'picture' => 'image',
-            'seller' => 'seller_id',
+            'cuff' => 'is_cuff',
             'status' => 'status',
             'creationDate' => 'created_at',
             'lastChange' => 'updated_at',
             'diffHuman' => 'diff_human',
-        ];
-
-        return isset($attributes[$index]) ? $attributes[$index] : null;
-    }
-
-    public static function transformedAttribute($index)
-    {
-        $attributes = [
-            'id' => 'identifier',
-            'name' => 'title',
-            'description' => 'details',
-            'quantity' => 'stock',
-            'status' => 'situation',
-            'image' => 'picture',
-            'seller_id' => 'seller',
-            'created_at' => 'creationDate',
-            'updated_at' => 'lastChange',
-            'deleted_at' => 'deletedDate',
         ];
 
         return isset($attributes[$index]) ? $attributes[$index] : null;

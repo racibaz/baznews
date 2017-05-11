@@ -7,31 +7,52 @@ use League\Fractal\TransformerAbstract;
 
 class PhotoGalleryTransformer  extends TransformerAbstract
 {
-    protected $availableIncludes = ['video_categories', 'videos'];
-
     public function transform(PhotoGallery $record)
     {
         return [
             'id' => (int) $record->id,
-            'title' =>  $record->title,
-            'slug' =>  $record->slug,
-            'short_url' =>  $record->short_url,
-            'description' =>  $record->description,
-            'keywords' =>  $record->keywords,
-            'thumbnail' =>  $record->thumbnail,
-            'is_cuff' =>  $record->is_cuff
+            'title' => (string) $record->title,
+            'slug' =>  (string) $record->slug,
+            'short_url' => (string) $record->short_url,
+            'description' => (string) $record->description,
+            'keywords' => (string) $record->keywords,
+            'thumbnail' => (string) $record->thumbnail,
+            'is_cuff' => (bool) $record->is_cuff,
+            'createdAt' => (string) $record->created_at,
+            'updatedAt' => (string) $record->updated_at,
+            'diff_human' => (string) $record->updated_at->diffForHumans(),
+            'links' => [
+                [
+                    'rel' => 'self',
+                    'href' => route('photo_galleries.show', $record->id),
+                ],
+                [
+                    'rel' => 'photoCategory',
+                    'href' => route('photo_categories.show', $record->photo_category_id),
+                ],
+                [
+                    'rel' => 'photos',
+                    'href' => route('photo_galleries.photos.index', $record->id),
+                ],
+            ]
         ];
     }
 
-    public function includePhotoCategory(PhotoGallery $record)
+    public static function originalAttribute($index)
     {
-        return $this->item($record->photo_category, new PhotoCategoryTransformer);
+        $attributes = [
+            'id' => 'id',
+            'title' => 'name',
+            'slug' => 'slug',
+            'shortUrl' => 'short_url',
+            'picture' => 'thumbnail',
+            'cuff' => 'is_cuff',
+            'active' => 'is_active',
+            'creationDate' => 'created_at',
+            'lastChange' => 'updated_at',
+            'diffHuman' => 'diff_human',
+        ];
+
+        return isset($attributes[$index]) ? $attributes[$index] : null;
     }
-
-    public function includePhotos(PhotoGallery $record)
-    {
-        return $this->collection($record->photos, new PhotoTransformer);
-    }
-
-
 }

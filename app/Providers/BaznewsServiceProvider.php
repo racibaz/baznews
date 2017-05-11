@@ -31,6 +31,7 @@ class BaznewsServiceProvider extends ServiceProvider
     {
         if(!app()->runningInConsole()) {
 
+            //todo test edildikten sonra User modelinin içine alınamalı.
             User::created(function ($user) {
                 if($user->status === 2){
                     $token = $user->activationToken()->create([

@@ -1,14 +1,13 @@
 <?php
 
 Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
-
     /*
      * News
      * */
     Route::resource('news', 'Api\News\NewsController', ['only' => ['index', 'show']]);
     Route::resource('news.photo_galleries', 'Api\News\NewsPhotoGalleryController', ['only' => ['index']]);
     Route::resource('news.video_galleries', 'Api\News\NewsVideoGalleryController', ['only' => ['index']]);
-    Route::resource('news.categories', 'Api\News\NewsCategoryController', ['only' => ['index']]);
+    Route::resource('news.categories', 'Api\News\NewsNewsCategoryController', ['only' => ['index']]);
     Route::resource('news.videos', 'Api\News\NewsVideoController', ['only' => ['index']]);
     Route::resource('news.photos', 'Api\News\NewsPhotoController', ['only' => ['index']]);
     Route::resource('news.related_news', 'Api\News\NewsRelatedNewsController', ['only' => ['index']]);
@@ -29,25 +28,26 @@ Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
     * Video Category
     * */
     Route::resource('video_categories', 'Api\VideoCategory\VideoCategoryController', ['only' => ['index', 'show']]);
-    Route::resource('video_categories.videos', 'Api\VideoCategory\NewsCategoryNewsController', ['only' => ['index']]);
+    Route::resource('video_categories.videos', 'Api\VideoCategory\VideoCategoryVideoController', ['only' => ['index']]);
+    Route::resource('video_categories.video_galleries', 'Api\VideoCategory\VideoCategoryVideoGalleryController', ['only' => ['index']]);
 
     /*
     * Video Gallery
     * */
     Route::resource('video_galleries', 'Api\VideoGallery\VideoGalleryController', ['only' => ['index', 'show']]);
-    Route::resource('video_galleries.videos', 'Api\VideoGallery\NewsCategoryNewsController', ['only' => ['index']]);
+    Route::resource('video_galleries.videos', 'Api\VideoGallery\VideoGalleryVideoController', ['only' => ['index']]);
 
     /*
     * Photo Category
     * */
     Route::resource('photo_categories', 'Api\PhotoCategory\PhotoCategoryController', ['only' => ['index', 'show']]);
-    Route::resource('photo_categories.photos', 'Api\PhotoCategory\PhotoCategoryController', ['only' => ['index']]);
+    Route::resource('photo_categories.photo_galleries', 'Api\PhotoCategory\PhotoCategoryPhotoGalleryController', ['only' => ['index']]);
 
     /*
     * Photo Gallery
     * */
     Route::resource('photo_galleries', 'Api\PhotoGallery\PhotoGalleryController', ['only' => ['index', 'show']]);
-    Route::resource('photo_galleries.photos', 'Api\PhotoGallery\PhotoGalleryController', ['only' => ['index']]);
+    Route::resource('photo_galleries.photos', 'Api\PhotoGallery\PhotoGalleryPhotoController', ['only' => ['index']]);
 
     /*
     * Video
@@ -58,33 +58,10 @@ Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
     * Photo
     * */
     Route::resource('photos', 'Api\Photo\PhotoController', ['only' => ['index', 'show']]);
+    Route::resource('photos.news', 'Api\Photo\PhotoNewsController', ['only' => ['index']]);
 
     /*
     * Related News
     * */
     Route::resource('related_news', 'Api\RelatedNews\RelatedNewsController', ['only' => ['index', 'show']]);
-
-
-
 });
-
-//Route::group(['prefix' => 'v1'], function () {
-//
-//    Route::get('news/{id}', 'App\Modules\News\Http\Controllers\Api\NewsController@news');
-//
-//    Route::get('/', 'TopicController@index');
-//    Route::get('/{topic}', 'TopicController@show');
-//    Route::post('/', 'TopicController@store')->middleware('auth:api');
-//    Route::patch('/{topic}', 'TopicController@update')->middleware('auth:api');
-//    Route::delete('/{topic}', 'TopicController@destroy')->middleware('auth:api');
-//
-//    Route::group(['prefix' => '/{topic}/posts'], function () {
-//        Route::post('/', 'PostController@store')->middleware('auth:api');
-//        Route::patch('/{post}', 'PostController@update')->middleware('auth:api');
-//        Route::delete('/{post}', 'PostController@destroy')->middleware('auth:api');
-//
-//        Route::group(['prefix' => '/{post}/likes'], function () {
-//            Route::post('/', 'PostLikeController@store')->middleware('auth:api');
-//        });
-//    });
-//});
