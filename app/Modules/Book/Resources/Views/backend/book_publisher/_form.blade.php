@@ -1,81 +1,93 @@
 @extends($activeTheme .'::backend.master')
-
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('book::book_publisher.management')}}
+            <small>{{trans('book::common.edit_delete')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('book_publisher.index') !!}">{{trans('book::book_publisher.management')}}</a>
+            </li>
+            <li class="active">{{trans('book::common.edit_delete')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
-<div class="container-fluid">
+    @if(isset($record->id))
+        {!! Form::model($record, ['route' => ['book_publisher.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+    @else
+        {!! Form::open(['route' => 'book_publisher.store','method' => 'post', 'files' => 'true']) !!}
+    @endif
     <div class="row">
-        <div class="col-md-12">
-            <!--Top header start-->
-            <h3 class="ls-top-header">{{trans('book::book_publisher.management')}}</h3>
-            <!--Top header end -->
+        <div class="col-lg-6">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{trans('book::common.edit_delete')}}</h3>
 
-            <!--Top breadcrumb start -->
-            <ol class="breadcrumb">
-                <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('book_publisher.index') !!}"> {{ trans('book::book_publisher.news_categories') }} </a></li>
-                <li class="active"> {{ trans('book::common.add_update') }}</li>
-            </ol>
-            <!--Top breadcrumb start -->
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+
+                    <div class="form-group">
+                        {!! Form::label('name', trans('book::book_publisher.name'),['class'=> 'control-label']) !!}
+                        {!! Form::text('name', $record->name, ['placeholder' => trans('book::book_publisher.name') ,'class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('link', trans('book::book_publisher.link'),['class'=> 'control-label']) !!}
+                        {!! Form::text('link', $record->link, ['placeholder' => trans('book::book_publisher.link') ,'class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            {!! Form::checkbox('is_active', null , $record->is_active) !!}
+                            {{trans('book::common.is_active')}}
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+
         </div>
     </div>
-    <!-- Main Content Element  Start-->
-    <div class="row">
-        <div class="col-md-6">
-            <div class="panel panel-light-blue">
-                <div class="panel-heading">
-                    {{--/<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
-                </div>
 
-                @if(isset($record->id))
-                    {!! Form::model($record, ['route' => ['book_publisher.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
-                @else
-                    {!! Form::open(['route' => 'book_publisher.store','method' => 'post', 'files' => 'true']) !!}
-                @endif
-
-                <div class="panel-body">
-
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('name', trans('book::book_publisher.name'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('name', $record->name, ['placeholder' => trans('book::book_publisher.name') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('link', trans('book::book_publisher.link'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('link', $record->link, ['placeholder' => trans('book::book_publisher.link') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            {{trans('book::common.status')}}
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <div class="checkbox i-checks">
-                                    <label>
-                                        {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                        <i></i> {{trans('book::common.is_active')}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {!! Form::close() !!}
-            </div>
-        </div>
-    </div><!-- end row -->
-    <!-- Main Content Element  End-->
-</div><!-- end container-fluid -->
+    {!! Form::close() !!}
+@endsection
+@section('css')
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+@endsection
+@section('js')
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.select2').select2();
+            $('.tagsinput').tagsinput();
+        });
+        $(window).resize(function () {
+            $('.select2').select2();
+            $('.tagsinput').tagsinput();
+        });
+        /*--------------------------------------------------------
+         Sticky Sidebar
+         * --------------------------------------------------------*/
+        jQuery(document).ready(function () {
+            jQuery('#sidebar,#content').theiaStickySidebar();
+        });
+        //active menu
+        activeMenu('book_publishers', 'book_management');
+    </script>
 @endsection

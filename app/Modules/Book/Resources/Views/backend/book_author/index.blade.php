@@ -61,3 +61,9 @@
         <!-- /.col -->
     </div>
 @endsection
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('book_authors','book_management');
+    </script>
+@endsection

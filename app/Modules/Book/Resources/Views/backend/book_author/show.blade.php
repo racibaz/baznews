@@ -70,6 +70,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('books','book_management');
+        activeMenu('book_authors','book_management');
     </script>
 @endsection

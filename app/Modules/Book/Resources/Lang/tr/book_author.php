@@ -25,7 +25,7 @@ return[
     'paper_type'=>'Kağıt Tipi',
     'size'=>'Boyutu',
     'select_categories'=>'Kategori Seçiniz',
-    'status'=>'Kategori Seçiniz',
+    'status'=>'Durum',
     'image'=>'Resim',
     'create_edit'=>'Yazar Ekle/Düzenle',
     'create_author'=>'Yazar Ekle',

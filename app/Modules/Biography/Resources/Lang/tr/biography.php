@@ -7,7 +7,9 @@
  */
 
 return[
+    'management'=>'Biyografi Yönetimi',
     'biography'=>'Biyografi',
+    'list'=>'Biyografi Listesi',
     'create_edit'=>'Oluştur/Düzenle',
     'title'=>'Başlık',
     'slug'=>'Slug',
@@ -25,4 +27,7 @@ return[
     'select_image'=>'Resim Seç',
     'remove'=>'Kaldır',
     'change'=>'Değiştir',
+    'status'=>'Durum',
+    'short_url'=>'Kısa URL',
+    'edit_delete'=>'Düzenle/Sil',
 ];

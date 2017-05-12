@@ -51,7 +51,7 @@ class BookCategoryController extends BackendController
 
     public function show(BookCategory $record)
     {
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['records']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
     }
 
 

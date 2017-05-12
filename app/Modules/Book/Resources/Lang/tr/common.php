@@ -10,4 +10,8 @@ return[
     'is_active'=>'Aktif/Pasif',
     'is_cuff'=>'Manşet',
     'edit_delete'=>'Düzenle/Sil',
+    'change'=>'Değiştir',
+    'remove'=>'Kaldır',
+    'select_image'=>'Resim Seç',
+    'please_choose'=>'Lütfen Seçiniz',
 ];
