@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\Eventable;
+use App\Transformers\MenuTransformer;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -28,6 +29,7 @@ class Menu extends Model
         ];
     }
 
+    public $transformer = MenuTransformer::class;
     protected $fillable = ['parent_id', '_lft', '_rgt', 'page_id', 'name', 'slug', 'url', 'route', 'icon', 'order' ,'is_active'];
     protected $dates = ['created_at','updated_at','deleted_at'];
 
@@ -40,5 +42,4 @@ class Menu extends Model
     {
         return Menu::where('is_active',1)->pluck('name', 'id');
     }
-
 }

@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Traits\Eventable;
+use App\Transformers\CityTransformer;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 
 class City extends Model
 {
@@ -14,6 +14,7 @@ class City extends Model
      *
      * @var array
      */
+    public $transformer = CityTransformer::class;
     protected $fillable = [
         'country_id',
         'name',

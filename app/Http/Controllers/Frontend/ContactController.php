@@ -23,7 +23,7 @@ class ContactController extends Controller
     public function index()
     {
         $contactTypeList =  Cache::tags(['ContactController', 'ContactType', 'contactTypeList'])->rememberForever('contactTypeList', function() {
-            return ContactType::contacctTypeList();
+            return ContactType::contactTypeList();
         });
 
         return Theme::view('frontend.contact',compact('contactTypeList'));
