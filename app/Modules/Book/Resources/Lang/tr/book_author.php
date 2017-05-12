@@ -28,6 +28,6 @@ return[
     'status'=>'Kategori Seçiniz',
     'image'=>'Resim',
     'create_edit'=>'Yazar Ekle/Düzenle',
-    'create_book'=>'Yazar Ekle',
+    'create_author'=>'Yazar Ekle',
     'bio_note'=>'Biyografi Notu',
 ];
