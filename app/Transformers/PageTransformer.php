@@ -26,7 +26,7 @@ class PageTransformer extends TransformerAbstract
                 ],
                 [
                     'rel' => 'pages.menus',
-                    'href' => route('pages.menus.show', $record->id),
+                    'href' => route('pages.menus.index', $record->id),
                 ],
             ]
         ];

@@ -11,20 +11,58 @@ class BookTransformer extends TransformerAbstract
     {
         return [
             'id' => (int) $record->id,
-            'name' => $record->name,
-            'slug' => $record->slug,
-            'link' => $record->link,
-            'thumbnail' => $record->thumbnail,
-            'photo' => $record->photo,
-            'author' => $record->author,
-            'publisher' => $record->publisher,
-            'description' => $record->description,
-            'ISBN' => $record->ISBN,
-            'release_date' => $record->release_date,
-            'number_of_print' => $record->number_of_print,
-            'skin_type' => $record->skin_type,
-            'paper_type' => $record->paper_type,
-            'size' => $record->size
+            'name' => (string) $record->name,
+            'slug' => (string) $record->slug,
+            'link' => (string) $record->link,
+            'thumbnail' => (string) $record->thumbnail,
+            'photo' => (string) $record->photo,
+            'author' => (string) $record->author,
+            'publisher' => (string) $record->publisher,
+            'description' => (string) $record->description,
+            'ISBN' => (string) $record->ISBN,
+            'release_date' => (string) $record->release_date,
+            'number_of_print' => (string) $record->number_of_print,
+            'skin_type' => (string) $record->skin_type,
+            'paper_type' => (string) $record->paper_type,
+            'size' => (string) $record->size,
+            'cuff' => (bool) $record->is_acuff,
+            'links' => [
+                [
+                    'rel' => 'self',
+                    'href' => route('books.show', $record->id),
+                ],
+                [
+                    'rel' => 'user',
+                    'href' => route('users.show', $record->user_id),
+                ],
+                [
+                    'rel' => 'bookPublisher',
+                    'href' => route('book_publishers.show', $record->publisher_id),
+                ],
+                [
+                    'rel' => 'bookAuthor',
+                    'href' => route('book_authors.show', $record->book_author_id),
+                ],
+                [
+                    'rel' => 'books.bookCategories',
+                    'href' => route('books.book_categories.index', $record->id),
+                ],
+            ]
         ];
+    }
+
+    public static function originalAttribute($index)
+    {
+        $attributes = [
+            'id' => 'id',
+            'name' => 'name',
+            'slug' => 'slug',
+            'shortUrl' => 'short_url',
+            'ISBN' => 'ISBN',
+            'releaseDate' => 'release_date',
+            'cuff' => 'is_cuff',
+            'active' => 'is_active',
+        ];
+        return isset($attributes[$index]) ? $attributes[$index] : null;
     }
 }

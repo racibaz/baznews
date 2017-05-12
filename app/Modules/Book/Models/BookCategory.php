@@ -3,6 +3,7 @@
 namespace App\Modules\Book\Models;
 
 use App\Models\Link;
+use App\Modules\Book\Transformers\BookCategoryTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
@@ -53,6 +54,7 @@ class BookCategory extends Model
     }
 
     protected $table = 'book_categories';
+    public $transformer = BookCategoryTransformer::class;
     protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'thumbnail', 'order', 'is_cuff', 'is_active'];
 
     public function books()
