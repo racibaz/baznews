@@ -87,7 +87,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::post('news/newsFilter', 'Backend\NewsController@newsFilter')->name('newsFilter');
     Route::get('news.forget_news_cache', 'Backend\NewsController@forgetCache')->name('forget_news_cache');
     Route::get('news.status/{status?}', 'Backend\NewsController@index')->name('news_statuses');
-    Route::resource('news', 'Backend\NewsController');
+
+    Route::resource('news', 'Backend\NewsController', [
+        'names' => ['index' => 'news.list']
+    ]);
+
     Route::resource('news_source', 'Backend\NewsSourceController');
     Route::resource('future_news', 'Backend\FutureNewsController');
     Route::get('photo_gallery/add_multi_photos_view/{photo_gallery_id}', 'Backend\PhotoGalleryController@addMultiPhotosView')->name('add_multi_photos_view');

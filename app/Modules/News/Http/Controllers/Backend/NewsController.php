@@ -271,7 +271,7 @@ class NewsController extends BackendController
         $this->removeCacheTags(['News']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view .'list');
     }
 
 
@@ -457,7 +457,7 @@ class NewsController extends BackendController
                 }
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+                return Redirect::route($this->redirectRouteName . $this->view . 'list', $result);
             } else {
                 return Redirect::back()
                     ->withErrors(trans('common.save_failed'))
