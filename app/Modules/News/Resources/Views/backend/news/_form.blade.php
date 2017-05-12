@@ -118,6 +118,36 @@
             <!-- /.box -->
         </div><!-- /.col-lg-12 -->
         <div class="col-lg-4" id="sidebar">
+
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-map-pin"></i>  {{trans('news::news.location')}}</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                {!! Form::label('country_id', trans('news::news.country_id'),['class'=> 'control-label']) !!}
+                                {!! Form::select('country_id', $countryList , $record->country_id , ['placeholder' => trans('news::news.please_choose'),'class' => 'form-control select2']) !!}
+                            </div>
+                        </div><!-- /.col-lg-12 -->
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                {!! Form::label('city_id', trans('news::news.city_id'),['class'=> 'control-label']) !!}
+                                {!! Form::select('city_id', $cityList , $record->city_id , ['placeholder' => trans('news::news.please_choose'),'class' => 'form-control select2']) !!}
+                            </div>
+                        </div><!-- /.col-lg-12 -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
             <div class="box box-success">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-edit"></i>  {{trans('news::news.status')}}</h3>
@@ -132,6 +162,10 @@
                             <div class="form-group">
                                 {!! Form::label('news_type', trans('news::news.news_type'),['class'=> ' control-label']) !!}
                                 {!! Form::select('news_type', $newsTypes , $record->news_type, ['placeholder' => trans('news::news.please_choose'),'class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('news_category_ids[]', trans('news::news.categories'),['class'=> 'control-label']) !!}
+                                {!! Form::select('news_category_ids[]', $newsCategoryList , $newsCategoryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('hit', trans('news::news.hit'),['class'=> ' control-label']) !!}
@@ -199,27 +233,13 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-list-ul"></i>  {{ trans('news::news.categories') }}</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="form-group">
-                        {!! Form::label('news_category_ids[]', trans('news::news.categories'),['class'=> 'control-label']) !!}
-                        {!! Form::select('news_category_ids[]', $newsCategoryList , $newsCategoryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
-                    </div>
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
+
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-cogs"></i>  {{trans('news::news.other_settings')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                     </div>
                 </div>
                 <!-- /.box-header -->
@@ -304,35 +324,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-map-pin"></i>  {{trans('news::news.location')}}</h3>
 
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                {!! Form::label('country_id', trans('news::news.country_id'),['class'=> 'control-label']) !!}
-                                {!! Form::select('country_id', $countryList , $record->country_id , ['placeholder' => trans('news::news.please_choose'),'class' => 'form-control select2']) !!}
-                            </div>
-                        </div><!-- /.col-lg-12 -->
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                {!! Form::label('city_id', trans('news::news.city_id'),['class'=> 'control-label']) !!}
-                                {!! Form::select('city_id', $cityList , $record->city_id , ['placeholder' => trans('news::news.please_choose'),'class' => 'form-control select2']) !!}
-                            </div>
-                        </div><!-- /.col-lg-12 -->
-                    </div>
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-image"></i>  {{trans('news::news.thumbnail_image')}}</h3>

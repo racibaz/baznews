@@ -21,7 +21,7 @@
             </p>
         </div>
         <div class="col-lg-12">
-            <div class="box box-default collapsed-box" id="filterBox">
+            <div class="box box-default" id="filterBox" style="display: none;">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-search"></i> {{trans('news::news.filter_search')}}</h3>
 
@@ -225,7 +225,7 @@
         </div>
 
         <div class="col-lg-12">
-            <div class="box box-default collapsed-box" id="statisticBox">
+            <div class="box box-default" id="statisticBox" style="display: none;">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-bar-chart"></i> {{trans('news::news.statistic')}}</h3>
 
@@ -414,13 +414,12 @@
             $('.select2').select2({ width: '100%',language: "tr" });
 
             $('#filter_btn').click(function () {
-                dateTime();
-                $('#filterBox').removeClass('collapsed-box');
-                $('#statisticBox').addClass('collapsed-box');
+                $('#filterBox').toggle();
+                $('#statisticBox').hide();
             });
             $('#statis_btn').click(function () {
-                $('#filterBox').addClass('collapsed-box');
-                $('#statisticBox').removeClass('collapsed-box');
+                $('#filterBox').hide();
+                $('#statisticBox').toggle();
             });
 
         });
