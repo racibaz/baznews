@@ -42,14 +42,6 @@
                         {!! Form::select('parent_id', $articleCategoryList , $record->parent_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('_lft', trans('article::article_category._lft'),['class'=> 'control-label']) !!}
-                        {!! Form::number('_lft', $record->_lft, ['placeholder' => trans('article::article_category._lft') ,'class' => 'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('_rgt', trans('article::article_category._rgt'),['class'=> 'control-label']) !!}
-                        {!! Form::number('_rgt', $record->_rgt, ['placeholder' => trans('article::article_category._rgt') ,'class' => 'form-control']) !!}
-                    </div>
-                    <div class="form-group">
                         {!! Form::label('name', trans('article::article_category.name'),['class'=> 'control-label']) !!}
                         {!! Form::text('name', $record->name, ['placeholder' => trans('article::article_category.name') ,'class' => 'form-control']) !!}
                     </div>
@@ -88,6 +80,20 @@
                     </div>
                 </div>
                 <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {!! Form::label('_lft', trans('article::article_category._lft'),['class'=> 'control-label']) !!}
+                                {!! Form::number('_lft', $record->_lft, ['placeholder' => trans('article::article_category._lft') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {!! Form::label('_rgt', trans('article::article_category._rgt'),['class'=> 'control-label']) !!}
+                                {!! Form::number('_rgt', $record->_rgt, ['placeholder' => trans('article::article_category._rgt') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         {!! Form::label('icon', trans('article::article_category.icon'),['class'=> 'control-label']) !!}
                         {!! Form::text('icon', $record->icon, ['placeholder' => trans('article::article_category.icon') ,'class' => 'form-control']) !!}

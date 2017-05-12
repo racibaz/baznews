@@ -11,6 +11,7 @@ return[
     'biography'=>'Biyografi',
     'list'=>'Biyografi Listesi',
     'create_edit'=>'Oluştur/Düzenle',
+    'add_biography'=>'Biyografi Ekle',
     'title'=>'Başlık',
     'slug'=>'Slug',
     'spot'=>'Spot',

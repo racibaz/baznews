@@ -113,13 +113,8 @@
                 <div class="box-body">
                     {!!  Form::hidden('photo_gallery_id', $record->id) !!}
                     <div class="form-group">
-                        <div class="row">
-                            {!! Form::label('tags', trans('news::photo_gallery.tags'),['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::select('tags_ids[]', $tagList , $tagIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
-                            </div>
-                        </div>
+                        {!! Form::label('tags', trans('news::photo_gallery.tags'),['class'=> 'control-label']) !!}
+                        {!! Form::select('tags_ids[]', $tagList , $tagIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
                     </div>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
