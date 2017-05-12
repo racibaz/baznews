@@ -27,8 +27,7 @@
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                            <i class="fa fa-times"></i></button>
+
                     </div>
                 </div>
                 <div class="box-body">
@@ -91,13 +90,12 @@
         <div class="col-lg-4" id="sidebar">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Title</h3>
+                    <h3 class="box-title">trans('biography::biography.order')</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                            <i class="fa fa-times"></i></button>
+
                     </div>
                 </div>
                 <div class="box-body">
@@ -161,6 +159,6 @@
                     jQuery('#sidebar,#content').theiaStickySidebar();
                 });
                 //active menu
-                activeMenu('biography','');
+                activeMenu('biograpy_manager','');
             </script>
 @endsection

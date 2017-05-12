@@ -1,4 +1,17 @@
 @extends($activeTheme .'::backend.master')
+@section('content-header')
+    <section class="content-header">
+        <h1>
+            {{trans('biography::biography.management')}}
+            <small>{{trans('biography::biography.list')}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('biography.index') !!}">{{trans('biography::biography.management')}}</a></li>
+            <li class="active">{{trans('biography::biography.list')}}</li>
+        </ol>
+    </section>
+@endsection
 @section('content')
 
     <div class="row">
@@ -10,7 +23,7 @@
             </div>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><strong>{{trans('biography.management')}}</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('biography::biography.list')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -18,11 +31,13 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('biography.name')}}</th>
-                            <th>{{trans('biography.order')}}</th>
-                            <th>{{trans('biography.status')}}</th>
-                            <th>{{trans('biography.is_cuff')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('biography::biography.name')}}</th>
+                            <th>{{trans('biography::biography.short_url')}}</th>
+                            <th>{{trans('biography::biography.order')}}</th>
+                            <th>{{trans('biography::biography.status')}}</th>
+                            <th>{{trans('biography::biography.is_cuff')}}</th>
+                            <th>{{trans('biography::biography.is_active')}}</th>
+                            <th>{{trans('biography::biography.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,9 +47,9 @@
                                     <td>{!! link_to_route('biography.show', $record->name , $record, [] ) !!}</td>
                                     <td> {{$record->short_url}} </td>
                                     <td> {{$record->order}} </td>
-                                    <td> {{$record->status}} </td>
-                                    <td> {{$record->is_cuff}} </td>
-                                    <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->status ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('biography.destroy',  $record))) !!}
@@ -48,17 +63,6 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>{{trans('biography.name')}}</th>
-                            <th>{{trans('biography.short_url')}}</th>
-                            <th>{{trans('biography.order')}}</th>
-                            <th>{{trans('biography.status')}}</th>
-                            <th>{{trans('biography.is_cuff')}}</th>
-                            <th>{{trans('common.is_active')}}</th>
-                        </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->
@@ -68,4 +72,10 @@
         </div>
         <!-- /.col -->
     </div>
+@endsection
+@section('js')
+    <script type="text/javascript">
+        //active menu
+        activeMenu('biograpy_manager','');
+    </script>
 @endsection
