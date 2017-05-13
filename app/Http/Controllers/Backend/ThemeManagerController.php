@@ -107,9 +107,10 @@ class ThemeManagerController extends BackendController
 
     public function themeActivationToggle($themeSlug)
     {
-        //Theme::setActive($themeSlug);
-
         $this->changeEnv(['ACTIVE_THEME' => $themeSlug]);
+
+        \Artisan::call('config:clear');
+        \Artisan::call('config:cache');
 
         //todo çalışmıyor.
 //        $this->dispatch(new FlushAllCache());
