@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Modules\News\Models\News;
 use App\Traits\Eventable;
+use App\Transformers\CountryTransformer;
 use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
@@ -14,6 +15,8 @@ class Country extends Model
      *
      * @var array
      */
+
+    public $transformer = CountryTransformer::class;
     protected $fillable = [
         'name',
         'is_active',

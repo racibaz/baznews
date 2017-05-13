@@ -3,6 +3,7 @@
 namespace App\Modules\Book\Models;
 
 use App\Models\City;
+use App\Modules\Book\Transformers\BookPublisherTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
@@ -26,6 +27,7 @@ class BookPublisher extends Model
         ];
     }
 
+    public $transformer = BookPublisherTransformer::class;
     /**
      * The attributes that are mass assignable.
      *

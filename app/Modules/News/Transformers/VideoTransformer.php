@@ -25,9 +25,8 @@ class VideoTransformer extends TransformerAbstract
             'links' => [
                 [
                     'rel' => 'self',
-                    'href' => route('video.show', $record->id),
+                    'href' => route('videos.show', $record->id),
                 ],
-                //todo eğer yoksa koşul konulmalı....
                 [
                     'rel' => 'videoCategory',
                     'href' => route('video_categories.show', $record->video_category_id),
@@ -38,5 +37,22 @@ class VideoTransformer extends TransformerAbstract
                 ],
             ]
         ];
+    }
+
+    public static function originalAttribute($index)
+    {
+        $attributes = [
+            'id' => 'id',
+            'title' => 'name',
+            'slug' => 'slug',
+            'shortUrl' => 'short_url',
+            'picture' => 'thumbnail',
+            'cuff' => 'is_cuff',
+            'order' => 'order',
+            'comment' => 'is_comment',
+            'active' => 'is_active'
+        ];
+
+        return isset($attributes[$index]) ? $attributes[$index] : null;
     }
 }

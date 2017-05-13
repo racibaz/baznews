@@ -25,4 +25,15 @@ class NewsSourceTransformer extends TransformerAbstract
             ]
         ];
     }
+
+    public static function originalAttribute($index)
+    {
+        $attributes = [
+            'id' => 'id',
+            'title' => 'name',
+            'url' => 'url'
+        ];
+
+        return isset($attributes[$index]) ? $attributes[$index] : null;
+    }
 }

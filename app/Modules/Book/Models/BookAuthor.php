@@ -2,6 +2,7 @@
 
 namespace App\Modules\Book\Models;
 
+use App\Modules\Book\Transformers\BookAuthorTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Validator;
@@ -28,6 +29,7 @@ class BookAuthor extends Model
 
     protected $table = 'book_authors';
 
+    public $transformer = BookAuthorTransformer::class;
     /**
      * The attributes that are mass assignable.
      *

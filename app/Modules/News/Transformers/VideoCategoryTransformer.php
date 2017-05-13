@@ -7,28 +7,49 @@ use League\Fractal\TransformerAbstract;
 
 class VideoCategoryTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['video_galleries', 'videos'];
-
     public function transform(VideoCategory $record)
     {
         return [
-            'id' => $record->id,
-            'name' => $record->name,
-            'slug' => $record->slug,
-            'description' => $record->description,
-            'keywords' => $record->keywords,
-            'icon' => $record->icon,
-            'is_cuff' =>  $record->is_cuff,
+            'id' => (int) $record->id,
+            'name' => (string) $record->name,
+            'slug' => (string) $record->slug,
+            'description' => (string) $record->description,
+            'keywords' => (string) $record->keywords,
+            'icon' => (string) $record->icon,
+            'is_cuff' => (bool) $record->is_cuff,
+            'createdAt' => (string) $record->created_at,
+            'updatedAt' => (string) $record->updated_at,
+            'diffHuman' => (string) $record->updated_at->diffForHumans(),
+            'links' => [
+                [
+                    'rel' => 'self',
+                    'href' => route('video_categories.show', $record->id),
+                ],
+                [
+                    'rel' => 'videoGalleries',
+                    'href' => route('video_categories.video_galleries.index', $record->id),
+                ],
+                [
+                    'rel' => 'videos',
+                    'href' => route('video_categories.videos.index', $record->id),
+                ],
+            ]
         ];
     }
 
-    public function includeVideoGalleries(VideoCategory $record)
+    public static function originalAttribute($index)
     {
-        return $this->collection($record->video_galleries, new VideoGalleryTransformer);
-    }
+        $attributes = [
+            'id' => 'id',
+            'title' => 'name',
+            'slug' => 'slug',
+            'is_cuff' => 'is_cuff',
+            'active' => 'is_active',
+            'creationDate' => 'created_at',
+            'lastChange' => 'updated_at',
+            'diffHuman' => 'diff_human',
+        ];
 
-    public function includeVideos(VideoCategory $record)
-    {
-        return $this->collection($record->videos, new VideoTransformer);
+        return isset($attributes[$index]) ? $attributes[$index] : null;
     }
 }

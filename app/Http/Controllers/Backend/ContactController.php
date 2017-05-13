@@ -32,7 +32,7 @@ class ContactController extends BackendController
 
     public function create()
     {
-        $contactTypeList = ContactType::contacctTypeList();
+        $contactTypeList = ContactType::contactTypeList();
         $record = $this->repo->createModel();
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'contactTypeList']));
     }
@@ -52,7 +52,7 @@ class ContactController extends BackendController
 
     public function edit(Contact $record)
     {
-        $contactTypeList = ContactType::contacctTypeList();
+        $contactTypeList = ContactType::contactTypeList();
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'contactTypeList']));
     }
 

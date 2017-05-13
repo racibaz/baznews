@@ -19,7 +19,7 @@ class ContactType extends Model
         return $this->hasMany(Contact::class);
     }
 
-    public static function contacctTypeList()
+    public static function contactTypeList()
     {
         return ContactType::where('is_active',1)->pluck('name','id');
     }

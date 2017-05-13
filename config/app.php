@@ -163,11 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        /*
-         * Package Service Providers...
-         */
 
-        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -200,7 +196,6 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         Spatie\Fractal\FractalServiceProvider::class,
-        Unlu\Laravel\Api\ApiQueryBuilderServiceProvider::class,
     ],
 
     /*
@@ -261,7 +256,6 @@ return [
         'AsyncWidget'  => Arrilot\Widgets\AsyncFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
-        'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
         'Fractal' => Spatie\Fractal\FractalFacade::class,
 
         ////TODO  THEME İN COMPONET GİBİ BİRŞEY VARDI ONA BAKILACAK

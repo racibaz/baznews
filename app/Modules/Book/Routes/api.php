@@ -1,31 +1,33 @@
 <?php
 
-use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your module. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
 
-//$api = app('Dingo\Api\Routing\Router');
-//
-//
-//
-//$api->version('v1', function ($api) {
-//
-//    $api->get('books/{count?}', 'App\Modules\Book\Http\Controllers\Api\BookController@getBooks')->where('count', '[0-9]+');
-//    $api->get('getBookById/{id}', 'App\Modules\Book\Http\Controllers\Api\BookController@getBookById')->where('id', '[0-9]+');
-//
-//});
-//
-//
-//
-//Route::get('/book', function (Request $request) {
-//    // return $request->book();
-//})->middleware('auth:api');
+    /*
+     * Book
+     * */
+    Route::resource('books', 'Api\Book\BookController', ['only' => ['index', 'show']]);
+    Route::resource('books.book_categories', 'Api\Book\BookBookCategoryController', ['only' => ['index']]);
+
+
+    /*
+     * BookCategory
+     * */
+    Route::resource('book_categories', 'Api\BookCategory\BookCategoryController', ['only' => ['index', 'show']]);
+    Route::resource('book_categories.books', 'Api\BookCategory\BookCategoryBookController', ['only' => ['index']]);
+
+
+    /*
+     * BookPublisher
+     * */
+    Route::resource('book_publishers', 'Api\BookPublisher\BookPublisherController', ['only' => ['index', 'show']]);
+    Route::resource('book_publishers.books', 'Api\BookPublisher\BookPublisherBookController', ['only' => ['index']]);
+    Route::resource('book_publishers.book_categories', 'Api\BookPublisher\BookPublisherBookCategoryController', ['only' => ['index']]);
+
+    /*
+     * BookAuthor
+     * */
+    Route::resource('book_authors', 'Api\BookAuthor\BookAuthorController', ['only' => ['index', 'show']]);
+    Route::resource('book_authors.books', 'Api\BookAuthor\BookAuthorBookController', ['only' => ['index']]);
+
+});

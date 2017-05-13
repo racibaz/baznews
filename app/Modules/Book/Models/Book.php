@@ -2,6 +2,7 @@
 
 namespace App\Modules\Book\Models;
 
+use App\Modules\Book\Transformers\BookTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Venturecraft\Revisionable\RevisionableTrait;
@@ -28,6 +29,7 @@ class Book extends Model
         ];
     }
 
+    public $transformer = BookTransformer::class;
     /**
      * The attributes that are mass assignable.
      *

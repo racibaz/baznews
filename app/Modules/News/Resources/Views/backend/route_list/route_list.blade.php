@@ -9,7 +9,7 @@
         {{--<li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>--}}
         {{--<li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>--}}
         @permission('index-newscategory')<li data-name="news_category"><a href="{!! route('news_category.index') !!}"><i class="fa fa-list-ul"></i> <span>{{trans('news::dashboard.news_categories')}}</span></a></li>@endpermission
-        @permission('index-news')<li data-name="news"><a href="{!! route('news.index') !!}"><i class="fa fa-globe"></i> <span>{{trans('news::dashboard.news')}}</span></a></li>@endpermission
+        @permission('index-news')<li data-name="news"><a href="{!! route('news.list') !!}"><i class="fa fa-globe"></i> <span>{{trans('news::dashboard.news')}}</span></a></li>@endpermission
         @permission('index-futurenews')<li data-name="future_news"><a href="{!! route('future_news.index') !!}"><i class="fa fa-newspaper-o"></i> <span>{{trans('news::dashboard.future_news')}}</span></a></li>@endpermission
         @permission('index-newssource')<li data-name="news_source"><a href="{!! route('news_source.index') !!}"><i class="fa fa-road"></i> <span>{{trans('news::dashboard.news_source')}}</span></a></li>@endpermission
         @permission('index-photocategory')<li data-name="photo_category"><a href="{!! route('photo_category.index') !!}"><i class="fa fa-list-ul"></i> <span>{{trans('news::dashboard.photo_category')}}</span></a></li>@endpermission
