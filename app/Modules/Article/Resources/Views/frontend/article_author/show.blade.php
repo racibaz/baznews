@@ -16,7 +16,7 @@
 
                     <div class="author-head">
                         <div class="author-img">
-                            <img src="https://placeimg.com/60/60/people/grayscale" alt="Author Name">
+                            <img src="{{asset('images/article_author_images/' . $record->id . '/58x58_/' .$record->photo)}}" alt="{{$record->name}}">
                         </div>
                         <div class="author-name">
                             <h1>{{$record->name}}</h1>
@@ -38,17 +38,17 @@
                     </div>
                     <div class="module">
                         <ul class="article-list">
-                            @foreach($record->articles as $record)
+                            @foreach($record->articles as $article)
                             <li>
                                 <div class="title pull-left">
-                                    <a href="{!! route('article', ['slug' => $record->slug]) !!}">
-                                        <span>{{$record->title}}</span>
+                                    <a href="{!! route('article', ['slug' => $article->slug]) !!}">
+                                        <span>{{$article->title}}</span>
                                     </a>
                                 </div>
                                 <div class="time pull-right">
-                                    <a href="{!! route('article', ['slug' => $record->slug]) !!}">
+                                    <a href="{!! route('article', ['slug' => $article->slug]) !!}">
                                         <i class="fa fa-clock-o"></i>
-                                        <span>{{Carbon\Carbon::parse($record->created_at)->format('d-m-Y')}}</span>
+                                        <span>{{$article->created_at->diffForHumans()}}</span>
                                     </a>
                                 </div>
                             </li>
