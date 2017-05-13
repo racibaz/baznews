@@ -25,8 +25,8 @@
 
                     <div class="article-head">
                         <div class="author-img">
-                            <a href="{!! route('article_author', ['slug' => $record->article_author->slug]) !!}" title="Author Name">
-                                <img src="https://placeimg.com/60/60/people/grayscale" alt="Author Name">
+                            <a href="{!! route('article_author', ['slug' => $record->article_author->slug]) !!}" title="{{$record->name}}">
+                                <img src="{{asset('images/article_author_images/' . $record->id . '/58x58_/' .$record->photo)}}" alt="{{$record->name}}">
                             </a>
                         </div>
                         <div class="article-detail">
@@ -44,12 +44,7 @@
                     </div>
 
                     <div class="article-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi assumenda autem dolor
-                            doloremque dolores dolorum enim ipsa maxime minima necessitatibus nemo nesciunt quaerat,
-                            quam quidem ratione reiciendis veniam voluptatibus!</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur, cumque dicta
-                            distinctio dolores enim est eveniet explicabo facilis harum hic molestiae nobis officiis
-                            quos, soluta tempore vero voluptas, voluptatem!</p>
+                        {!! $record->content !!}
                     </div>
                     {{--yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>--}}
                     {{--yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>--}}
@@ -63,32 +58,21 @@
                     </div>
                     <div class="module">
                         <ul class="article-list">
-                           <li>
-                               <div class="title pull-left">
-                                   <a href="#">
-                                       <span>Makale 1</span>
-                                   </a>
-                               </div>
-                               <div class="time pull-right">
-                                   <a href="#">
-                                       <i class="fa fa-clock-o"></i>
-                                       <span>1 Ocak 2017</span>
-                                   </a>
-                               </div>
-                           </li>
-                            <li>
-                                <div class="title pull-left">
-                                    <a href="#">
-                                        <span>Makale 1</span>
-                                    </a>
-                                </div>
-                                <div class="time pull-right">
-                                    <a href="#">
-                                        <i class="fa fa-clock-o"></i>
-                                        <span>1 Ocak 2017</span>
-                                    </a>
-                                </div>
-                            </li>
+                            @foreach($otherArticles as $article)
+                                <li>
+                                    <div class="title pull-left">
+                                        <a href="{!! route('article', ['slug' => $article->slug]) !!}">
+                                            <span>{{$article->title}}</span>
+                                        </a>
+                                    </div>
+                                    <div class="time pull-right">
+                                        <a href="{!! route('article', ['slug' => $article->slug]) !!}">
+                                            <i class="fa fa-clock-o"></i>
+                                            <span>{{$article->created_at->diffForHumans()}}</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

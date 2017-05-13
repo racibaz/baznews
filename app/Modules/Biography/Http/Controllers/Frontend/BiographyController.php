@@ -26,8 +26,17 @@ class BiographyController extends Controller
                 ->where('is_active', 1)
                 ->findBy('id',$id);
 
+            $otherBiographies = $this->repo
+                ->with([
+                    'user',
+                ])
+                ->where('status', 1)
+                ->where('is_active', 1)
+                ->findAll()->take(5);
+
             return Theme::view('biography::frontend.biography.show', compact([
                 'record',
+                'otherBiographies'
             ]))->render();
         });
     }

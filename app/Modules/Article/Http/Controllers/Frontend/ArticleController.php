@@ -29,8 +29,20 @@ class ArticleController extends Controller
                 ->where('is_active', 1)
                 ->findBy('id',$id);
 
+            $otherArticles = $this->repo
+                ->with([
+                    'article_categories',
+                    'article_author',
+                    'user',
+                ])
+                ->where('status', 1)
+                ->where('is_active', 1)
+                ->findAll()
+                ->take(5);
+
             return Theme::view('article::frontend.article.show', compact([
                 'record',
+                'otherArticles'
             ]))->render();
         });
     }

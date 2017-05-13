@@ -25,7 +25,7 @@ class BookTransformer extends TransformerAbstract
             'skin_type' => (string) $record->skin_type,
             'paper_type' => (string) $record->paper_type,
             'size' => (string) $record->size,
-            'cuff' => (bool) $record->is_acuff,
+            'cuff' => (bool) $record->is_cuff,
             'links' => [
                 [
                     'rel' => 'self',

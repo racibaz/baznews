@@ -3,6 +3,7 @@
 namespace App\Modules\Biography\Models;
 
 use App\Models\User;
+use App\Modules\Biography\Transformers\BiographyTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Venturecraft\Revisionable\RevisionableTrait;
@@ -28,6 +29,7 @@ class Biography extends Model
     }
 
     protected $table = 'biographies';
+    public $transformer = BiographyTransformer::class;
     protected $fillable = ['user_id', 'title', 'spot', 'name', 'slug', 'short_url', 'content', 'photo', 'description', 'keywords', 'order', 'hit', 'status', 'is_cuff', 'is_active'];
 
     public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];

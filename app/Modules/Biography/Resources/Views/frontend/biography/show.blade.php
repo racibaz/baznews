@@ -48,24 +48,19 @@
                     </div>
                     <div class="bio-box module">
                         <ul>
-                            <li>
-                                <a href="#">
-                                    <span class="bio-img"><img src="http://lorempixel.com/output/fashion-q-g-70-70-8.jpg" alt="" class="img-responsive"></span>
-                                    <div class="bio-detail">
-                                        <span class="bio-title">Nazım Hikmet</span>
-                                        <span class="bio-excerpt">Yazar,Şair Flan Filan..</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="bio-img"><img src="http://lorempixel.com/output/fashion-q-g-70-70-8.jpg" alt="" class="img-responsive"></span>
-                                    <div class="bio-detail">
-                                        <span class="bio-title">Nazım Hikmet</span>
-                                        <span class="bio-excerpt">Yazar,Şair Flan Filan..</span>
-                                    </div>
-                                </a>
-                            </li>
+                            @foreach($otherBiographies as $otherBiography)
+                                <li>
+                                    <a href="#">
+                                        <span class="bio-img">
+                                            <img src="{{ asset('images/biographies/' . $record->id . '/104x78_' . $record->photo) }}" alt="{{$record->title}}"  class="img-responsive">
+                                        </span>
+                                        <div class="bio-detail">
+                                            <span class="bio-title">{{$otherBiography->name}}</span>
+                                            <span class="bio-excerpt">{{$otherBiography->spot}}</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div><!-- /.other-bio -->
                 </div><!-- /.other-bio -->

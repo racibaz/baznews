@@ -29,6 +29,7 @@ class MenuController extends BackendController
         $records = $this->repo->findAll();
         $recordsTree = Menu::get()->toTree();
         $recordsTreeJson = Menu::get()->toTree();
+
         return Theme::view($this->getViewName(__FUNCTION__),compact(
             'records',
             'recordsTree',

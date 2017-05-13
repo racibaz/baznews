@@ -3,6 +3,7 @@
 namespace App\Modules\Article\Models;
 
 use App\Models\Link;
+use App\Modules\Article\Transformers\ArticleCategoryTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
@@ -53,6 +54,7 @@ class ArticleCategory extends Model
     }
 
     protected $table = 'article_categories';
+    public $transformer = ArticleCategoryTransformer::class;
     protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'icon', 'is_cuff', 'is_active'];
 
     public function articles()
