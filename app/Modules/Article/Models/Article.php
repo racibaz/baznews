@@ -3,11 +3,11 @@
 namespace App\Modules\Article\Models;
 
 use App\Models\User;
+use App\Modules\Article\Transformers\ArticleTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Validator;
 use Venturecraft\Revisionable\RevisionableTrait;
 
 class Article extends Eloquent
@@ -32,6 +32,7 @@ class Article extends Eloquent
 
     protected $table = 'articles';
 
+    public $transformer = ArticleTransformer::class;
     public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
 
     protected $fillable = ['user_id', 'article_author_id', 'title', 'slug', 'short_url', 'subtitle', 'spot', 'content', 'description', 'keywords', 'hit', 'order', 'status', 'is_cuff', 'is_active'];

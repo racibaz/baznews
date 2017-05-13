@@ -3,10 +3,10 @@
 namespace App\Modules\Article\Models;
 
 use App\Models\User;
+use App\Modules\Article\Transformers\ArticleAuthorTransformer;
 use App\Traits\Eventable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent;
-use Illuminate\Support\Facades\Validator;
 use Venturecraft\Revisionable\RevisionableTrait;
 
 class ArticleAuthor extends Eloquent
@@ -28,6 +28,7 @@ class ArticleAuthor extends Eloquent
         ];
     }
     protected $table = 'article_authors';
+    public $transformer = ArticleAuthorTransformer::class;
     protected $fillable = ['user_id', 'name', 'slug', 'email', 'cv', 'photo', 'description', 'keywords', 'is_quotation', 'is_cuff', 'is_active'];
 
     public function articles()
