@@ -9,24 +9,24 @@
         </ol>
         <div class="row">
             <div class="col-md-8">
-                <article class="module">
+                <article class="module" style="padding-bottom: 0;">
                     <div class="row">
                         @foreach($records as $record)
-                        <div class="col-lg-6">
-                            <div class="author-box">
-                                <div class="author-img">
-                                    <img src="{{ asset('images/article_author_images/' . $record->id . '/58x58_' . $record->photo)}}">
-                                </div><!-- /.author-img -->
-                                <div class="author-content">
-                                    <a href="{!! route('article_author', ['slug' => $record->slug]) !!}" class="name">{{$record->name}}</a>
-                                    <div class="author-bio">
-                                        <p>{!! $record->bio !!}</p>
-                                    </div>
-                                </div><!-- /.author-content -->
-                            </div><!-- /.author-box -->
+                        <div class="col-lg-4">
+                            <div class="a-box">
+                                <div class="a-inner">
+                                    <a href="{!! route('article_author', ['slug' => $record->slug]) !!}">
+                                        <img src="{{ asset('images/article_author_images/' . $record->id . '/58x58_' . $record->photo)}}">
+                                        <span class="a-foot">
+                                            <span class="name">{{$record->name}}</span>
+                                            <span class="bio">{!! $record->cv !!}</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
                         </div><!-- /.col-lg-6 -->
                         @endforeach
-                    </div><!-- /.row -->
+                    </div><!-- /.module -->
                 </article>
             </div><!-- /.new-content -->
             <div class="col-md-4">

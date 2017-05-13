@@ -93,9 +93,9 @@
     var left =  $('#dfp-pageskin-sol').width();
     var right =  $('#dfp-160-kare-sag').width();
     var ct = $('#container').width();
-    // $(window).resize(function () {
-    //     adsSize();
-    // });
+    $(window).resize(function () {
+        adsSize();
+    });
     // $(window).load(function () {
     //     adsSize();
     // });
@@ -129,7 +129,7 @@
     /*--------------------------------------------------------
      Center Carousel Horizontal News Slider
      * --------------------------------------------------------*/
-    let bookSlider = $('.books-slider');
+    var bookSlider = $('.books-slider');
     if(bookSlider.length > 0){
         bookSlider.bxSlider({
             slideWidth: 140,
@@ -170,9 +170,10 @@
 
             if ( ($(document.body).height()+footerHeight) < $(window).height()) {
                 $footer.css({
-                    position: "absolute"
-                }).animate({
-                    top: footerTop
+                    position: "fixed",
+                    bottom: "0",
+                    left: "0",
+                    right: "0"
                 })
             } else {
                 $footer.css({
