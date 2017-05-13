@@ -1247,13 +1247,13 @@ header{
 }
 .avatar-links li a > .item-inner h2{
     margin: 0 0 2px;
-    font-size: 1.7rem;
+    font-size: 16px;
     font-weight: normal;
 }
 .avatar-links li a > .item-inner p{
     overflow: inherit;
     margin: 0 0 2px;
-    font-size: 1.4rem;
+    font-size: 13px;
     line-height: normal;
     text-overflow: inherit;
     color: #8e9093;
@@ -2714,7 +2714,7 @@ ul.news-list li .text .title > a h3{
 ul.news-list li .text .excerpt{
     display: block;
     overflow: hidden;
-    max-height: 55px;
+    max-height: 54px;
     font-size: 12px;
 }
 ul.news-list li .text span.timeago {

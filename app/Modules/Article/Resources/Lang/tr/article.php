@@ -10,6 +10,7 @@ return[
     'management'=>'Makale Yönetimi',
     'list'=>'Makale Listesi',
     'author_name'=>'Alıntı Yazar Adı',
+    'article_authors'=>'Alıntı Yazarlar',
     'title'=>'Başlık',
     'order'=>'Sıralama',
     'is_cuff'=>'Manşet',

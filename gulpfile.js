@@ -49,6 +49,7 @@ elixir(function(mix) {
     mix.copy('node_modules/datatables.net-bs/**', 'public/themes/news-theme/assets/js/bootstrap-datatables');
     mix.copy('node_modules/jquery/**', 'public/themes/news-theme/assets/js/jquery');
     mix.copy('node_modules/dropzone/**', 'public/themes/news-theme/assets/js/dropzone');
+    mix.copy('node_modules/jstree/**', 'public/themes/news-theme/assets/js/jstree');
 
 //CSS Component
     mix.copy('node_modules/components-font-awesome/**', 'public/themes/news-theme/assets/css/font-awesome');

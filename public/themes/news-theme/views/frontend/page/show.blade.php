@@ -78,7 +78,6 @@
                     <div class="widget">
                         @foreach($widgets as $widget)
                             @widget($widget['namespace'])
-                            <br />
                         @endforeach
                     </div>
                 </div>

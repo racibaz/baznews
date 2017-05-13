@@ -1,14 +1,21 @@
 {
   "_args": [
     [
-      "jquery-ticker@^1.0.0",
-      "/home/vagrant/PROJELER/baznews"
+      {
+        "raw": "jquery-ticker",
+        "scope": null,
+        "escapedName": "jquery-ticker",
+        "name": "jquery-ticker",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/PROJELER/baznews"
     ]
   ],
-  "_from": "jquery-ticker@>=1.0.0 <2.0.0",
+  "_from": "jquery-ticker@latest",
   "_id": "jquery-ticker@1.0.0",
   "_inCache": true,
-  "_installable": true,
   "_location": "/jquery-ticker",
   "_nodeVersion": "6.9.4",
   "_npmOperationalInternal": {
@@ -16,27 +23,29 @@
     "tmp": "tmp/jquery-ticker-1.0.0.tgz_1488282942696_0.19898894568905234"
   },
   "_npmUser": {
-    "email": "dmitry.kalinin.email@gmail.com",
-    "name": "null-none"
+    "name": "null-none",
+    "email": "dmitry.kalinin.email@gmail.com"
   },
   "_npmVersion": "3.10.10",
   "_phantomChildren": {},
   "_requested": {
-    "name": "jquery-ticker",
-    "raw": "jquery-ticker@^1.0.0",
-    "rawSpec": "^1.0.0",
+    "raw": "jquery-ticker",
     "scope": null,
-    "spec": ">=1.0.0 <2.0.0",
-    "type": "range"
+    "escapedName": "jquery-ticker",
+    "name": "jquery-ticker",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/jquery-ticker/-/jquery-ticker-1.0.0.tgz",
   "_shasum": "4ef94a5b9f0143d15d08d4b7afeee4c7dd99ee46",
   "_shrinkwrap": null,
-  "_spec": "jquery-ticker@^1.0.0",
-  "_where": "/home/vagrant/PROJELER/baznews",
+  "_spec": "jquery-ticker",
+  "_where": "/home/PROJELER/baznews",
   "dependencies": {},
   "description": "A lightweight jQuery plugin for animating a simple news ticker",
   "devDependencies": {},
@@ -57,8 +66,8 @@
   "main": "jquery.ticker.js",
   "maintainers": [
     {
-      "email": "dmitry.kalinin.email@gmail.com",
-      "name": "null-none"
+      "name": "null-none",
+      "email": "dmitry.kalinin.email@gmail.com"
     }
   ],
   "name": "jquery-ticker",

@@ -26,7 +26,8 @@
                     <div class="box-header with-border">
                         <h3 class="box-title"><strong>{{trans('menu.menu_list')}}</strong></h3>
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i>
                             </button>
                         </div>
                         <!-- /.box-tools -->
@@ -34,7 +35,8 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-
+                    <pre>{!! $recordsTreeJson !!}</pre>
+                    <div id="menu_tree"></div>
                     @include($activeTheme . '::backend.partials.tree',$recordsTree)
 
                     <table class="table table-bordered table-hover">
@@ -47,21 +49,21 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $record)
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('menu.show', $record->name , $record, [] ) !!}</td>
-                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('menu.destroy',  $record))) !!}
-                                            {!! link_to_route('menu.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                        @foreach($records as $record)
+                            <tr>
+                                <td>{{$record->id}}</td>
+                                <td>{!! link_to_route('menu.show', $record->name , $record, [] ) !!}</td>
+                                <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('menu.destroy',  $record))) !!}
+                                        {!! link_to_route('menu.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
@@ -81,9 +83,17 @@
         <!-- /.col -->
     </div>
 @endsection
+@section('css')
+    <link href="{{ Theme::asset($activeTheme . '::js/jstree/dist/themes/default/style.min.css') }}" rel="stylesheet">
+@stop
 @section('js')
+    <script src="{{ Theme::asset($activeTheme .'::js/jstree/dist/jstree.min.js') }}"></script>
     <script type="text/javascript">
         //active menu
-        activeMenu('menu_management','');
+        activeMenu('menu_management', '');
+        $('#menu_tree').jstree({ 'core' : {
+            'data' : {!! $recordsTreeJson !!},
+        }});
+
     </script>
 @endsection

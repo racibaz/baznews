@@ -289,20 +289,9 @@
                             </div><!-- /rabpanel -->
                         </div><!-- /.nw-sm-img -->
                         <div class="widget">
-                            <div class="title-section">
-                                <h1>
-                                    <span>Link Title</span>
-                                </h1>
-                            </div>
-                            <div class="news-h-links module">
-                                <ul>
-                                    <li><a href="#">Link1</a></li>
-                                    <li><a href="#">Link2</a></li>
-                                    <li><a href="#">Link3</a></li>
-                                    <li><a href="#">Link4</a></li>
-                                    <li><a href="#">Link5</a></li>
-                                </ul>
-                            </div>
+                            @foreach($widgets as $widget)
+                                @widget($widget['namespace'])
+                            @endforeach
                         </div>
                     </div>
                 </div>
