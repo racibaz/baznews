@@ -85,6 +85,7 @@ return [
     'back_index_page'=>'Haberler Sayfasına Dön',
     'trashed_news_restore'=>'Silinmiş Haberi Geri Al',
     'search'=>'Ara',
+    'box_cuff_widget_title'=>'Manşet Haberleri',
 
 
 ];

@@ -16,7 +16,7 @@
 
                     <div class="author-head">
                         <div class="author-img">
-                            <img src="{{asset('images/article_author_images/' . $record->id . '/58x58_/' .$record->photo)}}" alt="{{$record->name}}">
+                            <img src="{{ asset('images/article_author_images/' . $record->id . '/58x58_' . $record->photo)}}" alt="{{$record->name}}" class="img-circle">
                         </div>
                         <div class="author-name">
                             <h1>{{$record->name}}</h1>
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="author-bio">
-                        {{$record->cv}}
+                        {!! $record->cv !!}
                     </div>
                     {{--yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>--}}
                     {{--yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>--}}
@@ -33,7 +33,7 @@
                 <div class="other-article">
                     <div class="title-section">
                         <h2>
-                            <span>Diğer Makaleler</span>
+                            <span>{{trans('article::article.other_articles')}}</span>
                         </h2>
                     </div>
                     <div class="module">

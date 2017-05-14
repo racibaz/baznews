@@ -11,6 +11,7 @@ return[
     'list'=>'Makale Listesi',
     'author_name'=>'Alıntı Yazar Adı',
     'article_authors'=>'Alıntı Yazarlar',
+    'other_articles'=>'Diğer Makaleler',
     'title'=>'Başlık',
     'order'=>'Sıralama',
     'is_cuff'=>'Manşet',

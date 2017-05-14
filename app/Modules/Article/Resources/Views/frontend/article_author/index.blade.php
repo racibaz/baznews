@@ -9,6 +9,11 @@
         </ol>
         <div class="row">
             <div class="col-md-8">
+                <div class="title-section">
+                    <h1>
+                        <span>{{trans('article::article.article_authors')}}</span>
+                    </h1>
+                </div>
                 <article class="module" style="padding-bottom: 0;">
                     <div class="row">
                         @foreach($records as $record)
@@ -16,7 +21,7 @@
                             <div class="a-box">
                                 <div class="a-inner">
                                     <a href="{!! route('article_author', ['slug' => $record->slug]) !!}">
-                                        <img src="{{ asset('images/article_author_images/' . $record->id . '/58x58_' . $record->photo)}}">
+                                        <img src="{{ asset('images/article_author_images/' . $record->id . '/58x58_' . $record->photo)}}" class="img-circle">
                                         <span class="a-foot">
                                             <span class="name">{{$record->name}}</span>
                                             <span class="bio">{!! $record->cv !!}</span>

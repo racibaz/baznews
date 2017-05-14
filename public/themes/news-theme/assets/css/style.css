@@ -2107,8 +2107,8 @@ footer .footer-bottom .cpy {
     padding-left: 10px;
 }
 .article-author .author-head .author-name > h1{
-    font-size: 30px;
-    margin: 27px 0 0 0;
+    font-size: 20px;
+    margin: 0;
 }
 
 .article-author .author-bio p{
@@ -2743,19 +2743,25 @@ ul.news-list li .text span.timeago {
     background-color: #f2f2f2;
     margin-bottom: 5px;
 }
+.a-box .a-inner{
+    padding-top: 10px;
+}
 .a-box a{
     display: block;
     color: #000000;
     font-size: 12px;
     text-align: center;
 }
+.a-box a:hover{
+    text-decoration: none;
+}
 .a-box a img{
     display: inline-block;
-    height: 130px;
     border-bottom: solid 3px #ebebeb;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
+    margin-bottom: 10px;
 }
 .a-box a span{
     display: block;
