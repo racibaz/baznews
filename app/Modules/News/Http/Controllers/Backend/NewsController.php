@@ -295,6 +295,7 @@ class NewsController extends BackendController
         $input['is_show_previous_and_next_news'] = Input::get('is_show_previous_and_next_news') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
+
         $ping = Input::get('is_ping') == "on" ? true : false;
         unset($input['is_ping']);
 
@@ -332,7 +333,7 @@ class NewsController extends BackendController
             'cuff_photo' => 'image',
 //            'mimes:jpeg,bmp,png'
             'thumbnail' => 'image',
-            'cuff_direct_link' => 'url|max:255',
+            'cuff_direct_link' =>  'url|nullable',
         );
         $v = Validator::make($input, $rules);
 
