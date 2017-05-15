@@ -42,6 +42,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('menu.name')}}</th>
+                            <th>{{trans('menu.order')}}</th>
                             <th>{{trans('menu.is_active')}}</th>
                             <th>{{trans('menu.edit_delete')}}</th>
                         </tr>
@@ -51,6 +52,7 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('menu.show', $record->name , $record, [] ) !!}</td>
+                                    <th>{{$record->order}}</th>
                                     <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
@@ -67,6 +69,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('menu.name')}}</th>
+                            <th>{{trans('menu.order')}}</th>
                             <th>{{trans('menu.is_active')}}</th>
                             <th>{{trans('menu.edit_delete')}}</th>
                         </tr>

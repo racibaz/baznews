@@ -7,6 +7,7 @@ use App\Models\Link;
 use App\Models\Menu;
 use App\Models\Page;
 use App\Repositories\MenuRepository as Repo;
+use Cache;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -26,7 +27,7 @@ class MenuController extends BackendController
 
     public function index()
     {
-        $records = $this->repo->findAll();
+        $records = $this->repo->orderBy('order','asc')->findAll();
         $recordsTree = Menu::get()->toTree();
         $recordsTreeJson = Menu::get()->toTree();
 
@@ -100,6 +101,7 @@ class MenuController extends BackendController
 
         if ($result) {
 
+            Cache::tags(['Setting', 'Menu'])->flush();
             $this->removeHomePageCache();
 
             Session::flash('flash_message', trans('common.message_model_updated'));

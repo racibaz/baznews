@@ -37,15 +37,15 @@ class MenuRequest extends FormRequest
                     'name' => [
                         'required',
                         'max:255',
-                        Rule::unique('menu'),
+                        Rule::unique('menus'),
                     ],
                     '_lft' => 'integer',
                     '_rgt' => 'integer',
-                    'page_id' => 'integer',
-                    'url'   => 'url|max:255',
-                    'route'   => 'max:255',
-                    'icon' => 'max:255',
-                    'order' => 'integer',
+                    'page_id' => 'integer|nullable',
+                    'url'   => 'url|max:255|nullable',
+                    'route'   => 'max:255|nullablev',
+                    'icon' => 'max:255|nullable',
+                    'order' => 'integer|nullable',
                 ];
             }
             case 'PUT':
@@ -60,11 +60,11 @@ class MenuRequest extends FormRequest
                     ],
                     '_lft' => 'integer',
                     '_rgt' => 'integer',
-                    'page_id' => 'integer',
-                    'url'   => 'url|max:255',
-                    'route'   => 'max:255',
-                    'icon' => 'max:255',
-                    'order' => 'integer',
+                    'page_id' => 'integer|nullable',
+                    'url'   => 'url|max:255|nullable',
+                    'route'   => 'max:255|nullable',
+                    'icon' => 'max:255|nullable',
+                    'order' => 'integer|nullable',
                 ];
             }
             default:break;

@@ -20,10 +20,6 @@ class IndexController extends Controller
     {
           return Cache::tags(['homePage'])->rememberForever('homePage', function() {
 
-              if(!\Schema::hasTable('news')) {
-                  return null;
-              }
-
              $newsRepository = new NewsRepository();
              $breakNewsItems    =  $newsRepository->where('break_news', 1)->where('status', 1)->limit(Cache::tags('Setting')->get('break_news'))->findAll();
              $bandNewsItems     =  $newsRepository->where('band_news', 1)->where('status', 1)->limit(Cache::tags('Setting')->get('band_news'))->findAll();
