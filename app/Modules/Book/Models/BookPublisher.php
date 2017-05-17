@@ -5,6 +5,7 @@ namespace App\Modules\Book\Models;
 use App\Models\City;
 use App\Modules\Book\Transformers\BookPublisherTransformer;
 use App\Traits\Eventable;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
@@ -26,6 +27,12 @@ class BookPublisher extends Model
             ]
         ];
     }
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
+    }
+
 
     public $transformer = BookPublisherTransformer::class;
     /**

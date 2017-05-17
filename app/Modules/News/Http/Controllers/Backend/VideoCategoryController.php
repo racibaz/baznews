@@ -113,7 +113,6 @@ class VideoCategoryController extends BackendController
                 /*
                  * Delete home page cache and related caches
                  * */
-                $this->removeCacheKey('photo:' . $result->id);
                 $this->removeCacheTags(['VideoController', 'VideoGalleryController']);
                 $this->removeHomePageCache();
 

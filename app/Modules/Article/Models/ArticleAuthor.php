@@ -5,6 +5,7 @@ namespace App\Modules\Article\Models;
 use App\Models\User;
 use App\Modules\Article\Transformers\ArticleAuthorTransformer;
 use App\Traits\Eventable;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent;
 use Venturecraft\Revisionable\RevisionableTrait;
@@ -27,6 +28,12 @@ class ArticleAuthor extends Eloquent
             ]
         ];
     }
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
+    }
+
     protected $table = 'article_authors';
     public $transformer = ArticleAuthorTransformer::class;
     protected $fillable = ['user_id', 'name', 'slug', 'email', 'cv', 'photo', 'description', 'keywords', 'is_quotation', 'is_cuff', 'is_active'];

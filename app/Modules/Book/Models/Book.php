@@ -4,6 +4,7 @@ namespace App\Modules\Book\Models;
 
 use App\Modules\Book\Transformers\BookTransformer;
 use App\Traits\Eventable;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Venturecraft\Revisionable\RevisionableTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -28,6 +29,12 @@ class Book extends Model
             ]
         ];
     }
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
+    }
+
 
     public $transformer = BookTransformer::class;
     /**

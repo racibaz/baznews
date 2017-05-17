@@ -4,6 +4,7 @@ namespace App\Modules\Book\Models;
 
 use App\Modules\Book\Transformers\BookAuthorTransformer;
 use App\Traits\Eventable;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Validator;
 use Illuminate\Database\Eloquent\Model;
@@ -26,6 +27,10 @@ class BookAuthor extends Model
         ];
     }
 
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
+    }
 
     protected $table = 'book_authors';
 

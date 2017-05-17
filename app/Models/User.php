@@ -7,6 +7,7 @@ use App\Modules\Book\Models\Book;
 use App\Modules\News\Models\RecommendationNews;
 use App\Traits\Eventable;
 use Cache;
+use Cocur\Slugify\Slugify;
 use Config;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Laravel\Passport\HasApiTokens;
@@ -59,6 +60,11 @@ class User extends Authenticatable
         ];
     }
 
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
+    }
 
     /**
      * The attributes that are mass assignable.

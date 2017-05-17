@@ -5,6 +5,7 @@ namespace App\Modules\Biography\Models;
 use App\Models\User;
 use App\Modules\Biography\Transformers\BiographyTransformer;
 use App\Traits\Eventable;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Venturecraft\Revisionable\RevisionableTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -27,6 +28,12 @@ class Biography extends Model
             ]
         ];
     }
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
+    }
+
 
     protected $table = 'biographies';
     public $transformer = BiographyTransformer::class;

@@ -43,6 +43,7 @@ class BaznewsInstall extends Command
         \Artisan::call('module:migrate');
         \Artisan::call('module:seed');
         \Artisan::call('migrate', ['--path' => 'vendor/venturecraft/revisionable/src/migrations']);
+        \Artisan::call('passport:install');
         \Cache::flush();
 
         return true;

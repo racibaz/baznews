@@ -4,6 +4,7 @@ namespace App\Modules\News\Models;
 
 use App\Modules\News\Transformers\VideoTransformer;
 use App\Traits\Eventable;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -31,6 +32,12 @@ class Video extends Model
             ]
         ];
     }
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
+    }
+
 
     public $transformer = VideoTransformer::class;
 

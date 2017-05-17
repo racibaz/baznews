@@ -9,7 +9,6 @@ use App\Repositories\CityRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\View;
 
 class CityController extends BackendController
 {

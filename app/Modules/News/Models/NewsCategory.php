@@ -5,6 +5,7 @@ namespace App\Modules\News\Models;
 use App\Models\Link;
 use App\Modules\News\Transformers\NewsCategoryTransformer;
 use App\Traits\Eventable;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -56,6 +57,12 @@ class NewsCategory extends Model
             ]
         ];
     }
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
+    }
+
 
     protected $table = 'news_categories';
     public $transformer = NewsCategoryTransformer::class;

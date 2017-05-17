@@ -5,6 +5,7 @@ namespace App\Modules\News\Models;
 use App\Models\Link;
 use App\Modules\News\Transformers\VideoCategoryTransformer;
 use App\Traits\Eventable;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -54,6 +55,11 @@ class VideoCategory extends Model
                 'source' => ['name']
             ]
         ];
+    }
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
     }
 
     protected $table = 'video_categories';

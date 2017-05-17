@@ -4,6 +4,7 @@ namespace App\Modules\News\Models;
 
 use App\Modules\News\Transformers\PhotoGalleryTransformer;
 use App\Traits\Eventable;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Venturecraft\Revisionable\RevisionableTrait;
@@ -26,6 +27,12 @@ class PhotoGallery extends Model
             ]
         ];
     }
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
+    }
+
     public $transformer = PhotoGalleryTransformer::class;
     protected $fillable = ['photo_category_id', 'user_id', 'title', 'slug', 'short_url', 'description', 'keywords', 'thumbnail', 'is_cuff','is_active'];
 

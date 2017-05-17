@@ -321,6 +321,14 @@ class SettingController extends BackendController
         return Redirect::back();
     }
 
+    public function flushCacheItem($cacheItem)
+    {
+        $this->removeCacheKey($cacheItem);
+        Log::info('Caches deleted');
+        Session::flash('flash_message', trans('setting.flush_cache_item') . '   ' . $cacheItem);
+        return Redirect::back();
+    }
+
 
     public function getAllRedisKey()
     {

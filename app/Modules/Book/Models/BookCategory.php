@@ -5,6 +5,7 @@ namespace App\Modules\Book\Models;
 use App\Models\Link;
 use App\Modules\Book\Transformers\BookCategoryTransformer;
 use App\Traits\Eventable;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -51,6 +52,11 @@ class BookCategory extends Model
                 'source' => ['name','id']
             ]
         ];
+    }
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
     }
 
     protected $table = 'book_categories';

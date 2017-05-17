@@ -28,7 +28,7 @@
                     <div class="panel-body">
                         <ul>
                             @foreach($redisKeys as $index => $redisKey)
-                                <li><a href="{!! URL::route('removeCacheKey',['cacheName' => $redisKey]) !!}"> {{ trans('common.remove_cache') }} </a>
+                                <li><a href="{!! URL::route('flushCacheItem',['cacheName' => $redisKey]) !!}"> {{ trans('common.remove_cache') }} </a>
                                     {{ ++$index  . '-  ' .  $redisKey}}
                                 </li> <br />
                             @endforeach

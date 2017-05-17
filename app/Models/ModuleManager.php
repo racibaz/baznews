@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\Eventable;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,6 +24,11 @@ class ModuleManager extends Model
                 'source' => ['name']
             ]
         ];
+    }
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
     }
 
     /**

@@ -7,6 +7,7 @@ use App\Repositories\AdvertisementRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 
 class BackendController extends Controller
@@ -76,11 +77,13 @@ class BackendController extends Controller
 
     /**
      * @param $cacheName
+     * @return mixed
      */
     public function removeCacheKey($cacheName)
     {
-        Cache::forget($cacheName);
+        return  Redis::del($cacheName);
     }
+
 
 
     /**

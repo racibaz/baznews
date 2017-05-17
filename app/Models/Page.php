@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\Eventable;
 use App\Transformers\PageTransformer;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -25,6 +26,11 @@ class Page extends Model
                 'source' => ['name']
             ]
         ];
+    }
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
     }
 
     public $transformer = PageTransformer::class;

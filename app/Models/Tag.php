@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\Eventable;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
@@ -35,6 +36,11 @@ class Tag extends Model
                 'source' => ['name']
             ]
         ];
+    }
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
     }
 
     //TODO $fillable   ALANLAR VE VİEW TARAFI DÜZENLENECEK.

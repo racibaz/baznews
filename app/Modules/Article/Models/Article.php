@@ -5,6 +5,7 @@ namespace App\Modules\Article\Models;
 use App\Models\User;
 use App\Modules\Article\Transformers\ArticleTransformer;
 use App\Traits\Eventable;
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -28,6 +29,11 @@ class Article extends Eloquent
                 'source' => ['title','id']
             ]
         ];
+    }
+
+    public function customizeSlugEngine(Slugify $engine, $attribute)
+    {
+        return $engine->activateRuleset('turkish');
     }
 
     protected $table = 'articles';

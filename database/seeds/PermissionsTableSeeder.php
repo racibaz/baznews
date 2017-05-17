@@ -1119,6 +1119,12 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $setting18 = Permission::create([
+            'name'          => 'flushCacheItem-setting',
+            'display_name'  => 'Flush cache item',
+            'is_active'     => 1,
+        ]);
+
 
         //backend
         $backend1 = Permission::create([
@@ -1488,6 +1494,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($setting15);
         $super_admin->permissions()->attach($setting16);
         $super_admin->permissions()->attach($setting17);
+        $super_admin->permissions()->attach($setting18);
         $super_admin->permissions()->attach($backend1);
         $super_admin->permissions()->attach($backend2);
         $super_admin->permissions()->attach($backend3);

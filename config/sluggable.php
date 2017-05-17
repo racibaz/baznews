@@ -44,7 +44,7 @@ return [
      *    'method' => array('Str','slug'),
      */
 
-    'method' => ['\\Patchwork\\Utf8', 'toAscii'],
+    'method' => null,
 
 
     /**
