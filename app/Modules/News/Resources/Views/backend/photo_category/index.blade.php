@@ -46,7 +46,11 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('photo_category.show', $record->name , $record, [] ) !!}</td>
-                                    <td> {{$record->parent_id}} </td>
+                                    <td>
+                                        @if($record->parent)
+                                            {{$record->parent->name}}
+                                         @endif
+                                    </td>
                                     <td> {{$record->hit}} </td>
                                     <td> {{$record->is_cuff}} </td>
                                     <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>

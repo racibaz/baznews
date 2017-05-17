@@ -47,7 +47,11 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('news_category.show', $record->name , $record, [] ) !!}</td>
-                                    <td> {{$record->parent_id}} </td>
+                                    <td>
+                                        @if($record->parent)
+                                            {{$record->parent->name}}
+                                        @endif
+                                    </td>
                                     <td> {{$record->news->count()}} </td>
                                     <td> {{$record->hit}} </td>
                                     <td>{!!$record->is_cuff ? '<label class="badge bg-green"><i class="fa fa-check"></i></label>' : '<label class="badge bg-brown"><i class="fa fa-times"></i></label>'!!} </td>
