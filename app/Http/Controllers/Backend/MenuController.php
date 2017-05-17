@@ -27,7 +27,7 @@ class MenuController extends BackendController
 
     public function index()
     {
-        $records = $this->repo->orderBy('order','asc')->findAll();
+        $records = $this->repo->orderBy('order','asc')->paginate();
         $recordsTree = Menu::get()->toTree();
         $recordsTreeJson = Menu::get()->toTree();
 

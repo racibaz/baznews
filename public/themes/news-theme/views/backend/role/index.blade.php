@@ -30,6 +30,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
+                    @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
                     <table class="table table-bordered table-hover">
                         <thead>
                         <tr>

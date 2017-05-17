@@ -38,7 +38,7 @@ class PhotoGalleryController extends BackendController
 
     public function index()
     {
-        $records = $this->repo->orderBy('updated_at', 'desc')->findAll();
+        $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records']));
     }
 

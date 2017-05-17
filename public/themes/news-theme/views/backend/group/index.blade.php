@@ -25,6 +25,7 @@
         <div class="box-body">
 
             <div class="table-responsive">
+                @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
                 <table id="groups" class="table table-bordered table-hover" style="margin-bottom: 0;">
                     <thead>
                     <tr>

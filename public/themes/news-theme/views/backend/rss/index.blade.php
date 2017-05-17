@@ -28,7 +28,8 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="cities" class="table table-bordered table-hover table-data">
+                    @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
+                    <table id="rsses" class="table table-bordered table-hover table-data">
                         <thead>
                         <tr>
                             <th>#</th>

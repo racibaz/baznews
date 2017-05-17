@@ -32,6 +32,7 @@
         <!-- /.box-header -->
         <div class="box-body">
             <div class="table-responsive">
+                @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
                 <table id="permissions" class="table table-bordered table-hover table-data">
                     <thead>
                     <tr>

@@ -26,7 +26,7 @@ class RoleController extends BackendController
 
     public function index()
     {
-        $records = $this->repo->findAll();
+        $records = $this->repo->paginate();
         return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
     }
 

@@ -28,6 +28,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     @include($activeTheme . '::backend.partials.tree',$recordsTree)
+                    @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
                     <div class="table-responsive">
                         <table id="news_category" class="table table-bordered table-hover">
                             <thead>

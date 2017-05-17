@@ -44,6 +44,9 @@
                             </div>
                         </div>
                     </div>
+
+                    @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
+
                     <table id="users" class="table table-bordered table-hover table-data">
                         <thead>
                         <tr>

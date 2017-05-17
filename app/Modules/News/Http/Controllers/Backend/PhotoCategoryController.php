@@ -27,7 +27,7 @@ class PhotoCategoryController extends BackendController
 
     public function index()
     {
-        $records = $this->repo->orderBy('updated_at', 'desc')->findAll();
+        $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
         $recordsTree = PhotoCategory::get()->toTree();
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records','recordsTree']));

@@ -33,7 +33,7 @@ class ModuleManagerController extends BackendController
         $modules = Module::all();
         $moduleCount = Module::count();
 
-        $records = $this->repo->findAll();
+        $records = $this->repo->paginate();
         return Theme::view($this->getViewName(__FUNCTION__),compact(
             'records',
             'moduleCount',

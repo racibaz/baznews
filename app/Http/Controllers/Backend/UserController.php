@@ -42,11 +42,11 @@ class UserController extends BackendController
          * List by user roles
          * */
         if(is_numeric($roleId)) {
-            $records = $roleRepo
+            $records = $roleRepo->where('id',$roleId)
                 ->find($roleId)
-                ->users;
+                ->users()->paginate();
         }else{
-            $records = $this->repo->findAll();
+            $records = $this->repo->paginate();
         }
 
         return Theme::view($this->getViewName(__FUNCTION__),compact('records', 'roles'));

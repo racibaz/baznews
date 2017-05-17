@@ -53,7 +53,7 @@ class AnnouncementController extends BackendController
             ->orderBy('updated_at','desc')
             ->get();
 
-        $records = $this->repo->findAll();
+        $records = $this->repo->paginate();
         return Theme::view($this->getViewName(__FUNCTION__),compact('records','announcements'));
     }
 

@@ -65,6 +65,7 @@
                     </div>
                 </div>
                 <div class="box-body">
+                    @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
                     <table id="modules" class="table table-bordered table-hover">
                         <thead>
                         <tr>
