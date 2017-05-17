@@ -44,7 +44,8 @@ return [
      *    'method' => array('Str','slug'),
      */
 
-    'method'          => null,
+    'method' => ['\\Patchwork\\Utf8', 'toAscii'],
+
 
     /**
      * Separator to use when generating slugs.  Defaults to a hyphen.

@@ -43,7 +43,7 @@ class MenuRequest extends FormRequest
                     '_rgt' => 'integer',
                     'page_id' => 'integer|nullable',
                     'url'   => 'url|max:255|nullable',
-                    'route'   => 'max:255|nullablev',
+                    'route'   => 'max:255|nullable',
                     'icon' => 'max:255|nullable',
                     'order' => 'integer|nullable',
                 ];
