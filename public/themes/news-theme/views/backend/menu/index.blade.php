@@ -26,7 +26,8 @@
                     <div class="box-header with-border">
                         <h3 class="box-title"><strong>{{trans('menu.menu_list')}}</strong></h3>
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i>
                             </button>
                         </div>
                         <!-- /.box-tools -->
@@ -34,7 +35,8 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-
+                    <pre>{!! $recordsTreeJson !!}</pre>
+                    <div id="menu_tree"></div>
                     @include($activeTheme . '::backend.partials.tree',$recordsTree)
 
                     @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
@@ -85,9 +87,17 @@
         <!-- /.col -->
     </div>
 @endsection
+@section('css')
+    <link href="{{ Theme::asset($activeTheme . '::js/jstree/dist/themes/default/style.min.css') }}" rel="stylesheet">
+@stop
 @section('js')
+    <script src="{{ Theme::asset($activeTheme .'::js/jstree/dist/jstree.min.js') }}"></script>
     <script type="text/javascript">
         //active menu
-        activeMenu('menu_management','');
+        activeMenu('menu_management', '');
+        $('#menu_tree').jstree({ 'core' : {
+            'data' : {!! $recordsTreeJson !!},
+        }});
+
     </script>
 @endsection

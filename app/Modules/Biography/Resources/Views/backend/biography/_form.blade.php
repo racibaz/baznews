@@ -49,10 +49,6 @@
                         {!! Form::text('slug', $record->slug, ['placeholder' => trans('biography::biography.slug') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('short_slug', trans('biography::biography.short_slug'),['class'=> 'control-label']) !!}
-                        {!! Form::text('short_slug', $record->short_slug, ['placeholder' => trans('biography::biography.short_slug') ,'class' => 'form-control']) !!}
-                    </div>
-                    <div class="form-group">
                         {!! Form::label('content', trans('biography::biography.content'),['class'=> 'control-label']) !!}
                         {!! Form::textarea('content', $record->content, ['placeholder' => trans('biography::biography.content') ,'class' => 'form-control summernote']) !!}
                     </div>
@@ -90,7 +86,7 @@
         <div class="col-lg-4" id="sidebar">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">trans('biography::biography.order')</h3>
+                    <h3 class="box-title">{{trans('biography::biography.status')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">

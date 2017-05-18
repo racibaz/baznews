@@ -320,6 +320,12 @@
                                 </div><!-- /.tab-content -->
                             </div><!-- /rabpanel -->
                         </div><!-- /.nw-sm-img -->
+
+                        <div class="widget">
+                            @foreach($widgets as $widget)
+                                @widget($widget['namespace'])
+                            @endforeach
+                        </div>
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->

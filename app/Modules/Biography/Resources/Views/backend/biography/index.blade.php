@@ -18,7 +18,7 @@
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
                 <a href="{{ route('biography.create') }}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> {{ trans('common.create') }}
+                    <i class="fa fa-plus"></i> {{ trans('biography::biography.add_biography') }}
                 </a>
             </div>
             <div class="box">

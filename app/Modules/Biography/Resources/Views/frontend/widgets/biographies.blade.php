@@ -12,29 +12,11 @@
                     <span class="bio-img"><img src="{{ asset('images/biographies/' . $biography->id . '/104x78_' . $biography->photo) }}" alt="{{$biography->title}}" class="img-responsive"></span>
                     <div class="bio-detail">
                         <span class="bio-title">{{$biography->name}}</span>
-                        <span class="bio-excerpt">Yazar,Şair Flan Filan..</span>
+                        <span class="bio-excerpt">{{$biography->spot}}</span>
                     </div>
                 </a>
             </li>
             @endforeach
-                <li>
-                    <a href="#">
-                        <span class="bio-img"><img src="http://lorempixel.com/output/fashion-q-g-70-70-8.jpg" alt="" class="img-responsive"></span>
-                        <div class="bio-detail">
-                            <span class="bio-title">Nazım Hikmet</span>
-                            <span class="bio-excerpt">Yazar,Şair Flan Filan..</span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="bio-img"><img src="http://lorempixel.com/output/fashion-q-g-70-70-8.jpg" alt="" class="img-responsive"></span>
-                        <div class="bio-detail">
-                            <span class="bio-title">Nazım Hikmet</span>
-                            <span class="bio-excerpt">Yazar,Şair Flan Filan..</span>
-                        </div>
-                    </a>
-                </li>
         </ul>
     </div>
 </div>

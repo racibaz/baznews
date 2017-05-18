@@ -41,20 +41,6 @@
                         {!! Form::label('parent_id', trans('news::photo_category.parent_id'),['class'=> 'control-label']) !!}
                         {!! Form::select('parent_id', $photoCategoryList , $record->parent_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                {!! Form::label('_lft', trans('news::photo_category._lft'),['class'=> 'control-label']) !!}
-                                {!! Form::number('_lft', $record->_lft, ['placeholder' => trans('news::photo_category._lft') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                {!! Form::label('_rgt', trans('news::photo_category._rgt'),['class'=> 'control-label']) !!}
-                                {!! Form::number('_rgt', $record->_rgt, ['placeholder' => trans('news::photo_category._rgt') ,'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
                     <div class="form-group">
                         {!! Form::label('slug', trans('news::photo_category.slug'),['class'=> 'control-label']) !!}
                         {!! Form::text('slug', $record->slug, ['placeholder' => trans('news::photo_category.slug') ,'class' => 'form-control']) !!}
@@ -90,6 +76,20 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {!! Form::label('_lft', trans('news::photo_category._lft'),['class'=> 'control-label']) !!}
+                                {!! Form::number('_lft', $record->_lft, ['placeholder' => trans('news::photo_category._lft') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {!! Form::label('_rgt', trans('news::photo_category._rgt'),['class'=> 'control-label']) !!}
+                                {!! Form::number('_rgt', $record->_rgt, ['placeholder' => trans('news::photo_category._rgt') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_cuff', null , $record->is_cuff) !!}

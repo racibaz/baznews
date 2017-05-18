@@ -30,20 +30,55 @@
                         </h1>
                     </div><!-- /.title-section -->
                     <div class="posts">
+                        <!-- TODO: Burada kutu haber görünümü açık silinebilir.. -->
+                        {{--<div class="row">--}}
+                            {{--@foreach($records as $record)--}}
+                                {{--<div class="col-md-4 col-sm-4 col-xs-6">--}}
+                                    {{--<div class="r-box">--}}
+                                        {{--<a href="{{ route('show_news', ['slug' => $record->slug]) }}" class="module">--}}
+                                            {{--<img src="{{asset('images/news_images/' . $record->id . '/165x90_' . $record->thumbnail)}}"--}}
+                                                 {{--alt="{{$record->title}}">--}}
+                                            {{--<div class="c-text">--}}
+                                                {{--<h6 class="title">{{$record->title}}</h6>--}}
+                                            {{--</div>--}}
+                                        {{--</a>--}}
+                                    {{--</div><!-- /.r-box -->--}}
+                                {{--</div><!-- /.r-box -->--}}
+                            {{--@endforeach--}}
+                        {{--</div>--}}
+
                         <div class="row">
                             @foreach($records as $record)
-                                <div class="col-md-4 col-sm-4 col-xs-6">
-                                    <div class="r-box">
-                                        <a href="{{ route('show_news', ['slug' => $record->slug]) }}" class="module">
-                                            <img src="{{asset('images/news_images/' . $record->id . '/165x90_' . $record->thumbnail)}}" alt="{{$record->title}}">
-                                            <div class="c-text">
-                                                <h6 class="title">{{$record->title}}</h6>
-                                            </div>
-                                        </a>
-                                    </div><!-- /.r-box -->
-                                </div><!-- /. -->
+                                <div class="col-lg-12">
+                                    <div class="news-box module">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-3 col-xs-4">
+                                                <div class="frame-image">
+                                                    <a href="{!! route('show_news', ['slug' => $record->slug]) !!}">
+                                                        <img src="{{asset('images/news_images/' . $record->id . '/165x90_' . $record->thumbnail)}}"
+                                                             alt="{{$record->title}}">
+                                                    </a>
+                                                </div><!-- /.frame-image -->
+                                            </div><!-- /.cols -->
+                                            <div class="col-lg-8 col-md-9 col-xs-8">
+                                                <div class="news-right-txt">
+                                                    <a href="{!! route('show_news', ['slug' => $record->slug]) !!}">
+                                                        <h2>{{$record->title}}</h2>
+                                                    </a>
+                                                    <div class="news-meta-left">
+                                                        <a href="#" class="meta-date" title=""><i
+                                                                    class="fa fa-clock-o"></i>{{$record->created_at}}</a>
+                                                    </div>
+                                                    <div class="news-excerpt">
+                                                        <p>{{$record->spot}}</p>
+                                                    </div><!-- /.news-except -->
+                                                </div>
+                                            </div><!-- /.cols -->
+                                        </div><!-- /.row -->
+                                    </div><!-- /news-box -->
+                                </div><!-- /.col-lg-12 -->
                             @endforeach
-                        </div><!-- /.row -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,14 +110,14 @@
     <meta name='summary' content=''>
 @endsection
 @section('css')
-{{--Css code--}}
+    {{--Css code--}}
 @endsection
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script type="text/javascript">
-        (function($) {
+        (function ($) {
             'use strict';
 
             /*--------------------------------------------------------
@@ -95,7 +130,7 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
     </script>

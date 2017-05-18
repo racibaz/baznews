@@ -17,7 +17,7 @@
                         </div>
                         <div class="item-inner">
                             <h2>{{ $articleAuthor->name }}</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur</p>
+                            <p>{{ $articleAuthor->bio_note }}</p>
                         </div>
                     </a>
                 </li>

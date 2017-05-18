@@ -467,9 +467,11 @@
                             </div>
                         </div>
                     </div>
-                    @foreach($widgets as $widget)
-                        @widget($widget['namespace'])
-                    @endforeach
+                    <div class="widget">
+                        @foreach($widgets as $widget)
+                            @widget($widget['namespace'])
+                        @endforeach
+                    </div>
                     {{--@widgetGroup('right_bar')--}}
                 </div><!-- /.sidebar -->
             </div><!-- /.col -->

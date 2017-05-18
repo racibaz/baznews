@@ -96,9 +96,9 @@
     $(window).resize(function () {
         adsSize();
     });
-    $(window).load(function () {
-        adsSize();
-    });
+    // $(window).load(function () {
+    //     adsSize();
+    // });
     function adsSize() {
         ct = $('#container').width();
         width = $(window).width();
@@ -126,14 +126,12 @@
         }
     });
 
-
-
-
     /*--------------------------------------------------------
      Center Carousel Horizontal News Slider
      * --------------------------------------------------------*/
-    if($('.books-slider').length > 0){
-        $('.books-slider').bxSlider({
+    var bookSlider = $('.books-slider');
+    if(bookSlider.length > 0){
+        bookSlider.bxSlider({
             slideWidth: 140,
             minSlides: 3,
             maxSlides: 5,
@@ -157,5 +155,42 @@
         // $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
     });
 
+    $(window).bind("load", function() {
+
+        var footerHeight = 0,
+            footerTop = 0,
+            $footer = $(".footer");
+
+        positionFooter();
+
+        function positionFooter() {
+
+            footerHeight = $footer.height();
+            footerTop = ($(window).scrollTop()+$(window).height()-footerHeight)+"px";
+
+            if ( ($(document.body).height()+footerHeight) < $(window).height()) {
+                $footer.css({
+                    position: "fixed",
+                    bottom: "0",
+                    left: "0",
+                    right: "0"
+                })
+            } else {
+                $footer.css({
+                    position: "static"
+                })
+            }
+
+        }
+
+        $(window)
+            .scroll(positionFooter)
+            .resize(positionFooter)
+
+    });
+
 })(jQuery);
+
+// Window load event used just in case window height is dependant upon images
+
 

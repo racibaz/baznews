@@ -1,41 +1,50 @@
 {
   "_args": [
     [
-      "icheck@^1.0.2",
-      "/home/vagrant/PROJELER/baznews"
+      {
+        "raw": "icheck",
+        "scope": null,
+        "escapedName": "icheck",
+        "name": "icheck",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/PROJELER/baznews"
     ]
   ],
-  "_from": "icheck@>=1.0.2 <2.0.0",
+  "_from": "icheck@latest",
   "_id": "icheck@1.0.2",
   "_inCache": true,
-  "_installable": true,
   "_location": "/icheck",
   "_nodeVersion": "0.12.2",
   "_npmUser": {
-    "email": "sisley.justin@gmail.com",
-    "name": "justinsisley"
+    "name": "justinsisley",
+    "email": "sisley.justin@gmail.com"
   },
   "_npmVersion": "2.7.5",
   "_phantomChildren": {},
   "_requested": {
-    "name": "icheck",
-    "raw": "icheck@^1.0.2",
-    "rawSpec": "^1.0.2",
+    "raw": "icheck",
     "scope": null,
-    "spec": ">=1.0.2 <2.0.0",
-    "type": "range"
+    "escapedName": "icheck",
+    "name": "icheck",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
   },
   "_requiredBy": [
-    "#DEV:/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/icheck/-/icheck-1.0.2.tgz",
   "_shasum": "06d08da3d47ae448c153b2639b86e9ad7fdf7128",
   "_shrinkwrap": null,
-  "_spec": "icheck@^1.0.2",
-  "_where": "/home/vagrant/PROJELER/baznews",
+  "_spec": "icheck",
+  "_where": "/home/PROJELER/baznews",
   "author": {
-    "email": "info@fronteed.com",
     "name": "Damir Sultanov",
+    "email": "info@fronteed.com",
     "url": "http://fronteed.com/"
   },
   "bugs": {
@@ -55,8 +64,8 @@
   "main": "icheck.js",
   "maintainers": [
     {
-      "email": "sisley.justin@gmail.com",
-      "name": "justinsisley"
+      "name": "justinsisley",
+      "email": "sisley.justin@gmail.com"
     }
   ],
   "name": "icheck",

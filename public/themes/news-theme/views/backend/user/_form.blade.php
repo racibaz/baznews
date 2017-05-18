@@ -269,7 +269,10 @@
 @section('js')
     <script type="text/javascript">
         $(document).ready(function() {
-            $('.summernote').summernote();
+            $('.summernote').summernote({
+                minHeight:'250px',
+                maxHeight:'1000px',
+            });
         });
         //active menu
         activeMenu('user_management','user');

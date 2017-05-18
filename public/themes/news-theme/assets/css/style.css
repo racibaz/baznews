@@ -1247,13 +1247,13 @@ header{
 }
 .avatar-links li a > .item-inner h2{
     margin: 0 0 2px;
-    font-size: 1.7rem;
+    font-size: 16px;
     font-weight: normal;
 }
 .avatar-links li a > .item-inner p{
     overflow: inherit;
     margin: 0 0 2px;
-    font-size: 1.4rem;
+    font-size: 13px;
     line-height: normal;
     text-overflow: inherit;
     color: #8e9093;
@@ -2107,8 +2107,8 @@ footer .footer-bottom .cpy {
     padding-left: 10px;
 }
 .article-author .author-head .author-name > h1{
-    font-size: 30px;
-    margin: 27px 0 0 0;
+    font-size: 20px;
+    margin: 0;
 }
 
 .article-author .author-bio p{
@@ -2714,7 +2714,7 @@ ul.news-list li .text .title > a h3{
 ul.news-list li .text .excerpt{
     display: block;
     overflow: hidden;
-    max-height: 55px;
+    max-height: 54px;
     font-size: 12px;
 }
 ul.news-list li .text span.timeago {
@@ -2734,4 +2734,52 @@ ul.news-list li .text span.timeago {
 }
 .archive-news-list .pagination{
     margin: 0;
+}
+
+/* ==========================================================================
+   Article Author List
+   ========================================================================== */
+.a-box{
+    background-color: #f2f2f2;
+    margin-bottom: 5px;
+}
+.a-box .a-inner{
+    padding-top: 10px;
+}
+.a-box a{
+    display: block;
+    color: #000000;
+    font-size: 12px;
+    text-align: center;
+}
+.a-box a:hover{
+    text-decoration: none;
+}
+.a-box a img{
+    display: inline-block;
+    border-bottom: solid 3px #ebebeb;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.a-box a span{
+    display: block;
+}
+.a-box a .a-foot{
+    padding: 15px;
+    background-color: #fafafa;
+    border:1px solid #ebebeb;
+}
+.a-box a .a-foot span.name{
+    color: #000;
+    font-size: 18px;
+    font-weight:bold;
+    padding-bottom: 10px;
+}
+.a-box a .a-foot span.bio{
+    overflow: hidden;
+    height:36px;
+    color:#000000;
+
 }

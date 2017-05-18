@@ -69,10 +69,6 @@
                                 {!! Form::text('ISBN', $record->ISBN, ['placeholder' => trans('book::book.ISBN') ,'class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('release_date', trans('book::book.release_date'),['class'=> 'control-label']) !!}
-                                {!! Form::text('release_date', $record->release_date, ['placeholder' => trans('book::book.release_date') ,'class' => 'form-control']) !!}
-                            </div>
-                            <div class="form-group">
                                 {!! Form::label('number_of_print', trans('book::book.number_of_print'),['class'=> 'control-label']) !!}
                                 {!! Form::text('number_of_print', $record->number_of_print, ['placeholder' => trans('book::book.number_of_print') ,'class' => 'form-control']) !!}
                             </div>
@@ -84,7 +80,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 {!! Form::label('release_date', trans('book::book.release_date'),['class'=> 'control-label']) !!}
-                                {!! Form::text('release_date', $record->release_date, ['placeholder' => trans('book::book.release_date') ,'class' => 'form-control']) !!}
+                                {!! Form::text('release_date', $record->release_date, ['placeholder' => trans('book::book.release_date') ,'class' => 'form-control','id'=>'show_time']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('paper_type', trans('book::book.paper_type'),['class'=> 'control-label']) !!}
@@ -196,6 +192,7 @@
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
 @endsection
 @section('js')
 
@@ -204,10 +201,18 @@
     <script src="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme .'::js/moment/min/moment.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme .'::js/moment/locale/tr.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('.select2').select2();
             $('.tagsinput').tagsinput();
+            //Date range picker with time picker
+            $('#show_time').datetimepicker({
+                format:'YYYY-MM-DD',
+                locale:'tr'
+            });
         });
         $(window).resize(function () {
             $('.select2').select2();
