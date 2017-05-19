@@ -23,6 +23,7 @@ class CreateVideosTable extends Migration
             $table->string('thumbnail')->nullable();
             $table->string('file')->nullable();
             $table->string('link')->nullable();
+            $table->text('embed')->nullable();
             $table->text('content')->nullable();
             $table->string('keywords')->nullable();
             $table->unsignedInteger('order')->default(0);

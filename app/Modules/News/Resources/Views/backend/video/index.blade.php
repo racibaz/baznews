@@ -32,6 +32,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('news::video.name')}}</th>
+                            <th>{{trans('news::video.thumbnail')}}</th>
                             <th>{{trans('news::video.is_active')}}</th>
                             <th>{{trans('news::video.edit_delete')}}</th>
                         </tr>
@@ -41,6 +42,12 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('video.show', $record->name , $record, [] ) !!}</td>
+                                    <td>
+
+                                        <img src="{{ asset('videos/' . $record->id . '/58x58_' . $record->thumbnail)}}"
+                                             alt="{{$record->title}}" title="{{$record->title}}"/>
+
+                                    </td>
                                     <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">

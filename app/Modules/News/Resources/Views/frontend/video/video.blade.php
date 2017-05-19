@@ -76,8 +76,8 @@
                                           "interactionCount": "2347"
                                         }
                                     </script>
-                                @elseif(!empty($video->link))
-                                    {!! $video->link !!}
+                                @elseif(!empty($video->embed))
+                                    {!! $video->embed !!}
                                 @endif
                             </div>
 

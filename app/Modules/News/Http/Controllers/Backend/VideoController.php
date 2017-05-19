@@ -127,6 +127,7 @@ class VideoController extends BackendController
         $input['is_comment'] = Input::get('is_comment') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
+
         $rules = array(
             'name' => 'required|max:255',
             'slug' => [

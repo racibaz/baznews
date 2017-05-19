@@ -51,6 +51,7 @@ class Video extends Model
         'thumbnail',
         'file',
         'link',
+        'embed',
         'content',
         'keywords',
         'order',

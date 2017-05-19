@@ -65,6 +65,10 @@
                         {!! Form::text('link', $record->link, ['placeholder' => trans('news::video.link') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
+                        {!! Form::label('embed', trans('news::video.embed'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('embed', $record->embed, ['placeholder' => trans('news::video.embed') ,'class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group">
                         {!! Form::label('content', trans('news::video.content'),['class'=> 'control-label']) !!}
                         {!! Form::textarea('content', $record->content, ['placeholder' => trans('news::video.content') ,'class' => 'form-control']) !!}
                     </div>
