@@ -20,7 +20,9 @@ class EnvFileChange
             return $next($request);
         }
 
-        \Log::warning('Unauthorized .env file request IP :' . $request->ip());
+        $userEmail = Auth::check() ?  Auth::user()->email : '';
+
+        \Log::warning('Unauthorized .env file request IP :' . $request->ip() . ' User Email : '. $userEmail);
         return redirect('/login');
     }
 }

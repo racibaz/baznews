@@ -37,7 +37,6 @@ return [
     'route'             =>  '/admin/enveditor',
 
     // middleware and middlewaregroups. Add your own middleware if you want.
-    //todo web middleware i mutlaka değiştirilmeli
     'middleware'        => ['web','envFileChange'],
     'middlewareGroups'  => []
 ];

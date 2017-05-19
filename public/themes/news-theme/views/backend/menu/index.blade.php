@@ -35,8 +35,6 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <pre>{!! $recordsTreeJson !!}</pre>
-                    <div id="menu_tree"></div>
                     @include($activeTheme . '::backend.partials.tree',$recordsTree)
 
                     @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
