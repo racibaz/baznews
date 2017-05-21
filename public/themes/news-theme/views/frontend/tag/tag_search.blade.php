@@ -1,6 +1,13 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
+            </div>
+        </div>
+    </div>
     <article class="container" id="container">
 
         <div class="tag-header module">

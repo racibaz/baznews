@@ -8,16 +8,3 @@
         @endforeach
     </div>
 </div>
-@push('js')
-    <script type="text/javascript" src="{{ Theme::asset($activeTheme . '::js/jquery.tagcloud/jquery.tagcloud.js') }}"></script>
-    <script type="text/javascript">
-        $.fn.tagcloud.defaults = {
-            size: {start: 11, end: 16, unit: 'pt'},
-            color: {start: '#EA4335', end: '#40819A'}
-        };
-
-        $(function () {
-            $('.tag-cloud a').tagcloud();
-        });
-    </script>
-@endpush

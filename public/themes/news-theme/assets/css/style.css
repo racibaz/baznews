@@ -174,8 +174,8 @@ body {
     position: relative;
     border: 1px solid #e1e1e1;
     border-bottom: 0;
-    margin: 0;
     padding: 0;
+    margin-bottom: 10px;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,f44336+0,f44336+42,ffffff+100 */
     background: #f44336; /* Old browsers */
     background: -moz-linear-gradient(left,  #f44336 0%, #f44336 0%, #f44336 42%, #ffffff 100%); /* FF3.6-15 */
@@ -928,17 +928,17 @@ header{
     text-shadow: #000 2px 2px 2px; }
 
 /* ==========================================================================
-   Video List Page Main İmages
+   Hover Video Box Posts
    ========================================================================== */
-.videos .r-box {
+.r-box {
     position: relative;
     overflow: hidden;
     margin-bottom: 10px;
 }
-.videos .r-box .box-img{
+.r-box .box-img{
     position: relative;
 }
-.videos .r-box a span.icon {
+.r-box a span.icon {
     position: absolute;
     top: 0;
     left: 0;
@@ -953,18 +953,18 @@ header{
     -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
 }
-.videos .r-box:hover span.icon {
+.r-box:hover span.icon {
     opacity: 1;
 }
-.videos .r-box a{
+.r-box a{
     display: block;
 }
 
-.videos .r-box a img {
+.r-box a img {
     width: 100%;
 }
 
-.videos .r-box .img-title a {
+.r-box .img-title a {
     display: block;
     background-color: #fff;
     font-size: 13px;
@@ -1108,6 +1108,8 @@ header{
 .sidebar-video .video-list-body{
     max-height: 357px;
     position: relative;
+    background-color: #fff;
+    padding: 10px;
 }
 .sidebar-video{
     position: relative;

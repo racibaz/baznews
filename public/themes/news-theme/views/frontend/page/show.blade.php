@@ -5,20 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="ticker last-time" id="son-dakika">
-                    <strong>Son Dakika:</strong>
-                    <ul>
-                        <li>
-                            <a href="#">Breaking News - 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Breaking News - 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Breaking News - 3</a>
-                        </li>
-                    </ul>
-                </div>
+                @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
             </div>
         </div>
     </div>
