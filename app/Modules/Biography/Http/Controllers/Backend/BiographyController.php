@@ -45,8 +45,13 @@ class BiographyController extends BackendController
 
     public function create()
     {
+        $statusList = $this->repo->getUserStatuses();
+
         $record = $this->repo->createModel();
-        return Theme::view('biography::' . $this->getViewName(__FUNCTION__), compact(['record']));
+        return Theme::view('biography::' . $this->getViewName(__FUNCTION__), compact([
+            'record',
+            'statusList'
+        ]));
     }
 
 
@@ -58,13 +63,19 @@ class BiographyController extends BackendController
 
     public function show(Biography $record)
     {
+        $statuses = Biography::$statuses;
         return Theme::view('biography::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(Biography $record)
     {
-        return Theme::view('biography::' . $this->getViewName(__FUNCTION__), compact(['record']));
+        $statusList = $this->repo->getUserStatuses();
+
+        return Theme::view('biography::' . $this->getViewName(__FUNCTION__), compact([
+            'record',
+            'statusList'
+        ]));
     }
 
 
@@ -94,15 +105,23 @@ class BiographyController extends BackendController
         $input['user_id'] = Auth::user()->id;
 
         $rules = array(
-            'title' => 'required|max:255',
-            'name' => 'required|max:255',
+            'title' => [
+                'required',
+                'max:255',
+                Rule::unique('biographies')->ignore($record->id),
+            ],
+            'name' => [
+                'required',
+                'max:255',
+                Rule::unique('biographies')->ignore($record->id),
+            ],
             'slug' => [
                 Rule::unique('biographies')->ignore($record->id),
             ],
             'content' => 'required',
             'photo' => 'image',
-            'description' => 'max:255',
-            'keywords' => 'max:255',
+            'description' => 'max:255|nullable',
+            'keywords' => 'max:255|nullable',
             'order' => 'integer',
             'hit' => 'integer',
             'status' => 'integer',

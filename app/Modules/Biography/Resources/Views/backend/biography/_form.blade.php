@@ -108,6 +108,10 @@
                         </label>
                     </div>
                     <div class="form-group">
+                        {!! Form::label('status', trans('biography::biography.status'),['class'=> ' control-label']) !!}
+                        {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('biography::biography.please_choose'),'class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group">
                         <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                     <!-- /.box-body -->
