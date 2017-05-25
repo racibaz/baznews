@@ -86,7 +86,7 @@
                             </div>
 
                             <div class="description">
-                                <em>{{$videoGallery->title}} / {{$video->updated_at}}</em>
+                                <em>{{$videoGallery->title}} / {{$video->updated_at->diffForHumans()}}</em>
                                 <h1>{{$video->name}}</h1>
                                 <h2>{{$video->content}}</h2>
                                 @foreach($tags as $tag)
@@ -145,7 +145,7 @@
                                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                                     </span>
                                                 </a>
-                                                <span class="time visible-lg"> {{$otherGalleryVideo->updated_at}}</span>
+                                                <span class="time visible-lg"> {{$otherGalleryVideo->updated_at->diffForHumans()}}</span>
                                             </div>
                                         </div><!-- /.row -->
                                     </div><!-- /.video-link -->

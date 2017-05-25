@@ -22,37 +22,17 @@ class VideoController extends Controller
 
         return Cache::tags(['VideoController', 'News', 'video'])->rememberForever('video:'.$id, function() use($id) {
 
-            $categoryVideos = null;
-
-            $video = $this->repo
-                ->with(['video_category', 'video_gallery','tags'])
-                ->where('is_active', 1)
-                ->findBy('id',$id);
-
+            $video = $this->repo->getVideo($id);
             abort_if(empty($video), 404, trans('common.not_found'));
-
             $videoGallery = $video->video_gallery;
             $tags = $video->tags;
 
-            $firstVideo = $videoGallery->videos->first();
-
-            $nextVideo = $videoGallery->videos->filter(function($galleryVideo) use($video){
-                return $galleryVideo->id > $video->id;
-            })->first();
-
-            $nextVideo = !isset($nextVideo) ? $firstVideo : $nextVideo;
-
-            $previousVideo = $videoGallery->videos->filter(function($galleryVideo) use($video){
-                return $galleryVideo->id < $video->id;
-            })->first();
-
-            $previousVideo = !isset($previousVideo) ? $firstVideo : $previousVideo;
-            $otherGalleryVideos = $this->repo->where('is_active',1)->whereNotIn('id', [$video->id])->findAll()->take(10);
-            $lastestVideos = $this->repo->orderBy('updated_at', 'desc')->findAll()->take(20);
-
-            if(!empty($video->video_category)) {
-                $categoryVideos = $video->video_category->videos->where('is_active', 1)->take(10);
-            }
+            $nextVideo = $this->repo->getNextVideo($videoGallery,$video);
+            $previousVideo = $this->repo->getPreviousVideo($videoGallery,$video);
+            $otherGalleryVideos = $this->repo->getOtherGalleryVideos($video->id);
+            $otherGalleries = $videoGallery->video_category->video_galleries->where('is_active', 1)->where('id', '<>', $videoGallery->id)->take(10);
+            $lastestVideos = $this->repo->getLatestVideos(20);
+            $categoryVideos = $this->repo->getVideoCategoryVideos($video);
 
             //todo is set video's videocategory area for video category relations
             if(!empty($videoGallery->video_category)) {
