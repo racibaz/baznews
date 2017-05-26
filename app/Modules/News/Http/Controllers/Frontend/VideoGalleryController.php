@@ -19,7 +19,6 @@ class VideoGalleryController extends Controller
 
     public function getVideoGalleryBySlug($slug)
     {
-
         $id = substr(strrchr($slug, '-'), 1);
 
         return Cache::tags(['VideoGalleryController', 'News', 'video_gallery'])->rememberForever('video_gallery:'.$id, function() use($id) {
@@ -36,7 +35,7 @@ class VideoGalleryController extends Controller
 
             $nextVideo = $this->repo->getNextVideo($videoGallery,$video);
             $previousVideo = $this->repo->getPreviousVideo($videoGallery,$video);
-            $otherGalleryVideos = $this->repo->getOtherGalleryVideos($video->id);
+            $otherGalleryVideos = $this->repo->getOtherGalleryVideos($video);
             $otherGalleries = $videoGallery->video_category->video_galleries->where('is_active', 1)->where('id', '<>', $videoGallery->id)->take(10);
             $lastestVideos = $this->repo->getLatestVideos(20);
             $categoryVideos = $this->repo->getVideoCategoryVideos($video);

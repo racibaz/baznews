@@ -33,7 +33,6 @@ class VideoGallery extends Model
         return $engine->activateRuleset('turkish');
     }
 
-
     public $transformer = VideoGalleryTransformer::class;
     protected $fillable = ['video_category_id', 'user_id', 'title', 'slug', 'short_url', 'description', 'keywords', 'thumbnail', 'is_cuff', 'is_active'];
 

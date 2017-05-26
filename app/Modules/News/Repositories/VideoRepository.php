@@ -2,7 +2,10 @@
 
 namespace App\Modules\News\Repositories;
 
+use Exception;
+use Log;
 use Rinvex\Repository\Repositories\EloquentRepository;
+use Illuminate\Support\Facades\File;
 
 class VideoRepository extends EloquentRepository
 {
@@ -11,9 +14,15 @@ class VideoRepository extends EloquentRepository
     protected $model = 'App\Modules\News\Models\Video';
 
 
-    public function getOtherGalleryVideos($id)
+    public function getOtherGalleryVideos($video)
     {
-        return $this->where('is_active', 1)->whereNotIn('id', [$id])->findAll()->take(10);
+         $videoGalleryVideos = $this->where('is_active', 1)
+            ->where('video_gallery_id',$video->video_gallery_id)
+            ->whereNotIn('id', [$video->id])
+            ->findAll()
+            ->take(10);
+
+         return isset($videoGalleryVideos) ? $videoGalleryVideos : null;
     }
 
     public function getNextVideo($videoGallery, $video)
@@ -37,7 +46,7 @@ class VideoRepository extends EloquentRepository
 
     public function getLatestVideos($take = 20)
     {
-        return  $this->orderBy('updated_at', 'desc')->findAll()->take($take);
+        return  $this->where('is_active',1)->orderBy('updated_at', 'desc')->findAll()->take($take);
     }
 
     public function getGalleryFirstVideo($videoGallery)
@@ -62,4 +71,23 @@ class VideoRepository extends EloquentRepository
         return null;
     }
 
+    public function deleteVideoFiles($video) : bool
+    {
+        try{
+
+            $videoTitle = $video->title;
+            $videoId = $video->id;
+
+            if(File::isDirectory(public_path('videos/' . $video->id))){
+                File::deleteDirectory(public_path('videos/' . $video->id));
+                return true;
+            }else{
+                return false;
+            }
+
+        }catch (Exception $e)
+        {
+            Log::warning('Video {$videoId} : ($videoTitle)' . trans('log.video_deleting_error'));
+        }
+    }
 }

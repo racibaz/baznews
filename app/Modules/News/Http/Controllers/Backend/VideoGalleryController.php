@@ -13,7 +13,6 @@ use App\Modules\News\Repositories\VideoGalleryRepository as Repo;
 use App\Modules\News\Repositories\VideoRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Exception;
-use Illuminate\Support\Facades\Log;
 use Mremi\UrlShortener\Model\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +31,7 @@ class VideoGalleryController extends BackendController
 
         $this->view = 'video_gallery.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
@@ -78,6 +77,7 @@ class VideoGalleryController extends BackendController
 
     public function destroy(VideoGallery $record)
     {
+        $this->repo->deleteVideoGalleryFiles($record);
         $this->repo->delete($record->id);
 
         $this->removeCacheTags(['VideoGalleryController']);
@@ -102,7 +102,7 @@ class VideoGalleryController extends BackendController
             ],
             'description' => 'required|max:255',
             'keywords' => 'required|max:255',
-            'thumbnail' => 'image|max:255',
+            'thumbnail' => 'image',
         );
         $v = Validator::make($input, $rules);
 
@@ -123,38 +123,38 @@ class VideoGalleryController extends BackendController
                 if(!empty($input['thumbnail'])) {
                     $oldPath = $record->thumbnail;
                     $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/video_gallery/'. $result->id .'/photos';
+                    $destination = '/video_gallery/'. $result->id;
                     Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
                     Uploader::removeFile($oldPath);
 
 
-                    Image::make(public_path('video_gallery/'. $result->id .'/photos/'. $result->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                         ->resize(58,58)
-                        ->save(public_path('video_gallery/'. $result->id .'/photos/58x58_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result->id .'/58x58_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $result->id .'/photos/'. $result->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                         ->resize(497,358)
-                        ->save(public_path('video_gallery/'. $result->id .'/photos/497x358_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result->id .'/497x358_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $result->id .'/photos/'. $result->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                         ->resize(658,404)
-                        ->save(public_path('video_gallery/'. $result->id .'/photos/658x404_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result->id .'/658x404_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $result->id .'/photos/'. $result->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                         ->resize(224,195)
-                        ->save(public_path('video_gallery/'. $result->id .'/photos/224x195_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result->id .'/224x195_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $result->id .'/photos/'. $result->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                         ->resize(165,90)
-                        ->save(public_path('video_gallery/'. $result->id .'/photos/165x90_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result->id .'/165x90_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $result->id .'/photos/'. $result->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                         ->resize(457,250)
-                        ->save(public_path('video_gallery/'. $result->id .'/photos/257x250_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result->id .'/257x250_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $result->id .'/photos/'. $result->thumbnail))
+                    Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                         ->resize(213, 116)
-                        ->save(public_path('video_gallery/'. $result->id .'/photos/213x116_' . $document_name));
+                        ->save(public_path('video_gallery/'. $result->id .'/213x116_' . $document_name));
                 }
 
 
@@ -315,33 +315,33 @@ class VideoGalleryController extends BackendController
                     Uploader::removeFile($oldPath);
 
 
-                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                    Image::make(public_path('videos/'. $record->id .'/'. $record->thumbnail))
                         ->resize(58,58)
-                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/58x58_' . $document_name));
+                        ->save(public_path('videos/'. $record->id .'/58x58_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                    Image::make(public_path('videos/'. $record->id .'/photos/'. $record->thumbnail))
                         ->resize(497,358)
-                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/497x358_' . $document_name));
+                        ->save(public_path('videos/'. $record->id .'/497x358_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                    Image::make(public_path('videos/'. $record->id .'/'. $record->thumbnail))
                         ->resize(658,404)
-                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/658x404_' . $document_name));
+                        ->save(public_path('videos/'. $record->id .'/658x404_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                    Image::make(public_path('videos/'. $record->id .'/'. $record->thumbnail))
                         ->resize(224,195)
-                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/224x195_' . $document_name));
+                        ->save(public_path('videos/'. $record->id .'/224x195_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                    Image::make(public_path('videos/'. $record->id .'/'. $record->thumbnail))
                         ->resize(165,90)
-                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/165x90_' . $document_name));
+                        ->save(public_path('videos/'. $record->id .'/165x90_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                    Image::make(public_path('videos/'. $record->id .'/'. $record->thumbnail))
                         ->resize(457,250)
-                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/257x250_' . $document_name));
+                        ->save(public_path('videos/'. $record->id .'/257x250_' . $document_name));
 
-                    Image::make(public_path('video_gallery/'. $record->video_gallery_id .'/photos/'. $record->thumbnail))
+                    Image::make(public_path('videos/'. $record->id .'/'. $record->thumbnail))
                         ->resize(213, 116)
-                        ->save(public_path('video_gallery/'. $record->video_gallery_id .'/photos/213x116_' . $document_name));
+                        ->save(public_path('video_gallery/'. $record->id .'/213x116_' . $document_name));
                 }
 
                 if(is_numeric($id)){

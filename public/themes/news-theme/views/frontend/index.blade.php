@@ -341,12 +341,11 @@
                 <div class="col-md-6">
                     <div class="title-section">
                         <h1>
-                            <span>Galeri</span>
+                            <span>{{trans('news::photo_gallery.photo_galleries')}}</span>
                         </h1>
                     </div>
                     <div class="th-nw-slide module">
                         <div id="m_pg1" class="pager">
-
                             @foreach($photoGalleries as $index =>  $photoGallery)
 
                                 <a data-slide-index="{{$index}}" href="#" class="bx-pager-link">
@@ -368,7 +367,7 @@
                 <div class="col-md-6">
                     <div class="title-section">
                         <h1>
-                            <span>Video</span>
+                            <span>{{trans('news::video_gallery.video_galleries')}}</span>
                         </h1>
                     </div>
                     <div class="th-nw-slide module">
@@ -376,7 +375,7 @@
                             @foreach($videoGalleries as $index => $videoGallery)
                                 <a data-slide-index="{{$index}}" href="{{route('show_video_gallery',['slug' => $videoGallery->videos->first()->slug ])}}" class="bx-pager-link">
                                     <span class="img-ct">
-                                        <img src="{{ asset('video_gallery/' . $videoGallery->id . '/photos/58x58_' . $videoGallery->thumbnail)}}" />
+                                        <img src="{{ asset('video_gallery/' . $videoGallery->id . '/58x58_' . $videoGallery->thumbnail)}}" />
                                     </span>
                                 </a>
                             @endforeach
@@ -385,7 +384,7 @@
                             @foreach($videoGalleries as $index =>  $videoGallery)
                                 <li>
                                     <a href="{{route('show_videos',['slug' => $videoGallery->videos->first()->slug ])}}">
-                                        <img src="{{ asset('video_gallery/' . $videoGallery->id . '/photos/497x358_' . $videoGallery->thumbnail)}}" />
+                                        <img src="{{ asset('video_gallery/' . $videoGallery->id . '/497x358_' . $videoGallery->thumbnail)}}" />
                                     </a>
                                 </li>
                             @endforeach

@@ -28,7 +28,7 @@
                     <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
                 </li>
                 <li>
-                    <a href="{!! route('show_news_category', ['slug' => $videoGallery->slug]) !!}">
+                    <a href="{!! route('show_video_gallery', ['slug' => $videoGallery->slug]) !!}">
                         {{$videoGallery->title}}
                     </a>
                 </li>
@@ -63,7 +63,7 @@
                                           "@type": "VideoObject",
                                           "name": "{{$video->title}}",
                                           "description": "{{$video->description}}",
-                                          "thumbnailUrl": "{{Cache::tags('Setting')->get('url') . '/' . asset('video_gallery/' . $video->video_gallery_id . '/photos/' . $video->thumbnail)}}",
+                                          "thumbnailUrl": "{{Cache::tags('Setting')->get('url') . '/' . asset('videos/' . $video->id. '/' . $video->thumbnail)}}",
                                           "uploadDate": "{{$video->updated_at}}",
                                           "publisher": {
                                             "@type": "Organization",
@@ -79,8 +79,8 @@
                                         }
                                     </script>
 
-                                @elseif(!empty($video->link))
-                                    {!! $video->link !!}
+                                @elseif(!empty($video->embed))
+                                    {!! $video->embed !!}
                                 @endif
 
                             </div>
@@ -121,7 +121,7 @@
                         <div class="sidebar-video">
                             <div class="title-section">
                                 <h1>
-                                    <span>Galerinin Diğer Videoları</span>
+                                    <span>{{trans('news::video.gallery_other_videos')}}</span>
                                 </h1>
                             </div>
 
@@ -132,7 +132,7 @@
                                             <div class="col-lg-3">
                                                 <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
                                                     <div class="hold">
-                                                        <img src="{{ asset('video_gallery/' . $otherGalleryVideo->video_gallery_id . '/photos/165x90_' . $otherGalleryVideo->thumbnail)}}"
+                                                        <img src="{{ asset('videos/' . $otherGalleryVideo->id . '/165x90_' . $otherGalleryVideo->thumbnail)}}"
                                                              alt="{{$otherGalleryVideo->title}}" title="{{$otherGalleryVideo->title}}"/>
                                                         <span class="icon play"></span>
                                                     </div>
@@ -142,7 +142,7 @@
                                                 <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
                                                     <span class="title">{{$otherGalleryVideo->name}}</span>
                                                     <span class="excerpt">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <p>{{$otherGalleryVideo->subtitle}}</p>
                                                     </span>
                                                 </a>
                                                 <span class="time visible-lg"> {{$otherGalleryVideo->updated_at->diffForHumans()}}</span>
@@ -333,7 +333,7 @@
             <div class="videos">
                 <div class="title-section">
                     <h1>
-                        <span>Gallery Other Videos</span>
+                        <span>{{trans('video.gallery_other_videos')}}</span>
                     </h1>
                 </div><!-- /.title-section -->
                 <div class="row">
@@ -342,7 +342,7 @@
                             <div class="r-box module">
                                 <div class="box-img">
                                     <a href="{{route('show_video_gallery',['slug' => $galleryVideo->slug ])}}">
-                                        <img src="{{ asset('video_gallery/' . $galleryVideo->video_gallery_id . '/photos/497x358_' . $galleryVideo->thumbnail)}}" alt="{{$galleryVideo->name}}" title="{{$galleryVideo->name}}"/>
+                                        <img src="{{ asset('videos/' . $galleryVideo->id . '/497x358_' . $galleryVideo->thumbnail)}}" alt="{{$galleryVideo->name}}" title="{{$galleryVideo->name}}"/>
                                         <span class="icon"></span>
                                     </a>
                                 </div>
@@ -359,7 +359,7 @@
             <div class="videos">
                 <div class="title-section">
                     <h1>
-                        <span>Lastest Videos</span>
+                        <span>{{trans('video.category_latest_videos')}}</span>
                         <a href="#" class="btn btn-primary btn-xs m-v-btn">Daha fazla</a>
                     </h1>
                 </div><!-- /.title-section -->
@@ -369,7 +369,7 @@
                             <div class="r-box module">
                                 <div class="box-img">
                                     <a href="{{route('show_videos',['slug' => $lastestVideo->slug ])}}">
-                                        <img src="{{ asset('video_gallery/' . $lastestVideo->video_gallery_id . '/photos/497x358_' . $lastestVideo->thumbnail)}}" alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
+                                        <img src="{{ asset('videos/' . $lastestVideo->id . '/497x358_' . $lastestVideo->thumbnail)}}" alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
                                         <span class="icon"></span>
                                     </a>
                                 </div>

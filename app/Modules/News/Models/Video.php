@@ -6,12 +6,9 @@ use App\Modules\News\Transformers\VideoTransformer;
 use App\Traits\Eventable;
 use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Venturecraft\Revisionable\RevisionableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Log;
-use League\Flysystem\Exception;
-use Venturecraft\Revisionable\RevisionableTrait;
 
 class Video extends Model
 {
@@ -81,23 +78,4 @@ class Video extends Model
     {
         return Video::where('is_active',1)->pluck('name', 'id');
     }
-
-    public static function deleteVideoFiles($video) : bool
-    {
-        try{
-
-            //todo $video->id video gallery id olmalı. ve varsa dosyaları silinmeli.
-            if(File::isDirectory(public_path('video_gallery/' . $video->id))){
-                File::deleteDirectory(public_path('video_gallery/' . $video->id));
-                return true;
-            }else{
-                return false;
-            }
-
-        }catch (Exception $e)
-        {
-            Log::warning('VideoGallery (updateGalleryVideos)' . trans('log.video_deleting_error'));
-        }
-    }
-
 }

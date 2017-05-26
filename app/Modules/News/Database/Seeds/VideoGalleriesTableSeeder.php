@@ -17,7 +17,7 @@ class VideoGalleriesTableSeeder extends Seeder
         VideoGallery::create([
             'video_category_id' => 1,
             'user_id' => 1,
-            'title' => 'ilk video gallery',
+            'title' => 'ilk video gallery 1',
             'slug' => 'ilk_video_gallery-1',
             'description' => 'galeri tanım/not',
             'keywords' => 'ilk galeri',
@@ -29,11 +29,11 @@ class VideoGalleriesTableSeeder extends Seeder
         VideoGallery::create([
             'video_category_id' => 2,
             'user_id' => 1,
-            'title' => 'ikinci video gallery',
+            'title' => 'ikinci video gallery 2',
             'slug' => 'ikinci_video_gallery-2',
             'description' => 'galeri tanım/not',
             'keywords' => 'ikinci galeri',
-            'thumbnail' => '7.jpg',
+            'thumbnail' => '2.jpg',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -41,36 +41,36 @@ class VideoGalleriesTableSeeder extends Seeder
         VideoGallery::create([
             'video_category_id' => 1,
             'user_id' => 1,
-            'title' => 'üç video gallery',
+            'title' => 'üç video gallery 3',
             'slug' => 'uc_video_gallery-3',
             'description' => 'galeri tanım/not',
             'keywords' => 'üç galeri',
             'thumbnail' => '3.jpg',
-            'is_cuff' => 0,
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
         VideoGallery::create([
             'video_category_id' => 3,
             'user_id' => 1,
-            'title' => 'dört video gallery',
+            'title' => 'dört video gallery 4',
             'slug' => 'dort_video_gallery-4',
             'description' => 'galeri tanım/not',
             'keywords' => 'dört galeri',
             'thumbnail' => '4.jpg',
-            'is_cuff' => 0,
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
         VideoGallery::create([
             'video_category_id' => 4,
             'user_id' => 1,
-            'title' => 'beş video gallery',
+            'title' => 'beş video gallery 5',
             'slug' => 'bes_video_gallery-5',
             'description' => 'galeri tanım/not',
             'keywords' => 'beş galeri',
             'thumbnail' => '5.jpg',
-            'is_cuff' => 0,
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
     }
