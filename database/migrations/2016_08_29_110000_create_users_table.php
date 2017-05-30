@@ -30,7 +30,6 @@ class CreateUsersTable extends Migration
             $table->string('youtube')->nullable();
             $table->string('web_site')->nullable();
             $table->boolean('sex')->nullable();
-            $table->string('blood_type')->nullable();
             $table->string('bio_note')->nullable();
             $table->string('IP')->nullable();
             $table->dateTime('last_login')->nullable();

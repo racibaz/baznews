@@ -150,15 +150,6 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('blood_type', trans('account.blood_type'), ['class'=> 'col-lg-2 control-label']) !!}
-
-                            <div class="col-lg-10">
-                                {!! Form::text('blood_type', $record->blood_type, ['placeholder' => trans('account.blood_type'), 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             {!! Form::label('bio_note', trans('account.bio_note'), ['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">

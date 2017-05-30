@@ -87,7 +87,6 @@ class User extends Authenticatable
         'youtube',
         'web_site',
         'sex',
-        'blood_type',
         'avatar',
         'bio_note',
         'IP',
@@ -108,18 +107,6 @@ class User extends Authenticatable
 
 
     public static $statuses = ['Passive', 'Active', 'Preparing Email Activation', 'Garbage'];
-
-
-    public static  $bloodGroups = [
-        'AB RH+' => 'AB RH+',
-        'AB RH-' => 'AB RH-',
-        'A RH+' => 'A RH+',
-        'A RH-' => 'A RH-',
-        'B RH+' => 'B RH+',
-        'B RH-' => 'B RH-',
-        '0 RH+' => '0 RH+',
-        '0 RH-' => '0 RH-'
-    ];
 
     public function groups()
     {

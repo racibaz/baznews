@@ -58,9 +58,11 @@ class AccountController extends Controller
         $countries = Country::countryList();
         $cities = City::cityList();
 
-        $bloodGroups = User::$bloodGroups;
-
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities','bloodGroups']));
+        return Theme::view($this->getViewName(__FUNCTION__),compact([
+            'record',
+            'countries',
+            'cities'
+        ]));
     }
 
 

@@ -205,7 +205,4 @@ class UserController extends BackendController
         Session::flash('flash_message', trans('common.force_deleted'));
         return redirect()->back();
     }
-
-
-
 }

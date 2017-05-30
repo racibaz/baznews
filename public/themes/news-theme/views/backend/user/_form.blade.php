@@ -80,11 +80,6 @@
                                 {!! Form::label('cell_phone', trans('user.cell_phone'), ['class'=> 'control-label']) !!}
                                 {!! Form::text('cell_phone', $record->cell_phone,['placeholder' => trans('user.cell_phone'), 'class' => 'form-control']) !!}
                             </div>
-
-                            <div class="form-group">
-                                {!! Form::label('blood_type', trans('user.blood_type'), ['class'=> 'control-label']) !!}
-                                {!! Form::text('blood_type', $record->blood_type, ['placeholder' => trans('user.blood_type'), 'class' => 'form-control']) !!}
-                            </div>
                             @if(!empty($record->id))
                                 <?php
                                 $default = Redis::get('url') . "/default_user_avatar.jpg";
@@ -105,12 +100,6 @@
                                 {!! Form::label('bio_note', trans('user.bio_note'), ['class'=> 'control-label']) !!}
                                 {!! Form::textarea('bio_note', $record->bio_note, ['placeholder' => trans('user.bio_note'), 'class' => 'form-control summernote','rows'=>'10']) !!}
                             </div>
-                            <div class="form-group">
-                                <label for="0">
-                                    {!! Form::checkbox('sex', null , $record->sex) !!}
-                                    {{trans('user.sex')}}
-                                </label>
-                            </div><!-- /.form-group -->
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -196,6 +185,12 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
+                    <div class="form-group">
+                        <label for="0">
+                            {!! Form::checkbox('sex', null , $record->sex) !!}
+                            {{trans('user.sex')}}
+                        </label>
+                    </div><!-- /.form-group -->
                     <div class="form-group">
                         {!! Form::label('status', trans('news::news.status'),['class'=> 'control-label']) !!}
                         {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('user.please_choose'),'class' => 'form-control']) !!}
