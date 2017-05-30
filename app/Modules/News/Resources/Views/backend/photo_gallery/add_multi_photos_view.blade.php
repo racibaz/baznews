@@ -31,8 +31,8 @@
                         @foreach($photo_gallery->photos as $photo)
                         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
                             <div class="thumbnail">
-                                <a href="{{asset('gallery/' . $photo_gallery->id . '/photos/' . $photo->file)}}" class="lightbox" style="display: block;overflow: hidden;height:73px;">
-                                    <img src="{{asset('gallery/' . $photo_gallery->id . '/photos/' . $photo->file)}}" alt="{{$photo_gallery->name}}">
+                                <a href="{{asset('photos/' . $photo->id . '/' . $photo->file)}}" class="lightbox" style="display: block;overflow: hidden;height:73px;">
+                                    <img src="{{asset('photos/' . $photo->id . '/' . $photo->file)}}" alt="{{$photo_gallery->name}}">
                                 </a>
                             </div><!-- /.thumbnail -->
                         </div><!-- /.col.. -->
@@ -73,7 +73,11 @@
                             <tbody>
                             @foreach($photo_gallery->photos as $photo)
                             <tr>
-                                <td><a href="{{asset('gallery/' . $photo_gallery->id . '/photos/' . $photo->file)}}" class="thumbnail" style="display: block;overflow: hidden;height:120px;width:120px;"><img src="{{asset('gallery/' . $photo_gallery->id . '/photos/' . $photo->file)}}" height="73"></a></td>
+                                <td>
+                                    <a href="{{asset('photos/' . $photo->id . '/' . $photo->file)}}" class="thumbnail" style="display: block;overflow: hidden;height:120px;width:120px;">
+                                        <img src="{{asset('photos/' . $photo->id . '/' . $photo->file)}}" height="73">
+                                    </a>
+                                </td>
                                 <td>{!! Form::text('subtitle/'. $photo->id, $photo->subtitle, ['placeholder' => trans('news::photo_gallery.title') ,'class' => 'form-control']) !!}</td>
                                 <td>{!! Form::textarea('content/'. $photo->id, $photo->content, ['placeholder' => trans('news::photo_gallery.content') ,'class' => 'form-control','rows'=>'2']) !!}</td>
                                 <td>

@@ -39,7 +39,7 @@
                         <div class="img-container module">
                             <div class="img">
                                 <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}">
-                                    <img src="{{ asset('gallery/' . $photoGallery->id . '/photos/' . $firstPhoto->file)}}" alt="{{$firstPhoto->name}}" class="img-responsive" />
+                                    <img src="{{ asset('photos/' . $firstPhoto->id . '/' . $firstPhoto->file)}}" alt="{{$firstPhoto->name}}" class="img-responsive" />
                                 </a>
                             </div>
                             <div class="pager">
@@ -92,20 +92,17 @@
                         <div class="details">
                             <div class="time">
                                 <small>
-                                    <i class="fa fa-clock-o"></i> {{$firstPhoto->updated_at}}
+                                    <i class="fa fa-clock-o"></i> {{$firstPhoto->updated_at->diffForHumans()}}
                                 </small>
                             </div><!-- /.time -->
                             <div class="gallery-text">
                                 <p>{{$firstPhoto->content}}</p>
-                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean lacinia bibendum nulla sed consectetur. Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Etiam porta sem malesuada magna mollis euismod.</p>
                             </div><!-- /.gallery-text -->
                         </div>
                         <div class="advert advert-right">
                             <img src="http://baznews.app/themes/news-theme/assets/img/advert-images/336x280.png" alt="Advert Sidebar">
                         </div>
-
                     </div><!-- /.gallery-details -->
-
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.image-gallery -->

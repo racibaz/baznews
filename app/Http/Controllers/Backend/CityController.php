@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\CityRequest;
 use App\Models\City;
 use App\Models\Country;
+use App\Modules\News\Models\PhotoGallery;
 use App\Repositories\CityRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Session;
@@ -26,6 +27,20 @@ class CityController extends BackendController
      */
     public function index()
     {
+
+        $gallery = PhotoGallery::find(1);
+
+        $photo = $gallery->photos()->create([
+            'photo_gallery_id'  => $gallery->id,
+            'name'              => 'deneme',
+            'slug'              => str_slug('deneme'),
+            'file'              => 'deneme.jpg',
+            'is_active'         => 1
+        ]);
+
+
+        dd($photo->id);
+
         $records = $this->repo->paginate();
         return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
     }

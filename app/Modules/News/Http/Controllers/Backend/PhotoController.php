@@ -3,6 +3,7 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Library\Uploader;
 use App\Modules\News\Models\Photo;
 use App\Modules\News\Models\PhotoGallery;
 use App\Modules\News\Repositories\PhotoRepository as Repo;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Rule;
+use Intervention\Image\Facades\Image;
 
 class PhotoController extends BackendController
 {
@@ -89,6 +91,7 @@ class PhotoController extends BackendController
             ],
             'subtitle' => 'max:255',
             'file' => 'image',
+            'link' => 'url|nullable',
             'keywords' => 'required|max:255',
             'order' => 'integer',
         );
@@ -108,7 +111,27 @@ class PhotoController extends BackendController
 
             if ($result) {
 
+                if(!empty($input['file'])) {
+                    $oldPath = $record->file;
+                    $document_name = $input['file']->getClientOriginalName();
+                    $destination = '/photos/' . $result->id;
+                    Uploader::fileUpload($result, 'file', $input['file'], $destination, $document_name);
+                    Uploader::removeFile($destination . '/' . $oldPath);
 
+                    $originalPhotoPath = public_path('photos/' . $result->id . '/' . $result->file);
+
+                    Image::make($originalPhotoPath)
+                        ->resize(58, 58)
+                        ->save(public_path('photos/' . $result->id . '/58x58_' . $result->file));
+
+                    Image::make($originalPhotoPath)
+                        ->resize(224, 195)
+                        ->save(public_path('photos/' . $result->id . '/224x195_' . $result->file));
+
+                    Image::make($originalPhotoPath)
+                        ->resize(497, 358)
+                        ->save(public_path('photos/' . $result->id . '/497x358_' . $result->file));
+                }
                 /*
                  * Delete home page cache and related caches
                  * */

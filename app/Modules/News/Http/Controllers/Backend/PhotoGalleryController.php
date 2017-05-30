@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Rule;
-use Intervention\Image\Facades\Image;
+use Image;
 
 class PhotoGalleryController extends BackendController
 {
@@ -171,9 +171,9 @@ class PhotoGalleryController extends BackendController
                  * */
                 if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
 
-                    $linkShortener = new LinkShortener(new Link);
-                    $result->short_url = $linkShortener->linkShortener($result->slug);
-                    $result->save();
+//                    $linkShortener = new LinkShortener(new Link);
+//                    $result->short_url = $linkShortener->linkShortener($result->slug);
+//                    $result->save();
                 }
 
 
@@ -208,9 +208,7 @@ class PhotoGalleryController extends BackendController
     {
         $gallery = PhotoGallery::find($request->input('photo_gallery_id'));
         $file = $request->file('file');
-        $basePath = 'gallery/' . $gallery->id . '/photos/';
         $fileName = uniqid() . $file->getClientOriginalName();
-
 
         /*dosya isminden extension kısmını çıkartıyoruz.*/
         //dosyanın orjinal ismini alıyoruz(uzantılı).
@@ -229,24 +227,40 @@ class PhotoGalleryController extends BackendController
         $name = implode('', $originalFileName);
 
 
-
-
-        $file->move($basePath, $fileName);
-
-
         //TODO  Storage facede ile cloud işlemleri de yapılabilecek.
 //        Storage::put($basePath , $file);
 //        $path = Storage::put($basePath , \File::get($file));
 //        Storage::disk('public')->put($fileName,\File::get($file));
 
 
-        $photo = $gallery->photos()->create([
+        $photo = Photo::create([
             'photo_gallery_id'  => $gallery->id,
             'name'              => $name,
             'slug'              => str_slug($name),
             'file'              => $fileName,
             'is_active'         => 1
         ]);
+
+        $basePath = 'photos/' . $photo->id . '/';
+        $file->move($basePath, $fileName);
+
+        $destination = '/photos/' . $photo->id;
+        Uploader::fileUpload($photo, 'file', $file , $destination, $fileName);
+
+        $originalPhotoPath = public_path('photos/' . $photo->id . '/' . $fileName);
+
+        Image::make($originalPhotoPath)
+            ->fit(58, 58)
+            ->save(public_path('photos/' . $photo->id . '/58x58_' . $fileName));
+
+        Image::make($originalPhotoPath)
+            ->fit(224, 195)
+            ->save(public_path('photos/' . $photo->id . '/224x195_' . $fileName));
+
+        Image::make($originalPhotoPath)
+            ->fit(497, 358)
+            ->save(public_path('photos/' . $photo->id . '/497x358_' . $fileName));
+
 
         /*
          * Dosya eklendiğinde isminin sonuna "- + id" şeklinde ekleme yapmıyor.
@@ -297,17 +311,14 @@ class PhotoGalleryController extends BackendController
 //                ->save(public_path('gallery/'. $photoGallery->slug .'/photos/497x358_' . $photo->file));
 
 
+            $originalPhotoPath = Image::make(public_path('gallery/'. $photoGallery->id .'/photos/'. $photo->file));
 
-            //todo yapılacak.
-
-            $img = Image::make(public_path('gallery/'. $photoGallery->id .'/photos/'. $photo->file));
-
-            Image::make(public_path('gallery/'. $photoGallery->id .'/photos/'. $photo->file))
-                ->fit(58,58)
+            Image::make($originalPhotoPath)
+                ->resize(58,58)
                 ->save(public_path('gallery/'. $photoGallery->id .'/photos/58x58_' . $photo->file));
 
-            Image::make(public_path('gallery/'. $photoGallery->id .'/photos/'. $photo->file))
-                ->fit(497,358)
+            Image::make($originalPhotoPath)
+                ->resize(497,358)
                 ->save(public_path('gallery/'. $photoGallery->id .'/photos/497x358_' . $photo->file));
         }
 
