@@ -160,7 +160,9 @@
                                         <div class="news-video-image">
                                             <a href="#">
                                                 <span class="play-icon"></span>
-                                                <img src="{{asset('images/news_images/2/196x150_2.jpg')}}">
+                                                <a href="{{route('show_videos',['slug' => $video_gallery->videos->first()->slug ])}}">
+                                                    <img src="{{ asset('video_gallery/' . $video_gallery->id . '/497x358_' . $video_gallery->thumbnail)}}" />
+                                                </a>
                                                 <div class="news-video-title">
                                                     <span>{{$video_gallery->title}}</span>
                                                 </div>
@@ -187,7 +189,9 @@
                                     <div class="col-lg-3 col-md-3 col-xs-4">
                                         <div class="gallery-image">
                                             <a href="#">
-                                                <img src="{{asset('images/news_images/3/196x150_3.jpg')}}">
+                                                <a href="{{route('show_photo_gallery',['slug' => $photo_gallery->slug ])}}">
+                                                    <img src="{{ asset('gallery/' . $photo_gallery->id . '/photos/497x358_' . $photo_gallery->thumbnail)}}" />
+                                                </a>
                                                 <div class="gallery-title">
                                                     {{$photo_gallery->title}}
                                                 </div>
@@ -237,6 +241,8 @@
                                                         data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'>
                                                 </video>
                                             </div>
+                                        @elseif(!empty($video->embed))
+                                            {!! $video->embed !!}
                                         @endif
                                     </div>
                                 @endforeach
