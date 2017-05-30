@@ -37,16 +37,16 @@
                         {!! Form::text('title', $record->title, ['placeholder' => trans('biography::biography.title') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('spot', trans('biography::biography.spot'),['class'=> 'control-label']) !!}
-                        {!! Form::text('spot', $record->spot, ['placeholder' => trans('biography::biography.spot') ,'class' => 'form-control']) !!}
-                    </div>
-                    <div class="form-group">
                         {!! Form::label('name', trans('biography::biography.name'),['class'=> 'control-label']) !!}
                         {!! Form::text('name', $record->name, ['placeholder' => trans('biography::biography.name') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('slug', trans('biography::biography.slug'),['class'=> 'control-label']) !!}
                         {!! Form::text('slug', $record->slug, ['placeholder' => trans('biography::biography.slug') ,'class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('spot', trans('biography::biography.spot'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('spot', $record->spot, ['placeholder' => trans('biography::biography.spot') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('content', trans('biography::biography.content'),['class'=> 'control-label']) !!}
