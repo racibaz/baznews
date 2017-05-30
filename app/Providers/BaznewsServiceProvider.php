@@ -6,6 +6,7 @@ use App\Events\UserRegistered;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\WidgetManager;
+use App\Modules\News\Models\News;
 use App\Repositories\MenuRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -69,6 +70,12 @@ class BaznewsServiceProvider extends ServiceProvider
             //Cache::tags('settings')->flush();
             //Cache::flush();
 
+
+            //todo cachle nerebilirnir.
+            View::share('breakNewsItems', News::where('break_news', 1)
+                ->where('status', 1)
+                ->limit(Cache::tags('Setting')->get('break_news'))
+                ->get());
 
             //TODO cachelenecek
             View::share('activeTheme', Theme::getActive());
