@@ -83,6 +83,16 @@ class BookCategoryController extends BackendController
     {
         $input = Input::all();
 
+        /*
+         * Kitap kategorilerini order değerine göre listelediğimiz için
+         * order boş ise en son değerin bir fazlasını veriyoruz.
+         *
+        */
+        if(empty($input['order'])) {
+            $lastOrder = BookCategory::orderBy('order', 'desc')->first();
+            $input['order'] = $lastOrder->order + 1;
+        }
+
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
 
@@ -91,10 +101,10 @@ class BookCategoryController extends BackendController
             'slug' => [
                 Rule::unique('book_categories')->ignore($record->id),
             ],
-            'thumbnail' => 'image|max:255',
+            'thumbnail' => 'image',
             'description' => 'max:255',
             'keywords' => 'max:255',
-            'order' => 'integer',
+            'order' => 'integer|nullable',
         );
         $v = Validator::make($input, $rules);
 

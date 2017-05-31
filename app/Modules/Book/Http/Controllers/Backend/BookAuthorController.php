@@ -3,6 +3,7 @@
 namespace App\Modules\Book\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Library\Uploader;
 use App\Modules\Book\Models\BookAuthor;
 use App\Modules\Book\Repositories\BookAuthorRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Rule;
+use Image;
 
 class BookAuthorController extends BackendController
 {
@@ -83,8 +85,8 @@ class BookAuthorController extends BackendController
             'slug' => [
                 Rule::unique('book_authors')->ignore($record->id),
             ],
-            'link' => 'url',
-            'thumbnail' => 'image|max:255',
+            'link' => 'url|nullable',
+            'thumbnail' => 'image',
         );
         $v = Validator::make($input, $rules);
 
@@ -101,6 +103,42 @@ class BookAuthorController extends BackendController
             }
 
             if ($result) {
+
+                if(!empty($input['thumbnail'])) {
+                    $oldPath = $record->thumbnail;
+                    $document_name = $input['thumbnail']->getClientOriginalName();
+                    $destination = '/images/book_authors/'. $result->id;
+                    Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                    Uploader::removeFile($oldPath);
+
+                    $thumbnailPath = public_path('images/book_authors/' . $result->id .'/'. $result->thumbnail);
+
+                    Image::make($thumbnailPath)
+                        ->fit(58, 58)
+                        ->save(public_path('images/book_authors/' . $result->id . '/58x58_' . $document_name));
+
+                    Image::make($thumbnailPath)
+                        ->fit(165, 90)
+                        ->save(public_path('images/book_authors/' . $result->id . '/165x90_' . $document_name));
+
+                    Image::make($thumbnailPath)
+                        ->fit(196, 150)
+                        ->save(public_path('images/book_authors/' . $result->id . '/196x150_' . $document_name));
+
+                    Image::make($thumbnailPath)
+                        ->fit(220, 310)
+                        ->save(public_path('images/book_authors/' . $result->id . '/220x310_' . $document_name));
+
+                    Image::make($thumbnailPath)
+                        ->fit(322, 265)
+                        ->save(public_path('images/book_authors/' . $result->id . '/322x265_' . $document_name));
+
+                    Image::make($thumbnailPath)
+                        ->fit(497, 358)
+                        ->save(public_path('images/book_authors/' . $result->id . '/497x358_' . $document_name));
+                }
+
+
 
                 /*
                  * Delete related caches

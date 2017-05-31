@@ -18,8 +18,7 @@ class BookAuthorSeederTable extends Seeder
             'user_id' => 1,
             'name' => 'Tahir Olgun 1',
             'slug' => 'tahir-olgun-1',
-            'link' => 'www.receptayyiperdogan.name',
-            'thumbnail' => 'thumbnail',
+            'thumbnail' => '1.png',
             'bio_note' => 'yazar tanımı',
             'is_cuff' => 1,
             'is_active' => 1,
@@ -27,10 +26,9 @@ class BookAuthorSeederTable extends Seeder
 
         BookAuthor::create([
             'user_id' => 1,
-            'name' => 'Yazar 2',
-            'slug' => 'yazar-2',
-            'link' => 'www.receptayyiperdogan.name',
-            'thumbnail' => 'thumbnail',
+            'name' => 'George Orwell 2',
+            'slug' => 'george-orwell-2',
+            'thumbnail' => '2.png',
             'bio_note' => 'yazar tanımı',
             'is_cuff' => 1,
             'is_active' => 1,
@@ -38,10 +36,9 @@ class BookAuthorSeederTable extends Seeder
 
         BookAuthor::create([
             'user_id' => 1,
-            'name' => 'Yazar 3',
-            'slug' => 'yazar-3',
-            'link' => 'www.receptayyiperdogan.name',
-            'thumbnail' => 'thumbnail',
+            'name' => 'Selman Kayabaşı 3',
+            'slug' => 'selman-kayabasi-3',
+            'thumbnail' => '3.png',
             'bio_note' => 'yazar tanımı',
             'is_cuff' => 1,
             'is_active' => 1,
@@ -49,10 +46,9 @@ class BookAuthorSeederTable extends Seeder
 
         BookAuthor::create([
             'user_id' => 1,
-            'name' => 'Yazar 4',
-            'slug' => 'yazar-4',
-            'link' => 'www.receptayyiperdogan.name',
-            'thumbnail' => 'thumbnail',
+            'name' => 'Yavuz Bahadıroğlu 4',
+            'slug' => 'yavuz-bahadiroglu-4',
+            'thumbnail' => '4.png',
             'bio_note' => 'yazar tanımı',
             'is_cuff' => 1,
             'is_active' => 1,

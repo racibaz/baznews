@@ -29,8 +29,12 @@ class BookController extends Controller
                 ->where('is_active', 1)
                 ->findBy('id',$id);
 
+            $bookFirstCategory = $record->book_categories()->first();
+            $firstCategoryBooks = isset($bookFirstCategory) ? $bookFirstCategory->books : [];
+
             return Theme::view('book::frontend.book.show', compact([
                 'record',
+                'firstCategoryBooks'
             ]))->render();
         });
     }

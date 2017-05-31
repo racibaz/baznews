@@ -100,7 +100,9 @@
                     <div class="form-group">
                         {!! Form::label('thumbnail', trans('book::book_author.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                <img src="{{ asset('images/book_authors/' . $record->id . '/' . $record->thumbnail)}}" alt="{{$record->name}}"/>
+                            </div>
                             <div>
                                 <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('book::common.select_image')}}</span><span class="fileinput-exists">{{trans('book::common.change')}}</span>{!! Form::file('thumbnail') !!}</span>
                                 <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('book::common.remove')}}</a>

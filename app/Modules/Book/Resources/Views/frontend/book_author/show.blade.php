@@ -18,8 +18,7 @@
                     <div class="author-books">
                         <div class="author-head">
                             <div class="author-img">
-                                <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1157336&width=120&isWatermarked=2016100a6"
-                                     alt="Jojo MOYES">
+                                <img src="{{ asset('images/book_authors/' . $record->id . '/58x58_' . $record->thumbnail)}}" alt="{{$record->name}}"/>
                             </div>
                             <div class="detail">
                                 <div class="author-name"><h1><span>{{$record->name}}</span></h1></div>
@@ -33,18 +32,17 @@
                             <div class="book-list">
                                 <div class="row">
                                     @foreach($record->books as $book)
-                                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                        <a href="{!! route('book', ['slug' => $book->slug]) !!}" class="{{$book->name}}">
-                                            <div class="thumbnail">
-                                                <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="" class="img-responsive">
-                                                <div class="caption">
-                                                    <h3>{{$book->name}}</h3>
+                                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            <a href="{!! route('book', ['slug' => $book->slug]) !!}" class="{{$book->name}}">
+                                                <div class="thumbnail">
+                                                    <img src="{{ asset('images/books/' . $book->id . '/original/' . $book->thumbnail)}}" alt="{{$book->name}}" class="img-responsive"/>
+                                                    <div class="caption">
+                                                        <h3>{{$book->name}}</h3>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </div><!-- /.col -->
+                                            </a>
+                                        </div><!-- /.col -->
                                     @endforeach
-
                                 </div><!-- /.row -->
                             </div><!-- /.book-list -->
                         </div>

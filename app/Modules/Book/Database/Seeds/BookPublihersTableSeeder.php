@@ -17,7 +17,7 @@ class BookPublihersTableSeeder extends Seeder
         BookPublisher::create([
             'user_id' => 1,
             'name' => 'Timaş Yayınları',
-            'link' => 'link',
+            'link' => 'http://www.example.com',
             'description' => 'firma tanımı',
             'is_active' => 1,
         ]);
@@ -25,7 +25,7 @@ class BookPublihersTableSeeder extends Seeder
         BookPublisher::create([
             'user_id' => 1,
             'name' => 'Yayın Evi 2',
-            'link' => 'link',
+            'link' => 'http://www.example.com',
             'description' => 'firma tanımı',
             'is_active' => 1,
         ]);
@@ -33,7 +33,7 @@ class BookPublihersTableSeeder extends Seeder
         BookPublisher::create([
             'user_id' => 1,
             'name' => 'Yayın Evi 3',
-            'link' => 'link',
+            'link' => 'http://www.example.com',
             'description' => 'firma tanımı',
             'is_active' => 1,
         ]);
@@ -41,7 +41,7 @@ class BookPublihersTableSeeder extends Seeder
         BookPublisher::create([
             'user_id' => 1,
             'name' => 'Yayın Evi 4',
-            'link' => 'link',
+            'link' => 'http://www.example.com',
             'description' => 'firma tanımı',
             'is_active' => 1,
         ]);
