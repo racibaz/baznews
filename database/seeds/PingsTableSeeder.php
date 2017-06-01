@@ -13,7 +13,7 @@ class PingsTableSeeder extends Seeder
     public function run()
     {
         Ping::create([
-            'ping_list'                  => 'Bilgilendirme',
+            'ping_list'                  => 'http://rpc.pingomatic.com',
         ]);
     }
 }

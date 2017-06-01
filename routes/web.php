@@ -77,6 +77,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs');
     Route::get('ping', 'Backend\PingController@edit')->name('ping');
     Route::post('ping.update', 'Backend\PingController@update')->name('ping.update');
+    Route::get('ping.send', 'Backend\PingController@sendPing')->name('ping.send');
     Route::resource('widget_group', 'Backend\WidgetGroupController');
     Route::resource('language', 'Backend\LanguageController');
     Route::get('setting/configCache', 'Backend\SettingController@configCache')->name('configCache');
