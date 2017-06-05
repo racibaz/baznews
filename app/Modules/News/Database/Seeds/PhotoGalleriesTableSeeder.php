@@ -21,7 +21,7 @@ class PhotoGalleriesTableSeeder extends Seeder
             'slug' => 'ilk_photo_gallery-1',
             'description' => 'galeri tanım/not',
             'keywords' => 'ilk galeri',
-            'thumbnail' => '1.jpg',
+            'thumbnail' => '1.png',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -33,7 +33,7 @@ class PhotoGalleriesTableSeeder extends Seeder
             'slug' => 'ikinci_photo_gallery-2',
             'description' => 'galeri tanım/not',
             'keywords' => 'ikinci galeri',
-            'thumbnail' => '8.jpg',
+            'thumbnail' => '2.png',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -45,8 +45,8 @@ class PhotoGalleriesTableSeeder extends Seeder
             'slug' => 'uc_photo_gallery-3',
             'description' => 'galeri tanım/not',
             'keywords' => 'üç galeri',
-            'thumbnail' => '1.jpg',
-            'is_cuff' => 0,
+            'thumbnail' => '3.png',
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
@@ -57,8 +57,8 @@ class PhotoGalleriesTableSeeder extends Seeder
             'slug' => 'dort_photo_gallery-4',
             'description' => 'galeri tanım/not',
             'keywords' => 'dört galeri',
-            'thumbnail' => '1.jpg',
-            'is_cuff' => 0,
+            'thumbnail' => '4.png',
+            'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
@@ -69,7 +69,7 @@ class PhotoGalleriesTableSeeder extends Seeder
             'slug' => 'bes_photo_gallery-5',
             'description' => 'galeri tanım/not',
             'keywords' => 'beş galeri',
-            'thumbnail' => '1.jpg',
+            'thumbnail' => '5.png',
             'is_cuff' => 0,
             'is_active' => 1,
         ]);
@@ -81,7 +81,7 @@ class PhotoGalleriesTableSeeder extends Seeder
             'slug' => 'alti_photo_gallery-6',
             'description' => 'galeri tanım/not',
             'keywords' => 'altı galeri',
-            'thumbnail' => '1.jpg',
+            'thumbnail' => '6.png',
             'is_cuff' => 0,
             'is_active' => 1,
         ]);
