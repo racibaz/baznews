@@ -66,8 +66,9 @@
                                                         <h2>{{$record->title}}</h2>
                                                     </a>
                                                     <div class="news-meta-left">
-                                                        <a href="#" class="meta-date" title=""><i
-                                                                    class="fa fa-clock-o"></i>{{$record->created_at}}</a>
+                                                        <a href="#" class="meta-date" title="">
+                                                            <i class="fa fa-clock-o"></i>{{$record->updated_at->diffForHumans()}}
+                                                        </a>
                                                     </div>
                                                     <div class="news-excerpt">
                                                         <p>{{$record->spot}}</p>

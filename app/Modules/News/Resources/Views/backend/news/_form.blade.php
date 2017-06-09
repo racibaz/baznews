@@ -67,10 +67,11 @@
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                {!! Form::label('content', trans('news::news.content'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('content', $record->content, ['placeholder' => trans('news::news.content') ,'class' => 'form-control summernote ']) !!}
+                                {!! Form::label('spot', trans('news::news.spot'),['class'=> 'control-label']) !!}
+                                {!! Form::textarea('spot', $record->spot, ['placeholder' => trans('news::news.spot') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
+
 
                         <div class="col-lg-6">
                             <div class="form-group">
@@ -87,9 +88,10 @@
                         </div><!-- /.col-lg-6 -->
 
                         <div class="col-lg-12">
+
                             <div class="form-group">
-                                {!! Form::label('spot', trans('news::news.spot'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('spot', $record->spot, ['placeholder' => trans('news::news.spot') ,'class' => 'form-control']) !!}
+                                {!! Form::label('content', trans('news::news.content'),['class'=> 'control-label']) !!}
+                                {!! Form::textarea('content', $record->content, ['placeholder' => trans('news::news.content') ,'class' => 'form-control summernote ']) !!}
                             </div>
 
                             <div class="form-group">
