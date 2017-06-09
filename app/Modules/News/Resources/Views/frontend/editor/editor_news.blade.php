@@ -3,23 +3,9 @@
 @section('content')
 
     <article class="container" id="container">
-        <ol class="breadcrumb">
-            <li>
-                <a href="#">Başlık</a>
-            </li>
-            <li>
-                <a href="#">
-                    Haber Kategorisi
-                </a>
-            </li>
-            <li>
-                En Son Sayfa Adı
-            </li>
-        </ol>
         <div class="row">
             <div class="col-md-8" id="content">
                 <div id="author-content">
-
                     <div class="author-box">
                         <div class="author-detail">
                             <div class="row">
@@ -30,7 +16,7 @@
                                 </div><!-- /.col -->
                                 <div class="col-lg-10 col-md-9">
                                     <div class="author-info">
-                                        <h2>{{$user->name}}</h2>
+                                        <h1>{{$user->name}}</h1>
                                         <div>{!! $user->bio_note !!}</div>
                                     </div><!-- /.editor-info -->
                                     <div class="links">
