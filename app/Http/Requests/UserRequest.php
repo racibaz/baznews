@@ -60,8 +60,7 @@ class UserRequest extends FormRequest
                         'max:255'
                     ],
                     'bio_note'  => [
-                        'string',
-                        'max:255'
+                        'string'
                     ]
                 ];
             }
@@ -88,8 +87,7 @@ class UserRequest extends FormRequest
                         'max:255'
                     ],
                     'bio_note'  => [
-                        'string',
-                        'max:255'
+                        'string'
                     ]
                 ];
             }

@@ -30,12 +30,8 @@
                                 </div><!-- /.col -->
                                 <div class="col-lg-10 col-md-9">
                                     <div class="author-info">
-
                                         <h2>{{$user->name}}</h2>
-
-                                        <div class="bio-text">
-                                            {!! $user->bio_note !!}
-                                        </div>
+                                        <div>{!! $user->bio_note !!}</div>
                                     </div><!-- /.editor-info -->
                                     <div class="links">
                                         <ul class="nav nav-pills">
