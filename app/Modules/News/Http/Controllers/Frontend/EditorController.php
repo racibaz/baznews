@@ -2,6 +2,7 @@
 
 namespace App\Modules\News\Http\Controllers\Frontend;
 
+use App\Models\User;
 use App\Modules\News\Repositories\NewsRepository;
 use Cache;
 use Illuminate\Http\Request;
@@ -41,9 +42,12 @@ class EditorController extends Controller
                             ->take(20);
 
 
+            $userAvatar = User::getUserAvatar($user->email,100);
+
             return Theme::view('news::frontend.editor.editor_news', compact([
                 'user',
-                'newsItems'
+                'newsItems',
+                'userAvatar'
             ]))->render();
         });
     }

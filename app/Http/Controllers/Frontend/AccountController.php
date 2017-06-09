@@ -57,11 +57,13 @@ class AccountController extends Controller
     {
         $countries = Country::countryList();
         $cities = City::cityList();
+        $userAvatar = User::getUserAvatar($record->email);
 
         return Theme::view($this->getViewName(__FUNCTION__),compact([
             'record',
             'countries',
-            'cities'
+            'cities',
+            'userAvatar'
         ]));
     }
 

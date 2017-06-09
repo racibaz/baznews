@@ -25,7 +25,7 @@
                             <div class="row">
                                 <div class="col-lg-2 col-md-3">
                                     <div class="author-photo">
-                                        <img src="http://www.prforexperts.com.au/wp-content/uploads/2013/02/61.png" alt="Author Name">
+                                        <img src="{{$userAvatar}}" alt="">
                                     </div><!-- /editor-photo -->
                                 </div><!-- /.col -->
                                 <div class="col-lg-10 col-md-9">
@@ -34,11 +34,8 @@
                                         <h2>{{$user->name}}</h2>
 
                                         <div class="bio-text">
-                                            <p>{{$user->bio_note}}Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                                                Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                                            </p>
+                                            {!! $user->bio_note !!}
                                         </div>
-                                        <span class="bio-long-btn">Genişlet</span>
                                     </div><!-- /.editor-info -->
                                     <div class="links">
                                         <ul class="nav nav-pills">
@@ -81,7 +78,7 @@
                                         <div class="col-lg-4 col-md-3 col-xs-4">
                                             <div class="frame-image">
                                                 <a href="{!! route('show_news', ['slug' => $item->slug]) !!}">
-                                                    <img src="{{asset('images/news_images/2/196x150_2.jpg')}}" alt="{{$item->title}}">
+                                                    <img src="{{asset('images/news_images/' . $item->id . '/196x150_' .$item->thumbnail)}}" alt="{{$item->title}}">
                                                 </a>
                                             </div>
                                         </div>
@@ -91,10 +88,10 @@
                                                     <h2>{{$item->title}}</h2>
                                                 </a>
                                                 <div class="news-meta-left">
-                                                    <a href="#" class="meta-date" title="" ><i class="fa fa-clock-o"></i> 9 Şubat 2017</a>
+                                                    <i class="fa fa-clock-o"></i> {{$item->updated_at->diffForHumans()}}
                                                 </div>
                                                 <div class="news-excerpt">
-                                                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                    <p>{{$item->spot}}</p>
                                                 </div>
                                             </div>
                                         </div>

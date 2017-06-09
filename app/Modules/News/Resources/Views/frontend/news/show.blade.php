@@ -69,7 +69,7 @@
                                         <div class="col-lg-2 col-md-3">
                                             <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">
                                                 <div class="author-photo">
-                                                    <img src="{{asset('images/news_images/4/58x58_4.jpg')}}">
+                                                    <img src="{{$userAvatar}}">
                                                 </div><!-- /editor-photo -->
                                             </a>
                                         </div><!-- /.col -->
@@ -79,8 +79,7 @@
                                                     <h2>{{$record->user->name}}</h2>
                                                 </a>
                                                 <div class="bio-text">
-                                                    <p>{{$record->user->bio_note}}
-                                                    </p>
+                                                    {!! $record->user->bio_note !!}
                                                 </div>
                                                 <span class="bio-long-btn">Genişlet</span>
                                             </div><!-- /.editor-info -->
