@@ -44,7 +44,7 @@
                             </tr>
                             <tr>
                                 <th>{{trans('article::article_author.cv')}}:</th>
-                                <td>{{$record->cv}}</td>
+                                <td>{!! $record->cv !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('article::article_author.photo')}}:</th>

@@ -7,7 +7,7 @@
  */
 
 return[
-    'management'=>'Alıntı Yazar Yönetimi',
+    'management'=>'Makale Yazarları Yönetimi',
     'name'=>'Yazarın Adı',
     'list'=>'Alıntı Yazar Listesi',
     'author_name'=>'Alıntı Yazar Adı',
@@ -24,7 +24,7 @@ return[
     'hit'=>'Hit',
     'status'=>'Durum',
     'is_active'=>'Aktif/Pasif',
-    'create'=>'Alıntı Yazar Oluştur',
+    'create'=>'Makale Yazarı Oluştur',
     'create_edit'=>'Oluştur/Düzenle',
     'edit_delete'=>'Düzenle/Sil',
     'article_categories'=>'Alıntı Yazar Kategorileri',
@@ -32,7 +32,7 @@ return[
     'revision_line'=>'Revizyon Akışı',
     'email'=>'E-Posta',
     'photo'=>'Fotoğraf',
-    'cv'=>'Özgeçmiş',
+    'cv'=>'Özgeçmiş / CV',
     'is_quotation'=>'Alıntı',
     'user_name'=>'Kullanıcı Adı',
     'select_image'=>'Resim Seçiniz',

@@ -74,7 +74,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <div></div>
                     <div class="form-group">
                         {!! Form::label('spot', trans('article::article.spot'),['class'=> 'control-label']) !!}
                         {!! Form::textarea('spot', $record->spot, ['placeholder' => trans('article::article.spot') ,'class' => 'form-control','rows'=>'3']) !!}

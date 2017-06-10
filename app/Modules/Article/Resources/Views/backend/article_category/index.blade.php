@@ -35,7 +35,7 @@
                             <th>#</th>
                             <th>{{trans('article::article_category.name')}}</th>
                             <th>{{trans('article::article_category.parent')}}</th>
-                            <th>{{trans('article::article_category.hit')}}</th>
+                            {{--<th>{{trans('article::article_category.hit')}}</th>--}}
                             <th>{{trans('article::article_category.is_cuff')}}</th>
                             <th>{{trans('article::article_category.is_active')}}</th>
                             <th>{{trans('article::article_category.edit_delete')}}</th>
@@ -46,9 +46,13 @@
                                 <tr>
                                     <td>{{$record->id}}</td>
                                     <td>{!! link_to_route('article_category.show', $record->name , $record, [] ) !!}</td>
-                                    <td> {{$record->parent_id}} </td>
-                                    <td> {{$record->hit}} </td>
-                                    <td> {{$record->is_cuff}} </td>
+                                    <td>
+                                        @if($record->parent)
+                                            {{$record->parent->name}}
+                                        @endif
+                                    </td>
+                                    {{--<td> {{$record->hit}} </td>--}}
+                                    <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">

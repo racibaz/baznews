@@ -3,14 +3,14 @@
     <section class="content-header">
         <h1>
             {{trans('article::article_category.management')}}
-            <small>{{trans('article::article_category.list')}}</small>
+            <small>{{trans('article::article_category.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li>
                 <a href="{!! URL::route('article_category.index') !!}">{{trans('article::article_category.management')}}</a>
             </li>
-            <li class="active">{{trans('article::article_category.list')}}</li>
+            <li class="active">{{trans('article::article_category.create_edit')}}</li>
         </ol>
     </section>
 @endsection
