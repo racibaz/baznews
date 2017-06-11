@@ -67,8 +67,8 @@
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                {!! Form::label('content', trans('news::news.content'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('content', $record->content, ['placeholder' => trans('news::news.content') ,'class' => 'form-control summernote ']) !!}
+                                {!! Form::label('content_area', trans('news::news.content'),['class'=> 'control-label']) !!}
+                                {!! Form::textarea('content_area', $record->content, ['placeholder' => trans('news::news.content') ,'class' => 'form-control content','id'=>'summernote-editor']) !!}
                             </div>
                         </div>
 
@@ -501,6 +501,18 @@
     <script src="{{ Theme::asset($activeTheme .'::js/moment/min/moment.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme .'::js/moment/locale/tr.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme .'::js/ckeditor/ckeditor.js') }}"></script>
+    <script>
+    var options = {
+        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
+    };
+    CKEDITOR.replace('content_area', options);
+    </script>
+
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('.summernote').summernote({

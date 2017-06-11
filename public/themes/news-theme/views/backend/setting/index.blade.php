@@ -581,9 +581,20 @@
     <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/smarty/smarty.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/css/css.js') }}"></script>
-    <script type="text/javascript">
+    <script src="{{ Theme::asset($activeTheme .'::js/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        //CKEDİTOR START
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
+        };
+        CKEDITOR.replace('user_contract', options);
+        CKEDITOR.replace('contact', options);
+        //CKEDİTOR END...
+
         $(document).ready(function() {
-            $('.summernote').summernote();
             $('.fileinput').fileinput();
             $('.select2').select2();
             $('.tagsinput').tagsinput();

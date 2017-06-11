@@ -262,13 +262,16 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.summernote').summernote({
-                minHeight:'250px',
-                maxHeight:'1000px',
-            });
-        });
+    <script src="{{ Theme::asset($activeTheme .'::js/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
+        };
+        CKEDITOR.replace('bio_note', options);
+
         //active menu
         activeMenu('user_management','user');
     </script>

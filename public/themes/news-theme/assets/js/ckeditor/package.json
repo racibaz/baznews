@@ -1,0 +1,93 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "ckeditor",
+        "scope": null,
+        "escapedName": "ckeditor",
+        "name": "ckeditor",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/vagrant/PROJELER/baznews"
+    ]
+  ],
+  "_from": "ckeditor@latest",
+  "_id": "ckeditor@4.7.0",
+  "_inCache": true,
+  "_location": "/ckeditor",
+  "_nodeVersion": "6.8.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/ckeditor-4.7.0.tgz_1495729525337_0.9432397915516049"
+  },
+  "_npmUser": {
+    "name": "cksource",
+    "email": "npm@cksource.com"
+  },
+  "_npmVersion": "3.10.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "ckeditor",
+    "scope": null,
+    "escapedName": "ckeditor",
+    "name": "ckeditor",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ckeditor/-/ckeditor-4.7.0.tgz",
+  "_shasum": "79b0fe6067503883a572f99a3e72b19d3a567a1a",
+  "_shrinkwrap": null,
+  "_spec": "ckeditor",
+  "_where": "/home/vagrant/PROJELER/baznews",
+  "author": {
+    "name": "CKSource",
+    "url": "http://cksource.com/"
+  },
+  "bugs": {
+    "url": "http://dev.ckeditor.com"
+  },
+  "dependencies": {},
+  "description": "JavaScript WYSIWYG web text editor.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "79b0fe6067503883a572f99a3e72b19d3a567a1a",
+    "tarball": "https://registry.npmjs.org/ckeditor/-/ckeditor-4.7.0.tgz"
+  },
+  "gitHead": "8edc5545364d3bd2b928852a7c270a044d1b3ea4",
+  "homepage": "http://ckeditor.com",
+  "keywords": [
+    "ckeditor",
+    "fckeditor",
+    "editor",
+    "wysiwyg",
+    "html",
+    "richtext",
+    "text",
+    "javascript"
+  ],
+  "license": "(GPL-2.0 OR LGPL-2.1 OR MPL-1.1)",
+  "main": "ckeditor.js",
+  "maintainers": [
+    {
+      "name": "cksource",
+      "email": "npm@cksource.com"
+    }
+  ],
+  "name": "ckeditor",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckeditor/ckeditor-releases.git"
+  },
+  "scripts": {},
+  "version": "4.7.0"
+}

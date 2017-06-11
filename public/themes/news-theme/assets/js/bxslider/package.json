@@ -1,21 +1,14 @@
 {
   "_args": [
     [
-      {
-        "raw": "bxslider",
-        "scope": null,
-        "escapedName": "bxslider",
-        "name": "bxslider",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
-      },
-      "/home/PROJELER/baznews"
+      "bxslider@^4.2.11",
+      "/home/vagrant/PROJELER/baznews"
     ]
   ],
-  "_from": "bxslider@latest",
+  "_from": "bxslider@>=4.2.11 <5.0.0",
   "_id": "bxslider@4.2.11",
   "_inCache": true,
+  "_installable": true,
   "_location": "/bxslider",
   "_nodeVersion": "6.3.1",
   "_npmOperationalInternal": {
@@ -23,32 +16,30 @@
     "tmp": "tmp/bxslider-4.2.11.tgz_1488981551612_0.8190578608773649"
   },
   "_npmUser": {
-    "name": "stevenwanderski",
-    "email": "steven.wanderski@gmail.com"
+    "email": "steven.wanderski@gmail.com",
+    "name": "stevenwanderski"
   },
   "_npmVersion": "3.10.3",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "bxslider",
-    "scope": null,
-    "escapedName": "bxslider",
     "name": "bxslider",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
+    "raw": "bxslider@^4.2.11",
+    "rawSpec": "^4.2.11",
+    "scope": null,
+    "spec": ">=4.2.11 <5.0.0",
+    "type": "range"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/bxslider/-/bxslider-4.2.11.tgz",
   "_shasum": "1cd3cd76ee40fc1918af9d228de591fb638d85a5",
   "_shrinkwrap": null,
-  "_spec": "bxslider",
-  "_where": "/home/PROJELER/baznews",
+  "_spec": "bxslider@^4.2.11",
+  "_where": "/home/vagrant/PROJELER/baznews",
   "author": {
-    "name": "Steven Wanderski",
     "email": "steven@bxcreative.com",
+    "name": "Steven Wanderski",
     "url": "http://stevenwanderski.com"
   },
   "bugs": {
@@ -85,12 +76,12 @@
   },
   "maintainers": [
     {
-      "name": "nucleartux",
-      "email": "nucleartux@gmail.com"
+      "email": "nucleartux@gmail.com",
+      "name": "nucleartux"
     },
     {
-      "name": "stevenwanderski",
-      "email": "steven.wanderski@gmail.com"
+      "email": "steven.wanderski@gmail.com",
+      "name": "stevenwanderski"
     }
   ],
   "name": "bxslider",

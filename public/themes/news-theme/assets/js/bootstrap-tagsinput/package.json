@@ -2,36 +2,36 @@
   "_args": [
     [
       {
-        "raw": "bootstrap-tagsinput",
-        "scope": null,
         "escapedName": "bootstrap-tagsinput",
         "name": "bootstrap-tagsinput",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
+        "raw": "bootstrap-tagsinput@0.7.1",
+        "rawSpec": "0.7.1",
+        "scope": null,
+        "spec": "0.7.1",
+        "type": "version"
       },
-      "/home/PROJELER/baznews"
+      "/Users/aliduman/Desktop/PROJELER/baznews"
     ]
   ],
-  "_from": "bootstrap-tagsinput@latest",
+  "_from": "bootstrap-tagsinput@0.7.1",
   "_id": "bootstrap-tagsinput@0.7.1",
   "_inCache": true,
   "_location": "/bootstrap-tagsinput",
   "_nodeVersion": "0.12.2",
   "_npmUser": {
-    "name": "lucknerjb",
-    "email": "lucknerjb@gmail.com"
+    "email": "lucknerjb@gmail.com",
+    "name": "lucknerjb"
   },
   "_npmVersion": "2.14.0",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "bootstrap-tagsinput",
-    "scope": null,
     "escapedName": "bootstrap-tagsinput",
     "name": "bootstrap-tagsinput",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
+    "raw": "bootstrap-tagsinput@0.7.1",
+    "rawSpec": "0.7.1",
+    "scope": null,
+    "spec": "0.7.1",
+    "type": "version"
   },
   "_requiredBy": [
     "#USER",
@@ -40,8 +40,8 @@
   "_resolved": "https://registry.npmjs.org/bootstrap-tagsinput/-/bootstrap-tagsinput-0.7.1.tgz",
   "_shasum": "ffe3b06bbe2a106945ef2814568005a94f211937",
   "_shrinkwrap": null,
-  "_spec": "bootstrap-tagsinput",
-  "_where": "/home/PROJELER/baznews",
+  "_spec": "bootstrap-tagsinput@0.7.1",
+  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "author": {
     "name": "Tim Schlechter"
   },
@@ -90,8 +90,8 @@
   "main": "dist/bootstrap-tagsinput.js",
   "maintainers": [
     {
-      "name": "lucknerjb",
-      "email": "lucknerjb@gmail.com"
+      "email": "lucknerjb@gmail.com",
+      "name": "lucknerjb"
     }
   ],
   "name": "bootstrap-tagsinput",

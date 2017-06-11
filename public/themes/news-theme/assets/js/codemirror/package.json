@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "codemirror@^5.25.2",
-        "scope": null,
         "escapedName": "codemirror",
         "name": "codemirror",
-        "rawSpec": "^5.25.2",
-        "spec": ">=5.25.2 <6.0.0",
-        "type": "range"
+        "raw": "codemirror@5.25.2",
+        "rawSpec": "5.25.2",
+        "scope": null,
+        "spec": "5.25.2",
+        "type": "version"
       },
-      "/home/vagrant/PROJELER/baznews"
+      "/Users/aliduman/Desktop/PROJELER/baznews"
     ]
   ],
-  "_from": "codemirror@>=5.25.2 <6.0.0",
+  "_from": "codemirror@5.25.2",
   "_id": "codemirror@5.25.2",
   "_inCache": true,
   "_location": "/codemirror",
@@ -23,28 +23,29 @@
     "tmp": "tmp/codemirror-5.25.2.tgz_1492683066328_0.4468107109423727"
   },
   "_npmUser": {
-    "name": "marijn",
-    "email": "marijnh@gmail.com"
+    "email": "marijnh@gmail.com",
+    "name": "marijn"
   },
   "_npmVersion": "3.10.8",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "codemirror@^5.25.2",
-    "scope": null,
     "escapedName": "codemirror",
     "name": "codemirror",
-    "rawSpec": "^5.25.2",
-    "spec": ">=5.25.2 <6.0.0",
-    "type": "range"
+    "raw": "codemirror@5.25.2",
+    "rawSpec": "5.25.2",
+    "scope": null,
+    "spec": "5.25.2",
+    "type": "version"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/codemirror/-/codemirror-5.25.2.tgz",
   "_shasum": "8c77677ca9c9248d757d3a07ed1e89a8404850b7",
   "_shrinkwrap": null,
-  "_spec": "codemirror@^5.25.2",
-  "_where": "/home/vagrant/PROJELER/baznews",
+  "_spec": "codemirror@5.25.2",
+  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "bugs": {
     "url": "http://github.com/codemirror/CodeMirror/issues"
   },
@@ -2010,9 +2011,9 @@
   "gitHead": "2474ce6e2e1254812a7800b55fb7a295dc34669b",
   "homepage": "http://codemirror.net",
   "jspm": {
-    "directories": {},
     "dependencies": {},
-    "devDependencies": {}
+    "devDependencies": {},
+    "directories": {}
   },
   "keywords": [
     "JavaScript",
@@ -2023,8 +2024,8 @@
   "main": "lib/codemirror.js",
   "maintainers": [
     {
-      "name": "marijn",
-      "email": "marijnh@gmail.com"
+      "email": "marijnh@gmail.com",
+      "name": "marijn"
     }
   ],
   "name": "codemirror",
