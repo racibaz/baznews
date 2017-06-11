@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Modules\Article\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UserRequest extends FormRequest
+class ArticleAuthorRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -39,55 +38,63 @@ class UserRequest extends FormRequest
                         'required',
                         'max:255'
                     ],
+                    'slug' => [
+                        Rule::unique('article_authors'),
+                    ],
                     'email' => [
-                        'required',
                         'string',
                         'Between:3,64',
-                        Rule::unique('users'),
+                        Rule::unique('article_authors'),
                     ],
-                    'password' => [
+                    'photo' => [
                         'required',
-                        'min:4',
-                        'Confirmed'
+                        'image'
                     ],
-                    'password_confirmation' => [
-                        'required',
-                        'min:4'
+                    'description'  => [
+                        'string',
+                        'max:255',
+                        'nullable'
                     ],
-                    'web_site'  => 'url|nullable',
-                    'avatar' => [
-                        'image',
-                        'max:255'
-                    ],
-                    'bio_note'  => [
-                        'string'
+                    'keywords'  => [
+                        'string',
+                        'max:255',
+                        'nullable'
                     ]
                 ];
             }
             case 'PUT':
             case 'PATCH':
             {
-                $id = $this->route('user')->id;
+                $id = $this->route('article_author')->id;
                 return [
                     'name' => [
                         'required',
                         'max:255'
                     ],
+                    'slug' => [
+                        'required',
+                        'string',
+                        'max:255',
+                        Rule::unique('article_authors')->ignore($id),
+                    ],
                     'email' => [
                         'required',
                         'string',
                         'Between:3,64',
-                        Rule::unique('users')->ignore($id),
+                        Rule::unique('article_authors')->ignore($id),
                     ],
-                    'password'                      => 'min:4|Confirmed|nullable',
-                    'password_confirmation'         => 'min:4|same:password|nullable',
-                    'web_site'  => 'url|nullable',
-                    'avatar' => [
+                    'photo' => [
                         'image',
-                        'max:255'
                     ],
-                    'bio_note'  => [
-                        'string'
+                    'description'  => [
+                        'string',
+                        'max:255',
+                        'nullable'
+                    ],
+                    'keywords'  => [
+                        'string',
+                        'max:255',
+                        'nullable'
                     ]
                 ];
             }

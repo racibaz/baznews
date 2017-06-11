@@ -3,6 +3,7 @@
 namespace App\Modules\News\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
@@ -62,12 +63,17 @@ class NewsController extends Controller
                     $nextNews = $this->repo->firstRecord();
             }
 
+            if($record->is_show_editor_profile){
+                $userAvatar = User::getUserAvatar($record->user->email,100);
+            }
+
             $relatedNewsItems =  $this->repo->relatedNews($record);
 
             return Theme::view('news::frontend.news.show', compact([
                 'record',
                 'previousNews',
                 'nextNews',
+                'userAvatar',
                 'relatedNewsItems',
             ]))->render();
         });

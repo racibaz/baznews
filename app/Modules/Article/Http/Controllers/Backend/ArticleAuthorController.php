@@ -5,16 +5,14 @@ namespace App\Modules\Article\Http\Controllers\Backend;
 use App\Http\Controllers\Backend\BackendController;
 use App\Library\Uploader;
 use App\Models\User;
+use App\Modules\Article\Http\Requests\ArticleAuthorRequest;
 use App\Modules\Article\Models\ArticleAuthor;
 use App\Modules\Article\Repositories\ArticleAuthorRepository as Repo;
 use App\Repositories\UserRepository;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rule;
 use Image;
 
 class ArticleAuthorController extends BackendController
@@ -44,7 +42,7 @@ class ArticleAuthorController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(ArticleAuthorRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -63,7 +61,7 @@ class ArticleAuthorController extends BackendController
     }
 
 
-    public function update(Request $request, ArticleAuthor $record)
+    public function update(ArticleAuthorRequest $request, ArticleAuthor $record)
     {
         return $this->save($record);
     }
@@ -88,85 +86,54 @@ class ArticleAuthorController extends BackendController
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        if(!empty($input['user_id'])){
-
-            $userRepo = new UserRepository();
-            $user = $userRepo->find($input['user_id']);
-
-            $input['user_id'] = $user->id;
-            $input['name'] = $user->name;
-            $input['slug'] = $user->slug;
-            $input['email'] = $user->email;
-        }else{
-
-            //user_id seçilmediyse db ye null değeri göndermek için null değeri veriyoruz.
-            $input['user_id'] = null;
-        }
-
-        $rules = array(
-            'name' => 'required',
-            'slug' => [
-                Rule::unique('article_authors')->ignore($record->id),
-            ],
-            'email' => 'email',
-            'photo' => 'image|max:255',
-            'description' => 'max:255',
-            'keywords' => 'max:255',
-        );
-        $v = Validator::make($input, $rules);
-
-        //Makale yazarı daha önce eklenmiş mi? Eğer eklenmiş ise hata mesajı gönderiyoruz.
-        $articleAuthor = $this->repo
-            ->orWhere('name',$input['name'])
-            ->orWhere('slug',$input['slug'])
-            ->orWhere('email',$input['email'])
-            ->first();
-
-        if($articleAuthor){
-            $v->errors()->add('Duplicate', 'Duplicate Article Author found!');
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
-        }
+        //todo logic düzeyde tekrar bakılacak. trello da  cartı var.
+//        if(!empty($input['user_id'])){
+//            $userRepo = new UserRepository();
+//            $user = $userRepo->find($input['user_id']);
+//
+//            $input['user_id'] = $user->id;
+//            $input['name'] = $user->name;
+////            $input['slug'] = $user->slug . '-' . $input['user_id'];
+//            $input['email'] = $user->email;
+//
+//        }else{
+//            //user_id seçilmediyse db ye null değeri göndermek için null değeri veriyoruz.
+//            $input['user_id'] = null;
+//        }
 
 
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
+        if ($result) {
+
+            if(!empty($input['photo'])) {
+                $oldPath = $record->photo;
+                $document_name = $input['photo']->getClientOriginalName();
+                $destination = '/images/article_author_images/'. $result->id .'/original';
+                Uploader::fileUpload($result , 'photo', $input['photo'] , $destination , $document_name);
+                Uploader::removeFile($oldPath);
+
+                $base_path = public_path('images/article_author_images/' . $result->id .'/original/'. $result->photo);
+
+                Image::make($base_path)
+                    ->fit(58, 58)
+                    ->save(public_path('images/article_author_images/' . $result->id . '/58x58_' . $document_name));
             }
 
-            if ($result) {
 
-                if(!empty($input['photo'])) {
-                    $oldPath = $record->photo;
-                    $document_name = $input['photo']->getClientOriginalName();
-                    $destination = '/images/article_author_images/'. $result->id .'/original';
-                    Uploader::fileUpload($result , 'photo', $input['photo'] , $destination , $document_name);
-                    Uploader::removeFile($oldPath);
+            $this->removeCacheTags(['ArticleAuthorController']);
+            $this->removeHomePageCache();
 
-                    Image::make(public_path('images/article_author_images/' . $result->id .'/original/'. $result->photo))
-                        ->fit(58, 58)
-                        ->save(public_path('images/article_author_images/' . $result->id . '/58x58_' . $document_name));
-                }
-
-
-                $this->removeCacheTags(['ArticleAuthorController']);
-                $this->removeHomePageCache();
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }

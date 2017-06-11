@@ -165,19 +165,20 @@ class ArticleController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['user_id'] = Auth::user()->id;
         $input['content'] = Purifier::clean(Input::get('content'));
-
+        $input['hit'] = isset($input['hit']) ? $input['hit'] : 1;
+        $input['order'] = isset($input['order']) ? $input['order'] : 1;
 
         $rules = array(
             'user_id' => 'required',
             'article_author_id' => 'required',
             'title' => 'required',
-            'subtitle' => 'max:255',
-            'spot' => 'max:255',
+            'subtitle' => 'max:255|nullable',
+            'spot' => 'max:255|nullable',
             'slug' => [
                 Rule::unique('articles')->ignore($record->id),
             ],
-            'description' => 'max:255',
-            'keywords' => 'max:255',
+            'description' => 'max:255|nullable',
+            'keywords' => 'max:255|nullable',
             'hit'   => 'integer',
             'order' => 'integer',
         );

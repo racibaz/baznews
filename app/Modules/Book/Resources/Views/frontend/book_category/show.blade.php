@@ -22,7 +22,7 @@
                             </h1>
                         </div>
                         <div class="books">
-                            <h2>Kategori Kitapları</h2>
+                            <h2>{{trans('book::book_category.category_books')}}</h2>
 
                             <div class="book-list">
                                 <div class="row">
@@ -30,7 +30,9 @@
                                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                             <a href="{!! route('book', ['slug' => $book->slug]) !!}" class="{{$book->name}}">
                                                 <div class="thumbnail">
-                                                    <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="" class="img-responsive">
+                                                    <a href="{!! route('book', ['slug' => $book->slug]) !!}">
+                                                        <img src="{{ asset('images/books/' . $book->id . '/original/' . $book->thumbnail)}}" alt="{{$book->name}}" class="img-responsive"/>
+                                                    </a>
                                                     <div class="caption">
                                                         <h3>{{$book->name}}</h3>
                                                     </div>

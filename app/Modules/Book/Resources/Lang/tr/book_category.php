@@ -24,4 +24,6 @@ return[
     'created_at'=>'Oluşturma Tarihi',
     'updated_at'=>'Güncelleme Tarihi',
     'status'=>'Durum',
+
+    'category_books' => 'Kategori Kitapları',
 ];

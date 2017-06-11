@@ -52,7 +52,9 @@
                     <div class="form-group">
                         {!! Form::label('photo', trans('article::article_author.photo'),['class'=> 'control-label','style'=>'width:100%']) !!}
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                <img src="{{ asset('images/article_author_images/' . $record->id . '/original/' . $record->photo)}}" alt="{{$record->name}}"/>
+                            </div>
                             <div>
                                 <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('article::article_author.select_image')}}</span><span class="fileinput-exists">{{trans('article::article_author.change')}}</span>{!! Form::file('photo') !!}</span>
                                 <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('article::article_author.remove')}}</a>
@@ -142,18 +144,14 @@
     <script src="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme .'::js/moment/min/moment.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme .'::js/moment/locale/tr.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme .'::js/ckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript">
-        //CKEDİTOR START
-        var options = {
-            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
-            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
-        };
-        CKEDITOR.replace('cv', options);
-        //CKEDİTOR END...
         $(document).ready(function() {
+            $('.summernote').summernote({
+                height: 300,                 // set editor height
+                minHeight: null,             // set minimum height of editor
+                maxHeight: null,             // set maximum height of editor
+                focus: true                  // set focus to editable area after initializing summernote
+            });
             $('.fileinput').fileinput();
             $('.select2').select2();
             $('.tagsinput').tagsinput();

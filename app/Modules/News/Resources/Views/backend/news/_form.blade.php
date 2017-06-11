@@ -67,10 +67,11 @@
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                {!! Form::label('content_area', trans('news::news.content'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('content_area', $record->content, ['placeholder' => trans('news::news.content') ,'class' => 'form-control content','id'=>'summernote-editor']) !!}
+                                {!! Form::label('spot', trans('news::news.spot'),['class'=> 'control-label']) !!}
+                                {!! Form::textarea('spot', $record->spot, ['placeholder' => trans('news::news.spot') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
+
 
                         <div class="col-lg-6">
                             <div class="form-group">
@@ -87,9 +88,10 @@
                         </div><!-- /.col-lg-6 -->
 
                         <div class="col-lg-12">
+
                             <div class="form-group">
-                                {!! Form::label('spot', trans('news::news.spot'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('spot', $record->spot, ['placeholder' => trans('news::news.spot') ,'class' => 'form-control']) !!}
+                                {!! Form::label('content', trans('news::news.content'),['class'=> 'control-label']) !!}
+                                {!! Form::textarea('content', $record->content, ['placeholder' => trans('news::news.content') ,'class' => 'form-control summernote ']) !!}
                             </div>
 
                             <div class="form-group">
@@ -501,18 +503,6 @@
     <script src="{{ Theme::asset($activeTheme .'::js/moment/min/moment.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme .'::js/moment/locale/tr.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme .'::js/ckeditor/ckeditor.js') }}"></script>
-    <script>
-    var options = {
-        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
-        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
-    };
-    CKEDITOR.replace('content_area', options);
-    </script>
-
-
     <script type="text/javascript">
         $(document).ready(function() {
             $('.summernote').summernote({

@@ -201,7 +201,7 @@ class User extends Authenticatable
             'password' => 'required|min:4|Confirmed',
             'password_confirmation' => 'required|min:4',
             'web_site' => 'url',
-            'bio_note' => 'string|max:255',
+            'bio_note' => 'string',
         );
 
         return Validator::make($input, $rules);
@@ -216,6 +216,12 @@ class User extends Authenticatable
     public static function byEmail($email)
     {
         return static::where('email', $email);
+    }
+
+    public static function getUserAvatar($email, $size = 40) : string
+    {
+        $default = Cache::get('url') . "/default_user_avatar.jpg";
+        return  "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
     }
     
 }
