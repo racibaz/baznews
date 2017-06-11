@@ -49,7 +49,7 @@
                             <div class="col-xs-8">
                                 <div class="checkbox icheck">
                                     <label>
-                                        <input type="checkbox"> <a href="#">{{trans('login.user_contract')}}</a> {{trans('login.accept')}}
+                                        <input type="checkbox"> <a data-toggle="modal" href="#register">{{trans('login.user_contract')}}</a> {{trans('login.accept')}}
                                     </label>
                                 </div>
                             </div>
@@ -77,6 +77,28 @@
     </div><!-- /.row -->
 
 </div><!-- /.container -->
+<div class="modal fade" id="register">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Kullanım Sözleşmesi</h4>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis deserunt dolorum fugit laboriosam
+                    necessitatibus omnis! Accusantium commodi doloribus et explicabo minus, molestias numquam odio
+                    officiis placeat recusandae saepe suscipit voluptas!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ducimus impedit laborum quasi
+                    quia reprehenderit veniam. Beatae consequuntur, deserunt eveniet necessitatibus neque unde. Dolorem
+                    ipsa nesciunt nostrum, repellat suscipit voluptatibus?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Kabul etmiyorum.</button>
+                <button type="button" class="btn btn-primary">Kabul ediyorum.</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 @endsection
 
 @section('js')
