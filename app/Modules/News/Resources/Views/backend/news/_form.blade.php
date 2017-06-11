@@ -38,7 +38,7 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8" id="content-area">
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-file-text"></i>  {{trans('news::news.content')}}</h3>
@@ -535,7 +535,7 @@
          Sticky Sidebar
          * --------------------------------------------------------*/
         jQuery(document).ready(function() {
-            jQuery('#sidebar,#content').theiaStickySidebar();
+            jQuery('#content-area,#sidebar').theiaStickySidebar();
         });
         //active menu
         activeMenu('news','news_management');
