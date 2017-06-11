@@ -115,6 +115,7 @@
                                 {!! Form::label('logo', trans('setting.logo'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
+                                    <strong>Ölçü:(90x90)</strong><br><br>
 
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
