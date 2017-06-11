@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "select2",
-        "scope": null,
         "escapedName": "select2",
         "name": "select2",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
+        "raw": "select2@4.0.3",
+        "rawSpec": "4.0.3",
+        "scope": null,
+        "spec": "4.0.3",
+        "type": "version"
       },
-      "/home/PROJELER/baznews"
+      "/Users/aliduman/Desktop/PROJELER/baznews"
     ]
   ],
-  "_from": "select2@latest",
+  "_from": "select2@4.0.3",
   "_id": "select2@4.0.3",
   "_inCache": true,
   "_location": "/select2",
@@ -22,19 +22,19 @@
     "tmp": "tmp/select2-4.0.3.tgz_1464312014558_0.3680991888977587"
   },
   "_npmUser": {
-    "name": "kevin-brown",
-    "email": "kevin+npm@kevin-brown.com"
+    "email": "kevin+npm@kevin-brown.com",
+    "name": "kevin-brown"
   },
   "_npmVersion": "1.4.28",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "select2",
-    "scope": null,
     "escapedName": "select2",
     "name": "select2",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
+    "raw": "select2@4.0.3",
+    "rawSpec": "4.0.3",
+    "scope": null,
+    "spec": "4.0.3",
+    "type": "version"
   },
   "_requiredBy": [
     "#USER",
@@ -43,8 +43,8 @@
   "_resolved": "https://registry.npmjs.org/select2/-/select2-4.0.3.tgz",
   "_shasum": "207733fe91eacb9cb1a13f12463401f472449e0f",
   "_shrinkwrap": null,
-  "_spec": "select2",
-  "_where": "/home/PROJELER/baznews",
+  "_spec": "select2@4.0.3",
+  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "author": {
     "name": "Kevin Brown",
     "url": "https://github.com/kevin-brown"
@@ -93,10 +93,10 @@
   "gitHead": "566c7846fbf8c3b7674346f26d0ee872c0a77629",
   "homepage": "https://select2.github.io",
   "jspm": {
-    "main": "js/select2",
     "directories": {
       "lib": "dist"
-    }
+    },
+    "main": "js/select2"
   },
   "keywords": [
     "select",
@@ -111,12 +111,12 @@
   "main": "dist/js/select2.js",
   "maintainers": [
     {
-      "name": "chrisjbaik",
-      "email": "chrisjbaik@gmail.com"
+      "email": "chrisjbaik@gmail.com",
+      "name": "chrisjbaik"
     },
     {
-      "name": "kevin-brown",
-      "email": "kevin+npm@kevin-brown.com"
+      "email": "kevin+npm@kevin-brown.com",
+      "name": "kevin-brown"
     }
   ],
   "name": "select2",

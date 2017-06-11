@@ -15,14 +15,14 @@ class NewsSourceTableSeeder extends Seeder
     public function run()
     {
         NewsSource::create([
-            'name'                  => 'İHH',
-            'url'                   => 'ihh_url',
+            'name'                  => 'İHA',
+            'url'                   => 'http://www.iha.com.tr',
             'is_active'             => 1
         ]);
 
         NewsSource::create([
             'name'                  => 'DHA',
-            'url'                   => 'dha_url',
+            'url'                   => 'http://www.dha.com.tr',
             'is_active'             => 1
         ]);
 
@@ -33,7 +33,25 @@ class NewsSourceTableSeeder extends Seeder
 
         NewsSource::create([
             'name'                  => 'Anadolu Haber Ajansı',
-            'url'                   => 'aa_url',
+            'url'                   => 'http://www.aa.com.tr',
+            'is_active'             => 1
+        ]);
+
+        NewsSource::create([
+            'name'                  => 'SANATLOG',
+            'url'                   => 'http://www.sanatlog.com/',
+            'is_active'             => 1
+        ]);
+
+        NewsSource::create([
+            'name'                  => 'Dağ Medya',
+            'url'                   => 'https://dagmedya.net/',
+            'is_active'             => 1
+        ]);
+
+        NewsSource::create([
+            'name'                  => 'Mürekkep Haber',
+            'url'                   => 'http://www.murekkephaber.com/',
             'is_active'             => 1
         ]);
     }

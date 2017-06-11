@@ -52,7 +52,9 @@
                     <div class="form-group">
                         {!! Form::label('photo', trans('article::article_author.photo'),['class'=> 'control-label','style'=>'width:100%']) !!}
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                <img src="{{ asset('images/article_author_images/' . $record->id . '/original/' . $record->photo)}}" alt="{{$record->name}}"/>
+                            </div>
                             <div>
                                 <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('article::article_author.select_image')}}</span><span class="fileinput-exists">{{trans('article::article_author.change')}}</span>{!! Form::file('photo') !!}</span>
                                 <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('article::article_author.remove')}}</a>

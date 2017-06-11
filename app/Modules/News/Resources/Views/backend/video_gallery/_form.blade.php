@@ -125,7 +125,7 @@
                         {!! Form::label('thumbnail', trans('news::photo_gallery.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
                         <div class="fileinput fileinput-new" data-provides="fileinput">
                             <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-
+                                <img src="{{ asset('video_gallery/' . $record->id . '/224x195_' . $record->thumbnail)}}" alt="{{$record->title}}"/>
                             </div>
                             <div>
                                 <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('news::video.select_image')}}</span><span class="fileinput-exists">{{trans('news::video.change')}}</span>{!! Form::file('thumbnail') !!}</span>

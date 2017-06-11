@@ -93,8 +93,8 @@ class ArticleCategoryController extends BackendController
             ],
             'description' => 'max:255',
             'keywords' => 'max:255',
-            'hit' => 'integer',
-            'icon' => 'max:255',
+            'hit' => 'integer|nullable',
+            'icon' => 'max:255|nullable',
         );
         $v = Validator::make($input, $rules);
 

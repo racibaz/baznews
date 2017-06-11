@@ -136,27 +136,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('blood_type', trans('user.blood_type'), ['class'=> 'col-lg-2 control-label']) !!}
-
-                                <div class="col-lg-10">
-                                    {!! Form::select('blood_type', $bloodGroups , $record->blood_type , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
-                                </div>
-                            </div>
-                        </div>
                         @if(!empty($record->id))
-                            <?php
-                            $default = Cache::tags('Setting')->get('url') . "/default_user_avatar.jpg";
-                            $size = 40;
-                            $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $record->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
-                            ?>
                             <div class="form-group">
                                 <div class="row">
                                     {!! Form::label('avatar', trans('user.avatar'), ['class'=> 'col-lg-2 control-label']) !!}
 
                                     <div class="col-lg-10">
-                                        <img src="<?php echo $grav_url; ?>" alt="" />
+                                        <img src="{{$userAvatar}}" alt="" />
                                     </div>
                                 </div>
                             </div>

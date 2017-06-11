@@ -18,6 +18,7 @@ class VideoTransformer extends TransformerAbstract
             'thumbnail' => (string) $record->thumbnail,
             'file' => (string) $record->file,
             'link' => (string) $record->link,
+            'embed' => (string) $record->embed,
             'content' => (string) $record->content,
             'keywords' => (string) $record->keywords,
             'order' => (int) $record->order,

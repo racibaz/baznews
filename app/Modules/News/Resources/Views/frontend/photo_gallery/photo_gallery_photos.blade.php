@@ -34,7 +34,7 @@
                         <div class="img-container module">
                             <div class="img">
                                 <a href="{{route('show_gallery_photos',['slug' => $photo->slug ])}}">
-                                    <img src="{{ asset('gallery/' . $photoGallery->id . '/photos/' . $photo->file)}}" alt="{{$photo->name}}" class="img-responsive" />
+                                    <img src="{{ asset('photos/' . $photo->id . '/' . $photo->file)}}" alt="{{$photo->name}}" class="img-responsive" />
                                 </a>
                             </div>
                             <div class="pager">
@@ -68,8 +68,33 @@
                             </ul>
                         </div>
                     </div><!-- /.gallery -->
+<<<<<<< HEAD
                     <!-- Tag Box -->
                     <div class="tags-box">
+=======
+                </div><!-- /.col -->
+                <div class="col-md-4" id="photo_sidebar">
+                    <div class="gallery-details module">
+                        <div class="details">
+                            <div class="time">
+                                <small>
+                                    <i class="fa fa-clock-o"></i> {{$firstPhoto->updated_at->diffForHumans()}}
+                                </small>
+                            </div><!-- /.time -->
+                            <div class="gallery-text">
+                                <p>{{$firstPhoto->content}}</p>
+                            </div><!-- /.gallery-text -->
+                        </div>
+                        <div class="advert advert-right">
+                            <img src="http://baznews.app/themes/news-theme/assets/img/advert-images/336x280.png" alt="Advert Sidebar">
+                        </div>
+                    </div><!-- /.gallery-details -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>
+>>>>>>> recai
                         @foreach($photoGallery->tags as $tag)
                             <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
                         @endforeach

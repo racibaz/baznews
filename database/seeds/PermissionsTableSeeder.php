@@ -1250,6 +1250,11 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $ping4 = Permission::create([
+            'name'          => 'sendPing-ping',
+            'display_name'  => 'send ping',
+            'is_active'     => 1,
+        ]);
 
         //language
         $language1 = Permission::create([
@@ -1515,6 +1520,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($ping1);
         $super_admin->permissions()->attach($ping2);
         $super_admin->permissions()->attach($ping3);
+        $super_admin->permissions()->attach($ping4);
         $super_admin->permissions()->attach($language1);
         $super_admin->permissions()->attach($language2);
         $super_admin->permissions()->attach($language3);

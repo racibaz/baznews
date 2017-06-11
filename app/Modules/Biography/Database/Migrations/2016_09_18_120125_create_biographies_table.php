@@ -21,7 +21,7 @@ class CreateBiographiesTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->nullable();
             $table->string('short_url')->nullable();
-            $table->string('content')->nullable();
+            $table->text('content')->nullable();
             $table->string('photo')->nullable();
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();

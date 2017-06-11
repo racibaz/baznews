@@ -55,8 +55,8 @@
                         <div class="row">
 
                             <div class="col-lg-12">
-                                {!! Form::label('content', trans('page.content'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('content', $record->content, ['placeholder' => trans('page.content') ,'class' => 'form-control summernote']) !!}
+                                {!! Form::label('content_area', trans('page.content'),['class'=> 'control-label']) !!}
+                                {!! Form::textarea('content_area', $record->content, ['placeholder' => trans('page.content') ,'class' => 'form-control summernote']) !!}
                             </div>
                         </div>
                     </div>
@@ -136,10 +136,17 @@
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.summernote').summernote();
-        });
+    <script src="{{ Theme::asset($activeTheme .'::js/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        //CKEDİTOR START
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
+        };
+        CKEDITOR.replace('content_area', options);
+        //CKEDİTOR END...
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/

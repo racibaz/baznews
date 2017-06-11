@@ -96,6 +96,7 @@ class UserController extends BackendController
         $cities = City::cityList();
         $roles = Role::roleList();
         $groups = Group::groupList();
+        $userAvatar = User::getUserAvatar($record->email);
 
         foreach (User::$statuses as  $index => $status){
             if(Auth::user()->can($status . '-user')){
@@ -103,7 +104,7 @@ class UserController extends BackendController
             }
         }
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups', 'statusList']));
+        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups', 'userAvatar', 'statusList']));
     }
 
 
@@ -205,7 +206,4 @@ class UserController extends BackendController
         Session::flash('flash_message', trans('common.force_deleted'));
         return redirect()->back();
     }
-
-
-
 }

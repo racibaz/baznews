@@ -20,8 +20,22 @@ trait Eventable
             static::updated(function ($record) {
 
                 $event = new Event();
-                $event->user_id = Auth::user()->id;
-                $event->event = get_called_class() .' Updated';
+
+                /*
+                 * Kullanıcı şifremi unuttum kısmından mail doğrulaması ile gelen formu doldururken login olmadığı için Auth
+                 * hata veriyor bundan dolayı da kullanıcının login olup olmadığını bakıyoruz.
+                 * */
+                if(empty(Auth::user())) {
+
+                    $event->user_id = null;
+                    $event->event = get_called_class() .' User changed his/her password';
+
+                }else {
+
+                    $event->user_id = Auth::user()->id;
+                    $event->event = get_called_class() .' Updated';
+                }
+
                 $record->events()->save($event);
             });
 

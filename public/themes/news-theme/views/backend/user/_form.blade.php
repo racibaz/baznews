@@ -80,22 +80,12 @@
                                 {!! Form::label('cell_phone', trans('user.cell_phone'), ['class'=> 'control-label']) !!}
                                 {!! Form::text('cell_phone', $record->cell_phone,['placeholder' => trans('user.cell_phone'), 'class' => 'form-control']) !!}
                             </div>
-
-                            <div class="form-group">
-                                {!! Form::label('blood_type', trans('user.blood_type'), ['class'=> 'control-label']) !!}
-                                {!! Form::text('blood_type', $record->blood_type, ['placeholder' => trans('user.blood_type'), 'class' => 'form-control']) !!}
-                            </div>
                             @if(!empty($record->id))
-                                <?php
-                                $default = Redis::get('url') . "/default_user_avatar.jpg";
-                                $size = 40;
-                                $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $record->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
-                                ?>
                                 <div class="form-group">
                                     <div class="row">
                                         {!! Form::label('avatar', trans('user.avatar'), ['class'=> 'col-lg-2 control-label']) !!}
                                         <div class="col-lg-10">
-                                            <img src="<?php echo $grav_url; ?>" alt="" />
+                                            <img src="{{$userAvatar}}" alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -105,12 +95,6 @@
                                 {!! Form::label('bio_note', trans('user.bio_note'), ['class'=> 'control-label']) !!}
                                 {!! Form::textarea('bio_note', $record->bio_note, ['placeholder' => trans('user.bio_note'), 'class' => 'form-control summernote','rows'=>'10']) !!}
                             </div>
-                            <div class="form-group">
-                                <label for="0">
-                                    {!! Form::checkbox('sex', null , $record->sex) !!}
-                                    {{trans('user.sex')}}
-                                </label>
-                            </div><!-- /.form-group -->
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -197,6 +181,12 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
+                        <label for="0">
+                            {!! Form::checkbox('sex', null , $record->sex) !!}
+                            {{trans('user.sex')}}
+                        </label>
+                    </div><!-- /.form-group -->
+                    <div class="form-group">
                         {!! Form::label('status', trans('news::news.status'),['class'=> 'control-label']) !!}
                         {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('user.please_choose'),'class' => 'form-control']) !!}
                     </div>
@@ -267,13 +257,16 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.summernote').summernote({
-                minHeight:'250px',
-                maxHeight:'1000px',
-            });
-        });
+    <script src="{{ Theme::asset($activeTheme .'::js/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
+        };
+        CKEDITOR.replace('bio_note', options);
+
         //active menu
         activeMenu('user_management','user');
     </script>

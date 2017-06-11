@@ -34,14 +34,13 @@
 
                                         <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
                                     </video>
-
                                     <script type="application/ld+json">
                                         {
                                           "@context": "http://schema.org",
                                           "@type": "VideoObject",
                                           "name": "{{$video->title}}",
                                           "description": "{{$video->description}}",
-                                          "thumbnailUrl": "{{Cache::tags('Setting')->get('url') . '/' . asset('video_gallery/' . $video->video_gallery_id . '/photos/' . $video->thumbnail)}}",
+                                          "thumbnailUrl": "{{Cache::tags('Setting')->get('url') . '/' . asset('videos/' . $video->id . '/' . $video->thumbnail)}}",
                                           "uploadDate": "{{$video->updated_at}}",
                                           "publisher": {
                                             "@type": "Organization",
@@ -62,7 +61,7 @@
                             </div>
 
                             <div class="description">
-                                <em>{{$videoGallery->title}} / {{$video->updated_at}}</em>
+                                <em>{{$videoGallery->title}} / {{$video->updated_at->diffForHumans()}}</em>
                                 <h1>{{$video->name}}</h1>
                                 <h2>{{$video->content}}</h2>
                                 @foreach($tags as $tag)
@@ -96,7 +95,7 @@
                         <div class="sidebar-video">
                             <div class="title-section">
                                 <h1>
-                                    <span>Diğer Videoları</span>
+                                    <span>{{trans('news::video.gallery_other_videos')}}</span>
                                 </h1>
                             </div>
 
@@ -107,7 +106,7 @@
                                             <div class="col-lg-3">
                                                 <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
                                                     <div class="hold">
-                                                        <img src="{{ asset('video_gallery/' . $otherGalleryVideo->video_gallery_id . '/photos/165x90_' . $otherGalleryVideo->thumbnail)}}"
+                                                        <img src="{{ asset('videos/' . $otherGalleryVideo->id . '/165x90_' . $otherGalleryVideo->thumbnail)}}"
                                                              alt="{{$otherGalleryVideo->title}}" title="{{$otherGalleryVideo->title}}"/>
                                                         <span class="icon play"></span>
                                                     </div>
@@ -117,10 +116,10 @@
                                                 <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
                                                     <span class="title">{{$otherGalleryVideo->name}}</span>
                                                     <span class="excerpt">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                        <p>{{$otherGalleryVideo->subtitle}}</p>
                                                     </span>
                                                 </a>
-                                                <span class="time visible-lg"> {{$otherGalleryVideo->updated_at}}</span>
+                                                <span class="time visible-lg"> {{$otherGalleryVideo->updated_at->diffForHumans()}}</span>
                                             </div>
                                         </div><!-- /.row -->
                                     </div><!-- /.video-link -->
@@ -140,7 +139,7 @@
             <div class="videos">
                 <div class="title-section">
                     <h1>
-                        <span>Lastest Videos</span>
+                        <span>{{trans('video.latest_videos')}}</span>
                         <a href="video-details.html" class="btn btn-primary btn-xs m-v-btn">Daha fazla</a>
                     </h1>
                 </div><!-- /.title-section -->
@@ -152,7 +151,7 @@
                             <div class="r-box module">
                                 <div class="box-img">
                                     <a href="{{route('show_videos',['slug' => $lastestVideo->slug ])}}">
-                                        <img src="{{ asset('video_gallery/' . $lastestVideo->video_gallery_id . '/photos/497x358_' . $lastestVideo->thumbnail)}}" alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
+                                        <img src="{{ asset('videos/' . $lastestVideo->id . '/497x358_' . $lastestVideo->thumbnail)}}" alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
                                         <span class="icon"></span>
                                     </a>
                                 </div>
@@ -173,24 +172,28 @@
                 <div class="videos">
                     <div class="title-section">
                         <h1>
-                            <span>Categories Other Videos</span>
+                            <span>{{trans('video.category_latest_videos')}}</span>
                             <a href="video-details.html" class="btn btn-primary btn-xs m-v-btn">Daha fazla</a>
                         </h1>
                     </div><!-- /.title-section -->
                     <div class="row">
                         @foreach($categoryVideos  as $categoryVideo)
-
                             <div class="col-md-2 col-sm-4 col-xs-6">
-                                <div class="r-box">
-                                    <a href="{{route('show_videos',['slug' => $categoryVideo->slug ])}}">
-                                        {{--<img src="{{ asset('videos/' . $lastVideo->id . '/165x90_' . $lastVideo->thumbnail)}}"   />--}}
-                                        <img src="img/video-manset/related-img.jpg" alt="">
-                                        <i class="icon"></i>
-                                        <span class="c-text">{{$categoryVideo->name}}</span>
-                                    </a>
+                                <div class="r-box module">
+                                    <div class="box-img">
+                                        <a href="{{route('show_videos',['slug' => $categoryVideo->slug ])}}">
+                                            <img src="{{ asset('videos/' . $categoryVideo->id . '/497x358_' . $categoryVideo->thumbnail)}}" alt="{{$categoryVideo->title}}" title="{{$categoryVideo->title}}"/>
+                                            <span class="icon"></span>
+                                        </a>
+                                    </div>
+                                    <div class="img-title">
+                                        <a href="{{route('show_videos',['slug' => $categoryVideo->slug ])}}">
+                                            {{$categoryVideo->name}}
+                                        </a>
+                                    </div>
+
                                 </div><!-- /.r-box -->
                             </div><!-- /. -->
-
                         @endforeach
                     </div><!-- /.row -->
                 </div><!-- /.videos -->

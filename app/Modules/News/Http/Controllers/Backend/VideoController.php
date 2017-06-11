@@ -29,13 +29,11 @@ class VideoController extends BackendController
         $this->repo= $repo;
     }
 
-
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records']));
     }
-
 
     public function create()
     {
@@ -61,12 +59,10 @@ class VideoController extends BackendController
         return $this->save($this->repo->createModel());
     }
 
-
     public function show(Video $record)
     {
         return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact('record'));
     }
-
 
     public function edit(Video $record)
     {
@@ -95,11 +91,9 @@ class VideoController extends BackendController
         return $this->save($record);
     }
 
-
     public function destroy(Video $record)
     {
-
-        $result = Video::deleteVideoFiles($record);
+        $this->repo->deleteVideoFiles($record);
         $this->repo->delete($record->id);
 
         $this->removeCacheTags(['VideoController']);
@@ -107,7 +101,6 @@ class VideoController extends BackendController
 
         return redirect()->route($this->redirectRouteName . $this->view .'index');
     }
-
 
     public function save($record)
     {
@@ -209,12 +202,10 @@ class VideoController extends BackendController
         }
     }
 
-
     public function tagsVideoStore(Video $record, $input)
     {
         if(isset($input['tags_ids'])) {
             $record->tags()->sync($input['tags_ids']);
         }
     }
-
 }

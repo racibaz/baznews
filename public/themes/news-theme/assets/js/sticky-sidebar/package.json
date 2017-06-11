@@ -1,50 +1,41 @@
 {
   "_args": [
     [
-      {
-        "raw": "theia-sticky-sidebar@1.7.0",
-        "scope": null,
-        "escapedName": "theia-sticky-sidebar",
-        "name": "theia-sticky-sidebar",
-        "rawSpec": "1.7.0",
-        "spec": "1.7.0",
-        "type": "version"
-      },
+      "theia-sticky-sidebar@^1.6.0",
       "/home/vagrant/PROJELER/baznews"
     ]
   ],
-  "_from": "theia-sticky-sidebar@1.7.0",
-  "_id": "theia-sticky-sidebar@1.7.0",
+  "_from": "theia-sticky-sidebar@>=1.6.0 <2.0.0",
+  "_id": "theia-sticky-sidebar@1.6.0",
   "_inCache": true,
+  "_installable": true,
   "_location": "/theia-sticky-sidebar",
-  "_nodeVersion": "7.7.3",
+  "_nodeVersion": "7.2.0",
   "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/theia-sticky-sidebar-1.7.0.tgz_1493201929258_0.13894631899893284"
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/theia-sticky-sidebar-1.6.0.tgz_1480944517008_0.8138484577648342"
   },
   "_npmUser": {
-    "name": "liviu.mirea",
-    "email": "liviu.mirea@wecodepixels.com"
+    "email": "liviu.mirea@wecodepixels.com",
+    "name": "liviu.mirea"
   },
-  "_npmVersion": "4.5.0",
+  "_npmVersion": "4.0.3",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "theia-sticky-sidebar@1.7.0",
-    "scope": null,
-    "escapedName": "theia-sticky-sidebar",
     "name": "theia-sticky-sidebar",
-    "rawSpec": "1.7.0",
-    "spec": "1.7.0",
-    "type": "version"
+    "raw": "theia-sticky-sidebar@^1.6.0",
+    "rawSpec": "^1.6.0",
+    "scope": null,
+    "spec": ">=1.6.0 <2.0.0",
+    "type": "range"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/theia-sticky-sidebar/-/theia-sticky-sidebar-1.7.0.tgz",
-  "_shasum": "0fbb924e84eaff987368fd284d00caea7a7ec35a",
+  "_resolved": "https://registry.npmjs.org/theia-sticky-sidebar/-/theia-sticky-sidebar-1.6.0.tgz",
+  "_shasum": "a385c11297eee3cdd6de93a0d48146bb462f8397",
   "_shrinkwrap": null,
-  "_spec": "theia-sticky-sidebar@1.7.0",
+  "_spec": "theia-sticky-sidebar@^1.6.0",
   "_where": "/home/vagrant/PROJELER/baznews",
   "authors": [
     "WeCodePixels <contact@wecodepixels.com>"
@@ -65,17 +56,17 @@
   },
   "directories": {},
   "dist": {
-    "shasum": "0fbb924e84eaff987368fd284d00caea7a7ec35a",
-    "tarball": "https://registry.npmjs.org/theia-sticky-sidebar/-/theia-sticky-sidebar-1.7.0.tgz"
+    "shasum": "a385c11297eee3cdd6de93a0d48146bb462f8397",
+    "tarball": "https://registry.npmjs.org/theia-sticky-sidebar/-/theia-sticky-sidebar-1.6.0.tgz"
   },
-  "gitHead": "ad283980a0620429b4d51035404f3b35977bf2fe",
+  "gitHead": "2e15719f541338020fb831344fa46365e94ae0c5",
   "homepage": "https://github.com/WeCodePixels/theia-sticky-sidebar#readme",
   "license": "MIT",
   "main": "dist/theia-sticky-sidebar.js",
   "maintainers": [
     {
-      "name": "liviu.mirea",
-      "email": "liviu.mirea@wecodepixels.com"
+      "email": "liviu.mirea@wecodepixels.com",
+      "name": "liviu.mirea"
     }
   ],
   "name": "theia-sticky-sidebar",
@@ -86,5 +77,5 @@
     "url": "git+https://github.com/WeCodePixels/theia-sticky-sidebar.git"
   },
   "scripts": {},
-  "version": "1.7.0"
+  "version": "1.6.0"
 }

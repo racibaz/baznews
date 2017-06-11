@@ -4,14 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Jobs\Ping\SendPing;
+use Caffeinated\Themes\Facades\Theme;
 use Carbon\Carbon;
 use JJG\Ping;
-use Log;
-use Redirect;
-use Session;
-use Theme;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
 class PingController extends BackendController
@@ -46,30 +44,6 @@ class PingController extends BackendController
 
     public function edit(Request $request)
     {
-        $pingJob = (new SendPing())
-            ->delay(Carbon::now()->addMinutes(10));
-
-        dispatch($pingJob);
-
-        $ping = \App\Models\Ping::first();
-
-        $text = trim($ping->ping_list);
-        $textAr = preg_split('/[\n\r]+/', $text);
-
-        // remove any extra \r characters
-        $textAr = array_filter($textAr, 'trim');
-
-        foreach ($textAr as $index => $host) {
-            $ping = new Ping($host);
-            $latency = $ping->ping();
-            if ($latency !== false) {
-                Log::info('Latency is ' . $latency . ' ms : ' . $host);
-            } else {
-                Log::error('Host could not be reached. : ' . $host);
-            }
-        }
-
-
         $record = \App\Models\Ping::first();
         return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
     }
@@ -100,5 +74,23 @@ class PingController extends BackendController
                     ->withInput($input);
             }
         }
+    }
+
+
+    public function sendPing()
+    {
+        $pingJob = (new SendPing())
+            ->delay(Carbon::now()->addMinutes(10));
+
+        $result = dispatch($pingJob);
+
+        if ($result) {
+            Session::flash('flash_message', trans('ping.success'));
+            return Redirect::back();
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('ping.send_error'));
+        }
+
     }
 }

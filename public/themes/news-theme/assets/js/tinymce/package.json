@@ -1,0 +1,44 @@
+{
+  "_from": "tinymce",
+  "_id": "tinymce@4.6.3",
+  "_inBundle": false,
+  "_integrity": "sha1-lK0k6tTxOTjAkDr9L/RpwLZVYj4=",
+  "_location": "/tinymce",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "tinymce",
+    "name": "tinymce",
+    "escapedName": "tinymce",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/tinymce/-/tinymce-4.6.3.tgz",
+  "_shasum": "94ad24ead4f13938c0903afd2ff469c0b655623e",
+  "_spec": "tinymce",
+  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
+  "bugs": {
+    "url": "http://www.tinymce.com/develop/bugtracker.php"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Web based JavaScript HTML WYSIWYG editor control.",
+  "keywords": [
+    "editor",
+    "wysiwyg",
+    "tinymce",
+    "richtext",
+    "javascript",
+    "html"
+  ],
+  "license": "LGPL-2.1",
+  "main": "tinymce.js",
+  "name": "tinymce",
+  "version": "4.6.3"
+}

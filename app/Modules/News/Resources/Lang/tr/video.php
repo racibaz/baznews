@@ -22,7 +22,7 @@ return[
     'link'=>'Link',
     'content'=>'İçerik',
     'keywords'=>'Anahtar Kelimeler',
-    'thumbnail'=>'Küçük Resim Ekle',
+    'thumbnail'=>'Küçük Resim',
     'is_cuff'=>'Manşette Göster',
     'is_active'=>'Aktif/Pasif',
     'edit_delete'=>'Düzenle/Sil',
@@ -33,4 +33,5 @@ return[
     'change'=>'Değiştir',
     'file'=>'Dosya',
     'subtitle'=>'Altyazı',
+    'gallery_other_videos' => 'Galerinin Diğer Videoları',
 ];

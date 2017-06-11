@@ -10,4 +10,8 @@ class VideoCategoryRepository extends EloquentRepository
 
     protected $model = 'App\Modules\News\Models\VideoCategory';
 
+    public function getCuffVideoCategories()
+    {
+        return $this->where('is_cuff',1)->where('is_active',1)->findAll();
+    }
 }

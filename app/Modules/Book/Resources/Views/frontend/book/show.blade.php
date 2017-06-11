@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="book-img">
-                                    <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="{{$record->name}}" class="img-responsive">
+                                    <img src="{{ asset('images/books/' . $record->id . '/original/' . $record->thumbnail)}}" alt="{{$record->name}}" class="img-responsive" />
                                 </div>
                                 <div class="detail">
                                     <ul class="nav">
@@ -70,30 +70,16 @@
                     </div>
                     <div class="book-list module">
                         <div class="row">
-                            <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
-                                <a href="#" class="thumbnail">
-                                    <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
-                                    <div class="caption">
-                                        <h3>Kitap 1</h3>
-                                    </div>
-                                </a>
-                            </div><!-- /.col -->
-                            <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
-                                <a href="#" class="thumbnail">
-                                    <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
-                                    <div class="caption">
-                                        <h3>Kitap 1</h3>
-                                    </div>
-                                </a>
-                            </div><!-- /.col -->
-                            <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
-                                <a href="#" class="thumbnail">
-                                    <img src="http://imageserver.kitapyurdu.com/select.php?imageid=1185590&amp;width=165&amp;isWatermarked=true" alt="">
-                                    <div class="caption">
-                                        <h3>Kitap 1</h3>
-                                    </div>
-                                </a>
-                            </div><!-- /.col -->
+                            @foreach($firstCategoryBooks as $book)
+                                <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
+                                    <a href="{!! route('book', ['slug' => $book->slug]) !!}" class="thumbnail">
+                                        <img src="{{ asset('images/books/' . $book->id . '/original/' . $book->thumbnail)}}" alt="{{$book->name}}"/>
+                                        <div class="caption">
+                                            <h3>{{$book->name}}</h3>
+                                        </div>
+                                    </a>
+                                </div><!-- /.col -->
+                            @endforeach
                         </div><!-- /.row -->
                     </div><!-- /.book-list -->
                 </div><!-- /.other-books -->

@@ -2,14 +2,12 @@
 
 namespace App\Jobs\Ping;
 
-
-
 use JJG\Ping;
-use Log;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Log;
 
 class SendPing implements ShouldQueue
 {

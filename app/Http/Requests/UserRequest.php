@@ -54,14 +54,13 @@ class UserRequest extends FormRequest
                         'required',
                         'min:4'
                     ],
-                    'web_site'  => 'url',
+                    'web_site'  => 'url|nullable',
                     'avatar' => [
                         'image',
                         'max:255'
                     ],
                     'bio_note'  => [
-                        'string',
-                        'max:255'
+                        'string'
                     ]
                 ];
             }
@@ -80,16 +79,15 @@ class UserRequest extends FormRequest
                         'Between:3,64',
                         Rule::unique('users')->ignore($id),
                     ],
-                    'password'                      => 'min:4|Confirmed',
-                    'password_confirmation'         => 'min:4',
-                    'web_site'  => 'url',
+                    'password'                      => 'min:4|Confirmed|nullable',
+                    'password_confirmation'         => 'min:4|same:password|nullable',
+                    'web_site'  => 'url|nullable',
                     'avatar' => [
                         'image',
                         'max:255'
                     ],
                     'bio_note'  => [
-                        'string',
-                        'max:255'
+                        'string'
                     ]
                 ];
             }

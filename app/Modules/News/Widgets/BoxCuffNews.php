@@ -32,7 +32,7 @@ class BoxCuffNews extends AbstractWidget
     {
         return Cache::tags(['Widget', 'News', 'BoxCuffNews'])->rememberForever('BoxCuffNews', function()  {
             $newsRepository = new NewsRepository();
-            $boxCuffNewsItmes = $newsRepository
+            $boxCuffNewsItems = $newsRepository
                 ->where('is_active', 1)
                 ->where('box_cuff', 1)
                 ->where('status', 1)
@@ -42,7 +42,7 @@ class BoxCuffNews extends AbstractWidget
 
             return Theme::view('news::frontend.widgets.box_cuff_news',compact([
                 'config',
-                'boxCuffNewsItmes'
+                'boxCuffNewsItems'
             ]))->render();
         });
     }

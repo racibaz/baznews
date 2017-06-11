@@ -28,9 +28,7 @@
                         @if($record->news_type == 0 || $record->news_type == 1)
                             <div class="new-img">
                                 <img src="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}" alt="{{$record->title}}">
-                                <div class="image-subtitle">
-                                    Venison pancetta cupim shankle stri (Haber 7)
-                                </div>
+                                {{--<div class="image-subtitle">Venison pancetta cupim shankle stri (Haber 7)</div>--}}
                             </div>
                         @elseif($record->news_type == 2)
                             iç haber
@@ -51,10 +49,12 @@
                             <div class="news-text">
                                 {!! $record->content !!}
                             </div><!-- /.ct-text -->
-                            <div class="new-source">
-                                <span>Haber Kaynağı: </span>
-                                {{$record->news_source->name}}
-                            </div><!-- /.new-source -->
+                            @if($record->news_source)
+                                <div class="new-source">
+                                    <span>Haber Kaynağı: </span>
+                                        {{$record->news_source->name}}
+                                </div><!-- /.new-source -->
+                            @endif
                         </div><!-- /.content -->
 
                         <div class="tags-box">
@@ -69,7 +69,7 @@
                                         <div class="col-lg-2 col-md-3">
                                             <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">
                                                 <div class="author-photo">
-                                                    <img src="{{asset('images/news_images/4/58x58_4.jpg')}}">
+                                                    <img src="{{$userAvatar}}">
                                                 </div><!-- /editor-photo -->
                                             </a>
                                         </div><!-- /.col -->
@@ -79,7 +79,11 @@
                                                     <h2>{{$record->user->name}}</h2>
                                                 </a>
                                                 <div class="bio-text">
+<<<<<<< HEAD
                                                     <p>{!!$record->user->bio_note!!}</p>
+=======
+                                                    {!! $record->user->bio_note !!}
+>>>>>>> recai
                                                 </div>
                                                 <span class="bio-long-btn">Genişlet</span>
                                             </div><!-- /.editor-info -->
@@ -159,7 +163,9 @@
                                         <div class="news-video-image">
                                             <a href="#">
                                                 <span class="play-icon"></span>
-                                                <img src="{{asset('images/news_images/2/196x150_2.jpg')}}">
+                                                <a href="{{route('show_videos',['slug' => $video_gallery->videos->first()->slug ])}}">
+                                                    <img src="{{ asset('video_gallery/' . $video_gallery->id . '/497x358_' . $video_gallery->thumbnail)}}" />
+                                                </a>
                                                 <div class="news-video-title">
                                                     <span>{{$video_gallery->title}}</span>
                                                 </div>
@@ -186,7 +192,9 @@
                                     <div class="col-lg-3 col-md-3 col-xs-4">
                                         <div class="gallery-image">
                                             <a href="#">
-                                                <img src="{{asset('images/news_images/3/196x150_3.jpg')}}">
+                                                <a href="{{route('show_photo_gallery',['slug' => $photo_gallery->slug ])}}">
+                                                    <img src="{{ asset('gallery/' . $photo_gallery->id . '/photos/497x358_' . $photo_gallery->thumbnail)}}" />
+                                                </a>
                                                 <div class="gallery-title">
                                                     {{$photo_gallery->title}}
                                                 </div>
@@ -236,6 +244,8 @@
                                                         data-setup='{ "techOrder": ["vimeo"], "sources": [{ "type": "video/vimeo", "src": "{{url($video->link)}}"}] }'>
                                                 </video>
                                             </div>
+                                        @elseif(!empty($video->embed))
+                                            {!! $video->embed !!}
                                         @endif
                                     </div>
                                 @endforeach

@@ -1,5 +1,5 @@
 /*!
- * Theia Sticky Sidebar v1.7.0
+ * Theia Sticky Sidebar v1.5.0
  * https://github.com/WeCodePixels/theia-sticky-sidebar
  *
  * Glues your website's sidebars, making them permanently visible while scrolling.
@@ -17,9 +17,7 @@
             'updateSidebarHeight': true,
             'minWidth': 0,
             'disableOnResponsiveLayouts': true,
-            'sidebarBehavior': 'modern',
-            'defaultPosition': 'relative',
-            'namespace': 'TSS'
+            'sidebarBehavior': 'modern'
         };
         options = $.extend(defaults, options);
 
@@ -36,7 +34,7 @@
             if (!success) {
                 console.log('TSS: Body width smaller than options.minWidth. Init is delayed.');
 
-                $(document).on('scroll.' + options.namespace, function (options, $that) {
+                $(document).scroll(function (options, $that) {
                     return function (evt) {
                         var success = tryInit(options, $that);
 
@@ -45,7 +43,7 @@
                         }
                     };
                 }(options, $that));
-                $(window).on('resize.' + options.namespace, function (options, $that) {
+                $(window).resize(function (options, $that) {
                     return function (evt) {
                         var success = tryInit(options, $that);
 
@@ -77,10 +75,7 @@
             options.initialized = true;
 
             // Add CSS
-            var existingStylesheet = $('#theia-sticky-sidebar-stylesheet-' + options.namespace);
-            if (existingStylesheet.length === 0) {
-                $('head').append($('<style id="theia-sticky-sidebar-stylesheet-' + options.namespace + '">.theiaStickySidebar:after {content: ""; display: table; clear: both;}</style>'));
-            }
+            $('head').append($('<style>.theiaStickySidebar:after {content: ""; display: table; clear: both;}</style>'));
 
             $that.each(function () {
                 var o = {};
@@ -99,7 +94,7 @@
                 // Create sticky sidebar
                 o.sidebar.parents().css('-webkit-transform', 'none'); // Fix for WebKit bug - https://code.google.com/p/chromium/issues/detail?id=20574
                 o.sidebar.css({
-                    'position': o.options.defaultPosition,
+                    'position': 'relative',
                     'overflow': 'visible',
                     // The "box-sizing" must be set to "content-box" because we set a fixed height to this element when the sticky sidebar has a fixed position.
                     '-webkit-box-sizing': 'border-box',
@@ -112,7 +107,7 @@
                 if (o.stickySidebar.length == 0) {
                     // Remove <script> tags, otherwise they will be run again when added to the stickySidebar.
                     var javaScriptMIMETypes = /(?:text|application)\/(?:x-)?(?:javascript|ecmascript)/i;
-                    o.sidebar.find('script').filter(function (index, script) {
+                    o.sidebar.find('script').filter(function(index, script) {
                         return script.type.length === 0 || script.type.match(javaScriptMIMETypes);
                     }).remove();
 
@@ -260,13 +255,11 @@
                      * It's way slower to first check if the values have changed.
                      */
                     if (position == 'fixed') {
-                        var scrollLeft = $(document).scrollLeft();
-
                         o.stickySidebar.css({
                             'position': 'fixed',
                             'width': getWidthForObject(o.stickySidebar) + 'px',
                             'transform': 'translateY(' + top + 'px)',
-                            'left': (o.sidebar.offset().left + parseInt(o.sidebar.css('padding-left')) - scrollLeft) + 'px',
+                            'left': (o.sidebar.offset().left + parseInt(o.sidebar.css('padding-left'))) + 'px',
                             'top': '0px'
                         });
                     }
@@ -303,18 +296,18 @@
                 o.onScroll(o);
 
                 // Recalculate the sidebar's position on every scroll and resize.
-                $(document).on('scroll.' + o.options.namespace, function (o) {
+                $(document).scroll(function (o) {
                     return function () {
                         o.onScroll(o);
                     };
                 }(o));
-                $(window).on('resize.' + o.options.namespace, function (o) {
+                $(window).resize(function (o) {
                     return function () {
                         o.stickySidebar.css({'position': 'static'});
                         o.onScroll(o);
                     };
                 }(o));
-
+                
                 // Recalculate the sidebar's position every time the sidebar changes its size.
                 if (typeof ResizeSensor !== 'undefined') {
                     new ResizeSensor(o.stickySidebar[0], function (o) {
@@ -349,24 +342,22 @@
                 }
             });
         }
-
+        
         function getWidthForObject(object) {
             var width;
-
+            
             try {
                 width = object[0].getBoundingClientRect().width;
             }
-            catch (err) {
+            catch(err) {
             }
-
+            
             if (typeof width === "undefined") {
                 width = object.width();
             }
-
+            
             return width;
         }
-
-        return this;
     }
 })(jQuery);
 

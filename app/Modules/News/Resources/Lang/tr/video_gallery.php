@@ -9,6 +9,7 @@
 return[
     'management' => 'Video Galeri Yönetimi',
     'video_gallery_create' => 'Video Galeri Oluştur',
+    'video_galleries' => 'Video Galeriler',
     'title' => 'Video Başlığı',
     'short_url' => 'Kısa URL',
     'is_cuff' => 'Manşet',

@@ -120,7 +120,7 @@ class BookController extends BackendController
             'slug' => [
                 Rule::unique('books')->ignore($record->id),
             ],
-            'link' => 'url',
+            'link' => 'url|nullable',
             'thumbnail' => 'image|max:255',
             'photo' => 'image|max:255',
         );

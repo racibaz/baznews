@@ -43,8 +43,8 @@
                         {!! Form::select('photo_gallery_id', $photoGalleryList , $record->photo_gallery_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('description', trans('news::photo.description'),['class'=> 'control-label']) !!}
-                        {!! Form::text('description', $record->description, ['placeholder' => trans('news::photo.description') ,'class' => 'form-control']) !!}
+                        {!! Form::label('content', trans('news::photo.content'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('content', $record->description, ['placeholder' => trans('news::photo.content') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="row">
                         <div class="col-lg-4">
@@ -96,7 +96,9 @@
                     <div class="form-group">
                         {!! Form::label('file', trans('news::photo.file'),['class'=> 'control-label','style'=>'width:100%']) !!}
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                <img src="{{ asset('photos/' . $record->id . '/224x195_' . $record->file)}}" alt="{{$record->name}}"/>
+                            </div>
                             <div>
                                 <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('news::photo.select_image')}}</span><span class="fileinput-exists">{{trans('news::photo.change')}}</span>{!! Form::file('file') !!}</span>
                                 <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('news::photo.remove')}}</a>
