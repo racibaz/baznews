@@ -207,6 +207,11 @@
         }
     });
 
+    /*--------------------------------------------------------
+     Last Minute News Ticker Slider
+     * --------------------------------------------------------*/
+    $('.ticker').ticker()
+
 })(jQuery);
 
 // Window load event used just in case window height is dependant upon images

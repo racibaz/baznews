@@ -1,6 +1,11 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
+    <div class="row">
+        <div class="col-md-12">
+            @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
+        </div>
+    </div>
     <article>
         <div class="container" id="container">
             <div class="row">
@@ -398,7 +403,6 @@
 
 @section('js')
 
-    <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
 
@@ -508,10 +512,6 @@
                 prevText: '<i class="fa fa-angle-left"></i>'
             });
 
-            /*--------------------------------------------------------
-             Last Minute News Ticker Slider
-             * --------------------------------------------------------*/
-            $('.ticker').ticker();
         })(jQuery);
 
         /*--------------------------------------------------------

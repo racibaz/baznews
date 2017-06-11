@@ -1,6 +1,11 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
+    <div class="row">
+        <div class="col-md-12">
+            @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
+        </div>
+    </div>
     <article>
         <div class="container" id="container">
             <ol class="breadcrumb">
@@ -235,16 +240,11 @@
         });
     </script>
     <script src="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
-            /*--------------------------------------------------------
-             Last Minute News Ticker Slider
-             * --------------------------------------------------------*/
-            $('.ticker').ticker();
             /*--------------------------------------------------------
              mCustomScrollbar
              * --------------------------------------------------------*/

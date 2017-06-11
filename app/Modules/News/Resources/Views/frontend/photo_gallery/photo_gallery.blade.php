@@ -1,7 +1,11 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
-
+    <div class="row">
+        <div class="col-md-12">
+            @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
+        </div>
+    </div>
     <article class="container" id="container">
 
         <div class="image-gallery">
@@ -14,8 +18,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row" id="home_content">
-                <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-8" id="content-area">
                     <div class="gallery">
                         <div class="paging text-center module">
                             <ul class="pagination">
@@ -121,7 +125,7 @@
                         </div><!-- /.f-posts -->
                     </div><!-- /.other-gallery -->
                 </div><!-- /.row -->
-                <div class="col-md-4" id="photo_sidebar">
+                <div class="col-md-4" id="sidebar">
                     <div class="gallery-details module">
                         <div class="details">
                             <div class="time">
@@ -134,11 +138,9 @@
                             </div><!-- /.gallery-text -->
                         </div>
                         <div class="advert advert-right">
-                            <img src="http://baznews.app/themes/news-theme/assets/img/advert-images/336x280.png" alt="Advert Sidebar">
+                            <img src="http://baznews.app/themes/news-theme/assets/img/advert-images/336x280.png" alt="Advert Sidebar" class="img-responsive">
                         </div>
                     </div><!-- /.gallery-details -->
-<<<<<<< HEAD
-
                     <div class="sidebar">
                         <div class="widget">
                             @foreach($widgets as $widget)
@@ -146,26 +148,9 @@
                             @endforeach
                         </div>
                     </div><!-- /.sidebar -->
-
-=======
->>>>>>> recai
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.image-gallery -->
-        <div class="row">
-            <div class="col-lg-12">
-
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8">
-
-            </div><!-- /.col-lg-8 -->
-            <div class="col-lg-4">
-
-            </div>
-        </div>
-
 
     </article><!-- /.article -->
 
@@ -187,30 +172,7 @@
     <meta name='summary' content=''>
 
 @endsection
-
-
-@section('css')
-    {{--<link href="//vjs.zencdn.net/5.8/photo-js.min.css" rel="stylesheet">--}}
-
-    {{--<link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">--}}
-@endsection
-
 @section('js')
-    {{--<script src="js/app.js"></script>--}}
-
-    {{--<script src="http://vjs.zencdn.net/5.8.8/photo.js"></script>--}}
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/photojs-youtube/2.1.1/Youtube.min.js"></script>--}}
-
-
-    {{--<script src="https://js.pusher.com/3.2/pusher.min.js"></script>--}}
-
-    {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>--}}
-
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>--}}
-
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>--}}
-
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>--}}
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script>
@@ -218,8 +180,7 @@
          Sticky Sidebar
          * --------------------------------------------------------*/
         jQuery(document).ready(function() {
-            jQuery('#home_center .col-md-4').theiaStickySidebar();
-            jQuery('#photo_sidebar').theiaStickySidebar();
+            jQuery('#content-area,#sidebar').theiaStickySidebar();
         });
     </script>
 

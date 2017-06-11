@@ -1,6 +1,11 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
+    <div class="row">
+        <div class="col-md-12">
+            @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
+        </div>
+    </div>
     <div class="container" id="container">
         <ol class="breadcrumb">
             <li>
@@ -79,11 +84,7 @@
                                                     <h2>{{$record->user->name}}</h2>
                                                 </a>
                                                 <div class="bio-text">
-<<<<<<< HEAD
                                                     <p>{!!$record->user->bio_note!!}</p>
-=======
-                                                    {!! $record->user->bio_note !!}
->>>>>>> recai
                                                 </div>
                                                 <span class="bio-long-btn">Genişlet</span>
                                             </div><!-- /.editor-info -->

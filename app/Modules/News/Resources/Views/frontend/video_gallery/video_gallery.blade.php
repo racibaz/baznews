@@ -1,26 +1,11 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="ticker last-time" id="son-dakika">
-                    <strong>Son Dakika:</strong>
-                    <ul>
-                        <li>
-                            <a href="#">Breaking News -1</a>
-                        </li>
-                        <li>
-                            <a href="#">Breaking News -1</a>
-                        </li>
-                        <li>
-                            <a href="#">Breaking News -1</a>
-                        </li>
-                    </ul>
-                </div><!-- /.ticker -->
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-    </div><!-- /.container -->
+    <div class="row">
+        <div class="col-md-12">
+            @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
+        </div>
+    </div>
     <article>
         <div class="container" id="container">
             <ol class="breadcrumb">
@@ -423,13 +408,8 @@
         });
     </script>
     <script src="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            /*--------------------------------------------------------
-             Last Minute News Ticker Slider
-             * --------------------------------------------------------*/
-            $('.ticker').ticker();
             /*--------------------------------------------------------
              mCustomScrollbar
              * --------------------------------------------------------*/

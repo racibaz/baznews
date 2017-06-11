@@ -1,9 +1,12 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
-
+    <div class="row">
+        <div class="col-md-12">
+            @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
+        </div>
+    </div>
     <article class="container" id="container">
-
         <div class="image-gallery">
             <div class="row">
                 <div class="col-lg-12">
@@ -13,7 +16,7 @@
                         </h1>
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8" id="content-area">
                     <div class="gallery">
                         <div class="text-center module">
                             <ul class="pagination">
@@ -75,7 +78,7 @@
                 @endif
 
                 </div><!-- /.col -->
-                <div class="col-lg-4">
+                <div class="col-lg-4" id="sidebar">
                     <div class="gallery-details module">
                         <div class="gallery-text">
                             <p>{{$photo->content}}</p>
@@ -160,27 +163,9 @@
 
 
 @section('css')
-    <link href="//vjs.zencdn.net/5.8/photo-js.min.css" rel="stylesheet">
-
-    <link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">
 @endsection
 
 @section('js')
-    <script src="js/app.js"></script>
-
-    <script src="http://vjs.zencdn.net/5.8.8/photo.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/photojs-youtube/2.1.1/Youtube.min.js"></script>
-
-
-    <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
-
-    {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>--}}
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/jquery.noty.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/themes/bootstrap.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/promise.js"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script>
@@ -188,7 +173,7 @@
          Sticky Sidebar
          * --------------------------------------------------------*/
         jQuery(document).ready(function() {
-            jQuery('#home_center .col-md-4').theiaStickySidebar({
+            jQuery('#content-area,.sidebar').theiaStickySidebar({
             });
         });
     </script>

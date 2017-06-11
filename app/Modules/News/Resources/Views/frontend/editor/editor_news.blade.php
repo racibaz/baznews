@@ -1,6 +1,11 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
+    <div class="row">
+        <div class="col-md-12">
+            @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
+        </div>
+    </div>
     <article class="container" id="container">
         <div class="row">
             <div class="col-md-8" id="content">
@@ -114,11 +119,15 @@
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script type="text/javascript">
-
-        /*--------------------------------------------------------
-         Sticky Sidebar
-         * --------------------------------------------------------*/
         jQuery(document).ready(function() {
+            /*--------------------------------------------------------
+             Last Minute News Ticker Slider
+             * --------------------------------------------------------*/
+            $('.ticker').ticker();
+
+            /*--------------------------------------------------------
+             Sticky Sidebar
+             * --------------------------------------------------------*/
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
     </script>
