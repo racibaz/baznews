@@ -42,7 +42,7 @@
     @include($activeTheme . '::frontend.layouts.header')
     <!-- Left side column. contains the logo and sidebar -->
     @include($activeTheme . '::frontend.layouts.sidebar')
-
+    {{--@include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])--}}
     @yield('content')
 
     <!-- Main Footer -->
@@ -50,17 +50,16 @@
 </div>
 
     <!-- jQuery library (served from Google) -->
-    <script src="{{ Theme::asset($activeTheme . '::js/jquery/jquery.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/bxslider/dist/jquery.bxslider.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/jquery.sticky.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/custom.js') }}"></script>
+    <script type="text/javascript" src="{{ Theme::asset($activeTheme . '::js/jquery/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ Theme::asset($activeTheme . '::js/bxslider/dist/jquery.bxslider.js') }}"></script>
+    <script type="text/javascript" src="{{ Theme::asset($activeTheme . '::js/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ Theme::asset($activeTheme . '::js/jquery.sticky.js') }}"></script>
+    <script type="text/javascript" src="{{ Theme::asset($activeTheme . '::js/jquery.tagcloud/jquery.tagcloud.js') }}"></script>
+    <script type="text/javascript" src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ Theme::asset($activeTheme . '::js/custom.js') }}"></script>
     {!! Cache::tags('Setting')->get('footer_code') !!}
-
     @yield('js')
-
     @stack('js')
-
 </body>
 </html>
 

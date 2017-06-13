@@ -155,6 +155,10 @@
         // $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
     });
 
+
+    /*--------------------------------------------------------
+     Sticky Footer
+     * --------------------------------------------------------*/
     $(window).bind("load", function() {
 
         var footerHeight = 0,
@@ -188,6 +192,25 @@
             .resize(positionFooter)
 
     });
+
+    /*--------------------------------------------------------
+     Tag Cloud Global
+     * --------------------------------------------------------*/
+    $.fn.tagcloud.defaults = {
+        size: {start: 11, end: 16, unit: 'pt'},
+        color: {start: '#EA4335', end: '#40819A'}
+    };
+
+    $(function () {
+        if ($('.tag-cloud').length > 0){
+            $('.tag-cloud a').tagcloud();
+        }
+    });
+
+    /*--------------------------------------------------------
+     Last Minute News Ticker Slider
+     * --------------------------------------------------------*/
+    $('.ticker').ticker()
 
 })(jQuery);
 

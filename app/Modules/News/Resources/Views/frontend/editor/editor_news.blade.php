@@ -1,7 +1,11 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
-
+    <div class="row">
+        <div class="col-md-12">
+            @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
+        </div>
+    </div>
     <article class="container" id="container">
         <div class="row">
             <div class="col-md-8" id="content">
@@ -87,174 +91,6 @@
             </div><!-- /.col-md-8 -->
             <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
-                    <div class="nw-sm-img module">
-                        <div role="tabpanel">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active">
-                                    <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>
-                                </li>
-                            </ul>
-
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="video">
-                                    <ul class="new-list no-list">
-                                        <li class="nw-bx no-list active">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">1</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">2</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">3</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">4</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">5</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                    </ul><!-- /.new-list -->
-                                </div><!-- /.tab-pane -->
-                                <div role="tabpanel" class="tab-pane" id="son_dakika">
-                                    <ul class="new-list no-list">
-                                        <li class="nw-bx no-list active">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">1</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">2</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">3</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">4</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">5</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                    </ul><!-- /.new-list -->
-                                </div><!-- /.tab-pane -->
-
-                                <div role="tabpanel" class="tab-pane" id="cok_okunanlar">
-                                    <ul class="new-list no-list">
-                                        <li class="nw-bx no-list active">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">1</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">2</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">3</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">4</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                        <li class="nw-bx no-list">
-                                            <a href="new-details.html" title="" class="full-link"></a>
-                                            <span class="imgwrap">
-                                        <img src="img/mini-spot/d_296_2.jpg" alt="">
-                                    </span>
-                                            <span class="dec">5</span>
-                                            <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                        </li>
-                                    </ul><!-- /.new-list -->
-                                </div><!-- /.tab-pane -->
-                            </div><!-- /.tab-content -->
-                        </div><!-- /rabpanel -->
-                    </div><!-- /.nw-sm-img -->
                     <div class="widget">
                         @foreach($widgets as $widget)
                             @widget($widget['namespace'])
@@ -283,11 +119,15 @@
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script type="text/javascript">
-
-        /*--------------------------------------------------------
-         Sticky Sidebar
-         * --------------------------------------------------------*/
         jQuery(document).ready(function() {
+            /*--------------------------------------------------------
+             Last Minute News Ticker Slider
+             * --------------------------------------------------------*/
+            $('.ticker').ticker();
+
+            /*--------------------------------------------------------
+             Sticky Sidebar
+             * --------------------------------------------------------*/
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
     </script>

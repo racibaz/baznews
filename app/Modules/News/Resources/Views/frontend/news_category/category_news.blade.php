@@ -1,26 +1,12 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
-
-    <article class="container" id="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="ticker last-time" id="son-dakika">
-                    <strong>Son Dakika:</strong>
-                    <ul>
-                        <li>
-                            <a href="#">Breaking News 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Breaking News 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Breaking News 3</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
         </div>
+    </div>
+    <article class="container" id="container">
         <div class="row">
             <div class="col-lg-8" id="content">
                 <div class="cat-posts">
@@ -114,20 +100,9 @@
     {{--Css code--}}
 @endsection
 @section('js')
-    <script src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script type="text/javascript">
-        (function ($) {
-            'use strict';
-
-            /*--------------------------------------------------------
-             Last Minute News Ticker Slider
-             * --------------------------------------------------------*/
-            $('.ticker').ticker();
-
-        })(jQuery);
-
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/

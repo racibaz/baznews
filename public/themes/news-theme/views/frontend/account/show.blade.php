@@ -1,6 +1,11 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
+    <div class="row">
+        <div class="col-md-12">
+            @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
+        </div>
+    </div>
 
     <div class="container-fluid" xmlns="http://www.w3.org/1999/html">
         <div class="row">
