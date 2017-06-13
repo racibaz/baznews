@@ -25,9 +25,6 @@ class ArticleCategoryController extends Controller
                 ->where('is_active', 1)
                 ->findBy('slug',$slug);
 
-            dd($record);
-
-
             return Theme::view('article::frontend.article_category.show', compact([
                 'record',
             ]))->render();

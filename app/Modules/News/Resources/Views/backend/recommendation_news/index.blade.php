@@ -51,6 +51,7 @@
                                     <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
+                                            {!! link_to_route('show_news', trans('common.show'), $record->news->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('recommendation_news.destroy',  $record))) !!}
 
                                             {!! link_to_route('recommendation_news.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}

@@ -64,7 +64,7 @@
                         </div>
                         {!! Cache::tags('Setting')->get('addthis') !!}
                     </div>
-                @if($record->is_comment)
+                @if($photo->is_comment)
                     <div class="discus-box">
                         <div class="row">
                             <div class="col-md-12">

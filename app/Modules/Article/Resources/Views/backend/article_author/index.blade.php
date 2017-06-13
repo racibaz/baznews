@@ -47,6 +47,7 @@
                                     <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
+                                            {!! link_to_route('article_author', trans('common.show'), $record->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('article_author.destroy',  $record))) !!}
 
                                             {!! link_to_route('article_author.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
