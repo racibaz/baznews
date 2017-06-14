@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="title-section">
-                    <h1><span>"" için Arama Sonuçları</span></h1>
+                    <h1><span>{{trans('news::news.search_result')}} </span></h1>
                 </div>
                 <div class="row">
                     @foreach($records as $record)
@@ -21,7 +21,7 @@
                                     <div class="col-lg-4 col-md-3 col-xs-4">
                                         <div class="frame-image">
                                             <a href="{!! route('show_news', ['slug' => $record->slug]) !!}">
-                                                <img src="{{asset('images/news_images/2/196x150_2.jpg')}}" alt="{{$record->title}}">
+                                                <img src="{{ asset('images/news_images/' . $record->id . '/196x150_' . $record->thumbnail )}}" alt="{{ $record->title }}" >
                                             </a>
                                         </div>
                                     </div>
@@ -31,10 +31,10 @@
                                                 <h2>{{$record->title}}</h2>
                                             </a>
                                             <div class="news-meta-left">
-                                                <a href="#" class="meta-date" title="" ><i class="fa fa-clock-o"></i> 9 Şubat 2017</a>
+                                                <a href="#" class="meta-date" title="" ><i class="fa fa-clock-o"></i> {{$record->updated_at->diffForHumans()}}</a>
                                             </div>
                                             <div class="news-excerpt">
-                                                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                {{$record->spot}}
                                             </div>
                                         </div>
                                     </div>
@@ -43,19 +43,21 @@
                         </div><!-- /.col-lg-4 -->
                     @endforeach
                 </div>
+                @include($activeTheme . '::backend.partials._pagination', ['records' => $records ])
             </div>
-            <div class="col-lg-4">
+            <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
-                    <div class="title-section">
-                        <h1><span>Sidebar</span></h1>
+                    <div class="widget">
+                        @foreach($widgets as $widget)
+                            @widget($widget['namespace'])
+                        @endforeach
                     </div>
-                </div>
-            </div>
+                    {{--@widgetGroup('right_bar')--}}
+                </div><!-- /.sidebar -->
+            </div><!-- /.col -->
         </div>
      </article>
-
 @endsection
-
 
 @section('meta_tags')
     <title> {{ $search }}  </title>
@@ -74,6 +76,5 @@
     <meta property="og:description" content="{{$search}}" />
     <meta property="fb:app_id" content="671303379704288">
     <meta property="article:author" content="">
-
 @endsection
 

@@ -12,16 +12,14 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+    //TODO https://www.codecourse.com/lessons/laravel-scout/1050
     public function index(Request $request)
     {
         $search = $request->q;
         $records = News::search($request->q)
             ->where('is_active',1)
             ->where('status',1)
-            ->get();
-
-        //TODO https://www.codecourse.com/lessons/laravel-scout/1050
-        //SAYFALAMA DAN DEVAM EDİLEBİLİNİR.
+            ->paginate(15);
 
         return Theme::view('news::frontend.news.search', compact([
             'records',
@@ -37,7 +35,6 @@ class SearchController extends Controller
         }
 
         $userRepo = new UserRepository();
-
         $user = $userRepo->find($id);
 
         $newsRepo = new NewsRepository();
