@@ -18,5 +18,5 @@ _ide_helper.php
 composer.lock
 /storage/oauth-private.key
 /storage/oauth-public.key
-
-
+baznews
+baznews.pub
