@@ -1095,31 +1095,36 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         $setting14 = Permission::create([
-            'name'          => 'routeClear-setting',
-            'display_name'  => 'setting store',
+            'name'          => 'routeCache-setting',
+            'display_name'  => 'setting route cache',
             'is_active'     => 1,
         ]);
 
-
         $setting15 = Permission::create([
-            'name'          => 'viewClear-setting',
-            'display_name'  => 'setting store',
+            'name'          => 'routeClear-setting',
+            'display_name'  => 'setting routeClear',
             'is_active'     => 1,
         ]);
 
         $setting16 = Permission::create([
-            'name'          => 'configClear-setting',
-            'display_name'  => 'setting store',
+            'name'          => 'viewClear-setting',
+            'display_name'  => 'setting viewClear',
             'is_active'     => 1,
         ]);
 
         $setting17 = Permission::create([
-            'name'          => 'configCache-setting',
-            'display_name'  => 'setting store',
+            'name'          => 'configClear-setting',
+            'display_name'  => 'setting configClear',
             'is_active'     => 1,
         ]);
 
         $setting18 = Permission::create([
+            'name'          => 'configCache-setting',
+            'display_name'  => 'setting configCache',
+            'is_active'     => 1,
+        ]);
+
+        $setting19 = Permission::create([
             'name'          => 'flushCacheItem-setting',
             'display_name'  => 'Flush cache item',
             'is_active'     => 1,
@@ -1500,6 +1505,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($setting16);
         $super_admin->permissions()->attach($setting17);
         $super_admin->permissions()->attach($setting18);
+        $super_admin->permissions()->attach($setting19);
         $super_admin->permissions()->attach($backend1);
         $super_admin->permissions()->attach($backend2);
         $super_admin->permissions()->attach($backend3);

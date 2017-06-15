@@ -82,6 +82,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::resource('language', 'Backend\LanguageController');
     Route::get('setting/configCache', 'Backend\SettingController@configCache')->name('configCache');
     Route::get('setting/configClear', 'Backend\SettingController@configClear')->name('configClear');
+    Route::get('setting/routeCache', 'Backend\SettingController@routeCache')->name('routeCache');
     Route::get('setting/routeClear', 'Backend\SettingController@routeClear')->name('routeClear');
     Route::get('setting/viewClear', 'Backend\SettingController@viewClear')->name('viewClear');
     Route::get('setting/backUpClean', 'Backend\SettingController@backUpClean')->name('backUpClean');

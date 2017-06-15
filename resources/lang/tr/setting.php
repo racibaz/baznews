@@ -54,4 +54,7 @@ return [
     'file_choose'=> 'Dosya Seçiniz',
     'other'=> 'Diğer Ayarlar',
     'recommended_logo_size' => 'Tavsiye Edilen Logo Boyutu',
+    'config_cache' => 'Konfigürasyon Ayarları Ön Belleğe Alındı.',
+    'config_cleared' => 'Konfigürasyon Ayarları Ön Bellekten Temizkendi.',
+
 ];

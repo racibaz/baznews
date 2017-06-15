@@ -433,9 +433,10 @@
                         <a class="list-group-item" href="{!! route('getBackUp') !!}"> <i class="fa fa-cloud-download"></i> <span>Backup Al</span></a>
                         <a class="list-group-item" href="{!! route('backUpClean') !!}"> <i class="fa fa-trash-o"></i> <span>Backup ları Sil</span></a>
                         <a class="list-group-item" href="{!! route('viewClear') !!}"> <i class="fa fa-trash-o"></i> <span>View Ön Belleğini Temizle</span></a>
+                        <a class="list-group-item" href="{!! route('routeCache') !!}"> <i class="fa fa-trash-o"></i> <span>Route Ayarlarını Ön Belleğe Al</span></a>
                         <a class="list-group-item" href="{!! route('routeClear') !!}"> <i class="fa fa-trash-o"></i> <span>Route Ön Belleğini Temizle</span></a>
-                        <a class="list-group-item" href="{!! route('configClear') !!}"> <i class="fa fa-trash-o"></i> <span>Konfigürasyon Ayarlarını Temizle</span></a>
                         <a class="list-group-item" href="{!! route('configCache') !!}"><i class="fa fa-trash-o"></i>  <span>Konfigürasyon Ayarlarını Ön Belleğe Al</span></a>
+                        <a class="list-group-item" href="{!! route('configClear') !!}"> <i class="fa fa-trash-o"></i> <span>Konfigürasyon Ayarlarını Temizle</span></a>
                     </div>
                 </div>
                 <div class="box-footer">

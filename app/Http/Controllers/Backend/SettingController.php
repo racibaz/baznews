@@ -375,20 +375,34 @@ class SettingController extends BackendController
         return Redirect::back();
     }
 
-    //TODO
-    /*
+
+    /**
+     *
      * route:cache işlemi yapıldığında bu hatayı alıyoruz.
      * Unable to prepare route [laravel-filemanager/demo] for serialization. Uses Closure.
      *
      * Route lar da clouse yapı kullanıldığı için
      * https://github.com/laravel/framework/issues/7319#issuecomment-73362932
-     * */
+     *
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function routeCache()
+    {
+        \Artisan::call('route:cache');
+
+        Log::info(trans('setting.route_cached'));
+        Session::flash('flash_message', trans('setting.route_cached'));
+
+        return Redirect::back();
+    }
+
 
     public function routeClear()
     {
         \Artisan::call('route:clear');
 
-        Log::info('Route Cleared.');
+        Log::info(trans('setting.route_cleared'));
         Session::flash('flash_message', trans('setting.route_cleared'));
 
         return Redirect::back();
@@ -399,7 +413,7 @@ class SettingController extends BackendController
     {
         \Artisan::call('view:clear');
 
-        Log::info('View Cleared.');
+        Log::info(trans('setting.view_cleared'));
         Session::flash('flash_message', trans('setting.view_cleared'));
 
         return Redirect::back();
@@ -410,7 +424,7 @@ class SettingController extends BackendController
     {
         \Artisan::call('config:clear');
 
-        Log::info('Config Cleared.');
+        Log::info(trans('setting.config_cleared'));
         Session::flash('flash_message', trans('setting.config_cleared'));
 
         return Redirect::back();
@@ -421,7 +435,7 @@ class SettingController extends BackendController
     {
         \Artisan::call('config:cache');
 
-        Log::info('Config Cache.');
+        Log::info(trans('setting.config_cache'));
         Session::flash('flash_message', trans('setting.config_cache'));
 
         return Redirect::back();
