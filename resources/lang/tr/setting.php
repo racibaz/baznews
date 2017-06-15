@@ -53,5 +53,5 @@ return [
     'remove'=> 'Sil',
     'file_choose'=> 'Dosya Seçiniz',
     'other'=> 'Diğer Ayarlar',
-
+    'recommended_logo_size' => 'Tavsiye Edilen Logo Boyutu',
 ];

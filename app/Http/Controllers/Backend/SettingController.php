@@ -124,6 +124,21 @@ class SettingController extends BackendController
                 ->withInput($input);
         }
 
+        if(!empty($input['country'])){
+            $record = $this->repo->findBy('attribute_key', 'country');
+            $this->repo->update($record->id,['attribute_value' => $input['country']]);
+        }
+
+        if(!empty($input['city'])){
+            $record = $this->repo->findBy('attribute_key', 'city');
+            $this->repo->update($record->id,['attribute_value' => $input['city']]);
+        }
+
+        if(!empty($input['language_code'])){
+            $record = $this->repo->findBy('attribute_key', 'language_code');
+            $this->repo->update($record->id,['attribute_value' => $input['language_code']]);
+        }
+
         if(!empty($input['title'])){
             $record = $this->repo->findBy('attribute_key', 'title');
             $this->repo->update($record->id,['attribute_value' => $input['title']]);
@@ -145,17 +160,7 @@ class SettingController extends BackendController
         }
 
         if(!empty($input['logo'])){
-            $record = $this->repo->findBy('attribute_key', 'logo');
-            $result = $this->repo->update($record->id,['attribute_value' => $input['logo']]);
-
-            if($result) {
-
-                $oldPath = $record->attribute_value;
-                $document_name = $input['logo']->getClientOriginalName();
-                $destination = '';
-                Uploader::fileUpload($result  , 'attribute_value', $input['logo'] , $destination , $document_name);
-                Uploader::removeFile($oldPath);
-            }
+            Uploader::logoUploader($input['logo']);
         }
 
         if(!empty($input['abstract_text'])){

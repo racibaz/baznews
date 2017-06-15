@@ -20,7 +20,7 @@
                 </button>
 
                 <a class="navbar-brand" href="{!! route('index') !!}">
-                    <img src="{{ Theme::asset($activeTheme . '::img/news-theme-logo.jpg') }}" alt="Logo" width="130" height="120" class="img-responsive" />
+                    <img src="{{ asset('img/logo.jpg') }}" alt="Logo" width="130" height="120" class="img-responsive" />
                 </a>
 
                 <div class="pull-right hright">

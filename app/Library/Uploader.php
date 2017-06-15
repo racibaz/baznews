@@ -48,4 +48,18 @@ class Uploader
     public static function imageUploader($record, $path)
     {
     }
+
+    public static function logoUploader($file)
+    {
+        if($file->isValid()){
+
+            $orjinalDirPath = public_path('img/');
+            $file->move($orjinalDirPath, 'logo.jpg');
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

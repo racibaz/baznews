@@ -52,9 +52,6 @@
                                 </div><!-- /.form-group -->
                             </div>
                         </div>
-
-
-
                         <div class="form-group">
                             <div class="row">
                                 {!! Form::label('title', trans('setting.title'),['class'=> 'col-lg-2 control-label']) !!}
@@ -115,11 +112,11 @@
                                 {!! Form::label('logo', trans('setting.logo'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    <strong>Ölçü:(90x90)</strong><br><br>
+                                    <strong>{{trans('setting.recommended_logo_size')}} (90x90)</strong><br><br>
 
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                            <img  id="preview" data-src="{!! asset($logo->attribute_value) !!}" src="{!! asset($logo->attribute_value) !!}" alt="">
+                                            <img  src="{!! asset('img/logo.jpg') !!}" alt="">
                                         </div>
                                         <div>
                                             <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('setting.file_choose')}}</span><span class="fileinput-exists">{{trans('setting.change')}}</span>{!! Form::file('logo',['class'=>'fileinput']) !!}</span>
@@ -343,15 +340,11 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    {!! Form::label('rss_cache_life_time', trans('setting.rss_cache_life_time'),['class'=> 'control-label']) !!}
-                                    {!! Form::number('rss_cache_life_time', $records->where('attribute_key','rss_cache_life_time')->first()->attribute_value, ['placeholder' => trans('setting.rss_cache_life_time') ,'class' => 'form-control']) !!}
-                                </div><!-- /.form-group -->
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
                                     {!! Form::label('sitemap_count', trans('setting.sitemap_count'),['class'=> 'control-label']) !!}
                                     {!! Form::number('sitemap_count', $records->where('attribute_key','sitemap_count')->first()->attribute_value, ['placeholder' => trans('setting.sitemap_count') ,'class' => 'form-control']) !!}
                                 </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     {!! Form::label('allow_photo_formats', trans('setting.allow_photo_formats'),['class'=> 'control-label']) !!}
                                     <br>
