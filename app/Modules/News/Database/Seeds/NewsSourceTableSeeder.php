@@ -54,5 +54,11 @@ class NewsSourceTableSeeder extends Seeder
             'url'                   => 'http://www.murekkephaber.com/',
             'is_active'             => 1
         ]);
+
+        NewsSource::create([
+            'name'                  => 'Hayal Perdesi',
+            'url'                   => 'http://www.hayalperdesi.net',
+            'is_active'             => 1
+        ]);
     }
 }

@@ -86,6 +86,7 @@
                             </div><!-- /.col-lg-4 -->
                             @endforeach
                         </div>
+                        @include($activeTheme . '::backend.partials._pagination', ['records' => $newsItems ])
                     </div>
                 </div><!-- /.new-content -->
             </div><!-- /.col-md-8 -->

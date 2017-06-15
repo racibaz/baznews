@@ -38,8 +38,7 @@ class EditorController extends Controller
                             ->where('user_id',$user->id)
                             ->where('is_active', 1)
                             ->where('status', 1)
-                            ->findAll()
-                            ->take(20);
+                            ->paginate(20);
 
 
             $userAvatar = User::getUserAvatar($user->email,100);
