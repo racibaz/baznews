@@ -61,8 +61,8 @@ class NewsRepository extends EloquentRepository
             ->first();
     }
 
-//todo php versiyon farkından dolayı "?" hata veriyor.
-//    public function relatedNews($record): ?array
+    //todo php versiyon farkından dolayı "?" hata veriyor.
+    //    public function relatedNews($record): ?array
     public function relatedNews($record)
     {
         $relatedNews = [];
@@ -81,5 +81,12 @@ class NewsRepository extends EloquentRepository
     }
 
 
-
+    public function getLastNews($take = 1000)
+    {
+        return $this->where('status', 1)
+            ->where('is_active', 1)
+            ->orderBy('updated_at', 'desc')
+            ->findAll()
+            ->take($take);
+    }
 }

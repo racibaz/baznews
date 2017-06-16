@@ -253,43 +253,43 @@ class PermissionsTableSeeder extends Seeder
 
         //sitemaps
         $sitemaps1 = Permission::create([
-            'name'          => 'index-sitemaps',
+            'name'          => 'index-sitemap',
             'display_name'  => 'Dosya Listeleme',
             'is_active'     => 1,
         ]);
 
         $sitemaps2 = Permission::create([
-            'name'          => 'create-sitemaps',
+            'name'          => 'create-sitemap',
             'display_name'  => 'Dosya Oluşturma',
             'is_active'     => 1,
         ]);
 
         $sitemaps3 = Permission::create([
-            'name'          => 'edit-sitemaps',
+            'name'          => 'edit-sitemap',
             'display_name'  => 'Dosya Düzenleme',
             'is_active'     => 1,
         ]);
 
         $sitemaps4 = Permission::create([
-            'name'          => 'destroy-sitemaps',
+            'name'          => 'destroy-sitemap',
             'display_name'  => 'Dosya Silme',
             'is_active'     => 1,
         ]);
 
         $sitemaps5 = Permission::create([
-            'name'          => 'show-sitemaps',
+            'name'          => 'show-sitemap',
             'display_name'  => 'Dosya Gösterme',
             'is_active'     => 1,
         ]);
 
         $sitemaps6 = Permission::create([
-            'name'          => 'update-sitemaps',
+            'name'          => 'update-sitemap',
             'display_name'  => 'sitemaps update',
             'is_active'     => 1,
         ]);
 
         $sitemaps7 = Permission::create([
-            'name'          => 'store-sitemaps',
+            'name'          => 'store-sitemap',
             'display_name'  => 'sitemaps store',
             'is_active'     => 1,
         ]);

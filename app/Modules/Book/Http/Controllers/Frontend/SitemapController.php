@@ -3,18 +3,24 @@
 namespace App\Modules\Book\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
-use App\Modules\Book\Models\Book;
 use Caffeinated\Themes\Facades\Theme;
+use App\Modules\Book\Repositories\BookRepository as Repo;
+use Illuminate\Support\Facades\Cache;
 
 class SitemapController extends Controller
 {
+    public function __construct(Repo $repo)
+    {
+        $this->repo = $repo;
+    }
     public function sitemap()
     {
-        $books = Book::where('is_active', 1)->orderBy('updated_at', 'desc')->get();
-        
+        $books = Cache::tags(['BookController', 'Book', 'sitemap'])->rememberForever('sitemap:book', function(){
+            return  $this->repo->getLastBooks();
+        });
+
         return Theme::response('modules.book.frontend.sitemap.sitemap', compact('books'), 200, [
-                        'Content-Type' => 'text/xml'
-            ]);
+            'Content-Type' => 'text/xml'
+        ]);
     }
 }

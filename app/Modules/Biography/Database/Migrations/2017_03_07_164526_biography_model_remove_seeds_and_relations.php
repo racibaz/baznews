@@ -29,6 +29,8 @@ class BiographyModelRemoveSeedsAndRelations extends Migration
         $this->removeEventsTableItems();
 
         $this->removeTaggableTableItems();
+
+        $this->removeSitemapsTableItems();
     }
 
 
@@ -108,4 +110,10 @@ class BiographyModelRemoveSeedsAndRelations extends Migration
         $repo->forgetCache();
     }
 
+    public function  removeSitemapsTableItems()
+    {
+        DB::table('sitemaps')
+            ->where('url', 'biographies_sitemap')
+            ->delete();
+    }
 }

@@ -25,4 +25,13 @@ class BiographyRepository extends EloquentRepository
 
         return $statusList;
     }
+
+    public function getLastBiographies($take = 1000)
+    {
+        return  $this->where('is_active', 1)
+            ->where('status', 1)
+            ->orderBy('updated_at', 'desc')
+            ->findAll()
+            ->take($take);
+    }
 }

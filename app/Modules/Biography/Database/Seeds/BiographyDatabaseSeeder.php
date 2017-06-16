@@ -2,8 +2,7 @@
 
 namespace App\Modules\Biography\Database\Seeds;
 
-use App\Models\Setting;
-use WidgetManagersTableSeeder;
+use App\Modules\Biogaphy\Database\Seeds\SitemapsTableSeeder;
 use Illuminate\Database\Seeder;
 
 class BiographyDatabaseSeeder extends Seeder
@@ -17,5 +16,6 @@ class BiographyDatabaseSeeder extends Seeder
     {
         $this->call(BiographiesTableSeeder::class);
         $this->call(PermissionTableSeeder::class);
+        $this->call(SitemapsTableSeeder::class);
     }
 }

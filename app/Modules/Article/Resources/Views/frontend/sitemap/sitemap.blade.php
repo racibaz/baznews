@@ -4,13 +4,13 @@
 
     @foreach ($articles as $article)
         <url>
-            <loc>{{Cache::tags('Setting')->get('url')}}/{{ $article->slug }}</loc>
+            <loc>{!! route('article', ['slug' => $article->slug]) !!}</loc>
             <news:news>
                 <news:publication>
                     <news:name>{{$article->title}}</news:name>
-                    <news:language>tr</news:language>
+                    <news:language>{{config('app.locale')}}</news:language>
                 </news:publication>
-                <news:genres>UserGenerated,PressRelease, Blog</news:genres>
+                <news:genres>{{config('baznews.genres')}}</news:genres>
                 <news:publication_date>{{$article->created_at}}</news:publication_date>
                 <news:title>{{$article->title}}</news:title>
                 <news:keywords>{{$article->keywords}}</news:keywords>
