@@ -37,6 +37,8 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
         $this->removeLinksTableItems();
 
         $this->removeSitemapsTableItems();
+
+        $this->removeRssTableItems();
     }
 
     public function modelRemoveSeedAndRelations()
@@ -195,4 +197,12 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
             ->where('url', 'articles_sitemap')
             ->delete();
     }
+
+    public function  removeRssTableItems()
+    {
+        DB::table('rss')
+            ->where('url', 'rss/articles')
+            ->delete();
+    }
+
 }

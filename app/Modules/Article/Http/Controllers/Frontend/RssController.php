@@ -2,67 +2,64 @@
 
 namespace App\Modules\Article\Http\Controllers\Frontend;
 
-use App\Modules\Article\Models\Article;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Cache;
+use App\Modules\Article\Repositories\ArticleRepository as Repo;
 
 class RssController extends Controller
 {
+    public $repo;
+
+    public function __construct(Repo $repo)
+    {
+        $this->repo = $repo;
+    }
+
     public function articlesRssRender()
     {
-        // create new feed
-        $feed = App::make("feed");
+        $feed = Cache::tags(['RssController', 'Article', 'articlesRssRender'])->rememberForever('articlesRssRender', function() {
 
-        // multiple feeds are supported
-        // if you are using caching you should set different cache keys for your feeds
+            // create new feed
+            $feed = App::make("feed");
 
-        // cache the feed for 60 minutes (second parameter is optional)
-        $feed->setCache(60, 'articlesRssRender');
-
-        // check if there is cached feed and build new only if is not
-        if (!$feed->isCached())
-        {
             // creating rss feed with our most recent 20 posts
-            //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
-
-            $articleItems = Article::where('status',1)->orderBy('created_at', 'desc')->take(20)->get();
-
+            $items = $this->repo->getLastArticles(20);
 
             // set your feed's title, description, link, pubdate and language
-            $feed->title = 'Your title';
-            $feed->description = 'Your description';
-            $feed->logo = asset('/logo.jpg');
-            $feed->link = url('feed');
+            $feed->title = Cache::tags(['Setting'])->get('title');
+            $feed->description = Cache::tags(['Setting'])->get('description');
+            $feed->logo = asset('img/logo.jpg');
+            $feed->link = route('rss/articles');
             $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
-            $feed->pubdate = $articleItems[0]->created_at;
-            $feed->lang = 'tr';
+            $feed->pubdate = $items[0]->updated_at;
+            $feed->lang = Cache::tags(['Setting'])->get('language_code');
             $feed->setShortening(true); // true or false
             $feed->setTextLimit(100); // maximum length of description text
 
-            foreach ($articleItems as $articleItem)
-            {
+            foreach ($items as $item) {
+
                 // set item's title, author, url, pubdate, description, content, enclosure (optional)*
                 $feed->add(
-                    $articleItem->title,
-                    $articleItem->author->first_name . ' '. $articleItem->author->last_name ,
-                    URL::to($articleItem->slug),
-                    $articleItem->created_at,
-                    $articleItem->description,
-                    $articleItem->content
+                    $item->name,
+                    '',
+                    route('article', ['slug' => $item->slug]),
+                    $item->created_at,
+                    $item->description,
+                    $item->content
                 );
             }
-        }
+
+            return $feed;
+        });
+
 
         // first param is the feed format
         // optional: second param is cache duration (value of 0 turns off caching)
         // optional: you can set custom cache key with 3rd param as string
-        return $feed->render('atom');
-
         // to return your feed as a string set second param to -1
         // $xml = $feed->render('atom', -1);
+
+        return $feed->render('atom');
     }
 }

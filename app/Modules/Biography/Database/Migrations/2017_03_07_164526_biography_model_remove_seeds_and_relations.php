@@ -31,6 +31,8 @@ class BiographyModelRemoveSeedsAndRelations extends Migration
         $this->removeTaggableTableItems();
 
         $this->removeSitemapsTableItems();
+
+        $this->removeRssTableItems();
     }
 
 
@@ -116,4 +118,13 @@ class BiographyModelRemoveSeedsAndRelations extends Migration
             ->where('url', 'biographies_sitemap')
             ->delete();
     }
+
+    public function  removeRssTableItems()
+    {
+        DB::table('rss')
+            ->where('url', 'rss/biographies')
+            ->delete();
+    }
 }
+
+

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Book\Http\Controllers\Frontend;
+namespace App\Modules\Biography\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Book\Repositories\BookRepository as Repo;
+use App\Modules\Biography\Repositories\BiographyRepository as Repo;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 
@@ -16,21 +16,21 @@ class RssController extends Controller
         $this->repo = $repo;
     }
 
-    public function booksRssRender()
+    public function biographiesRssRender()
     {
-        $feed = Cache::tags(['RssController', 'News', 'booksRssRender'])->rememberForever('booksRssRender', function() {
+        $feed = Cache::tags(['RssController', 'Biography', 'biographiesRssRender'])->rememberForever('biographiesRssRender', function() {
 
             // create new feed
             $feed = App::make("feed");
 
             // creating rss feed with our most recent 20 posts
-            $items = $this->repo->getLastBooks(20);
+            $items = $this->repo->getLastBiographies(20);
 
             // set your feed's title, description, link, pubdate and language
             $feed->title = Cache::tags(['Setting'])->get('title');
             $feed->description = Cache::tags(['Setting'])->get('description');
             $feed->logo = asset('img/logo.jpg');
-            $feed->link = route('rss/books');
+            $feed->link = route('rss/biographies');
             $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
             $feed->pubdate = $items[0]->updated_at;
             $feed->lang = Cache::tags(['Setting'])->get('language_code');
@@ -40,7 +40,7 @@ class RssController extends Controller
             foreach ($items as $item) {
 
                 $enclosure = [
-                    'url'=> asset('images/books/' . $item->id . '/original/' .$item->thumbnail),
+                    'url'=> asset('images/biographies/' . $item->id . '/original/' .$item->thumbnail),
                     'type'=>'image/jpeg'
                 ];
 
@@ -48,10 +48,10 @@ class RssController extends Controller
                 $feed->add(
                     $item->name,
                     '',
-                    route('book', ['slug' => $item->slug]),
+                    route('biography', ['slug' => $item->slug]),
                     $item->created_at,
                     $item->description,
-                    $item->description,
+                    $item->content,
                     $enclosure
                 );
             }

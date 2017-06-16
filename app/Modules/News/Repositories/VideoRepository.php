@@ -90,4 +90,14 @@ class VideoRepository extends EloquentRepository
             Log::warning('Video {$videoId} : ($videoTitle)' . trans('log.video_deleting_error'));
         }
     }
+
+
+    public function getLastVideoItems($take = 20)
+    {
+        return $this->where('is_active', 1)
+            ->orderBy('created_at', 'desc')
+            ->findAll()
+            ->take($take);
+    }
+
 }

@@ -4,68 +4,52 @@ namespace App\Modules\News\Http\Controllers\Frontend;
 
 use App;
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
-use App\Modules\News\Models\News;
-use App\Modules\News\Models\NewsCategory;
-use App\Modules\News\Models\Video;
-use App\Modules\News\Repositories\NewsCategoryRepository;
-use App\Modules\News\Repositories\NewsRepository;
+use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Modules\News\Repositories\VideoRepository;
-use Illuminate\Support\Facades\Redis;
-use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Cache;
 
 class RssController extends Controller
 {
+    public $repo;
 
-    public $repository;
-
-    public function __construct()
+    public function __construct(Repo $repo)
     {
-        $this->repository = new NewsRepository();
+        $this->repo = $repo;
     }
 
     public function bandNewsRssRender()
     {
-        // create new feed
-        $feed = App::make("feed");
+        $feed = Cache::tags(['RssController', 'News', 'bandNewsRssRender'])->rememberForever('bandNewsRssRender', function() {
 
-        // multiple feeds are supported
-        // if you are using caching you should set different cache keys for your feeds
+            // create new feed
+            $feed = App::make("feed");
 
-        // cache the feed for 60 minutes (second parameter is optional)
-        $feed->setCache(60, 'bandNewsRssRender');
-
-        // check if there is cached feed and build new only if is not
-        if (!$feed->isCached())
-        {
             // creating rss feed with our most recent 20 posts
-            //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
-
-            $newsItems = $this->repository->where('break_news', 1)->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
+            $newsItems = $this->repo->getBandNewsItems();
 
             // set your feed's title, description, link, pubdate and language
-            $feed->title = Redis::get('title');
-            $feed->description = Redis::get('description');
-            $feed->logo = asset(Redis::get('logo'));
-            $feed->link = url('feed');
+            $feed->title = Cache::tags(['Setting'])->get('title');
+            $feed->description = Cache::tags(['Setting'])->get('description');
+            $feed->logo = asset('img/logo.jpg');
+            $feed->link = route('rss/band_news');
             $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
-            $feed->pubdate = $newsItems[0]->created_at;
-            $feed->lang = Redis::get('language_code');
+            $feed->pubdate = $newsItems[0]->updated_at;
+            $feed->lang = Cache::tags(['Setting'])->get('language_code');
             $feed->setShortening(true); // true or false
             $feed->setTextLimit(100); // maximum length of description text
 
-            foreach ($newsItems as $newsItem)
-            {
+            foreach ($newsItems as $newsItem) {
+
                 $enclosure = [
-                    'url'=> Redis::get('url') . '/' . $newsItem->thumbnail,
+                    'url'=> asset('images/news_images/' . $newsItem->id . '/thumbnail/' .$newsItem->thumbnail),
                     'type'=>'image/jpeg'
                 ];
 
                 // set item's title, author, url, pubdate, description, content, enclosure (optional)*
                 $feed->add(
                     $newsItem->title,
-                    'yazar',
-                    URL::to($newsItem->slug),
+                    $newsItem->is_show_editor_profile ? $newsItem->user->name : '', //editor isminin görünmesi istemiyor ise boş değer veriyoruz.
+                    route('show_news', ['slug' => $newsItem->slug]),
                     $newsItem->created_at,
                     $newsItem->description,
                     $newsItem->content,
@@ -73,369 +57,52 @@ class RssController extends Controller
                 );
             }
 
-        }
+            return $feed;
+        });
+
 
         // first param is the feed format
         // optional: second param is cache duration (value of 0 turns off caching)
         // optional: you can set custom cache key with 3rd param as string
-        return $feed->render('atom');
-
         // to return your feed as a string set second param to -1
         // $xml = $feed->render('atom', -1);
+
+        return $feed->render('atom');
     }
 
     public function boxCuffRssRender()
-{
-    // create new feed
-    $feed = App::make("feed");
-
-    // multiple feeds are supported
-    // if you are using caching you should set different cache keys for your feeds
-
-    // cache the feed for 60 minutes (second parameter is optional)
-    $feed->setCache(60, 'boxCuffRssRender');
-
-    // check if there is cached feed and build new only if is not
-    if (!$feed->isCached())
     {
-        // creating rss feed with our most recent 20 posts
-        //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
+        $feed = Cache::tags(['RssController', 'News', 'boxCuffRssRender'])->rememberForever('boxCuffRssRender', function() {
 
-        $newsItems = $this->repository->where('box_cuff', 1)->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
+            // create new feed
+            $feed = App::make("feed");
 
-        // set your feed's title, description, link, pubdate and language
-        $feed->title = Redis::get('title');
-        $feed->description = Redis::get('description');
-        $feed->logo = asset(Redis::get('logo'));
-        $feed->link = url('feed');
-        $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
-        $feed->pubdate = $newsItems[0]->created_at;
-        $feed->lang = Redis::get('language_code');
-        $feed->setShortening(true); // true or false
-        $feed->setTextLimit(100); // maximum length of description text
-
-        foreach ($newsItems as $newsItem)
-        {
-            // set item's title, author, url, pubdate, description, content, enclosure (optional)*
-            $feed->add($newsItem->title, 'yazar', URL::to($newsItem->slug), $newsItem->created_at, $newsItem->description, $newsItem->content);
-        }
-
-    }
-
-    // first param is the feed format
-    // optional: second param is cache duration (value of 0 turns off caching)
-    // optional: you can set custom cache key with 3rd param as string
-    return $feed->render('atom');
-
-    // to return your feed as a string set second param to -1
-    // $xml = $feed->render('atom', -1);
-
-}
-
-    public function breakNewsRssRender()
-    {
-        // create new feed
-        $feed = App::make("feed");
-
-        // multiple feeds are supported
-        // if you are using caching you should set different cache keys for your feeds
-
-        // cache the feed for 60 minutes (second parameter is optional)
-        $feed->setCache(60, 'breaknewsRssRender');
-
-        // check if there is cached feed and build new only if is not
-        if (!$feed->isCached())
-        {
             // creating rss feed with our most recent 20 posts
-            //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
-
-            $newsItems = $this->repository->where('break_news', 1)->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
+            $newsItems = $this->repo->getBoxCuffNewsItems();
 
             // set your feed's title, description, link, pubdate and language
-            $feed->title = Redis::get('title');
-            $feed->description = Redis::get('description');
-            $feed->logo = asset(Redis::get('logo'));
-            $feed->link = url('feed');
+            $feed->title = Cache::tags(['Setting'])->get('title');
+            $feed->description = Cache::tags(['Setting'])->get('description');
+            $feed->logo = asset('img/logo.jpg');
+            $feed->link = route('rss/box_cuff');
             $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
-            $feed->pubdate = $newsItems[0]->created_at;
-            $feed->lang = Redis::get('language_code');
-            $feed->setShortening(true); // true or false
-            $feed->setTextLimit(100); // maximum length of description text
-
-            foreach ($newsItems as $newsItem)
-            {
-                // set item's title, author, url, pubdate, description, content, enclosure (optional)*
-                $feed->add($newsItem->title, 'yazar', URL::to($newsItem->slug), $newsItem->created_at, $newsItem->description, $newsItem->content);
-            }
-
-        }
-
-        // first param is the feed format
-        // optional: second param is cache duration (value of 0 turns off caching)
-        // optional: you can set custom cache key with 3rd param as string
-        return $feed->render('atom');
-
-        // to return your feed as a string set second param to -1
-        // $xml = $feed->render('atom', -1);
-    }
-
-    public function mainCuffRssRender()
-    {
-        // create new feed
-        $feed = App::make("feed");
-
-        // multiple feeds are supported
-        // if you are using caching you should set different cache keys for your feeds
-
-        // cache the feed for 60 minutes (second parameter is optional)
-        $feed->setCache(60, 'bandNewsRssRender');
-
-        // check if there is cached feed and build new only if is not
-        if (!$feed->isCached())
-        {
-            // creating rss feed with our most recent 20 posts
-            //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
-
-            $newsItems = $this->repository->where('main_cuff', 1)->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
-
-
-            // set your feed's title, description, link, pubdate and language
-            $feed->title = Redis::get('title');
-            $feed->description = Redis::get('description');
-            $feed->logo = asset(Redis::get('logo'));
-            $feed->link = url('feed');
-            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
-            $feed->pubdate = $newsItems[0]->created_at;
-            $feed->lang = Redis::get('language_code');
-            $feed->setShortening(true); // true or false
-            $feed->setTextLimit(100); // maximum length of description text
-
-            foreach ($newsItems as $newsItem)
-            {
-                // set item's title, author, url, pubdate, description, content, enclosure (optional)*
-                $feed->add($newsItem->title, 'yazar', URL::to($newsItem->slug), $newsItem->created_at, $newsItem->description, $newsItem->content);
-            }
-
-        }
-
-        // first param is the feed format
-        // optional: second param is cache duration (value of 0 turns off caching)
-        // optional: you can set custom cache key with 3rd param as string
-        return $feed->render('atom');
-
-        // to return your feed as a string set second param to -1
-        // $xml = $feed->render('atom', -1);
-    }
-
-    public function miniCuffRssRender()
-    {
-        // create new feed
-        $feed = App::make("feed");
-
-        // multiple feeds are supported
-        // if you are using caching you should set different cache keys for your feeds
-
-        // cache the feed for 60 minutes (second parameter is optional)
-        $feed->setCache(60, 'bandNewsRssRender');
-
-        // check if there is cached feed and build new only if is not
-        if (!$feed->isCached())
-        {
-            // creating rss feed with our most recent 20 posts
-            //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
-
-            $newsItems = $this->repository->where('mini_cuff', 1)->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
-
-
-            // set your feed's title, description, link, pubdate and language
-            $feed->title = Redis::get('title');
-            $feed->description = Redis::get('description');
-            $feed->logo = asset(Redis::get('logo'));
-            $feed->link = url('feed');
-            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
-            $feed->pubdate = $newsItems[0]->created_at;
-            $feed->lang = Redis::get('language_code');
-            $feed->setShortening(true); // true or false
-            $feed->setTextLimit(100); // maximum length of description text
-
-            foreach ($newsItems as $newsItem)
-            {
-                // set item's title, author, url, pubdate, description, content, enclosure (optional)*
-                $feed->add($newsItem->title, 'yazar', URL::to($newsItem->slug), $newsItem->created_at, $newsItem->description, $newsItem->content);
-            }
-
-        }
-
-        // first param is the feed format
-        // optional: second param is cache duration (value of 0 turns off caching)
-        // optional: you can set custom cache key with 3rd param as string
-        return $feed->render('atom');
-
-        // to return your feed as a string set second param to -1
-        // $xml = $feed->render('atom', -1);
-    }
-
-    public function allNewsRssRender()
-    {
-        // create new feed
-        $feed = App::make("feed");
-
-        // multiple feeds are supported
-        // if you are using caching you should set different cache keys for your feeds
-
-        // cache the feed for 60 minutes (second parameter is optional)
-        $feed->setCache(60, 'bandNewsRssRender');
-
-        // check if there is cached feed and build new only if is not
-        if (!$feed->isCached())
-        {
-            // creating rss feed with our most recent 20 posts
-            //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
-
-            $newsItems = $this->repository->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
-
-            // set your feed's title, description, link, pubdate and language
-            $feed->title = Redis::get('title');
-            $feed->description = Redis::get('description');
-            $feed->logo = asset(Redis::get('logo'));
-            $feed->link = url('feed');
-            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
-            $feed->pubdate = $newsItems[0]->created_at;
-            $feed->lang = Redis::get('language_code');
-            $feed->setShortening(true); // true or false
-            $feed->setTextLimit(100); // maximum length of description text
-
-            foreach ($newsItems as $newsItem)
-            {
-                // set item's title, author, url, pubdate, description, content, enclosure (optional)*
-                $feed->add($newsItem->title, 'yazar', URL::to($newsItem->slug), $newsItem->created_at, $newsItem->description, $newsItem->content);
-            }
-
-        }
-
-        // first param is the feed format
-        // optional: second param is cache duration (value of 0 turns off caching)
-        // optional: you can set custom cache key with 3rd param as string
-        return $feed->render('atom');
-
-        // to return your feed as a string set second param to -1
-        // $xml = $feed->render('atom', -1);
-    }
-
-    public function videosRssRender()
-    {
-
-        $this->repository = new VideoRepository();
-
-        // create new feed
-        $feed = App::make("feed");
-
-        // multiple feeds are supported
-        // if you are using caching you should set different cache keys for your feeds
-
-        // cache the feed for 60 minutes (second parameter is optional)
-        $feed->setCache(60, 'videosRssRender');
-
-        // check if there is cached feed and build new only if is not
-        if (!$feed->isCached())
-        {
-            // creating rss feed with our most recent 20 posts
-            //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
-
-            $records = $this->repository->where('is_active',1)->orderBy('created_at', 'desc')->take(20)->get();
-
-
-            // set your feed's title, description, link, pubdate and language
-            $feed->title = Redis::get('title');
-            $feed->description = Redis::get('description');
-            $feed->logo = asset(Redis::get('logo'));
-            $feed->link = url('feed');
-            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
-            $feed->pubdate = $records[0]->created_at;
-            $feed->lang = Redis::get('language_code');
-            $feed->setShortening(true); // true or false
-            $feed->setTextLimit(100); // maximum length of description text
-
-            foreach ($records as $record)
-            {
-                // set item's title, author, url, pubdate, description, content, enclosure (optional)*
-                $feed->add(
-                    $record->name,
-                    'author',
-                    URL::to($record->slug),
-                    $record->created_at,
-                    $record->description,
-                    $record->description
-                );
-            }
-
-        }
-
-        // first param is the feed format
-        // optional: second param is cache duration (value of 0 turns off caching)
-        // optional: you can set custom cache key with 3rd param as string
-        return $feed->render('atom');
-
-        // to return your feed as a string set second param to -1
-        // $xml = $feed->render('atom', -1);
-    }
-
-    public function getNewsCategoryRssRender($categoryName)
-    {
-
-        $this->repository = new NewsCategoryRepository();
-
-        $categoryName = strip_tags($categoryName);
-        $categoryName = htmlspecialchars($categoryName);
-        $categoryName = trim($categoryName);
-
-
-        // create new feed
-        $feed = App::make("feed");
-
-        // multiple feeds are supported
-        // if you are using caching you should set different cache keys for your feeds
-
-        // cache the feed for 60 minutes (second parameter is optional)
-        $feed->setCache(60, $categoryName);
-
-        // check if there is cached feed and build new only if is not
-        if (!$feed->isCached()) {
-            // creating rss feed with our most recent 20 posts
-            //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
-
-            $newsCategory = $this->repository->where('is_active', 1)->where('name', $categoryName)->orderBy('created_at', 'desc')->take(20)->first();
-
-
-            if(empty($newsCategory) || !isset($newsCategory) ){
-                return "hata-boş 404";
-            }
-
-            $newsItems = $newsCategory->news;
-
-
-            // set your feed's title, description, link, pubdate and language
-            $feed->title = Redis::get('title');
-            $feed->description = Redis::get('description');
-            $feed->logo = asset(Redis::get('logo'));
-            $feed->link = url('feed');
-            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
-            $feed->pubdate = $newsItems[0]->created_at;
-            $feed->lang = Redis::get('language_code');
+            $feed->pubdate = $newsItems[0]->updated_at;
+            $feed->lang = Cache::tags(['Setting'])->get('language_code');
             $feed->setShortening(true); // true or false
             $feed->setTextLimit(100); // maximum length of description text
 
             foreach ($newsItems as $newsItem) {
+
                 $enclosure = [
-                    'url' => Redis::get('url') . '/' . $newsItem->thumbnail,
-                    'type' => 'image/jpeg'
+                    'url'=> asset('images/news_images/' . $newsItem->id . '/thumbnail/' .$newsItem->thumbnail),
+                    'type'=>'image/jpeg'
                 ];
 
                 // set item's title, author, url, pubdate, description, content, enclosure (optional)*
                 $feed->add(
                     $newsItem->title,
-                    'yazar',
-                    URL::to($newsItem->slug),
+                    $newsItem->is_show_editor_profile ? $newsItem->user->name : '', //editor isminin görünmesi istemiyor ise boş değer veriyoruz.
+                    route('show_news', ['slug' => $newsItem->slug]),
                     $newsItem->created_at,
                     $newsItem->description,
                     $newsItem->content,
@@ -443,13 +110,354 @@ class RssController extends Controller
                 );
             }
 
-            // first param is the feed format
-            // optional: second param is cache duration (value of 0 turns off caching)
-            // optional: you can set custom cache key with 3rd param as string
-            return $feed->render('atom');
+            return $feed;
+        });
 
-            // to return your feed as a string set second param to -1
-            // $xml = $feed->render('atom', -1);
-        }
+
+        // first param is the feed format
+        // optional: second param is cache duration (value of 0 turns off caching)
+        // optional: you can set custom cache key with 3rd param as string
+        // to return your feed as a string set second param to -1
+        // $xml = $feed->render('atom', -1);
+
+        return $feed->render('atom');
     }
+
+    public function breakNewsRssRender()
+    {
+        $feed = Cache::tags(['RssController', 'News', 'breakNewsRssRender'])->rememberForever('breakNewsRssRender', function() {
+
+            // create new feed
+            $feed = App::make("feed");
+
+            // creating rss feed with our most recent 20 posts
+            $newsItems = $this->repo->getBreakNewsItems();
+
+            // set your feed's title, description, link, pubdate and language
+            $feed->title = Cache::tags(['Setting'])->get('title');
+            $feed->description = Cache::tags(['Setting'])->get('description');
+            $feed->logo = asset('img/logo.jpg');
+            $feed->link = route('rss/break_news');
+            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
+            $feed->pubdate = $newsItems[0]->updated_at;
+            $feed->lang = Cache::tags(['Setting'])->get('language_code');
+            $feed->setShortening(true); // true or false
+            $feed->setTextLimit(100); // maximum length of description text
+
+            foreach ($newsItems as $newsItem) {
+
+                $enclosure = [
+                    'url'=> asset('images/news_images/' . $newsItem->id . '/thumbnail/' .$newsItem->thumbnail),
+                    'type'=>'image/jpeg'
+                ];
+
+                // set item's title, author, url, pubdate, description, content, enclosure (optional)*
+                $feed->add(
+                    $newsItem->title,
+                    $newsItem->is_show_editor_profile ? $newsItem->user->name : '', //editor isminin görünmesi istemiyor ise boş değer veriyoruz.
+                    route('show_news', ['slug' => $newsItem->slug]),
+                    $newsItem->created_at,
+                    $newsItem->description,
+                    $newsItem->content,
+                    $enclosure
+                );
+            }
+
+            return $feed;
+        });
+
+
+        // first param is the feed format
+        // optional: second param is cache duration (value of 0 turns off caching)
+        // optional: you can set custom cache key with 3rd param as string
+        // to return your feed as a string set second param to -1
+        // $xml = $feed->render('atom', -1);
+
+        return $feed->render('atom');
+    }
+
+    public function mainCuffRssRender()
+    {
+        $feed = Cache::tags(['RssController', 'News', 'mainCuffRssRender'])->rememberForever('mainCuffRssRender', function() {
+
+            // create new feed
+            $feed = App::make("feed");
+
+            // creating rss feed with our most recent 20 posts
+            $newsItems = $this->repo->getMainCuffItems();
+
+            // set your feed's title, description, link, pubdate and language
+            $feed->title = Cache::tags(['Setting'])->get('title');
+            $feed->description = Cache::tags(['Setting'])->get('description');
+            $feed->logo = asset('img/logo.jpg');
+            $feed->link = route('rss/main_cuff');
+            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
+            $feed->pubdate = $newsItems[0]->updated_at;
+            $feed->lang = Cache::tags(['Setting'])->get('language_code');
+            $feed->setShortening(true); // true or false
+            $feed->setTextLimit(100); // maximum length of description text
+
+            foreach ($newsItems as $newsItem) {
+
+                $enclosure = [
+                    'url'=> asset('images/news_images/' . $newsItem->id . '/thumbnail/' .$newsItem->thumbnail),
+                    'type'=>'image/jpeg'
+                ];
+
+                // set item's title, author, url, pubdate, description, content, enclosure (optional)*
+                $feed->add(
+                    $newsItem->title,
+                    $newsItem->is_show_editor_profile ? $newsItem->user->name : '', //editor isminin görünmesi istemiyor ise boş değer veriyoruz.
+                    route('show_news', ['slug' => $newsItem->slug]),
+                    $newsItem->created_at,
+                    $newsItem->description,
+                    $newsItem->content,
+                    $enclosure
+                );
+            }
+
+            return $feed;
+        });
+
+
+        // first param is the feed format
+        // optional: second param is cache duration (value of 0 turns off caching)
+        // optional: you can set custom cache key with 3rd param as string
+        // to return your feed as a string set second param to -1
+        // $xml = $feed->render('atom', -1);
+
+        return $feed->render('atom');
+    }
+
+    public function miniCuffRssRender()
+    {
+        $feed = Cache::tags(['RssController', 'News', 'miniCuffRssRender'])->rememberForever('miniCuffRssRender', function() {
+
+            // create new feed
+            $feed = App::make("feed");
+
+            // creating rss feed with our most recent 20 posts
+            $newsItems = $this->repo->getMiniCuffItems();
+
+            // set your feed's title, description, link, pubdate and language
+            $feed->title = Cache::tags(['Setting'])->get('title');
+            $feed->description = Cache::tags(['Setting'])->get('description');
+            $feed->logo = asset('img/logo.jpg');
+            $feed->link = route('rss/mini_cuff');
+            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
+            $feed->pubdate = $newsItems[0]->updated_at;
+            $feed->lang = Cache::tags(['Setting'])->get('language_code');
+            $feed->setShortening(true); // true or false
+            $feed->setTextLimit(100); // maximum length of description text
+
+            foreach ($newsItems as $newsItem) {
+
+                $enclosure = [
+                    'url'=> asset('images/news_images/' . $newsItem->id . '/thumbnail/' .$newsItem->thumbnail),
+                    'type'=>'image/jpeg'
+                ];
+
+                // set item's title, author, url, pubdate, description, content, enclosure (optional)*
+                $feed->add(
+                    $newsItem->title,
+                    $newsItem->is_show_editor_profile ? $newsItem->user->name : '', //editor isminin görünmesi istemiyor ise boş değer veriyoruz.
+                    route('show_news', ['slug' => $newsItem->slug]),
+                    $newsItem->created_at,
+                    $newsItem->description,
+                    $newsItem->content,
+                    $enclosure
+                );
+            }
+
+            return $feed;
+        });
+
+
+        // first param is the feed format
+        // optional: second param is cache duration (value of 0 turns off caching)
+        // optional: you can set custom cache key with 3rd param as string
+        // to return your feed as a string set second param to -1
+        // $xml = $feed->render('atom', -1);
+
+        return $feed->render('atom');
+    }
+
+    public function allNewsRssRender()
+    {
+        $feed = Cache::tags(['RssController', 'News', 'allNewsRssRender'])->rememberForever('allNewsRssRender', function() {
+
+            // create new feed
+            $feed = App::make("feed");
+
+            // creating rss feed with our most recent 20 posts
+            $newsItems = $this->repo->getBandNewsItems();
+
+            // set your feed's title, description, link, pubdate and language
+            $feed->title = Cache::tags(['Setting'])->get('title');
+            $feed->description = Cache::tags(['Setting'])->get('description');
+            $feed->logo = asset('img/logo.jpg');
+            $feed->link = route('rss/all_news');
+            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
+            $feed->pubdate = $newsItems[0]->updated_at;
+            $feed->lang = Cache::tags(['Setting'])->get('language_code');
+            $feed->setShortening(true); // true or false
+            $feed->setTextLimit(100); // maximum length of description text
+
+            foreach ($newsItems as $newsItem) {
+
+                $enclosure = [
+                    'url'=> asset('images/news_images/' . $newsItem->id . '/thumbnail/' .$newsItem->thumbnail),
+                    'type'=>'image/jpeg'
+                ];
+
+                // set item's title, author, url, pubdate, description, content, enclosure (optional)*
+                $feed->add(
+                    $newsItem->title,
+                    $newsItem->is_show_editor_profile ? $newsItem->user->name : '', //editor isminin görünmesi istemiyor ise boş değer veriyoruz.
+                    route('show_news', ['slug' => $newsItem->slug]),
+                    $newsItem->created_at,
+                    $newsItem->description,
+                    $newsItem->content,
+                    $enclosure
+                );
+            }
+
+            return $feed;
+        });
+
+
+        // first param is the feed format
+        // optional: second param is cache duration (value of 0 turns off caching)
+        // optional: you can set custom cache key with 3rd param as string
+        // to return your feed as a string set second param to -1
+        // $xml = $feed->render('atom', -1);
+
+        return $feed->render('atom');
+    }
+
+    public function videosRssRender(VideoRepository $repo)
+    {
+        $feed = Cache::tags(['RssController', 'News', 'videosRssRender'])->rememberForever('videosRssRender', function() use ($repo){
+
+            // create new feed
+            $feed = App::make("feed");
+
+            // creating rss feed with our most recent 20 posts
+            $videoItems = $repo->getLastVideoItems();
+
+            // set your feed's title, description, link, pubdate and language
+            $feed->title = Cache::tags(['Setting'])->get('title');
+            $feed->description = Cache::tags(['Setting'])->get('description');
+            $feed->logo = asset('img/logo.jpg');
+            $feed->link = route('rss/videos');
+            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
+            $feed->pubdate = $videoItems[0]->updated_at;
+            $feed->lang = Cache::tags(['Setting'])->get('language_code');
+            $feed->setShortening(true); // true or false
+            $feed->setTextLimit(100); // maximum length of description text
+
+            foreach ($videoItems as $videoItem) {
+
+                $enclosure = [
+                    'url'=> asset('videos/' . $videoItem->id . '/' .$videoItem->thumbnail),
+                    'type'=>'image/jpeg'
+                ];
+
+                // set item's title, author, url, pubdate, description, content, enclosure (optional)*
+                $feed->add(
+                    $videoItem->name,
+                     '',
+                    route('show_videos', ['slug' => $videoItem->slug]),
+                    $videoItem->created_at,
+                    $videoItem->content,
+                    $videoItem->content,
+                    $enclosure
+                );
+            }
+
+            return $feed;
+        });
+
+
+        // first param is the feed format
+        // optional: second param is cache duration (value of 0 turns off caching)
+        // optional: you can set custom cache key with 3rd param as string
+        // to return your feed as a string set second param to -1
+        // $xml = $feed->render('atom', -1);
+
+        return $feed->render('atom');
+    }
+
+//    public function getNewsCategoryRssRender($categoryName)
+//    {
+//
+//        $this->repo = new NewsCategoryrepo();
+//
+//        $categoryName = strip_tags($categoryName);
+//        $categoryName = htmlspecialchars($categoryName);
+//        $categoryName = trim($categoryName);
+//
+//
+//        // create new feed
+//        $feed = App::make("feed");
+//
+//        // multiple feeds are supported
+//        // if you are using caching you should set different cache keys for your feeds
+//
+//        // cache the feed for 60 minutes (second parameter is optional)
+//        $feed->setCache(60, $categoryName);
+//
+//        // check if there is cached feed and build new only if is not
+//        if (!$feed->isCached()) {
+//            // creating rss feed with our most recent 20 posts
+//            //$posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
+//
+//            $newsCategory = $this->repo->where('is_active', 1)->where('name', $categoryName)->orderBy('created_at', 'desc')->take(20)->first();
+//
+//
+//            if(empty($newsCategory) || !isset($newsCategory) ){
+//                return "hata-boş 404";
+//            }
+//
+//            $newsItems = $newsCategory->news;
+//
+//
+//            // set your feed's title, description, link, pubdate and language
+//            $feed->title = Redis::get('title');
+//            $feed->description = Redis::get('description');
+//            $feed->logo = asset(Redis::get('logo'));
+//            $feed->link = url('feed');
+//            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
+//            $feed->pubdate = $newsItems[0]->created_at;
+//            $feed->lang = Redis::get('language_code');
+//            $feed->setShortening(true); // true or false
+//            $feed->setTextLimit(100); // maximum length of description text
+//
+//            foreach ($newsItems as $newsItem) {
+//                $enclosure = [
+//                    'url' => Redis::get('url') . '/' . $newsItem->thumbnail,
+//                    'type' => 'image/jpeg'
+//                ];
+//
+//                // set item's title, author, url, pubdate, description, content, enclosure (optional)*
+//                $feed->add(
+//                    $newsItem->title,
+//                    'yazar',
+//                    URL::to($newsItem->slug),
+//                    $newsItem->created_at,
+//                    $newsItem->description,
+//                    $newsItem->content,
+//                    $enclosure
+//                );
+//            }
+//
+//            // first param is the feed format
+//            // optional: second param is cache duration (value of 0 turns off caching)
+//            // optional: you can set custom cache key with 3rd param as string
+//            return $feed->render('atom');
+//
+//            // to return your feed as a string set second param to -1
+//            // $xml = $feed->render('atom', -1);
+//        }
+//    }
 }

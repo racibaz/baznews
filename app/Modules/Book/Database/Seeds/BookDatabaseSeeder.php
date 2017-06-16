@@ -21,6 +21,7 @@ class BookDatabaseSeeder extends Seeder
         $this->call(BookWidgetManagerTableSeeder::class);
         $this->call(PermissionTableSeeder::class);
         $this->call(SitemapsTableSeeder::class);
+        $this->call(RssTableSeeder::class);
 
 
         $setting = Setting::where('attribute_key','book_count')->first();

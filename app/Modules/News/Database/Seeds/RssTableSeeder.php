@@ -47,5 +47,12 @@ class RssTableSeeder extends Seeder
             'order'             => 1,
             'is_active'         => 1
         ]);
+
+        \App\Models\Rss::create([
+            'name'              => 'Videolar',
+            'url'               => 'rss/videos',
+            'order'             => 1,
+            'is_active'         => 1
+        ]);
     }
 }

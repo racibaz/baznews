@@ -21,7 +21,7 @@ class SitemapController extends Controller
     public function sitemap()
     {
         $newsItems = Cache::tags(['NewsController', 'News', 'sitemap'])->rememberForever('sitemap:news', function(){
-            return  $this->repo->getLastNews();
+            return  $this->repo->getLastNewsItems();
         });
 
         return Theme::response('modules.news.frontend.sitemap.sitemap', compact('newsItems'), 200, [

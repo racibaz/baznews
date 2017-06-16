@@ -81,7 +81,7 @@ class NewsRepository extends EloquentRepository
     }
 
 
-    public function getLastNews($take = 1000)
+    public function getLastNewsItems($take = 1000)
     {
         return $this->where('status', 1)
             ->where('is_active', 1)
@@ -89,4 +89,50 @@ class NewsRepository extends EloquentRepository
             ->findAll()
             ->take($take);
     }
+
+    public function getBandNewsItems($take = 20)
+    {
+        return $this->where('band_news', 1)
+            ->where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->findAll()
+            ->take($take);
+    }
+
+    public function getBoxCuffNewsItems($take = 20)
+    {
+        return $this->where('box_cuff', 1)
+            ->where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->findAll()
+            ->take($take);
+    }
+
+    public function getBreakNewsItems($take = 20)
+    {
+        return $this->where('break_news', 1)
+            ->where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->findAll()
+            ->take($take);
+    }
+
+    public function getMainCuffItems($take = 20)
+    {
+        return $this->where('main_cuff', 1)
+            ->where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->findAll()
+            ->take($take);
+    }
+
+    public function getMiniCuffItems($take = 20)
+    {
+        return $this->where('mini_cuff', 1)
+            ->where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->findAll()
+            ->take($take);
+    }
+
 }
