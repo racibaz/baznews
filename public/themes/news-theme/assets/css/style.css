@@ -1699,7 +1699,7 @@ footer .footer-bottom .cpy {
     text-decoration: underline;
 }
 .author-box .author-detail .author-info .bio-text{
-    max-height: 36px;
+    max-height: 30px;
     overflow: hidden;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
