@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Events\UserRegistered;
+use App\Models\Advertisement;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\WidgetManager;
@@ -80,6 +81,8 @@ class BaznewsServiceProvider extends ServiceProvider
             //TODO cachelenecek
             View::share('activeTheme', Theme::getActive());
 
+            //TODO cachelenecek
+            View::share('advertisements', Advertisement::advertisements());
         }
     }
 
