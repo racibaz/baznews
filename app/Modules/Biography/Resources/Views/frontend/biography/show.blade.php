@@ -5,7 +5,7 @@
     <div class="container" id="container">
         <ol class="breadcrumb">
             <li>
-                <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+                <a href="{!! route('index') !!}">{{trans('common.homepage')}}.</a>
             </li>
             <li>
                 {{$record->name}}
@@ -33,7 +33,7 @@
                             <div class="col-md-8">
                                 <div class="content">
                                     <h2>{{$record->title}}</h2>
-                                    {{$record->content}}
+                                    {!! $record->content !!}
                                 </div><!-- /.content -->
                             </div>
                         </div><!-- /.bio-content -->
@@ -49,9 +49,9 @@
                         <ul>
                             @foreach($otherBiographies as $otherBiography)
                                 <li>
-                                    <a href="#">
+                                    <a href="{!! route('biography', ['slug' => $otherBiography->slug]) !!}">
                                         <span class="bio-img">
-                                            <img src="{{ asset('images/biographies/' . $record->id . '/104x78_' . $record->photo) }}" alt="{{$record->title}}"  class="img-responsive">
+                                            <img src="{{ asset('images/biographies/' . $otherBiography->id . '/104x78_' . $otherBiography->photo) }}" alt="{{$otherBiography->title}}"  class="img-responsive">
                                         </span>
                                         <div class="bio-detail">
                                             <span class="bio-title">{{$otherBiography->name}}</span>

@@ -6,17 +6,17 @@
     <div class="container" id="container">
         <ol class="breadcrumb">
             <li>
-                <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+                <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
             </li>
             @foreach($record->article_categories as $articleCategory)
                 <li>
-                    <a href="{!! route('show_news_category', ['slug' => $articleCategory->slug]) !!}">
+                    <a href="{!! route('article_category', ['slug' => $articleCategory->slug]) !!}">
                         {{$articleCategory->name}}
                     </a>
                 </li>
             @endforeach
             <li>
-                {{$record->name}}
+                {{$record->title}}
             </li>
         </ol>
         <div class="row">
@@ -26,7 +26,7 @@
                     <div class="article-head">
                         <div class="author-img">
                             <a href="{!! route('article_author', ['slug' => $record->article_author->slug]) !!}" title="{{$record->name}}">
-                                <img src="{{asset('images/article_author_images/' . $record->id . '/58x58_/' .$record->photo)}}" alt="{{$record->name}}">
+                                <img src="{{asset('images/article_author_images/' . $record->article_author->id . '/58x58_' . $record->article_author->photo)}}" class="img-circle">
                             </a>
                         </div>
                         <div class="article-detail">

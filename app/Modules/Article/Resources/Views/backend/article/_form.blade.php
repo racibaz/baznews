@@ -118,10 +118,10 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="form-group">
-                        {!! Form::label('hit', trans('article::article.hit'),['class'=> 'control-label']) !!}
-                        {!! Form::number('hit', $record->hit, ['placeholder' => trans('article::article.hit') ,'class' => 'form-control']) !!}
-                    </div>
+                    {{--<div class="form-group">--}}
+                        {{--{!! Form::label('hit', trans('article::article.hit'),['class'=> 'control-label']) !!}--}}
+                        {{--{!! Form::number('hit', $record->hit, ['placeholder' => trans('article::article.hit') ,'class' => 'form-control']) !!}--}}
+                    {{--</div>--}}
                     <div class="form-group">
                         {!! Form::label('order', trans('article::article.order'),['class'=> 'control-label']) !!}
                         {!! Form::number('order', $record->order, ['placeholder' => trans('article::article.order') ,'class' => 'form-control']) !!}
