@@ -10,7 +10,7 @@
         <div class="container" id="container">
             <ol class="breadcrumb">
                 <li>
-                    <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+                    <a href="{!! route('index') !!}">{{trans('common.homepage')}}.</a>
                 </li>
                 <li>
                     <a href="{!! route('show_video_gallery', ['slug' => $videoGallery->slug]) !!}">

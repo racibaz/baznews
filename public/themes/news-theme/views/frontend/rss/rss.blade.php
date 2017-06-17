@@ -34,6 +34,12 @@
             </div>
         </div>
     </article><!-- /.article -->
+@endsection
 
-
+@section('meta_tags')
+    {{--<title> {{ $record->name }}  </title>--}}
+    {{--<meta name="keywords" content="{{$record->keywords}}"/>--}}
+    {{--<meta name="description" content="{{$record->description}}"/>--}}
+    {{--<meta name='subtitle' content='This is my subtitle'>--}}
+    {{--<meta name='pagename' content='{{$record->title}}'>--}}
 @endsection

@@ -8,7 +8,7 @@
     </div>
     <div class="container" id="container">
         <div class="breadcrumbs">
-            <p><a href="{!! route('index') !!}">{{trans('news.common')}}.</a>   \
+            <p><a href="{!! route('index') !!}">{{trans('common.homepage')}}</a> \
                 <a href="{!! route('article_category', ['slug' => $record->slug]) !!}">{{$record->name}}</a>
             </p>
         </div>

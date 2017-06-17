@@ -9,7 +9,7 @@
     <div class="container" id="container">
         <ol class="breadcrumb">
             <li>
-                <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+                <a href="{!! route('index') !!}">{{trans('common.homepage')}}.</a>
             </li>
             <li>
                 <a href="{!! route('article_category', ['slug' => $record->slug]) !!}">{{$record->name}}</a>
