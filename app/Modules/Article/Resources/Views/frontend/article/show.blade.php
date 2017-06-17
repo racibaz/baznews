@@ -15,7 +15,7 @@
             </li>
             @foreach($record->article_categories as $articleCategory)
                 <li>
-                    <a href="{!! route('show_news_category', ['slug' => $articleCategory->slug]) !!}">
+                    <a href="{!! route('article_category', ['slug' => $articleCategory->slug]) !!}">
                         {{$articleCategory->name}}
                     </a>
                 </li>
