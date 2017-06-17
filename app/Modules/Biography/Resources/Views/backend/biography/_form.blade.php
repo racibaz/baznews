@@ -56,7 +56,9 @@
                         {!! Form::label('photo', trans('biography::biography.photo'),['class'=> 'control-label','style'=>'width:100%']) !!}
 
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                <img src="{{ asset('images/biographies/' . $record->id . '/thumbnail/' . $record->photo)}}" alt="{{$record->name}}"/>
+                            </div>
                             <div>
                                 <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('biography::biography.select_image')}}</span><span class="fileinput-exists">{{trans('biography::biography.change')}}</span>{!! Form::file('photo') !!}</span>
                                 <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('biography::biography.remove')}}</a>
@@ -71,14 +73,10 @@
                         {!! Form::label('keywords', trans('biography::biography.keywords'),['class'=> 'control-label']) !!}
                         {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('biography::biography.keywords') ,'class' => 'form-control tagsinput']) !!}
                     </div>
-                    <div class="form-group">
-                        {!! Form::label('order', trans('biography::biography.order'),['class'=> 'control-label']) !!}
-                        {!! Form::number('order', $record->order, ['placeholder' => trans('biography::biography.order') ,'class' => 'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('hit', trans('biography::biography.hit'),['class'=> 'control-label']) !!}
-                        {!! Form::number('hit', $record->hit, ['placeholder' => trans('biography::biography.hit') ,'class' => 'form-control']) !!}
-                    </div>
+                    {{--<div class="form-group">--}}
+                        {{--{!! Form::label('hit', trans('biography::biography.hit'),['class'=> 'control-label']) !!}--}}
+                        {{--{!! Form::number('hit', $record->hit, ['placeholder' => trans('biography::biography.hit') ,'class' => 'form-control']) !!}--}}
+                    {{--</div>--}}
                     <!-- /.box-body -->
                 </div>
             </div>
@@ -91,7 +89,6 @@
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fa fa-minus"></i></button>
-
                     </div>
                 </div>
                 <div class="box-body">
@@ -106,6 +103,10 @@
                             {!! Form::checkbox('is_active', null , $record->is_active) !!}
                             {{trans('common.is_active')}}
                         </label>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('order', trans('biography::biography.order'),['class'=> 'control-label']) !!}
+                        {!! Form::number('order', $record->order, ['placeholder' => trans('biography::biography.order') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('status', trans('biography::biography.status'),['class'=> ' control-label']) !!}
