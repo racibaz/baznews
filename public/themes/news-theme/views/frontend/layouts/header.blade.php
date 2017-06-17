@@ -77,3 +77,4 @@
         </div><!-- /.container-fluid -->
     </nav>
 </header>
+@include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])

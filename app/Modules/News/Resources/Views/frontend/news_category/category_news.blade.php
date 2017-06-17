@@ -1,11 +1,6 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
-        </div>
-    </div>
     <article class="container" id="container">
         <div class="row">
             <div class="col-lg-8" id="content">
@@ -48,9 +43,11 @@
                                             </div><!-- /.cols -->
                                             <div class="col-lg-8 col-md-9 col-xs-8">
                                                 <div class="news-right-txt">
-                                                    <a href="{!! route('show_news', ['slug' => $record->slug]) !!}">
-                                                        <h2>{{$record->title}}</h2>
-                                                    </a>
+                                                    <div class="news-title">
+                                                        <a href="{!! route('show_news', ['slug' => $record->slug]) !!}">
+                                                            <h2>{{$record->title}}</h2>
+                                                        </a>
+                                                    </div>
                                                     <div class="news-meta-left">
                                                         <a href="#" class="meta-date" title="">
                                                             <i class="fa fa-clock-o"></i>{{$record->updated_at->diffForHumans()}}

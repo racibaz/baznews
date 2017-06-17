@@ -617,9 +617,10 @@ header{
     color: #000;
     font-weight: bold;
     text-align: center;
-    line-height: 1em;
-    min-height: 38px;
+    line-height: 1.2em;
+    height: 39px;
     text-transform: uppercase;
+    overflow: hidden;
 }
 #post-box-slider .bx-wrapper .thumbnail:hover {
 
@@ -1698,7 +1699,7 @@ footer .footer-bottom .cpy {
     text-decoration: underline;
 }
 .author-box .author-detail .author-info .bio-text{
-    max-height: 36px;
+    max-height: 30px;
     overflow: hidden;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
@@ -1920,9 +1921,9 @@ footer .footer-bottom .cpy {
 .news-box .frame-image a img{
     width: 100%;
 }
-.news-box .news-right-txt{
-    padding:0 15px 15px 0;
-    background-color: #fff;
+.news-box .news-right-txt .news-title{
+    max-height:26px;
+    overflow: hidden;
 }
 
 .news-box .news-right-txt a h2{
@@ -1945,10 +1946,13 @@ footer .footer-bottom .cpy {
     line-height: 1em;
 }
 .news-box .news-right-txt .news-excerpt{
-    max-height: 111px;
+    max-height: 75px;
     font-size: 14px;
     line-height: 1.3em;
     overflow: hidden;
+}
+.news-box .news-right-txt .news-excerpt p{
+    margin: 0;
 }
 
 /* ==========================================================================

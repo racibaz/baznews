@@ -2,12 +2,6 @@
 
 @section('content')
 
-    <div class="row">
-        <div class="col-md-12">
-            @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
-        </div>
-    </div>
-
     <div class="container" id="container">
         <ol class="breadcrumb">
             <li>
