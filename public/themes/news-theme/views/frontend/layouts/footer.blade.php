@@ -72,6 +72,9 @@
         <div class="footer-bottom">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="algolia-logo pull-left">
+                        <img src="{{ asset('img/Algolia_logo_bg-white.svg')}}" alt="Algolia" width="65">
+                    </div>
                     <div class="cpy text-center">
                         <span>{{Cache::tags('Setting')->get('copyright')}}</span>
                     </div>
