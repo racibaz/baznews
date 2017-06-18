@@ -35,7 +35,7 @@
                         </tr>
                         <tr>
                             <th>{{trans('advertisement.code')}}</th>
-                            <td>{{$record->code}}</td>
+                            <td>{!! $record->code !!}</td>
                         </tr>
                         <tr>
                             <th>{{trans('advertisement.description')}}</th>

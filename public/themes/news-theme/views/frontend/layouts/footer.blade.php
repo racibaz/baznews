@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="ft-logo">
-                        <img src="{{ Theme::asset($activeTheme . '::img/news-theme-logo.jpg')}}" alt="News Logo" width="80">
+                        <img src="{{ asset('img/logo.jpg')}}" alt="Logo" width="80">
                     </div><!-- /.ft-logo -->
                 </div><!-- /.col-md-4 -->
                 <div class="col-md-8">

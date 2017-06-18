@@ -43,10 +43,10 @@
                 </div><!-- /.hright -->
 
                 <div class="advert-header pull-right hidden-xs">
-                    <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Header" class="img-responsive">
+                    @if($advertisements->where('name','header_1')->first())
+                        {!! $advertisements->where('name','header_1')->first()->code !!}
+                    @endif
                 </div>
-
-
             </div><!-- /.container -->
         </div><!-- /.navbar-header -->
         <div class="menu">
