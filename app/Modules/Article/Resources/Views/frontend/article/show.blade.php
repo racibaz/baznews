@@ -50,6 +50,15 @@
                     {{--yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>--}}
                 </article>
 
+                <div class="share-box">
+                    <div class="title-section">
+                        <h1>
+                            <span>Paylaş</span>
+                        </h1>
+                    </div>
+                    {!! Cache::tags('Setting')->get('addthis') !!}
+                </div>
+
                 <div class="other-article">
                     <div class="title-section">
                         <h2>
