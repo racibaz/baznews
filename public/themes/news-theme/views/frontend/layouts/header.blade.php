@@ -1,9 +1,13 @@
 <div id="sticky-container" class="adverts">
     <div id="dfp-pageskin-sol" class="ads-left-160 ads">
-        <img src="{{ Theme::asset($activeTheme . '::img/ads-image1.jpeg')}}" alt="">
+        @if($advertisements->where('name','left_blok_1')->first())
+            {!! $advertisements->where('name','left_blok_1')->first()->code !!}
+        @endif
     </div>
     <div id="dfp-160-kare-sag" class="ads-right-160 ads">
-        <img src="{{ Theme::asset($activeTheme . '::img/ads-image1.jpeg')}}" alt="">
+        @if($advertisements->where('name','right_blok_1')->first())
+            {!! $advertisements->where('name','right_blok_1')->first()->code !!}
+        @endif
     </div>
 </div>
 <!-- Header -->
