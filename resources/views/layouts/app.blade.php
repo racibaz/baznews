@@ -44,7 +44,15 @@
             radioClass: 'iradio_square',
             increaseArea: '20%' // optional
         });
+        var privacy = $('.privacy-done');
+        if(privacy.length>0){
+            privacy.click(function () {
+                $('#privacyCheck').iCheck('check');
+                $('#register').modal('hide');
+            });
+        }
     });
+
 </script>
 </body>
 </html>

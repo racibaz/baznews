@@ -15,7 +15,7 @@
                     <form role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
                         <div class="form-group has-feedback{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <input type="text" class="form-control" placeholder="{{trans('login.name')}}"  name="name" value="{{ old('name') }}" id="name" autofocus>
+                            <input type="text" class="form-control" placeholder="{{trans('login.name')}}"  name="name" value="{{ old('name') }}" id="name" autofocus required>
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                             @if ($errors->has('name'))
                                 <span class="help-block">
@@ -24,7 +24,7 @@
                             @endif
                         </div>
                         <div class="form-group has-feedback{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <input type="email" class="form-control" placeholder="{{trans('login.mail')}}" name="email" value="{{ old('email') }}" id="email">
+                            <input type="email" class="form-control" placeholder="{{trans('login.mail')}}" name="email" value="{{ old('email') }}" id="email" required>
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                             @if ($errors->has('email'))
                                 <span class="help-block">
@@ -33,7 +33,7 @@
                             @endif
                         </div>
                         <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <input type="password" class="form-control" placeholder="{{trans('login.password')}}" name="password" id="password">
+                            <input type="password" class="form-control" placeholder="{{trans('login.password')}}" name="password" id="password" required>
                             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                             @if ($errors->has('password'))
                                 <span class="help-block">
@@ -42,14 +42,14 @@
                             @endif
                         </div>
                         <div class="form-group has-feedback{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <input type="password" class="form-control" placeholder="{{trans('login.confirm_password')}}" name="password_confirmation" id="password-confirm">
+                            <input type="password" class="form-control" placeholder="{{trans('login.confirm_password')}}" name="password_confirmation" id="password-confirm" required>
                             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                         </div>
                         <div class="row">
                             <div class="col-xs-8">
                                 <div class="checkbox icheck">
                                     <label>
-                                        <input type="checkbox"> <a data-toggle="modal" href="#register">{{trans('login.user_contract')}}</a> {{trans('login.accept')}}
+                                        <input type="checkbox" class="privacy-check" id="privacyCheck"> <a data-toggle="modal" href="#register">{{trans('login.user_contract')}}</a> {{trans('login.accept')}}
                                     </label>
                                 </div>
                             </div>
@@ -93,28 +93,11 @@
                     ipsa nesciunt nostrum, repellat suscipit voluptatibus?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Kabul etmiyorum.</button>
-                <button type="button" class="btn btn-primary">Kabul ediyorum.</button>
+                <button type="button" class="btn btn-default privacy-cancel" data-dismiss="modal">Kabul etmiyorum.</button>
+                <button type="button" class="btn btn-primary privacy-done">Kabul ediyorum.</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 @endsection
 
-@section('js')
-    <!-- jQuery 2.2.3 -->
-    <script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
-    <!-- Bootstrap 3.3.6 -->
-    <script src="/css/bootstrap/js/bootstrap.min.js"></script>
-    <!-- iCheck -->
-    <script src="/plugins/iCheck/icheck.js"></script>
-    <script>
-        //iChech Plugin
-        $('.icheck').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
-
-    </script>
-@endsection
