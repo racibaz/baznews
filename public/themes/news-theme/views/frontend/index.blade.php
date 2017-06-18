@@ -29,7 +29,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 hidden-xs">
+                <div class="col-md-4 hidden-xs hidden-sm">
                     <div class="main-slider slider module" id="spot-slider">
                         <ul class="bxslider">
                             @foreach($boxCuffNewsItems as $boxCuffNewsItem)

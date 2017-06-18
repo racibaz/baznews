@@ -85,47 +85,6 @@
 
     newsCoverList();
 
-
-    /*--------------------------------------------------------
-     Left Right Advert
-     * --------------------------------------------------------*/
-    var width = $(window).width();
-    var left =  $('#dfp-pageskin-sol').width();
-    var right =  $('#dfp-160-kare-sag').width();
-    var ct = $('#container').width();
-    $(window).resize(function () {
-        adsSize();
-    });
-    // $(window).load(function () {
-    //     adsSize();
-    // });
-    function adsSize() {
-        ct = $('#container').width();
-        width = $(window).width();
-        var sum = ct + left + right;
-        console.log("Cont: "+ct+" Sağ Kutu: "+right+" Sol Kutu: "+left);
-        var size = 0;
-        if(width < sum){
-            size = (width - sum) / 2;
-        }else if(width > sum){
-            size = (width - sum) / 2;
-        }
-        console.log("Size: "+size);
-        $('#dfp-160-kare-sag').css("right",size-10+"px").show();
-        $('#dfp-pageskin-sol').css("left",size-10+"px").show();
-        $('.ads').css('opacity','1');
-    }
-    $(window).scroll(function () {
-        if($(window).scrollTop()>178){
-            $("#sticky-container").sticky({
-                topSpacing: 0,
-                bottomSpacing: ( $('.ads').outerHeight() + $('footer').outerHeight())+80
-            });
-        }else{
-            $("#sticky-container").unstick();
-        }
-    });
-
     /*--------------------------------------------------------
      Center Carousel Horizontal News Slider
      * --------------------------------------------------------*/
@@ -213,7 +172,48 @@
     $('.ticker').ticker()
 
 })(jQuery);
-
 // Window load event used just in case window height is dependant upon images
 
+/*--------------------------------------------------------
+ Left Right Advert
+ * --------------------------------------------------------*/
+var width = $(window).width();
+var left =  $('#dfp-pageskin-sol').width();
+var right =  $('#dfp-160-kare-sag').width();
+var ct = $('#container').width();
+
+
+function adsSize() {
+    ct = $('#container').width();
+    width = $(window).width();
+    var sum = ct + left + right;
+    console.log("Cont: "+ct+" Sağ Kutu: "+right+" Sol Kutu: "+left);
+    var size = 0;
+    if(width < sum){
+        size = (width - sum) / 2;
+    }else if(width > sum){
+        size = (width - sum) / 2;
+    }
+    console.log("Size: "+size);
+    $('#dfp-160-kare-sag').css("right",size-10+"px").show();
+    $('#dfp-pageskin-sol').css("left",size-10+"px").show();
+    $('.ads').css('opacity','1');
+}
+
+$(window).scroll(function () {
+    if($(window).scrollTop()>178){
+        $("#sticky-container").sticky({
+            topSpacing: 0,
+            bottomSpacing: ( $('.ads').outerHeight() + $('footer').outerHeight())+80
+        });
+    }else{
+        $("#sticky-container").unstick();
+    }
+});
+
+$(window).resize(function () {
+    adsSize();
+});
+
+adsSize();
 
