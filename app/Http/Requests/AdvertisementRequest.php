@@ -39,7 +39,8 @@ class AdvertisementRequest extends FormRequest
                         'max:255',
                         Rule::unique('advertisements'),
                     ],
-                    'description' => 'max:255',
+                    'code'        => 'nullable',
+                    'description' => 'max:255|nullable',
                 ];
             }
             case 'PUT':
@@ -52,7 +53,8 @@ class AdvertisementRequest extends FormRequest
                         'max:255',
                         Rule::unique('advertisements')->ignore($id),
                     ],
-                    'description' => 'max:255',
+                    'code'        => 'nullable',
+                    'description' => 'max:255|nullable',
                 ];
             }
             default:break;

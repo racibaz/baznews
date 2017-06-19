@@ -19,8 +19,8 @@ class CreateAnnouncementsTable extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->integer('order')->nullable();
-            $table->boolean('is_active');
             $table->dateTime('show_time')->nullable();
+            $table->boolean('is_active');
             $table->timestamps();
             $table->softDeletes();
         });

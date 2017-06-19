@@ -3,10 +3,10 @@
 namespace App\Modules\Book\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Modules\Book\Http\Requests\BookPublisherRequest;
 use App\Modules\Book\Models\BookPublisher;
 use App\Modules\Book\Repositories\BookPublisherRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -36,7 +36,7 @@ class BookPublisherController extends BackendController
         return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
     }
 
-    public function store(Request $request)
+    public function store(BookPublisherRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -53,7 +53,7 @@ class BookPublisherController extends BackendController
         return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
     }
 
-    public function update(Request $request, BookPublisher $record)
+    public function update(BookPublisherRequest $request, BookPublisher $record)
     {
         return $this->save($record);
     }

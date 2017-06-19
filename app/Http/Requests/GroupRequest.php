@@ -39,8 +39,7 @@ class GroupRequest extends FormRequest
                         'max:255',
                         Rule::unique('groups'),
                     ],
-                    'display_name' => 'max:255',
-                    'description' => 'max:255',
+                    'description' => 'max:255|nullable',
                 ];
             }
             case 'PUT':
@@ -53,8 +52,7 @@ class GroupRequest extends FormRequest
                         'max:255',
                         Rule::unique('groups')->ignore($id),
                     ],
-                    'display_name' => 'max:255',
-                    'description' => 'max:255',
+                    'description' => 'max:255|nullable',
                 ];
             }
             default:break;

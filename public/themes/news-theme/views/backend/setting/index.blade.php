@@ -328,18 +328,6 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    {!! Form::label('rss_count', trans('setting.rss_count'),['class'=> 'control-label']) !!}
-                                    {!! Form::number('rss_count', $records->where('attribute_key','rss_count')->first()->attribute_value, ['placeholder' => trans('setting.rss_count') ,'class' => 'form-control']) !!}
-                                </div><!-- /.form-group -->
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    {!! Form::label('rss_cache_life_time', trans('setting.rss_cache_life_time'),['class'=> 'control-label']) !!}
-                                    {!! Form::number('rss_cache_life_time', $records->where('attribute_key','rss_cache_life_time')->first()->attribute_value, ['placeholder' => trans('setting.rss_cache_life_time') ,'class' => 'form-control']) !!}
-                                </div><!-- /.form-group -->
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
                                     {!! Form::label('sitemap_count', trans('setting.sitemap_count'),['class'=> 'control-label']) !!}
                                     {!! Form::number('sitemap_count', $records->where('attribute_key','sitemap_count')->first()->attribute_value, ['placeholder' => trans('setting.sitemap_count') ,'class' => 'form-control']) !!}
                                 </div><!-- /.form-group -->

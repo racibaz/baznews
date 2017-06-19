@@ -23,9 +23,33 @@ class AnnouncementRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title' => 'required|max:255',
-            'order' => 'integer',
-        ];
+        switch($this->method())
+        {
+            case 'GET':
+            case 'DELETE':
+            {
+                return [];
+            }
+            case 'POST':
+            {
+                return [
+                    'title'         => 'required|max:255',
+                    'description'   => 'max:255|nullable',
+                    'order'         => 'integer|nullable',
+                    'show_time'     => 'date|nullable',
+                ];
+            }
+            case 'PUT':
+            case 'PATCH':
+            {
+                return [
+                    'title'         => 'required|max:255',
+                    'description'   => 'max:255|nullable',
+                    'order'         => 'integer|nullable',
+                    'show_time'     => 'date|nullable',
+                ];
+            }
+            default:break;
+        }
     }
 }

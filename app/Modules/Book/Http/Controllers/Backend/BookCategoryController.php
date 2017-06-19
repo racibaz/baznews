@@ -5,6 +5,7 @@ namespace App\Modules\Book\Http\Controllers\Backend;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Controller;
 use App\Library\Uploader;
+use App\Modules\Book\Http\Requests\BookCategoryRequest;
 use App\Modules\Book\Models\BookCategory;
 use App\Modules\Book\Repositories\BookCategoryRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -43,7 +44,7 @@ class BookCategoryController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(BookCategoryRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -62,7 +63,7 @@ class BookCategoryController extends BackendController
     }
 
 
-    public function update(Request $request, BookCategory $record)
+    public function update(BookCategoryRequest $request, BookCategory $record)
     {
         return $this->save($record);
     }
@@ -96,60 +97,42 @@ class BookCategoryController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
 
-        $rules = array(
-            'name' => 'required|min:4|max:255',
-            'slug' => [
-                Rule::unique('book_categories')->ignore($record->id),
-            ],
-            'thumbnail' => 'image',
-            'description' => 'max:255',
-            'keywords' => 'max:255',
-            'order' => 'integer|nullable',
-        );
-        $v = Validator::make($input, $rules);
 
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
+        if ($result) {
+
+            if(!empty($input['thumbnail'])) {
+
+                $oldPath = $record->thumbnail;
+                $document_name = $input['thumbnail']->getClientOriginalName();
+                $destination = '/images/books_category/'. $result->id . '/original';
+                Uploader::fileUpload($result  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                Uploader::removeFile($oldPath);
+
+                Image::make(public_path('images/books_category/' . $result->id .'/original/'. $result->thumbnail))
+                    ->fit(180, 275)
+                    ->save(public_path('images/books_category/' . $result->id . '/180x275_' . $document_name));
             }
 
-            if ($result) {
 
-                if(!empty($input['thumbnail'])) {
-
-                    $oldPath = $record->thumbnail;
-                    $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/images/books_category/'. $result->id . '/original';
-                    Uploader::fileUpload($result  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
-                    Uploader::removeFile($oldPath);
-
-                    Image::make(public_path('images/books_category/' . $result->id .'/original/'. $result->thumbnail))
-                        ->fit(180, 275)
-                        ->save(public_path('images/books_category/' . $result->id . '/180x275_' . $document_name));
-                }
+            /*
+             * Delete related caches
+             * */
+            $this->removeCacheTags(['BookCategoryController']);
+            $this->removeHomePageCache();
 
 
-                /*
-                 * Delete related caches
-                 * */
-                $this->removeCacheTags(['BookCategoryController']);
-                $this->removeHomePageCache();
-
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }

@@ -4,15 +4,13 @@ namespace App\Modules\Book\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
 use App\Library\Uploader;
+use App\Modules\Book\Http\Requests\BookAuthorRequest;
 use App\Modules\Book\Models\BookAuthor;
 use App\Modules\Book\Repositories\BookAuthorRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rule;
 use Image;
 
 class BookAuthorController extends BackendController
@@ -38,7 +36,7 @@ class BookAuthorController extends BackendController
         return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
     }
 
-    public function store(Request $request)
+    public function store(BookAuthorRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -55,7 +53,7 @@ class BookAuthorController extends BackendController
         return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
     }
 
-    public function update(Request $request, BookAuthor $record)
+    public function update(BookAuthorRequest $request, BookAuthor $record)
     {
         return $this->save($record);
     }
@@ -80,79 +78,60 @@ class BookAuthorController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['user_id'] = \Auth::user()->id;
 
-        $rules = array(
-            'name' => 'required|min:4|max:255',
-            'slug' => [
-                Rule::unique('book_authors')->ignore($record->id),
-            ],
-            'link' => 'url|nullable',
-            'thumbnail' => 'image',
-        );
-        $v = Validator::make($input, $rules);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
+        if ($result) {
+
+            if(!empty($input['thumbnail'])) {
+                $oldPath = $record->thumbnail;
+                $document_name = $input['thumbnail']->getClientOriginalName();
+                $destination = '/images/book_authors/'. $result->id;
+                Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                Uploader::removeFile($oldPath);
+
+                $thumbnailPath = public_path('images/book_authors/' . $result->id .'/'. $result->thumbnail);
+
+                Image::make($thumbnailPath)
+                    ->fit(58, 58)
+                    ->save(public_path('images/book_authors/' . $result->id . '/58x58_' . $document_name));
+
+                Image::make($thumbnailPath)
+                    ->fit(165, 90)
+                    ->save(public_path('images/book_authors/' . $result->id . '/165x90_' . $document_name));
+
+                Image::make($thumbnailPath)
+                    ->fit(196, 150)
+                    ->save(public_path('images/book_authors/' . $result->id . '/196x150_' . $document_name));
+
+                Image::make($thumbnailPath)
+                    ->fit(220, 310)
+                    ->save(public_path('images/book_authors/' . $result->id . '/220x310_' . $document_name));
+
+                Image::make($thumbnailPath)
+                    ->fit(322, 265)
+                    ->save(public_path('images/book_authors/' . $result->id . '/322x265_' . $document_name));
+
+                Image::make($thumbnailPath)
+                    ->fit(497, 358)
+                    ->save(public_path('images/book_authors/' . $result->id . '/497x358_' . $document_name));
             }
 
-            if ($result) {
+            /*
+             * Delete related caches
+             * */
+            $this->removeCacheTags(['BookAuthorController']);
+            $this->removeHomePageCache();
 
-                if(!empty($input['thumbnail'])) {
-                    $oldPath = $record->thumbnail;
-                    $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/images/book_authors/'. $result->id;
-                    Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
-                    Uploader::removeFile($oldPath);
-
-                    $thumbnailPath = public_path('images/book_authors/' . $result->id .'/'. $result->thumbnail);
-
-                    Image::make($thumbnailPath)
-                        ->fit(58, 58)
-                        ->save(public_path('images/book_authors/' . $result->id . '/58x58_' . $document_name));
-
-                    Image::make($thumbnailPath)
-                        ->fit(165, 90)
-                        ->save(public_path('images/book_authors/' . $result->id . '/165x90_' . $document_name));
-
-                    Image::make($thumbnailPath)
-                        ->fit(196, 150)
-                        ->save(public_path('images/book_authors/' . $result->id . '/196x150_' . $document_name));
-
-                    Image::make($thumbnailPath)
-                        ->fit(220, 310)
-                        ->save(public_path('images/book_authors/' . $result->id . '/220x310_' . $document_name));
-
-                    Image::make($thumbnailPath)
-                        ->fit(322, 265)
-                        ->save(public_path('images/book_authors/' . $result->id . '/322x265_' . $document_name));
-
-                    Image::make($thumbnailPath)
-                        ->fit(497, 358)
-                        ->save(public_path('images/book_authors/' . $result->id . '/497x358_' . $document_name));
-                }
-
-
-
-                /*
-                 * Delete related caches
-                 * */
-                $this->removeCacheTags(['BookAuthorController']);
-                $this->removeHomePageCache();
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }
