@@ -298,9 +298,7 @@
                     <div class="module">
                         <div class="module">
                             <div class="advert advert-right">
-                                <img src="{{ Theme::asset($activeTheme . '::img/advert-images/336x280.png') }}" alt="Advert Sidebar" class="img-responsive">
-                                <br>
-                                {!!Cache::get('right_blok_1')!!}
+                                {!! Cache::tags('Setting', 'Advertisement')->get('right_blok_1') !!}
                             </div>
                         </div>
                     </div>

@@ -1,13 +1,9 @@
 <div id="sticky-container" class="adverts">
     <div id="dfp-pageskin-sol" class="ads-left-160 ads">
-        @if($advertisements->where('name','left_blok_1')->first())
-            {!! $advertisements->where('name','left_blok_1')->first()->code !!}
-        @endif
+        {!! Cache::tags('Setting', 'Advertisement')->get('left') !!}
     </div>
     <div id="dfp-160-kare-sag" class="ads-right-160 ads">
-        @if($advertisements->where('name','right_blok_1')->first())
-            {!! $advertisements->where('name','right_blok_1')->first()->code !!}
-        @endif
+        {!! Cache::tags('Setting', 'Advertisement')->get('right') !!}
     </div>
 </div>
 <!-- Header -->
@@ -47,9 +43,7 @@
                 </div><!-- /.hright -->
 
                 <div class="advert-header pull-right hidden-xs">
-                    @if($advertisements->where('name','header_1')->first())
-                        {!! $advertisements->where('name','header_1')->first()->code !!}
-                    @endif
+                    {!! Cache::tags('Setting', 'Advertisement')->get('header_1') !!}
                 </div>
             </div><!-- /.container -->
         </div><!-- /.navbar-header -->
