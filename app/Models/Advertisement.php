@@ -25,9 +25,4 @@ class Advertisement extends Model
     {
         return Advertisement::where('is_active',1)->pluck('name','id');
     }
-
-    public static function advertisements()
-    {
-        return Advertisement::where('is_active',1)->get();
-    }
 }

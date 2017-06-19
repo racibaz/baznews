@@ -129,9 +129,7 @@
                             <!-- /.image-banner-list -->
                         @endforeach
                         <div class="advert-center module">
-                            @if($advertisements->where('name','center_1')->first())
-                                {!! $advertisements->where('name','center_1')->first()->code !!}
-                            @endif
+                            {!! Cache::tags('Setting', 'Advertisement')->get('center_1') !!}
                         </div>
                     </div>
                 </div><!-- /.col -->
@@ -308,10 +306,7 @@
                             {{--</div><!-- /rabpanel -->--}}
                         {{--</div><!-- /.nw-sm-img -->--}}
                         <div class="advert advert-right module">
-                            @if($advertisements->where('name','right_blok_1')->first())
-                                {!! $advertisements->where('name','right_blok_1')->first()->code !!}
-                            @endif
-                            {!!Cache::get('right_blok_1')!!}
+                            {!! Cache::tags('Setting', 'Advertisement')->get('right_block_1') !!}
                         </div>
                         @foreach($widgets->where('group','right_bar') as $widget )
                             @widget($widget['namespace'])

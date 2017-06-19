@@ -37,9 +37,9 @@
 
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('name', trans('advertisement.name'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('name', trans('advertisement.name'),['class'=> 'col-lg-2 control-label ']) !!}
                             <div class="col-lg-10">
-                                {!! Form::select('name', $advertisementList , $record->id , ['placeholder' => trans('advertisement.name'),'class' => 'form-control select2']) !!}
+                                {!! Form::select('name',$advertisementList,$record->name,['placeholder' => trans('advertisement.name'),'class' => 'form-control select2',]) !!}
                             </div>
                         </div>
                     </div>

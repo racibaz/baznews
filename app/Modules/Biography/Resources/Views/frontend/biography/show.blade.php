@@ -74,7 +74,7 @@
 
                 <div class="module">
                     <div class="advert advert-center">
-                        <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Sidebar" class="img-responsive">
+                        {!! Cache::tags('Setting', 'Advertisement')->get('center_1') !!}
                     </div>
                 </div>
 

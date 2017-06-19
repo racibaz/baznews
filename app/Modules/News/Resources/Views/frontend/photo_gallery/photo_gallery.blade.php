@@ -133,7 +133,7 @@
                             </div><!-- /.gallery-text -->
                         </div>
                         <div class="advert advert-right">
-                            <img src="http://baznews.app/themes/news-theme/assets/img/advert-images/336x280.png" alt="Advert Sidebar" class="img-responsive">
+                            {!! Cache::tags('Setting', 'Advertisement')->get('right_blok_1') !!}
                         </div>
                     </div><!-- /.gallery-details -->
                     <div class="sidebar">
