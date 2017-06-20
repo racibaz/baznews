@@ -34,6 +34,7 @@ class MenuRequest extends FormRequest
             case 'POST':
             {
                 return [
+                    'parent_id'     => 'integer|nullable',
                     'page_id'       => 'integer|nullable',
                     'name' => [
                         'required',
@@ -55,6 +56,7 @@ class MenuRequest extends FormRequest
             {
                 $id = $this->route('menu')->id;
                 return [
+                    'parent_id'     => 'integer|nullable',
                     'name' => [
                         'required',
                         'max:255',
