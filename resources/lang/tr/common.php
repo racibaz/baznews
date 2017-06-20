@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'homepage' => 'Anasayfa',
     'save' => 'Kaydet',
     'create' => 'Ekle',
     'edit' => 'Düzenle',

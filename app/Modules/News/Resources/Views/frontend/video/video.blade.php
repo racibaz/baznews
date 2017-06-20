@@ -5,7 +5,7 @@
         <div class="container" id="container">
             <ol class="breadcrumb">
                 <li>
-                    <a href="{!! route('index') !!}">{{trans('common.homepage')}}.</a>
+                    <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
                 </li>
                 <li>
                     <a href="{!! route('show_video_gallery', ['slug' => $videoGallery->slug]) !!}">
@@ -61,7 +61,6 @@
                             </div>
 
                             <div class="description">
-                                <em>{{$videoGallery->title}} / {{$video->updated_at->diffForHumans()}}</em>
                                 <h1>{{$video->name}}</h1>
                                 <h2>{{$video->content}}</h2>
                                 @foreach($tags as $tag)
