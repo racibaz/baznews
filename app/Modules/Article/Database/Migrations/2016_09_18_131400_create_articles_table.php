@@ -22,7 +22,7 @@ class CreateArticlesTable extends Migration
             $table->string('short_url')->nullable();
             $table->string('subtitle')->nullable();
             $table->string('spot')->nullable();
-            $table->string('content')->nullable();
+            $table->text('content')->nullable();
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();
             $table->unsignedInteger('hit')->default(0);

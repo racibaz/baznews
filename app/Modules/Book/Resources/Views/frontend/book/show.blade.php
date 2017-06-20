@@ -5,7 +5,7 @@
     <div class="container" id="container">
         <ol class="breadcrumb">
             <li>
-                <a href="{!! route('index') !!}">{{trans('common.homepage')}}.</a>
+                <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
             </li>
             @foreach($record->book_categories as $bookCategory)
                 <li>

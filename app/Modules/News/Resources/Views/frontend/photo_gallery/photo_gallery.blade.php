@@ -133,7 +133,7 @@
                             </div><!-- /.gallery-text -->
                         </div>
                         <div class="advert advert-right">
-                            {!! Cache::tags('Setting', 'Advertisement')->get('right_blok_1') !!}
+                            {!! Cache::tags('Setting', 'Advertisement')->get('right_block_1') !!}
                         </div>
                     </div><!-- /.gallery-details -->
                     <div class="sidebar">

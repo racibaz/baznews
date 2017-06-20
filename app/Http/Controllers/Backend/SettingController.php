@@ -273,16 +273,6 @@ class SettingController extends BackendController
             $this->repo->update($record->id,['attribute_value' => $input['disqus']]);
         }
 
-        if(!empty($input['rss_count'])){
-            $record = $this->repo->findBy('attribute_key', 'rss_count');
-            $this->repo->update($record->id,['attribute_value' => $input['rss_count']]);
-        }
-
-        if(!empty($input['rss_cache_life_time'])){
-            $record = $this->repo->findBy('attribute_key', 'rss_cache_life_time');
-            $this->repo->update($record->id,['attribute_value' => $input['rss_cache_life_time']]);
-        }
-
         if(!empty($input['sitemap_count'])){
             $record = $this->repo->findBy('attribute_key', 'sitemap_count');
             $this->repo->update($record->id,['attribute_value' => $input['sitemap_count']]);

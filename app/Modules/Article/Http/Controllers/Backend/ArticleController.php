@@ -5,23 +5,20 @@ namespace App\Modules\Article\Http\Controllers\Backend;
 use App\Http\Controllers\Backend\BackendController;
 use App\Library\Link\LinkShortener;
 use App\Models\Setting;
+use App\Modules\Article\Http\Requests\ArticleRequest;
 use App\Modules\Article\Models\Article;
 use App\Modules\Article\Models\ArticleAuthor;
 use App\Modules\Article\Models\ArticleCategory;
 use App\Modules\Article\Repositories\ArticleRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Support\Facades\Cache;
 use League\Flysystem\Exception;
 use Mews\Purifier\Facades\Purifier;
 use Mremi\UrlShortener\Model\Link;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rule;
 
 class ArticleController extends BackendController
 {
@@ -99,7 +96,7 @@ class ArticleController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -140,7 +137,7 @@ class ArticleController extends BackendController
     }
 
 
-    public function update(Request $request, Article $record)
+    public function update(ArticleRequest $request, Article $record)
     {
         return $this->save($record);
     }
@@ -168,66 +165,44 @@ class ArticleController extends BackendController
         $input['hit'] = isset($input['hit']) ? $input['hit'] : 1;
         $input['order'] = isset($input['order']) ? $input['order'] : 1;
 
-        $rules = array(
-            'user_id' => 'required',
-            'article_author_id' => 'required',
-            'title' => 'required',
-            'subtitle' => 'max:255|nullable',
-            'spot' => 'max:255|nullable',
-            'slug' => [
-                Rule::unique('articles')->ignore($record->id),
-            ],
-            'description' => 'max:255|nullable',
-            'keywords' => 'max:255|nullable',
-            'hit'   => 'integer',
-            'order' => 'integer',
-        );
-        $v = Validator::make($input, $rules);
 
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id, $input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id, $input);
-            } else {
-                $result = $this->repo->create($input);
-            }
+        if ($result) {
 
-            if ($result) {
+            $this->articleArticleCategoriesStore($result, $input);
 
-                $this->articleArticleCategoriesStore($result, $input);
+            /*
+             * slug değişmiş ise ve link kısaltmaya izin verilmişse
+             * google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
+             *
+             * */
+            if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
 
-                /*
-                 * slug değişmiş ise ve link kısaltmaya izin verilmişse
-                 * google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
-                 *
-                 * */
-                if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+                try{
 
-                    try{
+                    $linkShortener = new LinkShortener(new Link);
+                    $result->short_url = $linkShortener->linkShortener($result->slug);
+                    $result->save();
 
-                        $linkShortener = new LinkShortener(new Link);
-                        $result->short_url = $linkShortener->linkShortener($result->slug);
-                        $result->save();
-
-                    }catch (Exception $e){
-                        Log::warning(trans('log.link_shortener_error'));
-                    }
+                }catch (Exception $e){
+                    Log::warning(trans('log.link_shortener_error'));
                 }
-
-                $this->removeCacheTags(['ArticleController', 'Article']);
-                $this->removeHomePageCache();
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
             }
+
+            $this->removeCacheTags(['ArticleController', 'Article']);
+            $this->removeHomePageCache();
+
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 

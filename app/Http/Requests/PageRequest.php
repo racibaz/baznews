@@ -34,12 +34,15 @@ class PageRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'name' => 'required',
+                    'name'          => 'required',
                     'slug' => [
+                        'required',
+                        'max:255',
                         Rule::unique('pages'),
                     ],
-                    'description' => 'string|max:255',
-                    'keywords' => 'string|max:255',
+                    'content'       => 'nullable',
+                    'description'   => 'string|max:255|nullable',
+                    'keywords'      => 'string|max:255|nullable',
                 ];
             }
             case 'PUT':
@@ -51,8 +54,9 @@ class PageRequest extends FormRequest
                     'slug' => [
                         Rule::unique('pages')->ignore($id),
                     ],
-                    'description' => 'string|max:255',
-                    'keywords' => 'string|max:255',
+                    'content'       => 'nullable',
+                    'description'   => 'string|max:255|nullable',
+                    'keywords'      => 'string|max:255|nullable',
                 ];
             }
             default:break;

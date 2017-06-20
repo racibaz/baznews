@@ -209,16 +209,6 @@ s.setAttribute(\'data-timestamp\', +new Date());
         ]);
 
         Setting::create([
-            'attribute_key'               => 'rss_count',
-            'attribute_value'             => '20',
-        ]);
-
-        Setting::create([
-            'attribute_key'               => 'rss_cache_life_time',
-            'attribute_value'             => '60',
-        ]);
-
-        Setting::create([
             'attribute_key'               => 'sitemap_count',
             'attribute_value'             => '20',
         ]);

@@ -4,6 +4,7 @@ namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
 use App\Library\Uploader;
+use App\Modules\News\Http\Requests\PhotoRequest;
 use App\Modules\News\Models\Photo;
 use App\Modules\News\Models\PhotoGallery;
 use App\Modules\News\Repositories\PhotoRepository as Repo;
@@ -43,7 +44,7 @@ class PhotoController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(PhotoRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -62,7 +63,7 @@ class PhotoController extends BackendController
     }
 
 
-    public function update(Request $request, Photo $record)
+    public function update(PhotoRequest $request, Photo $record)
     {
         return $this->save($record);
     }
@@ -84,67 +85,47 @@ class PhotoController extends BackendController
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $rules = array(
-            'name' => 'required|max:255',
-            'slug' => [
-                Rule::unique('photo_galleries')->ignore($record->id),
-            ],
-            'subtitle' => 'max:255',
-            'file' => 'image',
-            'link' => 'url|nullable',
-            'keywords' => 'required|max:255',
-            'order' => 'integer',
-        );
-        $v = Validator::make($input, $rules);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
+        if ($result) {
+
+            if(!empty($input['file'])) {
+                $oldPath = $record->file;
+                $document_name = $input['file']->getClientOriginalName();
+                $destination = '/photos/' . $result->id;
+                Uploader::fileUpload($result, 'file', $input['file'], $destination, $document_name);
+                Uploader::removeFile($destination . '/' . $oldPath);
+
+                $originalPhotoPath = public_path('photos/' . $result->id . '/' . $result->file);
+
+                Image::make($originalPhotoPath)
+                    ->resize(58, 58)
+                    ->save(public_path('photos/' . $result->id . '/58x58_' . $result->file));
+
+                Image::make($originalPhotoPath)
+                    ->resize(224, 195)
+                    ->save(public_path('photos/' . $result->id . '/224x195_' . $result->file));
+
+                Image::make($originalPhotoPath)
+                    ->resize(497, 358)
+                    ->save(public_path('photos/' . $result->id . '/497x358_' . $result->file));
             }
+            /*
+             * Delete home page cache and related caches
+             * */
+            $this->removeCacheTags(['PhotoController']);
+            $this->removeHomePageCache();
 
-            if ($result) {
-
-                if(!empty($input['file'])) {
-                    $oldPath = $record->file;
-                    $document_name = $input['file']->getClientOriginalName();
-                    $destination = '/photos/' . $result->id;
-                    Uploader::fileUpload($result, 'file', $input['file'], $destination, $document_name);
-                    Uploader::removeFile($destination . '/' . $oldPath);
-
-                    $originalPhotoPath = public_path('photos/' . $result->id . '/' . $result->file);
-
-                    Image::make($originalPhotoPath)
-                        ->resize(58, 58)
-                        ->save(public_path('photos/' . $result->id . '/58x58_' . $result->file));
-
-                    Image::make($originalPhotoPath)
-                        ->resize(224, 195)
-                        ->save(public_path('photos/' . $result->id . '/224x195_' . $result->file));
-
-                    Image::make($originalPhotoPath)
-                        ->resize(497, 358)
-                        ->save(public_path('photos/' . $result->id . '/497x358_' . $result->file));
-                }
-                /*
-                 * Delete home page cache and related caches
-                 * */
-                $this->removeCacheTags(['PhotoController']);
-                $this->removeHomePageCache();
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }

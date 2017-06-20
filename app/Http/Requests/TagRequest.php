@@ -42,8 +42,14 @@ class TagRequest extends FormRequest
                         'max:255',
                         Rule::unique('tags'),
                     ],
-                    'display_name' => 'max:255',
-                    'description' => 'max:255',
+                    'slug' => [
+                        'required',
+                        'min:1',
+                        'max:255',
+                        Rule::unique('tags'),
+                    ],
+                    'display_name'      => 'max:255|nullable',
+                    'description'       => 'max:255|nullable',
                 ];
             }
             case 'PUT':
@@ -57,8 +63,14 @@ class TagRequest extends FormRequest
                         'max:255',
                         Rule::unique('tags')->ignore($id),
                     ],
-                    'display_name' => 'max:255',
-                    'description' => 'max:255',
+                    'slug' => [
+                        'required',
+                        'min:1',
+                        'max:255',
+                        Rule::unique('tags')->ignore($id),
+                    ],
+                    'display_name'      => 'max:255|nullable',
+                    'description'       => 'max:255|nullable',
                 ];
             }
             default:break;

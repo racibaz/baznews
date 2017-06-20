@@ -3,10 +3,10 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Modules\News\Http\Requests\NewsCategoryRequest;
 use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Repositories\NewsCategoryRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -41,7 +41,7 @@ class NewsCategoryController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(NewsCategoryRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -60,7 +60,7 @@ class NewsCategoryController extends BackendController
     }
 
 
-    public function update(Request $request, NewsCategory $record)
+    public function update(NewsCategoryRequest $request, NewsCategory $record)
     {
         return $this->save($record);
     }
@@ -83,32 +83,23 @@ class NewsCategoryController extends BackendController
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $v = NewsCategory::validate($input);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
-            }
+        if ($result) {
 
-            if ($result) {
+            $this->removeCacheTags(['NewsCategoryController', 'News']);
+            $this->removeHomePageCache();
 
-                $this->removeCacheTags(['NewsCategoryController', 'News']);
-                $this->removeHomePageCache();
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }

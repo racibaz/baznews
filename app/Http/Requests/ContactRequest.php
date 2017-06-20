@@ -23,13 +23,41 @@ class ContactRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'contact_type_id' => 'integer',
-            'full_name' => 'required|min:3|max:255',
-            'subject' => 'required|min:3|max:255',
-            'email' => 'required|email|max:255',
-            'content' => 'required|string',
-            'IP' => 'ip'
-        ];
+        switch($this->method())
+        {
+            case 'GET':
+            case 'DELETE':
+            {
+                return [];
+            }
+            case 'POST':
+            {
+                return [
+                    'contact_type_id' => 'required|integer',
+                    'full_name'       => 'required|min:3|max:255',
+                    'subject'         => 'required|min:3|max:255',
+                    'email'           => 'required|email|max:255',
+                    'content'         => 'required|string',
+                    'phone'           => 'max:17|nullable',
+                    'status'          => 'nullable',
+                    'IP'              => 'ip'
+                ];
+            }
+            case 'PUT':
+            case 'PATCH':
+            {
+                return [
+                    'contact_type_id' => 'required|integer',
+                    'full_name'       => 'required|min:3|max:255',
+                    'subject'         => 'required|min:3|max:255',
+                    'email'           => 'required|email|max:255',
+                    'content'         => 'required|string',
+                    'phone'           => 'max:17|nullable',
+                    'status'          => 'nullable',
+                    'IP'              => 'ip'
+                ];
+            }
+            default:break;
+        }
     }
 }

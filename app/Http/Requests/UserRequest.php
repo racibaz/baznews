@@ -35,6 +35,9 @@ class UserRequest extends FormRequest
             case 'POST':
             {
                 return [
+                    'language_id'           => 'integer|nullable',
+                    'country_id'            => 'integer|nullable',
+                    'city_id'               => 'integer|nullable',
                     'name' => [
                         'required',
                         'max:255'
@@ -54,15 +57,18 @@ class UserRequest extends FormRequest
                         'required',
                         'min:4'
                     ],
-                    'web_site'  => 'url|nullable',
-                    'avatar' => [
-                        'image',
-                        'max:255'
-                    ],
-                    'bio_note'  => [
-                        'string',
-                        'nullable'
-                    ]
+                    'slug'                  => 'nullable',
+                    'cell_phone'            => 'max:255|nullable',
+                    'facebook'              => 'url|nullable',
+                    'twitter'               => 'url|nullable',
+                    'pinterest'             => 'url|nullable',
+                    'linkedin'              => 'url|nullable',
+                    'youtube'               => 'url|nullable',
+                    'web_site'              => 'url|nullable',
+                    'sex'                   => 'nullable',
+                    'bio_note'              => 'string|nullable',
+                    'IP'                    => 'nullable',
+                    'last_login'            => 'ip',
                 ];
             }
             case 'PUT':
@@ -70,6 +76,9 @@ class UserRequest extends FormRequest
             {
                 $id = $this->route('user')->id;
                 return [
+                    'language_id'           => 'integer|nullable',
+                    'country_id'            => 'integer|nullable',
+                    'city_id'               => 'integer|nullable',
                     'name' => [
                         'required',
                         'max:255'
@@ -80,17 +89,18 @@ class UserRequest extends FormRequest
                         'Between:3,64',
                         Rule::unique('users')->ignore($id),
                     ],
-                    'password'                      => 'min:4|Confirmed|nullable',
-                    'password_confirmation'         => 'min:4|same:password|nullable',
-                    'web_site'  => 'url|nullable',
-                    'avatar' => [
-                        'image',
-                        'max:255'
-                    ],
-                    'bio_note'  => [
-                        'string',
-                        'nullable'
-                    ]
+                    'slug'                  => 'nullable',
+                    'cell_phone'            => 'max:255|nullable',
+                    'facebook'              => 'url|nullable',
+                    'twitter'               => 'url|nullable',
+                    'pinterest'             => 'url|nullable',
+                    'linkedin'              => 'url|nullable',
+                    'youtube'               => 'url|nullable',
+                    'web_site'              => 'url|nullable',
+                    'sex'                   => 'nullable',
+                    'bio_note'              => 'string|nullable',
+                    'IP'                    => 'nullable',
+                    'last_login'            => 'ip',
                 ];
             }
             default:break;

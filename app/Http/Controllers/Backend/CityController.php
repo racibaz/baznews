@@ -27,20 +27,6 @@ class CityController extends BackendController
      */
     public function index()
     {
-
-        $gallery = PhotoGallery::find(1);
-
-        $photo = $gallery->photos()->create([
-            'photo_gallery_id'  => $gallery->id,
-            'name'              => 'deneme',
-            'slug'              => str_slug('deneme'),
-            'file'              => 'deneme.jpg',
-            'is_active'         => 1
-        ]);
-
-
-        dd($photo->id);
-
         $records = $this->repo->paginate();
         return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
     }

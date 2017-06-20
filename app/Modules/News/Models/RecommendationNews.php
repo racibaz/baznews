@@ -5,7 +5,6 @@ namespace App\Modules\News\Models;
 use App\Models\User;
 use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 
 class RecommendationNews extends Model
 {
@@ -29,13 +28,5 @@ class RecommendationNews extends Model
     public function news()
     {
         return $this->belongsTo(News::class);
-    }
-
-    public static function validate($input) {
-        $rules = array(
-            'user_id' => 'required',
-            'news_id' => 'required',
-        );
-        return Validator::make($input, $rules);
     }
 }

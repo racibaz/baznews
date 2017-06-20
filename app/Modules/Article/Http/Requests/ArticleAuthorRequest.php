@@ -36,30 +36,22 @@ class ArticleAuthorRequest extends FormRequest
                 return [
                     'name' => [
                         'required',
-                        'max:255'
+                        'max:255',
+                        Rule::unique('article_authors'),
+
                     ],
                     'slug' => [
                         Rule::unique('article_authors'),
                     ],
                     'email' => [
-                        'string',
-                        'Between:3,64',
+                        'email',
                         Rule::unique('article_authors'),
-                    ],
-                    'photo' => [
-                        'required',
-                        'image'
-                    ],
-                    'description'  => [
-                        'string',
-                        'max:255',
                         'nullable'
                     ],
-                    'keywords'  => [
-                        'string',
-                        'max:255',
-                        'nullable'
-                    ]
+                    'cv'            => 'nullable',
+                    'photo'         => 'image|nullable',
+                    'description'   => 'string|max:255|nullable',
+                    'keywords'      => 'string|max:255|nullable',
                 ];
             }
             case 'PUT':
@@ -69,33 +61,22 @@ class ArticleAuthorRequest extends FormRequest
                 return [
                     'name' => [
                         'required',
-                        'max:255'
+                        'max:255',
+                        Rule::unique('article_authors')->ignore($id),
                     ],
                     'slug' => [
-                        'required',
-                        'string',
                         'max:255',
                         Rule::unique('article_authors')->ignore($id),
                     ],
                     'email' => [
-                        'required',
-                        'string',
-                        'Between:3,64',
+                        'email',
                         Rule::unique('article_authors')->ignore($id),
+                        'nullable',
                     ],
-                    'photo' => [
-                        'image',
-                    ],
-                    'description'  => [
-                        'string',
-                        'max:255',
-                        'nullable'
-                    ],
-                    'keywords'  => [
-                        'string',
-                        'max:255',
-                        'nullable'
-                    ]
+                    'cv'            => 'nullable',
+                    'photo'         => 'image|nullable',
+                    'description'   => 'string|max:255|nullable',
+                    'keywords'      => 'string|max:255|nullable',
                 ];
             }
             default:break;

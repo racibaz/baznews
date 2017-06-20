@@ -86,47 +86,55 @@
                 <div class="col-md-8" id="content">
                     <div class="center-content">
                         @foreach($cuffNewsCategories as $cuffNewsCategory)
-                            <div class="img-new-list ">
-                                <div class="title-section">
-                                    <div class="pull-right">
-                                        <a href="{{ route('show_news_category', $cuffNewsCategory->slug) }}" class="btn btn-primary">{{ trans('news::news_category.show_more') }}</a>
-                                    </div>
-                                    <h3>
-                                        <a href="{{ route('show_news_category', $cuffNewsCategory->slug) }}"><span> {{ $cuffNewsCategory->name }} </span></a>
-                                    </h3>
-                                </div>
-                                <div class="new-list-ct module">
-                                    <div class="left-img-ct" style="background-image:{{ Theme::asset($activeTheme . '::img/example.jpg')}};backgroun-position:0 0; background-repeat: no-repeat;background-size: cover;">
-                                        <a href="new-details.html" class="full-link"></a>
-                                        <span class="shadow"></span>
-                                        <div class="new-ct">
-                                            <h3 class="new-title">Dapibus Ridiculus Ultricies Ornare Consectetur1</h3>
-                                            <time class="new-date">
-                                                <span class="timeago" title="">11 saat önce</span>
-                                            </time>
+
+                            {{--we check the news items of news category--}}
+                            @if(count($cuffNewsCategory->news))
+
+                                <div class="img-new-list ">
+                                    <div class="title-section">
+                                        <div class="pull-right">
+                                            <a href="{{ route('show_news_category', $cuffNewsCategory->slug) }}" class="btn btn-primary">{{ trans('news::news_category.show_more') }}</a>
                                         </div>
+                                        <h3>
+                                            <a href="{{ route('show_news_category', $cuffNewsCategory->slug) }}"><span> {{ $cuffNewsCategory->name }} </span></a>
+                                        </h3>
                                     </div>
-                                    <ul class="new-list">
-                                        @foreach($cuffNewsCategory->news->take(5) as $news)
-                                            <li>
-                                                <a href="{!! route('show_news', ['slug' => $news->slug]) !!}"
-                                                   class="full-link"
-                                                   data-img="{{ asset('images/news_images/' . $news->id . '/220x310_' . $news->thumbnail) }}"
-                                                   data-title="{{$news->title}}"
-                                                   data-time="{{$news->updated_at->diffForHumans() }}">
-                                                </a>
-                                                <div class="new-ct">
-                                                    <h3 class="new-title">{{$news->title}} </h3>
-                                                    <time class="new-date">
-                                                        <span class="timeago">{{$news->updated_at->diffForHumans() }}</span>
-                                                    </time>
-                                                </div>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div><!-- /.new-list-ct -->
-                            </div><!-- /.col-md-8 -->
-                            <!-- /.image-banner-list -->
+                                    <div class="new-list-ct module">
+                                        <div class="left-img-ct" style="background-image:{{ Theme::asset($activeTheme . '::img/example.jpg')}};backgroun-position:0 0; background-repeat: no-repeat;background-size: cover;">
+                                            <a href="{!! route('show_news', ['slug' => $cuffNewsCategory->news->first()->slug]) !!}"
+                                               class="full-link"
+                                               data-img="{{ asset('images/news_images/' . $cuffNewsCategory->news->first()->id . '/220x310_' . $cuffNewsCategory->news->first()->thumbnail) }}"
+                                            ></a>
+                                            <span class="shadow"></span>
+                                            <div class="new-ct">
+                                                <h3 class="new-title">{{$cuffNewsCategory->news->first()->title}}</h3>
+                                                <time class="new-date">
+                                                    <span class="timeago" title="">{{$cuffNewsCategory->news->first()->updated_at->diffForHumans() }}</span>
+                                                </time>
+                                            </div>
+                                        </div>
+                                        <ul class="new-list">
+                                            @foreach($cuffNewsCategory->news->take(5) as $news)
+                                                <li>
+                                                    <a href="{!! route('show_news', ['slug' => $news->slug]) !!}"
+                                                       class="full-link"
+                                                       data-img="{{ asset('images/news_images/' . $news->id . '/220x310_' . $news->thumbnail) }}"
+                                                       data-title="{{$news->title}}"
+                                                       data-time="{{$news->updated_at->diffForHumans() }}">
+                                                    </a>
+                                                    <div class="new-ct">
+                                                        <h3 class="new-title">{{$news->title}} </h3>
+                                                        <time class="new-date">
+                                                            <span class="timeago">{{$news->updated_at->diffForHumans() }}</span>
+                                                        </time>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div><!-- /.new-list-ct -->
+                                </div><!-- /.col-md-8 -->
+                                <!-- /.image-banner-list -->
+                            @endif
                         @endforeach
                         <div class="advert-center module">
                             {!! Cache::tags('Setting', 'Advertisement')->get('center_1') !!}
@@ -136,175 +144,7 @@
 
                 <div class="col-md-4" id="sidebar">
                     <div class="sidebar">
-                        {{--TODO: Tablı haber görünümü istenildiğinde buradan yorumları kaldırarak kullanılabilir.--}}
-                        {{--<div class="nw-sm-img module">--}}
-                            {{--<div role="tabpanel">--}}
-                                {{--<!-- Nav tabs -->--}}
-                                {{--<ul class="nav nav-tabs" role="tablist">--}}
-                                    {{--<li role="presentation" class="active">--}}
-                                        {{--<a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>--}}
-                                    {{--</li>--}}
-                                    {{--<li role="presentation">--}}
-                                        {{--<a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>--}}
-                                    {{--</li>--}}
-                                    {{--<li role="presentation">--}}
-                                        {{--<a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>--}}
-                                    {{--</li>--}}
-                                {{--</ul>--}}
 
-                                {{--<!-- Tab panes -->--}}
-                                {{--<div class="tab-content">--}}
-                                    {{--<div role="tabpanel" class="tab-pane active" id="video">--}}
-                                        {{--<ul class="new-list no-list">--}}
-                                            {{--<li class="nw-bx no-list active">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                        {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                    {{--</span>--}}
-                                                {{--<span class="dec">1</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="nw-bx no-list">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                        {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                    {{--</span>--}}
-                                                {{--<span class="dec">2</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="nw-bx no-list">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                        {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                    {{--</span>--}}
-                                                {{--<span class="dec">3</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="nw-bx no-list">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                                {{--</span>--}}
-                                                {{--<span class="dec">4</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="nw-bx no-list">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                                {{--</span>--}}
-                                                {{--<span class="dec">5</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                        {{--</ul><!-- /.new-list -->--}}
-                                    {{--</div><!-- /.tab-pane -->--}}
-                                    {{--<div role="tabpanel" class="tab-pane" id="son_dakika">--}}
-                                        {{--<ul class="new-list no-list">--}}
-                                            {{--<li class="nw-bx no-list active">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                                {{--</span>--}}
-                                                {{--<span class="dec">1</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="nw-bx no-list">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                                {{--</span>--}}
-                                                {{--<span class="dec">2</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="nw-bx no-list">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                                {{--</span>--}}
-                                                {{--<span class="dec">3</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="nw-bx no-list">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                                {{--</span>--}}
-                                                {{--<span class="dec">4</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="nw-bx no-list">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                                {{--</span>--}}
-                                                {{--<span class="dec">5</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                        {{--</ul><!-- /.new-list -->--}}
-                                    {{--</div><!-- /.tab-pane -->--}}
-
-                                    {{--<div role="tabpanel" class="tab-pane" id="cok_okunanlar">--}}
-                                        {{--<ul class="new-list no-list">--}}
-                                            {{--<li class="nw-bx no-list active">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                                {{--</span>--}}
-                                                {{--<span class="dec">1</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="nw-bx no-list">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                                {{--</span>--}}
-                                                {{--<span class="dec">2</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="nw-bx no-list">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                                {{--</span>--}}
-                                                {{--<span class="dec">3</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="nw-bx no-list">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                                {{--</span>--}}
-                                                {{--<span class="dec">4</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="nw-bx no-list">--}}
-                                                {{--<a href="new-details.html" title="" class="full-link"></a>--}}
-                                                {{--<span class="imgwrap">--}}
-                                                    {{--<img src="{{ Theme::asset($activeTheme . '::img/mini-spot/d_296_2.jpg')}}" alt="">--}}
-                                                {{--</span>--}}
-                                                {{--<span class="dec">5</span>--}}
-                                                {{--<div class="spot">Pellentesque Quam</div>--}}
-                                                {{--<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>--}}
-                                            {{--</li>--}}
-                                        {{--</ul><!-- /.new-list -->--}}
-                                    {{--</div><!-- /.tab-pane -->--}}
-                                {{--</div><!-- /.tab-content -->--}}
-                            {{--</div><!-- /rabpanel -->--}}
-                        {{--</div><!-- /.nw-sm-img -->--}}
                         <div class="advert advert-right module">
                             {!! Cache::tags('Setting', 'Advertisement')->get('right_block_1') !!}
                         </div>

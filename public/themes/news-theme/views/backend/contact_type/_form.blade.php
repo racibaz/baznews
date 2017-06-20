@@ -11,7 +11,7 @@
             <!--Top breadcrumb start -->
             <ol class="breadcrumb">
                 <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{!! URL::route('contact_type.index') !!}"> {{ trans('contact_type.countries') }} </a></li>
+                <li><a href="{!! URL::route('contact_type.index') !!}"> {{ trans('contact_type.management') }} </a></li>
                 <li class="active"> {{ trans('common.add_update') }}</li>
             </ol>
             <!--Top breadcrumb start -->

@@ -7,7 +7,6 @@ use App\Modules\Article\Http\Requests\ArticleCategoryRequest;
 use App\Modules\Article\Models\ArticleCategory;
 use App\Modules\Article\Repositories\ArticleCategoryRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -43,7 +42,7 @@ class ArticleCategoryController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(ArticleCategoryRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -62,7 +61,7 @@ class ArticleCategoryController extends BackendController
     }
 
 
-    public function update(Request $request, ArticleCategory $record)
+    public function update(ArticleCategoryRequest $request, ArticleCategory $record)
     {
         return $this->save($record);
     }
@@ -86,43 +85,23 @@ class ArticleCategoryController extends BackendController
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $rules = array(
-            'name' => 'required|max:255',
-            'slug' => [
-                Rule::unique('article_categories')->ignore($record->id),
-            ],
-            'description' => 'max:255',
-            'keywords' => 'max:255',
-            'hit' => 'integer|nullable',
-            'icon' => 'max:255|nullable',
-        );
-        $v = Validator::make($input, $rules);
-
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id, $input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id, $input);
-            } else {
-                $result = $this->repo->create($input);
-            }
+        if ($result) {
 
-            if ($result) {
+            $this->removeCacheTags(['ArticleCategoryController']);
+            $this->removeHomePageCache();
 
-                $this->removeCacheTags(['ArticleCategoryController']);
-                $this->removeHomePageCache();
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }

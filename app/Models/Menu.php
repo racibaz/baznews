@@ -12,10 +12,12 @@ use Kalnoy\Nestedset\NodeTrait;
 
 class Menu extends Model
 {
-    use Sluggable;
-    use NodeTrait;
     use Eventable;
     use SoftDeletes;
+    use Sluggable;
+    use NodeTrait {
+        NodeTrait::replicate insteadof Sluggable;
+    }
 
     /**
      * Return the sluggable configuration array for this model.

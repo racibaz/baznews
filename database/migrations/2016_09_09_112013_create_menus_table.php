@@ -18,7 +18,7 @@ class CreateMenusTable extends Migration
             $table->increments('id');
             NestedSet::columns($table);
             $table->unsignedInteger('page_id')->nullable();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('slug')->nullable();
             $table->string('url')->nullable();
             $table->string('route')->nullable();

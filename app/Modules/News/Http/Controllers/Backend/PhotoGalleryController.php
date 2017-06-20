@@ -7,6 +7,7 @@ use App\Library\Link\LinkShortener;
 use App\Library\Uploader;
 use App\Models\Setting;
 use App\Models\Tag;
+use App\Modules\News\Http\Requests\PhotoGalleryRequest;
 use App\Modules\News\Models\Photo;
 use App\Modules\News\Models\PhotoCategory;
 use App\Modules\News\Models\PhotoGallery;
@@ -59,7 +60,7 @@ class PhotoGalleryController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(PhotoGalleryRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -91,7 +92,7 @@ class PhotoGalleryController extends BackendController
     }
 
 
-    public function update(Request $request, PhotoGallery $record)
+    public function update(PhotoGalleryRequest $request, PhotoGallery $record)
     {
         return $this->save($record);
     }
@@ -115,82 +116,65 @@ class PhotoGalleryController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['user_id'] = Auth::user()->id;
 
-        $rules = array(
-            'user_id' => 'required',
-            'title' => 'required|max:255',
-            'slug' => [
-                Rule::unique('photo_galleries')->ignore($record->id),
-            ],
-            'description' => 'required|max:255',
-            'keywords' => 'required|max:255',
-        );
-        $v = Validator::make($input, $rules);
 
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
+        if ($result) {
+
+            //todo form tarafında foto yüklemesini kaldırdım
+            //çünkü galeri resimlerini gösterirken "gallery/gallery_slug/thumbnail" olduğu için
+            //tekrar kontrol etmemiz gerekiyor.Bundan foto eklemeyi kaldırdım.
+            if(!empty($input['thumbnail'])) {
+                $oldPath = $record->thumbnail;
+                $document_name = $input['thumbnail']->getClientOriginalName();
+                $destination = '/gallery/'. $result->id .'/photos';
+                Uploader::fileUpload($result, 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                Uploader::removeFile($oldPath);
+
+
+                Image::make(public_path('gallery/'. $result->id .'/photos/'. $result->thumbnail))
+                    ->resize(58,58)
+                    ->save(public_path('gallery/'. $result->id .'/photos/58x58_' . $document_name));
+
+                Image::make(public_path('gallery/'. $result->id .'/photos/'. $result->thumbnail))
+                    ->resize(497,358)
+                    ->save(public_path('gallery/'. $result->id .'/photos/497x358_' . $document_name));
             }
 
-            if ($result) {
 
-                //todo form tarafında foto yüklemesini kaldırdım
-                //çünkü galeri resimlerini gösterirken "gallery/gallery_slug/thumbnail" olduğu için
-                //tekrar kontrol etmemiz gerekiyor.Bundan foto eklemeyi kaldırdım.
-                if(!empty($input['thumbnail'])) {
-                    $oldPath = $record->thumbnail;
-                    $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/gallery/'. $result->id .'/photos';
-                    Uploader::fileUpload($result, 'thumbnail', $input['thumbnail'] , $destination , $document_name);
-                    Uploader::removeFile($oldPath);
+            $this->tagsPhotoGalleryStore($result,$input);
 
 
-                    Image::make(public_path('gallery/'. $result->id .'/photos/'. $result->thumbnail))
-                        ->resize(58,58)
-                        ->save(public_path('gallery/'. $result->id .'/photos/58x58_' . $document_name));
-
-                    Image::make(public_path('gallery/'. $result->id .'/photos/'. $result->thumbnail))
-                        ->resize(497,358)
-                        ->save(public_path('gallery/'. $result->id .'/photos/497x358_' . $document_name));
-                }
-
-
-                $this->tagsPhotoGalleryStore($result,$input);
-
-
-                /*
-                 * slug değişmiş ise ve link kısaltmaya izin verilmişse
-                 * google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
-                 *
-                 * */
-                if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+            /*
+             * slug değişmiş ise ve link kısaltmaya izin verilmişse
+             * google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
+             *
+             * */
+            if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
 
 //                    $linkShortener = new LinkShortener(new Link);
 //                    $result->short_url = $linkShortener->linkShortener($result->slug);
 //                    $result->save();
-                }
-
-
-                /*
-                 * Delete home page cache and related caches
-                 * */
-                $this->removeCacheTags(['PhotoGalleryController']);
-                $this->removeHomePageCache();
-
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
             }
+
+
+            /*
+             * Delete home page cache and related caches
+             * */
+            $this->removeCacheTags(['PhotoGalleryController']);
+            $this->removeHomePageCache();
+
+
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 

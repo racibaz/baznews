@@ -17,7 +17,10 @@ class NewsCategory extends Model
     use Eventable;
     use RevisionableTrait;
     use Sluggable;
-    use NodeTrait;
+    //https://github.com/Zizaco/entrust/issues/379
+    use NodeTrait {
+        NodeTrait::replicate insteadof Sluggable;
+    }
 
     public static function boot()
     {

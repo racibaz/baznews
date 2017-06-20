@@ -5,7 +5,7 @@
     <div class="container" id="container">
         <ol class="breadcrumb">
             <li>
-                <a href="{!! route('index') !!}">{{trans('common.homepage')}}.</a>
+                <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
             </li>
             <li>
                 <a href="{!! route('book_category', ['slug' => $record->slug]) !!}">{{$record->name}}</a>

@@ -19,14 +19,4 @@ class Sitemap extends Model
         'order',
         'is_active',
     ];
-
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required|max:255',
-            'url' => 'required',
-            'order' => 'integer',
-        );
-
-        return Validator::make($input, $rules);
-    }
 }

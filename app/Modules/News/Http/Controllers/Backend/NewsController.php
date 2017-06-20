@@ -10,6 +10,7 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\Setting;
 use App\Models\Tag;
+use App\Modules\News\Http\Requests\NewsRequest;
 use App\Modules\News\Models\FutureNews;
 use App\Modules\News\Models\News;
 use App\Modules\News\Models\NewsCategory;
@@ -25,16 +26,12 @@ use App\Repositories\TagRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Carbon\Carbon;
 use Mremi\UrlShortener\Model\Link;
-use Mremi\UrlShortener\Provider\Google\GoogleProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 
 class NewsController extends BackendController
@@ -153,7 +150,7 @@ class NewsController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -258,7 +255,7 @@ class NewsController extends BackendController
     }
 
 
-    public function update(Request $request, News $record)
+    public function update(NewsRequest $request, News $record)
     {
         return $this->save($record);
     }
@@ -322,148 +319,126 @@ class NewsController extends BackendController
             }
         }
 
-        $rules = array(
-            'title' => 'required',
-            'slug' => [
-                Rule::unique('news')->ignore($record->id),
-            ],
-            'spot' => 'required',
-            'short_link' => 'string|max:255',
-            'content' => 'required',
-            'cuff_photo' => 'image',
-//            'mimes:jpeg,bmp,png'
-            'thumbnail' => 'image',
-            'cuff_direct_link' =>  'url|nullable',
-        );
-        $v = Validator::make($input, $rules);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
+        if ($result) {
+
+            if(!empty($input['thumbnail'])) {
+                $oldPath = $record->thumbnail;
+                $document_name = $input['thumbnail']->getClientOriginalName();
+                $destination = '/images/news_images/'. $result->id .'/thumbnail';
+                Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                Uploader::removeFile($oldPath);
+
+
+                Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
+                    ->fit(58, 58)
+                    ->save(public_path('images/news_images/' . $result->id . '/58x58_' . $document_name));
+
+                Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
+                    ->fit(165, 90)
+                    ->save(public_path('images/news_images/' . $result->id . '/165x90_' . $document_name));
+
+                Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
+                    ->fit(196, 150)
+                    ->save(public_path('images/news_images/' . $result->id . '/196x150_' . $document_name));
+
+                Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
+                    ->fit(220, 310)
+                    ->save(public_path('images/news_images/' . $result->id . '/220x310_' . $document_name));
+
+                Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
+                    ->fit(322, 265)
+                    ->save(public_path('images/news_images/' . $result->id . '/322x265_' . $document_name));
+
+                Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
+                    ->fit(497, 358)
+                    ->save(public_path('images/news_images/' . $result->id . '/497x358_' . $document_name));
             }
 
-            if ($result) {
-
-                if(!empty($input['thumbnail'])) {
-                    $oldPath = $record->thumbnail;
-                    $document_name = $input['thumbnail']->getClientOriginalName();
-                    $destination = '/images/news_images/'. $result->id .'/thumbnail';
-                    Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
-                    Uploader::removeFile($oldPath);
-
-
-                    Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
-                        ->fit(58, 58)
-                        ->save(public_path('images/news_images/' . $result->id . '/58x58_' . $document_name));
-
-                    Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
-                        ->fit(165, 90)
-                        ->save(public_path('images/news_images/' . $result->id . '/165x90_' . $document_name));
-
-                    Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
-                        ->fit(196, 150)
-                        ->save(public_path('images/news_images/' . $result->id . '/196x150_' . $document_name));
-
-                    Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
-                        ->fit(220, 310)
-                        ->save(public_path('images/news_images/' . $result->id . '/220x310_' . $document_name));
-
-                    Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
-                        ->fit(322, 265)
-                        ->save(public_path('images/news_images/' . $result->id . '/322x265_' . $document_name));
-
-                    Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
-                        ->fit(497, 358)
-                        ->save(public_path('images/news_images/' . $result->id . '/497x358_' . $document_name));
-                }
-
-                if(!empty($input['cuff_photo'])) {
-                    $oldPath = $record->cuff_photo;
-                    $document_name = $input['cuff_photo']->getClientOriginalName();
-                    $destination = '/images/news_images/'. $result->id .'/cuff_photo' ;
-                    Uploader::fileUpload($result , 'cuff_photo', $input['cuff_photo'] , $destination , $document_name);
-                    Uploader::removeFile($oldPath);
-                }
+            if(!empty($input['cuff_photo'])) {
+                $oldPath = $record->cuff_photo;
+                $document_name = $input['cuff_photo']->getClientOriginalName();
+                $destination = '/images/news_images/'. $result->id .'/cuff_photo' ;
+                Uploader::fileUpload($result , 'cuff_photo', $input['cuff_photo'] , $destination , $document_name);
+                Uploader::removeFile($oldPath);
+            }
 
 
-                $this->newsNewsCategoriesStore($result,$input);
-                $this->futureNewsStore($result,$input);
-                $this->recommendationNewsStore($result,$input);
-                $this->relatedNewsNewsStore($result,$input);
-                $this->tagsNewsStore($result,$input);
-                $this->newsPhotoGalleriesStore($result,$input);
-                $this->newsVideoGalleriesStore($result,$input);
-                $this->newsVideosStore($result,$input);
-                $this->newsPhotosStore($result,$input);
+            $this->newsNewsCategoriesStore($result,$input);
+            $this->futureNewsStore($result,$input);
+            $this->recommendationNewsStore($result,$input);
+            $this->relatedNewsNewsStore($result,$input);
+            $this->tagsNewsStore($result,$input);
+            $this->newsPhotoGalleriesStore($result,$input);
+            $this->newsVideoGalleriesStore($result,$input);
+            $this->newsVideosStore($result,$input);
+            $this->newsPhotosStore($result,$input);
 
 
 
-                /*
-                 * slug değişmiş ise ve link kısaltmaya izin verilmişse google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
-                 *
-                 * */
-                if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+            /*
+             * slug değişmiş ise ve link kısaltmaya izin verilmişse google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
+             *
+             * */
+            if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
 
-                    $linkShortener = new LinkShortener(new Link);
-                    $result->short_url = $linkShortener->linkShortener($result->slug);
-                    $result->save();
-                }
+                $linkShortener = new LinkShortener(new Link);
+                $result->short_url = $linkShortener->linkShortener($result->slug);
+                $result->save();
+            }
 
 
-                /*
-                 * content içerisinde bulunan tag leri tag listesine otomatik olarak ekliyoruz
-                 * setting tablosunda "automatic_add_tags" ayarının 1 olması gerekiyor.
-                 *
-                 * Buna göre form alanında checkbox işaretli gelince bu işlemi yapıyoruz.
-                 *
-                 * Önemli NOT : Kullanıcının  manuel olarak haberle ilişkilendirdiği tag ler "tags_news_store"
-                 * methodunda "sync" olarak ekleniyor.BUndan dolayı biz "attach" olarak ekliyoruz.
-                 *
-                 * */
+            /*
+             * content içerisinde bulunan tag leri tag listesine otomatik olarak ekliyoruz
+             * setting tablosunda "automatic_add_tags" ayarının 1 olması gerekiyor.
+             *
+             * Buna göre form alanında checkbox işaretli gelince bu işlemi yapıyoruz.
+             *
+             * Önemli NOT : Kullanıcının  manuel olarak haberle ilişkilendirdiği tag ler "tags_news_store"
+             * methodunda "sync" olarak ekleniyor.BUndan dolayı biz "attach" olarak ekliyoruz.
+             *
+             * */
 
-                $automaticAddTags = Input::get('automatic_add_tags') == "on" ? true : false;
+            $automaticAddTags = Input::get('automatic_add_tags') == "on" ? true : false;
 
-                if($automaticAddTags){
+            if($automaticAddTags){
 
-                    foreach ($tagsRepo->findAll() as $tag){
+                foreach ($tagsRepo->findAll() as $tag){
 
-                        if(strpos($input['content'], $tag->name)){
+                    if(strpos($input['content'], $tag->name)){
 
-                            $isExistTag = $result->tags->where('name',$tag->name)->first();
+                        $isExistTag = $result->tags->where('name',$tag->name)->first();
 
-                            if(empty($isExistTag))
-                                $result->tags()->attach($tag->id);
-                        }
+                        if(empty($isExistTag))
+                            $result->tags()->attach($tag->id);
                     }
                 }
-
-                $this->removeCacheTags(['News']);
-                $this->removeHomePageCache();
-
-                /*
-                 *Send a job for ping with delay 10 minutes
-                 * */
-                if($ping == true && $result->status == 1){
-                    $pingJob = (new SendPing())
-                        ->delay(Carbon::now()->addMinutes(10));
-
-                    dispatch($pingJob);
-                }
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'list', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
             }
+
+            $this->removeCacheTags(['News']);
+            $this->removeHomePageCache();
+
+            /*
+             *Send a job for ping with delay 10 minutes
+             * */
+            if($ping == true && $result->status == 1){
+                $pingJob = (new SendPing())
+                    ->delay(Carbon::now()->addMinutes(10));
+
+                dispatch($pingJob);
+            }
+
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'list', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 

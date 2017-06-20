@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Events\UserRegistered;
-use App\Models\Advertisement;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\WidgetManager;
@@ -55,7 +54,7 @@ class BaznewsServiceProvider extends ServiceProvider
 
                 Cache::tags(['Setting', 'Menu'])->rememberForever('menus', function () {
                     $menuRepository = new MenuRepository();
-                    return  $menuRepository->with(['page'])->where('is_active', 1)->orderBy('order','asc')->findAll();
+                    return  $menuRepository->getMenus();
                 });
 
                 Cache::tags(['Setting', 'Advertisement'])->rememberForever('advertisements', function () {

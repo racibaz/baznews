@@ -3,15 +3,13 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Modules\News\Http\Requests\VideoCategoryRequest;
 use App\Modules\News\Models\VideoCategory;
 use App\Modules\News\Repositories\VideoCategoryRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rule;
 
 class VideoCategoryController extends BackendController
 {
@@ -42,7 +40,7 @@ class VideoCategoryController extends BackendController
     }
 
 
-    public function store(Request $request)
+    public function store(VideoCategoryRequest $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -61,7 +59,7 @@ class VideoCategoryController extends BackendController
     }
 
 
-    public function update(Request $request, VideoCategory $record)
+    public function update(VideoCategoryRequest $request, VideoCategory $record)
     {
         return $this->save($record);
     }
@@ -84,45 +82,27 @@ class VideoCategoryController extends BackendController
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        $rules = array(
-            'name' => 'required',
-            'slug' => [
-                Rule::unique('video_categories')->ignore($record->id),
-            ],
-            'description' => 'required|max:255',
-            'keywords' => 'required|max:255',
-            'hit' => 'integer',
-            'icon' => 'max:255',
-        );
-        $v = Validator::make($input, $rules);
 
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
-            }
+        if ($result) {
 
-            if ($result) {
+            /*
+             * Delete home page cache and related caches
+             * */
+            $this->removeCacheTags(['VideoController', 'VideoGalleryController']);
+            $this->removeHomePageCache();
 
-                /*
-                 * Delete home page cache and related caches
-                 * */
-                $this->removeCacheTags(['VideoController', 'VideoGalleryController']);
-                $this->removeHomePageCache();
-
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }

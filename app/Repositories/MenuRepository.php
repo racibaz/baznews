@@ -10,4 +10,11 @@ class MenuRepository extends EloquentRepository
 
     protected $model = 'App\Models\Menu';
 
+    public function getMenus()
+    {
+        return $this->with(['page'])
+            ->where('is_active', 1)
+            ->orderBy('order','asc')
+            ->findAll();
+    }
 }
