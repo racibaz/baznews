@@ -15,7 +15,7 @@ class Menu extends Model
     use Sluggable;
     use NodeTrait;
     use Eventable;
-    use SoftDeletes;
+    use SoftDeletes { SoftDeletes::restore insteadof Sluggable; }
 
     /**
      * Return the sluggable configuration array for this model.
