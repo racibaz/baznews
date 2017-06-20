@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Events\UserRegistered;
-use App\Models\Advertisement;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\WidgetManager;
