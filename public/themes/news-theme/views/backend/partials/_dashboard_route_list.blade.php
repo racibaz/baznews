@@ -35,7 +35,7 @@
         @permission('index-widgetgroup')<li data-name="group"><a href="{!! route('widget_group.index') !!}"><i class="fa fa-archive"></i> <span>{{trans('dashboard.widget_groups')}}</span></a></li>@endpermission
     </ul>
 </li>
-@permission('index-contact_type')<li data-name="contact_types"><a href="{!! route('contact_type.index') !!}"><i class="fa fa-book"></i> <span>{{trans('dashboard.contact_types')}}</span></a></li>@endpermission
+@permission('index-contacttype')<li data-name="contact_types"><a href="{!! route('contact_type.index') !!}"><i class="fa fa-book"></i> <span>{{trans('dashboard.contact_types')}}</span></a></li>@endpermission
 @permission('index-contact')<li data-name="contact_management"><a href="{!! route('contact.index') !!}"><i class="fa fa-phone"></i> <span>{{trans('dashboard.contacts')}}</span></a></li>@endpermission
 @permission('index-menu')<li data-name="menu_management"><a href="{!! route('menu.index') !!}"><i class="fa fa-list"></i> <span>{{trans('dashboard.menus')}}</span></a></li>@endpermission
 @permission('index-page')<li data-name="page"><a href="{!! route('page.index') !!}"><i class="fa fa-file-text-o"></i> <span>{{trans('dashboard.pages')}}</span></a></li>@endpermission
