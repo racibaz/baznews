@@ -364,7 +364,7 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            {!! link_to_route('show_news', trans('common.show'), $record->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
+                                            {!! link_to_route('show_news', trans('common.news_show'), $record->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('news.destroy',  $record))) !!}
                                             {!! link_to_route('news.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
                                             {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
