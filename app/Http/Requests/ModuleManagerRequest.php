@@ -34,12 +34,15 @@ class ModuleManagerRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'name' => 'required',
+                    'name' => [
+                        'max:255',
+                        Rule::unique('modules'),
+                    ],
                     'slug' => [
                         'max:255',
                         Rule::unique('modules'),
                     ],
-                    'order' => 'integer',
+                    'order' => 'integer|nullable',
                 ];
             }
             case 'PUT':
@@ -47,12 +50,15 @@ class ModuleManagerRequest extends FormRequest
             {
                 $id = $this->route('module_manager')->id;
                 return [
-                    'name' => 'required',
+                    'name' => [
+                        'max:255',
+                        Rule::unique('modules')->ignore($id),
+                    ],
                     'slug' => [
                         'max:255',
                         Rule::unique('modules')->ignore($id),
                     ],
-                    'order' => 'integer',
+                    'order' => 'integer|nullable',
                 ];
             }
             default:break;

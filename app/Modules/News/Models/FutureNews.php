@@ -4,7 +4,6 @@ namespace App\Modules\News\Models;
 
 use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 
 class FutureNews extends Model
 {
@@ -16,14 +15,6 @@ class FutureNews extends Model
     public function news()
     {
         return $this->belongsTo(News::class);
-    }
-
-    public static function validate($input) {
-        $rules = array(
-            'news_id' => 'required',
-            'future_datetime' => 'required',
-        );
-        return Validator::make($input, $rules);
     }
 
     public static function futureNewsList()

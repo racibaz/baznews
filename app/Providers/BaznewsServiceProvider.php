@@ -3,11 +3,11 @@
 namespace App\Providers;
 
 use App\Events\UserRegistered;
-use App\Models\Advertisement;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\WidgetManager;
 use App\Modules\News\Models\News;
+use App\Repositories\AdvertisementRepository;
 use App\Repositories\MenuRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -54,35 +54,39 @@ class BaznewsServiceProvider extends ServiceProvider
 
                 Cache::tags(['Setting', 'Menu'])->rememberForever('menus', function () {
                     $menuRepository = new MenuRepository();
-                    return  $menuRepository->with(['page'])->where('is_active', 1)->orderBy('order','asc')->findAll();
+                    return  $menuRepository->getMenus();
                 });
 
+                Cache::tags(['Setting', 'Advertisement'])->rememberForever('advertisements', function () {
+                    $repo = new AdvertisementRepository();
+                    foreach ($repo->advertisements() as $advertisement) {
+                        Cache::tags('Setting', 'Advertisement')->forever($advertisement->name, $advertisement->code);
+                    }
+                });
+
+                /*todo
+                 *
+                 * //todo cachle nerebilirnir.
+                 * widget_manager , widget group ile ilişkili olduğunda performans açısından sorun olabilir
+                 * bunu için widger manager a string olarak değer versek nasıl olur?
+                 * widget alanlarında sorgulamaları nasıl yapmammız gerekiyor?
+                 * */
+                View::share('widgets', WidgetManager::where('is_active',1)->orderBy('position','asc')->get() );
+
+                //Cache::tags('settings')->flush();
+                //Cache::flush();
+
+
+                //todo cachle nerebilirnir.
+                View::share('breakNewsItems', News::where('break_news', 1)
+                    ->where('status', 1)
+                    ->limit(Cache::tags('Setting')->get('break_news'))
+                    ->get());
+
+                //TODO cachelenecek
+                View::share('activeTheme', Theme::getActive());
+
             });
-
-
-            /*todo
-             *
-             * widget_manager , widget group ile ilişkili olduğunda performans açısından sorun olabilir
-             * bunu için widger manager a string olarak değer versek nasıl olur?
-             * widget alanlarında sorgulamaları nasıl yapmammız gerekiyor?
-             * */
-            View::share('widgets', WidgetManager::where('is_active',1)->orderBy('position','asc')->get() );
-
-            //Cache::tags('settings')->flush();
-            //Cache::flush();
-
-
-            //todo cachle nerebilirnir.
-            View::share('breakNewsItems', News::where('break_news', 1)
-                ->where('status', 1)
-                ->limit(Cache::tags('Setting')->get('break_news'))
-                ->get());
-
-            //TODO cachelenecek
-            View::share('activeTheme', Theme::getActive());
-
-            //TODO cachelenecek
-            View::share('advertisements', Advertisement::advertisements());
         }
     }
 

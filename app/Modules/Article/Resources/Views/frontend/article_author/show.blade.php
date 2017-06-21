@@ -4,7 +4,7 @@
     <div class="container" id="container">
         <ol class="breadcrumb">
             <li>
-                <a href="{!! route('index') !!}">{{trans('common.homepage')}}.</a>
+                <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
             </li>
             <li>
                 <a href="{!! route('article_category', ['slug' => $record->slug]) !!}">{{$record->name}}</a>
@@ -29,6 +29,15 @@
                     {{--yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>--}}
                     {{--yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>--}}
                 </article>
+
+                <div class="share-box">
+                    <div class="title-section">
+                        <h1>
+                            <span>Paylaş</span>
+                        </h1>
+                    </div>
+                    {!! Cache::tags('Setting')->get('addthis') !!}
+                </div>
 
                 <div class="other-article">
                     <div class="title-section">

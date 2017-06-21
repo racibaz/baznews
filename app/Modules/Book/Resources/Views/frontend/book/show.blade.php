@@ -5,7 +5,7 @@
     <div class="container" id="container">
         <ol class="breadcrumb">
             <li>
-                <a href="{!! route('index') !!}">{{trans('common.homepage')}}.</a>
+                <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
             </li>
             @foreach($record->book_categories as $bookCategory)
                 <li>
@@ -63,6 +63,14 @@
                         </div><!-- /.row -->
                     </div><!-- /#book-detail -->
                 </article>
+                <div class="share-box">
+                    <div class="title-section">
+                        <h1>
+                            <span>Paylaş</span>
+                        </h1>
+                    </div>
+                    {!! Cache::tags('Setting')->get('addthis') !!}
+                </div>
                 <div class="other-books">
                     <div class="title-section">
                         <h2><span>Diğer Kitaplar</span></h2>

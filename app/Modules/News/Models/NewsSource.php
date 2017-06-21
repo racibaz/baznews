@@ -5,7 +5,6 @@ namespace App\Modules\News\Models;
 use App\Modules\News\Transformers\NewsSourceTransformer;
 use App\Traits\Eventable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 
 class NewsSource extends Model
 {
@@ -18,13 +17,6 @@ class NewsSource extends Model
     public function news()
     {
         return $this->hasMany(News::class);
-    }
-
-    public static function validate($input) {
-        $rules = array(
-            'name' => 'required',
-        );
-        return Validator::make($input, $rules);
     }
 
     public static function newsSourceList()

@@ -5,7 +5,7 @@
     <div class="container" id="container">
         <ol class="breadcrumb">
             <li>
-                <a href="{!! route('index') !!}">{{trans('common.homepage')}}.</a>
+                <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
             </li>
             <li>
                 {{$record->name}}
@@ -39,6 +39,14 @@
                         </div><!-- /.bio-content -->
                     </div><!-- /.module -->
                 </article>
+                <div class="share-box">
+                    <div class="title-section">
+                        <h1>
+                            <span>Paylaş</span>
+                        </h1>
+                    </div>
+                    {!! Cache::tags('Setting')->get('addthis') !!}
+                </div>
                 <div class="other-bio">
                     <div class="title-section">
                         <h2>
@@ -66,7 +74,7 @@
 
                 <div class="module">
                     <div class="advert advert-center">
-                        <img src="{{ Theme::asset($activeTheme . '::img/advert-images/728x90.png') }}" alt="Advert Sidebar" class="img-responsive">
+                        {!! Cache::tags('Setting', 'Advertisement')->get('center_1') !!}
                     </div>
                 </div>
 

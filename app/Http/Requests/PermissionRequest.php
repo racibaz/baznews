@@ -39,8 +39,8 @@ class PermissionRequest extends FormRequest
                         'max:255',
                         Rule::unique('permissions'),
                     ],
-                    'display_name' => 'max:255',
-                    'description' => 'max:255',
+                    'display_name'      => 'max:255|nullable',
+                    'description'       => 'max:255|nullable',
                 ];
             }
             case 'PUT':
@@ -53,8 +53,8 @@ class PermissionRequest extends FormRequest
                         'max:255',
                         Rule::unique('permissions')->ignore($id),
                     ],
-                    'display_name' => 'max:255',
-                    'description' => 'max:255',
+                    'display_name'      => 'max:255|nullable',
+                    'description'       => 'max:255|nullable',
                 ];
             }
             default:break;

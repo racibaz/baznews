@@ -25,7 +25,7 @@ return [
     'roles'             => 'Rol Yönetimi',
     'countries'         => 'Ülkeler',
     'cities'            => 'İller',
-    'contact_types'     => 'İletişim Yöntemleri',
+    'contact_types'     => 'İletişim Türü Yöntemi',
     'contacts'          => 'İletişim Yönetimi',
     'menus'             => 'Menüler',
     'pages'             => 'Sayfalar',

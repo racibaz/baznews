@@ -51,6 +51,7 @@
     "select2": "^4.0.3",
     "summernote": "^0.8.3",
     "theia-sticky-sidebar": "^1.6.0",
+    "turbolinks": "^5.0.3",
     "video.js": "^5.19.2",
     "videojs": "^1.0.0",
     "videojs-youtube": "^2.1.1",

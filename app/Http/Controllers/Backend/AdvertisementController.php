@@ -25,6 +25,7 @@ class AdvertisementController extends BackendController
 
     public function index()
     {
+        $repo = $this->repo;
         $records = $this->repo->findAll();
         $advertisementAreaNames = $this->getThemeAdvertisementAreaName();
         $activeTheme = Theme::getActive();
@@ -32,7 +33,8 @@ class AdvertisementController extends BackendController
         return Theme::view($this->getViewName(__FUNCTION__),compact(
            'records',
             'advertisementAreaNames',
-            'activeTheme'
+            'activeTheme',
+           'repo'
         ));
     }
 
@@ -40,10 +42,11 @@ class AdvertisementController extends BackendController
     public function create()
     {
         $advertisementList = [];
+        $repo = $this->repo;
         $advertisementAreaNames = $this->getThemeAdvertisementAreaName();
 
         foreach ($advertisementAreaNames as $index => $advertisementAreaName){
-            if(!in_array($advertisementAreaName['areaName'] , \App\Models\Advertisement::advertisements()->pluck('name')->toArray())){
+            if(!in_array($advertisementAreaName['areaName'] , $this->repo->advertisements()->pluck('name')->toArray())){
                 $advertisementList[$advertisementAreaName['areaName']] = $advertisementAreaName['areaName'];
             }
         }
@@ -53,7 +56,8 @@ class AdvertisementController extends BackendController
         return Theme::view($this->getViewName(__FUNCTION__),compact([
             'record',
             'advertisementAreaNames',
-            'advertisementList'
+            'advertisementList',
+            'repo'
         ]));
     }
 
@@ -70,20 +74,27 @@ class AdvertisementController extends BackendController
     }
 
 
+    /**
+     * todo logic seviyede geliştirilebilinir.
+     * $advertisementList dizisine sadece mevcut değeri ekliyoruz.
+     * Sebebi ise değiştirilmek istendiğinde model silinsin istenirse tekrar eklensin koşulunu sağlamak için.
+     * Edit kısmında listeden farklı isim eklediğimiz de logic düzeyde hatalar oluşabilmekte.
+     *
+     *
+     * @param Advertisement $record
+     * @return \View
+     */
     public function edit(Advertisement $record)
     {
         $advertisementList = [];
-        $advertisementAreaNames = $this->getThemeAdvertisementAreaName();
+        $repo = $this->repo;
 
-        foreach ($advertisementAreaNames as $index => $advertisementAreaName){
-            if(!in_array($advertisementAreaName['areaName'] , \App\Models\Advertisement::advertisements()->pluck('name')->toArray())){
-                $advertisementList[$advertisementAreaName['areaName']] = $advertisementAreaName['areaName'];
-            }
-        }
+        $advertisementList[$record->name] = $record->name;
 
         return Theme::view($this->getViewName(__FUNCTION__),compact([
             'record',
-            'advertisementList'
+            'advertisementList',
+            'repo'
         ]));
     }
 
@@ -113,6 +124,10 @@ class AdvertisementController extends BackendController
         }
 
         if ($result) {
+
+            $this->removeCacheTags(['Advertisement']);
+            $this->removeHomePageCache();
+
             Session::flash('flash_message', trans('common.message_model_updated'));
             return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
         } else {

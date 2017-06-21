@@ -5,7 +5,7 @@
     <div class="container" id="container">
         <ol class="breadcrumb">
             <li>
-                <a href="{!! route('index') !!}">{{trans('common.homepage')}}.</a>
+                <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
             </li>
             <li>
                 {{$record->name}}
@@ -47,6 +47,14 @@
                         </div>
                     </div>
                 </article>
+                <div class="share-box">
+                    <div class="title-section">
+                        <h1>
+                            <span>Paylaş</span>
+                        </h1>
+                    </div>
+                    {!! Cache::tags('Setting')->get('addthis') !!}
+                </div>
             </div><!-- /.new-content -->
             <div class="col-md-4" id="sidebar">
                 <div class="sidebar">

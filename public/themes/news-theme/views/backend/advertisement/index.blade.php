@@ -93,7 +93,7 @@
                                 <td>{{$advertisementAreaName['areaName']}}</td>
                                 <td>{{$advertisementAreaName['areaType']}}</td>
                                 <td>
-                                    @if(in_array($advertisementAreaName['areaName'] , \App\Models\Advertisement::advertisements()->pluck('name')->toArray()))
+                                    @if(in_array($advertisementAreaName['areaName'] , $repo->advertisements()->pluck('name')->toArray()))
                                         <span class="badge bg-green"><i class="fa fa-check"></i>  {{trans('advertisement.added')}}</span>
                                     @endif
                                 </td>

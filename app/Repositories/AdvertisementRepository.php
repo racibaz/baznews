@@ -10,4 +10,8 @@ class AdvertisementRepository extends EloquentRepository
 
     protected $model = 'App\Models\Advertisement';
 
+    public function advertisements()
+    {
+        return $this->where('is_active',1)->findAll();
+    }
 }

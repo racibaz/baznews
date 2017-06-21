@@ -363,8 +363,26 @@ header{
     #navbar-header a.navbar-brand {
         margin-bottom: 10px;
     }
-
 }
+@media only screen and (max-width: 1024px) {
+    #navbar-header .advert-header{
+        width: 58%;
+        margin-top: 42px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    #navbar-header .advert-header{
+        width: 50%;
+        margin-top: 66px;
+    }
+}
+@media only screen and (max-width: 1400px) {
+    #navbar-header .advert-header{
+        width: 50%;
+        margin-top: 66px;
+    }
+}
+
 #navbar-header a.navbar-brand img {
     width: 90px;
     height: 90px;
@@ -622,6 +640,11 @@ header{
     text-transform: uppercase;
     overflow: hidden;
 }
+@media screen and (max-width: 480px) {
+    #post-box-slider .bx-wrapper .thumbnail .caption .ct-title{
+        font-size: 12px;
+    }
+}
 #post-box-slider .bx-wrapper .thumbnail:hover {
 
 }
@@ -671,11 +694,21 @@ header{
     font-weight: bold;
     color: #fff;
     margin: 0;
-    line-height: 1.2em; }
+    line-height: 1.2em;
+}
+
 .img-new-list .new-list-ct .left-img-ct .new-ct time.new-date span.timeago {
     opacity: .8;
     color: #fff;
     font-size: 11px;
+}
+@media screen and (max-width: 480px) {
+    .img-new-list .new-list-ct .left-img-ct .new-ct h3.new-title {
+        font-size: 18px;
+    }
+    .img-new-list .new-list-ct .left-img-ct .new-ct time.new-date span.timeago {
+        font-size:11px;
+    }
 }
 .img-new-list .new-list-ct .new-list {
     width: 68%;
@@ -1962,10 +1995,15 @@ footer .footer-bottom .cpy {
     margin-bottom: 10px;
 }
 .books-widget .book{
+    text-align: center;
+    height: 188px;
     padding:0;
+    margin: 0 5px;
 }
 .books-widget .book .cover a img{
-    width: 100%;
+    display: inline-block;
+    width: 110px;
+    height: 150px;
     border: 1px solid #E7E7E7;
     padding: 3px;
 }
@@ -2359,6 +2397,14 @@ ul.sub-list li > a > .time {
 #book-detail .detail .nav li strong{
     font-size:12px;
 }
+@media screen and (max-width: 480px) {
+    #book-detail .book-img{
+        text-align: center;
+    }
+    #book-detail .book-img img{
+        display: inline-block;
+    }
+}
 #book-detail .detail .nav li span{
     font-size:11px;
     color: #6f6f6f;
@@ -2408,12 +2454,19 @@ ul.sub-list li > a > .time {
 /* ==========================================================================
    Book List
    ========================================================================== */
+.book-list{
+    margin-bottom: 25px;
+}
 .book-list .thumbnail{
+    height:188px;
     text-decoration: none;
     margin-bottom: 0;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
+}
+.book-list .thumbnail img{
+    height: 150px;
 }
 .book-list .thumbnail:hover{
     border-color:#E92735;
@@ -2421,7 +2474,7 @@ ul.sub-list li > a > .time {
 .book-list .thumbnail .caption{
     display: block;
     width: 100%;
-    max-height: 22px;
+    height: 35px;
     overflow: hidden;
 }
 .book-list .thumbnail .caption h3{
@@ -2794,4 +2847,9 @@ ul.news-list li .text span.timeago {
     overflow: hidden;
     height:36px;
     color:#000000;
+}
+
+.algolia-logo{
+    background-color: #fff;
+    padding: 3px 8px;
 }
