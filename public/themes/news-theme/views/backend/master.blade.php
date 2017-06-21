@@ -279,9 +279,10 @@
     </div>
     <!-- ./wrapper -->
 </div><!-- ./div app -->
-
+@yield('frameworkApp')
 <!-- jQuery 2.2.3 -->
 <script src="{{ Theme::asset($activeTheme .'::js/jquery/dist/jquery.min.js') }}"></script>
+
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ Theme::asset($activeTheme .'::AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- FastClick -->
@@ -299,7 +300,6 @@
 <script src="{{ Theme::asset($activeTheme .'::AdminLTE/plugins/chartjs/Chart.min.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{--<script src="{{ Theme::asset($activeTheme .'::AdminLTE/dist/js/pages/dashboard2.js') }}"></script>--}}
-
 <!-- İCHECK -->
 <script src="{{ Theme::asset($activeTheme .'::js/icheck/icheck.min.js') }}"></script>
 <!-- SUMMERNOTE -->
@@ -310,6 +310,7 @@
 <script src="{{ Theme::asset($activeTheme .'::js/functions.js') }}"></script>
 
 @yield('js')
+
 
 <script type="text/javascript">
     $(document).ready(function () {
