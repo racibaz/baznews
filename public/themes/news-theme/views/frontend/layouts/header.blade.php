@@ -1,9 +1,9 @@
 <div id="sticky-container" class="adverts">
     <div id="dfp-pageskin-sol" class="ads-left-160 ads">
-        {!! Cache::tags('Setting', 'Advertisement')->get('left') !!}
+        {!! Cache::tags('Setting', 'Advertisement')->get('left_blok_1') !!}
     </div>
     <div id="dfp-160-kare-sag" class="ads-right-160 ads">
-        {!! Cache::tags('Setting', 'Advertisement')->get('right') !!}
+        {!! Cache::tags('Setting', 'Advertisement')->get('right_blok_1') !!}
     </div>
 </div>
 <!-- Header -->
