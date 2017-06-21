@@ -2,6 +2,7 @@
 
 return [
     'homepage' => 'Anasayfa',
+    'news_show' => 'Haberi Gör',
     'save' => 'Kaydet',
     'create' => 'Ekle',
     'edit' => 'Düzenle',

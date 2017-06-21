@@ -100,7 +100,7 @@
                                         </h3>
                                     </div>
                                     <div class="new-list-ct module">
-                                        <div class="left-img-ct" style="background-image:{{ Theme::asset($activeTheme . '::img/example.jpg')}};backgroun-position:0 0; background-repeat: no-repeat;background-size: cover;">
+                                        <div class="left-img-ct" style="background:url({{ Theme::asset($activeTheme . '::img/example.jpg')}})0 0 no-repeat;background-size: cover;">
                                             <a href="{!! route('show_news', ['slug' => $cuffNewsCategory->news->first()->slug]) !!}"
                                                class="full-link"
                                                data-img="{{ asset('images/news_images/' . $cuffNewsCategory->news->first()->id . '/220x310_' . $cuffNewsCategory->news->first()->thumbnail) }}"

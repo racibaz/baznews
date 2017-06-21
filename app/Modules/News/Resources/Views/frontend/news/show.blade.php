@@ -22,7 +22,7 @@
                 <article class="article news-article">
                     <div id="new-content" class="module">
                         <div class="meta">
-                            <span class="timestamp">Oluşturma : {{ $record->created_at }} | Güncelleme: {{ $record->updated_at }}</span>
+                            <span class="timestamp"><strong>GİRİŞ :</strong> {{ $record->created_at->format('d.m.Y h:m') }}&nbsp;&nbsp;&nbsp;<strong>GÜNCELLEME:</strong> {{ $record->updated_at->format('d.m.Y h:m') }}</span>
                         </div><!-- /.meta -->
                         <h1 class="news-title">{{ $record->title }}</h1>
                         @if($record->news_type == 0 || $record->news_type == 1)
@@ -33,13 +33,21 @@
                         @elseif($record->news_type == 2)
                             iç haber
                         @elseif($record->news_type == 3)
-                            photo gallery
+                            <div class="gallery-content">
+                                photo gallery
+                            </div>
                         @elseif($record->news_type == 4)
-                            {!! $record->video_embed !!}
+                            <div class="video-embed">
+                                {!! $record->video_embed !!}
+                            </div>
                         @elseif($record->news_type == 5)
-                            video gallery
+                            <div class="video-gallery-content">
+                                video gallery
+                            </div>
                         @elseif($record->news_type == 6)
-                            sound
+                            <div class="sound-content">
+                                sound
+                            </div>
                         @endif
 
                         <div class="content" id="content">
