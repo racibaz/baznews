@@ -358,21 +358,20 @@ class NewsDatabaseSeeder extends Seeder
         }
 
 
-        foreach (NewsCategory::all()->take(6) as $news_category) {
-            
+        foreach (NewsCategory::all()->take(6) as $item) {
+
             Menu::create([
                 'parent_id'                 => null,
                 '_lft'                      => 1,
                 '_rgt'                      => 1,
-                'name'                      => $news_category->name,
-                'slug'                      => $news_category->slug,
-                'route'                     => 'news-category/' . $news_category->slug,
+                'name'                      => $item->name,
+                'slug'                      => $item->slug,
+                'route'                     => 'news-category/' . $item->slug,
                 'order'                     => 10,
                 'is_header'                 => 1,
                 'is_footer'                 => 1,
                 'is_active'                 => 1,
             ]);
-
         }
     }
 }
