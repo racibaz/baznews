@@ -130,36 +130,34 @@ class VideoController extends BackendController
             //todo video yüklenebilecek.
             //file
             if(!empty($input['thumbnail'])) {
-
-                $destination = '/videos/'. $result->id;
-                Uploader::removeDirectory($destination);
-
+                $oldPath = $record->thumbnail;
                 $document_name = $input['thumbnail']->getClientOriginalName();
+                $destination = '/videos/'. $result->id;
                 Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                Uploader::removeFile($destination . '/' . $oldPath);
 
-                $originalPhotoPath = public_path('videos/'. $result->id .'/'. $result->thumbnail);
 
-                Image::make($originalPhotoPath)
+                Image::make(public_path('videos/'. $result->id .'/'. $result->thumbnail))
                     ->resize(58, 58)
                     ->save(public_path('videos/'. $result->id .'/58x58_' . $document_name));
 
-                Image::make($originalPhotoPath)
+                Image::make(public_path('videos/'. $result->id .'/'. $result->thumbnail))
                     ->resize(497, 358)
                     ->save(public_path('videos/'. $result->id .'/497x358_' . $document_name));
 
-                Image::make($originalPhotoPath)
+                Image::make(public_path('videos/'. $result->id .'/'. $result->thumbnail))
                     ->resize(658, 404)
                     ->save(public_path('videos/'. $result->id .'/658x404_' . $document_name));
 
-                Image::make($originalPhotoPath)
+                Image::make(public_path('videos/'. $result->id .'/'. $result->thumbnail))
                     ->resize(224, 195)
                     ->save(public_path('videos/'. $result->id .'/224x195_' . $document_name));
 
-                Image::make($originalPhotoPath)
+                Image::make(public_path('videos/'. $result->id .'/'. $result->thumbnail))
                     ->resize(165, 90)
                     ->save(public_path('videos/'. $result->id .'/165x90_' . $document_name));
 
-                Image::make($originalPhotoPath)
+                Image::make(public_path('videos/'. $result->id .'/'. $result->thumbnail))
                     ->resize(457, 250)
                     ->save(public_path('videos/'. $result->id .'/257x250_' . $document_name));
             }

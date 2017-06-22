@@ -94,13 +94,11 @@ class PhotoController extends BackendController
         if ($result) {
 
             if(!empty($input['file'])) {
-
-                $destination = '/photos/' . $result->id;
-                Uploader::removeDirectory($destination);
-
+                $oldPath = $record->file;
                 $document_name = $input['file']->getClientOriginalName();
                 $destination = '/photos/' . $result->id;
                 Uploader::fileUpload($result, 'file', $input['file'], $destination, $document_name);
+                Uploader::removeFile($destination . '/' . $oldPath);
 
                 $originalPhotoPath = public_path('photos/' . $result->id . '/' . $result->file);
 

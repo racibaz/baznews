@@ -103,40 +103,38 @@ class VideoGalleryController extends BackendController
         if ($result) {
 
             if(!empty($input['thumbnail'])) {
-
-                $destination = '/video_gallery/'. $result->id;
-                Uploader::removeDirectory($destination);
-
+                $oldPath = $record->thumbnail;
                 $document_name = $input['thumbnail']->getClientOriginalName();
+                $destination = '/video_gallery/'. $result->id;
                 Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                Uploader::removeFile($oldPath);
 
-                $originalPhotoPath = public_path('video_gallery/'. $result->id .'/'. $result->thumbnail);
 
-                Image::make($originalPhotoPath)
+                Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                     ->resize(58,58)
                     ->save(public_path('video_gallery/'. $result->id .'/58x58_' . $document_name));
 
-                Image::make($originalPhotoPath)
+                Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                     ->resize(497,358)
                     ->save(public_path('video_gallery/'. $result->id .'/497x358_' . $document_name));
 
-                Image::make($originalPhotoPath)
+                Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                     ->resize(658,404)
                     ->save(public_path('video_gallery/'. $result->id .'/658x404_' . $document_name));
 
-                Image::make($originalPhotoPath)
+                Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                     ->resize(224,195)
                     ->save(public_path('video_gallery/'. $result->id .'/224x195_' . $document_name));
 
-                Image::make($originalPhotoPath)
+                Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                     ->resize(165,90)
                     ->save(public_path('video_gallery/'. $result->id .'/165x90_' . $document_name));
 
-                Image::make($originalPhotoPath)
+                Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                     ->resize(457,250)
                     ->save(public_path('video_gallery/'. $result->id .'/257x250_' . $document_name));
 
-                Image::make($originalPhotoPath)
+                Image::make(public_path('video_gallery/'. $result->id .'/'. $result->thumbnail))
                     ->resize(213, 116)
                     ->save(public_path('video_gallery/'. $result->id .'/213x116_' . $document_name));
             }
@@ -289,7 +287,6 @@ class VideoGalleryController extends BackendController
 
                 }else if($field == 'thumbnail') {
 
-                    //todo detaylı bakılacak.
                     $record = Video::find($id);
 
                     $oldPath = !empty($record->thumbnail) ? $record->thumbnail : null;

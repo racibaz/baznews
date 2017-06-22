@@ -108,11 +108,11 @@ class BookCategoryController extends BackendController
 
             if(!empty($input['thumbnail'])) {
 
-                $destination = '/images/books_category/'. $result->id . '/original';
-                Uploader::removeDirectory($destination);
-
+                $oldPath = $record->thumbnail;
                 $document_name = $input['thumbnail']->getClientOriginalName();
+                $destination = '/images/books_category/'. $result->id . '/original';
                 Uploader::fileUpload($result  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                Uploader::removeFile($oldPath);
 
                 Image::make(public_path('images/books_category/' . $result->id .'/original/'. $result->thumbnail))
                     ->fit(180, 275)

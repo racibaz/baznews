@@ -110,12 +110,11 @@ class ArticleAuthorController extends BackendController
         if ($result) {
 
             if(!empty($input['photo'])) {
-
-                Uploader::removeDirectory('/images/article_author_images/'. $result->id);
-
+                $oldPath = $record->photo;
                 $document_name = $input['photo']->getClientOriginalName();
                 $destination = '/images/article_author_images/'. $result->id .'/original';
                 Uploader::fileUpload($result , 'photo', $input['photo'] , $destination , $document_name);
+                Uploader::removeFile($oldPath);
 
                 $base_path = public_path('images/article_author_images/' . $result->id .'/original/'. $result->photo);
 

@@ -6,7 +6,6 @@ use App\Http\Controllers\Backend\BackendController;
 use App\Library\Link\LinkShortener;
 use App\Library\Uploader;
 use App\Models\Setting;
-use App\Modules\Biography\Http\Requests\BiographyRequest;
 use App\Modules\Biography\Models\Biography;
 use App\Modules\Biography\Repositories\BiographyRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -56,7 +55,7 @@ class BiographyController extends BackendController
     }
 
 
-    public function store(BiographyRequest $request)
+    public function store(Request $request)
     {
         return $this->save($this->repo->createModel());
     }
@@ -80,7 +79,7 @@ class BiographyController extends BackendController
     }
 
 
-    public function update(BiographyRequest $request, Biography $record)
+    public function update(Request $request, Biography $record)
     {
         return $this->save($record);
     }
@@ -103,49 +102,80 @@ class BiographyController extends BackendController
 
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
+        $input['user_id'] = Auth::user()->id;
 
-        if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
-        } else {
-            $result = $this->repo->create($input);
-        }
+        $rules = array(
+            'title' => [
+                'required',
+                'max:255',
+                Rule::unique('biographies')->ignore($record->id),
+            ],
+            'name' => [
+                'required',
+                'max:255',
+                Rule::unique('biographies')->ignore($record->id),
+            ],
+            'slug' => [
+                Rule::unique('biographies')->ignore($record->id),
+            ],
+            'content' => 'required',
+            'photo' => 'image',
+            'description' => 'max:255|nullable',
+            'keywords' => 'max:255|nullable',
+            'order' => 'integer',
+            'hit' => 'integer',
+            'status' => 'integer',
+        );
+        $v = Validator::make($input, $rules);
 
-        if ($result) {
-
-            if(!empty($input['photo'])) {
-
-                Uploader::removeDirectory('images/biographies/'. $result->id);
-
-                $document_name = $input['photo']->getClientOriginalName();
-                $destination = '/images/biographies/'. $result->id .'/thumbnail';
-                Uploader::fileUpload($result, 'photo', $input['photo'] , $destination , $document_name);
-
-                Image::make(public_path('images/biographies/' . $result->id .'/thumbnail/'. $result->photo))
-                    ->fit(104, 78)
-                    ->save(public_path('images/biographies/' . $result->id . '/104x78_' . $document_name));
-            }
-
-
-            /*
-             * slug değişmiş ise ve link kısaltmaya izin verilmişse google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
-             *
-             * */
-            if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
-
-                $linkShortener = new LinkShortener(new Link);
-                $result->short_url = $linkShortener->linkShortener($result->slug);
-                $result->save();
-            }
-
-            $this->removeCacheTags(['BiographyController', 'Biography']);
-            $this->removeHomePageCache();
-
-            Session::flash('flash_message', trans('common.message_model_updated'));
-            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-        } else {
+        if ($v->fails()) {
             return Redirect::back()
-                ->withErrors(trans('common.save_failed'))
+                ->withErrors($v)
                 ->withInput($input);
+        } else {
+
+            if (isset($record->id)) {
+                $result = $this->repo->update($record->id,$input);
+            } else {
+                $result = $this->repo->create($input);
+            }
+
+            if ($result) {
+
+                if(!empty($input['photo'])) {
+                    $oldPath = $record->photo;
+                    $document_name = $input['photo']->getClientOriginalName();
+                    $destination = '/images/biographies/'. $result->id .'/thumbnail';
+                    Uploader::fileUpload($result, 'photo', $input['photo'] , $destination , $document_name);
+                    Uploader::removeFile($oldPath);
+
+                    Image::make(public_path('images/biographies/' . $result->id .'/thumbnail/'. $result->photo))
+                        ->fit(104, 78)
+                        ->save(public_path('images/biographies/' . $result->id . '/104x78_' . $document_name));
+                }
+
+
+                /*
+                 * slug değişmiş ise ve link kısaltmaya izin verilmişse google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
+                 *
+                 * */
+                if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+
+                    $linkShortener = new LinkShortener(new Link);
+                    $result->short_url = $linkShortener->linkShortener($result->slug);
+                    $result->save();
+                }
+
+                $this->removeCacheTags(['BiographyController', 'Biography']);
+                $this->removeHomePageCache();
+
+                Session::flash('flash_message', trans('common.message_model_updated'));
+                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+            } else {
+                return Redirect::back()
+                    ->withErrors(trans('common.save_failed'))
+                    ->withInput($input);
+            }
         }
     }
 }
