@@ -1799,6 +1799,10 @@ footer .footer-bottom .cpy {
     border-radius: 0;
     background-color: #E3000F;
     border-color:#E3000F;
+    max-width: 200px;
+    height: 32px;
+    line-height: 1.6em;
+    overflow: hidden;
     color: #ffffff;
 }
 .pager li a:hover{
