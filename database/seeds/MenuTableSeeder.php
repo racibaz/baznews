@@ -19,7 +19,7 @@ class MenuTableSeeder extends Seeder
             '_rgt'                      => 1,
             'name'                      => 'Homepage',
             'slug'                      => 'homepage',
-            'url'                       => 'http://baznews.app',
+            'url'                       => 'bazsoft.biz',
             'target'                    => '_blank',
             'icon'                      => '<i class="fa fa-home" aria-hidden="true"></i>',
             'order'                     => 1,
@@ -50,7 +50,7 @@ class MenuTableSeeder extends Seeder
             'page_id'                   => 1,
             'name'                      => 'Künye',
             'slug'                      => 'kunye',
-            'icon'                      => 'icon',
+            'target'                    => '_blank',
             'order'                     => 1,
             'is_footer'                 => 1,
             'is_active'                 => 1,
@@ -64,11 +64,56 @@ class MenuTableSeeder extends Seeder
             'name'                      => 'Dış Link',
             'slug'                      => 'dis-link',
             'url'                       => 'http://www.receptayyiperdogan.name',
-            'icon'                      => 'icon',
+            'target'                    => '_blank',
             'order'                     => 1,
             'is_header'                 => 1,
             'is_footer'                 => 1,
             'is_active'                 => 1,
         ]);
+
+
+        Menu::create([
+            'parent_id'                 => null,
+            '_lft'                      => 1,
+            '_rgt'                      => 1,
+            'name'                      => 'Site Haritası',
+            'slug'                      => 'site-haritasi',
+            'route'                     => 'sitemap.xml',
+            'target'                    => '_blank',
+            'icon'                      => '<i class="fa fa-sitemap" aria-hidden="true"></i>',
+            'order'                     => 100,
+            'is_footer'                 => 1,
+            'is_active'                 => 1,
+        ]);
+
+
+        Menu::create([
+            'parent_id'                 => null,
+            '_lft'                      => 1,
+            '_rgt'                      => 1,
+            'name'                      => 'rss.xml',
+            'slug'                      => 'rss.xml',
+            'route'                     => 'rss.xml',
+            'target'                    => '_blank',
+            'icon'                      => '<i class="fa fa-rss" aria-hidden="true"></i>',
+            'order'                     => 100,
+            'is_footer'                 => 1,
+            'is_active'                 => 1,
+        ]);
+
+        Menu::create([
+            'parent_id'                 => null,
+            '_lft'                      => 1,
+            '_rgt'                      => 1,
+            'name'                      => 'İletişim',
+            'slug'                      => 'iletisim',
+            'route'                     => 'contact',
+            'target'                    => '_blank',
+            'icon'                      => '<i class="fa fa-address-card" aria-hidden="true"></i>',
+            'order'                     => 100,
+            'is_footer'                 => 1,
+            'is_active'                 => 1,
+        ]);
+
     }
 }
