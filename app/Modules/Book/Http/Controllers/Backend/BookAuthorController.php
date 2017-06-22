@@ -87,11 +87,12 @@ class BookAuthorController extends BackendController
         if ($result) {
 
             if(!empty($input['thumbnail'])) {
-                $oldPath = $record->thumbnail;
-                $document_name = $input['thumbnail']->getClientOriginalName();
+
                 $destination = '/images/book_authors/'. $result->id;
+                Uploader::removeDirectory($destination);
+
+                $document_name = $input['thumbnail']->getClientOriginalName();
                 Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
-                Uploader::removeFile($oldPath);
 
                 $thumbnailPath = public_path('images/book_authors/' . $result->id .'/'. $result->thumbnail);
 

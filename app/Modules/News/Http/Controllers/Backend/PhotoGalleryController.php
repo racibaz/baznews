@@ -129,11 +129,13 @@ class PhotoGalleryController extends BackendController
             //çünkü galeri resimlerini gösterirken "gallery/gallery_slug/thumbnail" olduğu için
             //tekrar kontrol etmemiz gerekiyor.Bundan foto eklemeyi kaldırdım.
             if(!empty($input['thumbnail'])) {
-                $oldPath = $record->thumbnail;
-                $document_name = $input['thumbnail']->getClientOriginalName();
+
                 $destination = '/gallery/'. $result->id .'/photos';
+                //todo gallerinin photoları silinmemesi lazım
+                //Uploader::removeFile($destination);
+
+                $document_name = $input['thumbnail']->getClientOriginalName();
                 Uploader::fileUpload($result, 'thumbnail', $input['thumbnail'] , $destination , $document_name);
-                Uploader::removeFile($oldPath);
 
 
                 Image::make(public_path('gallery/'. $result->id .'/photos/'. $result->thumbnail))

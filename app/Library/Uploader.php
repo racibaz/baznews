@@ -44,6 +44,12 @@ class Uploader
         }
     }
 
+    public static function removeDirectory($destination)
+    {
+        if(File::isDirectory(public_path($destination))) {
+            File::deleteDirectory(public_path($destination));
+        }
+    }
 
     public static function imageUploader($record, $path)
     {
