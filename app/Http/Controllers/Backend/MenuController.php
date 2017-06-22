@@ -91,6 +91,8 @@ class MenuController extends BackendController
     public function save($record)
     {
         $input = Input::all();
+        $input['is_header'] = Input::get('is_header') == "on" ? true : false;
+        $input['is_footer'] = Input::get('is_footer') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         if (isset($record->id)) {

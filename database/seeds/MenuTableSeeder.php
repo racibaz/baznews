@@ -23,6 +23,7 @@ class MenuTableSeeder extends Seeder
             'target'                    => '_blank',
             'icon'                      => '<i class="fa fa-home" aria-hidden="true"></i>',
             'order'                     => 1,
+            'is_header'                 => 1,
             'is_active'                 => 1,
         ]);
 
@@ -36,6 +37,8 @@ class MenuTableSeeder extends Seeder
             'url'                       => 'link',
             'icon'                      => 'icon',
             'order'                     => 1,
+            'is_header'                 => 1,
+            'is_footer'                 => 1,
             'is_active'                 => 1,
         ]);
 
@@ -49,6 +52,7 @@ class MenuTableSeeder extends Seeder
             'slug'                      => 'kunye',
             'icon'                      => 'icon',
             'order'                     => 1,
+            'is_footer'                 => 1,
             'is_active'                 => 1,
         ]);
 
@@ -62,6 +66,8 @@ class MenuTableSeeder extends Seeder
             'url'                       => 'http://www.receptayyiperdogan.name',
             'icon'                      => 'icon',
             'order'                     => 1,
+            'is_header'                 => 1,
+            'is_footer'                 => 1,
             'is_active'                 => 1,
         ]);
     }

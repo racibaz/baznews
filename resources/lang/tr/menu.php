@@ -6,6 +6,8 @@ return [
     'passive_menu_count' => 'Pasif Menü Sayısı',
     'management' => 'Menü Yönetimi',
     'edit_create' => 'Menü Oluştur/Düzenle',
+    'header_menu' => 'Header (üst) Menü',
+    'footer_menu' => 'Footer (alt) Menü',
     'status' => 'Durum',
     'parent_menu' => 'Üst Menü',
     'sort_left' => 'Sıralama Sol',
@@ -23,5 +25,6 @@ return [
     'edit_delete' => 'Düzenle/Sil',
     'menu_list' => 'Menü Listesi',
     'menu_create' => 'Menü Oluştur',
-
+    'is_header' => 'Ekle / Çıkar',
+    'is_footer' => 'Ekle / Çıkar',
 ];

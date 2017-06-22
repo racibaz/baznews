@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="m-ct">
                                     <ul class="mn">
-                                        @foreach(Cache::tags(['Setting', 'Menu'])->get('menus') as $menu)
+                                        @foreach(Cache::tags(['Setting', 'Menu'])->get('footer_menus') as $menu)
                                             @if(!empty($menu->route))
                                                 <li><a href="{!! url($menu->route) !!}" target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
                                             @elseif(!empty($menu->url))
