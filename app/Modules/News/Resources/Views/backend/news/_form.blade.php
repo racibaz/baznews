@@ -344,7 +344,9 @@
                             <div class="form-group">
                                 {!! Form::label('cuff_photo', trans('news::news.cuff_photo'),['class'=> 'control-label','style'=>'width:100%']) !!}
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                        <img src="{{ asset('images/news_images/' . $record->id . '/cuff_photo/' . $record->cuff_photo)}}"/>
+                                    </div>
                                     <div>
                                         <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('news::news.select_image')}}</span><span class="fileinput-exists">{{trans('news::news.change')}}</span>{!! Form::file('cuff_photo') !!}</span>
                                         <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('news::news.remove')}}</a>
@@ -356,7 +358,9 @@
                             <div class="form-group">
                                 {!! Form::label('thumbnail', trans('news::news.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                        <img src="{{ asset('images/news_images/' . $record->id . '/thumbnail/' . $record->thumbnail)}}"/>
+                                    </div>
                                     <div>
                                         <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('news::news.select_image')}}</span><span class="fileinput-exists">{{trans('news::news.change')}}</span>{!! Form::file('thumbnail') !!}</span>
                                         <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('news::news.remove')}}</a>
