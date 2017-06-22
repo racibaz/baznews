@@ -122,19 +122,21 @@ class BookController extends BackendController
 
         if ($result) {
             if(!empty($input['thumbnail'])) {
-                $oldPath = $record->thumbnail;
-                $document_name = $input['thumbnail']->getClientOriginalName();
+
                 $destination = '/images/books/'. $result->id . '/original';
+                Uploader::removeDirectory($destination);
+
+                $document_name = $input['thumbnail']->getClientOriginalName();
                 Uploader::fileUpload($result  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
-                Uploader::removeFile($oldPath);
             }
 
             if(!empty($input['photo'])) {
-                $oldPath = $record->photo;
-                $document_name = $input['photo']->getClientOriginalName();
+
                 $destination = '/images/books/'. $result->id . '/photo';
+                Uploader::removeDirectory($destination);
+
+                $document_name = $input['photo']->getClientOriginalName();
                 Uploader::fileUpload($result , 'photo', $input['photo'] , $destination , $document_name);
-                Uploader::removeFile($oldPath);
             }
 
 

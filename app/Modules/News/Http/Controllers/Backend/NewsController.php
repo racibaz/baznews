@@ -329,43 +329,46 @@ class NewsController extends BackendController
 
             if(!empty($input['thumbnail'])) {
 
-                Uploader::removeFile('/images/news_images/'. $result->id);
+                $destination = '/images/news_images/'. $result->id .'/thumbnail';
+                Uploader::removeDirectory($destination);
 
                 $document_name = $input['thumbnail']->getClientOriginalName();
-                $destination = '/images/news_images/'. $result->id .'/thumbnail';
                 Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
 
-                Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
+                $originalPhotoPath = public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail);
+
+                Image::make($originalPhotoPath)
                     ->fit(58, 58)
                     ->save(public_path('images/news_images/' . $result->id . '/58x58_' . $document_name));
 
-                Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
+                Image::make($originalPhotoPath)
                     ->fit(165, 90)
                     ->save(public_path('images/news_images/' . $result->id . '/165x90_' . $document_name));
 
-                Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
+                Image::make($originalPhotoPath)
                     ->fit(196, 150)
                     ->save(public_path('images/news_images/' . $result->id . '/196x150_' . $document_name));
 
-                Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
+                Image::make($originalPhotoPath)
                     ->fit(220, 310)
                     ->save(public_path('images/news_images/' . $result->id . '/220x310_' . $document_name));
 
-                Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
+                Image::make($originalPhotoPath)
                     ->fit(322, 265)
                     ->save(public_path('images/news_images/' . $result->id . '/322x265_' . $document_name));
 
-                Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
+                Image::make($originalPhotoPath)
                     ->fit(497, 358)
                     ->save(public_path('images/news_images/' . $result->id . '/497x358_' . $document_name));
             }
 
             if(!empty($input['cuff_photo'])) {
-                $oldPath = $record->cuff_photo;
+
+                $destination = '/images/news_images/'. $result->id .'/cuff_photo';
+                Uploader::removeDirectory($destination . '/');
+
                 $document_name = $input['cuff_photo']->getClientOriginalName();
-                $destination = '/images/news_images/'. $result->id .'/cuff_photo' ;
                 Uploader::fileUpload($result , 'cuff_photo', $input['cuff_photo'] , $destination , $document_name);
-                Uploader::removeFile($oldPath);
             }
 
 
