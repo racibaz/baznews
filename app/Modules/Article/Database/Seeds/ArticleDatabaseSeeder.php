@@ -3,7 +3,6 @@
 namespace App\Modules\Article\Database\Seeds;
 
 use App\Models\Setting;
-use App\Modules\Article\Models\ArticleCategory;
 use Illuminate\Database\Seeder;
 
 class ArticleDatabaseSeeder extends Seeder
@@ -59,22 +58,5 @@ class ArticleDatabaseSeeder extends Seeder
                 'attribute_value'             => '5',
             ]);
         }
-
-        foreach (ArticleCategory::all() as $item) {
-
-            ArticleCategory::create([
-                'parent_id'                 => null,
-                '_lft'                      => 1,
-                '_rgt'                      => 1,
-                'name'                      => $item->name,
-                'slug'                      => $item->slug,
-                'route'                     => 'article_category/' . $item->slug,
-                'order'                     => 10,
-                'is_header'                 => 1,
-                'is_footer'                 => 1,
-                'is_active'                 => 1,
-            ]);
-        }
-
     }
 }
