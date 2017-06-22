@@ -73,49 +73,29 @@ class BookPublisherController extends BackendController
     public function save($record)
     {
         $input = Input::all();
-
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
-        $input['user_id'] = \Auth::user()->id;
 
-        $rules = array(
-            'name' => 'required|min:4|max:255',
-            'slug' => [
-                Rule::unique('book_publishers')->ignore($record->id),
-            ],
-            'link' => 'url',
-            'description' => 'max:255',
-        );
-        $v = Validator::make($input, $rules);
-
-        if ($v->fails()) {
-            return Redirect::back()
-                ->withErrors($v)
-                ->withInput($input);
+        if (isset($record->id)) {
+            $result = $this->repo->update($record->id,$input);
         } else {
+            $result = $this->repo->create($input);
+        }
 
-            if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
-            } else {
-                $result = $this->repo->create($input);
-            }
+        if ($result) {
 
-            if ($result) {
-
-
-                /*
-                 * Delete related caches
-                 * */
-                $this->removeCacheTags(['BookPublisherController']);
-                $this->removeHomePageCache();
+            /*
+             * Delete related caches
+             * */
+            $this->removeCacheTags(['BookPublisherController']);
+            $this->removeHomePageCache();
 
 
-                Session::flash('flash_message', trans('common.message_model_updated'));
-                return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
-            } else {
-                return Redirect::back()
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput($input);
-            }
+            Session::flash('flash_message', trans('common.message_model_updated'));
+            return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
+        } else {
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'))
+                ->withInput($input);
         }
     }
 }

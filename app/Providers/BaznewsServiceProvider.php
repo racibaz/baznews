@@ -52,9 +52,14 @@ class BaznewsServiceProvider extends ServiceProvider
                     Cache::tags('Setting')->forever($setting->attribute_key, $setting->attribute_value);
                 }
 
-                Cache::tags(['Setting', 'Menu'])->rememberForever('menus', function () {
+                Cache::tags(['Setting', 'Menu'])->rememberForever('header_menus', function () {
                     $menuRepository = new MenuRepository();
-                    return  $menuRepository->getMenus();
+                    return  $menuRepository->getHeaderMenus();
+                });
+
+                Cache::tags(['Setting', 'Menu'])->rememberForever('footer_menus', function () {
+                    $menuRepository = new MenuRepository();
+                    return  $menuRepository->getFooterMenus();
                 });
 
                 Cache::tags(['Setting', 'Advertisement'])->rememberForever('advertisements', function () {

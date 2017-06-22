@@ -52,9 +52,9 @@
             <div class="collapse navbar-collapse" id="main-navbar-menu">
                 <div class="container">
                     <ul class="nav navbar-nav">
-                        @foreach(Cache::tags(['Setting', 'Menu'])->get('menus') as $menu)
+                        @foreach(Cache::tags(['Setting', 'Menu'])->get('header_menus') as $menu)
                             @if(!empty($menu->route))
-                                <li><a href="{{ Cache::tags('Setting')->get('url') . '/' . $menu->route}}" target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
+                                <li><a href="{!! url($menu->route) !!}" target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
                             @elseif(!empty($menu->url))
                                 <li><a href="{{$menu->url}}" target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}} </a></li>
                             @elseif(!empty($menu->page->id))

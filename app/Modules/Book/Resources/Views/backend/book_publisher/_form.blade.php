@@ -19,6 +19,9 @@
     @else
         {!! Form::open(['route' => 'book_publisher.store','method' => 'post', 'files' => 'true']) !!}
     @endif
+
+    {!! Form::hidden('user_id', Auth::user()->id ) !!}
+
     <div class="row">
         <div class="col-lg-6">
             <div class="box box-default">

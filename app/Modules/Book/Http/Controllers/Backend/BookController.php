@@ -111,8 +111,6 @@ class BookController extends BackendController
 
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
-//        $input['user_id'] = \Auth::user()->id;
-
 
         if (isset($record->id)) {
             $result = $this->repo->update($record->id,$input);
@@ -122,19 +120,21 @@ class BookController extends BackendController
 
         if ($result) {
             if(!empty($input['thumbnail'])) {
-                $oldPath = $record->thumbnail;
-                $document_name = $input['thumbnail']->getClientOriginalName();
+
                 $destination = '/images/books/'. $result->id . '/original';
+                Uploader::removeDirectory($destination);
+
+                $document_name = $input['thumbnail']->getClientOriginalName();
                 Uploader::fileUpload($result  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
-                Uploader::removeFile($oldPath);
             }
 
             if(!empty($input['photo'])) {
-                $oldPath = $record->photo;
-                $document_name = $input['photo']->getClientOriginalName();
+
                 $destination = '/images/books/'. $result->id . '/photo';
+                Uploader::removeDirectory($destination);
+
+                $document_name = $input['photo']->getClientOriginalName();
                 Uploader::fileUpload($result , 'photo', $input['photo'] , $destination , $document_name);
-                Uploader::removeFile($oldPath);
             }
 
 

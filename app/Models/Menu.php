@@ -39,7 +39,7 @@ class Menu extends Model
 
 
     public $transformer = MenuTransformer::class;
-    protected $fillable = ['parent_id', '_lft', '_rgt', 'page_id', 'name', 'slug', 'url', 'route', 'icon', 'order' ,'is_active'];
+    protected $fillable = ['parent_id', '_lft', '_rgt', 'page_id', 'name', 'slug', 'url', 'route', 'icon', 'order', 'is_header', 'is_footer', 'is_active'];
     protected $dates = ['created_at','updated_at','deleted_at'];
 
     public function page()

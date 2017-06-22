@@ -2,8 +2,10 @@
 
 namespace App\Modules\News\Database\Seeds;
 
+use App\Models\Menu;
 use App\Models\Setting;
 use App\Models\WidgetGroup;
+use App\Modules\News\Models\NewsCategory;
 use Illuminate\Database\Seeder;
 
 class NewsDatabaseSeeder extends Seeder
@@ -355,5 +357,21 @@ class NewsDatabaseSeeder extends Seeder
             ]);
         }
 
+
+        foreach (NewsCategory::all()->take(6) as $item) {
+
+            Menu::create([
+                'parent_id'                 => null,
+                '_lft'                      => 1,
+                '_rgt'                      => 1,
+                'name'                      => $item->name,
+                'slug'                      => $item->slug,
+                'route'                     => 'news-category/' . $item->slug,
+                'order'                     => 10,
+                'is_header'                 => 1,
+                'is_footer'                 => 1,
+                'is_active'                 => 1,
+            ]);
+        }
     }
 }

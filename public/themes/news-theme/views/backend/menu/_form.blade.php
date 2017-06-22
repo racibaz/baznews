@@ -137,7 +137,33 @@
                             {!! Form::label('order', trans('menu.order'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::text('order', $record->order, ['placeholder' => trans('menu.order') ,'class' => 'form-control']) !!}
+                                {!! Form::number('order', $record->order, ['placeholder' => trans('menu.order') ,'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <b>{{trans('menu.header_menu')}}</b>
+                            </div>
+                            <div class="col-lg-10">
+                                <label>
+                                    {!! Form::checkbox('is_header', null , $record->is_header) !!}
+                                    <i></i> {{trans('menu.is_header')}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <b>{{trans('menu.footer_menu')}}</b>
+                            </div>
+                            <div class="col-lg-10">
+                                <label>
+                                    {!! Form::checkbox('is_footer', null , $record->is_footer) !!}
+                                    <i></i> {{trans('menu.is_footer')}}
+                                </label>
                             </div>
                         </div>
                     </div>

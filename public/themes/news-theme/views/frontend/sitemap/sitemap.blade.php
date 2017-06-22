@@ -3,7 +3,7 @@
 
     @foreach($sitemaps as $index => $sitemap)
             <sitemap>
-                <loc>{{Cache::tags('Setting')->get('url')}}/{{ $sitemap->url }}</loc>
+                <loc>{{ url($sitemap->url) }}</loc>
                 <lastmod>{{ $sitemap->last_modified }}</lastmod>
             </sitemap>
     @endforeach

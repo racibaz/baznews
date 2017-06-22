@@ -25,8 +25,8 @@ Route::get('/login/{service}/callback', 'Auth\SocialLoginController@callback');
 Route::get('sitemap.xml', 'Frontend\SitemapController@sitemaps')->name('sitemaps');
 Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');
 Route::get('/tags/{q}', 'Frontend\SearchController@tagSearch')->name('tag_search');
-Route::get(trans('route.contact'), 'Frontend\ContactController@index')->name('contact-index');
-Route::post(trans('route.contact'), 'Frontend\ContactController@store')->name('contact-store');
+Route::get('contact', 'Frontend\ContactController@index')->name('contact-index');
+Route::post('contact', 'Frontend\ContactController@store')->name('contact-store');
 
 Auth::routes();
 
