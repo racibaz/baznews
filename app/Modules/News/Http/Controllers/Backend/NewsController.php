@@ -328,12 +328,12 @@ class NewsController extends BackendController
         if ($result) {
 
             if(!empty($input['thumbnail'])) {
-                $oldPath = $record->thumbnail;
+
+                Uploader::removeFile('/images/news_images/'. $result->id);
+
                 $document_name = $input['thumbnail']->getClientOriginalName();
                 $destination = '/images/news_images/'. $result->id .'/thumbnail';
                 Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
-                Uploader::removeFile($oldPath);
-
 
                 Image::make(public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail))
                     ->fit(58, 58)
