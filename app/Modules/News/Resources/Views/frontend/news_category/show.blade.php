@@ -230,7 +230,7 @@
         </div><!-- /.row -->
 
     </article><!-- /.article -->
-    <div class="fb-comment-embed" data-href="{{Cache::tags('Setting')->get('url')}}/{{$record->slug}}" data-width="560" data-include-parent="false"></div>
+    <div class="fb-comment-embed" data-href="{{ url($record->slug) }}" data-width="560" data-include-parent="false"></div>
 
     @if($record->is_comment)
         {!! Cache::tags('Setting')->get('disqus') !!}

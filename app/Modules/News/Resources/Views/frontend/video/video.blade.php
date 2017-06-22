@@ -40,7 +40,7 @@
                                           "@type": "VideoObject",
                                           "name": "{{$video->title}}",
                                           "description": "{{$video->description}}",
-                                          "thumbnailUrl": "{{Cache::tags('Setting')->get('url') . '/' . asset('videos/' . $video->id . '/' . $video->thumbnail)}}",
+                                          "thumbnailUrl": "{{asset('videos/' . $video->id . '/' . $video->thumbnail)}}",
                                           "uploadDate": "{{$video->updated_at}}",
                                           "publisher": {
                                             "@type": "Organization",
