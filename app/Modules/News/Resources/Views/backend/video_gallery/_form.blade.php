@@ -18,6 +18,9 @@
     @else
         {!! Form::open(['route' => 'video_gallery.store','method' => 'post', 'files' => 'true']) !!}
     @endif
+
+    {!! Form::hidden('user_id', Auth::user()->id ) !!}
+
     <!-- Main Content Element  Start-->
     <div class="row">
         <div class="col-lg-8">

@@ -19,6 +19,8 @@
         {!! Form::open(['route' => 'article.store','method' => 'post']) !!}
     @endif
 
+    {!! Form::hidden('user_id', Auth::user()->id ) !!}
+
     <div class="modal fade" id="revision-id">
         <div class="modal-dialog">
             <div class="modal-content">

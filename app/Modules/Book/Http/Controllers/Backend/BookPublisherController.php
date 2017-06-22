@@ -74,7 +74,6 @@ class BookPublisherController extends BackendController
     {
         $input = Input::all();
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
-        $input['user_id'] = \Auth::user()->id;
 
         if (isset($record->id)) {
             $result = $this->repo->update($record->id,$input);

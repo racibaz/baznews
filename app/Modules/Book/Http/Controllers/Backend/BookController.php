@@ -111,8 +111,6 @@ class BookController extends BackendController
 
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
-//        $input['user_id'] = \Auth::user()->id;
-
 
         if (isset($record->id)) {
             $result = $this->repo->update($record->id,$input);
