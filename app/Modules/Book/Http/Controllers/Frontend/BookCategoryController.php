@@ -16,17 +16,20 @@ class BookCategoryController extends Controller
 
     public function show($slug)
     {
-        return Cache::tags(['BookCategoryController', 'Book', 'bookCategory'])->rememberForever('bookCategory:'.$slug, function() use($slug) {
+        return Cache::tags(['BookCategoryController', 'Book', 'bookCategory'])->rememberForever(request()->fullUrl(), function() use($slug) {
             $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
-            $record = $this->repo
-                ->with([
-                    'books',
-                ])
+            $bookCategory = $this->repo
+                ->with(['books'])
                 ->where('is_active', 1)
                 ->findBy('slug',$slug);
 
+            $records = $bookCategory->books()->paginate();
+
+            dd($records);
+
             return Theme::view('book::frontend.book_category.show', compact([
-                'record',
+                'bookCategory',
+                'records',
             ]))->render();
         });
     }

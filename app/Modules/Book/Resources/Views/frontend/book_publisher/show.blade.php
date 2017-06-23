@@ -7,7 +7,7 @@
                 <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
             </li>
             <li>
-                <a href="{!! route('book_category', ['slug' => $record->slug]) !!}">{{$record->name}}</a>
+                <a href="{!! route('book_category', ['slug' => $bookPublisher->slug]) !!}">{{$bookPublisher->name}}</a>
             </li>
         </ol>
         <div class="row">
@@ -16,20 +16,20 @@
                     <div class="publish-books">
                         <div class="publish-name">
                             <h1>
-                                <span>{{$record->name}}</span>
+                                <span>{{$bookPublisher->name}}</span>
                             </h1>
                         </div>
                         <div class="books">
                             <h2>Yayın Evi Kitapları</h2>
                             <div class="book-list">
                                 <div class="row">
-                                    @foreach($record->books as $book)
+                                    @foreach($records as $record)
                                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                            <a href="{!! route('book', ['slug' => $book->slug]) !!}" class="{{$book->name}}">
+                                            <a href="{!! route('book', ['slug' => $record->slug]) !!}" class="{{$record->name}}">
                                                 <div class="thumbnail">
-                                                    <img src="{{ asset('images/books/' . $book->id . '/original/' . $book->thumbnail)}}" alt="{{$book->name}}" class="img-responsive"/>
+                                                    <img src="{{ asset('images/books/' . $record->id . '/original/' . $record->thumbnail)}}" alt="{{$record->name}}" class="img-responsive"/>
                                                     <div class="caption">
-                                                        <h3>{{$book->name}}</h3>
+                                                        <h3>{{$record->name}}</h3>
                                                     </div>
                                                 </div>
                                             </a>
@@ -38,6 +38,7 @@
                                 </div><!-- /.row -->
                             </div><!-- /.book-list -->
                         </div>
+                        @include($activeTheme . '::frontend.partials._pagination', ['records' => $records ])
                     </div><!-- /.publish-books -->
                 </article>
                 <div class="share-box">
@@ -60,29 +61,29 @@
         </div><!-- /.col-md-8 -->
     </div><!-- /.row -->
 
-    {{--<div class="fb-comment-embed" data-href="{{ ur($record->slug) }}" data-width="560" data-include-parent="false"></div>--}}
+    {{--<div class="fb-comment-embed" data-href="{{ ur($bookPublisher->slug) }}" data-width="560" data-include-parent="false"></div>--}}
 @endsection
 
 
 @section('meta_tags')
-    <title> {{ $record->name }}  </title>
-    <meta name="keywords" content="{{$record->keywords}}"/>
-    <meta name="description" content="{{$record->description}}"/>
+    <title> {{ $bookPublisher->name }}  </title>
+    <meta name="keywords" content="{{$bookPublisher->keywords}}"/>
+    <meta name="description" content="{{$bookPublisher->description}}"/>
     <meta name='robots' content='index,follow'>
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="{{Cache::tags('Setting')->get('twitter_account')}}">
-    <meta name="twitter:title" content="{{$record->name}}">
-    <meta name="twitter:description" content="{{$record->description}}">
+    <meta name="twitter:title" content="{{$bookPublisher->name}}">
+    <meta name="twitter:description" content="{{$bookPublisher->description}}">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ $record->name }} " />
+    <meta property="og:title" content="{{ $bookPublisher->name }} " />
     <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}" />
     <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}" />
-    <meta property="og:description" content="{{$record->description}}" />
+    <meta property="og:description" content="{{$bookPublisher->description}}" />
     <meta property="fb:app_id" content="671303379704288">
-    <meta property="og:image" content="{{asset('images/books/' . $record->id . '/original/' .$record->thumbnail)}}"/>
-    <meta property="article:published_time" content="{{$record->created_at}}">
+    <meta property="og:image" content="{{asset('images/books/' . $bookPublisher->id . '/original/' .$bookPublisher->thumbnail)}}"/>
+    <meta property="article:published_time" content="{{$bookPublisher->created_at}}">
     <meta property="article:author" content="">
 @endsection
 @section('js')

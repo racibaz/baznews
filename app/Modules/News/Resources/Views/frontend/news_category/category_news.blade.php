@@ -11,23 +11,6 @@
                         </h1>
                     </div><!-- /.title-section -->
                     <div class="posts">
-                        <!-- TODO: Burada kutu haber görünümü açık silinebilir.. -->
-                        {{--<div class="row">--}}
-                            {{--@foreach($records as $record)--}}
-                                {{--<div class="col-md-4 col-sm-4 col-xs-6">--}}
-                                    {{--<div class="r-box">--}}
-                                        {{--<a href="{{ route('show_news', ['slug' => $record->slug]) }}" class="module">--}}
-                                            {{--<img src="{{asset('images/news_images/' . $record->id . '/165x90_' . $record->thumbnail)}}"--}}
-                                                 {{--alt="{{$record->title}}">--}}
-                                            {{--<div class="c-text">--}}
-                                                {{--<h6 class="title">{{$record->title}}</h6>--}}
-                                            {{--</div>--}}
-                                        {{--</a>--}}
-                                    {{--</div><!-- /.r-box -->--}}
-                                {{--</div><!-- /.r-box -->--}}
-                            {{--@endforeach--}}
-                        {{--</div>--}}
-
                         <div class="row">
                             @foreach($records as $record)
                                 <div class="col-lg-12">
@@ -63,6 +46,7 @@
                                 </div><!-- /.col-lg-12 -->
                             @endforeach
                         </div>
+                        @include($activeTheme . '::frontend.partials._pagination', ['records' => $records ])
                     </div>
                 </div>
             </div>

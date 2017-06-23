@@ -18,17 +18,18 @@ class BookAuthorController extends Controller
     {
         $id =  substr(strrchr($slug, '-'), 1 );
 
-        return Cache::tags(['BookAuthorController', 'Book', 'bookAuthor'])->rememberForever('bookAuthor:'.$id, function() use($id) {
+        return Cache::tags(['BookAuthorController', 'Book', 'bookAuthor'])->rememberForever(request()->fullUrl(), function() use($id) {
 
-            $record = $this->repo
-                ->with([
-                    'books',
-                ])
+            $bookAuthor = $this->repo
+                ->with(['books'])
                 ->where('is_active', 1)
                 ->findBy('id',$id);
 
+            $records = $bookAuthor->books()->paginate();
+
             return Theme::view('book::frontend.book_author.show', compact([
-                'record',
+                'bookAuthor',
+                'records',
             ]))->render();
         });
     }
