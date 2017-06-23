@@ -1394,41 +1394,48 @@ header{
 footer {
     padding-top: 40px;
     background-color: #23262D;
-    margin-top: 40px; }
-footer .footer-head .ft-logo {
-    padding-top: 15px; }
-@media only screen and (max-width: 480px) {
-    footer .footer-head .ft-logo {
+    margin-top: 40px;
+}
+footer .footer-head{
+    height: 150px;
+}
+footer .footer-head .footer-menu,
+footer .footer-head .footer-menu > li{
+    display: inline-block;
+    width: 40%;
+    margin: 0;
+    padding:0;
+    list-style-image: none;
+}
+footer .footer-head .footer-menu > li > a{
+    color:#fff;
+    font-size: 13px;
+}
+@media only screen and (max-width: 768px) {
+    footer .footer-head .ft-logo{
         text-align: center;
-        margin-bottom: 30px; } }
-@media only screen and (max-width: 480px) {
-    footer .footer-head .ft-m {
-        text-align: center; } }
-footer .footer-head .ft-m .m-ttl h4 {
-    color: #e0e0e0;
-    font-size: 16px;
-    margin: 0 0 10px; }
-@media only screen and (max-width: 480px) {
-    footer .footer-head .ft-m .m-ct {
-        margin-bottom: 30px; } }
-footer .footer-head .ft-m .m-ct ul {
-    list-style: none;
-    padding: 0;
-    margin: 0; }
-footer .footer-head .ft-m .m-ct ul li {
-    list-style: none;
-    padding: 0;
-    margin: 0; }
-footer .footer-head .ft-m .m-ct ul li a {
-    color: #abc7d1;
-    font-size: 12px; }
+        margin-bottom: 15px;
+    }
+    footer .footer-head{
+        height: auto;
+    }
+    footer .footer-head .footer-menu {
+        text-align: center;
+        width: 100%;
+    }
+    footer .footer-head .footer-menu li{
+        width: 100%;
+    }
+}
 footer .footer-bottom {
     padding: 15px 0;
     border-top: 1px solid #616161;
-    margin-top: 50px; }
+    margin-top: 50px;
+}
 footer .footer-bottom .cpy {
     font-size: 11px;
-    color: #989898; }
+    color: #989898;
+}
 
 
 /* ==========================================================================
