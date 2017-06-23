@@ -117,11 +117,6 @@
     <script type="text/javascript">
         jQuery(document).ready(function() {
             /*--------------------------------------------------------
-             Last Minute News Ticker Slider
-             * --------------------------------------------------------*/
-            $('.ticker').ticker();
-
-            /*--------------------------------------------------------
              Sticky Sidebar
              * --------------------------------------------------------*/
             jQuery('#sidebar,#content').theiaStickySidebar();
