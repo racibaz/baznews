@@ -14,4 +14,13 @@ class VideoCategoryRepository extends EloquentRepository
     {
         return $this->where('is_cuff',1)->where('is_active',1)->findAll();
     }
+
+    public function getVideoCategoryVideos($video, $take = 10)
+    {
+        if(!empty($video->video_category)) {
+            return  $video->video_category->videos->where('is_active', 1)->take($take);
+        }
+
+        return null;
+    }
 }

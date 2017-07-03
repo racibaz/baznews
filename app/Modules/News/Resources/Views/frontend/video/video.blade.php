@@ -7,11 +7,13 @@
                 <li>
                     <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
                 </li>
-                <li>
-                    <a href="{!! route('show_video_gallery', ['slug' => $videoGallery->slug]) !!}">
-                        {{$videoGallery->title}}
-                    </a>
-                </li>
+                @if($videoGallery)
+                    <li>
+                        <a href="{!! route('show_video_gallery', ['slug' => $videoGallery->slug]) !!}">
+                            {{$videoGallery->title}}
+                        </a>
+                    </li>
+                @endif
                 <li>
                     {{$video->name}}
                 </li>
@@ -90,41 +92,42 @@
                 </div><!-- /.col-md-8 -->
                 <div class="col-md-4" id="video_sidebar">
                     <div class="sidebar">
+                        @if(count($otherGalleryVideos))
+                            <div class="sidebar-video">
+                                <div class="title-section">
+                                    <h1>
+                                        <span>{{trans('news::video.gallery_other_videos')}}</span>
+                                    </h1>
+                                </div>
 
-                        <div class="sidebar-video">
-                            <div class="title-section">
-                                <h1>
-                                    <span>{{trans('news::video.gallery_other_videos')}}</span>
-                                </h1>
-                            </div>
-
-                            <div class="video-list-body">
-                                @foreach($otherGalleryVideos as $otherGalleryVideo)
-                                    <div class="video-link">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
-                                                    <div class="hold">
-                                                        <img src="{{ asset('videos/' . $otherGalleryVideo->id . '/165x90_' . $otherGalleryVideo->thumbnail)}}"
-                                                             alt="{{$otherGalleryVideo->title}}" title="{{$otherGalleryVideo->title}}"/>
-                                                        <span class="icon play"></span>
-                                                    </div>
-                                                </a>
-                                            </div><!-- /.col -->
-                                            <div class="col-lg-9">
-                                                <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
-                                                    <span class="title">{{$otherGalleryVideo->name}}</span>
-                                                    <span class="excerpt">
-                                                        <p>{{$otherGalleryVideo->subtitle}}</p>
-                                                    </span>
-                                                </a>
-                                                <span class="time visible-lg"> {{$otherGalleryVideo->updated_at->diffForHumans()}}</span>
-                                            </div>
-                                        </div><!-- /.row -->
-                                    </div><!-- /.video-link -->
-                                @endforeach
-                            </div>
-                        </div><!-- /.sidebar-video -->
+                                <div class="video-list-body">
+                                    @foreach($otherGalleryVideos as $otherGalleryVideo)
+                                        <div class="video-link">
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
+                                                        <div class="hold">
+                                                            <img src="{{ asset('videos/' . $otherGalleryVideo->id . '/165x90_' . $otherGalleryVideo->thumbnail)}}"
+                                                                 alt="{{$otherGalleryVideo->title}}" title="{{$otherGalleryVideo->title}}"/>
+                                                            <span class="icon play"></span>
+                                                        </div>
+                                                    </a>
+                                                </div><!-- /.col -->
+                                                <div class="col-lg-9">
+                                                    <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
+                                                        <span class="title">{{$otherGalleryVideo->name}}</span>
+                                                        <span class="excerpt">
+                                                            <p>{{$otherGalleryVideo->subtitle}}</p>
+                                                        </span>
+                                                    </a>
+                                                    <span class="time visible-lg"> {{$otherGalleryVideo->updated_at->diffForHumans()}}</span>
+                                                </div>
+                                            </div><!-- /.row -->
+                                        </div><!-- /.video-link -->
+                                    @endforeach
+                                </div>
+                            </div><!-- /.sidebar-video -->
+                        @endif
 
                         <div class="widget">
                             @foreach($widgets as $widget)
@@ -204,11 +207,11 @@
 
 
 @section('meta_tags')
-    <title> {{ $videoGallery->title }}  </title>
-    <meta name="keywords" content="{{$videoGallery->keywords}}"/>
-    <meta name="description" content="{{$videoGallery->description}}"/>
+    <title> {{ $video->name }}  </title>
+    <meta name="keywords" content="{{$video->keywords}}"/>
+    <meta name="description" content="{{$video->description}}"/>
     <meta name='subtitle' content='This is my subtitle'>
-    <meta name='pagename' content='{{$videoGallery->title}}'>
+    <meta name='pagename' content='{{$video->name}}'>
     <meta name='identifier-URL' content='http://www.websiteaddress.com'>
     <meta name='directory' content='submission'>
     <meta name='author' content='name, email@hotmail.com'>

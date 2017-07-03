@@ -25,23 +25,34 @@ class VideoRepository extends EloquentRepository
          return isset($videoGalleryVideos) ? $videoGalleryVideos : null;
     }
 
-    public function getNextVideo($videoGallery, $video)
+    public function getAllVideos()
     {
-        $nextVideo = $videoGallery->videos->filter(function ($galleryVideo) use ($video) {
-            return $galleryVideo->id > $video->id;
-        })->first();
+        return $this->where('is_active',1)->findAll();
+    }
 
-        return !isset($nextVideo) ? $this->getGalleryFirstVideo($videoGallery) : $nextVideo;
+    public function getLastVideo()
+    {
+        return $this->where('is_active',1)->last();
     }
 
 
-    public function getPreviousVideo($videoGallery, $video)
+    public function getNextVideo($video)
     {
-        $previousVideo = $videoGallery->videos->filter(function ($galleryVideo) use ($video) {
-            return $galleryVideo->id < $video->id;
-        })->first();
+        $nextVideo = $this->getAllVideos()->filter(function ($value, $key) use ($video) {
+            return $value->id > $video->id;
+        });
 
-        return !isset($previousVideo) ? $this->getGalleryFirstVideo($videoGallery) : $previousVideo;
+        return !isset($nextVideo) ? $this->getLastVideo() : $nextVideo->first();
+    }
+
+
+    public function getPreviousVideo( $video)
+    {
+        $previousVideo = $this->getAllVideos()->filter(function ($value, $key) use ($video) {
+            return $value->id < $video->id;
+        });
+
+        return !isset($previousVideo) ? $this->getLastVideo() : $previousVideo->first();
     }
 
     public function getLatestVideos($take = 20)
@@ -62,14 +73,7 @@ class VideoRepository extends EloquentRepository
             ->findBy('id',$id);
     }
 
-    public function getVideoCategoryVideos($video, $take = 10)
-    {
-        if(!empty($video->video_category)) {
-            return  $video->video_category->videos->where('is_active', 1)->take($take);
-        }
 
-        return null;
-    }
 
     public function deleteVideoFiles($video) : bool
     {
