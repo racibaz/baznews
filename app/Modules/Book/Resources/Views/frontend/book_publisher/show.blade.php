@@ -7,7 +7,7 @@
                 <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
             </li>
             <li>
-                <a href="{!! route('book_category', ['slug' => $bookPublisher->slug]) !!}">{{$bookPublisher->name}}</a>
+                <a href="{!! route('book_publisher', ['slug' => $bookPublisher->slug]) !!}">{{$bookPublisher->name}}</a>
             </li>
         </ol>
         <div class="row">
