@@ -23,7 +23,8 @@ class ArticleSetting extends Model
         'article_authors_widget_list_count'
     ];
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'article_count' => 'integer',
             'article_author_count' => 'integer',

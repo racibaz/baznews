@@ -24,18 +24,15 @@ class VideoRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    'video_category_id'         => 'integer|nullable',
-                    'video_gallery_id'          => 'integer|nullable',
+                    'video_category_id' => 'integer|nullable',
+                    'video_gallery_id' => 'integer|nullable',
                     'name' => [
                         'required',
                         'max:255',
@@ -46,23 +43,22 @@ class VideoRequest extends FormRequest
                         Rule::unique('videos'),
                         'nullable',
                     ],
-                    'subtitle'                  => 'string|max:255|nullable',
-                    'thumbnail'                 => 'image|nullable',
-                    'file'                      => 'nullable',
-                    'link'                      => 'url|max:255|nullable',
-                    'embed'                     => 'nullable',
-                    'content'                   => 'nullable',
-                    'keywords'                  => 'string|max:255|nullable',
-                    'order'                     => 'integer|nullable',
+                    'subtitle' => 'string|max:255|nullable',
+                    'thumbnail' => 'image|nullable',
+                    'file' => 'nullable',
+                    'link' => 'url|max:255|nullable',
+                    'embed' => 'nullable',
+                    'content' => 'nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'order' => 'integer|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('video')->id;
                 return [
-                    'video_category_id'         => 'integer|nullable',
-                    'video_gallery_id'          => 'integer|nullable',
+                    'video_category_id' => 'integer|nullable',
+                    'video_gallery_id' => 'integer|nullable',
                     'name' => [
                         'required',
                         'max:255',
@@ -72,17 +68,18 @@ class VideoRequest extends FormRequest
                         'max:255',
                         Rule::unique('videos')->ignore($id),
                     ],
-                    'subtitle'                  => 'string|max:255|nullable',
-                    'thumbnail'                 => 'image|nullable',
-                    'file'                      => 'nullable',
-                    'link'                      => 'url|max:255|nullable',
-                    'embed'                     => 'nullable',
-                    'content'                   => 'nullable',
-                    'keywords'                  => 'string|max:255|nullable',
-                    'order'                     => 'integer|nullable',
+                    'subtitle' => 'string|max:255|nullable',
+                    'thumbnail' => 'image|nullable',
+                    'file' => 'nullable',
+                    'link' => 'url|max:255|nullable',
+                    'embed' => 'nullable',
+                    'content' => 'nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'order' => 'integer|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

@@ -24,42 +24,39 @@ class PageRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    'name'          => 'required',
+                    'name' => 'required',
                     'slug' => [
                         'required',
                         'max:255',
                         Rule::unique('pages'),
                     ],
-                    'content'       => 'nullable',
-                    'description'   => 'string|max:255|nullable',
-                    'keywords'      => 'string|max:255|nullable',
+                    'content' => 'nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('page')->id;
                 return [
                     'name' => 'required',
                     'slug' => [
                         Rule::unique('pages')->ignore($id),
                     ],
-                    'content'       => 'nullable',
-                    'description'   => 'string|max:255|nullable',
-                    'keywords'      => 'string|max:255|nullable',
+                    'content' => 'nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

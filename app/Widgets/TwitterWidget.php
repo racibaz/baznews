@@ -21,9 +21,9 @@ class TwitterWidget extends AbstractWidget
      */
     public function run()
     {
-        return Cache::tags(['Widget', 'Core', 'TwitterWidget'])->rememberForever('TwitterWidget', function()  {
+        return Cache::tags(['Widget', 'Core', 'TwitterWidget'])->rememberForever('TwitterWidget', function () {
             $twitterEmbedCode = Cache::get('twitter_embed_code');
-            return Theme::view('frontend.widgets.twitter_widget',compact([
+            return Theme::view('frontend.widgets.twitter_widget', compact([
                 'config',
                 'twitterEmbedCode'
             ]))->render();

@@ -30,7 +30,7 @@ class SettingController extends BackendController
 
         $this->view = 'setting.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
@@ -53,9 +53,9 @@ class SettingController extends BackendController
         $modulesCount = Module::count();
 
         //SelectBox içerisinde value değerinin seçilebilmesi için key yerine value değerini atıyoruz.
-        foreach(DateTimeZone::listIdentifiers() as $key => $value) $timezoneList[$value] = $value;
+        foreach (DateTimeZone::listIdentifiers() as $key => $value) $timezoneList[$value] = $value;
 
-        $logo = $this->repo->findBy('attribute_key','logo');
+        $logo = $this->repo->findBy('attribute_key', 'logo');
 
         return Theme::view($this->getViewName(__FUNCTION__),
             compact(
@@ -77,7 +77,7 @@ class SettingController extends BackendController
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -89,13 +89,13 @@ class SettingController extends BackendController
 
     public function show(Setting $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(Setting $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','routeCollection']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'routeCollection']));
     }
 
 
@@ -108,7 +108,7 @@ class SettingController extends BackendController
     public function destroy(Setting $record)
     {
         $this->repo->delete($record->id);
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -124,168 +124,168 @@ class SettingController extends BackendController
                 ->withInput($input);
         }
 
-        if(!empty($input['country'])){
+        if (!empty($input['country'])) {
             $record = $this->repo->findBy('attribute_key', 'country');
-            $this->repo->update($record->id,['attribute_value' => $input['country']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['country']]);
         }
 
-        if(!empty($input['city'])){
+        if (!empty($input['city'])) {
             $record = $this->repo->findBy('attribute_key', 'city');
-            $this->repo->update($record->id,['attribute_value' => $input['city']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['city']]);
         }
 
-        if(!empty($input['language_code'])){
+        if (!empty($input['language_code'])) {
             $record = $this->repo->findBy('attribute_key', 'language_code');
-            $this->repo->update($record->id,['attribute_value' => $input['language_code']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['language_code']]);
         }
 
-        if(!empty($input['title'])){
+        if (!empty($input['title'])) {
             $record = $this->repo->findBy('attribute_key', 'title');
-            $this->repo->update($record->id,['attribute_value' => $input['title']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['title']]);
         }
 
-        if(!empty($input['slogan'])){
+        if (!empty($input['slogan'])) {
             $record = $this->repo->findBy('attribute_key', 'slogan');
-            $this->repo->update($record->id,['attribute_value' => $input['slogan']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['slogan']]);
         }
 
-        if(!empty($input['description'])){
+        if (!empty($input['description'])) {
             $record = $this->repo->findBy('attribute_key', 'description');
-            $this->repo->update($record->id,['attribute_value' => $input['description']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['description']]);
         }
 
-        if(!empty($input['keywords'])){
+        if (!empty($input['keywords'])) {
             $record = $this->repo->findBy('attribute_key', 'keywords');
-            $this->repo->update($record->id,['attribute_value' => $input['keywords']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['keywords']]);
         }
 
-        if(!empty($input['logo'])){
+        if (!empty($input['logo'])) {
             Uploader::logoUploader($input['logo']);
         }
 
-        if(!empty($input['abstract_text'])){
+        if (!empty($input['abstract_text'])) {
             $record = $this->repo->findBy('attribute_key', 'abstract_text');
-            $this->repo->update($record->id,['attribute_value' => $input['abstract_text']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['abstract_text']]);
         }
 
-        if(!empty($input['footer_text'])){
+        if (!empty($input['footer_text'])) {
             $record = $this->repo->findBy('attribute_key', 'footer_text');
-            $this->repo->update($record->id,['attribute_value' => $input['footer_text']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['footer_text']]);
         }
 
-        if(!empty($input['contact'])){
+        if (!empty($input['contact'])) {
             $record = $this->repo->findBy('attribute_key', 'contact');
-            $this->repo->update($record->id,['attribute_value' => $input['contact']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['contact']]);
         }
 
-        if(!empty($input['copyright'])){
+        if (!empty($input['copyright'])) {
             $record = $this->repo->findBy('attribute_key', 'copyright');
-            $this->repo->update($record->id,['attribute_value' => $input['copyright']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['copyright']]);
         }
 
-        if(!empty($input['url'])){
+        if (!empty($input['url'])) {
             $record = $this->repo->findBy('attribute_key', 'url');
-            $this->repo->update($record->id,['attribute_value' => $input['url']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['url']]);
         }
 
-        if(!empty($input['google_recaptcha_site_key'])){
+        if (!empty($input['google_recaptcha_site_key'])) {
             $record = $this->repo->findBy('attribute_key', 'google_recaptcha_site_key');
-            $this->repo->update($record->id,['attribute_value' => $input['google_recaptcha_site_key']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['google_recaptcha_site_key']]);
         }
 
-        if(!empty($input['google_recaptcha_secret_key'])){
+        if (!empty($input['google_recaptcha_secret_key'])) {
             $record = $this->repo->findBy('attribute_key', 'google_recaptcha_secret_key');
-            $this->repo->update($record->id,['attribute_value' => $input['google_recaptcha_secret_key']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['google_recaptcha_secret_key']]);
         }
 
-        if(!empty($input['google_url_shortener_key'])){
+        if (!empty($input['google_url_shortener_key'])) {
             $record = $this->repo->findBy('attribute_key', 'google_url_shortener_key');
-            $this->repo->update($record->id,['attribute_value' => $input['google_url_shortener_key']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['google_url_shortener_key']]);
         }
 
-        if(!empty($input['head_code'])){
+        if (!empty($input['head_code'])) {
             $record = $this->repo->findBy('attribute_key', 'head_code');
-            $this->repo->update($record->id,['attribute_value' => $input['head_code']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['head_code']]);
         }
 
-        if(!empty($input['footer_code'])){
+        if (!empty($input['footer_code'])) {
             $record = $this->repo->findBy('attribute_key', 'footer_code');
-            $this->repo->update($record->id,['attribute_value' => $input['footer_code']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['footer_code']]);
         }
 
-        if(!empty($input['timezone'])){
+        if (!empty($input['timezone'])) {
             $record = $this->repo->findBy('attribute_key', 'timezone');
-            $this->repo->update($record->id,['attribute_value' => $input['timezone']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['timezone']]);
         }
 
-        if(!empty($input['facebook'])){
+        if (!empty($input['facebook'])) {
             $record = $this->repo->findBy('attribute_key', 'facebook');
-            $this->repo->update($record->id,['attribute_value' => $input['facebook']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['facebook']]);
         }
 
-        if(!empty($input['facebook_embed_code'])){
+        if (!empty($input['facebook_embed_code'])) {
             $record = $this->repo->findBy('attribute_key', 'facebook_embed_code');
-            $this->repo->update($record->id,['attribute_value' => $input['facebook_embed_code']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['facebook_embed_code']]);
         }
 
-        if(!empty($input['twitter'])){
+        if (!empty($input['twitter'])) {
             $record = $this->repo->findBy('attribute_key', 'twitter');
-            $this->repo->update($record->id,['attribute_value' => $input['twitter']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['twitter']]);
         }
 
-        if(!empty($input['twitter_embed_code'])){
+        if (!empty($input['twitter_embed_code'])) {
             $record = $this->repo->findBy('attribute_key', 'twitter_embed_code');
-            $this->repo->update($record->id,['attribute_value' => $input['twitter_embed_code']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['twitter_embed_code']]);
         }
 
-        if(!empty($input['instagram'])){
+        if (!empty($input['instagram'])) {
             $record = $this->repo->findBy('attribute_key', 'instagram');
-            $this->repo->update($record->id,['attribute_value' => $input['instagram']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['instagram']]);
         }
 
-        if(!empty($input['instagram_embed_code'])){
+        if (!empty($input['instagram_embed_code'])) {
             $record = $this->repo->findBy('attribute_key', 'instagram_embed_code');
-            $this->repo->update($record->id,['attribute_value' => $input['instagram_embed_code']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['instagram_embed_code']]);
         }
 
-        if(!empty($input['pinterest'])){
+        if (!empty($input['pinterest'])) {
             $record = $this->repo->findBy('attribute_key', 'pinterest');
-            $this->repo->update($record->id,['attribute_value' => $input['pinterest']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['pinterest']]);
         }
 
-        if(!empty($input['pinterest_embed_code'])){
+        if (!empty($input['pinterest_embed_code'])) {
             $record = $this->repo->findBy('attribute_key', 'pinterest_embed_code');
-            $this->repo->update($record->id,['attribute_value' => $input['pinterest_embed_code']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['pinterest_embed_code']]);
         }
 
-        if(!empty($input['weather_embed_code'])){
+        if (!empty($input['weather_embed_code'])) {
             $record = $this->repo->findBy('attribute_key', 'weather_embed_code');
-            $this->repo->update($record->id,['attribute_value' => $input['weather_embed_code']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['weather_embed_code']]);
         }
 
-        if(!empty($input['addthis'])){
+        if (!empty($input['addthis'])) {
             $record = $this->repo->findBy('attribute_key', 'addthis');
-            $this->repo->update($record->id,['attribute_value' => $input['addthis']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['addthis']]);
         }
 
-        if(!empty($input['disqus'])){
+        if (!empty($input['disqus'])) {
             $record = $this->repo->findBy('attribute_key', 'disqus');
-            $this->repo->update($record->id,['attribute_value' => $input['disqus']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['disqus']]);
         }
 
-        if(!empty($input['sitemap_count'])){
+        if (!empty($input['sitemap_count'])) {
             $record = $this->repo->findBy('attribute_key', 'sitemap_count');
-            $this->repo->update($record->id,['attribute_value' => $input['sitemap_count']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['sitemap_count']]);
         }
 
-        if(!empty($input['allow_photo_formats'])){
+        if (!empty($input['allow_photo_formats'])) {
             $record = $this->repo->findBy('attribute_key', 'allow_photo_formats');
-            $this->repo->update($record->id,['attribute_value' => $input['allow_photo_formats']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['allow_photo_formats']]);
         }
 
-        if(!empty($input['allow_video_formats'])){
+        if (!empty($input['allow_video_formats'])) {
             $record = $this->repo->findBy('attribute_key', 'allow_video_formats');
-            $this->repo->update($record->id,['attribute_value' => $input['allow_video_formats']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['allow_video_formats']]);
         }
 
         Session::flash('flash_message', trans('common.message_model_updated'));
@@ -327,9 +327,9 @@ class SettingController extends BackendController
 
     public function getAllRedisKey()
     {
-         $redisKeys = Redis::keys('*');
+        $redisKeys = Redis::keys('*');
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['redisKeys']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['redisKeys']));
     }
 
 
@@ -337,8 +337,7 @@ class SettingController extends BackendController
     {
         $laravelCaches = Redis::keys('*' . $content . '*');
 
-        foreach ($laravelCaches as $laravelCache)
-        {
+        foreach ($laravelCaches as $laravelCache) {
             Redis::del($laravelCache);
         }
     }
@@ -346,7 +345,7 @@ class SettingController extends BackendController
 
     public function getBackUp()
     {
-        $this->dispatch( new GetBackUp());
+        $this->dispatch(new GetBackUp());
 
         Log::info('Backup received.');
         Session::flash('flash_message', trans('setting.backup_received'));
@@ -357,7 +356,7 @@ class SettingController extends BackendController
 
     public function backUpClean()
     {
-        $this->dispatch( new BackUpClean());
+        $this->dispatch(new BackUpClean());
 
         Log::info('Backup cleaned.');
         Session::flash('flash_message', trans('setting.backup_cleaned'));

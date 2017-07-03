@@ -15,11 +15,11 @@
 Route::get('biography/{slug}', 'Frontend\BiographyController@show')->name('biography');
 Route::get('biographies_sitemap', 'Frontend\SitemapController@sitemap')->name('biographies_sitemap');
 
-Route::group(['prefix' => 'rss'], function() {
+Route::group(['prefix' => 'rss'], function () {
     Route::get('biographies', 'Frontend\RssController@biographiesRssRender')->name('rss/biographies');
 });
 
 
-Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function () {
     Route::resource('biography', 'Backend\BiographyController');
 });

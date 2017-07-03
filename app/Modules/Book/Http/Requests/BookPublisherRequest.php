@@ -24,17 +24,14 @@ class BookPublisherRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    'user_id'               => 'required|integer',
+                    'user_id' => 'required|integer',
                     'name' => [
                         'max:255',
                         Rule::unique('book_publishers'),
@@ -44,16 +41,15 @@ class BookPublisherRequest extends FormRequest
                         Rule::unique('book_publishers'),
                         'nullable'
                     ],
-                    'link'                  => 'url|max:255|nullable',
-                    'description'           => 'string|max:255|nullable',
+                    'link' => 'url|max:255|nullable',
+                    'description' => 'string|max:255|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('book_publisher')->id;
                 return [
-                    'user_id'               => 'required|integer',
+                    'user_id' => 'required|integer',
                     'name' => [
                         'max:255',
                         Rule::unique('book_publishers')->ignore($id),
@@ -63,11 +59,12 @@ class BookPublisherRequest extends FormRequest
                         Rule::unique('book_publishers')->ignore($id),
                         'nullable'
                     ],
-                    'link'                  => 'url|max:255|nullable',
-                    'description'           => 'string|max:255|nullable',
+                    'link' => 'url|max:255|nullable',
+                    'description' => 'string|max:255|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

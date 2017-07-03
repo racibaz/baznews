@@ -15,50 +15,50 @@ class NewsSourceTableSeeder extends Seeder
     public function run()
     {
         NewsSource::create([
-            'name'                  => 'İHA',
-            'url'                   => 'http://www.iha.com.tr',
-            'is_active'             => 1
+            'name' => 'İHA',
+            'url' => 'http://www.iha.com.tr',
+            'is_active' => 1
         ]);
 
         NewsSource::create([
-            'name'                  => 'DHA',
-            'url'                   => 'http://www.dha.com.tr',
-            'is_active'             => 1
+            'name' => 'DHA',
+            'url' => 'http://www.dha.com.tr',
+            'is_active' => 1
         ]);
 
         NewsSource::create([
-            'name'                  => 'Medya Takip',
-            'is_active'             => 1
+            'name' => 'Medya Takip',
+            'is_active' => 1
         ]);
 
         NewsSource::create([
-            'name'                  => 'Anadolu Haber Ajansı',
-            'url'                   => 'http://www.aa.com.tr',
-            'is_active'             => 1
+            'name' => 'Anadolu Haber Ajansı',
+            'url' => 'http://www.aa.com.tr',
+            'is_active' => 1
         ]);
 
         NewsSource::create([
-            'name'                  => 'SANATLOG',
-            'url'                   => 'http://www.sanatlog.com/',
-            'is_active'             => 1
+            'name' => 'SANATLOG',
+            'url' => 'http://www.sanatlog.com/',
+            'is_active' => 1
         ]);
 
         NewsSource::create([
-            'name'                  => 'Dağ Medya',
-            'url'                   => 'https://dagmedya.net/',
-            'is_active'             => 1
+            'name' => 'Dağ Medya',
+            'url' => 'https://dagmedya.net/',
+            'is_active' => 1
         ]);
 
         NewsSource::create([
-            'name'                  => 'Mürekkep Haber',
-            'url'                   => 'http://www.murekkephaber.com/',
-            'is_active'             => 1
+            'name' => 'Mürekkep Haber',
+            'url' => 'http://www.murekkephaber.com/',
+            'is_active' => 1
         ]);
 
         NewsSource::create([
-            'name'                  => 'Hayal Perdesi',
-            'url'                   => 'http://www.hayalperdesi.net',
-            'is_active'             => 1
+            'name' => 'Hayal Perdesi',
+            'url' => 'http://www.hayalperdesi.net',
+            'is_active' => 1
         ]);
     }
 }

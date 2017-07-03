@@ -17,8 +17,8 @@ class SearchController extends Controller
     {
         $search = $request->q;
         $records = News::search($request->q)
-            ->where('is_active',1)
-            ->where('status',1)
+            ->where('is_active', 1)
+            ->where('status', 1)
             ->paginate(15);
 
         return Theme::view('news::frontend.news.search', compact([
@@ -28,9 +28,9 @@ class SearchController extends Controller
     }
 
 
-    public function editorProfile($name,$id)
+    public function editorProfile($name, $id)
     {
-        if(empty($id) || !is_numeric($id) ){
+        if (empty($id) || !is_numeric($id)) {
             return Redirect::back();
         }
 
@@ -38,9 +38,9 @@ class SearchController extends Controller
         $user = $userRepo->find($id);
 
         $newsRepo = new NewsRepository();
-        $userNews = $newsRepo->where('user_id',$user->id)->findAll();
+        $userNews = $newsRepo->where('user_id', $user->id)->findAll();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact([
+        return Theme::view($this->getViewName(__FUNCTION__), compact([
             'records',
             'user',
         ]));

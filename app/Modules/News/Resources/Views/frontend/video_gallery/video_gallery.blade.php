@@ -30,11 +30,17 @@
                                            poster="http://video-js.zencoder.com/oceans-clip.png"
                                            data-setup='{"example_option":true}'>
 
-                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/mp4" />
-                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/webm" />
-                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/ogg" />
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}"
+                                                type="video/mp4"/>
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}"
+                                                type="video/webm"/>
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}"
+                                                type="video/ogg"/>
 
-                                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider
+                                            upgrading to a web browser that <a
+                                                    href="http://videojs.com/html5-video-support/" target="_blank">supports
+                                                HTML5 video</a></p>
                                     </video>
 
                                     <script type="application/ld+json">
@@ -57,6 +63,7 @@
                                           "embedUrl": "https://www.example.com/videoplayer.swf?video=123",
                                           "interactionCount": "2347"
                                         }
+
                                     </script>
 
                                 @elseif(!empty($video->embed))
@@ -83,15 +90,15 @@
                             </div>
                             {!! Cache::tags('Setting')->get('addthis') !!}
                         </div>
-                    {{--@if($record->is_comment)--}}
+                        {{--@if($record->is_comment)--}}
                         {{--<div class="discus-box">--}}
-                            {{--<div class="row">--}}
-                                {{--<div class="col-md-12">--}}
-                                    {{--{!! Cache::tags('Setting')->get('disqus') !!}--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+                        {{--<div class="row">--}}
+                        {{--<div class="col-md-12">--}}
+                        {{--{!! Cache::tags('Setting')->get('disqus') !!}--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
                         {{--</div><!-- /.discus-box -->--}}
-                    {{--@endif--}}
+                        {{--@endif--}}
 
                     </div><!-- /.new-content -->
                 </div><!-- /.col-md-8 -->
@@ -113,7 +120,8 @@
                                                 <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
                                                     <div class="hold">
                                                         <img src="{{ asset('videos/' . $otherGalleryVideo->id . '/165x90_' . $otherGalleryVideo->thumbnail)}}"
-                                                             alt="{{$otherGalleryVideo->title}}" title="{{$otherGalleryVideo->title}}"/>
+                                                             alt="{{$otherGalleryVideo->title}}"
+                                                             title="{{$otherGalleryVideo->title}}"/>
                                                         <span class="icon play"></span>
                                                     </div>
                                                 </a>
@@ -141,10 +149,12 @@
                                         <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>
+                                        <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son
+                                            Dakika</a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>
+                                        <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab"
+                                           data-toggle="tab">Çok Okunanlar</a>
                                     </li>
                                 </ul>
 
@@ -159,7 +169,9 @@
                                     </span>
                                                 <span class="dec">1</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
@@ -168,7 +180,9 @@
                                     </span>
                                                 <span class="dec">2</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
@@ -177,7 +191,9 @@
                                     </span>
                                                 <span class="dec">3</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
@@ -186,7 +202,9 @@
                                     </span>
                                                 <span class="dec">4</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
@@ -195,7 +213,9 @@
                                     </span>
                                                 <span class="dec">5</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                         </ul><!-- /.new-list -->
                                     </div><!-- /.tab-pane -->
@@ -208,7 +228,9 @@
                                     </span>
                                                 <span class="dec">1</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
@@ -217,7 +239,9 @@
                                     </span>
                                                 <span class="dec">2</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
@@ -226,7 +250,9 @@
                                     </span>
                                                 <span class="dec">3</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
@@ -235,7 +261,9 @@
                                     </span>
                                                 <span class="dec">4</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
@@ -244,7 +272,9 @@
                                     </span>
                                                 <span class="dec">5</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                         </ul><!-- /.new-list -->
                                     </div><!-- /.tab-pane -->
@@ -257,7 +287,9 @@
                                     </span>
                                                 <span class="dec">1</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
@@ -266,7 +298,9 @@
                                     </span>
                                                 <span class="dec">2</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
@@ -275,7 +309,9 @@
                                     </span>
                                                 <span class="dec">3</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
@@ -284,7 +320,9 @@
                                     </span>
                                                 <span class="dec">4</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                             <li class="nw-bx no-list">
                                                 <a href="new-details.html" title="" class="full-link"></a>
@@ -293,7 +331,9 @@
                                     </span>
                                                 <span class="dec">5</span>
                                                 <div class="spot">Pellentesque Quam</div>
-                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit.
+                                                </div>
                                             </li>
                                         </ul><!-- /.new-list -->
                                     </div><!-- /.tab-pane -->
@@ -322,7 +362,8 @@
                             <div class="r-box module">
                                 <div class="box-img">
                                     <a href="{{route('show_video_gallery',['slug' => $galleryVideo->slug ])}}">
-                                        <img src="{{ asset('videos/' . $galleryVideo->id . '/497x358_' . $galleryVideo->thumbnail)}}" alt="{{$galleryVideo->name}}" title="{{$galleryVideo->name}}"/>
+                                        <img src="{{ asset('videos/' . $galleryVideo->id . '/497x358_' . $galleryVideo->thumbnail)}}"
+                                             alt="{{$galleryVideo->name}}" title="{{$galleryVideo->name}}"/>
                                         <span class="icon"></span>
                                     </a>
                                 </div>
@@ -349,7 +390,8 @@
                             <div class="r-box module">
                                 <div class="box-img">
                                     <a href="{{route('show_videos',['slug' => $lastestVideo->slug ])}}">
-                                        <img src="{{ asset('videos/' . $lastestVideo->id . '/497x358_' . $lastestVideo->thumbnail)}}" alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
+                                        <img src="{{ asset('videos/' . $lastestVideo->id . '/497x358_' . $lastestVideo->thumbnail)}}"
+                                             alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
                                         <span class="icon"></span>
                                     </a>
                                 </div>
@@ -388,7 +430,8 @@
 
 
 @section('css')
-    <link href="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}"
+          type="text/css" rel="stylesheet">
 @endsection
 
 @section('js')
@@ -398,7 +441,7 @@
 
     <script>
         videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
-        videojs("video-js", {}, function(){
+        videojs("video-js", {}, function () {
             // Player (this) is initialized and ready.
         });
     </script>
@@ -409,7 +452,7 @@
              mCustomScrollbar
              * --------------------------------------------------------*/
             $('.sidebar-video .video-list-body').mCustomScrollbar({
-                theme:"rounded-dark"
+                theme: "rounded-dark"
             });
         });
     </script>

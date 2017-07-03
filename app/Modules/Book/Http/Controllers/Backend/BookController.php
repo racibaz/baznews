@@ -26,13 +26,13 @@ class BookController extends BackendController
 
         $this->view = 'book.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
     {
         $records = $this->repo->paginate();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['records']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
@@ -63,7 +63,7 @@ class BookController extends BackendController
 
     public function show(Book $record)
     {
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -102,7 +102,7 @@ class BookController extends BackendController
         $this->removeCacheTags(['Book']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
     public function save($record)
@@ -113,28 +113,28 @@ class BookController extends BackendController
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }
 
         if ($result) {
-            if(!empty($input['thumbnail'])) {
+            if (!empty($input['thumbnail'])) {
 
-                $destination = '/images/books/'. $result->id . '/original';
+                $destination = '/images/books/' . $result->id . '/original';
                 Uploader::removeDirectory($destination);
 
                 $document_name = $input['thumbnail']->getClientOriginalName();
-                Uploader::fileUpload($result  , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                Uploader::fileUpload($result, 'thumbnail', $input['thumbnail'], $destination, $document_name);
             }
 
-            if(!empty($input['photo'])) {
+            if (!empty($input['photo'])) {
 
-                $destination = '/images/books/'. $result->id . '/photo';
+                $destination = '/images/books/' . $result->id . '/photo';
                 Uploader::removeDirectory($destination);
 
                 $document_name = $input['photo']->getClientOriginalName();
-                Uploader::fileUpload($result , 'photo', $input['photo'] , $destination , $document_name);
+                Uploader::fileUpload($result, 'photo', $input['photo'], $destination, $document_name);
             }
 
 
@@ -146,14 +146,14 @@ class BookController extends BackendController
              * */
 
 
-            $this->bookBookCategoriesStore($result,$input);
+            $this->bookBookCategoriesStore($result, $input);
 
 
             /*
              * slug değişmiş ise ve link kısaltmaya izin verilmişse google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
              *
              * */
-            if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+            if (($record->slug != $result->slug) && Setting::where('attribute_key', 'is_url_shortener')->first()) {
 
                 $linkShortener = new LinkShortener(new Link);
                 $result->short_url = $linkShortener->linkShortener($result->slug);
@@ -179,7 +179,7 @@ class BookController extends BackendController
 
     public function bookBookCategoriesStore(Book $record, $input)
     {
-        if(isset($input['book_category_ids'])) {
+        if (isset($input['book_category_ids'])) {
             $record->book_categories()->sync($input['book_category_ids']);
         }
     }

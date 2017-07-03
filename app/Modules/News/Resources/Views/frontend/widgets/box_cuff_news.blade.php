@@ -10,7 +10,8 @@
                 <li class="module">
                     <div class="imgwrap">
                         <a href="{!! route('show_news', ['slug' => $boxCuffNewsItem->slug]) !!}">
-                            <img src="{{ asset('images/news_images/' . $boxCuffNewsItem->id . '/58x58_' . $boxCuffNewsItem->thumbnail )}}" alt="">
+                            <img src="{{ asset('images/news_images/' . $boxCuffNewsItem->id . '/58x58_' . $boxCuffNewsItem->thumbnail )}}"
+                                 alt="">
                         </a>
                     </div><!-- /imgwrap -->
                     <div class="text">

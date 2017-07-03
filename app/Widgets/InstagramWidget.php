@@ -21,9 +21,9 @@ class InstagramWidget extends AbstractWidget
      */
     public function run()
     {
-        return Cache::tags(['Widget', 'Core', 'InstagramWidget'])->rememberForever('InstagramWidget', function()  {
+        return Cache::tags(['Widget', 'Core', 'InstagramWidget'])->rememberForever('InstagramWidget', function () {
             $instagramEmbedCode = Cache::get('instagram_embed_code');
-            return Theme::view('frontend.widgets.instagram_widget',compact([
+            return Theme::view('frontend.widgets.instagram_widget', compact([
                 'instagramEmbedCode'
             ]))->render();
         });

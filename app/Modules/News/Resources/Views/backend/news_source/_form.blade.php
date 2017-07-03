@@ -51,7 +51,8 @@
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <div class="form-group">
-                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <button class="btn btn-success" type="submit"><i
+                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div>
             </div>
@@ -64,6 +65,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('news_source','news_management');
+        activeMenu('news_source', 'news_management');
     </script>
 @endsection

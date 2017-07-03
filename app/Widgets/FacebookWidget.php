@@ -29,9 +29,9 @@ class FacebookWidget extends AbstractWidget
      */
     public function run()
     {
-        return Cache::tags(['Widget', 'Core', 'FacebookWidget'])->rememberForever('FacebookWidget', function()  {
+        return Cache::tags(['Widget', 'Core', 'FacebookWidget'])->rememberForever('FacebookWidget', function () {
             $facebookEmbedCode = Cache::get('facebook_embed_code');
-            return Theme::view('frontend.widgets.facebook_widget',compact([
+            return Theme::view('frontend.widgets.facebook_widget', compact([
                 'facebookEmbedCode'
             ]))->render();
         });

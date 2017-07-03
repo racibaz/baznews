@@ -24,9 +24,9 @@ class RssRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          => 'required|max:255',
-            'url'           => 'required',
-            'order'         => 'integer|nullable',
+            'name' => 'required|max:255',
+            'url' => 'required',
+            'order' => 'integer|nullable',
         ];
     }
 }

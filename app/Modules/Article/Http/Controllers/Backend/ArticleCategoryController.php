@@ -9,9 +9,7 @@ use App\Modules\Article\Repositories\ArticleCategoryRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rule;
 
 class ArticleCategoryController extends BackendController
 {
@@ -21,7 +19,7 @@ class ArticleCategoryController extends BackendController
 
         $this->view = 'article_category.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
@@ -30,7 +28,7 @@ class ArticleCategoryController extends BackendController
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
         $recordsTree = ArticleCategory::get()->toTree();
 
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__),compact(['records','recordsTree']));
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));
     }
 
 
@@ -38,7 +36,7 @@ class ArticleCategoryController extends BackendController
     {
         $articleCategoryList = ArticleCategory::articleCategoryList();
         $record = $this->repo->createModel();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__),compact(['record', 'articleCategoryList']));
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'articleCategoryList']));
     }
 
 
@@ -50,14 +48,14 @@ class ArticleCategoryController extends BackendController
 
     public function show(ArticleCategory $record)
     {
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(ArticleCategory $record)
     {
         $articleCategoryList = ArticleCategory::articleCategoryList();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__),compact(['record', 'articleCategoryList']));
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'articleCategoryList']));
     }
 
 
@@ -74,7 +72,7 @@ class ArticleCategoryController extends BackendController
         $this->removeCacheTags(['ArticleCategoryController']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 

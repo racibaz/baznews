@@ -9,9 +9,6 @@ use App\Repositories\TagRepository;
 use Caffeinated\Themes\Facades\Theme;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 
 
 class ArchiveController extends Controller
@@ -21,7 +18,7 @@ class ArchiveController extends Controller
     {
         $this->repo = $repo;
     }
-    
+
     public function index(Request $request)
     {
         $records = [];
@@ -31,20 +28,20 @@ class ArchiveController extends Controller
         $day = $request->days;
 
 
-        if(!empty($year) && !empty($month) && !empty($day)){
+        if (!empty($year) && !empty($month) && !empty($day)) {
 
             $date = $year . '-' . $month . '-' . $day;
             $datetime = Carbon::createFromDate($year, $month, $day, config('app.timezone'));
 
-            $records = News::where('is_active',1)
-                            ->where('status',1)
-                            ->whereBetween('created_at', [$date . ' 00:00:00', $date . ' 23:59:-59'])
-                            ->get();
+            $records = News::where('is_active', 1)
+                ->where('status', 1)
+                ->whereBetween('created_at', [$date . ' 00:00:00', $date . ' 23:59:-59'])
+                ->get();
         }
 
 
         $tagRepo = new TagRepository();
-        $tags = $tagRepo->orderBy('updated_at','desc')->simplePaginate(15);
+        $tags = $tagRepo->orderBy('updated_at', 'desc')->simplePaginate(15);
 
 
         return Theme::view('news::frontend.archive',

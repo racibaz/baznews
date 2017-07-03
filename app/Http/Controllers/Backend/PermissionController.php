@@ -18,21 +18,21 @@ class PermissionController extends BackendController
 
         $this->view = 'permission.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
     public function index()
     {
         $records = $this->repo->paginate();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('records'));
     }
 
 
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -44,13 +44,13 @@ class PermissionController extends BackendController
 
     public function show(Permission $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(Permission $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -63,7 +63,7 @@ class PermissionController extends BackendController
     public function destroy(Permission $record)
     {
         $this->repo->delete($record->id);
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -73,7 +73,7 @@ class PermissionController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }

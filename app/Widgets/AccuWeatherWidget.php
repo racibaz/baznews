@@ -5,7 +5,6 @@ namespace App\Widgets;
 use Arrilot\Widgets\AbstractWidget;
 use Cache;
 use Theme;
-use Illuminate\Support\Facades\Redis;
 
 
 class AccuWeatherWidget extends AbstractWidget
@@ -23,10 +22,10 @@ class AccuWeatherWidget extends AbstractWidget
      */
     public function run()
     {
-        return Cache::tags(['Widget', 'Core', 'AccuWeatherWidget'])->rememberForever('AccuWeatherWidget', function()  {
+        return Cache::tags(['Widget', 'Core', 'AccuWeatherWidget'])->rememberForever('AccuWeatherWidget', function () {
 
             $weatherEmbedCode = Cache::get('weather_embed_code');
-            return Theme::view('frontend.widgets.accu_weather_widget',compact([
+            return Theme::view('frontend.widgets.accu_weather_widget', compact([
                 'weatherEmbedCode'
             ]))->render();
         });

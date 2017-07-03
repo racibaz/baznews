@@ -10,14 +10,14 @@ class VideoGalleryTransformer extends TransformerAbstract
     public function transform(VideoGallery $record)
     {
         return [
-            'id' => (int) $record->id,
-            'title' => (string) $record->title,
-            'slug' =>  (string) $record->slug,
-            'short_url' => (string) $record->short_url,
-            'description' => (string) $record->description,
-            'keywords' => (string) $record->keywords,
-            'thumbnail' => (string) $record->thumbnail,
-            'is_cuff' => (bool) $record->is_cuff,
+            'id' => (int)$record->id,
+            'title' => (string)$record->title,
+            'slug' => (string)$record->slug,
+            'short_url' => (string)$record->short_url,
+            'description' => (string)$record->description,
+            'keywords' => (string)$record->keywords,
+            'thumbnail' => (string)$record->thumbnail,
+            'is_cuff' => (bool)$record->is_cuff,
             'links' => [
                 [
                     'rel' => 'self',

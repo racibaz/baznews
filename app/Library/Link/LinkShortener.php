@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Cache;
 class LinkShortener
 {
     private $link;
+
     function __construct(Link $link)
     {
         $this->link = $link;
@@ -38,7 +39,7 @@ class LinkShortener
             array('connect_timeout' => 1, 'timeout' => 1)
         );
 
-        return  $googleProvider->shorten($this->link);
+        return $googleProvider->shorten($this->link);
     }
 
 }

@@ -28,11 +28,11 @@
             <div class="table-responsive">
                 <table id="announce" class="table table-bordered table-hover table-data">
                     <thead>
-                        <tr>
-                            <th>{!! trans('announcement.title') !!}</th>
-                            <th>{!! trans('announcement.is_active') !!}</th>
-                            <th>{!! trans('announcement.edit_delete') !!}</th>
-                        </tr>
+                    <tr>
+                        <th>{!! trans('announcement.title') !!}</th>
+                        <th>{!! trans('announcement.is_active') !!}</th>
+                        <th>{!! trans('announcement.edit_delete') !!}</th>
+                    </tr>
                     </thead>
                     <tbody>
                     @foreach($records as $record)
@@ -65,6 +65,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('announcement','');
+        activeMenu('announcement', '');
     </script>
 @endsection

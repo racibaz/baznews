@@ -47,9 +47,9 @@
                                 <td>
                                     <div class="btn-group">
                                         {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('userHistoryForceDelete',  $trashedRecord->id ))) !!}
-                                            {!! Form::hidden('historyForceDeleteRecordId', $trashedRecord->id) !!}
-                                            {!! link_to_route('trashedUserRestore', trans('user.trashed_user_restore'), $trashedRecord->id, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::hidden('historyForceDeleteRecordId', $trashedRecord->id) !!}
+                                        {!! link_to_route('trashedUserRestore', trans('user.trashed_user_restore'), $trashedRecord->id, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
                                         {!! Form::close() !!}
                                     </div>
                                 </td>
@@ -76,6 +76,6 @@
     <script type="text/javascript">
         //Menü active code...
         //active menu
-        activeMenu('user_management','user');
+        activeMenu('user_management', 'user');
     </script>
 @endsection

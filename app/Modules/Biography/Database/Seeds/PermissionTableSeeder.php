@@ -18,97 +18,97 @@ class PermissionTableSeeder extends Seeder
     {
         //biography
         $biography1 = Permission::create([
-            'name'          => 'index-biography',
-            'display_name'  => 'biography  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-biography',
+            'display_name' => 'biography  Listeleme',
+            'is_active' => 1,
         ]);
 
         $biography2 = Permission::create([
-            'name'          => 'create-biography',
-            'display_name'  => 'biography Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-biography',
+            'display_name' => 'biography Oluşturma',
+            'is_active' => 1,
         ]);
 
         $biography3 = Permission::create([
-            'name'          => 'edit-biography',
-            'display_name'  => 'biography Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-biography',
+            'display_name' => 'biography Düzenleme',
+            'is_active' => 1,
         ]);
 
         $biography4 = Permission::create([
-            'name'          => 'destroy-biography',
-            'display_name'  => 'biography Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-biography',
+            'display_name' => 'biography Silme',
+            'is_active' => 1,
         ]);
 
         $biography5 = Permission::create([
-            'name'          => 'show-biography',
-            'display_name'  => 'biography Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-biography',
+            'display_name' => 'biography Gösterme',
+            'is_active' => 1,
         ]);
 
         $biography6 = Permission::create([
-            'name'          => 'update-biography',
-            'display_name'  => 'update biography',
-            'is_active'     => 1,
+            'name' => 'update-biography',
+            'display_name' => 'update biography',
+            'is_active' => 1,
         ]);
 
         $biography7 = Permission::create([
-            'name'          => 'store-biography',
-            'display_name'  => 'update store',
-            'is_active'     => 1,
+            'name' => 'store-biography',
+            'display_name' => 'update store',
+            'is_active' => 1,
         ]);
 
-        foreach (Biography::$statuses as $status){
+        foreach (Biography::$statuses as $status) {
 
             $biography[$status] = Permission::create([
-                'name'          => $status . '-biography',
-                'display_name'  => 'Biography status ' . $status,
-                'is_active'     => 1,
+                'name' => $status . '-biography',
+                'display_name' => 'Biography status ' . $status,
+                'is_active' => 1,
             ]);
         }
 
         //biographysetting
         $biographysetting1 = Permission::create([
-            'name'          => 'index-biographysetting',
-            'display_name'  => 'biographysetting  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-biographysetting',
+            'display_name' => 'biographysetting  Listeleme',
+            'is_active' => 1,
         ]);
 
         $biographysetting2 = Permission::create([
-            'name'          => 'create-biographysetting',
-            'display_name'  => 'biographysetting Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-biographysetting',
+            'display_name' => 'biographysetting Oluşturma',
+            'is_active' => 1,
         ]);
 
         $biographysetting3 = Permission::create([
-            'name'          => 'edit-biographysetting',
-            'display_name'  => 'biographysetting Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-biographysetting',
+            'display_name' => 'biographysetting Düzenleme',
+            'is_active' => 1,
         ]);
 
         $biographysetting4 = Permission::create([
-            'name'          => 'destroy-biographysetting',
-            'display_name'  => 'biographysetting Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-biographysetting',
+            'display_name' => 'biographysetting Silme',
+            'is_active' => 1,
         ]);
 
         $biographysetting5 = Permission::create([
-            'name'          => 'show-biographysetting',
-            'display_name'  => 'biographysetting Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-biographysetting',
+            'display_name' => 'biographysetting Gösterme',
+            'is_active' => 1,
         ]);
 
         $biographysetting6 = Permission::create([
-            'name'          => 'update-biographysetting',
-            'display_name'  => 'update biographysetting',
-            'is_active'     => 1,
+            'name' => 'update-biographysetting',
+            'display_name' => 'update biographysetting',
+            'is_active' => 1,
         ]);
 
         $biographysetting7 = Permission::create([
-            'name'          => 'store-biographysetting',
-            'display_name'  => 'update store',
-            'is_active'     => 1,
+            'name' => 'store-biographysetting',
+            'display_name' => 'update store',
+            'is_active' => 1,
         ]);
 
         $super_admin = Role::find(1);
@@ -121,7 +121,7 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($biography6);
         $super_admin->permissions()->attach($biography7);
 
-        foreach (Biography::$statuses as $status){
+        foreach (Biography::$statuses as $status) {
             $super_admin->permissions()->attach($biography[$status]);
         };
 

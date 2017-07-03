@@ -24,15 +24,12 @@ class SitemapRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
                     'name' => [
                         'required',
@@ -44,13 +41,12 @@ class SitemapRequest extends FormRequest
                         'url',
                         Rule::unique('sitemaps'),
                     ],
-                    'last_modified'     => 'required|date',
-                    'order'             => 'integer|nullable',
+                    'last_modified' => 'required|date',
+                    'order' => 'integer|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('sitemap')->id;
                 return [
                     'name' => [
@@ -63,11 +59,12 @@ class SitemapRequest extends FormRequest
                         'url',
                         Rule::unique('sitemaps')->ignore($id),
                     ],
-                    'last_modified'     => 'required|date',
-                    'order'             => 'integer|nullable',
+                    'last_modified' => 'required|date',
+                    'order' => 'integer|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

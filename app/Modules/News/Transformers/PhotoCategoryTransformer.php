@@ -10,16 +10,16 @@ class PhotoCategoryTransformer extends TransformerAbstract
     public function transform(PhotoCategory $record)
     {
         return [
-            'id' => (int) $record->id,
-            'name' => (string) $record->name,
-            'slug' => (string) $record->slug,
-            'description' => (string) $record->description,
-            'keywords' => (string) $record->keywords,
-            'icon' => (string) $record->icon,
-            'is_cuff' => (bool) $record->is_cuff,
-            'createdAt' => (string) $record->created_at,
-            'updatedAt' => (string) $record->updated_at,
-            'diff_human' => (string) $record->updated_at->diffForHumans(),
+            'id' => (int)$record->id,
+            'name' => (string)$record->name,
+            'slug' => (string)$record->slug,
+            'description' => (string)$record->description,
+            'keywords' => (string)$record->keywords,
+            'icon' => (string)$record->icon,
+            'is_cuff' => (bool)$record->is_cuff,
+            'createdAt' => (string)$record->created_at,
+            'updatedAt' => (string)$record->updated_at,
+            'diff_human' => (string)$record->updated_at->diffForHumans(),
             'links' => [
                 [
                     'rel' => 'self',

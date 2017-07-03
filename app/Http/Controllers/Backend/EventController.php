@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Repositories\EventRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -19,7 +18,7 @@ class EventController extends BackendController
 
         $this->view = 'event.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function getViewName($methodName)
@@ -31,14 +30,14 @@ class EventController extends BackendController
     public function index()
     {
         $records = $this->repo->paginate();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('records'));
     }
 
 
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -50,13 +49,13 @@ class EventController extends BackendController
 
     public function show(Event $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(Event $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -69,7 +68,7 @@ class EventController extends BackendController
     public function destroy(Event $record)
     {
         $this->repo->delete($record->id);
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -86,7 +85,7 @@ class EventController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id, $input);
             } else {
                 $result = $this->repo->create($input);
             }

@@ -2,10 +2,10 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     @foreach($sitemaps as $index => $sitemap)
-            <sitemap>
-                <loc>{{ url($sitemap->url) }}</loc>
-                <lastmod>{{ $sitemap->last_modified }}</lastmod>
-            </sitemap>
+        <sitemap>
+            <loc>{{ url($sitemap->url) }}</loc>
+            <lastmod>{{ $sitemap->last_modified }}</lastmod>
+        </sitemap>
     @endforeach
 
 </sitemapindex>

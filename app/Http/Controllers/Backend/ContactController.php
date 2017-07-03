@@ -20,13 +20,13 @@ class ContactController extends BackendController
 
         $this->view = 'contact.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
     {
         $records = $this->repo->paginate();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('records'));
     }
 
 
@@ -34,7 +34,7 @@ class ContactController extends BackendController
     {
         $contactTypeList = ContactType::contactTypeList();
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'contactTypeList']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'contactTypeList']));
     }
 
 
@@ -46,14 +46,14 @@ class ContactController extends BackendController
 
     public function show(Contact $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(Contact $record)
     {
         $contactTypeList = ContactType::contactTypeList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'contactTypeList']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'contactTypeList']));
     }
 
 
@@ -66,7 +66,7 @@ class ContactController extends BackendController
     public function destroy(Contact $record)
     {
         $this->repo->delete($record->id);
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -77,7 +77,7 @@ class ContactController extends BackendController
         $input['IP'] = Auth::user()->getUserIp();
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }

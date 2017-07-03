@@ -11,13 +11,9 @@ use App\Modules\Biography\Models\Biography;
 use App\Modules\Biography\Repositories\BiographyRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Mremi\UrlShortener\Model\Link;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rule;
 use Image;
 
 class BiographyController extends BackendController
@@ -28,7 +24,7 @@ class BiographyController extends BackendController
 
         $this->view = 'biography.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function getViewName($methodName)
@@ -105,22 +101,22 @@ class BiographyController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }
 
         if ($result) {
 
-            if(!empty($input['photo'])) {
+            if (!empty($input['photo'])) {
 
-                Uploader::removeDirectory('images/biographies/'. $result->id);
+                Uploader::removeDirectory('images/biographies/' . $result->id);
 
                 $document_name = $input['photo']->getClientOriginalName();
-                $destination = '/images/biographies/'. $result->id .'/thumbnail';
-                Uploader::fileUpload($result, 'photo', $input['photo'] , $destination , $document_name);
+                $destination = '/images/biographies/' . $result->id . '/thumbnail';
+                Uploader::fileUpload($result, 'photo', $input['photo'], $destination, $document_name);
 
-                Image::make(public_path('images/biographies/' . $result->id .'/thumbnail/'. $result->photo))
+                Image::make(public_path('images/biographies/' . $result->id . '/thumbnail/' . $result->photo))
                     ->fit(104, 78)
                     ->save(public_path('images/biographies/' . $result->id . '/104x78_' . $document_name));
             }
@@ -130,7 +126,7 @@ class BiographyController extends BackendController
              * slug değişmiş ise ve link kısaltmaya izin verilmişse google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
              *
              * */
-            if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+            if (($record->slug != $result->slug) && Setting::where('attribute_key', 'is_url_shortener')->first()) {
 
                 $linkShortener = new LinkShortener(new Link);
                 $result->short_url = $linkShortener->linkShortener($result->slug);

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\CityRequest;
 use App\Models\City;
 use App\Models\Country;
-use App\Modules\News\Models\PhotoGallery;
 use App\Repositories\CityRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Session;
@@ -19,7 +18,7 @@ class CityController extends BackendController
 
         $this->view = 'city.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     /**
@@ -28,7 +27,7 @@ class CityController extends BackendController
     public function index()
     {
         $records = $this->repo->paginate();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('records'));
     }
 
     /**
@@ -38,7 +37,7 @@ class CityController extends BackendController
     {
         $countries = Country::countryList();
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'countries']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'countries']));
     }
 
 
@@ -59,7 +58,7 @@ class CityController extends BackendController
      */
     public function show(City $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -71,7 +70,7 @@ class CityController extends BackendController
     public function edit(City $record)
     {
         $countries = Country::countryList();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'countries']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'countries']));
     }
 
 
@@ -94,7 +93,7 @@ class CityController extends BackendController
     public function destroy(City $record)
     {
         $this->repo->delete($record->id);
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -108,7 +107,7 @@ class CityController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }

@@ -21,7 +21,8 @@ class Link extends Model
         return $this->morphTo();
     }
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'url' => 'required|max:255'
         );
@@ -30,22 +31,22 @@ class Link extends Model
 
     public static function linksList()
     {
-        return self::pluck('url','url');
+        return self::pluck('url', 'url');
     }
 
     public static function getLinksWithType()
     {
         $linkList = [];
 
-        foreach (self::all() as $key => $value){
+        foreach (self::all() as $key => $value) {
 
             //get polymorphic table type name
-            $typeArray = explode('\\',$value->linkable_type);
+            $typeArray = explode('\\', $value->linkable_type);
             $type = end($typeArray);
             //replace for route usage
-            $type = str_replace( '_', '-', snake_case($type)) ;
+            $type = str_replace('_', '-', snake_case($type));
 
-            $linkList[$type . '/'. $value->url] = $type. '/'. $value->url;
+            $linkList[$type . '/' . $value->url] = $type . '/' . $value->url;
         }
 
         return $linkList;

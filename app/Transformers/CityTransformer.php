@@ -10,8 +10,8 @@ class CityTransformer extends TransformerAbstract
     public function transform(City $record)
     {
         $data = [
-            'id' => (int) $record->id,
-            'name' => (string) $record->name,
+            'id' => (int)$record->id,
+            'name' => (string)$record->name,
             'links' => [
                 [
                     'rel' => 'self',

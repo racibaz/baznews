@@ -16,18 +16,22 @@
                         <div class="text-center module">
                             <ul class="pagination">
                                 <li>
-                                    <a href="{{route('show_photo',['slug' => $previousPhoto->slug ])}}"><i class="fa fa-angle-left"></i></a>
+                                    <a href="{{route('show_photo',['slug' => $previousPhoto->slug ])}}"><i
+                                                class="fa fa-angle-left"></i></a>
                                 </li>
-                                <li><a href="{{route('show_photo',['slug' => $photo->slug ])}}">{{$photo->name}}</a></li>
+                                <li><a href="{{route('show_photo',['slug' => $photo->slug ])}}">{{$photo->name}}</a>
+                                </li>
                                 <li>
-                                    <a href="{{route('show_photo',['slug' => $nextPhoto->slug ])}}"><i class="fa fa-angle-right"></i></a>
+                                    <a href="{{route('show_photo',['slug' => $nextPhoto->slug ])}}"><i
+                                                class="fa fa-angle-right"></i></a>
                                 </li>
                             </ul>
                         </div>
                         <div class="img-container module">
                             <div class="img">
                                 <a href="{{route('show_photo',['slug' => $photo->slug ])}}">
-                                    <img src="{{ asset('gallery/' . $photo->photo_gallery_id . '/photos/' . $photo->file)}}" alt="{{$photo->name}}" class="img-responsive" />
+                                    <img src="{{ asset('gallery/' . $photo->photo_gallery_id . '/photos/' . $photo->file)}}"
+                                         alt="{{$photo->name}}" class="img-responsive"/>
                                 </a>
                             </div>
                             <div class="pager">
@@ -44,11 +48,14 @@
                         <div class="text-center module">
                             <ul class="pagination">
                                 <li>
-                                    <a href="{{route('show_photo',['slug' => $previousPhoto->slug ])}}"><i class="fa fa-angle-left"></i></a>
+                                    <a href="{{route('show_photo',['slug' => $previousPhoto->slug ])}}"><i
+                                                class="fa fa-angle-left"></i></a>
                                 </li>
-                                <li><a href="{{route('show_photo',['slug' => $photo->slug ])}}">{{$photo->name}}</a></li>
+                                <li><a href="{{route('show_photo',['slug' => $photo->slug ])}}">{{$photo->name}}</a>
+                                </li>
                                 <li>
-                                    <a href="{{route('show_photo',['slug' => $nextPhoto->slug ])}}"><i class="fa fa-angle-right"></i></a>
+                                    <a href="{{route('show_photo',['slug' => $nextPhoto->slug ])}}"><i
+                                                class="fa fa-angle-right"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -62,15 +69,15 @@
                         </div>
                         {!! Cache::tags('Setting')->get('addthis') !!}
                     </div>
-                @if($photo->is_comment)
-                    <div class="discus-box">
-                        <div class="row">
-                            <div class="col-md-12">
-                                {!! Cache::tags('Setting')->get('disqus') !!}
+                    @if($photo->is_comment)
+                        <div class="discus-box">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {!! Cache::tags('Setting')->get('disqus') !!}
+                                </div>
                             </div>
-                        </div>
-                    </div><!-- /.discus-box -->
-                @endif
+                        </div><!-- /.discus-box -->
+                    @endif
 
                 </div><!-- /.col -->
                 <div class="col-lg-4" id="sidebar">
@@ -109,7 +116,8 @@
                                     <div class="col-md-4">
                                         <a href="{{route('show_photo',['slug' => $lastPhoto->slug ])}}" class="news">
                                             <div class="pic">
-                                                <img src="{{ asset('gallery/' . $lastPhoto->photo_gallery_id . '/photos/' . $lastPhoto->thumbnail)}}" alt="{{$lastPhoto->name}}"
+                                                <img src="{{ asset('gallery/' . $lastPhoto->photo_gallery_id . '/photos/' . $lastPhoto->thumbnail)}}"
+                                                     alt="{{$lastPhoto->name}}"
                                                      title="{{$lastPhoto->name}}"/>
                                             </div>
                                         </a>
@@ -167,9 +175,8 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
-            jQuery('#content-area,.sidebar').theiaStickySidebar({
-            });
+        jQuery(document).ready(function () {
+            jQuery('#content-area,.sidebar').theiaStickySidebar({});
         });
     </script>
 @endsection

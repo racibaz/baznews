@@ -20,9 +20,9 @@ class PhotoGalleryController extends Controller
 
     public function getPhotoGalleryBySlug($slug)
     {
-        $id =  substr(strrchr($slug, '-'), 1 );
+        $id = substr(strrchr($slug, '-'), 1);
 
-        return Cache::tags(['PhotoGalleryController', 'News', 'photo_gallery'])->rememberForever('photo_gallery:'.$id, function() use($id) {
+        return Cache::tags(['PhotoGalleryController', 'News', 'photo_gallery'])->rememberForever('photo_gallery:' . $id, function () use ($id) {
 
             //$slug = htmlentities(strip_tags($id), ENT_QUOTES, 'UTF-8');
             $photoGallery = $this->repo
@@ -38,7 +38,7 @@ class PhotoGalleryController extends Controller
                 ->take(-1)
                 ->first();
 
-            $nextPhoto = $photoGallery->photos->filter(function($photo) use($firstPhoto){
+            $nextPhoto = $photoGallery->photos->filter(function ($photo) use ($firstPhoto) {
 
                 return $photo->id > $firstPhoto->id;
             })->first();
@@ -46,12 +46,11 @@ class PhotoGalleryController extends Controller
             $nextPhoto = !isset($nextPhoto) ? $firstPhoto : $nextPhoto;
 
 
-
             $photoRepository = new PhotoRepository();
             //$lastphotos = $photoRepository->orderBy('updated_at','desc')->limit(6)->findAll();
 
-            $photoCount = $photoRepository->where('is_active',1)->findAll()->count();
-            $randomPhotos = $photoRepository->where('is_active',1)->findAll()->random(3);
+            $photoCount = $photoRepository->where('is_active', 1)->findAll()->count();
+            $randomPhotos = $photoRepository->where('is_active', 1)->findAll()->random(3);
 
 
             $photoCategoryGalleries = $this->getPhotoGalleriesFormPhotoCategory($photoGallery->photo_category->id);
@@ -78,13 +77,13 @@ class PhotoGalleryController extends Controller
 
     public function showGalleryPhotos($slug)
     {
-        $id =  substr(strrchr($slug, '-'), 1 );
+        $id = substr(strrchr($slug, '-'), 1);
 
-        return Cache::tags(['PhotoGalleryController', 'News', 'showGalleryPhoto'])->rememberForever('showGalleryPhoto:'.$id, function() use($id) {
+        return Cache::tags(['PhotoGalleryController', 'News', 'showGalleryPhoto'])->rememberForever('showGalleryPhoto:' . $id, function () use ($id) {
 
 
             $photoRepository = new PhotoRepository();
-            $photo = $photoRepository->where('is_active',1)->find($id);
+            $photo = $photoRepository->where('is_active', 1)->find($id);
 
             //todo bulunamadığında exception yerine düzgün bir hata verilecek.
             $photoGallery = $photo->photo_gallery;
@@ -96,7 +95,7 @@ class PhotoGalleryController extends Controller
                 ->take(-1)
                 ->first();
 
-            $nextPhoto = $photoGallery->photos->filter(function($galleryPhoto) use($photo){
+            $nextPhoto = $photoGallery->photos->filter(function ($galleryPhoto) use ($photo) {
 
                 return $galleryPhoto->id > $photo->id;
             })->first();
@@ -104,7 +103,7 @@ class PhotoGalleryController extends Controller
             $nextPhoto = !isset($nextPhoto) ? $firstPhoto : $nextPhoto;
 
 
-            $previousPhoto = $photoGallery->photos->filter(function($galleryPhoto) use($photo){
+            $previousPhoto = $photoGallery->photos->filter(function ($galleryPhoto) use ($photo) {
 
                 return $galleryPhoto->id < $photo->id;
             })->first();
@@ -112,11 +111,11 @@ class PhotoGalleryController extends Controller
             $previousPhoto = !isset($previousPhoto) ? $firstPhoto : $previousPhoto;
 
 
-            $photoCount = $photoRepository->where('is_active',1)->findAll()->count();
-            $randomPhotos = $photoRepository->where('is_active',1)->findAll()->random(3);
+            $photoCount = $photoRepository->where('is_active', 1)->findAll()->count();
+            $randomPhotos = $photoRepository->where('is_active', 1)->findAll()->random(3);
 
             $photoCategoryRepository = new PhotoCategoryRepository();
-            $photoCategories = $photoCategoryRepository->where('is_cuff',1)->where('is_active',1)->findAll();
+            $photoCategories = $photoCategoryRepository->where('is_cuff', 1)->where('is_active', 1)->findAll();
 
             //todo will be must Popular photos area
             //todo how to increment hit area?(redis cache)
@@ -143,12 +142,12 @@ class PhotoGalleryController extends Controller
 
     public function getPhotoGalleriesFormPhotoCategory($id)
     {
-        return Cache::tags(['PhotoGalleryController', 'News', 'photoGalleriesFormPhotoCategory'])->rememberForever('photoGalleriesFormPhotoCategory:'.$id, function() use($id) {
+        return Cache::tags(['PhotoGalleryController', 'News', 'photoGalleriesFormPhotoCategory'])->rememberForever('photoGalleriesFormPhotoCategory:' . $id, function () use ($id) {
 
             $photoCategoryRepository = new PhotoCategoryRepository();
             $photoCategory = $photoCategoryRepository
-                ->where('is_cuff',1)
-                ->where('is_active',1)
+                ->where('is_cuff', 1)
+                ->where('is_active', 1)
                 ->find($id);
 
             return $photoCategory->photo_galleries;

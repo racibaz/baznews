@@ -26,7 +26,7 @@ class PhotoCategory extends Model
         parent::boot();
 
         static::created(function ($record) {
-            if($record->is_active) {
+            if ($record->is_active) {
                 $link = new Link();
                 $link->url = $record->slug;
                 $record->links()->save($link);
@@ -34,7 +34,7 @@ class PhotoCategory extends Model
         });
 
         static::updated(function ($record) {
-            if($record->is_active) {
+            if ($record->is_active) {
                 $link = Link::where('linkable_id', $record->id)->where('linkable_type', PhotoCategory::class)->first();
                 $link->url = $record->slug;
                 $record->links()->save($link);
@@ -52,7 +52,8 @@ class PhotoCategory extends Model
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
                 'source' => ['name']
@@ -81,6 +82,6 @@ class PhotoCategory extends Model
 
     public static function photoCategoryList()
     {
-        return PhotoCategory::where('is_active',1)->pluck('name', 'id');
+        return PhotoCategory::where('is_active', 1)->pluck('name', 'id');
     }
 }

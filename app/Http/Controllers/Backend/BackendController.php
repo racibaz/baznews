@@ -28,7 +28,7 @@ class BackendController extends Controller
             Cache::tags(['Setting', 'Advertisement'])->rememberForever('advertisements', function () {
 
                 $advertisementRepository = new AdvertisementRepository();
-                $advertisements =  $advertisementRepository->where('is_active', 1)->findAll();
+                $advertisements = $advertisementRepository->where('is_active', 1)->findAll();
 
                 foreach ($advertisements as $advertisement) {
                     Cache::tags(['Setting', 'Advertisement'])->forever($advertisement->name, $advertisement->code);
@@ -48,17 +48,17 @@ class BackendController extends Controller
      */
     public function checkPermission()
     {
-        $route =  Route::getCurrentRoute()->getAction();
-        $routePathParts = explode('@',$route['controller']);
+        $route = Route::getCurrentRoute()->getAction();
+        $routePathParts = explode('@', $route['controller']);
 
-        $controllerPathParts = explode('\\',$routePathParts[0]);
+        $controllerPathParts = explode('\\', $routePathParts[0]);
         $partCount = count($controllerPathParts);
         $controllerName = $controllerPathParts[$partCount - 1];
         $methodName = $routePathParts[1];
 
-        $classModelName = strtolower(substr($controllerName, 0 , -10));
-        if(!Auth::user()->can($methodName . '-' . $classModelName)){
-            Log::warning('Yetkisiz Alana Girmeye Çalışıldı. ' . 'Kişi : ' . Auth::user()->name . '  IP :' . Auth::user()->getUserIp() );
+        $classModelName = strtolower(substr($controllerName, 0, -10));
+        if (!Auth::user()->can($methodName . '-' . $classModelName)) {
+            Log::warning('Yetkisiz Alana Girmeye Çalışıldı. ' . 'Kişi : ' . Auth::user()->name . '  IP :' . Auth::user()->getUserIp());
             abort(403, 'Unauthorized action.');
         }
         return true;
@@ -81,9 +81,8 @@ class BackendController extends Controller
      */
     public function removeCacheKey($cacheName)
     {
-        return  Redis::del($cacheName);
+        return Redis::del($cacheName);
     }
-
 
 
     /**

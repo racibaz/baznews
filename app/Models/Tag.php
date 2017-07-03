@@ -30,7 +30,8 @@ class Tag extends Model
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
                 'source' => ['name']
@@ -74,6 +75,6 @@ class Tag extends Model
 
     public static function tagList()
     {
-        return Tag::pluck('name','id');
+        return Tag::pluck('name', 'id');
     }
 }

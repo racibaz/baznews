@@ -24,17 +24,14 @@ class BookAuthorRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    'user_id'           => 'integer|required',
+                    'user_id' => 'integer|required',
                     'name' => [
                         'required',
                         'max:255',
@@ -45,17 +42,16 @@ class BookAuthorRequest extends FormRequest
                         Rule::unique('book_authors'),
                         'nullable'
                     ],
-                    'link'          => 'url|max:255|nullable',
-                    'thumbnail'     => 'image|nullable',
-                    'bio_note'      => 'string|nullable',
+                    'link' => 'url|max:255|nullable',
+                    'thumbnail' => 'image|nullable',
+                    'bio_note' => 'string|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('book_author')->id;
                 return [
-                    'user_id'           => 'integer|required',
+                    'user_id' => 'integer|required',
                     'name' => [
                         'required',
                         'max:255',
@@ -67,12 +63,13 @@ class BookAuthorRequest extends FormRequest
                         Rule::unique('book_authors')->ignore($id),
                         'nullable'
                     ],
-                    'link'          => 'url|max:255|nullable',
-                    'thumbnail'     => 'image|nullable',
-                    'bio_note'      => 'nullable',
+                    'link' => 'url|max:255|nullable',
+                    'thumbnail' => 'image|nullable',
+                    'bio_note' => 'nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

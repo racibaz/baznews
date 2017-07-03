@@ -6,8 +6,8 @@ use App\Modules\News\Transformers\VideoGalleryTransformer;
 use App\Traits\Eventable;
 use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Model;
 use Venturecraft\Revisionable\RevisionableTrait;
+use Illuminate\Database\Eloquent\Model;
 
 class VideoGallery extends Model
 {
@@ -20,10 +20,11 @@ class VideoGallery extends Model
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
-                'source' => ['title','id']
+                'source' => ['title', 'id']
             ]
         ];
     }
@@ -59,6 +60,6 @@ class VideoGallery extends Model
 
     public static function videoGalleryList()
     {
-        return VideoGallery::where('is_active',1)->pluck('title', 'id');
+        return VideoGallery::where('is_active', 1)->pluck('title', 'id');
     }
 }

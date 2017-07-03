@@ -21,14 +21,14 @@ class RecommendationNewsController extends BackendController
 
         $this->view = 'recommendation_news.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
@@ -38,7 +38,7 @@ class RecommendationNewsController extends BackendController
         $newsList = News::newsList();
         $record = $this->repo->createModel();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'newsList', 'userList']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsList', 'userList']));
     }
 
 
@@ -50,7 +50,7 @@ class RecommendationNewsController extends BackendController
 
     public function show(RecommendationNews $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -59,7 +59,7 @@ class RecommendationNewsController extends BackendController
         $userList = User::userList();
         $newsList = News::newsList();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'newsList', 'userList']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsList', 'userList']));
     }
 
 
@@ -76,7 +76,7 @@ class RecommendationNewsController extends BackendController
         $this->removeCacheTags(['NewsController']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -88,7 +88,7 @@ class RecommendationNewsController extends BackendController
 
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }

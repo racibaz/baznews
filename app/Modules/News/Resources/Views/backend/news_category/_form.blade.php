@@ -115,7 +115,8 @@
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <div class="form-group">
-                        <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <button class="btn btn-success btn-lg" type="submit"><i
+                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div><!-- /.form-group -->
                 </div>
             </div><!-- /.box-solid -->
@@ -134,10 +135,14 @@
                     <div class="form-group">
                         {!! Form::label('thumbnail', trans('news::news_category.thumbnail'),['class'=> 'control-label','style'=>'width:100%;']) !!}
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                 style="width: 200px; height: 150px;"></div>
                             <div>
-                                <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('news::news_category.select_image')}}</span><span class="fileinput-exists">{{trans('news::news_category.change')}}</span>{!! Form::file('thumbnail') !!}</span>
-                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('news::news_category.remove')}}</a>
+                                <span class="btn btn-default btn-file"><span
+                                            class="fileinput-new">{{trans('news::news_category.select_image')}}</span><span
+                                            class="fileinput-exists">{{trans('news::news_category.change')}}</span>{!! Form::file('thumbnail') !!}</span>
+                                <a href="#" class="btn btn-default fileinput-exists"
+                                   data-dismiss="fileinput">{{trans('news::news_category.remove')}}</a>
                             </div>
                         </div><!-- /file-input -->
                     </div><!-- /.form-group -->
@@ -149,9 +154,11 @@
     {!! Form::close() !!}
 @endsection
 @section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 @endsection
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
@@ -160,7 +167,7 @@
     <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.fileinput').fileinput();
             $('.select2').select2();
             $('.tagsinput').tagsinput();
@@ -172,10 +179,10 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
         //active menu
-        activeMenu('news_management','news_category');
+        activeMenu('news_management', 'news_category');
     </script>
 @endsection

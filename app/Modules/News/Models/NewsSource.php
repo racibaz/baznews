@@ -21,6 +21,6 @@ class NewsSource extends Model
 
     public static function newsSourceList()
     {
-        return NewsSource::where('is_active',1)->pluck('name', 'id');
+        return NewsSource::where('is_active', 1)->pluck('name', 'id');
     }
 }

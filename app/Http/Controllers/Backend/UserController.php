@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\City;
 use App\Models\Country;
@@ -14,11 +13,9 @@ use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository as Repo;
 use Auth;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 
 
 class UserController extends BackendController
@@ -29,27 +26,27 @@ class UserController extends BackendController
 
         $this->view = 'user.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
     public function index($roleId = null)
     {
         $roleRepo = new RoleRepository();
-        $roles = $roleRepo->where('is_active',1)->findAll();
+        $roles = $roleRepo->where('is_active', 1)->findAll();
 
         /*
          * List by user roles
          * */
-        if(is_numeric($roleId)) {
-            $records = $roleRepo->where('id',$roleId)
+        if (is_numeric($roleId)) {
+            $records = $roleRepo->where('id', $roleId)
                 ->find($roleId)
                 ->users()->paginate();
-        }else{
+        } else {
             $records = $this->repo->paginate();
         }
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records', 'roles'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('records', 'roles'));
     }
 
 
@@ -63,13 +60,13 @@ class UserController extends BackendController
         $roles = Role::roleList();
         $groups = Group::groupList();
 
-        foreach (User::$statuses as  $index => $status){
-            if(Auth::user()->can($status . '-user')){
-                $statusList[$index] =  $status;
+        foreach (User::$statuses as $index => $status) {
+            if (Auth::user()->can($status . '-user')) {
+                $statusList[$index] = $status;
             }
         }
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups', 'statusList']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'countries', 'cities', 'roles', 'groups', 'statusList']));
     }
 
 
@@ -82,9 +79,9 @@ class UserController extends BackendController
     public function show(User $record)
     {
         $revisions = $record->getUserRevisions($record->id);
-        $events = Event::where('user_id',$record->id)->orderBy('updated_at', 'desc')->get();
+        $events = Event::where('user_id', $record->id)->orderBy('updated_at', 'desc')->get();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record', 'revisions', 'events'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record', 'revisions', 'events'));
     }
 
 
@@ -98,13 +95,13 @@ class UserController extends BackendController
         $groups = Group::groupList();
         $userAvatar = User::getUserAvatar($record->email);
 
-        foreach (User::$statuses as  $index => $status){
-            if(Auth::user()->can($status . '-user')){
-                $statusList[$index] =  $status;
+        foreach (User::$statuses as $index => $status) {
+            if (Auth::user()->can($status . '-user')) {
+                $statusList[$index] = $status;
             }
         }
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups', 'userAvatar', 'statusList']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'countries', 'cities', 'roles', 'groups', 'userAvatar', 'statusList']));
     }
 
 
@@ -118,7 +115,7 @@ class UserController extends BackendController
     {
         $this->repo->delete($record->id);
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -138,8 +135,8 @@ class UserController extends BackendController
         }
         if ($result) {
 
-            $this->roleUserStore($result,$input);
-            $this->groupUserStore($result,$input);
+            $this->roleUserStore($result, $input);
+            $this->groupUserStore($result, $input);
 
             Session::flash('flash_message', trans('common.message_model_updated'));
             return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
@@ -153,13 +150,13 @@ class UserController extends BackendController
 
     public function roleUserStore(User $record, $input)
     {
-        if(isset($input['role_user_store_']))
+        if (isset($input['role_user_store_']))
             $record->roles()->sync($input['role_user_store_']);
     }
 
     public function groupUserStore(User $record, $input)
     {
-        if(isset($input['group_user_store_']))
+        if (isset($input['group_user_store_']))
             $record->groups()->sync($input['group_user_store_']);
     }
 
@@ -168,7 +165,7 @@ class UserController extends BackendController
     {
         $trashedRecords = User::onlyTrashed()->paginate(50);
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(
+        return Theme::view($this->getViewName(__FUNCTION__), compact(
             'trashedRecords'
         ));
 
@@ -176,7 +173,7 @@ class UserController extends BackendController
 
     public function trashedUserRestore($trashedUserId)
     {
-        if(!is_numeric($trashedUserId) || empty($trashedUserId)){
+        if (!is_numeric($trashedUserId) || empty($trashedUserId)) {
 
             return Redirect::back()
                 ->withErrors(trans('common.model_not_resorted'));
@@ -194,7 +191,7 @@ class UserController extends BackendController
     {
         $input = Input::all();
 
-        if(empty($input['historyForceDeleteRecordId']) || !is_numeric($input['historyForceDeleteRecordId'])) {
+        if (empty($input['historyForceDeleteRecordId']) || !is_numeric($input['historyForceDeleteRecordId'])) {
 
             return Redirect::back()
                 ->withErrors(trans('common.save_failed'));

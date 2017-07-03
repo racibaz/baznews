@@ -12,6 +12,6 @@ class RssController extends Controller
     {
         $rssItems = Rss::where('is_active', 1)->get();
 
-        return Theme::view('frontend.rss.rss',compact(['rssItems']));
+        return Theme::view('frontend.rss.rss', compact(['rssItems']));
     }
 }

@@ -16,8 +16,10 @@
     <div class="row">
         <div class="col-lg-12">
             <p>
-                <a href="javascript:void(0);" class="btn btn-primary" id="filter_btn"><i class="fa fa-search"></i> {{trans('news::news.filter_search')}}</a>
-                <a href="javascript:void(0);" class="btn btn-info" id="statis_btn"><i class="fa fa-bar-chart"></i> {{trans('news::news.statistic')}}</a>
+                <a href="javascript:void(0);" class="btn btn-primary" id="filter_btn"><i
+                            class="fa fa-search"></i> {{trans('news::news.filter_search')}}</a>
+                <a href="javascript:void(0);" class="btn btn-info" id="statis_btn"><i
+                            class="fa fa-bar-chart"></i> {{trans('news::news.statistic')}}</a>
             </p>
         </div>
         <div class="col-lg-12">
@@ -26,7 +28,8 @@
                     <h3 class="box-title"><i class="fa fa-search"></i> {{trans('news::news.filter_search')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool filterBtn" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool filterBtn" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -230,7 +233,8 @@
                     <h3 class="box-title"><i class="fa fa-bar-chart"></i> {{trans('news::news.statistic')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool statisBtn" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool statisBtn" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -246,11 +250,11 @@
     <div class="row">
         <div class="col-lg-12">
             @if(Auth::user()->can('create-news'))
-            <div class="form-group pull-left">
-                <a href="{{ route('news.create') }}" class="btn btn-success btn-lg">
-                    <i class="fa fa-plus"></i> {{ trans('news::news.news_create') }}
-                </a>
-            </div>
+                <div class="form-group pull-left">
+                    <a href="{{ route('news.create') }}" class="btn btn-success btn-lg">
+                        <i class="fa fa-plus"></i> {{ trans('news::news.news_create') }}
+                    </a>
+                </div>
             @endif
             <div class="form-group pull-right">
                 @if(Auth::user()->can('forgetCache-news'))
@@ -387,11 +391,12 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
-    <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}"
+          rel="stylesheet">
     <style>
-        .input-group-sm>.form-control,
-        .input-group-sm>.input-group-addon,
-        .input-group-sm>.input-group-btn>.btn{
+        .input-group-sm > .form-control,
+        .input-group-sm > .input-group-addon,
+        .input-group-sm > .input-group-btn > .btn {
             height: 34px;
         }
     </style>
@@ -405,14 +410,14 @@
         function dateTime() {
             //Date range picker with time picker
             $('#start_date,#end_date').datetimepicker({
-                format:'YYYY-MM-DD HH:mm:ss',
-                locale:'tr'
+                format: 'YYYY-MM-DD HH:mm:ss',
+                locale: 'tr'
             });
         }
         //active menu
         $(function () {
             dateTime();
-            $('.select2').select2({ width: '100%',language: "tr" });
+            $('.select2').select2({width: '100%', language: "tr"});
 
             $('#filter_btn').click(function () {
                 $('#filterBox').toggle();
@@ -426,6 +431,6 @@
         });
         //active menu
 
-        activeMenu('news_management','news');
+        activeMenu('news_management', 'news');
     </script>
 @endsection

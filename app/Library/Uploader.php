@@ -5,8 +5,8 @@
  * Date: 6.8.2016
  * Time: 09:54
  */
-namespace App\Library;
 
+namespace App\Library;
 
 
 use App\Attachment;
@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\File;
 class Uploader
 {
 
-    public static function fileUpload($record,$field,$file,$destination,$filename)
+    public static function fileUpload($record, $field, $file, $destination, $filename)
     {
-        if($file->isValid()){
+        if ($file->isValid()) {
 
             //$extension = $file->getClientOriginalExtension();
 
@@ -39,14 +39,14 @@ class Uploader
 
     public static function removeFile($destination)
     {
-        if(File::exists(public_path($destination))) {
+        if (File::exists(public_path($destination))) {
             File::delete(public_path($destination));
         }
     }
 
     public static function removeDirectory($destination)
     {
-        if(File::isDirectory(public_path($destination))) {
+        if (File::isDirectory(public_path($destination))) {
             File::deleteDirectory(public_path($destination));
         }
     }
@@ -57,7 +57,7 @@ class Uploader
 
     public static function logoUploader($file)
     {
-        if($file->isValid()){
+        if ($file->isValid()) {
 
             $orjinalDirPath = public_path('img/');
             $file->move($orjinalDirPath, 'logo.jpg');

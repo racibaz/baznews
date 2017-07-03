@@ -21,14 +21,14 @@ class FutureNewsController extends BackendController
 
         $this->view = 'future_news.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
@@ -36,7 +36,7 @@ class FutureNewsController extends BackendController
     {
         $newsAllList = News::newsAllList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'newsAllList']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsAllList']));
     }
 
 
@@ -48,14 +48,14 @@ class FutureNewsController extends BackendController
 
     public function show(FutureNews $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(FutureNews $record)
     {
         $newsAllList = News::newsAllList();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'newsAllList']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsAllList']));
     }
 
 
@@ -68,7 +68,7 @@ class FutureNewsController extends BackendController
     public function destroy(FutureNews $record)
     {
         $this->repo->delete($record->id);
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -78,7 +78,7 @@ class FutureNewsController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }

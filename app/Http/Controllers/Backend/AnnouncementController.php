@@ -24,7 +24,7 @@ class AnnouncementController extends BackendController
 
         $this->view = 'announcement.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
@@ -36,33 +36,32 @@ class AnnouncementController extends BackendController
          * bağlı olan dokümanları alıyoruz.
          */
 
-        foreach($user_groups as $group){
-            foreach ($group->announcements as $announcement){
-                $announcement_list =  $announcement_list . '/'.  $announcement->id;
+        foreach ($user_groups as $group) {
+            foreach ($group->announcements as $announcement) {
+                $announcement_list = $announcement_list . '/' . $announcement->id;
             }
         }
 
-        $records = explode("/",$announcement_list);
+        $records = explode("/", $announcement_list);
 
         $announcements = Announcement::whereIn('id', array_unique($records))
-            ->where('is_active',1)
-            ->where(function($query)
-            {
+            ->where('is_active', 1)
+            ->where(function ($query) {
                 $query->where('show_time', '>=', Carbon::now());
             })
-            ->orderBy('updated_at','desc')
+            ->orderBy('updated_at', 'desc')
             ->get();
 
         $records = $this->repo->paginate();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records','announcements'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('records', 'announcements'));
     }
 
 
     public function create()
     {
-        $groupList =  Auth::user()->groups;
+        $groupList = Auth::user()->groups;
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'groupList']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'groupList']));
     }
 
 
@@ -74,17 +73,17 @@ class AnnouncementController extends BackendController
 
     public function show(Announcement $record)
     {
-        $groupList =  Auth::user()->groups;
+        $groupList = Auth::user()->groups;
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'groupList']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'groupList']));
     }
 
 
     public function edit(Announcement $record)
     {
-        $groupList =  Auth::user()->groups;
+        $groupList = Auth::user()->groups;
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'groupList']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'groupList']));
     }
 
 
@@ -97,7 +96,7 @@ class AnnouncementController extends BackendController
     public function destroy(Announcement $record)
     {
         $this->repo->delete($record->id);
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -107,7 +106,7 @@ class AnnouncementController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }
@@ -127,7 +126,7 @@ class AnnouncementController extends BackendController
 
     public function announcementGroupStore(Announcement $record, $input)
     {
-        if(isset($input['announcement_group_store_'])) {
+        if (isset($input['announcement_group_store_'])) {
             $record->groups()->sync($input['announcement_group_store_']);
         }
     }
@@ -141,17 +140,17 @@ class AnnouncementController extends BackendController
          * bağlı olan duyuruları alıyoruz.
          */
 
-        foreach($user_groups as $group){
-            foreach ($group->announcements as $announcement){
-                $announcement_list =  $announcement_list . '/'.  $announcement->id;
+        foreach ($user_groups as $group) {
+            foreach ($group->announcements as $announcement) {
+                $announcement_list = $announcement_list . '/' . $announcement->id;
             }
         }
 
-        $records = explode("/",$announcement_list);
+        $records = explode("/", $announcement_list);
 
         $announcements = Announcement::whereIn('id', array_unique($records))
-            ->where('is_active',1)
-            ->orderBy('updated_at','desc')
+            ->where('is_active', 1)
+            ->orderBy('updated_at', 'desc')
             ->get();
 
         return view('backend.announcement.list')

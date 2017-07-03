@@ -28,14 +28,15 @@ class Contact extends Model
         'status',
     ];
 
-    protected $dates = ['created_at','updated_at','deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function contact_type()
     {
-        return $this->belongsTo(ContactType::class,'contact_type_id');
+        return $this->belongsTo(ContactType::class, 'contact_type_id');
     }
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'contact_type_id' => 'integer',
             'full_name' => 'required|min:3|max:255',

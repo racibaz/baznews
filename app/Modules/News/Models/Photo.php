@@ -6,9 +6,9 @@ use App\Modules\News\Transformers\PhotoTransformer;
 use App\Traits\Eventable;
 use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Venturecraft\Revisionable\RevisionableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Venturecraft\Revisionable\RevisionableTrait;
 
 class Photo extends Model
 {
@@ -22,10 +22,11 @@ class Photo extends Model
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
-                'source' => ['name','id']
+                'source' => ['name', 'id']
             ]
         ];
     }
@@ -36,8 +37,8 @@ class Photo extends Model
     }
 
     public $transformer = PhotoTransformer::class;
-    protected $fillable = ['photo_gallery_id', 'name', 'subtitle', 'slug', 'file', 'link','content', 'keywords', 'order', 'is_active'];
-    protected $dates = ['created_at','updated_at','deleted_at'];
+    protected $fillable = ['photo_gallery_id', 'name', 'subtitle', 'slug', 'file', 'link', 'content', 'keywords', 'order', 'is_active'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function news()
     {
@@ -57,6 +58,6 @@ class Photo extends Model
 
     public static function photoList()
     {
-        return Photo::where('is_active',1)->pluck('name', 'id');
+        return Photo::where('is_active', 1)->pluck('name', 'id');
     }
 }

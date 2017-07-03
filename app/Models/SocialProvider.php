@@ -9,7 +9,7 @@ class SocialProvider extends Model
 {
     use Eventable;
 
-    protected  $fillable = ['provider_id','provider'];
+    protected $fillable = ['provider_id', 'provider'];
 
     function user()
     {

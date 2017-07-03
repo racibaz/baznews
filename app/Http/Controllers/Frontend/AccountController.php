@@ -25,7 +25,7 @@ class AccountController extends Controller
 
     public function __construct(Repo $repo)
     {
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function getViewName($methodName)
@@ -37,7 +37,7 @@ class AccountController extends Controller
     public function index()
     {
         $record = \Auth::user();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -47,9 +47,9 @@ class AccountController extends Controller
 
         //$events = $record->events();
 
-        $events = Event::where('user_id',$record->id)->get();
+        $events = Event::where('user_id', $record->id)->get();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record', 'revisions', 'events'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record', 'revisions', 'events'));
     }
 
 
@@ -59,7 +59,7 @@ class AccountController extends Controller
         $cities = City::cityList();
         $userAvatar = User::getUserAvatar($record->email);
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact([
+        return Theme::view($this->getViewName(__FUNCTION__), compact([
             'record',
             'countries',
             'cities',
@@ -92,14 +92,14 @@ class AccountController extends Controller
         //kendi email adresini daha önce kayıtlı olarak görüyor ve hata veriyor
         //bundan dolayı aynı ise burada unique validasyonunu atlamış oluyoruz.
         $rules = [
-            'facebook'  => 'url|max:255',
-            'twitter'  => 'url|max:255',
+            'facebook' => 'url|max:255',
+            'twitter' => 'url|max:255',
             'pinterest' => 'url|max:255',
-            'linkedin'  => 'url|max:255',
-            'youtube'   => 'url|max:255',
-            'web_site'   => 'url|max:255',
-            'bio_note'  => 'string|max:255',
-            'IP'    => 'ip',
+            'linkedin' => 'url|max:255',
+            'youtube' => 'url|max:255',
+            'web_site' => 'url|max:255',
+            'bio_note' => 'string|max:255',
+            'IP' => 'ip',
         ];
 
         $v = Validator::make($input, $rules);
@@ -131,7 +131,7 @@ class AccountController extends Controller
     public function changePasswordView()
     {
         $record = \Auth::user();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -146,8 +146,8 @@ class AccountController extends Controller
         $record = \Auth::user();
 
         $rules = [
-            'password'                      => 'required|min:4|Confirmed',
-            'password_confirmation'         => 'required|min:4',
+            'password' => 'required|min:4|Confirmed',
+            'password_confirmation' => 'required|min:4',
         ];
 
         $v = Validator::make($input, $rules);
@@ -163,7 +163,7 @@ class AccountController extends Controller
 
         list($result, $instance) = $this->repo->update($record->id, $input);
 
-        if($result) {
+        if ($result) {
             Session::flash('flash_message', trans('account.password_changed'));
             return Redirect::route($this->redirectRouteName . $this->view . 'index', $record);
         }

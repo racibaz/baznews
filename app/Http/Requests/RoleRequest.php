@@ -24,28 +24,24 @@ class RoleRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
                     'name' => [
                         'required',
                         'max:255',
                         Rule::unique('roles'),
                     ],
-                    'display_name'      => 'max:255|nullable',
-                    'description'       => 'max:255|nullable',
+                    'display_name' => 'max:255|nullable',
+                    'description' => 'max:255|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('role')->id;
                 return [
                     'name' => [
@@ -53,11 +49,12 @@ class RoleRequest extends FormRequest
                         'max:255',
                         Rule::unique('roles')->ignore($id),
                     ],
-                    'display_name'      => 'max:255|nullable',
-                    'description'       => 'max:255|nullable',
+                    'display_name' => 'max:255|nullable',
+                    'description' => 'max:255|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

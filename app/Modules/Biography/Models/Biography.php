@@ -21,10 +21,11 @@ class Biography extends Model
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
-                'source' => ['title','id']
+                'source' => ['title', 'id']
             ]
         ];
     }
@@ -49,6 +50,6 @@ class Biography extends Model
 
     public static function biographyList()
     {
-        return Biography::where('is_active',1)->pluck('name', 'id');
+        return Biography::where('is_active', 1)->pluck('name', 'id');
     }
 }

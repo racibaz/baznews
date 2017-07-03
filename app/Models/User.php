@@ -11,13 +11,13 @@ use Cocur\Slugify\Slugify;
 use Config;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Laravel\Passport\HasApiTokens;
+use Venturecraft\Revisionable\Revision;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
-use Venturecraft\Revisionable\Revision;
-use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
@@ -41,7 +41,8 @@ class User extends Authenticatable
 
     }
 
-    public function restore() {
+    public function restore()
+    {
         $this->sfRestore();
         Cache::tags(Config::get('entrust.role_user_table'))->flush();
     }
@@ -52,7 +53,8 @@ class User extends Authenticatable
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
                 'source' => ['name']
@@ -103,7 +105,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $dates = ['created_at','updated_at','deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
 
     public static $statuses = ['Passive', 'Active', 'Preparing Email Activation', 'Garbage'];
@@ -117,7 +119,7 @@ class User extends Authenticatable
     public function roles()
     {
         //return $this->belongsToMany('App\Role');
-        return $this->belongsToMany(Role::class,'role_user','user_id', 'role_id');
+        return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
     }
 
     public function city()
@@ -137,7 +139,7 @@ class User extends Authenticatable
 
     public function hasSocialLinked($service)
     {
-        return (bool) $this->social->where('service', $service)->count();
+        return (bool)$this->social->where('service', $service)->count();
     }
 
     //todo modules news
@@ -154,7 +156,7 @@ class User extends Authenticatable
 
     public static function userList()
     {
-        return User::where('status',1)->pluck('name', 'id');
+        return User::where('status', 1)->pluck('name', 'id');
     }
 
     public function recommendation_news()
@@ -179,22 +181,24 @@ class User extends Authenticatable
 
     public static function getAllUsers()
     {
-        return User::where('status',1)->get();
+        return User::where('status', 1)->get();
     }
 
-    public static  function getUsersByGroupId($group_id){
+    public static function getUsersByGroupId($group_id)
+    {
 
-        $group = Group::where('id',$group_id)->first();
+        $group = Group::where('id', $group_id)->first();
         return $group->users;
     }
 
 
     public static function getUserRevisions($user_id)
     {
-        return Revision::where('user_id',$user_id)->get();
+        return Revision::where('user_id', $user_id)->get();
     }
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'name' => 'required|max:255',
             'email' => 'required|Between:3,64|email|Unique:users',
@@ -218,10 +222,10 @@ class User extends Authenticatable
         return static::where('email', $email);
     }
 
-    public static function getUserAvatar($email, $size = 40) : string
+    public static function getUserAvatar($email, $size = 40): string
     {
         $default = Cache::get('url') . "/default_user_avatar.jpg";
-        return  "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+        return "https://www.gravatar.com/avatar/" . md5(strtolower(trim($email))) . "?d=" . urlencode($default) . "&s=" . $size;
     }
-    
+
 }

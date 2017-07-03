@@ -23,15 +23,15 @@ class RecentArticles extends AbstractWidget
      */
     public function run()
     {
-        $recentArticles = Cache::tags(['Widget', 'Article', 'recentArticles'])->rememberForever('recentArticles', function()  {
+        $recentArticles = Cache::tags(['Widget', 'Article', 'recentArticles'])->rememberForever('recentArticles', function () {
 
             $repo = new ArticleRepository();
-            return  $repo->with(['article_categories', 'article_authors'])
+            return $repo->with(['article_categories', 'article_authors'])
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
                 ->where('status', 1)
                 ->take(Redis::get('recent_article_widget_list_count'))
-                ->orderBy('order','desc')
+                ->orderBy('order', 'desc')
                 ->get();
         });
 

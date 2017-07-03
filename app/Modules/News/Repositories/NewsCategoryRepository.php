@@ -12,6 +12,6 @@ class NewsCategoryRepository extends EloquentRepository
 
     public function getAllNewsCategories()
     {
-        return  $this->where('is_active',1)->orderBy('updated_at', 'desc')->paginate(20);
+        return $this->where('is_active', 1)->orderBy('updated_at', 'desc')->paginate(20);
     }
 }

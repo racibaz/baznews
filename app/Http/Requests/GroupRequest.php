@@ -24,15 +24,12 @@ class GroupRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
                     'name' => [
                         'required',
@@ -43,8 +40,7 @@ class GroupRequest extends FormRequest
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('group')->id;
                 return [
                     'name' => [
@@ -55,7 +51,8 @@ class GroupRequest extends FormRequest
                     'description' => 'max:255|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

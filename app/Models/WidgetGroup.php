@@ -25,7 +25,8 @@ class WidgetGroup extends Model
         return $this->hasMany(WidgetManager::class);
     }
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'name' => 'required|string',
         );
@@ -34,12 +35,12 @@ class WidgetGroup extends Model
 
     public static function getAllWidgetGroups()
     {
-        return WidgetGroup::where('is_active',1)->get();
+        return WidgetGroup::where('is_active', 1)->get();
     }
 
     public static function widgetGroupList()
     {
-        return WidgetGroup::where('is_active',1)->pluck('name','id');
+        return WidgetGroup::where('is_active', 1)->pluck('name', 'id');
     }
 
 }

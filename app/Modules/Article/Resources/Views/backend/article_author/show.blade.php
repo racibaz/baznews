@@ -21,7 +21,8 @@
                     <h3 class="box-title">{{$record->name}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                                title="Collapse">
                             <i class="fa fa-minus"></i></button>
 
                     </div>
@@ -85,6 +86,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('authors','article_management');
+        activeMenu('authors', 'article_management');
     </script>
 @stop

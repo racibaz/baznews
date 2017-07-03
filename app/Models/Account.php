@@ -94,21 +94,23 @@ class Account extends Model
 
     public static function getAllUsers()
     {
-        return User::where('is_active',1)->get();
+        return User::where('is_active', 1)->get();
     }
 
-    public static  function getUsersByGroupId($group_id){
+    public static function getUsersByGroupId($group_id)
+    {
 
-        $group = Group::where('id',$group_id)->first();
+        $group = Group::where('id', $group_id)->first();
         return $group->users;
     }
 
     public static function getUserRevisions($user_id)
     {
-        return Revision::where('user_id',$user_id)->get();
+        return Revision::where('user_id', $user_id)->get();
     }
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'password' => 'required|min:4|Confirmed',
             'password_confirmation' => 'required|min:4',

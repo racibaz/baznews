@@ -21,7 +21,7 @@ class SendFacebookLinkedEmail
     /**
      * Handle the event.
      *
-     * @param  FacebookAccountWasLinked  $event
+     * @param  FacebookAccountWasLinked $event
      * @return void
      */
     public function handle(FacebookAccountWasLinked $event)

@@ -52,34 +52,34 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th>Ad Soyad</th>
-                                        <td>{{$record->name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>E-Posta</th>
-                                        <td>{{$record->email}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rolleri</th>
-                                        <td>
-                                            @foreach($record->roles as $role)
-                                                <span class="label label-default">{{$role->name}}</span>
-                                            @endforeach
-                                        </td>
-                                    </tr>
-                                    {{--<tr>--}}
-                                        {{--<th>Grupları</th>--}}
-                                        {{--<td>--}}
-                                            {{--@foreach($record->groups as $group)--}}
-                                                {{--<span class="label label-default">{{$group->name}}</span>--}}
-                                            {{--@endforeach--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    <tr>
-                                        <th>Aktif/Pasif</th>
-                                        <td>{!!$record->is_active ? '<label class="badge badge-green">Aktif</label>' : '<label class="badge badge-brown">Pasif</label>'!!}</td>
-                                    </tr>
+                                <tr>
+                                    <th>Ad Soyad</th>
+                                    <td>{{$record->name}}</td>
+                                </tr>
+                                <tr>
+                                    <th>E-Posta</th>
+                                    <td>{{$record->email}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Rolleri</th>
+                                    <td>
+                                        @foreach($record->roles as $role)
+                                            <span class="label label-default">{{$role->name}}</span>
+                                        @endforeach
+                                    </td>
+                                </tr>
+                                {{--<tr>--}}
+                                {{--<th>Grupları</th>--}}
+                                {{--<td>--}}
+                                {{--@foreach($record->groups as $group)--}}
+                                {{--<span class="label label-default">{{$group->name}}</span>--}}
+                                {{--@endforeach--}}
+                                {{--</td>--}}
+                                {{--</tr>--}}
+                                <tr>
+                                    <th>Aktif/Pasif</th>
+                                    <td>{!!$record->is_active ? '<label class="badge badge-green">Aktif</label>' : '<label class="badge badge-brown">Pasif</label>'!!}</td>
+                                </tr>
 
                                 </tbody>
                             </table>
@@ -188,7 +188,6 @@
             </div>
             <!-- /.box -->
         </div>
-
 
 
         <!-- Main Content Element  End-->

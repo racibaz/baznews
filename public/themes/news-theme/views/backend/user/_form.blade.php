@@ -32,7 +32,8 @@
                             <h3 class="box-title">Genel Bilgiler</h3>
 
                             <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
                                 </button>
                             </div>
                             <!-- /.box-tools -->
@@ -57,7 +58,8 @@
                             <h3 class="box-title">Diğer</h3>
 
                             <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
                                 </button>
                             </div>
                             <!-- /.box-tools -->
@@ -85,7 +87,7 @@
                                     <div class="row">
                                         {!! Form::label('avatar', trans('user.avatar'), ['class'=> 'col-lg-2 control-label']) !!}
                                         <div class="col-lg-10">
-                                            <img src="{{$userAvatar}}" alt="" />
+                                            <img src="{{$userAvatar}}" alt=""/>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +109,8 @@
                             <h3 class="box-title">Şifre Değiştir</h3>
 
                             <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
                                 </button>
                             </div>
                             <!-- /.box-tools -->
@@ -130,7 +133,8 @@
                             <h3 class="box-title">Sosyal</h3>
 
                             <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
                                 </button>
                             </div>
                             <!-- /.box-tools -->
@@ -173,7 +177,8 @@
                     <h3 class="box-title">Durum</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -194,7 +199,8 @@
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <div class="form-group">
-                        <button class="btn btn-success pull-right" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <button class="btn btn-success pull-right" type="submit"><i
+                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div>
                 <!-- /.box-footer -->
@@ -205,7 +211,8 @@
                     <h3 class="box-title">Rol Yönetimi</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -230,7 +237,8 @@
                     <h3 class="box-title">Grup Yönetimi</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -269,6 +277,6 @@
         CKEDITOR.replace('bio_note', options);
 
         //active menu
-        activeMenu('user_management','user');
+        activeMenu('user_management', 'user');
     </script>
 @endsection

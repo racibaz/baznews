@@ -19,7 +19,7 @@ class VideoCategoryController extends BackendController
 
         $this->view = 'video_category.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
@@ -28,7 +28,7 @@ class VideoCategoryController extends BackendController
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
         $recordsTree = VideoCategory::get()->toTree();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records','recordsTree']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));
     }
 
 
@@ -36,7 +36,7 @@ class VideoCategoryController extends BackendController
     {
         $videoCategoryList = VideoCategory::videoCategoryList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'videoCategoryList']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'videoCategoryList']));
     }
 
 
@@ -48,14 +48,14 @@ class VideoCategoryController extends BackendController
 
     public function show(VideoCategory $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(VideoCategory $record)
     {
         $videoCategoryList = VideoCategory::videoCategoryList();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'videoCategoryList']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'videoCategoryList']));
     }
 
 
@@ -72,7 +72,7 @@ class VideoCategoryController extends BackendController
         $this->removeCacheTags(['VideoController', 'VideoGalleryController']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -84,7 +84,7 @@ class VideoCategoryController extends BackendController
 
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }

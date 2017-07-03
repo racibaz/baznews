@@ -28,7 +28,7 @@ class ArticleController extends BackendController
 
         $this->view = 'article.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index($statusCode = null)
@@ -36,26 +36,26 @@ class ArticleController extends BackendController
         $statusList = [];
         $articleCountByStatus = [];
         $statuses = Article::$statuses;
-        foreach ($statuses as  $index => $status){
-            if(Auth::user()->can($status . '-article')){
-                $statusList[$index] =  $status;
-                $articleCountByStatus[$index] = $this->repo->where('status',$index)->findAll()->count();
+        foreach ($statuses as $index => $status) {
+            if (Auth::user()->can($status . '-article')) {
+                $statusList[$index] = $status;
+                $articleCountByStatus[$index] = $this->repo->where('status', $index)->findAll()->count();
             }
         }
 
 
         //Status durumuna göre verileri getiriyoruz.
-        if(is_numeric($statusCode)) {
+        if (is_numeric($statusCode)) {
 
-            if(!key_exists($statusCode,$statusList)){
-                Log::warning('Not permission by news status code(' . $statusCode .')  admin.news.index  User id :  ' . Auth::user()->id);
+            if (!key_exists($statusCode, $statusList)) {
+                Log::warning('Not permission by news status code(' . $statusCode . ')  admin.news.index  User id :  ' . Auth::user()->id);
                 Session::flash('error_message', trans('common.bad_request'));
                 return Redirect::back();
             }
 
-            $records = $this->repo->orderBy('updated_at', 'desc')->where('status',$statusCode)->paginate(50);
+            $records = $this->repo->orderBy('updated_at', 'desc')->where('status', $statusCode)->paginate(50);
 
-        }else{
+        } else {
             $records = $this->repo->orderBy('updated_at', 'desc')->paginate(50);
         }
 
@@ -75,13 +75,13 @@ class ArticleController extends BackendController
     {
         $articleCategoryIDs = [];
         $articleCategoryList = ArticleCategory::articleCategoryList();
-        $articleAuthorList  = ArticleAuthor::articleAuthorList();
+        $articleAuthorList = ArticleAuthor::articleAuthorList();
         $record = $this->repo->createModel();
         $statuses = Article::$statuses;
 
-        foreach ($statuses as  $index => $status){
-            if(Auth::user()->can($status . '-news')){
-                $statusList[$index] =  $status;
+        foreach ($statuses as $index => $status) {
+            if (Auth::user()->can($status . '-news')) {
+                $statusList[$index] = $status;
             }
         }
 
@@ -116,9 +116,9 @@ class ArticleController extends BackendController
         $statuses = Article::$statuses;
 
 
-        foreach ($statuses as  $index => $status){
-            if(Auth::user()->can($status . '-news')){
-                $statusList[$index] =  $status;
+        foreach ($statuses as $index => $status) {
+            if (Auth::user()->can($status . '-news')) {
+                $statusList[$index] = $status;
             }
         }
 
@@ -180,15 +180,15 @@ class ArticleController extends BackendController
              * google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
              *
              * */
-            if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+            if (($record->slug != $result->slug) && Setting::where('attribute_key', 'is_url_shortener')->first()) {
 
-                try{
+                try {
 
                     $linkShortener = new LinkShortener(new Link);
                     $result->short_url = $linkShortener->linkShortener($result->slug);
                     $result->save();
 
-                }catch (Exception $e){
+                } catch (Exception $e) {
                     Log::warning(trans('log.link_shortener_error'));
                 }
             }
@@ -207,7 +207,7 @@ class ArticleController extends BackendController
 
     public function articleArticleCategoriesStore(Article $record, $input)
     {
-        if(isset($input['article_category_ids'])) {
+        if (isset($input['article_category_ids'])) {
             $record->article_categories()->sync($input['article_category_ids']);
         }
     }

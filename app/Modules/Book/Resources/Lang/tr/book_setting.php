@@ -6,7 +6,7 @@
  * Time: 14:35
  */
 
-return[
-    'book_setting'=>'Kitap Ayarları',
-    'book_count'=>'Kitap Sayısı',
+return [
+    'book_setting' => 'Kitap Ayarları',
+    'book_count' => 'Kitap Sayısı',
 ];

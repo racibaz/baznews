@@ -3,7 +3,6 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
-use App\Library\Link\LinkShortener;
 use App\Library\Uploader;
 use App\Models\Setting;
 use App\Models\Tag;
@@ -15,14 +14,11 @@ use App\Modules\News\Repositories\PhotoGalleryRepository as Repo;
 use App\Modules\News\Repositories\PhotoRepository;
 use Caffeinated\Themes\Facades\Theme;
 use League\Flysystem\Exception;
-use Mremi\UrlShortener\Model\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rule;
 use Image;
 
 class PhotoGalleryController extends BackendController
@@ -33,14 +29,14 @@ class PhotoGalleryController extends BackendController
 
         $this->view = 'photo_gallery.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
@@ -51,7 +47,7 @@ class PhotoGalleryController extends BackendController
         $record = $this->repo->createModel();
         $tagList = Tag::tagList();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
             'record',
             'photoCategories',
             'tagList',
@@ -68,7 +64,7 @@ class PhotoGalleryController extends BackendController
 
     public function show(PhotoGallery $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -79,11 +75,11 @@ class PhotoGalleryController extends BackendController
 
         $tagList = Tag::tagList();
 
-        foreach ($record->tags as $index => $tag){
+        foreach ($record->tags as $index => $tag) {
             $tagIDs[$index] = $tag->id;
         }
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
             'record',
             'photoCategories',
             'tagList',
@@ -105,7 +101,7 @@ class PhotoGalleryController extends BackendController
         $this->removeCacheTags(['PhotoGalleryController']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -118,7 +114,7 @@ class PhotoGalleryController extends BackendController
 
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }
@@ -128,27 +124,27 @@ class PhotoGalleryController extends BackendController
             //todo form tarafında foto yüklemesini kaldırdım
             //çünkü galeri resimlerini gösterirken "gallery/gallery_slug/thumbnail" olduğu için
             //tekrar kontrol etmemiz gerekiyor.Bundan foto eklemeyi kaldırdım.
-            if(!empty($input['thumbnail'])) {
+            if (!empty($input['thumbnail'])) {
 
-                $destination = '/gallery/'. $result->id .'/photos';
+                $destination = '/gallery/' . $result->id . '/photos';
                 //todo gallerinin photoları silinmemesi lazım
                 //Uploader::removeFile($destination);
 
                 $document_name = $input['thumbnail']->getClientOriginalName();
-                Uploader::fileUpload($result, 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                Uploader::fileUpload($result, 'thumbnail', $input['thumbnail'], $destination, $document_name);
 
 
-                Image::make(public_path('gallery/'. $result->id .'/photos/'. $result->thumbnail))
-                    ->resize(58,58)
-                    ->save(public_path('gallery/'. $result->id .'/photos/58x58_' . $document_name));
+                Image::make(public_path('gallery/' . $result->id . '/photos/' . $result->thumbnail))
+                    ->resize(58, 58)
+                    ->save(public_path('gallery/' . $result->id . '/photos/58x58_' . $document_name));
 
-                Image::make(public_path('gallery/'. $result->id .'/photos/'. $result->thumbnail))
-                    ->resize(497,358)
-                    ->save(public_path('gallery/'. $result->id .'/photos/497x358_' . $document_name));
+                Image::make(public_path('gallery/' . $result->id . '/photos/' . $result->thumbnail))
+                    ->resize(497, 358)
+                    ->save(public_path('gallery/' . $result->id . '/photos/497x358_' . $document_name));
             }
 
 
-            $this->tagsPhotoGalleryStore($result,$input);
+            $this->tagsPhotoGalleryStore($result, $input);
 
 
             /*
@@ -156,7 +152,7 @@ class PhotoGalleryController extends BackendController
              * google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
              *
              * */
-            if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+            if (($record->slug != $result->slug) && Setting::where('attribute_key', 'is_url_shortener')->first()) {
 
 //                    $linkShortener = new LinkShortener(new Link);
 //                    $result->short_url = $linkShortener->linkShortener($result->slug);
@@ -198,7 +194,7 @@ class PhotoGalleryController extends BackendController
 
         /*dosya isminden extension kısmını çıkartıyoruz.*/
         //dosyanın orjinal ismini alıyoruz(uzantılı).
-        $originalFileName =  explode('.', $file->getClientOriginalName());
+        $originalFileName = explode('.', $file->getClientOriginalName());
 
         //uzantısını kayıt etmek için uzantısını değişkene atıyoruz.
         $extention = array_last($originalFileName);
@@ -220,18 +216,18 @@ class PhotoGalleryController extends BackendController
 
 
         $photo = Photo::create([
-            'photo_gallery_id'  => $gallery->id,
-            'name'              => $name,
-            'slug'              => str_slug($name),
-            'file'              => $fileName,
-            'is_active'         => 1
+            'photo_gallery_id' => $gallery->id,
+            'name' => $name,
+            'slug' => str_slug($name),
+            'file' => $fileName,
+            'is_active' => 1
         ]);
 
         $basePath = 'photos/' . $photo->id . '/';
         $file->move($basePath, $fileName);
 
         $destination = '/photos/' . $photo->id;
-        Uploader::fileUpload($photo, 'file', $file , $destination, $fileName);
+        Uploader::fileUpload($photo, 'file', $file, $destination, $fileName);
 
         $originalPhotoPath = public_path('photos/' . $photo->id . '/' . $fileName);
 
@@ -257,7 +253,7 @@ class PhotoGalleryController extends BackendController
          *
          * */
         $photoRepo = new PhotoRepository();
-        $result = $photoRepo->update($photo->id,[
+        $result = $photoRepo->update($photo->id, [
             'name' => $name
         ]);
 
@@ -273,14 +269,14 @@ class PhotoGalleryController extends BackendController
 
         $photoGalleryId = $inputs['photo_gallery_id'];
 
-        if(!empty($inputs['is_cuff_thumbnail'])){
+        if (!empty($inputs['is_cuff_thumbnail'])) {
 
             $photoGallery = PhotoGallery::find($photoGalleryId);
             $photo = Photo::find($inputs['is_cuff_thumbnail']);
 
 
-            $result = PhotoGallery::where('id',$photoGalleryId)
-                        ->update(['thumbnail' => $photo->file]);
+            $result = PhotoGallery::where('id', $photoGalleryId)
+                ->update(['thumbnail' => $photo->file]);
 
 
             //todo güncelleme repository tarafında yapılmalı.
@@ -297,17 +293,16 @@ class PhotoGalleryController extends BackendController
 //                ->save(public_path('gallery/'. $photoGallery->slug .'/photos/497x358_' . $photo->file));
 
 
-            $originalPhotoPath = Image::make(public_path('gallery/'. $photoGallery->id .'/photos/'. $photo->file));
+            $originalPhotoPath = Image::make(public_path('gallery/' . $photoGallery->id . '/photos/' . $photo->file));
 
             Image::make($originalPhotoPath)
-                ->resize(58,58)
-                ->save(public_path('gallery/'. $photoGallery->id .'/photos/58x58_' . $photo->file));
+                ->resize(58, 58)
+                ->save(public_path('gallery/' . $photoGallery->id . '/photos/58x58_' . $photo->file));
 
             Image::make($originalPhotoPath)
-                ->resize(497,358)
-                ->save(public_path('gallery/'. $photoGallery->id .'/photos/497x358_' . $photo->file));
+                ->resize(497, 358)
+                ->save(public_path('gallery/' . $photoGallery->id . '/photos/497x358_' . $photo->file));
         }
-
 
 
         unset($inputs['_token']);
@@ -316,50 +311,47 @@ class PhotoGalleryController extends BackendController
 
         //form name alanından gönderdiğimiz  photo id lerini alıyoruz
         //value alanlarını subtitle ve content ile değiştiriyoruz.
-        foreach (array_keys($inputs) as $key)
-        {
-            if(!empty($inputs[$key]))
-            {
+        foreach (array_keys($inputs) as $key) {
+            if (!empty($inputs[$key])) {
                 /*
                  * $fields[0] değeri content veya subtitle olabiliyor
                  * $fields[1] değeri ise formdan verdiğimiz id oluyor.
                  * */
 
-                $fields = explode('/',$key);
+                $fields = explode('/', $key);
 
                 $field = $fields[0];
                 $id = $fields[1];
 
-                if($field == 'delete'){
+                if ($field == 'delete') {
 
-                    try{
+                    try {
 
                         Photo::find($id)->delete();
                         //TODO video nun dosyaları da silinecek.
                         continue;
-                    }catch (Exception $e)
-                    {
+                    } catch (Exception $e) {
                         //todo log yazılacak
                     }
 
-                }else if($field == 'subtitle'){
+                } else if ($field == 'subtitle') {
 
                     $subtitle = $inputs[$key];
 
-                }else if($field == 'content'){
+                } else if ($field == 'content') {
 
                     $content = $inputs[$key];
                 }
 
 
-                if(is_numeric($id)){
+                if (is_numeric($id)) {
 
                     $photo = Photo::find($id);
-                    if(isset($photo->id)){
+                    if (isset($photo->id)) {
 
                         //ikisinden biri boş ise önceki değerini veriyoruz.
-                        $photo->subtitle =  $subtitle ? $subtitle : $photo->subtitle;
-                        $photo->content =  $content ? $content : $photo->content;
+                        $photo->subtitle = $subtitle ? $subtitle : $photo->subtitle;
+                        $photo->content = $content ? $content : $photo->content;
                         $photo->save();
                     }
                 }
@@ -385,7 +377,7 @@ class PhotoGalleryController extends BackendController
 
     public function tagsPhotoGalleryStore(PhotoGallery $record, $input)
     {
-        if(isset($input['tags_ids'])) {
+        if (isset($input['tags_ids'])) {
             $record->tags()->sync($input['tags_ids']);
         }
     }

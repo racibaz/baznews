@@ -7,7 +7,8 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{!! URL::route('book_publisher.index') !!}">{{trans('book::book_publisher.management')}}</a></li>
+            <li><a href="{!! URL::route('book_publisher.index') !!}">{{trans('book::book_publisher.management')}}</a>
+            </li>
             <li class="active">{{$record->name}}</li>
         </ol>
     </section>
@@ -20,7 +21,8 @@
                     <h3 class="box-title">{{$record->name}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -32,8 +34,8 @@
                             <tbody>
 
                             {{--<tr>--}}
-                                {{--<th>{{trans('book::book_publisher.user_id')}}</th>--}}
-                                {{--<td>{{$record->user_id}}</td>--}}
+                            {{--<th>{{trans('book::book_publisher.user_id')}}</th>--}}
+                            {{--<td>{{$record->user_id}}</td>--}}
                             {{--</tr>--}}
                             <tr>
                                 <th width="20%">{{trans('book::book_publisher.name')}}</th>
@@ -75,6 +77,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('book_publishers','book_management');
+        activeMenu('book_publishers', 'book_management');
     </script>
 @endsection

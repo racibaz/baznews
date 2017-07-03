@@ -31,7 +31,7 @@ Route::get('photo/{slug}', 'Frontend\PhotoController@getPhotoBySlug')->name('sho
 Route::get('gallery_photo/{slug}', 'Frontend\PhotoGalleryController@showGalleryPhotos')->name('show_gallery_photos');
 Route::get('editor-profile/{slug}', 'Frontend\EditorController@showProfile')->name('editor-profile');
 
-Route::group(['prefix' => 'rss'], function() {
+Route::group(['prefix' => 'rss'], function () {
 
     Route::get('all_news', 'Frontend\RssController@allNewsRssRender')->name('rss/all_news');
     Route::get('band_news', 'Frontend\RssController@bandNewsRssRender')->name('rss/band_news');
@@ -46,7 +46,7 @@ Route::group(['prefix' => 'rss'], function() {
     Route::get('news_category/{category_name}', 'Frontend\RssController@getNewsCategoryRssRender')->name('rss/category');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function () {
 
     //todo gerek olursa news ve diğerleri için dashboard lar yapılacak.
     Route::get('/news_dashboard', 'Backend\NewsDashboardController@index')->name('news_dashboard');

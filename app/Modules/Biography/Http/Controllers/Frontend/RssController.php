@@ -18,7 +18,7 @@ class RssController extends Controller
 
     public function biographiesRssRender()
     {
-        $feed = Cache::tags(['RssController', 'Biography', 'biographiesRssRender'])->rememberForever('biographiesRssRender', function() {
+        $feed = Cache::tags(['RssController', 'Biography', 'biographiesRssRender'])->rememberForever('biographiesRssRender', function () {
 
             // create new feed
             $feed = App::make("feed");
@@ -40,8 +40,8 @@ class RssController extends Controller
             foreach ($items as $item) {
 
                 $enclosure = [
-                    'url'=> asset('images/biographies/' . $item->id . '/original/' .$item->thumbnail),
-                    'type'=>'image/jpeg'
+                    'url' => asset('images/biographies/' . $item->id . '/original/' . $item->thumbnail),
+                    'type' => 'image/jpeg'
                 ];
 
                 // set item's title, author, url, pubdate, description, content, enclosure (optional)*

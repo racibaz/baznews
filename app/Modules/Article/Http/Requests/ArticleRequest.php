@@ -24,19 +24,16 @@ class ArticleRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    'article_category_id'   => 'required|integer',
-                    'user_id'               => 'required|integer',
-                    'article_author_id'     => 'required|integer',
+                    'article_category_id' => 'required|integer',
+                    'user_id' => 'required|integer',
+                    'article_author_id' => 'required|integer',
                     'title' => [
                         'max:255',
                         Rule::unique('articles'),
@@ -47,23 +44,22 @@ class ArticleRequest extends FormRequest
                         Rule::unique('articles'),
                         'nullable'
                     ],
-                    'short_url'             => 'url|max:255|nullable',
-                    'subtitle'              => 'string|max:255|nullable',
-                    'spot'                  => 'string|max:255|nullable',
-                    'description'           => 'string|max:255|nullable',
-                    'keywords'              => 'string|max:255|nullable',
-                    'hit'                   => 'integer|nullable',
-                    'order'                 => 'integer|nullable',
+                    'short_url' => 'url|max:255|nullable',
+                    'subtitle' => 'string|max:255|nullable',
+                    'spot' => 'string|max:255|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'hit' => 'integer|nullable',
+                    'order' => 'integer|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('article')->id;
                 return [
-                    'article_category_id'   => 'required|integer',
-                    'user_id'               => 'required|integer',
-                    'article_author_id'     => 'required|integer',
+                    'article_category_id' => 'required|integer',
+                    'user_id' => 'required|integer',
+                    'article_author_id' => 'required|integer',
                     'title' => [
                         'max:255',
                         Rule::unique('articles')->ignore($id),
@@ -73,16 +69,17 @@ class ArticleRequest extends FormRequest
                         Rule::unique('articles')->ignore($id),
                         'nullable'
                     ],
-                    'short_url'             => 'url|max:255|nullable',
-                    'subtitle'              => 'string|max:255|nullable',
-                    'spot'                  => 'string|max:255|nullable',
-                    'description'           => 'string|max:255|nullable',
-                    'keywords'              => 'string|max:255|nullable',
-                    'hit'                   => 'integer|nullable',
-                    'order'                 => 'integer|nullable',
+                    'short_url' => 'url|max:255|nullable',
+                    'subtitle' => 'string|max:255|nullable',
+                    'spot' => 'string|max:255|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'hit' => 'integer|nullable',
+                    'order' => 'integer|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

@@ -16,10 +16,10 @@ class ModuleServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadTranslationsFrom(__DIR__.'/../Resources/Lang', 'news');
-        $this->loadViewsFrom(__DIR__.'/../Resources/Views', 'news');
+        $this->loadTranslationsFrom(__DIR__ . '/../Resources/Lang', 'news');
+        $this->loadViewsFrom(__DIR__ . '/../Resources/Views', 'news');
 
-        if(!app()->runningInConsole()) {
+        if (!app()->runningInConsole()) {
 
             Cache::tags(['NewsCategory', 'News'])->rememberForever('cuffNewsCategories', function () {
 

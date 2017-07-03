@@ -23,31 +23,28 @@ class RecommendationNewsRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    'user_id'       => 'required',
-                    'news_id'       => 'required',
-                    'order'         => 'integer|nullable'
+                    'user_id' => 'required',
+                    'news_id' => 'required',
+                    'order' => 'integer|nullable'
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 return [
-                    'user_id'       => 'required',
-                    'news_id'       => 'required',
-                    'order'         => 'integer|nullable'
+                    'user_id' => 'required',
+                    'news_id' => 'required',
+                    'order' => 'integer|nullable'
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

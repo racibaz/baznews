@@ -13,7 +13,7 @@
     </section>
 @endsection
 @section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css"/>
 @endsection
 
 @section('content')
@@ -29,13 +29,15 @@
                 <div class="box-body">
                     <div class="row">
                         @foreach($photo_gallery->photos as $photo)
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
-                            <div class="thumbnail">
-                                <a href="{{asset('photos/' . $photo->id . '/' . $photo->file)}}" class="lightbox" style="display: block;overflow: hidden;height:73px;">
-                                    <img src="{{asset('photos/' . $photo->id . '/' . $photo->file)}}" alt="{{$photo_gallery->name}}">
-                                </a>
-                            </div><!-- /.thumbnail -->
-                        </div><!-- /.col.. -->
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+                                <div class="thumbnail">
+                                    <a href="{{asset('photos/' . $photo->id . '/' . $photo->file)}}" class="lightbox"
+                                       style="display: block;overflow: hidden;height:73px;">
+                                        <img src="{{asset('photos/' . $photo->id . '/' . $photo->file)}}"
+                                             alt="{{$photo_gallery->name}}">
+                                    </a>
+                                </div><!-- /.thumbnail -->
+                            </div><!-- /.col.. -->
                         @endforeach
                     </div><!-- /.row -->
                 </div>
@@ -72,34 +74,39 @@
                             </thead>
                             <tbody>
                             @foreach($photo_gallery->photos as $photo)
-                            <tr>
-                                <td>
-                                    <a href="{{asset('photos/' . $photo->id . '/' . $photo->file)}}" class="thumbnail" style="display: block;overflow: hidden;height:120px;width:120px;">
-                                        <img src="{{asset('photos/' . $photo->id . '/' . $photo->file)}}" height="73">
-                                    </a>
-                                </td>
-                                <td>{!! Form::text('subtitle/'. $photo->id, $photo->subtitle, ['placeholder' => trans('news::photo_gallery.title') ,'class' => 'form-control']) !!}</td>
-                                <td>{!! Form::textarea('content/'. $photo->id, $photo->content, ['placeholder' => trans('news::photo_gallery.content') ,'class' => 'form-control','rows'=>'2']) !!}</td>
-                                <td>
-                                    <label>
-                                        {!! Form::checkbox('delete/' . $photo->id, null , null) !!}
-                                        {{trans('news::photo_gallery.delete_photo')}}
-                                    </label>
-                                </td>
-                                <td>
-                                    <label>
-                                        {!! Form::checkbox('is_cuff_thumbnail', $photo->id, $photo->file == $photo_gallery->thumbnail ? true : false ) !!}
-                                        {{trans('news::photo_gallery.is_photo_gallery_cuff_thumbnail')}}
-                                    </label>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{asset('photos/' . $photo->id . '/' . $photo->file)}}"
+                                           class="thumbnail"
+                                           style="display: block;overflow: hidden;height:120px;width:120px;">
+                                            <img src="{{asset('photos/' . $photo->id . '/' . $photo->file)}}"
+                                                 height="73">
+                                        </a>
+                                    </td>
+                                    <td>{!! Form::text('subtitle/'. $photo->id, $photo->subtitle, ['placeholder' => trans('news::photo_gallery.title') ,'class' => 'form-control']) !!}</td>
+                                    <td>{!! Form::textarea('content/'. $photo->id, $photo->content, ['placeholder' => trans('news::photo_gallery.content') ,'class' => 'form-control','rows'=>'2']) !!}</td>
+                                    <td>
+                                        <label>
+                                            {!! Form::checkbox('delete/' . $photo->id, null , null) !!}
+                                            {{trans('news::photo_gallery.delete_photo')}}
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            {!! Form::checkbox('is_cuff_thumbnail', $photo->id, $photo->file == $photo_gallery->thumbnail ? true : false ) !!}
+                                            {{trans('news::photo_gallery.is_photo_gallery_cuff_thumbnail')}}
+                                        </label>
+                                    </td>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>
                     </div><!-- /.table-responsive -->
                     <div class="box-footer">
                         <div class="form-group">
-                            <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('news::photo_gallery.updateSubtitleAndContent')}}</button>
+                            <button class="btn btn-success" type="submit"><i
+                                        class="fa fa-check-square-o"></i> {{trans('news::photo_gallery.updateSubtitleAndContent')}}
+                            </button>
                         </div>
                     </div>
                     {!! Form::close() !!}
@@ -112,9 +119,9 @@
 
     {!! Form::open(['route' => 'addMultiPhotos','method' => 'post', 'class' => 'dropzone', 'id' => 'addPhotos', 'files' => 'true']) !!}
 
-        {{ csrf_field() }}
+    {{ csrf_field() }}
 
-        {!! Form::hidden('photo_gallery_id', $photo_gallery->id) !!}
+    {!! Form::hidden('photo_gallery_id', $photo_gallery->id) !!}
     {!! Form::close() !!}
 
 @endsection
@@ -122,18 +129,19 @@
 
 @section('js')
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 
     <script>
         Dropzone.options.addPhotos = {
 
             maxFileSize: 100,
-            acceptedFiles : 'image/*',
+            acceptedFiles: 'image/*',
             success: function (file, response) {
 
-                if(file.status === 'success'){
+                if (file.status === 'success') {
                     handleDropzoneFileUpload.handleSuccess(response);
-                }else {
+                } else {
                     handleDropzoneFileUpload.handleError(response);
                 }
             }

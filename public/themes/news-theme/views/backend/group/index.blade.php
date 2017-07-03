@@ -45,7 +45,7 @@
                             <td>
                                 @if($record->is_active)
                                     <span class="badge bg-green">{{trans('group.active')}}</span>
-                                    @else
+                                @else
                                     <span class="badge bg-red">{{trans('group.passive')}}</span>
                                 @endif
                             </td>
@@ -78,6 +78,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('user_management','group');
+        activeMenu('user_management', 'group');
     </script>
 @endsection

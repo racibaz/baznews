@@ -26,7 +26,7 @@ class PingController extends BackendController
     {
         $ping = \App\Models\Ping::first();
 
-        $pingList = explode('/n' , $ping->ping_list);
+        $pingList = explode('/n', $ping->ping_list);
 
         dd($pingList);
 
@@ -36,8 +36,7 @@ class PingController extends BackendController
         $latency = $ping->ping();
         if ($latency !== false) {
             print 'Latency is ' . $latency . ' ms';
-        }
-        else {
+        } else {
             print 'Host could not be reached.';
         }
     }
@@ -45,7 +44,7 @@ class PingController extends BackendController
     public function edit(Request $request)
     {
         $record = \App\Models\Ping::first();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 

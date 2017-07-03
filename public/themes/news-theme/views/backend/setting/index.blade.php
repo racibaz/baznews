@@ -22,13 +22,20 @@
             <!-- Custom Tabs -->
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">{{trans('setting.general')}}</a></li>
-                    <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">{{trans('setting.google')}}</a></li>
-                    <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">{{trans('setting.social_connect')}}</a></li>
-                    <li class=""><a href="#tab_4" data-toggle="tab" aria-expanded="false">{{trans('setting.tab_contact')}}</a></li>
-                    <li class=""><a href="#tab_5" data-toggle="tab" aria-expanded="false">{{trans('setting.embed_code')}}</a></li>
-                    <li class=""><a href="#tab_6" data-toggle="tab" aria-expanded="false">{{trans('setting.header_footer')}}</a></li>
-                    <li class=""><a href="#tab_7" data-toggle="tab" aria-expanded="false">{{trans('setting.other')}}</a></li>
+                    <li class="active"><a href="#tab_1" data-toggle="tab"
+                                          aria-expanded="true">{{trans('setting.general')}}</a></li>
+                    <li class=""><a href="#tab_2" data-toggle="tab"
+                                    aria-expanded="false">{{trans('setting.google')}}</a></li>
+                    <li class=""><a href="#tab_3" data-toggle="tab"
+                                    aria-expanded="false">{{trans('setting.social_connect')}}</a></li>
+                    <li class=""><a href="#tab_4" data-toggle="tab"
+                                    aria-expanded="false">{{trans('setting.tab_contact')}}</a></li>
+                    <li class=""><a href="#tab_5" data-toggle="tab"
+                                    aria-expanded="false">{{trans('setting.embed_code')}}</a></li>
+                    <li class=""><a href="#tab_6" data-toggle="tab"
+                                    aria-expanded="false">{{trans('setting.header_footer')}}</a></li>
+                    <li class=""><a href="#tab_7" data-toggle="tab" aria-expanded="false">{{trans('setting.other')}}</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
@@ -115,12 +122,16 @@
                                     <strong>{{trans('setting.recommended_logo_size')}} (90x90)</strong><br><br>
 
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
-                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                            <img  src="{!! asset('img/logo.jpg') !!}" alt="">
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                             style="width: 200px; height: 150px;">
+                                            <img src="{!! asset('img/logo.jpg') !!}" alt="">
                                         </div>
                                         <div>
-                                            <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('setting.file_choose')}}</span><span class="fileinput-exists">{{trans('setting.change')}}</span>{!! Form::file('logo',['class'=>'fileinput']) !!}</span>
-                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('setting.remove')}}</a>
+                                            <span class="btn btn-default btn-file"><span
+                                                        class="fileinput-new">{{trans('setting.file_choose')}}</span><span
+                                                        class="fileinput-exists">{{trans('setting.change')}}</span>{!! Form::file('logo',['class'=>'fileinput']) !!}</span>
+                                            <a href="#" class="btn btn-default fileinput-exists"
+                                               data-dismiss="fileinput">{{trans('setting.remove')}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -374,7 +385,8 @@
                     <h3 class="box-title">{{trans('setting.status')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -414,24 +426,36 @@
                     {{--</div>--}}
 
                     <div class="list-group">
-                        <a class="list-group-item" data-toggle="modal" href="#config_list"><i class="fa fa-cog"></i>{{trans('setting.config_list')}}</a>
-                        <a class="list-group-item" href="{!! route('repairMysqlTables') !!}"><i class="fa fa-thumbs-o-up"></i> <span>Mysql Tabloları Onar</span></a>
-                        <a class="list-group-item" href="{!! route('getAllRedisKey') !!}"><i class="fa fa-list-alt"></i> <span>Cache Verileri Göster</span></a>
-                        <a class="list-group-item" href="{!! route('flushAllCache') !!}"><i class="fa fa-trash-o"></i> <span>Cache Verilerini Sil</span></a>
-                        <a class="list-group-item" href="{!! route('getBackUp') !!}"> <i class="fa fa-cloud-download"></i> <span>Backup Al</span></a>
-                        <a class="list-group-item" href="{!! route('backUpClean') !!}"> <i class="fa fa-trash-o"></i> <span>Backup ları Sil</span></a>
-                        <a class="list-group-item" href="{!! route('viewClear') !!}"> <i class="fa fa-trash-o"></i> <span>View Ön Belleğini Temizle</span></a>
-                        <a class="list-group-item" href="{!! route('routeCache') !!}"> <i class="fa fa-trash-o"></i> <span>Route Ayarlarını Ön Belleğe Al</span></a>
-                        <a class="list-group-item" href="{!! route('routeClear') !!}"> <i class="fa fa-trash-o"></i> <span>Route Ön Belleğini Temizle</span></a>
-                        <a class="list-group-item" href="{!! route('configCache') !!}"><i class="fa fa-trash-o"></i>  <span>Konfigürasyon Ayarlarını Ön Belleğe Al</span></a>
-                        <a class="list-group-item" href="{!! route('configClear') !!}"> <i class="fa fa-trash-o"></i> <span>Konfigürasyon Ayarlarını Temizle</span></a>
+                        <a class="list-group-item" data-toggle="modal" href="#config_list"><i
+                                    class="fa fa-cog"></i>{{trans('setting.config_list')}}</a>
+                        <a class="list-group-item" href="{!! route('repairMysqlTables') !!}"><i
+                                    class="fa fa-thumbs-o-up"></i> <span>Mysql Tabloları Onar</span></a>
+                        <a class="list-group-item" href="{!! route('getAllRedisKey') !!}"><i class="fa fa-list-alt"></i>
+                            <span>Cache Verileri Göster</span></a>
+                        <a class="list-group-item" href="{!! route('flushAllCache') !!}"><i class="fa fa-trash-o"></i>
+                            <span>Cache Verilerini Sil</span></a>
+                        <a class="list-group-item" href="{!! route('getBackUp') !!}"> <i
+                                    class="fa fa-cloud-download"></i> <span>Backup Al</span></a>
+                        <a class="list-group-item" href="{!! route('backUpClean') !!}"> <i class="fa fa-trash-o"></i>
+                            <span>Backup ları Sil</span></a>
+                        <a class="list-group-item" href="{!! route('viewClear') !!}"> <i class="fa fa-trash-o"></i>
+                            <span>View Ön Belleğini Temizle</span></a>
+                        <a class="list-group-item" href="{!! route('routeCache') !!}"> <i class="fa fa-trash-o"></i>
+                            <span>Route Ayarlarını Ön Belleğe Al</span></a>
+                        <a class="list-group-item" href="{!! route('routeClear') !!}"> <i class="fa fa-trash-o"></i>
+                            <span>Route Ön Belleğini Temizle</span></a>
+                        <a class="list-group-item" href="{!! route('configCache') !!}"><i class="fa fa-trash-o"></i>
+                            <span>Konfigürasyon Ayarlarını Ön Belleğe Al</span></a>
+                        <a class="list-group-item" href="{!! route('configClear') !!}"> <i class="fa fa-trash-o"></i>
+                            <span>Konfigürasyon Ayarlarını Temizle</span></a>
                     </div>
                 </div>
                 <div class="box-footer">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-12">
-                                <button class="btn btn-success pull-right" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                                <button class="btn btn-success pull-right" type="submit"><i
+                                            class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                             </div>
                         </div>
                     </div>
@@ -507,7 +531,7 @@
                                         <h1>activeTheme :</h1> {{$activeTheme}} <br>
                                         <h1> themes : </h1>
                                         @foreach($themes as $theme)
-                                            {{$theme}} <br />
+                                            {{$theme}} <br/>
                                         @endforeach
                                         <br><br><br><br><br>
 
@@ -516,7 +540,7 @@
                                         <h1> modules : </h1>
                                         <br>
                                         @foreach($modules as $module)
-                                            {{$module['basename']}} <br />
+                                            {{$module['basename']}} <br/>
                                         @endforeach
 
                                         <br><br><br><br><br>
@@ -525,7 +549,7 @@
                                     <h1> Route List </h1>
                                     <div id="routes">
                                         @foreach ($routeCollection as $value)
-                                            {{$value->uri()}} <br />
+                                            {{$value->uri()}} <br/>
                                         @endforeach
                                     </div>
                                 </div>
@@ -547,9 +571,11 @@
     <!-- Main Content Element  End-->
 @endsection
 @section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/codemirror/lib/codemirror.css') }}">
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/codemirror/theme/monokai.css') }}">
 @endsection
@@ -577,67 +603,121 @@
         CKEDITOR.replace('contact', options);
         //CKEDİTOR END...
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.fileinput').fileinput();
             $('.select2').select2();
             $('.tagsinput').tagsinput();
         });
         function codemirrore1() {
-            var a=document.getElementById("facebook_embed_code");
-            var b=document.getElementById("twitter_embed_code");
-            var c=document.getElementById("instagram_embed_code");
-            var j=document.getElementById("pinterest_embed_code");
-            CodeMirror.fromTextArea(a,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
-            CodeMirror.fromTextArea(b,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
-            CodeMirror.fromTextArea(c,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
-            CodeMirror.fromTextArea(j,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
+            var a = document.getElementById("facebook_embed_code");
+            var b = document.getElementById("twitter_embed_code");
+            var c = document.getElementById("instagram_embed_code");
+            var j = document.getElementById("pinterest_embed_code");
+            CodeMirror.fromTextArea(a, {
+                lineNumbers: true,
+                matchBrackets: true,
+                styleActiveLine: true,
+                theme: "monokai",
+                readOnly: !1
+            });
+            CodeMirror.fromTextArea(b, {
+                lineNumbers: true,
+                matchBrackets: true,
+                styleActiveLine: true,
+                theme: "monokai",
+                readOnly: !1
+            });
+            CodeMirror.fromTextArea(c, {
+                lineNumbers: true,
+                matchBrackets: true,
+                styleActiveLine: true,
+                theme: "monokai",
+                readOnly: !1
+            });
+            CodeMirror.fromTextArea(j, {
+                lineNumbers: true,
+                matchBrackets: true,
+                styleActiveLine: true,
+                theme: "monokai",
+                readOnly: !1
+            });
         }
         function codemirrore2() {
-            var d=document.getElementById("weather_code");
-            var e=document.getElementById("addthis_code");
-            var f=document.getElementById("disqus_code");
-            CodeMirror.fromTextArea(d,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
-            CodeMirror.fromTextArea(e,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
-            CodeMirror.fromTextArea(f,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
+            var d = document.getElementById("weather_code");
+            var e = document.getElementById("addthis_code");
+            var f = document.getElementById("disqus_code");
+            CodeMirror.fromTextArea(d, {
+                lineNumbers: true,
+                matchBrackets: true,
+                styleActiveLine: true,
+                theme: "monokai",
+                readOnly: !1
+            });
+            CodeMirror.fromTextArea(e, {
+                lineNumbers: true,
+                matchBrackets: true,
+                styleActiveLine: true,
+                theme: "monokai",
+                readOnly: !1
+            });
+            CodeMirror.fromTextArea(f, {
+                lineNumbers: true,
+                matchBrackets: true,
+                styleActiveLine: true,
+                theme: "monokai",
+                readOnly: !1
+            });
         }
         function codemirrore3() {
-            var g=document.getElementById("head_code");
-            var h=document.getElementById("footer_code");
-            CodeMirror.fromTextArea(g,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
-            CodeMirror.fromTextArea(h,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
+            var g = document.getElementById("head_code");
+            var h = document.getElementById("footer_code");
+            CodeMirror.fromTextArea(g, {
+                lineNumbers: true,
+                matchBrackets: true,
+                styleActiveLine: true,
+                theme: "monokai",
+                readOnly: !1
+            });
+            CodeMirror.fromTextArea(h, {
+                lineNumbers: true,
+                matchBrackets: true,
+                styleActiveLine: true,
+                theme: "monokai",
+                readOnly: !1
+            });
         }
-        var t3=0,t5=0,t6=0;
+        var t3 = 0, t5 = 0, t6 = 0;
         $(window).resize(function () {
             $('.select2').select2();
             $('.tagsinput').tagsinput();
         });
         $('.nav-tabs li a').click(function () {
-            if($(this).attr('href')==="#tab_3" && t3 === 0){
+            if ($(this).attr('href') === "#tab_3" && t3 === 0) {
                 setTimeout(function () {
                     codemirrore1();
-                },100);
-                t3=1;
+                }, 100);
+                t3 = 1;
             }
-            if($(this).attr('href')==="#tab_5" && t5 === 0){
+            if ($(this).attr('href') === "#tab_5" && t5 === 0) {
                 setTimeout(function () {
                     codemirrore2();
-                },100);
-                t5=1;
+                }, 100);
+                t5 = 1;
             }
-            if($(this).attr('href')==="#tab_6" && t6 === 0){
+            if ($(this).attr('href') === "#tab_6" && t6 === 0) {
                 setTimeout(function () {
                     codemirrore3();
-                },100);
-                t6=1;
+                }, 100);
+                t6 = 1;
             }
         });
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
         //active menu
-        activeMenu('setting','general_setting');
+        activeMenu('setting', 'general_setting');
     </script>
 @endsection

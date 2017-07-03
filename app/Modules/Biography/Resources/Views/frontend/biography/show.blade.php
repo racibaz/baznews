@@ -19,7 +19,8 @@
                             <div class="col-md-4">
                                 <div class="bio-profile">
                                     <div class="bio-img">
-                                        <img src="{{ asset('images/biographies/' . $record->id . '/104x78_' . $record->photo) }}" alt="{{$record->title}}">
+                                        <img src="{{ asset('images/biographies/' . $record->id . '/104x78_' . $record->photo) }}"
+                                             alt="{{$record->title}}">
                                     </div>
                                     <div class="bio-detail">
                                         <h1 class="bio-name">{{$record->name}} </h1>
@@ -59,7 +60,8 @@
                                 <li>
                                     <a href="{!! route('biography', ['slug' => $otherBiography->slug]) !!}">
                                         <span class="bio-img">
-                                            <img src="{{ asset('images/biographies/' . $otherBiography->id . '/104x78_' . $otherBiography->photo) }}" alt="{{$otherBiography->title}}"  class="img-responsive">
+                                            <img src="{{ asset('images/biographies/' . $otherBiography->id . '/104x78_' . $otherBiography->photo) }}"
+                                                 alt="{{$otherBiography->title}}" class="img-responsive">
                                         </span>
                                         <div class="bio-detail">
                                             <span class="bio-title">{{$otherBiography->name}}</span>
@@ -99,17 +101,17 @@
     <meta name="keywords" content="{{$record->keywords}}"/>
     <meta name="description" content="{{$record->description}}"/>
     <meta name='robots' content='index,follow'>
-    
+
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="{{Cache::tags('Setting')->get('twitter_account')}}">
     <meta name="twitter:title" content="{{$record->name}}">
     <meta name="twitter:description" content="{{$record->description}}">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ $record->name }} " />
-    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}" />
-    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}" />
-    <meta property="og:description" content="{{$record->description}}" />
+    <meta property="og:title" content="{{ $record->name }} "/>
+    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}"/>
+    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}"/>
+    <meta property="og:description" content="{{$record->description}}"/>
     <meta property="fb:app_id" content="671303379704288">
     <meta property="og:image" content="{{asset('images/books/' . $record->id . '/original/' .$record->thumbnail)}}"/>
     <meta property="article:published_time" content="{{$record->created_at}}">
@@ -123,7 +125,7 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
     </script>

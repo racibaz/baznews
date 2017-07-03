@@ -24,11 +24,11 @@ class Permission extends EntrustPermission
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class,'permission_role','permission_id', 'role_id');
+        return $this->belongsToMany(Role::class, 'permission_role', 'permission_id', 'role_id');
     }
 
     public static function permissionList()
     {
-        return Permission::where('is_active',1)->get();
+        return Permission::where('is_active', 1)->get();
     }
 }

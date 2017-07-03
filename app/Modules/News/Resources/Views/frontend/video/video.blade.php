@@ -7,11 +7,13 @@
                 <li>
                     <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
                 </li>
-                <li>
-                    <a href="{!! route('show_video_gallery', ['slug' => $videoGallery->slug]) !!}">
-                        {{$videoGallery->title}}
-                    </a>
-                </li>
+                @if($videoGallery)
+                    <li>
+                        <a href="{!! route('show_video_gallery', ['slug' => $videoGallery->slug]) !!}">
+                            {{$videoGallery->title}}
+                        </a>
+                    </li>
+                @endif
                 <li>
                     {{$video->name}}
                 </li>
@@ -28,11 +30,17 @@
                                            poster="http://video-js.zencoder.com/oceans-clip.png"
                                            data-setup='{"example_option":true}'>
 
-                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/mp4" />
-                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/webm" />
-                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/ogg" />
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}"
+                                                type="video/mp4"/>
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}"
+                                                type="video/webm"/>
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}"
+                                                type="video/ogg"/>
 
-                                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider
+                                            upgrading to a web browser that <a
+                                                    href="http://videojs.com/html5-video-support/" target="_blank">supports
+                                                HTML5 video</a></p>
                                     </video>
                                     <script type="application/ld+json">
                                         {
@@ -54,6 +62,7 @@
                                           "embedUrl": "https://www.example.com/videoplayer.swf?video=123",
                                           "interactionCount": "2347"
                                         }
+
                                     </script>
                                 @elseif(!empty($video->embed))
                                     {!! $video->embed !!}
@@ -90,41 +99,43 @@
                 </div><!-- /.col-md-8 -->
                 <div class="col-md-4" id="video_sidebar">
                     <div class="sidebar">
+                        @if(count($otherGalleryVideos))
+                            <div class="sidebar-video">
+                                <div class="title-section">
+                                    <h1>
+                                        <span>{{trans('news::video.gallery_other_videos')}}</span>
+                                    </h1>
+                                </div>
 
-                        <div class="sidebar-video">
-                            <div class="title-section">
-                                <h1>
-                                    <span>{{trans('news::video.gallery_other_videos')}}</span>
-                                </h1>
-                            </div>
-
-                            <div class="video-list-body">
-                                @foreach($otherGalleryVideos as $otherGalleryVideo)
-                                    <div class="video-link">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
-                                                    <div class="hold">
-                                                        <img src="{{ asset('videos/' . $otherGalleryVideo->id . '/165x90_' . $otherGalleryVideo->thumbnail)}}"
-                                                             alt="{{$otherGalleryVideo->title}}" title="{{$otherGalleryVideo->title}}"/>
-                                                        <span class="icon play"></span>
-                                                    </div>
-                                                </a>
-                                            </div><!-- /.col -->
-                                            <div class="col-lg-9">
-                                                <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
-                                                    <span class="title">{{$otherGalleryVideo->name}}</span>
-                                                    <span class="excerpt">
-                                                        <p>{{$otherGalleryVideo->subtitle}}</p>
-                                                    </span>
-                                                </a>
-                                                <span class="time visible-lg"> {{$otherGalleryVideo->updated_at->diffForHumans()}}</span>
-                                            </div>
-                                        </div><!-- /.row -->
-                                    </div><!-- /.video-link -->
-                                @endforeach
-                            </div>
-                        </div><!-- /.sidebar-video -->
+                                <div class="video-list-body">
+                                    @foreach($otherGalleryVideos as $otherGalleryVideo)
+                                        <div class="video-link">
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
+                                                        <div class="hold">
+                                                            <img src="{{ asset('videos/' . $otherGalleryVideo->id . '/165x90_' . $otherGalleryVideo->thumbnail)}}"
+                                                                 alt="{{$otherGalleryVideo->title}}"
+                                                                 title="{{$otherGalleryVideo->title}}"/>
+                                                            <span class="icon play"></span>
+                                                        </div>
+                                                    </a>
+                                                </div><!-- /.col -->
+                                                <div class="col-lg-9">
+                                                    <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
+                                                        <span class="title">{{$otherGalleryVideo->name}}</span>
+                                                        <span class="excerpt">
+                                                            <p>{{$otherGalleryVideo->subtitle}}</p>
+                                                        </span>
+                                                    </a>
+                                                    <span class="time visible-lg"> {{$otherGalleryVideo->updated_at->diffForHumans()}}</span>
+                                                </div>
+                                            </div><!-- /.row -->
+                                        </div><!-- /.video-link -->
+                                    @endforeach
+                                </div>
+                            </div><!-- /.sidebar-video -->
+                        @endif
 
                         <div class="widget">
                             @foreach($widgets as $widget)
@@ -150,7 +161,8 @@
                             <div class="r-box module">
                                 <div class="box-img">
                                     <a href="{{route('show_videos',['slug' => $lastestVideo->slug ])}}">
-                                        <img src="{{ asset('videos/' . $lastestVideo->id . '/497x358_' . $lastestVideo->thumbnail)}}" alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
+                                        <img src="{{ asset('videos/' . $lastestVideo->id . '/497x358_' . $lastestVideo->thumbnail)}}"
+                                             alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
                                         <span class="icon"></span>
                                     </a>
                                 </div>
@@ -181,7 +193,8 @@
                                 <div class="r-box module">
                                     <div class="box-img">
                                         <a href="{{route('show_videos',['slug' => $categoryVideo->slug ])}}">
-                                            <img src="{{ asset('videos/' . $categoryVideo->id . '/497x358_' . $categoryVideo->thumbnail)}}" alt="{{$categoryVideo->title}}" title="{{$categoryVideo->title}}"/>
+                                            <img src="{{ asset('videos/' . $categoryVideo->id . '/497x358_' . $categoryVideo->thumbnail)}}"
+                                                 alt="{{$categoryVideo->title}}" title="{{$categoryVideo->title}}"/>
                                             <span class="icon"></span>
                                         </a>
                                     </div>
@@ -204,11 +217,11 @@
 
 
 @section('meta_tags')
-    <title> {{ $videoGallery->title }}  </title>
-    <meta name="keywords" content="{{$videoGallery->keywords}}"/>
-    <meta name="description" content="{{$videoGallery->description}}"/>
+    <title> {{ $video->name }}  </title>
+    <meta name="keywords" content="{{$video->keywords}}"/>
+    <meta name="description" content="{{$video->description}}"/>
     <meta name='subtitle' content='This is my subtitle'>
-    <meta name='pagename' content='{{$videoGallery->title}}'>
+    <meta name='pagename' content='{{$video->name}}'>
     <meta name='identifier-URL' content='http://www.websiteaddress.com'>
     <meta name='directory' content='submission'>
     <meta name='author' content='name, email@hotmail.com'>
@@ -220,7 +233,8 @@
 @endsection
 
 @section('css')
-    <link href="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}"
+          type="text/css" rel="stylesheet">
 @endsection
 
 @section('js')
@@ -229,7 +243,7 @@
     <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
     <script type="text/javascript">
         videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}";
-        videojs("video-js", {}, function(){
+        videojs("video-js", {}, function () {
             // Player (this) is initialized and ready.
         });
     </script>
@@ -243,14 +257,14 @@
              mCustomScrollbar
              * --------------------------------------------------------*/
             $('.sidebar-video .video-list-body').mCustomScrollbar({
-                theme:"light"
+                theme: "light"
             });
         });
 
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#video_sidebar,#content').theiaStickySidebar();
         });
     </script>

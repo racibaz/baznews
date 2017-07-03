@@ -19,8 +19,12 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
-                <li class="header"><a href="/" target="_blank" title="{{ trans('dashboard.web_site') }}"><i class="fa fa-home"></i> {{ trans('dashboard.web_site') }} </a></li>
-                @permission('removeHomePageCache-backend')<li class="header"><a href="{!! URL::route('removeHomePageCache') !!}"><i class="fa fa-trash-o"></i> {{ trans('dashboard.remove_home_page_cache') }} </a></li>@endpermission
+                <li class="header"><a href="/" target="_blank" title="{{ trans('dashboard.web_site') }}"><i
+                                class="fa fa-home"></i> {{ trans('dashboard.web_site') }} </a></li>
+                @permission('removeHomePageCache-backend')
+                <li class="header"><a href="{!! URL::route('removeHomePageCache') !!}"><i
+                                class="fa fa-trash-o"></i> {{ trans('dashboard.remove_home_page_cache') }} </a>
+                </li>@endpermission
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
@@ -34,7 +38,8 @@
                                 <li><!-- start message -->
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                            <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg"
+                                                 class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
                                             Support Team
@@ -47,7 +52,8 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                            <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user3-128x128.jpg"
+                                                 class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
                                             AdminLTE Design Team
@@ -59,7 +65,8 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                            <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user4-128x128.jpg"
+                                                 class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
                                             Developers
@@ -71,7 +78,8 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                            <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user3-128x128.jpg"
+                                                 class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
                                             Sales Department
@@ -83,7 +91,8 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                            <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user4-128x128.jpg"
+                                                 class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
                                             Reviewers
@@ -115,7 +124,8 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
+                                        <i class="fa fa-warning text-yellow"></i> Very long description here that may
+                                        not fit into the
                                         page and may cause design problems
                                     </a>
                                 </li>
@@ -157,7 +167,9 @@
                                             <small class="pull-right">20%</small>
                                         </h3>
                                         <div class="progress xs">
-                                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar progress-bar-aqua" style="width: 20%"
+                                                 role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                 aria-valuemax="100">
                                                 <span class="sr-only">20% Complete</span>
                                             </div>
                                         </div>
@@ -171,7 +183,9 @@
                                             <small class="pull-right">40%</small>
                                         </h3>
                                         <div class="progress xs">
-                                            <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar progress-bar-green" style="width: 40%"
+                                                 role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                 aria-valuemax="100">
                                                 <span class="sr-only">40% Complete</span>
                                             </div>
                                         </div>
@@ -185,7 +199,9 @@
                                             <small class="pull-right">60%</small>
                                         </h3>
                                         <div class="progress xs">
-                                            <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar progress-bar-red" style="width: 60%"
+                                                 role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                 aria-valuemax="100">
                                                 <span class="sr-only">60% Complete</span>
                                             </div>
                                         </div>
@@ -199,7 +215,9 @@
                                             <small class="pull-right">80%</small>
                                         </h3>
                                         <div class="progress xs">
-                                            <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar progress-bar-yellow" style="width: 80%"
+                                                 role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                 aria-valuemax="100">
                                                 <span class="sr-only">80% Complete</span>
                                             </div>
                                         </div>
@@ -216,13 +234,15 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                        <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg"
+                             class="user-image" alt="User Image">
                         <span class="hidden-xs">Alexander Pierce</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg"
+                                 class="img-circle" alt="User Image">
 
                             <p>
                                 Alexander Pierce - Web Developer
@@ -255,10 +275,11 @@
                                 <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-sign-out"></i>  {{trans('common.logout')}}
+                                    <i class="fa fa-sign-out"></i> {{trans('common.logout')}}
                                 </a>
 
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                      style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </div>

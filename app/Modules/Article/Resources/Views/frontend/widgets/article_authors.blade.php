@@ -1,7 +1,8 @@
 <div class="widget">
     <div class="title-section">
         <div class="pull-right">
-            <a href="{{route('article_authors')}}" class="btn btn-primary">{{trans('article::article.article_authors')}}</a>
+            <a href="{{route('article_authors')}}"
+               class="btn btn-primary">{{trans('article::article.article_authors')}}</a>
         </div>
         <h3>
             <span>Yazarlar Widget </span>

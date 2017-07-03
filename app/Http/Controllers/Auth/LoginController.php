@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Jobs\Users\UpdateLastLogin;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -47,8 +47,8 @@ class LoginController extends Controller
      *
      * user statuses 0 => 'Passive', 1 => 'Active' , 2 => 'Preparing Email Activation', 3 => 'Garbage'
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
+     * @param  \Illuminate\Http\Request $request
+     * @param  mixed $user
      * @return mixed
      */
     protected function authenticated(Request $request, $user)
@@ -58,7 +58,7 @@ class LoginController extends Controller
         if ($user->status === 0) {
             Auth::logout();
             return redirect('/login')->withError('Your Account is Passive Mode');
-        }elseif ($user->status === 2){
+        } elseif ($user->status === 2) {
             Auth::logout();
             return redirect('/login')->withError('Please activate your account. <a href="' . route('auth.activate.resend') . '?email=' . $user->email . '">Resend</a>');
         }

@@ -22,12 +22,14 @@
                 <article class="article news-article">
                     <div id="new-content" class="module">
                         <div class="meta">
-                            <span class="timestamp"><strong>GİRİŞ :</strong> {{ $record->created_at->format('d.m.Y h:m') }}&nbsp;&nbsp;&nbsp;<strong>GÜNCELLEME:</strong> {{ $record->updated_at->format('d.m.Y h:m') }}</span>
+                            <span class="timestamp"><strong>GİRİŞ :</strong> {{ $record->created_at->format('d.m.Y h:m') }}
+                                &nbsp;&nbsp;&nbsp;<strong>GÜNCELLEME:</strong> {{ $record->updated_at->format('d.m.Y h:m') }}</span>
                         </div><!-- /.meta -->
                         <h1 class="news-title">{{ $record->title }}</h1>
                         @if($record->news_type == 0 || $record->news_type == 1)
                             <div class="new-img">
-                                <img src="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}" alt="{{$record->title}}">
+                                <img src="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}"
+                                     alt="{{$record->title}}">
                                 {{--<div class="image-subtitle">Venison pancetta cupim shankle stri (Haber 7)</div>--}}
                             </div>
                         @elseif($record->news_type == 2)
@@ -60,7 +62,7 @@
                             @if($record->news_source)
                                 <div class="new-source">
                                     <span>Haber Kaynağı: </span>
-                                        {{$record->news_source->name}}
+                                    {{$record->news_source->name}}
                                 </div><!-- /.new-source -->
                             @endif
                         </div><!-- /.content -->
@@ -94,22 +96,28 @@
                                             <div class="links">
                                                 <ul class="nav nav-pills">
                                                     <li>
-                                                        <a href="{{$record->user->web_site}}" target="_blank" ><i class="fa fa-globe"></i></a>
+                                                        <a href="{{$record->user->web_site}}" target="_blank"><i
+                                                                    class="fa fa-globe"></i></a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{$record->user->facebook}}" target="_blank" ><i class="fa fa-facebook"></i></a>
+                                                        <a href="{{$record->user->facebook}}" target="_blank"><i
+                                                                    class="fa fa-facebook"></i></a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{$record->user->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                                                        <a href="{{$record->user->twitter}}" target="_blank"><i
+                                                                    class="fa fa-twitter"></i></a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{$record->user->pinterest}}" target="_blank" ><i class="fa fa-pinterest"></i></a>
+                                                        <a href="{{$record->user->pinterest}}" target="_blank"><i
+                                                                    class="fa fa-pinterest"></i></a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{$record->user->linkedin}}" target="_blank" ><i class="fa fa-linkedin"></i></a>
+                                                        <a href="{{$record->user->linkedin}}" target="_blank"><i
+                                                                    class="fa fa-linkedin"></i></a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{$record->user->youtube}}" target="_blank" ><i class="fa fa-youtube"></i></a>
+                                                        <a href="{{$record->user->youtube}}" target="_blank"><i
+                                                                    class="fa fa-youtube"></i></a>
                                                     </li>
                                                 </ul>
                                             </div><!-- /.editor-info -->
@@ -120,8 +128,12 @@
                         @endif
                         @if($record->is_show_previous_and_next_news)
                             <ul class="pager">
-                                <li class="previous"><a href="{!! route('show_news', ['slug' => $previousNews->slug]) !!}"><i class="fa fa-chevron-left "></i>  {{ $previousNews->title }}</a></li>
-                                <li class="next"><a href="{!! route('show_news', ['slug' => $nextNews->slug]) !!}">{{ $nextNews->title }}  <i class="fa fa-chevron-right"></i></a></li>
+                                <li class="previous"><a
+                                            href="{!! route('show_news', ['slug' => $previousNews->slug]) !!}"><i
+                                                class="fa fa-chevron-left "></i> {{ $previousNews->title }}</a></li>
+                                <li class="next"><a
+                                            href="{!! route('show_news', ['slug' => $nextNews->slug]) !!}">{{ $nextNews->title }}
+                                        <i class="fa fa-chevron-right"></i></a></li>
                             </ul>
                         @endif
 
@@ -168,7 +180,7 @@
                                             <a href="#">
                                                 <span class="play-icon"></span>
                                                 <a href="{{route('show_videos',['slug' => $video_gallery->videos->first()->slug ])}}">
-                                                    <img src="{{ asset('video_gallery/' . $video_gallery->id . '/497x358_' . $video_gallery->thumbnail)}}" />
+                                                    <img src="{{ asset('video_gallery/' . $video_gallery->id . '/497x358_' . $video_gallery->thumbnail)}}"/>
                                                 </a>
                                                 <div class="news-video-title">
                                                     <span>{{$video_gallery->title}}</span>
@@ -197,7 +209,7 @@
                                         <div class="gallery-image">
                                             <a href="#">
                                                 <a href="{{route('show_photo_gallery',['slug' => $photo_gallery->slug ])}}">
-                                                    <img src="{{ asset('gallery/' . $photo_gallery->id . '/photos/497x358_' . $photo_gallery->thumbnail)}}" />
+                                                    <img src="{{ asset('gallery/' . $photo_gallery->id . '/photos/497x358_' . $photo_gallery->thumbnail)}}"/>
                                                 </a>
                                                 <div class="gallery-title">
                                                     {{$photo_gallery->title}}
@@ -230,11 +242,14 @@
                                                        preload="auto"
                                                        poster=""
                                                        data-setup='{"example_option":true}'>
-                                                    <source src="{{url($video->file)}}" type="video/mp4" />
-                                                    <source src="{{url($video->file)}}" type="video/webm" />
-                                                    <source src="{{url($video->file)}}" type="video/ogg" />
+                                                    <source src="{{url($video->file)}}" type="video/mp4"/>
+                                                    <source src="{{url($video->file)}}" type="video/webm"/>
+                                                    <source src="{{url($video->file)}}" type="video/ogg"/>
                                                     {{--<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />--}}
-                                                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                                                    <p class="vjs-no-js">To view this video please enable JavaScript,
+                                                        and consider upgrading to a web browser that <a
+                                                                href="http://videojs.com/html5-video-support/"
+                                                                target="_blank">supports HTML5 video</a></p>
                                                 </video>
                                             </div>
                                         @elseif(!empty($video->link))
@@ -319,7 +334,8 @@
         </div><!-- /.col-md-8 -->
     </div><!-- /.row -->
 
-    <div class="fb-comment-embed" data-href="{{ url($record->slug) }}" data-width="560" data-include-parent="false"></div>
+    <div class="fb-comment-embed" data-href="{{ url($record->slug) }}" data-width="560"
+         data-include-parent="false"></div>
 @endsection
 
 
@@ -340,12 +356,13 @@
     <meta name="twitter:description" content="{{$record->description}}">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ $record->title }} " />
-    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}" />
-    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}" />
-    <meta property="og:description" content="{{$record->description}}" />
+    <meta property="og:title" content="{{ $record->title }} "/>
+    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}"/>
+    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}"/>
+    <meta property="og:description" content="{{$record->description}}"/>
     <meta property="fb:app_id" content="671303379704288">
-    <meta property="og:image" content="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}"/>
+    <meta property="og:image"
+          content="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}"/>
     <meta property="article:published_time" content="{{$record->created_at}}">
     {{--<meta property="article:author" content="">--}}
 
@@ -363,12 +380,12 @@
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script>
         videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
-        videojs("video-js", {}, function(){
+        videojs("video-js", {}, function () {
             // Player (this) is initialized and ready.
         });
     </script>
     <script type="text/javascript">
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             /*--------------------------------------------------------
              Sticky Sidebar
              * --------------------------------------------------------*/

@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\ModelCRUD;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
 
 class CreateLogEntry
@@ -22,11 +20,11 @@ class CreateLogEntry
     /**
      * Handle the event.
      *
-     * @param  ModelCRUD  $event
+     * @param  ModelCRUD $event
      * @return void
      */
     public function handle(ModelCRUD $event)
     {
-        Log::info('class : ' . $event->modelName . ' function :' . $event->methodName  . ' user_id ' . $event->userFullName .  ' - IP :' . $event->userIp );
+        Log::info('class : ' . $event->modelName . ' function :' . $event->methodName . ' user_id ' . $event->userFullName . ' - IP :' . $event->userIp);
     }
 }

@@ -16,51 +16,51 @@ class BooksTableSeeder extends Seeder
     public function run()
     {
         $book1 = Book::create([
-            'user_id'               => 1,
-            'book_author_id'        => 1,
-            'book_publisher_id'          => 1,
-            'name'                  => 'kitap 1',
-            'slug'                  => 'kitap1-1',
-            'thumbnail'             => '1.png',
-            'photo'                 => '1.png',
-            'is_cuff'               => 1,
-            'is_active'             => 1
+            'user_id' => 1,
+            'book_author_id' => 1,
+            'book_publisher_id' => 1,
+            'name' => 'kitap 1',
+            'slug' => 'kitap1-1',
+            'thumbnail' => '1.png',
+            'photo' => '1.png',
+            'is_cuff' => 1,
+            'is_active' => 1
         ]);
 
         $book2 = Book::create([
-            'user_id'               => 1,
-            'book_author_id'        => 2,
-            'book_publisher_id'          => 1,
-            'name'                  => 'kitap 2',
-            'slug'                  => 'kitap2-2',
-            'thumbnail'             => '2.png',
-            'photo'                 => '2.png',
-            'is_cuff'               => 1,
-            'is_active'             => 1
+            'user_id' => 1,
+            'book_author_id' => 2,
+            'book_publisher_id' => 1,
+            'name' => 'kitap 2',
+            'slug' => 'kitap2-2',
+            'thumbnail' => '2.png',
+            'photo' => '2.png',
+            'is_cuff' => 1,
+            'is_active' => 1
         ]);
 
         $book3 = Book::create([
-            'user_id'               => 1,
-            'book_author_id'        => 3,
-            'book_publisher_id'          => 1,
-            'name'                  => 'kitap 3',
-            'slug'                  => 'kitap3-3',
-            'thumbnail'             => '3.png',
-            'photo'                 => '3.png',
-            'is_cuff'               => 1,
-            'is_active'             => 1
+            'user_id' => 1,
+            'book_author_id' => 3,
+            'book_publisher_id' => 1,
+            'name' => 'kitap 3',
+            'slug' => 'kitap3-3',
+            'thumbnail' => '3.png',
+            'photo' => '3.png',
+            'is_cuff' => 1,
+            'is_active' => 1
         ]);
 
         $book4 = Book::create([
-            'user_id'               => 1,
-            'book_author_id'        => 4,
-            'book_publisher_id'          => 1,
-            'name'                  => 'kitap 4',
-            'slug'                  => 'kitap4-4',
-            'thumbnail'             => '4.png',
-            'photo'                 => '4.png',
-            'is_cuff'               => 1,
-            'is_active'             => 1
+            'user_id' => 1,
+            'book_author_id' => 4,
+            'book_publisher_id' => 1,
+            'name' => 'kitap 4',
+            'slug' => 'kitap4-4',
+            'thumbnail' => '4.png',
+            'photo' => '4.png',
+            'is_cuff' => 1,
+            'is_active' => 1
         ]);
 
 

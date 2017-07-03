@@ -18,7 +18,7 @@ class CheckPerm
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if(Auth::check() && Auth::user()->can('index-admin')){
+        if (Auth::check() && Auth::user()->can('index-admin')) {
             return $next($request);
         }
 

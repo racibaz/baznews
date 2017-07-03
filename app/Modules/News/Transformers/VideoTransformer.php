@@ -10,19 +10,19 @@ class VideoTransformer extends TransformerAbstract
     public function transform(Video $record)
     {
         return [
-            'id' =>  (int) $record->id,
-            'name' => (string) $record->name,
-            'slug' => (string) $record->slug,
-            'short_url' => (string) $record->short_url,
-            'subtitle' => (string) $record->subtitle,
-            'thumbnail' => (string) $record->thumbnail,
-            'file' => (string) $record->file,
-            'link' => (string) $record->link,
-            'embed' => (string) $record->embed,
-            'content' => (string) $record->content,
-            'keywords' => (string) $record->keywords,
-            'order' => (int) $record->order,
-            'is_comment' => (bool) $record->is_comment,
+            'id' => (int)$record->id,
+            'name' => (string)$record->name,
+            'slug' => (string)$record->slug,
+            'short_url' => (string)$record->short_url,
+            'subtitle' => (string)$record->subtitle,
+            'thumbnail' => (string)$record->thumbnail,
+            'file' => (string)$record->file,
+            'link' => (string)$record->link,
+            'embed' => (string)$record->embed,
+            'content' => (string)$record->content,
+            'keywords' => (string)$record->keywords,
+            'order' => (int)$record->order,
+            'is_comment' => (bool)$record->is_comment,
             'links' => [
                 [
                     'rel' => 'self',

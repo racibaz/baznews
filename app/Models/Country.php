@@ -40,6 +40,6 @@ class Country extends Model
 
     public static function countryList()
     {
-        return Country::where('is_active',1)->pluck('name','id');
+        return Country::where('is_active', 1)->pluck('name', 'id');
     }
 }

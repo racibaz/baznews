@@ -7,7 +7,8 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{!! URL::route('video_category.index') !!}">{{trans('news::video_category.management')}}</a></li>
+            <li><a href="{!! URL::route('video_category.index') !!}">{{trans('news::video_category.management')}}</a>
+            </li>
             <li class="active">{{trans('news::video_category.create_edit')}}</li>
         </ol>
     </section>
@@ -28,7 +29,8 @@
                     <h3 class="box-title">{{trans('news::video_category.name')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -84,7 +86,8 @@
                         </label>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <button class="btn btn-success" type="submit"><i
+                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -96,7 +99,8 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme.'::AdminLTE/plugins/select2/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme.'::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme.'::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 @endsection
 @section('js')
     <script src="{{ Theme::asset($activeTheme.'::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
@@ -107,7 +111,7 @@
             $(".select2").select2();
             $('.tagsinput').tagsinput();
             //active menu
-            activeMenu('video_category','news_management');
+            activeMenu('video_category', 'news_management');
         });
     </script>
 @endsection

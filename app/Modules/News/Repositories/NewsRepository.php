@@ -2,7 +2,6 @@
 
 namespace App\Modules\News\Repositories;
 
-use App\Modules\News\Transformers\NewsTransformer;
 use Rinvex\Repository\Repositories\EloquentRepository;
 
 class NewsRepository extends EloquentRepository
@@ -15,12 +14,12 @@ class NewsRepository extends EloquentRepository
     {
         $previousNews = $this
             ->where('id', '<', $record->id)
-            ->where('status',1)
-            ->where('is_active',1)
+            ->where('status', 1)
+            ->where('is_active', 1)
             ->findAll()
             ->last();
 
-        if(!empty($previousNews))
+        if (!empty($previousNews))
             return $previousNews;
         else
             return null;
@@ -29,13 +28,13 @@ class NewsRepository extends EloquentRepository
     public function nextNews($record)
     {
         $nextNews = $this
-            ->where('id', '>' ,$record->id)
-            ->where('status',1)
-            ->where('is_active',1)
+            ->where('id', '>', $record->id)
+            ->where('status', 1)
+            ->where('is_active', 1)
             ->findAll()
             ->first();
 
-        if(!empty($nextNews))
+        if (!empty($nextNews))
             return $nextNews;
         else
             return null;
@@ -45,8 +44,8 @@ class NewsRepository extends EloquentRepository
     public function lastRecord()
     {
         return $this
-            ->where('status',1)
-            ->where('is_active',1)
+            ->where('status', 1)
+            ->where('is_active', 1)
             ->findAll()
             ->last();
     }
@@ -55,8 +54,8 @@ class NewsRepository extends EloquentRepository
     public function firstRecord()
     {
         return $this
-            ->where('status',1)
-            ->where('is_active',1)
+            ->where('status', 1)
+            ->where('is_active', 1)
             ->findAll()
             ->first();
     }
@@ -72,9 +71,9 @@ class NewsRepository extends EloquentRepository
         }
 
         //todo sadece belirli alanlar getirilebilinir.
-        $relatedNewsItems =  $this->whereIn('id', $relatedNews)->findAll();
+        $relatedNewsItems = $this->whereIn('id', $relatedNews)->findAll();
 
-        if($relatedNewsItems->count())
+        if ($relatedNewsItems->count())
             return $relatedNewsItems;
         else
             return null;

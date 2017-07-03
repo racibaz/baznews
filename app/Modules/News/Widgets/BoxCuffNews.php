@@ -30,17 +30,17 @@ class BoxCuffNews extends AbstractWidget
      */
     public function run()
     {
-        return Cache::tags(['Widget', 'News', 'BoxCuffNews'])->rememberForever('BoxCuffNews', function()  {
+        return Cache::tags(['Widget', 'News', 'BoxCuffNews'])->rememberForever('BoxCuffNews', function () {
             $newsRepository = new NewsRepository();
             $boxCuffNewsItems = $newsRepository
                 ->where('is_active', 1)
                 ->where('box_cuff', 1)
                 ->where('status', 1)
                 ->take(5)
-                ->orderBy('updated_at','desc')
+                ->orderBy('updated_at', 'desc')
                 ->get();
 
-            return Theme::view('news::frontend.widgets.box_cuff_news',compact([
+            return Theme::view('news::frontend.widgets.box_cuff_news', compact([
                 'config',
                 'boxCuffNewsItems'
             ]))->render();

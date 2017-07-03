@@ -1,9 +1,9 @@
 {
-    "name": "Biography",
-    "slug": "biography",
-    "version": "1.0",
-    "description": "This is the description for the Biography module.",
-    "widget" : false,
-    "sitemap" : false,
-    "sitemap_path" : "news_sitemap"
+  "name": "Biography",
+  "slug": "biography",
+  "version": "1.0",
+  "description": "This is the description for the Biography module.",
+  "widget": false,
+  "sitemap": false,
+  "sitemap_path": "news_sitemap"
 }

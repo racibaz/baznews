@@ -10,18 +10,18 @@ class BiographyTransformer extends TransformerAbstract
     public function transform(Biography $record)
     {
         return [
-            'id' => (int) $record->id,
-            'title' => (string) $record->title,
-            'spot' => (string) $record->spot,
-            'name' => (string) $record->name,
-            'slug' => (string) $record->slug,
-            'short_url' => (string) $record->short_url,
-            'content' => (string) $record->content,
-            'photo' => (string) $record->photo,
-            'description' => (string) $record->description,
-            'keywords' => (string) $record->keywords,
-            'order' => (int) $record->order,
-            'cuff' => (bool) $record->is_cuff,
+            'id' => (int)$record->id,
+            'title' => (string)$record->title,
+            'spot' => (string)$record->spot,
+            'name' => (string)$record->name,
+            'slug' => (string)$record->slug,
+            'short_url' => (string)$record->short_url,
+            'content' => (string)$record->content,
+            'photo' => (string)$record->photo,
+            'description' => (string)$record->description,
+            'keywords' => (string)$record->keywords,
+            'order' => (int)$record->order,
+            'cuff' => (bool)$record->is_cuff,
             'links' => [
                 [
                     'rel' => 'self',

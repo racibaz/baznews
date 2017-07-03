@@ -21,7 +21,7 @@ class SendTwitterLinkedEmail
     /**
      * Handle the event.
      *
-     * @param  TwitterAccountWasLinked  $event
+     * @param  TwitterAccountWasLinked $event
      * @return void
      */
     public function handle(TwitterAccountWasLinked $event)

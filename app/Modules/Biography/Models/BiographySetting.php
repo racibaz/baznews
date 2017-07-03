@@ -20,7 +20,8 @@ class BiographySetting extends Model
         'biography_count',
     ];
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'biography_count' => 'integer',
         );

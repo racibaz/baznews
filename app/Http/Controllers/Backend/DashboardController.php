@@ -10,8 +10,8 @@ use App\Models\Menu;
 use App\Models\Page;
 use App\Models\User;
 use Cache;
-use Illuminate\Support\Facades\Auth;
 use Theme;
+use Illuminate\Support\Facades\Auth;
 
 
 class DashboardController extends Controller
@@ -35,28 +35,28 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $activeUserCount = User::where('status',1)->get()->count();
-        $passiveUserCount = User::where('status',1)->get()->count();
+        $activeUserCount = User::where('status', 1)->get()->count();
+        $passiveUserCount = User::where('status', 1)->get()->count();
         //todo farklı statusler de gelmeli.
 
-        $activeGroupCount = Group::where('is_active',1)->get()->count();
-        $passiveGroupCount = Group::where('is_active',0)->get()->count();
+        $activeGroupCount = Group::where('is_active', 1)->get()->count();
+        $passiveGroupCount = Group::where('is_active', 0)->get()->count();
 
-        $activePageCount = Page::where('is_active',1)->get()->count();
-        $passivePageCount = Page::where('is_active',0)->get()->count();
+        $activePageCount = Page::where('is_active', 1)->get()->count();
+        $passivePageCount = Page::where('is_active', 0)->get()->count();
 
-        $activeMenuCount = Menu::where('is_active',1)->get()->count();
-        $passiveMenuCount = Menu::where('is_active',0)->get()->count();
+        $activeMenuCount = Menu::where('is_active', 1)->get()->count();
+        $passiveMenuCount = Menu::where('is_active', 0)->get()->count();
 
 
-        $passiveContactMessageCount = Contact::where('is_read',0)->get()->count();
+        $passiveContactMessageCount = Contact::where('is_read', 0)->get()->count();
 
-        $activeAdsCount = Advertisement::where('is_active',1)->get()->count();
+        $activeAdsCount = Advertisement::where('is_active', 1)->get()->count();
 
         $userGroups = \Auth::user()->groups;
 
-        $userGroupsAnnouncements = $userGroups->map(function($userGroup) {
-            return $userGroup->announcements->where('is_active',1);
+        $userGroupsAnnouncements = $userGroups->map(function ($userGroup) {
+            return $userGroup->announcements->where('is_active', 1);
         });
 
 
@@ -64,7 +64,7 @@ class DashboardController extends Controller
 
         //$announcements = Announcement::where('is_active',1)->orderBy('order','desc')->get();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(
+        return Theme::view($this->getViewName(__FUNCTION__), compact(
             'activeUserCount',
             'passiveUserCount',
             'activeGroupCount',

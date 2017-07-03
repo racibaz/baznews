@@ -18,7 +18,8 @@ class Archive extends Model
         'is_active',
     ];
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'name' => 'required|min:4|max:255',
         );

@@ -13,6 +13,6 @@ class Language extends Model
 
     public static function languageList()
     {
-        return Language::where('is_active',1)->pluck('name', 'id');
+        return Language::where('is_active', 1)->pluck('name', 'id');
     }
 }

@@ -22,7 +22,7 @@ class Event extends Model
         'eventable_type',
     ];
 
-    protected $dates = ['created_at','updated_at','deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function eventable()
     {
@@ -35,7 +35,8 @@ class Event extends Model
     }
 
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'user_id' => 'required',
         );

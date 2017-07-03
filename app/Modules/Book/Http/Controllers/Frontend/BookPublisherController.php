@@ -11,17 +11,17 @@ class BookPublisherController extends Controller
 {
     public function __construct(Repo $repo)
     {
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function show($slug)
     {
-        return Cache::tags(['BookPublisherController', 'Book', 'bookPublisher'])->rememberForever(request()->fullUrl(), function() use($slug) {
+        return Cache::tags(['BookPublisherController', 'Book', 'bookPublisher'])->rememberForever(request()->fullUrl(), function () use ($slug) {
             $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
             $bookPublisher = $this->repo
-                    ->with(['books'])
-                    ->where('is_active', 1)
-                    ->findBy('slug',$slug);
+                ->with(['books'])
+                ->where('is_active', 1)
+                ->findBy('slug', $slug);
 
             $records = $bookPublisher->books()->paginate();
 

@@ -19,7 +19,7 @@ class PhotoCategoryController extends BackendController
 
         $this->view = 'photo_category.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
@@ -28,7 +28,7 @@ class PhotoCategoryController extends BackendController
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
         $recordsTree = PhotoCategory::get()->toTree();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records','recordsTree']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));
     }
 
 
@@ -36,7 +36,7 @@ class PhotoCategoryController extends BackendController
     {
         $photoCategoryList = PhotoCategory::photoCategoryList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'photoCategoryList']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'photoCategoryList']));
     }
 
 
@@ -48,14 +48,14 @@ class PhotoCategoryController extends BackendController
 
     public function show(PhotoCategory $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(PhotoCategory $record)
     {
         $photoCategoryList = PhotoCategory::photoCategoryList();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'photoCategoryList']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'photoCategoryList']));
     }
 
 
@@ -68,7 +68,7 @@ class PhotoCategoryController extends BackendController
     public function destroy(PhotoCategory $record)
     {
         $this->repo->delete($record->id);
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -79,7 +79,7 @@ class PhotoCategoryController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }

@@ -11,20 +11,20 @@ class BiographyController extends Controller
 {
     public function __construct(Repo $repo)
     {
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function show($slug)
     {
-        $id =  substr(strrchr($slug, '-'), 1 );
-        return Cache::tags(['BiographyController', 'Biography', 'biography'])->rememberForever('biography:'.$id, function() use($id) {
+        $id = substr(strrchr($slug, '-'), 1);
+        return Cache::tags(['BiographyController', 'Biography', 'biography'])->rememberForever('biography:' . $id, function () use ($id) {
             $record = $this->repo
                 ->with([
                     'user',
                 ])
                 ->where('status', 1)
                 ->where('is_active', 1)
-                ->findBy('id',$id);
+                ->findBy('id', $id);
 
             $otherBiographies = $this->repo
                 ->with([

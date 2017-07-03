@@ -4,81 +4,66 @@
   "author": "Ali Duman",
   "description": "This is an example my default theme.",
   "version": "1.0.0",
-  "advertisements":
-  [
+  "advertisements": [
     {
-      "areaName":"top",
-      "areaType":"horizontal banner"
+      "areaName": "top",
+      "areaType": "horizontal banner"
     },
-
     {
-      "areaName":"left",
-      "areaType":"vertical banner"
+      "areaName": "left",
+      "areaType": "vertical banner"
     },
-
     {
-      "areaName":"right",
-      "areaType":"vertical banner"
+      "areaName": "right",
+      "areaType": "vertical banner"
     },
-
     {
-      "areaName":"footer",
-      "areaType":"horizontal banner"
+      "areaName": "footer",
+      "areaType": "horizontal banner"
     },
-
     {
-      "areaName":"header_1",
-      "areaType":"leaderboard (728x90)"
+      "areaName": "header_1",
+      "areaType": "leaderboard (728x90)"
     },
-
     {
-      "areaName":"left_block_1",
-      "areaType":"leaderboard (728x90)"
+      "areaName": "left_block_1",
+      "areaType": "leaderboard (728x90)"
     },
-
     {
-      "areaName":"left_block_2",
-      "areaType":"leaderboard (728x90)"
+      "areaName": "left_block_2",
+      "areaType": "leaderboard (728x90)"
     },
-
     {
-      "areaName":"right_block_1",
-      "areaType":"large rectangle (336x280)"
+      "areaName": "right_block_1",
+      "areaType": "large rectangle (336x280)"
     },
-
     {
-      "areaName":"right_block_2",
-      "areaType":"leaderboard (728x90)"
+      "areaName": "right_block_2",
+      "areaType": "leaderboard (728x90)"
     },
-
     {
-      "areaName":"center_1",
-      "areaType":"leaderboard (728x90)"
+      "areaName": "center_1",
+      "areaType": "leaderboard (728x90)"
     },
-
     {
-      "areaName":"center_2",
-      "areaType":"leaderboard (728x90)"
+      "areaName": "center_2",
+      "areaType": "leaderboard (728x90)"
     },
-
     {
-      "areaName":"footer_1",
-      "areaType":"leaderboard (728x90)"
+      "areaName": "footer_1",
+      "areaType": "leaderboard (728x90)"
     },
-
     {
-      "areaName":"footer_2",
-      "areaType":"leaderboard (728x90)"
+      "areaName": "footer_2",
+      "areaType": "leaderboard (728x90)"
     },
-
     {
-      "areaName":"center_news_content_1",
-      "areaType":"leaderboard (728x90)"
+      "areaName": "center_news_content_1",
+      "areaType": "leaderboard (728x90)"
     },
-
     {
-      "areaName":"center_news_content_2",
-      "areaType":"leaderboard (728x90)"
+      "areaName": "center_news_content_2",
+      "areaType": "leaderboard (728x90)"
     }
   ]
 }

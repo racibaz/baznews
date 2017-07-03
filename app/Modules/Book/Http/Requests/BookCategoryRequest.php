@@ -24,15 +24,12 @@ class BookCategoryRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
                     'name' => [
                         'required',
@@ -44,15 +41,14 @@ class BookCategoryRequest extends FormRequest
                         Rule::unique('book_categories'),
                         'nullable'
                     ],
-                    'description'   => 'string|max:255|nullable',
-                    'keywords'      => 'string|max:255|nullable',
-                    'thumbnail'     => 'image|nullable',
-                    'order'         => 'integer|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'thumbnail' => 'image|nullable',
+                    'order' => 'integer|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('book_category')->id;
                 return [
                     'name' => [
@@ -66,13 +62,14 @@ class BookCategoryRequest extends FormRequest
                         Rule::unique('book_categories')->ignore($id),
                         'nullable'
                     ],
-                    'description'   => 'string|max:255|nullable',
-                    'keywords'      => 'string|max:255|nullable',
-                    'thumbnail'     => 'image|nullable',
-                    'order'         => 'integer|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'thumbnail' => 'image|nullable',
+                    'order' => 'integer|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

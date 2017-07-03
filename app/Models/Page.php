@@ -20,7 +20,8 @@ class Page extends Model
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
                 'source' => ['name']
@@ -34,8 +35,8 @@ class Page extends Model
     }
 
     public $transformer = PageTransformer::class;
-    protected $fillable = ['name', 'slug', 'content', 'description', 'keywords' , 'is_comment','is_active'];
-    protected $dates = ['created_at','updated_at','deleted_at'];
+    protected $fillable = ['name', 'slug', 'content', 'description', 'keywords', 'is_comment', 'is_active'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function menus()
     {
@@ -44,6 +45,6 @@ class Page extends Model
 
     public static function pageList()
     {
-        return Page::where('is_active',1)->pluck('name', 'id');
+        return Page::where('is_active', 1)->pluck('name', 'id');
     }
 }

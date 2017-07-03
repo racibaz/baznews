@@ -12,7 +12,8 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header" id="navbar-header">
             <div class="container">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-menu" aria-expanded="false">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#main-navbar-menu" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -20,15 +21,17 @@
                 </button>
 
                 <a class="navbar-brand" href="{!! route('index') !!}">
-                    <img src="{{ asset('img/logo.jpg') }}" alt="Logo" width="130" height="120" class="img-responsive" />
+                    <img src="{{ asset('img/logo.jpg') }}" alt="Logo" width="130" height="120" class="img-responsive"/>
                 </a>
 
                 <div class="pull-right hright">
 
                     <div class="login-btns">
                         <div class="btn-group">
-                            <a href="{!! route('login') !!}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-log-in"></i> {{trans('common.login')}}</a>
-                            <a href="{!! route('register') !!}" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i> {{trans('common.register')}}</a>
+                            <a href="{!! route('login') !!}" class="btn btn-success btn-xs"><i
+                                        class="glyphicon glyphicon-log-in"></i> {{trans('common.login')}}</a>
+                            <a href="{!! route('register') !!}" class="btn btn-primary btn-xs"><i
+                                        class="glyphicon glyphicon-floppy-disk"></i> {{trans('common.register')}}</a>
                         </div><!-- /.btn-group -->
                     </div><!-- /.login-btns -->
 
@@ -54,15 +57,20 @@
                     <ul class="nav navbar-nav">
                         @foreach(Cache::tags(['Setting', 'Menu'])->get('header_menus') as $menu)
                             @if(!empty($menu->route))
-                                <li><a href="{!! url($menu->route) !!}" target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
+                                <li><a href="{!! url($menu->route) !!}"
+                                       target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
                             @elseif(!empty($menu->url))
-                                <li><a href="{{$menu->url}}" target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}} </a></li>
+                                <li><a href="{{$menu->url}}"
+                                       target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}} </a></li>
                             @elseif(!empty($menu->page->id))
-                                <li><a href="{!! route('page',['slug' => $menu->page->slug ]) !!}" title="{{$menu->name}}" target="{{$menu->target}}" >{!! $menu->icon !!} {{$menu->name}}</a></li>
+                                <li><a href="{!! route('page',['slug' => $menu->page->slug ]) !!}"
+                                       title="{{$menu->name}}"
+                                       target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
                             @endif
                         @endforeach
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Alt Menü <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Alt Menü <b
+                                        class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Örnek Bağlantı-1</a></li>
                                 <li class="divider"></li>

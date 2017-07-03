@@ -27,10 +27,12 @@
                                 <div class="row">
                                     @foreach($records as $record)
                                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                            <a href="{!! route('book', ['slug' => $record->slug]) !!}" class="{{$record->name}}">
+                                            <a href="{!! route('book', ['slug' => $record->slug]) !!}"
+                                               class="{{$record->name}}">
                                                 <div class="thumbnail">
                                                     <a href="{!! route('book', ['slug' => $record->slug]) !!}">
-                                                        <img src="{{ asset('images/books/' . $record->id . '/original/' . $record->thumbnail)}}" alt="{{$record->name}}" class="img-responsive"/>
+                                                        <img src="{{ asset('images/books/' . $record->id . '/original/' . $record->thumbnail)}}"
+                                                             alt="{{$record->name}}" class="img-responsive"/>
                                                     </a>
                                                     <div class="caption">
                                                         <h3>{{$record->name}}</h3>
@@ -82,12 +84,13 @@
     <meta name="twitter:description" content="{{$bookCategory->description}}">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ $bookCategory->name }} " />
-    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}" />
-    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}" />
-    <meta property="og:description" content="{{$bookCategory->description}}" />
+    <meta property="og:title" content="{{ $bookCategory->name }} "/>
+    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}"/>
+    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}"/>
+    <meta property="og:description" content="{{$bookCategory->description}}"/>
     <meta property="fb:app_id" content="671303379704288">
-    <meta property="og:image" content="{{asset('images/books/' . $bookCategory->id . '/original/' .$bookCategory->thumbnail)}}"/>
+    <meta property="og:image"
+          content="{{asset('images/books/' . $bookCategory->id . '/original/' .$bookCategory->thumbnail)}}"/>
     <meta property="article:published_time" content="{{$bookCategory->created_at}}">
     <meta property="article:author" content="">
 @endsection
@@ -99,7 +102,7 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
     </script>

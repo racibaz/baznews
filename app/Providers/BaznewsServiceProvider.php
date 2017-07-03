@@ -31,11 +31,11 @@ class BaznewsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(!app()->runningInConsole()) {
+        if (!app()->runningInConsole()) {
 
             //todo test edildikten sonra User modelinin içine alınamalı.
             User::created(function ($user) {
-                if($user->status === 2){
+                if ($user->status === 2) {
                     $token = $user->activationToken()->create([
                         'token' => str_random(128),
                     ]);
@@ -54,12 +54,12 @@ class BaznewsServiceProvider extends ServiceProvider
 
                 Cache::tags(['Setting', 'Menu'])->rememberForever('header_menus', function () {
                     $menuRepository = new MenuRepository();
-                    return  $menuRepository->getHeaderMenus();
+                    return $menuRepository->getHeaderMenus();
                 });
 
                 Cache::tags(['Setting', 'Menu'])->rememberForever('footer_menus', function () {
                     $menuRepository = new MenuRepository();
-                    return  $menuRepository->getFooterMenus();
+                    return $menuRepository->getFooterMenus();
                 });
 
                 Cache::tags(['Setting', 'Advertisement'])->rememberForever('advertisements', function () {
@@ -76,7 +76,7 @@ class BaznewsServiceProvider extends ServiceProvider
                  * bunu için widger manager a string olarak değer versek nasıl olur?
                  * widget alanlarında sorgulamaları nasıl yapmammız gerekiyor?
                  * */
-                View::share('widgets', WidgetManager::where('is_active',1)->orderBy('position','asc')->get() );
+                View::share('widgets', WidgetManager::where('is_active', 1)->orderBy('position', 'asc')->get());
 
                 //Cache::tags('settings')->flush();
                 //Cache::flush();

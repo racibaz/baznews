@@ -22,19 +22,19 @@ class Biographies extends AbstractWidget
      */
     public function run()
     {
-        $biographies = Cache::tags(['Widget', 'Biography', 'biography'])->rememberForever('biography', function()  {
+        $biographies = Cache::tags(['Widget', 'Biography', 'biography'])->rememberForever('biography', function () {
 
             $biograpRepository = new BiographyRepository();
-            return  $biograpRepository
+            return $biograpRepository
                 ->where('status', 1)
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
 //                ->take(Redis::get('biography_count'))
-                    ->take(10)
-                ->orderBy('order','desc')
+                ->take(10)
+                ->orderBy('order', 'desc')
                 ->get();
 
         });
-        return Theme::view('biography::frontend.widgets.biographies', compact(['config','biographies']));
+        return Theme::view('biography::frontend.widgets.biographies', compact(['config', 'biographies']));
     }
 }

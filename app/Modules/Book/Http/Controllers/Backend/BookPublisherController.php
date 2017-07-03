@@ -9,9 +9,7 @@ use App\Modules\Book\Repositories\BookPublisherRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rule;
 
 class BookPublisherController extends BackendController
 {
@@ -21,19 +19,19 @@ class BookPublisherController extends BackendController
 
         $this->view = 'book_publisher.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['records']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
     public function store(BookPublisherRequest $request)
@@ -44,13 +42,13 @@ class BookPublisherController extends BackendController
 
     public function show(BookPublisher $record)
     {
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
     public function edit(BookPublisher $record)
     {
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
     public function update(BookPublisherRequest $request, BookPublisher $record)
@@ -66,7 +64,7 @@ class BookPublisherController extends BackendController
         $this->removeCacheTags(['BookPublisherController']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -76,7 +74,7 @@ class BookPublisherController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }

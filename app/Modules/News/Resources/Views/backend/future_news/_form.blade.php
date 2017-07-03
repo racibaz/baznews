@@ -26,7 +26,8 @@
                     <h3 class="box-title">{{trans('news::future_news.edit_create')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -67,7 +68,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                                <button class="btn btn-success" type="submit"><i
+                                            class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                             </div>
                         </div>
                     </div>
@@ -82,7 +84,8 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
-    <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}"
+          rel="stylesheet">
 @endsection
 @section('js')
     <script src="{{ Theme::asset($activeTheme .'::js/moment/min/moment.min.js') }}"></script>
@@ -94,12 +97,12 @@
         $(function () {
             //Date range picker with time picker
             $('#show_time').datetimepicker({
-                format:'YYYY-MM-DD HH:mm:ss',
-                locale:'tr'
+                format: 'YYYY-MM-DD HH:mm:ss',
+                locale: 'tr'
             });
         });
         //active menu
         $('.select2').select2();
-        activeMenu('news_management','future_news');
+        activeMenu('news_management', 'future_news');
     </script>
 @endsection

@@ -21,19 +21,19 @@ class BookAuthorController extends BackendController
 
         $this->view = 'book_author.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['records']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
     public function store(BookAuthorRequest $request)
@@ -44,13 +44,13 @@ class BookAuthorController extends BackendController
 
     public function show(BookAuthor $record)
     {
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
     public function edit(BookAuthor $record)
     {
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
     public function update(BookAuthorRequest $request, BookAuthor $record)
@@ -66,7 +66,7 @@ class BookAuthorController extends BackendController
         $this->removeCacheTags(['BookAuthorController']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -78,22 +78,22 @@ class BookAuthorController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }
 
         if ($result) {
 
-            if(!empty($input['thumbnail'])) {
+            if (!empty($input['thumbnail'])) {
 
-                $destination = '/images/book_authors/'. $result->id;
+                $destination = '/images/book_authors/' . $result->id;
                 Uploader::removeDirectory($destination);
 
                 $document_name = $input['thumbnail']->getClientOriginalName();
-                Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                Uploader::fileUpload($result, 'thumbnail', $input['thumbnail'], $destination, $document_name);
 
-                $thumbnailPath = public_path('images/book_authors/' . $result->id .'/'. $result->thumbnail);
+                $thumbnailPath = public_path('images/book_authors/' . $result->id . '/' . $result->thumbnail);
 
                 Image::make($thumbnailPath)
                     ->fit(58, 58)

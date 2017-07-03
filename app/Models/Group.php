@@ -17,7 +17,7 @@ class Group extends Model
         'is_active',
     ];
 
-    protected $dates = ['created_at','updated_at','deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function users()
     {
@@ -36,7 +36,7 @@ class Group extends Model
 
     public static function groupList()
     {
-        return Group::where('is_active',1)->get();
+        return Group::where('is_active', 1)->get();
     }
 
 }

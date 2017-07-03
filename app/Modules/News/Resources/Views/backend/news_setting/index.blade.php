@@ -80,7 +80,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <button class="btn btn-success" type="submit"><i
+                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -97,6 +98,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('news_setting','news_management');
+        activeMenu('news_setting', 'news_management');
     </script>
 @endsection

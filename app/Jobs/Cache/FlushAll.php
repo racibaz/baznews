@@ -35,20 +35,17 @@ class FlushAll implements ShouldQueue
     public function handle()
     {
 
-        if($this->tags != null)
-        {
-            if(is_array($this->tags)){
+        if ($this->tags != null) {
+            if (is_array($this->tags)) {
                 Cache::tags($this->tags)->flush();
-            }else
-            {
+            } else {
                 Cache::tags($this->tags)->flush();
             }
         }
 
-        if($this->key != null)
-        {
+        if ($this->key != null) {
             Cache::forget($this->key);
         }
-        
+
     }
 }

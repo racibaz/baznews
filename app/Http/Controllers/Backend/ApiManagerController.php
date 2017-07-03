@@ -18,6 +18,6 @@ class ApiManagerController extends BackendController
     public function index()
     {
         $records = [];
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('records'));
     }
 }

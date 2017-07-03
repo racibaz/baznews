@@ -2,15 +2,14 @@
 
 namespace App\Modules\Book\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-
 use App\Http\Controllers\Backend\BackendController;
 use App\Modules\Book\Models\BookSetting;
 use App\Repositories\SettingRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 
 class BookSettingController extends BackendController
 {
@@ -20,7 +19,7 @@ class BookSettingController extends BackendController
 
         $this->view = 'book_setting.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
@@ -47,9 +46,9 @@ class BookSettingController extends BackendController
                 ->withInput($input);
         }
 
-        if(!empty($input['book_count'])){
+        if (!empty($input['book_count'])) {
             $record = $this->repo->findBy('attribute_key', 'book_count');
-            $this->repo->update($record->id,['attribute_value' => $input['book_count']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['book_count']]);
         }
 
         $this->removeCacheTags(['Book']);

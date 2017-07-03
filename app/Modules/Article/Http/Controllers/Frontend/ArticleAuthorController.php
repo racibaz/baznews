@@ -11,12 +11,12 @@ class ArticleAuthorController extends Controller
 {
     public function __construct(Repo $repo)
     {
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
     {
-        return Cache::tags(['ArticleAuthorController', 'Article', 'articleAuthors'])->rememberForever('articleAuthors', function() {
+        return Cache::tags(['ArticleAuthorController', 'Article', 'articleAuthors'])->rememberForever('articleAuthors', function () {
 
             $records = $this->repo
                 ->where('is_active', 1)
@@ -30,15 +30,15 @@ class ArticleAuthorController extends Controller
 
     public function show($slug)
     {
-        $id =  substr(strrchr($slug, '-'), 1 );
-        return Cache::tags(['ArticleAuthorController', 'Article', 'articleAuthor'])->rememberForever('articleAuthor:'.$id, function() use($id) {
+        $id = substr(strrchr($slug, '-'), 1);
+        return Cache::tags(['ArticleAuthorController', 'Article', 'articleAuthor'])->rememberForever('articleAuthor:' . $id, function () use ($id) {
 
             $record = $this->repo
                 ->with([
                     'articles',
                 ])
                 ->where('is_active', 1)
-                ->findBy('id',$id);
+                ->findBy('id', $id);
 
             return Theme::view('article::frontend.article_author.show', compact([
                 'record',

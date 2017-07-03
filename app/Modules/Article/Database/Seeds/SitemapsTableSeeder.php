@@ -15,11 +15,11 @@ class SitemapsTableSeeder extends Seeder
     public function run()
     {
         Sitemap::create([
-            'name'          => 'Makaleler',
-            'url'           => 'articles_sitemap',
+            'name' => 'Makaleler',
+            'url' => 'articles_sitemap',
             'last_modified' => \Carbon\Carbon::now(),
-            'order'         => 2,
-            'is_active'     => 1,
+            'order' => 2,
+            'is_active' => 1,
         ]);
     }
 }

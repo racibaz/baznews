@@ -26,7 +26,8 @@
                     <h3 class="box-title">{{trans('event.management')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -63,7 +64,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                                <button class="btn btn-success" type="submit"><i
+                                            class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                             </div>
                         </div>
                     </div>
@@ -78,6 +80,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('event','');
+        activeMenu('event', '');
     </script>
 @endsection

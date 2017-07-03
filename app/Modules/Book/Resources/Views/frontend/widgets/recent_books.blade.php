@@ -12,7 +12,8 @@
                     <div class="book">
                         <div class="cover">
                             <a href="{!! route('book', ['slug' => $recentBook->slug]) !!}">
-                                <img src="{{ asset('images/books/' . $recentBook->id . '/original/' . $recentBook->thumbnail)}}" alt="{{$recentBook->name}}"/>
+                                <img src="{{ asset('images/books/' . $recentBook->id . '/original/' . $recentBook->thumbnail)}}"
+                                     alt="{{$recentBook->name}}"/>
                             </a>
                         </div>
                         <div class="name">

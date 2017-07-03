@@ -16,12 +16,12 @@ class PageController extends Controller
 
     public function show($slug)
     {
-        return Cache::tags(['PageController', 'Page', 'page'])->rememberForever('page:'.$slug, function() use($slug) {
+        return Cache::tags(['PageController', 'Page', 'page'])->rememberForever('page:' . $slug, function () use ($slug) {
 
             $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
             $record = $this->repo
                 ->where('is_active', 1)
-                ->findBy('slug',$slug);
+                ->findBy('slug', $slug);
 
             return Theme::view('frontend.page.show', compact([
                 'record'

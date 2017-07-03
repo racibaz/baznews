@@ -5,22 +5,22 @@ namespace App\Modules\News\Transformers;
 use App\Modules\News\Models\PhotoGallery;
 use League\Fractal\TransformerAbstract;
 
-class PhotoGalleryTransformer  extends TransformerAbstract
+class PhotoGalleryTransformer extends TransformerAbstract
 {
     public function transform(PhotoGallery $record)
     {
         return [
-            'id' => (int) $record->id,
-            'title' => (string) $record->title,
-            'slug' =>  (string) $record->slug,
-            'short_url' => (string) $record->short_url,
-            'description' => (string) $record->description,
-            'keywords' => (string) $record->keywords,
-            'thumbnail' => (string) $record->thumbnail,
-            'is_cuff' => (bool) $record->is_cuff,
-            'createdAt' => (string) $record->created_at,
-            'updatedAt' => (string) $record->updated_at,
-            'diff_human' => (string) $record->updated_at->diffForHumans(),
+            'id' => (int)$record->id,
+            'title' => (string)$record->title,
+            'slug' => (string)$record->slug,
+            'short_url' => (string)$record->short_url,
+            'description' => (string)$record->description,
+            'keywords' => (string)$record->keywords,
+            'thumbnail' => (string)$record->thumbnail,
+            'is_cuff' => (bool)$record->is_cuff,
+            'createdAt' => (string)$record->created_at,
+            'updatedAt' => (string)$record->updated_at,
+            'diff_human' => (string)$record->updated_at->diffForHumans(),
             'links' => [
                 [
                     'rel' => 'self',

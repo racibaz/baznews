@@ -81,6 +81,6 @@
 
     <script type="text/javascript">
         //active menu
-        activeMenu('photo','news_management');
+        activeMenu('photo', 'news_management');
     </script>
 @endsection

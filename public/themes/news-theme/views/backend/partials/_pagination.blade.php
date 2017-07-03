@@ -20,14 +20,16 @@
     </div>
 </div>
 <style type="text/css">
-    .number-box{
+    .number-box {
         margin: 10px 0;
     }
-    .pagination{
+
+    .pagination {
         margin: 10px 0;
         display: block;
     }
-    .number-box .mini-box{
+
+    .number-box .mini-box {
         float: left;
         height: 34px;
         padding: 8px 13px;
@@ -38,15 +40,18 @@
         -moz-border-radius: 4px;
         border-radius: 4px;
     }
-    .number-box .mini-box h3.title{
+
+    .number-box .mini-box h3.title {
         margin: 0;
         font-size: 14px;
-        font-weight:bold;
+        font-weight: bold;
     }
-    .number-box .mini-box h3.title span{
+
+    .number-box .mini-box h3.title span {
         font-size: 15px;
     }
-    .table{
+
+    .table {
         margin: 0;
     }
 </style>

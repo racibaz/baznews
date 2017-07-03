@@ -23,7 +23,7 @@ class NewsCategoryController extends Controller
     {
         return $this->redirectViewName . $this->view . $methodName;
     }
-    
+
     public function index()
     {
         $records = $this->repo->getAllNewsCategories();
@@ -32,13 +32,13 @@ class NewsCategoryController extends Controller
 
     public function getNewsByNewsCategorySlug($newsCategorySlug)
     {
-        return Cache::tags(['NewsCategoryController', 'News', 'NewsCategory'])->rememberForever(request()->fullUrl(), function() use($newsCategorySlug) {
+        return Cache::tags(['NewsCategoryController', 'News', 'NewsCategory'])->rememberForever(request()->fullUrl(), function () use ($newsCategorySlug) {
 
             $newsCategorySlug = htmlentities(strip_tags($newsCategorySlug), ENT_QUOTES, 'UTF-8');
             $newsCategory = $this->repo
-                    ->with(['news'])
-                    ->where('is_active', 1)
-                    ->findBy('slug',$newsCategorySlug);
+                ->with(['news'])
+                ->where('is_active', 1)
+                ->findBy('slug', $newsCategorySlug);
 
             $records = $newsCategory->news()->paginate();
 

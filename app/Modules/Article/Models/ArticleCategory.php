@@ -23,7 +23,7 @@ class ArticleCategory extends Model
     {
         parent::boot();
         static::created(function ($record) {
-            if($record->is_active){
+            if ($record->is_active) {
                 $link = new Link();
                 $link->url = $record->slug;
                 $record->links()->save($link);
@@ -31,7 +31,7 @@ class ArticleCategory extends Model
         });
 
         static::updated(function ($record) {
-            if($record->is_active) {
+            if ($record->is_active) {
                 $link = Link::where('linkable_id', $record->id)->where('linkable_type', ArticleCategory::class)->first();
                 $link->url = $record->slug;
                 $record->links()->save($link);
@@ -43,13 +43,14 @@ class ArticleCategory extends Model
             $record->links()->delete($link);
         });
     }
-    
+
     /**
      * Return the sluggable configuration array for this model.
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
                 'source' => ['name']
@@ -78,11 +79,11 @@ class ArticleCategory extends Model
 
     public static function articleCategoryList()
     {
-        return ArticleCategory::where('is_active',1)->pluck('name', 'id');
+        return ArticleCategory::where('is_active', 1)->pluck('name', 'id');
     }
 
     public static function articleCategories()
     {
-        return ArticleCategory::where('is_active',1)->get();
+        return ArticleCategory::where('is_active', 1)->get();
     }
 }

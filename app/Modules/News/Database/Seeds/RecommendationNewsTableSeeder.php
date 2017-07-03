@@ -15,27 +15,27 @@ class RecommendationNewsTableSeeder extends Seeder
     public function run()
     {
         RecommendationNews::create([
-            'user_id'               => 1,
-            'news_id'               => 1,
-            'is_active'             => 1,
+            'user_id' => 1,
+            'news_id' => 1,
+            'is_active' => 1,
         ]);
 
         RecommendationNews::create([
-            'user_id'               => 2,
-            'news_id'               => 2,
-            'is_active'             => 1,
+            'user_id' => 2,
+            'news_id' => 2,
+            'is_active' => 1,
         ]);
 
         RecommendationNews::create([
-            'user_id'               => 3,
-            'news_id'               => 3,
-            'is_active'             => 1,
+            'user_id' => 3,
+            'news_id' => 3,
+            'is_active' => 1,
         ]);
 
         RecommendationNews::create([
-            'user_id'               => 1,
-            'news_id'               => 2,
-            'is_active'             => 1,
+            'user_id' => 1,
+            'news_id' => 2,
+            'is_active' => 1,
         ]);
     }
 }

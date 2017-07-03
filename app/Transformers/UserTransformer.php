@@ -10,15 +10,15 @@ class UserTransformer extends TransformerAbstract
     public function transform(User $record)
     {
         $data = [
-            'id' => (int) $record->id,
-            'name' => (string) $record->name,
-            'facebook' => (string) $record->facebook,
-            'twitter' => (string) $record->twitter,
-            'pinterest' => (string) $record->pinterest,
-            'linkedin' => (string) $record->linkedin,
-            'youtube' => (string) $record->youtube,
-            'web_site' => (string) $record->web_site,
-            'bio_note' => (string) $record->bio_note,
+            'id' => (int)$record->id,
+            'name' => (string)$record->name,
+            'facebook' => (string)$record->facebook,
+            'twitter' => (string)$record->twitter,
+            'pinterest' => (string)$record->pinterest,
+            'linkedin' => (string)$record->linkedin,
+            'youtube' => (string)$record->youtube,
+            'web_site' => (string)$record->web_site,
+            'bio_note' => (string)$record->bio_note,
             'links' => [
                 [
                     'rel' => 'self',

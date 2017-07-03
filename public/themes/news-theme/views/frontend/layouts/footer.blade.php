@@ -11,11 +11,14 @@
                     <ul class="footer-menu">
                         @foreach(Cache::tags(['Setting', 'Menu'])->get('footer_menus') as $menu)
                             @if(!empty($menu->route))
-                                <li><a href="{!! url($menu->route) !!}" target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
+                                <li><a href="{!! url($menu->route) !!}"
+                                       target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
                             @elseif(!empty($menu->url))
-                                <li><a href="{{$menu->url}}" target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name }}</a></li>
+                                <li><a href="{{$menu->url}}"
+                                       target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name }}</a></li>
                             @elseif(!empty($menu->page->id))
-                                <li><a href="{!! route('page',['slug' => $menu->page->slug ]) !!}" title="{{$menu->name}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
+                                <li><a href="{!! route('page',['slug' => $menu->page->slug ]) !!}"
+                                       title="{{$menu->name}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
                             @endif
                         @endforeach
                     </ul>

@@ -29,10 +29,11 @@
                     <?php
                     $default = Redis::get('url') . "/default_user_avatar.jpg";
                     $size = 150;
-                    $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $record->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+                    $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($record->email))) . "?d=" . urlencode($default) . "&s=" . $size;
                     ?>
 
-                    <img class="profile-user-img img-responsive img-circle" src="<?php echo $grav_url; ?>" alt="{{$record->name}}"/>
+                    <img class="profile-user-img img-responsive img-circle" src="<?php echo $grav_url; ?>"
+                         alt="{{$record->name}}"/>
 
                     <h3 class="profile-username text-center">{{$record->name}}</h3>
 
@@ -94,7 +95,8 @@
                         <div class="box-header">
                             <h3 class="box-title"><strong>{{trans('user.user_revisions')}}</strong></h3>
                             <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
                                 </button>
                             </div>
                         </div>
@@ -161,7 +163,8 @@
                         <div class="box-header">
                             <h3 class="box-title"><strong>{{trans('user.user_events')}}</strong></h3>
                             <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
                                 </button>
                             </div>
                         </div>
@@ -227,6 +230,6 @@
     <script type="text/javascript">
         //Menü active code...
         //active menu
-        activeMenu('user_management','user');
+        activeMenu('user_management', 'user');
     </script>
 @endsection

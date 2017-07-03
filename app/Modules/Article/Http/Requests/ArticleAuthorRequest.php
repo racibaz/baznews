@@ -24,15 +24,12 @@ class ArticleAuthorRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
                     'name' => [
                         'required',
@@ -48,15 +45,14 @@ class ArticleAuthorRequest extends FormRequest
                         Rule::unique('article_authors'),
                         'nullable'
                     ],
-                    'cv'            => 'nullable',
-                    'photo'         => 'image|nullable',
-                    'description'   => 'string|max:255|nullable',
-                    'keywords'      => 'string|max:255|nullable',
+                    'cv' => 'nullable',
+                    'photo' => 'image|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('article_author')->id;
                 return [
                     'name' => [
@@ -73,13 +69,14 @@ class ArticleAuthorRequest extends FormRequest
                         Rule::unique('article_authors')->ignore($id),
                         'nullable',
                     ],
-                    'cv'            => 'nullable',
-                    'photo'         => 'image|nullable',
-                    'description'   => 'string|max:255|nullable',
-                    'keywords'      => 'string|max:255|nullable',
+                    'cv' => 'nullable',
+                    'photo' => 'image|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

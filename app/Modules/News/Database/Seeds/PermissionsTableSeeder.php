@@ -19,661 +19,659 @@ class PermissionsTableSeeder extends Seeder
     {
         //futurenews
         $futurenews1 = Permission::create([
-            'name'          => 'index-futurenews',
-            'display_name'  => 'futurenews  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-futurenews',
+            'display_name' => 'futurenews  Listeleme',
+            'is_active' => 1,
         ]);
 
         $futurenews2 = Permission::create([
-            'name'          => 'create-futurenews',
-            'display_name'  => 'futurenews Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-futurenews',
+            'display_name' => 'futurenews Oluşturma',
+            'is_active' => 1,
         ]);
 
         $futurenews3 = Permission::create([
-            'name'          => 'edit-futurenews',
-            'display_name'  => 'futurenews Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-futurenews',
+            'display_name' => 'futurenews Düzenleme',
+            'is_active' => 1,
         ]);
 
         $futurenews4 = Permission::create([
-            'name'          => 'destroy-futurenews',
-            'display_name'  => 'futurenews Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-futurenews',
+            'display_name' => 'futurenews Silme',
+            'is_active' => 1,
         ]);
 
         $futurenews5 = Permission::create([
-            'name'          => 'show-futurenews',
-            'display_name'  => 'futurenews Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-futurenews',
+            'display_name' => 'futurenews Gösterme',
+            'is_active' => 1,
         ]);
 
         $futurenews6 = Permission::create([
-            'name'          => 'update-futurenews',
-            'display_name'  => 'futurenews update',
-            'is_active'     => 1,
+            'name' => 'update-futurenews',
+            'display_name' => 'futurenews update',
+            'is_active' => 1,
         ]);
 
         $futurenews7 = Permission::create([
-            'name'          => 'store-futurenews',
-            'display_name'  => 'futurenews  store',
-            'is_active'     => 1,
+            'name' => 'store-futurenews',
+            'display_name' => 'futurenews  store',
+            'is_active' => 1,
         ]);
 
         //newscategory
         $newscategory1 = Permission::create([
-            'name'          => 'index-newscategory',
-            'display_name'  => 'newscategory  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-newscategory',
+            'display_name' => 'newscategory  Listeleme',
+            'is_active' => 1,
         ]);
 
         $newscategory2 = Permission::create([
-            'name'          => 'create-newscategory',
-            'display_name'  => 'newscategory Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-newscategory',
+            'display_name' => 'newscategory Oluşturma',
+            'is_active' => 1,
         ]);
 
         $newscategory3 = Permission::create([
-            'name'          => 'edit-newscategory',
-            'display_name'  => 'newscategory Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-newscategory',
+            'display_name' => 'newscategory Düzenleme',
+            'is_active' => 1,
         ]);
 
         $newscategory4 = Permission::create([
-            'name'          => 'destroy-newscategory',
-            'display_name'  => 'newscategory Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-newscategory',
+            'display_name' => 'newscategory Silme',
+            'is_active' => 1,
         ]);
 
         $newscategory5 = Permission::create([
-            'name'          => 'show-newscategory',
-            'display_name'  => 'newscategory Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-newscategory',
+            'display_name' => 'newscategory Gösterme',
+            'is_active' => 1,
         ]);
 
         $newscategory6 = Permission::create([
-            'name'          => 'update-newscategory',
-            'display_name'  => 'newscategory update',
-            'is_active'     => 1,
+            'name' => 'update-newscategory',
+            'display_name' => 'newscategory update',
+            'is_active' => 1,
         ]);
 
         $newscategory7 = Permission::create([
-            'name'          => 'store-newscategory',
-            'display_name'  => 'futurenews  store',
-            'is_active'     => 1,
+            'name' => 'store-newscategory',
+            'display_name' => 'futurenews  store',
+            'is_active' => 1,
         ]);
 
         //newssource
         $newssource1 = Permission::create([
-            'name'          => 'index-newssource',
-            'display_name'  => 'newssource  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-newssource',
+            'display_name' => 'newssource  Listeleme',
+            'is_active' => 1,
         ]);
 
         $newssource2 = Permission::create([
-            'name'          => 'create-newssource',
-            'display_name'  => 'newssource Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-newssource',
+            'display_name' => 'newssource Oluşturma',
+            'is_active' => 1,
         ]);
 
         $newssource3 = Permission::create([
-            'name'          => 'edit-newssource',
-            'display_name'  => 'newssource Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-newssource',
+            'display_name' => 'newssource Düzenleme',
+            'is_active' => 1,
         ]);
 
         $newssource4 = Permission::create([
-            'name'          => 'destroy-newssource',
-            'display_name'  => 'newssource Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-newssource',
+            'display_name' => 'newssource Silme',
+            'is_active' => 1,
         ]);
 
         $newssource5 = Permission::create([
-            'name'          => 'show-newssource',
-            'display_name'  => 'newssource Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-newssource',
+            'display_name' => 'newssource Gösterme',
+            'is_active' => 1,
         ]);
 
         $newssource6 = Permission::create([
-            'name'          => 'update-newssource',
-            'display_name'  => 'newssource update',
-            'is_active'     => 1,
+            'name' => 'update-newssource',
+            'display_name' => 'newssource update',
+            'is_active' => 1,
         ]);
 
         $newssource7 = Permission::create([
-            'name'          => 'store-newssource',
-            'display_name'  => 'newssource store',
-            'is_active'     => 1,
+            'name' => 'store-newssource',
+            'display_name' => 'newssource store',
+            'is_active' => 1,
         ]);
 
         //news
         $news1 = Permission::create([
-            'name'          => 'index-news',
-            'display_name'  => 'news  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-news',
+            'display_name' => 'news  Listeleme',
+            'is_active' => 1,
         ]);
 
         $news2 = Permission::create([
-            'name'          => 'create-news',
-            'display_name'  => 'news Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-news',
+            'display_name' => 'news Oluşturma',
+            'is_active' => 1,
         ]);
 
         $news3 = Permission::create([
-            'name'          => 'edit-news',
-            'display_name'  => 'news Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-news',
+            'display_name' => 'news Düzenleme',
+            'is_active' => 1,
         ]);
 
         $news4 = Permission::create([
-            'name'          => 'destroy-news',
-            'display_name'  => 'news Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-news',
+            'display_name' => 'news Silme',
+            'is_active' => 1,
         ]);
 
         $news5 = Permission::create([
-            'name'          => 'show-news',
-            'display_name'  => 'news Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-news',
+            'display_name' => 'news Gösterme',
+            'is_active' => 1,
         ]);
 
         $news6 = Permission::create([
-            'name'          => 'update-news',
-            'display_name'  => 'news update',
-            'is_active'     => 1,
+            'name' => 'update-news',
+            'display_name' => 'news update',
+            'is_active' => 1,
         ]);
 
         $news7 = Permission::create([
-            'name'          => 'store-news',
-            'display_name'  => 'news store',
-            'is_active'     => 1,
+            'name' => 'store-news',
+            'display_name' => 'news store',
+            'is_active' => 1,
         ]);
 
         $news8 = Permission::create([
-            'name'          => 'toggleBooleanType-news',
-            'display_name'  => 'news toggle_boolean_type',
-            'is_active'     => 1,
+            'name' => 'toggleBooleanType-news',
+            'display_name' => 'news toggle_boolean_type',
+            'is_active' => 1,
         ]);
 
         $news9 = Permission::create([
-            'name'          => 'statusToggle-news',
-            'display_name'  => 'news statusToggle ',
-            'is_active'     => 1,
+            'name' => 'statusToggle-news',
+            'display_name' => 'news statusToggle ',
+            'is_active' => 1,
         ]);
 
         $news10 = Permission::create([
-            'name'          => 'showTrashedRecords-news',
-            'display_name'  => 'news showTrashedRecords ',
-            'is_active'     => 1,
+            'name' => 'showTrashedRecords-news',
+            'display_name' => 'news showTrashedRecords ',
+            'is_active' => 1,
         ]);
 
         $news11 = Permission::create([
-            'name'          => 'trashedNewsRestore-news',
-            'display_name'  => 'news trashedNewsRestore',
-            'is_active'     => 1,
+            'name' => 'trashedNewsRestore-news',
+            'display_name' => 'news trashedNewsRestore',
+            'is_active' => 1,
         ]);
 
         $news12 = Permission::create([
-            'name'          => 'historyForceDelete-news',
-            'display_name'  => 'news historyForceDelete',
-            'is_active'     => 1,
+            'name' => 'historyForceDelete-news',
+            'display_name' => 'news historyForceDelete',
+            'is_active' => 1,
         ]);
 
         $news13 = Permission::create([
-            'name'          => 'forgetCache-news',
-            'display_name'  => 'news forgetNewsCache',
-            'is_active'     => 1,
+            'name' => 'forgetCache-news',
+            'display_name' => 'news forgetNewsCache',
+            'is_active' => 1,
         ]);
 
 
-        foreach (News::$statuses as $status){
+        foreach (News::$statuses as $status) {
 
             $news[$status] = Permission::create([
-                'name'          => $status . '-news',
-                'display_name'  => 'News status ' . $status,
-                'is_active'     => 1,
+                'name' => $status . '-news',
+                'display_name' => 'News status ' . $status,
+                'is_active' => 1,
             ]);
         }
 
         //newswidgetmanager
         $newswidgetmanager1 = Permission::create([
-            'name'          => 'index-newswidgetmanager',
-            'display_name'  => 'newswidgetmanager  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-newswidgetmanager',
+            'display_name' => 'newswidgetmanager  Listeleme',
+            'is_active' => 1,
         ]);
 
         $newswidgetmanager2 = Permission::create([
-            'name'          => 'create-newswidgetmanager',
-            'display_name'  => 'newswidgetmanager Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-newswidgetmanager',
+            'display_name' => 'newswidgetmanager Oluşturma',
+            'is_active' => 1,
         ]);
 
         $newswidgetmanager3 = Permission::create([
-            'name'          => 'edit-newswidgetmanager',
-            'display_name'  => 'newswidgetmanager Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-newswidgetmanager',
+            'display_name' => 'newswidgetmanager Düzenleme',
+            'is_active' => 1,
         ]);
 
         $newswidgetmanager4 = Permission::create([
-            'name'          => 'destroy-newswidgetmanager',
-            'display_name'  => 'newswidgetmanager Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-newswidgetmanager',
+            'display_name' => 'newswidgetmanager Silme',
+            'is_active' => 1,
         ]);
 
         $newswidgetmanager5 = Permission::create([
-            'name'          => 'show-newswidgetmanager',
-            'display_name'  => 'newswidgetmanager Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-newswidgetmanager',
+            'display_name' => 'newswidgetmanager Gösterme',
+            'is_active' => 1,
         ]);
 
         $newswidgetmanager6 = Permission::create([
-            'name'          => 'update-newswidgetmanager',
-            'display_name'  => 'newswidgetmanager update',
-            'is_active'     => 1,
+            'name' => 'update-newswidgetmanager',
+            'display_name' => 'newswidgetmanager update',
+            'is_active' => 1,
         ]);
 
         $newswidgetmanager7 = Permission::create([
-            'name'          => 'store-newswidgetmanager',
-            'display_name'  => 'newswidgetmanager store',
-            'is_active'     => 1,
+            'name' => 'store-newswidgetmanager',
+            'display_name' => 'newswidgetmanager store',
+            'is_active' => 1,
         ]);
 
         //photocategory
         $photocategory1 = Permission::create([
-            'name'          => 'index-photocategory',
-            'display_name'  => 'photocategory  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-photocategory',
+            'display_name' => 'photocategory  Listeleme',
+            'is_active' => 1,
         ]);
 
         $photocategory2 = Permission::create([
-            'name'          => 'create-photocategory',
-            'display_name'  => 'photocategory Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-photocategory',
+            'display_name' => 'photocategory Oluşturma',
+            'is_active' => 1,
         ]);
 
         $photocategory3 = Permission::create([
-            'name'          => 'edit-photocategory',
-            'display_name'  => 'photocategory Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-photocategory',
+            'display_name' => 'photocategory Düzenleme',
+            'is_active' => 1,
         ]);
 
         $photocategory4 = Permission::create([
-            'name'          => 'destroy-photocategory',
-            'display_name'  => 'photocategory Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-photocategory',
+            'display_name' => 'photocategory Silme',
+            'is_active' => 1,
         ]);
 
         $photocategory5 = Permission::create([
-            'name'          => 'show-photocategory',
-            'display_name'  => 'photocategory Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-photocategory',
+            'display_name' => 'photocategory Gösterme',
+            'is_active' => 1,
         ]);
 
         $photocategory6 = Permission::create([
-            'name'          => 'update-photocategory',
-            'display_name'  => 'photocategory update',
-            'is_active'     => 1,
+            'name' => 'update-photocategory',
+            'display_name' => 'photocategory update',
+            'is_active' => 1,
         ]);
 
         $photocategory7 = Permission::create([
-            'name'          => 'store-photocategory',
-            'display_name'  => 'photocategory store',
-            'is_active'     => 1,
+            'name' => 'store-photocategory',
+            'display_name' => 'photocategory store',
+            'is_active' => 1,
         ]);
 
         //photogallery
         $photogallery1 = Permission::create([
-            'name'          => 'index-photogallery',
-            'display_name'  => 'photogallery  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-photogallery',
+            'display_name' => 'photogallery  Listeleme',
+            'is_active' => 1,
         ]);
 
         $photogallery2 = Permission::create([
-            'name'          => 'create-photogallery',
-            'display_name'  => 'photogallery Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-photogallery',
+            'display_name' => 'photogallery Oluşturma',
+            'is_active' => 1,
         ]);
 
         $photogallery3 = Permission::create([
-            'name'          => 'edit-photogallery',
-            'display_name'  => 'photogallery Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-photogallery',
+            'display_name' => 'photogallery Düzenleme',
+            'is_active' => 1,
         ]);
 
         $photogallery4 = Permission::create([
-            'name'          => 'destroy-photogallery',
-            'display_name'  => 'photogallery Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-photogallery',
+            'display_name' => 'photogallery Silme',
+            'is_active' => 1,
         ]);
 
         $photogallery5 = Permission::create([
-            'name'          => 'show-photogallery',
-            'display_name'  => 'photogallery Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-photogallery',
+            'display_name' => 'photogallery Gösterme',
+            'is_active' => 1,
         ]);
 
         $photogallery6 = Permission::create([
-            'name'          => 'update-photogallery',
-            'display_name'  => 'photogallery update',
-            'is_active'     => 1,
+            'name' => 'update-photogallery',
+            'display_name' => 'photogallery update',
+            'is_active' => 1,
         ]);
 
         $photogallery7 = Permission::create([
-            'name'          => 'store-photogallery',
-            'display_name'  => 'photogallery store',
-            'is_active'     => 1,
+            'name' => 'store-photogallery',
+            'display_name' => 'photogallery store',
+            'is_active' => 1,
         ]);
 
         $photogallery8 = Permission::create([
-            'name'          => 'addMultiPhotosView-photogallery',
-            'display_name'  => 'photogallery addMultiPhotosView',
-            'is_active'     => 1,
+            'name' => 'addMultiPhotosView-photogallery',
+            'display_name' => 'photogallery addMultiPhotosView',
+            'is_active' => 1,
         ]);
 
         $photogallery9 = Permission::create([
-            'name'          => 'addMultiPhotos-photogallery',
-            'display_name'  => 'photogallery addMultiPhotos',
-            'is_active'     => 1,
+            'name' => 'addMultiPhotos-photogallery',
+            'display_name' => 'photogallery addMultiPhotos',
+            'is_active' => 1,
         ]);
 
         $photogallery10 = Permission::create([
-            'name'          => 'updateGalleryPhotos-photogallery',
-            'display_name'  => 'photogallery updateGalleryPhotos',
-            'is_active'     => 1,
+            'name' => 'updateGalleryPhotos-photogallery',
+            'display_name' => 'photogallery updateGalleryPhotos',
+            'is_active' => 1,
         ]);
 
         $photogallery11 = Permission::create([
-            'name'          => 'forgetCache-photogallery',
-            'display_name'  => 'photogallery forgetCache',
-            'is_active'     => 1,
+            'name' => 'forgetCache-photogallery',
+            'display_name' => 'photogallery forgetCache',
+            'is_active' => 1,
         ]);
 
 
         //photo
         $photo1 = Permission::create([
-            'name'          => 'index-photo',
-            'display_name'  => 'photo  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-photo',
+            'display_name' => 'photo  Listeleme',
+            'is_active' => 1,
         ]);
 
         $photo2 = Permission::create([
-            'name'          => 'create-photo',
-            'display_name'  => 'photo Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-photo',
+            'display_name' => 'photo Oluşturma',
+            'is_active' => 1,
         ]);
 
         $photo3 = Permission::create([
-            'name'          => 'edit-photo',
-            'display_name'  => 'photo Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-photo',
+            'display_name' => 'photo Düzenleme',
+            'is_active' => 1,
         ]);
 
         $photo4 = Permission::create([
-            'name'          => 'destroy-photo',
-            'display_name'  => 'photo Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-photo',
+            'display_name' => 'photo Silme',
+            'is_active' => 1,
         ]);
 
         $photo5 = Permission::create([
-            'name'          => 'show-photo',
-            'display_name'  => 'photo Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-photo',
+            'display_name' => 'photo Gösterme',
+            'is_active' => 1,
         ]);
 
         $photo6 = Permission::create([
-            'name'          => 'update-photo',
-            'display_name'  => 'photo update',
-            'is_active'     => 1,
+            'name' => 'update-photo',
+            'display_name' => 'photo update',
+            'is_active' => 1,
         ]);
 
         $photo7 = Permission::create([
-            'name'          => 'store-photo',
-            'display_name'  => 'photo store',
-            'is_active'     => 1,
+            'name' => 'store-photo',
+            'display_name' => 'photo store',
+            'is_active' => 1,
         ]);
 
         //recommendationnews
         $recommendationnews1 = Permission::create([
-            'name'          => 'index-recommendationnews',
-            'display_name'  => 'recommendationnews  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-recommendationnews',
+            'display_name' => 'recommendationnews  Listeleme',
+            'is_active' => 1,
         ]);
 
         $recommendationnews2 = Permission::create([
-            'name'          => 'create-recommendationnews',
-            'display_name'  => 'recommendationnews Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-recommendationnews',
+            'display_name' => 'recommendationnews Oluşturma',
+            'is_active' => 1,
         ]);
 
         $recommendationnews3 = Permission::create([
-            'name'          => 'edit-recommendationnews',
-            'display_name'  => 'recommendationnews Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-recommendationnews',
+            'display_name' => 'recommendationnews Düzenleme',
+            'is_active' => 1,
         ]);
 
         $recommendationnews4 = Permission::create([
-            'name'          => 'destroy-recommendationnews',
-            'display_name'  => 'recommendationnews Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-recommendationnews',
+            'display_name' => 'recommendationnews Silme',
+            'is_active' => 1,
         ]);
 
         $recommendationnews5 = Permission::create([
-            'name'          => 'show-recommendationnews',
-            'display_name'  => 'recommendationnews Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-recommendationnews',
+            'display_name' => 'recommendationnews Gösterme',
+            'is_active' => 1,
         ]);
 
         $recommendationnews6 = Permission::create([
-            'name'          => 'update-recommendationnews',
-            'display_name'  => 'recommendationnews update',
-            'is_active'     => 1,
+            'name' => 'update-recommendationnews',
+            'display_name' => 'recommendationnews update',
+            'is_active' => 1,
         ]);
 
         $recommendationnews7 = Permission::create([
-            'name'          => 'store-recommendationnews',
-            'display_name'  => 'recommendationnews store',
-            'is_active'     => 1,
+            'name' => 'store-recommendationnews',
+            'display_name' => 'recommendationnews store',
+            'is_active' => 1,
         ]);
 
         //videocategory
         $videocategory1 = Permission::create([
-            'name'          => 'index-videocategory',
-            'display_name'  => 'videocategory  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-videocategory',
+            'display_name' => 'videocategory  Listeleme',
+            'is_active' => 1,
         ]);
 
         $videocategory2 = Permission::create([
-            'name'          => 'create-videocategory',
-            'display_name'  => 'videocategory Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-videocategory',
+            'display_name' => 'videocategory Oluşturma',
+            'is_active' => 1,
         ]);
 
         $videocategory3 = Permission::create([
-            'name'          => 'edit-videocategory',
-            'display_name'  => 'videocategory Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-videocategory',
+            'display_name' => 'videocategory Düzenleme',
+            'is_active' => 1,
         ]);
 
         $videocategory4 = Permission::create([
-            'name'          => 'destroy-videocategory',
-            'display_name'  => 'videocategory Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-videocategory',
+            'display_name' => 'videocategory Silme',
+            'is_active' => 1,
         ]);
 
         $videocategory5 = Permission::create([
-            'name'          => 'show-videocategory',
-            'display_name'  => 'videocategory Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-videocategory',
+            'display_name' => 'videocategory Gösterme',
+            'is_active' => 1,
         ]);
 
         $videocategory6 = Permission::create([
-            'name'          => 'update-videocategory',
-            'display_name'  => 'videocategory update',
-            'is_active'     => 1,
+            'name' => 'update-videocategory',
+            'display_name' => 'videocategory update',
+            'is_active' => 1,
         ]);
 
         $videocategory7 = Permission::create([
-            'name'          => 'store-videocategory',
-            'display_name'  => 'videocategory store',
-            'is_active'     => 1,
+            'name' => 'store-videocategory',
+            'display_name' => 'videocategory store',
+            'is_active' => 1,
         ]);
 
         //videogallery
         $videogallery1 = Permission::create([
-            'name'          => 'index-videogallery',
-            'display_name'  => 'videogallery  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-videogallery',
+            'display_name' => 'videogallery  Listeleme',
+            'is_active' => 1,
         ]);
 
         $videogallery2 = Permission::create([
-            'name'          => 'create-videogallery',
-            'display_name'  => 'videogallery Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-videogallery',
+            'display_name' => 'videogallery Oluşturma',
+            'is_active' => 1,
         ]);
 
         $videogallery3 = Permission::create([
-            'name'          => 'edit-videogallery',
-            'display_name'  => 'videogallery Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-videogallery',
+            'display_name' => 'videogallery Düzenleme',
+            'is_active' => 1,
         ]);
 
         $videogallery4 = Permission::create([
-            'name'          => 'destroy-videogallery',
-            'display_name'  => 'videogallery Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-videogallery',
+            'display_name' => 'videogallery Silme',
+            'is_active' => 1,
         ]);
 
         $videogallery5 = Permission::create([
-            'name'          => 'show-videogallery',
-            'display_name'  => 'videogallery Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-videogallery',
+            'display_name' => 'videogallery Gösterme',
+            'is_active' => 1,
         ]);
 
         $videogallery6 = Permission::create([
-            'name'          => 'update-videogallery',
-            'display_name'  => 'videogallery update',
-            'is_active'     => 1,
+            'name' => 'update-videogallery',
+            'display_name' => 'videogallery update',
+            'is_active' => 1,
         ]);
 
         $videogallery7 = Permission::create([
-            'name'          => 'store-videogallery',
-            'display_name'  => 'videogallery store',
-            'is_active'     => 1,
+            'name' => 'store-videogallery',
+            'display_name' => 'videogallery store',
+            'is_active' => 1,
         ]);
 
         $videogallery8 = Permission::create([
-            'name'          => 'addMultiVideosView-videogallery',
-            'display_name'  => 'videogallery addMultiVideosView',
-            'is_active'     => 1,
+            'name' => 'addMultiVideosView-videogallery',
+            'display_name' => 'videogallery addMultiVideosView',
+            'is_active' => 1,
         ]);
 
         $videogallery9 = Permission::create([
-            'name'          => 'addMultiVideos-videogallery',
-            'display_name'  => 'videogallery addMultiVideos',
-            'is_active'     => 1,
+            'name' => 'addMultiVideos-videogallery',
+            'display_name' => 'videogallery addMultiVideos',
+            'is_active' => 1,
         ]);
 
         $videogallery10 = Permission::create([
-            'name'          => 'updateGalleryVideos-videogallery',
-            'display_name'  => 'videogallery updateGalleryVideos',
-            'is_active'     => 1,
+            'name' => 'updateGalleryVideos-videogallery',
+            'display_name' => 'videogallery updateGalleryVideos',
+            'is_active' => 1,
         ]);
 
         $videogallery11 = Permission::create([
-            'name'          => 'forgetCache-videogallery',
-            'display_name'  => 'videogallery forgetCache',
-            'is_active'     => 1,
+            'name' => 'forgetCache-videogallery',
+            'display_name' => 'videogallery forgetCache',
+            'is_active' => 1,
         ]);
 
 
         //video
         $video1 = Permission::create([
-            'name'          => 'index-video',
-            'display_name'  => 'video  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-video',
+            'display_name' => 'video  Listeleme',
+            'is_active' => 1,
         ]);
 
         $video2 = Permission::create([
-            'name'          => 'create-video',
-            'display_name'  => 'video Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-video',
+            'display_name' => 'video Oluşturma',
+            'is_active' => 1,
         ]);
 
         $video3 = Permission::create([
-            'name'          => 'edit-video',
-            'display_name'  => 'video Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-video',
+            'display_name' => 'video Düzenleme',
+            'is_active' => 1,
         ]);
 
         $video4 = Permission::create([
-            'name'          => 'destroy-video',
-            'display_name'  => 'video Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-video',
+            'display_name' => 'video Silme',
+            'is_active' => 1,
         ]);
 
         $video5 = Permission::create([
-            'name'          => 'show-video',
-            'display_name'  => 'video Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-video',
+            'display_name' => 'video Gösterme',
+            'is_active' => 1,
         ]);
 
         $video6 = Permission::create([
-            'name'          => 'update-video',
-            'display_name'  => 'video update',
-            'is_active'     => 1,
+            'name' => 'update-video',
+            'display_name' => 'video update',
+            'is_active' => 1,
         ]);
 
         $video7 = Permission::create([
-            'name'          => 'store-video',
-            'display_name'  => 'video store',
-            'is_active'     => 1,
+            'name' => 'store-video',
+            'display_name' => 'video store',
+            'is_active' => 1,
         ]);
-
 
 
         //newssetting
         $newssetting1 = Permission::create([
-            'name'          => 'index-newssetting',
-            'display_name'  => 'newssetting  Listeleme',
-            'is_active'     => 1,
+            'name' => 'index-newssetting',
+            'display_name' => 'newssetting  Listeleme',
+            'is_active' => 1,
         ]);
 
         $newssetting2 = Permission::create([
-            'name'          => 'create-newssetting',
-            'display_name'  => 'newssetting Oluşturma',
-            'is_active'     => 1,
+            'name' => 'create-newssetting',
+            'display_name' => 'newssetting Oluşturma',
+            'is_active' => 1,
         ]);
 
         $newssetting3 = Permission::create([
-            'name'          => 'edit-newssetting',
-            'display_name'  => 'newssetting Düzenleme',
-            'is_active'     => 1,
+            'name' => 'edit-newssetting',
+            'display_name' => 'newssetting Düzenleme',
+            'is_active' => 1,
         ]);
 
         $newssetting4 = Permission::create([
-            'name'          => 'destroy-newssetting',
-            'display_name'  => 'newssetting Silme',
-            'is_active'     => 1,
+            'name' => 'destroy-newssetting',
+            'display_name' => 'newssetting Silme',
+            'is_active' => 1,
         ]);
 
         $newssetting5 = Permission::create([
-            'name'          => 'show-newssetting',
-            'display_name'  => 'newssetting Gösterme',
-            'is_active'     => 1,
+            'name' => 'show-newssetting',
+            'display_name' => 'newssetting Gösterme',
+            'is_active' => 1,
         ]);
 
         $newssetting6 = Permission::create([
-            'name'          => 'update-newssetting',
-            'display_name'  => 'newssetting update',
-            'is_active'     => 1,
+            'name' => 'update-newssetting',
+            'display_name' => 'newssetting update',
+            'is_active' => 1,
         ]);
 
         $newssetting7 = Permission::create([
-            'name'          => 'store-newssetting',
-            'display_name'  => 'newssetting  store',
-            'is_active'     => 1,
+            'name' => 'store-newssetting',
+            'display_name' => 'newssetting  store',
+            'is_active' => 1,
         ]);
-
 
 
         $first_user = User::find(1);
@@ -714,7 +712,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($news12);
         $super_admin->permissions()->attach($news13);
 
-        foreach (News::$statuses as $status){
+        foreach (News::$statuses as $status) {
             $super_admin->permissions()->attach($news[$status]);
         };
 

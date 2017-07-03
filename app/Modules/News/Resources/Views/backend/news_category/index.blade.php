@@ -83,6 +83,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('news_management','news_category');
+        activeMenu('news_management', 'news_category');
     </script>
 @endsection

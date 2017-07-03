@@ -8,10 +8,10 @@ use App\Models\ContactType;
 use App\Repositories\ContactRepository as Repo;
 use Cache;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Support\Facades\Input;
 use Redirect;
 use Request;
 use Session;
+use Illuminate\Support\Facades\Input;
 
 class ContactController extends Controller
 {
@@ -22,11 +22,11 @@ class ContactController extends Controller
 
     public function index()
     {
-        $contactTypeList =  Cache::tags(['ContactController', 'ContactType', 'contactTypeList'])->rememberForever('contactTypeList', function() {
+        $contactTypeList = Cache::tags(['ContactController', 'ContactType', 'contactTypeList'])->rememberForever('contactTypeList', function () {
             return ContactType::contactTypeList();
         });
 
-        return Theme::view('frontend.contact',compact('contactTypeList'));
+        return Theme::view('frontend.contact', compact('contactTypeList'));
     }
 
     public function store(Request $request)
@@ -37,11 +37,11 @@ class ContactController extends Controller
 //         * https://www.kaplankomputing.com/blog/tutorials/recaptcha-php-demo-tutorial/
 //         * */
         $secret = Cache::tags('Setting')->get('google_recaptcha_secret_key');
-        $response=$_POST["g-recaptcha-response"];
-        $verify=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secret}&response={$response}");
-        $captcha_success=json_decode($verify);
+        $response = $_POST["g-recaptcha-response"];
+        $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secret}&response={$response}");
+        $captcha_success = json_decode($verify);
 
-        if ($captcha_success->success==false) {
+        if ($captcha_success->success == false) {
             return Redirect::back()
                 ->withErrors(trans('common.save_failed'))
                 ->withInput($input);
@@ -56,16 +56,16 @@ class ContactController extends Controller
         }
 
         $result = $this->repo->create([
-                'contact_type_id' => strip_tags($input['contact_type_id']),
-                'full_name' => strip_tags($input['full_name']),
-                'subject' => strip_tags($input['subject']),
-                'email' => strip_tags($input['email']),
-                'phone' => strip_tags($input['phone']),
-                'content' => strip_tags($input['content']),
-                'is_read' => 0,
-                'IP' => Request::ip(),
-                'status' => 0
-            ]);
+            'contact_type_id' => strip_tags($input['contact_type_id']),
+            'full_name' => strip_tags($input['full_name']),
+            'subject' => strip_tags($input['subject']),
+            'email' => strip_tags($input['email']),
+            'phone' => strip_tags($input['phone']),
+            'content' => strip_tags($input['content']),
+            'is_read' => 0,
+            'IP' => Request::ip(),
+            'status' => 0
+        ]);
 
         if ($result) {
             Session::flash('success_messages', trans('contact.your_message_posted'));

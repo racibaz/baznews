@@ -24,12 +24,11 @@ class BookDatabaseSeeder extends Seeder
         $this->call(RssTableSeeder::class);
 
 
-        $setting = Setting::where('attribute_key','book_count')->first();
-        if(empty($setting))
-        {
+        $setting = Setting::where('attribute_key', 'book_count')->first();
+        if (empty($setting)) {
             Setting::create([
-                'attribute_key'               => 'book_count',
-                'attribute_value'             => '5',
+                'attribute_key' => 'book_count',
+                'attribute_value' => '5',
             ]);
         }
     }

@@ -16,77 +16,79 @@ class VideoRepository extends EloquentRepository
 
     public function getOtherGalleryVideos($video)
     {
-         $videoGalleryVideos = $this->where('is_active', 1)
-            ->where('video_gallery_id',$video->video_gallery_id)
+        $videoGalleryVideos = $this->where('is_active', 1)
+            ->where('video_gallery_id', $video->video_gallery_id)
             ->whereNotIn('id', [$video->id])
             ->findAll()
             ->take(10);
 
-         return isset($videoGalleryVideos) ? $videoGalleryVideos : null;
+        return isset($videoGalleryVideos) ? $videoGalleryVideos : null;
     }
 
-    public function getNextVideo($videoGallery, $video)
+    public function getAllVideos()
     {
-        $nextVideo = $videoGallery->videos->filter(function ($galleryVideo) use ($video) {
-            return $galleryVideo->id > $video->id;
-        })->first();
+        return $this->where('is_active', 1)->findAll();
+    }
 
-        return !isset($nextVideo) ? $this->getGalleryFirstVideo($videoGallery) : $nextVideo;
+    public function getLastVideo()
+    {
+        return $this->where('is_active', 1)->last();
     }
 
 
-    public function getPreviousVideo($videoGallery, $video)
+    public function getNextVideo($video)
     {
-        $previousVideo = $videoGallery->videos->filter(function ($galleryVideo) use ($video) {
-            return $galleryVideo->id < $video->id;
-        })->first();
+        $nextVideo = $this->getAllVideos()->filter(function ($value, $key) use ($video) {
+            return $value->id > $video->id;
+        });
 
-        return !isset($previousVideo) ? $this->getGalleryFirstVideo($videoGallery) : $previousVideo;
+        return !isset($nextVideo) ? $this->getLastVideo() : $nextVideo->first();
+    }
+
+
+    public function getPreviousVideo($video)
+    {
+        $previousVideo = $this->getAllVideos()->filter(function ($value, $key) use ($video) {
+            return $value->id < $video->id;
+        });
+
+        return !isset($previousVideo) ? $this->getLastVideo() : $previousVideo->first();
     }
 
     public function getLatestVideos($take = 20)
     {
-        return  $this->where('is_active',1)->orderBy('updated_at', 'desc')->findAll()->take($take);
+        return $this->where('is_active', 1)->orderBy('updated_at', 'desc')->findAll()->take($take);
     }
 
     public function getGalleryFirstVideo($videoGallery)
     {
-        return  $videoGallery->videos->first();
+        return $videoGallery->videos->first();
     }
 
 
     public function getVideo($id)
     {
-        return $this->with(['video_category', 'video_gallery','tags'])
+        return $this->with(['video_category', 'video_gallery', 'tags'])
             ->where('is_active', 1)
-            ->findBy('id',$id);
+            ->findBy('id', $id);
     }
 
-    public function getVideoCategoryVideos($video, $take = 10)
-    {
-        if(!empty($video->video_category)) {
-            return  $video->video_category->videos->where('is_active', 1)->take($take);
-        }
 
-        return null;
-    }
-
-    public function deleteVideoFiles($video) : bool
+    public function deleteVideoFiles($video): bool
     {
-        try{
+        try {
 
             $videoTitle = $video->title;
             $videoId = $video->id;
 
-            if(File::isDirectory(public_path('videos/' . $video->id))){
+            if (File::isDirectory(public_path('videos/' . $video->id))) {
                 File::deleteDirectory(public_path('videos/' . $video->id));
                 return true;
-            }else{
+            } else {
                 return false;
             }
 
-        }catch (Exception $e)
-        {
+        } catch (Exception $e) {
             Log::warning('Video {$videoId} : ($videoTitle)' . trans('log.video_deleting_error'));
         }
     }

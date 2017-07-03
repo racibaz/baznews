@@ -21,10 +21,11 @@ class ArticleAuthor extends Eloquent
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
-                'source' => ['name','id']
+                'source' => ['name', 'id']
             ]
         ];
     }
@@ -50,6 +51,6 @@ class ArticleAuthor extends Eloquent
 
     public static function articleAuthorList()
     {
-        return ArticleAuthor::where('is_active',1)->pluck('name', 'id');
+        return ArticleAuthor::where('is_active', 1)->pluck('name', 'id');
     }
 }

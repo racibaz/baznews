@@ -4,7 +4,6 @@ namespace App\Modules\News\Database\Seeds;
 
 use App\Models\Tag;
 use App\Modules\News\Models\News;
-use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Models\Photo;
 use App\Modules\News\Models\PhotoGallery;
 use App\Modules\News\Models\Video;
@@ -62,7 +61,6 @@ class RelationsTableSeeder extends Seeder
         $news4->photos()->attach($photo4);
 
 
-
         $videoGallery1 = VideoGallery::find(1)->first();
         $videoGallery2 = VideoGallery::find(2)->first();
         $videoGallery3 = VideoGallery::find(3)->first();
@@ -111,7 +109,6 @@ class RelationsTableSeeder extends Seeder
         $news2->tags()->save($tag4);
         $news3->tags()->save($tag3);
         $news4->tags()->save($tag4);
-
 
 
 //        $newsCategory1 = NewsCategory::find(1)->first();

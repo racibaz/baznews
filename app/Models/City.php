@@ -23,7 +23,7 @@ class City extends Model
 
     public function country()
     {
-        return $this->belongsTo('App\Models\Country','country_id');
+        return $this->belongsTo('App\Models\Country', 'country_id');
     }
 
     public function users()
@@ -39,7 +39,7 @@ class City extends Model
 
     public static function cityList()
     {
-        return City::where('is_active',1)->pluck('name','id');
+        return City::where('is_active', 1)->pluck('name', 'id');
     }
 
 }
