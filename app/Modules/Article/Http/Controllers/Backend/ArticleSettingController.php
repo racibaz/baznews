@@ -8,9 +8,9 @@ use App\Modules\Article\Models\ArticleSetting;
 use App\Repositories\SettingRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 
 class ArticleSettingController extends BackendController
 {
@@ -20,7 +20,7 @@ class ArticleSettingController extends BackendController
 
         $this->view = 'article_setting.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
@@ -46,24 +46,24 @@ class ArticleSettingController extends BackendController
                 ->withInput($input);
         }
 
-        if(!empty($input['article_count'])){
+        if (!empty($input['article_count'])) {
             $record = $this->repo->findBy('attribute_key', 'article_count');
-            $this->repo->update($record->id,['attribute_value' => $input['article_count']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['article_count']]);
         }
 
-        if(!empty($input['article_author_count'])){
+        if (!empty($input['article_author_count'])) {
             $record = $this->repo->findBy('attribute_key', 'article_author_count');
-            $this->repo->update($record->id,['attribute_value' => $input['article_author_count']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['article_author_count']]);
         }
 
-        if(!empty($input['recent_article_widget_list_count'])){
+        if (!empty($input['recent_article_widget_list_count'])) {
             $record = $this->repo->findBy('attribute_key', 'recent_article_widget_list_count');
-            $this->repo->update($record->id,['attribute_value' => $input['recent_article_widget_list_count']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['recent_article_widget_list_count']]);
         }
 
-        if(!empty($input['article_authors_widget_list_count'])){
+        if (!empty($input['article_authors_widget_list_count'])) {
             $record = $this->repo->findBy('attribute_key', 'article_authors_widget_list_count');
-            $this->repo->update($record->id,['attribute_value' => $input['article_authors_widget_list_count']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['article_authors_widget_list_count']]);
         }
 
 

@@ -96,6 +96,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('module_manager','');
+        activeMenu('module_manager', '');
     </script>
 @endsection

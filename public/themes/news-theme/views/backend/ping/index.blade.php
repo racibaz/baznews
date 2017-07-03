@@ -24,24 +24,24 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $record)
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('ping.show', $record->name , $record, [] ) !!}</td>
-                                    <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('ping.destroy',  $record))) !!}
+                        @foreach($records as $record)
+                            <tr>
+                                <td>{{$record->id}}</td>
+                                <td>{!! link_to_route('ping.show', $record->name , $record, [] ) !!}</td>
+                                <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('ping.destroy',  $record))) !!}
 
-                                            {!! link_to_route('ping.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! link_to_route('ping.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
 
 
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
@@ -63,6 +63,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('ping','general_setting');
+        activeMenu('ping', 'general_setting');
     </script>
 @endsection

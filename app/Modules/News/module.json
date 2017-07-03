@@ -1,9 +1,9 @@
 {
-    "name": "News",
-    "slug": "news",
-    "version": "1.0",
-    "description": "This is the description for the News module.",
-    "widget" : true,
-    "sitemap" : true,
-    "sitemap_path" : "news_sitemap"
+  "name": "News",
+  "slug": "news",
+  "version": "1.0",
+  "description": "This is the description for the News module.",
+  "widget": true,
+  "sitemap": true,
+  "sitemap_path": "news_sitemap"
 }

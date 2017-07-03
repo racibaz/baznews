@@ -23,6 +23,6 @@ class Advertisement extends Model
 
     public static function advertisementList()
     {
-        return Advertisement::where('is_active',1)->pluck('name','id');
+        return Advertisement::where('is_active', 1)->pluck('name', 'id');
     }
 }

@@ -32,7 +32,8 @@
                     @include($activeTheme . '::backend.partials._rivisions', ['rivisions' => $record->revisionHistory])
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('news::news.close')}}</button>
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">{{trans('news::news.close')}}</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -41,11 +42,13 @@
         <div class="col-lg-8" id="content-area">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-file-text"></i>  {{trans('news::news.content')}}</h3>
+                    <h3 class="box-title"><i class="fa fa-file-text"></i> {{trans('news::news.content')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
                     </div>
                 </div>
                 <!-- /.box-header -->
@@ -123,11 +126,13 @@
 
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-map-pin"></i>  {{trans('news::news.location')}}</h3>
+                    <h3 class="box-title"><i class="fa fa-map-pin"></i> {{trans('news::news.location')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
                     </div>
                 </div>
                 <!-- /.box-header -->
@@ -152,9 +157,10 @@
             <!-- /.box -->
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-edit"></i>  {{trans('news::news.status')}}</h3>
+                    <h3 class="box-title"><i class="fa fa-edit"></i> {{trans('news::news.status')}}</h3>
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i></button>
                     </div>
                 </div>
                 <!-- /.box-header -->
@@ -188,18 +194,22 @@
                 </div><!-- /.box-body -->
                 <div class="box-footer">
                     <div class="form-group">
-                        <a class="btn btn-primary" data-toggle="modal" href="#activity-modal"><i class="fa fa-clock-o"></i>   {{trans('news::news.changed_timeline')}}</a>
-                        <button class="btn btn-success btn-lg pull-right" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <a class="btn btn-primary" data-toggle="modal" href="#activity-modal"><i
+                                    class="fa fa-clock-o"></i> {{trans('news::news.changed_timeline')}}</a>
+                        <button class="btn btn-success btn-lg pull-right" type="submit"><i
+                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div><!-- /.box-footer -->
             </div>
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-edit"></i>  {{trans('news::news.keywords')}}</h3>
+                    <h3 class="box-title"><i class="fa fa-edit"></i> {{trans('news::news.keywords')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
                     </div>
                 </div>
                 <!-- /.box-header -->
@@ -238,10 +248,11 @@
 
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-cogs"></i>  {{trans('news::news.other_settings')}}</h3>
+                    <h3 class="box-title"><i class="fa fa-cogs"></i> {{trans('news::news.other_settings')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i></button>
                     </div>
                 </div>
                 <!-- /.box-header -->
@@ -329,11 +340,13 @@
 
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-image"></i>  {{trans('news::news.thumbnail_image')}}</h3>
+                    <h3 class="box-title"><i class="fa fa-image"></i> {{trans('news::news.thumbnail_image')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
                     </div>
                 </div>
                 <!-- /.box-header -->
@@ -344,12 +357,16 @@
                             <div class="form-group">
                                 {!! Form::label('cuff_photo', trans('news::news.cuff_photo'),['class'=> 'control-label','style'=>'width:100%']) !!}
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                         style="width: 200px; height: 150px;">
                                         <img src="{{ asset('images/news_images/' . $record->id . '/cuff_photo/' . $record->cuff_photo)}}"/>
                                     </div>
                                     <div>
-                                        <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('news::news.select_image')}}</span><span class="fileinput-exists">{{trans('news::news.change')}}</span>{!! Form::file('cuff_photo') !!}</span>
-                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('news::news.remove')}}</a>
+                                        <span class="btn btn-default btn-file"><span
+                                                    class="fileinput-new">{{trans('news::news.select_image')}}</span><span
+                                                    class="fileinput-exists">{{trans('news::news.change')}}</span>{!! Form::file('cuff_photo') !!}</span>
+                                        <a href="#" class="btn btn-default fileinput-exists"
+                                           data-dismiss="fileinput">{{trans('news::news.remove')}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -358,12 +375,16 @@
                             <div class="form-group">
                                 {!! Form::label('thumbnail', trans('news::news.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                         style="width: 200px; height: 150px;">
                                         <img src="{{ asset('images/news_images/' . $record->id . '/thumbnail/' . $record->thumbnail)}}"/>
                                     </div>
                                     <div>
-                                        <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('news::news.select_image')}}</span><span class="fileinput-exists">{{trans('news::news.change')}}</span>{!! Form::file('thumbnail') !!}</span>
-                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('news::news.remove')}}</a>
+                                        <span class="btn btn-default btn-file"><span
+                                                    class="fileinput-new">{{trans('news::news.select_image')}}</span><span
+                                                    class="fileinput-exists">{{trans('news::news.change')}}</span>{!! Form::file('thumbnail') !!}</span>
+                                        <a href="#" class="btn btn-default fileinput-exists"
+                                           data-dismiss="fileinput">{{trans('news::news.remove')}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -375,7 +396,7 @@
             <!-- /.box -->
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-image"></i>  {{ trans('news::news.photos') }}</h3>
+                    <h3 class="box-title"><i class="fa fa-image"></i> {{ trans('news::news.photos') }}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -389,7 +410,7 @@
             <!-- /.box -->
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-file-video-o"></i>  {{ trans('news::news.videos') }}</h3>
+                    <h3 class="box-title"><i class="fa fa-file-video-o"></i> {{ trans('news::news.videos') }}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -403,7 +424,9 @@
             <!-- /.box -->
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="glyphicon glyphicon-facetime-video"></i> {{ trans('news::news.video_galleries') }}</h3>
+                    <h3 class="box-title"><i
+                                class="glyphicon glyphicon-facetime-video"></i> {{ trans('news::news.video_galleries') }}
+                    </h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -431,7 +454,7 @@
             <!-- /.box -->
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-tags"></i>  {{ trans('news::news.tags') }}</h3>
+                    <h3 class="box-title"><i class="fa fa-tags"></i> {{ trans('news::news.tags') }}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -446,7 +469,7 @@
             <!-- /.box -->
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-refresh"></i>  {{ trans('news::news.related_news') }}</h3>
+                    <h3 class="box-title"><i class="fa fa-refresh"></i> {{ trans('news::news.related_news') }}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -460,7 +483,7 @@
             <!-- /.box -->
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-globe"></i>  {{ trans('news::news.recommendation_news') }}</h3>
+                    <h3 class="box-title"><i class="fa fa-globe"></i> {{ trans('news::news.recommendation_news') }}</h3>
                 </div>
 
                 <!-- /.box-header -->
@@ -493,10 +516,14 @@
     <!-- Main Content Element  End-->
 @endsection
 @section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}"
+          rel="stylesheet">
 @endsection
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
@@ -521,14 +548,14 @@
         CKEDITOR.replace('content', options);
         //CKEDİTOR END...
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.fileinput').fileinput();
             $('.select2').select2();
             $('.tagsinput').tagsinput();
             //Date range picker with time picker
             $('#show_time').datetimepicker({
-                format:'YYYY-MM-DD HH:mm:ss',
-                locale:'tr'
+                format: 'YYYY-MM-DD HH:mm:ss',
+                locale: 'tr'
             });
         });
         $(window).resize(function () {
@@ -538,10 +565,10 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#content-area,#sidebar').theiaStickySidebar();
         });
         //active menu
-        activeMenu('news','news_management');
+        activeMenu('news', 'news_management');
     </script>
 @endsection

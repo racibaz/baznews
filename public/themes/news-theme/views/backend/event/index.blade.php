@@ -35,26 +35,26 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $record)
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('event.show',$record->event , $record, [] ) !!} </td>
-                                    <td>{{$record->eventable_id}} </td>
-                                    <td>{{$record->eventable_type}}</td>
-                                    <td>{!! link_to_route('user.show', $record->user->name , $record, [] ) !!}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('event.destroy',  $record))) !!}
+                        @foreach($records as $record)
+                            <tr>
+                                <td>{{$record->id}}</td>
+                                <td>{!! link_to_route('event.show',$record->event , $record, [] ) !!} </td>
+                                <td>{{$record->eventable_id}} </td>
+                                <td>{{$record->eventable_type}}</td>
+                                <td>{!! link_to_route('user.show', $record->user->name , $record, [] ) !!}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('event.destroy',  $record))) !!}
 
-                                            {!! link_to_route('event.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! link_to_route('event.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
 
 
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -69,6 +69,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('event','');
+        activeMenu('event', '');
     </script>
 @endsection

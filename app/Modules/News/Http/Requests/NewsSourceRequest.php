@@ -24,27 +24,23 @@ class NewsSourceRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
                     'name' => [
                         'required',
                         'max:255',
                         Rule::unique('news_sources'),
                     ],
-                    'url'                   => 'url|nullable',
+                    'url' => 'url|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('news_source')->id;
                 return [
                     'name' => [
@@ -52,10 +48,11 @@ class NewsSourceRequest extends FormRequest
                         'max:255',
                         Rule::unique('news_sources')->ignore($id),
                     ],
-                    'url'                   => 'url|nullable',
+                    'url' => 'url|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

@@ -21,7 +21,8 @@
                     <h3 class="box-title">{{trans('ping.send')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -36,7 +37,8 @@
                         {!! Form::textarea('ping_list', $record->ping_list, ['placeholder' => trans('ping.description') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <button class="btn btn-success" type="submit"><i
+                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                         <a href="{{ route('ping.send') }}" class="btn btn-success">
                             <i class="fa fa-plus"></i> {{ trans('ping.send') }}
                         </a>
@@ -52,6 +54,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('ping','general_setting');
+        activeMenu('ping', 'general_setting');
     </script>
 @endsection

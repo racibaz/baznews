@@ -44,7 +44,7 @@ class NewsController extends BackendController
 
         $this->view = 'news.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index($statusCode = null)
@@ -52,32 +52,32 @@ class NewsController extends BackendController
         $statusList = [];
         $newsCountByStatus = [];
         $statuses = News::$statuses;
-        foreach ($statuses as  $index => $status){
-            if(Auth::user()->can($status . '-news')){
-                $statusList[$index] =  $status;
-                $newsCountByStatus[$index] = $this->repo->where('status',$index)->findAll()->count();
+        foreach ($statuses as $index => $status) {
+            if (Auth::user()->can($status . '-news')) {
+                $statusList[$index] = $status;
+                $newsCountByStatus[$index] = $this->repo->where('status', $index)->findAll()->count();
             }
         }
 
 
         //Status durumuna göre verileri getiriyoruz.
-        if(is_numeric($statusCode)) {
+        if (is_numeric($statusCode)) {
 
-            if(!key_exists($statusCode,$statusList)){
-                Log::warning('Not permission by news status code(' . $statusCode .')  admin.news.index  User id :  ' . Auth::user()->id);
+            if (!key_exists($statusCode, $statusList)) {
+                Log::warning('Not permission by news status code(' . $statusCode . ')  admin.news.index  User id :  ' . Auth::user()->id);
                 Session::flash('error_message', trans('common.bad_request'));
                 return Redirect::back();
             }
 
-            $records = $this->repo->orderBy('updated_at', 'desc')->where('status',$statusCode)->paginate(50);
+            $records = $this->repo->orderBy('updated_at', 'desc')->where('status', $statusCode)->paginate(50);
 
-        }else{
+        } else {
             $records = $this->repo->orderBy('updated_at', 'desc')->paginate(50);
         }
 
         $newsCategoryList = NewsCategory::newsCategoryList();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
             'records',
             'newsCategoryList',
             'statusList',
@@ -114,10 +114,10 @@ class NewsController extends BackendController
 
         $record = $this->repo->createModel();
 
-        foreach ($statuses as  $index => $status){
+        foreach ($statuses as $index => $status) {
 
-            if(Auth::user()->can($status . '-news')){
-                $statusList[$index] =  $status;
+            if (Auth::user()->can($status . '-news')) {
+                $statusList[$index] = $status;
             }
         }
 
@@ -158,7 +158,7 @@ class NewsController extends BackendController
 
     public function show(News $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -203,7 +203,7 @@ class NewsController extends BackendController
             $relatedIDs[$index] = $related_new->related_news_id;
         }
 
-        foreach ($record->tags as $index => $tag){
+        foreach ($record->tags as $index => $tag) {
             $tagIDs[$index] = $tag->id;
         }
 
@@ -219,10 +219,10 @@ class NewsController extends BackendController
             $newsCategoryIDs[$index] = $news_category->id;
         }
 
-        foreach ($statuses as  $index => $status){
+        foreach ($statuses as $index => $status) {
 
-            if(Auth::user()->can($status . '-news')){
-                $statusList[$index] =  $status;
+            if (Auth::user()->can($status . '-news')) {
+                $statusList[$index] = $status;
             }
         }
 
@@ -268,7 +268,7 @@ class NewsController extends BackendController
         $this->removeCacheTags(['News']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'list');
+        return redirect()->route($this->redirectRouteName . $this->view . 'list');
     }
 
 
@@ -304,11 +304,11 @@ class NewsController extends BackendController
          * */
         $tagsRepo = new TagRepository();
 
-        if(!isset($record->id)) {
+        if (!isset($record->id)) {
             $findTagsInContent = Input::get('find_tags_in_content') == "on" ? true : false;
 
-            if($findTagsInContent){
-                foreach ($tagsRepo->findAll() as $tag){
+            if ($findTagsInContent) {
+                foreach ($tagsRepo->findAll() as $tag) {
 
                     $input['content'] = str_replace(
                         $tag->name,
@@ -320,22 +320,22 @@ class NewsController extends BackendController
         }
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }
 
         if ($result) {
 
-            if(!empty($input['thumbnail'])) {
+            if (!empty($input['thumbnail'])) {
 
-                $destination = '/images/news_images/'. $result->id .'/thumbnail';
+                $destination = '/images/news_images/' . $result->id . '/thumbnail';
                 Uploader::removeDirectory($destination);
 
                 $document_name = $input['thumbnail']->getClientOriginalName();
-                Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                Uploader::fileUpload($result, 'thumbnail', $input['thumbnail'], $destination, $document_name);
 
-                $originalPhotoPath = public_path('images/news_images/' . $result->id .'/thumbnail/'. $result->thumbnail);
+                $originalPhotoPath = public_path('images/news_images/' . $result->id . '/thumbnail/' . $result->thumbnail);
 
                 Image::make($originalPhotoPath)
                     ->fit(58, 58)
@@ -362,33 +362,32 @@ class NewsController extends BackendController
                     ->save(public_path('images/news_images/' . $result->id . '/497x358_' . $document_name));
             }
 
-            if(!empty($input['cuff_photo'])) {
+            if (!empty($input['cuff_photo'])) {
 
-                $destination = '/images/news_images/'. $result->id .'/cuff_photo';
+                $destination = '/images/news_images/' . $result->id . '/cuff_photo';
                 Uploader::removeDirectory($destination . '/');
 
                 $document_name = $input['cuff_photo']->getClientOriginalName();
-                Uploader::fileUpload($result , 'cuff_photo', $input['cuff_photo'] , $destination , $document_name);
+                Uploader::fileUpload($result, 'cuff_photo', $input['cuff_photo'], $destination, $document_name);
             }
 
 
-            $this->newsNewsCategoriesStore($result,$input);
-            $this->futureNewsStore($result,$input);
-            $this->recommendationNewsStore($result,$input);
-            $this->relatedNewsNewsStore($result,$input);
-            $this->tagsNewsStore($result,$input);
-            $this->newsPhotoGalleriesStore($result,$input);
-            $this->newsVideoGalleriesStore($result,$input);
-            $this->newsVideosStore($result,$input);
-            $this->newsPhotosStore($result,$input);
-
+            $this->newsNewsCategoriesStore($result, $input);
+            $this->futureNewsStore($result, $input);
+            $this->recommendationNewsStore($result, $input);
+            $this->relatedNewsNewsStore($result, $input);
+            $this->tagsNewsStore($result, $input);
+            $this->newsPhotoGalleriesStore($result, $input);
+            $this->newsVideoGalleriesStore($result, $input);
+            $this->newsVideosStore($result, $input);
+            $this->newsPhotosStore($result, $input);
 
 
             /*
              * slug değişmiş ise ve link kısaltmaya izin verilmişse google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
              *
              * */
-            if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+            if (($record->slug != $result->slug) && Setting::where('attribute_key', 'is_url_shortener')->first()) {
 
                 $linkShortener = new LinkShortener(new Link);
                 $result->short_url = $linkShortener->linkShortener($result->slug);
@@ -409,15 +408,15 @@ class NewsController extends BackendController
 
             $automaticAddTags = Input::get('automatic_add_tags') == "on" ? true : false;
 
-            if($automaticAddTags){
+            if ($automaticAddTags) {
 
-                foreach ($tagsRepo->findAll() as $tag){
+                foreach ($tagsRepo->findAll() as $tag) {
 
-                    if(strpos($input['content'], $tag->name)){
+                    if (strpos($input['content'], $tag->name)) {
 
-                        $isExistTag = $result->tags->where('name',$tag->name)->first();
+                        $isExistTag = $result->tags->where('name', $tag->name)->first();
 
-                        if(empty($isExistTag))
+                        if (empty($isExistTag))
                             $result->tags()->attach($tag->id);
                     }
                 }
@@ -429,7 +428,7 @@ class NewsController extends BackendController
             /*
              *Send a job for ping with delay 10 minutes
              * */
-            if($ping == true && $result->status == 1){
+            if ($ping == true && $result->status == 1) {
                 $pingJob = (new SendPing())
                     ->delay(Carbon::now()->addMinutes(10));
 
@@ -448,7 +447,7 @@ class NewsController extends BackendController
 
     public function newsNewsCategoriesStore(News $record, $input)
     {
-        if(isset($input['news_category_ids'])) {
+        if (isset($input['news_category_ids'])) {
             $record->news_categories()->sync($input['news_category_ids']);
         }
     }
@@ -457,27 +456,27 @@ class NewsController extends BackendController
     {
         $input['future_news__is_active'] = Input::get('future_news__is_active') == "on" ? true : false;
 
-        if(empty($record)){
+        if (empty($record)) {
 
             return Redirect::back()
                 ->withErrors(trans('common.save_failed'))
                 ->withInput($input);
         }
 
-        if(!empty($input['future_datetime'])){
+        if (!empty($input['future_datetime'])) {
 
-            if(!empty($record->future_news)) {
+            if (!empty($record->future_news)) {
 
                 $futureNews = $record->future_news;
                 $futureNews->future_datetime = $input['future_datetime'];
                 $futureNews->is_active = $input['future_news__is_active'];
                 $futureNews->save();
 
-            }else {
+            } else {
 
                 $record->future_news()->create([
-                    'future_datetime'   => $input['future_datetime'],
-                    'is_active'         => $input['future_news__is_active']
+                    'future_datetime' => $input['future_datetime'],
+                    'is_active' => $input['future_news__is_active']
                 ]);
             }
 
@@ -490,7 +489,7 @@ class NewsController extends BackendController
     public function recommendationNewsStore(News $record, $input)
     {
 
-        if(empty($record)){
+        if (empty($record)) {
 
             return Redirect::back()
                 ->withErrors(trans('common.save_failed'))
@@ -498,26 +497,26 @@ class NewsController extends BackendController
         }
 
 
-        if(!empty($input['recommendation_news_order'])){
+        if (!empty($input['recommendation_news_order'])) {
 
             $input['recommendation_news_is_active'] = Input::get('recommendation_news_is_active') == "on" ? true : false;
             $input['recommendation_news_is_cuff'] = Input::get('recommendation_news_is_cuff') == "on" ? true : false;
 
-            if(!empty($record->recommendation_news)){
+            if (!empty($record->recommendation_news)) {
 
-                $recommendation_news            = $record->recommendation_news;
-                $recommendation_news->user_id   = Auth::user()->id;
-                $recommendation_news->order     = $input['recommendation_news_order'];
+                $recommendation_news = $record->recommendation_news;
+                $recommendation_news->user_id = Auth::user()->id;
+                $recommendation_news->order = $input['recommendation_news_order'];
                 $recommendation_news->is_active = $input['recommendation_news_is_active'];
-                $recommendation_news->is_cuff   = $input['recommendation_news_is_cuff'];
+                $recommendation_news->is_cuff = $input['recommendation_news_is_cuff'];
                 $recommendation_news->save();
 
-            }else {
+            } else {
                 $record->recommendation_news()->create([
-                    'user_id'   => Auth::user()->id,
-                    'order'   => $input['recommendation_news_order'],
-                    'is_active'   => $input['recommendation_news_is_active'],
-                    'is_cuff'   => $input['recommendation_news_is_cuff'],
+                    'user_id' => Auth::user()->id,
+                    'order' => $input['recommendation_news_order'],
+                    'is_active' => $input['recommendation_news_is_active'],
+                    'is_cuff' => $input['recommendation_news_is_cuff'],
                 ]);
             }
 
@@ -533,11 +532,11 @@ class NewsController extends BackendController
     {
 //        $record->related_news()->sync($input['related_news_ids']);
 
-        if(isset($input['related_news_ids'])){
+        if (isset($input['related_news_ids'])) {
 
-            RelatedNews::where('news_id',$record->id)->delete();
+            RelatedNews::where('news_id', $record->id)->delete();
 
-            foreach ($input['related_news_ids'] as $in){
+            foreach ($input['related_news_ids'] as $in) {
 
                 $record->related_news()->create([
                     'related_news_id' => $in,
@@ -554,35 +553,35 @@ class NewsController extends BackendController
 
     public function tagsNewsStore(News $record, $input)
     {
-        if(isset($input['tags_ids'])) {
+        if (isset($input['tags_ids'])) {
             $record->tags()->sync($input['tags_ids']);
         }
     }
 
     public function newsPhotoGalleriesStore(News $record, $input)
     {
-        if(isset($input['photo_gallery_ids'])) {
+        if (isset($input['photo_gallery_ids'])) {
             $record->photo_galleries()->sync($input['photo_gallery_ids']);
         }
     }
 
     public function newsVideoGalleriesStore(News $record, $input)
     {
-        if(isset($input['video_gallery_ids'])) {
+        if (isset($input['video_gallery_ids'])) {
             $record->video_galleries()->sync($input['video_gallery_ids']);
         }
     }
 
     public function newsVideosStore(News $record, $input)
     {
-        if(isset($input['videos_ids'])) {
+        if (isset($input['videos_ids'])) {
             $record->videos()->sync($input['videos_ids']);
         }
     }
 
     public function newsPhotosStore(News $record, $input)
     {
-        if(isset($input['photos_ids'])) {
+        if (isset($input['photos_ids'])) {
             $record->photos()->sync($input['photos_ids']);
         }
     }
@@ -590,8 +589,7 @@ class NewsController extends BackendController
     public function newsFilter(Request $request)
     {
         $records = News::
-        whereHas('news_categories', function($query)
-        {
+        whereHas('news_categories', function ($query) {
             if ($news_category_id = Input::get('news_category_id')) {
                 $query->where('news_category_id', "$news_category_id");
             }
@@ -652,12 +650,12 @@ class NewsController extends BackendController
                     $query->where('created_at', '<=', "$end_date");
                 }
             })
-            ->orderBy('updated_at','desc');
+            ->orderBy('updated_at', 'desc');
 
         $newsCategoryList = NewsCategory::newsCategoryList();
         $records = $records->paginate(100);
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records', 'newsCategoryList']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records', 'newsCategoryList']));
     }
 
     public function toggleBooleanType($news_id, $key)
@@ -665,12 +663,12 @@ class NewsController extends BackendController
         $value = null;
         $record = $this->repo->find($news_id);
 
-        if($record->$key){
-            $value =  0;
-        }else
+        if ($record->$key) {
+            $value = 0;
+        } else
             $value = 1;
 
-        $this->repo->update($record->id,[$key => $value]);
+        $this->repo->update($record->id, [$key => $value]);
 
         $this->removeCacheTags(['News']);
         $this->removeHomePageCache();
@@ -682,7 +680,7 @@ class NewsController extends BackendController
     {
         $input = Input::all();
 
-        if(empty($input['status'])){
+        if (empty($input['status'])) {
             return Redirect::back()
                 ->withErrors(trans('common.status_null'))
                 ->withInput($input);
@@ -691,11 +689,11 @@ class NewsController extends BackendController
         $value = null;
         $record = $this->repo->find($input['recordId']);
 
-        $this->repo->update($record->id,['status' => $input['status']]);
+        $this->repo->update($record->id, ['status' => $input['status']]);
 
         $this->removeCacheTags(['News']);
         $this->removeHomePageCache();
-        
+
         return Redirect::back();
     }
 
@@ -703,14 +701,14 @@ class NewsController extends BackendController
     {
         $trashedRecords = News::onlyTrashed()->paginate(50);
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
             'trashedRecords'
         ]));
     }
 
     public function trashedNewsRestore($trashedNewsId)
     {
-        if(!is_numeric($trashedNewsId) || empty($trashedNewsId)){
+        if (!is_numeric($trashedNewsId) || empty($trashedNewsId)) {
 
             return Redirect::back()
                 ->withErrors(trans('common.model_not_resorted'));
@@ -727,13 +725,13 @@ class NewsController extends BackendController
 
     public function historyForceDelete()
     {
-         $input = Input::all();
+        $input = Input::all();
 
-         if(empty($input['historyForceDeleteRecordId']) || !is_numeric($input['historyForceDeleteRecordId'])) {
+        if (empty($input['historyForceDeleteRecordId']) || !is_numeric($input['historyForceDeleteRecordId'])) {
 
-             return Redirect::back()
-                 ->withErrors(trans('common.save_failed'));
-         }
+            return Redirect::back()
+                ->withErrors(trans('common.save_failed'));
+        }
 
         $news = $this->repo->withTrashed()->find($input['historyForceDeleteRecordId']);
         $news->forceDelete();

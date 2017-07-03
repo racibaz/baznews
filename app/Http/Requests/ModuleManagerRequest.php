@@ -24,15 +24,12 @@ class ModuleManagerRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
                     'name' => [
                         'max:255',
@@ -46,8 +43,7 @@ class ModuleManagerRequest extends FormRequest
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('module_manager')->id;
                 return [
                     'name' => [
@@ -61,7 +57,8 @@ class ModuleManagerRequest extends FormRequest
                     'order' => 'integer|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

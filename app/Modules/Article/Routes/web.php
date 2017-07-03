@@ -17,11 +17,11 @@ Route::get('article-author/{slug}', 'Frontend\ArticleAuthorController@show')->na
 Route::get('article-authors', 'Frontend\ArticleAuthorController@index')->name('article_authors');
 Route::get('articles_sitemap', 'Frontend\SitemapController@sitemap')->name('articles_sitemap');
 
-Route::group(['prefix' => 'rss'], function() {
+Route::group(['prefix' => 'rss'], function () {
     Route::get('articles', 'Frontend\RssController@articlesRssRender')->name('rss/articles');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function () {
 
     Route::resource('article_author', 'Backend\ArticleAuthorController');
     Route::post('article.article_article_category_store', 'Backend\ArticleController@article_article_category_store')->name('article_article_category_store');

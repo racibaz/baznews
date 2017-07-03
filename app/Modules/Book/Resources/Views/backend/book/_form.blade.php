@@ -26,7 +26,8 @@
                     <h3 class="box-title">{{trans('book::book.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -104,7 +105,8 @@
                     <h3 class="box-title">{{trans('book::book.status')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -125,7 +127,8 @@
                         </label>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <button class="btn btn-success" type="submit"><i
+                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div><!-- /.box-body -->
                 <!-- /.box-body -->
@@ -134,7 +137,8 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('book::book.select_categories') }}</h3>
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                 </div>
@@ -150,7 +154,8 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('book::book.image') }}</h3>
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                 </div>
@@ -160,12 +165,17 @@
                         {!! Form::label('thumbnail', trans('book::book.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
 
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                <img src="{{ asset('images/books/' . $record->id . '/original/' . $record->thumbnail)}}" alt="{{$record->name}}"/>
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                 style="width: 200px; height: 150px;">
+                                <img src="{{ asset('images/books/' . $record->id . '/original/' . $record->thumbnail)}}"
+                                     alt="{{$record->name}}"/>
                             </div>
                             <div>
-                                <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('book::common.select_image')}}</span><span class="fileinput-exists">{{trans('book::common.change')}}</span>{!! Form::file('thumbnail') !!}</span>
-                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('book::common.remove')}}</a>
+                                <span class="btn btn-default btn-file"><span
+                                            class="fileinput-new">{{trans('book::common.select_image')}}</span><span
+                                            class="fileinput-exists">{{trans('book::common.change')}}</span>{!! Form::file('thumbnail') !!}</span>
+                                <a href="#" class="btn btn-default fileinput-exists"
+                                   data-dismiss="fileinput">{{trans('book::common.remove')}}</a>
                             </div>
                         </div>
                     </div>
@@ -173,11 +183,14 @@
                         {!! Form::label('photo', trans('book::book.photo'),['class'=> 'control-label','style'=>'width:100%']) !!}
 
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                <img src="{{ asset('images/books/' . $record->id . '/photo/' . $record->photo)}}" alt="{{$record->name}}"/>
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                 style="width: 200px; height: 150px;">
+                                <img src="{{ asset('images/books/' . $record->id . '/photo/' . $record->photo)}}"
+                                     alt="{{$record->name}}"/>
                             </div>
                             <div>
-                                <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>{!! Form::file('photo') !!}</span>
+                                <span class="btn btn-default btn-file"><span
+                                            class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>{!! Form::file('photo') !!}</span>
                                 <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
                             </div>
                         </div>
@@ -193,10 +206,13 @@
 
 @endsection
 @section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
-    <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}"
+          rel="stylesheet">
 @endsection
 @section('js')
 
@@ -221,13 +237,13 @@
         };
         CKEDITOR.replace('description', options);
         //CKEDİTOR END
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.select2').select2();
             $('.tagsinput').tagsinput();
             //Date range picker with time picker
             $('#show_time').datetimepicker({
-                format:'YYYY-MM-DD',
-                locale:'tr'
+                format: 'YYYY-MM-DD',
+                locale: 'tr'
             });
         });
         $(window).resize(function () {
@@ -237,11 +253,11 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
         //active menu
-        activeMenu('books','book_management');
+        activeMenu('books', 'book_management');
     </script>
 @endsection
 

@@ -24,7 +24,7 @@ class VideoGalleryController extends Controller
     {
         $id = substr(strrchr($slug, '-'), 1);
 
-        return Cache::tags(['VideoGalleryController', 'News', 'video_gallery'])->rememberForever('video_gallery:'.$id, function() use($id) {
+        return Cache::tags(['VideoGalleryController', 'News', 'video_gallery'])->rememberForever('video_gallery:' . $id, function () use ($id) {
 
             $video = $this->videoRepo->getVideo($id);
             abort_if(empty($video), 404, trans('common.not_found'));
@@ -33,8 +33,8 @@ class VideoGalleryController extends Controller
             $videoGallery = $video->video_gallery;
             $tags = $video->tags;
 
-            $nextVideo = $this->repo->getGalleryNextVideo($videoGallery,$video);
-            $previousVideo = $this->repo->getGalleryPreviousVideo($videoGallery,$video);
+            $nextVideo = $this->repo->getGalleryNextVideo($videoGallery, $video);
+            $previousVideo = $this->repo->getGalleryPreviousVideo($videoGallery, $video);
             $otherGalleryVideos = $this->repo->getOtherGalleryVideos($video);
             $otherGalleries = $this->repo->getOtherGalleries($videoGallery);
             $lastestVideos = $this->videoRepo->getLatestVideos(20);

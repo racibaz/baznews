@@ -15,17 +15,17 @@ class ArticleCategoriesTableSeeder extends Seeder
     public function run()
     {
         ArticleCategory::create([
-                'parent_id'                 => null,
-                '_lft'                      => 1,
-                '_rgt'                      => 1,
-                'name'                      => 'Dünya makalesi',
-                'slug'                      => 'dunya_makalesi',
-                'description'               => 'Dünya makalesivs..',
-                'keywords'                  => 'keywords',
-                'hit'                       => 1,
-                'icon'                      => 'icon path',
-                'is_cuff'                   => 1,
-                'is_active'                 => 1,
+            'parent_id' => null,
+            '_lft' => 1,
+            '_rgt' => 1,
+            'name' => 'Dünya makalesi',
+            'slug' => 'dunya_makalesi',
+            'description' => 'Dünya makalesivs..',
+            'keywords' => 'keywords',
+            'hit' => 1,
+            'icon' => 'icon path',
+            'is_cuff' => 1,
+            'is_active' => 1,
         ]);
     }
 }

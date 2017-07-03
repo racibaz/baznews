@@ -38,21 +38,21 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $record)
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('contact.show', $record->subject , $record, [] ) !!}</td>
-                                    <td>{!!$record->is_read ? '<label class="badge bg-green">' . trans('contact.read') . '</label>' : '<label class="badge bg-brown">' . trans('contact.unread') . '</label>'!!}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('contact.destroy',  $record))) !!}
-                                                {!! link_to_route('contact.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                                                {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                        @foreach($records as $record)
+                            <tr>
+                                <td>{{$record->id}}</td>
+                                <td>{!! link_to_route('contact.show', $record->subject , $record, [] ) !!}</td>
+                                <td>{!!$record->is_read ? '<label class="badge bg-green">' . trans('contact.read') . '</label>' : '<label class="badge bg-brown">' . trans('contact.unread') . '</label>'!!}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('contact.destroy',  $record))) !!}
+                                        {!! link_to_route('contact.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
@@ -75,6 +75,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('contact_management','');
+        activeMenu('contact_management', '');
     </script>
 @endsection

@@ -24,17 +24,14 @@ class BiographyRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    'user_id'               => 'required|integer',
+                    'user_id' => 'required|integer',
                     'title' => [
                         'max:255',
                         Rule::unique('biographies'),
@@ -49,21 +46,20 @@ class BiographyRequest extends FormRequest
                         'max:255',
                         Rule::unique('biographies'),
                     ],
-                    'short_url'             => 'url|max:255|nullable',
-                    'content'               => 'nullable',
-                    'photo'                 => 'image|nullable',
-                    'description'           => 'string|max:255|nullable',
-                    'keywords'              => 'string|max:255|nullable',
-                    'hit'                   => 'integer|nullable',
-                    'order'                 => 'integer|nullable',
+                    'short_url' => 'url|max:255|nullable',
+                    'content' => 'nullable',
+                    'photo' => 'image|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'hit' => 'integer|nullable',
+                    'order' => 'integer|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('biography')->id;
                 return [
-                    'user_id'               => 'required|integer',
+                    'user_id' => 'required|integer',
                     'title' => [
                         'max:255',
                         Rule::unique('biographies')->ignore($id),
@@ -79,16 +75,17 @@ class BiographyRequest extends FormRequest
                         'max:255',
                         Rule::unique('biographies')->ignore($id),
                     ],
-                    'short_url'             => 'url|max:255|nullable',
-                    'content'               => 'nullable',
-                    'photo'                 => 'image|nullable',
-                    'description'           => 'string|max:255|nullable',
-                    'keywords'              => 'string|max:255|nullable',
-                    'hit'                   => 'integer|nullable',
-                    'order'                 => 'integer|nullable',
+                    'short_url' => 'url|max:255|nullable',
+                    'content' => 'nullable',
+                    'photo' => 'image|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'hit' => 'integer|nullable',
+                    'order' => 'integer|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

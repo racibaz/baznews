@@ -24,28 +24,24 @@ class AdvertisementRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
                     'name' => [
                         'required',
                         'max:255',
                         Rule::unique('advertisements'),
                     ],
-                    'code'        => 'nullable',
+                    'code' => 'nullable',
                     'description' => 'max:255|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('advertisement')->id;
                 return [
                     'name' => [
@@ -53,11 +49,12 @@ class AdvertisementRequest extends FormRequest
                         'max:255',
                         Rule::unique('advertisements')->ignore($id),
                     ],
-                    'code'        => 'nullable',
+                    'code' => 'nullable',
                     'description' => 'max:255|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

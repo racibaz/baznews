@@ -1,7 +1,7 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
-    
+
     <article class="container" id="container">
         <div class="row">
             <div class="col-lg-8">
@@ -16,7 +16,8 @@
                                     <div class="col-lg-4 col-md-3 col-xs-4">
                                         <div class="frame-image">
                                             <a href="{!! route('show_news', ['slug' => $record->slug]) !!}">
-                                                <img src="{{ asset('images/news_images/' . $record->id . '/196x150_' . $record->thumbnail )}}" alt="{{ $record->title }}" >
+                                                <img src="{{ asset('images/news_images/' . $record->id . '/196x150_' . $record->thumbnail )}}"
+                                                     alt="{{ $record->title }}">
                                             </a>
                                         </div>
                                     </div>
@@ -26,7 +27,9 @@
                                                 <h2>{{$record->title}}</h2>
                                             </a>
                                             <div class="news-meta-left">
-                                                <a href="#" class="meta-date" title="" ><i class="fa fa-clock-o"></i> {{$record->updated_at->diffForHumans()}}</a>
+                                                <a href="#" class="meta-date" title=""><i
+                                                            class="fa fa-clock-o"></i> {{$record->updated_at->diffForHumans()}}
+                                                </a>
                                             </div>
                                             <div class="news-excerpt">
                                                 {{$record->spot}}
@@ -51,7 +54,7 @@
                 </div><!-- /.sidebar -->
             </div><!-- /.col -->
         </div>
-     </article>
+    </article>
 @endsection
 
 @section('meta_tags')
@@ -65,10 +68,10 @@
     <meta name="twitter:description" content="{{$search}}">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ $search }} " />
-    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}" />
-    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}" />
-    <meta property="og:description" content="{{$search}}" />
+    <meta property="og:title" content="{{ $search }} "/>
+    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}"/>
+    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}"/>
+    <meta property="og:description" content="{{$search}}"/>
     <meta property="fb:app_id" content="671303379704288">
     <meta property="article:author" content="">
 @endsection

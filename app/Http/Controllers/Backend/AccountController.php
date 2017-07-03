@@ -23,15 +23,15 @@ class AccountController extends BackendController
 
         $this->view = 'account.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function show(Account $record)
     {
         $revisions = $record->getUserRevisions($record->id);
-        $events = Event::where('user_id',$record->id)->get();
+        $events = Event::where('user_id', $record->id)->get();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record','revisions', 'events'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record', 'revisions', 'events'));
     }
 
 
@@ -42,7 +42,7 @@ class AccountController extends BackendController
         $roles = Role::roleList();
         $groups = Group::groupList();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record','countries' ,'cities', 'roles', 'groups']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'countries', 'cities', 'roles', 'groups']));
     }
 
 
@@ -65,7 +65,7 @@ class AccountController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id, $input);
             }
 
             if ($result) {

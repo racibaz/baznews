@@ -22,40 +22,35 @@ class ArticleDatabaseSeeder extends Seeder
         $this->call(SitemapsTableSeeder::class);
 
 
-
-        $setting = Setting::where('attribute_key','article_count')->first();
-        if(empty($setting))
-        {
+        $setting = Setting::where('attribute_key', 'article_count')->first();
+        if (empty($setting)) {
             Setting::create([
-                'attribute_key'               => 'article_count',
-                'attribute_value'             => '5',
+                'attribute_key' => 'article_count',
+                'attribute_value' => '5',
             ]);
         }
 
-        $setting = Setting::where('attribute_key','article_author_count')->first();
-        if(empty($setting))
-        {
+        $setting = Setting::where('attribute_key', 'article_author_count')->first();
+        if (empty($setting)) {
             Setting::create([
-                'attribute_key'               => 'article_author_count',
-                'attribute_value'             => '5',
+                'attribute_key' => 'article_author_count',
+                'attribute_value' => '5',
             ]);
         }
 
-        $setting = Setting::where('attribute_key','recent_article_widget_list_count')->first();
-        if(empty($setting))
-        {
+        $setting = Setting::where('attribute_key', 'recent_article_widget_list_count')->first();
+        if (empty($setting)) {
             Setting::create([
-                'attribute_key'               => 'recent_article_widget_list_count',
-                'attribute_value'             => '5',
+                'attribute_key' => 'recent_article_widget_list_count',
+                'attribute_value' => '5',
             ]);
         }
 
-        $setting = Setting::where('attribute_key','article_authors_widget_list_count')->first();
-        if(empty($setting))
-        {
+        $setting = Setting::where('attribute_key', 'article_authors_widget_list_count')->first();
+        if (empty($setting)) {
             Setting::create([
-                'attribute_key'               => 'article_authors_widget_list_count',
-                'attribute_value'             => '5',
+                'attribute_key' => 'article_authors_widget_list_count',
+                'attribute_value' => '5',
             ]);
         }
     }

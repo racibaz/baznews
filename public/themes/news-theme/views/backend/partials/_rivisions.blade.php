@@ -1,54 +1,52 @@
-
-
 <ul class="timeline">
 
-    @foreach($rivisions as $history)
+@foreach($rivisions as $history)
     <!-- timeline time label -->
-    <li class="time-label">
+        <li class="time-label">
         <span class="bg-red">
             {{$history->updated_at}}
         </span>
-    </li>
-    <!-- /.timeline-label -->
+        </li>
+        <!-- /.timeline-label -->
 
-    <!-- timeline item -->
-    <li>
-        <!-- timeline icon -->
-        <i class="fa fa-globe bg-blue"></i>
-        <div class="timeline-item">
-            <span class="time"><i class="fa fa-clock-o"></i> {{$history->updated_at}}</span>
+        <!-- timeline item -->
+        <li>
+            <!-- timeline icon -->
+            <i class="fa fa-globe bg-blue"></i>
+            <div class="timeline-item">
+                <span class="time"><i class="fa fa-clock-o"></i> {{$history->updated_at}}</span>
 
-            <h3 class="timeline-header">{{ $history->userResponsible()->first_name }}</h3>
+                <h3 class="timeline-header">{{ $history->userResponsible()->first_name }}</h3>
 
-            <div class="timeline-body">
-                <h2>changed -> {{ $history->fieldName() }} </h2>
-                <p>
-                    from
-                </p>
-                <pre>
+                <div class="timeline-body">
+                    <h2>changed -> {{ $history->fieldName() }} </h2>
+                    <p>
+                        from
+                    </p>
+                    <pre>
                     {{ $history->oldValue() }}
                 </pre>
-                <p>
-                    to
-                </p>
-                <pre>
+                    <p>
+                        to
+                    </p>
+                    <pre>
                     {{ $history->newValue() }}
                 </pre>
 
-            </div>
+                </div>
 
-            {{--<div class="timeline-footer">--}}
+                {{--<div class="timeline-footer">--}}
                 {{--<a class="btn btn-primary btn-xs">...</a>--}}
-            {{--</div>--}}
-        </div>
-    </li>
-    <!-- END timeline item -->
+                {{--</div>--}}
+            </div>
+        </li>
+        <!-- END timeline item -->
     @endforeach
 </ul>
 {{--@foreach($rivisions as $history)--}}
-    {{--@if($history->key == 'created_at' && !$history->old_value)--}}
-        {{--<li>{{ $history->userResponsible()->first_name }} created this resource at {{ $history->newValue() }}</li>--}}
-    {{--@else--}}
-        {{--<li>{{ $history->userResponsible()->first_name }} changed {{ $history->fieldName() }} from {{ $history->oldValue() }} to {{ $history->newValue() }}</li>--}}
-    {{--@endif--}}
+{{--@if($history->key == 'created_at' && !$history->old_value)--}}
+{{--<li>{{ $history->userResponsible()->first_name }} created this resource at {{ $history->newValue() }}</li>--}}
+{{--@else--}}
+{{--<li>{{ $history->userResponsible()->first_name }} changed {{ $history->fieldName() }} from {{ $history->oldValue() }} to {{ $history->newValue() }}</li>--}}
+{{--@endif--}}
 {{--@endforeach--}}

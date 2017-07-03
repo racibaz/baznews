@@ -8,9 +8,9 @@ use App\Modules\Biography\Models\BiographySetting;
 use App\Repositories\SettingRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 
 class BiographySettingController extends BackendController
 {
@@ -20,7 +20,7 @@ class BiographySettingController extends BackendController
 
         $this->view = 'biography_setting.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
@@ -47,9 +47,9 @@ class BiographySettingController extends BackendController
                 ->withInput($input);
         }
 
-        if(!empty($input['biography_count'])){
+        if (!empty($input['biography_count'])) {
             $record = $this->repo->findBy('attribute_key', 'biography_count');
-            $this->repo->update($record->id,['attribute_value' => $input['biography_count']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['biography_count']]);
         }
 
 

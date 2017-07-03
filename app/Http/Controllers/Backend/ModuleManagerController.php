@@ -4,13 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\ModuleManagerRequest;
 use App\Models\ModuleManager;
-use App\Models\WidgetManager;
 use App\Repositories\ModuleManagerRepository as Repo;
 use App\Repositories\WidgetManagerRepository;
-use Cache;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -25,7 +22,7 @@ class ModuleManagerController extends BackendController
 
         $this->view = 'module_manager.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
@@ -34,7 +31,7 @@ class ModuleManagerController extends BackendController
         $moduleCount = Module::count();
 
         $records = $this->repo->paginate();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(
+        return Theme::view($this->getViewName(__FUNCTION__), compact(
             'records',
             'moduleCount',
             'modules'
@@ -44,7 +41,7 @@ class ModuleManagerController extends BackendController
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -56,13 +53,13 @@ class ModuleManagerController extends BackendController
 
     public function show(ModuleManager $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(ModuleManager $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -79,7 +76,7 @@ class ModuleManagerController extends BackendController
         $this->removeCacheTags(['routeList']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -97,7 +94,7 @@ class ModuleManagerController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                list($status, $instance) = $this->repo->update($record->id,$input);
+                list($status, $instance) = $this->repo->update($record->id, $input);
             } else {
                 list($status, $instance) = $this->repo->create($input);
             }
@@ -119,10 +116,10 @@ class ModuleManagerController extends BackendController
 
     public function moduleActivationToggle($moduleSlug)
     {
-        if (Module::isEnabled($moduleSlug) )  {
+        if (Module::isEnabled($moduleSlug)) {
             Module::disable($moduleSlug);
 
-        }else{
+        } else {
             Module::enable($moduleSlug);
         }
 
@@ -183,7 +180,7 @@ class ModuleManagerController extends BackendController
         $widget = $widgetManagerRepo->findBy('module_name', $moduleName);
 
 
-        if(isset($widget))
+        if (isset($widget))
             $widget->forceDelete();
 
         $this->removeCacheTags(['Widget']);

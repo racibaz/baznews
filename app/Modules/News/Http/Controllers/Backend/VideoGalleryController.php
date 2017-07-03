@@ -16,7 +16,6 @@ use Caffeinated\Themes\Facades\Theme;
 use Exception;
 use Mremi\UrlShortener\Model\Link;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -37,7 +36,7 @@ class VideoGalleryController extends BackendController
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
@@ -45,7 +44,7 @@ class VideoGalleryController extends BackendController
     {
         $videoCategories = VideoCategory::videoCategoryList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'videoCategories']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'videoCategories']));
     }
 
 
@@ -57,14 +56,14 @@ class VideoGalleryController extends BackendController
 
     public function show(VideoGallery $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(VideoGallery $record)
     {
         $videoCategories = VideoCategory::videoCategoryList();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'videoCategories']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'videoCategories']));
     }
 
 
@@ -82,7 +81,7 @@ class VideoGalleryController extends BackendController
         $this->removeCacheTags(['VideoGalleryController']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -93,50 +92,50 @@ class VideoGalleryController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }
 
         if ($result) {
 
-            if(!empty($input['thumbnail'])) {
+            if (!empty($input['thumbnail'])) {
 
-                $destination = '/video_gallery/'. $result->id;
+                $destination = '/video_gallery/' . $result->id;
                 Uploader::removeDirectory($destination);
 
                 $document_name = $input['thumbnail']->getClientOriginalName();
-                Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                Uploader::fileUpload($result, 'thumbnail', $input['thumbnail'], $destination, $document_name);
 
-                $originalPhotoPath = public_path('video_gallery/'. $result->id .'/'. $result->thumbnail);
-
-                Image::make($originalPhotoPath)
-                    ->resize(58,58)
-                    ->save(public_path('video_gallery/'. $result->id .'/58x58_' . $document_name));
+                $originalPhotoPath = public_path('video_gallery/' . $result->id . '/' . $result->thumbnail);
 
                 Image::make($originalPhotoPath)
-                    ->resize(497,358)
-                    ->save(public_path('video_gallery/'. $result->id .'/497x358_' . $document_name));
+                    ->resize(58, 58)
+                    ->save(public_path('video_gallery/' . $result->id . '/58x58_' . $document_name));
 
                 Image::make($originalPhotoPath)
-                    ->resize(658,404)
-                    ->save(public_path('video_gallery/'. $result->id .'/658x404_' . $document_name));
+                    ->resize(497, 358)
+                    ->save(public_path('video_gallery/' . $result->id . '/497x358_' . $document_name));
 
                 Image::make($originalPhotoPath)
-                    ->resize(224,195)
-                    ->save(public_path('video_gallery/'. $result->id .'/224x195_' . $document_name));
+                    ->resize(658, 404)
+                    ->save(public_path('video_gallery/' . $result->id . '/658x404_' . $document_name));
 
                 Image::make($originalPhotoPath)
-                    ->resize(165,90)
-                    ->save(public_path('video_gallery/'. $result->id .'/165x90_' . $document_name));
+                    ->resize(224, 195)
+                    ->save(public_path('video_gallery/' . $result->id . '/224x195_' . $document_name));
 
                 Image::make($originalPhotoPath)
-                    ->resize(457,250)
-                    ->save(public_path('video_gallery/'. $result->id .'/257x250_' . $document_name));
+                    ->resize(165, 90)
+                    ->save(public_path('video_gallery/' . $result->id . '/165x90_' . $document_name));
+
+                Image::make($originalPhotoPath)
+                    ->resize(457, 250)
+                    ->save(public_path('video_gallery/' . $result->id . '/257x250_' . $document_name));
 
                 Image::make($originalPhotoPath)
                     ->resize(213, 116)
-                    ->save(public_path('video_gallery/'. $result->id .'/213x116_' . $document_name));
+                    ->save(public_path('video_gallery/' . $result->id . '/213x116_' . $document_name));
             }
 
 
@@ -145,7 +144,7 @@ class VideoGalleryController extends BackendController
              * google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
              *
              * */
-            if(($record->slug != $result->slug) && Setting::where('attribute_key','is_url_shortener')->first()){
+            if (($record->slug != $result->slug) && Setting::where('attribute_key', 'is_url_shortener')->first()) {
 
                 $linkShortener = new LinkShortener(new Link);
                 $result->short_url = $linkShortener->linkShortener($result->slug);
@@ -186,7 +185,7 @@ class VideoGalleryController extends BackendController
 
         /*dosya isminden extension kısmını çıkartıyoruz.*/
         //dosyanın orjinal ismini alıyoruz(uzantılı).
-        $originalFileName =  explode('.', $file->getClientOriginalName());
+        $originalFileName = explode('.', $file->getClientOriginalName());
 
         //uzantısını kayıt etmek için uzantısını değişkene atıyoruz.
         $extention = array_last($originalFileName);
@@ -205,16 +204,16 @@ class VideoGalleryController extends BackendController
         //TODO  Storage facede ile cloud işlemleri de yapılabilecek.
 
         $video = $gallery->videos()->create([
-            'video_gallery_id'  => 1,
-            'name'              => $name,
-            'slug'              => str_slug($name),
-            'file'              => $fileName,
-            'is_comment'        => 1,
-            'is_active'         => 1
+            'video_gallery_id' => 1,
+            'name' => $name,
+            'slug' => str_slug($name),
+            'file' => $fileName,
+            'is_comment' => 1,
+            'is_active' => 1
         ]);
 
         $videoRepo = new VideoRepository();
-        $result = $videoRepo->update($video->id,[
+        $result = $videoRepo->update($video->id, [
             'name' => $name
         ]);
 
@@ -222,10 +221,9 @@ class VideoGalleryController extends BackendController
     }
 
 
-
     public function updateGalleryVideos(Request $request)
     {
-        $subtitle = $content = $order = $isComment = $isActive = $link =   null;
+        $subtitle = $content = $order = $isComment = $isActive = $link = null;
 
         $inputs = Input::all();
 
@@ -233,112 +231,109 @@ class VideoGalleryController extends BackendController
 
         //form name alanından gönderdiğimiz  photo id lerini alıyoruz
         //value alanlarını subtitle ve content ile değiştiriyoruz.
-        foreach (array_keys($inputs) as $key)
-        {
-            if(!empty($inputs[$key]))
-            {
+        foreach (array_keys($inputs) as $key) {
+            if (!empty($inputs[$key])) {
                 /*
                  * $fields[0] değeri content veya subtitle olabiliyor
                  * $fields[1] değeri ise formdan verdiğimiz id oluyor.
                  * */
 
-                $fields = explode('/',$key);
+                $fields = explode('/', $key);
 
                 $field = $fields[0];
                 $id = $fields[1];
 
 
-                if($field == 'delete'){
-                    try{
-                        $video =  Video::find($id)->delete();
+                if ($field == 'delete') {
+                    try {
+                        $video = Video::find($id)->delete();
 
                         //todo video, video gallery listesinden çıkarılmalı.
                         //$result = Video::deleteVideoFiles($video);
                         continue;
-                    }catch (Exception $e)
-                    {
+                    } catch (Exception $e) {
                         //
                     }
 
-                }else if($field == 'subtitle') {
+                } else if ($field == 'subtitle') {
 
                     $subtitle = $inputs[$key];
 
-                }else if($field == 'content') {
+                } else if ($field == 'content') {
 
                     $content = $inputs[$key];
 
-                }else if($field == 'link') {
+                } else if ($field == 'link') {
 
                     $link = $inputs[$key];
 
-                }else if($field == 'order') {
+                } else if ($field == 'order') {
 
                     $order = $inputs[$key];
 
-                }else if($field == 'is_comment') {
+                } else if ($field == 'is_comment') {
 
                     //todo is_comment ve is_active hatası birinden biri oluyor ikisi de olmalı.
                     $isComment = $inputs[$key] == "on" ? true : false;
 
-                }else if($field == 'is_active') {
+                } else if ($field == 'is_active') {
 
                     $isActive = $inputs[$key] == "on" ? true : false;
 
-                }else if($field == 'thumbnail') {
+                } else if ($field == 'thumbnail') {
 
                     //todo detaylı bakılacak.
                     $record = Video::find($id);
 
                     $oldPath = !empty($record->thumbnail) ? $record->thumbnail : null;
-                    $document_name = $inputs['thumbnail/'. $record->id]->getClientOriginalName();
-                    $destination = '/video_gallery/'. $record->video_gallery_id .'/photos';
-                    Uploader::fileUpload($record , 'thumbnail', $inputs['thumbnail/'. $record->id] , $destination , $document_name);
+                    $document_name = $inputs['thumbnail/' . $record->id]->getClientOriginalName();
+                    $destination = '/video_gallery/' . $record->video_gallery_id . '/photos';
+                    Uploader::fileUpload($record, 'thumbnail', $inputs['thumbnail/' . $record->id], $destination, $document_name);
                     Uploader::removeFile($oldPath);
 
 
-                    Image::make(public_path('videos/'. $record->id .'/'. $record->thumbnail))
-                        ->resize(58,58)
-                        ->save(public_path('videos/'. $record->id .'/58x58_' . $document_name));
+                    Image::make(public_path('videos/' . $record->id . '/' . $record->thumbnail))
+                        ->resize(58, 58)
+                        ->save(public_path('videos/' . $record->id . '/58x58_' . $document_name));
 
-                    Image::make(public_path('videos/'. $record->id .'/photos/'. $record->thumbnail))
-                        ->resize(497,358)
-                        ->save(public_path('videos/'. $record->id .'/497x358_' . $document_name));
+                    Image::make(public_path('videos/' . $record->id . '/photos/' . $record->thumbnail))
+                        ->resize(497, 358)
+                        ->save(public_path('videos/' . $record->id . '/497x358_' . $document_name));
 
-                    Image::make(public_path('videos/'. $record->id .'/'. $record->thumbnail))
-                        ->resize(658,404)
-                        ->save(public_path('videos/'. $record->id .'/658x404_' . $document_name));
+                    Image::make(public_path('videos/' . $record->id . '/' . $record->thumbnail))
+                        ->resize(658, 404)
+                        ->save(public_path('videos/' . $record->id . '/658x404_' . $document_name));
 
-                    Image::make(public_path('videos/'. $record->id .'/'. $record->thumbnail))
-                        ->resize(224,195)
-                        ->save(public_path('videos/'. $record->id .'/224x195_' . $document_name));
+                    Image::make(public_path('videos/' . $record->id . '/' . $record->thumbnail))
+                        ->resize(224, 195)
+                        ->save(public_path('videos/' . $record->id . '/224x195_' . $document_name));
 
-                    Image::make(public_path('videos/'. $record->id .'/'. $record->thumbnail))
-                        ->resize(165,90)
-                        ->save(public_path('videos/'. $record->id .'/165x90_' . $document_name));
+                    Image::make(public_path('videos/' . $record->id . '/' . $record->thumbnail))
+                        ->resize(165, 90)
+                        ->save(public_path('videos/' . $record->id . '/165x90_' . $document_name));
 
-                    Image::make(public_path('videos/'. $record->id .'/'. $record->thumbnail))
-                        ->resize(457,250)
-                        ->save(public_path('videos/'. $record->id .'/257x250_' . $document_name));
+                    Image::make(public_path('videos/' . $record->id . '/' . $record->thumbnail))
+                        ->resize(457, 250)
+                        ->save(public_path('videos/' . $record->id . '/257x250_' . $document_name));
 
-                    Image::make(public_path('videos/'. $record->id .'/'. $record->thumbnail))
+                    Image::make(public_path('videos/' . $record->id . '/' . $record->thumbnail))
                         ->resize(213, 116)
-                        ->save(public_path('video_gallery/'. $record->id .'/213x116_' . $document_name));
+                        ->save(public_path('video_gallery/' . $record->id . '/213x116_' . $document_name));
                 }
 
-                if(is_numeric($id)){
+                if (is_numeric($id)) {
 
                     $video = Video::find($id);
 
                     //video silinmemiş ise işleme devam ediyoruz.
-                    if(!empty($video)){
+                    if (!empty($video)) {
                         //ikisinden biri boş ise önceki değerini veriyoruz.
-                        $video->subtitle =  $subtitle ? $subtitle : $video->subtitle;
-                        $video->content =  $content ? $content : $video->content;
-                        $video->link =  $link ? $link : $video->link;
-                        $video->order =  $order ? $order : $video->order;
-                        $video->is_comment =  $isComment == true ? true : false;
-                        $video->is_active =  $isActive == true ? true : false;
+                        $video->subtitle = $subtitle ? $subtitle : $video->subtitle;
+                        $video->content = $content ? $content : $video->content;
+                        $video->link = $link ? $link : $video->link;
+                        $video->order = $order ? $order : $video->order;
+                        $video->is_comment = $isComment == true ? true : false;
+                        $video->is_active = $isActive == true ? true : false;
                         $video->save();
                     }
                 }

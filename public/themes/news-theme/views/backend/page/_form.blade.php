@@ -26,7 +26,8 @@
                     <h3 class="box-title">{{trans('page.content')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -86,7 +87,8 @@
                     <h3 class="box-title">{{trans('page.status')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -119,7 +121,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-12">
-                                <button class="btn btn-success pull-right" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                                <button class="btn btn-success pull-right" type="submit"><i
+                                            class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                             </div>
                         </div>
                     </div>
@@ -151,10 +154,10 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
         //active menu
-        activeMenu('page','');
+        activeMenu('page', '');
     </script>
 @endsection

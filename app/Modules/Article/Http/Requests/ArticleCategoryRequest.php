@@ -24,15 +24,12 @@ class ArticleCategoryRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
                     'name' => [
                         'required',
@@ -44,15 +41,14 @@ class ArticleCategoryRequest extends FormRequest
                         Rule::unique('article_categories'),
                         'nullable',
                     ],
-                    'description'   => 'string|max:255|nullable',
-                    'keywords'      => 'string|max:255|nullable',
-                    'hit'           => 'integer|nullable',
-                    'icon'          => 'string|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'hit' => 'integer|nullable',
+                    'icon' => 'string|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('article_category')->id;
                 return [
                     'name' => [
@@ -65,13 +61,14 @@ class ArticleCategoryRequest extends FormRequest
                         'max:255',
                         Rule::unique('article_categories')->ignore($id),
                     ],
-                    'description'   => 'string|max:255|nullable',
-                    'keywords'      => 'string|max:255|nullable',
-                    'hit'           => 'integer|nullable',
-                    'icon'          => 'string|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'hit' => 'integer|nullable',
+                    'icon' => 'string|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

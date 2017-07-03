@@ -7,7 +7,8 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{!! URL::route('video_category.index') !!}">{{trans('news::video_category.management')}}</a></li>
+            <li><a href="{!! URL::route('video_category.index') !!}">{{trans('news::video_category.management')}}</a>
+            </li>
             <li class="active">{{$record->name}}</li>
         </ol>
     </section>
@@ -20,7 +21,8 @@
                     <h3 class="box-title">{{$record->name}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->

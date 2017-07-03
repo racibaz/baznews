@@ -16,14 +16,14 @@
                                         <?php
                                         $default = asset('default_user_avatar.jpg');
                                         $size = 40;
-                                        $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $record->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+                                        $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($record->email))) . "?d=" . urlencode($default) . "&s=" . $size;
                                         ?>
                                         <img src="<?php echo $grav_url; ?>" alt="" class="img-rounded"/>
                                     @endif
                                 </div>
                                 <div class="text-center">
                                     <h2 class="account-name"><i class="fa fa-user"></i> {{$record->name}} </h2>
-                                    <p><i class="fa fa-envelope"></i>  {{$record->email}}</p>
+                                    <p><i class="fa fa-envelope"></i> {{$record->email}}</p>
                                     {!! link_to_route('account.edit', trans('account.edit'), $record, ['class' => 'btn btn-primary'] ) !!}
                                     {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-info'] ) !!}
                                 </div>
@@ -37,10 +37,13 @@
                                     @endpermission
                                 </p>
                                 <p>
-                                    <a href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="btn btn-danger btn-block">
+                                    <a href="{{ url('/logout') }}"
+                                       onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                                       class="btn btn-danger btn-block">
                                         <i class="fa fa-sign-out"></i>{{trans('account.logout')}}
                                     </a>
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                      style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                                 </p>

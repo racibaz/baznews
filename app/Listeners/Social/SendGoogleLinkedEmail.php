@@ -22,7 +22,7 @@ class SendGoogleLinkedEmail
     /**
      * Handle the event.
      *
-     * @param  GoogleAccountWasLinked  $event
+     * @param  GoogleAccountWasLinked $event
      * @return void
      */
     public function handle(GoogleAccountWasLinked $event)

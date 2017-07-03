@@ -25,7 +25,8 @@
                 <div class="box-header">
                     <h3 class="box-title"><strong>{{trans('tag.management')}}</strong></h3>
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                 </div>
@@ -41,22 +42,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $record)
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('tag.show', $record->name , $record, [] ) !!}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('tag.destroy',  $record))) !!}
+                        @foreach($records as $record)
+                            <tr>
+                                <td>{{$record->id}}</td>
+                                <td>{!! link_to_route('tag.show', $record->name , $record, [] ) !!}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('tag.destroy',  $record))) !!}
 
-                                            {!! link_to_route('tag.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! link_to_route('tag.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
 
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
@@ -80,6 +81,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('tag','');
+        activeMenu('tag', '');
     </script>
 @endsection

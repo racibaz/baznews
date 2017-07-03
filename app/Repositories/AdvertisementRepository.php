@@ -12,6 +12,6 @@ class AdvertisementRepository extends EloquentRepository
 
     public function advertisements()
     {
-        return $this->where('is_active',1)->findAll();
+        return $this->where('is_active', 1)->findAll();
     }
 }

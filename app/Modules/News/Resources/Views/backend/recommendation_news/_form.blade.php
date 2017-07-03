@@ -7,7 +7,9 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{!! URL::route('recommendation_news.index') !!}">{{trans('news::recommendation_news.management')}}</a></li>
+            <li>
+                <a href="{!! URL::route('recommendation_news.index') !!}">{{trans('news::recommendation_news.management')}}</a>
+            </li>
             <li class="active">{{trans('news::recommendation_news.create_edit')}}</li>
         </ol>
     </section>
@@ -25,7 +27,8 @@
                     <h3 class="box-title">{{trans('news::recommendation_news.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -57,7 +60,8 @@
                         </label>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <button class="btn btn-success" type="submit"><i
+                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -72,13 +76,13 @@
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.select2').select2();
         });
         $(window).resize(function () {
             $('.select2').select2();
         });
         //active menu
-        activeMenu('recommendation_news','news_management');
+        activeMenu('recommendation_news', 'news_management');
     </script>
 @endsection

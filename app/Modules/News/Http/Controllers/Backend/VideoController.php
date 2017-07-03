@@ -24,13 +24,13 @@ class VideoController extends BackendController
 
         $this->view = 'video.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
     public function create()
@@ -42,7 +42,7 @@ class VideoController extends BackendController
         $videoGalleryList = VideoGallery::videoGalleryList();
         $tagList = Tag::tagList();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
             'record',
             'videoCategoryList',
             'videoGalleryList',
@@ -59,7 +59,7 @@ class VideoController extends BackendController
 
     public function show(Video $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
     public function edit(Video $record)
@@ -69,12 +69,12 @@ class VideoController extends BackendController
         $videoGalleryList = VideoGallery::videoGalleryList();
         $tagList = Tag::tagList();
 
-        foreach ($record->tags as $index => $tag){
+        foreach ($record->tags as $index => $tag) {
             $tagIDs[$index] = $tag->id;
         }
 
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact([
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
             'record',
             'videoCategoryList',
             'videoGalleryList',
@@ -97,7 +97,7 @@ class VideoController extends BackendController
         $this->removeCacheTags(['VideoController']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
     public function save($record)
@@ -109,10 +109,10 @@ class VideoController extends BackendController
          * migrate schema da set null ve cascade parametrelerini demememe rağmen
          * null olarak kayıt yaptırmaya çalıştığmızda hata veriyor.
         */
-        if(empty($input['video_category_id']))
+        if (empty($input['video_category_id']))
             unset($input['video_category_id']);
 
-        if(empty($input['video_gallery_id']))
+        if (empty($input['video_gallery_id']))
             unset($input['video_gallery_id']);
 
         $input['is_comment'] = Input::get('is_comment') == "on" ? true : false;
@@ -120,7 +120,7 @@ class VideoController extends BackendController
 
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }
@@ -129,43 +129,43 @@ class VideoController extends BackendController
 
             //todo video yüklenebilecek.
             //file
-            if(!empty($input['thumbnail'])) {
+            if (!empty($input['thumbnail'])) {
 
-                $destination = '/videos/'. $result->id;
+                $destination = '/videos/' . $result->id;
                 Uploader::removeDirectory($destination);
 
                 $document_name = $input['thumbnail']->getClientOriginalName();
-                Uploader::fileUpload($result , 'thumbnail', $input['thumbnail'] , $destination , $document_name);
+                Uploader::fileUpload($result, 'thumbnail', $input['thumbnail'], $destination, $document_name);
 
-                $originalPhotoPath = public_path('videos/'. $result->id .'/'. $result->thumbnail);
+                $originalPhotoPath = public_path('videos/' . $result->id . '/' . $result->thumbnail);
 
                 Image::make($originalPhotoPath)
                     ->resize(58, 58)
-                    ->save(public_path('videos/'. $result->id .'/58x58_' . $document_name));
+                    ->save(public_path('videos/' . $result->id . '/58x58_' . $document_name));
 
                 Image::make($originalPhotoPath)
                     ->resize(497, 358)
-                    ->save(public_path('videos/'. $result->id .'/497x358_' . $document_name));
+                    ->save(public_path('videos/' . $result->id . '/497x358_' . $document_name));
 
                 Image::make($originalPhotoPath)
                     ->resize(658, 404)
-                    ->save(public_path('videos/'. $result->id .'/658x404_' . $document_name));
+                    ->save(public_path('videos/' . $result->id . '/658x404_' . $document_name));
 
                 Image::make($originalPhotoPath)
                     ->resize(224, 195)
-                    ->save(public_path('videos/'. $result->id .'/224x195_' . $document_name));
+                    ->save(public_path('videos/' . $result->id . '/224x195_' . $document_name));
 
                 Image::make($originalPhotoPath)
                     ->resize(165, 90)
-                    ->save(public_path('videos/'. $result->id .'/165x90_' . $document_name));
+                    ->save(public_path('videos/' . $result->id . '/165x90_' . $document_name));
 
                 Image::make($originalPhotoPath)
                     ->resize(457, 250)
-                    ->save(public_path('videos/'. $result->id .'/257x250_' . $document_name));
+                    ->save(public_path('videos/' . $result->id . '/257x250_' . $document_name));
             }
 
 
-            $this->tagsVideoStore($result,$input);
+            $this->tagsVideoStore($result, $input);
 
             /*
              * Delete home page cache and related caches
@@ -184,7 +184,7 @@ class VideoController extends BackendController
 
     public function tagsVideoStore(Video $record, $input)
     {
-        if(isset($input['tags_ids'])) {
+        if (isset($input['tags_ids'])) {
             $record->tags()->sync($input['tags_ids']);
         }
     }

@@ -58,7 +58,8 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                    <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                                    <button class="btn btn-success" type="submit"><i
+                                                class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                                 </div>
                             </div>
                         </div>

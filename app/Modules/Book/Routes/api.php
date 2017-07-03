@@ -1,7 +1,7 @@
 <?php
 
 
-Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
+Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
 
     /*
      * Book

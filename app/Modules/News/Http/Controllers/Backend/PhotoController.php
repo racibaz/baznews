@@ -9,12 +9,9 @@ use App\Modules\News\Models\Photo;
 use App\Modules\News\Models\PhotoGallery;
 use App\Modules\News\Repositories\PhotoRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 
 class PhotoController extends BackendController
@@ -25,14 +22,14 @@ class PhotoController extends BackendController
 
         $this->view = 'photo.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
     public function index()
     {
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
@@ -40,7 +37,7 @@ class PhotoController extends BackendController
     {
         $photoGalleryList = PhotoGallery::photoGalleryList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'photoGalleryList']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'photoGalleryList']));
     }
 
 
@@ -52,14 +49,14 @@ class PhotoController extends BackendController
 
     public function show(Photo $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(Photo $record)
     {
         $photoGalleryList = PhotoGallery::photoGalleryList();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'photoGalleryList']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'photoGalleryList']));
     }
 
 
@@ -76,7 +73,7 @@ class PhotoController extends BackendController
         $this->removeCacheTags(['PhotoController']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -86,14 +83,14 @@ class PhotoController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }
 
         if ($result) {
 
-            if(!empty($input['file'])) {
+            if (!empty($input['file'])) {
 
                 $destination = '/photos/' . $result->id;
                 Uploader::removeDirectory($destination);

@@ -5,9 +5,9 @@ namespace App\Jobs\Users;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UpdateLastLogin implements ShouldQueue
 {
@@ -37,6 +37,6 @@ class UpdateLastLogin implements ShouldQueue
     {
         $this->user->update([
             'last_login' => $this->date
-         ]);
+        ]);
     }
 }

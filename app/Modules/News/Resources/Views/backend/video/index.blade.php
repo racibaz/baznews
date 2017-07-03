@@ -38,31 +38,31 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $record)
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('video.show', $record->name , $record, [] ) !!}</td>
-                                    <td>
+                        @foreach($records as $record)
+                            <tr>
+                                <td>{{$record->id}}</td>
+                                <td>{!! link_to_route('video.show', $record->name , $record, [] ) !!}</td>
+                                <td>
 
-                                        <img src="{{ asset('videos/' . $record->id . '/58x58_' . $record->thumbnail)}}"
-                                             alt="{{$record->title}}" title="{{$record->title}}"/>
+                                    <img src="{{ asset('videos/' . $record->id . '/58x58_' . $record->thumbnail)}}"
+                                         alt="{{$record->title}}" title="{{$record->title}}"/>
 
-                                    </td>
-                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! link_to_route('show_photo_gallery', trans('common.show'), $record->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('video.destroy',  $record))) !!}
+                                </td>
+                                <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        {!! link_to_route('show_photo_gallery', trans('common.show'), $record->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('video.destroy',  $record))) !!}
 
-                                            {!! link_to_route('video.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! link_to_route('video.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
 
 
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -79,7 +79,7 @@
         $(function () {
 
             //active menu
-            activeMenu('video','news_management');
+            activeMenu('video', 'news_management');
         });
     </script>
 @endsection

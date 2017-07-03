@@ -7,7 +7,8 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{!! URL::route('article_author.index') !!}">{{trans('article::article_author.management')}}</a></li>
+            <li><a href="{!! URL::route('article_author.index') !!}">{{trans('article::article_author.management')}}</a>
+            </li>
             <li class="active">{{trans('article::article_author.edit_delete')}}</li>
         </ol>
     </section>
@@ -26,7 +27,8 @@
                     <h3 class="box-title">Title</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                                title="Collapse">
                             <i class="fa fa-minus"></i></button>
 
                     </div>
@@ -52,12 +54,17 @@
                     <div class="form-group">
                         {!! Form::label('photo', trans('article::article_author.photo'),['class'=> 'control-label','style'=>'width:100%']) !!}
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                <img src="{{ asset('images/article_author_images/' . $record->id . '/original/' . $record->photo)}}" alt="{{$record->name}}"/>
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                 style="width: 200px; height: 150px;">
+                                <img src="{{ asset('images/article_author_images/' . $record->id . '/original/' . $record->photo)}}"
+                                     alt="{{$record->name}}"/>
                             </div>
                             <div>
-                                <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('article::article_author.select_image')}}</span><span class="fileinput-exists">{{trans('article::article_author.change')}}</span>{!! Form::file('photo') !!}</span>
-                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('article::article_author.remove')}}</a>
+                                <span class="btn btn-default btn-file"><span
+                                            class="fileinput-new">{{trans('article::article_author.select_image')}}</span><span
+                                            class="fileinput-exists">{{trans('article::article_author.change')}}</span>{!! Form::file('photo') !!}</span>
+                                <a href="#" class="btn btn-default fileinput-exists"
+                                   data-dismiss="fileinput">{{trans('article::article_author.remove')}}</a>
                             </div>
                         </div>
                     </div>
@@ -119,7 +126,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-12">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                                <button class="btn btn-success" type="submit"><i
+                                            class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                             </div>
                         </div>
                     </div>
@@ -132,9 +140,11 @@
     {!! Form::close() !!}
 @endsection
 @section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 @endsection
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
@@ -158,12 +168,12 @@
         CKEDITOR.replace('cv', options);
         //CKEDİTOR END...
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.fileinput').fileinput();
             $('.select2').select2();
             $('.tagsinput').tagsinput();
             //active menu
-            activeMenu('authors','article_management');
+            activeMenu('authors', 'article_management');
 
         });
         $(window).resize(function () {
@@ -173,7 +183,7 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
     </script>

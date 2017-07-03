@@ -24,19 +24,16 @@ class VideoCategoryRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    '_lft'                  => 'integer|nullable',
-                    '_rgt'                  => 'integer|nullable',
-                    'parent_id'             => 'integer|nullable',
+                    '_lft' => 'integer|nullable',
+                    '_rgt' => 'integer|nullable',
+                    'parent_id' => 'integer|nullable',
                     'name' => [
                         'required',
                         'max:255',
@@ -47,20 +44,19 @@ class VideoCategoryRequest extends FormRequest
                         Rule::unique('video_categories'),
                         'nullable'
                     ],
-                    'description'           => 'string|max:255|nullable',
-                    'keywords'              => 'string|max:255|nullable',
-                    'icon'                  => 'string|nullable',
-                    'hit'                   => 'integer|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'icon' => 'string|nullable',
+                    'hit' => 'integer|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('video_category')->id;
                 return [
-                    '_lft'                  => 'integer|nullable',
-                    '_rgt'                  => 'integer|nullable',
-                    'parent_id'             => 'integer|nullable',
+                    '_lft' => 'integer|nullable',
+                    '_rgt' => 'integer|nullable',
+                    'parent_id' => 'integer|nullable',
                     'name' => [
                         'required',
                         'max:255',
@@ -70,13 +66,14 @@ class VideoCategoryRequest extends FormRequest
                         'max:255',
                         Rule::unique('video_categories')->ignore($id),
                     ],
-                    'description'           => 'string|max:255|nullable',
-                    'keywords'              => 'string|max:255|nullable',
-                    'icon'                  => 'string|nullable',
-                    'hit'                   => 'integer|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'icon' => 'string|nullable',
+                    'hit' => 'integer|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

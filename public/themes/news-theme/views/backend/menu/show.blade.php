@@ -23,7 +23,8 @@
                     <h3 class="box-title">{{trans('menu.name').' > '.$record->name}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -33,50 +34,50 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover" style="margin: 0;">
                             <tbody>
-                                <tr>
-                                    <td width="20%"><b>{{trans('menu.name')}}:</b></td>
-                                    <td width="80%">{{$record->name}}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>{{trans('menu.parent_menu')}}:</b></td>
-                                    <td>{{$record->parent_id}}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>{{trans('menu.site_page')}}:</b></td>
-                                    <td>{{$record->parent_id}}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>{{trans('menu.sort_left')}}:</b></td>
-                                    <td>{{$record->_lft}}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>{{trans('menu.sort_right')}}:</b></td>
-                                    <td>{{$record->_rgt}}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>{{trans('menu.site_page')}}:</b></td>
-                                    <td>{{$record->page_id}}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>{{trans('menu.slug')}}:</b></td>
-                                    <td>{{$record->slug}}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>{{trans('menu.url')}}:</b></td>
-                                    <td>{{$record->url}}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>{{trans('menu.category')}}:</b></td>
-                                    <td>{{$record->route}}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>{{trans('menu.target')}}:</b></td>
-                                    <td>{{$record->target}}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>{{trans('menu.order')}}:</b></td>
-                                    <td>{{$record->order}}</td>
-                                </tr>
+                            <tr>
+                                <td width="20%"><b>{{trans('menu.name')}}:</b></td>
+                                <td width="80%">{{$record->name}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{trans('menu.parent_menu')}}:</b></td>
+                                <td>{{$record->parent_id}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{trans('menu.site_page')}}:</b></td>
+                                <td>{{$record->parent_id}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{trans('menu.sort_left')}}:</b></td>
+                                <td>{{$record->_lft}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{trans('menu.sort_right')}}:</b></td>
+                                <td>{{$record->_rgt}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{trans('menu.site_page')}}:</b></td>
+                                <td>{{$record->page_id}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{trans('menu.slug')}}:</b></td>
+                                <td>{{$record->slug}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{trans('menu.url')}}:</b></td>
+                                <td>{{$record->url}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{trans('menu.category')}}:</b></td>
+                                <td>{{$record->route}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{trans('menu.target')}}:</b></td>
+                                <td>{{$record->target}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{trans('menu.order')}}:</b></td>
+                                <td>{{$record->order}}</td>
+                            </tr>
 
                             </tbody>
                         </table>
@@ -90,6 +91,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('menu_management','');
+        activeMenu('menu_management', '');
     </script>
 @endsection

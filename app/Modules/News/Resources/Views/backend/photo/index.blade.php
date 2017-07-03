@@ -37,24 +37,24 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $record)
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('photo.show', $record->name , $record, [] ) !!}</td>
-                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! link_to_route('show_photo', trans('common.show'), $record->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('photo.destroy',  $record))) !!}
+                        @foreach($records as $record)
+                            <tr>
+                                <td>{{$record->id}}</td>
+                                <td>{!! link_to_route('photo.show', $record->name , $record, [] ) !!}</td>
+                                <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        {!! link_to_route('show_photo', trans('common.show'), $record->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('photo.destroy',  $record))) !!}
 
-                                            {!! link_to_route('photo.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! link_to_route('photo.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
 
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -69,6 +69,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('photo','news_management');
+        activeMenu('photo', 'news_management');
     </script>
 @endsection

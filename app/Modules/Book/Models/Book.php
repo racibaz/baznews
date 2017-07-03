@@ -22,10 +22,11 @@ class Book extends Model
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
-                'source' => ['name','id']
+                'source' => ['name', 'id']
             ]
         ];
     }
@@ -63,7 +64,7 @@ class Book extends Model
         'is_active',
     ];
 
-    protected $dates = ['created_at','updated_at','deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
 
     public function book_categories()
@@ -78,16 +79,16 @@ class Book extends Model
 
     public function book_author()
     {
-        return $this->belongsTo(BookAuthor::class,'book_author_id');
+        return $this->belongsTo(BookAuthor::class, 'book_author_id');
     }
 
     public function book_publisher()
     {
-        return $this->belongsTo(BookPublisher::class,'book_publisher_id');
+        return $this->belongsTo(BookPublisher::class, 'book_publisher_id');
     }
 
     public static function bookList()
     {
-        return Book::where('is_active',1)->pluck('name','id');
+        return Book::where('is_active', 1)->pluck('name', 'id');
     }
 }

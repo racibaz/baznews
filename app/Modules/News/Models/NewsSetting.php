@@ -28,7 +28,8 @@ class NewsSetting extends Model
         'is_show_previous_and_next_news',
     ];
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'break_news' => 'integer',
             'band_news' => 'integer',

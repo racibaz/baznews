@@ -10,8 +10,8 @@ class CountryTransformer extends TransformerAbstract
     public function transform(Country $record)
     {
         $data = [
-            'id' => (int) $record->id,
-            'name' => (string) $record->name,
+            'id' => (int)$record->id,
+            'name' => (string)$record->name,
             'links' => [
                 [
                     'rel' => 'self',

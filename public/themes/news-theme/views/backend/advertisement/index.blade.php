@@ -39,24 +39,24 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $record)
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('advertisement.show', $record->name , $record, [] ) !!}</td>
-                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('advertisement.destroy',  $record))) !!}
+                        @foreach($records as $record)
+                            <tr>
+                                <td>{{$record->id}}</td>
+                                <td>{!! link_to_route('advertisement.show', $record->name , $record, [] ) !!}</td>
+                                <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('advertisement.destroy',  $record))) !!}
 
-                                            {!! link_to_route('advertisement.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! link_to_route('advertisement.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
 
 
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -72,7 +72,8 @@
                     <h3 class="box-title">{{trans('advertisement.active_theme')}}: </b>{{$activeTheme}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -94,7 +95,8 @@
                                 <td>{{$advertisementAreaName['areaType']}}</td>
                                 <td>
                                     @if(in_array($advertisementAreaName['areaName'] , $repo->advertisements()->pluck('name')->toArray()))
-                                        <span class="badge bg-green"><i class="fa fa-check"></i>  {{trans('advertisement.added')}}</span>
+                                        <span class="badge bg-green"><i
+                                                    class="fa fa-check"></i> {{trans('advertisement.added')}}</span>
                                     @endif
                                 </td>
                             </tr>
@@ -116,6 +118,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('advertisement','');
+        activeMenu('advertisement', '');
     </script>
 @endsection

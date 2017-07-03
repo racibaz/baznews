@@ -11,14 +11,14 @@ class BookController extends Controller
 {
     public function __construct(Repo $repo)
     {
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function show($slug)
     {
-        $id =  substr(strrchr($slug, '-'), 1 );
+        $id = substr(strrchr($slug, '-'), 1);
 
-        return Cache::tags(['BookController', 'Book', 'book'])->rememberForever('book:'.$id, function() use($id) {
+        return Cache::tags(['BookController', 'Book', 'book'])->rememberForever('book:' . $id, function () use ($id) {
 
             $record = $this->repo
                 ->with([
@@ -27,7 +27,7 @@ class BookController extends Controller
                     'user',
                 ])
                 ->where('is_active', 1)
-                ->findBy('id',$id);
+                ->findBy('id', $id);
 
             $bookFirstCategory = $record->book_categories()->first();
             $firstCategoryBooks = isset($bookFirstCategory) ? $bookFirstCategory->books : [];

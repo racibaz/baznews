@@ -8,7 +8,6 @@ use App\Traits\Eventable;
 use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 
 class BookPublisher extends Model
 {
@@ -20,10 +19,11 @@ class BookPublisher extends Model
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
-                'source' => ['name','id']
+                'source' => ['name', 'id']
             ]
         ];
     }
@@ -67,6 +67,6 @@ class BookPublisher extends Model
 
     public static function bookPublisherList()
     {
-        return BookPublisher::where('is_active',1)->pluck('name','id');
+        return BookPublisher::where('is_active', 1)->pluck('name', 'id');
     }
 }

@@ -22,7 +22,7 @@ class ArticleAuthorController extends BackendController
 
         $this->view = 'article_author.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
@@ -37,7 +37,7 @@ class ArticleAuthorController extends BackendController
         $record = $this->repo->createModel();
         $userList = User::userList();
 
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record','userList']));
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'userList']));
     }
 
 
@@ -56,7 +56,7 @@ class ArticleAuthorController extends BackendController
     public function edit(ArticleAuthor $record)
     {
         $userList = User::userList();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record','userList']));
+        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'userList']));
     }
 
 
@@ -102,22 +102,22 @@ class ArticleAuthorController extends BackendController
 
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }
 
         if ($result) {
 
-            if(!empty($input['photo'])) {
+            if (!empty($input['photo'])) {
 
-                Uploader::removeDirectory('/images/article_author_images/'. $result->id);
+                Uploader::removeDirectory('/images/article_author_images/' . $result->id);
 
                 $document_name = $input['photo']->getClientOriginalName();
-                $destination = '/images/article_author_images/'. $result->id .'/original';
-                Uploader::fileUpload($result , 'photo', $input['photo'] , $destination , $document_name);
+                $destination = '/images/article_author_images/' . $result->id . '/original';
+                Uploader::fileUpload($result, 'photo', $input['photo'], $destination, $document_name);
 
-                $base_path = public_path('images/article_author_images/' . $result->id .'/original/'. $result->photo);
+                $base_path = public_path('images/article_author_images/' . $result->id . '/original/' . $result->photo);
 
                 Image::make($base_path)
                     ->fit(58, 58)

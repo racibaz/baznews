@@ -3,9 +3,9 @@
 namespace App\Modules\Article\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Article\Repositories\ArticleRepository as Repo;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
-use App\Modules\Article\Repositories\ArticleRepository as Repo;
 
 class RssController extends Controller
 {
@@ -18,7 +18,7 @@ class RssController extends Controller
 
     public function articlesRssRender()
     {
-        $feed = Cache::tags(['RssController', 'Article', 'articlesRssRender'])->rememberForever('articlesRssRender', function() {
+        $feed = Cache::tags(['RssController', 'Article', 'articlesRssRender'])->rememberForever('articlesRssRender', function () {
 
             // create new feed
             $feed = App::make("feed");

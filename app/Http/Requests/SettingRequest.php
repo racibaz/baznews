@@ -23,38 +23,35 @@ class SettingRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    'title'             => 'max:255',
-                    'slogan'            => 'max:255|nullable',
-                    'description'       => 'max:255|nullable',
-                    'keywords'          => 'max:255|nullable',
-                    'logo'              => 'image|nullable',
-                    'url'               => 'url',
+                    'title' => 'max:255',
+                    'slogan' => 'max:255|nullable',
+                    'description' => 'max:255|nullable',
+                    'keywords' => 'max:255|nullable',
+                    'logo' => 'image|nullable',
+                    'url' => 'url',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('role')->id;
                 return [
-                    'title'             => 'max:255',
-                    'slogan'            => 'max:255|nullable',
-                    'description'       => 'max:255|nullable',
-                    'keywords'          => 'max:255|nullable',
-                    'logo'              => 'image|nullable',
-                    'url'               => 'url',
+                    'title' => 'max:255',
+                    'slogan' => 'max:255|nullable',
+                    'description' => 'max:255|nullable',
+                    'keywords' => 'max:255|nullable',
+                    'logo' => 'image|nullable',
+                    'url' => 'url',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

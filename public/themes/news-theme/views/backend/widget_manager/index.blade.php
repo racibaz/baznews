@@ -27,10 +27,12 @@
                     {!! Form::open(['route' => 'addWidgetActivation','method' => 'post']) !!}
                     @if(!in_array($widget['slug'] ,$records->pluck('slug')->toArray()))
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{trans('widget_manager.module_name')}}: {{$widget['module_name']}} ({{$widget['name']}})</h3>
+                            <h3 class="box-title">{{trans('widget_manager.module_name')}}: {{$widget['module_name']}}
+                                ({{$widget['name']}})</h3>
 
                             <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i> Detay
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-plus"></i> Detay
                                 </button>
                             </div>
                             <!-- /.box-tools -->
@@ -45,7 +47,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <button class="btn btn-success btn-block" type="submit"><i class="fa fa-check-square-o"></i> {{trans('widget_manager.widget_active')}}</button>
+                                        <button class="btn btn-success btn-block" type="submit"><i
+                                                    class="fa fa-check-square-o"></i> {{trans('widget_manager.widget_active')}}
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -129,16 +133,16 @@
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.summernote').summernote();
         });
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
         //active menu
-        activeMenu('widget','widget_management');
+        activeMenu('widget', 'widget_management');
     </script>
 @endsection

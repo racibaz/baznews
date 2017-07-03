@@ -30,11 +30,17 @@
                                            poster="http://video-js.zencoder.com/oceans-clip.png"
                                            data-setup='{"example_option":true}'>
 
-                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/mp4" />
-                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/webm" />
-                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}" type="video/ogg" />
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}"
+                                                type="video/mp4"/>
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}"
+                                                type="video/webm"/>
+                                        <source src="{{asset('video_gallery/' . $videoGallery->id . '/videos/' . $video->file)}}"
+                                                type="video/ogg"/>
 
-                                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider
+                                            upgrading to a web browser that <a
+                                                    href="http://videojs.com/html5-video-support/" target="_blank">supports
+                                                HTML5 video</a></p>
                                     </video>
                                     <script type="application/ld+json">
                                         {
@@ -56,6 +62,7 @@
                                           "embedUrl": "https://www.example.com/videoplayer.swf?video=123",
                                           "interactionCount": "2347"
                                         }
+
                                     </script>
                                 @elseif(!empty($video->embed))
                                     {!! $video->embed !!}
@@ -108,7 +115,8 @@
                                                     <a href="{{route('show_videos',['slug' => $otherGalleryVideo->slug ])}}">
                                                         <div class="hold">
                                                             <img src="{{ asset('videos/' . $otherGalleryVideo->id . '/165x90_' . $otherGalleryVideo->thumbnail)}}"
-                                                                 alt="{{$otherGalleryVideo->title}}" title="{{$otherGalleryVideo->title}}"/>
+                                                                 alt="{{$otherGalleryVideo->title}}"
+                                                                 title="{{$otherGalleryVideo->title}}"/>
                                                             <span class="icon play"></span>
                                                         </div>
                                                     </a>
@@ -153,7 +161,8 @@
                             <div class="r-box module">
                                 <div class="box-img">
                                     <a href="{{route('show_videos',['slug' => $lastestVideo->slug ])}}">
-                                        <img src="{{ asset('videos/' . $lastestVideo->id . '/497x358_' . $lastestVideo->thumbnail)}}" alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
+                                        <img src="{{ asset('videos/' . $lastestVideo->id . '/497x358_' . $lastestVideo->thumbnail)}}"
+                                             alt="{{$lastestVideo->title}}" title="{{$lastestVideo->title}}"/>
                                         <span class="icon"></span>
                                     </a>
                                 </div>
@@ -184,7 +193,8 @@
                                 <div class="r-box module">
                                     <div class="box-img">
                                         <a href="{{route('show_videos',['slug' => $categoryVideo->slug ])}}">
-                                            <img src="{{ asset('videos/' . $categoryVideo->id . '/497x358_' . $categoryVideo->thumbnail)}}" alt="{{$categoryVideo->title}}" title="{{$categoryVideo->title}}"/>
+                                            <img src="{{ asset('videos/' . $categoryVideo->id . '/497x358_' . $categoryVideo->thumbnail)}}"
+                                                 alt="{{$categoryVideo->title}}" title="{{$categoryVideo->title}}"/>
                                             <span class="icon"></span>
                                         </a>
                                     </div>
@@ -223,7 +233,8 @@
 @endsection
 
 @section('css')
-    <link href="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}"
+          type="text/css" rel="stylesheet">
 @endsection
 
 @section('js')
@@ -232,7 +243,7 @@
     <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
     <script type="text/javascript">
         videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}";
-        videojs("video-js", {}, function(){
+        videojs("video-js", {}, function () {
             // Player (this) is initialized and ready.
         });
     </script>
@@ -246,14 +257,14 @@
              mCustomScrollbar
              * --------------------------------------------------------*/
             $('.sidebar-video .video-list-body').mCustomScrollbar({
-                theme:"light"
+                theme: "light"
             });
         });
 
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#video_sidebar,#content').theiaStickySidebar();
         });
     </script>

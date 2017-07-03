@@ -3,7 +3,6 @@
 namespace App\Modules\News\Database\Seeds;
 
 use App\Modules\News\Models\FutureNews;
-use App\Modules\News\Models\News;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
@@ -24,27 +23,27 @@ class FutureNewsTableSeeder extends Seeder
 //        $news1->future_news()->attach(new FutureNews());
 
         FutureNews::create([
-            'news_id'               => 1,
-            'future_datetime'       => Carbon::now()->addMinutes(3),
-            'is_active'             => 1
+            'news_id' => 1,
+            'future_datetime' => Carbon::now()->addMinutes(3),
+            'is_active' => 1
         ]);
 
         FutureNews::create([
-            'news_id'               => 2,
-            'future_datetime'       => Carbon::now()->addMinutes(4),
-            'is_active'             => 1
+            'news_id' => 2,
+            'future_datetime' => Carbon::now()->addMinutes(4),
+            'is_active' => 1
         ]);
 
         FutureNews::create([
-            'news_id'               => 3,
-            'future_datetime'       => Carbon::now()->addMinutes(5),
-            'is_active'             => 1
+            'news_id' => 3,
+            'future_datetime' => Carbon::now()->addMinutes(5),
+            'is_active' => 1
         ]);
 
         FutureNews::create([
-            'news_id'               => 4,
-            'future_datetime'       => Carbon::now()->addMinutes(6),
-            'is_active'             => 1
+            'news_id' => 4,
+            'future_datetime' => Carbon::now()->addMinutes(6),
+            'is_active' => 1
         ]);
 
     }

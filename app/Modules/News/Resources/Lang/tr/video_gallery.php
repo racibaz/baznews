@@ -6,7 +6,7 @@
  * Time: 21:34
  */
 
-return[
+return [
     'management' => 'Video Galeri Yönetimi',
     'video_gallery_create' => 'Video Galeri Oluştur',
     'video_galleries' => 'Video Galeriler',

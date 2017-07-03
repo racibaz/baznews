@@ -32,7 +32,8 @@
                     @include($activeTheme . '::backend.partials._rivisions', ['rivisions' => $record->revisionHistory])
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('article::article.close')}}</button>
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">{{trans('article::article.close')}}</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -44,7 +45,8 @@
                     <h3 class="box-title">{{trans('article::article.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                                title="Collapse">
                             <i class="fa fa-minus"></i></button>
 
                     </div>
@@ -121,8 +123,8 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     {{--<div class="form-group">--}}
-                        {{--{!! Form::label('hit', trans('article::article.hit'),['class'=> 'control-label']) !!}--}}
-                        {{--{!! Form::number('hit', $record->hit, ['placeholder' => trans('article::article.hit') ,'class' => 'form-control']) !!}--}}
+                    {{--{!! Form::label('hit', trans('article::article.hit'),['class'=> 'control-label']) !!}--}}
+                    {{--{!! Form::number('hit', $record->hit, ['placeholder' => trans('article::article.hit') ,'class' => 'form-control']) !!}--}}
                     {{--</div>--}}
                     <div class="form-group">
                         {!! Form::label('order', trans('article::article.order'),['class'=> 'control-label']) !!}
@@ -147,8 +149,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-12">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
-                                <a class="btn btn-primary" data-toggle="modal" href="#revision-id"><i class="fa fa-calendar"></i>  {{trans('article::article.revision_line')}}</a>
+                                <button class="btn btn-success" type="submit"><i
+                                            class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                                <a class="btn btn-primary" data-toggle="modal" href="#revision-id"><i
+                                            class="fa fa-calendar"></i> {{trans('article::article.revision_line')}}</a>
                             </div>
                         </div>
                     </div>
@@ -161,10 +165,14 @@
     {!! Form::close() !!}
 @endsection
 @section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}"
+          rel="stylesheet">
 @endsection
 @section('js')
 
@@ -187,7 +195,7 @@
         CKEDITOR.replace('content', options);
         //CKEDİTOR END...
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.select2').select2();
             $('.tagsinput').tagsinput();
         });
@@ -198,10 +206,10 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
         //active menu
-        activeMenu('articles','article_management');
+        activeMenu('articles', 'article_management');
     </script>
 @endsection

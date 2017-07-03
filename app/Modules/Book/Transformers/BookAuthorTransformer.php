@@ -10,13 +10,13 @@ class BookAuthorTransformer extends TransformerAbstract
     public function transform(BookAuthor $record)
     {
         return [
-            'id' => (int) $record->id,
-            'name' => (string) $record->name,
-            'slug' => (string) $record->slug,
-            'link' => (string) $record->link,
-            'thumbnail' => (string) $record->thumbnail,
-            'bio' => (string) $record->bio_note,
-            'cuff' => (bool) $record->is_cuff,
+            'id' => (int)$record->id,
+            'name' => (string)$record->name,
+            'slug' => (string)$record->slug,
+            'link' => (string)$record->link,
+            'thumbnail' => (string)$record->thumbnail,
+            'bio' => (string)$record->bio_note,
+            'cuff' => (bool)$record->is_cuff,
             'links' => [
                 [
                     'rel' => 'self',

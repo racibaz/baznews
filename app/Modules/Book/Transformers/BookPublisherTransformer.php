@@ -2,7 +2,6 @@
 
 namespace App\Modules\Book\Transformers;
 
-use App\Modules\Book\Models\Book;
 use App\Modules\Book\Models\BookPublisher;
 use League\Fractal\TransformerAbstract;
 
@@ -11,11 +10,11 @@ class BookPublisherTransformer extends TransformerAbstract
     public function transform(BookPublisher $record)
     {
         return [
-            'id' => (int) $record->id,
-            'name' => (string) $record->name,
-            'slug' => (string) $record->slug,
-            'link' => (string) $record->link,
-            'description' => (string) $record->description,
+            'id' => (int)$record->id,
+            'name' => (string)$record->name,
+            'slug' => (string)$record->slug,
+            'link' => (string)$record->link,
+            'description' => (string)$record->description,
             'links' => [
                 [
                     'rel' => 'self',

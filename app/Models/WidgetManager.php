@@ -4,12 +4,12 @@ namespace App\Models;
 
 use App\Traits\Eventable;
 use Caffeinated\Modules\Facades\Module;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Validator;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Validator;
 
 class WidgetManager extends Model
 {
@@ -42,14 +42,14 @@ class WidgetManager extends Model
         'is_active',
     ];
 
-    protected $dates = ['created_at','updated_at','deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
 
     public static function boot()
     {
         parent::boot();
 
-        if(!app()->runningInConsole() ) {
+        if (!app()->runningInConsole()) {
 
             static::created(function () {
 
@@ -71,13 +71,13 @@ class WidgetManager extends Model
     }
 
 
-
     public function widget_group()
     {
-        return $this->belongsTo(WidgetGroup::class,'widget_group_id');
+        return $this->belongsTo(WidgetGroup::class, 'widget_group_id');
     }
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'name' => 'required|string',
             'namespace' => 'required',
@@ -88,15 +88,14 @@ class WidgetManager extends Model
 
     public static function getAllWidgets()
     {
-        return WidgetManager::where('is_active',1)->get();
+        return WidgetManager::where('is_active', 1)->get();
     }
 
     public static function getEnableModuleWidgets()
     {
-        $widgets =[];
+        $widgets = [];
 
-        foreach (Module::all() as $module)
-        {
+        foreach (Module::all() as $module) {
 
             //module pasif ise widget bilgilerini almıyoruz.
             if (Module::isDisabled($module['slug'])) {
@@ -113,9 +112,8 @@ class WidgetManager extends Model
                 RecursiveIteratorIterator::SELF_FIRST);
 
 
-            foreach ($jsonIterator as $key => $val)
-            {
-                if(is_array($val)) {
+            foreach ($jsonIterator as $key => $val) {
+                if (is_array($val)) {
                     $widgetName = $key;
                 } else {
 
@@ -141,25 +139,23 @@ class WidgetManager extends Model
             RecursiveIteratorIterator::SELF_FIRST);
 
 
-        foreach ($jsonIterator as $key  => $val)
-        {
-            if(is_array($val)) {
+        foreach ($jsonIterator as $key => $val) {
+            if (is_array($val)) {
                 $widgetName = $key;
                 //echo "$key:\n";
             } else {
 
-                if($key === 'slug' && $val === $widgetSlug){
+                if ($key === 'slug' && $val === $widgetSlug) {
 
-                    foreach ($jsonIterator as $subKey => $subVal)
-                    {
-                        if(is_array($subVal)){
+                    foreach ($jsonIterator as $subKey => $subVal) {
+                        if (is_array($subVal)) {
                             $currentWidgetName = $subKey;
                         }
 
                         /*Bir module de birden fazla widget var ise
                          *onun için yukarıda "slug" üzerinden eşleştirme yapmış olsak da tekrar kontrol ediyoruz.
                          * */
-                        if($widgetName === $currentWidgetName){
+                        if ($widgetName === $currentWidgetName) {
                             $widget[$subKey] = $subVal;
                         }
                     }
@@ -168,12 +164,11 @@ class WidgetManager extends Model
         }
 
         //Eğer widget sistemin core unda tanımlanmış ise modüllere bakmıyor.
-        if(count($widget) > 0)
+        if (count($widget) > 0)
             return $widget;
 
 
-        foreach (Module::all() as $module)
-        {
+        foreach (Module::all() as $module) {
             //module pasif ise widget bilgilerini almıyoruz.
             if (Module::isDisabled($module['slug'])) {
                 continue;
@@ -189,24 +184,22 @@ class WidgetManager extends Model
                 RecursiveIteratorIterator::SELF_FIRST);
 
 
-            foreach ($jsonIterator as $key => $val)
-            {
-                if(is_array($val)) {
+            foreach ($jsonIterator as $key => $val) {
+                if (is_array($val)) {
                     $widgetName = $key;
                 } else {
 
-                    if($key === 'slug' && $val === $widgetSlug){
+                    if ($key === 'slug' && $val === $widgetSlug) {
 
-                        foreach ($jsonIterator as $subKey => $subVal)
-                        {
-                            if(is_array($subVal)){
+                        foreach ($jsonIterator as $subKey => $subVal) {
+                            if (is_array($subVal)) {
                                 $currentWidgetName = $subKey;
                             }
 
                             /*Bir module de birden fazla widget var ise
                              *onun için yukarıda "slug" üzerinden eşleştirme yapmış olsak da tekrar kontrol ediyoruz.
                              * */
-                            if($widgetName === $currentWidgetName){
+                            if ($widgetName === $currentWidgetName) {
                                 $widget[$subKey] = $subVal;
                             }
                         }
@@ -221,7 +214,7 @@ class WidgetManager extends Model
 
     public static function getCoreWidgets()
     {
-        $widgets =[];
+        $widgets = [];
 
         //module un widgets.json file yolu
         $widgetsJsonFilePath = base_path('app/Widgets/widgets.json');
@@ -240,9 +233,8 @@ class WidgetManager extends Model
          * hem de "$key" in property ismini alıyoruz.
          * */
 
-        foreach ($jsonIterator as $key  => $val)
-        {
-            if(is_array($val)) {
+        foreach ($jsonIterator as $key => $val) {
+            if (is_array($val)) {
                 $widgetName = $key;
                 //echo "$key:\n";
             } else {

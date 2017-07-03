@@ -10,17 +10,17 @@ class ArticleTransformer extends TransformerAbstract
     public function transform(Article $record)
     {
         return [
-            'id' => (int) $record->id,
-            'title' => (string) $record->title,
-            'slug' => (string) $record->slug,
-            'shortUrl' => (string) $record->short_url,
-            'subtitle' => (string) $record->subtitle,
-            'spot' => (string) $record->spot,
-            'content' => (string) $record->content,
-            'description' => (string) $record->description,
-            'keywords' => (string) $record->keywords,
-            'order' => (int) $record->order,
-            'cuff' => (bool) $record->is_cuff,
+            'id' => (int)$record->id,
+            'title' => (string)$record->title,
+            'slug' => (string)$record->slug,
+            'shortUrl' => (string)$record->short_url,
+            'subtitle' => (string)$record->subtitle,
+            'spot' => (string)$record->spot,
+            'content' => (string)$record->content,
+            'description' => (string)$record->description,
+            'keywords' => (string)$record->keywords,
+            'order' => (int)$record->order,
+            'cuff' => (bool)$record->is_cuff,
             'links' => [
                 [
                     'rel' => 'self',

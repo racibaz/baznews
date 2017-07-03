@@ -6,10 +6,10 @@
  * Time: 22:09
  */
 
-return[
+return [
 
-    'day'=>'Gün',
-    'month'=>'Ay',
-    'year'=>'Yıl',
+    'day' => 'Gün',
+    'month' => 'Ay',
+    'year' => 'Yıl',
 
 ];

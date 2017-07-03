@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\UserRequestedActivationEmail;
+use App\Http\Controllers\Controller;
 use App\Models\ActivationToken;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Events\UserRequestedActivationEmail;
 
 class ActivationController extends Controller
 {

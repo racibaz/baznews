@@ -19,7 +19,7 @@ class RssController extends Controller
 
     public function bandNewsRssRender()
     {
-        $feed = Cache::tags(['RssController', 'News', 'bandNewsRssRender'])->rememberForever('bandNewsRssRender', function() {
+        $feed = Cache::tags(['RssController', 'News', 'bandNewsRssRender'])->rememberForever('bandNewsRssRender', function () {
 
             // create new feed
             $feed = App::make("feed");
@@ -41,8 +41,8 @@ class RssController extends Controller
             foreach ($newsItems as $newsItem) {
 
                 $enclosure = [
-                    'url'=> asset('images/news_images/' . $newsItem->id . '/thumbnail/' .$newsItem->thumbnail),
-                    'type'=>'image/jpeg'
+                    'url' => asset('images/news_images/' . $newsItem->id . '/thumbnail/' . $newsItem->thumbnail),
+                    'type' => 'image/jpeg'
                 ];
 
                 // set item's title, author, url, pubdate, description, content, enclosure (optional)*
@@ -72,7 +72,7 @@ class RssController extends Controller
 
     public function boxCuffRssRender()
     {
-        $feed = Cache::tags(['RssController', 'News', 'boxCuffRssRender'])->rememberForever('boxCuffRssRender', function() {
+        $feed = Cache::tags(['RssController', 'News', 'boxCuffRssRender'])->rememberForever('boxCuffRssRender', function () {
 
             // create new feed
             $feed = App::make("feed");
@@ -94,8 +94,8 @@ class RssController extends Controller
             foreach ($newsItems as $newsItem) {
 
                 $enclosure = [
-                    'url'=> asset('images/news_images/' . $newsItem->id . '/thumbnail/' .$newsItem->thumbnail),
-                    'type'=>'image/jpeg'
+                    'url' => asset('images/news_images/' . $newsItem->id . '/thumbnail/' . $newsItem->thumbnail),
+                    'type' => 'image/jpeg'
                 ];
 
                 // set item's title, author, url, pubdate, description, content, enclosure (optional)*
@@ -125,7 +125,7 @@ class RssController extends Controller
 
     public function breakNewsRssRender()
     {
-        $feed = Cache::tags(['RssController', 'News', 'breakNewsRssRender'])->rememberForever('breakNewsRssRender', function() {
+        $feed = Cache::tags(['RssController', 'News', 'breakNewsRssRender'])->rememberForever('breakNewsRssRender', function () {
 
             // create new feed
             $feed = App::make("feed");
@@ -147,8 +147,8 @@ class RssController extends Controller
             foreach ($newsItems as $newsItem) {
 
                 $enclosure = [
-                    'url'=> asset('images/news_images/' . $newsItem->id . '/thumbnail/' .$newsItem->thumbnail),
-                    'type'=>'image/jpeg'
+                    'url' => asset('images/news_images/' . $newsItem->id . '/thumbnail/' . $newsItem->thumbnail),
+                    'type' => 'image/jpeg'
                 ];
 
                 // set item's title, author, url, pubdate, description, content, enclosure (optional)*
@@ -178,7 +178,7 @@ class RssController extends Controller
 
     public function mainCuffRssRender()
     {
-        $feed = Cache::tags(['RssController', 'News', 'mainCuffRssRender'])->rememberForever('mainCuffRssRender', function() {
+        $feed = Cache::tags(['RssController', 'News', 'mainCuffRssRender'])->rememberForever('mainCuffRssRender', function () {
 
             // create new feed
             $feed = App::make("feed");
@@ -200,8 +200,8 @@ class RssController extends Controller
             foreach ($newsItems as $newsItem) {
 
                 $enclosure = [
-                    'url'=> asset('images/news_images/' . $newsItem->id . '/thumbnail/' .$newsItem->thumbnail),
-                    'type'=>'image/jpeg'
+                    'url' => asset('images/news_images/' . $newsItem->id . '/thumbnail/' . $newsItem->thumbnail),
+                    'type' => 'image/jpeg'
                 ];
 
                 // set item's title, author, url, pubdate, description, content, enclosure (optional)*
@@ -231,7 +231,7 @@ class RssController extends Controller
 
     public function miniCuffRssRender()
     {
-        $feed = Cache::tags(['RssController', 'News', 'miniCuffRssRender'])->rememberForever('miniCuffRssRender', function() {
+        $feed = Cache::tags(['RssController', 'News', 'miniCuffRssRender'])->rememberForever('miniCuffRssRender', function () {
 
             // create new feed
             $feed = App::make("feed");
@@ -253,8 +253,8 @@ class RssController extends Controller
             foreach ($newsItems as $newsItem) {
 
                 $enclosure = [
-                    'url'=> asset('images/news_images/' . $newsItem->id . '/thumbnail/' .$newsItem->thumbnail),
-                    'type'=>'image/jpeg'
+                    'url' => asset('images/news_images/' . $newsItem->id . '/thumbnail/' . $newsItem->thumbnail),
+                    'type' => 'image/jpeg'
                 ];
 
                 // set item's title, author, url, pubdate, description, content, enclosure (optional)*
@@ -284,7 +284,7 @@ class RssController extends Controller
 
     public function allNewsRssRender()
     {
-        $feed = Cache::tags(['RssController', 'News', 'allNewsRssRender'])->rememberForever('allNewsRssRender', function() {
+        $feed = Cache::tags(['RssController', 'News', 'allNewsRssRender'])->rememberForever('allNewsRssRender', function () {
 
             // create new feed
             $feed = App::make("feed");
@@ -306,8 +306,8 @@ class RssController extends Controller
             foreach ($newsItems as $newsItem) {
 
                 $enclosure = [
-                    'url'=> asset('images/news_images/' . $newsItem->id . '/thumbnail/' .$newsItem->thumbnail),
-                    'type'=>'image/jpeg'
+                    'url' => asset('images/news_images/' . $newsItem->id . '/thumbnail/' . $newsItem->thumbnail),
+                    'type' => 'image/jpeg'
                 ];
 
                 // set item's title, author, url, pubdate, description, content, enclosure (optional)*
@@ -337,7 +337,7 @@ class RssController extends Controller
 
     public function videosRssRender(VideoRepository $repo)
     {
-        $feed = Cache::tags(['RssController', 'News', 'videosRssRender'])->rememberForever('videosRssRender', function() use ($repo){
+        $feed = Cache::tags(['RssController', 'News', 'videosRssRender'])->rememberForever('videosRssRender', function () use ($repo) {
 
             // create new feed
             $feed = App::make("feed");
@@ -359,14 +359,14 @@ class RssController extends Controller
             foreach ($videoItems as $videoItem) {
 
                 $enclosure = [
-                    'url'=> asset('videos/' . $videoItem->id . '/' .$videoItem->thumbnail),
-                    'type'=>'image/jpeg'
+                    'url' => asset('videos/' . $videoItem->id . '/' . $videoItem->thumbnail),
+                    'type' => 'image/jpeg'
                 ];
 
                 // set item's title, author, url, pubdate, description, content, enclosure (optional)*
                 $feed->add(
                     $videoItem->name,
-                     '',
+                    '',
                     route('show_videos', ['slug' => $videoItem->slug]),
                     $videoItem->created_at,
                     $videoItem->content,

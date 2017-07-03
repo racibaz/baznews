@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Auth;
 use Socialite;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class SocialLoginController extends Controller
 {

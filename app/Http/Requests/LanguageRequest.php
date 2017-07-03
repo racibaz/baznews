@@ -24,27 +24,23 @@ class LanguageRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
                     'name' => [
                         'required',
                         'max:255',
                         Rule::unique('languages'),
                     ],
-                    'description'       => 'max:255|nullable',
+                    'description' => 'max:255|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('language')->id;
                 return [
                     'name' => [
@@ -52,10 +48,11 @@ class LanguageRequest extends FormRequest
                         'max:255',
                         Rule::unique('languages')->ignore($id),
                     ],
-                    'description'       => 'max:255|nullable',
+                    'description' => 'max:255|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

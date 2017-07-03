@@ -17,19 +17,20 @@
                 <article class="module" style="padding-bottom: 0;">
                     <div class="row">
                         @foreach($records as $record)
-                        <div class="col-lg-4">
-                            <div class="a-box">
-                                <div class="a-inner">
-                                    <a href="{!! route('article_author', ['slug' => $record->slug]) !!}">
-                                        <img src="{{ asset('images/article_author_images/' . $record->id . '/58x58_' . $record->photo)}}" class="img-circle">
-                                        <span class="a-foot">
+                            <div class="col-lg-4">
+                                <div class="a-box">
+                                    <div class="a-inner">
+                                        <a href="{!! route('article_author', ['slug' => $record->slug]) !!}">
+                                            <img src="{{ asset('images/article_author_images/' . $record->id . '/58x58_' . $record->photo)}}"
+                                                 class="img-circle">
+                                            <span class="a-foot">
                                             <span class="name">{{$record->name}}</span>
                                             <span class="bio">{!! $record->cv !!}</span>
                                         </span>
-                                    </a>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div><!-- /.col-lg-6 -->
+                            </div><!-- /.col-lg-6 -->
                         @endforeach
                     </div><!-- /.module -->
                 </article>

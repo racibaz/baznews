@@ -83,7 +83,7 @@
                                 <td>
                                     <div class="btn-group">
                                         {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('historyForceDelete',  $trashedRecord->id ))) !!}
-                                            {!! Form::hidden('historyForceDeleteRecordId', $trashedRecord->id) !!}
+                                        {!! Form::hidden('historyForceDeleteRecordId', $trashedRecord->id) !!}
                                         {!! link_to_route('trashedNewsRestore', trans('news::news.trashed_news_restore'), $trashedRecord->id, ['class' => 'btn btn-primary btn-xs'] ) !!}
                                         {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
                                         {!! Form::close() !!}
@@ -106,6 +106,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('news','news_management');
+        activeMenu('news', 'news_management');
     </script>
 @endsection

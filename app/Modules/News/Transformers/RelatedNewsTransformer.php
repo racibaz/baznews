@@ -10,7 +10,7 @@ class RelatedNewsTransformer extends TransformerAbstract
     public function transform(RelatedNews $record)
     {
         return [
-            'news_id' =>  $record->news_id,
+            'news_id' => $record->news_id,
             'related_news_id' => $record->related_news_id,
             'links' => [
                 [

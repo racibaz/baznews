@@ -55,7 +55,7 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('news_source','news_management');
+        activeMenu('news_source', 'news_management');
     </script>
 @endsection
 

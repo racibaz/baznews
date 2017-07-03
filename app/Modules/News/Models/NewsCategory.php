@@ -8,9 +8,9 @@ use App\Traits\Eventable;
 use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
+use Venturecraft\Revisionable\RevisionableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
-use Venturecraft\Revisionable\RevisionableTrait;
 
 class NewsCategory extends Model
 {
@@ -27,7 +27,7 @@ class NewsCategory extends Model
         parent::boot();
 
         static::created(function ($record) {
-            if($record->is_active) {
+            if ($record->is_active) {
                 $link = new Link();
                 $link->url = $record->slug;
                 $record->links()->save($link);
@@ -35,7 +35,7 @@ class NewsCategory extends Model
         });
 
         static::updated(function ($record) {
-            if($record->is_active) {
+            if ($record->is_active) {
                 $link = Link::where('linkable_id', $record->id)->where('linkable_type', NewsCategory::class)->first();
                 $link->url = $record->slug;
                 $record->links()->save($link);
@@ -53,7 +53,8 @@ class NewsCategory extends Model
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
                 'source' => ['name']
@@ -81,7 +82,8 @@ class NewsCategory extends Model
         return $this->morphMany(Link::class, 'linkable');
     }
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'name' => 'required',
             'thumbnail' => 'image|max:255',
@@ -91,6 +93,6 @@ class NewsCategory extends Model
 
     public static function newsCategoryList()
     {
-        return NewsCategory::where('is_active',1)->pluck('name', 'id');
+        return NewsCategory::where('is_active', 1)->pluck('name', 'id');
     }
 }

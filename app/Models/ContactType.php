@@ -12,7 +12,7 @@ class ContactType extends Model
     use SoftDeletes;
 
     protected $fillable = ['name', 'is_active'];
-    protected $dates = ['created_at','updated_at','deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function contacts()
     {
@@ -21,6 +21,6 @@ class ContactType extends Model
 
     public static function contactTypeList()
     {
-        return ContactType::where('is_active',1)->pluck('name','id');
+        return ContactType::where('is_active', 1)->pluck('name', 'id');
     }
 }

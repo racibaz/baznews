@@ -22,12 +22,13 @@ class Setting extends Model
         'is_active',
     ];
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'title' => 'max:255',
             'slogan' => 'max:255',
             'description' => 'max:255',
-            'keywords'=> 'max:255',
+            'keywords' => 'max:255',
             'logo' => 'image',
             'url' => 'url',
             'rss_count' => 'integer',

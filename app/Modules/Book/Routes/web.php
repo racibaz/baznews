@@ -17,11 +17,11 @@ Route::get('book-author/{slug}', 'Frontend\BookAuthorController@show')->name('bo
 Route::get('book-publisher/{slug}', 'Frontend\BookPublisherController@show')->name('book_publisher');
 Route::get('books_sitemap', 'Frontend\SitemapController@sitemap')->name('books_sitemap');
 
-Route::group(['prefix' => 'rss'], function() {
+Route::group(['prefix' => 'rss'], function () {
     Route::get('books', 'Frontend\RssController@booksRssRender')->name('rss/books');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function () {
     Route::resource('book', 'Backend\BookController');
     Route::resource('book_category', 'Backend\BookCategoryController');
     Route::resource('book_publisher', 'Backend\BookPublisherController');

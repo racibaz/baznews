@@ -21,7 +21,8 @@ class RelatedNews extends Model
         return $this->belongsTo(News::class, 'news_id');
     }
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'news_id' => 'required',
             'related_news_id' => 'required',

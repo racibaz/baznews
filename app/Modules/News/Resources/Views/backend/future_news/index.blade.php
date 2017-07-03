@@ -25,7 +25,8 @@
                 <div class="box-header">
                     <h3 class="box-title"><strong>{{trans('news::future_news.list')}}</strong></h3>
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                 </div>
@@ -79,6 +80,6 @@
 @endsection
 @section('js')
     <script type="text/javascript">
-        activeMenu('news_management','future_news');
+        activeMenu('news_management', 'future_news');
     </script>
 @endsection

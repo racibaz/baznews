@@ -57,7 +57,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <button class="btn btn-success btn-block" type="submit"><i class="fa fa-search"></i> {{trans('news::common.search')}}</button>
+                    <button class="btn btn-success btn-block" type="submit"><i
+                                class="fa fa-search"></i> {{trans('news::common.search')}}</button>
                 </div><!-- /.form-group -->
             </div><!-- /.col -->
         </div><!-- /.row -->

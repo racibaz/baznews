@@ -7,9 +7,9 @@ use App\Repositories\WidgetManagerRepository as Repo;
 use Cache;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 
 class WidgetManagerController extends BackendController
 {
@@ -19,7 +19,7 @@ class WidgetManagerController extends BackendController
 
         $this->view = 'widget_manager.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
@@ -29,10 +29,10 @@ class WidgetManagerController extends BackendController
 
         $moduleWidgets = WidgetManager::getEnableModuleWidgets();
         $coreWidgetss = WidgetManager::getCoreWidgets();
-        $widgets = array_merge($coreWidgetss,$moduleWidgets);
+        $widgets = array_merge($coreWidgetss, $moduleWidgets);
         $widgetGroupList = WidgetManager::$widgetGroups;
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records', 'widgets','widgetGroupList' ));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('records', 'widgets', 'widgetGroupList'));
     }
 
 
@@ -41,7 +41,7 @@ class WidgetManagerController extends BackendController
         $record = $this->repo->createModel();
 //        $widgetGroupList = WidgetGroup::widgetGroupList();
         $widgetGroupList = WidgetManager::$widgetGroups;
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'widgetGroupList']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'widgetGroupList']));
     }
 
 
@@ -53,7 +53,7 @@ class WidgetManagerController extends BackendController
 
     public function show(WidgetManager $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -61,7 +61,7 @@ class WidgetManagerController extends BackendController
     {
 //        $widgetGroupList = WidgetGroup::widgetGroupList();
         $widgetGroupList = WidgetManager::$widgetGroups;
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'widgetGroupList']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'widgetGroupList']));
     }
 
 
@@ -76,7 +76,7 @@ class WidgetManagerController extends BackendController
         $this->repo->delete($record->id);
         Cache::tags(['Setting', 'Widget', 'homePage'])->flush();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -94,7 +94,7 @@ class WidgetManagerController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id, $input);
             } else {
                 $result = $this->repo->create($input);
             }
@@ -122,8 +122,8 @@ class WidgetManagerController extends BackendController
 
         $widget = WidgetManager::getWidgetInfo($widgetSlug);
 
-        $trashedWidget = $this->repo->withTrashed()->where('slug',$widgetSlug)->first();
-        if(!empty($trashedWidget)){
+        $trashedWidget = $this->repo->withTrashed()->where('slug', $widgetSlug)->first();
+        if (!empty($trashedWidget)) {
             $trashedWidget->restore();
             $this->repo->forgetCache();
             Cache::tags(['Setting', 'Widget', 'homePage'])->flush();
@@ -136,25 +136,25 @@ class WidgetManagerController extends BackendController
          *
          * widget ın position değerini 1 arttırarak ekliyoruz.
          * */
-        $widgetPosition = $this->repo->orderBy('position','desc')->findAll()->first();
+        $widgetPosition = $this->repo->orderBy('position', 'desc')->findAll()->first();
 
 
-        $widgetManagaer =[];
+        $widgetManagaer = [];
 //        $widgetManagaer['widget_group_id']  = 4;
-        $widgetManagaer['name']         = $widget['name'];
-        $widgetManagaer['slug']         = $widget['slug'];
-        $widgetManagaer['module_name']  = $widget['module_name'];
-        $widgetManagaer['namespace']    = $widget['namespace'];
-        $widgetManagaer['group']        = $group;
-        $widgetManagaer['position']     = $widgetPosition->position + 1;
-        $widgetManagaer['is_active']    = 1;
+        $widgetManagaer['name'] = $widget['name'];
+        $widgetManagaer['slug'] = $widget['slug'];
+        $widgetManagaer['module_name'] = $widget['module_name'];
+        $widgetManagaer['namespace'] = $widget['namespace'];
+        $widgetManagaer['group'] = $group;
+        $widgetManagaer['position'] = $widgetPosition->position + 1;
+        $widgetManagaer['is_active'] = 1;
 
-        $record = $this->repo->findBy('slug',$widgetSlug);
+        $record = $this->repo->findBy('slug', $widgetSlug);
 
-        if(isset($record->id)) {
+        if (isset($record->id)) {
             return Redirect::back()
                 ->withErrors(trans('widget.widget_is_exists'));
-        }else{
+        } else {
             $this->repo->create($widgetManagaer);
         }
 

@@ -11,7 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
 class ImageUploader implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
-    
+
     public $record;
 
     public $input;
@@ -25,7 +25,7 @@ class ImageUploader implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($record, $input ,$destination ,$document_name)
+    public function __construct($record, $input, $destination, $document_name)
     {
         $this->record = $record;
         $this->input = $input;
@@ -41,6 +41,6 @@ class ImageUploader implements ShouldQueue
     public function handle()
     {
         dd('foto upload');
-        Uploader::fileUpload($this->record , $this->input , $this->destination , $this->document_name);
+        Uploader::fileUpload($this->record, $this->input, $this->destination, $this->document_name);
     }
 }

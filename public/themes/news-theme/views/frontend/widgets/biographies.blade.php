@@ -1,7 +1,7 @@
 <h1> Biography Widget </h1>
-<br />
+<br/>
 @foreach($biographies as $biography)
 
-    {{ $biography->full_name }} <br />
-    <img src="{{ $biography->photo }}">  <br />
+    {{ $biography->full_name }} <br/>
+    <img src="{{ $biography->photo }}">  <br/>
 @endforeach

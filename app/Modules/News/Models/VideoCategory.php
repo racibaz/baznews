@@ -8,8 +8,8 @@ use App\Traits\Eventable;
 use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
-use Illuminate\Database\Eloquent\Model;
 use Venturecraft\Revisionable\RevisionableTrait;
+use Illuminate\Database\Eloquent\Model;
 
 class VideoCategory extends Model
 {
@@ -26,7 +26,7 @@ class VideoCategory extends Model
         parent::boot();
 
         static::created(function ($record) {
-            if($record->is_active) {
+            if ($record->is_active) {
                 $link = new Link();
                 $link->url = $record->slug;
                 $record->links()->save($link);
@@ -34,7 +34,7 @@ class VideoCategory extends Model
         });
 
         static::updated(function ($record) {
-            if($record->is_active) {
+            if ($record->is_active) {
                 $link = Link::where('linkable_id', $record->id)->where('linkable_type', VideoCategory::class)->first();
                 $link->url = $record->slug;
                 $record->links()->save($link);
@@ -52,7 +52,8 @@ class VideoCategory extends Model
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
                 'source' => ['name']
@@ -87,6 +88,6 @@ class VideoCategory extends Model
 
     public static function videoCategoryList()
     {
-        return VideoCategory::where('is_active',1)->pluck('name', 'id');
+        return VideoCategory::where('is_active', 1)->pluck('name', 'id');
     }
 }

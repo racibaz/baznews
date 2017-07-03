@@ -20,7 +20,8 @@ class BookSetting extends Model
         'book_count',
     ];
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'book_count' => 'integer',
         );

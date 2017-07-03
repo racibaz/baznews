@@ -24,19 +24,16 @@ class BookRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    'user_id'                       => 'required|integer',
-                    'book_publisher_id'             => 'required|integer',
-                    'book_author_id'                => 'required|integer',
+                    'user_id' => 'required|integer',
+                    'book_publisher_id' => 'required|integer',
+                    'book_author_id' => 'required|integer',
                     'name' => [
                         'required',
                         'max:255',
@@ -47,27 +44,26 @@ class BookRequest extends FormRequest
                         Rule::unique('book_publishers'),
                         'nullable'
                     ],
-                    'short_url'                     => 'url|max:255|nullable',
-                    'link'                          => 'url|max:255|nullable',
-                    'thumbnail'                     => 'image|nullable',
-                    'photo'                         => 'image|nullable',
-                    'description'                   => 'string|nullable',
-                    'ISBN'                          => 'string|nullable',
-                    'release_date'                  => 'date|nullable',
-                    'number_of_print'               => 'nullable',
-                    'skin_type'                     => 'nullable',
-                    'paper_type'                    => 'nullable',
-                    'size'                          => 'nullable',
+                    'short_url' => 'url|max:255|nullable',
+                    'link' => 'url|max:255|nullable',
+                    'thumbnail' => 'image|nullable',
+                    'photo' => 'image|nullable',
+                    'description' => 'string|nullable',
+                    'ISBN' => 'string|nullable',
+                    'release_date' => 'date|nullable',
+                    'number_of_print' => 'nullable',
+                    'skin_type' => 'nullable',
+                    'paper_type' => 'nullable',
+                    'size' => 'nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('book_publisher')->id;
                 return [
-                    'user_id'                       => 'required|integer',
-                    'book_publisher_id'             => 'required|integer',
-                    'book_author_id'                => 'required|integer',
+                    'user_id' => 'required|integer',
+                    'book_publisher_id' => 'required|integer',
+                    'book_author_id' => 'required|integer',
                     'name' => [
                         'required',
                         'max:255',
@@ -78,20 +74,21 @@ class BookRequest extends FormRequest
                         Rule::unique('book_publishers')->ignore($id),
                         'nullable'
                     ],
-                    'short_url'                     => 'url|max:255|nullable',
-                    'link'                          => 'url|max:255|nullable',
-                    'thumbnail'                     => 'image|nullable',
-                    'photo'                         => 'image|nullable',
-                    'description'                   => 'string|nullable',
-                    'ISBN'                          => 'string|nullable',
-                    'release_date'                  => 'date|nullable',
-                    'number_of_print'               => 'nullable',
-                    'skin_type'                     => 'nullable',
-                    'paper_type'                    => 'nullable',
-                    'size'                          => 'nullable',
+                    'short_url' => 'url|max:255|nullable',
+                    'link' => 'url|max:255|nullable',
+                    'thumbnail' => 'image|nullable',
+                    'photo' => 'image|nullable',
+                    'description' => 'string|nullable',
+                    'ISBN' => 'string|nullable',
+                    'release_date' => 'date|nullable',
+                    'number_of_print' => 'nullable',
+                    'skin_type' => 'nullable',
+                    'paper_type' => 'nullable',
+                    'size' => 'nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

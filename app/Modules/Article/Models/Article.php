@@ -8,8 +8,8 @@ use App\Traits\Eventable;
 use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Venturecraft\Revisionable\RevisionableTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Eloquent
 {
@@ -23,10 +23,11 @@ class Article extends Eloquent
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
-                'source' => ['title','id']
+                'source' => ['title', 'id']
             ]
         ];
     }
@@ -42,7 +43,7 @@ class Article extends Eloquent
     public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
 
     protected $fillable = ['user_id', 'article_author_id', 'title', 'slug', 'short_url', 'subtitle', 'spot', 'content', 'description', 'keywords', 'hit', 'order', 'status', 'is_cuff', 'is_active'];
-    protected $dates = ['created_at','updated_at','deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function user()
     {
@@ -61,6 +62,6 @@ class Article extends Eloquent
 
     public static function articleList()
     {
-        return Article::where('is_active',1)->pluck('title', 'id');
+        return Article::where('is_active', 1)->pluck('title', 'id');
     }
 }

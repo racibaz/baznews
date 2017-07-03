@@ -26,7 +26,8 @@
                     <h3 class="box-title"><strong>{{trans('page.management')}}</strong></h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -45,23 +46,23 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $record)
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('page.show', $record->name , $record, [] ) !!}</td>
-                                    <td>{!!$record->is_comment ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! link_to_route('page', trans('common.show'), $record->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('page.destroy',  $record))) !!}
-                                                {!! link_to_route('page.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                                                {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                        @foreach($records as $record)
+                            <tr>
+                                <td>{{$record->id}}</td>
+                                <td>{!! link_to_route('page.show', $record->name , $record, [] ) !!}</td>
+                                <td>{!!$record->is_comment ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        {!! link_to_route('page', trans('common.show'), $record->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('page.destroy',  $record))) !!}
+                                        {!! link_to_route('page.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
@@ -85,6 +86,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('page','');
+        activeMenu('page', '');
     </script>
 @endsection

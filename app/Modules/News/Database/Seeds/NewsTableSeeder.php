@@ -16,15 +16,15 @@ class NewsTableSeeder extends Seeder
     public function run()
     {
         $news1 = News::create([
-            'user_id'                           => 1,
-            'country_id'                        => 1,
-            'city_id'                           => 1,
-            'news_source_id'                  => 1,
-            'title'                             => 'İlk Haber 1',
-            'small_title'                       => 'İlk Haber 1',
-            'slug'                              => 'ilk_haber-1',
-            'spot'                              => 'Spicy jalapeno bacon ipsum dolor amet pork salami shankle meatloaf. Venison pancetta cupim shankle strip steak capicola biltong t-bone pork pork belly cow ground round hamburger short loin.',
-            'content'                           => 'Spicy jalapeno bacon ipsum dolor amet salami pastrami beef pork chop shankle shoulder, ball tip hamburger spare ribs pork loin turkey cow. Salami chicken ham hock drumstick tenderloin, shank jerky tongue beef ribs. Meatball short ribs jowl, prosciutto picanha sausage drumstick andouille ribeye bacon bresaola flank short loin tail. Andouille chicken cow shoulder swine. Meatloaf jowl pancetta, brisket beef ribs turkey chicken pork belly. Beef ribs sirloin spare ribs cupim cow kevin turkey. Sirloin bresaola short loin hamburger turkey brisket jerky.
+            'user_id' => 1,
+            'country_id' => 1,
+            'city_id' => 1,
+            'news_source_id' => 1,
+            'title' => 'İlk Haber 1',
+            'small_title' => 'İlk Haber 1',
+            'slug' => 'ilk_haber-1',
+            'spot' => 'Spicy jalapeno bacon ipsum dolor amet pork salami shankle meatloaf. Venison pancetta cupim shankle strip steak capicola biltong t-bone pork pork belly cow ground round hamburger short loin.',
+            'content' => 'Spicy jalapeno bacon ipsum dolor amet salami pastrami beef pork chop shankle shoulder, ball tip hamburger spare ribs pork loin turkey cow. Salami chicken ham hock drumstick tenderloin, shank jerky tongue beef ribs. Meatball short ribs jowl, prosciutto picanha sausage drumstick andouille ribeye bacon bresaola flank short loin tail. Andouille chicken cow shoulder swine. Meatloaf jowl pancetta, brisket beef ribs turkey chicken pork belly. Beef ribs sirloin spare ribs cupim cow kevin turkey. Sirloin bresaola short loin hamburger turkey brisket jerky.
 
 Doner picanha landjaeger pancetta shoulder turducken, ribeye t-bone leberkas pastrami tail corned beef. Picanha swine t-bone ham hock, pork shank burgdoggen tongue strip steak rump chuck pork belly frankfurter. Pastrami frankfurter alcatra, strip steak shankle ham cupim sirloin pig picanha chicken tail kielbasa. Rump short loin pancetta, beef ribs pork loin chicken drumstick pork chop t-bone fatback spare ribs pastrami. Turducken filet mignon spare ribs pig pastrami burgdoggen. Pig cow ball tip flank, landjaeger ground round shank corned beef prosciutto.
 
@@ -34,36 +34,36 @@ Ham hock frankfurter shank cow pork loin sirloin turducken jowl leberkas. Frankf
 
 Prosciutto sirloin pork belly drumstick t-bone, filet mignon landjaeger porchetta rump frankfurter picanha. Jerky salami capicola, chuck ribeye rump hamburger tenderloin beef pork turkey tongue spare ribs corned beef. Pork loin chicken burgdoggen jerky, tri-tip tenderloin beef. Salami porchetta cupim turkey, strip steak tongue brisket bresaola short ribs. Cow pastrami tri-tip, hamburger pork loin capicola beef ribs. Bresaola leberkas kielbasa, jerky short loin pork chop salami t-bone.
 Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-            'description'                       => 'tanım',
-            'keywords'                          => 'anahtar kelimler',
-            'meta_tags'                         => 'meta lar',
-            'cuff_photo'                        => '1.jpg',
-            'thumbnail'                         => '1.jpg',
-            'hit'                               => 1,
-            'status'                            => 1,
-            'band_news'                         => 1,
-            'box_cuff'                          => 1,
-            'is_cuff'                           => 1,
-            'break_news'                        => 1,
-            'is_comment'                        => 1,
-            'is_show_editor_profile'            => 1,
-            'is_show_previous_and_next_news'    => 1,
-            'main_cuff'                         => 1,
-            'mini_cuff'                         => 1,
-            'map_text'                          => 'koordinatlar',
-            'is_active'                         => 1
+            'description' => 'tanım',
+            'keywords' => 'anahtar kelimler',
+            'meta_tags' => 'meta lar',
+            'cuff_photo' => '1.jpg',
+            'thumbnail' => '1.jpg',
+            'hit' => 1,
+            'status' => 1,
+            'band_news' => 1,
+            'box_cuff' => 1,
+            'is_cuff' => 1,
+            'break_news' => 1,
+            'is_comment' => 1,
+            'is_show_editor_profile' => 1,
+            'is_show_previous_and_next_news' => 1,
+            'main_cuff' => 1,
+            'mini_cuff' => 1,
+            'map_text' => 'koordinatlar',
+            'is_active' => 1
         ]);
 
         $news2 = News::create([
-            'user_id'                           => 1,
-            'country_id'                        => 1,
-            'city_id'                           => 1,
-            'news_source_id'                  => 1,
-            'title'                             => 'İkinci Haber 2',
-            'small_title'                       => 'İkinci Haber 2',
-            'slug'                              => 'ikinci_haber-2',
-            'spot'                              => 'Spicy jalapeno bacon ipsum dolor amet pork salami shankle meatloaf. Venison pancetta cupim shankle strip steak capicola biltong t-bone pork pork belly cow ground round hamburger short loin.',
-            'content'                           => 'Spicy jalapeno bacon ipsum dolor amet salami pastrami beef pork chop shankle shoulder, ball tip hamburger spare ribs pork loin turkey cow. Salami chicken ham hock drumstick tenderloin, shank jerky tongue beef ribs. Meatball short ribs jowl, prosciutto picanha sausage drumstick andouille ribeye bacon bresaola flank short loin tail. Andouille chicken cow shoulder swine. Meatloaf jowl pancetta, brisket beef ribs turkey chicken pork belly. Beef ribs sirloin spare ribs cupim cow kevin turkey. Sirloin bresaola short loin hamburger turkey brisket jerky.
+            'user_id' => 1,
+            'country_id' => 1,
+            'city_id' => 1,
+            'news_source_id' => 1,
+            'title' => 'İkinci Haber 2',
+            'small_title' => 'İkinci Haber 2',
+            'slug' => 'ikinci_haber-2',
+            'spot' => 'Spicy jalapeno bacon ipsum dolor amet pork salami shankle meatloaf. Venison pancetta cupim shankle strip steak capicola biltong t-bone pork pork belly cow ground round hamburger short loin.',
+            'content' => 'Spicy jalapeno bacon ipsum dolor amet salami pastrami beef pork chop shankle shoulder, ball tip hamburger spare ribs pork loin turkey cow. Salami chicken ham hock drumstick tenderloin, shank jerky tongue beef ribs. Meatball short ribs jowl, prosciutto picanha sausage drumstick andouille ribeye bacon bresaola flank short loin tail. Andouille chicken cow shoulder swine. Meatloaf jowl pancetta, brisket beef ribs turkey chicken pork belly. Beef ribs sirloin spare ribs cupim cow kevin turkey. Sirloin bresaola short loin hamburger turkey brisket jerky.
 
 Doner picanha landjaeger pancetta shoulder turducken, ribeye t-bone leberkas pastrami tail corned beef. Picanha swine t-bone ham hock, pork shank burgdoggen tongue strip steak rump chuck pork belly frankfurter. Pastrami frankfurter alcatra, strip steak shankle ham cupim sirloin pig picanha chicken tail kielbasa. Rump short loin pancetta, beef ribs pork loin chicken drumstick pork chop t-bone fatback spare ribs pastrami. Turducken filet mignon spare ribs pig pastrami burgdoggen. Pig cow ball tip flank, landjaeger ground round shank corned beef prosciutto.
 
@@ -73,35 +73,35 @@ Ham hock frankfurter shank cow pork loin sirloin turducken jowl leberkas. Frankf
 
 Prosciutto sirloin pork belly drumstick t-bone, filet mignon landjaeger porchetta rump frankfurter picanha. Jerky salami capicola, chuck ribeye rump hamburger tenderloin beef pork turkey tongue spare ribs corned beef. Pork loin chicken burgdoggen jerky, tri-tip tenderloin beef. Salami porchetta cupim turkey, strip steak tongue brisket bresaola short ribs. Cow pastrami tri-tip, hamburger pork loin capicola beef ribs. Bresaola leberkas kielbasa, jerky short loin pork chop salami t-bone.
 Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-            'description'                       => 'tanım',
-            'keywords'                          => 'anahtar kelimler',
-            'meta_tags'                         => 'meta lar',
-            'cuff_photo'                        => '2.jpg',
-            'thumbnail'                         => '2.jpg',
-            'hit'                               => 1,
-            'status'                            => 1,
-            'band_news'                         => 1,
-            'box_cuff'                          => 1,
-            'is_cuff'                           => 1,
-            'is_comment'                        => 1,
-            'is_show_editor_profile'            => 1,
-            'is_show_previous_and_next_news'    => 1,
-            'main_cuff'                         => 1,
-            'mini_cuff'                         => 1,
-            'map_text'                          => 'koordinatlar',
-            'is_active'                         => 1
+            'description' => 'tanım',
+            'keywords' => 'anahtar kelimler',
+            'meta_tags' => 'meta lar',
+            'cuff_photo' => '2.jpg',
+            'thumbnail' => '2.jpg',
+            'hit' => 1,
+            'status' => 1,
+            'band_news' => 1,
+            'box_cuff' => 1,
+            'is_cuff' => 1,
+            'is_comment' => 1,
+            'is_show_editor_profile' => 1,
+            'is_show_previous_and_next_news' => 1,
+            'main_cuff' => 1,
+            'mini_cuff' => 1,
+            'map_text' => 'koordinatlar',
+            'is_active' => 1
         ]);
 
         $news3 = News::create([
-            'user_id'                           => 1,
-            'country_id'                        => 1,
-            'city_id'                           => 1,
-            'news_source_id'                  => 1,
-            'title'                             => 'Üç Haber 3',
-            'small_title'                       => 'Üç Haber 3',
-            'slug'                              => 'Üç_haber-3',
-            'spot'                              => 'Spicy jalapeno bacon ipsum dolor amet pork salami shankle meatloaf. Venison pancetta cupim shankle strip steak capicola biltong t-bone pork pork belly cow ground round hamburger short loin.',
-            'content'                           => 'Spicy jalapeno bacon ipsum dolor amet salami pastrami beef pork chop shankle shoulder, ball tip hamburger spare ribs pork loin turkey cow. Salami chicken ham hock drumstick tenderloin, shank jerky tongue beef ribs. Meatball short ribs jowl, prosciutto picanha sausage drumstick andouille ribeye bacon bresaola flank short loin tail. Andouille chicken cow shoulder swine. Meatloaf jowl pancetta, brisket beef ribs turkey chicken pork belly. Beef ribs sirloin spare ribs cupim cow kevin turkey. Sirloin bresaola short loin hamburger turkey brisket jerky.
+            'user_id' => 1,
+            'country_id' => 1,
+            'city_id' => 1,
+            'news_source_id' => 1,
+            'title' => 'Üç Haber 3',
+            'small_title' => 'Üç Haber 3',
+            'slug' => 'Üç_haber-3',
+            'spot' => 'Spicy jalapeno bacon ipsum dolor amet pork salami shankle meatloaf. Venison pancetta cupim shankle strip steak capicola biltong t-bone pork pork belly cow ground round hamburger short loin.',
+            'content' => 'Spicy jalapeno bacon ipsum dolor amet salami pastrami beef pork chop shankle shoulder, ball tip hamburger spare ribs pork loin turkey cow. Salami chicken ham hock drumstick tenderloin, shank jerky tongue beef ribs. Meatball short ribs jowl, prosciutto picanha sausage drumstick andouille ribeye bacon bresaola flank short loin tail. Andouille chicken cow shoulder swine. Meatloaf jowl pancetta, brisket beef ribs turkey chicken pork belly. Beef ribs sirloin spare ribs cupim cow kevin turkey. Sirloin bresaola short loin hamburger turkey brisket jerky.
 
 Doner picanha landjaeger pancetta shoulder turducken, ribeye t-bone leberkas pastrami tail corned beef. Picanha swine t-bone ham hock, pork shank burgdoggen tongue strip steak rump chuck pork belly frankfurter. Pastrami frankfurter alcatra, strip steak shankle ham cupim sirloin pig picanha chicken tail kielbasa. Rump short loin pancetta, beef ribs pork loin chicken drumstick pork chop t-bone fatback spare ribs pastrami. Turducken filet mignon spare ribs pig pastrami burgdoggen. Pig cow ball tip flank, landjaeger ground round shank corned beef prosciutto.
 
@@ -111,35 +111,35 @@ Ham hock frankfurter shank cow pork loin sirloin turducken jowl leberkas. Frankf
 
 Prosciutto sirloin pork belly drumstick t-bone, filet mignon landjaeger porchetta rump frankfurter picanha. Jerky salami capicola, chuck ribeye rump hamburger tenderloin beef pork turkey tongue spare ribs corned beef. Pork loin chicken burgdoggen jerky, tri-tip tenderloin beef. Salami porchetta cupim turkey, strip steak tongue brisket bresaola short ribs. Cow pastrami tri-tip, hamburger pork loin capicola beef ribs. Bresaola leberkas kielbasa, jerky short loin pork chop salami t-bone.
 Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-            'description'                       => 'tanım',
-            'keywords'                          => 'anahtar kelimler',
-            'meta_tags'                         => 'meta lar',
-            'cuff_photo'                        => '3.jpg',
-            'thumbnail'                         => '3.jpg',
-            'hit'                               => 1,
-            'status'                            => 1,
-            'band_news'                         => 1,
-            'box_cuff'                          => 1,
-            'is_cuff'                           => 1,
-            'is_comment'                        => 1,
-            'is_show_editor_profile'            => 1,
-            'is_show_previous_and_next_news'    => 1,
-            'main_cuff'                         => 1,
-            'mini_cuff'                         => 1,
-            'map_text'                          => 'koordinatlar',
-            'is_active'                         => 1
+            'description' => 'tanım',
+            'keywords' => 'anahtar kelimler',
+            'meta_tags' => 'meta lar',
+            'cuff_photo' => '3.jpg',
+            'thumbnail' => '3.jpg',
+            'hit' => 1,
+            'status' => 1,
+            'band_news' => 1,
+            'box_cuff' => 1,
+            'is_cuff' => 1,
+            'is_comment' => 1,
+            'is_show_editor_profile' => 1,
+            'is_show_previous_and_next_news' => 1,
+            'main_cuff' => 1,
+            'mini_cuff' => 1,
+            'map_text' => 'koordinatlar',
+            'is_active' => 1
         ]);
 
         $news4 = News::create([
-            'user_id'                           => 1,
-            'country_id'                        => 1,
-            'city_id'                           => 1,
-            'news_source_id'                  => 1,
-            'title'                             => 'Dört Haber 4',
-            'small_title'                       => 'Dört Haber 4',
-            'slug'                              => 'Dört_haber-4',
-            'spot'                              => 'Spicy jalapeno bacon ipsum dolor amet pork salami shankle meatloaf. Venison pancetta cupim shankle strip steak capicola biltong t-bone pork pork belly cow ground round hamburger short loin.',
-            'content'                           => 'Spicy jalapeno bacon ipsum dolor amet salami pastrami beef pork chop shankle shoulder, ball tip hamburger spare ribs pork loin turkey cow. Salami chicken ham hock drumstick tenderloin, shank jerky tongue beef ribs. Meatball short ribs jowl, prosciutto picanha sausage drumstick andouille ribeye bacon bresaola flank short loin tail. Andouille chicken cow shoulder swine. Meatloaf jowl pancetta, brisket beef ribs turkey chicken pork belly. Beef ribs sirloin spare ribs cupim cow kevin turkey. Sirloin bresaola short loin hamburger turkey brisket jerky.
+            'user_id' => 1,
+            'country_id' => 1,
+            'city_id' => 1,
+            'news_source_id' => 1,
+            'title' => 'Dört Haber 4',
+            'small_title' => 'Dört Haber 4',
+            'slug' => 'Dört_haber-4',
+            'spot' => 'Spicy jalapeno bacon ipsum dolor amet pork salami shankle meatloaf. Venison pancetta cupim shankle strip steak capicola biltong t-bone pork pork belly cow ground round hamburger short loin.',
+            'content' => 'Spicy jalapeno bacon ipsum dolor amet salami pastrami beef pork chop shankle shoulder, ball tip hamburger spare ribs pork loin turkey cow. Salami chicken ham hock drumstick tenderloin, shank jerky tongue beef ribs. Meatball short ribs jowl, prosciutto picanha sausage drumstick andouille ribeye bacon bresaola flank short loin tail. Andouille chicken cow shoulder swine. Meatloaf jowl pancetta, brisket beef ribs turkey chicken pork belly. Beef ribs sirloin spare ribs cupim cow kevin turkey. Sirloin bresaola short loin hamburger turkey brisket jerky.
 
 Doner picanha landjaeger pancetta shoulder turducken, ribeye t-bone leberkas pastrami tail corned beef. Picanha swine t-bone ham hock, pork shank burgdoggen tongue strip steak rump chuck pork belly frankfurter. Pastrami frankfurter alcatra, strip steak shankle ham cupim sirloin pig picanha chicken tail kielbasa. Rump short loin pancetta, beef ribs pork loin chicken drumstick pork chop t-bone fatback spare ribs pastrami. Turducken filet mignon spare ribs pig pastrami burgdoggen. Pig cow ball tip flank, landjaeger ground round shank corned beef prosciutto.
 
@@ -149,36 +149,36 @@ Ham hock frankfurter shank cow pork loin sirloin turducken jowl leberkas. Frankf
 
 Prosciutto sirloin pork belly drumstick t-bone, filet mignon landjaeger porchetta rump frankfurter picanha. Jerky salami capicola, chuck ribeye rump hamburger tenderloin beef pork turkey tongue spare ribs corned beef. Pork loin chicken burgdoggen jerky, tri-tip tenderloin beef. Salami porchetta cupim turkey, strip steak tongue brisket bresaola short ribs. Cow pastrami tri-tip, hamburger pork loin capicola beef ribs. Bresaola leberkas kielbasa, jerky short loin pork chop salami t-bone.
 Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-            'description'                       => 'tanım',
-            'keywords'                          => 'anahtar kelimler',
-            'meta_tags'                         => 'meta lar',
-            'cuff_photo'                        => '4.jpg',
-            'thumbnail'                         => '4.jpg',
-            'hit'                               => 1,
-            'status'                            => 1,
-            'band_news'                         => 1,
-            'box_cuff'                          => 1,
-            'is_cuff'                           => 1,
-            'is_comment'                        => 1,
-            'is_show_editor_profile'            => 1,
-            'is_show_previous_and_next_news'    => 1,
-            'main_cuff'                         => 1,
-            'mini_cuff'                         => 1,
-            'map_text'                               => 'koordinatlar',
-            'is_active'                         => 1
+            'description' => 'tanım',
+            'keywords' => 'anahtar kelimler',
+            'meta_tags' => 'meta lar',
+            'cuff_photo' => '4.jpg',
+            'thumbnail' => '4.jpg',
+            'hit' => 1,
+            'status' => 1,
+            'band_news' => 1,
+            'box_cuff' => 1,
+            'is_cuff' => 1,
+            'is_comment' => 1,
+            'is_show_editor_profile' => 1,
+            'is_show_previous_and_next_news' => 1,
+            'main_cuff' => 1,
+            'mini_cuff' => 1,
+            'map_text' => 'koordinatlar',
+            'is_active' => 1
         ]);
 
 
         $news5 = News::create([
-            'user_id'                           => 1,
-            'country_id'                        => 1,
-            'city_id'                           => 1,
-            'news_source_id'                    => 5,
-            'title'                             => 'İnsanlığın Çocuğu: Miguel de Cervantes Saavedra 5',
-            'small_title'                       => 'İnsanlığın Çocuğu: Miguel de Cervantes Saavedra 5',
-            'slug'                              => 'insanligin-cocugu-miguel-de-cervantes-saavedra-5',
-            'spot'                              => 'Günümün büyük çoğunluğunu romancı, şair ve oyun yazarı Cervantes’i düşünerek geçiriyorum. Bu, yalnızlığıyla yarışacak kimsenin bulunmadığı adamı düşünüyorum. Kendisiye/acılarıyla alay edecek boyuta varma erdemine ulaşmış insanla günümü geçirmek istiyorum. O inandığı değerlerinin karşısında sadık bir mürit gibidir.',
-            'content'                           => 'Yapıtı Don Kişot’ta salt aşkı değil kusursuz dostluğu da idealize etmiştir. Belleğinde yaşattığı aşkın kutsallığına erişmek için bir metrese gerek duymuyordu. Kendisini şövalye sanan Don Kişot, her şövalyenin bir sevgilisinin olması gerektiğini düşüyor. Sıradan, şişman bir köylü kızı olan Aldonzo’ya Dulcinea del Toboso takma adını verir ve sevgilisi yapar kendisine. Onu soylu bir ailenin güzel kızı olarak düşünüyor. Yanına kendi köyünde yaşayan Sancho Panza’yı seyisi olarak alır ve yola koyulur.  Karşısına çıkan hanın sahibine kendisini şövalye olarak ilan ettiriyor. Öyle ki yel değirmenlerini dev sanıyor ve üzerine yürüyor. Onun insan yanının yapıtlarına yansıyan en büyük özelliği tüm duyguları kendisiyle eşitlemiş olmasıdır. Yalnız yeldeğirmenlerinin peşine düşmesinin bir diğer nedeni de kendi ayarında bir dost bulamamış olmasıdır. Serüvenci ruhuyla şövalye yürekli bu dostumun başına neler gelmiyor ki… O günün kederle el ele verip parçaladığı kalbini geceleri onarıyor. Sabahları ise kendi külünden doğan bir Anka kuşudur.  O yüzden yel değirmenine karşı savaş açacak gücü kendisinde görüyor. Endişeli bir ruha sahip olması onu içten içe yiyip tüketiyor. Onun hakkında okuduklarımı yolda yürürken hatırlamaya başlıyorum. 29 Eylül 1547 tarihinde Alcalá de Henares, İspanya’da doğan ve 22 Nisan 1616 (68 yaşında) Madrid, İspanya’da ölen Miguel de Cervantes Saavedra’nın yol arkadaşım olmasını yürekten istiyorum. Endülüslü bir anneden doğma ailesi Galice’dengelme. Kendisi de Kelt ırkından sayılıyor. Batı edebiyatının klasikleri arasındaki yerini alan Modern Avrupa’nın ilk romanı olarak kabul edilen yazdığı magnum opusu Don Kişot  bugüne kadar yazılmış en iyi kurgusal eserlerden biri sayılıyor.Onun yapıtlarına yansıyan insan yanını bir başka mercek altında incelemek istiyorum. Genç yaşında yazmaya başladığı denemeleri ve tiyatro eserleriyle kısa bir süre sonra edebiyat çevresinde adını duyuruyor. Bugün bile İspanyol edebiyatında roman geleneğinin başlatıcısı olarak kabul ediliyor. İşlenen bir suç ad benzerliğinden dolayı kendisine malolunca İtalya’dan ayrılıyor. Yaşadığı bir dizi serüvenden dolayı Osmanlılar tarafından tutsak edilen Cervantes, 1575-1580 yılları arasında da Cezayir‘de esir olarak yaşıyor.Birçok yaralanma tehlikesi geçiren Cervantes bir top güllesiyle yazık ki sol elini kaybediyor. Birçok kez kaçmaya teşebbüs ediyor ama başarılı olamıyor. Hapse atılınca da hapiste kendisini tamamen edebiyata adıyor. En büyük yapıtı olan Don Quijote (Don Kişot)’u kaleme alıyor. Bu eseri sayesinde tüm dünyada da tanınıyor. Bu yapıtında kendi hayatıyla alay ettiği, özellikle de yapıttaki kahramanların hayatlarıyla kendi hayatı arasında birçok benzerlik görüldüğü anlaşılıyor. Don Kişot dünyanın en çok okunan eserlerinden biridir ve 38 dile çevrilmiştir. Bu eser hâlâ dünyanın en çok okunan romanları arasındaki yerini koruyor. Don Kişot bir çocuk gibi her şeye inanır. Yeryüzünde yaşayan insanlar arasında en safıdır o. Dünyada var olan hiçbir çirkinlik ona bulaşmaz. Dünyadaki tüm insanlar onun gibi saftırlar. Kişiliğinin en belirgin özelliği umuda sımsıkı sarılmasıdır. Onun cennetinde herkese yer vardır. Her tür çiçeğin açtığı bir cennettir. Cennetine girmek isteyenlerinin de girmeme hakkı vardır. Israrı ve baskıyı sevmemektir. Öyle ki kendi cennetinde kendisi dışarıda kalabilir. Adalet tüm haksızlıkların temelidir. Polislik mesleğinin kendisine verilmesini ister. Prensler ve çağın büyükleri pekâlâ iyilikseverlikle yanında yer alabilirler. Don Kişot; cennetinde yaptığı düzenlenmelerle Tanrı’yı da üzülmekten koruyacaktır. İyi niyetli insanları bir araya getirerek barışı sağlayacağını düşünen kahramanımız bilgelik düzeyinde bir bilgi birikimine sahiptir. O kadar namuslu olmasaydı kesinlikle bilgin olurdu. İnsanlara birşeyler öğretmesini sevmez. Öğretecek olsa dahi büyük bir mütevazılıkla yapar. Gereğinden fazla okuyan kahramanınız okuduklarının oluşturduğu iksiri insanlara dağıtıyor. Onun için başarının hiçbir önemi yoktur; zira o edebi başarıya gönül vermiştir. Don Kişot, soylu atının üzerinde bir masal kahramanıdır. Onda olan inanç, haşmet ve ihtişam kimsede yoktur. Girdiği her savaştan yenik çıkan, bu savaşların soylu beceriksizi duygu dünyasıyla insanı kendisine hayran bırakıyor. “İşte size, barbarlara karşı, İsa uğruna yapılan savaşta bir kolunu kaybeden Lepant’ın askeri. Kralların zalimliklerine, evdeki sefalete en önemlisi de  aile hayatının tüm saçmalığını ortadan kaldırmış olursunuz. Böylece edebiyat çevreleri,  kutsal papazlar tarikatının ifşa etmiş oldu. (…) Artık sizi Don Kişot ve Cervantes’ten ayrı tutmuyorum.” Onun kişiliğinin bir diğer özelliği de coşkulu olmasıdır. Adalete karşı özel bir bağlılığı vardır; zira mutlak bir duygunun içindeki coşkuyu arıyor. Güzelliklerle dolu bir dünya özlemi vardır ve bu özleminde de oldukça samimidir. İlahi adaleti yeryüzünden tecelli etme görevini kendisi kendine vermiştir. Onun bilgeliği süvari atına kılıcıyla binmesi değil; cehennem Tanrılarının yeryüzünün bütün güçlerinden daha güçlü olduğunu farkına varmasıdır. Dürüstlüğü hukuk ve adalet kavramından daha önemli buluyor; çünkü dürüstlüğün olduğu yerde hukuk da adalet de yerli yerine oturacaktır. Hakkı söylemek başka şu haklıya hakkını vermek başka şeydir. Kahramanımız haklıya hakkını dağıtan bir tasavvuf dervişi gibidir. Hiçbir sıkıntı onun iyilikseverliğinietkilemez. Onda inanç ve cesaretin verdiği yücelik vardır. Söz konusu cesaret olduğunda akıl devre dışı kalıyor. O yaratıyor ve yarattığı insanları fethediyor. Yazarın yazın dehası da tam da burada devreye giriyor. Kendini insanlığı kurtarmaya adamış bu insan insanlığın soytarısı oluyor. İnsan ilişkisini daha derinden sorguladığı için ezik insan psikolojisini ortaya koyuyor. Yoksulların birbirleriyle olan savaşlarının zenginlerin birbirlerine olan savaşları aratmadığını tüm çıplaklığıyla sergiliyor. İnsanlık için ne kadar soylu da olsa düşünceleri iradeleri elinden alınmış insanların soytarısı olmaktan öteye gidemiyor. Aslıda burjuvanın soytarıları olduklarını farkına varamayan bir grup insanın içine düştüğü iç acıtıcı durumu sergiliyor yazar. Durum böyle olunca kahramanımızda  trajikomik acıların  kralıdır süvarisi değil.
+            'user_id' => 1,
+            'country_id' => 1,
+            'city_id' => 1,
+            'news_source_id' => 5,
+            'title' => 'İnsanlığın Çocuğu: Miguel de Cervantes Saavedra 5',
+            'small_title' => 'İnsanlığın Çocuğu: Miguel de Cervantes Saavedra 5',
+            'slug' => 'insanligin-cocugu-miguel-de-cervantes-saavedra-5',
+            'spot' => 'Günümün büyük çoğunluğunu romancı, şair ve oyun yazarı Cervantes’i düşünerek geçiriyorum. Bu, yalnızlığıyla yarışacak kimsenin bulunmadığı adamı düşünüyorum. Kendisiye/acılarıyla alay edecek boyuta varma erdemine ulaşmış insanla günümü geçirmek istiyorum. O inandığı değerlerinin karşısında sadık bir mürit gibidir.',
+            'content' => 'Yapıtı Don Kişot’ta salt aşkı değil kusursuz dostluğu da idealize etmiştir. Belleğinde yaşattığı aşkın kutsallığına erişmek için bir metrese gerek duymuyordu. Kendisini şövalye sanan Don Kişot, her şövalyenin bir sevgilisinin olması gerektiğini düşüyor. Sıradan, şişman bir köylü kızı olan Aldonzo’ya Dulcinea del Toboso takma adını verir ve sevgilisi yapar kendisine. Onu soylu bir ailenin güzel kızı olarak düşünüyor. Yanına kendi köyünde yaşayan Sancho Panza’yı seyisi olarak alır ve yola koyulur.  Karşısına çıkan hanın sahibine kendisini şövalye olarak ilan ettiriyor. Öyle ki yel değirmenlerini dev sanıyor ve üzerine yürüyor. Onun insan yanının yapıtlarına yansıyan en büyük özelliği tüm duyguları kendisiyle eşitlemiş olmasıdır. Yalnız yeldeğirmenlerinin peşine düşmesinin bir diğer nedeni de kendi ayarında bir dost bulamamış olmasıdır. Serüvenci ruhuyla şövalye yürekli bu dostumun başına neler gelmiyor ki… O günün kederle el ele verip parçaladığı kalbini geceleri onarıyor. Sabahları ise kendi külünden doğan bir Anka kuşudur.  O yüzden yel değirmenine karşı savaş açacak gücü kendisinde görüyor. Endişeli bir ruha sahip olması onu içten içe yiyip tüketiyor. Onun hakkında okuduklarımı yolda yürürken hatırlamaya başlıyorum. 29 Eylül 1547 tarihinde Alcalá de Henares, İspanya’da doğan ve 22 Nisan 1616 (68 yaşında) Madrid, İspanya’da ölen Miguel de Cervantes Saavedra’nın yol arkadaşım olmasını yürekten istiyorum. Endülüslü bir anneden doğma ailesi Galice’dengelme. Kendisi de Kelt ırkından sayılıyor. Batı edebiyatının klasikleri arasındaki yerini alan Modern Avrupa’nın ilk romanı olarak kabul edilen yazdığı magnum opusu Don Kişot  bugüne kadar yazılmış en iyi kurgusal eserlerden biri sayılıyor.Onun yapıtlarına yansıyan insan yanını bir başka mercek altında incelemek istiyorum. Genç yaşında yazmaya başladığı denemeleri ve tiyatro eserleriyle kısa bir süre sonra edebiyat çevresinde adını duyuruyor. Bugün bile İspanyol edebiyatında roman geleneğinin başlatıcısı olarak kabul ediliyor. İşlenen bir suç ad benzerliğinden dolayı kendisine malolunca İtalya’dan ayrılıyor. Yaşadığı bir dizi serüvenden dolayı Osmanlılar tarafından tutsak edilen Cervantes, 1575-1580 yılları arasında da Cezayir‘de esir olarak yaşıyor.Birçok yaralanma tehlikesi geçiren Cervantes bir top güllesiyle yazık ki sol elini kaybediyor. Birçok kez kaçmaya teşebbüs ediyor ama başarılı olamıyor. Hapse atılınca da hapiste kendisini tamamen edebiyata adıyor. En büyük yapıtı olan Don Quijote (Don Kişot)’u kaleme alıyor. Bu eseri sayesinde tüm dünyada da tanınıyor. Bu yapıtında kendi hayatıyla alay ettiği, özellikle de yapıttaki kahramanların hayatlarıyla kendi hayatı arasında birçok benzerlik görüldüğü anlaşılıyor. Don Kişot dünyanın en çok okunan eserlerinden biridir ve 38 dile çevrilmiştir. Bu eser hâlâ dünyanın en çok okunan romanları arasındaki yerini koruyor. Don Kişot bir çocuk gibi her şeye inanır. Yeryüzünde yaşayan insanlar arasında en safıdır o. Dünyada var olan hiçbir çirkinlik ona bulaşmaz. Dünyadaki tüm insanlar onun gibi saftırlar. Kişiliğinin en belirgin özelliği umuda sımsıkı sarılmasıdır. Onun cennetinde herkese yer vardır. Her tür çiçeğin açtığı bir cennettir. Cennetine girmek isteyenlerinin de girmeme hakkı vardır. Israrı ve baskıyı sevmemektir. Öyle ki kendi cennetinde kendisi dışarıda kalabilir. Adalet tüm haksızlıkların temelidir. Polislik mesleğinin kendisine verilmesini ister. Prensler ve çağın büyükleri pekâlâ iyilikseverlikle yanında yer alabilirler. Don Kişot; cennetinde yaptığı düzenlenmelerle Tanrı’yı da üzülmekten koruyacaktır. İyi niyetli insanları bir araya getirerek barışı sağlayacağını düşünen kahramanımız bilgelik düzeyinde bir bilgi birikimine sahiptir. O kadar namuslu olmasaydı kesinlikle bilgin olurdu. İnsanlara birşeyler öğretmesini sevmez. Öğretecek olsa dahi büyük bir mütevazılıkla yapar. Gereğinden fazla okuyan kahramanınız okuduklarının oluşturduğu iksiri insanlara dağıtıyor. Onun için başarının hiçbir önemi yoktur; zira o edebi başarıya gönül vermiştir. Don Kişot, soylu atının üzerinde bir masal kahramanıdır. Onda olan inanç, haşmet ve ihtişam kimsede yoktur. Girdiği her savaştan yenik çıkan, bu savaşların soylu beceriksizi duygu dünyasıyla insanı kendisine hayran bırakıyor. “İşte size, barbarlara karşı, İsa uğruna yapılan savaşta bir kolunu kaybeden Lepant’ın askeri. Kralların zalimliklerine, evdeki sefalete en önemlisi de  aile hayatının tüm saçmalığını ortadan kaldırmış olursunuz. Böylece edebiyat çevreleri,  kutsal papazlar tarikatının ifşa etmiş oldu. (…) Artık sizi Don Kişot ve Cervantes’ten ayrı tutmuyorum.” Onun kişiliğinin bir diğer özelliği de coşkulu olmasıdır. Adalete karşı özel bir bağlılığı vardır; zira mutlak bir duygunun içindeki coşkuyu arıyor. Güzelliklerle dolu bir dünya özlemi vardır ve bu özleminde de oldukça samimidir. İlahi adaleti yeryüzünden tecelli etme görevini kendisi kendine vermiştir. Onun bilgeliği süvari atına kılıcıyla binmesi değil; cehennem Tanrılarının yeryüzünün bütün güçlerinden daha güçlü olduğunu farkına varmasıdır. Dürüstlüğü hukuk ve adalet kavramından daha önemli buluyor; çünkü dürüstlüğün olduğu yerde hukuk da adalet de yerli yerine oturacaktır. Hakkı söylemek başka şu haklıya hakkını vermek başka şeydir. Kahramanımız haklıya hakkını dağıtan bir tasavvuf dervişi gibidir. Hiçbir sıkıntı onun iyilikseverliğinietkilemez. Onda inanç ve cesaretin verdiği yücelik vardır. Söz konusu cesaret olduğunda akıl devre dışı kalıyor. O yaratıyor ve yarattığı insanları fethediyor. Yazarın yazın dehası da tam da burada devreye giriyor. Kendini insanlığı kurtarmaya adamış bu insan insanlığın soytarısı oluyor. İnsan ilişkisini daha derinden sorguladığı için ezik insan psikolojisini ortaya koyuyor. Yoksulların birbirleriyle olan savaşlarının zenginlerin birbirlerine olan savaşları aratmadığını tüm çıplaklığıyla sergiliyor. İnsanlık için ne kadar soylu da olsa düşünceleri iradeleri elinden alınmış insanların soytarısı olmaktan öteye gidemiyor. Aslıda burjuvanın soytarıları olduklarını farkına varamayan bir grup insanın içine düştüğü iç acıtıcı durumu sergiliyor yazar. Durum böyle olunca kahramanımızda  trajikomik acıların  kralıdır süvarisi değil.
 
 
 Ben bunları düşünerek yolda yürürken yanıma yaklaşan adamı fark ettim. Direkt kendini tanıtarak benim yol arkadaşım olmak istediğini söyledi. Tarif edilmez bir mutlulukla, heyecanla sarsıldı ruhum.  Bir süre öylesine yürüdük ikimizde. Ben onun yüzüne yansıyan duyguları seyrediyordum o ise ruhumun derinliklerini gözlerimde görüyordu. Yakınlık ya da uzaklık ikimizin birbirimize duyumsadığı duygu sarmalı içinde yok olmuştu. Hiçliğin ne olduğunu ilk kez o an algılıyordum. Başka başka çağlarda yaşamış ve birbirinden habersiz bu iki insanının birbirine duyumsadığı derinliği karşısında ürktüm. İkimizde birbirimizden ürkmekte haklıydık; çünkü birbirimize dair tüm bilinmezliğimizi bilinir yapıyordu bakışlarımız. Bu ölüme meydan okuyan birliğin karşısında nutkum tutulmuştu.  Sadece duygularımız değil, adımlarımız da birbiriyle yarışıyordu. Bir ara onun, elini omzuma attığını fark etim. Ben de elimi onun omuzlarına attım. Birbirimize gülümseyerek yolumuza devam ettik. Konuşmayı ben başlattım:
@@ -218,36 +218,36 @@ Don Kişot’un dostu yoktu. O da benim gibi kendi eşitini bulamadığı için 
 
 
 “Doğrusunu istersen Bedriye ruhumun olgunlaşması sanıldığı kadar kolay olmadı. Sen yapıtımı basma yaşımı biliyorsun. Ben bile ancak o yaşta acılarıma gülerek yaklaştım. Yazdıklarımda yaşadıklarımı gülerek anlattımsa da içim delik deşik. Neydi biliyor musun Bedriye? Hayatım boyunca ciddiye alınmamıştım. Saygı görmemişim. En acınası da konuşmaya tenezzül edemediğim insanlar ayağıma pranga vurup beni yönetebildiklerini düşünüyorlardı / yönetiyorlardı da. Ben aldığım her nefeste öldüm. Ölümün de acının da her türünü tanıdım ve tattım. Acıya kesti bedenim. Ama iradem yaşama pencere açtı ve yaşama tutundum.  Yazın dünyasını keşfettim ve o dünyanın soytarısı da şövalyesi de ben oldum. Ruhun önüne kim geçebilir. Silahlar düşünceyi öldürmeyi başarsaydı Bedriye, geçmişten geleceğe okuyacağımız kitapların sayıları bu denli kalabalık olmazdı. Bedelsiz hiçbir şey olmuyor. Bugün geldiğim yere gelmek için kimse benim çektiğim çileleri çekmek istemez. Şunu söylememe izin ver: sonunda soytarı yaptıkları, boynuna tasma, ayağına zincir geçirdikleri kölenin önünde onlar diz çöktü; ben çökmedim. Hem de salt ülkemde değil bütün dünya yaşadıklarım ille de yarattığım kahramanlarımın önünde diz çöktü. Varsın sana da kimse yardım etmesin. Sen benim gittiğim çile yolundan git. Hem benim kadar şanssız da sayılmazsın. Ben her zaman senin dostun olarak arkandayım. Beni anman yeterli buluşmamıza. Seni bu duygularla kucaklıyorum.',
-            'description'                       => 'tanım',
-            'keywords'                          => 'anahtar kelimler',
-            'meta_tags'                         => 'meta lar',
-            'cuff_photo'                        => '5.jpg',
-            'thumbnail'                         => '5.jpg',
-            'hit'                               => 1,
-            'status'                            => 1,
-            'band_news'                         => 1,
-            'box_cuff'                          => 1,
-            'is_cuff'                           => 1,
-            'is_comment'                        => 1,
-            'is_show_editor_profile'            => 1,
-            'is_show_previous_and_next_news'    => 1,
-            'main_cuff'                         => 1,
-            'mini_cuff'                         => 1,
-            'map_text'                               => 'koordinatlar',
-            'is_active'                         => 1
+            'description' => 'tanım',
+            'keywords' => 'anahtar kelimler',
+            'meta_tags' => 'meta lar',
+            'cuff_photo' => '5.jpg',
+            'thumbnail' => '5.jpg',
+            'hit' => 1,
+            'status' => 1,
+            'band_news' => 1,
+            'box_cuff' => 1,
+            'is_cuff' => 1,
+            'is_comment' => 1,
+            'is_show_editor_profile' => 1,
+            'is_show_previous_and_next_news' => 1,
+            'main_cuff' => 1,
+            'mini_cuff' => 1,
+            'map_text' => 'koordinatlar',
+            'is_active' => 1
         ]);
 
 
         $news6 = News::create([
-            'user_id'                           => 1,
-            'country_id'                        => 1,
-            'city_id'                           => 1,
-            'news_source_id'                    => 5,
-            'title'                             => 'Rear Window (1954, Alfred Hitchcock) 6',
-            'small_title'                       => 'Rear Window (1954, Alfred Hitchcock) 6',
-            'slug'                              => 'rear-window-1954-alfred-hitchcock-6',
-            'spot'                              => 'François Truffaut’ya göre sinema hakkında bir sinema filmi. Alfred Hitchcock’a göre katıksız bir aşk filmi. İzleyicilere göre bir cinayet ve dedektiflik filmi. İşin aslı hepsi de doğru. Hem de bir sahnesi hariç tamamı tek bir odada, çoğu nesnel kamerayla çekilmiş, tam bir maharet örneği. Alfred Hitchcock’un da büyük katkısının olduğu John Michael Hayes’in hikayesi aslında gerçek bir olaydan esinlenerek oluşturulmuş ve Hitchcock, böylece genel kabul gören ilk başyapıtını vermiş. Gerçi özellikle 1970’lerden sonra Hitchcock’un neredeyse çektiği her sahneyi en ufak anına kadar araştıran ve irdeleyen sinemasever kuşak, yönetmenin önceki başyapıtlarına da hak ettiği değeri verdi ama Rear Window, çoktan tarihe bu yönüyle geçmişti bile.',
-            'content'                           => 'Rear Window, yalnızca basit bir başyapıt değil, tek başına tüm bir “suspense” sinemasının çehresini değiştiren, etkilerinin bugün dahi hissedildiği, sinema tarihine yön veren bir film. Neredeyse her anında değerlendirilmesi gereken bir sinema anlayışı olan bir film. Bir doğa fotoğrafçısının, açıklanmayan bir sebepten dolayı bacağı kırık halde apartmanının geniş penceresinin önünde, tekerlekli sandalyesinde haftalar geçirmesi ve bu arada da hepsi birbirinden ilginç komşularının özel hayatlarını gözetlemesi ve aralarından birinin karısını öldürdüğünü düşünmesi sonucunda gelişen olayları anlatan film, izleme, başkasının hayatını takip etme gibi unsurlarıyla aslında tam bir sinema tezahürü.
+            'user_id' => 1,
+            'country_id' => 1,
+            'city_id' => 1,
+            'news_source_id' => 5,
+            'title' => 'Rear Window (1954, Alfred Hitchcock) 6',
+            'small_title' => 'Rear Window (1954, Alfred Hitchcock) 6',
+            'slug' => 'rear-window-1954-alfred-hitchcock-6',
+            'spot' => 'François Truffaut’ya göre sinema hakkında bir sinema filmi. Alfred Hitchcock’a göre katıksız bir aşk filmi. İzleyicilere göre bir cinayet ve dedektiflik filmi. İşin aslı hepsi de doğru. Hem de bir sahnesi hariç tamamı tek bir odada, çoğu nesnel kamerayla çekilmiş, tam bir maharet örneği. Alfred Hitchcock’un da büyük katkısının olduğu John Michael Hayes’in hikayesi aslında gerçek bir olaydan esinlenerek oluşturulmuş ve Hitchcock, böylece genel kabul gören ilk başyapıtını vermiş. Gerçi özellikle 1970’lerden sonra Hitchcock’un neredeyse çektiği her sahneyi en ufak anına kadar araştıran ve irdeleyen sinemasever kuşak, yönetmenin önceki başyapıtlarına da hak ettiği değeri verdi ama Rear Window, çoktan tarihe bu yönüyle geçmişti bile.',
+            'content' => 'Rear Window, yalnızca basit bir başyapıt değil, tek başına tüm bir “suspense” sinemasının çehresini değiştiren, etkilerinin bugün dahi hissedildiği, sinema tarihine yön veren bir film. Neredeyse her anında değerlendirilmesi gereken bir sinema anlayışı olan bir film. Bir doğa fotoğrafçısının, açıklanmayan bir sebepten dolayı bacağı kırık halde apartmanının geniş penceresinin önünde, tekerlekli sandalyesinde haftalar geçirmesi ve bu arada da hepsi birbirinden ilginç komşularının özel hayatlarını gözetlemesi ve aralarından birinin karısını öldürdüğünü düşünmesi sonucunda gelişen olayları anlatan film, izleme, başkasının hayatını takip etme gibi unsurlarıyla aslında tam bir sinema tezahürü.
 
 
 Ana kahramanımız Jeff’i ilk bulduğumuz yer bir sinema perdesine benzeyen, geniş ve yüksek pencerelerdir. Bacağı kırılmış olduğundan Jeff, tam bir pasif hayatı yaşar. Hatta sevgilisinin şehevi öpücüklerine bile aynen karşılık vermekten başka bir şey yapacak çaresi yoktur. Bu açıdan tam bir film izleyicisine benzer. İzlediği komşuların hayatlarında değişiklik yaratamaz, pasiftir, onları yalnızca seyretmekle yetinir. Yalnız Kalp adını verdiği orta yaşlı yalnız kadının intihara kadar giden yalnızlığını sadece izlemekle yetinir. Beste sıkıntısı çeken ve bir ara Hitchcock’un da bizzat misafiri olduğu müzisyen komşusunun piyano resitallerini dinlemekle yetinir. Aynı anda 3 erkekle aynı evde birlikte olabilecek kadar popüler ve seksi genç kızın, cinsel uyarıcı niteliğindeki danslarını sadece izlemekle kalır. Büyük bir aşkla dolu oldukları her hallerinden belli olan yeni evli bir çiftin ilişkilerinin sadece 3-4 günde bozulmasına şahit olur. Çocuksuz ve tüm sevgisini köpeğinde bulan bir yaşlı çiftin rutin hayatını izler. Tüm bunların yanı sıra kendi başı da beladadır. Çünkü, sosyete güzeli, onun macera dolu yaşamına adapte olamayacak Lisa kendisine deli gibi aşıktır ve evlenmek istemektedir.
@@ -279,23 +279,23 @@ Alfred Hitchcock, izleyicisine hayatın dilimlerinden değil, pasta dilimlerinde
 
 İlginç Bilgi: Jeff’in finalde tele-objektifiyle kullandığı flaşörün yarattığı ışık aynı zamanda onun aydınlanacağına ve arınacağına bir delalettir.',
 
-            'description'                       => 'tanım',
-            'keywords'                          => 'anahtar kelimler',
-            'meta_tags'                         => 'meta lar',
-            'cuff_photo'                        => '6.jpg',
-            'thumbnail'                         => '6.jpg',
-            'hit'                               => 1,
-            'status'                            => 1,
-            'band_news'                         => 1,
-            'box_cuff'                          => 1,
-            'is_cuff'                           => 1,
-            'is_comment'                        => 1,
-            'is_show_editor_profile'            => 1,
-            'is_show_previous_and_next_news'    => 1,
-            'main_cuff'                         => 1,
-            'mini_cuff'                         => 1,
-            'map_text'                               => 'koordinatlar',
-            'is_active'                         => 1
+            'description' => 'tanım',
+            'keywords' => 'anahtar kelimler',
+            'meta_tags' => 'meta lar',
+            'cuff_photo' => '6.jpg',
+            'thumbnail' => '6.jpg',
+            'hit' => 1,
+            'status' => 1,
+            'band_news' => 1,
+            'box_cuff' => 1,
+            'is_cuff' => 1,
+            'is_comment' => 1,
+            'is_show_editor_profile' => 1,
+            'is_show_previous_and_next_news' => 1,
+            'main_cuff' => 1,
+            'mini_cuff' => 1,
+            'map_text' => 'koordinatlar',
+            'is_active' => 1
         ]);
 
         $newsCategory1 = NewsCategory::find(1)->first();

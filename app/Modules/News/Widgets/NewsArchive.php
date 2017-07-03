@@ -20,7 +20,7 @@ class NewsArchive extends AbstractWidget
      */
     public function run()
     {
-        return Theme::view('news::frontend.widgets.news_archive',compact([
+        return Theme::view('news::frontend.widgets.news_archive', compact([
             'config',
             'boxCuffNewsItmes'
         ]))->render();

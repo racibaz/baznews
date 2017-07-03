@@ -7,7 +7,9 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{!! URL::route('recommendation_news.index') !!}">{{trans('news::recommendation_news.management')}}</a></li>
+            <li>
+                <a href="{!! URL::route('recommendation_news.index') !!}">{{trans('news::recommendation_news.management')}}</a>
+            </li>
             <li class="active">{{trans('news::recommendation_news.create_edit')}}</li>
         </ol>
     </section>
@@ -41,27 +43,27 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $record)
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('recommendation_news.show', $record->news->title , $record, [] ) !!}</td>
-                                    <td> {{$record->user->first_name}} </td>
-                                    <td> {{$record->order }} </td>
-                                    <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! link_to_route('show_news', trans('common.show'), $record->news->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('recommendation_news.destroy',  $record))) !!}
+                        @foreach($records as $record)
+                            <tr>
+                                <td>{{$record->id}}</td>
+                                <td>{!! link_to_route('recommendation_news.show', $record->news->title , $record, [] ) !!}</td>
+                                <td> {{$record->user->first_name}} </td>
+                                <td> {{$record->order }} </td>
+                                <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        {!! link_to_route('show_news', trans('common.show'), $record->news->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
+                                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('recommendation_news.destroy',  $record))) !!}
 
-                                            {!! link_to_route('recommendation_news.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                        {!! link_to_route('recommendation_news.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
 
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -76,6 +78,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('recommendation_news','news_management');
+        activeMenu('recommendation_news', 'news_management');
     </script>
 @endsection

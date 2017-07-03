@@ -20,7 +20,7 @@ class AdvertisementController extends BackendController
 
         $this->view = 'advertisement.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
@@ -30,11 +30,11 @@ class AdvertisementController extends BackendController
         $advertisementAreaNames = $this->getThemeAdvertisementAreaName();
         $activeTheme = Theme::getActive();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(
-           'records',
+        return Theme::view($this->getViewName(__FUNCTION__), compact(
+            'records',
             'advertisementAreaNames',
             'activeTheme',
-           'repo'
+            'repo'
         ));
     }
 
@@ -45,15 +45,15 @@ class AdvertisementController extends BackendController
         $repo = $this->repo;
         $advertisementAreaNames = $this->getThemeAdvertisementAreaName();
 
-        foreach ($advertisementAreaNames as $index => $advertisementAreaName){
-            if(!in_array($advertisementAreaName['areaName'] , $this->repo->advertisements()->pluck('name')->toArray())){
+        foreach ($advertisementAreaNames as $index => $advertisementAreaName) {
+            if (!in_array($advertisementAreaName['areaName'], $this->repo->advertisements()->pluck('name')->toArray())) {
                 $advertisementList[$advertisementAreaName['areaName']] = $advertisementAreaName['areaName'];
             }
         }
 
         $record = $this->repo->createModel();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact([
+        return Theme::view($this->getViewName(__FUNCTION__), compact([
             'record',
             'advertisementAreaNames',
             'advertisementList',
@@ -70,7 +70,7 @@ class AdvertisementController extends BackendController
 
     public function show(Advertisement $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -91,7 +91,7 @@ class AdvertisementController extends BackendController
 
         $advertisementList[$record->name] = $record->name;
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact([
+        return Theme::view($this->getViewName(__FUNCTION__), compact([
             'record',
             'advertisementList',
             'repo'
@@ -108,7 +108,7 @@ class AdvertisementController extends BackendController
     public function destroy(Advertisement $record)
     {
         $this->repo->delete($record->id);
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -150,13 +150,12 @@ class AdvertisementController extends BackendController
             new RecursiveArrayIterator(json_decode($jsonFile, true)),
             RecursiveIteratorIterator::SELF_FIRST);
 
-        foreach ($jsonIterator as $key => $val)
-        {
-            if('advertisements' == $key) {
+        foreach ($jsonIterator as $key => $val) {
+            if ('advertisements' == $key) {
 
                 foreach ($val as $k => $v) {
 
-                    if(!empty($v['areaName'])){
+                    if (!empty($v['areaName'])) {
 
                         $areaNames[$k]['areaName'] = $v['areaName'];
                         $areaNames[$k]['areaType'] = $v['areaType'];

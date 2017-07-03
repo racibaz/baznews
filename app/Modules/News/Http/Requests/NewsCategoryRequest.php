@@ -24,19 +24,16 @@ class NewsCategoryRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    '_lft'                  => 'integer|nullable',
-                    '_rgt'                  => 'integer|nullable',
-                    'parent_id'             => 'integer|nullable',
+                    '_lft' => 'integer|nullable',
+                    '_rgt' => 'integer|nullable',
+                    'parent_id' => 'integer|nullable',
                     'name' => [
                         'required',
                         'max:255',
@@ -47,20 +44,19 @@ class NewsCategoryRequest extends FormRequest
                         Rule::unique('news_categories'),
                         'nullable'
                     ],
-                    'thumbnail'             => 'image|nullable',
-                    'description'           => 'string|max:255|nullable',
-                    'keywords'              => 'string|max:255|nullable',
-                    'hit'                   => 'integer|nullable',
+                    'thumbnail' => 'image|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'hit' => 'integer|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('news_category')->id;
                 return [
-                    '_lft'                  => 'integer|nullable',
-                    '_rgt'                  => 'integer|nullable',
-                    'parent_id'             => 'integer|nullable',
+                    '_lft' => 'integer|nullable',
+                    '_rgt' => 'integer|nullable',
+                    'parent_id' => 'integer|nullable',
                     'name' => [
                         'required',
                         'max:255',
@@ -70,13 +66,14 @@ class NewsCategoryRequest extends FormRequest
                         'max:255',
                         Rule::unique('news_categories')->ignore($id),
                     ],
-                    'thumbnail'             => 'image|nullable',
-                    'description'           => 'string|max:255|nullable',
-                    'keywords'              => 'string|max:255|nullable',
-                    'hit'                   => 'integer|nullable',
+                    'thumbnail' => 'image|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'hit' => 'integer|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

@@ -19,49 +19,64 @@
                         <div class="paging text-center module">
                             <ul class="pagination">
                                 <li>
-                                    <a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk Sayfa</a>
+                                    <a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk
+                                        Sayfa</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}"><i class="fa fa-angle-left"></i></a>
+                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}"><i
+                                                class="fa fa-angle-left"></i></a>
                                 </li>
                                 @foreach($galleryPhotos as $index => $galleryPhoto)
-                                    <li><a href="{{route('show_gallery_photos',['slug' => $galleryPhoto->slug ])}}">{{++$index}}</a></li>
+                                    <li>
+                                        <a href="{{route('show_gallery_photos',['slug' => $galleryPhoto->slug ])}}">{{++$index}}</a>
+                                    </li>
                                 @endforeach
                                 <li>
-                                    <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}"><i class="fa fa-angle-right"></i></a>
+                                    <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}"><i
+                                                class="fa fa-angle-right"></i></a>
                                 </li>
                                 <li>
-                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son Sayfa</a>
+                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son
+                                        Sayfa</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="img-container module">
                             <div class="img">
                                 <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}">
-                                    <img src="{{ asset('photos/' . $firstPhoto->id . '/' . $firstPhoto->file)}}" alt="{{$firstPhoto->name}}" class="img-responsive" />
+                                    <img src="{{ asset('photos/' . $firstPhoto->id . '/' . $firstPhoto->file)}}"
+                                         alt="{{$firstPhoto->name}}" class="img-responsive"/>
                                 </a>
                             </div>
                             <div class="pager">
-                                <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}" class="btn left"><i class="fa fa-angle-left"></i></a>
-                                <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}" class="btn right"><i class="fa fa-angle-right"></i></a>
+                                <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}"
+                                   class="btn left"><i class="fa fa-angle-left"></i></a>
+                                <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}"
+                                   class="btn right"><i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                         <div class="paging text-center module">
                             <ul class="pagination">
                                 <li>
-                                    <a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk Sayfa</a>
+                                    <a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk
+                                        Sayfa</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}"><i class="fa fa-angle-left"></i></a>
+                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}"><i
+                                                class="fa fa-angle-left"></i></a>
                                 </li>
                                 @foreach($galleryPhotos as $index => $galleryPhoto)
-                                    <li><a href="{{route('show_gallery_photos',['slug' => $galleryPhoto->slug ])}}">{{++$index}}</a></li>
+                                    <li>
+                                        <a href="{{route('show_gallery_photos',['slug' => $galleryPhoto->slug ])}}">{{++$index}}</a>
+                                    </li>
                                 @endforeach
                                 <li>
-                                    <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}"><i class="fa fa-angle-right"></i></a>
+                                    <a href="{{route('show_gallery_photos',['slug' => $nextPhoto->slug ])}}"><i
+                                                class="fa fa-angle-right"></i></a>
                                 </li>
                                 <li>
-                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son Sayfa</a>
+                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son
+                                        Sayfa</a>
                                 </li>
                             </ul>
                         </div>
@@ -76,13 +91,13 @@
                     </div>
 
                     {{--@if($record->is_comment)--}}
-                        {{--<div class="discus-box">--}}
-                            {{--<div class="row">--}}
-                                {{--<div class="col-md-12">--}}
-                                    {{--{!! Cache::tags('Setting')->get('disqus') !!}--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div><!-- /.discus-box -->--}}
+                    {{--<div class="discus-box">--}}
+                    {{--<div class="row">--}}
+                    {{--<div class="col-md-12">--}}
+                    {{--{!! Cache::tags('Setting')->get('disqus') !!}--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--</div><!-- /.discus-box -->--}}
                     {{--@endif--}}
 
                     <div class="tag-box">
@@ -103,8 +118,11 @@
                                         <div class="col-md-3">
                                             <div class="r-box module">
                                                 <div class="box-img">
-                                                    <a href="{{route('show_photo_gallery',['slug' => $photoCategoryGallery->slug ])}}" class="news">
-                                                        <img src="{{ asset('gallery/' . $photoCategoryGallery->id . '/photos/' . $photoCategoryGallery->thumbnail)}}" alt="{{$photoCategoryGallery->name}}" title="{{$photoCategoryGallery->title}}">
+                                                    <a href="{{route('show_photo_gallery',['slug' => $photoCategoryGallery->slug ])}}"
+                                                       class="news">
+                                                        <img src="{{ asset('gallery/' . $photoCategoryGallery->id . '/photos/' . $photoCategoryGallery->thumbnail)}}"
+                                                             alt="{{$photoCategoryGallery->name}}"
+                                                             title="{{$photoCategoryGallery->title}}">
                                                     </a>
                                                 </div>
                                                 <div class="img-title">
@@ -174,7 +192,7 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#content-area,#sidebar').theiaStickySidebar();
         });
     </script>

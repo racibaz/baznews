@@ -73,6 +73,6 @@
 @section('js')
     <script>
         //active menu
-        activeMenu('photo_gallery','news_management');
+        activeMenu('photo_gallery', 'news_management');
     </script>
 @endsection

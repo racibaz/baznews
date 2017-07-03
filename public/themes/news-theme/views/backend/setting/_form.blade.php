@@ -6,7 +6,8 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li class="active"><a href="{!! URL::route('setting.management') !!}"> {{trans('setting.management')}}</a></li>
+            <li class="active"><a href="{!! URL::route('setting.management') !!}"> {{trans('setting.management')}}</a>
+            </li>
         </ol>
     </section>
 @endsection
@@ -75,7 +76,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                                <button class="btn btn-success" type="submit"><i
+                                            class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                             </div>
                         </div>
                     </div>
@@ -106,10 +108,10 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
         //active menu
-        activeMenu('setting','general_setting');
+        activeMenu('setting', 'general_setting');
     </script>
 @endsection

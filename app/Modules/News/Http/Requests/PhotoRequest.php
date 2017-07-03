@@ -24,17 +24,14 @@ class PhotoRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    'photo_gallery_id'          => 'integer|nullable',
+                    'photo_gallery_id' => 'integer|nullable',
                     'name' => [
                         'required',
                         Rule::unique('photos'),
@@ -43,20 +40,19 @@ class PhotoRequest extends FormRequest
                         Rule::unique('photos'),
                         'nullable',
                     ],
-                    'subtitle'                  => 'string|max:255|nullable',
-                    'file'                      => 'image|nullable',
-                    'link'                      => 'url|max:255|nullable',
-                    'content'                   => 'nullable',
-                    'keywords'                  => 'string|max:255|nullable',
-                    'order'                     => 'integer|nullable',
+                    'subtitle' => 'string|max:255|nullable',
+                    'file' => 'image|nullable',
+                    'link' => 'url|max:255|nullable',
+                    'content' => 'nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'order' => 'integer|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('photo')->id;
                 return [
-                    'photo_gallery_id'          => 'integer|nullable',
+                    'photo_gallery_id' => 'integer|nullable',
                     'name' => [
                         'required',
                         Rule::unique('photos')->ignore($id),
@@ -65,15 +61,16 @@ class PhotoRequest extends FormRequest
                         'maz:255',
                         Rule::unique('photos')->ignore($id),
                     ],
-                    'subtitle'                  => 'string|max:255|nullable',
-                    'file'                      => 'image|nullable',
-                    'link'                      => 'url|max:255|nullable',
-                    'content'                   => 'nullable',
-                    'keywords'                  => 'string|max:255|nullable',
-                    'order'                     => 'integer|nullable',
+                    'subtitle' => 'string|max:255|nullable',
+                    'file' => 'image|nullable',
+                    'link' => 'url|max:255|nullable',
+                    'content' => 'nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'order' => 'integer|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

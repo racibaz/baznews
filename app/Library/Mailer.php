@@ -9,11 +9,9 @@
 namespace App\Library;
 
 
-use Illuminate\Support\Facades\Mail;
-
 class Mailer
 {
-    public static function sendMailToUSer($user,$status)
+    public static function sendMailToUSer($user, $status)
     {
 //        $subject = [
 //            'subjectText'=> 'Hüdayi EDYS',

@@ -11,15 +11,15 @@
                     <h1><span>RSS Bağlantılarımız</span></h1>
                 </div>
                 <div class="page-content module">
-                   <div class="rss-links">
-                       <h2>RSS Bağlantı Linklerimiz</h2>
-                       <p>Aşağıdaki linkleri kullanarak rss bağlantısı kurabilirsiniz.</p>
-                       <ul>
-                           @foreach($rssItems as $rssItem)
-                               <li><a href="{{$rssItem->url}}"> {{$rssItem->name}} </a></li>
-                           @endforeach
-                       </ul>
-                   </div>
+                    <div class="rss-links">
+                        <h2>RSS Bağlantı Linklerimiz</h2>
+                        <p>Aşağıdaki linkleri kullanarak rss bağlantısı kurabilirsiniz.</p>
+                        <ul>
+                            @foreach($rssItems as $rssItem)
+                                <li><a href="{{$rssItem->url}}"> {{$rssItem->name}} </a></li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -27,7 +27,7 @@
                     <div class="widget">
                         @foreach($widgets as $widget)
                             @widget($widget['namespace'])
-                            <br />
+                            <br/>
                         @endforeach
                     </div>
                 </div>

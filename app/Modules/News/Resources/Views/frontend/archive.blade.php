@@ -55,7 +55,10 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <button class="btn btn-success btn-block" type="submit" style="margin-top: 25px;"><i class="fa fa-search"></i> {{trans('news::common.search')}}</button>
+                                            <button class="btn btn-success btn-block" type="submit"
+                                                    style="margin-top: 25px;"><i
+                                                        class="fa fa-search"></i> {{trans('news::common.search')}}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -70,9 +73,6 @@
                             </div><!-- /.tag-box -->
                         </div><!-- /.col-md-12 -->
                     </div><!-- /.row -->
-
-
-
 
 
                     @if(isset($records))
@@ -99,9 +99,13 @@
                                             <tr>
                                                 <td>{{$index++}}</td>
                                                 <!-- TODO : Haberin resmine link verilmeli.. -->
-                                                <td><img src="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}" width="100px" alt="{{$record->title}}"></td>
+                                                <td>
+                                                    <img src="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}"
+                                                         width="100px" alt="{{$record->title}}"></td>
                                                 <td>{!! link_to_route('news.show', $record->title , $record, [] ) !!}</td>
-                                                <td width="50%"><span style="display: block;max-height:20px;overflow: hidden;">{!! link_to_route('news.show', $record->spot , $record, [] ) !!}</span></td>
+                                                <td width="50%"><span
+                                                            style="display: block;max-height:20px;overflow: hidden;">{!! link_to_route('news.show', $record->spot , $record, [] ) !!}</span>
+                                                </td>
                                                 <td> {{$record->hit}} </td>
                                             </tr>
                                         @endforeach
@@ -119,7 +123,7 @@
                     <div class="widget">
                         @foreach($widgets as $widget)
                             @widget($widget['namespace'])
-                            <br />
+                            <br/>
                         @endforeach
                     </div>
                 </div>
@@ -135,7 +139,7 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
     </script>

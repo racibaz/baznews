@@ -15,7 +15,7 @@ class MenuRepository extends EloquentRepository
         return $this->with(['page'])
             ->where('is_header', 1)
             ->where('is_active', 1)
-            ->orderBy('order','asc')
+            ->orderBy('order', 'asc')
             ->findAll();
     }
 
@@ -24,7 +24,7 @@ class MenuRepository extends EloquentRepository
         return $this->with(['page'])
             ->where('is_footer', 1)
             ->where('is_active', 1)
-            ->orderBy('order','asc')
+            ->orderBy('order', 'asc')
             ->findAll();
     }
 }

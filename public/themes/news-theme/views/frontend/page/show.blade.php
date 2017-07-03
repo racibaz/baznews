@@ -40,15 +40,15 @@
                     {!! Cache::tags('Setting')->get('addthis') !!}
                 </div>
 
-            @if($record->is_comment)
-                <div class="discus-box">
-                    <div class="row">
-                        <div class="col-md-12">
-                            {!! Cache::tags('Setting')->get('disqus') !!}
+                @if($record->is_comment)
+                    <div class="discus-box">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {!! Cache::tags('Setting')->get('disqus') !!}
+                            </div>
                         </div>
-                    </div>
-                </div><!-- /.discus-box -->
-            @endif
+                    </div><!-- /.discus-box -->
+                @endif
 
             </div>
             <div class="col-lg-4" id="sidebar">
@@ -85,10 +85,10 @@
     <meta name="twitter:description" content="{{$record->description}}">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ $record->title }} " />
-    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}" />
-    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}" />
-    <meta property="og:description" content="{{$record->description}}" />
+    <meta property="og:title" content="{{ $record->title }} "/>
+    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}"/>
+    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}"/>
+    <meta property="og:description" content="{{$record->description}}"/>
     <meta property="fb:app_id" content="671303379704288">
     {{--<meta property="og:image" content="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}"/>--}}
     <meta property="article:published_time" content="{{$record->created_at}}">
@@ -103,7 +103,7 @@
         /*--------------------------------------------------------
          Sticky Sidebar
          * --------------------------------------------------------*/
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
     </script>

@@ -22,10 +22,11 @@ class Video extends Model
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
-                'source' => ['name','id']
+                'source' => ['name', 'id']
             ]
         ];
     }
@@ -56,7 +57,7 @@ class Video extends Model
         'is_active'
     ];
 
-    protected $dates = ['created_at','updated_at','deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function video_category()
     {
@@ -76,6 +77,6 @@ class Video extends Model
 
     public static function videoList()
     {
-        return Video::where('is_active',1)->pluck('name', 'id');
+        return Video::where('is_active', 1)->pluck('name', 'id');
     }
 }

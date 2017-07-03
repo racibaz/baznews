@@ -22,12 +22,12 @@ class TagCloud extends AbstractWidget
      */
     public function run()
     {
-        return Cache::tags(['Widget', 'Core', 'TagCloud'])->rememberForever('TagCloud', function()  {
+        return Cache::tags(['Widget', 'Core', 'TagCloud'])->rememberForever('TagCloud', function () {
 
             $tagRepo = new TagRepository();
-            $tags = $tagRepo->take(5)->orderBy('updated_at','desc')->get();
+            $tags = $tagRepo->take(5)->orderBy('updated_at', 'desc')->get();
 
-            return Theme::view('frontend.widgets.tag_cloud',compact([
+            return Theme::view('frontend.widgets.tag_cloud', compact([
                 'config',
                 'tags'
             ]))->render();

@@ -6,9 +6,9 @@ use App\Traits\Eventable;
 use App\Transformers\MenuTransformer;
 use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Kalnoy\Nestedset\NodeTrait;
 
 class Menu extends Model
 {
@@ -24,7 +24,8 @@ class Menu extends Model
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
                 'source' => ['name']
@@ -40,7 +41,7 @@ class Menu extends Model
 
     public $transformer = MenuTransformer::class;
     protected $fillable = ['parent_id', '_lft', '_rgt', 'page_id', 'name', 'slug', 'url', 'route', 'icon', 'order', 'is_header', 'is_footer', 'is_active'];
-    protected $dates = ['created_at','updated_at','deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function page()
     {
@@ -49,6 +50,6 @@ class Menu extends Model
 
     public static function menuList()
     {
-        return Menu::where('is_active',1)->pluck('name', 'id');
+        return Menu::where('is_active', 1)->pluck('name', 'id');
     }
 }

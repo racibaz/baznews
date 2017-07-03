@@ -20,7 +20,7 @@ class ThemeManagerController extends BackendController
 
         $this->view = 'theme_manager.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
@@ -30,7 +30,7 @@ class ThemeManagerController extends BackendController
         $activeTheme = Theme::getActive();
         $records = $this->repo->paginate();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact([
+        return Theme::view($this->getViewName(__FUNCTION__), compact([
             'records',
             'themes',
             'activeTheme'
@@ -40,7 +40,7 @@ class ThemeManagerController extends BackendController
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -52,13 +52,13 @@ class ThemeManagerController extends BackendController
 
     public function show(ThemeManager $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(ThemeManager $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -71,7 +71,7 @@ class ThemeManagerController extends BackendController
     public function destroy(ThemeManager $record)
     {
         $this->repo->delete($record->id);
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -89,7 +89,7 @@ class ThemeManagerController extends BackendController
         } else {
 
             if (isset($record->id)) {
-                $result = $this->repo->update($record->id,$input);
+                $result = $this->repo->update($record->id, $input);
             } else {
                 $result = $this->repo->create($input);
             }
@@ -119,25 +119,25 @@ class ThemeManagerController extends BackendController
         Cache::flush();
 
 
-        Log::info('Theme changed to the '. $themeSlug);
+        Log::info('Theme changed to the ' . $themeSlug);
         Session::flash('flash_message', trans('setting.themeActivationToggle'));
         return Redirect::back();
     }
-
 
 
     /**
      * http://laravel-tricks.com/tricks/change-the-env-dynamically
      * Calls the method
      */
-    public function something(){
+    public function something()
+    {
         // some code
         $env_update = $this->changeEnv([
-            'DB_DATABASE'   => 'new_db_name',
-            'DB_USERNAME'   => 'new_db_user',
-            'DB_HOST'       => 'new_db_host'
+            'DB_DATABASE' => 'new_db_name',
+            'DB_USERNAME' => 'new_db_user',
+            'DB_HOST' => 'new_db_host'
         ]);
-        if($env_update){
+        if ($env_update) {
             // Do something
         } else {
             // Do something else
@@ -145,8 +145,9 @@ class ThemeManagerController extends BackendController
         // more code
     }
 
-    protected function changeEnv($data = array()){
-        if(count($data) > 0){
+    protected function changeEnv($data = array())
+    {
+        if (count($data) > 0) {
 
             // Read .env-file
             $env = file_get_contents(base_path() . '/.env');
@@ -155,17 +156,17 @@ class ThemeManagerController extends BackendController
             $env = preg_split('/\s+/', $env);;
 
             // Loop through given data
-            foreach((array)$data as $key => $value){
+            foreach ((array)$data as $key => $value) {
 
                 // Loop through .env-data
-                foreach($env as $env_key => $env_value){
+                foreach ($env as $env_key => $env_value) {
 
                     // Turn the value into an array and stop after the first split
                     // So it's not possible to split e.g. the App-Key by accident
                     $entry = explode("=", $env_value, 2);
 
                     // Check, if new key fits the actual .env-key
-                    if($entry[0] == $key){
+                    if ($entry[0] == $key) {
                         // If yes, overwrite it with the new one
                         $env[$env_key] = $key . "=" . $value;
                     } else {

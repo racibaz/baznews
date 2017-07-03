@@ -7,7 +7,9 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{!! URL::route('article_category.index') !!}">{{trans('article::article_category.management')}}</a></li>
+            <li>
+                <a href="{!! URL::route('article_category.index') !!}">{{trans('article::article_category.management')}}</a>
+            </li>
             <li class="active">{{$record->name}}</li>
         </ol>
     </section>
@@ -20,7 +22,8 @@
                     <h3 class="box-title">{{$record->name}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                                title="Collapse">
                             <i class="fa fa-minus"></i></button>
 
                     </div>
@@ -81,6 +84,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('article_categories','article_management');
+        activeMenu('article_categories', 'article_management');
     </script>
 @endsection

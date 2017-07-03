@@ -16,14 +16,19 @@
             <div class="box box-widget">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
                 <div class="widget-user-header bg-yellow" style="padding: 20px 15px;">
-                    <h3 class="widget-user-username" style="margin: 0;"><i class="fa fa-bullhorn"></i> {{trans('dashboard.announcements')}}</h3>
+                    <h3 class="widget-user-username" style="margin: 0;"><i
+                                class="fa fa-bullhorn"></i> {{trans('dashboard.announcements')}}</h3>
                 </div>
                 <div class="box-footer no-padding" style="max-height: 400px;overflow: scroll;">
                     <ul class="nav nav-stacked" id="announce-list">
                         @foreach($userGroupsAnnouncements as $userGroupsAnnouncement)
-                            <li id="announce-{{$userGroupsAnnouncement->id}}" class="announce" data-id="announce-{{$userGroupsAnnouncement->id}}">
-                                <a href="#announce-modal" data-id="announce-{{$userGroupsAnnouncement->id}}" data-toggle="modal">{{$userGroupsAnnouncement->title}}<span class="pull-right badge bg-blue">{{$userGroupsAnnouncement->show_time}}</span></a>
-                                <div class="list-data" data-offset="{{$userGroupsAnnouncement->order}}" style="display: none;" data-id="announce-{{$userGroupsAnnouncement->id}}">
+                            <li id="announce-{{$userGroupsAnnouncement->id}}" class="announce"
+                                data-id="announce-{{$userGroupsAnnouncement->id}}">
+                                <a href="#announce-modal" data-id="announce-{{$userGroupsAnnouncement->id}}"
+                                   data-toggle="modal">{{$userGroupsAnnouncement->title}}<span
+                                            class="pull-right badge bg-blue">{{$userGroupsAnnouncement->show_time}}</span></a>
+                                <div class="list-data" data-offset="{{$userGroupsAnnouncement->order}}"
+                                     style="display: none;" data-id="announce-{{$userGroupsAnnouncement->id}}">
                                     <div class="title">{{$userGroupsAnnouncement->title}}</div>
                                     <div class="description">{{$userGroupsAnnouncement->description}}</div>
                                 </div>
@@ -46,7 +51,8 @@
                             <div class="m-content"></div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('dashboard.close')}}</button>
+                            <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">{{trans('dashboard.close')}}</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
@@ -210,13 +216,13 @@
             $('#announce-modal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget); // Button that triggered the modal
                 var dataid = button.data('id'); // Extract info from data-* attributes
-                var title ="",description="";
+                var title = "", description = "";
                 $('.announce').each(function () {
-                   var currentId = $(this).find('.list-data').data('id');
-                   if(dataid === currentId){
-                       title = $(this).find('.list-data .title').html();
-                       description = $(this).find('.list-data .description').html();
-                   }
+                    var currentId = $(this).find('.list-data').data('id');
+                    if (dataid === currentId) {
+                        title = $(this).find('.list-data .title').html();
+                        description = $(this).find('.list-data .description').html();
+                    }
                 });
 
                 var modal = $(this);
@@ -224,7 +230,7 @@
                 modal.find('.m-content').html(description);
             });
             //active menu
-            activeMenu('home','');
+            activeMenu('home', '');
         });
     </script>
 @endsection

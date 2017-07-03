@@ -6,7 +6,6 @@ use App\Modules\Book\Transformers\BookAuthorTransformer;
 use App\Traits\Eventable;
 use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Validator;
 use Illuminate\Database\Eloquent\Model;
 
 class BookAuthor extends Model
@@ -19,10 +18,11 @@ class BookAuthor extends Model
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
-                'source' => ['name','id']
+                'source' => ['name', 'id']
             ]
         ];
     }
@@ -58,6 +58,6 @@ class BookAuthor extends Model
 
     public static function bookAuthorList()
     {
-        return BookAuthor::where('is_active',1)->pluck('name','id');
+        return BookAuthor::where('is_active', 1)->pluck('name', 'id');
     }
 }

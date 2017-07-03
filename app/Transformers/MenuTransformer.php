@@ -2,7 +2,6 @@
 
 namespace App\Transformers;
 
-use App\Models\Country;
 use App\Models\Menu;
 use League\Fractal\TransformerAbstract;
 
@@ -11,15 +10,15 @@ class MenuTransformer extends TransformerAbstract
     public function transform(Menu $record)
     {
         $data = [
-            'id' => (int) $record->id,
-            'left' => (int) $record->_lft,
-            'right' => (int) $record->_rgt,
-            'name' => (string) $record->name,
-            'slug' => (string) $record->slug,
-            'url' => (string) $record->url,
-            'route' => (string) $record->route,
-            'icon' => (string) $record->icon,
-            'order' => (int) $record->order,
+            'id' => (int)$record->id,
+            'left' => (int)$record->_lft,
+            'right' => (int)$record->_rgt,
+            'name' => (string)$record->name,
+            'slug' => (string)$record->slug,
+            'url' => (string)$record->url,
+            'route' => (string)$record->route,
+            'icon' => (string)$record->icon,
+            'order' => (int)$record->order,
             'links' => [
                 [
                     'rel' => 'self',

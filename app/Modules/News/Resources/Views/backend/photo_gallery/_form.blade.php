@@ -29,7 +29,8 @@
                     <h3 class="box-title">{{trans('news::photo_category.news_create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -64,12 +65,16 @@
                         {!! Form::label('thumbnail', trans('news::photo_gallery.thumbnail'),['class'=> 'control-label','style'=>'width:100%;']) !!}
 
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                 style="width: 200px; height: 150px;">
                                 <img src="{{asset('/gallery/' . $record->id . '/photos/' . $record->thumbnail)}}">
                             </div>
                             <div>
-                                <span class="btn btn-default btn-file"><span class="fileinput-new">{{trans('news::photo_gallery.select_image')}}</span><span class="fileinput-exists">{{trans('news::photo_gallery.change')}}</span>{!! Form::file('thumbnail') !!}</span>
-                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('news::photo_gallery.remove')}}</a>
+                                <span class="btn btn-default btn-file"><span
+                                            class="fileinput-new">{{trans('news::photo_gallery.select_image')}}</span><span
+                                            class="fileinput-exists">{{trans('news::photo_gallery.change')}}</span>{!! Form::file('thumbnail') !!}</span>
+                                <a href="#" class="btn btn-default fileinput-exists"
+                                   data-dismiss="fileinput">{{trans('news::photo_gallery.remove')}}</a>
                             </div>
                         </div>
                     </div>
@@ -102,7 +107,8 @@
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <div class="form-group">
-                        <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <button class="btn btn-success btn-lg" type="submit"><i
+                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div>
             </div>
@@ -128,15 +134,17 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
 @endsection
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.fileinput').fileinput();
             $('.select2').select2();
             $('.tagsinput').tagsinput();
@@ -146,6 +154,6 @@
             $('.tagsinput').tagsinput();
         });
         //active menu
-        activeMenu('photo_gallery','news_management');
+        activeMenu('photo_gallery', 'news_management');
     </script>
 @endsection

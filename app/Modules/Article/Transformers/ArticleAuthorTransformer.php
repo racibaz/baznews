@@ -10,16 +10,16 @@ class ArticleAuthorTransformer extends TransformerAbstract
     public function transform(ArticleAuthor $record)
     {
         return [
-            'id' => (int) $record->id,
-            'name' => (string) $record->name,
-            'slug' => (string) $record->slug,
-            'email' => (string) $record->email,
-            'cv' => (string) $record->cv,
-            'photo' => (string) $record->photo,
-            'description' => (string) $record->description,
-            'keywords' => (string) $record->keywords,
-            'quotation' => (bool) $record->is_quotation,
-            'cuff' => (bool) $record->is_cuff,
+            'id' => (int)$record->id,
+            'name' => (string)$record->name,
+            'slug' => (string)$record->slug,
+            'email' => (string)$record->email,
+            'cv' => (string)$record->cv,
+            'photo' => (string)$record->photo,
+            'description' => (string)$record->description,
+            'keywords' => (string)$record->keywords,
+            'quotation' => (bool)$record->is_quotation,
+            'cuff' => (bool)$record->is_cuff,
             'links' => [
                 [
                     'rel' => 'self',

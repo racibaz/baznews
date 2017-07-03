@@ -6,7 +6,6 @@ use App\Http\Requests\LanguageRequest;
 use App\Models\Language;
 use App\Repositories\LanguageRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -19,20 +18,20 @@ class LanguageController extends BackendController
 
         $this->view = 'language.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function index()
     {
         $records = $this->repo->paginate();
-        return Theme::view($this->getViewName(__FUNCTION__),compact('records'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('records'));
     }
 
 
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -44,13 +43,13 @@ class LanguageController extends BackendController
 
     public function show(Language $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(Language $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -63,7 +62,7 @@ class LanguageController extends BackendController
     public function destroy(Language $record)
     {
         $this->repo->delete($record->id);
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -74,7 +73,7 @@ class LanguageController extends BackendController
 
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }

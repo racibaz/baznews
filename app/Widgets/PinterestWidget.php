@@ -21,9 +21,9 @@ class PinterestWidget extends AbstractWidget
      */
     public function run()
     {
-        return Cache::tags(['Widget', 'Core', 'PinterestWidget'])->rememberForever('PinterestWidget', function()  {
+        return Cache::tags(['Widget', 'Core', 'PinterestWidget'])->rememberForever('PinterestWidget', function () {
             $pinterestEmbedCode = Cache::get('pinterest_embed_code');
-            return Theme::view('frontend.widgets.pinterest_widget',compact([
+            return Theme::view('frontend.widgets.pinterest_widget', compact([
                 'pinterestEmbedCode'
             ]))->render();
         });

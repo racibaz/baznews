@@ -31,7 +31,8 @@
                                         <div class="col-lg-4 col-md-3 col-xs-4">
                                             <div class="frame-image">
                                                 <a href="{!! route('show_news', ['slug' => $news->slug]) !!}">
-                                                    <img src="http://baznews.app/images/news_images/2/196x150_2.jpg" alt="{{$news->title}}">
+                                                    <img src="http://baznews.app/images/news_images/2/196x150_2.jpg"
+                                                         alt="{{$news->title}}">
                                                 </a>
                                             </div>
                                         </div>
@@ -41,7 +42,8 @@
                                                     <h2>{{$news->title}}</h2>
                                                 </a>
                                                 <div class="news-meta-left">
-                                                    <a href="#" class="meta-date" title=""><i class="fa fa-clock-o"></i> 9 Şubat 2017</a>
+                                                    <a href="#" class="meta-date" title=""><i class="fa fa-clock-o"></i>
+                                                        9 Şubat 2017</a>
                                                 </div>
                                                 <div class="news-excerpt">
                                                     <p>{{$news->spot}}</p>
@@ -66,7 +68,8 @@
                                         <div class="col-lg-4 col-md-3 col-xs-4">
                                             <div class="frame-image">
                                                 <a href="{!! route('show_news', ['slug' => $video->slug]) !!}">
-                                                    <img src="http://baznews.app/images/news_images/2/196x150_2.jpg" alt="{{$video->name}}">
+                                                    <img src="http://baznews.app/images/news_images/2/196x150_2.jpg"
+                                                         alt="{{$video->name}}">
                                                 </a>
                                             </div>
                                         </div>
@@ -76,7 +79,8 @@
                                                     <h2>{{$video->name}}</h2>
                                                 </a>
                                                 <div class="news-meta-left">
-                                                    <a href="#" class="meta-date" title=""><i class="fa fa-clock-o"></i> 9 Şubat 2017</a>
+                                                    <a href="#" class="meta-date" title=""><i class="fa fa-clock-o"></i>
+                                                        9 Şubat 2017</a>
                                                 </div>
                                                 <div class="news-excerpt">
                                                     <p>{{$video->excerpt}}</p>
@@ -101,7 +105,8 @@
                                         <div class="col-lg-4 col-md-3 col-xs-4">
                                             <div class="frame-image">
                                                 <a href="{!! route('show_news', ['slug' => $photoGallery->slug]) !!}">
-                                                    <img src="http://baznews.app/images/news_images/2/196x150_2.jpg" alt="{{$photoGallery->tinametle}}">
+                                                    <img src="http://baznews.app/images/news_images/2/196x150_2.jpg"
+                                                         alt="{{$photoGallery->tinametle}}">
                                                 </a>
                                             </div>
                                         </div>
@@ -111,7 +116,8 @@
                                                     <h2>{{$photoGallery->name}}</h2>
                                                 </a>
                                                 <div class="news-meta-left">
-                                                    <a href="#" class="meta-date" title=""><i class="fa fa-clock-o"></i> 9 Şubat 2017</a>
+                                                    <a href="#" class="meta-date" title=""><i class="fa fa-clock-o"></i>
+                                                        9 Şubat 2017</a>
                                                 </div>
                                                 <div class="news-excerpt">
                                                     <p>{{$photoGallery->excerpt}}</p>
@@ -135,10 +141,12 @@
                                     <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son Dakika</a>
+                                    <a href="#son_dakika" aria-controls="son_dakika" role="tab" data-toggle="tab">Son
+                                        Dakika</a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok Okunanlar</a>
+                                    <a href="#cok_okunanlar" aria-controls="cok_okunanlar" role="tab" data-toggle="tab">Çok
+                                        Okunanlar</a>
                                 </li>
                             </ul>
 
@@ -153,7 +161,8 @@
                                     </span>
                                             <span class="dec">1</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                         <li class="nw-bx no-list">
                                             <a href="new-details.html" title="" class="full-link"></a>
@@ -162,7 +171,8 @@
                                     </span>
                                             <span class="dec">2</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                         <li class="nw-bx no-list">
                                             <a href="new-details.html" title="" class="full-link"></a>
@@ -171,7 +181,8 @@
                                     </span>
                                             <span class="dec">3</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                         <li class="nw-bx no-list">
                                             <a href="new-details.html" title="" class="full-link"></a>
@@ -180,7 +191,8 @@
                                     </span>
                                             <span class="dec">4</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                         <li class="nw-bx no-list">
                                             <a href="new-details.html" title="" class="full-link"></a>
@@ -189,7 +201,8 @@
                                     </span>
                                             <span class="dec">5</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                     </ul><!-- /.new-list -->
                                 </div><!-- /.tab-pane -->
@@ -202,7 +215,8 @@
                                     </span>
                                             <span class="dec">1</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                         <li class="nw-bx no-list">
                                             <a href="new-details.html" title="" class="full-link"></a>
@@ -211,7 +225,8 @@
                                     </span>
                                             <span class="dec">2</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                         <li class="nw-bx no-list">
                                             <a href="new-details.html" title="" class="full-link"></a>
@@ -220,7 +235,8 @@
                                     </span>
                                             <span class="dec">3</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                         <li class="nw-bx no-list">
                                             <a href="new-details.html" title="" class="full-link"></a>
@@ -229,7 +245,8 @@
                                     </span>
                                             <span class="dec">4</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                         <li class="nw-bx no-list">
                                             <a href="new-details.html" title="" class="full-link"></a>
@@ -238,7 +255,8 @@
                                     </span>
                                             <span class="dec">5</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                     </ul><!-- /.new-list -->
                                 </div><!-- /.tab-pane -->
@@ -252,7 +270,8 @@
                                     </span>
                                             <span class="dec">1</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                         <li class="nw-bx no-list">
                                             <a href="new-details.html" title="" class="full-link"></a>
@@ -261,7 +280,8 @@
                                     </span>
                                             <span class="dec">2</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                         <li class="nw-bx no-list">
                                             <a href="new-details.html" title="" class="full-link"></a>
@@ -270,7 +290,8 @@
                                     </span>
                                             <span class="dec">3</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                         <li class="nw-bx no-list">
                                             <a href="new-details.html" title="" class="full-link"></a>
@@ -279,7 +300,8 @@
                                     </span>
                                             <span class="dec">4</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                         <li class="nw-bx no-list">
                                             <a href="new-details.html" title="" class="full-link"></a>
@@ -288,7 +310,8 @@
                                     </span>
                                             <span class="dec">5</span>
                                             <div class="spot">Pellentesque Quam</div>
-                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            </div>
                                         </li>
                                     </ul><!-- /.new-list -->
                                 </div><!-- /.tab-pane -->
@@ -324,10 +347,10 @@
     <meta name="twitter:description" content="{{$search}}">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ $search }} " />
-    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}" />
-    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}" />
-    <meta property="og:description" content="{{$search}}" />
+    <meta property="og:title" content="{{ $search }} "/>
+    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}"/>
+    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}"/>
+    <meta property="og:description" content="{{$search}}"/>
     <meta property="fb:app_id" content="671303379704288">
     <meta property="article:author" content="">
 @endsection

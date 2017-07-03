@@ -6,11 +6,11 @@
  * Time: 22:50
  */
 
-return[
-    'article_manager'=>'Makale Yönetimi',
-    'article_authors'=>'Yazar Makaleleri',
-    'authors'=>'Alıntı Yazarlar',
-    'articles'=>'Makaleler',
-    'article_categories'=>'Makale Kategorileri',
-    'article_settings'=>'Makale Ayarları',
+return [
+    'article_manager' => 'Makale Yönetimi',
+    'article_authors' => 'Yazar Makaleleri',
+    'authors' => 'Alıntı Yazarlar',
+    'articles' => 'Makaleler',
+    'article_categories' => 'Makale Kategorileri',
+    'article_settings' => 'Makale Ayarları',
 ];

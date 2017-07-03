@@ -23,29 +23,26 @@ class FutureNewsRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    'news_id'               => 'required|integer',
-                    'future_datetime'       => 'required|date',
+                    'news_id' => 'required|integer',
+                    'future_datetime' => 'required|date',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 return [
-                    'news_id'               => 'required|integer',
-                    'future_datetime'       => 'required|date',
+                    'news_id' => 'required|integer',
+                    'future_datetime' => 'required|date',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

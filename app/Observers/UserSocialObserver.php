@@ -9,7 +9,7 @@ class UserSocialObserver
     public function created(UserSocial $userSocial)
     {
         //
-        
+
         $this->handleRegisteredEvent('created', $userSocial);
     }
 

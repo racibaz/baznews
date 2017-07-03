@@ -19,7 +19,8 @@ class Ping extends Model
         'ping_list'
     ];
 
-    public static function validate($input) {
+    public static function validate($input)
+    {
         $rules = array(
             'ping_list' => 'required|string',
         );

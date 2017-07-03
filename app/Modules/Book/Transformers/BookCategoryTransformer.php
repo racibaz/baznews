@@ -10,16 +10,16 @@ class BookCategoryTransformer extends TransformerAbstract
     public function transform(BookCategory $record)
     {
         return [
-            'id' => (int) $record->id,
-            'left' => (string) $record->_lft,
-            'right' => (string) $record->_rgt,
-            'name' => (string) $record->name,
-            'slug' => (string) $record->slug,
-            'description' => (string) $record->description,
-            'keywords' => (string) $record->keywords,
-            'picture' => (string) $record->thumbnail,
-            'order' => (int) $record->order,
-            'cuff' => (bool) $record->is_cuff,
+            'id' => (int)$record->id,
+            'left' => (string)$record->_lft,
+            'right' => (string)$record->_rgt,
+            'name' => (string)$record->name,
+            'slug' => (string)$record->slug,
+            'description' => (string)$record->description,
+            'keywords' => (string)$record->keywords,
+            'picture' => (string)$record->thumbnail,
+            'order' => (int)$record->order,
+            'cuff' => (bool)$record->is_cuff,
             'links' => [
                 [
                     'rel' => 'self',

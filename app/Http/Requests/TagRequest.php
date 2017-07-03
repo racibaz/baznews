@@ -26,15 +26,12 @@ class TagRequest extends FormRequest
     {
 
 
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
                     'name' => [
                         'required',
@@ -48,13 +45,12 @@ class TagRequest extends FormRequest
                         'max:255',
                         Rule::unique('tags'),
                     ],
-                    'display_name'      => 'max:255|nullable',
-                    'description'       => 'max:255|nullable',
+                    'display_name' => 'max:255|nullable',
+                    'description' => 'max:255|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('tag')->id;
                 return [
                     'name' => [
@@ -69,11 +65,12 @@ class TagRequest extends FormRequest
                         'max:255',
                         Rule::unique('tags')->ignore($id),
                     ],
-                    'display_name'      => 'max:255|nullable',
-                    'description'       => 'max:255|nullable',
+                    'display_name' => 'max:255|nullable',
+                    'description' => 'max:255|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

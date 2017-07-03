@@ -70,14 +70,15 @@
     </div>
 @endsection
 @section('css')
-    <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datatables/css/dataTables.bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datatables/css/dataTables.bootstrap.css') }}"
+          rel="stylesheet">
 @endsection
 @section('js')
     <script src="{{ Theme::asset($activeTheme .'::js/datatables/js/jquery.dataTables.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme .'::js/bootstrap-datatables/js/dataTables.bootstrap.js') }}"></script>
     <script type="text/javascript">
         //active menu
-        activeMenu('permission','user_management');
+        activeMenu('permission', 'user_management');
         $('.table-data').DataTable({
             "sPaginationType": "full_numbers",
             "paging": true,
@@ -86,28 +87,28 @@
             "ordering": true,
             "info": true,
             "autoWidth": true,
-            "total":true,
+            "total": true,
             "language": {
-                "decimal":        "",
-                "emptyTable":     "Tabloda veri bulunamadı",
-                "info":           "_START_ ile _END_ arası _TOTAL_ kayıt gösteriliyor. Toplam Kayıt Sayısı: _TOTAL_",
-                "infoEmpty":      "_START_ ile _END_ arası _TOTAL_ kayıt gösteriliyor. Gösterilen Kayıt Sayısı: _TOTAL_",
-                "infoFiltered":   "(Toplam _MAX_ kayıt filtrelendi.)",
-                "infoPostFix":    "",
-                "thousands":      ",",
-                "lengthMenu":     "_MENU_ kayıt gösteriliyor.",
+                "decimal": "",
+                "emptyTable": "Tabloda veri bulunamadı",
+                "info": "_START_ ile _END_ arası _TOTAL_ kayıt gösteriliyor. Toplam Kayıt Sayısı: _TOTAL_",
+                "infoEmpty": "_START_ ile _END_ arası _TOTAL_ kayıt gösteriliyor. Gösterilen Kayıt Sayısı: _TOTAL_",
+                "infoFiltered": "(Toplam _MAX_ kayıt filtrelendi.)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "_MENU_ kayıt gösteriliyor.",
                 "loadingRecords": "Yükleniyor...",
-                "processing":     "İşleniyor...",
-                "search":         "Ara:",
-                "zeroRecords":    "Hiçbir kayıt bulunamadı.",
+                "processing": "İşleniyor...",
+                "search": "Ara:",
+                "zeroRecords": "Hiçbir kayıt bulunamadı.",
                 "paginate": {
-                    "first":      "İlk",
-                    "last":       "Son",
-                    "next":       "İleri",
-                    "previous":   "Geri"
+                    "first": "İlk",
+                    "last": "Son",
+                    "next": "İleri",
+                    "previous": "Geri"
                 },
                 "aria": {
-                    "sortAscending":  ": Artan sıralamaya göre listelendi",
+                    "sortAscending": ": Artan sıralamaya göre listelendi",
                     "sortDescending": ": Azalan sıralamaya göre listelendi"
                 }
             }

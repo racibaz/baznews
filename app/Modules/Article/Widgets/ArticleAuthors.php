@@ -23,14 +23,14 @@ class ArticleAuthors extends AbstractWidget
      */
     public function run()
     {
-        $articleAuthors = Cache::tags(['Widget', 'Article', 'articleAuthorsWidget'])->rememberForever('articleAuthorsWidget', function()  {
+        $articleAuthors = Cache::tags(['Widget', 'Article', 'articleAuthorsWidget'])->rememberForever('articleAuthorsWidget', function () {
 
             $repo = new ArticleAuthorRepository();
-            return  $repo->with(['articles'])
+            return $repo->with(['articles'])
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
                 ->take(Redis::get('article_authors_widget_list_count'))
-                ->orderBy('updated_at','desc')
+                ->orderBy('updated_at', 'desc')
                 ->get();
         });
         return Theme::view('article::frontend.widgets.article_authors', compact(['articleAuthors']));

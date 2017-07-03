@@ -25,7 +25,8 @@
                     <h3 class="box-title">{{trans('news::video.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -53,16 +54,19 @@
                         {!! Form::label('thumbnail', trans('news::video.thumbnail'),['class'=> 'control-label','style'=>'width:100%;']) !!}
 
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                <img src="{{ asset('videos/' . $record->id . '/224x195_' . $record->thumbnail)}}" alt="{{$record->title}}"/>
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                 style="width: 200px; height: 150px;">
+                                <img src="{{ asset('videos/' . $record->id . '/224x195_' . $record->thumbnail)}}"
+                                     alt="{{$record->title}}"/>
                             </div>
                             <div>
                                 <span class="btn btn-default btn-file">
                                     <span class="fileinput-new">{{trans('news::video.select_image')}}</span>
                                     <span class="fileinput-exists">{{trans('news::video.change')}}</span>
-                                        {!! Form::file('thumbnail') !!}
+                                    {!! Form::file('thumbnail') !!}
                                 </span>
-                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{trans('news::video.remove')}}</a>
+                                <a href="#" class="btn btn-default fileinput-exists"
+                                   data-dismiss="fileinput">{{trans('news::video.remove')}}</a>
                             </div>
                         </div>
                     </div>
@@ -118,7 +122,8 @@
                 </div><!-- /.box-body -->
                 <div class="box-footer">
                     <div class="form-group">
-                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <button class="btn btn-success" type="submit"><i
+                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div>
             </div><!-- /.box -->
@@ -129,8 +134,10 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ Theme::asset($activeTheme.'::AdminLTE/plugins/select2/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme.'::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme.'::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme.'::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ Theme::asset($activeTheme.'::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 @endsection
 @section('js')
     <script src="{{ Theme::asset($activeTheme.'::js/sticky-sidebar/ResizeSensor.js') }}"></script>
@@ -147,11 +154,11 @@
             /*--------------------------------------------------------
              Sticky Sidebar
              * --------------------------------------------------------*/
-            jQuery(document).ready(function() {
+            jQuery(document).ready(function () {
                 jQuery('#sidebar,#content').theiaStickySidebar();
             });
             //active menu
-            activeMenu('video','news_management');
+            activeMenu('video', 'news_management');
         });
     </script>
 @endsection

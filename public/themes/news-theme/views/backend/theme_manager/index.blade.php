@@ -25,7 +25,8 @@
                 <div class="box-header">
                     <h3 class="box-title"><strong>{{trans('theme_manager.themes')}}</strong></h3>
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                 </div>
@@ -60,7 +61,8 @@
                         {{trans('theme_manager.list')}}
                     </h3>
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                 </div>
@@ -106,6 +108,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('theme_manager','');
+        activeMenu('theme_manager', '');
     </script>
 @endsection

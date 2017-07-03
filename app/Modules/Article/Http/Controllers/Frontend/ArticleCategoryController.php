@@ -11,19 +11,19 @@ class ArticleCategoryController extends Controller
 {
     public function __construct(Repo $repo)
     {
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
     public function show($slug)
     {
-        return Cache::tags(['ArticleCategoryController', 'Article', 'categoryArticles'])->rememberForever('categoryArticles:'.$slug, function() use($slug) {
+        return Cache::tags(['ArticleCategoryController', 'Article', 'categoryArticles'])->rememberForever('categoryArticles:' . $slug, function () use ($slug) {
             $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
             $record = $this->repo
                 ->with([
                     'articles',
                 ])
                 ->where('is_active', 1)
-                ->findBy('slug',$slug);
+                ->findBy('slug', $slug);
 
             return Theme::view('article::frontend.article_category.show', compact([
                 'record',

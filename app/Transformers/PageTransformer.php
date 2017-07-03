@@ -2,8 +2,6 @@
 
 namespace App\Transformers;
 
-use App\Models\Country;
-use App\Models\Menu;
 use App\Models\Page;
 use League\Fractal\TransformerAbstract;
 
@@ -12,13 +10,13 @@ class PageTransformer extends TransformerAbstract
     public function transform(Page $record)
     {
         $data = [
-            'id' => (int) $record->id,
-            'name' => (string) $record->name,
-            'slug' => (string) $record->slug,
-            'content' => (string) $record->content,
-            'description' => (string) $record->description,
-            'keywords' => (string) $record->keywords,
-            'comment' => (int) $record->is_commnet,
+            'id' => (int)$record->id,
+            'name' => (string)$record->name,
+            'slug' => (string)$record->slug,
+            'content' => (string)$record->content,
+            'description' => (string)$record->description,
+            'keywords' => (string)$record->keywords,
+            'comment' => (int)$record->is_commnet,
             'links' => [
                 [
                     'rel' => 'self',

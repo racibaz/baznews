@@ -27,7 +27,8 @@
                     <h3 class="box-title">{{trans('advertisement.management')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -77,7 +78,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                                <button class="btn btn-success" type="submit"><i
+                                            class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                             </div>
                         </div>
                     </div>
@@ -102,13 +104,19 @@
     <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/css/css.js') }}"></script>
     <script type="text/javascript">
         function codemirrore1() {
-            var a=document.getElementById("advert_code");
-            CodeMirror.fromTextArea(a,{lineNumbers:true,matchBrackets:true,styleActiveLine:true,theme:"monokai",readOnly:!1});
+            var a = document.getElementById("advert_code");
+            CodeMirror.fromTextArea(a, {
+                lineNumbers: true,
+                matchBrackets: true,
+                styleActiveLine: true,
+                theme: "monokai",
+                readOnly: !1
+            });
         }
         jQuery(window).load(function () {
             codemirrore1();
         });
         //active menu
-        activeMenu('advertisement','');
+        activeMenu('advertisement', '');
     </script>
 @endsection

@@ -14,10 +14,10 @@ class RssTableSeeder extends Seeder
     public function run()
     {
         \App\Models\Rss::create([
-            'name'              => 'Makaleler',
-            'url'               => 'rss/articles',
-            'order'             => 1,
-            'is_active'         => 1
+            'name' => 'Makaleler',
+            'url' => 'rss/articles',
+            'order' => 1,
+            'is_active' => 1
         ]);
     }
 }

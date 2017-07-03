@@ -20,7 +20,7 @@ class NewsCategoryController extends BackendController
 
         $this->view = 'news_category.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
@@ -29,7 +29,7 @@ class NewsCategoryController extends BackendController
         $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
         $recordsTree = NewsCategory::get()->toTree();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['records','recordsTree']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));
     }
 
 
@@ -37,7 +37,7 @@ class NewsCategoryController extends BackendController
     {
         $newsCategoryList = NewsCategory::newsCategoryList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'newsCategoryList']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsCategoryList']));
     }
 
 
@@ -49,14 +49,14 @@ class NewsCategoryController extends BackendController
 
     public function show(NewsCategory $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(NewsCategory $record)
     {
         $newsCategoryList = NewsCategory::newsCategoryList();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),compact(['record', 'newsCategoryList']));
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsCategoryList']));
     }
 
 
@@ -73,7 +73,7 @@ class NewsCategoryController extends BackendController
         $this->removeCacheTags(['NewsCategoryController', 'News']);
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -84,7 +84,7 @@ class NewsCategoryController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }

@@ -10,7 +10,7 @@ class Sitemap extends Model
     use Eventable;
 
     protected $table = 'sitemaps';
-    
+
     protected $fillable = [
         'name',
         'url',

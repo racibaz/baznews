@@ -6,6 +6,6 @@
  * Time: 09:06
  */
 
-return[
-    'biograpy_manager'=>'Biyografi Yönetimi',
+return [
+    'biograpy_manager' => 'Biyografi Yönetimi',
 ];

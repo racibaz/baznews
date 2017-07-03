@@ -24,18 +24,15 @@ class VideoGalleryRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
-            case 'DELETE':
-            {
+            case 'DELETE': {
                 return [];
             }
-            case 'POST':
-            {
+            case 'POST': {
                 return [
-                    'video_category_id'         => 'integer|nullable',
-                    'user_id'                   => 'required|integer',
+                    'video_category_id' => 'integer|nullable',
+                    'user_id' => 'required|integer',
                     'title' => [
                         'required',
                         'max:255',
@@ -46,19 +43,18 @@ class VideoGalleryRequest extends FormRequest
                         Rule::unique('video_galleries'),
                         'nullable'
                     ],
-                    'short_url'                 => 'url|nullable',
-                    'description'               => 'string|max:255|nullable',
-                    'keywords'                  => 'string|max:255|nullable',
-                    'thumbnail'                 => 'image|nullable',
+                    'short_url' => 'url|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'thumbnail' => 'image|nullable',
                 ];
             }
             case 'PUT':
-            case 'PATCH':
-            {
+            case 'PATCH': {
                 $id = $this->route('video_gallery')->id;
                 return [
-                    'video_category_id'         => 'integer|nullable',
-                    'user_id'                   => 'required|integer',
+                    'video_category_id' => 'integer|nullable',
+                    'user_id' => 'required|integer',
                     'title' => [
                         'required',
                         'max:255',
@@ -68,13 +64,14 @@ class VideoGalleryRequest extends FormRequest
                         'max:255',
                         Rule::unique('video_galleries')->ignore($id),
                     ],
-                    'short_url'                 => 'url|nullable',
-                    'description'               => 'string|max:255|nullable',
-                    'keywords'                  => 'string|max:255|nullable',
-                    'thumbnail'                 => 'image|nullable',
+                    'short_url' => 'url|nullable',
+                    'description' => 'string|max:255|nullable',
+                    'keywords' => 'string|max:255|nullable',
+                    'thumbnail' => 'image|nullable',
                 ];
             }
-            default:break;
+            default:
+                break;
         }
     }
 }

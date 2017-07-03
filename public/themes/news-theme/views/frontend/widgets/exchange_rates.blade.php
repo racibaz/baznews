@@ -7,9 +7,9 @@
     <div class="exchange_box module">
         <table class="table">
             <thead>
-                <tr>
-                   <th>Döviz Tipi:</th>
-                   <th>Kur Tutarı:</th>
+            <tr>
+                <th>Döviz Tipi:</th>
+                <th>Kur Tutarı:</th>
                 </td>
             </thead>
             <tbody>

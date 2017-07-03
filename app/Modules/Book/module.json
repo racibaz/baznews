@@ -1,10 +1,9 @@
 {
-    "name": "Book",
-    "slug": "book",
-    "version": "1.0",
-    "description": "This is the description for the Book module.",
-    "widget" : true,
-    "sitemap" : true,
-    "sitemap_path" : "books_sitemap"
-
+  "name": "Book",
+  "slug": "book",
+  "version": "1.0",
+  "description": "This is the description for the Book module.",
+  "widget": true,
+  "sitemap": true,
+  "sitemap_path": "books_sitemap"
 }

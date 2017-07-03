@@ -6,7 +6,9 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{!! URL::route('article_setting.index') !!}">{{trans('article::article_setting.article_setting')}}</a></li>
+            <li>
+                <a href="{!! URL::route('article_setting.index') !!}">{{trans('article::article_setting.article_setting')}}</a>
+            </li>
         </ol>
     </section>
 @endsection
@@ -19,7 +21,8 @@
                     <h3 class="box-title">{{trans('article::article_setting.article_setting')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                                title="Collapse">
                             <i class="fa fa-minus"></i></button>
 
                     </div>
@@ -42,7 +45,8 @@
                         {!! Form::number('article_authors_widget_list_count', $records->where('attribute_key','article_authors_widget_list_count')->first()->attribute_value, ['placeholder' => trans('article::article_setting.article_authors_widget_list_count') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <button class="btn btn-success" type="submit"><i
+                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -55,6 +59,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('article_settings','article_management');
+        activeMenu('article_settings', 'article_management');
     </script>
 @endsection

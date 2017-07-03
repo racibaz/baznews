@@ -2,7 +2,6 @@
 
 namespace App\Modules\Book\Widgets;
 
-use App\Modules\Article\Repositories\ArticleRepository;
 use App\Modules\Book\Repositories\BookRepository;
 use Arrilot\Widgets\AbstractWidget;
 use Caffeinated\Themes\Facades\Theme;
@@ -24,14 +23,14 @@ class RecentBooks extends AbstractWidget
      */
     public function run()
     {
-        $recentBooks = Cache::tags(['Widget', 'Book', 'RecentBooks'])->rememberForever('recentBooks', function()  {
+        $recentBooks = Cache::tags(['Widget', 'Book', 'RecentBooks'])->rememberForever('recentBooks', function () {
 
             $bookRepository = new BookRepository();
-            return  $bookRepository
+            return $bookRepository
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
                 ->take(Redis::get('book_count'))
-                ->orderBy('updated_at','desc')
+                ->orderBy('updated_at', 'desc')
                 ->get();
         });
         return Theme::view('book::frontend.widgets.recent_books', compact(['recentBooks']));

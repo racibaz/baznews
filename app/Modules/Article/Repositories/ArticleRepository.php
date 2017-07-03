@@ -13,7 +13,7 @@ class ArticleRepository extends EloquentRepository
 
     public function getLastArticles($take = 1000)
     {
-        return  $this->where('is_active', 1)
+        return $this->where('is_active', 1)
             ->where('status', 1)
             ->orderBy('updated_at', 'desc')
             ->findAll()

@@ -9,7 +9,6 @@ use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 
 class BookCategory extends Model
 {
@@ -24,7 +23,7 @@ class BookCategory extends Model
     {
         parent::boot();
         static::created(function ($record) {
-            if($record->is_active) {
+            if ($record->is_active) {
                 $link = new Link();
                 $link->url = $record->slug;
                 $record->links()->save($link);
@@ -32,7 +31,7 @@ class BookCategory extends Model
         });
 
         static::updated(function ($record) {
-            if($record->is_active) {
+            if ($record->is_active) {
                 $link = Link::where('linkable_id', $record->id)->where('linkable_type', BookCategory::class)->first();
                 $link->url = $record->slug;
                 $record->links()->save($link);
@@ -44,15 +43,17 @@ class BookCategory extends Model
             $record->links()->delete($link);
         });
     }
+
     /**
      * Return the sluggable configuration array for this model.
      *
      * @return array
      */
-    public function sluggable() {
+    public function sluggable()
+    {
         return [
             'slug' => [
-                'source' => ['name','id']
+                'source' => ['name', 'id']
             ]
         ];
     }
@@ -78,6 +79,6 @@ class BookCategory extends Model
 
     public static function bookCategoryList()
     {
-        return BookCategory::where('is_active',1)->pluck('name', 'id');
+        return BookCategory::where('is_active', 1)->pluck('name', 'id');
     }
 }

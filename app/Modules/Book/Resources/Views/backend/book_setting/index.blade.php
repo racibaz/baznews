@@ -19,7 +19,8 @@
                     <h3 class="box-title">{{trans('book::book_setting.book_setting')}}</h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.box-tools -->
@@ -31,7 +32,8 @@
                         {!! Form::number('book_count', $records->where('attribute_key','book_count')->first()->attribute_value, ['placeholder' => trans('book::book_setting.book_count') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success" type="submit"><i class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                        <button class="btn btn-success" type="submit"><i
+                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -43,6 +45,6 @@
 @section('js')
     <script type="text/javascript">
         //active menu
-        activeMenu('book_settings','book_management');
+        activeMenu('book_settings', 'book_management');
     </script>
 @endsection

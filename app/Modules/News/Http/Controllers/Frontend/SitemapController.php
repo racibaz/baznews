@@ -3,8 +3,8 @@
 namespace App\Modules\News\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Caffeinated\Themes\Facades\Theme;
 use App\Modules\News\Repositories\NewsRepository as Repo;
+use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
 class SitemapController extends Controller
@@ -20,8 +20,8 @@ class SitemapController extends Controller
      */
     public function sitemap()
     {
-        $newsItems = Cache::tags(['NewsController', 'News', 'sitemap'])->rememberForever('sitemap:news', function(){
-            return  $this->repo->getLastNewsItems();
+        $newsItems = Cache::tags(['NewsController', 'News', 'sitemap'])->rememberForever('sitemap:news', function () {
+            return $this->repo->getLastNewsItems();
         });
 
         return Theme::response('modules.news.frontend.sitemap.sitemap', compact('newsItems'), 200, [

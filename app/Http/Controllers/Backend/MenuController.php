@@ -21,17 +21,17 @@ class MenuController extends BackendController
 
         $this->view = 'menu.';
         $this->redirectViewName = 'backend.';
-        $this->repo= $repo;
+        $this->repo = $repo;
     }
 
 
     public function index()
     {
-        $records = $this->repo->orderBy('order','asc')->paginate();
+        $records = $this->repo->orderBy('order', 'asc')->paginate();
         $recordsTree = Menu::get()->toTree();
         $recordsTreeJson = Menu::get()->toTree();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(
+        return Theme::view($this->getViewName(__FUNCTION__), compact(
             'records',
             'recordsTree',
             'recordsTreeJson'
@@ -46,7 +46,7 @@ class MenuController extends BackendController
         $pageList = Page::pageList();
         $linkList = Link::getLinksWithType();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'menuList', 'pageList','linkList']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'menuList', 'pageList', 'linkList']));
     }
 
 
@@ -56,9 +56,9 @@ class MenuController extends BackendController
     }
 
 
-        public function show(Menu $record)
+    public function show(Menu $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__),compact('record'));
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -68,7 +68,7 @@ class MenuController extends BackendController
         $pageList = Page::pageList();
         $linkList = Link::getLinksWithType();
 
-        return Theme::view($this->getViewName(__FUNCTION__),compact(['record', 'menuList', 'pageList','linkList']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'menuList', 'pageList', 'linkList']));
     }
 
 
@@ -84,7 +84,7 @@ class MenuController extends BackendController
 
         $this->removeHomePageCache();
 
-        return redirect()->route($this->redirectRouteName . $this->view .'index');
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
 
@@ -96,7 +96,7 @@ class MenuController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
         if (isset($record->id)) {
-            $result = $this->repo->update($record->id,$input);
+            $result = $this->repo->update($record->id, $input);
         } else {
             $result = $this->repo->create($input);
         }
