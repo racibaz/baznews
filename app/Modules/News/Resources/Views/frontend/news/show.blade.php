@@ -304,10 +304,8 @@
             <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
                     <div class="module">
-                        <div class="module">
-                            <div class="advert advert-right">
-                                {!! Cache::tags('Setting', 'Advertisement')->get('right_block_1') !!}
-                            </div>
+                        <div class="advert advert-right">
+                            {!! Cache::tags('Setting', 'Advertisement')->get('right_block_1') !!}
                         </div>
                     </div>
                     <div class="widget">
