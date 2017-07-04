@@ -1,14 +1,7 @@
 @extends($activeTheme . '::frontend.master')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            @include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])
-        </div>
-    </div>
-
     <article class="container" id="container">
-
         <div class="tag-header module">
             <h1>
                 <span class="label label-info">{{$record->name}}</span> etiketine sahip sonuçlar..
@@ -31,7 +24,7 @@
                                         <div class="col-lg-4 col-md-3 col-xs-4">
                                             <div class="frame-image">
                                                 <a href="{!! route('show_news', ['slug' => $news->slug]) !!}">
-                                                    <img src="http://baznews.app/images/news_images/2/196x150_2.jpg"
+                                                    <img src="{{asset('images/news_images/' . $news->id . '/thumbnail/' .$news->thumbnail)}}"
                                                          alt="{{$news->title}}">
                                                 </a>
                                             </div>
