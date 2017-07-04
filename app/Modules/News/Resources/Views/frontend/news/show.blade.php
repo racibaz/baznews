@@ -72,60 +72,7 @@
                                 <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
                             @endforeach
                         </div>
-                        @if($record->is_show_editor_profile)
-                            <div class="author-box">
-                                <div class="author-detail">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-3">
-                                            <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">
-                                                <div class="author-photo">
-                                                    <img src="{{$userAvatar}}">
-                                                </div><!-- /editor-photo -->
-                                            </a>
-                                        </div><!-- /.col -->
-                                        <div class="col-lg-10 col-md-9">
-                                            <div class="author-info">
-                                                <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">
-                                                    <h2>{{$record->user->name}}</h2>
-                                                </a>
-                                                <div class="bio-text">
-                                                    <p>{!!$record->user->bio_note!!}</p>
-                                                </div>
-                                                <span class="bio-long-btn">Genişlet</span>
-                                            </div><!-- /.editor-info -->
-                                            <div class="links">
-                                                <ul class="nav nav-pills">
-                                                    <li>
-                                                        <a href="{{$record->user->web_site}}" target="_blank"><i
-                                                                    class="fa fa-globe"></i></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{$record->user->facebook}}" target="_blank"><i
-                                                                    class="fa fa-facebook"></i></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{$record->user->twitter}}" target="_blank"><i
-                                                                    class="fa fa-twitter"></i></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{$record->user->pinterest}}" target="_blank"><i
-                                                                    class="fa fa-pinterest"></i></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{$record->user->linkedin}}" target="_blank"><i
-                                                                    class="fa fa-linkedin"></i></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{$record->user->youtube}}" target="_blank"><i
-                                                                    class="fa fa-youtube"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div><!-- /.editor-info -->
-                                        </div><!-- /.col -->
-                                    </div><!-- /.row -->
-                                </div><!-- /.editor-detail -->
-                            </div>
-                        @endif
+
                         @if($record->is_show_previous_and_next_news)
                             <ul class="pager">
                                 <li class="previous"><a
@@ -295,6 +242,60 @@
                         </div>
                     </div>
                 @endif
+                @if($record->is_show_editor_profile)
+                    <div class=" module author-box">
+                        <div class="author-detail">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-3">
+                                    <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">
+                                        <div class="author-photo">
+                                            <img src="{{$userAvatar}}">
+                                        </div><!-- /editor-photo -->
+                                    </a>
+                                </div><!-- /.col -->
+                                <div class="col-lg-10 col-md-9">
+                                    <div class="author-info">
+                                        <a href="{!! route('editor-profile',['slug' => $record->user->slug]) !!}">
+                                            <h2>{{$record->user->name}}</h2>
+                                        </a>
+                                        <div class="bio-text">
+                                            <p>{!!$record->user->bio_note!!}</p>
+                                        </div>
+                                        <span class="bio-long-btn">Genişlet</span>
+                                    </div><!-- /.editor-info -->
+                                    <div class="links">
+                                        <ul class="nav nav-pills">
+                                            <li>
+                                                <a href="{{$record->user->web_site}}" target="_blank"><i
+                                                            class="fa fa-globe"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{$record->user->facebook}}" target="_blank"><i
+                                                            class="fa fa-facebook"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{$record->user->twitter}}" target="_blank"><i
+                                                            class="fa fa-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{$record->user->pinterest}}" target="_blank"><i
+                                                            class="fa fa-pinterest"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{$record->user->linkedin}}" target="_blank"><i
+                                                            class="fa fa-linkedin"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{$record->user->youtube}}" target="_blank"><i
+                                                            class="fa fa-youtube"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div><!-- /.editor-info -->
+                                </div><!-- /.col -->
+                            </div><!-- /.row -->
+                        </div><!-- /.editor-detail -->
+                    </div>
+                @endif
                 <div class="share-box">
                     <div class="title-section">
                         <h1>
@@ -305,7 +306,7 @@
                 </div>
 
                 @if($record->is_comment)
-                    <div class="discus-box">
+                    <div class="module discus-box">
                         <div class="row">
                             <div class="col-md-12">
                                 {!! Cache::tags('Setting')->get('disqus') !!}
@@ -313,16 +314,16 @@
                         </div>
                     </div><!-- /.discus-box -->
                 @endif
-
-
             </div><!-- /.new-content -->
             <div class="col-md-4" id="sidebar">
                 <div class="sidebar">
-                    <div class="module">
-                        <div class="advert advert-right">
-                            {!! Cache::tags('Setting', 'Advertisement')->get('right_block_1') !!}
+                    @if(Cache::tags('Setting', 'Advertisement')->get('right_block_1'))
+                        <div class="module">
+                            <div class="advert advert-right">
+                                {!! Cache::tags('Setting', 'Advertisement')->get('right_block_1') !!}
+                            </div>
                         </div>
-                    </div>
+                    @endif
                     <div class="widget">
                         @foreach($widgets as $widget)
                             @widget($widget['namespace'])
