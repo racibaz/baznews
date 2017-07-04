@@ -46,7 +46,8 @@ class RoleController extends BackendController
 
     public function show(Role $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
+        $perms = Permission::permissionList();
+        return Theme::view($this->getViewName(__FUNCTION__), compact('record','perms'));
     }
 
 
