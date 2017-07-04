@@ -3,6 +3,7 @@
 namespace App\Modules\News\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
+use Carbon\Carbon;
 use Theme;
 
 class NewsArchive extends AbstractWidget
@@ -20,9 +21,13 @@ class NewsArchive extends AbstractWidget
      */
     public function run()
     {
+        $subYears = Carbon::now()->subYears(5)->year;
+        $nowYear = Carbon::now()->year;
+
         return Theme::view('news::frontend.widgets.news_archive', compact([
             'config',
-            'boxCuffNewsItmes'
+            'subYears',
+            'nowYear'
         ]))->render();
     }
 }
