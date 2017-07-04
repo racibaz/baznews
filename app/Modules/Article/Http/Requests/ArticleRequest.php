@@ -31,7 +31,7 @@ class ArticleRequest extends FormRequest
             }
             case 'POST': {
                 return [
-                    'article_category_id' => 'required|integer',
+                    'article_category_ids' => 'required',
                     'user_id' => 'required|integer',
                     'article_author_id' => 'required|integer',
                     'title' => [
@@ -57,7 +57,7 @@ class ArticleRequest extends FormRequest
             case 'PATCH': {
                 $id = $this->route('article')->id;
                 return [
-                    'article_category_id' => 'required|integer',
+                    'article_category_ids' => 'required',
                     'user_id' => 'required|integer',
                     'article_author_id' => 'required|integer',
                     'title' => [
