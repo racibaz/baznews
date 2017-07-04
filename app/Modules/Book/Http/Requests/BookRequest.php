@@ -59,7 +59,7 @@ class BookRequest extends FormRequest
             }
             case 'PUT':
             case 'PATCH': {
-                $id = $this->route('book_publisher')->id;
+                $id = $this->route('book')->id;
                 return [
                     'user_id' => 'required|integer',
                     'book_publisher_id' => 'required|integer',
