@@ -33,11 +33,11 @@
                             <tbody>
                             <tr>
                                 <th width="20%">{{trans('news::recommendation_news.news_id')}}:</th>
-                                <td>{{$record->news->title}}</td>
+                                <td>{!! link_to_route('news_show', $record->news->title , $record, [] ) !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::recommendation_news.user_id')}}:</th>
-                                <td>{{$record->user->name}}</td>
+                                <td>{!! link_to_route('user.show', $record->user->name, $record, [] ) !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::recommendation_news.order')}}:</th>
