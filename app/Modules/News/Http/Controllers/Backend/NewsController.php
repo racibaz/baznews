@@ -158,7 +158,12 @@ class NewsController extends BackendController
 
     public function show(News $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
+        $relatedNewsItems = $this->repo->relatedNews($record);
+
+        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
+            'record',
+            'relatedNewsItems'
+        ]));
     }
 
 
