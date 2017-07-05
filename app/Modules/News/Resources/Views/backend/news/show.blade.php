@@ -101,24 +101,32 @@
                             <tbody>
                             <tr>
                                 <th width="20%">{{trans('news::news.country_id')}}</th>
-                                <td>{{$record->country_id}}</td>
+                                <td>{{$record->country->name}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.city_id')}}</th>
-                                <td>{{$record->city_id}}</td>
+                                <td>{{$record->city->name}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.news_source_id')}}</th>
-                                <td>{{$record->news_source_id}}</td>
+                                <td>{{$record->news_source->name}}</td>
                             </tr>
 
                             <tr>
                                 <th>{{trans('news::news.cuff_photo')}}</th>
-                                <td>{{$record->cuff_photo}}</td>
+                                <td>{!!$record->cuff_photo ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.thumbnail')}}</th>
-                                <td>{{$record->thumbnail}}</td>
+                                <td>
+                                    <img src="{{ asset('images/news_images/' . $record->id . '/thumbnail/' . $record->thumbnail)}}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>{{trans('news::news.cuff_photo')}}</th>
+                                <td>
+                                    <img src="{{ asset('images/news_images/' . $record->id . '/cuff_photo/' . $record->cuff_photo)}}"/>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.cuff_direct_link')}}</th>
@@ -126,15 +134,11 @@
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.video_embed')}}</th>
-                                <td>{{$record->video_embed}}</td>
+                                <td>{!! $record->video_embed !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.news_type')}}</th>
                                 <td>{{$record->news_type}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('news::news.hit')}}</th>
-                                <td>{{$record->hit}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.status')}}</th>

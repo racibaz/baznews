@@ -312,7 +312,7 @@
                             @foreach($records as $index => $record)
                                 <tr>
                                     <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('news.show', $record->title , $record, [] ) !!}</td>
+                                    <td>{!! link_to_route('news_show', $record->title , $record, [] ) !!}</td>
                                     <td> {{$record->short_url}} </td>
                                     <td>
                                         {{--<a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'status']) !!}">{{$record->status}}</a>--}}
