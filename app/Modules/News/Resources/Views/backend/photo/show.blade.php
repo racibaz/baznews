@@ -44,7 +44,9 @@
                             </tr>
                             <tr>
                                 <th>{{trans('news::photo.file')}}:</th>
-                                <td>{{$record->file}}</td>
+                                <td>
+                                    <img src="{{ asset('photos/' . $record->id . '/224x195_' . $record->file)}}"  alt="{{$record->name}}"/>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::photo.link')}}:</th>
