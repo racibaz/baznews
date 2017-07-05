@@ -33,12 +33,12 @@
                         <table class="table table-bordered table-hover">
                             <tbody>
                             <tr>
-                                <th>{{trans('news::photo_category.name')}}</th>
-                                <td>{{$record->name}}</td>
+                                <th>{{trans('common.id')}}</th>
+                                <td>{{$record->id}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::photo_category.id')}}</th>
-                                <td>{{$record->id}}</td>
+                                <th>{{trans('news::photo_category.name')}}</th>
+                                <td>{{$record->name}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::photo_category._lft')}}</th>
@@ -48,11 +48,6 @@
                                 <th>{{trans('news::photo_category._rgt')}}</th>
                                 <td>{{$record->_rgt}}</td>
                             </tr>
-                            <tr>
-                                <th>{{trans('news::photo_category.parent_id')}}</th>
-                                <td>{{$record->parent_id}}</td>
-                            </tr>
-
                             <tr>
                                 <th>{{trans('news::photo_category.slug')}}</th>
                                 <td>{{$record->slug}}</td>
@@ -66,16 +61,12 @@
                                 <td>{{$record->keywords}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::photo_category.hit')}}</th>
-                                <t{{$record->hit}}d></td>
-                            </tr>
-                            <tr>
                                 <th>{{trans('news::photo_category.icon')}}</th>
                                 <td{{$record->icon}}></td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::photo_category.is_cuff')}}</th>
-                                <td>{{$record->is_cuff}}</td>
+                                <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::photo_category.is_active')}}</th>
