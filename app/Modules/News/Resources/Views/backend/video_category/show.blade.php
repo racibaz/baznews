@@ -33,12 +33,8 @@
                         <table class="table table-hover">
                             <tbody>
                             <tr>
-                                <th width="20%">{{trans('news::video_category.id')}}</th>
-                                <td>{{$record->id}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('news::video_category.photo_gallery_id')}}</th>
-                                <td>{{$record->photo_gallery_id}}</td>
+                                <th width="20%">{{trans('news::video_category.name')}}</th>
+                                <td>{{$record->name}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::video_category.name')}}</th>
@@ -53,8 +49,8 @@
                                 <td>{{$record->subtitle}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::video_category.file')}}</th>
-                                <td>{{$record->file}}</td>
+                                <th>{{trans('news::video_category.icon')}}</th>
+                                <td>{!! $record->icon !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::video_category.link')}}</th>
@@ -62,7 +58,7 @@
                             </tr>
                             <tr>
                                 <th>{{trans('news::video_category.content')}}</th>
-                                <td>{{$record->content}}</td>
+                                <td>{!! $record->content !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::video_category.keywords')}}</th>
