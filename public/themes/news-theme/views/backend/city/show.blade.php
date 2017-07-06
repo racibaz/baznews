@@ -33,7 +33,7 @@
                             <tbody>
                             <tr>
                                 <th width="20%">{{trans('city.country_name')}}</th>
-                                <td>{{$record->country_id}}:</td>
+                                <td>{{$record->country->name}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('city.name')}}:</th>
