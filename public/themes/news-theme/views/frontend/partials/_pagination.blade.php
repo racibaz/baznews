@@ -23,32 +23,31 @@
     .number-box {
         margin: 10px 0;
     }
-
-    .pagination {
-        margin: 10px 0;
-        display: block;
-    }
-
     .number-box .mini-box {
         float: left;
         height: 34px;
         padding: 8px 13px;
-        background-color: #eaeaea;
-        border: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
         margin-right: 15px;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        border-radius: 4px;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
     }
 
     .number-box .mini-box h3.title {
         margin: 0;
-        font-size: 14px;
-        font-weight: bold;
+        font-size: 12px;
     }
 
     .number-box .mini-box h3.title span {
-        font-size: 15px;
+        font-size: 12px;
+    }
+
+    .number-box .mini-box h3.title .label-info{
+        background-color: #f44336;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
     }
 
     .table {
