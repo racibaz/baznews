@@ -55,7 +55,7 @@
                             </tr>
                             <tr>
                                 <th>{{trans('book::book_publisher.is_active')}}</th>
-                                <td>{{$record->is_active}}</td>
+                                <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('book::book_publisher.created_at')}}</th>

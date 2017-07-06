@@ -50,6 +50,7 @@ class RecommendationNewsController extends BackendController
 
     public function show(RecommendationNews $record)
     {
+//        dd($record);
         return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 

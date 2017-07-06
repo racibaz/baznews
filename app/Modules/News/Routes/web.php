@@ -89,7 +89,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function () {
     Route::get('news.status/{status?}', 'Backend\NewsController@index')->name('news_statuses');
 
     Route::resource('news', 'Backend\NewsController', [
-        'names' => ['index' => 'news.list']
+        'names' => [
+            'index' => 'news.list',
+            'show' => 'news_show',
+        ]
     ]);
 
     Route::resource('news_source', 'Backend\NewsSourceController');

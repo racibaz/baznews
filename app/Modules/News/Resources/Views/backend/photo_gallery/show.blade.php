@@ -26,7 +26,7 @@
                             <tbody>
                             <tr>
                                 <th>{{trans('news::photo_gallery.photo_category_id')}}</th>
-                                <td>{{$record->photo_category_id}}</td>
+                                <td>{{$record->photo_category->name}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::photo_gallery.title')}}</th>
@@ -50,15 +50,15 @@
                             </tr>
                             <tr>
                                 <th>{{trans('news::photo_gallery.thumbnail')}}</th>
-                                <td>{{$record->thumbnail}}</td>
+                                <td><img src="{{asset('/gallery/' . $record->id . '/photos/' . $record->thumbnail)}}"></td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::photo_gallery.is_cuff')}}</th>
-                                <td>{{$record->is_cuff}}</td>
+                                <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::photo_gallery.is_active')}}</th>
-                                <td>{{$record->is_active}}</td>
+                                <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             </tbody>
                         </table>

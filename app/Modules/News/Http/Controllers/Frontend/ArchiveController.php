@@ -36,19 +36,23 @@ class ArchiveController extends Controller
             $records = News::where('is_active', 1)
                 ->where('status', 1)
                 ->whereBetween('created_at', [$date . ' 00:00:00', $date . ' 23:59:-59'])
-                ->get();
+                ->paginate();
         }
 
 
         $tagRepo = new TagRepository();
         $tags = $tagRepo->orderBy('updated_at', 'desc')->simplePaginate(15);
 
+        $subYears = Carbon::now()->subYears(5)->year;
+        $nowYear = Carbon::now()->year;
 
         return Theme::view('news::frontend.archive',
             compact([
                 'records',
                 'tags',
                 'datetime',
+                'subYears',
+                'nowYear'
             ]));
     }
 }
