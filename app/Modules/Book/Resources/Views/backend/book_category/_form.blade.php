@@ -126,7 +126,9 @@
                         {!! Form::label('thumbnail', trans('book::book_category.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
                         <div class="fileinput fileinput-new" data-provides="fileinput">
                             <div class="fileinput-preview thumbnail" data-trigger="fileinput"
-                                 style="width: 200px; height: 150px;"></div>
+                                 style="width: 200px; height: 150px;">
+                                <img src="{{ asset('images/books_category/' . $record->id . '/original/' . $record->thumbnail)}}"/>
+                            </div>
                             <div>
                                 <span class="btn btn-default btn-file"><span
                                             class="fileinput-new">{{trans('book::common.select_image')}}</span><span
