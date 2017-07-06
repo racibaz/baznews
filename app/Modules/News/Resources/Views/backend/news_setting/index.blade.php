@@ -63,19 +63,33 @@
                         <div class="col-xs-6 col-lg-3">
                             <div class="form-group">
                                 {!! Form::label('find_tags_in_content', trans('news::news_setting.find_tags_in_content'),['class'=> 'control-label']) !!}
-                                {!! Form::number('find_tags_in_content', $records->where('attribute_key','find_tags_in_content')->first()->attribute_value, ['placeholder' => trans('news::news_setting.find_tags_in_content') ,'class' => 'form-control']) !!}
+                                {!! Form::select('find_tags_in_content', ['false' => trans('common.passive'), 'true' => trans('common.active')],
+                                $records->where('attribute_key','find_tags_in_content')->first()->attribute_value,
+                                 ['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="col-xs-6 col-lg-3">
                             <div class="form-group">
                                 {!! Form::label('automatic_add_tags', trans('news::news_setting.automatic_add_tags'),['class'=> 'control-label']) !!}
-                                {!! Form::number('automatic_add_tags', $records->where('attribute_key','automatic_add_tags')->first()->attribute_value, ['placeholder' => trans('news::news_setting.automatic_add_tags') ,'class' => 'form-control']) !!}
+                                {!! Form::select('automatic_add_tags', ['false' => trans('common.passive'), 'true' => trans('common.active')],
+                                $records->where('attribute_key','automatic_add_tags')->first()->attribute_value,
+                                 ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-lg-3">
+                            <div class="form-group">
+                                {!! Form::label('is_show_editor_profile_in_news', trans('news::news_setting.is_show_editor_profile_in_news'),['class'=> 'control-label']) !!}
+                                {!! Form::select('is_show_editor_profile_in_news', ['false' => trans('common.passive'), 'true' => trans('common.active')],
+                                $records->where('attribute_key','is_show_editor_profile_in_news')->first()->attribute_value,
+                                 ['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="col-xs-6 col-lg-3">
                             <div class="form-group">
                                 {!! Form::label('is_show_previous_and_next_news', trans('news::news_setting.is_show_previous_and_next_news'),['class'=> ' control-label']) !!}
-                                {!! Form::number('is_show_previous_and_next_news', $records->where('attribute_key','is_show_previous_and_next_news')->first()->attribute_value, ['placeholder' => trans('news::news_setting.is_show_previous_and_next_news') ,'class' => 'form-control']) !!}
+                                {!! Form::select('is_show_previous_and_next_news', ['false' => trans('common.passive'), 'true' => trans('common.active')],
+                                $records->where('attribute_key','is_show_previous_and_next_news')->first()->attribute_value,
+                                 ['class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

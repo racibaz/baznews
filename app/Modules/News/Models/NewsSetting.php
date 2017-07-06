@@ -36,10 +36,10 @@ class NewsSetting extends Model
             'box_cuff' => 'integer',
             'main_cuff' => 'integer',
             'mini_cuff' => 'integer',
-            'find_tags_in_content' => 'integer',
-            'automatic_add_tags' => 'integer',
-            'is_show_editor_profile_in_news' => 'integer',
-            'is_show_previous_and_next_news' => 'integer',
+            'find_tags_in_content' => 'required',
+            'automatic_add_tags' => 'required',
+            'is_show_editor_profile_in_news' => 'required',
+            'is_show_previous_and_next_news' => 'required',
         );
         return Validator::make($input, $rules);
     }
