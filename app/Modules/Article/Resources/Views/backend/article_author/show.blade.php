@@ -49,7 +49,10 @@
                             </tr>
                             <tr>
                                 <th>{{trans('article::article_author.photo')}}:</th>
-                                <td>{{$record->photo}}</td>
+                                <td>
+                                    <img src="{{ asset('images/article_author_images/' . $record->id . '/original/' . $record->photo)}}"
+                                         alt="{{$record->name}}"/>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{trans('article::article_author.description')}}:</th>
@@ -61,7 +64,7 @@
                             </tr>
                             <tr>
                                 <th>{{trans('article::article_author.is_quotation')}}:</th>
-                                <td>{{$record->is_quotation}}</td>
+                                <td>{!!$record->is_quotation ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('article::article_author.is_cuff')}}:</th>

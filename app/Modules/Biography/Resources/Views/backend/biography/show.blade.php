@@ -65,7 +65,10 @@
                             </tr>
                             <tr>
                                 <th>{{trans('biography::biography.photo')}}</th>
-                                <td>{{$record->photo}}</td>
+                                <td>
+                                    <img src="{{ asset('images/biographies/' . $record->id . '/thumbnail/' . $record->photo)}}"
+                                         alt="{{$record->name}}"/>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{trans('biography::biography.description')}}</th>
@@ -74,10 +77,6 @@
                             <tr>
                                 <th>{{trans('biography::biography.keywords')}}</th>
                                 <td>{{$record->keywords}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('biography::biography.hit')}}</th>
-                                <td>{{$record->hit}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('biography::biography.order')}}</th>
