@@ -22,13 +22,12 @@
             <div class="col-md-6">
                 <div class="panel panel-light-blue">
                     <div class="panel-heading">
-                        {{--<h3 class="panel-title">Kullanıcı Ekle / Düzenle Formu</h3>--}}
                     </div>
 
                     @if(isset($record->id))
-                        {!! Form::model($record, ['route' => ['sitemap.update', $record], 'method' => 'PATCH', 'files' => 'true']) !!}
+                        {!! Form::model($record, ['route' => ['sitemap.update', $record], 'method' => 'PATCH']) !!}
                     @else
-                        {!! Form::open(['route' => 'sitemap.store','method' => 'post', 'files' => 'true']) !!}
+                        {!! Form::open(['route' => 'sitemap.store','method' => 'post']) !!}
                     @endif
 
                     <div class="panel-body">
