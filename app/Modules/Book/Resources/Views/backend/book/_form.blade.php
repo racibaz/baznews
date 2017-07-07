@@ -118,6 +118,12 @@
 
                     <div class="form-group">
                         <label>
+                            {!! Form::checkbox('is_comment', null , $record->is_comment) !!}
+                            {{ trans('common.is_comment') }}
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
                             {!! Form::checkbox('is_cuff', null , $record->is_cuff) !!}
                             {{trans('book::book.is_cuff')}}
                         </label>

@@ -23,6 +23,7 @@ class BooksTableSeeder extends Seeder
             'slug' => 'kitap1-1',
             'thumbnail' => '1.png',
             'photo' => '1.png',
+            'is_comment' => 1,
             'is_cuff' => 1,
             'is_active' => 1
         ]);
@@ -35,6 +36,7 @@ class BooksTableSeeder extends Seeder
             'slug' => 'kitap2-2',
             'thumbnail' => '2.png',
             'photo' => '2.png',
+            'is_comment' => 1,
             'is_cuff' => 1,
             'is_active' => 1
         ]);
@@ -47,6 +49,7 @@ class BooksTableSeeder extends Seeder
             'slug' => 'kitap3-3',
             'thumbnail' => '3.png',
             'photo' => '3.png',
+            'is_comment' => 1,
             'is_cuff' => 1,
             'is_active' => 1
         ]);
@@ -59,6 +62,7 @@ class BooksTableSeeder extends Seeder
             'slug' => 'kitap4-4',
             'thumbnail' => '4.png',
             'photo' => '4.png',
+            'is_comment' => 1,
             'is_cuff' => 1,
             'is_active' => 1
         ]);
