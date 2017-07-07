@@ -51,12 +51,6 @@
                                 {!! Form::text('slug', $record->slug, ['placeholder' => trans('news::news_category.slug') ,'class' => 'form-control']) !!}
                             </div><!-- /.form-group -->
                         </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                {!! Form::label('hit', trans('news::news_category.hit'),['class'=> 'control-label']) !!}
-                                {!! Form::number('hit', $record->hit, ['placeholder' => trans('news::news_category.hit') ,'class' => 'form-control']) !!}
-                            </div><!-- /.form-group -->
-                        </div>
                     </div>
 
                     <div class="form-group">
@@ -117,34 +111,6 @@
                     <div class="form-group">
                         <button class="btn btn-success btn-lg" type="submit"><i
                                     class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
-                    </div><!-- /.form-group -->
-                </div>
-            </div><!-- /.box-solid -->
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('news::news_category.thumbnail')}}</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                        </button>
-                    </div>
-                    <!-- /.box-tools -->
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="form-group">
-                        {!! Form::label('thumbnail', trans('news::news_category.thumbnail'),['class'=> 'control-label','style'=>'width:100%;']) !!}
-                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput"
-                                 style="width: 200px; height: 150px;"></div>
-                            <div>
-                                <span class="btn btn-default btn-file"><span
-                                            class="fileinput-new">{{trans('news::news_category.select_image')}}</span><span
-                                            class="fileinput-exists">{{trans('news::news_category.change')}}</span>{!! Form::file('thumbnail') !!}</span>
-                                <a href="#" class="btn btn-default fileinput-exists"
-                                   data-dismiss="fileinput">{{trans('news::news_category.remove')}}</a>
-                            </div>
-                        </div><!-- /file-input -->
                     </div><!-- /.form-group -->
                 </div>
             </div><!-- /.box-solid -->

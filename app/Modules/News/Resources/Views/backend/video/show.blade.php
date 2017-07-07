@@ -32,12 +32,12 @@
                         <table class="table table-hover">
                             <tbody>
                             <tr>
-                                <th width="20%">{{trans('news::video.id')}}</th>
+                                <th width="20%">{{trans('common.id')}}</th>
                                 <td>{{$record->id}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::video.photo_gallery_id')}}</th>
-                                <td>{{$record->photo_gallery_id}}</td>
+                                <th>{{trans('news::video.video_gallery_id')}}</th>
+                                <td>{{$record->video_gallery->name}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::video.name')}}</th>

@@ -23,7 +23,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'description' => 'Dünya haberleri vs..',
             'keywords' => 'keywords',
             'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -37,7 +36,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'description' => 'Asya haberleri vs..',
             'keywords' => 'keywords',
             'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -51,7 +49,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'description' => 'Afrika haberleri vs..',
             'keywords' => 'keywords',
             'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -65,7 +62,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'description' => 'Avrupa haberleri vs..',
             'keywords' => 'keywords',
             'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -79,7 +75,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'description' => 'Azerbaycan haberleri vs..',
             'keywords' => 'keywords',
             'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -93,7 +88,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'description' => 'Mali haberleri vs..',
             'keywords' => 'keywords',
             'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -107,7 +101,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'description' => 'Türkiye haberleri vs..',
             'keywords' => 'keywords',
             'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);

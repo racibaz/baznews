@@ -37,7 +37,6 @@
                                 <th>{{trans('news::news_category.name')}}</th>
                                 <th>{{trans('news::news_category.parent_id')}}</th>
                                 <th>{{trans('news::news_category.news_count')}}</th>
-                                <th>{{trans('news::news_category.hit')}}</th>
                                 <th>{{trans('news::news_category.is_cuff')}}</th>
                                 <th>{{trans('news::news_category.is_active')}}</th>
                                 <th>{{trans('news::news_category.edit_delete')}}</th>
@@ -54,7 +53,6 @@
                                         @endif
                                     </td>
                                     <td> {{$record->news->count()}} </td>
-                                    <td> {{$record->hit}} </td>
                                     <td>{!!$record->is_cuff ? '<label class="badge bg-green"><i class="fa fa-check"></i></label>' : '<label class="badge bg-brown"><i class="fa fa-times"></i></label>'!!} </td>
                                     <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>

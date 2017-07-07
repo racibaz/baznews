@@ -2,7 +2,6 @@
 
 namespace App\Modules\Biography\Database\Seeds;
 
-use App\Modules\Biogaphy\Database\Seeds\SitemapsTableSeeder;
 use Illuminate\Database\Seeder;
 
 class BiographyDatabaseSeeder extends Seeder

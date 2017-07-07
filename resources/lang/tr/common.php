@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'id' => 'ID',
     'homepage' => 'Anasayfa',
     'save' => 'Kaydet',
     'create' => 'Ekle',

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Biogaphy\Database\Seeds;
+namespace App\Modules\Biography\Database\Seeds;
 
 use App\Models\Sitemap;
 use Illuminate\Database\Seeder;
