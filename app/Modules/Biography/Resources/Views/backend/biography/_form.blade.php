@@ -18,6 +18,9 @@
     @else
         {!! Form::open(['route' => 'biography.store','method' => 'post', 'files' => 'true']) !!}
     @endif
+
+    {!! Form::hidden('user_id', Auth::user()->id) !!}
+
     <div class="row">
         <div class="col-lg-8" id="content-area">
             <div class="box">

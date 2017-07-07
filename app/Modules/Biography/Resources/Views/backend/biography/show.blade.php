@@ -31,14 +31,6 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <tbody>
-                            {{--<tr>--}}
-                            {{--<th>{{trans('biography::biography.id')}}</th>--}}
-                            {{--<td>{{$record->id}}</td>--}}
-                            {{--</tr>--}}
-                            {{--<tr>--}}
-                            {{--<th>{{trans('biography::biography.user_id')}}</th>--}}
-                            {{--<td>{{$record->user_id}}</td>--}}
-                            {{--</tr>--}}
                             <tr>
                                 <th width="20%">{{trans('biography::biography.title')}}</th>
                                 <td>{{$record->title}}</td>
