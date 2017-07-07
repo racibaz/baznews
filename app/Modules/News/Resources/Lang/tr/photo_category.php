@@ -30,7 +30,6 @@ return [
     'edit_delete' => 'Düzenle/Sil',
     'content' => 'İçerik',
     'subtitle' => 'Altyazı',
-    'hit' => 'Hit',
     'icon' => 'İkon',
     'is_cuff' => 'Manşete Çıksın',
 ];

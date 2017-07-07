@@ -9,7 +9,6 @@ return [
     'create' => 'Kategori Oluştur',
     'description' => 'Tanım/Not',
     'slug' => 'Slug',
-    'hit' => 'Hit',
     'icon' => 'Icon',
     'is_cuff' => 'Manşete Çıksın',
     'news_categories' => 'Haber Kategorileri Listesi',

@@ -57,10 +57,6 @@
                         {!! Form::label('keywords', trans('article::article_category.keywords'),['class'=> 'control-label']) !!}
                         {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('article::article_category.keywords') ,'class' => 'form-control tagsinput']) !!}
                     </div>
-                    <div class="form-group">
-                        {!! Form::label('hit', trans('article::article_category.hit'),['class'=> 'control-label']) !!}
-                        {!! Form::number('hit', $record->hit, ['placeholder' => trans('article::article_category.hit') ,'class' => 'form-control']) !!}
-                    </div>
                 </div>
                 <!-- /.box-body -->
             </div><!-- /.box -->

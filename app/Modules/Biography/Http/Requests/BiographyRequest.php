@@ -51,7 +51,6 @@ class BiographyRequest extends FormRequest
                     'photo' => 'image|nullable',
                     'description' => 'string|max:255|nullable',
                     'keywords' => 'string|max:255|nullable',
-                    'hit' => 'integer|nullable',
                     'order' => 'integer|nullable',
                 ];
             }
@@ -80,7 +79,6 @@ class BiographyRequest extends FormRequest
                     'photo' => 'image|nullable',
                     'description' => 'string|max:255|nullable',
                     'keywords' => 'string|max:255|nullable',
-                    'hit' => 'integer|nullable',
                     'order' => 'integer|nullable',
                 ];
             }

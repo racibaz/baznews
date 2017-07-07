@@ -70,7 +70,7 @@ class NewsCategory extends Model
 
     protected $table = 'news_categories';
     public $transformer = NewsCategoryTransformer::class;
-    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'is_cuff', 'is_active'];
+    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'is_cuff', 'is_active'];
 
     public function news()
     {

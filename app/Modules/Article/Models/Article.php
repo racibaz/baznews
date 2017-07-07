@@ -42,7 +42,7 @@ class Article extends Eloquent
     public $transformer = ArticleTransformer::class;
     public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
 
-    protected $fillable = ['user_id', 'article_author_id', 'title', 'slug', 'short_url', 'subtitle', 'spot', 'content', 'description', 'keywords', 'hit', 'order', 'status', 'is_cuff', 'is_active'];
+    protected $fillable = ['user_id', 'article_author_id', 'title', 'slug', 'short_url', 'subtitle', 'spot', 'content', 'description', 'keywords', 'order', 'status', 'is_cuff', 'is_active'];
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function user()

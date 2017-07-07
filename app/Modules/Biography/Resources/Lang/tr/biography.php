@@ -22,7 +22,6 @@ return [
     'photo' => 'Fotoğraf',
     'keywords' => 'Anahtar Kelimeler',
     'order' => 'Sıralama',
-    'hit' => 'Hit',
     'is_cuff' => 'Manşet',
     'is_active' => 'Aktif/Pasif',
     'select_image' => 'Resim Seç',

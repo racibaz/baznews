@@ -25,7 +25,6 @@ class CreateBiographiesTable extends Migration
             $table->string('photo')->nullable();
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();
-            $table->unsignedInteger('hit')->default(0);
             $table->unsignedInteger('order')->default(0);
             $table->boolean('status')->default(false);
             $table->boolean('is_cuff')->default(false);

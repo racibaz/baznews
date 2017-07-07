@@ -609,9 +609,6 @@ class NewsController extends BackendController
                 if ($slug = Input::get('slug')) {
                     $query->where('slug', 'LIKE', "%$slug%");
                 }
-                if ($hit = Input::get('hit')) {
-                    $query->where('hit', "$hit");
-                }
                 if ($status = Input::get('status')) {
                     $status = Input::get('status') == "on" ? true : false;
                     $query->where('status', "$status");

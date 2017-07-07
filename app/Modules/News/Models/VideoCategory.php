@@ -68,7 +68,7 @@ class VideoCategory extends Model
 
     protected $table = 'video_categories';
     public $transformer = VideoCategoryTransformer::class;
-    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'icon', 'is_cuff', 'is_active'];
+    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'icon', 'is_cuff', 'is_active'];
 
 
     public function video_galleries()

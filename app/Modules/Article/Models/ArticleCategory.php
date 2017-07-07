@@ -65,7 +65,7 @@ class ArticleCategory extends Model
 
     protected $table = 'article_categories';
     public $transformer = ArticleCategoryTransformer::class;
-    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'icon', 'is_cuff', 'is_active'];
+    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'icon', 'is_cuff', 'is_active'];
 
     public function articles()
     {

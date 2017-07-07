@@ -37,7 +37,6 @@
                             <th>#</th>
                             <th>{{trans('news::video_category.name')}}</th>
                             <th>{{trans('news::video_category.parent_id')}}</th>
-                            <th>{{trans('news::video_category.hit')}}</th>
                             <th>{{trans('news::video_category.is_cuff')}}</th>
                             <th>{{trans('news::video_category.is_active')}}</th>
                             <th>{{trans('news::video_category.edit_delete')}}</th>
@@ -53,7 +52,6 @@
                                         {{$record->parent->name}}
                                     @endif
                                 </td>
-                                <td> {{$record->hit}} </td>
                                 <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                 <td>

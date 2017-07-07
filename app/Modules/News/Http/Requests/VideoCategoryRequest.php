@@ -47,7 +47,6 @@ class VideoCategoryRequest extends FormRequest
                     'description' => 'string|max:255|nullable',
                     'keywords' => 'string|max:255|nullable',
                     'icon' => 'string|nullable',
-                    'hit' => 'integer|nullable',
                 ];
             }
             case 'PUT':
@@ -69,7 +68,6 @@ class VideoCategoryRequest extends FormRequest
                     'description' => 'string|max:255|nullable',
                     'keywords' => 'string|max:255|nullable',
                     'icon' => 'string|nullable',
-                    'hit' => 'integer|nullable',
                 ];
             }
             default:

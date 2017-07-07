@@ -76,10 +76,6 @@
                                 <td>{{$record->keywords}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article.hit')}}</th>
-                                <td>{{$record->hit}}</td>
-                            </tr>
-                            <tr>
                                 <th>{{trans('article::article.order')}}</th>
                                 <td>{{$record->order}}</td>
                             </tr>

@@ -21,7 +21,6 @@ return [
     'content' => 'İçerik',
     'description' => 'Açıklama',
     'keywords' => 'Anahtar Kelime',
-    'hit' => 'Hit',
     'status' => 'Durum',
     'is_active' => 'Aktif/Pasif',
     'create' => 'Makale Yazarı Oluştur',

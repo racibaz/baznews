@@ -38,7 +38,7 @@ class Biography extends Model
 
     protected $table = 'biographies';
     public $transformer = BiographyTransformer::class;
-    protected $fillable = ['user_id', 'title', 'spot', 'name', 'slug', 'short_url', 'content', 'photo', 'description', 'keywords', 'order', 'hit', 'status', 'is_cuff', 'is_active'];
+    protected $fillable = ['user_id', 'title', 'spot', 'name', 'slug', 'short_url', 'content', 'photo', 'description', 'keywords', 'order', 'status', 'is_cuff', 'is_active'];
 
     public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
 

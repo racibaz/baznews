@@ -22,7 +22,6 @@ class ArticleCategoriesTableSeeder extends Seeder
             'slug' => 'dunya_makalesi',
             'description' => 'Dünya makalesivs..',
             'keywords' => 'keywords',
-            'hit' => 1,
             'icon' => 'icon path',
             'is_cuff' => 1,
             'is_active' => 1,
