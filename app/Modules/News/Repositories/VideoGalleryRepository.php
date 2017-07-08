@@ -13,16 +13,6 @@ class VideoGalleryRepository extends EloquentRepository
 
     protected $model = 'App\Modules\News\Models\VideoGallery';
 
-    public function getOtherGalleryVideos($video)
-    {
-        $videoGalleryVideos = $this->where('is_active', 1)
-            ->where('video_gallery_id', $video->video_gallery_id)
-            ->whereNotIn('id', [$video->id])
-            ->findAll()
-            ->take(10);
-
-        return isset($videoGalleryVideos) ? $videoGalleryVideos : null;
-    }
 
     public function getOtherGalleries($videoGallery, $take = 10)
     {
@@ -32,12 +22,14 @@ class VideoGalleryRepository extends EloquentRepository
                 ->take($take);
         }
 
-        return $videoGallery
-            ->video_category
-            ->video_galleries
-            ->where('is_active', 1)
-            ->where('id', '<>', $videoGallery->id)
-            ->take($take);
+        $videoGalleries = $videoGallery
+                        ->video_category
+                        ->video_galleries
+                        ->where('is_active', 1)
+                        ->where('id', '<>', $videoGallery->id)
+                        ->take($take);
+
+        return isset($videoGalleries) ? $videoGalleries : null;
     }
 
     public function getGalleryNextVideo($videoGallery, $video)

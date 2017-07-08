@@ -73,6 +73,21 @@ class VideoRepository extends EloquentRepository
             ->findBy('id', $id);
     }
 
+    public function getVideoGallery($video)
+    {
+        return count($video->video_gallery) > 0 ? $video->video_gallery : null;
+    }
+
+    public function getVideoGalleryOtherVideos($video)
+    {
+        return count($video->video_gallery->videos) > 0 ? $video->video_gallery->videos : null;
+    }
+
+    public function getVideoTags($video)
+    {
+        return count($video->video_gallery->videos) > 0 ? $video->video_gallery->videos : null;
+    }
+
 
     public function deleteVideoFiles($video): bool
     {

@@ -29,15 +29,15 @@ class VideoGalleryController extends Controller
             $video = $this->videoRepo->getVideo($id);
             abort_if(empty($video), 404, trans('common.not_found'));
 
-            $galleryVideos = $video->video_gallery->videos;
-            $videoGallery = $video->video_gallery;
-            $tags = $video->tags;
+            $galleryVideos = $this->videoRepo->getVideoGalleryOtherVideos($video);
+            $videoGallery = $this->videoRepo->getVideoGallery($video);
+            $tags = $this->videoRepo->getVideoTags($video);
+            $lastestVideos = $this->videoRepo->getLatestVideos(20);
+            $otherGalleryVideos = $this->videoRepo->getOtherGalleryVideos($video);
 
             $nextVideo = $this->repo->getGalleryNextVideo($videoGallery, $video);
             $previousVideo = $this->repo->getGalleryPreviousVideo($videoGallery, $video);
-            $otherGalleryVideos = $this->repo->getOtherGalleryVideos($video);
             $otherGalleries = $this->repo->getOtherGalleries($videoGallery);
-            $lastestVideos = $this->videoRepo->getLatestVideos(20);
 
             $videoCategories = $this->videoCategoryRepo->getCuffVideoCategories();
             $categoryVideos = $this->videoCategoryRepo->getVideoCategoryVideos($video);
@@ -62,4 +62,6 @@ class VideoGalleryController extends Controller
 
         });
     }
+
+
 }
