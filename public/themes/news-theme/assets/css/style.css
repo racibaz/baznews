@@ -660,7 +660,7 @@ header {
     display: block;
     text-align: center;
     font-size: 13px;
-    width: 38px;
+    width: 36.3px;
     height: 26px;
     margin: 0 1px 0 0;
     outline: 0;
@@ -671,6 +671,12 @@ header {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
+}
+#spot-slider .slider-paging ul li > a{
+    width: 35px;
+}
+.slider .slider-paging ul li:last-child > a{
+    margin-right:0;
 }
 
 .slider .slider-paging ul li > a.active {
@@ -1340,10 +1346,13 @@ header {
 /* ==========================================================================
    VİDEO DETAİLS
    ========================================================================== */
-.playerbox {
+.playerbox .player{
     margin-bottom: 10px;
 }
-
+.playerbox .player iframe{
+    width: 100%;
+    height: 500px;
+}
 .playerbox .description {
     padding: 0 15px;
 }
@@ -1675,10 +1684,12 @@ footer .footer-head {
     height: 150px;
 }
 
-footer .footer-head .footer-menu,
+footer .footer-head .footer-menu{
+    width: 100%;
+}
 footer .footer-head .footer-menu > li {
     display: inline-block;
-    width: 40%;
+    width: 33%;
     margin: 0;
     padding: 0;
     list-style-image: none;
@@ -2691,7 +2702,12 @@ ul.sub-list li > a > .time {
 .advert-center {
     margin-bottom: 10px;
 }
-
+.advert-center img,
+.advert-center iframe,
+.advert img,
+.advert iframe{
+    width: 100%;
+}
 .adverts .ads {
     top: 178px;
 }
@@ -3445,4 +3461,27 @@ ul.news-list li .text span.timeago {
 .algolia-logo {
     background-color: #fff;
     padding: 3px 8px;
+}
+/* ==========================================================================
+   List Pagination Style
+   ========================================================================== */
+.pagination{
+    margin: 0;
+}
+.pagination  li span{
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+    border:1px solid #f44336;
+}
+.pagination  li.active span{
+    border-color:#f44336;
+    background-color: #f44336;
+    color:#fff;
+}
+
+.number-box .mini-box{
+    background: none;
+    border:none;
+
 }

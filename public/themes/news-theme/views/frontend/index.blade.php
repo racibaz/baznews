@@ -155,10 +155,11 @@
 
                 <div class="col-md-4" id="sidebar">
                     <div class="sidebar">
-
-                        <div class="advert advert-right module">
-                            {!! Cache::tags('Setting', 'Advertisement')->get('right_block_1') !!}
-                        </div>
+                        @if(Cache::tags('Setting', 'Advertisement')->get('right_block_1'))
+                            <div class="advert advert-right module">
+                                {!! Cache::tags('Setting', 'Advertisement')->get('right_block_1') !!}
+                            </div>
+                        @endif
                         @foreach($widgets->where('group','right_bar') as $widget )
                             @widget($widget['namespace'])
                         @endforeach
