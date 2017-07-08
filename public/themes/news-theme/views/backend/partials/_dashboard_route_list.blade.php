@@ -1,4 +1,13 @@
 <li data-name="home"><a href="/admin"><i class="fa fa-home"></i> <span>{{trans('dashboard.home_page')}}</span></a></li>
+
+<li class="header">MODÜLLER</li>
+@foreach( Module::all() as $module)
+    @if(Module::isEnabled($module['slug']))
+        {!! Theme::view( $module['slug'] .'::backend.route_list.route_list') !!}
+    @endif
+@endforeach
+
+<li class="header">Core</li>
 <li class="treeview" data-name="user_management">
     <a href="#">
         <i class="fa fa-users"></i> <span>{{trans('dashboard.user_management')}}</span>
@@ -98,11 +107,3 @@
 @permission('index-apimanager')
 <li data-name="api_manager"><a href="{!! route('api_manager') !!}"><i class="fa fa-file-code-o"></i>
         <span>{{trans('dashboard.api_manager')}}</span></a></li>@endpermission
-
-
-<li class="header">MODÜLLER</li>
-@foreach( Module::all() as $module)
-    @if(Module::isEnabled($module['slug']))
-        {!! Theme::view( $module['slug'] .'::backend.route_list.route_list') !!}
-    @endif
-@endforeach
