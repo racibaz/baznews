@@ -753,6 +753,7 @@
             addMarker(myLatlng, 'Default Marker', map);
 
             map.addListener('click', function (event) {
+
                 addMarker(event.latLng, 'Click Generated Marker', map);
             });
             function handleEvent(event) {

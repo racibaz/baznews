@@ -426,7 +426,7 @@ header {
 @media only screen and (max-width: 1400px) {
     #navbar-header .advert-header {
         width: 50%;
-        margin-top: 66px;
+        margin-top: 20px;
     }
 }
 
@@ -1685,11 +1685,17 @@ footer .footer-head {
 }
 
 footer .footer-head .footer-menu{
+    -moz-column-count: 4;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 20px;
+    column-count: 4;
+    column-gap: 20px;
     width: 100%;
+    float: left;
+    padding: 0;
 }
 footer .footer-head .footer-menu > li {
-    display: inline-block;
-    width: 33%;
     margin: 0;
     padding: 0;
     list-style-image: none;
@@ -3481,9 +3487,50 @@ ul.news-list li .text span.timeago {
     background-color: #f44336;
     color:#fff;
 }
-
+.pagination>li>a{
+    cursor: pointer;
+}
+.pagination>li>a,
+.pagination>li>span{
+    color:#000;
+    background-color: #fff;
+    border-color: #ddd;
+}
+/*Left Number Box Style*/
 .number-box .mini-box{
     background: none;
     border:none;
+}
+.number-box {
+    margin: 10px 0;
+}
+.number-box .mini-box {
+    float: left;
+    height: 34px;
+    padding: 8px 13px;
+    border-bottom: 1px solid #ccc;
+    margin-right: 15px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
 
+.number-box .mini-box h3.title {
+    margin: 0;
+    font-size: 12px;
+}
+
+.number-box .mini-box h3.title span {
+    font-size: 12px;
+}
+
+.number-box .mini-box h3.title .label-info{
+    background-color: #f44336;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.table {
+    margin: 0;
 }

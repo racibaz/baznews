@@ -8,7 +8,7 @@
                     </div>
                 </div>
                 <div class="col-sm-10 col-md-10">
-                    <ul class="footer-menu">
+                    <ul class="footer-menu" data-columns="3">
                         @foreach(Cache::tags(['Setting', 'Menu'])->get('footer_menus') as $menu)
                             @if(!empty($menu->route))
                                 <li><a href="{!! url($menu->route) !!}"
