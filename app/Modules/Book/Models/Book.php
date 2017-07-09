@@ -60,6 +60,7 @@ class Book extends Model
         'skin_type',
         'paper_type',
         'size',
+        'is_comment',
         'is_cuff',
         'is_active',
     ];

@@ -18,7 +18,6 @@ class NewsCategoryTransformer extends TransformerAbstract
             'slug' => (string)$record->slug,
             'description' => (string)$record->description,
             'keywords' => (string)$record->keywords,
-            'hit' => (int)$record->hit,
             'thumbnail' => (string)$record->thumbnail,
             'is_cuff' => (bool)$record->is_cuff,
             'createdAt' => (string)$record->created_at,

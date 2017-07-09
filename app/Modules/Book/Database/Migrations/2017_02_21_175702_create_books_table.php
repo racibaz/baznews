@@ -31,6 +31,7 @@ class CreateBooksTable extends Migration
             $table->string('skin_type')->nullable();
             $table->string('paper_type')->nullable();
             $table->string('size')->nullable();
+            $table->boolean('is_comment');
             $table->boolean('is_cuff');
             $table->boolean('is_active');
             $table->timestamps();

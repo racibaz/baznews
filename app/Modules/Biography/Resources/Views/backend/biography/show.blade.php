@@ -31,14 +31,6 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <tbody>
-                            {{--<tr>--}}
-                            {{--<th>{{trans('biography::biography.id')}}</th>--}}
-                            {{--<td>{{$record->id}}</td>--}}
-                            {{--</tr>--}}
-                            {{--<tr>--}}
-                            {{--<th>{{trans('biography::biography.user_id')}}</th>--}}
-                            {{--<td>{{$record->user_id}}</td>--}}
-                            {{--</tr>--}}
                             <tr>
                                 <th width="20%">{{trans('biography::biography.title')}}</th>
                                 <td>{{$record->title}}</td>
@@ -65,7 +57,10 @@
                             </tr>
                             <tr>
                                 <th>{{trans('biography::biography.photo')}}</th>
-                                <td>{{$record->photo}}</td>
+                                <td>
+                                    <img src="{{ asset('images/biographies/' . $record->id . '/thumbnail/' . $record->photo)}}"
+                                         alt="{{$record->name}}"/>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{trans('biography::biography.description')}}</th>
@@ -74,10 +69,6 @@
                             <tr>
                                 <th>{{trans('biography::biography.keywords')}}</th>
                                 <td>{{$record->keywords}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('biography::biography.hit')}}</th>
-                                <td>{{$record->hit}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('biography::biography.order')}}</th>

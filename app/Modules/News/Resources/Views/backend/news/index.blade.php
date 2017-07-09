@@ -49,12 +49,6 @@
                                 {!! Form::text('slug', null ,['placeholder' => trans('news::news.slug'),'class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                {!! Form::label('hit', trans('news::news.hit')) !!}
-                                {!! Form::number('hit', null ,['placeholder' => trans('news::news.hit'),'class' => 'form-control']) !!}
-                            </div>
-                        </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-3">

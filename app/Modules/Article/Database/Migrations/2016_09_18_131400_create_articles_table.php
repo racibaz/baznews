@@ -25,7 +25,6 @@ class CreateArticlesTable extends Migration
             $table->text('content')->nullable();
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();
-            $table->unsignedInteger('hit')->default(0);
             $table->unsignedInteger('order')->default(0);
             $table->unsignedTinyInteger('status')->default(0);
             $table->boolean('is_cuff')->default(false);

@@ -119,6 +119,10 @@ class BiographyController extends BackendController
                 Image::make(public_path('images/biographies/' . $result->id . '/thumbnail/' . $result->photo))
                     ->fit(104, 78)
                     ->save(public_path('images/biographies/' . $result->id . '/104x78_' . $document_name));
+
+                Image::make(public_path('images/biographies/' . $result->id . '/thumbnail/' . $result->photo))
+                    ->fit(200, 150)
+                    ->save(public_path('images/biographies/' . $result->id . '/200x150_' . $document_name));
             }
 
 

@@ -49,11 +49,17 @@
                             </tr>
                             <tr>
                                 <th>{{trans('book::book.thumbnail')}}</th>
-                                <td>{{$record->thumbnail}}</td>
+                                <td>
+                                    <img src="{{ asset('images/books/' . $record->id . '/original/' . $record->thumbnail)}}"
+                                         alt="{{$record->name}}"/>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{trans('book::book.photo')}}</th>
-                                <td>{{$record->photo}}</td>
+                                <td>
+                                    <img src="{{ asset('images/books/' . $record->id . '/original/' . $record->thumbnail)}}"
+                                         alt="{{$record->name}}"/>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{trans('book::book.description')}}</th>

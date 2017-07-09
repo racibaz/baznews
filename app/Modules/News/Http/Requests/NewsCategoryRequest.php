@@ -47,7 +47,6 @@ class NewsCategoryRequest extends FormRequest
                     'thumbnail' => 'image|nullable',
                     'description' => 'string|max:255|nullable',
                     'keywords' => 'string|max:255|nullable',
-                    'hit' => 'integer|nullable',
                 ];
             }
             case 'PUT':
@@ -69,7 +68,6 @@ class NewsCategoryRequest extends FormRequest
                     'thumbnail' => 'image|nullable',
                     'description' => 'string|max:255|nullable',
                     'keywords' => 'string|max:255|nullable',
-                    'hit' => 'integer|nullable',
                 ];
             }
             default:

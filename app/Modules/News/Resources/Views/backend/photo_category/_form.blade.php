@@ -51,11 +51,6 @@
                         {!! Form::label('description', trans('news::photo_category.description'),['class'=> 'control-label']) !!}
                         {!! Form::textarea('description', $record->description, ['placeholder' => trans('news::photo_category.description') ,'class' => 'form-control']) !!}
                     </div>
-
-                    <div class="form-group">
-                        {!! Form::label('hit', trans('news::photo_category.hit'),['class'=> 'control-label']) !!}
-                        {!! Form::number('hit', $record->hit, ['placeholder' => trans('news::photo_category.hit') ,'class' => 'form-control']) !!}
-                    </div>
                     <div class="form-group">
                         {!! Form::label('icon', trans('news::photo_category.icon'),['class'=> 'control-label']) !!}
                         {!! Form::text('icon', $record->icon, ['placeholder' => trans('news::photo_category.icon') ,'class' => 'form-control']) !!}

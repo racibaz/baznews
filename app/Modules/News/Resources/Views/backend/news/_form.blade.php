@@ -176,10 +176,6 @@
                                 {!! Form::select('news_category_ids[]', $newsCategoryList , $newsCategoryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('hit', trans('news::news.hit'),['class'=> ' control-label']) !!}
-                                {!! Form::number('hit', $record->hit, ['placeholder' => trans('news::news.hit') ,'class' => 'form-control']) !!}
-                            </div>
-                            <div class="form-group">
                                 {!! Form::label('status', trans('news::news.status'),['class'=> ' control-label']) !!}
                                 {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('news::news.please_choose'),'class' => 'form-control']) !!}
                             </div>

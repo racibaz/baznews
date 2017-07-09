@@ -34,7 +34,6 @@ return [
     'file' => 'Dosya',
     'subtitle' => 'Altyazı',
     'icon' => 'İkon',
-    'hit' => 'Hit',
     'description' => 'Tanım',
     '_lft' => 'Sol',
     '_rgt' => 'Sağ',

@@ -68,7 +68,7 @@ class PhotoCategory extends Model
 
     protected $table = 'photo_categories';
     public $transformer = PhotoCategoryTransformer::class;
-    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'icon', 'is_cuff', 'is_active'];
+    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'icon', 'is_cuff', 'is_active'];
 
     public function photo_galleries()
     {

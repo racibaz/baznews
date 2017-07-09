@@ -34,9 +34,10 @@
                             <th>#</th>
                             <th>{{trans('book::book.name')}}</th>
                             <th>{{trans('book::book.short_url')}}</th>
+                            <th>{{trans('common.is_comment')}}</th>
                             <th>{{trans('book::book.is_cuff')}}</th>
-                            <th>{{trans('book::common.is_active')}}</th>
-                            <th>{{trans('book::common.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -45,6 +46,7 @@
                                 <td>{{$record->id}}</td>
                                 <td>{!! link_to_route('book.show', $record->name , $record, [] ) !!}</td>
                                 <td> {{$record->short_url}} </td>
+                                <td>{!!$record->is_comment ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                 <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                 <td>

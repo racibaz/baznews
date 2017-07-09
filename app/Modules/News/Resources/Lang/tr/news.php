@@ -16,7 +16,6 @@ return [
     'slug' => 'Slug',
     'spot' => 'Haberin Spotu',
     'content' => 'İçerik',
-    'hit' => 'Hit',
     'keywords' => 'Anahtar Kelimeler',
     'meta_tags' => 'Meta Etiketler',
     'thumbnail' => 'Küçük Resim',

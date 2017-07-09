@@ -33,7 +33,7 @@
                             <tbody>
                             <tr>
                                 <th>{{trans('news::video_gallery.video_category_id')}}</th>
-                                <td>{{$record->video_category_id}}</td>
+                                <td>{{$record->video_category->name}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::video_gallery.title')}}</th>
@@ -57,7 +57,10 @@
                             </tr>
                             <tr>
                                 <th>{{trans('news::video_gallery.thumbnail')}}</th>
-                                <td>{{$record->thumbnail}}</td>
+                                <td>
+                                    <img src="{{ asset('video_gallery/' . $record->id . '/224x195_' . $record->thumbnail)}}"
+                                         alt="{{$record->title}}"/>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::video_gallery.is_cuff')}}</th>

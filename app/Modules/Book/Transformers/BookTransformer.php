@@ -9,6 +9,7 @@ class BookTransformer extends TransformerAbstract
 {
     public function transform(Book $record)
     {
+        //todo is_commnet alanı şuan buarada ekli değil.
         return [
             'id' => (int)$record->id,
             'name' => (string)$record->name,

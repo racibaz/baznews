@@ -19,7 +19,6 @@ return [
     'content' => 'İçerik',
     'description' => 'Açıklama',
     'keywords' => 'Anahtar Kelime',
-    'hit' => 'Hit',
     'status' => 'Durum',
     'parent' => 'Üst Kategori',
     'is_active' => 'Aktif/Pasif',

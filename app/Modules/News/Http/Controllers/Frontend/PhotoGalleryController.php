@@ -58,9 +58,6 @@ class PhotoGalleryController extends Controller
             $photoCategoryGalleries = $photoCategoryGalleries->except($photoGallery->id);
 
 
-            //todo will be must Popular photos area
-            //todo how to increment hit area?(redis cache)
-
             return Theme::view('news::frontend.photo_gallery.photo_gallery', compact([
                 'photoGallery',
                 'galleryPhotos',
@@ -116,9 +113,6 @@ class PhotoGalleryController extends Controller
 
             $photoCategoryRepository = new PhotoCategoryRepository();
             $photoCategories = $photoCategoryRepository->where('is_cuff', 1)->where('is_active', 1)->findAll();
-
-            //todo will be must Popular photos area
-            //todo how to increment hit area?(redis cache)
 
             $photoCategoryGalleries = $this->getPhotoGalleriesFormPhotoCategory($photoGallery->photo_category->id);
             //mevcutta gösterilen foto galeriyi collection dan siliyoruz.

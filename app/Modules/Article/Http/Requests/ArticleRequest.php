@@ -49,7 +49,6 @@ class ArticleRequest extends FormRequest
                     'spot' => 'string|max:255|nullable',
                     'description' => 'string|max:255|nullable',
                     'keywords' => 'string|max:255|nullable',
-                    'hit' => 'integer|nullable',
                     'order' => 'integer|nullable',
                 ];
             }
@@ -74,7 +73,6 @@ class ArticleRequest extends FormRequest
                     'spot' => 'string|max:255|nullable',
                     'description' => 'string|max:255|nullable',
                     'keywords' => 'string|max:255|nullable',
-                    'hit' => 'integer|nullable',
                     'order' => 'integer|nullable',
                 ];
             }

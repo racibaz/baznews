@@ -23,7 +23,6 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('news::news.title')}}</th>
-                            <th>{{trans('news::news.hit')}}</th>
                             <th>{{trans('news::news.band_news')}}</th>
                             <th>{{trans('news::news.box_cuff')}}</th>
                             <th>{{trans('news::news.is_cuff')}}</th>
@@ -39,7 +38,6 @@
                             <tr>
                                 <td>{{$trashedRecord->id}}</td>
                                 <td>{!! link_to_route('news.show', $trashedRecord->title , $trashedRecord, [] ) !!}</td>
-                                <td> {{$trashedRecord->hit}} </td>
                                 <td>
                                     <a href="{!! route('toggle_boolean_type',['newsId' => $trashedRecord->id,'key' => 'band_news']) !!}">
                                         {!! $trashedRecord->band_news ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}

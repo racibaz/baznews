@@ -41,13 +41,7 @@ class SitemapController extends BackendController
         return $this->save($this->repo->createModel());
     }
 
-
-    public function show(Sitemap $record)
-    {
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
-    }
-
-
+    
     public function edit(Sitemap $record)
     {
         return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));

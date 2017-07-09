@@ -70,7 +70,7 @@ class NewsCategory extends Model
 
     protected $table = 'news_categories';
     public $transformer = NewsCategoryTransformer::class;
-    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'hit', 'thumbnail', 'is_cuff', 'is_active'];
+    protected $fillable = ['parent_id', '_lft', '_rgt', 'name', 'slug', 'description', 'keywords', 'is_cuff', 'is_active'];
 
     public function news()
     {
@@ -86,7 +86,6 @@ class NewsCategory extends Model
     {
         $rules = array(
             'name' => 'required',
-            'thumbnail' => 'image|max:255',
         );
         return Validator::make($input, $rules);
     }

@@ -18,6 +18,9 @@
     @else
         {!! Form::open(['route' => 'biography.store','method' => 'post', 'files' => 'true']) !!}
     @endif
+
+    {!! Form::hidden('user_id', Auth::user()->id) !!}
+
     <div class="row">
         <div class="col-lg-8" id="content-area">
             <div class="box">
@@ -79,11 +82,6 @@
                         {!! Form::label('keywords', trans('biography::biography.keywords'),['class'=> 'control-label']) !!}
                         {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('biography::biography.keywords') ,'class' => 'form-control tagsinput']) !!}
                     </div>
-                {{--<div class="form-group">--}}
-                {{--{!! Form::label('hit', trans('biography::biography.hit'),['class'=> 'control-label']) !!}--}}
-                {{--{!! Form::number('hit', $record->hit, ['placeholder' => trans('biography::biography.hit') ,'class' => 'form-control']) !!}--}}
-                {{--</div>--}}
-                <!-- /.box-body -->
                 </div>
             </div>
         </div><!-- /.col-lg-6 -->

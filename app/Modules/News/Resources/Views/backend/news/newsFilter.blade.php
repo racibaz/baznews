@@ -25,10 +25,6 @@
                         {!! Form::text('slug', null ,['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('hit', trans('news.hit')) !!}
-                        {!! Form::number('hit', null ,['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
-                    </div>
-                    <div class="form-group">
                         <label>
                             {!! Form::checkbox('status', null, null, [
                             'data-toggle' => 'toggle',
@@ -191,7 +187,6 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('news.title')}}</th>
-                            <th>{{trans('news.hit')}}</th>
                             <th>{{trans('news.status')}}</th>
                             <th>{{trans('news.band_news')}}</th>
                             <th>{{trans('news.box_cuff')}}</th>
@@ -208,7 +203,6 @@
                             <tr>
                                 <td>{{$record->id}}</td>
                                 <td>{!! link_to_route('news.show', $record->title , $record, [] ) !!}</td>
-                                <td> {{$record->hit}} </td>
                                 <td> {{$record->status}} </td>
                                 <td> {{$record->band_news}} </td>
                                 <td> {{$record->box_cuff}} </td>
@@ -236,7 +230,6 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('news.title')}}</th>
-                            <th>{{trans('news.hit')}}</th>
                             <th>{{trans('news.status')}}</th>
                             <th>{{trans('news.band_news')}}</th>
                             <th>{{trans('news.box_cuff')}}</th>

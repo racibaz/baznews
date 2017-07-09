@@ -21,7 +21,6 @@ class CreateVideoCategoriesTable extends Migration
             $table->string('slug')->nullable();
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();
-            $table->unsignedInteger('hit')->nullable();
             $table->string('icon')->nullable();
             $table->boolean('is_cuff');
             $table->boolean('is_active');

@@ -64,18 +64,16 @@
                         </div><!-- /.row -->
                     </div><!-- /#book-detail -->
                 </article>
-                <div class="share-box">
-                    <div class="title-section">
-                        <h1>
-                            <span>Paylaş</span>
-                        </h1>
+
+                    <div class="share-box">
+                        <div class="title-section">
+                            <h1>
+                                <span>Paylaş</span>
+                            </h1>
+                        </div>
+                        {!! Cache::tags('Setting')->get('addthis') !!}
                     </div>
-                    {!! Cache::tags('Setting')->get('addthis') !!}
-                </div>
-                <div class="other-books">
-                    <div class="title-section">
-                        <h2><span>Diğer Kitaplar</span></h2>
-                    </div>
+<<<<<<< HEAD
                     <div class="book-list module">
                         <div class="row">
                             @foreach($firstCategoryBooks as $book)
@@ -92,6 +90,40 @@
                         </div><!-- /.row -->
                     </div><!-- /.book-list -->
                 </div><!-- /.other-books -->
+=======
+
+                    @if($record->is_comment)
+                        <div class="discus-box">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {!! Cache::tags('Setting')->get('disqus') !!}
+                                </div>
+                            </div>
+                        </div><!-- /.discus-box -->
+                    @endif
+
+                    <div class="other-books">
+                        <div class="title-section">
+                            <h2><span>Diğer Kitaplar</span></h2>
+                        </div>
+                        <div class="book-list module">
+                            <div class="row">
+                                @foreach($firstCategoryBooks as $book)
+                                    <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
+                                        <a href="{!! route('book', ['slug' => $book->slug]) !!}" class="thumbnail">
+                                            <img src="{{ asset('images/books/' . $book->id . '/original/' . $book->thumbnail)}}"
+                                                 alt="{{$book->name}}"/>
+                                            <div class="caption">
+                                                <h3>{{$book->name}}</h3>
+                                            </div>
+                                        </a>
+                                    </div><!-- /.col -->
+                                @endforeach
+                            </div><!-- /.row -->
+                        </div><!-- /.book-list -->
+                    </div><!-- /.other-books -->
+
+>>>>>>> recai
             </div><!-- /.new-content -->
             <div class="col-md-4" id="sidebar">
                 <div class="sidebar">

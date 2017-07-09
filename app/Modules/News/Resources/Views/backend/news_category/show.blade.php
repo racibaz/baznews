@@ -37,15 +37,15 @@
                             </tr>
                             <tr>
                                 <th>{{trans('news::news_category.parent_id')}}:</th>
-                                <td>{{$record->parent_id }}</td>
+                                <td>
+                                    @if($record->parent)
+                                        {{$record->parent->name}}
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news_category.slug')}}:</th>
                                 <td>{{$record->slug}}</td>
-                            </tr>
-                            <tr>
-                                <th>{{trans('news::news_category.hit')}}:</th>
-                                <td>{{$record->hit}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news_category.description')}}:</th>
@@ -87,35 +87,16 @@
                             </tr>
                             <tr>
                                 <th>{{trans('news::news_category.is_cuff')}}:</th>
-                                <td>{{$record->is_cuff}}</td>
+                                <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::common.is_active')}}:</th>
-                                <td>{{$record->is_active}}</td>
+                                <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                 </div><!-- /.box-body -->
-            </div><!-- /.box-solid -->
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('news::news_category.thumbnail')}}</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                        </button>
-                    </div>
-                    <!-- /.box-tools -->
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                        <div class="thumbnail">
-                            <img src="{{$record->thumbnail}}" alt="{{$record->name}}">
-                        </div>
-                    </div>
-                </div>
             </div><!-- /.box-solid -->
         </div><!-- /.col-md-4 -->
     </div><!-- end row -->

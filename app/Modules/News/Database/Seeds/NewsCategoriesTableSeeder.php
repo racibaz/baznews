@@ -22,8 +22,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'slug' => 'dunya_haberleri',
             'description' => 'Dünya haberleri vs..',
             'keywords' => 'keywords',
-            'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -36,8 +34,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'slug' => 'asya_haberleri',
             'description' => 'Asya haberleri vs..',
             'keywords' => 'keywords',
-            'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -50,8 +46,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'slug' => 'afrika_haberleri',
             'description' => 'Afrika haberleri vs..',
             'keywords' => 'keywords',
-            'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -64,8 +58,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'slug' => 'avrupa_haberleri',
             'description' => 'Avrupa haberleri vs..',
             'keywords' => 'keywords',
-            'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -78,8 +70,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'slug' => 'azerbaycan_haberleri',
             'description' => 'Azerbaycan haberleri vs..',
             'keywords' => 'keywords',
-            'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -92,8 +82,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'slug' => 'mali_haberleri',
             'description' => 'Mali haberleri vs..',
             'keywords' => 'keywords',
-            'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
@@ -106,8 +94,6 @@ class NewsCategoriesTableSeeder extends Seeder
             'slug' => 'turkiye_haberleri',
             'description' => 'Türkiye haberleri vs..',
             'keywords' => 'keywords',
-            'hit' => 1,
-            'thumbnail' => 'thumbnail path',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);

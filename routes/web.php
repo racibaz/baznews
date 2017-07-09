@@ -66,7 +66,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('module_manager/moduleReset/{moduleSlug}', 'Backend\ModuleManagerController@moduleReset')->name('moduleReset');
     Route::get('module_manager/moduleRefreshAndSeed/{moduleSlug}', 'Backend\ModuleManagerController@moduleRefreshAndSeed')->name('moduleRefreshAndSeed');
     Route::resource('module_manager', 'Backend\ModuleManagerController');
-    Route::resource('sitemap', 'Backend\SitemapController');
+
+    Route::resource('sitemap', 'Backend\SitemapController',['except' => [
+        'show'
+    ]]);
+
     Route::resource('rss', 'Backend\RssController');
     Route::post('widget_manager/addWidgetActivation', 'Backend\WidgetManagerController@addWidgetActivation')->name('addWidgetActivation');
     Route::resource('widget_manager', 'Backend\WidgetManagerController');

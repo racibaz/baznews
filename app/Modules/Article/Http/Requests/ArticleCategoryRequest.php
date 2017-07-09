@@ -43,7 +43,6 @@ class ArticleCategoryRequest extends FormRequest
                     ],
                     'description' => 'string|max:255|nullable',
                     'keywords' => 'string|max:255|nullable',
-                    'hit' => 'integer|nullable',
                     'icon' => 'string|nullable',
                 ];
             }
@@ -63,7 +62,6 @@ class ArticleCategoryRequest extends FormRequest
                     ],
                     'description' => 'string|max:255|nullable',
                     'keywords' => 'string|max:255|nullable',
-                    'hit' => 'integer|nullable',
                     'icon' => 'string|nullable',
                 ];
             }

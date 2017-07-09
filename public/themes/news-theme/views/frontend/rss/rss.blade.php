@@ -37,9 +37,7 @@
 @endsection
 
 @section('meta_tags')
-    {{--<title> {{ $record->name }}  </title>--}}
-    {{--<meta name="keywords" content="{{$record->keywords}}"/>--}}
-    {{--<meta name="description" content="{{$record->description}}"/>--}}
-    {{--<meta name='subtitle' content='This is my subtitle'>--}}
-    {{--<meta name='pagename' content='{{$record->title}}'>--}}
+    <title> {{Cache::tags('Setting')->get('url')}} rss.xml  </title>
+    <meta name="keywords" content="{{Cache::tags('Setting')->get('url')}} rss.xml "/>
+    <meta name="description" content="{{Cache::tags('Setting')->get('url')}} rss.xml "/>
 @endsection

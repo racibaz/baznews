@@ -45,11 +45,14 @@
                             </tr>
                             <tr>
                                 <th>{{trans('book::book_author.thumbnail')}}</th>
-                                <td>{{$record->thumbnail}}</td>
+                                <td>
+                                    <img src="{{ asset('images/book_authors/' . $record->id . '/' . $record->thumbnail)}}"
+                                         alt="{{$record->name}}"/>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{trans('book::book_author.bio_note')}}</th>
-                                <td>{{$record->bio_note}}</td>
+                                <td>{!! $record->bio_note !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('book::common.is_cuff')}}</th>

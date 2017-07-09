@@ -19,7 +19,7 @@
                             <div class="col-md-4">
                                 <div class="bio-profile">
                                     <div class="bio-img">
-                                        <img src="{{ asset('images/biographies/' . $record->id . '/104x78_' . $record->photo) }}"
+                                        <img src="{{ asset('images/biographies/' . $record->id . '/200x150_' . $record->photo) }}"
                                              alt="{{$record->title}}">
                                     </div>
                                     <div class="bio-detail">

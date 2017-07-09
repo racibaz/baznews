@@ -27,8 +27,6 @@
                     <div class="author-bio">
                         {!! $record->cv !!}
                     </div>
-                    {{--yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>--}}
-                    {{--yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>--}}
                 </article>
 
                 <div class="share-box">
