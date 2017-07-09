@@ -51,6 +51,7 @@ elixir(function(mix) {
     mix.copy('node_modules/dropzone/**', 'public/themes/news-theme/assets/js/dropzone');
     mix.copy('node_modules/jstree/**', 'public/themes/news-theme/assets/js/jstree');
     mix.copy('node_modules/ckeditor/**', 'public/themes/news-theme/assets/js/ckeditor');
+    mix.copy('node_modules/jquery-lazyload/**', 'public/themes/news-theme/assets/js/jquery-lazyload');
 
 
 //CSS Component

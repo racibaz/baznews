@@ -1,71 +1,45 @@
 {
-  "_args": [
-    [
-      "icheck@^1.0.2",
-      "/home/vagrant/PROJELER/baznews"
-    ]
-  ],
-  "_from": "icheck@>=1.0.2 <2.0.0",
+  "_from": "icheck@^1.0.2",
   "_id": "icheck@1.0.2",
-  "_inCache": true,
-  "_installable": true,
+  "_inBundle": false,
+  "_integrity": "sha1-BtCNo9R65EjBU7Jjm4bprX/fcSg=",
   "_location": "/icheck",
-  "_nodeVersion": "0.12.2",
-  "_npmUser": {
-    "email": "sisley.justin@gmail.com",
-    "name": "justinsisley"
-  },
-  "_npmVersion": "2.7.5",
   "_phantomChildren": {},
   "_requested": {
-    "name": "icheck",
+    "type": "range",
+    "registry": true,
     "raw": "icheck@^1.0.2",
+    "name": "icheck",
+    "escapedName": "icheck",
     "rawSpec": "^1.0.2",
-    "scope": null,
-    "spec": ">=1.0.2 <2.0.0",
-    "type": "range"
+    "saveSpec": null,
+    "fetchSpec": "^1.0.2"
   },
   "_requiredBy": [
     "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/icheck/-/icheck-1.0.2.tgz",
   "_shasum": "06d08da3d47ae448c153b2639b86e9ad7fdf7128",
-  "_shrinkwrap": null,
   "_spec": "icheck@^1.0.2",
-  "_where": "/home/vagrant/PROJELER/baznews",
+  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "author": {
-    "email": "info@fronteed.com",
     "name": "Damir Sultanov",
+    "email": "info@fronteed.com",
     "url": "http://fronteed.com/"
   },
   "bugs": {
     "url": "https://github.com/fronteed/icheck/issues"
   },
-  "dependencies": {},
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "Highly customizable checkboxes and radio buttons (jQuery & Zepto)",
-  "devDependencies": {},
-  "directories": {},
-  "dist": {
-    "shasum": "06d08da3d47ae448c153b2639b86e9ad7fdf7128",
-    "tarball": "https://registry.npmjs.org/icheck/-/icheck-1.0.2.tgz"
-  },
-  "gitHead": "cd45d5faf4bec01b5cf0a9c214101c56d5111ed8",
   "homepage": "http://fronteed.com/iCheck/",
   "license": "MIT",
   "main": "icheck.js",
-  "maintainers": [
-    {
-      "email": "sisley.justin@gmail.com",
-      "name": "justinsisley"
-    }
-  ],
   "name": "icheck",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fronteed/icheck.git"
   },
-  "scripts": {},
   "version": "1.0.2"
 }

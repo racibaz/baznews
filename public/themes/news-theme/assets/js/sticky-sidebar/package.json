@@ -1,51 +1,38 @@
 {
-  "_args": [
-    [
-      "theia-sticky-sidebar@^1.6.0",
-      "/home/vagrant/PROJELER/baznews"
-    ]
-  ],
-  "_from": "theia-sticky-sidebar@>=1.6.0 <2.0.0",
-  "_id": "theia-sticky-sidebar@1.6.0",
-  "_inCache": true,
-  "_installable": true,
+  "_from": "theia-sticky-sidebar@^1.6.0",
+  "_id": "theia-sticky-sidebar@1.7.0",
+  "_inBundle": false,
+  "_integrity": "sha1-D7uSToTq/5hzaP0oTQDK6np+w1o=",
   "_location": "/theia-sticky-sidebar",
-  "_nodeVersion": "7.2.0",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/theia-sticky-sidebar-1.6.0.tgz_1480944517008_0.8138484577648342"
-  },
-  "_npmUser": {
-    "email": "liviu.mirea@wecodepixels.com",
-    "name": "liviu.mirea"
-  },
-  "_npmVersion": "4.0.3",
   "_phantomChildren": {},
   "_requested": {
-    "name": "theia-sticky-sidebar",
+    "type": "range",
+    "registry": true,
     "raw": "theia-sticky-sidebar@^1.6.0",
+    "name": "theia-sticky-sidebar",
+    "escapedName": "theia-sticky-sidebar",
     "rawSpec": "^1.6.0",
-    "scope": null,
-    "spec": ">=1.6.0 <2.0.0",
-    "type": "range"
+    "saveSpec": null,
+    "fetchSpec": "^1.6.0"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/theia-sticky-sidebar/-/theia-sticky-sidebar-1.6.0.tgz",
-  "_shasum": "a385c11297eee3cdd6de93a0d48146bb462f8397",
-  "_shrinkwrap": null,
+  "_resolved": "https://registry.npmjs.org/theia-sticky-sidebar/-/theia-sticky-sidebar-1.7.0.tgz",
+  "_shasum": "0fbb924e84eaff987368fd284d00caea7a7ec35a",
   "_spec": "theia-sticky-sidebar@^1.6.0",
-  "_where": "/home/vagrant/PROJELER/baznews",
+  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "authors": [
     "WeCodePixels <contact@wecodepixels.com>"
   ],
   "bugs": {
     "url": "https://github.com/WeCodePixels/theia-sticky-sidebar/issues"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "jquery": ">=1.7.0"
   },
+  "deprecated": false,
   "description": "Glues your website's sidebars, making them permanently visible while scrolling.",
   "devDependencies": {
     "css-element-queries": "*",
@@ -54,28 +41,13 @@
     "gulp-sourcemaps": "*",
     "gulp-uglify": "*"
   },
-  "directories": {},
-  "dist": {
-    "shasum": "a385c11297eee3cdd6de93a0d48146bb462f8397",
-    "tarball": "https://registry.npmjs.org/theia-sticky-sidebar/-/theia-sticky-sidebar-1.6.0.tgz"
-  },
-  "gitHead": "2e15719f541338020fb831344fa46365e94ae0c5",
   "homepage": "https://github.com/WeCodePixels/theia-sticky-sidebar#readme",
   "license": "MIT",
   "main": "dist/theia-sticky-sidebar.js",
-  "maintainers": [
-    {
-      "email": "liviu.mirea@wecodepixels.com",
-      "name": "liviu.mirea"
-    }
-  ],
   "name": "theia-sticky-sidebar",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WeCodePixels/theia-sticky-sidebar.git"
   },
-  "scripts": {},
-  "version": "1.6.0"
+  "version": "1.7.0"
 }

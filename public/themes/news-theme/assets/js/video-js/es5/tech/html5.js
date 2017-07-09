@@ -282,7 +282,7 @@ var Html5 = function (_Tech) {
     }
 
     // Update specific tag settings, in case they were overridden
-    var settingsAttrs = ['autoplay', 'preload', 'loop', 'muted'];
+    var settingsAttrs = ['autoplay', 'preload', 'loop', 'muted', 'playsinline'];
 
     for (var i = settingsAttrs.length - 1; i >= 0; i--) {
       var attr = settingsAttrs[i];
@@ -905,6 +905,79 @@ var Html5 = function (_Tech) {
     }
   };
 
+  /**
+   * Get the value of `playsinline` from the media element. `playsinline` indicates
+   * to the browser that non-fullscreen playback is preferred when fullscreen
+   * playback is the native default, such as in iOS Safari.
+   *
+   * @method Html5#playsinline
+   * @return {boolean}
+   *         - The value of `playsinline` from the media element.
+   *         - True indicates that the media should play inline.
+   *         - False indicates that the media should not play inline.
+   *
+   * @see [Spec]{@link https://html.spec.whatwg.org/#attr-video-playsinline}
+   */
+
+
+  Html5.prototype.playsinline = function playsinline() {
+    return this.el_.hasAttribute('playsinline');
+  };
+
+  /**
+   * Set the value of `playsinline` from the media element. `playsinline` indicates
+   * to the browser that non-fullscreen playback is preferred when fullscreen
+   * playback is the native default, such as in iOS Safari.
+   *
+   * @method Html5#setPlaysinline
+   * @param {boolean} playsinline
+   *         - True indicates that the media should play inline.
+   *         - False indicates that the media should not play inline.
+   *
+   * @see [Spec]{@link https://html.spec.whatwg.org/#attr-video-playsinline}
+   */
+
+
+  Html5.prototype.setPlaysinline = function setPlaysinline(value) {
+    if (value) {
+      this.el_.setAttribute('playsinline', 'playsinline');
+    } else {
+      this.el_.removeAttribute('playsinline');
+    }
+  };
+
+  /**
+   * Gets available media playback quality metrics as specified by the W3C's Media
+   * Playback Quality API.
+   *
+   * @see [Spec]{@link https://wicg.github.io/media-playback-quality}
+   *
+   * @return {Object}
+   *         An object with supported media playback quality metrics
+   */
+
+
+  Html5.prototype.getVideoPlaybackQuality = function getVideoPlaybackQuality() {
+    if (typeof this.el().getVideoPlaybackQuality === 'function') {
+      return this.el().getVideoPlaybackQuality();
+    }
+
+    var videoPlaybackQuality = {};
+
+    if (typeof this.el().webkitDroppedFrameCount !== 'undefined' && typeof this.el().webkitDecodedFrameCount !== 'undefined') {
+      videoPlaybackQuality.droppedVideoFrames = this.el().webkitDroppedFrameCount;
+      videoPlaybackQuality.totalVideoFrames = this.el().webkitDecodedFrameCount;
+    }
+
+    if (_window2['default'].performance && typeof _window2['default'].performance.now === 'function') {
+      videoPlaybackQuality.creationTime = _window2['default'].performance.now();
+    } else if (_window2['default'].performance && _window2['default'].performance.timing && typeof _window2['default'].performance.timing.navigationStart === 'number') {
+      videoPlaybackQuality.creationTime = _window2['default'].Date.now() - _window2['default'].performance.timing.navigationStart;
+    }
+
+    return videoPlaybackQuality;
+  };
+
   return Html5;
 }(_tech2['default']);
 
@@ -977,7 +1050,7 @@ Html5.canControlVolume = function () {
 Html5.canControlPlaybackRate = function () {
   // Playback rate API is implemented in Android Chrome, but doesn't do anything
   // https://github.com/videojs/video.js/issues/3180
-  if (browser.IS_ANDROID && browser.IS_CHROME) {
+  if (browser.IS_ANDROID && browser.IS_CHROME && browser.CHROME_VERSION < 58) {
     return false;
   }
   // IE will error if Windows Media Player not installed #3315

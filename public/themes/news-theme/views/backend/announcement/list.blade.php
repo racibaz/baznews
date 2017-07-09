@@ -2,11 +2,11 @@
 @section('content-header')
     <section class="content-header">
         <h1>
-            {{trans('advertisement.management')}}
+            {{trans('announcement.management')}}
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{!! URL::route('advertisement.index') !!}"> {{trans('advertisement.management')}}</a></li>
+            <li><a href="{!! URL::route('announcement.index') !!}"> {{trans('announcement.management')}}</a></li>
         </ol>
     </section>
 @endsection

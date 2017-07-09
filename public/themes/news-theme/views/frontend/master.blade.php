@@ -61,6 +61,13 @@
         src="{{ Theme::asset($activeTheme . '::js/jquery.tagcloud/jquery.tagcloud.js') }}"></script>
 <script type="text/javascript"
         src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ Theme::asset($activeTheme . '::js/jquery-lazyload/jquery.lazyload.js') }}"></script>
+<script type="text/javascript">
+    $("img").lazyload({
+        effect: "fadeIn"
+    });
+</script>
 <script type="text/javascript" src="{{ Theme::asset($activeTheme . '::js/custom.js') }}"></script>
 {!! Cache::tags('Setting')->get('footer_code') !!}
 @yield('js')

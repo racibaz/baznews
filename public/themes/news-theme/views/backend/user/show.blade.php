@@ -102,57 +102,65 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <table id="users" class="table table-bordered table-hover table-data">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>{{trans('user.revisionable_type')}}</th>
-                                    <th>{{trans('user.revisionable_id')}}</th>
-                                    <th>{{trans('user.key')}}</th>
-                                    <th>{{trans('user.old_value')}}</th>
-                                    <th>{{trans('user.new_value')}}</th>
-                                    <th>{{trans('user.created_at')}}</th>
-                                    <th>{{trans('user.updated_at')}}</th>
-                                    <th>{{trans('common.is_active')}}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($revisions as $revison)
-                                    <tr>
-                                        <td>{{$revison->id}}</td>
-                                        <td>{{$revison->revisionable_type }}</td>
-                                        <td>{{$revison->revisionable_id }}</td>
-                                        <td>{{$revison->key }}</td>
-                                        <td>{{$revison->old_value }}</td>
-                                        <td>{{$revison->new_value }}</td>
-                                        <td>{{$revison->created_at }}</td>
-                                        <td>{{$revison->updated_at }}</td>
-                                        <td>
-                                            <div class="btn-group">
+
+                            <ul class="timeline">
+
+                            @foreach($revisions as $revison)
+                                <!-- timeline time label -->
+                                    <li class="time-label">
+                                    <span class="bg-red">
+                                        {{$revison->updated_at}}
+                                    </span>
+                                    </li>
+                                    <!-- /.timeline-label -->
+
+                                    <!-- timeline item -->
+                                    <li>
+                                        <!-- timeline icon -->
+                                        <i class="fa fa-globe bg-blue"></i>
+                                        <div class="timeline-item">
+                                            <span class="time"><i class="fa fa-clock-o"></i> {{$revison->updated_at}}</span>
+
+                                            <h3 class="timeline-header">{{ $revison->userResponsible()->first_name }}</h3>
+
+                                            <div class="timeline-body">
+
+                                                <div>{{$revison->id}}</div>
+                                                <div>{{$revison->revisionable_type }}</div>
+                                                <div>{{$revison->revisionable_id }}</div>
+                                                <div>{{$revison->key }}</div>
+                                                <br>
+                                                <div class="panel panel-danger">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title">Eski İçerik</h3>
+                                                    </div>
+                                                    <div class="change-content">
+                                                        {!! $revison->oldValue()  !!}
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-success">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title">Yeni İçerik</h3>
+                                                    </div>
+                                                    <div class="change-content">
+                                                        {!! $revison->newValue()  !!}
+                                                    </div>
+                                                </div>
                                                 {{--TODO revision CRUD işlemrlerinin yapıldığı yere düzenle ve sil linkleri verilecek.--}}
                                                 {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('user.destroy',  $record))) !!}
                                                 {!! link_to_route('user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
                                                 {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
                                                 {!! Form::close() !!}
                                             </div>
-                                        </td>
-                                    </tr>
+
+                                            {{--<div class="timeline-footer">--}}
+                                            {{--<a class="btn btn-primary btn-xs">...</a>--}}
+                                            {{--</div>--}}
+                                        </div>
+                                    </li>
+                                    <!-- END timeline item -->
                                 @endforeach
-                                </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>#</th>
-                                    <th>{{trans('user.revisionable_type')}}</th>
-                                    <th>{{trans('user.revisionable_id')}}</th>
-                                    <th>{{trans('user.key')}}</th>
-                                    <th>{{trans('user.old_value')}}</th>
-                                    <th>{{trans('user.new_value')}}</th>
-                                    <th>{{trans('user.created_at')}}</th>
-                                    <th>{{trans('user.updated_at')}}</th>
-                                    <th>{{trans('common.is_active')}}</th>
-                                </tr>
-                                </tfoot>
-                            </table>
+                            </ul>
                         </div>
                         <!-- /.box-body -->
                     </div>

@@ -4,11 +4,11 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle"
-                     alt="User Image">
+                {{--<img src="https://www.gravatar.com/avatar/{{md5(strtolower(trim($record->email))) }}?d={{urlencode($default)}}&s=150" class="img-circle"--}}
+                     {{--alt="User Image">--}}
             </div>
             <div class="pull-left info">
-                <p>{!! link_to_route('login', trans('user.account')) !!}</p>
+                <p>{{Auth::user()->name}}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> {{trans('user.case')}}</a>
             </div>
         </div>

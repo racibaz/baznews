@@ -1,41 +1,27 @@
 {
-  "_args": [
-    [
-      "malihu-custom-scrollbar-plugin@^3.1.5",
-      "/home/vagrant/PROJELER/baznews"
-    ]
-  ],
-  "_from": "malihu-custom-scrollbar-plugin@>=3.1.5 <4.0.0",
+  "_from": "malihu-custom-scrollbar-plugin@^3.1.5",
   "_id": "malihu-custom-scrollbar-plugin@3.1.5",
-  "_inCache": true,
-  "_installable": true,
+  "_inBundle": false,
+  "_integrity": "sha1-MQzsxeWUFaHCnp37XStuAdZqKe8=",
   "_location": "/malihu-custom-scrollbar-plugin",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/malihu-custom-scrollbar-plugin-3.1.5.tgz_1468189112807_0.01810723333619535"
-  },
-  "_npmUser": {
-    "email": "manos@malihu.gr",
-    "name": "malihu"
-  },
-  "_npmVersion": "1.4.28",
   "_phantomChildren": {},
   "_requested": {
-    "name": "malihu-custom-scrollbar-plugin",
+    "type": "range",
+    "registry": true,
     "raw": "malihu-custom-scrollbar-plugin@^3.1.5",
+    "name": "malihu-custom-scrollbar-plugin",
+    "escapedName": "malihu-custom-scrollbar-plugin",
     "rawSpec": "^3.1.5",
-    "scope": null,
-    "spec": ">=3.1.5 <4.0.0",
-    "type": "range"
+    "saveSpec": null,
+    "fetchSpec": "^3.1.5"
   },
   "_requiredBy": [
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/malihu-custom-scrollbar-plugin/-/malihu-custom-scrollbar-plugin-3.1.5.tgz",
   "_shasum": "310cecc5e59415a1c29e9dfb5d2b6e01d66a29ef",
-  "_shrinkwrap": null,
   "_spec": "malihu-custom-scrollbar-plugin@^3.1.5",
-  "_where": "/home/vagrant/PROJELER/baznews",
+  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "author": {
     "name": "malihu",
     "url": "http://manos.malihu.gr"
@@ -43,16 +29,12 @@
   "bugs": {
     "url": "https://github.com/malihu/malihu-custom-scrollbar-plugin/issues"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "jquery-mousewheel": ">=3.0.6"
   },
+  "deprecated": false,
   "description": "Highly customizable custom scrollbar jQuery plugin, featuring vertical/horizontal scrollbars, scrolling momentum, mouse-wheel, keyboard and touch support user defined callbacks etc.",
-  "devDependencies": {},
-  "directories": {},
-  "dist": {
-    "shasum": "310cecc5e59415a1c29e9dfb5d2b6e01d66a29ef",
-    "tarball": "https://registry.npmjs.org/malihu-custom-scrollbar-plugin/-/malihu-custom-scrollbar-plugin-3.1.5.tgz"
-  },
   "files": [
     "jquery.mCustomScrollbar.js",
     "jquery.mCustomScrollbar.concat.min.js",
@@ -60,7 +42,6 @@
     "mCSB_buttons.png",
     "readme.md"
   ],
-  "gitHead": "eac2b0af71a7ca06cc19e28d15ba60f6db2dfd29",
   "homepage": "http://manos.malihu.gr/jquery-custom-content-scroller",
   "jam": {
     "dependencies": {
@@ -75,19 +56,10 @@
   ],
   "license": "MIT",
   "main": "./jquery.mCustomScrollbar.js",
-  "maintainers": [
-    {
-      "email": "manos@malihu.gr",
-      "name": "malihu"
-    }
-  ],
   "name": "malihu-custom-scrollbar-plugin",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/malihu/malihu-custom-scrollbar-plugin.git"
   },
-  "scripts": {},
   "version": "3.1.5"
 }

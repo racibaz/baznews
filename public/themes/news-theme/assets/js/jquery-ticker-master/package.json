@@ -1,51 +1,30 @@
 {
-  "_args": [
-    [
-      "jquery-ticker@^1.0.0",
-      "/home/vagrant/PROJELER/baznews"
-    ]
-  ],
-  "_from": "jquery-ticker@>=1.0.0 <2.0.0",
+  "_from": "jquery-ticker@^1.0.0",
   "_id": "jquery-ticker@1.0.0",
-  "_inCache": true,
-  "_installable": true,
+  "_inBundle": false,
+  "_integrity": "sha1-TvlKW58BQ9FdCNS3r+7kx92Z7kY=",
   "_location": "/jquery-ticker",
-  "_nodeVersion": "6.9.4",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/jquery-ticker-1.0.0.tgz_1488282942696_0.19898894568905234"
-  },
-  "_npmUser": {
-    "email": "dmitry.kalinin.email@gmail.com",
-    "name": "null-none"
-  },
-  "_npmVersion": "3.10.10",
   "_phantomChildren": {},
   "_requested": {
-    "name": "jquery-ticker",
+    "type": "range",
+    "registry": true,
     "raw": "jquery-ticker@^1.0.0",
+    "name": "jquery-ticker",
+    "escapedName": "jquery-ticker",
     "rawSpec": "^1.0.0",
-    "scope": null,
-    "spec": ">=1.0.0 <2.0.0",
-    "type": "range"
+    "saveSpec": null,
+    "fetchSpec": "^1.0.0"
   },
   "_requiredBy": [
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/jquery-ticker/-/jquery-ticker-1.0.0.tgz",
   "_shasum": "4ef94a5b9f0143d15d08d4b7afeee4c7dd99ee46",
-  "_shrinkwrap": null,
   "_spec": "jquery-ticker@^1.0.0",
-  "_where": "/home/vagrant/PROJELER/baznews",
-  "dependencies": {},
+  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "A lightweight jQuery plugin for animating a simple news ticker",
-  "devDependencies": {},
-  "directories": {},
-  "dist": {
-    "shasum": "4ef94a5b9f0143d15d08d4b7afeee4c7dd99ee46",
-    "tarball": "https://registry.npmjs.org/jquery-ticker/-/jquery-ticker-1.0.0.tgz"
-  },
-  "gitHead": "6c3c1e896e4c641f1b538af53a89b790420aa618",
   "keywords": [
     "ticker",
     "jquery",
@@ -55,16 +34,7 @@
   ],
   "license": "MIT",
   "main": "jquery.ticker.js",
-  "maintainers": [
-    {
-      "email": "dmitry.kalinin.email@gmail.com",
-      "name": "null-none"
-    }
-  ],
   "name": "jquery-ticker",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
-  "scripts": {},
   "url": "https://github.com/null-none/jquery-ticker",
   "version": "1.0.0"
 }

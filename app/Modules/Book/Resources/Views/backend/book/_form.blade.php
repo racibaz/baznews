@@ -115,7 +115,10 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-
+                    <div class="form-group">
+                        <label for="book_category_ids[]">{{ trans('book::book.select_categories') }}</label>
+                        {!! Form::select('book_category_ids[]', $bookCategoryList , $bookCategoryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
+                    </div>
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_cuff', null , $record->is_cuff) !!}
@@ -135,23 +138,7 @@
                 </div><!-- /.box-body -->
                 <!-- /.box-body -->
             </div>
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title">{{ trans('book::book.select_categories') }}</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                    class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="form-group">
-                        {!! Form::select('book_category_ids[]', $bookCategoryList , $bookCategoryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
-                    </div>
-                </div>
-                <!-- /.box-body -->
-            </div>
+
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ trans('book::book.image') }}</h3>

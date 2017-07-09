@@ -1,55 +1,42 @@
 {
-  "_args": [
-    [
-      "moment@^2.10",
-      "/home/vagrant/PROJELER/baznews/node_modules/eonasdan-bootstrap-datetimepicker"
-    ]
-  ],
-  "_from": "moment@>=2.10.0 <3.0.0",
+  "_from": "moment@^2.18.1",
   "_id": "moment@2.18.1",
-  "_inCache": true,
-  "_installable": true,
+  "_inBundle": false,
+  "_integrity": "sha1-w2GT3Tzhwu7SrbfIAtu8d6gbHA8=",
   "_location": "/moment",
-  "_nodeVersion": "6.7.0",
-  "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/moment-2.18.1.tgz_1490137132553_0.33630239870399237"
-  },
-  "_npmUser": {
-    "email": "iskren.chernev@gmail.com",
-    "name": "ichernev"
-  },
-  "_npmVersion": "3.10.3",
   "_phantomChildren": {},
   "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "moment@^2.18.1",
     "name": "moment",
-    "raw": "moment@^2.10",
-    "rawSpec": "^2.10",
-    "scope": null,
-    "spec": ">=2.10.0 <3.0.0",
-    "type": "range"
+    "escapedName": "moment",
+    "rawSpec": "^2.18.1",
+    "saveSpec": null,
+    "fetchSpec": "^2.18.1"
   },
   "_requiredBy": [
+    "/",
     "/eonasdan-bootstrap-datetimepicker",
     "/moment-timezone"
   ],
   "_resolved": "https://registry.npmjs.org/moment/-/moment-2.18.1.tgz",
   "_shasum": "c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f",
-  "_shrinkwrap": null,
-  "_spec": "moment@^2.10",
-  "_where": "/home/vagrant/PROJELER/baznews/node_modules/eonasdan-bootstrap-datetimepicker",
+  "_spec": "moment@^2.18.1",
+  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "author": {
-    "email": "iskren.chernev@gmail.com",
     "name": "Iskren Ivov Chernev",
+    "email": "iskren.chernev@gmail.com",
     "url": "https://github.com/ichernev"
   },
   "bugs": {
     "url": "https://github.com/moment/moment/issues"
   },
+  "bundleDependencies": false,
   "contributors": [
     {
-      "email": "washwithcare@gmail.com",
       "name": "Tim Wood",
+      "email": "washwithcare@gmail.com",
       "url": "http://timwoodcreates.com/"
     },
     {
@@ -57,22 +44,22 @@
       "url": "http://rockymeza.com"
     },
     {
-      "email": "mj1856@hotmail.com",
       "name": "Matt Johnson",
+      "email": "mj1856@hotmail.com",
       "url": "http://codeofmatt.com"
     },
     {
-      "email": "isaac@isaaccambron.com",
       "name": "Isaac Cambron",
+      "email": "isaac@isaaccambron.com",
       "url": "http://isaaccambron.com"
     },
     {
-      "email": "andre@oire.org",
       "name": "Andre Polykanine",
+      "email": "andre@oire.org",
       "url": "https://github.com/oire"
     }
   ],
-  "dependencies": {},
+  "deprecated": false,
   "description": "Parse, validate, manipulate, and display dates",
   "devDependencies": {
     "benchmark": "latest",
@@ -107,11 +94,6 @@
     "typescript": "^1.8.10",
     "uglify-js": "latest"
   },
-  "directories": {},
-  "dist": {
-    "shasum": "c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f",
-    "tarball": "https://registry.npmjs.org/moment/-/moment-2.18.1.tgz"
-  },
   "dojoBuild": "package.js",
   "ender": "./ender.js",
   "engines": {
@@ -120,9 +102,6 @@
   "homepage": "http://momentjs.com",
   "jsnext:main": "./src/moment.js",
   "jspm": {
-    "buildConfig": {
-      "uglify": true
-    },
     "files": [
       "moment.js",
       "moment.d.ts",
@@ -130,6 +109,9 @@
     ],
     "map": {
       "moment": "./moment"
+    },
+    "buildConfig": {
+      "uglify": true
     }
   },
   "keywords": [
@@ -145,27 +127,7 @@
   ],
   "license": "MIT",
   "main": "./moment.js",
-  "maintainers": [
-    {
-      "email": "iskren.chernev@gmail.com",
-      "name": "ichernev"
-    },
-    {
-      "email": "maggiepint@gmail.com",
-      "name": "maggiepint"
-    },
-    {
-      "email": "mj1856@hotmail.com",
-      "name": "mj1856"
-    },
-    {
-      "email": "washwithcare@gmail.com",
-      "name": "timrwood"
-    }
-  ],
   "name": "moment",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/moment/moment.git"

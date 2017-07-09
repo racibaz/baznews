@@ -23,7 +23,7 @@
                             <div class="detail">
                                 <div class="author-name"><h1><span>{{$bookAuthor->name}}</span></h1></div>
                                 <div class="author-bio">
-                                    {{$bookAuthor->bio_note}}
+                                    {!! $bookAuthor->bio_note !!}
                                 </div>
                             </div>
                         </div>

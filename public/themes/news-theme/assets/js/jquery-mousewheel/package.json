@@ -1,38 +1,29 @@
 {
-  "_args": [
-    [
-      "jquery-mousewheel@^3.1.13",
-      "/home/vagrant/PROJELER/baznews"
-    ]
-  ],
-  "_from": "jquery-mousewheel@>=3.1.13 <4.0.0",
+  "_from": "jquery-mousewheel@^3.1.13",
   "_id": "jquery-mousewheel@3.1.13",
-  "_inCache": true,
-  "_installable": true,
+  "_inBundle": false,
+  "_integrity": "sha1-BvAzXxbjU6aV5yBr9QUDy1I6buU=",
   "_location": "/jquery-mousewheel",
-  "_npmUser": {
-    "email": "dave.methvin@gmail.com",
-    "name": "dmethvin"
-  },
-  "_npmVersion": "1.4.28",
   "_phantomChildren": {},
   "_requested": {
-    "name": "jquery-mousewheel",
+    "type": "range",
+    "registry": true,
     "raw": "jquery-mousewheel@^3.1.13",
+    "name": "jquery-mousewheel",
+    "escapedName": "jquery-mousewheel",
     "rawSpec": "^3.1.13",
-    "scope": null,
-    "spec": ">=3.1.13 <4.0.0",
-    "type": "range"
+    "saveSpec": null,
+    "fetchSpec": "^3.1.13"
   },
   "_requiredBy": [
     "/",
-    "/malihu-custom-scrollbar-plugin"
+    "/malihu-custom-scrollbar-plugin",
+    "/select2"
   ],
   "_resolved": "https://registry.npmjs.org/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz",
   "_shasum": "06f0335f16e353a695e7206bf50503cb523a6ee5",
-  "_shrinkwrap": null,
   "_spec": "jquery-mousewheel@^3.1.13",
-  "_where": "/home/vagrant/PROJELER/baznews",
+  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "author": {
     "name": "jQuery Foundation and other contributors",
     "url": "https://github.com/jquery/jquery-mousewheel/blob/master/AUTHORS.txt"
@@ -40,7 +31,8 @@
   "bugs": {
     "url": "https://github.com/jquery/jquery-mousewheel/issues"
   },
-  "dependencies": {},
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "A jQuery plugin that adds cross-browser mouse wheel support.",
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -51,17 +43,12 @@
   "directories": {
     "test": "test"
   },
-  "dist": {
-    "shasum": "06f0335f16e353a695e7206bf50503cb523a6ee5",
-    "tarball": "https://registry.npmjs.org/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz"
-  },
   "files": [
     "ChangeLog.md",
     "jquery.mousewheel.js",
     "README.md",
     "LICENSE.txt"
   ],
-  "gitHead": "67289b6b2aa0066d7d78a5807f520387135ffb22",
   "homepage": "https://github.com/jquery/jquery-mousewheel",
   "jam": {
     "dependencies": {
@@ -84,27 +71,10 @@
     }
   ],
   "main": "./jquery.mousewheel.js",
-  "maintainers": [
-    {
-      "email": "substack@gmail.com",
-      "name": "substack"
-    },
-    {
-      "email": "hello.brandon@aaron.sh",
-      "name": "brandonaaron"
-    },
-    {
-      "email": "dave.methvin@gmail.com",
-      "name": "dmethvin"
-    }
-  ],
   "name": "jquery-mousewheel",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jquery/jquery-mousewheel.git"
   },
-  "scripts": {},
   "version": "3.1.13"
 }

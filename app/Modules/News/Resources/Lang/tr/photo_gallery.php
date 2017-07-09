@@ -31,4 +31,5 @@ return [
     'updateSubtitleAndContent' => 'Alt Başlık ve İçeriği Güncelle',
     'delete_photo' => 'Fotoğrafı Sil',
     'is_photo_gallery_cuff_thumbnail' => 'Galeri Manşet Resmi',
+    'drag_files' => 'Dosyayı Buraya Sürükleyin',
 ];

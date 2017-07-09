@@ -1,7 +1,7 @@
 'use strict';
 
 exports.__esModule = true;
-exports.BACKGROUND_SIZE_SUPPORTED = exports.TOUCH_ENABLED = exports.IS_ANY_SAFARI = exports.IS_SAFARI = exports.IE_VERSION = exports.IS_IE8 = exports.IS_CHROME = exports.IS_EDGE = exports.IS_FIREFOX = exports.IS_NATIVE_ANDROID = exports.IS_OLD_ANDROID = exports.ANDROID_VERSION = exports.IS_ANDROID = exports.IOS_VERSION = exports.IS_IOS = exports.IS_IPOD = exports.IS_IPHONE = exports.IS_IPAD = undefined;
+exports.BACKGROUND_SIZE_SUPPORTED = exports.TOUCH_ENABLED = exports.IS_ANY_SAFARI = exports.IS_SAFARI = exports.IE_VERSION = exports.IS_IE8 = exports.CHROME_VERSION = exports.IS_CHROME = exports.IS_EDGE = exports.IS_FIREFOX = exports.IS_NATIVE_ANDROID = exports.IS_OLD_ANDROID = exports.ANDROID_VERSION = exports.IS_ANDROID = exports.IOS_VERSION = exports.IS_IOS = exports.IS_IPOD = exports.IS_IPHONE = exports.IS_IPAD = undefined;
 
 var _dom = require('./dom');
 
@@ -76,6 +76,14 @@ var IS_NATIVE_ANDROID = exports.IS_NATIVE_ANDROID = IS_ANDROID && ANDROID_VERSIO
 var IS_FIREFOX = exports.IS_FIREFOX = /Firefox/i.test(USER_AGENT);
 var IS_EDGE = exports.IS_EDGE = /Edge/i.test(USER_AGENT);
 var IS_CHROME = exports.IS_CHROME = !IS_EDGE && /Chrome/i.test(USER_AGENT);
+var CHROME_VERSION = exports.CHROME_VERSION = function () {
+  var match = USER_AGENT.match(/Chrome\/(\d+)/);
+
+  if (match && match[1]) {
+    return parseFloat(match[1]);
+  }
+  return null;
+}();
 var IS_IE8 = exports.IS_IE8 = /MSIE\s8\.0/.test(USER_AGENT);
 var IE_VERSION = exports.IE_VERSION = function () {
   var result = /MSIE\s(\d+)\.\d/.exec(USER_AGENT);

@@ -122,7 +122,7 @@ var Flash = function (_Tech) {
     // Otherwise this adds a CDN url.
     // The CDN also auto-adds a swf URL for that specific version.
     if (!options.swf) {
-      var ver = '5.3.0';
+      var ver = '5.4.0';
 
       options.swf = '//vjs.zencdn.net/swf/' + ver + '/video-js.swf';
     }
@@ -413,6 +413,29 @@ var Flash = function (_Tech) {
 
   Flash.prototype.enterFullScreen = function enterFullScreen() {
     return false;
+  };
+
+  /**
+   * Gets available media playback quality metrics as specified by the W3C's Media
+   * Playback Quality API.
+   *
+   * @see [Spec]{@link https://wicg.github.io/media-playback-quality}
+   *
+   * @return {Object}
+   *         An object with supported media playback quality metrics
+   */
+
+
+  Flash.prototype.getVideoPlaybackQuality = function getVideoPlaybackQuality() {
+    var videoPlaybackQuality = this.el_.vjs_getProperty('getVideoPlaybackQuality');
+
+    if (_window2['default'].performance && typeof _window2['default'].performance.now === 'function') {
+      videoPlaybackQuality.creationTime = _window2['default'].performance.now();
+    } else if (_window2['default'].performance && _window2['default'].performance.timing && typeof _window2['default'].performance.timing.navigationStart === 'number') {
+      videoPlaybackQuality.creationTime = _window2['default'].Date.now() - _window2['default'].performance.timing.navigationStart;
+    }
+
+    return videoPlaybackQuality;
   };
 
   return Flash;

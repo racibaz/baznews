@@ -1,51 +1,37 @@
 {
-  "_args": [
-    [
-      "bxslider@^4.2.11",
-      "/home/vagrant/PROJELER/baznews"
-    ]
-  ],
-  "_from": "bxslider@>=4.2.11 <5.0.0",
+  "_from": "bxslider@^4.2.11",
   "_id": "bxslider@4.2.11",
-  "_inCache": true,
-  "_installable": true,
+  "_inBundle": false,
+  "_integrity": "sha1-HNPNdu5A/BkYr50ijeWR+2ONhaU=",
   "_location": "/bxslider",
-  "_nodeVersion": "6.3.1",
-  "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/bxslider-4.2.11.tgz_1488981551612_0.8190578608773649"
-  },
-  "_npmUser": {
-    "email": "steven.wanderski@gmail.com",
-    "name": "stevenwanderski"
-  },
-  "_npmVersion": "3.10.3",
   "_phantomChildren": {},
   "_requested": {
-    "name": "bxslider",
+    "type": "range",
+    "registry": true,
     "raw": "bxslider@^4.2.11",
+    "name": "bxslider",
+    "escapedName": "bxslider",
     "rawSpec": "^4.2.11",
-    "scope": null,
-    "spec": ">=4.2.11 <5.0.0",
-    "type": "range"
+    "saveSpec": null,
+    "fetchSpec": "^4.2.11"
   },
   "_requiredBy": [
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/bxslider/-/bxslider-4.2.11.tgz",
   "_shasum": "1cd3cd76ee40fc1918af9d228de591fb638d85a5",
-  "_shrinkwrap": null,
   "_spec": "bxslider@^4.2.11",
-  "_where": "/home/vagrant/PROJELER/baznews",
+  "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "author": {
-    "email": "steven@bxcreative.com",
     "name": "Steven Wanderski",
+    "email": "steven@bxcreative.com",
     "url": "http://stevenwanderski.com"
   },
   "bugs": {
     "url": "https://github.com/stevenwanderski/bxslider-4/issues"
   },
-  "dependencies": {},
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "Touch enabled jQuery plugin for creating responsive carousels and sliders.",
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -53,15 +39,9 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.0.1"
   },
-  "directories": {},
-  "dist": {
-    "shasum": "1cd3cd76ee40fc1918af9d228de591fb638d85a5",
-    "tarball": "https://registry.npmjs.org/bxslider/-/bxslider-4.2.11.tgz"
-  },
   "engines": {
     "node": ">=0.10.28"
   },
-  "gitHead": "1dbcd4debd585ffa51be08fb034575f5935fe83c",
   "homepage": "http://bxslider.com",
   "keywords": [
     "responsive",
@@ -74,23 +54,10 @@
     "type": "MIT",
     "url": "http://opensource.org/licenses/MIT"
   },
-  "maintainers": [
-    {
-      "email": "nucleartux@gmail.com",
-      "name": "nucleartux"
-    },
-    {
-      "email": "steven.wanderski@gmail.com",
-      "name": "stevenwanderski"
-    }
-  ],
   "name": "bxslider",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "https://github.com/stevenwanderski/bxslider-4/bxslider-4.git"
   },
-  "scripts": {},
   "version": "4.2.11"
 }

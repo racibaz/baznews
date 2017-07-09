@@ -2,18 +2,17 @@
 @section('content-header')
     <section class="content-header">
         <h1>
-            {{trans('advertisement.management')}}
+            {{trans('announcement.management')}}
             <small>{{$record->title}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{!! URL::route('advertisement.index') !!}"> {{trans('advertisement.management')}}</a></li>
+            <li><a href="{!! URL::route('announcement.index') !!}"> {{trans('announcement.management')}}</a></li>
             <li class="active">{{$record->title}}</li>
         </ol>
     </section>
 @endsection
 @section('content')
-
     <!-- Main content -->
     <div class="row">
         <div class="col-md-6">

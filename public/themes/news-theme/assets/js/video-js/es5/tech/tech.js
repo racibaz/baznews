@@ -948,6 +948,23 @@ var Tech = function (_Component) {
   };
 
   /**
+   * Gets available media playback quality metrics as specified by the W3C's Media
+   * Playback Quality API.
+   *
+   * @see [Spec]{@link https://wicg.github.io/media-playback-quality}
+   *
+   * @return {Object}
+   *         An object with supported media playback quality metrics
+   *
+   * @abstract
+   */
+
+
+  Tech.prototype.getVideoPlaybackQuality = function getVideoPlaybackQuality() {
+    return {};
+  };
+
+  /**
    * A method to set a poster from a `Tech`.
    *
    * @abstract
@@ -955,6 +972,24 @@ var Tech = function (_Component) {
 
 
   Tech.prototype.setPoster = function setPoster() {};
+
+  /**
+   * A method to check for the presence of the 'playsinine' <video> attribute.
+   *
+   * @abstract
+   */
+
+
+  Tech.prototype.playsinline = function playsinline() {};
+
+  /**
+   * A method to set or unset the 'playsinine' <video> attribute.
+   *
+   * @abstract
+   */
+
+
+  Tech.prototype.setPlaysinline = function setPlaysinline() {};
 
   /*
    * Check if the tech can support the given mime-type.

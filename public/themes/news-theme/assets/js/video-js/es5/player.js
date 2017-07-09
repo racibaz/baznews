@@ -501,6 +501,11 @@ var Player = function (_Component) {
     // Make player easily findable by ID
     Player.players[_this.id_] = _this;
 
+    // Add a major version class to aid css in plugins
+    var majorVersion = '5.20.1'.split('.')[0];
+
+    _this.addClass('vjs-v' + majorVersion);
+
     // When the player is first initialized, trigger activity so components
     // like the control bar show themselves if needed
     _this.userActive(true);
@@ -921,6 +926,7 @@ var Player = function (_Component) {
       'textTracks': this.textTracks_,
       'audioTracks': this.audioTracks_,
       'autoplay': this.options_.autoplay,
+      'playsinline': this.options_.playsinline,
       'preload': this.options_.preload,
       'loop': this.options_.loop,
       'muted': this.options_.muted,
@@ -2610,6 +2616,33 @@ var Player = function (_Component) {
   };
 
   /**
+   * Set or unset the playsinline attribute.
+   * Playsinline tells the browser that non-fullscreen playback is preferred.
+   *
+   * @param {boolean} [value]
+   *        - true means that we should try to play inline by default
+   *        - false means that we should use the browser's default playback mode,
+   *          which in most cases is inline. iOS Safari is a notable exception
+   *          and plays fullscreen by default.
+   *
+   * @return {string|Player}
+   *         - the current value of playsinline
+   *         - the player when setting
+   *
+   * @see [Spec]{@link https://html.spec.whatwg.org/#attr-video-playsinline}
+   */
+
+
+  Player.prototype.playsinline = function playsinline(value) {
+    if (value !== undefined) {
+      this.techCall_('setPlaysinline', value);
+      this.options_.playsinline = value;
+      return this;
+    }
+    return this.techGet_('playsinline');
+  };
+
+  /**
    * Get or set the loop attribute on the video element.
    *
    * @param {boolean} [value]
@@ -3257,6 +3290,22 @@ var Player = function (_Component) {
     if (this.tech_) {
       return this.tech_.removeRemoteTextTrack(track);
     }
+  };
+
+  /**
+   * Gets available media playback quality metrics as specified by the W3C's Media
+   * Playback Quality API.
+   *
+   * @see [Spec]{@link https://wicg.github.io/media-playback-quality}
+   *
+   * @return {Object|undefined}
+   *         An object with supported media playback quality metrics or undefined if there
+   *         is no tech or the tech does not support it.
+   */
+
+
+  Player.prototype.getVideoPlaybackQuality = function getVideoPlaybackQuality() {
+    return this.techGet_('getVideoPlaybackQuality');
   };
 
   /**

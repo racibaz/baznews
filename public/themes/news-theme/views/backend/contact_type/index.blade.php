@@ -22,6 +22,7 @@
                             <th>#</th>
                             <th>{{trans('contact_type.name')}}</th>
                             <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('contact_type.edit_create')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -29,7 +30,7 @@
                             <tr>
                                 <td>{{$record->id}}</td>
                                 <td>{!! link_to_route('contact_type.show', $record->name , $record, [] ) !!}</td>
-                                <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
+                                <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-red">' . trans('common.passive') . '</label>'!!}</td>
                                 <td>
                                     <div class="btn-group">
                                         {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('contact_type.destroy',  $record))) !!}

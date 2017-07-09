@@ -79,7 +79,7 @@
                     <div class="book-list module">
                         <div class="row">
                             @foreach($firstCategoryBooks as $book)
-                                <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
+                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
                                     <a href="{!! route('book', ['slug' => $book->slug]) !!}" class="thumbnail">
                                         <img src="{{ asset('images/books/' . $book->id . '/original/' . $book->thumbnail)}}"
                                              alt="{{$book->name}}"/>

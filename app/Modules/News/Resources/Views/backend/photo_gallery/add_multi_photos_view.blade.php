@@ -93,7 +93,7 @@
                                     </td>
                                     <td>
                                         <label>
-                                            {!! Form::checkbox('is_cuff_thumbnail', $photo->id, $photo->file == $photo_gallery->thumbnail ? true : false ) !!}
+                                            {!! Form::radio('is_cuff_thumbnail', $photo->id, $photo->file == $photo_gallery->thumbnail ? true : false ) !!}
                                             {{trans('news::photo_gallery.is_photo_gallery_cuff_thumbnail')}}
                                         </label>
                                     </td>
@@ -137,6 +137,7 @@
 
             maxFileSize: 100,
             acceptedFiles: 'image/*',
+            dictDefaultMessage: '{{trans('news::photo_gallery.drag_files')}}',
             success: function (file, response) {
 
                 if (file.status === 'success') {
@@ -161,6 +162,8 @@
                 $($photoList).append('<li> <a href="' + photoSrc + '"><img src="' + $photoSrc + '"></a></li>');
             }
         };
+        //active menu
+        activeMenu('photo_gallery', 'news_management');
 
     </script>
 

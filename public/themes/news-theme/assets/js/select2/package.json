@@ -1,49 +1,26 @@
 {
-  "_args": [
-    [
-      {
-        "escapedName": "select2",
-        "name": "select2",
-        "raw": "select2@4.0.3",
-        "rawSpec": "4.0.3",
-        "scope": null,
-        "spec": "4.0.3",
-        "type": "version"
-      },
-      "/Users/aliduman/Desktop/PROJELER/baznews"
-    ]
-  ],
-  "_from": "select2@4.0.3",
+  "_from": "select2@^4.0.3",
   "_id": "select2@4.0.3",
-  "_inCache": true,
+  "_inBundle": false,
+  "_integrity": "sha1-IHcz/pHqy5yxoT8SRjQB9HJEng8=",
   "_location": "/select2",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/select2-4.0.3.tgz_1464312014558_0.3680991888977587"
-  },
-  "_npmUser": {
-    "email": "kevin+npm@kevin-brown.com",
-    "name": "kevin-brown"
-  },
-  "_npmVersion": "1.4.28",
   "_phantomChildren": {},
   "_requested": {
-    "escapedName": "select2",
+    "type": "range",
+    "registry": true,
+    "raw": "select2@^4.0.3",
     "name": "select2",
-    "raw": "select2@4.0.3",
-    "rawSpec": "4.0.3",
-    "scope": null,
-    "spec": "4.0.3",
-    "type": "version"
+    "escapedName": "select2",
+    "rawSpec": "^4.0.3",
+    "saveSpec": null,
+    "fetchSpec": "^4.0.3"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/select2/-/select2-4.0.3.tgz",
   "_shasum": "207733fe91eacb9cb1a13f12463401f472449e0f",
-  "_shrinkwrap": null,
-  "_spec": "select2@4.0.3",
+  "_spec": "select2@^4.0.3",
   "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "author": {
     "name": "Kevin Brown",
@@ -52,6 +29,7 @@
   "bugs": {
     "url": "https://github.com/select2/select2/issues"
   },
+  "bundleDependencies": false,
   "contributors": [
     {
       "name": "Igor Vaynberg",
@@ -62,6 +40,7 @@
     "almond": "~0.3.1",
     "jquery-mousewheel": "~3.1.13"
   },
+  "deprecated": false,
   "description": "Select2 is a jQuery based replacement for select boxes. It supports searching, remote data sets, and infinite scrolling of results.",
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -81,22 +60,16 @@
     "grunt-sass": "^1.0.0",
     "grunt-saucelabs": "^8.6.0"
   },
-  "directories": {},
-  "dist": {
-    "shasum": "207733fe91eacb9cb1a13f12463401f472449e0f",
-    "tarball": "https://registry.npmjs.org/select2/-/select2-4.0.3.tgz"
-  },
   "files": [
     "src",
     "dist"
   ],
-  "gitHead": "566c7846fbf8c3b7674346f26d0ee872c0a77629",
   "homepage": "https://select2.github.io",
   "jspm": {
+    "main": "js/select2",
     "directories": {
       "lib": "dist"
-    },
-    "main": "js/select2"
+    }
   },
   "keywords": [
     "select",
@@ -109,23 +82,10 @@
   ],
   "license": "MIT",
   "main": "dist/js/select2.js",
-  "maintainers": [
-    {
-      "email": "chrisjbaik@gmail.com",
-      "name": "chrisjbaik"
-    },
-    {
-      "email": "kevin+npm@kevin-brown.com",
-      "name": "kevin-brown"
-    }
-  ],
   "name": "select2",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git://github.com/select2/select2.git"
   },
-  "scripts": {},
   "version": "4.0.3"
 }

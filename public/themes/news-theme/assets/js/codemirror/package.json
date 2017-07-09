@@ -1,54 +1,31 @@
 {
-  "_args": [
-    [
-      {
-        "escapedName": "codemirror",
-        "name": "codemirror",
-        "raw": "codemirror@5.25.2",
-        "rawSpec": "5.25.2",
-        "scope": null,
-        "spec": "5.25.2",
-        "type": "version"
-      },
-      "/Users/aliduman/Desktop/PROJELER/baznews"
-    ]
-  ],
-  "_from": "codemirror@5.25.2",
-  "_id": "codemirror@5.25.2",
-  "_inCache": true,
+  "_from": "codemirror@^5.25.2",
+  "_id": "codemirror@5.26.0",
+  "_inBundle": false,
+  "_integrity": "sha1-vL7oaBbtEjhwwmBGHCtcQLaHRuU=",
   "_location": "/codemirror",
-  "_nodeVersion": "6.9.1",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/codemirror-5.25.2.tgz_1492683066328_0.4468107109423727"
-  },
-  "_npmUser": {
-    "email": "marijnh@gmail.com",
-    "name": "marijn"
-  },
-  "_npmVersion": "3.10.8",
   "_phantomChildren": {},
   "_requested": {
-    "escapedName": "codemirror",
+    "type": "range",
+    "registry": true,
+    "raw": "codemirror@^5.25.2",
     "name": "codemirror",
-    "raw": "codemirror@5.25.2",
-    "rawSpec": "5.25.2",
-    "scope": null,
-    "spec": "5.25.2",
-    "type": "version"
+    "escapedName": "codemirror",
+    "rawSpec": "^5.25.2",
+    "saveSpec": null,
+    "fetchSpec": "^5.25.2"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/codemirror/-/codemirror-5.25.2.tgz",
-  "_shasum": "8c77677ca9c9248d757d3a07ed1e89a8404850b7",
-  "_shrinkwrap": null,
-  "_spec": "codemirror@5.25.2",
+  "_resolved": "https://registry.npmjs.org/codemirror/-/codemirror-5.26.0.tgz",
+  "_shasum": "bcbee86816ed123870c260461c2b5c40b68746e5",
+  "_spec": "codemirror@^5.25.2",
   "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "bugs": {
     "url": "http://github.com/codemirror/CodeMirror/issues"
   },
+  "bundleDependencies": false,
   "contributors": [
     {
       "name": "List of CodeMirror contributors. Updated before every release."
@@ -262,6 +239,9 @@
     },
     {
       "name": "Arnab Bose"
+    },
+    {
+      "name": "Arsène von Wyss"
     },
     {
       "name": "Arthur Müller"
@@ -829,6 +809,9 @@
     },
     {
       "name": "Jacob Lee"
+    },
+    {
+      "name": "Jaimin"
     },
     {
       "name": "Jake Peyser"
@@ -1417,6 +1400,9 @@
       "name": "nerbert"
     },
     {
+      "name": "NetworkNode"
+    },
+    {
       "name": "nextrevision"
     },
     {
@@ -1473,6 +1459,9 @@
     },
     {
       "name": "Norman Rzepka"
+    },
+    {
+      "name": "opl-"
     },
     {
       "name": "Oreoluwa Onatemowo"
@@ -1601,6 +1590,9 @@
       "name": "Rasmus Erik Voel Jensen"
     },
     {
+      "name": "Rasmus Schultz"
+    },
+    {
       "name": "ray ratchup"
     },
     {
@@ -1623,6 +1615,9 @@
     },
     {
       "name": "Rishi Goomar"
+    },
+    {
+      "name": "Robert Brignull"
     },
     {
       "name": "Robert Crossfield"
@@ -1656,6 +1651,9 @@
     },
     {
       "name": "Sam Lee"
+    },
+    {
+      "name": "Sam Rawlins"
     },
     {
       "name": "Samuel Ainsworth"
@@ -1728,6 +1726,9 @@
     },
     {
       "name": "sheopory"
+    },
+    {
+      "name": "Shil S"
     },
     {
       "name": "Shiv Deepak"
@@ -1991,7 +1992,7 @@
       "name": "魏鹏刚"
     }
   ],
-  "dependencies": {},
+  "deprecated": false,
   "description": "Full-featured in-browser code editor",
   "devDependencies": {
     "blint": "^0.5.1",
@@ -2004,16 +2005,11 @@
   "directories": {
     "lib": "./lib"
   },
-  "dist": {
-    "shasum": "8c77677ca9c9248d757d3a07ed1e89a8404850b7",
-    "tarball": "https://registry.npmjs.org/codemirror/-/codemirror-5.25.2.tgz"
-  },
-  "gitHead": "2474ce6e2e1254812a7800b55fb7a295dc34669b",
   "homepage": "http://codemirror.net",
   "jspm": {
+    "directories": {},
     "dependencies": {},
-    "devDependencies": {},
-    "directories": {}
+    "devDependencies": {}
   },
   "keywords": [
     "JavaScript",
@@ -2024,13 +2020,12 @@
   "main": "lib/codemirror.js",
   "maintainers": [
     {
+      "name": "Marijn Haverbeke",
       "email": "marijnh@gmail.com",
-      "name": "marijn"
+      "url": "http://marijnhaverbeke.nl"
     }
   ],
   "name": "codemirror",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/codemirror/CodeMirror.git"
@@ -2042,5 +2037,5 @@
     "test": "node ./test/run.js",
     "watch": "rollup -w -c"
   },
-  "version": "5.25.2"
+  "version": "5.26.0"
 }

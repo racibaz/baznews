@@ -19,20 +19,23 @@
                 <h3 class="timeline-header">{{ $history->userResponsible()->first_name }}</h3>
 
                 <div class="timeline-body">
-                    <h2>changed -> {{ $history->fieldName() }} </h2>
-                    <p>
-                        from
-                    </p>
-                    <pre>
-                    {{ $history->oldValue() }}
-                </pre>
-                    <p>
-                        to
-                    </p>
-                    <pre>
-                    {{ $history->newValue() }}
-                </pre>
-
+                    <h3>Değiştirilen Form Alanı -> {{ $history->fieldName() }} </h3>
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Eski İçerik</h3>
+                        </div>
+                        <div class="change-content">
+                            {!! $history->oldValue()  !!}
+                        </div>
+                    </div>
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Yeni İçerik</h3>
+                        </div>
+                        <div class="change-content">
+                            {!! $history->newValue()  !!}
+                        </div>
+                    </div>
                 </div>
 
                 {{--<div class="timeline-footer">--}}

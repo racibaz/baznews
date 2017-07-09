@@ -1,50 +1,27 @@
 {
-  "_args": [
-    [
-      {
-        "escapedName": "datatables.net",
-        "name": "datatables.net",
-        "raw": "datatables.net@1.10.15",
-        "rawSpec": "1.10.15",
-        "scope": null,
-        "spec": "1.10.15",
-        "type": "version"
-      },
-      "/Users/aliduman/Desktop/PROJELER/baznews"
-    ]
-  ],
-  "_from": "datatables.net@1.10.15",
+  "_from": "datatables.net@^1.10.15",
   "_id": "datatables.net@1.10.15",
-  "_inCache": true,
+  "_inBundle": false,
+  "_integrity": "sha1-x4kHe7/jhedf9aIz+l8jJRpy32g=",
   "_location": "/datatables.net",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/datatables.net-1.10.15.tgz_1492503926912_0.7814477488864213"
-  },
-  "_npmUser": {
-    "email": "allan@datatables.net",
-    "name": "datatables"
-  },
-  "_npmVersion": "1.3.6",
   "_phantomChildren": {},
   "_requested": {
-    "escapedName": "datatables.net",
+    "type": "range",
+    "registry": true,
+    "raw": "datatables.net@^1.10.15",
     "name": "datatables.net",
-    "raw": "datatables.net@1.10.15",
-    "rawSpec": "1.10.15",
-    "scope": null,
-    "spec": "1.10.15",
-    "type": "version"
+    "escapedName": "datatables.net",
+    "rawSpec": "^1.10.15",
+    "saveSpec": null,
+    "fetchSpec": "^1.10.15"
   },
   "_requiredBy": [
-    "#USER",
     "/",
     "/datatables.net-bs"
   ],
   "_resolved": "https://registry.npmjs.org/datatables.net/-/datatables.net-1.10.15.tgz",
   "_shasum": "c789077bbfe385e75ff5a233fa5f23251a72df68",
-  "_shrinkwrap": null,
-  "_spec": "datatables.net@1.10.15",
+  "_spec": "datatables.net@^1.10.15",
   "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "author": {
     "name": "SpryMedia Ltd",
@@ -53,16 +30,12 @@
   "bugs": {
     "url": "https://datatables.net/forums"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "jquery": ">=1.7"
   },
+  "deprecated": false,
   "description": "DataTables for jQuery ",
-  "devDependencies": {},
-  "directories": {},
-  "dist": {
-    "shasum": "c789077bbfe385e75ff5a233fa5f23251a72df68",
-    "tarball": "https://registry.npmjs.org/datatables.net/-/datatables.net-1.10.15.tgz"
-  },
   "files": [
     "js/jquery.dataTables.js"
   ],
@@ -77,15 +50,7 @@
   ],
   "license": "MIT",
   "main": "./js/jquery.dataTables.js",
-  "maintainers": [
-    {
-      "email": "npm@datatables.net",
-      "name": "datatables"
-    }
-  ],
   "name": "datatables.net",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DataTables/Dist-DataTables.git"

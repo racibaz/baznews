@@ -24,10 +24,6 @@
                                     </div>
                                     <div class="bio-detail">
                                         <h1 class="bio-name">{{$record->name}} </h1>
-                                        <div class="bio-social">
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                        </div>
                                     </div>
                                 </div><!-- /.bio-profile -->
                             </div>

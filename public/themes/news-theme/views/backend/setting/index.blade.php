@@ -270,6 +270,24 @@
                                     {!! Form::label('contact', trans('setting.contact'),['class'=> ' control-label']) !!}
                                     {!! Form::textarea('contact', $records->where('attribute_key','contact')->first()->attribute_value, ['placeholder' => trans('setting.contact') ,'class' => 'form-control summernote']) !!}
                                 </div>
+                                <div class="col-md-12">
+                                    <hr>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::label('latitude', trans('setting.latitude'),['class'=> 'control-label']) !!}
+                                        {!! Form::text('latitude', $records->where('attribute_key','latitude')->first()->attribute_value, ['placeholder' => trans('setting.latitude') ,'class' => 'form-control']) !!}
+                                    </div><!-- /.form-group -->
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::label('longitude', trans('setting.longitude'),['class'=> 'control-label']) !!}
+                                        {!! Form::text('longitude', $records->where('attribute_key','longitude')->first()->attribute_value, ['placeholder' => trans('setting.longitude') ,'class' => 'form-control']) !!}
+                                    </div><!-- /.form-group -->
+                                </div>
+                                <div class="col-md-12">
+                                    <div id="map" style="height: 300px;"></div>
+                                </div>
                             </div>
                         </div><!-- /.form-group -->
                     </div>
@@ -355,23 +373,7 @@
                                     {!! Form::text('allow_video_formats', $records->where('attribute_key','allow_video_formats')->first()->attribute_value, ['placeholder' => trans('setting.allow_video_formats') ,'class' => 'form-control tagsinput']) !!}
                                 </div><!-- /.form-group -->
                             </div>
-                            <div class="col-md-12">
-                                <hr>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {!! Form::label('latitude', trans('setting.latitude'),['class'=> 'control-label']) !!}
-                                    {!! Form::text('latitude', $records->where('attribute_key','latitude')->first()->attribute_value, ['placeholder' => trans('setting.latitude') ,'class' => 'form-control']) !!}
-                                </div><!-- /.form-group -->
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {!! Form::label('longitude', trans('setting.longitude'),['class'=> 'control-label']) !!}
-                                    {!! Form::text('longitude', $records->where('attribute_key','longitude')->first()->attribute_value, ['placeholder' => trans('setting.longitude') ,'class' => 'form-control']) !!}
-                                </div><!-- /.form-group -->
-                            </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- /.tab-content -->
@@ -720,4 +722,59 @@
         //active menu
         activeMenu('setting', 'general_setting');
     </script>
+    <script>
+        var latitude = $('#latitude').val();
+        var longitude = $('#longitude').val();
+        $('#latitude').on('keyup',function () {
+            latitude = $(this).val();
+        });
+        $('#latitude').on('keyup',function () {
+            longitude = $(this).val();
+        });
+        $(function(){
+            $(".nav-tabs li a").on("click", function(e){
+                if (e.target.hash === '#tab_4') {
+                    initMap();
+                }
+            });
+        });
+
+
+        function initMap() {
+            var myLatlng = new google.maps.LatLng(latitude, longitude);
+            var myOptions = {
+                zoom: 5,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+
+            var map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+            addMarker(myLatlng, 'Default Marker', map);
+
+            map.addListener('click', function (event) {
+                addMarker(event.latLng, 'Click Generated Marker', map);
+            });
+            function handleEvent(event) {
+                document.getElementById('latitude').value = event.latLng.lat();
+                document.getElementById('longitude').value = event.latLng.lng();
+            }
+
+            function addMarker(latlng, title, map) {
+                var marker = new google.maps.Marker({
+                    position: latlng,
+                    map: map,
+                    title: title,
+                    draggable: true
+                });
+
+                marker.addListener('drag', handleEvent);
+                marker.addListener('dragend', handleEvent);
+            }
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYeFB-plBwrGcrIedpc8xtjrFklJra6PM">
+    </script>
+
 @endsection

@@ -25,7 +25,7 @@ return [
     'paper_type' => 'Kağıt Tipi',
     'size' => 'Boyutu',
     'select_categories' => 'Kategori Seçiniz',
-    'status' => 'Kategori Seçiniz',
+    'status' => 'Durum',
     'image' => 'Resim',
     'create_edit' => 'Kitap Ekle/Düzenle',
     'create_book' => 'Kitap Ekle',

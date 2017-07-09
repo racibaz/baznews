@@ -1,46 +1,26 @@
 {
-  "_args": [
-    [
-      {
-        "escapedName": "jasny-bootstrap",
-        "name": "jasny-bootstrap",
-        "raw": "jasny-bootstrap@3.1.3",
-        "rawSpec": "3.1.3",
-        "scope": null,
-        "spec": "3.1.3",
-        "type": "version"
-      },
-      "/Users/aliduman/Desktop/PROJELER/baznews"
-    ]
-  ],
-  "_from": "jasny-bootstrap@3.1.3",
+  "_from": "jasny-bootstrap@^3.1.3",
   "_id": "jasny-bootstrap@3.1.3",
-  "_inCache": true,
+  "_inBundle": false,
+  "_integrity": "sha1-sHKmgdUMZJdiyVQ8emCT2bqi+Hs=",
   "_location": "/jasny-bootstrap",
-  "_nodeVersion": "2.3.1",
-  "_npmUser": {
-    "email": "habla.con@escaleno.cl",
-    "name": "escaleno"
-  },
-  "_npmVersion": "2.11.3",
   "_phantomChildren": {},
   "_requested": {
-    "escapedName": "jasny-bootstrap",
+    "type": "range",
+    "registry": true,
+    "raw": "jasny-bootstrap@^3.1.3",
     "name": "jasny-bootstrap",
-    "raw": "jasny-bootstrap@3.1.3",
-    "rawSpec": "3.1.3",
-    "scope": null,
-    "spec": "3.1.3",
-    "type": "version"
+    "escapedName": "jasny-bootstrap",
+    "rawSpec": "^3.1.3",
+    "saveSpec": null,
+    "fetchSpec": "^3.1.3"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/jasny-bootstrap/-/jasny-bootstrap-3.1.3.tgz",
   "_shasum": "b072a681d50c649762c9543c7a6093d9baa2f87b",
-  "_shrinkwrap": null,
-  "_spec": "jasny-bootstrap@3.1.3",
+  "_spec": "jasny-bootstrap@^3.1.3",
   "_where": "/Users/aliduman/Desktop/PROJELER/baznews",
   "author": {
     "name": "Arnold Daniels"
@@ -48,7 +28,8 @@
   "bugs": {
     "url": "https://github.com/jasny/bootstrap/issues"
   },
-  "dependencies": {},
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "Additional features and components for Bootstrap",
   "devDependencies": {
     "btoa": "~1.1.1",
@@ -77,27 +58,21 @@
     "load-grunt-tasks": "~0.4.0",
     "markdown": "~0.5.0"
   },
-  "directories": {},
-  "dist": {
-    "shasum": "b072a681d50c649762c9543c7a6093d9baa2f87b",
-    "tarball": "https://registry.npmjs.org/jasny-bootstrap/-/jasny-bootstrap-3.1.3.tgz"
-  },
-  "gitHead": "f96d55965a6c3a29014c940ae3f52aeeda1920f7",
   "homepage": "http://jasny.github.io/bootstrap",
   "jspm": {
-    "buildConfig": {
-      "uglify": true
-    },
+    "main": "js/jasny-bootstrap",
     "directories": {
       "example": "examples",
       "lib": "dist"
     },
-    "main": "js/jasny-bootstrap",
     "shim": {
       "js/jasny-bootstrap": {
-        "exports": "$",
-        "imports": "jquery"
+        "imports": "jquery",
+        "exports": "$"
       }
+    },
+    "buildConfig": {
+      "uglify": true
     }
   },
   "keywords": [
@@ -109,15 +84,7 @@
     "type": "Apache-2.0",
     "url": "https://github.com/jasny/bootstrap/blob/master/LICENSE"
   },
-  "maintainers": [
-    {
-      "email": "habla.con@escaleno.cl",
-      "name": "escaleno"
-    }
-  ],
   "name": "jasny-bootstrap",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jasny/bootstrap.git"

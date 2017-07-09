@@ -1,6 +1,6 @@
 /**
  * @license
- * Video.js 5.19.2 <http://videojs.com/>
+ * Video.js 5.20.1 <http://videojs.com/>
  * Copyright Brightcove, Inc. <https://www.brightcove.com/>
  * Available under Apache License Version 2.0
  * <https://github.com/videojs/video.js/blob/master/LICENSE>
@@ -485,8 +485,10 @@ var ClickableComponent = function (_Component) {
     if (typeof this.tabIndex_ !== 'undefined') {
       this.el_.setAttribute('tabIndex', this.tabIndex_);
     }
-    this.on('tap', this.handleClick);
-    this.on('click', this.handleClick);
+    this.off(['tap', 'click'], this.handleClick);
+    this.off('focus', this.handleFocus);
+    this.off('blur', this.handleBlur);
+    this.on(['tap', 'click'], this.handleClick);
     this.on('focus', this.handleFocus);
     this.on('blur', this.handleBlur);
     return this;
@@ -506,8 +508,7 @@ var ClickableComponent = function (_Component) {
     if (typeof this.tabIndex_ !== 'undefined') {
       this.el_.removeAttribute('tabIndex');
     }
-    this.off('tap', this.handleClick);
-    this.off('click', this.handleClick);
+    this.off(['tap', 'click'], this.handleClick);
     this.off('focus', this.handleFocus);
     this.off('blur', this.handleBlur);
     return this;
@@ -9324,6 +9325,11 @@ var Player = function (_Component) {
     // Make player easily findable by ID
     Player.players[_this.id_] = _this;
 
+    // Add a major version class to aid css in plugins
+    var majorVersion = '5.20.1'.split('.')[0];
+
+    _this.addClass('vjs-v' + majorVersion);
+
     // When the player is first initialized, trigger activity so components
     // like the control bar show themselves if needed
     _this.userActive(true);
@@ -9744,6 +9750,7 @@ var Player = function (_Component) {
       'textTracks': this.textTracks_,
       'audioTracks': this.audioTracks_,
       'autoplay': this.options_.autoplay,
+      'playsinline': this.options_.playsinline,
       'preload': this.options_.preload,
       'loop': this.options_.loop,
       'muted': this.options_.muted,
@@ -11433,6 +11440,33 @@ var Player = function (_Component) {
   };
 
   /**
+   * Set or unset the playsinline attribute.
+   * Playsinline tells the browser that non-fullscreen playback is preferred.
+   *
+   * @param {boolean} [value]
+   *        - true means that we should try to play inline by default
+   *        - false means that we should use the browser's default playback mode,
+   *          which in most cases is inline. iOS Safari is a notable exception
+   *          and plays fullscreen by default.
+   *
+   * @return {string|Player}
+   *         - the current value of playsinline
+   *         - the player when setting
+   *
+   * @see [Spec]{@link https://html.spec.whatwg.org/#attr-video-playsinline}
+   */
+
+
+  Player.prototype.playsinline = function playsinline(value) {
+    if (value !== undefined) {
+      this.techCall_('setPlaysinline', value);
+      this.options_.playsinline = value;
+      return this;
+    }
+    return this.techGet_('playsinline');
+  };
+
+  /**
    * Get or set the loop attribute on the video element.
    *
    * @param {boolean} [value]
@@ -12080,6 +12114,22 @@ var Player = function (_Component) {
     if (this.tech_) {
       return this.tech_.removeRemoteTextTrack(track);
     }
+  };
+
+  /**
+   * Gets available media playback quality metrics as specified by the W3C's Media
+   * Playback Quality API.
+   *
+   * @see [Spec]{@link https://wicg.github.io/media-playback-quality}
+   *
+   * @return {Object|undefined}
+   *         An object with supported media playback quality metrics or undefined if there
+   *         is no tech or the tech does not support it.
+   */
+
+
+  Player.prototype.getVideoPlaybackQuality = function getVideoPlaybackQuality() {
+    return this.techGet_('getVideoPlaybackQuality');
   };
 
   /**
@@ -13722,7 +13772,7 @@ var Flash = function (_Tech) {
     // Otherwise this adds a CDN url.
     // The CDN also auto-adds a swf URL for that specific version.
     if (!options.swf) {
-      var ver = '5.3.0';
+      var ver = '5.4.0';
 
       options.swf = '//vjs.zencdn.net/swf/' + ver + '/video-js.swf';
     }
@@ -14013,6 +14063,29 @@ var Flash = function (_Tech) {
 
   Flash.prototype.enterFullScreen = function enterFullScreen() {
     return false;
+  };
+
+  /**
+   * Gets available media playback quality metrics as specified by the W3C's Media
+   * Playback Quality API.
+   *
+   * @see [Spec]{@link https://wicg.github.io/media-playback-quality}
+   *
+   * @return {Object}
+   *         An object with supported media playback quality metrics
+   */
+
+
+  Flash.prototype.getVideoPlaybackQuality = function getVideoPlaybackQuality() {
+    var videoPlaybackQuality = this.el_.vjs_getProperty('getVideoPlaybackQuality');
+
+    if (_window2['default'].performance && typeof _window2['default'].performance.now === 'function') {
+      videoPlaybackQuality.creationTime = _window2['default'].performance.now();
+    } else if (_window2['default'].performance && _window2['default'].performance.timing && typeof _window2['default'].performance.timing.navigationStart === 'number') {
+      videoPlaybackQuality.creationTime = _window2['default'].Date.now() - _window2['default'].performance.timing.navigationStart;
+    }
+
+    return videoPlaybackQuality;
   };
 
   return Flash;
@@ -15041,7 +15114,7 @@ var Html5 = function (_Tech) {
     }
 
     // Update specific tag settings, in case they were overridden
-    var settingsAttrs = ['autoplay', 'preload', 'loop', 'muted'];
+    var settingsAttrs = ['autoplay', 'preload', 'loop', 'muted', 'playsinline'];
 
     for (var i = settingsAttrs.length - 1; i >= 0; i--) {
       var attr = settingsAttrs[i];
@@ -15664,6 +15737,79 @@ var Html5 = function (_Tech) {
     }
   };
 
+  /**
+   * Get the value of `playsinline` from the media element. `playsinline` indicates
+   * to the browser that non-fullscreen playback is preferred when fullscreen
+   * playback is the native default, such as in iOS Safari.
+   *
+   * @method Html5#playsinline
+   * @return {boolean}
+   *         - The value of `playsinline` from the media element.
+   *         - True indicates that the media should play inline.
+   *         - False indicates that the media should not play inline.
+   *
+   * @see [Spec]{@link https://html.spec.whatwg.org/#attr-video-playsinline}
+   */
+
+
+  Html5.prototype.playsinline = function playsinline() {
+    return this.el_.hasAttribute('playsinline');
+  };
+
+  /**
+   * Set the value of `playsinline` from the media element. `playsinline` indicates
+   * to the browser that non-fullscreen playback is preferred when fullscreen
+   * playback is the native default, such as in iOS Safari.
+   *
+   * @method Html5#setPlaysinline
+   * @param {boolean} playsinline
+   *         - True indicates that the media should play inline.
+   *         - False indicates that the media should not play inline.
+   *
+   * @see [Spec]{@link https://html.spec.whatwg.org/#attr-video-playsinline}
+   */
+
+
+  Html5.prototype.setPlaysinline = function setPlaysinline(value) {
+    if (value) {
+      this.el_.setAttribute('playsinline', 'playsinline');
+    } else {
+      this.el_.removeAttribute('playsinline');
+    }
+  };
+
+  /**
+   * Gets available media playback quality metrics as specified by the W3C's Media
+   * Playback Quality API.
+   *
+   * @see [Spec]{@link https://wicg.github.io/media-playback-quality}
+   *
+   * @return {Object}
+   *         An object with supported media playback quality metrics
+   */
+
+
+  Html5.prototype.getVideoPlaybackQuality = function getVideoPlaybackQuality() {
+    if (typeof this.el().getVideoPlaybackQuality === 'function') {
+      return this.el().getVideoPlaybackQuality();
+    }
+
+    var videoPlaybackQuality = {};
+
+    if (typeof this.el().webkitDroppedFrameCount !== 'undefined' && typeof this.el().webkitDecodedFrameCount !== 'undefined') {
+      videoPlaybackQuality.droppedVideoFrames = this.el().webkitDroppedFrameCount;
+      videoPlaybackQuality.totalVideoFrames = this.el().webkitDecodedFrameCount;
+    }
+
+    if (_window2['default'].performance && typeof _window2['default'].performance.now === 'function') {
+      videoPlaybackQuality.creationTime = _window2['default'].performance.now();
+    } else if (_window2['default'].performance && _window2['default'].performance.timing && typeof _window2['default'].performance.timing.navigationStart === 'number') {
+      videoPlaybackQuality.creationTime = _window2['default'].Date.now() - _window2['default'].performance.timing.navigationStart;
+    }
+
+    return videoPlaybackQuality;
+  };
+
   return Html5;
 }(_tech2['default']);
 
@@ -15736,7 +15882,7 @@ Html5.canControlVolume = function () {
 Html5.canControlPlaybackRate = function () {
   // Playback rate API is implemented in Android Chrome, but doesn't do anything
   // https://github.com/videojs/video.js/issues/3180
-  if (browser.IS_ANDROID && browser.IS_CHROME) {
+  if (browser.IS_ANDROID && browser.IS_CHROME && browser.CHROME_VERSION < 58) {
     return false;
   }
   // IE will error if Windows Media Player not installed #3315
@@ -17552,6 +17698,23 @@ var Tech = function (_Component) {
   };
 
   /**
+   * Gets available media playback quality metrics as specified by the W3C's Media
+   * Playback Quality API.
+   *
+   * @see [Spec]{@link https://wicg.github.io/media-playback-quality}
+   *
+   * @return {Object}
+   *         An object with supported media playback quality metrics
+   *
+   * @abstract
+   */
+
+
+  Tech.prototype.getVideoPlaybackQuality = function getVideoPlaybackQuality() {
+    return {};
+  };
+
+  /**
    * A method to set a poster from a `Tech`.
    *
    * @abstract
@@ -17559,6 +17722,24 @@ var Tech = function (_Component) {
 
 
   Tech.prototype.setPoster = function setPoster() {};
+
+  /**
+   * A method to check for the presence of the 'playsinine' <video> attribute.
+   *
+   * @abstract
+   */
+
+
+  Tech.prototype.playsinline = function playsinline() {};
+
+  /**
+   * A method to set or unset the 'playsinine' <video> attribute.
+   *
+   * @abstract
+   */
+
+
+  Tech.prototype.setPlaysinline = function setPlaysinline() {};
 
   /*
    * Check if the tech can support the given mime-type.
@@ -21164,7 +21345,7 @@ exports['default'] = VideoTrack;
 'use strict';
 
 exports.__esModule = true;
-exports.BACKGROUND_SIZE_SUPPORTED = exports.TOUCH_ENABLED = exports.IS_ANY_SAFARI = exports.IS_SAFARI = exports.IE_VERSION = exports.IS_IE8 = exports.IS_CHROME = exports.IS_EDGE = exports.IS_FIREFOX = exports.IS_NATIVE_ANDROID = exports.IS_OLD_ANDROID = exports.ANDROID_VERSION = exports.IS_ANDROID = exports.IOS_VERSION = exports.IS_IOS = exports.IS_IPOD = exports.IS_IPHONE = exports.IS_IPAD = undefined;
+exports.BACKGROUND_SIZE_SUPPORTED = exports.TOUCH_ENABLED = exports.IS_ANY_SAFARI = exports.IS_SAFARI = exports.IE_VERSION = exports.IS_IE8 = exports.CHROME_VERSION = exports.IS_CHROME = exports.IS_EDGE = exports.IS_FIREFOX = exports.IS_NATIVE_ANDROID = exports.IS_OLD_ANDROID = exports.ANDROID_VERSION = exports.IS_ANDROID = exports.IOS_VERSION = exports.IS_IOS = exports.IS_IPOD = exports.IS_IPHONE = exports.IS_IPAD = undefined;
 
 var _dom = _dereq_(81);
 
@@ -21239,6 +21420,14 @@ var IS_NATIVE_ANDROID = exports.IS_NATIVE_ANDROID = IS_ANDROID && ANDROID_VERSIO
 var IS_FIREFOX = exports.IS_FIREFOX = /Firefox/i.test(USER_AGENT);
 var IS_EDGE = exports.IS_EDGE = /Edge/i.test(USER_AGENT);
 var IS_CHROME = exports.IS_CHROME = !IS_EDGE && /Chrome/i.test(USER_AGENT);
+var CHROME_VERSION = exports.CHROME_VERSION = function () {
+  var match = USER_AGENT.match(/Chrome\/(\d+)/);
+
+  if (match && match[1]) {
+    return parseFloat(match[1]);
+  }
+  return null;
+}();
 var IS_IE8 = exports.IS_IE8 = /MSIE\s8\.0/.test(USER_AGENT);
 var IE_VERSION = exports.IE_VERSION = function () {
   var result = /MSIE\s(\d+)\.\d/.exec(USER_AGENT);
@@ -23916,7 +24105,7 @@ setup.autoSetupTimeout(1, videojs);
  *
  * @type {string}
  */
-videojs.VERSION = '5.19.2';
+videojs.VERSION = '5.20.1';
 
 /**
  * The global options object. These are the settings that take effect
@@ -24471,7 +24660,7 @@ function _createXHR(options) {
 
     function readystatechange() {
         if (xhr.readyState === 4) {
-            setTimeout(loadFunc, 0)
+            loadFunc()
         }
     }
 
@@ -24493,6 +24682,15 @@ function _createXHR(options) {
 
         return body
     }
+
+    var failureResponse = {
+                body: undefined,
+                headers: {},
+                statusCode: 0,
+                method: method,
+                url: uri,
+                rawRequest: xhr
+            }
 
     function errorFunc(evt) {
         clearTimeout(timeoutTimer)
@@ -24549,26 +24747,18 @@ function _createXHR(options) {
     var aborted
     var uri = xhr.url = options.uri || options.url
     var method = xhr.method = options.method || "GET"
-    var body = options.body || options.data
+    var body = options.body || options.data || null
     var headers = xhr.headers = options.headers || {}
     var sync = !!options.sync
     var isJson = false
     var timeoutTimer
-    var failureResponse = {
-        body: undefined,
-        headers: {},
-        statusCode: 0,
-        method: method,
-        url: uri,
-        rawRequest: xhr
-    }
 
-    if ("json" in options && options.json !== false) {
+    if ("json" in options) {
         isJson = true
         headers["accept"] || headers["Accept"] || (headers["Accept"] = "application/json") //Don't override existing accept header declared by user
         if (method !== "GET" && method !== "HEAD") {
             headers["content-type"] || headers["Content-Type"] || (headers["Content-Type"] = "application/json") //Don't override existing accept header declared by user
-            body = JSON.stringify(options.json === true ? body : options.json)
+            body = JSON.stringify(options.json)
         }
     }
 
@@ -24578,9 +24768,6 @@ function _createXHR(options) {
     // IE9 must have onprogress be set to a unique function.
     xhr.onprogress = function () {
         // IE must die
-    }
-    xhr.onabort = function(){
-        aborted = true;
     }
     xhr.ontimeout = errorFunc
     xhr.open(method, uri, !sync, options.username, options.password)
@@ -24593,8 +24780,7 @@ function _createXHR(options) {
     // both npm's request and jquery 1.x use this kind of timeout, so this is being consistent
     if (!sync && options.timeout > 0 ) {
         timeoutTimer = setTimeout(function(){
-            if (aborted) return
-            aborted = true//IE9 may still call readystatechange
+            aborted=true//IE9 may still call readystatechange
             xhr.abort("timeout")
             var e = new Error("XMLHttpRequest timeout")
             e.code = "ETIMEDOUT"
@@ -24622,10 +24808,7 @@ function _createXHR(options) {
         options.beforeSend(xhr)
     }
 
-    // Microsoft Edge browser sends "undefined" when send is called with undefined value.
-    // XMLHttpRequest spec says to pass null as body to indicate no body
-    // See https://github.com/naugtur/xhr/issues/100.
-    xhr.send(body || null)
+    xhr.send(body)
 
     return xhr
 
@@ -24636,7 +24819,7 @@ function getXml(xhr) {
     if (xhr.responseType === "document") {
         return xhr.responseXML
     }
-    var firefoxBugTakenEffect = xhr.responseXML && xhr.responseXML.documentElement.nodeName === "parsererror"
+    var firefoxBugTakenEffect = xhr.status === 204 && xhr.responseXML && xhr.responseXML.documentElement.nodeName === "parsererror"
     if (xhr.responseType === "" && !firefoxBugTakenEffect) {
         return xhr.responseXML
     }
