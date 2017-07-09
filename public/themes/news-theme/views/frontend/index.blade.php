@@ -10,7 +10,7 @@
                             @foreach($mainCuffNewsItems as $mainCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
                                     <a href="{!! !empty($mainCuffNewsItem->cuff_direct_link) ?  $mainCuffNewsItem->cuff_direct_link : route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
-                                        <img data-original="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}"
+                                        <img src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}"
                                              data-src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}"
                                              alt="News Logo" class="lazy-slider lazy">
                                     </a>
@@ -39,7 +39,7 @@
                             @foreach($boxCuffNewsItems as $boxCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
                                     <a href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
-                                        <img data-original="{{ asset('images/news_images/' . $boxCuffNewsItem->id . '/322x265_' . $boxCuffNewsItem->thumbnail )}}"
+                                        <img src="{{ asset('images/news_images/' . $boxCuffNewsItem->id . '/322x265_' . $boxCuffNewsItem->thumbnail )}}"
                                              alt="{{$boxCuffNewsItem->title}}" class="lazy">
                                     </a>
                                 </li>
