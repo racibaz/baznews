@@ -141,6 +141,13 @@
     </article><!-- /.article -->
 @endsection
 
+@section('meta_tags')
+    <title>
+        {{Cache::tags('Setting')->get('url')}}
+        @if($datetime){{$datetime->formatLocalized('%A %d %B %Y') }}@endif
+    </title>
+@endsection
+
 @section('js')
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
