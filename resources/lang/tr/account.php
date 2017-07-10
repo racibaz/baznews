@@ -25,5 +25,6 @@ return [
     'password'        => 'Parola',
     'logout'        => 'Çıkış Yap',
     'show_dashboard'=> 'Yönetim Paneli',
+    'profile' => 'Kullanıcı Profili',
 
 ];

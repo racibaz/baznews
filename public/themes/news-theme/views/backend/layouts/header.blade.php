@@ -22,9 +22,11 @@
                 <li class="header"><a href="/" target="_blank" title="{{ trans('dashboard.web_site') }}"><i
                                 class="fa fa-home"></i> {{ trans('dashboard.web_site') }} </a></li>
                 @permission('removeHomePageCache-backend')
-                <li class="header"><a href="{!! URL::route('removeHomePageCache') !!}"><i
-                                class="fa fa-trash-o"></i> {{ trans('dashboard.remove_home_page_cache') }} </a>
-                </li>@endpermission
+                    <li class="header">
+                        <a href="{!! URL::route('removeHomePageCache') !!}"><i
+                                    class="fa fa-trash-o"></i> {{ trans('dashboard.remove_home_page_cache') }} </a>
+                    </li>
+                @endpermission
 
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
@@ -36,9 +38,13 @@
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            {{--<img src="https://www.gravatar.com/avatar/{{md5(strtolower(trim(Auth::user()->email))) }}?d={{urlencode($default)}}&s=150"--}}
-                                 {{--class="img-circle" alt="User Image">--}}
 
+                            <?php
+                            $default = asset('default_user_avatar.jpg');
+                            $size = 100;
+                            $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim(Auth::user()->email))) . "?d=" . urlencode($default) . "&s=" . $size;
+                            ?>
+                            <img src="<?php echo $grav_url; ?>" alt="" class="img-rounded"/>
                             <p>
                                 {{Auth::user()->name}}
                             </p>
@@ -46,7 +52,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat"><i class="fa fa-user"></i> Profile</a>
+                                <a href="{{ url('/account') }}" class="btn btn-default btn-flat"><i class="fa fa-user"></i>{{trans('account.profile')}}</a>
                             </div>
                             <div class="pull-right">
 

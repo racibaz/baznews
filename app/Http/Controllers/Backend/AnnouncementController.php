@@ -70,36 +70,6 @@ class AnnouncementController extends BackendController
         return $this->save($this->repo->createModel());
     }
 
-
-    public function show(Announcement $record)
-    {
-        $groupList = Auth::user()->groups;
-        $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'groupList']));
-    }
-
-
-    public function edit(Announcement $record)
-    {
-        $groupList = Auth::user()->groups;
-
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'groupList']));
-    }
-
-
-    public function update(AnnouncementRequest $request, Announcement $record)
-    {
-        return $this->save($record);
-    }
-
-
-    public function destroy(Announcement $record)
-    {
-        $this->repo->delete($record->id);
-        return redirect()->route($this->redirectRouteName . $this->view . 'index');
-    }
-
-
     public function save($record)
     {
         $input = Input::all();
@@ -129,6 +99,29 @@ class AnnouncementController extends BackendController
         if (isset($input['announcement_group_store_'])) {
             $record->groups()->sync($input['announcement_group_store_']);
         }
+    }
+
+    public function show(Announcement $record)
+    {
+        $groupList = Auth::user()->groups;
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'groupList']));
+    }
+
+    public function edit(Announcement $record)
+    {
+        $groupList = Auth::user()->groups;
+        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'groupList']));
+    }
+
+    public function update(AnnouncementRequest $request, Announcement $record)
+    {
+        return $this->save($record);
+    }
+
+    public function destroy(Announcement $record)
+    {
+        $this->repo->delete($record->id);
+        return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
     public function announcement_list()
