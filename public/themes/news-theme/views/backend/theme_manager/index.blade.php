@@ -17,9 +17,9 @@
     <div class="row">
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
-                <a href="{{ route('theme_manager.create') }}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> {{ trans('theme_manager.create') }}
-                </a>
+                {{--<a href="{{ route('theme_manager.create') }}" class="btn btn-success">--}}
+                    {{--<i class="fa fa-plus"></i> {{ trans('theme_manager.create') }}--}}
+                {{--</a>--}}
             </div>
             <div class="box box-default">
                 <div class="box-header">
