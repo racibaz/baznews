@@ -116,11 +116,13 @@ class BiographyController extends BackendController
                 $destination = '/images/biographies/' . $result->id . '/thumbnail';
                 Uploader::fileUpload($result, 'photo', $input['photo'], $destination, $document_name);
 
-                Image::make(public_path('images/biographies/' . $result->id . '/thumbnail/' . $result->photo))
+                $path = public_path('images/biographies/' . $result->id . '/thumbnail/' . $result->photo);
+
+                Image::make($path)
                     ->fit(104, 78)
                     ->save(public_path('images/biographies/' . $result->id . '/104x78_' . $document_name));
 
-                Image::make(public_path('images/biographies/' . $result->id . '/thumbnail/' . $result->photo))
+                Image::make($path)
                     ->fit(200, 150)
                     ->save(public_path('images/biographies/' . $result->id . '/200x150_' . $document_name));
             }
