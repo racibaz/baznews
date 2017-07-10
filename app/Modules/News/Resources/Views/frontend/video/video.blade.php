@@ -1,4 +1,5 @@
 @extends($activeTheme . '::frontend.master')
+@extends($activeTheme . '::frontend.master')
 
 @section('content')
     <article>
@@ -149,8 +150,7 @@
             <div class="videos">
                 <div class="title-section">
                     <h1>
-                        <span>{{trans('video.latest_videos')}}</span>
-                        <a href="video-details.html" class="btn btn-primary btn-xs m-v-btn">Daha fazla</a>
+                        <span>{{trans('news::video.latest_videos')}}</span>
                     </h1>
                 </div><!-- /.title-section -->
                 <div class="row">
