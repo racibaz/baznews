@@ -13,12 +13,7 @@
                             <div class="col-md-7">
                                 <div class="account-img text-center">
                                     @if(!empty($record->id))
-                                        <?php
-                                        $default = asset('default_user_avatar.jpg');
-                                        $size = 40;
-                                        $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($record->email))) . "?d=" . urlencode($default) . "&s=" . $size;
-                                        ?>
-                                        <img src="<?php echo $grav_url; ?>" alt="" class="img-rounded"/>
+                                        <img src="{{\App\Models\User::getUserAvatar(Auth::user()->email, 40)}}" alt="" class="img-rounded"/>
                                     @endif
                                 </div>
                                 <div class="text-center">

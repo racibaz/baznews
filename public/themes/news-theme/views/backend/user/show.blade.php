@@ -26,13 +26,7 @@
             <div class="box box-default">
                 <!-- /.box-header -->
                 <div class="box-body box-profile">
-                    <?php
-                    $default = Redis::get('url') . "/default_user_avatar.jpg";
-                    $size = 150;
-                    $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($record->email))) . "?d=" . urlencode($default) . "&s=" . $size;
-                    ?>
-
-                    <img class="profile-user-img img-responsive img-circle" src="<?php echo $grav_url; ?>"
+                    <img class="profile-user-img img-responsive img-circle" src="{{\App\Models\User::getUserAvatar(Auth::user()->email, 150)}}"
                          alt="{{$record->name}}"/>
 
                     <h3 class="profile-username text-center">{{$record->name}}</h3>
