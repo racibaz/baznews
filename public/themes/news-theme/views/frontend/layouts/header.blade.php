@@ -52,7 +52,7 @@
         </div><!-- /.navbar-header -->
         <div class="menu">
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="main-navbar-menu">
+            <div class="collapse navbar-collapse full-menu" id="main-navbar-menu">
                 <div class="container">
                     <ul class="nav navbar-nav">
                         @foreach(Cache::tags(['Setting', 'Menu'])->get('header_menus') as $menu)

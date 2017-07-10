@@ -215,5 +215,7 @@ $(window).resize(function () {
     adsSize();
 });
 
-adsSize();
-
+window.load = adsSize();
+setTimeout(function () {
+    adsSize();
+},1000);

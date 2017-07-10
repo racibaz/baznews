@@ -10,7 +10,7 @@
                             @foreach($mainCuffNewsItems as $mainCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
                                     <a href="{!! !empty($mainCuffNewsItem->cuff_direct_link) ?  $mainCuffNewsItem->cuff_direct_link : route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
-                                        <img data-original="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}"
+                                        <img src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}"
                                              data-src="{{ asset('images/news_images/' . $mainCuffNewsItem->id . '/cuff_photo/' . $mainCuffNewsItem->cuff_photo)}}"
                                              alt="News Logo" class="lazy-slider lazy">
                                     </a>
@@ -39,7 +39,7 @@
                             @foreach($boxCuffNewsItems as $boxCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
                                     <a href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
-                                        <img data-original="{{ asset('images/news_images/' . $boxCuffNewsItem->id . '/322x265_' . $boxCuffNewsItem->thumbnail )}}"
+                                        <img src="{{ asset('images/news_images/' . $boxCuffNewsItem->id . '/322x265_' . $boxCuffNewsItem->thumbnail )}}"
                                              alt="{{$boxCuffNewsItem->title}}" class="lazy">
                                     </a>
                                 </li>
@@ -71,7 +71,7 @@
                                 <li>
                                     <div class="thumbnail">
                                         <a href="{{ route('show_news', ['slug' => $miniCuffNewsItem->slug]) }}">
-                                            <img data-original="{{ asset('images/news_images/' . $miniCuffNewsItem->id . '/196x150_' . $miniCuffNewsItem->thumbnail) }}"
+                                            <img src="{{ asset('images/news_images/' . $miniCuffNewsItem->id . '/196x150_' . $miniCuffNewsItem->thumbnail) }}"
                                                  alt="Dummyİmage" class="lazy">
                                             <div class="caption">
                                                 <span class="ct-title">{{$miniCuffNewsItem->small_title}}</span>
@@ -189,7 +189,7 @@
                             @foreach($photoGalleries as $index =>  $photoGallery)
                                 <li>
                                     <a href="{{route('show_photo_gallery',['slug' => $photoGallery->slug ])}}">
-                                        <img class="lazy" data-original="{{ asset('gallery/' . $photoGallery->id . '/photos/497x358_' . $photoGallery->thumbnail)}}"/>
+                                        <img src="{{ asset('gallery/' . $photoGallery->id . '/photos/497x358_' . $photoGallery->thumbnail)}}"/>
                                     </a>
                                 </li>
                             @endforeach
@@ -218,7 +218,7 @@
                             @foreach($videoGalleries as $index =>  $videoGallery)
                                 <li>
                                     <a href="{{route('show_videos',['slug' => $videoGallery->videos->first()->slug ])}}">
-                                        <img class="lazy" data-original="{{ asset('video_gallery/' . $videoGallery->id . '/497x358_' . $videoGallery->thumbnail)}}"/>
+                                        <img src="{{ asset('video_gallery/' . $videoGallery->id . '/497x358_' . $videoGallery->thumbnail)}}"/>
                                     </a>
                                 </li>
                             @endforeach
@@ -313,11 +313,6 @@
                 pagerCustom: '#m_pg1',
                 nextText: '<i class="fa fa-angle-right"></i>',
                 prevText: '<i class="fa fa-angle-left"></i>',
-                onSlideBefore: function($slideElement, oldIndex, newIndex){
-                    var $lazy = $slideElement.find(".lazy");
-                    var $load = $lazy.attr("data-original");
-                    $lazy.attr("src",$load).removeClass("lazy");
-                }
             });
             sliderHoverAction('#m_pg1', imageSlider);
 
@@ -331,11 +326,6 @@
                 pagerCustom: '#m_pg2',
                 nextText: '<i class="fa fa-angle-right"></i>',
                 prevText: '<i class="fa fa-angle-left"></i>',
-                onSlideBefore: function($slideElement, oldIndex, newIndex){
-                    var $lazy = $slideElement.find(".lazy");
-                    var $load = $lazy.attr("data-original");
-                    $lazy.attr("src",$load).removeClass("lazy");
-                }
             });
             sliderHoverAction('#m_pg2', videoSlider);
 
@@ -366,11 +356,6 @@
                 pager: false,
                 nextText: '<i class="fa fa-angle-right"></i>',
                 prevText: '<i class="fa fa-angle-left"></i>',
-                onSlideBefore: function($slideElement, oldIndex, newIndex){
-                    var $lazy = $slideElement.find(".lazy");
-                    var $load = $lazy.attr("data-original");
-                    $lazy.attr("src",$load).removeClass("lazy");
-                }
             });
 
         })(jQuery);
@@ -381,6 +366,7 @@
         jQuery(document).ready(function () {
             jQuery('#content,#sidebar').theiaStickySidebar();
         });
+
     </script>
 
 @endsection
