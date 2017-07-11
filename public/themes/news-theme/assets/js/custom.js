@@ -186,15 +186,17 @@ var ct = $('#container').width();
 function adsSize() {
     ct = $('#container').width();
     width = $(window).width();
+    right = $('#dfp-160-kare-sag').width();
+    left = $('#dfp-160-kare-sag').width();
     var sum = ct + left + right;
-    console.log("Cont: " + ct + " Sağ Kutu: " + right + " Sol Kutu: " + left);
+    //console.log("Cont: " + ct + " Sağ Kutu: " + right + " Sol Kutu: " + left);
     var size = 0;
     if (width < sum) {
         size = (width - sum) / 2;
     } else if (width > sum) {
         size = (width - sum) / 2;
     }
-    console.log("Size: " + size);
+    //console.log("Size: " + size);
     $('#dfp-160-kare-sag').css("right", size - 10 + "px").show();
     $('#dfp-pageskin-sol').css("left", size - 10 + "px").show();
     $('.ads').css('opacity', '1');

@@ -349,7 +349,7 @@
              * --------------------------------------------------------*/
             $('.bxcarousel').bxSlider({
                 slideWidth: 228,
-                minSlides: 5,
+                minSlides: 2,
                 maxSlides: 5,
                 slideMargin: 0,
                 auto: true,
