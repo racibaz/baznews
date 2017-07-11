@@ -224,7 +224,7 @@ class User extends Authenticatable
 
     public static function getUserAvatar($email, $size = 40): string
     {
-        $default = Cache::get('url') . "/default_user_avatar.jpg";
+        $default = asset('img/default_user_avatar.jpg');
         return "https://www.gravatar.com/avatar/" . md5(strtolower(trim($email))) . "?d=" . urlencode($default) . "&s=" . $size;
     }
 

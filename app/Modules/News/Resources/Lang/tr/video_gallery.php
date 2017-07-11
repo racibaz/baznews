@@ -29,5 +29,5 @@ return [
     'keywords' => 'Anahtar Kelimeler',
     'description' => 'Açıklama',
     'status' => 'Durum',
-
+    'gallery_other_videos' => 'Galleriye Ait Diğer Videolar',
 ];

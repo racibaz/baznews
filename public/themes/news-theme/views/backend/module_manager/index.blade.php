@@ -41,44 +41,12 @@
                                     <th>{{ $module['name'] }} </th>
                                     @if(Module::isEnabled($module['slug']))
                                         <td>
-                                            {!! link_to_route('moduleActivationToggle', \Caffeinated\Modules\Facades\Module::isEnabled($module['slug']) ? 'Aktif' : 'Pasif' , $module['slug'], ['class'=>'btn btn-success'] ) !!}</td>
-                                        <td>{!! link_to_route('moduleReset', trans('module_manager.refresh') , $module['slug'], ['class'=>'btn btn-info'] ) !!}</td>
+                                            {!! link_to_route('moduleActivationToggle', 'Aktif', $module['slug'], ['class'=>'btn btn-success'] ) !!}</td>
+                                        <td>{!! link_to_route('moduleReset', trans('module_manager.remove_data') , $module['slug'], ['class'=>'btn btn-danger'] ) !!}</td>
                                     @else
-                                        <td>{!! link_to_route('moduleActivationToggle', \Caffeinated\Modules\Facades\Module::isEnabled($module['slug']) ? 'Aktif' : 'Pasif' , $module['slug'], ['class'=>'btn btn-success'] ) !!}</td>
-                                        <td>{!! link_to_route('moduleRefreshAndSeed', trans('module_manager.refresh') , $module['slug'], ['class'=>'btn btn-info'] ) !!}</td>
+                                        <td>{!! link_to_route('moduleActivationToggle', 'Pasif' , $module['slug'], Module::isEnabled($module['slug']) ? ['class'=>'btn btn-success'] : ['class'=>'btn btn-danger'] ) !!}</td>
+                                        <td>{!! link_to_route('moduleRefreshAndSeed', trans('module_manager.seed_data'), $module['slug'], ['class'=>'btn btn-info'] ) !!}</td>
                                     @endif
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table id="modules" class="table table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>{{trans('module_manager.name')}}</th>
-                                <th>{{trans('common.is_active')}}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($records as $record)
-                                <tr>
-                                    <td>{{$record->id}}</td>
-                                    <td>{!! link_to_route('module_manager.show', $record->name , $record, [] ) !!}</td>
-                                    <td>{!!$record->is_active ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('module_manager.destroy',  $record))) !!}
-
-                                            {!! link_to_route('module_manager.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-
-
-                                            {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

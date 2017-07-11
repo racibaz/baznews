@@ -38,4 +38,5 @@ return [
     '_lft' => 'Sol',
     '_rgt' => 'Sağ',
     'parent_id' => 'Üst Kategori',
+    'category_latest_videos' => 'Kategoriye Ait Son Videolar',
 ];
