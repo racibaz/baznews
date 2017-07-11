@@ -52,5 +52,6 @@ return [
     'remove_home_page_cache' => 'Ana Sayfa Önbelleği Temizle',
     'close' => 'Kapat',
     'web_site' => 'Web Sitesi',
+    'api_manager' => 'API Yönetimi',
 
 ];

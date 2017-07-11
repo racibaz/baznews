@@ -21,4 +21,6 @@ return[
     'status'=>'Sıralama',
     'is_active'=>'Aktif/Pasif',
     'refresh'=>'Modülü Yenile',
+    'remove_data' => 'Verileri Sil',
+    'seed_data' => 'Dump Dataları Ekle',
 ];
