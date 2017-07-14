@@ -480,6 +480,18 @@ header {
 /* ==========================================================================
    Main Menü
    ========================================================================== */
+.menu .navbar-nav{
+    height: 46px;
+    overflow: hidden;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+.menu .navbar-nav:hover{
+    overflow: inherit;
+    height: auto;
+}
 #main-navbar-menu {
     width: 100%;
     padding: 0;
