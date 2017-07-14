@@ -36,7 +36,19 @@
                             iç haber
                         @elseif($record->news_type == 3)
                             <div class="gallery-content">
-                                photo gallery
+                                <div class="container-gallery">
+                                    <img src="https://unsplash.it/1920/1200?image=494" alt="">
+                                    <img src="https://unsplash.it/1920/1200?image=483" alt="">
+                                    <img src="https://unsplash.it/1920/1200?image=541" alt="">
+                                    <img src="https://unsplash.it/1920/1200?image=563" alt="">
+                                    <img src="https://unsplash.it/1920/1200?image=579" alt="">
+                                    <img src="https://unsplash.it/1920/1200?image=577" alt="">
+                                    <img src="https://unsplash.it/1920/1200?image=604" alt="">
+                                    <img src="https://unsplash.it/1920/1200?image=611" alt="">
+                                    <img src="https://unsplash.it/1920/1200?image=623" alt="">
+                                    <img src="https://unsplash.it/1920/1200?image=628" alt="">
+                                    <img src="https://unsplash.it/1920/1200?image=646" alt="">
+                                </div>
                             </div>
                         @elseif($record->news_type == 4)
                             <div class="video-embed">
@@ -371,7 +383,7 @@
 
 
 @section('css')
-
+    <link href="{{ Theme::asset($activeTheme . '::css/gallery.css') }}" rel="stylesheet">
 @endsection
 
 @section('js')
@@ -379,6 +391,7 @@
     <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/gallery.js') }}"></script>
     <script>
         videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
         videojs("video-js", {}, function () {
@@ -400,6 +413,36 @@
                 jQuery(this).hide();
             });
 
+            //Gallery js..
+            $('.container-gallery').gallery({
+                height: 650,
+                items: 6,
+                480: {
+                    items: 2,
+                    height: 400,
+                    thmbHeight: 100
+                },
+                768: {
+
+                    items: 3,
+                    height: 500,
+                    thmbHeight: 120
+                },
+                600: {
+
+                    items: 4
+                },
+                992 : {
+
+                    items: 5,
+                    height: 350
+                }
+
+            });
+
         });
+
+
+
     </script>
 @endsection
