@@ -1,9 +1,9 @@
 {
   "slug": "news-theme",
-  "name": "news-theme backend AdminLte 2.3.6 frontend by Ali Duman",
+  "name": "news-theme",
   "author": "Ali Duman",
-  "description": "This is an example my default theme.",
-  "version": "1.0.0",
+  "description": "news-theme backend AdminLte 2.3.6 frontend by Ali Duman",
+  "version": "1.0",
   "advertisements": [
     {
       "areaName": "top",
