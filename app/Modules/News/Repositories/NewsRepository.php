@@ -134,4 +134,14 @@ class NewsRepository extends EloquentRepository
             ->take($take);
     }
 
+
+    public function getNewsOfUserById($userId, $take = 20)
+    {
+        $record = $this->where('user_id', $userId)
+            ->where('is_active', 1)
+            ->where('status', 1)
+            ->paginate($take);
+        return $record ? $record : null;
+    }
+
 }
