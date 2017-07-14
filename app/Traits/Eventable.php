@@ -13,7 +13,7 @@ trait Eventable
             static::created(function ($record) {
 
                 $event = new Event();
-                $event->user_id = Auth::user()->id;
+                $event->user_id = Auth::user() ? Auth::user()->id : null;
                 $event->event = get_called_class() . ' Created';
                 $record->events()->save($event);
             });
