@@ -32,7 +32,7 @@ class CreateNewsTable extends Migration
             $table->text('thumbnail')->nullable();
             $table->string('cuff_direct_link')->nullable();
             $table->string('video_embed')->nullable();
-            $table->unsignedBigInteger('news_type')->nullable()->default(0);
+            $table->unsignedInteger('news_type')->nullable()->default(0);
             $table->string('map_text')->nullable();
             $table->unsignedInteger('status')->nullable();
             //$table->enum('choices', array('foo', 'bar'));
