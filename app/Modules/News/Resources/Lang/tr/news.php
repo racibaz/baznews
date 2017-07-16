@@ -85,6 +85,5 @@ return [
     'trashed_news_restore' => 'Silinmiş Haberi Geri Al',
     'search' => 'Ara',
     'box_cuff_widget_title' => 'Manşet Haberleri',
-
-
+    'news_relation_is_not_updated_with_news_type' => 'Haber Türündeki Kayıt Silinemedi.',
 ];

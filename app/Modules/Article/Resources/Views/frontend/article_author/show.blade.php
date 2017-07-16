@@ -7,7 +7,7 @@
                 <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
             </li>
             <li>
-                <a href="{!! route('article_category', ['slug' => $record->slug]) !!}">{{$record->name}}</a>
+                <a href="{!! route('article_author', ['slug' => $record->slug]) !!}">{{$record->name}}</a>
             </li>
         </ol>
         <div class="row">

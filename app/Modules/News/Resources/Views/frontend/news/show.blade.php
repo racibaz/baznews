@@ -37,17 +37,11 @@
                         @elseif($record->news_type == 3)
                             <div class="gallery-content">
                                 <div class="container-gallery">
-                                    <img src="https://unsplash.it/1920/1200?image=494" alt="">
-                                    <img src="https://unsplash.it/1920/1200?image=483" alt="">
-                                    <img src="https://unsplash.it/1920/1200?image=541" alt="">
-                                    <img src="https://unsplash.it/1920/1200?image=563" alt="">
-                                    <img src="https://unsplash.it/1920/1200?image=579" alt="">
-                                    <img src="https://unsplash.it/1920/1200?image=577" alt="">
-                                    <img src="https://unsplash.it/1920/1200?image=604" alt="">
-                                    <img src="https://unsplash.it/1920/1200?image=611" alt="">
-                                    <img src="https://unsplash.it/1920/1200?image=623" alt="">
-                                    <img src="https://unsplash.it/1920/1200?image=628" alt="">
-                                    <img src="https://unsplash.it/1920/1200?image=646" alt="">
+                                    @if($record->photo_galleries->first()->photos->count())
+                                        @foreach($record->photo_galleries->first()->photos as $photo)
+                                            <img src="{{asset('photos/' . $photo->id . '/224x195_' . $photo->file )}}">
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         @elseif($record->news_type == 4)
@@ -243,7 +237,11 @@
                                 @foreach($record->photos as $photo)
                                     <div class="col-lg-12">
                                         <div class="news-photo-image">
-                                            <img src="{{asset('images/news_images/4/196x150_4.jpg')}}">
+                                            @if($photo->file)
+                                                <img src="{{asset('photos/' . $photo->id . '/224x195_' . $photo->file )}}">
+                                            @elseif($photo->link)
+                                                <img src="{{$photo->link}}">
+                                            @endif
                                             <div class="news-photo-title">
                                                 {{$photo->name}}
                                             </div>
