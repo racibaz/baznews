@@ -1043,61 +1043,50 @@ header {
 .th-nw-slide .pager a {
     position: relative;
     display: block;
-    width: 85px;
-    height: 85px;
+    width: 92px;
     padding: 0;
     float: left;
     border: 0;
 }
 
-@media only screen and (max-width: 480px) {
-    .th-nw-slide .pager a {
-        width: 45px;
-        height: 45px;
-    }
-}
-
 .th-nw-slide .pager a span.img-ct {
-    width: 85px;
-    height: 85px;
+    width: 92px;
     border: 3px solid #e1e1e1;
     display: block;
     overflow: hidden;
 }
-
-@media only screen and (max-width: 480px) {
-    .th-nw-slide .pager a span.img-ct {
-        width: 45px;
-        height: 45px;
-    }
-}
-
 .th-nw-slide .pager a.active span.img-ct {
     border: 3px solid #ea4748;
 }
-
 .th-nw-slide .pager a.active:after {
     display: block;
     position: absolute;
     bottom: -13px;
-    left: 35px;
+    left: 50%;
+    margin-left: -7px;
     z-index: 1;
     content: '\25bc';
     font-size: 12px;
     color: #ea4748;
 }
 
-@media only screen and (max-width: 480px) {
-    .th-nw-slide .pager a.active:after {
-        left: 17px;
-    }
-}
 
 .th-nw-slide .pager a img {
     display: block;
-    width: 110px;
+    width: 94px;
 }
 
+@media only screen and (max-width: 1400px) {
+    .th-nw-slide .pager a {
+        width: 16.6%;
+    }
+    .th-nw-slide .pager a span.img-ct{
+        width: 100%;
+    }
+    .th-nw-slide .pager a img{
+        width: 100%;
+    }
+}
 /* ==========================================================================
    Video List Page Main İmages
    ========================================================================== */
