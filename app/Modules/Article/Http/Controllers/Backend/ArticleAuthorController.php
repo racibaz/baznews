@@ -104,7 +104,9 @@ class ArticleAuthorController extends BackendController
         if (isset($record->id)) {
             $result = $this->repo->update($record->id, $input);
         } else {
-            $result = $this->repo->create($input);
+            $record = $this->repo->create($input);
+            //sluggable slug ın sonuna id koyması için upate ediyoruz.
+            $result = $this->repo->update($record->id, $input);
         }
 
         if ($result) {
