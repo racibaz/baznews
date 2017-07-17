@@ -34,7 +34,6 @@ class ArchiveController extends Controller
             $datetime = Carbon::createFromDate($year, $month, $day, config('app.timezone'));
 
             $records = News::where('is_active', 1)
-                ->where('status', 1)
                 ->whereBetween('created_at', [$date . ' 00:00:00', $date . ' 23:59:-59'])
                 ->paginate();
         }

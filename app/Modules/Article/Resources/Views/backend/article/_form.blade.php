@@ -137,12 +137,6 @@
                         </label>
                     </div>
                     <div class="form-group">
-                        <label>
-                            {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                            {{trans('article::article.is_active')}}
-                        </label>
-                    </div>
-                    <div class="form-group">
                         <div class="row">
                             <div class="col-lg-12">
                                 <button class="btn btn-success" type="submit"><i

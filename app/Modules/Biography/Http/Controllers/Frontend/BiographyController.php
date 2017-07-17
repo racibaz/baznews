@@ -22,7 +22,6 @@ class BiographyController extends Controller
                 ->with([
                     'user',
                 ])
-                ->where('status', 1)
                 ->where('is_active', 1)
                 ->findBy('id', $id);
 
@@ -30,7 +29,6 @@ class BiographyController extends Controller
                 ->with([
                     'user',
                 ])
-                ->where('status', 1)
                 ->where('is_active', 1)
                 ->findAll()->take(5);
 

@@ -2,6 +2,8 @@
 
 namespace App\Modules\Article\Providers;
 
+use App\Modules\Article\Models\Article;
+use App\Modules\Article\Observers\ArticleObserver;
 use Caffeinated\Modules\Support\ServiceProvider;
 
 class ModuleServiceProvider extends ServiceProvider
@@ -15,6 +17,8 @@ class ModuleServiceProvider extends ServiceProvider
     {
         $this->loadTranslationsFrom(__DIR__ . '/../Resources/Lang', 'article');
         $this->loadViewsFrom(__DIR__ . '/../Resources/Views', 'article');
+
+        Article::observe(ArticleObserver::class);
     }
 
     /**

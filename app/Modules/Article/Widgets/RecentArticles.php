@@ -29,7 +29,6 @@ class RecentArticles extends AbstractWidget
             return $repo->with(['article_categories', 'article_authors'])
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
-                ->where('status', 1)
                 ->take(Redis::get('recent_article_widget_list_count'))
                 ->orderBy('order', 'desc')
                 ->get();

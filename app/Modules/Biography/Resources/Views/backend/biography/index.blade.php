@@ -35,7 +35,6 @@
                             <th>{{trans('biography::biography.name')}}</th>
                             <th>{{trans('biography::biography.short_url')}}</th>
                             <th>{{trans('biography::biography.order')}}</th>
-                            <th>{{trans('biography::biography.status')}}</th>
                             <th>{{trans('biography::biography.is_cuff')}}</th>
                             <th>{{trans('biography::biography.is_active')}}</th>
                             <th>{{trans('biography::biography.edit_delete')}}</th>
@@ -48,7 +47,6 @@
                                 <td>{!! link_to_route('biography.show', $record->name , $record, [] ) !!}</td>
                                 <td> {{$record->short_url}} </td>
                                 <td> {{$record->order}} </td>
-                                <td>{!!$record->status ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                 <td>{!!$record->cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                 <td>

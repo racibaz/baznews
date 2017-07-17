@@ -26,7 +26,6 @@ class Biographies extends AbstractWidget
 
             $biograpRepository = new BiographyRepository();
             return $biograpRepository
-                ->where('status', 1)
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
 //                ->take(Redis::get('biography_count'))

@@ -46,7 +46,6 @@ class NewsController extends Controller
                     'tags',
                     'user'
                 ])
-                ->where('status', 1)
                 ->where('is_active', 1)
                 ->findBy('id', $id);
 

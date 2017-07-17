@@ -35,7 +35,6 @@ class BoxCuffNews extends AbstractWidget
             $boxCuffNewsItems = $newsRepository
                 ->where('is_active', 1)
                 ->where('box_cuff', 1)
-                ->where('status', 1)
                 ->take(5)
                 ->orderBy('updated_at', 'desc')
                 ->get();

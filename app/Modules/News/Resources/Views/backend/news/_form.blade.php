@@ -179,12 +179,6 @@
                                 {!! Form::label('status', trans('news::news.status'),['class'=> ' control-label']) !!}
                                 {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('news::news.please_choose'),'class' => 'form-control']) !!}
                             </div>
-                            <div class="form-group">
-                                <label>
-                                    {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                    {{trans('news::common.is_active')}}
-                                </label>
-                            </div>
                         </div><!-- /.col-lg-12 -->
                     </div><!-- /.row -->
                 </div><!-- /.box-body -->

@@ -21,11 +21,11 @@ class IndexController extends Controller
         return Cache::tags(['homePage'])->rememberForever('homePage', function () {
 
             $newsRepository = new NewsRepository();
-            $breakNewsItems = $newsRepository->where('break_news', 1)->where('status', 1)->limit(Cache::tags('Setting')->get('break_news'))->orderBy('updated_at', 'desc')->findAll();
-            $bandNewsItems = $newsRepository->where('band_news', 1)->where('status', 1)->limit(Cache::tags('Setting')->get('band_news'))->orderBy('updated_at', 'desc')->findAll();
-            $mainCuffNewsItems = $newsRepository->where('main_cuff', 1)->where('status', 1)->limit(Cache::tags('Setting')->get('main_cuff'))->orderBy('updated_at', 'desc')->findAll();
-            $miniCuffNewsItems = $newsRepository->where('mini_cuff', 1)->where('status', 1)->limit(Cache::tags('Setting')->get('mini_cuff'))->orderBy('updated_at', 'desc')->findAll();
-            $boxCuffNewsItems = $newsRepository->where('box_cuff', 1)->where('status', 1)->limit(5)->orderBy('updated_at', 'desc')->findAll();
+            $breakNewsItems = $newsRepository->where('break_news', 1)->limit(Cache::tags('Setting')->get('break_news'))->orderBy('updated_at', 'desc')->findAll();
+            $bandNewsItems = $newsRepository->where('band_news', 1)->limit(Cache::tags('Setting')->get('band_news'))->orderBy('updated_at', 'desc')->findAll();
+            $mainCuffNewsItems = $newsRepository->where('main_cuff', 1)->limit(Cache::tags('Setting')->get('main_cuff'))->orderBy('updated_at', 'desc')->findAll();
+            $miniCuffNewsItems = $newsRepository->where('mini_cuff', 1)->limit(Cache::tags('Setting')->get('mini_cuff'))->orderBy('updated_at', 'desc')->findAll();
+            $boxCuffNewsItems = $newsRepository->where('box_cuff', 1)->limit(5)->orderBy('updated_at', 'desc')->findAll();
 
             $photoGalleryRepository = new PhotoGalleryRepository();
             $photoGalleries = $photoGalleryRepository->where('is_active', 1)->where('is_cuff', 1)->limit(Cache::tags('Setting')->get('photo_gallery'))->orderBy('updated_at', 'desc')->findAll();

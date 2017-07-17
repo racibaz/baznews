@@ -18,7 +18,6 @@ class SearchController extends Controller
         $search = $request->q;
         $records = News::search($request->q)
             ->where('is_active', 1)
-            ->where('status', 1)
             ->paginate(15);
 
         return Theme::view('news::frontend.news.search', compact([

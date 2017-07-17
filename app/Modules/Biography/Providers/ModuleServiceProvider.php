@@ -2,6 +2,8 @@
 
 namespace App\Modules\Biography\Providers;
 
+use App\Modules\Biography\Models\Biography;
+use App\Modules\Biography\Observers\BiographyObserver;
 use Caffeinated\Modules\Support\ServiceProvider;
 
 class ModuleServiceProvider extends ServiceProvider
@@ -15,6 +17,8 @@ class ModuleServiceProvider extends ServiceProvider
     {
         $this->loadTranslationsFrom(__DIR__ . '/../Resources/Lang', 'biography');
         $this->loadViewsFrom(__DIR__ . '/../Resources/Views', 'biography');
+
+        Biography::observe(BiographyObserver::class);
     }
 
     /**

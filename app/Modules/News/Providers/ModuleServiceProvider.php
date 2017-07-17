@@ -2,6 +2,8 @@
 
 namespace App\Modules\News\Providers;
 
+use App\Modules\News\Models\News;
+use App\Modules\News\Observers\NewsObserver;
 use App\Modules\News\Repositories\NewsCategoryRepository;
 use Cache;
 use Caffeinated\Modules\Support\ServiceProvider;
@@ -18,6 +20,9 @@ class ModuleServiceProvider extends ServiceProvider
     {
         $this->loadTranslationsFrom(__DIR__ . '/../Resources/Lang', 'news');
         $this->loadViewsFrom(__DIR__ . '/../Resources/Views', 'news');
+
+        News::observe(NewsObserver::class);
+
 
         if (!app()->runningInConsole()) {
 

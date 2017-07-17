@@ -20,7 +20,6 @@ class News extends Model
     use RevisionableTrait;
     use Sluggable;
 
-
     /**
      * Return the sluggable configuration array for this model.
      *

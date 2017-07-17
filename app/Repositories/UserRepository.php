@@ -12,7 +12,6 @@ class UserRepository extends EloquentRepository
     public function getUserBySlug($slug)
     {
         $user = $this->where('slug', $slug)
-            ->where('is_active', 1)
             ->where('status', 1)
             ->first();
 

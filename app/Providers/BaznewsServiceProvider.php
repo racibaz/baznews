@@ -84,7 +84,7 @@ class BaznewsServiceProvider extends ServiceProvider
 
                 //todo cachle nerebilirnir.
                 View::share('breakNewsItems', News::where('break_news', 1)
-                    ->where('status', 1)
+                    ->where('is_active', 1)
                     ->limit(Cache::tags('Setting')->get('break_news'))
                     ->get());
 

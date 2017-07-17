@@ -27,7 +27,6 @@ class ArticleController extends Controller
                     'article_author',
                     'user',
                 ])
-                ->where('status', 1)
                 ->where('is_active', 1)
                 ->findBy('id', $id);
 
@@ -37,7 +36,6 @@ class ArticleController extends Controller
                     'article_author',
                     'user',
                 ])
-                ->where('status', 1)
                 ->where('is_active', 1)
                 ->findAll()
                 ->take(5);

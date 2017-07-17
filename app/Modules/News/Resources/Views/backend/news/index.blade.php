@@ -293,7 +293,6 @@
                                 <th>{{trans('news::news.is_comment')}}</th>
                                 <th>{{trans('news::news.main_cuff')}}</th>
                                 <th>{{trans('news::news.mini_cuff')}}</th>
-                                <th>{{trans('news::news.is_active')}}</th>
                                 <th>{{trans('news::news.edit_delete')}}</th>
                             </tr>
                             </thead>
@@ -348,11 +347,6 @@
                                     <td>
                                         <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'mini_cuff']) !!}">
                                             {!! $record->mini_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-red"><i class="fa fa-times"></i></span>'!!}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="{!! route('toggle_boolean_type',['newsId' => $record->id,'key' => 'is_active']) !!}">
-                                            {!!$record->is_active ? '<label class="badge bg-green">' . trans('news::news.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}
                                         </a>
                                     </td>
                                     <td>

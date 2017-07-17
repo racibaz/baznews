@@ -104,12 +104,6 @@
                         </label>
                     </div>
                     <div class="form-group">
-                        <label>
-                            {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                            {{trans('common.is_active')}}
-                        </label>
-                    </div>
-                    <div class="form-group">
                         {!! Form::label('order', trans('biography::biography.order'),['class'=> 'control-label']) !!}
                         {!! Form::number('order', $record->order, ['placeholder' => trans('biography::biography.order') ,'class' => 'form-control']) !!}
                     </div>
