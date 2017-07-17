@@ -1,5 +1,4 @@
 @extends($activeTheme . '::frontend.master')
-@extends($activeTheme . '::frontend.master')
 
 @section('content')
     <article>
