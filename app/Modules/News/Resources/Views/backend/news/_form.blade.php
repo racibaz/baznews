@@ -257,18 +257,6 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>
-                                    {!! Form::checkbox('find_tags_in_content', null , isset($record->id) ? $record->find_tags_in_content : Redis::get('find_tags_in_content') ) !!}
-                                    {{trans('news::news.find_tags_in_content')}}
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label>
-                                    {!! Form::checkbox('automatic_add_tags', null , isset($record->id) ? 0 :  Redis::get('automatic_add_tags') ) !!}
-                                    {{trans('news::news.automatic_add_tags')}}
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label>
                                     {!! Form::checkbox('band_news', null , $record->band_news) !!}
                                     {{trans('news::news.band_news')}}
                                 </label>
@@ -281,14 +269,20 @@
                             </div>
                             <div class="form-group">
                                 <label>
-                                    {!! Form::checkbox('is_cuff', null , $record->is_cuff) !!}
-                                    {{trans('news::news.is_cuff')}}
+                                    {!! Form::checkbox('break_news', null , $record->break_news) !!}
+                                    {{trans('news::news.break_news')}}
                                 </label>
                             </div>
                             <div class="form-group">
                                 <label>
-                                    {!! Form::checkbox('break_news', null , $record->break_news) !!}
-                                    {{trans('news::news.break_news')}}
+                                    {!! Form::checkbox('main_cuff', null , $record->main_cuff) !!}
+                                    {{trans('news::news.main_cuff')}}
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    {!! Form::checkbox('mini_cuff', null , $record->mini_cuff) !!}
+                                    {{trans('news::news.mini_cuff')}}
                                 </label>
                             </div>
                             <div class="form-group">
@@ -311,14 +305,20 @@
                             </div>
                             <div class="form-group">
                                 <label>
-                                    {!! Form::checkbox('main_cuff', null , $record->main_cuff) !!}
-                                    {{trans('news::news.main_cuff')}}
+                                    {!! Form::checkbox('find_tags_in_content', null , isset($record->id) ? $record->find_tags_in_content : Redis::get('find_tags_in_content') ) !!}
+                                    {{trans('news::news.find_tags_in_content')}}
                                 </label>
                             </div>
                             <div class="form-group">
                                 <label>
-                                    {!! Form::checkbox('mini_cuff', null , $record->mini_cuff) !!}
-                                    {{trans('news::news.mini_cuff')}}
+                                    {!! Form::checkbox('automatic_add_tags', null , isset($record->id) ? 0 :  Redis::get('automatic_add_tags') ) !!}
+                                    {{trans('news::news.automatic_add_tags')}}
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    {!! Form::checkbox('is_cuff', null , $record->is_cuff) !!}
+                                    {{trans('news::news.is_cuff')}}
                                 </label>
                             </div>
                             <div class="form-group">

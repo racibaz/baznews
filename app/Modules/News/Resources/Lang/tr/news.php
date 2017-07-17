@@ -21,7 +21,7 @@ return [
     'thumbnail' => 'Küçük Resim',
     'description' => 'Tanım/Not',
     'status' => 'Durum',
-    'is_cuff' => 'Ana Manşet',
+    'is_cuff' => 'Manşet',
     'cuff_direct_link' => 'Ana Manşet Linki',
     'band_news' => 'Band Haber',
     'box_cuff' => 'Sağ Manşet',
