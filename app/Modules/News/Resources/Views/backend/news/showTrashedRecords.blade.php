@@ -5,7 +5,7 @@
         <div class="col-xs-12">
             <div style="margin-bottom: 20px;">
                 @if(Auth::user()->can('showTrashedRecords-news'))
-                    <a href="{{ route('news.index') }}" class="btn btn-info">
+                    <a href="{{ route('news.list') }}" class="btn btn-info">
                         <i class="fa fa-angle-left"></i>&nbsp;&nbsp;{{ trans('news::news.back_index_page') }}
                     </a>
                 @endif
