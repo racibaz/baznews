@@ -68,15 +68,6 @@
                                        target="{{$menu->target}}">{!! $menu->icon !!} {{$menu->name}}</a></li>
                             @endif
                         @endforeach
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Alt Menü <b
-                                        class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Örnek Bağlantı-1</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Örnek Bağlantı-2</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </div>
             </div><!-- /.navbar-collapse -->
