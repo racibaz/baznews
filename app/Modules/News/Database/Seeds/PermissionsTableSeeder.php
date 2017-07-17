@@ -219,13 +219,6 @@ class PermissionsTableSeeder extends Seeder
             'is_active' => 1,
         ]);
 
-        $news13 = Permission::create([
-            'name' => 'forgetCache-news',
-            'display_name' => 'news forgetNewsCache',
-            'is_active' => 1,
-        ]);
-
-
         foreach (News::$statuses as $status) {
 
             $news[$status] = Permission::create([
@@ -710,7 +703,6 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($news10);
         $super_admin->permissions()->attach($news11);
         $super_admin->permissions()->attach($news12);
-        $super_admin->permissions()->attach($news13);
 
         foreach (News::$statuses as $status) {
             $super_admin->permissions()->attach($news[$status]);

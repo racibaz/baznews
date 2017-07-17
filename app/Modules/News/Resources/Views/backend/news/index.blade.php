@@ -251,11 +251,6 @@
                 </div>
             @endif
             <div class="form-group pull-right">
-                @if(Auth::user()->can('forgetCache-news'))
-                    <a href="{{ route('forget_news_cache') }}" class="btn btn-danger">
-                        <i class="fa fa-eraser"></i> {{ trans('news::news.forget_news_cache') }}
-                    </a>
-                @endif
                 @if(Auth::user()->can('showTrashedRecords-news'))
                     <a href="{{ route('showTrashedRecords') }}" class="btn btn-primary">
                         <i class="fa fa-trash-o"></i> {{ trans('news::news.trashed_news') }}
