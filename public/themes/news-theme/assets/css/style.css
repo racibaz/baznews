@@ -470,7 +470,7 @@ header {
     }
     .navbar-collapse .navbar-nav li{
         float: none;
-        flex-grow: 1;
+        flex-grow: 0;
     }
     .navbar-collapse .navbar-nav li > a{
         width: 100%;
@@ -2184,7 +2184,6 @@ footer .footer-bottom .cpy {
     border-radius: 0;
     background-color: #E3000F;
     border-color: #E3000F;
-    max-width: 200px;
     height: 32px;
     line-height: 1.6em;
     overflow: hidden;
