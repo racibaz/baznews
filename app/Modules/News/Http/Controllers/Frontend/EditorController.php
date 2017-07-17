@@ -4,16 +4,17 @@ namespace App\Modules\News\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Modules\News\Repositories\NewsRepository;
+use App\Modules\News\Repositories\NewsRepository as NewsRepo;
 use App\Repositories\UserRepository as Repo;
 use Cache;
 use Theme;
 
 class EditorController extends Controller
 {
-    public function __construct(Repo $repo)
+    public function __construct(Repo $repo, NewsRepo $newsRepo)
     {
         $this->repo = $repo;
+        $this->newsRepo = $newsRepo;
     }
 
     public function showProfile($slug)
@@ -22,21 +23,8 @@ class EditorController extends Controller
 
             $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
 
-            $user = $this->repo
-                ->where('slug', $slug)
-                ->where('is_active', 1)
-                ->where('status', 1)
-                ->first();
-
-
-            $newsRepo = new NewsRepository();
-            $newsItems = $newsRepo
-                ->where('user_id', $user->id)
-                ->where('is_active', 1)
-                ->where('status', 1)
-                ->paginate(2);
-
-
+            $user = $this->repo->getUserBySlug($slug);
+            $newsItems = $this->newsRepo->getNewsOfUserById($user->id);
             $userAvatar = User::getUserAvatar($user->email, 100);
 
             return Theme::view('news::frontend.editor.editor_news', compact([

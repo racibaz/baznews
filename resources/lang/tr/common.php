@@ -20,6 +20,7 @@ return [
     'pagination' => 'Sayfalar',
     'is_comment' => 'Yorum',
     'share' => 'Paylaş',
+    'show' => 'Göster',
     //Genel Mesajlar
     'message_model_updated' => 'Kayıt İşlemi Başarılı',
     'save_failed' => 'Kayıt İşlemi Hatalı',

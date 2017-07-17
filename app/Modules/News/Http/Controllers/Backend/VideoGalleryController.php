@@ -91,6 +91,16 @@ class VideoGalleryController extends BackendController
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
+        /*
+         * galeriye ait itemları kontrol ediyoruz.
+         * galeriye içirisinde item yok ise hata aldığımızdan dolayı
+         * pasif duruma alıyoruz.
+         * */
+        if($record->videos->count() == 0){
+            $input['is_active'] = false;
+            Session::flash('flash_message', trans('news::video_gallery.not_exist_photos'));
+        }
+
         if (isset($record->id)) {
             $result = $this->repo->update($record->id, $input);
         } else {

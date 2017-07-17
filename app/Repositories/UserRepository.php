@@ -9,4 +9,13 @@ class UserRepository extends EloquentRepository
 
     protected $model = 'App\Models\User';
 
+    public function getUserBySlug($slug)
+    {
+        $user = $this->where('slug', $slug)
+            ->where('is_active', 1)
+            ->where('status', 1)
+            ->first();
+
+        return $user ? $user : null;
+    }
 }

@@ -57,10 +57,10 @@ class LoginController extends Controller
 
         if ($user->status === 0) {
             Auth::logout();
-            return redirect('/login')->withError('Your Account is Passive Mode');
+            return redirect('/login')->withErrors('Your Account is Passive Mode');
         } elseif ($user->status === 2) {
             Auth::logout();
-            return redirect('/login')->withError('Please activate your account. <a href="' . route('auth.activate.resend') . '?email=' . $user->email . '">Resend</a>');
+            return redirect('/login')->withErrors('Please activate your account. <a href="' . route('auth.activate.resend') . '?email=' . $user->email . '">Resend</a>');
         }
     }
 }

@@ -112,6 +112,16 @@ class PhotoGalleryController extends BackendController
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['user_id'] = Auth::user()->id;
 
+        /*
+         * galeriye ait itemları kontrol ediyoruz.
+         * galeriye içirisinde item yok ise hata aldığımızdan dolayı
+         * pasif duruma alıyoruz.
+         * */
+        if($record->photos->count() == 0){
+            $input['is_active'] = false;
+            Session::flash('flash_message', trans('news::photo_gallery.not_exist_photos'));
+        }
+
 
         if (isset($record->id)) {
             $result = $this->repo->update($record->id, $input);

@@ -36,7 +36,13 @@
                             iç haber
                         @elseif($record->news_type == 3)
                             <div class="gallery-content">
-                                photo gallery
+                                <div class="container-gallery">
+                                    @if($record->photo_galleries->first()->photos->count())
+                                        @foreach($record->photo_galleries->first()->photos as $photo)
+                                            <img src="{{asset('photos/' . $photo->id . '/224x195_' . $photo->file )}}">
+                                        @endforeach
+                                    @endif
+                                </div>
                             </div>
                         @elseif($record->news_type == 4)
                             <div class="video-embed">
@@ -231,7 +237,11 @@
                                 @foreach($record->photos as $photo)
                                     <div class="col-lg-12">
                                         <div class="news-photo-image">
-                                            <img src="{{asset('images/news_images/4/196x150_4.jpg')}}">
+                                            @if($photo->file)
+                                                <img src="{{asset('photos/' . $photo->id . '/224x195_' . $photo->file )}}">
+                                            @elseif($photo->link)
+                                                <img src="{{$photo->link}}">
+                                            @endif
                                             <div class="news-photo-title">
                                                 {{$photo->name}}
                                             </div>
@@ -371,7 +381,7 @@
 
 
 @section('css')
-
+    <link href="{{ Theme::asset($activeTheme . '::css/gallery.css') }}" rel="stylesheet">
 @endsection
 
 @section('js')
@@ -379,6 +389,7 @@
     <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ Theme::asset($activeTheme . '::js/gallery.js') }}"></script>
     <script>
         videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
         videojs("video-js", {}, function () {
@@ -400,6 +411,36 @@
                 jQuery(this).hide();
             });
 
+            //Gallery js..
+            $('.container-gallery').gallery({
+                height: 650,
+                items: 6,
+                480: {
+                    items: 2,
+                    height: 400,
+                    thmbHeight: 100
+                },
+                768: {
+
+                    items: 3,
+                    height: 500,
+                    thmbHeight: 120
+                },
+                600: {
+
+                    items: 4
+                },
+                992 : {
+
+                    items: 5,
+                    height: 350
+                }
+
+            });
+
         });
+
+
+
     </script>
 @endsection

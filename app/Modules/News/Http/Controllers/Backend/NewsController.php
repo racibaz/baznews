@@ -382,8 +382,29 @@ class NewsController extends BackendController
             $this->recommendationNewsStore($result, $input);
             $this->relatedNewsNewsStore($result, $input);
             $this->tagsNewsStore($result, $input);
-            $this->newsPhotoGalleriesStore($result, $input);
-            $this->newsVideoGalleriesStore($result, $input);
+
+            /*
+             * news_type photo gallery tipi ise photo gallery silinmemeli
+             * */
+            $photoGalleriesStoreResult = $this->newsPhotoGalleriesStore($result, $input);
+            if(!$photoGalleriesStoreResult){
+                return Redirect::back()
+                    ->withErrors(trans('news::news.news_relation_is_not_updated_with_news_type'))
+                    ->withInput($input);
+            }
+
+            /*
+             * news_type videp gallery tipi ise video gallery silinmemeli
+             * */
+            $videoGalleriesStoreResult = $this->newsVideoGalleriesStore($result, $input);
+            if(!$videoGalleriesStoreResult){
+                return Redirect::back()
+                    ->withErrors(trans('news::news.news_relation_is_not_updated_with_news_type'))
+                    ->withInput($input);
+            }
+
+
+
             $this->newsVideosStore($result, $input);
             $this->newsPhotosStore($result, $input);
 
@@ -454,6 +475,8 @@ class NewsController extends BackendController
     {
         if (isset($input['news_category_ids'])) {
             $record->news_categories()->sync($input['news_category_ids']);
+        }else{
+            $record->news_categories()->detach();
         }
     }
 
@@ -546,12 +569,6 @@ class NewsController extends BackendController
                 $record->related_news()->create([
                     'related_news_id' => $in,
                 ]);
-
-
-//                $relatedNews = new RelatedNews();
-//                $relatedNews->news_id = $record->id;
-//                $relatedNews->related_news_id =  $in;
-//                $relatedNews->save();
             }
         }
     }
@@ -560,27 +577,58 @@ class NewsController extends BackendController
     {
         if (isset($input['tags_ids'])) {
             $record->tags()->sync($input['tags_ids']);
+        }else{
+            $record->tags()->detach();
         }
     }
 
+    /**
+     * @param News $record
+     * @param $input
+     * @return bool
+     */
     public function newsPhotoGalleriesStore(News $record, $input)
     {
         if (isset($input['photo_gallery_ids'])) {
             $record->photo_galleries()->sync($input['photo_gallery_ids']);
+        }else{
+            if($record->news_type == 3){
+                return false;
+            }else{
+                $record->photo_galleries()->detach();
+            }
         }
+
+        return true;
     }
 
+    /**
+     * @param News $record
+     * @param $input
+     * @return bool
+     */
     public function newsVideoGalleriesStore(News $record, $input)
     {
         if (isset($input['video_gallery_ids'])) {
             $record->video_galleries()->sync($input['video_gallery_ids']);
+        }else{
+
+            if($record->news_type === 5){
+                return false;
+            }else{
+                $record->video_galleries()->detach();
+            }
         }
+
+        return true;
     }
 
     public function newsVideosStore(News $record, $input)
     {
         if (isset($input['videos_ids'])) {
             $record->videos()->sync($input['videos_ids']);
+        }else{
+            $record->videos()->detach();
         }
     }
 
@@ -588,6 +636,8 @@ class NewsController extends BackendController
     {
         if (isset($input['photos_ids'])) {
             $record->photos()->sync($input['photos_ids']);
+        }else{
+            $record->photos()->detach();
         }
     }
 

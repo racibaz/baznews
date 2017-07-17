@@ -288,6 +288,8 @@ class SettingController extends BackendController
             $this->repo->update($record->id, ['attribute_value' => $input['allow_video_formats']]);
         }
 
+        $this->flushAllCache();
+
         Session::flash('flash_message', trans('common.message_model_updated'));
         return Redirect::route($this->redirectRouteName . $this->view . 'index');
     }

@@ -480,6 +480,18 @@ header {
 /* ==========================================================================
    Main Menü
    ========================================================================== */
+.menu .navbar-nav{
+    height: 46px;
+    overflow: hidden;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+.menu .navbar-nav:hover{
+    overflow: inherit;
+    height: auto;
+}
 #main-navbar-menu {
     width: 100%;
     padding: 0;
@@ -2190,6 +2202,30 @@ footer .footer-bottom .cpy {
     color: #ffffff;
 }
 
+@media only screen and (max-width: 320px){
+    .pager li{
+        display: block;
+        width: 100%;
+    }
+    .pager .previous > a{
+        text-align: left;
+    }
+    .pager .next > a{
+        text-align: right;
+    }
+    .pager .previous > a,
+    .pager .next > a{
+        display: block;
+        float: inherit;
+        width: 100%;
+        margin-bottom: 10px;
+        max-width:100%;
+    }
+    .pager li a{
+        float: inherit;
+        width: 100%;
+    }
+}
 .pager li a:hover {
     background-color: #ff0013;
     border-color: #ff0013;
