@@ -40,8 +40,12 @@ class ArticleAuthorController extends Controller
                 ->where('is_active', 1)
                 ->findBy('id', $id);
 
+
+            $authorPhoto = $this->repo->getAuthorAvatar($record);
+
             return Theme::view('article::frontend.article_author.show', compact([
                 'record',
+                'authorPhoto'
             ]))->render();
         });
     }

@@ -16,7 +16,7 @@
 
                     <div class="author-head">
                         <div class="author-img">
-                            <img src="{{ asset('images/article_author_images/' . $record->id . '/58x58_' . $record->photo)}}"
+                            <img src="{{ asset($authorPhoto)}}"
                                  alt="{{$record->name}}" class="img-circle">
                         </div>
                         <div class="author-name">

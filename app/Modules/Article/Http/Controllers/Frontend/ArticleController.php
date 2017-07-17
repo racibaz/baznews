@@ -4,14 +4,16 @@ namespace App\Modules\Article\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Article\Repositories\ArticleRepository as Repo;
+use App\Modules\Article\Repositories\ArticleAuthorRepository as ArticleAuthor;
 use Cache;
 use Caffeinated\Themes\Facades\Theme;
 
 class ArticleController extends Controller
 {
-    public function __construct(Repo $repo)
+    public function __construct(Repo $repo, ArticleAuthor $authorRepo)
     {
         $this->repo = $repo;
+        $this->authorRepo = $authorRepo;
     }
 
     public function show($slug)
@@ -40,9 +42,12 @@ class ArticleController extends Controller
                 ->findAll()
                 ->take(5);
 
+            $authorPhoto = $this->authorRepo->getAuthorAvatar($record->article_author);
+
             return Theme::view('article::frontend.article.show', compact([
                 'record',
-                'otherArticles'
+                'otherArticles',
+                'authorPhoto'
             ]))->render();
         });
     }

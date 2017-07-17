@@ -27,8 +27,7 @@
                         <div class="author-img">
                             <a href="{!! route('article_author', ['slug' => $record->article_author->slug]) !!}"
                                title="{{$record->name}}">
-                                <img src="{{asset('images/article_author_images/' . $record->article_author->id . '/58x58_' . $record->article_author->photo)}}"
-                                     class="img-circle">
+                                <img src="{{asset($authorPhoto)}}" class="img-circle" width="58" height="58">
                             </a>
                         </div>
                         <div class="article-detail">
@@ -48,8 +47,6 @@
                     <div class="article-content">
                         {!! $record->content !!}
                     </div>
-                    {{--yazarı : <a href="{!! route('book_author', ['slug' => $record->book_author->slug]) !!}">{{$record->book_author->name}}</a>--}}
-                    {{--yayıncı : <a href="{!! route('book_publisher', ['slug' => $record->book_publisher->slug]) !!}">{{$record->book_publisher->name}}</a>--}}
                 </article>
 
                 <div class="share-box">
