@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Menu extends Model
 {
     use Eventable;
-    use SoftDeletes;
     use Sluggable;
     use NodeTrait {
         NodeTrait::replicate insteadof Sluggable;
@@ -41,7 +40,7 @@ class Menu extends Model
 
     public $transformer = MenuTransformer::class;
     protected $fillable = ['parent_id', '_lft', '_rgt', 'page_id', 'name', 'slug', 'url', 'route', 'icon', 'order', 'is_header', 'is_footer', 'is_active'];
-    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    protected $dates = ['created_at', 'updated_at'];
 
     public function page()
     {

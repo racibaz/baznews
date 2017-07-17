@@ -29,7 +29,6 @@ class CreateMenusTable extends Migration
             $table->boolean('is_footer')->nullable();
             $table->boolean('is_active')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
