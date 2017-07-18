@@ -39,7 +39,7 @@
                 <div class="box-body">
                     <div class="form-group">
                         {!! Form::label('parent_id', trans('news::video_category.parent_id'),['class'=> ' control-label']) !!}
-                        {!! Form::select('parent_id', $videoCategoryList , $record->parent_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+                        {!! Form::select('parent_id', $videoCategoryList , $record->parent_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('_lft', trans('news::video_category._lft'),['class'=> ' control-label']) !!}

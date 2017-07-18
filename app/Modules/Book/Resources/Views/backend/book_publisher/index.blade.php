@@ -33,8 +33,8 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('book::book_publisher.name')}}</th>
-                            <th>{{trans('book::common.is_active')}}</th>
-                            <th>{{trans('book::common.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

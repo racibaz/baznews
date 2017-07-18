@@ -30,4 +30,6 @@ return [
     'article_categories' => 'Makale Kategorileri',
     'close' => 'Kapat',
     'revision_line' => 'Revizyon Akışı',
+
+    'recent_articles' => 'Son Eklenen Makaleler',
 ];

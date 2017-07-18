@@ -1,7 +1,7 @@
 <div class="widget">
     <div class="title-section">
         <h1>
-            <span> Tavsiye Edilen Kitaplar Widget </span>
+            <span>{{trans('book::book.recent_books')}}</span>
         </h1>
     </div>
 

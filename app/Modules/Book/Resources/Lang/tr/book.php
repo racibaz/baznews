@@ -30,4 +30,6 @@ return [
     'create_edit' => 'Kitap Ekle/Düzenle',
     'create_book' => 'Kitap Ekle',
     'is_cuff' => 'Manşet',
+
+    'recent_books' => 'Son Eklenen Kitaplar',
 ];

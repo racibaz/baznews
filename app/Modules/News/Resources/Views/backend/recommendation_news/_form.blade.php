@@ -37,11 +37,11 @@
                 <div class="box-body">
                     <div class="form-group">
                         {!! Form::label('news_id', trans('news::recommendation_news.news_id'),['class'=> 'control-label']) !!}
-                        {!! Form::select('news_id', $newsList , $record->news_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+                        {!! Form::select('news_id', $newsList , $record->news_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('user_id', trans('news::recommendation_news.user_id'),['class'=> 'control-label']) !!}
-                        {!! Form::select('user_id', $userList , $record->user_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+                        {!! Form::select('user_id', $userList , $record->user_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('order', trans('news::recommendation_news.order'),['class'=> 'control-label']) !!}

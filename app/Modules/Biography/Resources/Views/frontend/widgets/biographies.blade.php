@@ -1,7 +1,7 @@
 <div class="widget">
     <div class="title-section">
         <h1>
-            <span>Biyografiler</span>
+            <span>{{trans('biography::biography.biographies')}}</span>
         </h1>
     </div>
     <div class="bio-box module">

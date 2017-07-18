@@ -42,7 +42,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 {!! Form::label('parent_id', trans('news::news_category.parent_id'),['class'=> 'control-label']) !!}
-                                {!! Form::select('parent_id', $newsCategoryList , $record->parent_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+                                {!! Form::select('parent_id', $newsCategoryList , $record->parent_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                             </div><!-- /.form-group -->
                         </div>
                         <div class="col-lg-4">
@@ -102,7 +102,7 @@
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                            {{trans('news::common.is_active')}}
+                            {{trans('common.is_active')}}
                         </label>
                     </div><!-- /.form-group -->
                 </div>

@@ -30,4 +30,6 @@ return [
     'status' => 'Durum',
     'short_url' => 'Kısa URL',
     'edit_delete' => 'Düzenle/Sil',
+
+    'biographies' => 'Biografiler'
 ];

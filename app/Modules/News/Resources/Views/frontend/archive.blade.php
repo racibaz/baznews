@@ -60,7 +60,7 @@
                                         <div class="form-group">
                                             <button class="btn btn-success btn-block" type="submit"
                                                     style="margin-top: 25px;"><i
-                                                        class="fa fa-search"></i> {{trans('news::common.search')}}
+                                                        class="fa fa-search"></i> {{trans('common.search')}}
                                             </button>
                                         </div>
                                     </div>

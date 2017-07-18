@@ -30,7 +30,7 @@
                             <th>{{trans('news::news.is_comment')}}</th>
                             <th>{{trans('news::news.main_cuff')}}</th>
                             <th>{{trans('news::news.mini_cuff')}}</th>
-                            <th>{{trans('news::common.is_active')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </thead>
                         <tbody>

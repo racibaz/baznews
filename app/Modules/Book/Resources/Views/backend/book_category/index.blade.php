@@ -37,8 +37,8 @@
                             <th>#</th>
                             <th>{{trans('book::book_category.name')}}</th>
                             <th>{{trans('book::book_category.is_cuff')}}</th>
-                            <th>{{trans('book::common.is_active')}}</th>
-                            <th>{{trans('book::common.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

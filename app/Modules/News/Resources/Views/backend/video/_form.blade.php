@@ -36,11 +36,11 @@
 
                     <div class="form-group">
                         {!! Form::label('video_category_id', trans('news::video.video_category_id'),['class'=> 'control-label']) !!}
-                        {!! Form::select('video_category_id', $videoCategoryList , $record->video_category_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+                        {!! Form::select('video_category_id', $videoCategoryList , $record->video_category_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('video_gallery_id', trans('news::video.video_gallery_id'),['class'=> 'control-label']) !!}
-                        {!! Form::select('video_gallery_id', $videoGalleryList , $record->video_gallery_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+                        {!! Form::select('video_gallery_id', $videoGalleryList , $record->video_gallery_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('name', trans('news::video.name'),['class'=> 'control-label']) !!}

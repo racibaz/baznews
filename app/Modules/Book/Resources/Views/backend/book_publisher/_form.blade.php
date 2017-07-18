@@ -3,13 +3,13 @@
     <section class="content-header">
         <h1>
             {{trans('book::book_publisher.management')}}
-            <small>{{trans('book::common.edit_delete')}}</small>
+            <small>{{trans('common.edit_delete')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('book_publisher.index') !!}">{{trans('book::book_publisher.management')}}</a>
             </li>
-            <li class="active">{{trans('book::common.edit_delete')}}</li>
+            <li class="active">{{trans('common.edit_delete')}}</li>
         </ol>
     </section>
 @endsection
@@ -26,7 +26,7 @@
         <div class="col-lg-6">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('book::common.edit_delete')}}</h3>
+                    <h3 class="box-title">{{trans('common.edit_delete')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                            {{trans('book::common.is_active')}}
+                            {{trans('common.is_active')}}
                         </label>
                     </div>
                     <div class="form-group">

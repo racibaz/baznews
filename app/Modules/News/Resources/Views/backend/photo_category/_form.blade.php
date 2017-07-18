@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group">
                         {!! Form::label('parent_id', trans('news::photo_category.parent_id'),['class'=> 'control-label']) !!}
-                        {!! Form::select('parent_id', $photoCategoryList , $record->parent_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+                        {!! Form::select('parent_id', $photoCategoryList , $record->parent_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('slug', trans('news::photo_category.slug'),['class'=> 'control-label']) !!}

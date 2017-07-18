@@ -55,11 +55,11 @@
                                 <td>{!! $record->bio_note !!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::common.is_cuff')}}</th>
+                                <th>{{trans('common.is_cuff')}}</th>
                                 <td>{!!$record->cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::common.is_active')}}</th>
+                                <th>{{trans('common.is_active')}}</th>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             </tbody>

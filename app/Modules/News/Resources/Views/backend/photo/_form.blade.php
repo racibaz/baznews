@@ -40,7 +40,7 @@
                     </div>
                     <div class="form-group">
                         {!! Form::label('photo_gallery_id', trans('news::photo.photo_gallery'),['class'=> 'control-label']) !!}
-                        {!! Form::select('photo_gallery_id', $photoGalleryList , $record->photo_gallery_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+                        {!! Form::select('photo_gallery_id', $photoGalleryList , $record->photo_gallery_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('content', trans('news::photo.content'),['class'=> 'control-label']) !!}
@@ -70,7 +70,7 @@
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                            {{trans('news::common.is_active')}}
+                            {{trans('common.is_active')}}
                         </label>
                     </div>
                     <div class="form-group">

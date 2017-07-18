@@ -55,11 +55,11 @@
 
                     <div class="form-group">
                         {!! Form::label('book_author_id', trans('book::book.book_author'),['class'=> 'control-label']) !!}
-                        {!! Form::select('book_author_id', $bookAuthorList , $record->book_author_id, ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+                        {!! Form::select('book_author_id', $bookAuthorList , $record->book_author_id, ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('book_publisher_id', trans('book::book.book_publisher'),['class'=> 'control-label']) !!}
-                        {!! Form::select('book_publisher_id', $bookPublisherList , $record->book_publisher_id, ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+                        {!! Form::select('book_publisher_id', $bookPublisherList , $record->book_publisher_id, ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('description', trans('book::book.description'),['class'=> 'control-label']) !!}
@@ -167,10 +167,10 @@
                             </div>
                             <div>
                                 <span class="btn btn-default btn-file"><span
-                                            class="fileinput-new">{{trans('book::common.select_image')}}</span><span
-                                            class="fileinput-exists">{{trans('book::common.change')}}</span>{!! Form::file('thumbnail') !!}</span>
+                                            class="fileinput-new">{{trans('common.select_image')}}</span><span
+                                            class="fileinput-exists">{{trans('common.change')}}</span>{!! Form::file('thumbnail') !!}</span>
                                 <a href="#" class="btn btn-default fileinput-exists"
-                                   data-dismiss="fileinput">{{trans('book::common.remove')}}</a>
+                                   data-dismiss="fileinput">{{trans('common.remove')}}</a>
                             </div>
                         </div>
                     </div>

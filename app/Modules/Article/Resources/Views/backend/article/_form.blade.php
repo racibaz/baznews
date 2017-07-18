@@ -128,7 +128,7 @@
                     </div>
                     <div class="form-group">
                         {!! Form::label('status', trans('article::article.status'),['class'=> 'control-label']) !!}
-                        {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control']) !!}
+                        {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         <label>

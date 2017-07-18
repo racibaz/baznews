@@ -74,13 +74,13 @@
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_cuff', null , $record->is_cuff) !!}
-                            {{trans('book::common.is_cuff')}}
+                            {{trans('common.is_cuff')}}
                         </label>
                     </div>
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                            {{trans('book::common.is_active')}}
+                            {{trans('common.is_active')}}
                         </label>
                     </div>
                     <div class="form-group">
@@ -114,10 +114,10 @@
                             </div>
                             <div>
                                 <span class="btn btn-default btn-file"><span
-                                            class="fileinput-new">{{trans('book::common.select_image')}}</span><span
-                                            class="fileinput-exists">{{trans('book::common.change')}}</span>{!! Form::file('thumbnail') !!}</span>
+                                            class="fileinput-new">{{trans('common.select_image')}}</span><span
+                                            class="fileinput-exists">{{trans('common.change')}}</span>{!! Form::file('thumbnail') !!}</span>
                                 <a href="#" class="btn btn-default fileinput-exists"
-                                   data-dismiss="fileinput">{{trans('book::common.remove')}}</a>
+                                   data-dismiss="fileinput">{{trans('common.remove')}}</a>
                             </div>
                         </div>
                     </div>

@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                            {{trans('news::common.is_active')}}
+                            {{trans('common.is_active')}}
                         </label>
                     </div>
                 </div>

@@ -14,7 +14,7 @@
                     <li>
                         <a href="{!! URL::route('article_setting.index') !!}"> {{ trans('article::article_setting.article_categories') }} </a>
                     </li>
-                    <li class="active"> {{ trans('article::common.add_update') }}</li>
+                    <li class="active"> {{ trans('common.add_update') }}</li>
                 </ol>
                 <!--Top breadcrumb start -->
             </div>

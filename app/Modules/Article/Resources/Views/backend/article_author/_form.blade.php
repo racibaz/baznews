@@ -91,7 +91,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="form-group">
-                            {!! Form::select('user_id', $userList , $record->user_id , ['placeholder' => trans('news::common.please_choose'),'class' => 'form-control select2']) !!}
+                            {!! Form::select('user_id', $userList , $record->user_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                         </div>
                     </div>
                     <!-- /.box-body -->
