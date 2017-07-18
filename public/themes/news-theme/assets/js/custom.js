@@ -66,8 +66,8 @@
             $this.find('.left-img-ct .new-date .timeago').html(time);
         });
         $('.img-new-list .new-list li a').hover(function () {
+            $('.img-new-list .new-list li a').removeClass("active");
             var $this = $(this).parent().parent().parent();
-            $(this).find('.new-list li a').removeClass("active");
             $(this).addClass("active");
             var url = $(this).attr("href");
             var img = $(this).data("img");
