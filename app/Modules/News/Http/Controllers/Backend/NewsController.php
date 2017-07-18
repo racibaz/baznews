@@ -732,16 +732,13 @@ class NewsController extends BackendController
     {
         $input = Input::all();
 
-        if (empty($input['status'])) {
-            return Redirect::back()
-                ->withErrors(trans('common.status_null'))
-                ->withInput($input);
-        }
-
         $value = null;
         $record = $this->repo->find($input['recordId']);
 
-        $this->repo->update($record->id, ['status' => $input['status']]);
+        //passive de formdan değer gelmediği için ayrıca kontrol ediyoruz.
+        if (empty($input['status'])) {
+            $this->repo->update($record->id, ['status' => 0]);
+        }
 
         $this->removeCacheTags(['News']);
         $this->removeHomePageCache();

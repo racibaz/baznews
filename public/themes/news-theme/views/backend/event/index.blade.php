@@ -29,8 +29,10 @@
                             <th>#</th>
                             <th>{{trans('event.eventable_type')}}</th>
                             <th>{{trans('event.eventable_id')}}</th>
-                            <th>{{trans('event.user_id')}}</th>
                             <th>{{trans('event.event')}}</th>
+                            <th>{{trans('event.user_id')}}</th>
+                            <th>{{trans('common.created_at')}}</th>
+                            <th>{{trans('common.updated_at')}}</th>
                             <th>{{trans('event.edit_delete')}}</th>
                         </tr>
                         </thead>
@@ -42,6 +44,8 @@
                                 <td>{{$record->eventable_id}} </td>
                                 <td>{{$record->eventable_type}}</td>
                                 <td>{!! link_to_route('user.show', $record->user->name , $record, [] ) !!}</td>
+                                <td>{{$record->created_at}}</td>
+                                <td>{{$record->updated_at}}</td>
                                 <td>
                                     <div class="btn-group">
                                         {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('event.destroy',  $record))) !!}
