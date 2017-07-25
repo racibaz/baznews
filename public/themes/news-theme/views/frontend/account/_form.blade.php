@@ -104,7 +104,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                {!! Form::label('country_id', "Ülke",['class'=> 'col-lg-2 control-label']) !!}
+                                {!! Form::label('lbl_country_id', "Ülke",['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
                                     {!! Form::select('country_id', $countries , $record->country_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
@@ -113,7 +113,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                {!! Form::label('city_id', "Şehir",['class'=> 'col-lg-2 control-label']) !!}
+                                {!! Form::label('lbl_city_id', "Şehir",['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
                                     {!! Form::select('city_id', $cities , $record->city_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
@@ -237,4 +237,24 @@
         //Initialize Select2 Elements
         $(".select2").select2();
     </script>
+
+
+    <script type="text/javascript">
+        $("select[name='country_id']").change(function(){
+
+            var country_id = $(this).val();
+            var token = $("input[name='_token']").val();
+
+            $.ajax({
+                url: "{!! route('getCitiesByCountryId') !!}",
+                method: 'POST',
+                data: {country_id:country_id, _token:token},
+                success: function(data) {
+                    $("select[name='city_id']").html('');
+                    $("select[name='city_id']").html(data.options);
+                }
+            });
+        });
+    </script>
+
 @endsection

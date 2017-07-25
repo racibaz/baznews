@@ -140,13 +140,13 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                {!! Form::label('country_id', trans('news::news.country_id'),['class'=> 'control-label']) !!}
+                                {!! Form::label('lbl_country_id', trans('news::news.country_id'),['class'=> 'control-label']) !!}
                                 {!! Form::select('country_id', $countryList , $record->country_id , ['placeholder' => trans('news::news.please_choose'),'class' => 'form-control select2']) !!}
                             </div>
                         </div><!-- /.col-lg-12 -->
                         <div class="col-lg-12">
                             <div class="form-group">
-                                {!! Form::label('city_id', trans('news::news.city_id'),['class'=> 'control-label']) !!}
+                                {!! Form::label('lbl_city_id', trans('news::news.city_id'),['class'=> 'control-label']) !!}
                                 {!! Form::select('city_id', $cityList , $record->city_id , ['placeholder' => trans('news::news.please_choose'),'class' => 'form-control select2']) !!}
                             </div>
                         </div><!-- /.col-lg-12 -->
@@ -560,5 +560,24 @@
         });
         //active menu
         activeMenu('news', 'news_management');
+    </script>
+
+    <script type="text/javascript">
+
+        $("select[name='country_id']").change(function(){
+
+            var country_id = $(this).val();
+            var token = $("input[name='_token']").val();
+
+            $.ajax({
+                url: "{!! route('getCitiesByCountryId') !!}",
+                method: 'POST',
+                data: {country_id:country_id, _token:token},
+                success: function(data) {
+                    $("select[name='city_id']").html('');
+                    $("select[name='city_id']").html(data.options);
+                }
+            });
+        });
     </script>
 @endsection

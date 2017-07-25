@@ -31,7 +31,7 @@ class NewsRequest extends FormRequest
             }
             case 'POST': {
                 return [
-                    'news_category_id' => 'integer|nullable',
+                    'news_category_ids' => 'array|required',
                     'photo_gallery_id' => 'integer|nullable',
                     'photo_category_id' => 'integer|nullable',
                     'photo_id' => 'integer|nullable',
@@ -74,7 +74,7 @@ class NewsRequest extends FormRequest
                 $id = $this->route('news')->id;
                 return [
 
-                    'news_category_id' => 'integer|nullable',
+                    'news_category_ids' => 'array|required',
                     'photo_gallery_id' => 'integer|nullable',
                     'photo_category_id' => 'integer|nullable',
                     'photo_id' => 'integer|nullable',

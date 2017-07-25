@@ -67,11 +67,11 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="form-group">
-                                {!! Form::label('country_id', "Ülke",['class'=> 'control-label']) !!}
+                                {!! Form::label('lbl_country_id', "Ülke",['class'=> 'control-label']) !!}
                                 {!! Form::select('country_id', $countries , $record->country_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('city_id', "Şehir",['class'=> 'control-label']) !!}
+                                {!! Form::label('lbl_city_id', "Şehir",['class'=> 'control-label']) !!}
                                 {!! Form::select('city_id', $cities , $record->city_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
@@ -279,4 +279,23 @@
         //active menu
         activeMenu('user_management', 'user');
     </script>
+
+    <script type="text/javascript">
+        $("select[name='country_id']").change(function(){
+
+            var country_id = $(this).val();
+            var token = $("input[name='_token']").val();
+
+            $.ajax({
+                url: "{!! route('getCitiesByCountryId') !!}",
+                method: 'POST',
+                data: {country_id:country_id, _token:token},
+                success: function(data) {
+                    $("select[name='city_id']").html('');
+                    $("select[name='city_id']").html(data.options);
+                }
+            });
+        });
+    </script>
+
 @endsection

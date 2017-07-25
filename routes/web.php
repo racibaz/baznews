@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::pattern('id', '[0-9]+');
 
 Route::get('/', 'Frontend\IndexController@index')->name('index');
-Route::get('/home', 'HomeController@index');
 Route::get(trans('route.page') . '/{slug}', 'Frontend\PageController@show')->name('page');
 Route::get('/activate/token/{token}', 'Auth\ActivationController@activate')->name('auth.activate');
 Route::get('/activate/resend', 'Auth\ActivationController@resend')->name('auth.activate.resend');
@@ -38,7 +37,10 @@ Route::group(['middleware' => 'auth'], function () {
     ]]);
 });
 
+
+
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
+
 
     Route::get('/', 'Backend\DashboardController@index')->name('dashboard');
     Route::get('index', 'Backend\DashboardController@index');
@@ -100,3 +102,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
 
     Route::get('api_manager', 'Backend\ApiManagerController@index')->name('api_manager');
 });
+
+
+Route::post('getCitiesByCountryId', 'BaseController@getCitiesByCountryId')->name('getCitiesByCountryId');
