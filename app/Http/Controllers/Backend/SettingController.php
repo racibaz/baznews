@@ -178,6 +178,16 @@ class SettingController extends BackendController
             $this->repo->update($record->id, ['attribute_value' => $input['contact']]);
         }
 
+        if (!empty($input['longitude'])) {
+            $record = $this->repo->findBy('attribute_key', 'longitude');
+            $this->repo->update($record->id, ['attribute_value' => $input['longitude']]);
+        }
+
+        if (!empty($input['latitude'])) {
+            $record = $this->repo->findBy('attribute_key', 'latitude');
+            $this->repo->update($record->id, ['attribute_value' => $input['latitude']]);
+        }
+
         if (!empty($input['copyright'])) {
             $record = $this->repo->findBy('attribute_key', 'copyright');
             $this->repo->update($record->id, ['attribute_value' => $input['copyright']]);
