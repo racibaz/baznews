@@ -5,9 +5,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="login-box">
-                <div class="login-logo">
-                    <a href="/"><b>Baz</b>NEWS</a>
-                </div>
                 <!-- /.login-logo -->
                 <div class="login-box-body">
                     <p class="login-box-msg">{{trans('login.start')}}</p>
