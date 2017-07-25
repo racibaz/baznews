@@ -188,6 +188,28 @@
         $(document).ready(function () {
             $('.select2').select2();
             $('.tagsinput').tagsinput();
+
+            /*--------------START INFINITE -------------------*/
+            var win = $(window);
+            // Each time the user scrolls
+            win.scroll(function() {
+                // End of the document reached?
+                if ($(document).height() - win.height() == win.scrollTop()) {
+                    debugger;
+                    $('#loading').show();
+
+                    $.ajax({
+                        url: '',//TODO : Back end services url gelecek..
+                        dataType: 'html',
+                        success: function(html) {
+                            $('#activity-modal .modal-body').append(html);
+                            $('#loading').hide();
+                        }
+                    });
+                }
+            });
+            /*--------------END INFINITE -------------------*/
+            
         });
         $(window).resize(function () {
             $('.select2').select2();
