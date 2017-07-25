@@ -124,14 +124,14 @@ class SettingController extends BackendController
                 ->withInput($input);
         }
 
-        if (!empty($input['country'])) {
+        if (!empty($input['country_id'])) {
             $record = $this->repo->findBy('attribute_key', 'country');
-            $this->repo->update($record->id, ['attribute_value' => $input['country']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['country_id']]);
         }
 
-        if (!empty($input['city'])) {
+        if (!empty($input['city_id'])) {
             $record = $this->repo->findBy('attribute_key', 'city');
-            $this->repo->update($record->id, ['attribute_value' => $input['city']]);
+            $this->repo->update($record->id, ['attribute_value' => $input['city_id']]);
         }
 
         if (!empty($input['language_code'])) {

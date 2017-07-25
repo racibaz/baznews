@@ -42,14 +42,14 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    {!! Form::label('country', trans('setting.country'),['class'=> 'control-label']) !!}
-                                    {!! Form::select('country', $countryList , $records->where('attribute_key','country')->first()->attribute_value , ['class' => 'form-control select2']) !!}
+                                    {!! Form::label('lbl_country_id', trans('setting.country'),['class'=> 'control-label']) !!}
+                                    {!! Form::select('country_id', $countryList , $records->where('attribute_key','country')->first()->attribute_value , ['class' => 'form-control select2']) !!}
                                 </div><!-- /.form-group -->
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    {!! Form::label('city', trans('setting.city'),['class'=> 'control-label']) !!}
-                                    {!! Form::select('city', $cityList , $records->where('attribute_key','city')->first()->attribute_value , ['class' => 'form-control select2']) !!}
+                                    {!! Form::label('lbl_city_id', trans('setting.city'),['class'=> 'control-label']) !!}
+                                    {!! Form::select('city_id', $cityList , $records->where('attribute_key','city')->first()->attribute_value , ['class' => 'form-control select2']) !!}
                                 </div><!-- /.form-group -->
                             </div>
                             <div class="col-md-4">
@@ -776,6 +776,24 @@
     </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYeFB-plBwrGcrIedpc8xtjrFklJra6PM">
+    </script>
+
+    <script type="text/javascript">
+        $("select[name='country_id']").change(function(){
+
+            var country_id = $(this).val();
+            var token = $("input[name='_token']").val();
+
+            $.ajax({
+                url: "{!! route('getCitiesByCountryId') !!}",
+                method: 'POST',
+                data: {country_id:country_id, _token:token},
+                success: function(data) {
+                    $("select[name='city_id']").html('');
+                    $("select[name='city_id']").html(data.options);
+                }
+            });
+        });
     </script>
 
 @endsection
