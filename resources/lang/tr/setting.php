@@ -47,6 +47,7 @@ return [
     'longitude'=> 'longitude',
     'social_connect'=> 'Sosyal Medya',
     'status'=> 'Durum',
+    'is_url_shortener' => 'Kaydedilen Kayıtların Linkleri Kısaltılsın mı?',
     'header_footer'=> 'Header&Footer',
     'config_list'=> 'Ayar Listesi',
     'change'=> 'Değiştir',

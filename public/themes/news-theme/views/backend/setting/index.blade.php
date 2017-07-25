@@ -361,6 +361,14 @@
                                     {!! Form::number('sitemap_count', $records->where('attribute_key','sitemap_count')->first()->attribute_value, ['placeholder' => trans('setting.sitemap_count') ,'class' => 'form-control']) !!}
                                 </div><!-- /.form-group -->
                             </div>
+                            <div class="col-xs-6 col-lg-3">
+                                <div class="form-group">
+                                    {!! Form::label('is_url_shortener', trans('setting.is_url_shortener'),['class'=> 'control-label']) !!}
+                                    {!! Form::select('is_url_shortener', ['false' => trans('common.passive'), 'true' => trans('common.active')],
+                                    $records->where('attribute_key','is_url_shortener')->first()->attribute_value,
+                                     ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     {!! Form::label('allow_photo_formats', trans('setting.allow_photo_formats'),['class'=> 'control-label']) !!}
@@ -395,38 +403,6 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    {{--<div class="form-group">--}}
-                    {{--<div class="row">--}}
-                    {{--{!! Form::label('attribute_value', trans('setting.attribute_value'),['class'=> 'col-lg-2 control-label']) !!}--}}
-
-                    {{--<div class="col-lg-10">--}}
-                    {{--{!! Form::textarea('attribute_value', $record->attribute_value, ['placeholder' => trans('setting.attribute_value') ,'class' => 'form-control']) !!}--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group">--}}
-                    {{--<div class="row">--}}
-                    {{--{!! Form::label('description', trans('setting.description'),['class'=> 'col-lg-2 control-label']) !!}--}}
-
-                    {{--<div class="col-lg-10">--}}
-                    {{--{!! Form::textarea('description', $record->description, ['placeholder' => trans('setting.description') ,'class' => 'form-control']) !!}--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group">--}}
-                    {{--<div class="row">--}}
-                    {{--{{trans('common.status')}}--}}
-                    {{--<div class="col-lg-offset-2 col-lg-10">--}}
-                    {{--<div class="checkbox i-checks">--}}
-                    {{--<label>--}}
-                    {{--{!! Form::checkbox('is_active', null , $record->is_active) !!}--}}
-                    {{--<i></i> {{trans('common.is_active')}}--}}
-                    {{--</label>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-
                     <div class="list-group">
                         <a class="list-group-item" data-toggle="modal" href="#config_list"><i
                                     class="fa fa-cog"></i>{{trans('setting.config_list')}}</a>

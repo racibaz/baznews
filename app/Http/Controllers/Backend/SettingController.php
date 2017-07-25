@@ -288,6 +288,11 @@ class SettingController extends BackendController
             $this->repo->update($record->id, ['attribute_value' => $input['sitemap_count']]);
         }
 
+        if (!empty($input['is_url_shortener'])) {
+            $record = $this->repo->findBy('attribute_key', 'is_url_shortener');
+            $this->repo->update($record->id, ['attribute_value' => $input['is_url_shortener']]);
+        }
+
         if (!empty($input['allow_photo_formats'])) {
             $record = $this->repo->findBy('attribute_key', 'allow_photo_formats');
             $this->repo->update($record->id, ['attribute_value' => $input['allow_photo_formats']]);

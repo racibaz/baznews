@@ -413,7 +413,7 @@ class NewsController extends BackendController
              * slug değişmiş ise ve link kısaltmaya izin verilmişse google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
              *
              * */
-            if (($record->slug != $result->slug) && Setting::where('attribute_key', 'is_url_shortener')->first()) {
+            if (($record->slug != $result->slug) && Setting::isUrlShortener()) {
 
                 $linkShortener = new LinkShortener(new Link);
                 $result->short_url = $linkShortener->linkShortener($result->slug);

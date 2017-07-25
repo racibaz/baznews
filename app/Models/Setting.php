@@ -37,4 +37,9 @@ class Setting extends Model
         );
         return Validator::make($input, $rules);
     }
+
+    public static function isUrlShortener()
+    {
+        return Setting::where('attribute_key', 'is_url_shortener')->first()->attribute_value == 'true' ? true : false;
+    }
 }

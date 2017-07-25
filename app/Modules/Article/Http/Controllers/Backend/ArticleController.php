@@ -179,7 +179,7 @@ class ArticleController extends BackendController
              * google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
              *
              * */
-            if (($record->slug != $result->slug) && Setting::where('attribute_key', 'is_url_shortener')->first()) {
+            if (($record->slug != $result->slug) && Setting::isUrlShortener()) {
 
                 try {
 
