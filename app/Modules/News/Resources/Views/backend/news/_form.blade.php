@@ -85,7 +85,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                {!! Form::label('news_resource_id', trans('news::news.news_source_id'),['class'=> 'control-label']) !!}
+                                {!! Form::label('news_source_id', trans('news::news.news_source_id'),['class'=> 'control-label']) !!}
                                 {!! Form::select('news_source_id', $newsSourceList , $record->news_source_id , ['placeholder' => trans('news::news.please_choose'),'class' => 'form-control select2']) !!}
                             </div>
                         </div><!-- /.col-lg-6 -->
