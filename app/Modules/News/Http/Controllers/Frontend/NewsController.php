@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
+use Mockery\Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Cache;
 
 class NewsController extends Controller
@@ -48,6 +50,7 @@ class NewsController extends Controller
                 ])
                 ->where('is_active', 1)
                 ->findBy('id', $id);
+
 
             if ($record->is_show_previous_and_next_news) {
 
