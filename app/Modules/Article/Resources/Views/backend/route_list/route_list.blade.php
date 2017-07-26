@@ -1,10 +1,9 @@
 <li class="treeview" data-name="article_management">
     <a href="#">
-        <i class="fa fa-file-text-o"></i>
-        <span>{{trans('article::dashboard.article_manager')}}</span>
+        <i class="fa fa-book"></i> <span>{{trans('article::dashboard.article_manager')}}</span>
         <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-        </span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
     </a>
     <ul class="treeview-menu">
         @permission('index-articleauthor')
