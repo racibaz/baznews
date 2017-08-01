@@ -16,11 +16,10 @@
     <link href="{{ asset('css/AdminLTE/css/AdminLTE.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/AdminLTE/css/alt/AdminLTE-bootstrap-social.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
-    <!-- İCHECK -->
+    <!-- icheck -->
     <link href="{{ asset('plugins/iCheck/all.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <!-- Scripts -->
-    <script>
+    <script type="text/javascript">
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
@@ -34,7 +33,7 @@
 <!-- Scripts -->
 <script src="{{ asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- İCHECK -->
-<script src="{{ asset('plugins/iCheck/iCheck.min.js') }}"></script>
+<script src="{{ asset('plugins/iCheck/icheck.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('css/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('css/AdminLTE/js/demo.js') }}"></script>
