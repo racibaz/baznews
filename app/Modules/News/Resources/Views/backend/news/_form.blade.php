@@ -552,7 +552,7 @@
             // Each time the user scrolls
             win.scroll(function() {
                 // End of the document reached?
-                if ($(document).height() - win.height() == win.scrollTop()) {
+                if ($(document).height() - win.height() === win.scrollTop()) {
                     debugger;
                     $('#loading').show();
 
@@ -560,7 +560,7 @@
                         url: '',//TODO : Back end services url gelecek..
                         dataType: 'html',
                         success: function(html) {
-                            $('#activity-modal .modal-body').append(html);
+                            $('#activity-modal').find('.modal-body').append(html);
                             $('#loading').hide();
                         }
                     });
