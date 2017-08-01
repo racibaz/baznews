@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('account.change_password_view', 'Frontend\AccountController@changePasswordView')->name('change_password_view');
     Route::post('account.change_password', 'Frontend\AccountController@changePassword')->name('change_password');
     Route::resource('account', 'Frontend\AccountController', ['only' => [
-        'index', 'edit', 'update','show'
+        'index', 'edit', 'update'
     ]]);
 });
 

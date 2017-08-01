@@ -41,6 +41,9 @@
         <div class="container">
             <div class="content">
                 <div class="title">Be right back.</div>
+                <div>
+                    <span> <a href="{{route('index')}}">{{trans('common.homepage')}}</a></span>
+                </div>
             </div>
         </div>
     </body>
