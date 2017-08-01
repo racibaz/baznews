@@ -12,11 +12,10 @@
           rel="stylesheet">
     <link href="{{ Theme::asset($activeTheme . '::css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ Theme::asset($activeTheme . '::js/video-js/video-js.min.css') }}" rel="stylesheet">
-    {{--<link href="https://fonts.googleapis.com/css?family=Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&amp;subset=latin-ext" rel="stylesheet">--}}
 
     @yield('css')
 
-    <link href="{{ Theme::asset($activeTheme . '::css/style.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ Theme::asset($activeTheme . '::css/style.min.css') }}" type="text/css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

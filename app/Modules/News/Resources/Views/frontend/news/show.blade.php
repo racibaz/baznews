@@ -392,9 +392,11 @@
     <script src="{{ Theme::asset($activeTheme . '::js/gallery.js') }}"></script>
     <script>
         videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
-        videojs("video-js", {}, function () {
-            // Player (this) is initialized and ready.
-        });
+        if($('.video-js').length>0){
+            videojs("video-js", {}, function () {
+                // Player (this) is initialized and ready.
+            });
+        }
     </script>
     <script type="text/javascript">
         jQuery(document).ready(function () {
