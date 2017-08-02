@@ -6,7 +6,7 @@
     </div>
     <div>
         <ul class="news-list">
-            @if(!empty($recommendationNewsItems))
+            @if(count($recommendationNewsItems)>0)
                 @foreach($recommendationNewsItems as $recommendationNewsItem)
                     <li class="module">
                         <div class="imgwrap">
