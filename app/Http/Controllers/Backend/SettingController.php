@@ -56,6 +56,7 @@ class SettingController extends BackendController
         foreach (DateTimeZone::listIdentifiers() as $key => $value) $timezoneList[$value] = $value;
 
         $logo = $this->repo->findBy('attribute_key', 'logo');
+        $favicon = $this->repo->findBy('attribute_key', 'favicon');
 
         return Theme::view($this->getViewName(__FUNCTION__),
             compact(
@@ -69,7 +70,8 @@ class SettingController extends BackendController
                 'modules',
                 'modulesCount',
                 'timezoneList',
-                'logo'
+                'logo',
+                'favicon'
             ));
     }
 
@@ -161,6 +163,10 @@ class SettingController extends BackendController
 
         if (!empty($input['logo'])) {
             Uploader::logoUploader($input['logo']);
+        }
+
+        if (!empty($input['favicon'])) {
+            Uploader::faviconUploader($input['favicon']);
         }
 
         if (!empty($input['abstract_text'])) {
