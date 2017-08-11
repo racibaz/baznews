@@ -40,6 +40,8 @@ class NewsCategoryController extends Controller
                 ->where('is_active', 1)
                 ->findBy('slug', $newsCategorySlug);
 
+            abort_if(!$newsCategory,404,'The specified News Category cannot be found');
+
             $records = $newsCategory->news()->paginate();
 
             return Theme::view('news::frontend.news_category.category_news', compact([
