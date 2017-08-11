@@ -86,12 +86,13 @@ class BackendController extends Controller
 
 
     /**
-     * @param $cachetags
+     * @param $cacheTags
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function removeCacheTags($cachetags)
+    public function removeCacheTags($cacheTags)
     {
-        Cache::tags($cachetags)->flush();
+        Cache::tags($cacheTags)->flush();
+        return redirect()->back();
     }
 
 

@@ -100,6 +100,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('remove_home_page_cache', 'Backend\BackendController@removeHomePageCacheWithRedirect')->name('removeHomePageCache');
     Route::get('flush_cache_item/{cacheName}', 'Backend\SettingController@flushCacheItem')->name('flushCacheItem');
 
+    Route::get('removeCacheTags/{cacheTags?}', 'Backend\BackendController@removeCacheTags')->name('removeCacheTags');
     Route::get('api_manager', 'Backend\ApiManagerController@index')->name('api_manager');
 });
 

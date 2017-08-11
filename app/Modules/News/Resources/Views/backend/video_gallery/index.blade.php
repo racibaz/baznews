@@ -23,7 +23,7 @@
                     </a>
                 @endif
                 @if(Auth::user()->can('forgetCache-videogallery'))
-                    <a href="{{ route('forget_video_gallery_cache') }}" class="btn btn-info">
+                    <a href="{{ route('removeCacheTags', ['cacheTags' => 'VideoGalleryController']) }}" class="btn btn-info">
                         <i class="fa fa-plus"></i> {{ trans('news::video_gallery.forget_video_gallery_cache') }}
                     </a>
                 @endif

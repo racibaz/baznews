@@ -22,7 +22,7 @@
                     </a>
                 @endif
                 @if(Auth::user()->can('forgetCache-photogallery'))
-                    <a href="{{ route('forget_photo_gallery_cache') }}" class="btn btn-info">
+                    <a href="{{ route('removeCacheTags', ['cacheTags' => 'PhotoGalleryController']) }}" class="btn btn-info">
                         <i class="fa fa-trash-o"></i> {{ trans('news::photo_gallery.forget_photo_gallery_cache') }}
                     </a>
                 @endif

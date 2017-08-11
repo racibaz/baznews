@@ -99,7 +99,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function () {
     Route::get('photo_gallery/add_multi_photos_view/{photo_gallery_id}', 'Backend\PhotoGalleryController@addMultiPhotosView')->name('add_multi_photos_view');
     Route::post('photo_gallery/add_multi_photos', 'Backend\PhotoGalleryController@addMultiPhotos')->name('addMultiPhotos');
     Route::post('photo_gallery/updateGalleryPhotos', 'Backend\PhotoGalleryController@updateGalleryPhotos')->name('updateGalleryPhotos');
-    Route::get('photo_gallery/forget_photo_gallery_cache', 'Backend\PhotoGalleryController@forgetCache')->name('forget_photo_gallery_cache');
     Route::resource('photo_gallery', 'Backend\PhotoGalleryController');
     Route::resource('photo', 'Backend\PhotoController');
     Route::resource('photo_category', 'Backend\PhotoCategoryController');
@@ -107,7 +106,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function () {
     Route::get('video_gallery/add_multi_videos_view/{video_gallery_id}', 'Backend\VideoGalleryController@addMultiVideosView')->name('add_multi_videos_view');
     Route::post('video_gallery/add_multi_videos', 'Backend\VideoGalleryController@addMultiVideos')->name('addMultiVideos');
     Route::post('video_gallery/updateGalleryVideos', 'Backend\VideoGalleryController@updateGalleryVideos')->name('updateGalleryVideos');
-    Route::get('video_gallery/forget_video_gallery_cache', 'Backend\VideoGalleryController@forgetCache')->name('forget_video_gallery_cache');
     Route::resource('video_gallery', 'Backend\VideoGalleryController');
     Route::post('video.tags_video_store', 'Backend\VideoController@tags_video_store')->name('tags_video_store');
     Route::resource('video', 'Backend\VideoController');
