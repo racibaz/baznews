@@ -55,7 +55,9 @@
                                     <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('news::future_news.active') . '</label>' : '<label class="badge bg-brown">' . trans('news::future_news.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
-                                            {!! link_to_route('show_news', trans('common.show'), $record->news->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
+                                            @if($record->is_active)
+                                                {!! link_to_route('show_news', trans('common.show'), $record->news->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
+                                            @endif
                                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('future_news.destroy',  $record))) !!}
 
                                             {!! link_to_route('future_news.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}

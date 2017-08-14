@@ -33,7 +33,7 @@
                             <video id="{{$video->id}}"
                                    class="video-js vjs-default-skin"
                                    controls preload="auto"
-                                   poster="{{ asset('video_gallery/' . $video_gallery->id . '/photos/213x116_' . $video->thumbnail)}}"
+                                   poster="{{ asset('video_gallery/' . $video_gallery->id . '/213x116_' . $video->thumbnail)}}"
                                    data-setup='{"example_option":true}'>
                                 <source src="{{asset('video_gallery/' . $video_gallery->id . '/videos/' . $video->file)}}"
                                         type="video/mp4">
@@ -77,8 +77,9 @@
                         <div class="thumbnail">
                             <a data-toggle="modal" href="#modal-{{$video->id}}">
                                 <div class="thumbnail-img">
-                                    <img src="{{ asset('video_gallery/' . $video_gallery->id . '/photos/213x116_' . $video->thumbnail)}}"
+                                    <img src="{{ asset('video_gallery/' . $video_gallery->id . '/213x116_' . $video->thumbnail)}}"
                                          width="100%"/>
+
                                 </div>
                             </a>
                             <div class="caption">
