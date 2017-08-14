@@ -32,6 +32,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('news::photo.name')}}</th>
+                            <th>{{trans('news::photo.photo')}}</th>
                             <th>{{trans('news::photo.is_active')}}</th>
                             <th>{{trans('news::photo.edit_delete')}}</th>
                         </tr>
@@ -41,6 +42,13 @@
                             <tr>
                                 <td>{{$record->id}}</td>
                                 <td>{!! link_to_route('photo.show', $record->name , $record, [] ) !!}</td>
+                                <td>
+                                    @if($record->file)
+                                        <img src="{{ asset('photos/' . $record->id . '/58x58_' . $record->file)}}" width="58" height="58"/>
+                                    @elseif($record->link)
+                                        <img src="{{ $record->link}}" width="58" height="58"/>
+                                    @endif
+                                </td>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                 <td>
                                     <div class="btn-group">
