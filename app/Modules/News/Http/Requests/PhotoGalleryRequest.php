@@ -31,7 +31,7 @@ class PhotoGalleryRequest extends FormRequest
             }
             case 'POST': {
                 return [
-                    'photo_category_id' => 'integer|nullable',
+                    'photo_category_id' => 'required|integer',
                     'user_id' => 'required|integer',
                     'title' => [
                         'required',
@@ -53,7 +53,7 @@ class PhotoGalleryRequest extends FormRequest
             case 'PATCH': {
                 $id = $this->route('photo_gallery')->id;
                 return [
-                    'photo_category_id' => 'integer|nullable',
+                    'photo_category_id' => 'required|integer',
                     'user_id' => 'required|integer',
                     'title' => [
                         'required',

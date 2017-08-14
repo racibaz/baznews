@@ -28,10 +28,10 @@ class IndexController extends Controller
             $boxCuffNewsItems = $newsRepository->where('box_cuff', 1)->limit(5)->orderBy('updated_at', 'desc')->findAll();
 
             $photoGalleryRepository = new PhotoGalleryRepository();
-            $photoGalleries = $photoGalleryRepository->where('is_active', 1)->where('is_cuff', 1)->limit(Cache::tags('Setting')->get('photo_gallery'))->orderBy('updated_at', 'desc')->findAll();
+            $photoGalleries = $photoGalleryRepository->where('is_active', 1)->where('is_cuff', 1)->limit(25)->orderBy('updated_at', 'desc')->findAll();
 
             $videoGalleryRepository = new VideoGalleryRepository();
-            $videoGalleries = $videoGalleryRepository->where('is_active', 1)->where('is_cuff', 1)->limit(Cache::tags('Setting')->get('video_gallery'))->orderBy('updated_at', 'desc')->findAll();
+            $videoGalleries = $videoGalleryRepository->where('is_active', 1)->where('is_cuff', 1)->limit(25)->orderBy('updated_at', 'desc')->findAll();
 
             $recommendationNewsRepository = new RecommendationNewsRepository();
             $recommendationNewsItems = $recommendationNewsRepository->with(['news'])

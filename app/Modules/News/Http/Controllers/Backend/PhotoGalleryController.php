@@ -108,6 +108,7 @@ class PhotoGalleryController extends BackendController
     public function save($record)
     {
         $input = Input::all();
+
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['user_id'] = Auth::user()->id;
@@ -120,6 +121,12 @@ class PhotoGalleryController extends BackendController
         if($record->photos->count() == 0){
             $input['is_active'] = false;
             Session::flash('flash_message', trans('news::photo_gallery.not_exist_photos'));
+        }else{
+            if(empty($record->thumbnail) && empty($input['thumbnail'])){
+                return Redirect::back()
+                    ->withErrors(trans('news::photo_gallery.thumbnail_is_not_exist'))
+                    ->withInput($input);
+            }
         }
 
 
@@ -293,14 +300,6 @@ class PhotoGalleryController extends BackendController
 //            $photoGallery = $this->repo->update($photoGalleryId, [
 //                    'thumbnail' => 'yeni resim'
 //                ]);
-
-//            Image::make(public_path('gallery/'. $photoGallery->slug .'/photos/'. $photo->file))
-//                ->resize(58,58)
-//                ->save(public_path('gallery/'. $photoGallery->slug .'/photos/58x58_' . $photo->file));
-//
-//            Image::make(public_path('gallery/'. $photoGallery->slug .'/photos/'. $photo->file))
-//                ->resize(497,358)
-//                ->save(public_path('gallery/'. $photoGallery->slug .'/photos/497x358_' . $photo->file));
 
 
             $originalPhotoPath = Image::make(public_path('gallery/' . $photoGallery->id . '/photos/' . $photo->file));
