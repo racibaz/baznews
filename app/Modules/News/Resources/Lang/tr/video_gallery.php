@@ -12,6 +12,7 @@ return [
     'video_galleries' => 'Video Galeriler',
     'title' => 'Video Başlığı',
     'short_url' => 'Kısa URL',
+    'thumbnail' => 'Küçük Resim',
     'is_cuff' => 'Manşet',
     'is_active' => 'Aktif/Pasif',
     'add_multi_videosView' => 'Çoklu Video Ekle',

@@ -68,4 +68,17 @@ class Uploader
         }
     }
 
+    public static function faviconUploader($file)
+    {
+        if ($file->isValid()) {
+
+            $orjinalDirPath = public_path('');
+            $file->move($orjinalDirPath, 'favicon.ico');
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

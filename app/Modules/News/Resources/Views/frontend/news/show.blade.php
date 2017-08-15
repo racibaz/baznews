@@ -50,7 +50,9 @@
                             </div>
                         @elseif($record->news_type == 5)
                             <div class="video-gallery-content">
-                                video gallery
+                                <a href="#" title="video galery resmi">
+                                    {{--<img src="" alt="">--}}
+                                </a>
                             </div>
                         @elseif($record->news_type == 6)
                             <div class="sound-content">

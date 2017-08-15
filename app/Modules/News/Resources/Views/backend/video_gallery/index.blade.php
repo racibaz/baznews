@@ -23,7 +23,7 @@
                     </a>
                 @endif
                 @if(Auth::user()->can('forgetCache-videogallery'))
-                    <a href="{{ route('forget_video_gallery_cache') }}" class="btn btn-info">
+                    <a href="{{ route('removeCacheTags', ['cacheTags' => 'VideoGalleryController']) }}" class="btn btn-info">
                         <i class="fa fa-plus"></i> {{ trans('news::video_gallery.forget_video_gallery_cache') }}
                     </a>
                 @endif
@@ -41,6 +41,7 @@
                             <th>#</th>
                             <th>{{trans('news::video_gallery.title')}}</th>
                             <th>{{trans('news::video_gallery.short_url')}}</th>
+                            <th>{{trans('news::video_gallery.thumbnail')}}</th>
                             <th>{{trans('news::video_gallery.is_cuff')}}</th>
                             <th>{{trans('news::video_gallery.is_active')}}</th>
                             <th>{{trans('news::video_gallery.edit_delete')}}</th>
@@ -52,11 +53,16 @@
                                 <td>{{$record->id}}</td>
                                 <td>{!! link_to_route('video_gallery.show', $record->title , $record, [] ) !!}</td>
                                 <td>{{$record->short_url}}</td>
+                                <td>
+                                    <img src="{{ asset('video_gallery/' . $record->id . '/58x58_' . $record->thumbnail)}}"/>
+                                </td>
                                 <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                 <td>
                                     <div class="btn-group">
-                                        {!! link_to_route('show_video_gallery', trans('common.show'), $record->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
+                                        @if($record->is_active)
+                                            {!! link_to_route('show_video_gallery', trans('common.show'), $record->slug, ['target' => '_blank', 'class' => 'btn btn-info btn-xs'] ) !!}
+                                        @endif
                                         {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('video_gallery.destroy',  $record))) !!}
                                         {!! link_to_route('add_multi_videos_view', trans('news::video_gallery.add_multi_videosView'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
                                         {!! link_to_route('video_gallery.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}

@@ -139,6 +139,26 @@
                         </div><!-- /.form-group -->
                         <div class="form-group">
                             <div class="row">
+                                {!! Form::label('favicon', trans('setting.favicon'),['class'=> 'col-lg-2 control-label']) !!}
+
+                                <div class="col-lg-10">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput">
+                                            <img src="{!! asset('favicon.ico') !!}" alt="">
+                                        </div>
+                                        <div>
+                                            <span class="btn btn-default btn-file"><span
+                                                        class="fileinput-new">{{trans('setting.file_choose')}}</span><span
+                                                        class="fileinput-exists">{{trans('setting.change')}}</span>{!! Form::file('favicon',['class'=>'fileinput']) !!}</span>
+                                            <a href="#" class="btn btn-default fileinput-exists"
+                                               data-dismiss="fileinput">{{trans('setting.remove')}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <div class="row">
                                 {!! Form::label('abstract_text', trans('setting.abstract_text'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">

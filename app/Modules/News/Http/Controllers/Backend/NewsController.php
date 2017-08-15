@@ -268,6 +268,16 @@ class NewsController extends BackendController
 
     public function destroy(News $record)
     {
+        //todo mysql cascade işlemlerine bakılmalı otomatik olması lazım değil mi?
+        $record->news_categories()->detach();
+        $record->photo_galleries()->detach();
+        $record->video_galleries()->detach();
+        $record->photos()->detach();
+        $record->videos()->detach();
+        $record->recommendation_news()->forceDelete();
+        $record->future_news()->forceDelete();
+        $record->tags()->detach();
+
         $this->repo->delete($record->id);
 
         $this->removeCacheTags(['News']);
