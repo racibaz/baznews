@@ -16,28 +16,11 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-
-    private $model;
-    private $view = '.dashboard.';
-    private $redirectViewName = 'backend';
-    private $redirectRouteName = 'admin';
-
-//    public function __construct(CityRepositoryInterface $model)
-//    {
-//        $this->model= $model;
-//    }
-
-    public function getViewName($methodName)
-    {
-        return $this->redirectViewName . $this->view . $methodName;
-    }
-
-
     public function index()
     {
         $activeUserCount = User::where('status', 1)->get()->count();
-        $passiveUserCount = User::where('status', 1)->get()->count();
-        //todo farklı statusler de gelmeli.
+        $passiveUserCount = User::where('status', 0)->get()->count();
+        //todo farklı statusler de gelmeli. foreach ile dönülebilinir.
 
         $activeGroupCount = Group::where('is_active', 1)->get()->count();
         $passiveGroupCount = Group::where('is_active', 0)->get()->count();
@@ -59,12 +42,9 @@ class DashboardController extends Controller
             return $userGroup->announcements->where('is_active', 1);
         });
 
-
         $userGroupsAnnouncements = $userGroupsAnnouncements[0];
 
-        //$announcements = Announcement::where('is_active',1)->orderBy('order','desc')->get();
-
-        return Theme::view($this->getViewName(__FUNCTION__), compact(
+        return Theme::view('backend.dashboard.index', compact(
             'activeUserCount',
             'passiveUserCount',
             'activeGroupCount',

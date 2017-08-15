@@ -376,13 +376,6 @@ class NewsController extends BackendController
                 Uploader::fileUpload($result, 'cuff_photo', $input['cuff_photo'], $destination, $document_name);
             }
 
-
-            $this->newsNewsCategoriesStore($result, $input);
-            $this->futureNewsStore($result, $input);
-            $this->recommendationNewsStore($result, $input);
-            $this->relatedNewsNewsStore($result, $input);
-            $this->tagsNewsStore($result, $input);
-
             /*
              * news_type photo gallery tipi ise photo gallery silinmemeli
              * */
@@ -403,11 +396,14 @@ class NewsController extends BackendController
                     ->withInput($input);
             }
 
-
-
             $this->newsVideosStore($result, $input);
             $this->newsPhotosStore($result, $input);
 
+            $this->newsNewsCategoriesStore($result, $input);
+            $this->futureNewsStore($result, $input);
+            $this->recommendationNewsStore($result, $input);
+            $this->relatedNewsNewsStore($result, $input);
+            $this->tagsNewsStore($result, $input);
 
             /*
              * slug değişmiş ise ve link kısaltmaya izin verilmişse google link kısaltma servisi ile 'short_link' alanına ekliyoruz.
@@ -613,7 +609,7 @@ class NewsController extends BackendController
             $record->video_galleries()->sync($input['video_gallery_ids']);
         }else{
 
-            if($record->news_type === 5){
+            if($record->news_type == 5){
                 return false;
             }else{
                 $record->video_galleries()->detach();
