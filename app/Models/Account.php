@@ -114,13 +114,13 @@ class Account extends Model
         $rules = array(
             'password' => 'required|min:4|Confirmed',
             'password_confirmation' => 'required|min:4',
-            'facebook' => 'url|max:255',
-            'twitter' => 'url|max:255',
-            'pinterest' => 'url|max:255',
-            'linkedin' => 'url|max:255',
-            'youtube' => 'url|max:255',
-            'web_site' => 'url|max:255',
-            'bio_note' => 'string|max:255',
+            'facebook' => 'url|nullable',
+            'twitter' => 'url|nullable',
+            'pinterest' => 'url|nullable',
+            'linkedin' => 'url|nullable',
+            'youtube' => 'url|nullable',
+            'web_site' => 'url|nullable',
+            'bio_note' => 'string|max:1000|nullable',
             'IP' => 'ip',
             //todo cell_phone
             //todo email alanı kontrol edilmeli

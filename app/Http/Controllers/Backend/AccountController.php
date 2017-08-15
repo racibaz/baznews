@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Input;
 
 class AccountController extends BackendController
 {
+    //todo backend den account kaldırılabilinir. Mevcutta kullanılmıyor sanırsam.
     public function __construct(Repo $repo)
     {
         parent::__construct();
