@@ -21,7 +21,7 @@ class ActivationController extends Controller
 
         Auth::login($token->user);
 
-        return redirect('/home');
+        return redirect('/login');
     }
 
     public function resend(Request $request)
