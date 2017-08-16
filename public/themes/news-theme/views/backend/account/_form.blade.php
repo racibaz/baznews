@@ -117,7 +117,7 @@
                                 {!! Form::label('twitter', trans('account.twitter'), ['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::text('twitter', $record->cell_phone,['placeholder' => trans('account.twitter'), 'class' => 'form-control']) !!}
+                                    {!! Form::text('twitter', $record->twitter,['placeholder' => trans('account.twitter'), 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>

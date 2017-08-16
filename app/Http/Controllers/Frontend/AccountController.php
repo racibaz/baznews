@@ -76,7 +76,6 @@ class AccountController extends Controller
     public function save($record)
     {
         $input = Input::all();
-
         $input['password'] = empty($input['password']) ? $record->password : bcrypt($input['password']);
 
         // İçeriklerde ki html tag leri temizliyoruz.
@@ -88,17 +87,19 @@ class AccountController extends Controller
         $input['web_site'] = strip_tags($input['web_site']);
         $input['bio_note'] = strip_tags($input['bio_note']);
 
+        //todo request validation formatında kontol yapılabilinir.
         //kullanıcı email adresini guncellediğinde email adresini uniqe olduğu için
         //kendi email adresini daha önce kayıtlı olarak görüyor ve hata veriyor
         //bundan dolayı aynı ise burada unique validasyonunu atlamış oluyoruz.
         $rules = [
-            'facebook' => 'url|max:255',
-            'twitter' => 'url|max:255',
-            'pinterest' => 'url|max:255',
-            'linkedin' => 'url|max:255',
-            'youtube' => 'url|max:255',
-            'web_site' => 'url|max:255',
-            'bio_note' => 'string|max:255',
+            'cell_phone' => 'numeric|nullable',
+            'facebook' => 'url|nullable',
+            'twitter' => 'url|nullable',
+            'pinterest' => 'url|nullable',
+            'linkedin' => 'url|nullable',
+            'youtube' => 'url|nullable',
+            'web_site' => 'url|nullable',
+            'bio_note' => 'string|max:1000|nullable',
             'IP' => 'ip',
         ];
 
