@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Jobs\Users\UpdateLastLogin;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -55,12 +56,17 @@ class LoginController extends Controller
     {
         $this->dispatch(new UpdateLastLogin($user, Carbon::now()));
 
-        if ($user->status === 0) {
+        if ($user->status == User::PASSIVE) {
             Auth::logout();
             return redirect('/login')->withErrors('Your Account is Passive Mode');
-        } elseif ($user->status === 2) {
+
+        } elseif ($user->status == User::PREPARING_EMAIL_ACTIVATION) {
             Auth::logout();
             return redirect('/login')->withErrors('Please activate your account. <a href="' . route('auth.activate.resend') . '?email=' . $user->email . '">Resend</a>');
+
+        } elseif ($user->status == User::GARBAGE) {
+            Auth::logout();
+            return redirect('/login')->withErrors('Hesabınız Silindi.');
         }
     }
 }

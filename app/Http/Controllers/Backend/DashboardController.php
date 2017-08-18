@@ -36,13 +36,15 @@ class DashboardController extends Controller
 
         $activeAdsCount = Advertisement::where('is_active', 1)->get()->count();
 
-        $userGroups = \Auth::user()->groups;
+        $userGroupsAnnouncements = [];
+        if(count(\Auth::user()->groups)) {
 
-        $userGroupsAnnouncements = $userGroups->map(function ($userGroup) {
-            return $userGroup->announcements->where('is_active', 1);
-        });
-
-        $userGroupsAnnouncements = $userGroupsAnnouncements[0];
+            $userGroups = \Auth::user()->groups;
+            $userGroupsAnnouncements = $userGroups->map(function ($userGroup) {
+                return $userGroup->announcements->where('is_active', 1);
+            });
+            $userGroupsAnnouncements = $userGroupsAnnouncements[0];
+        }
 
         return Theme::view('backend.dashboard.index', compact(
             'activeUserCount',

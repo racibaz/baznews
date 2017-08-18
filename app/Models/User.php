@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\UserRegistered;
 use App\Modules\Biography\Models\Biography;
 use App\Modules\Book\Models\Book;
 use App\Modules\News\Models\RecommendationNews;
@@ -68,6 +69,38 @@ class User extends Authenticatable
         return $engine->activateRuleset('turkish');
     }
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user) {
+
+            switch (Cache::tags('Setting')->get('user_registration_type'))
+            {
+                case Setting::PUBLIC:
+                    $user->update(['status' => User::ACTIVE]);
+                    break;
+                case Setting::PRIVATE:
+                    $user->update(['status' => User::PASSIVE]);
+                    break;
+                case Setting::VERIFIED:
+                    $user->update(['status' => User::PREPARING_EMAIL_ACTIVATION]);
+                    break;
+                case Setting::NONE:
+                    $user->update(['status' => User::GARBAGE]);
+                    break;
+            }
+
+            if ($user->status == User::PREPARING_EMAIL_ACTIVATION) {
+                $token = $user->activationToken()->create([
+                    'token' => str_random(128),
+                ]);
+
+                event(new UserRegistered($user));
+            }
+        });
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -106,8 +139,7 @@ class User extends Authenticatable
     ];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
-
-
+    public const PASSIVE = 0, ACTIVE = 1, PREPARING_EMAIL_ACTIVATION = 2, GARBAGE = 3;
     public static $statuses = ['Passive', 'Active', 'Preparing Email Activation', 'Garbage'];
 
     public function groups()

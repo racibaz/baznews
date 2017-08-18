@@ -6,10 +6,20 @@
         <div class="col-md-12">
             <div class="register-box">
                 <div class="register-logo">
-                    <a href="{{ url('/') }}"><b>Bazz</b>NEWS</a>
+                    <a href="{{ url('/') }}">BazNEWS</a>
                 </div>
 
                 <div class="register-box-body">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{!! $error !!}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <p class="login-box-msg">{{trans('login.signup_title')}}</p>
 
                     <form role="form" method="POST" action="{{ url('/register') }}">
@@ -46,13 +56,15 @@
                             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                         </div>
                         <div class="row">
-                            <div class="col-xs-8">
-                                <div class="checkbox icheck">
-                                    <label>
-                                        <input type="checkbox" class="privacy-check" id="privacyCheck"> <a data-toggle="modal" href="#register">{{trans('login.user_contract')}}</a> {{trans('login.accept')}}
-                                    </label>
+                            @if(Cache::tags('Setting')->get('user_contract_force'))
+                                <div class="col-xs-8">
+                                    <div class="checkbox icheck">
+                                        <label>
+                                            <input type="checkbox" class="privacy-check" name="user_contract" id="user_contract" > <a data-toggle="modal" href="#register">{{trans('login.user_contract')}}</a> {{trans('login.accept')}}
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             <!-- /.col -->
                             <div class="col-xs-4">
                                 <button type="submit" class="btn btn-primary btn-block btn-flat"><i class="fa fa-save"></i> {{trans('login.register')}}</button>
@@ -82,15 +94,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Kullanım Sözleşmesi</h4>
+                <h4 class="modal-title">{{trans('setting.user_contract')}}</h4>
             </div>
             <div class="modal-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis deserunt dolorum fugit laboriosam
-                    necessitatibus omnis! Accusantium commodi doloribus et explicabo minus, molestias numquam odio
-                    officiis placeat recusandae saepe suscipit voluptas!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ducimus impedit laborum quasi
-                    quia reprehenderit veniam. Beatae consequuntur, deserunt eveniet necessitatibus neque unde. Dolorem
-                    ipsa nesciunt nostrum, repellat suscipit voluptatibus?</p>
+                {{Cache::tags('Setting')->get('user_contract')}}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default privacy-cancel" data-dismiss="modal">Kabul etmiyorum.</button>

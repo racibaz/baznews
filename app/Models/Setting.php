@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 
 class Setting extends Model
 {
+    public const PUBLIC = 0, PRIVATE = 1, VERIFIED = 2, NONE = 3;
+
     use Eventable;
 
     public $timestamps = false;

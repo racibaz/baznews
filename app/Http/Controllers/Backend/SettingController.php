@@ -199,6 +199,24 @@ class SettingController extends BackendController
             $this->repo->update($record->id, ['attribute_value' => $input['copyright']]);
         }
 
+        $record = $this->repo->findBy('attribute_key', 'user_contract_force');
+        if (!empty($input['user_contract_force'])) {
+            $this->repo->update($record->id, ['attribute_value' => 1 ]);
+        }else{
+            $this->repo->update($record->id, ['attribute_value' => 0 ]);
+        }
+
+        // public değeri "0" olduğu için empty methodu yerine özellikle isset methodunu kullanıyoruz.
+        if (isset($input['user_registration_type'])) {
+            $record = $this->repo->findBy('attribute_key', 'user_registration_type');
+            $this->repo->update($record->id, ['attribute_value' => $input['user_registration_type']]);
+        }
+
+        if (!empty($input['user_contract'])) {
+            $record = $this->repo->findBy('attribute_key', 'user_contract');
+            $this->repo->update($record->id, ['attribute_value' => $input['user_contract']]);
+        }
+
         if (!empty($input['url'])) {
             $record = $this->repo->findBy('attribute_key', 'url');
             $this->repo->update($record->id, ['attribute_value' => $input['url']]);

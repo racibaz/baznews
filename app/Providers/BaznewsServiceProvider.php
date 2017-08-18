@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Events\UserRegistered;
 use App\Models\Setting;
-use App\Models\User;
 use App\Models\WidgetManager;
 use App\Modules\News\Models\News;
 use App\Repositories\AdvertisementRepository;
@@ -32,17 +30,6 @@ class BaznewsServiceProvider extends ServiceProvider
     public function boot()
     {
         if (!app()->runningInConsole()) {
-
-            //todo test edildikten sonra User modelinin içine alınamalı.
-            User::created(function ($user) {
-                if ($user->status === 2) {
-                    $token = $user->activationToken()->create([
-                        'token' => str_random(128),
-                    ]);
-
-                    event(new UserRegistered($user));
-                }
-            });
 
             //DB::getSchemaBuilder()->getColumnListing('settings');
 

@@ -81,8 +81,7 @@
                                     <!-- /.thumbnail -->
                                 </li>
                                 <!-- /.col -->
-                        @endforeach
-
+                            @endforeach
                         <!-- /.col -->
                         </ul>
                     </div>
