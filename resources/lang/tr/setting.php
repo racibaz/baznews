@@ -57,5 +57,7 @@ return [
     'recommended_logo_size' => 'Tavsiye Edilen Logo Boyutu',
     'config_cache' => 'Konfigürasyon Ayarları Ön Belleğe Alındı.',
     'config_cleared' => 'Konfigürasyon Ayarları Ön Bellekten Temizkendi.',
-
+    'user_registration_type.private' => 'Hesabınız Site Yönetici Tarafından Onaylandığında Giriş Yapabilirsiniz. Site Yöneticisi İle İletişime Geçebilirsiniz.',
+    'user_registration_type.verified' => 'Hesabınızı Aktif Hale Getitmek İçin E-Posta Hesanızı Kontrol Ediniz.',
+    'user_registration_type.none' => 'Kullanıcı Kaydı Alınmamaktadır.',
 ];

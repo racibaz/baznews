@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use App\Models\User;
 use Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Input;
 
 class RegisterController extends Controller
 {
@@ -31,14 +34,23 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/account';
 
+
     /**
+     * RegisterController constructor.
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
         $this->middleware('guest');
+
+        //todo registerdan sonra login e düştüğünde bu hatayı alıyoruz.
+        if(Cache::tags('Setting')->get('user_contract_force')){
+            if(empty(Input::get('user_contract'))){
+                return redirect('register')
+                    ->withErrors(trans('common.save_failed'))
+                    ->withInput(Input::all());
+            }
+        }
     }
 
     /**
@@ -64,11 +76,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //todo user repo üzerinden yapıldığında backend de gözüküyor.
+        // "status" kısmını User modelinde kontrol ediyoruz.
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'status' => 2
         ]);
     }
 
@@ -81,9 +94,24 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {
-        Auth::logout();
-
-        return redirect('/login')->withInfo('Please now activate your account.');
+        switch (Cache::tags('Setting')->get('user_registration_type'))
+        {
+            case Setting::PUBLIC:
+                return redirect('/login');
+                break;
+            case Setting::PRIVATE:
+                Auth::logout();
+                return redirect()->back()->withErrors(trans('setting.user_registration_type.private'));
+                break;
+            case Setting::VERIFIED:
+                Auth::logout();
+                return redirect()->back()->withErrors(trans('setting.user_registration_type.verified'));
+                break;
+            case Setting::NONE:
+                Auth::logout();
+                return redirect()->back()->withErrors(trans('setting.user_registration_type.none'));
+                break;
+        }
     }
 
 }

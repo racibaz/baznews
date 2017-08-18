@@ -179,6 +179,39 @@
 
                         <div class="form-group">
                             <div class="row">
+                                <div class="col-md-2">
+                                    <strong>
+                                        {{trans('setting.user_contract_force')}}
+                                    </strong>
+                                </div>
+                                <div class="col-lg-10">
+                                    <label>
+                                        {!! Form::checkbox('user_contract_force', null , $records->where('attribute_key','user_contract_force')->first()->attribute_value) !!}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <strong>
+                                        {{trans('setting.user_registration_type')}}
+                                    </strong>
+                                </div>
+                                <div class="col-lg-10">
+                                    <label>
+                                        <div class="form-group">
+                                            {!! Form::select('user_registration_type', [\App\Models\Setting::PUBLIC => trans('setting.public'),
+                                                                                        \App\Models\Setting::PRIVATE => trans('setting.private'),
+                                                                                        \App\Models\Setting::VERIFIED => trans('setting.verified'),
+                                                                                        \App\Models\Setting::NONE => trans('setting.none')],
+                                                                                         $records->where('attribute_key','user_registration_type')->first()->attribute_value,
+                                                                                        ['class' => 'form-control']) !!}
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
                                 {!! Form::label('user_contract', trans('setting.user_contract'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">

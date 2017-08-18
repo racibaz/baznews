@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
@@ -38,7 +39,7 @@ class ResetPasswordController extends Controller
      */
     protected function sendResetResponse($response)
     {
-        if ($this->guard()->user()->status === 2) {
+        if ($this->guard()->user()->status === User::PREPARING_EMAIL_ACTIVATION || $this->guard()->user()->status === User::GARBAGE) {
             $this->guard()->logout();
             return redirect('/login')->withInfo('Your password has been changed but you still need to activate.');
         }

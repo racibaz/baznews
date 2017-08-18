@@ -51,6 +51,5 @@ return [
     'eventable_id' => 'Id',
     'event_name' => 'Etkinlik Adı',
     'trushed_management' => 'Silinmiş Kullanıcılar',
-    'please_choose'=>'Lütfen Seçiniz..'
-
+    'please_choose'=>'Lütfen Seçiniz..',
 ];

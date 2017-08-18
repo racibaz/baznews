@@ -89,6 +89,16 @@ class SettingTableSeeder extends Seeder
         ]);
 
         Setting::create([
+            'attribute_key'               => 'user_contract_force',
+            'attribute_value'             => 1,
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'user_registration_type',
+            'attribute_value'             => Setting::PUBLIC,
+        ]);
+
+        Setting::create([
             'attribute_key'               => 'user_contract',
             'attribute_value'             => 'user_contract',
         ]);
