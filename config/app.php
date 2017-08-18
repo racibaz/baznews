@@ -258,8 +258,6 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
         'Fractal' => Spatie\Fractal\FractalFacade::class,
-
-        ////TODO  THEME İN COMPONET GİBİ BİRŞEY VARDI ONA BAKILACAK
     ],
 
 ];
