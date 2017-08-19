@@ -95,7 +95,7 @@ class SettingTableSeeder extends Seeder
 
         Setting::create([
             'attribute_key'               => 'user_registration_type',
-            'attribute_value'             => Setting::PUBLIC,
+            'attribute_value'             => Setting::PRIVATE,
         ]);
 
         Setting::create([
