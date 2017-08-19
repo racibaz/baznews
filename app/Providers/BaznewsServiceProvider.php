@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Setting;
 use App\Models\WidgetManager;
 use App\Modules\News\Models\News;
+use App\Modules\News\Repositories\NewsRepository;
 use App\Repositories\AdvertisementRepository;
 use App\Repositories\MenuRepository;
 use Caffeinated\Themes\Facades\Theme;
@@ -29,9 +30,7 @@ class BaznewsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (!app()->runningInConsole()) {
-
-            //DB::getSchemaBuilder()->getColumnListing('settings');
+//        if (!app()->runningInConsole()) {
 
             Cache::tags('Setting')->rememberForever('settings', function () {
 
@@ -65,21 +64,21 @@ class BaznewsServiceProvider extends ServiceProvider
                  * */
                 View::share('widgets', WidgetManager::where('is_active', 1)->orderBy('position', 'asc')->get());
 
-                //Cache::tags('settings')->flush();
-                //Cache::flush();
+
+                $newsRepo = new NewsRepository();
+                View::share('breakNewsItems', $newsRepo->getBreakNewsItems());
 
 
-                //todo cachle nerebilirnir.
-                View::share('breakNewsItems', News::where('break_news', 1)
-                    ->where('is_active', 1)
-                    ->limit(Cache::tags('Setting')->get('break_news'))
-                    ->get());
+                Cache::tags(['Setting', 'Advertisement'])->rememberForever('breakNewsItems', function () {
+                    $repo = new AdvertisementRepository();
+                    $repo->putCacheAdvertisementItems();
+                });
 
-                //TODO cachelenecek
+                //TODO tema içerisinde misal js, css veya diğer gereksiz yerlerden bu değişken kaldırılmalı
                 View::share('activeTheme', Theme::getActive());
 
             });
-        }
+//        }
     }
 
     /**

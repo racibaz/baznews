@@ -15,34 +15,28 @@ use Illuminate\Support\Facades\Cache;
 
 class IndexController extends Controller
 {
-
     public function index()
     {
         return Cache::tags(['homePage'])->rememberForever('homePage', function () {
 
             $newsRepository = new NewsRepository();
-            $breakNewsItems = $newsRepository->where('break_news', 1)->limit(Cache::tags('Setting')->get('break_news'))->orderBy('updated_at', 'desc')->findAll();
-            $bandNewsItems = $newsRepository->where('band_news', 1)->limit(Cache::tags('Setting')->get('band_news'))->orderBy('updated_at', 'desc')->findAll();
-            $mainCuffNewsItems = $newsRepository->where('main_cuff', 1)->limit(Cache::tags('Setting')->get('main_cuff'))->orderBy('updated_at', 'desc')->findAll();
-            $miniCuffNewsItems = $newsRepository->where('mini_cuff', 1)->limit(Cache::tags('Setting')->get('mini_cuff'))->orderBy('updated_at', 'desc')->findAll();
-            $boxCuffNewsItems = $newsRepository->where('box_cuff', 1)->limit(5)->orderBy('updated_at', 'desc')->findAll();
+            // $breakNewsItems değerini BaznewsServicePorvider da View::share() methodu ile alıyoruz.
+            $bandNewsItems = $newsRepository->getBandNewsItems();
+            $mainCuffNewsItems = $newsRepository->getMainCuffItems();
+            $miniCuffNewsItems = $newsRepository->getMiniCuffItems();
+            $boxCuffNewsItems = $newsRepository->getBoxCuffNewsItems();
 
             $photoGalleryRepository = new PhotoGalleryRepository();
-            $photoGalleries = $photoGalleryRepository->where('is_active', 1)->where('is_cuff', 1)->limit(25)->orderBy('updated_at', 'desc')->findAll();
+            $photoGalleries = $photoGalleryRepository->getCuffPhotoGalleries();
 
             $videoGalleryRepository = new VideoGalleryRepository();
-            $videoGalleries = $videoGalleryRepository->where('is_active', 1)->where('is_cuff', 1)->limit(25)->orderBy('updated_at', 'desc')->findAll();
+            $videoGalleries = $videoGalleryRepository->getCuffVideoGalleries();
 
             $recommendationNewsRepository = new RecommendationNewsRepository();
-            $recommendationNewsItems = $recommendationNewsRepository->with(['news'])
-                ->where('is_active', 1)
-                ->where('is_cuff', 1)
-                ->limit(Cache::tags('Setting')->get('recommendation_news'))
-                ->orderBy('order', 'asc')
-                ->findAll();
+            $recommendationNewsItems = $recommendationNewsRepository->getCuffRecommendationNewsItems();
 
             Cache::tags(['Widget'])->rememberForever('widgets', function () {
-                return WidgetManager::where('is_active', 1)->get();
+                return WidgetManager::getAllWidgets();
             });
 
             $pageSetting = Setting::all();
@@ -50,7 +44,6 @@ class IndexController extends Controller
 
             return Theme::view('frontend.index', compact(
                 'pageSetting',
-                'breakNewsItems',
                 'bandNewsItems',
                 'mainCuffNewsItems',
                 'miniCuffNewsItems',

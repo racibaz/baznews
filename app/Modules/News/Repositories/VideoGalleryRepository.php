@@ -74,4 +74,13 @@ class VideoGalleryRepository extends EloquentRepository
     {
         return $videoGallery->videos->first();
     }
+
+    public function getCuffVideoGalleries($limit = 25)
+    {
+        return $this->where('is_active', 1)
+            ->where('is_cuff', 1)
+            ->limit($limit)
+            ->orderBy('updated_at', 'desc')
+            ->findAll();
+    }
 }

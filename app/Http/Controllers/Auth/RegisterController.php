@@ -43,10 +43,9 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
 
-        //todo registerdan sonra login e düştüğünde bu hatayı alıyoruz.
-        if(Cache::tags('Setting')->get('user_contract_force')){
+        if(request()->isMethod('post') && Cache::tags('Setting')->get('user_contract_force')) {
             if(empty(Input::get('user_contract'))){
-                return redirect('register')
+                    return redirect('register')
                     ->withErrors(trans('common.save_failed'))
                     ->withInput(Input::all());
             }

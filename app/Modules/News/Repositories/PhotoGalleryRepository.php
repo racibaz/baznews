@@ -10,4 +10,12 @@ class PhotoGalleryRepository extends EloquentRepository
 
     protected $model = 'App\Modules\News\Models\PhotoGallery';
 
+    public function getCuffPhotoGalleries($limit = 25)
+    {
+        return $this->where('is_active', 1)
+            ->where('is_cuff', 1)
+            ->limit($limit)
+            ->orderBy('updated_at', 'desc')
+            ->findAll();
+    }
 }

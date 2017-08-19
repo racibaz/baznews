@@ -88,7 +88,7 @@ class WidgetManager extends Model
 
     public static function getAllWidgets()
     {
-        return WidgetManager::where('is_active', 1)->get();
+        return WidgetManager::where('is_active', 1)->orderBy('position', 'asc')->get();
     }
 
     public static function getEnableModuleWidgets()
