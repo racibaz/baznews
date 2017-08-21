@@ -10,7 +10,6 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Input;
 
 class RegisterController extends Controller
 {
@@ -42,14 +41,6 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-
-        if(request()->isMethod('post') && Cache::tags('Setting')->get('user_contract_force')) {
-            if(empty(Input::get('user_contract'))){
-                    return redirect('register')
-                    ->withErrors(trans('common.save_failed'))
-                    ->withInput(Input::all());
-            }
-        }
     }
 
     /**
@@ -60,10 +51,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        //kullanıcı sözleşmesi Setting  de zorunlu hale getirilmişse kullanıcı kayıt olmadan kontrol ediyoruz.
+        $userCheckContractValidation = Cache::tags('Setting')->get('user_contract_force') == 1 ? 'required' : '';
+
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'user_contract' => $userCheckContractValidation,
         ]);
     }
 
@@ -112,5 +107,4 @@ class RegisterController extends Controller
                 break;
         }
     }
-
 }

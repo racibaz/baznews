@@ -30,7 +30,7 @@ class BaznewsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        if (!app()->runningInConsole()) {
+        if (!app()->runningInConsole()) {
 
             Cache::tags('Setting')->rememberForever('settings', function () {
 
@@ -76,9 +76,8 @@ class BaznewsServiceProvider extends ServiceProvider
 
                 //TODO tema içerisinde misal js, css veya diğer gereksiz yerlerden bu değişken kaldırılmalı
                 View::share('activeTheme', Theme::getActive());
-
             });
-//        }
+        }
     }
 
     /**

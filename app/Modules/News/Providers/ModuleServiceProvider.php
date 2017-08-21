@@ -23,10 +23,13 @@ class ModuleServiceProvider extends ServiceProvider
 
         News::observe(NewsObserver::class);
 
-        Cache::tags(['NewsCategory', 'News'])->rememberForever('cuffNewsCategories', function () {
-            $newsCategoryRepository = new NewsCategoryRepository();
-            View::share('cuffNewsCategories', $newsCategoryRepository->getAllNewsCategoriesWithNews());
-        });
+        if (!app()->runningInConsole()) {
+
+            Cache::tags(['NewsCategory', 'News'])->rememberForever('cuffNewsCategories', function () {
+                $newsCategoryRepository = new NewsCategoryRepository();
+                View::share('cuffNewsCategories', $newsCategoryRepository->getAllNewsCategoriesWithNews());
+            });
+        }
     }
 
     /**
