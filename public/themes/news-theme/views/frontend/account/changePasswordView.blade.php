@@ -83,38 +83,41 @@
                     @endif
 
                     {!! Form::model($record, ['route' => ['change_password', $record], 'method' => 'POST']) !!}
-                    <div class="user-forms">
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('password', trans('user.password'), ['class'=> 'col-lg-2 control-label']) !!}
+                        <div class="user-forms">
+                            <div class="form-group">
+                                <div class="row">
+                                    {!! Form::label('password', trans('user.password'), ['class'=> 'col-lg-2 control-label']) !!}
 
-                                <div class="col-lg-10">
-                                    {!! Form::password('password', array('placeholder' => trans('user.password'), 'class'=>'form-control')) !!}
+                                    <div class="col-lg-10">
+                                        {!! Form::password('password', array('placeholder' => trans('user.password'), 'class'=>'form-control')) !!}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                {!! Form::label('password_confirmation', trans('user.password_confirmation') ,['class'=> 'col-lg-2 control-label']) !!}
+                            <div class="form-group">
+                                <div class="row">
+                                    {!! Form::label('password_confirmation', trans('user.password_confirmation') ,['class'=> 'col-lg-2 control-label']) !!}
 
-                                <div class="col-lg-10">
-                                    {!! Form::password('password_confirmation', array('placeholder' => trans('user.password_confirmation'), 'class'=>'form-control')) !!}
+                                    <div class="col-lg-10">
+                                        {!! Form::password('password_confirmation', array('placeholder' => trans('user.password_confirmation'), 'class'=>'form-control')) !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button class="btn btn-success" type="submit"><i
+                                                    class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-lg-offset-2 col-lg-10">
-                                    <button class="btn btn-success" type="submit"><i
-                                                class="fa fa-check-square-o"></i> {{trans('common.save')}}</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     {!! Form::close() !!}
                 </div>
             </div><!-- /.col -->
         </div><!-- end row -->
         <!-- Main Content Element  End-->
     </article><!-- /.article -->
+@endsection
+@section('meta_tags')
+    <title> {{ $record->name }}  </title>
 @endsection

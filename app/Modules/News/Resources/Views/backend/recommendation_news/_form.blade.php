@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label>
-                            {!! Form::checkbox('is_cuff', null , $record->is_active) !!}
+                            {!! Form::checkbox('is_cuff', null , $record->is_cuff) !!}
                             {{trans('news::recommendation_news.is_cuff')}}
                         </label>
                     </div>

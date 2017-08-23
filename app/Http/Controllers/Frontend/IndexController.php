@@ -32,9 +32,6 @@ class IndexController extends Controller
             $videoGalleryRepository = new VideoGalleryRepository();
             $videoGalleries = $videoGalleryRepository->getCuffVideoGalleries();
 
-            $recommendationNewsRepository = new RecommendationNewsRepository();
-            $recommendationNewsItems = $recommendationNewsRepository->getCuffRecommendationNewsItems();
-
             Cache::tags(['Widget'])->rememberForever('widgets', function () {
                 return WidgetManager::getAllWidgets();
             });
@@ -51,8 +48,7 @@ class IndexController extends Controller
                 'cuffNewsCategories',
                 'modules',
                 'photoGalleries',
-                'videoGalleries',
-                'recommendationNewsItems'
+                'videoGalleries'
             ))->render();
 
         });

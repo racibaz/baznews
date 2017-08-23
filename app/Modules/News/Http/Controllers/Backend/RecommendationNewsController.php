@@ -74,7 +74,7 @@ class RecommendationNewsController extends BackendController
     {
         $this->repo->delete($record->id);
 
-        $this->removeCacheTags(['NewsController']);
+        $this->removeCacheTags(['RecommendationNews','NewsController']);
         $this->removeHomePageCache();
 
         return redirect()->route($this->redirectRouteName . $this->view . 'index');

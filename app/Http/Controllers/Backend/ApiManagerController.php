@@ -9,7 +9,7 @@ class ApiManagerController extends BackendController
 
     public function __construct()
     {
-//        parent::__construct();
+        parent::__construct();
 
         $this->view = 'api_manager.';
         $this->redirectViewName = 'backend.';

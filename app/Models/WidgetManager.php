@@ -8,6 +8,7 @@ use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
 
@@ -49,25 +50,17 @@ class WidgetManager extends Model
     {
         parent::boot();
 
-        if (!app()->runningInConsole()) {
+        static::created(function () {
+            Cache::tags('homePage')->flush();
+        });
 
-            static::created(function () {
+        static::updated(function () {
+            Cache::tags('homePage')->flush();
+        });
 
-                Redis::del('laravel:homePage');
-            });
-
-            static::updated(function () {
-
-                Redis::del('laravel:homePage');
-
-            });
-
-            static::deleted(function () {
-
-                Redis::del('laravel:homePage');
-            });
-
-        }
+        static::deleted(function () {
+            Cache::tags('homePage')->flush();
+        });
     }
 
 

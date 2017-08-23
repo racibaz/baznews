@@ -18,8 +18,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $activeUserCount = User::where('status', 1)->get()->count();
-        $passiveUserCount = User::where('status', 0)->get()->count();
+        $activeUserCount = User::where('status', User::ACTIVE)->get()->count();
+        $passiveUserCount = User::where('status', User::PASSIVE)->get()->count();
         //todo farklı statusler de gelmeli. foreach ile dönülebilinir.
 
         $activeGroupCount = Group::where('is_active', 1)->get()->count();

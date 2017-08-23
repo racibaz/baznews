@@ -15,8 +15,8 @@ class RecommendationNewsRepository extends EloquentRepository
         return $this->with(['news'])
             ->where('is_active', 1)
             ->where('is_cuff', 1)
-            ->limit($limit)
+            ->take($limit)
             ->orderBy('order', 'asc')
-            ->findAll();
+            ->get();
     }
 }
