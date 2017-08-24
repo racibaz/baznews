@@ -65,14 +65,7 @@
                     </div><!-- /#book-detail -->
                 </article>
 
-                <div class="share-box">
-                    <div class="title-section">
-                        <h1>
-                            <span>Paylaş</span>
-                        </h1>
-                    </div>
-                    {!! Cache::tags('Setting')->get('addthis') !!}
-                </div>
+                @include($activeTheme . '::frontend.partials._share')
 
                 @if($record->is_comment)
                     <div class="discus-box">

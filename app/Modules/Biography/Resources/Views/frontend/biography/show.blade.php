@@ -36,14 +36,7 @@
                         </div><!-- /.bio-content -->
                     </div><!-- /.module -->
                 </article>
-                <div class="share-box">
-                    <div class="title-section">
-                        <h1>
-                            <span>Paylaş</span>
-                        </h1>
-                    </div>
-                    {!! Cache::tags('Setting')->get('addthis') !!}
-                </div>
+                @include($activeTheme . '::frontend.partials._share')
                 <div class="other-bio">
                     <div class="title-section">
                         <h2>

@@ -54,6 +54,7 @@ class News extends Model
     public $transformer = NewsTransformer::class;
     public static $newsTypes = ['Standard', 'Private News', 'Internal News', 'Photo Gallery', 'Video', 'Video Gallery', 'Sound'];
     public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
+    //todo is_cuff kullanımına bakılmalı.
     protected $fillable = ['user_id', 'country_id', 'city_id', 'news_source_id',
         'title', 'small_title', 'slug', 'spot', 'short_url', 'content', 'description', 'keywords', 'meta_tags', 'cuff_photo', 'thumbnail', 'cuff_direct_link',
         'video_embed', 'news_type', 'status', 'band_news', 'box_cuff', 'is_cuff', 'break_news', 'main_cuff', 'mini_cuff', 'map', 'is_comment',

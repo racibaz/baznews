@@ -83,6 +83,9 @@
                             </ul>
                         </div>
                     </div><!-- /.gallery -->
+                    @include($activeTheme . '::frontend.partials._share')
+                    {{--//todo comment de partial yapılmalı--}}
+                    {{--//todo tag  de partial yapılmalı--}}
                     <div class="row">
                         <div class="col-lg-12">
                             <div>
