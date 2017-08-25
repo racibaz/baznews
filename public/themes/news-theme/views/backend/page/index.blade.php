@@ -40,7 +40,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('page.name')}}</th>
-                            <th>{{trans('page.is_comment')}}</th>
+                            <th>{{trans('common.is_comment')}}</th>
                             <th>{{trans('page.is_active')}}</th>
                             <th>{{trans('page.edit_create')}}</th>
                         </tr>
@@ -70,7 +70,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('page.name')}}</th>
-                            <th>{{trans('page.is_comment')}}</th>
+                            <th>{{trans('common.is_comment')}}</th>
                             <th>{{trans('page.is_active')}}</th>
                             <th>{{trans('page.edit_create')}}</th>
                         </tr>

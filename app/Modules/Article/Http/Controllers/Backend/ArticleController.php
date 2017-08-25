@@ -159,6 +159,7 @@ class ArticleController extends BackendController
         $input = Input::all();
 
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
+        $input['is_comment'] = Input::get('is_comment') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['content'] = Purifier::clean(Input::get('content'));
         $input['order'] = isset($input['order']) ? $input['order'] : 1;

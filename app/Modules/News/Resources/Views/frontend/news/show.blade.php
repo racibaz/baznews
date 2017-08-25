@@ -311,13 +311,7 @@
                 @include($activeTheme . '::frontend.partials._share')
 
                 @if($record->is_comment)
-                    <div class="module discus-box">
-                        <div class="row">
-                            <div class="col-md-12">
-                                {!! Cache::tags('Setting')->get('disqus') !!}
-                            </div>
-                        </div>
-                    </div><!-- /.discus-box -->
+                    @include($activeTheme . '::frontend.partials._comment')
                 @endif
             </div><!-- /.new-content -->
             <div class="col-md-4" id="sidebar">

@@ -82,17 +82,9 @@
                         </div>
                     </div><!-- /.gallery -->
                     @include($activeTheme . '::frontend.partials._share')
-
-                    {{--@if($record->is_comment)--}}
-                    {{--<div class="discus-box">--}}
-                    {{--<div class="row">--}}
-                    {{--<div class="col-md-12">--}}
-                    {{--{!! Cache::tags('Setting')->get('disqus') !!}--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</div><!-- /.discus-box -->--}}
-                    {{--@endif--}}
-
+                    @if($firstPhoto->is_comment)
+                        @include($activeTheme . '::frontend.partials._comment')
+                    @endif
                     <div class="tag-box">
                         @foreach($photoGallery->tags as $tag)
                             <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>

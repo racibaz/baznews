@@ -110,7 +110,7 @@
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_comment', null , $record->is_comment) !!}
-                            <i></i> {{trans('news::video.is_comment')}}
+                            <i></i> {{trans('common.is_comment')}}
                         </label>
                     </div>
                     <div class="form-group">

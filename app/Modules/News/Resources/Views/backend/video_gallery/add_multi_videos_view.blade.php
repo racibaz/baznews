@@ -117,7 +117,7 @@
                                 <p>
                                     <label>
                                         {!! Form::checkbox('is_comment/' . $video->id, null , $video->is_comment) !!}
-                                        <i></i> {{trans('news::video_gallery.is_comment')}}
+                                        <i></i> {{trans('common.is_comment')}}
                                     </label>
                                 </p>
                                 <p>

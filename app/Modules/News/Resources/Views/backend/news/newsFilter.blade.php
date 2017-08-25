@@ -125,7 +125,7 @@
                             'data-onstyle' => "success",
                             'data-offstyle' => "danger"
                             ] ) !!}
-                            {!! trans('news.is_comment') !!}
+                            {!! trans('common.is_comment') !!}
                         </label>
                     </div>
                     <div class="form-group">
@@ -192,7 +192,7 @@
                             <th>{{trans('news.box_cuff')}}</th>
                             <th>{{trans('news.is_cuff')}}</th>
                             <th>{{trans('news.break_news')}}</th>
-                            <th>{{trans('news.is_comment')}}</th>
+                            <th>{{trans('common.is_comment')}}</th>
                             <th>{{trans('news.main_cuff')}}</th>
                             <th>{{trans('news.mini_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>
@@ -235,7 +235,7 @@
                             <th>{{trans('news.box_cuff')}}</th>
                             <th>{{trans('news.is_cuff')}}</th>
                             <th>{{trans('news.break_news')}}</th>
-                            <th>{{trans('news.is_comment')}}</th>
+                            <th>{{trans('common.is_comment')}}</th>
                             <th>{{trans('news.main_cuff')}}</th>
                             <th>{{trans('news.mini_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>

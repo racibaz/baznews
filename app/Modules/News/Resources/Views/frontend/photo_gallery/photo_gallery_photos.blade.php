@@ -84,7 +84,9 @@
                         </div>
                     </div><!-- /.gallery -->
                     @include($activeTheme . '::frontend.partials._share')
-                    {{--//todo comment de partial yapılmalı--}}
+                    @if($photo->is_comment)
+                        @include($activeTheme . '::frontend.partials._comment')
+                    @endif
                     {{--//todo tag  de partial yapılmalı--}}
                     <div class="row">
                         <div class="col-lg-12">

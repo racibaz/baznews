@@ -37,7 +37,7 @@ class Photo extends Model
     }
 
     public $transformer = PhotoTransformer::class;
-    protected $fillable = ['photo_gallery_id', 'name', 'subtitle', 'slug', 'file', 'link', 'content', 'keywords', 'order', 'is_active'];
+    protected $fillable = ['photo_gallery_id', 'name', 'subtitle', 'slug', 'file', 'link', 'content', 'keywords', 'order', 'is_comment', 'is_active'];
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function news()

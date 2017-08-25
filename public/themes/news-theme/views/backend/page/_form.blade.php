@@ -100,7 +100,7 @@
                             <div class="col-lg-12">
                                 <label>
                                     {!! Form::checkbox('is_comment', null , $record->is_comment) !!}
-                                    &nbsp;&nbsp;{{trans('page.is_comment')}}
+                                    &nbsp;&nbsp;{{trans('common.is_comment')}}
                                 </label>
                             </div>
                         </div>

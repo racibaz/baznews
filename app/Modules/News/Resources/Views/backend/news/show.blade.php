@@ -169,7 +169,7 @@
                                 <td>{!! $record->mini_cuff ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.is_comment')}}</th>
+                                <th>{{trans('common.is_comment')}}</th>
                                 <td>{!! $record->is_comment ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>

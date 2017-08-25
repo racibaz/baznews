@@ -24,6 +24,7 @@ class CreatePhotosTable extends Migration
             $table->text('content')->nullable();
             $table->string('keywords')->nullable();
             $table->unsignedInteger('order')->nullable();
+            $table->boolean('is_comment')->default(false);
             $table->boolean('is_active')->nullable();
             $table->timestamps();
             $table->softDeletes();

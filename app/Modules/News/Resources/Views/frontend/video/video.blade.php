@@ -80,13 +80,7 @@
                         @include($activeTheme . '::frontend.partials._share')
 
                         @if($video->is_comment)
-                            <div class="discus-box">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        {!! Cache::tags('Setting')->get('disqus') !!}
-                                    </div>
-                                </div>
-                            </div><!-- /.discus-box -->
+                            @include($activeTheme . '::frontend.partials._comment')
                         @endif
                     </div><!-- /.new-content -->
                 </div><!-- /.col-md-8 -->

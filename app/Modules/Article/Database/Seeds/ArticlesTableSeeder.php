@@ -27,6 +27,7 @@ class ArticlesTableSeeder extends Seeder
             'order' => 1,
             'status' => 1,
             'is_cuff' => 1,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -43,6 +44,7 @@ class ArticlesTableSeeder extends Seeder
             'order' => 1,
             'status' => 1,
             'is_cuff' => 1,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -59,6 +61,7 @@ class ArticlesTableSeeder extends Seeder
             'order' => 1,
             'status' => 1,
             'is_cuff' => 1,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -75,6 +78,7 @@ class ArticlesTableSeeder extends Seeder
             'order' => 1,
             'status' => 1,
             'is_cuff' => 1,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
     }

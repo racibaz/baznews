@@ -78,7 +78,6 @@
                     </div>
                 </div>
 
-
             </div><!-- /.new-content -->
             <div class="col-md-4" id="sidebar">
                 <div class="sidebar">

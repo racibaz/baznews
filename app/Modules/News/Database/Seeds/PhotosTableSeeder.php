@@ -23,6 +23,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 1 tanım',
             'keywords' => 'photo 1',
             'order' => 1,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -35,6 +36,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 2 tanım',
             'keywords' => 'photo 2',
             'order' => 2,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -47,6 +49,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 3 tanım',
             'keywords' => 'photo 3',
             'order' => 3,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -59,6 +62,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 4 tanım',
             'keywords' => 'photo 4',
             'order' => 4,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -71,6 +75,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 5 tanım',
             'keywords' => 'photo 5',
             'order' => 5,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -83,6 +88,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 6 tanım',
             'keywords' => 'photo 6',
             'order' => 6,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -97,6 +103,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 7 tanım',
             'keywords' => 'photo 7',
             'order' => 7,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -109,6 +116,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 8 tanım',
             'keywords' => 'photo 8',
             'order' => 8,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -121,6 +129,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 9 tanım',
             'keywords' => 'photo 9',
             'order' => 9,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -133,6 +142,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 10 tanım',
             'keywords' => 'photo 10',
             'order' => 10,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -145,6 +155,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 11 tanım',
             'keywords' => 'photo 11',
             'order' => 11,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -157,6 +168,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 12 tanım',
             'keywords' => 'photo 12',
             'order' => 12,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -169,6 +181,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 13 tanım',
             'keywords' => 'photo 13',
             'order' => 13,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -181,6 +194,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 14 tanım',
             'keywords' => 'photo 14',
             'order' => 14,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -193,6 +207,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 15 tanım',
             'keywords' => 'photo 15',
             'order' => 15,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -205,6 +220,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 16 tanım',
             'keywords' => 'photo 16',
             'order' => 16,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -217,6 +233,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 17 tanım',
             'keywords' => 'photo 17',
             'order' => 17,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
 
@@ -229,6 +246,7 @@ class PhotosTableSeeder extends Seeder
             'content' => 'photo 18 tanım',
             'keywords' => 'photo 18',
             'order' => 18,
+            'is_comment' => 1,
             'is_active' => 1,
         ]);
     }

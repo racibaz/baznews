@@ -28,6 +28,7 @@ class CreateArticlesTable extends Migration
             $table->unsignedInteger('order')->default(0);
             $table->unsignedTinyInteger('status')->default(0);
             $table->boolean('is_cuff')->default(false);
+            $table->boolean('is_comment')->default(false);
             $table->boolean('is_active')->default(false);
             $table->timestamps();
             $table->softDeletes();
