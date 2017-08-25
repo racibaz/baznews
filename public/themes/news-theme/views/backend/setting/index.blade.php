@@ -321,7 +321,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     {!! Form::label('contact', trans('setting.contact'),['class'=> ' control-label']) !!}
-                                    {!! Form::textarea('contact', $records->where('attribute_key','contact')->first()->attribute_value, ['placeholder' => trans('setting.contact') ,'class' => 'form-control summernote']) !!}
+                                    {!! Form::textarea('contact', $records->where('attribute_key','contact')->first()->attribute_value, ['placeholder' => trans('setting.contact') ,'class' => 'form-control']) !!}
                                 </div>
                                 <div class="col-md-12">
                                     <hr>
@@ -400,7 +400,7 @@
                                 {!! Form::label('footer_text', trans('setting.footer_text'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::textarea('footer_text', $records->where('attribute_key','footer_text')->first()->attribute_value, ['placeholder' => trans('setting.footer_text') ,'class' => 'form-control summernote']) !!}
+                                    {!! Form::textarea('footer_text', $records->where('attribute_key','footer_text')->first()->attribute_value, ['placeholder' => trans('setting.footer_text') ,'class' => 'form-control footer-text']) !!}
                                 </div>
                             </div>
                         </div><!-- /.form-group -->
@@ -632,6 +632,7 @@
         };
         CKEDITOR.replace('user_contract', options);
         CKEDITOR.replace('contact', options);
+        CKEDITOR.replace('footer_text', options);
         //CKEDİTOR END...
 
         $(document).ready(function () {
