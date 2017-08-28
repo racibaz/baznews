@@ -25,6 +25,7 @@ class SendActivationEmail
      */
     public function handle($event)
     {
+        //todo users içerisine alınmalı.
         Mail::to($event->user)->send(new SendActivationToken($event->user->activationToken));
     }
 }

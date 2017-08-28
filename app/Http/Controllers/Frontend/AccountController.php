@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Account;
 use App\Models\City;
 use App\Models\Country;
-use App\Models\Event;
 use App\Models\User;
 use App\Repositories\AccountRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
@@ -33,26 +32,12 @@ class AccountController extends Controller
         return $this->redirectViewName . $this->view . $methodName;
     }
 
-
     public function index()
     {
         $record = \Auth::user();
         return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
     }
-
-
-    public function show(Account $record)
-    {
-        $revisions = $record->getUserRevisions($record->id);
-
-        //$events = $record->events();
-
-        $events = Event::where('user_id', $record->id)->get();
-
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record', 'revisions', 'events'));
-    }
-
-
+    
     public function edit(Account $record)
     {
         $countries = Country::countryList();

@@ -30,6 +30,12 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Social\GoogleAccountWasLinked' => [
             'App\Listeners\Social\SendGoogleLinkedEmail',
         ],
+        'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\Users\LatestLogin',
+        ],
+        'Illuminate\Auth\Events\Logout' => [
+            'App\Listeners\Users\PreviousLogin',
+        ],
 
 
     ];

@@ -19,6 +19,8 @@
                                 <div class="text-center">
                                     <h2 class="account-name"><i class="fa fa-user"></i> {{$record->name}} </h2>
                                     <p><i class="fa fa-envelope"></i> {{$record->email}}</p>
+                                    <p><i class="fa fa-sign-in" aria-hidden="true"></i>  : {{ $record->getUserLastLoginDiffHumansTime() }}</p>
+                                    <p><i class="fa fa-sign-out" aria-hidden="true"></i>  : {{ $record->getUserPreviousLoginDiffHumansTime() }}</p>
                                     {!! link_to_route('account.edit', trans('account.edit'), $record, ['class' => 'btn btn-primary'] ) !!}
                                     {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-info'] ) !!}
                                 </div>

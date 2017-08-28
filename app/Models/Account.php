@@ -43,7 +43,14 @@ class Account extends Model
         'sex',
         'blood_type',
         'bio_note',
+        'last_login',
         'IP',
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'last_login',
     ];
 
     /**

@@ -54,8 +54,6 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        $this->dispatch(new UpdateLastLogin($user, Carbon::now()));
-
         if ($user->status == User::PASSIVE) {
             Auth::logout();
             return redirect('/login')->withErrors('Your Account is Passive Mode');

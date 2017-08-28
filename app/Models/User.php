@@ -138,7 +138,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    protected $dates = ['last_login', 'previous_visit', 'created_at', 'updated_at', 'deleted_at'];
     public const PASSIVE = 0, ACTIVE = 1, PREPARING_EMAIL_ACTIVATION = 2, GARBAGE = 3;
     public static $statuses = ['Passive', 'Active', 'Preparing Email Activation', 'Garbage'];
 
@@ -258,6 +258,16 @@ class User extends Authenticatable
     {
         $default = asset('img/default_user_avatar.jpg');
         return "https://www.gravatar.com/avatar/" . md5(strtolower(trim($email))) . "?d=" . urlencode($default) . "&s=" . $size;
+    }
+
+    public function getUserLastLoginDiffHumansTime()
+    {
+        return $this->last_login->diffForHumans() ?: '';
+    }
+
+    public function getUserPreviousLoginDiffHumansTime()
+    {
+        return $this->previous_visit->diffForHumans() ?: '';
     }
 
 }

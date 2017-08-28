@@ -27,5 +27,4 @@ return [
     'show_dashboard'=> 'Yönetim Paneli',
     'profile' => 'Kullanıcı Profili',
     'password_not_changed' => 'Parolanız Değiştirildi.',
-
 ];
