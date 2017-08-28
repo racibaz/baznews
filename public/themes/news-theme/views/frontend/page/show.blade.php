@@ -5,7 +5,7 @@
 
         <ol class="breadcrumb">
             <li>
-                <a href="{!! route('index') !!}">{{trans('news.common')}}.</a>
+                <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
             </li>
             <li>
                 <a href="{!! route('show_news_category', ['slug' => $record->slug]) !!}">
@@ -56,23 +56,15 @@
     <title> {{ $record->name }}  </title>
     <meta name="keywords" content="{{$record->keywords}}"/>
     <meta name="description" content="{{$record->description}}"/>
-    <meta name='subtitle' content='This is my subtitle'>
-    <meta name='pagename' content='{{$record->title}}'>
-    <meta name='identifier-URL' content='http://www.websiteaddress.com'>
-    <meta name='directory' content='submission'>
-    <meta name='author' content='name, email@hotmail.com'>
-    <meta name='subject' content='your website s subject'>
-    <meta name='abstract' content=''>
-    <meta name='topic' content=''>
-    <meta name='summary' content=''>
+    <meta name='pagename' content='{{$record->name}}'>
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="{{Cache::tags('Setting')->get('twitter_account')}}">
-    <meta name="twitter:title" content="{{$record->title}}">
+    <meta name="twitter:title" content="{{$record->name}}">
     <meta name="twitter:description" content="{{$record->description}}">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ $record->title }} "/>
+    <meta property="og:title" content="{{ $record->name }} "/>
     <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}"/>
     <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}"/>
     <meta property="og:description" content="{{$record->description}}"/>
