@@ -262,12 +262,12 @@ class User extends Authenticatable
 
     public function getUserLastLoginDiffHumansTime()
     {
-        return $this->last_login->diffForHumans() ?: '';
+        return $this->last_login  <> null ? $this->last_login->diffForHumans() : null;
     }
 
     public function getUserPreviousLoginDiffHumansTime()
     {
-        return $this->previous_visit->diffForHumans() ?: '';
+        return $this->previous_visit <> null ? $this->previous_visit->diffForHumans() : null;
     }
 
 }

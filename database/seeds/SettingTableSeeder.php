@@ -93,9 +93,13 @@ class SettingTableSeeder extends Seeder
             'attribute_value'             => 1,
         ]);
 
+        /*
+         * user_registration_type alanı "0" yani Setting::PUBLIC olmalı.
+         * Çünkü sistem seeder işlemi yaptığında user oluştururken farklı bir değer varsa status alanını "1" yapmıyor bundan dolayı da kullanıcı giriş yapamıyor.
+         * */
         Setting::create([
             'attribute_key'               => 'user_registration_type',
-            'attribute_value'             => Setting::PRIVATE,
+            'attribute_value'             => Setting::PUBLIC,
         ]);
 
         Setting::create([
