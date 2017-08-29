@@ -52,26 +52,31 @@ class Tag extends Model
         'name'
     ];
 
+    public function taggable()
+    {
+        return $this->morphTo();
+    }
+
     //todo module news
-    public function news()
-    {
-        return $this->morphedByMany('App\Modules\News\Models\News', 'taggable');
-    }
-
-    public function photos()
-    {
-        return $this->morphedByMany('App\Modules\News\Models\Photo', 'taggable');
-    }
-
-    public function photo_galleries()
-    {
-        return $this->morphedByMany('App\Modules\News\Models\PhotoGallery', 'taggable');
-    }
-
-    public function videos()
-    {
-        return $this->morphedByMany('App\Modules\News\Models\Video', 'taggable');
-    }
+//    public function news()
+//    {
+//        return $this->morphedByMany('App\Modules\News\Models\News', 'taggable');
+//    }
+//
+//    public function photos()
+//    {
+//        return $this->morphedByMany('App\Modules\News\Models\Photo', 'taggable');
+//    }
+//
+//    public function photo_galleries()
+//    {
+//        return $this->morphedByMany('App\Modules\News\Models\PhotoGallery', 'taggable');
+//    }
+//
+//    public function videos()
+//    {
+//        return $this->morphedByMany('App\Modules\News\Models\Video', 'taggable');
+//    }
 
     public static function tagList()
     {
