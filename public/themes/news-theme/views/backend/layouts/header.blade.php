@@ -31,7 +31,7 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{\App\Models\User::getUserAvatar(Auth::user()->email,20)}}" alt="" class="img-rounded"/>
+                        <img src="{{\App\Models\User::getUserAvatar(Auth::user()->email,20)}}" alt="" class="img-rounded" width="20" height="20"/>
                         <span class="hidden-xs">{{Auth::user()->name}}</span>
                     </a>
                     <ul class="dropdown-menu">

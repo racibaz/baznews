@@ -13,7 +13,7 @@
                             <div class="col-md-7">
                                 <div class="account-img text-center">
                                     @if(!empty($record->id))
-                                        <img src="{{\App\Models\User::getUserAvatar(Auth::user()->email, 40)}}" alt="" class="img-rounded"/>
+                                        <img src="{{\App\Models\User::getUserAvatar(Auth::user()->email, 40)}}" alt="" class="img-rounded" width="40" height="40"/>
                                     @endif
                                 </div>
                                 <div class="text-center">
