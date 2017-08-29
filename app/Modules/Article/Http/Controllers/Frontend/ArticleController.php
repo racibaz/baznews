@@ -3,8 +3,8 @@
 namespace App\Modules\Article\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Article\Repositories\ArticleRepository as Repo;
 use App\Modules\Article\Repositories\ArticleAuthorRepository as ArticleAuthor;
+use App\Modules\Article\Repositories\ArticleRepository as Repo;
 use Cache;
 use Caffeinated\Themes\Facades\Theme;
 

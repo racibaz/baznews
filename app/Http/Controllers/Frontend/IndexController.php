@@ -7,7 +7,6 @@ use App\Models\Setting;
 use App\Models\WidgetManager;
 use App\Modules\News\Repositories\NewsRepository;
 use App\Modules\News\Repositories\PhotoGalleryRepository;
-use App\Modules\News\Repositories\RecommendationNewsRepository;
 use App\Modules\News\Repositories\VideoGalleryRepository;
 use Caffeinated\Modules\Facades\Module;
 use Caffeinated\Themes\Facades\Theme;
