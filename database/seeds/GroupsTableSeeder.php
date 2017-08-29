@@ -13,9 +13,9 @@ class GroupsTableSeeder extends Seeder
      */
     public function run()
     {
-        $group1 = Group::create([
-            'name'          => 'Üst Yönetim',
-            'description'   => 'Site Yöneticileri',
+        $group4 = Group::create([
+            'name'          => 'İçerik Sağlayıcılar',
+            'description'   => 'İçerik Sağlayıcılar',
             'is_active'  => 1,
         ]);
 
@@ -31,9 +31,9 @@ class GroupsTableSeeder extends Seeder
             'is_active'  => 1,
         ]);
 
-        $group4 = Group::create([
-            'name'          => 'İçerik Sağlayıcılar',
-            'description'   => 'İçerik Sağlayıcılar',
+        $group1 = Group::create([
+            'name'          => 'Üst Yönetim',
+            'description'   => 'Site Yöneticileri',
             'is_active'  => 1,
         ]);
 

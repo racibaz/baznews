@@ -1324,7 +1324,8 @@ class PermissionsTableSeeder extends Seeder
 
 
         $first_user = User::find(1);
-        $super_admin = Role::find(1);
+        //RoleTableSeeder da super_admin id sırası 5 olduğu için id si 5 olanı çekiyoruz.
+        $super_admin = Role::find(5);
 
         $super_admin->users()->attach($first_user);
 

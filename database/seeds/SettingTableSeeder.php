@@ -107,6 +107,16 @@ class SettingTableSeeder extends Seeder
             'attribute_value'             => 'user_contract',
         ]);
 
+        Setting::create([
+            'attribute_key'               => 'user_default_role',
+            'attribute_value'             => 1,
+        ]);
+
+        Setting::create([
+            'attribute_key'               => 'user_default_group',
+            'attribute_value'             => 1,
+        ]);
+
         //$url = \Illuminate\Support\Facades\Route::current()->domain();
         Setting::create([
             'attribute_key'               => 'url',

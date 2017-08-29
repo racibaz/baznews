@@ -8,7 +8,9 @@ use App\Jobs\DB\RepairMysqlTables;
 use App\Library\Uploader;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Group;
 use App\Models\Language;
+use App\Models\Role;
 use App\Models\Setting;
 use App\Repositories\SettingRepository as Repo;
 use Caffeinated\Modules\Facades\Module;
@@ -51,6 +53,8 @@ class SettingController extends BackendController
         $activeTheme = Theme::getActive();
         $modules = Module::all();
         $modulesCount = Module::count();
+        $roleList = Role::roleList();
+        $groupList = Group::groupList();
 
         //SelectBox içerisinde value değerinin seçilebilmesi için key yerine value değerini atıyoruz.
         foreach (DateTimeZone::listIdentifiers() as $key => $value) $timezoneList[$value] = $value;
@@ -71,7 +75,9 @@ class SettingController extends BackendController
                 'modulesCount',
                 'timezoneList',
                 'logo',
-                'favicon'
+                'favicon',
+                'roleList',
+                'groupList'
             ));
     }
 
@@ -215,6 +221,11 @@ class SettingController extends BackendController
         if (!empty($input['user_contract'])) {
             $record = $this->repo->findBy('attribute_key', 'user_contract');
             $this->repo->update($record->id, ['attribute_value' => $input['user_contract']]);
+        }
+
+        if (!empty($input['user_default_role'])) {
+            $record = $this->repo->findBy('attribute_key', 'user_default_role');
+            $this->repo->update($record->id, ['attribute_value' => $input['user_default_role']]);
         }
 
         if (!empty($input['url'])) {

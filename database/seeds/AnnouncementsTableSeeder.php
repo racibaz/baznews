@@ -41,21 +41,8 @@ class AnnouncementsTableSeeder extends Seeder
         ]);
 
 
-        $group1 = \App\Models\Group::find(1);
-        $group2 = \App\Models\Group::find(2);
-        $group3 = \App\Models\Group::find(3);
+        $group1 = \App\Models\Group::find(4);
 
         $group1->announcements()->attach($ann1);
-        $group1->announcements()->attach($ann2);
-        $group1->announcements()->attach($ann3);
-
-
-        $group2->announcements()->attach($ann2);
-        $group2->announcements()->attach($ann3);
-
-        $group3->announcements()->attach($ann3);
-
-
-
     }
 }

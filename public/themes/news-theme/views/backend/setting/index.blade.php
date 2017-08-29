@@ -209,6 +209,40 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <strong>
+                                        {{trans('setting.user_default_role')}}
+                                    </strong>
+                                </div>
+                                <div class="col-lg-10">
+                                    <label>
+                                        <div class="form-group">
+                                            {!! Form::select('user_default_role',
+                                                                                $roleList->pluck('name', 'id'),
+                                                                                $records->where('attribute_key','user_default_role')->first()->attribute_value,
+                                                                                ['class' => 'form-control']) !!}
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <strong>
+                                        {{trans('setting.user_default_group')}}
+                                    </strong>
+                                </div>
+                                <div class="col-lg-10">
+                                    <label>
+                                        <div class="form-group">
+                                            {!! Form::select('user_default_group',
+                                                                                $groupList->pluck('name', 'id') ,
+                                                                                $records->where('attribute_key','user_default_group')->first()->attribute_value,
+                                                                                ['class' => 'form-control']) !!}
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="row">

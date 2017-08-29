@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Group;
+use App\Models\Role;
 use App\Models\Setting;
 use App\Models\User;
+use App\Repositories\UserRepository as Repo;
 use Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -33,14 +36,15 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/account';
 
-
+    protected $repo;
     /**
      * RegisterController constructor.
      * Create a new controller instance.
      */
-    public function __construct()
+    public function __construct(Repo $repo)
     {
         $this->middleware('guest');
+        $this->repo = $repo;
     }
 
     /**
@@ -70,13 +74,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        //todo user repo üzerinden yapıldığında backend de gözüküyor.
         // "status" kısmını User modelinde kontrol ediyoruz.
-        return User::create([
+        $user = $this->repo->create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        //Setting de belirtilen default role atıyoruz.
+        $defaultRole = Role::find(Cache::tags('Setting')->get('user_default_role'));
+        $user->roles()->attach($defaultRole);
+
+        //Setting de belirtilen default group atıyoruz.
+        $defaultGroup = Group::find(Cache::tags('Setting')->get('user_default_group'));
+        $user->groups()->attach($defaultGroup);
+
+        return $user;
     }
 
     /**
