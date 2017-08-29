@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="register-box">
                 <div class="register-logo">
-                    <a href="{{ url('/') }}">BazNEWS</a>
+                    <a href="{{ url('/') }}">{{env('APP_NAME')}}</a>
                 </div>
 
                 <div class="register-box-body">
