@@ -31,11 +31,5 @@ class RecommendationNewsTableSeeder extends Seeder
             'news_id' => 3,
             'is_active' => 1,
         ]);
-
-        RecommendationNews::create([
-            'user_id' => 1,
-            'news_id' => 2,
-            'is_active' => 1,
-        ]);
     }
 }

@@ -17,8 +17,8 @@ class MenuTableSeeder extends Seeder
             'parent_id'                 => null,
             '_lft'                      => 1,
             '_rgt'                      => 1,
-            'name'                      => 'Homepage',
-            'slug'                      => 'homepage',
+            'name'                      => 'Anasayfa',
+            'slug'                      => 'anasayfa',
             'url'                       => '/',
             'target'                    => '_blank',
             'icon'                      => '<i class="fa fa-home" aria-hidden="true"></i>',
@@ -26,22 +26,6 @@ class MenuTableSeeder extends Seeder
             'is_header'                 => 1,
             'is_active'                 => 1,
         ]);
-
-
-        Menu::create([
-            'parent_id'                 => null,
-            '_lft'                      => 1,
-            '_rgt'                      => 1,
-            'name'                      => 'menü 1',
-            'slug'                      => 'menu1',
-            'url'                       => 'link',
-            'icon'                      => 'icon',
-            'order'                     => 1,
-            'is_header'                 => 1,
-            'is_footer'                 => 1,
-            'is_active'                 => 1,
-        ]);
-
 
         Menu::create([
             'parent_id'                 => null,

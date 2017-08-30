@@ -292,21 +292,13 @@ Alfred Hitchcock, izleyicisine hayatın dilimlerinden değil, pasta dilimlerinde
             'is_active' => 1
         ]);
 
-        $newsCategory1 = NewsCategory::find(1)->first();
-        $newsCategory2 = NewsCategory::find(2)->first();
-        $newsCategory3 = NewsCategory::find(3)->first();
-        $newsCategory4 = NewsCategory::find(4)->first();
-        $newsCategory5 = NewsCategory::find(5)->first();
-        $newsCategory6 = NewsCategory::find(6)->first();
-        $newsCategory7 = NewsCategory::find(7)->first();
 
-
-        $news1->news_categories()->attach($newsCategory1);
-        $news2->news_categories()->attach($newsCategory2);
-        $news3->news_categories()->attach($newsCategory3);
-        $news3->news_categories()->attach($newsCategory4);
-        $news4->news_categories()->attach($newsCategory5);
-        $news5->news_categories()->attach($newsCategory1);
-        $news6->news_categories()->attach($newsCategory2);
+        $news1->news_categories()->attach(1);
+        $news2->news_categories()->attach(2);
+        $news3->news_categories()->attach(3);
+        $news3->news_categories()->attach(4);
+        $news4->news_categories()->attach(5);
+        $news5->news_categories()->attach(6);
+        $news6->news_categories()->attach(7);
     }
 }

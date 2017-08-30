@@ -15,13 +15,6 @@ class FutureNewsTableSeeder extends Seeder
      */
     public function run()
     {
-//        $news1 = News::find(1)->first();
-//        $news2 = News::find(2)->first();
-//        $news3 = News::find(3)->first();
-//        $news4 = News::find(4)->first();
-//
-//        $news1->future_news()->attach(new FutureNews());
-
         FutureNews::create([
             'news_id' => 1,
             'future_datetime' => Carbon::now()->addMinutes(3),

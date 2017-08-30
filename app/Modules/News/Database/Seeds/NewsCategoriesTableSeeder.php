@@ -27,35 +27,35 @@ class NewsCategoriesTableSeeder extends Seeder
         ]);
 
         NewsCategory::create([
-            'parent_id' => 1,
+            'parent_id' => null,
             '_lft' => 1,
             '_rgt' => 1,
-            'name' => 'Asya',
-            'slug' => 'asya_haberleri',
-            'description' => 'Asya haberleri vs..',
+            'name' => 'Ekonomi',
+            'slug' => 'ekonomi_haberleri',
+            'description' => 'Ekonomi haberleri vs..',
             'keywords' => 'keywords',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
         NewsCategory::create([
-            'parent_id' => 1,
+            'parent_id' => null,
             '_lft' => 1,
             '_rgt' => 1,
-            'name' => 'Afrika',
-            'slug' => 'afrika_haberleri',
-            'description' => 'Afrika haberleri vs..',
+            'name' => 'Spor',
+            'slug' => 'spor_haberleri',
+            'description' => 'Spor haberleri vs..',
             'keywords' => 'keywords',
             'is_cuff' => 1,
             'is_active' => 1,
         ]);
 
         NewsCategory::create([
-            'parent_id' => 1,
+            'parent_id' => null,
             '_lft' => 1,
             '_rgt' => 1,
-            'name' => 'Avrupa',
-            'slug' => 'avrupa_haberleri',
+            'name' => 'Kültür Sanat',
+            'slug' => 'kultur_sanat_haberleri',
             'description' => 'Avrupa haberleri vs..',
             'keywords' => 'keywords',
             'is_cuff' => 1,
@@ -63,24 +63,12 @@ class NewsCategoriesTableSeeder extends Seeder
         ]);
 
         NewsCategory::create([
-            'parent_id' => 2,
+            'parent_id' => 4,
             '_lft' => 1,
             '_rgt' => 1,
-            'name' => 'Azerbaycan',
-            'slug' => 'azerbaycan_haberleri',
-            'description' => 'Azerbaycan haberleri vs..',
-            'keywords' => 'keywords',
-            'is_cuff' => 1,
-            'is_active' => 1,
-        ]);
-
-        NewsCategory::create([
-            'parent_id' => 3,
-            '_lft' => 1,
-            '_rgt' => 1,
-            'name' => 'Mali',
-            'slug' => 'mali_haberleri',
-            'description' => 'Mali haberleri vs..',
+            'name' => 'Müzik',
+            'slug' => 'muzik_haberleri',
+            'description' => 'Müzik haberleri vs..',
             'keywords' => 'keywords',
             'is_cuff' => 1,
             'is_active' => 1,
@@ -88,6 +76,18 @@ class NewsCategoriesTableSeeder extends Seeder
 
         NewsCategory::create([
             'parent_id' => 4,
+            '_lft' => 1,
+            '_rgt' => 1,
+            'name' => 'Tiyatro',
+            'slug' => 'tiyatro_haberleri',
+            'description' => 'Tiyatro haberleri vs..',
+            'keywords' => 'keywords',
+            'is_cuff' => 1,
+            'is_active' => 1,
+        ]);
+
+        NewsCategory::create([
+            'parent_id' => 1,
             '_lft' => 1,
             '_rgt' => 1,
             'name' => 'Türkiye',
