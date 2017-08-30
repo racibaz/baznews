@@ -25,7 +25,7 @@ class WidgetManagerController extends BackendController
 
     public function index()
     {
-        $records = $this->repo->paginate();
+        $records = $this->repo->orderBy('created_at','desc')->paginate();
 
         $moduleWidgets = WidgetManager::getEnableModuleWidgets();
         $coreWidgetss = WidgetManager::getCoreWidgets();

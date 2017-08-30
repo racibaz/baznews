@@ -26,7 +26,7 @@ class NewsCategoryController extends BackendController
 
     public function index()
     {
-        $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
+        $records = $this->repo->orderBy('created_at', 'desc')->paginate();
         $recordsTree = NewsCategory::get()->toTree();
 
         return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));

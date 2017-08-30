@@ -24,7 +24,7 @@ class RssController extends BackendController
 
     public function index()
     {
-        $records = $this->repo->paginate();
+        $records = $this->repo->orderBy('created_at','desc')->paginate();
         return Theme::view($this->getViewName(__FUNCTION__), compact('records'));
     }
 

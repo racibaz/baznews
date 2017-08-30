@@ -41,9 +41,9 @@ class UserController extends BackendController
         if (is_numeric($roleId)) {
             $records = $roleRepo->where('id', $roleId)
                 ->find($roleId)
-                ->users()->paginate();
+                ->users()->orderBy('created_at','desc')->paginate();
         } else {
-            $records = $this->repo->paginate();
+            $records = $this->repo->orderBy('created_at','desc')->paginate();
         }
 
         return Theme::view($this->getViewName(__FUNCTION__), compact('records', 'roles'));

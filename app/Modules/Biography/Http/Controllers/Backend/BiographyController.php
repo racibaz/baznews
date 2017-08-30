@@ -35,7 +35,7 @@ class BiographyController extends BackendController
 
     public function index()
     {
-        $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
+        $records = $this->repo->orderBy('created_at', 'desc')->paginate();
         return Theme::view('biography::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 

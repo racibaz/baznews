@@ -26,7 +26,7 @@ class AdvertisementController extends BackendController
     public function index()
     {
         $repo = $this->repo;
-        $records = $this->repo->findAll();
+        $records = $this->repo->orderBy('created_at','desc')->findAll();
         $advertisementAreaNames = $this->getThemeAdvertisementAreaName();
         $activeTheme = Theme::getActive();
 

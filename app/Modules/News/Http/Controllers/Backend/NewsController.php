@@ -69,10 +69,10 @@ class NewsController extends BackendController
                 return Redirect::back();
             }
 
-            $records = $this->repo->orderBy('updated_at', 'desc')->where('status', $statusCode)->paginate(50);
+            $records = $this->repo->orderBy('created_at', 'desc')->where('status', $statusCode)->paginate(50);
 
         } else {
-            $records = $this->repo->orderBy('updated_at', 'desc')->paginate(50);
+            $records = $this->repo->orderBy('created_at', 'desc')->paginate(50);
         }
 
         $newsCategoryList = NewsCategory::newsCategoryList();

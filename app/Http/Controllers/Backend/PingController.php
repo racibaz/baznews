@@ -22,6 +22,7 @@ class PingController extends BackendController
         $this->redirectViewName = 'backend.';
     }
 
+    //todo index kaldırılmalı mı?
     public function index()
     {
         $ping = \App\Models\Ping::first();

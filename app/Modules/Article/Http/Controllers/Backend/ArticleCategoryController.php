@@ -25,7 +25,7 @@ class ArticleCategoryController extends BackendController
 
     public function index()
     {
-        $records = $this->repo->orderBy('updated_at', 'desc')->paginate();
+        $records = $this->repo->orderBy('created_at', 'desc')->paginate();
         $recordsTree = ArticleCategory::get()->toTree();
 
         return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));
