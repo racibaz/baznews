@@ -117,6 +117,12 @@ class ModuleManagerController extends BackendController
     public function moduleActivationToggle($moduleSlug)
     {
         if (Module::isEnabled($moduleSlug)) {
+
+            /*
+             * Module disable yapıldığında aktif olan widgetlarını da pasif hale getiriyoruz.
+             * */
+            $this->repo->setPassiveModeOfModelWidgets($moduleSlug);
+
             Module::disable($moduleSlug);
 
         } else {
