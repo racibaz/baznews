@@ -42,6 +42,7 @@ class Contact extends Model
             'full_name' => 'required|min:3|max:255',
             'subject' => 'required|min:3|max:255',
             'email' => 'required|email|max:255',
+            'phone' => 'numeric|min:10|nullable',
             'content' => 'required|string',
             'IP' => 'ip'
         );
