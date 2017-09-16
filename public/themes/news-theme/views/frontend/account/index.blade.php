@@ -25,8 +25,13 @@
                                     @if(!empty($record->getUserPreviousLoginDiffHumansTime()))
                                         <p><i class="fa fa-sign-out" aria-hidden="true"></i>  : {{ $record->getUserPreviousLoginDiffHumansTime() }}</p>
                                     @endif
-                                    {!! link_to_route('account.edit', trans('account.edit'), $record, ['class' => 'btn btn-primary'] ) !!}
-                                    {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-info'] ) !!}
+
+                                    @permission('edit-account')
+                                        {!! link_to_route('account.edit', trans('account.edit'), $record, ['class' => 'btn btn-primary'] ) !!}
+                                    @endpermission
+                                    @permission('changePasswordView-account')
+                                        {!! link_to_route('change_password_view', trans('account.change_password'), $record, ['class' => 'btn btn-info'] ) !!}
+                                    @endpermission
                                 </div>
                             </div>
                             <div class="col-md-5">

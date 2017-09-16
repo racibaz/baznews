@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Input;
 
 class AccountController extends BackendController
 {
-    //todo backend den account kaldırılabilinir. Mevcutta kullanılmıyor sanırsam.
     public function __construct(Repo $repo)
     {
         parent::__construct();
@@ -43,7 +42,13 @@ class AccountController extends BackendController
         $roles = Role::roleList();
         $groups = Group::groupList();
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'countries', 'cities', 'roles', 'groups']));
+        return Theme::view($this->getViewName(__FUNCTION__), compact([
+            'record',
+            'countries',
+            'cities',
+            'roles',
+            'groups'
+        ]));
     }
 
 

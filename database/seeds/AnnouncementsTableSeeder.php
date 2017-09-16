@@ -40,9 +40,20 @@ class AnnouncementsTableSeeder extends Seeder
             'is_active'  => 1,
         ]);
 
+        $ann4 = Announcement::create([
+            'user_id'          => 4,
+            'title'   => 'Demo Grubu Duyurusu',
+            'description'   => 'Duyuru Tanımı 4',
+            'order'   => 4,
+            'show_time'   => \Carbon\Carbon::now()->addDays(10),
+            'is_active'  => 1,
+        ]);
+
 
         $group1 = \App\Models\Group::find(4);
-
         $group1->announcements()->attach($ann1);
+
+        $group5 = \App\Models\Group::find(5);
+        $group5->announcements()->attach($ann4);
     }
 }

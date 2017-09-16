@@ -116,7 +116,7 @@ class Account extends Model
         return Revision::where('user_id', $user_id)->get();
     }
 
-    public static function validate($input)
+    public static function validadte($input)
     {
         $rules = array(
             'password' => 'required|min:4|Confirmed',

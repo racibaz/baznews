@@ -46,5 +46,13 @@ class RolesTableSeeder extends Seeder
             'description'   => 'Site Yöneticileri',
             'is_active'     => 1,
         ]);
+
+        Role::create([
+            'name'          => 'demo',
+            'display_name'  => 'Demo Kullanıcılar',
+            'description'   => 'Demo Kullanıcılar için oluşturuldu.',
+            'is_active'     => 1,
+        ]);
+
     }
 }

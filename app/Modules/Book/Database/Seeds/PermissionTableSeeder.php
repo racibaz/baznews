@@ -275,5 +275,28 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($booksetting6);
         $super_admin->permissions()->attach($booksetting7);
 
+
+        //RoleTableSeeder da demo_role id sırası 6 olduğu için id si 6 olanı çekiyoruz.
+        $demo_role = Role::find(6);
+
+        $demo_role->permissions()->attach($book1);
+        $demo_role->permissions()->attach($book3);
+        $demo_role->permissions()->attach($book5);
+
+        $demo_role->permissions()->attach($book_category1);
+        $demo_role->permissions()->attach($book_category3);
+        $demo_role->permissions()->attach($book_category5);
+
+        $demo_role->permissions()->attach($bookpublisher1);
+        $demo_role->permissions()->attach($bookpublisher3);
+        $demo_role->permissions()->attach($bookpublisher5);
+
+        $demo_role->permissions()->attach($bookauthor1);
+        $demo_role->permissions()->attach($bookauthor3);
+        $demo_role->permissions()->attach($bookauthor5);
+
+        $demo_role->permissions()->attach($booksetting1);
+        $demo_role->permissions()->attach($booksetting3);
+        $demo_role->permissions()->attach($booksetting5);
     }
 }

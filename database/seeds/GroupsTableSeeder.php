@@ -37,13 +37,21 @@ class GroupsTableSeeder extends Seeder
             'is_active'  => 1,
         ]);
 
+        $group5 = Group::create([
+            'name'          => 'Demo',
+            'description'   => 'Demo Kullanıcılar için oluşturuldu.',
+            'is_active'  => 1,
+        ]);
+
 
         $user1 = User::find(1);
         $user2 = User::find(2);
         $user3 = User::find(3);
+        $user4 = User::find(4);
 
         $group1->users()->attach($user1);
         $group2->users()->attach($user2);
         $group3->users()->attach($user3);
+        $group5->users()->attach($user4);
     }
 }

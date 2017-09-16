@@ -788,5 +788,72 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($newssetting6);
         $super_admin->permissions()->attach($newssetting7);
 
+
+        //RoleTableSeeder da demo_role id sırası 6 olduğu için id si 6 olanı çekiyoruz.
+        $demo_role = Role::find(6);
+
+        $demo_role->permissions()->attach($futurenews1);
+        $demo_role->permissions()->attach($futurenews5);
+
+        $demo_role->permissions()->attach($newscategory1);
+        $demo_role->permissions()->attach($newscategory3);
+        $demo_role->permissions()->attach($newscategory5);
+
+        $demo_role->permissions()->attach($newssource1);
+        $demo_role->permissions()->attach($newssource3);
+        $demo_role->permissions()->attach($newssource5);
+
+        $demo_role->permissions()->attach($news1);
+        $demo_role->permissions()->attach($news3);
+        $demo_role->permissions()->attach($news5);
+        $demo_role->permissions()->attach($news10);
+
+        foreach (News::$statuses as $status) {
+            $demo_role->permissions()->attach($news[$status]);
+        };
+
+        $demo_role->permissions()->attach($newswidgetmanager1);
+        $demo_role->permissions()->attach($newswidgetmanager3);
+        $demo_role->permissions()->attach($newswidgetmanager5);
+
+        $demo_role->permissions()->attach($photocategory1);
+        $demo_role->permissions()->attach($photocategory3);
+        $demo_role->permissions()->attach($photocategory5);
+
+        $demo_role->permissions()->attach($photogallery1);
+        $demo_role->permissions()->attach($photogallery3);
+        $demo_role->permissions()->attach($photogallery5);
+        $demo_role->permissions()->attach($photogallery8);
+        $demo_role->permissions()->attach($photogallery9);
+        $demo_role->permissions()->attach($photogallery10);
+        $demo_role->permissions()->attach($photogallery11);
+
+        $demo_role->permissions()->attach($photo1);
+        $demo_role->permissions()->attach($photo3);
+        $demo_role->permissions()->attach($photo5);
+
+        $demo_role->permissions()->attach($recommendationnews1);
+        $demo_role->permissions()->attach($recommendationnews3);
+        $demo_role->permissions()->attach($recommendationnews5);
+
+        $demo_role->permissions()->attach($videocategory1);
+        $demo_role->permissions()->attach($videocategory3);
+        $demo_role->permissions()->attach($videocategory5);
+
+        $demo_role->permissions()->attach($videogallery1);
+        $demo_role->permissions()->attach($videogallery3);
+        $demo_role->permissions()->attach($videogallery5);
+        $demo_role->permissions()->attach($videogallery8);
+        $demo_role->permissions()->attach($videogallery9);
+        $demo_role->permissions()->attach($videogallery10);
+        $demo_role->permissions()->attach($videogallery11);
+
+        $demo_role->permissions()->attach($video1);
+        $demo_role->permissions()->attach($video3);
+        $demo_role->permissions()->attach($video5);
+
+        $demo_role->permissions()->attach($newssetting1);
+        $demo_role->permissions()->attach($newssetting3);
+        $demo_role->permissions()->attach($newssetting5);
     }
 }

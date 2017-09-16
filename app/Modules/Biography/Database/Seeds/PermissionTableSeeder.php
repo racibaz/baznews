@@ -134,5 +134,21 @@ class PermissionTableSeeder extends Seeder
         $super_admin->permissions()->attach($biographysetting5);
         $super_admin->permissions()->attach($biographysetting6);
         $super_admin->permissions()->attach($biographysetting7);
+
+        //RoleTableSeeder da demo_role id sırası 6 olduğu için id si 6 olanı çekiyoruz.
+        $demo_role = Role::find(6);
+
+        $demo_role->permissions()->attach($biography1);
+        $demo_role->permissions()->attach($biography3);
+        $demo_role->permissions()->attach($biography5);
+
+        foreach (Biography::$statuses as $status) {
+            $demo_role->permissions()->attach($biography[$status]);
+        };
+
+
+        $demo_role->permissions()->attach($biographysetting1);
+        $demo_role->permissions()->attach($biographysetting3);
+        $demo_role->permissions()->attach($biographysetting5);
     }
 }

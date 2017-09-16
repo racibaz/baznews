@@ -70,6 +70,25 @@ class UsersTableSeeder extends Seeder
 //            'IP' => '1213123',
             'status' => 1,
         ]);
+
+        $user4 = User::create([
+            'language_id' => 1,
+            'country_id' => 1,
+            'city_id' => 1,
+            'name' => 'demo1',
+            'email' => 'demo@bazsoft.biz',
+            'password' => bcrypt("demo"),
+//            'slug' => 'slug',
+//            'cell_phone' => 'cell_phone',
+//            'facebook' => 'facebook',
+//            'twitter' => 'twitter',
+//            'linkedin' => 'linkedin',
+//            'youtube' => 'youtube',
+//            'sex' => 1,
+//            'IP' => '1213123',
+            'status' => 1,
+        ]);
+
         
     }
 }

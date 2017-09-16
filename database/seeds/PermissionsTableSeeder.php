@@ -684,6 +684,18 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $account8 = Permission::create([
+            'name'          => 'changePasswordView-account',
+            'display_name'  => 'frontend de kullanıcının şifre değiştirme sayfasını görüntüleme yetkisi.',
+            'is_active'     => 1,
+        ]);
+
+        $account9 = Permission::create([
+            'name'          => 'changePassword-account',
+            'display_name'  => 'frontend de kullanıcının şifre değiştirme yetkisi.',
+            'is_active'     => 1,
+        ]);
+
         //country
         $country1 = Permission::create([
             'name'          => 'index-country',
@@ -1399,6 +1411,8 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($account5);
         $super_admin->permissions()->attach($account6);
         $super_admin->permissions()->attach($account7);
+        $super_admin->permissions()->attach($account8);
+        $super_admin->permissions()->attach($account9);
         $super_admin->permissions()->attach($country1);
         $super_admin->permissions()->attach($country2);
         $super_admin->permissions()->attach($country3);
@@ -1544,5 +1558,132 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($language7);
         $super_admin->permissions()->attach($api_manager);
 
+
+        //demo kullanıcısını çekiyoruz.
+        $demo_user = User::find(4);
+        //RoleTableSeeder da demo id sırası 6 olduğu için id si 6 olanı çekiyoruz.
+        $demo_role = Role::find(6);
+
+        $demo_role->users()->attach($demo_user);
+
+        $demo_role->permissions()->attach($dashboard1);
+        $demo_role->permissions()->attach($dashboard2);
+        $demo_role->permissions()->attach($user1);
+        $demo_role->permissions()->attach($user3);
+        $demo_role->permissions()->attach($user5);
+        $demo_role->permissions()->attach($user11);
+        $demo_role->permissions()->attach($user12);
+
+        foreach (User::$statuses as $status){
+            $demo_role->permissions()->attach($user[$status]);
+        }
+
+        $demo_role->permissions()->attach($group1);
+        $demo_role->permissions()->attach($group3);
+        $demo_role->permissions()->attach($group5);
+
+        $demo_role->permissions()->attach($role1);
+        $demo_role->permissions()->attach($role3);
+        $demo_role->permissions()->attach($role5);
+        $demo_role->permissions()->attach($role8);
+
+        $demo_role->permissions()->attach($tag1);
+        $demo_role->permissions()->attach($tag3);
+        $demo_role->permissions()->attach($tag5);
+
+        $demo_role->permissions()->attach($permission1);
+        $demo_role->permissions()->attach($permission3);
+        $demo_role->permissions()->attach($permission5);
+
+        $demo_role->permissions()->attach($revision1);
+        $demo_role->permissions()->attach($revision3);
+        $demo_role->permissions()->attach($revision5);
+
+        $demo_role->permissions()->attach($log1);
+
+        $demo_role->permissions()->attach($account1);
+        $demo_role->permissions()->attach($account3);
+        $demo_role->permissions()->attach($account5);
+        $demo_role->permissions()->attach($account8);
+
+        $demo_role->permissions()->attach($country1);
+        $demo_role->permissions()->attach($country3);
+        $demo_role->permissions()->attach($country5);
+
+        $demo_role->permissions()->attach($city1);
+        $demo_role->permissions()->attach($city3);
+        $demo_role->permissions()->attach($city5);
+
+        $demo_role->permissions()->attach($contacttype1);
+        $demo_role->permissions()->attach($contacttype3);
+        $demo_role->permissions()->attach($contacttype5);
+
+        $demo_role->permissions()->attach($contact1);
+        $demo_role->permissions()->attach($contact3);
+        $demo_role->permissions()->attach($contact5);
+
+        $demo_role->permissions()->attach($event1);
+        $demo_role->permissions()->attach($event3);
+        $demo_role->permissions()->attach($event5);
+
+        $demo_role->permissions()->attach($menu1);
+        $demo_role->permissions()->attach($menu3);
+        $demo_role->permissions()->attach($menu5);
+
+        $demo_role->permissions()->attach($page1);
+        $demo_role->permissions()->attach($page3);
+        $demo_role->permissions()->attach($page5);
+
+        $demo_role->permissions()->attach($rss1);
+        $demo_role->permissions()->attach($rss3);
+        $demo_role->permissions()->attach($rss5);
+
+        $demo_role->permissions()->attach($sitemaps1);
+        $demo_role->permissions()->attach($sitemaps3);
+        $demo_role->permissions()->attach($sitemaps5);
+
+        $demo_role->permissions()->attach($announcement1);
+        $demo_role->permissions()->attach($announcement3);
+        $demo_role->permissions()->attach($announcement5);
+
+        $demo_role->permissions()->attach($thememanager1);
+        $demo_role->permissions()->attach($thememanager3);
+        $demo_role->permissions()->attach($thememanager5);
+
+        $demo_role->permissions()->attach($modulemanager1);
+        $demo_role->permissions()->attach($modulemanager3);
+        $demo_role->permissions()->attach($modulemanager5);
+
+        $demo_role->permissions()->attach($widgetmanager1);
+        $demo_role->permissions()->attach($widgetmanager3);
+        $demo_role->permissions()->attach($widgetmanager5);
+
+        $demo_role->permissions()->attach($setting1);
+        $demo_role->permissions()->attach($setting3);
+        $demo_role->permissions()->attach($setting5);
+        $demo_role->permissions()->attach($setting16);
+        $demo_role->permissions()->attach($setting17);
+        $demo_role->permissions()->attach($setting18);
+        $demo_role->permissions()->attach($setting19);
+
+        $demo_role->permissions()->attach($backend1);
+        $demo_role->permissions()->attach($backend2);
+        $demo_role->permissions()->attach($backend3);
+        $demo_role->permissions()->attach($backend4);
+
+        $demo_role->permissions()->attach($advertisement1);
+        $demo_role->permissions()->attach($advertisement3);
+        $demo_role->permissions()->attach($advertisement5);
+
+        $demo_role->permissions()->attach($widgetgroup1);
+        $demo_role->permissions()->attach($widgetgroup3);
+        $demo_role->permissions()->attach($widgetgroup5);
+
+        $demo_role->permissions()->attach($ping1);
+        $demo_role->permissions()->attach($ping2);
+
+        $demo_role->permissions()->attach($language1);
+        $demo_role->permissions()->attach($language3);
+        $demo_role->permissions()->attach($language5);
     }
 }

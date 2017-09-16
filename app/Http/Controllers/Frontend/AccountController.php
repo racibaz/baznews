@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Backend\BackendController;
 use App\Models\Account;
 use App\Models\City;
 use App\Models\Country;
@@ -10,20 +10,21 @@ use App\Models\User;
 use App\Repositories\AccountRepository as Repo;
 use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 
-class AccountController extends Controller
+class AccountController extends BackendController
 {
-    private $repo;
-    private $view = 'account.';
-    private $redirectViewName = 'frontend.';
-    private $redirectRouteName = '';
-
     public function __construct(Repo $repo)
     {
+        parent::__construct();
+
+        $this->view = 'account.';
+        $this->redirectViewName = 'frontend.';
         $this->repo = $repo;
     }
 
@@ -40,6 +41,11 @@ class AccountController extends Controller
     
     public function edit(Account $record)
     {
+        if(auth()->user()->getAuthIdentifier() <> $record->id){
+            Log::warning('Yetkisiz Alana Girmeye Çalışıldı. uri :' . Route::getCurrentRoute()->uri() . ' : user_id : ' . auth()->user()->getAuthIdentifier() . '  IP :' . auth()->user()->getUserIp());
+            abort(403, 'Unauthorized action.');
+        }
+
         $countries = Country::countryList();
         $cities = City::cityList();
         $userAvatar = User::getUserAvatar($record->email);
@@ -77,7 +83,7 @@ class AccountController extends Controller
         //kendi email adresini daha önce kayıtlı olarak görüyor ve hata veriyor
         //bundan dolayı aynı ise burada unique validasyonunu atlamış oluyoruz.
         $rules = [
-            'cell_phone' => 'numeric|nullable',
+            'cell_phone' => 'numeric|min:10|nullable',
             'facebook' => 'url|nullable',
             'twitter' => 'url|nullable',
             'pinterest' => 'url|nullable',
