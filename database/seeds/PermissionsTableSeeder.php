@@ -1580,10 +1580,10 @@ class PermissionsTableSeeder extends Seeder
         $demo_role->permissions()->attach($dashboard2);
 
         $demo_role->permissions()->attach($user1);
-        $demo_role->permissions()->attach($user3);
-        $demo_role->permissions()->attach($user5);
-        $demo_role->permissions()->attach($user11);
-        $demo_role->permissions()->attach($user12);
+//        $demo_role->permissions()->attach($user3);
+//        $demo_role->permissions()->attach($user5);
+//        $demo_role->permissions()->attach($user11);
+//        $demo_role->permissions()->attach($user12);
 
         foreach (User::$statuses as $status){
             $demo_role->permissions()->attach($user[$status]);

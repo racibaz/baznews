@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Route;
 
 class EnvFileChange
 {
@@ -20,9 +22,7 @@ class EnvFileChange
             return $next($request);
         }
 
-        $userEmail = Auth::check() ? Auth::user()->email : '';
-
-        \Log::warning('Unauthorized .env file request IP :' . $request->ip() . ' User Email : ' . $userEmail);
+        Log::warning('Unauthorized .env file request. uri :' . Route::getCurrentRoute()->uri() . ' : user_id : ' . auth()->user()->getAuthIdentifier() . '  IP :' . auth()->user()->getUserIp());
         return redirect('/login');
     }
 }

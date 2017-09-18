@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Setting;
 use App\Models\User;
 use Auth;
 use Socialite;

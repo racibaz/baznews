@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Route;
 
 class CheckPerm
 {
@@ -22,7 +24,7 @@ class CheckPerm
             return $next($request);
         }
 
-        \Log::warning('Unauthorized request IP :' . $request->ip());
+        Log::warning('Unauthorized request. uri :' . Route::getCurrentRoute()->uri() . ' : user_id : ' . auth()->user()->getAuthIdentifier() . '  IP :' . auth()->user()->getUserIp());
         return redirect('/login');
     }
 }

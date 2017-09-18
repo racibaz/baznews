@@ -4,9 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
-class logViewer
+class LogViewer
 {
     /**
      * Handle an incoming request.
@@ -17,13 +18,11 @@ class logViewer
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Route::currentRouteName() == "logs" && Auth::user()->can('show-log')) {
+        if (Auth::check() && Auth::user()->can('show-log')) {
             return $next($request);
         }
 
-        $userEmail = Auth::check() ? Auth::user()->email : '';
-
-        \Log::warning('Unauthorized log index page request IP :' . $request->ip() . ' User Email : ' . $userEmail);
+        Log::warning('Unauthorized log index page request. uri :' . Route::getCurrentRoute()->uri() . ' : user_id : ' . auth()->user()->getAuthIdentifier() . '  IP :' . auth()->user()->getUserIp());
         return redirect('/login');
     }
 }
