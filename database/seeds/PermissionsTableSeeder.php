@@ -14,9 +14,14 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-
         //env file
         $env1 = Permission::create([
+            'name'          => 'index-env',
+            'display_name'  => 'It makes show in the dashboard route list',
+            'is_active'     => 1,
+        ]);
+
+        $env2 = Permission::create([
             'name'          => 'changes-env',
             'display_name'  => 'Changes the Env file.',
             'is_active'     => 1,
@@ -601,45 +606,45 @@ class PermissionsTableSeeder extends Seeder
         //log
         $log1 = Permission::create([
             'name'          => 'index-log',
-            'display_name'  => 'log  Listeleme',
+            'display_name'  => 'Dashboard da log linki görebilsin mi?',
             'is_active'     => 1,
         ]);
 
-        $log2 = Permission::create([
-            'name'          => 'create-log',
-            'display_name'  => 'log Oluşturma',
-            'is_active'     => 1,
-        ]);
-
-        $log3 = Permission::create([
-            'name'          => 'edit-log',
-            'display_name'  => 'log Düzenleme',
-            'is_active'     => 1,
-        ]);
-
-        $log4 = Permission::create([
-            'name'          => 'destroy-log',
-            'display_name'  => 'log Silme',
-            'is_active'     => 1,
-        ]);
+//        $log2 = Permission::create([
+//            'name'          => 'create-log',
+//            'display_name'  => 'log Oluşturma',
+//            'is_active'     => 1,
+//        ]);
+//
+//        $log3 = Permission::create([
+//            'name'          => 'edit-log',
+//            'display_name'  => 'log Düzenleme',
+//            'is_active'     => 1,
+//        ]);
+//
+//        $log4 = Permission::create([
+//            'name'          => 'destroy-log',
+//            'display_name'  => 'log Silme',
+//            'is_active'     => 1,
+//        ]);
 
         $log5 = Permission::create([
             'name'          => 'show-log',
-            'display_name'  => 'log Gösterme',
+            'display_name'  => 'log İle Alakalı işlemleri yapabilir.',
             'is_active'     => 1,
         ]);
 
-        $log6 = Permission::create([
-            'name'          => 'update-log',
-            'display_name'  => 'log update',
-            'is_active'     => 1,
-        ]);
-
-        $log7 = Permission::create([
-            'name'          => 'store-log',
-            'display_name'  => 'log update',
-            'is_active'     => 1,
-        ]);
+//        $log6 = Permission::create([
+//            'name'          => 'update-log',
+//            'display_name'  => 'log update',
+//            'is_active'     => 1,
+//        ]);
+//
+//        $log7 = Permission::create([
+//            'name'          => 'store-log',
+//            'display_name'  => 'log update',
+//            'is_active'     => 1,
+//        ]);
 
         //account
         $account1 = Permission::create([
@@ -1342,6 +1347,7 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->users()->attach($first_user);
 
         $super_admin->permissions()->attach($env1);
+        $super_admin->permissions()->attach($env2);
         $super_admin->permissions()->attach($dashboard1);
         $super_admin->permissions()->attach($dashboard2);
         $super_admin->permissions()->attach($user1);
@@ -1398,12 +1404,12 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($revision6);
         $super_admin->permissions()->attach($revision7);
         $super_admin->permissions()->attach($log1);
-        $super_admin->permissions()->attach($log2);
-        $super_admin->permissions()->attach($log3);
-        $super_admin->permissions()->attach($log4);
+//        $super_admin->permissions()->attach($log2);
+//        $super_admin->permissions()->attach($log3);
+//        $super_admin->permissions()->attach($log4);
         $super_admin->permissions()->attach($log5);
-        $super_admin->permissions()->attach($log6);
-        $super_admin->permissions()->attach($log7);
+//        $super_admin->permissions()->attach($log6);
+//        $super_admin->permissions()->attach($log7);
         $super_admin->permissions()->attach($account1);
         $super_admin->permissions()->attach($account2);
         $super_admin->permissions()->attach($account3);
@@ -1566,8 +1572,13 @@ class PermissionsTableSeeder extends Seeder
 
         $demo_role->users()->attach($demo_user);
 
+        $demo_role->permissions()->attach($env1);
+
+        $demo_role->permissions()->attach($log1);
+
         $demo_role->permissions()->attach($dashboard1);
         $demo_role->permissions()->attach($dashboard2);
+
         $demo_role->permissions()->attach($user1);
         $demo_role->permissions()->attach($user3);
         $demo_role->permissions()->attach($user5);
@@ -1598,8 +1609,6 @@ class PermissionsTableSeeder extends Seeder
         $demo_role->permissions()->attach($revision1);
         $demo_role->permissions()->attach($revision3);
         $demo_role->permissions()->attach($revision5);
-
-        $demo_role->permissions()->attach($log1);
 
         $demo_role->permissions()->attach($account1);
         $demo_role->permissions()->attach($account3);

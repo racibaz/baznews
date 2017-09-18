@@ -49,7 +49,7 @@
         @permission('index-log')
         <li data-name="logs"><a href="{!! route('logs') !!}"><i class="fa fa-list-ul"></i>
                 <span>{{trans('dashboard.logs')}}</span></a></li>@endpermission
-        @permission('changes-env')
+        @permission('index-env')
         <li data-name="env"><a href="{!! url('admin/enveditor') !!}"><i class="fa fa-code-fork"></i>
                 <span>{{trans('dashboard.changes_env_file')}}</span></a></li>@endpermission
     </ul>
