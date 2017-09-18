@@ -104,6 +104,7 @@
 @permission('index-thememanager')
 <li data-name="theme_manager"><a href="{!! route('theme_manager.index') !!}"><i class="fa fa-file-code-o"></i>
         <span>{{trans('dashboard.theme_managers')}}</span></a></li>@endpermission
-@permission('index-apimanager')
+{{--@permission('index-apimanager')--}}
 <li data-name="api_manager"><a href="{!! route('api_manager') !!}"><i class="fa fa-file-code-o"></i>
-        <span>{{trans('api_manager.management')}}</span></a></li>@endpermission
+        <span>{{trans('api_manager.management')}}</span></a></li>
+{{--@endpermission--}}
