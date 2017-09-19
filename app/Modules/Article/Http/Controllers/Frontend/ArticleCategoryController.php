@@ -17,7 +17,7 @@ class ArticleCategoryController extends Controller
     public function show($slug)
     {
         return Cache::tags(['ArticleCategoryController', 'Article', 'categoryArticles'])->rememberForever('categoryArticles:' . $slug, function () use ($slug) {
-            $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
+            $slug = removeHtmlTagsOfField($slug);
             $record = $this->repo
                 ->with([
                     'articles',

@@ -21,7 +21,7 @@ class EditorController extends Controller
     {
         return Cache::tags(['UserController', 'NewsController', 'User', 'News'])->rememberForever(request()->fullUrl(), function () use ($slug) {
 
-            $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
+            $slug = removeHtmlTagsOfField($slug);
 
             $user = $this->repo->getUserBySlug($slug);
             $newsItems = $this->newsRepo->getNewsOfUserById($user->id);

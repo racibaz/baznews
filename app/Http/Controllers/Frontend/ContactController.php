@@ -56,12 +56,12 @@ class ContactController extends Controller
         }
 
         $result = $this->repo->create([
-            'contact_type_id' => strip_tags($input['contact_type_id']),
-            'full_name' => strip_tags($input['full_name']),
-            'subject' => strip_tags($input['subject']),
-            'email' => strip_tags($input['email']),
-            'phone' => strip_tags($input['phone']),
-            'content' => strip_tags($input['content']),
+            'contact_type_id' => removeHtmlTagsOfField($input['contact_type_id']),
+            'full_name' => removeHtmlTagsOfField($input['full_name']),
+            'subject' => removeHtmlTagsOfField($input['subject']),
+            'email' => removeHtmlTagsOfField($input['email']),
+            'phone' => removeHtmlTagsOfField($input['phone']),
+            'content' => removeHtmlTagsOfField($input['content']),
             'is_read' => 0,
             'IP' => Request::ip(),
             'status' => 0

@@ -70,13 +70,11 @@ class AccountController extends BackendController
         $input['password'] = empty($input['password']) ? $record->password : bcrypt($input['password']);
 
         // İçeriklerde ki html tag leri temizliyoruz.
-        $input['facebook'] = strip_tags($input['facebook']);
-        $input['twitter'] = strip_tags($input['twitter']);
-        $input['pinterest'] = strip_tags($input['pinterest']);
-        $input['linkedin'] = strip_tags($input['linkedin']);
-        $input['youtube'] = strip_tags($input['youtube']);
-        $input['web_site'] = strip_tags($input['web_site']);
-        $input['bio_note'] = strip_tags($input['bio_note']);
+        $input = removeHtmlTagsOfFields($input, [
+            '_method',
+            '_token',
+            'password',
+        ]);
 
         //todo request validation formatında kontol yapılabilinir.
         //kullanıcı email adresini guncellediğinde email adresini uniqe olduğu için

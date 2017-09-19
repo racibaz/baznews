@@ -17,7 +17,7 @@ class BookCategoryController extends Controller
     public function show($slug)
     {
         return Cache::tags(['BookCategoryController', 'Book', 'bookCategory'])->rememberForever(request()->fullUrl(), function () use ($slug) {
-            $slug = htmlentities(strip_tags($slug), ENT_QUOTES, 'UTF-8');
+            $slug = removeHtmlTagsOfField($slug);
             $bookCategory = $this->repo
                 ->with(['books'])
                 ->where('is_active', 1)

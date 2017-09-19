@@ -34,7 +34,7 @@ class NewsCategoryController extends Controller
     {
         return Cache::tags(['NewsCategoryController', 'News', 'NewsCategory'])->rememberForever(request()->fullUrl(), function () use ($newsCategorySlug) {
 
-            $newsCategorySlug = htmlentities(strip_tags($newsCategorySlug), ENT_QUOTES, 'UTF-8');
+            $newsCategorySlug = removeHtmlTagsOfField($newsCategorySlug);
             $newsCategory = $this->repo
                 ->with(['news'])
                 ->where('is_active', 1)
