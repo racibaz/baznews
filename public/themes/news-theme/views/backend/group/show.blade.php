@@ -8,7 +8,7 @@
 
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li>{{trans('group.group_add_edit')}}</li>
+            <li><a href="{!! URL::route('group.index') !!}"> {{ trans('group.management') }} </a></li>
             <li class="active">{{$record->name}}</li>
         </ol>
     </section>

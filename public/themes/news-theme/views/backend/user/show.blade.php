@@ -6,8 +6,8 @@
             <small>{{trans('user.user_list_title')}}</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i> {{trans('dashboard.home_page')}}</a></li>
-            <li>{{trans('user.user_management')}}</li>
+            <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{!! URL::route('user.index') !!}"> {{ trans('user.user_management') }} </a></li>
             <li class="active">{{$record->name}}</li>
         </ol>
     </section>
@@ -26,7 +26,7 @@
             <div class="box box-default">
                 <!-- /.box-header -->
                 <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="{{\App\Models\User::getUserAvatar(Auth::user()->email, 150)}}"
+                    <img class="profile-user-img img-responsive img-circle" src="{{\App\Models\User::getUserAvatar($record->email, 150)}}"
                          alt="{{$record->name}}"/>
 
                     <h3 class="profile-username text-center">{{$record->name}}</h3>
@@ -68,16 +68,14 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-
                     <strong><i class="fa fa-map-marker margin-r-5"></i> {{trans('user.adress')}}</strong>
-
-                    <p class="text-muted">{{$record->country_id}} , {{$record->city_id}}</p>
-
+                    <p class="text-muted">{{$record->country->name}} , {{$record->city->name}}</p>
                     <hr>
-
                     <strong><i class="fa fa-file-text-o margin-r-5"></i> {{trans('user.bio_note')}} </strong>
-
                     <p>{{$record->bio_note}}</p>
+                    <hr>
+                    <strong><i class="fa fa-external-link margin-r-5"></i> {{trans('user.web_site')}} </strong>
+                    <p>{{$record->web_site}}</p>
                 </div>
                 <!-- /.box-body -->
             </div>
