@@ -10,7 +10,7 @@
         "barryvdh/laravel-debugbar": "^2.2",
         "zizaco/entrust": "5.2.x-dev",
         "caffeinated/themes": "^3.0",
-        "rinvex/repository": "dev-develop",
+        "rinvex/repository": "2.0.*",
         "caffeinated/modules": "^4.0",
         "kalnoy/nestedset": "^4.1",
         "venturecraft/revisionable": "1.*",
