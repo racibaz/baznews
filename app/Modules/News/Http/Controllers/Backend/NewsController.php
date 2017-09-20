@@ -464,7 +464,7 @@ class NewsController extends BackendController
                 $pingJob = (new SendPing())
                     ->delay(Carbon::now()->addMinutes(10));
 
-                dispatch($pingJob);
+                dispatch_now($pingJob);
             }
 
             Session::flash('flash_message', trans('common.message_model_updated'));

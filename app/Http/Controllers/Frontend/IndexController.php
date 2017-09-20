@@ -38,6 +38,20 @@ class IndexController extends Controller
             $pageSetting = Setting::all();
             $modules = Module::enabled();
 
+
+            return view(Theme::path('frontend.index'), compact(
+                'pageSetting',
+                'bandNewsItems',
+                'mainCuffNewsItems',
+                'miniCuffNewsItems',
+                'boxCuffNewsItems',
+                'cuffNewsCategories',
+                'modules',
+                'photoGalleries',
+                'videoGalleries'
+            ))->render();
+
+
             return Theme::view('frontend.index', compact(
                 'pageSetting',
                 'bandNewsItems',
@@ -49,6 +63,14 @@ class IndexController extends Controller
                 'photoGalleries',
                 'videoGalleries'
             ))->render();
+
+
+            return Theme::view('frontend.index', compact(
+                'var1',
+                    'var2',
+            ))->render();
+
+
 
         });
     }
