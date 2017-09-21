@@ -12,7 +12,6 @@ use App\Modules\News\Models\PhotoCategory;
 use App\Modules\News\Models\PhotoGallery;
 use App\Modules\News\Repositories\PhotoGalleryRepository as Repo;
 use App\Modules\News\Repositories\PhotoRepository;
-use Caffeinated\Themes\Facades\Theme;
 use League\Flysystem\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +35,7 @@ class PhotoGalleryController extends BackendController
     public function index()
     {
         $records = $this->repo->orderBy('created_at', 'desc')->paginate();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
@@ -47,7 +46,7 @@ class PhotoGalleryController extends BackendController
         $record = $this->repo->createModel();
         $tagList = Tag::tagList();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
+        return view('news::' . $this->getViewName(__FUNCTION__), compact([
             'record',
             'photoCategories',
             'tagList',
@@ -64,7 +63,7 @@ class PhotoGalleryController extends BackendController
 
     public function show(PhotoGallery $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -79,7 +78,7 @@ class PhotoGalleryController extends BackendController
             $tagIDs[$index] = $tag->id;
         }
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
+        return view('news::' . $this->getViewName(__FUNCTION__), compact([
             'record',
             'photoCategories',
             'tagList',
@@ -198,7 +197,7 @@ class PhotoGalleryController extends BackendController
     {
         $photo_gallery = PhotoGallery::find($photo_gallery_id);
 
-        return Theme::view('news::' . $this->redirectViewName . $this->view . 'add_multi_photos_view', compact(['photo_gallery']));
+        return view('news::' . $this->redirectViewName . $this->view . 'add_multi_photos_view', compact(['photo_gallery']));
     }
 
 

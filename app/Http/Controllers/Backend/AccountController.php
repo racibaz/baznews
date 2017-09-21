@@ -9,7 +9,6 @@ use App\Models\Event;
 use App\Models\Group;
 use App\Models\Role;
 use App\Repositories\AccountRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -31,7 +30,7 @@ class AccountController extends BackendController
         $revisions = $record->getUserRevisions($record->id);
         $events = Event::where('user_id', $record->id)->get();
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record', 'revisions', 'events'));
+        return view($this->getViewName(__FUNCTION__), compact('record', 'revisions', 'events'));
     }
 
 
@@ -42,7 +41,7 @@ class AccountController extends BackendController
         $roles = Role::roleList();
         $groups = Group::groupList();
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact([
+        return view($this->getViewName(__FUNCTION__), compact([
             'record',
             'countries',
             'cities',

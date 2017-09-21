@@ -70,12 +70,12 @@
     </div>
 @endsection
 @section('css')
-    <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datatables/css/dataTables.bootstrap.css') }}"
+    <link href="{{ asset($themeAssetsPath . 'js/bootstrap-datatables/css/dataTables.bootstrap.css') }}"
           rel="stylesheet">
 @endsection
-@section('js')
-    <script src="{{ Theme::asset($activeTheme .'::js/datatables/js/jquery.dataTables.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme .'::js/bootstrap-datatables/js/dataTables.bootstrap.js') }}"></script>
+@push('js')
+    <script src="{{ asset($themeAssetsPath . 'js/datatables/js/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/bootstrap-datatables/js/dataTables.bootstrap.js') }}"></script>
     <script type="text/javascript">
         //active menu
         activeMenu('permission', 'user_management');
@@ -114,4 +114,4 @@
             }
         });
     </script>
-@endsection
+@endpush

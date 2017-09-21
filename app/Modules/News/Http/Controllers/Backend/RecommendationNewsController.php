@@ -8,7 +8,6 @@ use App\Modules\News\Http\Requests\RecommendationNewsRequest;
 use App\Modules\News\Models\News;
 use App\Modules\News\Models\RecommendationNews;
 use App\Modules\News\Repositories\RecommendationNewsRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -28,7 +27,7 @@ class RecommendationNewsController extends BackendController
     public function index()
     {
         $records = $this->repo->orderBy('created_at', 'desc')->paginate();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
@@ -38,7 +37,7 @@ class RecommendationNewsController extends BackendController
         $newsList = News::newsList();
         $record = $this->repo->createModel();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsList', 'userList']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsList', 'userList']));
     }
 
 
@@ -51,7 +50,7 @@ class RecommendationNewsController extends BackendController
     public function show(RecommendationNews $record)
     {
 //        dd($record);
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -60,7 +59,7 @@ class RecommendationNewsController extends BackendController
         $userList = User::userList();
         $newsList = News::newsList();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsList', 'userList']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsList', 'userList']));
     }
 
 

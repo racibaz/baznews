@@ -3,7 +3,7 @@
 <li class="header">MODÜLLER</li>
 @foreach( Module::all() as $module)
     @if(Module::isEnabled($module['slug']))
-        {!! Theme::view( $module['slug'] .'::backend.route_list.route_list') !!}
+        {!! view( $module['slug'] .'::backend.route_list.route_list') !!}
     @endif
 @endforeach
 

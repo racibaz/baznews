@@ -219,23 +219,23 @@
 @endsection
 
 @section('css')
-    <link href="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}"
+    <link href="{{ asset($themeAssetsPath . 'js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}"
           type="text/css" rel="stylesheet">
 @endsection
 
-@section('js')
+@push('js')
 
-    <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.novtt.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/video-js/video.novtt.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/video-js/video.js') }}"></script>
     <script type="text/javascript">
-        videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}";
+        videojs.options.flash.swf = "{{ asset($themeAssetsPath . 'js/video-js/video-js.swf') }}";
         videojs("video-js", {}, function () {
             // Player (this) is initialized and ready.
         });
     </script>
-    <script src="{{ Theme::asset($activeTheme . '::js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -255,4 +255,4 @@
         });
     </script>
 
-@endsection
+@endpush

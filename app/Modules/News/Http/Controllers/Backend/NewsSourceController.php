@@ -6,7 +6,6 @@ use App\Http\Controllers\Backend\BackendController;
 use App\Modules\News\Http\Requests\NewsSourceRequest;
 use App\Modules\News\Models\NewsSource;
 use App\Modules\News\Repositories\NewsSourceRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -26,14 +25,14 @@ class NewsSourceController extends BackendController
     public function index()
     {
         $records = $this->repo->orderBy('created_at', 'desc')->paginate();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -45,13 +44,13 @@ class NewsSourceController extends BackendController
 
     public function show(NewsSource $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(NewsSource $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 

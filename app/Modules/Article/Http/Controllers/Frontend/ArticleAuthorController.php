@@ -22,7 +22,7 @@ class ArticleAuthorController extends Controller
                 ->where('is_active', 1)
                 ->findAll();
 
-            return Theme::view('article::frontend.article_author.index', compact([
+            return view('article::frontend.article_author.index', compact([
                 'records',
             ]))->render();
         });
@@ -43,7 +43,7 @@ class ArticleAuthorController extends Controller
 
             $authorPhoto = $this->repo->getAuthorAvatar($record);
 
-            return Theme::view('article::frontend.article_author.show', compact([
+            return view('article::frontend.article_author.show', compact([
                 'record',
                 'authorPhoto'
             ]))->render();

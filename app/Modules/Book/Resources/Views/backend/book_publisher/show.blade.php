@@ -74,9 +74,9 @@
         </div>
     </div>
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('book_publishers', 'book_management');
     </script>
-@endsection
+@endpush

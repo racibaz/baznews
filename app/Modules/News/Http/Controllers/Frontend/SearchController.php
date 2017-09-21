@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Modules\News\Models\News;
 use App\Modules\News\Repositories\NewsRepository;
 use App\Repositories\UserRepository;
-use Caffeinated\Themes\Facades\Theme;
 use Redirect;
 use Illuminate\Http\Request;
 
@@ -20,7 +19,7 @@ class SearchController extends Controller
             ->where('is_active', 1)
             ->paginate(15);
 
-        return Theme::view('news::frontend.news.search', compact([
+        return view('news::frontend.news.search', compact([
             'records',
             'search'
         ]));
@@ -39,7 +38,7 @@ class SearchController extends Controller
         $newsRepo = new NewsRepository();
         $userNews = $newsRepo->where('user_id', $user->id)->findAll();
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact([
+        return view($this->getViewName(__FUNCTION__), compact([
             'records',
             'user',
         ]));

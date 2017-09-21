@@ -81,9 +81,9 @@
         </div>
     </div>
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('article_categories', 'article_management');
     </script>
-@endsection
+@endpush

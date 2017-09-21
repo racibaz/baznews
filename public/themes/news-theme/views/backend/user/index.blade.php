@@ -531,9 +531,9 @@
         <!-- /.col -->
     </div>
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //Menü active code...
         activeMenu('user_management', 'user');
     </script>
-@endsection
+@endpush

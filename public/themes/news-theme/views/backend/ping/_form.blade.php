@@ -51,9 +51,9 @@
     {!! Form::close() !!}
     <!-- Main Content Element  End-->
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('ping', 'general_setting');
     </script>
-@endsection
+@endpush

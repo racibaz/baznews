@@ -4,7 +4,6 @@ namespace App\Modules\Article\Widgets;
 
 use App\Modules\Article\Repositories\ArticleAuthorRepository;
 use Arrilot\Widgets\AbstractWidget;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
 
@@ -33,6 +32,6 @@ class ArticleAuthors extends AbstractWidget
                 ->orderBy('updated_at', 'desc')
                 ->get();
         });
-        return Theme::view('article::frontend.widgets.article_authors', compact(['articleAuthors']));
+        return view('article::frontend.widgets.article_authors', compact(['articleAuthors']));
     }
 }

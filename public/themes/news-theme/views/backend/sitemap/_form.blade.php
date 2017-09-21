@@ -62,9 +62,9 @@
     </div><!-- /.row -->
     {!! Form::close() !!}
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('sitemap', '');
     </script>
-@endsection
+@endpush

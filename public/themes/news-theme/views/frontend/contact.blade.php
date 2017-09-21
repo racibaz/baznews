@@ -115,10 +115,10 @@
     <meta name="description" content="{{ Cache::tags('Setting')->get('description') }}"/>
     <meta name='pagename' content='jQuery Tools, Tutorials and Resources - O Reilly Media'>
 @endsection
-@section('js')
+@push('js')
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script>
         /*--------------------------------------------------------
          Sticky Sidebar
@@ -127,4 +127,4 @@
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
     </script>
-@endsection
+@endpush

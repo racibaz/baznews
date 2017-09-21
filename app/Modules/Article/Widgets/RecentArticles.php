@@ -4,7 +4,6 @@ namespace App\Modules\Article\Widgets;
 
 use App\Modules\Article\Repositories\ArticleRepository;
 use Arrilot\Widgets\AbstractWidget;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
 
@@ -34,6 +33,6 @@ class RecentArticles extends AbstractWidget
                 ->get();
         });
 
-        return Theme::view('article::frontend.widgets.recent_articles', compact(['recentArticles']));
+        return view('article::frontend.widgets.recent_articles', compact(['recentArticles']));
     }
 }

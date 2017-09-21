@@ -4,7 +4,6 @@ namespace App\Modules\Book\Widgets;
 
 use App\Modules\Book\Repositories\BookRepository;
 use Arrilot\Widgets\AbstractWidget;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
 
@@ -33,6 +32,6 @@ class RecentBooks extends AbstractWidget
                 ->orderBy('updated_at', 'desc')
                 ->get();
         });
-        return Theme::view('book::frontend.widgets.recent_books', compact(['recentBooks']));
+        return view('book::frontend.widgets.recent_books', compact(['recentBooks']));
     }
 }

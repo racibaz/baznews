@@ -7,7 +7,6 @@ use App\Modules\News\Http\Requests\FutureNewsRequest;
 use App\Modules\News\Models\FutureNews;
 use App\Modules\News\Models\News;
 use App\Modules\News\Repositories\FutureNewsRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -28,7 +27,7 @@ class FutureNewsController extends BackendController
     public function index()
     {
         $records = $this->repo->orderBy('created_at', 'desc')->paginate();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
@@ -36,7 +35,7 @@ class FutureNewsController extends BackendController
     {
         $newsAllList = News::newsAllList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsAllList']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsAllList']));
     }
 
 
@@ -48,14 +47,14 @@ class FutureNewsController extends BackendController
 
     public function show(FutureNews $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(FutureNews $record)
     {
         $newsAllList = News::newsAllList();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsAllList']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsAllList']));
     }
 
 

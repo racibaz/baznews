@@ -4,7 +4,6 @@ namespace App\Modules\News\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
 use Carbon\Carbon;
-use Theme;
 
 class NewsArchive extends AbstractWidget
 {
@@ -24,7 +23,7 @@ class NewsArchive extends AbstractWidget
         $subYears = Carbon::now()->subYears(5)->year;
         $nowYear = Carbon::now()->year;
 
-        return Theme::view('news::frontend.widgets.news_archive', compact([
+        return view('news::frontend.widgets.news_archive', compact([
             'config',
             'subYears',
             'nowYear'

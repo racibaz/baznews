@@ -155,18 +155,18 @@
     {!! Form::close() !!}
 @endsection
 @section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme.'::AdminLTE/plugins/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset($themeAssetsPath . 'AdminLTE/plugins/select2/select2.min.css') }}">
     <link rel="stylesheet"
-          href="{{ Theme::asset($activeTheme.'::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+          href="{{ asset($themeAssetsPath . 'js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
     <link rel="stylesheet"
-          href="{{ Theme::asset($activeTheme.'::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+          href="{{ asset($themeAssetsPath . 'js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 @endsection
-@section('js')
-    <script src="{{ Theme::asset($activeTheme.'::js/sticky-sidebar/ResizeSensor.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme.'::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme.'::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme.'::js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme.'::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+@push('js')
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
     <script>
         $(function () {
             //Initialize Select2 Elements
@@ -183,4 +183,4 @@
             activeMenu('video_gallery', 'news_management');
         });
     </script>
-@endsection
+@endpush

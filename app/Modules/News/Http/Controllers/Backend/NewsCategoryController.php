@@ -6,7 +6,6 @@ use App\Http\Controllers\Backend\BackendController;
 use App\Modules\News\Http\Requests\NewsCategoryRequest;
 use App\Modules\News\Models\NewsCategory;
 use App\Modules\News\Repositories\NewsCategoryRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -29,7 +28,7 @@ class NewsCategoryController extends BackendController
         $records = $this->repo->orderBy('created_at', 'desc')->paginate();
         $recordsTree = NewsCategory::get()->toTree();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));
     }
 
 
@@ -37,7 +36,7 @@ class NewsCategoryController extends BackendController
     {
         $newsCategoryList = NewsCategory::newsCategoryList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsCategoryList']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsCategoryList']));
     }
 
 
@@ -49,14 +48,14 @@ class NewsCategoryController extends BackendController
 
     public function show(NewsCategory $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(NewsCategory $record)
     {
         $newsCategoryList = NewsCategory::newsCategoryList();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsCategoryList']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'newsCategoryList']));
     }
 
 

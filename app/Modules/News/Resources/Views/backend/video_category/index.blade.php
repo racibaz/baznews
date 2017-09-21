@@ -78,11 +78,11 @@
         <!-- /.col -->
     </div>
 @endsection
-@section('js')
+@push('js')
     <script>
         $(function () {
             //active menu
             activeMenu('video_category', 'news_management');
         });
     </script>
-@endsection
+@endpush

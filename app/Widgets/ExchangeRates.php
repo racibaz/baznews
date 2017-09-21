@@ -18,7 +18,7 @@ class ExchangeRates extends AbstractWidget
             $usdSelling = $connect_web->Currency[0]->BanknoteSelling;
             $euroBuying = $connect_web->Currency[3]->BanknoteBuying;
             $euroSelling = $connect_web->Currency[3]->BanknoteSelling;
-            return Theme::view('frontend.widgets.exchange_rates', compact([
+            return view('frontend.widgets.exchange_rates', compact([
                 'usdBuying',
                 'usdSelling',
                 'euroBuying',

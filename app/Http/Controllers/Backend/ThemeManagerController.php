@@ -30,7 +30,7 @@ class ThemeManagerController extends BackendController
         $activeTheme = Theme::getActive();
         $records = $this->repo->paginate();
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact([
+        return view($this->getViewName(__FUNCTION__), compact([
             'records',
             'themes',
             'activeTheme'
@@ -40,7 +40,7 @@ class ThemeManagerController extends BackendController
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
+        return view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -52,13 +52,13 @@ class ThemeManagerController extends BackendController
 
     public function show(ThemeManager $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
+        return view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(ThemeManager $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
+        return view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 

@@ -42,7 +42,7 @@ class ArticleController extends Controller
 
             $authorPhoto = $this->authorRepo->getAuthorAvatar($record->article_author);
 
-            return Theme::view('article::frontend.article.show', compact([
+            return view('article::frontend.article.show', compact([
                 'record',
                 'otherArticles',
                 'authorPhoto'

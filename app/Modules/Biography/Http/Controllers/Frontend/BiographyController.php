@@ -32,7 +32,7 @@ class BiographyController extends Controller
                 ->where('is_active', 1)
                 ->findAll()->take(5);
 
-            return Theme::view('biography::frontend.biography.show', compact([
+            return view('biography::frontend.biography.show', compact([
                 'record',
                 'otherBiographies'
             ]))->render();

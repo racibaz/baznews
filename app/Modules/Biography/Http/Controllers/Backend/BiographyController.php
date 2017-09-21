@@ -36,7 +36,7 @@ class BiographyController extends BackendController
     public function index()
     {
         $records = $this->repo->orderBy('created_at', 'desc')->paginate();
-        return Theme::view('biography::' . $this->getViewName(__FUNCTION__), compact(['records']));
+        return view('biography::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
@@ -45,7 +45,7 @@ class BiographyController extends BackendController
         $statusList = $this->repo->getUserStatuses();
 
         $record = $this->repo->createModel();
-        return Theme::view('biography::' . $this->getViewName(__FUNCTION__), compact([
+        return view('biography::' . $this->getViewName(__FUNCTION__), compact([
             'record',
             'statusList'
         ]));
@@ -61,7 +61,7 @@ class BiographyController extends BackendController
     public function show(Biography $record)
     {
         $statuses = Biography::$statuses;
-        return Theme::view('biography::' . $this->getViewName(__FUNCTION__), compact('record'));
+        return view('biography::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -69,7 +69,7 @@ class BiographyController extends BackendController
     {
         $statusList = $this->repo->getUserStatuses();
 
-        return Theme::view('biography::' . $this->getViewName(__FUNCTION__), compact([
+        return view('biography::' . $this->getViewName(__FUNCTION__), compact([
             'record',
             'statusList'
         ]));

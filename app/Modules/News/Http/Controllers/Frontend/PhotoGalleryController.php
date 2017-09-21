@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Modules\News\Repositories\PhotoCategoryRepository;
 use App\Modules\News\Repositories\PhotoGalleryRepository as Repo;
 use App\Modules\News\Repositories\PhotoRepository;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
 class PhotoGalleryController extends Controller
@@ -58,7 +57,7 @@ class PhotoGalleryController extends Controller
             $photoCategoryGalleries = $photoCategoryGalleries->except($photoGallery->id);
 
 
-            return Theme::view('news::frontend.photo_gallery.photo_gallery', compact([
+            return view('news::frontend.photo_gallery.photo_gallery', compact([
                 'photoGallery',
                 'galleryPhotos',
                 'firstPhoto',
@@ -118,7 +117,7 @@ class PhotoGalleryController extends Controller
             //mevcutta gösterilen foto galeriyi collection dan siliyoruz.
             $photoCategoryGalleries = $photoCategoryGalleries->except($photoGallery->id);
 
-            return Theme::view('news::frontend.photo_gallery.photo_gallery_photos', compact([
+            return view('news::frontend.photo_gallery.photo_gallery_photos', compact([
                 'photoGallery',
                 'galleryPhotos',
                 'firstPhoto',

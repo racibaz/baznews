@@ -62,9 +62,9 @@
         <!-- /.box-body -->
     </div>
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('announcement', '');
     </script>
-@endsection
+@endpush

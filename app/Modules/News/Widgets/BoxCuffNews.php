@@ -4,7 +4,6 @@ namespace App\Modules\News\Widgets;
 
 use App\Modules\News\Repositories\NewsRepository;
 use Arrilot\Widgets\AbstractWidget;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
 class BoxCuffNews extends AbstractWidget
@@ -39,7 +38,7 @@ class BoxCuffNews extends AbstractWidget
                 ->orderBy('updated_at', 'desc')
                 ->get();
 
-            return Theme::view('news::frontend.widgets.box_cuff_news', compact([
+            return view('news::frontend.widgets.box_cuff_news', compact([
                 'config',
                 'boxCuffNewsItems'
             ]))->render();

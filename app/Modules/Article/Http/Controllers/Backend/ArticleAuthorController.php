@@ -28,7 +28,7 @@ class ArticleAuthorController extends BackendController
     public function index()
     {
         $records = $this->repo->orderBy('created_at', 'desc')->paginate();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['records']));
+        return view('article::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
@@ -37,7 +37,7 @@ class ArticleAuthorController extends BackendController
         $record = $this->repo->createModel();
         $userList = User::userList();
 
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'userList']));
+        return view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'userList']));
     }
 
 
@@ -49,14 +49,14 @@ class ArticleAuthorController extends BackendController
 
     public function show(ArticleAuthor $record)
     {
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact('record'));
+        return view('article::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(ArticleAuthor $record)
     {
         $userList = User::userList();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'userList']));
+        return view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'userList']));
     }
 
 

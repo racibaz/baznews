@@ -210,7 +210,7 @@
     <!-- /.row -->
 
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         $(document).ready(function () {
             $('#announce-modal').on('show.bs.modal', function (event) {
@@ -233,4 +233,4 @@
             activeMenu('home', '');
         });
     </script>
-@endsection
+@endpush

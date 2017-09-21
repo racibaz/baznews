@@ -85,9 +85,9 @@
         <!-- /.col -->
     </div>
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('page', '');
     </script>
-@endsection
+@endpush

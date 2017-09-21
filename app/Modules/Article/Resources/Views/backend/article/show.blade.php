@@ -107,10 +107,10 @@
 @section('css')
 
 @stop
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('articles', 'article_management');
     </script>
-@stop
+@endpush
 

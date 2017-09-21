@@ -4,7 +4,7 @@
 {{--@section('title-description'){{trans('common.edit')}}@stop--}}
 
 @section('content')
-    @include($activeTheme .'::backend.announcement._form', ['record' => $record ])
+    @include($themeAssetsPath . 'backend.announcement._form', ['record' => $record ])
 @stop
 
 

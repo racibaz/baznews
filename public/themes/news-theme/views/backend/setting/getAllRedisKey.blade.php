@@ -40,9 +40,9 @@
             </div>
         </div><!-- end row -->
         @endsection
-        @section('js')
+        @push('js')
             <script type="text/javascript">
                 //active menu
                 activeMenu('setting', 'general_setting');
             </script>
-@endsection
+@endpush

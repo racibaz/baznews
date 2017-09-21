@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Jobs\Ping\SendPing;
-use Caffeinated\Themes\Facades\Theme;
 use Carbon\Carbon;
 use JJG\Ping;
 use Illuminate\Http\Request;
@@ -45,7 +44,7 @@ class PingController extends BackendController
     public function edit(Request $request)
     {
         $record = \App\Models\Ping::first();
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
+        return view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 

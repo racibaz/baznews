@@ -3,7 +3,6 @@
 namespace App\Modules\News\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController;
-use Caffeinated\Themes\Facades\Theme;
 
 class RevisionController extends BackendController
 {
@@ -16,6 +15,6 @@ class RevisionController extends BackendController
     public function index()
     {
         //$records = $this->repo->orderBy('updated_at', 'desc')->findAll();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 }

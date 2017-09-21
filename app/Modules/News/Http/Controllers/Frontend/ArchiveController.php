@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Modules\News\Models\News;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Repositories\TagRepository;
-use Caffeinated\Themes\Facades\Theme;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -45,7 +44,7 @@ class ArchiveController extends Controller
         $subYears = Carbon::now()->subYears(5)->year;
         $nowYear = Carbon::now()->year;
 
-        return Theme::view('news::frontend.archive',
+        return view('news::frontend.archive',
             compact([
                 'records',
                 'tags',

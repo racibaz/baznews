@@ -188,11 +188,7 @@
             </div>
             <!-- /.box -->
         </div>
-
-
         <!-- Main Content Element  End-->
     </div><!-- container-fluid -->
-
-
 @endsection
 

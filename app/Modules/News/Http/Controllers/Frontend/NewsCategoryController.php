@@ -4,7 +4,6 @@ namespace App\Modules\News\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Modules\News\Repositories\NewsCategoryRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
 class NewsCategoryController extends Controller
@@ -27,7 +26,7 @@ class NewsCategoryController extends Controller
     public function index()
     {
         $records = $this->repo->getAllNewsCategories();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
     public function getNewsByNewsCategorySlug($newsCategorySlug)
@@ -44,7 +43,7 @@ class NewsCategoryController extends Controller
 
             $records = $newsCategory->news()->paginate();
 
-            return Theme::view('news::frontend.news_category.category_news', compact([
+            return view('news::frontend.news_category.category_news', compact([
                 'newsCategory',
                 'records'
             ]))->render();

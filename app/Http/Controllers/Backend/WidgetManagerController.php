@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Models\WidgetManager;
 use App\Repositories\WidgetManagerRepository as Repo;
 use Cache;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -32,7 +31,7 @@ class WidgetManagerController extends BackendController
         $widgets = array_merge($coreWidgetss, $moduleWidgets);
         $widgetGroupList = WidgetManager::$widgetGroups;
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact('records', 'widgets', 'widgetGroupList'));
+        return view($this->getViewName(__FUNCTION__), compact('records', 'widgets', 'widgetGroupList'));
     }
 
 
@@ -41,7 +40,7 @@ class WidgetManagerController extends BackendController
         $record = $this->repo->createModel();
 //        $widgetGroupList = WidgetGroup::widgetGroupList();
         $widgetGroupList = WidgetManager::$widgetGroups;
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'widgetGroupList']));
+        return view($this->getViewName(__FUNCTION__), compact(['record', 'widgetGroupList']));
     }
 
 
@@ -53,7 +52,7 @@ class WidgetManagerController extends BackendController
 
     public function show(WidgetManager $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
+        return view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -61,7 +60,7 @@ class WidgetManagerController extends BackendController
     {
 //        $widgetGroupList = WidgetGroup::widgetGroupList();
         $widgetGroupList = WidgetManager::$widgetGroups;
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'widgetGroupList']));
+        return view($this->getViewName(__FUNCTION__), compact(['record', 'widgetGroupList']));
     }
 
 

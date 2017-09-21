@@ -5,7 +5,6 @@ namespace App\Modules\News\Http\Controllers\Backend;
 use App\Http\Controllers\Backend\BackendController;
 use App\Modules\News\Models\NewsSetting;
 use App\Repositories\SettingRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -25,7 +24,7 @@ class NewsSettingController extends BackendController
     public function index()
     {
         $records = $this->repo->findAll();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records',]));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['records',]));
     }
 
     public function store(Request $request)

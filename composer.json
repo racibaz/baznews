@@ -1,13 +1,11 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "name": "oLDu67/baznews",
+    "description": "Baznews is online newspaper cms.",
+    "keywords": ["online newspaper", "baznews", "laravel", "cms"],
     "type": "project",
     "require": {
-        "php": ">=5.6.4",
+        "php": ">=7.0.0",
         "laravel/framework": "5.5.*",
-        "barryvdh/laravel-debugbar": "^2.2",
         "zizaco/entrust": "5.2.x-dev",
         "rinvex/repository": "dev-develop",
         "caffeinated/modules": "^4.0",
@@ -22,18 +20,18 @@
         "spatie/laravel-backup": "^5.0",
         "predis/predis": "^1.1",
         "roumen/feed": "^2.11",
-        "rap2hpoutre/laravel-log-viewer": "^0.7.0",
-        "arrilot/laravel-widgets": "^3.6",
-        "algolia/algoliasearch-client-php": "^1.11",
+        "rap2hpoutre/laravel-log-viewer": "^0.10.4",
+        "arrilot/laravel-widgets": "^3.7",
+        "algolia/algoliasearch-client-php": "^1.20",
         "geerlingguy/ping": "^1.1",
         "brotzka/laravel-dotenv-editor": "2.*",
         "laravelcollective/html": "^5.5",
         "laravel/scout": "^3.0",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
-        "mremi/url-shortener": "dev-master",
+        "mremi/url-shortener": "^2.1",
         "patchwork/utf8": "^1.3",
-        "laravel/passport": "^3.0",
+        "laravel/passport": "^4.0",
         "spatie/laravel-fractal": "^5.2",
         "illuminate/support": "^5.5",
         "illuminate/events": "^5.5"
@@ -45,12 +43,13 @@
         "symfony/dom-crawler": "3.1.*",
         "barryvdh/laravel-ide-helper": "^2.2",
         "phpunit/phpunit": "~6.0",
-        "filp/whoops": "~2.0"
-
+        "filp/whoops": "~2.0",
+        "barryvdh/laravel-debugbar": "^3.1"
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database/seeds",
+            "database/factories"
         ],
         "files": [
             "app/helpers.php"
@@ -65,15 +64,27 @@
             "tests/TestCase.php"
         ]
     },
-    "scripts":{
-        "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan ide-helper:generate",
-            "php artisan ide-helper:meta",
-            "php artisan optimize"
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+            ]
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
         ]
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
     }
 }

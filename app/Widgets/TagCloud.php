@@ -27,7 +27,7 @@ class TagCloud extends AbstractWidget
             $tagRepo = new TagRepository();
             $tags = $tagRepo->take(5)->orderBy('updated_at', 'desc')->get();
 
-            return Theme::view('frontend.widgets.tag_cloud', compact([
+            return view('frontend.widgets.tag_cloud', compact([
                 'config',
                 'tags'
             ]))->render();

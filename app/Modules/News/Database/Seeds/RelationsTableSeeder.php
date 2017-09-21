@@ -3,10 +3,6 @@
 namespace App\Modules\News\Database\Seeds;
 
 use App\Modules\News\Models\News;
-use App\Modules\News\Models\Photo;
-use App\Modules\News\Models\PhotoGallery;
-use App\Modules\News\Models\Video;
-use App\Modules\News\Models\VideoGallery;
 use Illuminate\Database\Seeder;
 
 class RelationsTableSeeder extends Seeder

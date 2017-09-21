@@ -74,7 +74,7 @@
         <!-- /.col -->
     </div>
 @endsection
-@section('js')
+@push('js')
     <script>
         $(function () {
 
@@ -82,4 +82,4 @@
             activeMenu('video', 'news_management');
         });
     </script>
-@endsection
+@endpush

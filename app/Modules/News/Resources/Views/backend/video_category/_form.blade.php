@@ -94,13 +94,13 @@
     {!! Form::close() !!}
 @endsection
 @section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme.'::AdminLTE/plugins/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset($themeAssetsPath . 'AdminLTE/plugins/select2/select2.min.css') }}">
     <link rel="stylesheet"
-          href="{{ Theme::asset($activeTheme.'::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+          href="{{ asset($themeAssetsPath . 'js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 @endsection
-@section('js')
-    <script src="{{ Theme::asset($activeTheme.'::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme.'::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+@push('js')
+    <script src="{{ asset($themeAssetsPath . 'AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
     <script>
         $(function () {
             //Initialize Select2 Elements
@@ -110,4 +110,4 @@
             activeMenu('video_category', 'news_management');
         });
     </script>
-@endsection
+@endpush

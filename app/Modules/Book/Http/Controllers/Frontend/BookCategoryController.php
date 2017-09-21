@@ -25,7 +25,7 @@ class BookCategoryController extends Controller
 
             $records = $bookCategory->books()->paginate();
 
-            return Theme::view('book::frontend.book_category.show', compact([
+            return view('book::frontend.book_category.show', compact([
                 'bookCategory',
                 'records',
             ]))->render();

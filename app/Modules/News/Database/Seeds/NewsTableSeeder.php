@@ -3,7 +3,6 @@
 namespace App\Modules\News\Database\Seeds;
 
 use App\Modules\News\Models\News;
-use App\Modules\News\Models\NewsCategory;
 use Illuminate\Database\Seeder;
 
 class NewsTableSeeder extends Seeder

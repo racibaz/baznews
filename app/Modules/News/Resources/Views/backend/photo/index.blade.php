@@ -76,9 +76,9 @@
         <!-- /.col -->
     </div>
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('photo', 'news_management');
     </script>
-@endsection
+@endpush

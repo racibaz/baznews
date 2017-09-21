@@ -61,7 +61,7 @@ class ArticleController extends BackendController
 
         $articleCategoryList = ArticleCategory::articleCategoryList();
 
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__),
+        return view('article::' . $this->getViewName(__FUNCTION__),
             compact([
                 'records',
                 'articleCategoryList',
@@ -85,7 +85,7 @@ class ArticleController extends BackendController
             }
         }
 
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__),
+        return view('article::' . $this->getViewName(__FUNCTION__),
             compact([
                 'record',
                 'articleCategoryIDs',
@@ -104,7 +104,7 @@ class ArticleController extends BackendController
 
     public function show(Article $record)
     {
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact('record'));
+        return view('article::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -126,7 +126,7 @@ class ArticleController extends BackendController
             $articleCategoryIDs[$index] = $article_category->id;
         }
 
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__),
+        return view('article::' . $this->getViewName(__FUNCTION__),
             compact([
                 'record',
                 'articleCategoryIDs',

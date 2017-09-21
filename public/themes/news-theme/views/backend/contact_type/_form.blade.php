@@ -53,9 +53,9 @@
 
     {!! Form::close() !!}
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('contact_type', '');
     </script>
-@endsection
+@endpush

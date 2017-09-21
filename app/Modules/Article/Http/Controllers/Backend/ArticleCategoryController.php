@@ -28,7 +28,7 @@ class ArticleCategoryController extends BackendController
         $records = $this->repo->orderBy('created_at', 'desc')->paginate();
         $recordsTree = ArticleCategory::get()->toTree();
 
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));
+        return view('article::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));
     }
 
 
@@ -36,7 +36,7 @@ class ArticleCategoryController extends BackendController
     {
         $articleCategoryList = ArticleCategory::articleCategoryList();
         $record = $this->repo->createModel();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'articleCategoryList']));
+        return view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'articleCategoryList']));
     }
 
 
@@ -48,14 +48,14 @@ class ArticleCategoryController extends BackendController
 
     public function show(ArticleCategory $record)
     {
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact('record'));
+        return view('article::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(ArticleCategory $record)
     {
         $articleCategoryList = ArticleCategory::articleCategoryList();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'articleCategoryList']));
+        return view('article::' . $this->getViewName(__FUNCTION__), compact(['record', 'articleCategoryList']));
     }
 
 

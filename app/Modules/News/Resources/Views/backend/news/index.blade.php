@@ -375,8 +375,8 @@
     </div>
 @endsection
 @section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
-    <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}"
+    <link rel="stylesheet" href="{{ asset($themeAssetsPath . 'js/select2/dist/css/select2.min.css') }}">
+    <link href="{{ asset($themeAssetsPath . 'js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}"
           rel="stylesheet">
     <style>
         .input-group-sm > .form-control,
@@ -386,11 +386,11 @@
         }
     </style>
 @endsection
-@section('js')
-    <script src="{{ Theme::asset($activeTheme .'::js/moment/min/moment.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme .'::js/moment/locale/tr.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
+@push('js')
+    <script src="{{ asset($themeAssetsPath . 'js/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/moment/locale/tr.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/select2/dist/js/select2.min.js') }}"></script>
     <script type="text/javascript">
         function dateTime() {
             //Date range picker with time picker
@@ -418,4 +418,4 @@
 
         activeMenu('news_management', 'news');
     </script>
-@endsection
+@endpush
