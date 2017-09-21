@@ -596,7 +596,7 @@
                                         <h1>activeTheme :</h1> {{$activeTheme}} <br>
                                         <h1> themes : </h1>
                                         @foreach($themes as $theme)
-                                            {{$theme}} <br/>
+                                            {{$theme['name']}} <br/>
                                         @endforeach
                                         <br><br><br><br><br>
 

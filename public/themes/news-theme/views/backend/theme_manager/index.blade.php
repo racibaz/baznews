@@ -36,15 +36,15 @@
                         @foreach($themes as $theme)
                             <div class="col-md-3 col-lg-2">
                                 <div class="thumbnail">
-                                    <img src="{{ asset('themes/' . $theme . '/theme-thumb.png')}}" alt="">
+                                    <img src="{{ asset('themes/' . $theme['slug'] . '/theme-thumb.png')}}" alt="">
                                     <div class="caption">
-                                        <h3>{{$theme}}
-                                            @if($activeTheme == $theme)
+                                        <h3>{{$theme['slug']}}
+                                            @if($activeTheme == $theme['slug'])
                                                 <span class="badge bg-green"><i class="fa fa-check"></i>Aktif</span>
                                             @endif
                                         </h3>
                                         <p>
-                                            {!! link_to_route('themeActivationToggle', ($activeTheme === $theme ? 'Etkisizleştir':'Etkinleştir') ,$theme, ['class'=>'btn'.($activeTheme === $theme ? ' btn-danger':' btn-success')] ) !!}
+                                            {!! link_to_route('themeActivationToggle', ($activeTheme === $theme['slug'] ? 'Etkisizleştir':'Etkinleştir') ,$theme['slug'], ['class'=>'btn'.($activeTheme === $theme['slug'] ? ' btn-danger':' btn-success')] ) !!}
                                         </p>
                                     </div>
                                 </div>
