@@ -6,7 +6,6 @@ use App\Models\WidgetGroup;
 use App\Repositories\WidgetGroupRepository as Repo;
 use Redirect;
 use Session;
-use Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -26,7 +25,7 @@ class WidgetGroupController extends BackendController
     {
         $records = $this->repo->orderBy('created_at','desc')->paginate();
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact('records'));
+        return view($this->getViewName(__FUNCTION__), compact('records'));
     }
 
 
@@ -34,7 +33,7 @@ class WidgetGroupController extends BackendController
     {
         $record = $this->repo->createModel();
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
+        return view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -46,13 +45,13 @@ class WidgetGroupController extends BackendController
 
     public function show(WidgetGroup $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
+        return view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(WidgetGroup $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
+        return view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 

@@ -7,7 +7,6 @@ use App\Models\Contact;
 use App\Models\ContactType;
 use App\Repositories\ContactRepository as Repo;
 use Cache;
-use Caffeinated\Themes\Facades\Theme;
 use Redirect;
 use Request;
 use Session;
@@ -26,7 +25,7 @@ class ContactController extends Controller
             return ContactType::contactTypeList();
         });
 
-        return Theme::view('frontend.contact', compact('contactTypeList'));
+        return view('frontend.contact', compact('contactTypeList'));
     }
 
     public function store(Request $request)

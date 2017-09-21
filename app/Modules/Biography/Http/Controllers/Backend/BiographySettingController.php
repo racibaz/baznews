@@ -26,7 +26,7 @@ class BiographySettingController extends BackendController
     public function index()
     {
         $records = $this->repo->findAll();
-        return Theme::view('article::' . $this->getViewName(__FUNCTION__), compact(['records',]));
+        return view('article::' . $this->getViewName(__FUNCTION__), compact(['records',]));
     }
 
 

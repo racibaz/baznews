@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Rss;
-use Caffeinated\Themes\Facades\Theme;
 
 class RssController extends Controller
 {
@@ -12,6 +11,6 @@ class RssController extends Controller
     {
         $rssItems = Rss::where('is_active', 1)->get();
 
-        return Theme::view('frontend.rss.rss', compact(['rssItems']));
+        return view('frontend.rss.rss', compact(['rssItems']));
     }
 }

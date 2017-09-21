@@ -126,9 +126,7 @@
 
 @endsection
 
-
-@section('js')
-
+@push('js')
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 
@@ -164,7 +162,5 @@
         };
         //active menu
         activeMenu('photo_gallery', 'news_management');
-
     </script>
-
-@endsection
+@endpush

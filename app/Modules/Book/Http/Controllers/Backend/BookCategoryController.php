@@ -28,7 +28,7 @@ class BookCategoryController extends BackendController
     {
         $records = $this->repo->orderBy('created_at', 'desc')->paginate();
         $recordsTree = BookCategory::get()->toTree();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));
+        return view('book::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));
     }
 
 
@@ -36,7 +36,7 @@ class BookCategoryController extends BackendController
     {
         $record = $this->repo->createModel();
         $bookCategoryList = BookCategory::bookCategoryList();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['record', 'bookCategoryList']));
+        return view('book::' . $this->getViewName(__FUNCTION__), compact(['record', 'bookCategoryList']));
     }
 
 
@@ -48,14 +48,14 @@ class BookCategoryController extends BackendController
 
     public function show(BookCategory $record)
     {
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
+        return view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
     public function edit(BookCategory $record)
     {
         $bookCategoryList = BookCategory::bookCategoryList();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['record', 'bookCategoryList']));
+        return view('book::' . $this->getViewName(__FUNCTION__), compact(['record', 'bookCategoryList']));
     }
 
 

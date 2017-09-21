@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\PageRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
 class PageController extends Controller
@@ -23,7 +22,7 @@ class PageController extends Controller
                 ->where('is_active', 1)
                 ->findBy('slug', $slug);
 
-            return Theme::view('frontend.page.show', compact([
+            return view('frontend.page.show', compact([
                 'record'
             ]))->render();
         });

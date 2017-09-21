@@ -12,7 +12,6 @@ use App\Modules\News\Models\VideoCategory;
 use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\VideoGalleryRepository as Repo;
 use App\Modules\News\Repositories\VideoRepository;
-use Caffeinated\Themes\Facades\Theme;
 use Exception;
 use Mremi\UrlShortener\Model\Link;
 use Illuminate\Http\Request;
@@ -36,7 +35,7 @@ class VideoGalleryController extends BackendController
     public function index()
     {
         $records = $this->repo->orderBy('created_at', 'desc')->paginate();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
 
@@ -44,7 +43,7 @@ class VideoGalleryController extends BackendController
     {
         $videoCategories = VideoCategory::videoCategoryList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'videoCategories']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'videoCategories']));
     }
 
 
@@ -56,14 +55,14 @@ class VideoGalleryController extends BackendController
 
     public function show(VideoGallery $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(VideoGallery $record)
     {
         $videoCategories = VideoCategory::videoCategoryList();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'videoCategories']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'videoCategories']));
     }
 
 
@@ -182,7 +181,7 @@ class VideoGalleryController extends BackendController
     {
         $video_gallery = VideoGallery::find($video_gallery_id);
 
-        return Theme::view('news::' . $this->redirectViewName . $this->view . 'add_multi_videos_view', compact(['video_gallery']));
+        return view('news::' . $this->redirectViewName . $this->view . 'add_multi_videos_view', compact(['video_gallery']));
     }
 
     //TODO YOUTUBE CLONE EĞİTİMİNDE Kİ GİBİ YAPILACAK JOB,QUEUE VS..

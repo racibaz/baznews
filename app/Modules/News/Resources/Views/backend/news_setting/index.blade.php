@@ -109,9 +109,9 @@
 
 @section('css')
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('news_setting', 'news_management');
     </script>
-@endsection
+@endpush

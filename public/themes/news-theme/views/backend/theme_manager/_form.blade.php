@@ -156,9 +156,9 @@
         <!-- Main Content Element  End-->
     </div><!-- end container-fluid -->
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('theme_manager', '');
     </script>
-@endsection
+@endpush

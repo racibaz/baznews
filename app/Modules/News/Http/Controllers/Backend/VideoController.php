@@ -10,7 +10,6 @@ use App\Modules\News\Models\Video;
 use App\Modules\News\Models\VideoCategory;
 use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\VideoRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -30,7 +29,7 @@ class VideoController extends BackendController
     public function index()
     {
         $records = $this->repo->orderBy('created_at', 'desc')->paginate();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
     public function create()
@@ -42,7 +41,7 @@ class VideoController extends BackendController
         $videoGalleryList = VideoGallery::videoGalleryList();
         $tagList = Tag::tagList();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
+        return view('news::' . $this->getViewName(__FUNCTION__), compact([
             'record',
             'videoCategoryList',
             'videoGalleryList',
@@ -59,7 +58,7 @@ class VideoController extends BackendController
 
     public function show(Video $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
     public function edit(Video $record)
@@ -74,7 +73,7 @@ class VideoController extends BackendController
         }
 
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
+        return view('news::' . $this->getViewName(__FUNCTION__), compact([
             'record',
             'videoCategoryList',
             'videoGalleryList',

@@ -7,7 +7,6 @@ use App\Models\ModuleManager;
 use App\Repositories\ModuleManagerRepository as Repo;
 use App\Repositories\WidgetManagerRepository;
 use Caffeinated\Modules\Facades\Module;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -31,7 +30,7 @@ class ModuleManagerController extends BackendController
         $moduleCount = Module::count();
 
         $records = $this->repo->paginate();
-        return Theme::view($this->getViewName(__FUNCTION__), compact(
+        return view($this->getViewName(__FUNCTION__), compact(
             'records',
             'moduleCount',
             'modules'
@@ -41,7 +40,7 @@ class ModuleManagerController extends BackendController
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
+        return view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -53,13 +52,13 @@ class ModuleManagerController extends BackendController
 
     public function show(ModuleManager $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
+        return view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(ModuleManager $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
+        return view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 

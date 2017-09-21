@@ -23,7 +23,6 @@ use App\Modules\News\Models\Video;
 use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Repositories\TagRepository;
-use Caffeinated\Themes\Facades\Theme;
 use Carbon\Carbon;
 use Mremi\UrlShortener\Model\Link;
 use Illuminate\Http\Request;
@@ -77,7 +76,7 @@ class NewsController extends BackendController
 
         $newsCategoryList = NewsCategory::newsCategoryList();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
+        return view('news::' . $this->getViewName(__FUNCTION__), compact([
             'records',
             'newsCategoryList',
             'statusList',
@@ -122,7 +121,7 @@ class NewsController extends BackendController
         }
 
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),
+        return view('news::' . $this->getViewName(__FUNCTION__),
             compact(['record',
                 'newsList',
                 'countryList',
@@ -160,7 +159,7 @@ class NewsController extends BackendController
     {
         $relatedNewsItems = $this->repo->relatedNews($record);
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
+        return view('news::' . $this->getViewName(__FUNCTION__), compact([
             'record',
             'relatedNewsItems'
         ]));
@@ -232,7 +231,7 @@ class NewsController extends BackendController
         }
 
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__),
+        return view('news::' . $this->getViewName(__FUNCTION__),
             compact(['record',
                 'newsList',
                 'countryList',
@@ -464,7 +463,7 @@ class NewsController extends BackendController
                 $pingJob = (new SendPing())
                     ->delay(Carbon::now()->addMinutes(10));
 
-                dispatch($pingJob);
+                dispatch_now($pingJob);
             }
 
             Session::flash('flash_message', trans('common.message_model_updated'));
@@ -713,7 +712,7 @@ class NewsController extends BackendController
         $newsCategoryList = NewsCategory::newsCategoryList();
         $records = $records->paginate(100);
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records', 'newsCategoryList']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['records', 'newsCategoryList']));
     }
 
     public function toggleBooleanType($news_id, $key)
@@ -756,7 +755,7 @@ class NewsController extends BackendController
     {
         $trashedRecords = News::onlyTrashed()->paginate(50);
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact([
+        return view('news::' . $this->getViewName(__FUNCTION__), compact([
             'trashedRecords'
         ]));
     }

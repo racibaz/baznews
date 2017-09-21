@@ -8,7 +8,6 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\User;
 use App\Repositories\AccountRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
@@ -36,7 +35,7 @@ class AccountController extends BackendController
     public function index()
     {
         $record = \Auth::user();
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
+        return view($this->getViewName(__FUNCTION__), compact('record'));
     }
     
     public function edit(Account $record)
@@ -50,7 +49,7 @@ class AccountController extends BackendController
         $cities = City::cityList();
         $userAvatar = User::getUserAvatar($record->email);
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact([
+        return view($this->getViewName(__FUNCTION__), compact([
             'record',
             'countries',
             'cities',
@@ -121,7 +120,7 @@ class AccountController extends BackendController
     public function changePasswordView()
     {
         $record = \Auth::user();
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
+        return view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 

@@ -5,7 +5,6 @@ namespace App\Modules\News\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Modules\News\Repositories\PhotoCategoryRepository;
 use App\Modules\News\Repositories\PhotoRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
 
@@ -53,7 +52,7 @@ class PhotoController extends Controller
 
             $lastPhotos = $this->repo->where('is_active', 1)->orderBy('updated_at', 'desc')->findAll()->take(10);
 
-            return Theme::view('news::frontend.photo.photo', compact([
+            return view('news::frontend.photo.photo', compact([
                 'photo',
                 'photoGallery',
                 'galleryPhotos',

@@ -70,9 +70,9 @@
     </div>
 @endsection
 
-@section('js')
+@push('js')
     <script>
         //active menu
         activeMenu('photo_gallery', 'news_management');
     </script>
-@endsection
+@endpush

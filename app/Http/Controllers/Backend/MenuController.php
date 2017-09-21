@@ -8,7 +8,6 @@ use App\Models\Menu;
 use App\Models\Page;
 use App\Repositories\MenuRepository as Repo;
 use Cache;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -31,7 +30,7 @@ class MenuController extends BackendController
         $recordsTree = Menu::get()->toTree();
         $recordsTreeJson = Menu::get()->toTree();
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact(
+        return view($this->getViewName(__FUNCTION__), compact(
             'records',
             'recordsTree',
             'recordsTreeJson'
@@ -46,7 +45,7 @@ class MenuController extends BackendController
         $pageList = Page::pageList();
         $linkList = Link::getLinksWithType();
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'menuList', 'pageList', 'linkList']));
+        return view($this->getViewName(__FUNCTION__), compact(['record', 'menuList', 'pageList', 'linkList']));
     }
 
 
@@ -58,7 +57,7 @@ class MenuController extends BackendController
 
     public function show(Menu $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
+        return view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -68,7 +67,7 @@ class MenuController extends BackendController
         $pageList = Page::pageList();
         $linkList = Link::getLinksWithType();
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'menuList', 'pageList', 'linkList']));
+        return view($this->getViewName(__FUNCTION__), compact(['record', 'menuList', 'pageList', 'linkList']));
     }
 
 

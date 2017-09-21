@@ -370,17 +370,17 @@
 
 
 @section('css')
-    <link href="{{ Theme::asset($activeTheme . '::css/gallery.css') }}" rel="stylesheet">
+    <link href="{{ asset($themeAssetsPath . 'css/gallery.css') }}" rel="stylesheet">
 @endsection
 
-@section('js')
-    <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.novtt.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/video-js/video.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/gallery.js') }}"></script>
+@push('js')
+    <script src="{{ asset($themeAssetsPath . 'js/video-js/video.novtt.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/video-js/video.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/gallery.js') }}"></script>
     <script>
-        videojs.options.flash.swf = "{{ Theme::asset($activeTheme . '::js/video-js/video-js.swf') }}"
+        videojs.options.flash.swf = "{{ asset($themeAssetsPath . 'js/video-js/video-js.swf') }}"
         if($('.video-js').length>0){
             videojs("video-js", {}, function () {
                 // Player (this) is initialized and ready.
@@ -434,4 +434,4 @@
 
 
     </script>
-@endsection
+@endpush

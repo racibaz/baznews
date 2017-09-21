@@ -71,10 +71,10 @@
     {!! Form::close() !!}
 @endsection
 @section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset($themeAssetsPath . 'js/select2/dist/css/select2.min.css') }}">
 @endsection
-@section('js')
-    <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
+@push('js')
+    <script src="{{ asset($themeAssetsPath . 'js/select2/dist/js/select2.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('.select2').select2();
@@ -85,4 +85,4 @@
         //active menu
         activeMenu('recommendation_news', 'news_management');
     </script>
-@endsection
+@endpush

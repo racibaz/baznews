@@ -195,10 +195,10 @@
 
 @endsection
 @section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/dropzone/dist/min/dropzone.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset($themeAssetsPath . 'js/dropzone/dist/min/dropzone.min.css') }}"/>
     <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
     <link rel="stylesheet"
-          href="{{ Theme::asset($activeTheme.'::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+          href="{{ asset($activeTheme.'::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
     <style type="text/css">
         .video-js {
             width: 100%;
@@ -212,12 +212,12 @@
         }
     </style>
 @endsection
-@section('js')
+@push('js')
     <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.1.1/Youtube.min.js"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/videojs/Vimeo.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/dropzone/dist/min/dropzone.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/videojs/Vimeo.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/dropzone/dist/min/dropzone.min.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
     <script>
         Dropzone.options.addVideos = {
 
@@ -256,4 +256,4 @@
         //active menu
         activeMenu('video_gallery', 'news_management');
     </script>
-@endsection
+@endpush

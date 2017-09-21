@@ -1,4 +1,4 @@
-@extends($activeTheme .'::backend.master')
+@extends($themeAssetsPath . 'backend.master')
 @section('content-header')
     <section class="content-header">
         <h1>
@@ -89,15 +89,15 @@
     {!! Form::close() !!}
 @endsection
 @section('css')
-    <link href="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}"
+    <link href="{{ asset($themeAssetsPath . 'js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}"
           rel="stylesheet">
 @endsection
-@section('js')
+@push('js')
 
-    <script src="{{ Theme::asset($activeTheme .'::js/moment/min/moment.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme .'::js/moment/locale/tr.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme .'::js/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme .'::js/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/moment/locale/tr.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/ckeditor/ckeditor.js') }}"></script>
     <script>
         //CKEDİTOR START
         var options = {
@@ -119,5 +119,5 @@
             });
         });
     </script>
-@endsection
+@endpush
 

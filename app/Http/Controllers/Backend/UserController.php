@@ -12,7 +12,6 @@ use App\Models\User;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository as Repo;
 use Auth;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -46,7 +45,7 @@ class UserController extends BackendController
             $records = $this->repo->orderBy('created_at','desc')->paginate();
         }
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact('records', 'roles'));
+        return view($this->getViewName(__FUNCTION__), compact('records', 'roles'));
     }
 
 
@@ -66,7 +65,7 @@ class UserController extends BackendController
             }
         }
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'countries', 'cities', 'roles', 'groups', 'statusList']));
+        return view($this->getViewName(__FUNCTION__), compact(['record', 'countries', 'cities', 'roles', 'groups', 'statusList']));
     }
 
 
@@ -81,7 +80,7 @@ class UserController extends BackendController
         $revisions = $record->getUserRevisions($record->id);
         $events = Event::where('user_id', $record->id)->orderBy('updated_at', 'desc')->get();
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record', 'revisions', 'events'));
+        return view($this->getViewName(__FUNCTION__), compact('record', 'revisions', 'events'));
     }
 
 
@@ -101,7 +100,7 @@ class UserController extends BackendController
             }
         }
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'countries', 'cities', 'roles', 'groups', 'userAvatar', 'statusList']));
+        return view($this->getViewName(__FUNCTION__), compact(['record', 'countries', 'cities', 'roles', 'groups', 'userAvatar', 'statusList']));
     }
 
 
@@ -165,7 +164,7 @@ class UserController extends BackendController
     {
         $trashedRecords = User::onlyTrashed()->paginate(50);
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact(
+        return view($this->getViewName(__FUNCTION__), compact(
             'trashedRecords'
         ));
 

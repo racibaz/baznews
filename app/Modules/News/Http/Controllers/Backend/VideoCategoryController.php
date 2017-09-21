@@ -6,7 +6,6 @@ use App\Http\Controllers\Backend\BackendController;
 use App\Modules\News\Http\Requests\VideoCategoryRequest;
 use App\Modules\News\Models\VideoCategory;
 use App\Modules\News\Repositories\VideoCategoryRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -28,7 +27,7 @@ class VideoCategoryController extends BackendController
         $records = $this->repo->orderBy('created_at', 'desc')->paginate();
         $recordsTree = VideoCategory::get()->toTree();
 
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['records', 'recordsTree']));
     }
 
 
@@ -36,7 +35,7 @@ class VideoCategoryController extends BackendController
     {
         $videoCategoryList = VideoCategory::videoCategoryList();
         $record = $this->repo->createModel();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'videoCategoryList']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'videoCategoryList']));
     }
 
 
@@ -48,14 +47,14 @@ class VideoCategoryController extends BackendController
 
     public function show(VideoCategory $record)
     {
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(VideoCategory $record)
     {
         $videoCategoryList = VideoCategory::videoCategoryList();
-        return Theme::view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'videoCategoryList']));
+        return view('news::' . $this->getViewName(__FUNCTION__), compact(['record', 'videoCategoryList']));
     }
 
 

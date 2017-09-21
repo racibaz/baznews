@@ -10,7 +10,6 @@ use App\Models\Menu;
 use App\Models\Page;
 use App\Models\User;
 use Cache;
-use Theme;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -46,7 +45,7 @@ class DashboardController extends Controller
             $userGroupsAnnouncements = $userGroupsAnnouncements[0];
         }
 
-        return Theme::view('backend.dashboard.index', compact(
+        return view('backend.dashboard.index', compact(
             'activeUserCount',
             'passiveUserCount',
             'activeGroupCount',
@@ -69,7 +68,7 @@ class DashboardController extends Controller
     public function routeList()
     {
         return Cache::tags(['routeList'])->remember('admin_dashboard_links_user_id_' . Auth::user()->id, 1000, function () {
-            return Theme::view('backend.partials._dashboard_route_list')->render();
+            return view('backend.partials._dashboard_route_list')->render();
         });
 
     }

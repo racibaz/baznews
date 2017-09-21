@@ -27,7 +27,7 @@ class BookAuthorController extends Controller
 
             $records = $bookAuthor->books()->paginate();
 
-            return Theme::view('book::frontend.book_author.show', compact([
+            return view('book::frontend.book_author.show', compact([
                 'bookAuthor',
                 'records',
             ]))->render();

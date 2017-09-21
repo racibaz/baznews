@@ -9,7 +9,6 @@ use App\Modules\News\Repositories\NewsRepository;
 use App\Modules\News\Repositories\PhotoGalleryRepository;
 use App\Modules\News\Repositories\VideoGalleryRepository;
 use Caffeinated\Modules\Facades\Module;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
 class IndexController extends Controller
@@ -38,7 +37,8 @@ class IndexController extends Controller
             $pageSetting = Setting::all();
             $modules = Module::enabled();
 
-            return Theme::view('frontend.index', compact(
+
+            return view('frontend.index', compact(
                 'pageSetting',
                 'bandNewsItems',
                 'mainCuffNewsItems',
@@ -49,7 +49,6 @@ class IndexController extends Controller
                 'photoGalleries',
                 'videoGalleries'
             ))->render();
-
         });
     }
 }

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Modules\News\Repositories\VideoCategoryRepository as VideoCategoryRepo;
 use App\Modules\News\Repositories\VideoGalleryRepository as Repo;
 use App\Modules\News\Repositories\VideoRepository as VideoRepo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
 class VideoGalleryController extends Controller
@@ -46,7 +45,7 @@ class VideoGalleryController extends Controller
                 $videoGallery->video_category;
             }
 
-            return Theme::view('news::frontend.video_gallery.video_gallery', compact([
+            return view('news::frontend.video_gallery.video_gallery', compact([
                 'video',
                 'galleryVideos',
                 'videoGallery',

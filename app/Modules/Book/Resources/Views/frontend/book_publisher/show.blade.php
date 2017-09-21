@@ -82,9 +82,9 @@
     <meta property="article:published_time" content="{{$bookPublisher->created_at}}">
     <meta property="article:author" content="">
 @endsection
-@section('js')
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+@push('js')
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script type="text/javascript">
 
         /*--------------------------------------------------------
@@ -94,4 +94,4 @@
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
     </script>
-@endsection
+@endpush

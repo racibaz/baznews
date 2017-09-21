@@ -264,8 +264,8 @@
     <!-- Main Content Element  End-->
 @endsection
 
-@section('js')
-    <script src="{{ Theme::asset($activeTheme .'::js/ckeditor/ckeditor.js') }}"></script>
+@push('js')
+    <script src="{{ asset($themeAssetsPath . 'js/ckeditor/ckeditor.js') }}"></script>
     <script>
         var options = {
             filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
@@ -298,4 +298,4 @@
         });
     </script>
 
-@endsection
+@endpush

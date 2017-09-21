@@ -67,6 +67,4 @@
         </div>
         <!-- /.col -->
     </div>
-
-
 @endsection

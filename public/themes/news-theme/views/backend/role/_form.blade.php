@@ -125,7 +125,7 @@
     </div><!-- end row -->
     {!! Form::close() !!}
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         var checkAll = $('input.all');
         var checkboxes = $('input.check');
@@ -149,4 +149,4 @@
         //active menu
         activeMenu('role', 'user_management');
     </script>
-@endsection
+@endpush

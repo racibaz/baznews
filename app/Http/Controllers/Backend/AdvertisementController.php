@@ -30,7 +30,7 @@ class AdvertisementController extends BackendController
         $advertisementAreaNames = $this->getThemeAdvertisementAreaName();
         $activeTheme = Theme::getActive();
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact(
+        return view($this->getViewName(__FUNCTION__), compact(
             'records',
             'advertisementAreaNames',
             'activeTheme',
@@ -53,7 +53,7 @@ class AdvertisementController extends BackendController
 
         $record = $this->repo->createModel();
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact([
+        return view($this->getViewName(__FUNCTION__), compact([
             'record',
             'advertisementAreaNames',
             'advertisementList',
@@ -70,7 +70,7 @@ class AdvertisementController extends BackendController
 
     public function show(Advertisement $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
+        return view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
@@ -91,7 +91,7 @@ class AdvertisementController extends BackendController
 
         $advertisementList[$record->name] = $record->name;
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact([
+        return view($this->getViewName(__FUNCTION__), compact([
             'record',
             'advertisementList',
             'repo'

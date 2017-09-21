@@ -637,25 +637,25 @@
 @endsection
 @section('css')
     <link rel="stylesheet"
-          href="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/select2/dist/css/select2.min.css') }}">
+          href="{{ asset($themeAssetsPath . 'js/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset($themeAssetsPath . 'js/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet"
-          href="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/codemirror/lib/codemirror.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/codemirror/theme/monokai.css') }}">
+          href="{{ asset($themeAssetsPath . 'js/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet" href="{{ asset($themeAssetsPath . 'js/codemirror/lib/codemirror.css') }}">
+    <link rel="stylesheet" href="{{ asset($themeAssetsPath . 'js/codemirror/theme/monokai.css') }}">
 @endsection
-@section('js')
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/select2/dist/js/select2.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/lib/codemirror.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/javascript/javascript.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/smarty/smarty.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/css/css.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme .'::js/ckeditor/ckeditor.js') }}"></script>
+@push('js')
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/codemirror/lib/codemirror.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/codemirror/mode/javascript/javascript.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/codemirror/mode/smarty/smarty.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/codemirror/mode/css/css.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/ckeditor/ckeditor.js') }}"></script>
     <script>
         //CKEDİTOR START
         var options = {
@@ -860,4 +860,4 @@
         });
     </script>
 
-@endsection
+@endpush

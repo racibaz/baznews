@@ -81,9 +81,9 @@
         <!-- Main Content Element  End-->
     </div><!-- container-fluid -->
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('language', '');
     </script>
-@endsection
+@endpush

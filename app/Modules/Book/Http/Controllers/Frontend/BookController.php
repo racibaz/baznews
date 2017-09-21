@@ -32,7 +32,7 @@ class BookController extends Controller
             $bookFirstCategory = $record->book_categories()->first();
             $firstCategoryBooks = isset($bookFirstCategory) ? $bookFirstCategory->books : [];
 
-            return Theme::view('book::frontend.book.show', compact([
+            return view('book::frontend.book.show', compact([
                 'record',
                 'firstCategoryBooks'
             ]))->render();

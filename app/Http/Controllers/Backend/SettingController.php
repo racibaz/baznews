@@ -62,7 +62,7 @@ class SettingController extends BackendController
         $logo = $this->repo->findBy('attribute_key', 'logo');
         $favicon = $this->repo->findBy('attribute_key', 'favicon');
 
-        return Theme::view($this->getViewName(__FUNCTION__),
+        return view($this->getViewName(__FUNCTION__),
             compact(
                 'records',
                 'languageList',
@@ -85,7 +85,7 @@ class SettingController extends BackendController
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
+        return view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -97,13 +97,13 @@ class SettingController extends BackendController
 
     public function show(Setting $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
+        return view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(Setting $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'routeCollection']));
+        return view($this->getViewName(__FUNCTION__), compact(['record', 'routeCollection']));
     }
 
 
@@ -347,7 +347,7 @@ class SettingController extends BackendController
 
     public function repairMysqlTables()
     {
-        $this->dispatch(new RepairMysqlTables());
+        $this->dispatch_now(new RepairMysqlTables());
 
         Log::info('Database table repaired.');
         Session::flash('flash_message', trans('setting.repair_mysql_tables'));
@@ -381,7 +381,7 @@ class SettingController extends BackendController
     {
         $redisKeys = Redis::keys('*');
 
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['redisKeys']));
+        return view($this->getViewName(__FUNCTION__), compact(['redisKeys']));
     }
 
 
@@ -397,7 +397,7 @@ class SettingController extends BackendController
 
     public function getBackUp()
     {
-        $this->dispatch(new GetBackUp());
+        $this->dispatch_now(new GetBackUp());
 
         Log::info('Backup received.');
         Session::flash('flash_message', trans('setting.backup_received'));
@@ -408,7 +408,7 @@ class SettingController extends BackendController
 
     public function backUpClean()
     {
-        $this->dispatch(new BackUpClean());
+        $this->dispatch_now(new BackUpClean());
 
         Log::info('Backup cleaned.');
         Session::flash('flash_message', trans('setting.backup_cleaned'));

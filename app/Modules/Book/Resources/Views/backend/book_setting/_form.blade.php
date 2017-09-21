@@ -99,7 +99,7 @@
     </style>
 @endsection
 
-@section('js')
+@push('js')
 
     <script>
         function readURL(input) {
@@ -119,4 +119,4 @@
             readURL(this);
         });
     </script>
-@endsection
+@endpush

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\CountryRequest;
 use App\Models\Country;
 use App\Repositories\CountryRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -24,14 +23,14 @@ class CountryController extends BackendController
     public function index()
     {
         $records = $this->repo->orderBy('created_at','desc')->paginate();
-        return Theme::view($this->getViewName(__FUNCTION__), compact('records'));
+        return view($this->getViewName(__FUNCTION__), compact('records'));
     }
 
 
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
+        return view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -43,13 +42,13 @@ class CountryController extends BackendController
 
     public function show(Country $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
+        return view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(Country $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
+        return view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 

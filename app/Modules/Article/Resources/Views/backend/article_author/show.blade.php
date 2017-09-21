@@ -86,9 +86,9 @@
 @section('css')
 
 @stop
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('authors', 'article_management');
     </script>
-@stop
+@endpush

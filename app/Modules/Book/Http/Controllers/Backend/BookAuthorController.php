@@ -27,13 +27,13 @@ class BookAuthorController extends BackendController
     public function index()
     {
         $records = $this->repo->orderBy('created_at', 'desc')->paginate();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['records']));
+        return view('book::' . $this->getViewName(__FUNCTION__), compact(['records']));
     }
 
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
+        return view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
     public function store(BookAuthorRequest $request)
@@ -44,13 +44,13 @@ class BookAuthorController extends BackendController
 
     public function show(BookAuthor $record)
     {
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
+        return view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
     public function edit(BookAuthor $record)
     {
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
+        return view('book::' . $this->getViewName(__FUNCTION__), compact(['record']));
     }
 
     public function update(BookAuthorRequest $request, BookAuthor $record)

@@ -8,16 +8,16 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link href="{{ Theme::asset($activeTheme . '::css/bootstrap/css/bootstrap.min.css') }}" type="text/css"
+    <link href="{{ asset($themeAssetsPath . 'css/bootstrap/css/bootstrap.min.css') }}" type="text/css"
           rel="stylesheet">
-    <link href="{{ Theme::asset($activeTheme . '::js/bxslider/dist/jquery.bxslider.css') }}" type="text/css"
+    <link href="{{ asset($themeAssetsPath . 'js/bxslider/dist/jquery.bxslider.css') }}" type="text/css"
           rel="stylesheet">
-    <link href="{{ Theme::asset($activeTheme . '::css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ Theme::asset($activeTheme . '::js/video-js/video-js.min.css') }}" rel="stylesheet">
+    <link href="{{ asset($themeAssetsPath . 'css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset($themeAssetsPath . 'js/video-js/video-js.min.css') }}" rel="stylesheet">
 
     @yield('css')
 
-    <link href="{{ Theme::asset($activeTheme . '::css/style.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset($themeAssetsPath . 'css/style.min.css') }}" type="text/css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,36 +42,36 @@
 {{--{!!  Cache::tags('Setting')->get('google_tag_manager_body_code') !!}--}}
 
 <!-- Main Header -->
-@include($activeTheme . '::frontend.layouts.header')
+@include('frontend.layouts.header')
 <!-- Left side column. contains the logo and sidebar -->
-@include($activeTheme . '::frontend.layouts.sidebar')
-{{--@include($activeTheme . '::frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])--}}
+@include('frontend.layouts.sidebar')
+{{--@include('frontend.partials._breaking_news', ['breakNewsItems' => $breakNewsItems ])--}}
 @yield('content')
 
 <!-- Main Footer -->
-    @include($activeTheme . '::frontend.layouts.footer')
+    @include('frontend.layouts.footer')
 </div>
 
 <!-- jQuery library (served from Google) -->
-<script type="text/javascript" src="{{ Theme::asset($activeTheme . '::js/jquery/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset($themeAssetsPath . 'js/jquery/jquery.min.js') }}"></script>
 <script type="text/javascript"
-        src="{{ Theme::asset($activeTheme . '::js/bxslider/dist/jquery.bxslider.js') }}"></script>
-<script type="text/javascript" src="{{ Theme::asset($activeTheme . '::js/bootstrap/js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ Theme::asset($activeTheme . '::js/jquery.sticky.js') }}"></script>
+        src="{{ asset($themeAssetsPath . 'js/bxslider/dist/jquery.bxslider.js') }}"></script>
+<script type="text/javascript" src="{{ asset( $themeAssetsPath . 'js/bootstrap/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset( $themeAssetsPath . 'js/jquery.sticky.js') }}"></script>
 <script type="text/javascript"
-        src="{{ Theme::asset($activeTheme . '::js/jquery.tagcloud/jquery.tagcloud.js') }}"></script>
+        src="{{ asset($themeAssetsPath . 'js/jquery.tagcloud/jquery.tagcloud.js') }}"></script>
 <script type="text/javascript"
-        src="{{ Theme::asset($activeTheme . '::js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
+        src="{{ asset($themeAssetsPath . 'js/jquery-ticker-master/jquery.ticker.min.js') }}"></script>
 <script type="text/javascript"
-        src="{{ Theme::asset($activeTheme . '::js/jquery-lazyload/jquery.lazyload.js') }}"></script>
+        src="{{ asset($themeAssetsPath . 'js/jquery-lazyload/jquery.lazyload.js') }}"></script>
 <script type="text/javascript">
     $("img").lazyload({
         effect: "fadeIn"
     });
 </script>
-<script type="text/javascript" src="{{ Theme::asset($activeTheme . '::js/custom.js') }}"></script>
+<script type="text/javascript" src="{{ asset($themeAssetsPath . 'js/custom.js') }}"></script>
 {!! Cache::tags('Setting')->get('footer_code') !!}
-@yield('js')
+{{--@yield('js')--}}
 @stack('js')
 </body>
 </html>

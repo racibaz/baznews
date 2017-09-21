@@ -75,9 +75,9 @@
 
 @endsection
 
-@section('js')
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+@push('js')
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
     <script type="text/javascript">
         /*--------------------------------------------------------
          Sticky Sidebar
@@ -86,4 +86,4 @@
             jQuery('#sidebar,#content').theiaStickySidebar();
         });
     </script>
-@endsection
+@endpush

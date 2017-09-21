@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Modules\News\Repositories\NewsRepository as NewsRepo;
 use App\Repositories\UserRepository as Repo;
 use Cache;
-use Theme;
 
 class EditorController extends Controller
 {
@@ -27,7 +26,7 @@ class EditorController extends Controller
             $newsItems = $this->newsRepo->getNewsOfUserById($user->id);
             $userAvatar = User::getUserAvatar($user->email, 100);
 
-            return Theme::view('news::frontend.editor.editor_news', compact([
+            return view('news::frontend.editor.editor_news', compact([
                 'user',
                 'newsItems',
                 'userAvatar'

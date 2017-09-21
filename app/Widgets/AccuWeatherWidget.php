@@ -25,7 +25,7 @@ class AccuWeatherWidget extends AbstractWidget
         return Cache::tags(['Widget', 'Core', 'AccuWeatherWidget'])->rememberForever('AccuWeatherWidget', function () {
 
             $weatherEmbedCode = Cache::get('weather_embed_code');
-            return Theme::view('frontend.widgets.accu_weather_widget', compact([
+            return view('frontend.widgets.accu_weather_widget', compact([
                 'weatherEmbedCode'
             ]))->render();
         });

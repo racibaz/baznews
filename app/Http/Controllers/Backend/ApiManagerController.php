@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Caffeinated\Themes\Facades\Theme;
-
 class ApiManagerController extends BackendController
 {
 
@@ -18,6 +16,6 @@ class ApiManagerController extends BackendController
     public function index()
     {
         $records = [];
-        return Theme::view($this->getViewName(__FUNCTION__), compact('records'));
+        return view($this->getViewName(__FUNCTION__), compact('records'));
     }
 }

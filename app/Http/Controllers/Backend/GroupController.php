@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\GroupRequest;
 use App\Models\Group;
 use App\Repositories\GroupRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -27,14 +26,14 @@ class GroupController extends BackendController
     public function index()
     {
         $records = $this->repo->orderBy('created_at','desc')->paginate();
-        return Theme::view($this->getViewName(__FUNCTION__), compact('records'));
+        return view($this->getViewName(__FUNCTION__), compact('records'));
     }
 
 
     public function create()
     {
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
+        return view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 
@@ -46,13 +45,13 @@ class GroupController extends BackendController
 
     public function show(Group $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact('record'));
+        return view($this->getViewName(__FUNCTION__), compact('record'));
     }
 
 
     public function edit(Group $record)
     {
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record']));
+        return view($this->getViewName(__FUNCTION__), compact(['record']));
     }
 
 

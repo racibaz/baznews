@@ -169,4 +169,16 @@ class Handler extends ExceptionHandler
     {
         return $request->acceptsHtml() && collect($request->route()->middleware())->contains('web');
     }
+
+    /**
+     * Convert a validation exception into a JSON response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Validation\ValidationException  $exception
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function invalidJson($request, ValidationException $exception)
+    {
+        return response()->json($exception->errors(), $exception->status);
+    }
 }

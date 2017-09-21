@@ -4,7 +4,6 @@ namespace App\Modules\Biography\Widgets;
 
 use App\Modules\Biography\Repositories\BiographyRepository;
 use Arrilot\Widgets\AbstractWidget;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
 class Biographies extends AbstractWidget
@@ -34,6 +33,6 @@ class Biographies extends AbstractWidget
                 ->get();
 
         });
-        return Theme::view('biography::frontend.widgets.biographies', compact(['config', 'biographies']));
+        return view('biography::frontend.widgets.biographies', compact(['config', 'biographies']));
     }
 }

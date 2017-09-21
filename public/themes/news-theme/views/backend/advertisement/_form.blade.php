@@ -93,15 +93,15 @@
     {!! Form::close() !!}
 @endsection
 @section('css')
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/codemirror/lib/codemirror.css') }}">
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme . '::js/codemirror/theme/monokai.css') }}">
+    <link rel="stylesheet" href="{{ asset($themeAssetsPath . 'js/codemirror/lib/codemirror.css') }}">
+    <link rel="stylesheet" href="{{ asset($themeAssetsPath . 'js/codemirror/theme/monokai.css') }}">
 @endsection
-@section('js')
-    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/lib/codemirror.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/javascript/javascript.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/smarty/smarty.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/codemirror/mode/css/css.js') }}"></script>
+@push('js')
+    <script src="{{ asset($themeAssetsPath . 'js/codemirror/lib/codemirror.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/codemirror/mode/javascript/javascript.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/codemirror/mode/smarty/smarty.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/codemirror/mode/css/css.js') }}"></script>
     <script type="text/javascript">
         function codemirrore1() {
             var a = document.getElementById("advert_code");
@@ -119,4 +119,4 @@
         //active menu
         activeMenu('advertisement', '');
     </script>
-@endsection
+@endpush

@@ -227,11 +227,11 @@
 
 @section('css')
     <!-- Select2 -->
-    <link rel="stylesheet" href="{{ Theme::asset($activeTheme .'::AdminLTE/plugins/select2/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset($themeAssetsPath . 'AdminLTE/plugins/select2/select2.min.css')}}">
 @endsection
-@section('js')
+@push('js')
     <!-- Select2 -->
-    <script src="{{ Theme::asset($activeTheme .'::AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'AdminLTE/plugins/select2/select2.full.min.js') }}"></script>
 
     <script type="text/javascript">
         //Initialize Select2 Elements
@@ -257,4 +257,4 @@
         });
     </script>
 
-@endsection
+@endpush

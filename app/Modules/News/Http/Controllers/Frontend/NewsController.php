@@ -5,7 +5,6 @@ namespace App\Modules\News\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Modules\News\Repositories\NewsRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
 class NewsController extends Controller
@@ -69,7 +68,7 @@ class NewsController extends Controller
 
             $relatedNewsItems = $this->repo->relatedNews($record);
 
-            return Theme::view('news::frontend.news.show', compact([
+            return view('news::frontend.news.show', compact([
                 'record',
                 'previousNews',
                 'nextNews',

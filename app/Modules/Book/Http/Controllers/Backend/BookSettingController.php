@@ -25,7 +25,7 @@ class BookSettingController extends BackendController
     public function index()
     {
         $records = $this->repo->findAll();
-        return Theme::view('book::' . $this->getViewName(__FUNCTION__), compact(['records',]));
+        return view('book::' . $this->getViewName(__FUNCTION__), compact(['records',]));
     }
 
 

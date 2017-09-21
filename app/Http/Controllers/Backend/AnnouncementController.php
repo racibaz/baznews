@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\AnnouncementRequest;
 use App\Models\Announcement;
 use App\Repositories\AnnouncementRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -53,7 +52,7 @@ class AnnouncementController extends BackendController
             ->get();
 
         $records = $this->repo->paginate();
-        return Theme::view($this->getViewName(__FUNCTION__), compact('records', 'announcements'));
+        return view($this->getViewName(__FUNCTION__), compact('records', 'announcements'));
     }
 
 
@@ -61,7 +60,7 @@ class AnnouncementController extends BackendController
     {
         $groupList = Auth::user()->groups;
         $record = $this->repo->createModel();
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'groupList']));
+        return view($this->getViewName(__FUNCTION__), compact(['record', 'groupList']));
     }
 
 
@@ -104,13 +103,13 @@ class AnnouncementController extends BackendController
     public function show(Announcement $record)
     {
         $groupList = Auth::user()->groups;
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'groupList']));
+        return view($this->getViewName(__FUNCTION__), compact(['record', 'groupList']));
     }
 
     public function edit(Announcement $record)
     {
         $groupList = Auth::user()->groups;
-        return Theme::view($this->getViewName(__FUNCTION__), compact(['record', 'groupList']));
+        return view($this->getViewName(__FUNCTION__), compact(['record', 'groupList']));
     }
 
     public function update(AnnouncementRequest $request, Announcement $record)

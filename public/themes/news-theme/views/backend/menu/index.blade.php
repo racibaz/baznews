@@ -86,10 +86,10 @@
     </div>
 @endsection
 @section('css')
-    <link href="{{ Theme::asset($activeTheme . '::js/jstree/dist/themes/default/style.min.css') }}" rel="stylesheet">
+    <link href="{{ asset($themeAssetsPath . 'js/jstree/dist/themes/default/style.min.css') }}" rel="stylesheet">
 @stop
-@section('js')
-    <script src="{{ Theme::asset($activeTheme .'::js/jstree/dist/jstree.min.js') }}"></script>
+@push('js')
+    <script src="{{ asset($themeAssetsPath . 'js/jstree/dist/jstree.min.js') }}"></script>
     <script type="text/javascript">
         //active menu
         activeMenu('menu_management', '');
@@ -98,6 +98,5 @@
                 'data': {!! $recordsTreeJson !!},
             }
         });
-
     </script>
-@endsection
+@endpush

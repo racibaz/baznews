@@ -121,8 +121,8 @@
     <!-- Main Content Element  End-->
     {!! Form::close() !!}
 @endsection
-@section('js')
-    <script src="{{ Theme::asset($activeTheme .'::js/ckeditor/ckeditor.js') }}"></script>
+@push('js')
+    <script src="{{ asset($themeAssetsPath . 'js/ckeditor/ckeditor.js') }}"></script>
     <script>
         //CKEDİTOR START
         var options = {
@@ -138,4 +138,4 @@
         //active menu
         activeMenu('', 'contact_management');
     </script>
-@endsection
+@endpush

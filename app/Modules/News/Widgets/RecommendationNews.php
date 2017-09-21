@@ -4,9 +4,7 @@ namespace App\Modules\News\Widgets;
 
 use App\Modules\News\Repositories\RecommendationNewsRepository;
 use Arrilot\Widgets\AbstractWidget;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
 
 class RecommendationNews extends AbstractWidget
 {
@@ -36,7 +34,7 @@ class RecommendationNews extends AbstractWidget
             $reComNewsRepo = new RecommendationNewsRepository();
             $recommendationNewsItems = $reComNewsRepo->getCuffRecommendationNewsItems(5);
 
-            return Theme::view('news::frontend.widgets.recommendation_news', compact([
+            return view('news::frontend.widgets.recommendation_news', compact([
                 'config',
                 'recommendationNewsItems'
             ]))->render();

@@ -109,7 +109,7 @@
                                     </div>
                                     <div class="new-list-ct module">
                                         <div class="left-img-ct"
-                                             style="background:url({{ Theme::asset($activeTheme . '::img/example.jpg')}})0 0 no-repeat;background-size: cover;">
+                                             style="background:url({{ asset($themeAssetsPath . 'img/example.jpg')}})0 0 no-repeat;background-size: cover;">
                                             <a href="{!! route('show_news', ['slug' => $cuffNewsCategory->news->first()->slug]) !!}"
                                                class="full-link"
                                                data-img="{{ asset('images/news_images/' . $cuffNewsCategory->news->first()->id . '/220x310_' . $cuffNewsCategory->news->first()->thumbnail) }}"
@@ -246,10 +246,10 @@
 @section('css')
 @endsection
 
-@section('js')
+@push('js')
 
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/ResizeSensor.js') }}"></script>
-    <script src="{{ Theme::asset($activeTheme . '::js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src="{{ asset($themeAssetsPath . 'js/sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
 
     <script type="text/javascript">
         (function ($) {
@@ -365,7 +365,5 @@
         jQuery(document).ready(function () {
             jQuery('#content,#sidebar').theiaStickySidebar();
         });
-
     </script>
-
-@endsection
+@endpush

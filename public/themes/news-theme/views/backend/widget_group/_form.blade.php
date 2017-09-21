@@ -55,9 +55,9 @@
     </div>
     {!! Form::close() !!}
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('group', 'widget_management');
     </script>
-@endsection
+@endpush

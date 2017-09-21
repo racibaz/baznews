@@ -175,7 +175,6 @@ return [
         //3.parties
         App\Providers\BaznewsServiceProvider::class,
         App\Providers\SocialServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Caffeinated\Themes\ThemesServiceProvider::class,

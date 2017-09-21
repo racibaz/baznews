@@ -77,9 +77,9 @@
     <!-- Main Content Element  End-->
     {!! Form::close() !!}
 @endsection
-@section('js')
+@push('js')
     <script type="text/javascript">
         //active menu
         activeMenu('event', '');
     </script>
-@endsection
+@endpush
