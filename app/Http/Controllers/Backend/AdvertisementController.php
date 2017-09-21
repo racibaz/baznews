@@ -28,7 +28,7 @@ class AdvertisementController extends BackendController
         $repo = $this->repo;
         $records = $this->repo->orderBy('created_at','desc')->findAll();
         $advertisementAreaNames = $this->getThemeAdvertisementAreaName();
-        $activeTheme = Theme::getActive();
+        $activeTheme = Theme::getCurrent();
 
         return view($this->getViewName(__FUNCTION__), compact(
             'records',
@@ -142,7 +142,7 @@ class AdvertisementController extends BackendController
     {
         $areaNames = [];
 
-        $activeThemeJsonFilePath = base_path('public/themes/' . Theme::getActive() . '/theme.json');
+        $activeThemeJsonFilePath = base_path('public/themes/' . Theme::getCurrent() . '/theme.json');
 
         $jsonFile = file_get_contents($activeThemeJsonFilePath);
 

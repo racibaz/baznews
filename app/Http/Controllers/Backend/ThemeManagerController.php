@@ -27,7 +27,7 @@ class ThemeManagerController extends BackendController
     public function index()
     {
         $themes = Theme::all();
-        $activeTheme = Theme::getActive();
+        $activeTheme = Theme::getCurrent();
         $records = $this->repo->paginate();
 
         return view($this->getViewName(__FUNCTION__), compact([

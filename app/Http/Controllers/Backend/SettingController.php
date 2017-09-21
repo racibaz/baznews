@@ -50,7 +50,7 @@ class SettingController extends BackendController
         $cityList = City::cityList();
         $routeCollection = Route::getRoutes();
         $themes = Theme::all();
-        $activeTheme = Theme::getActive();
+        $activeTheme = Theme::getCurrent();
         $modules = Module::all();
         $modulesCount = Module::count();
         $roleList = Role::roleList();
