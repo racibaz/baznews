@@ -24,7 +24,8 @@ class CheckPerm
             return $next($request);
         }
 
-        Log::warning('Unauthorized request. uri :' . Route::getCurrentRoute()->uri() . ' : user_id : ' . auth()->user()->getAuthIdentifier() . '  IP :' . auth()->user()->getUserIp());
+        $userId = Auth::check() ? \auth()->user()->getAuthIdentifier() : "";
+        Log::warning('Unauthorized request. uri :' . Route::getCurrentRoute()->uri() . ' : user_id : ' . $userId . '  IP :' . $request->ip());
         return redirect('/login');
     }
 }
