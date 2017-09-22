@@ -6,7 +6,6 @@ use App\Http\Controllers\Backend\BackendController;
 use App\Modules\Article\Http\Requests\ArticleCategoryRequest;
 use App\Modules\Article\Models\ArticleCategory;
 use App\Modules\Article\Repositories\ArticleCategoryRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;

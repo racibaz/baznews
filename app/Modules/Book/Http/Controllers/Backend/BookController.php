@@ -12,7 +12,6 @@ use App\Modules\Book\Models\BookAuthor;
 use App\Modules\Book\Models\BookCategory;
 use App\Modules\Book\Models\BookPublisher;
 use App\Modules\Book\Repositories\BookRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Mremi\UrlShortener\Model\Link;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;

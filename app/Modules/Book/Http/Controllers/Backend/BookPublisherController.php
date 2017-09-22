@@ -6,7 +6,6 @@ use App\Http\Controllers\Backend\BackendController;
 use App\Modules\Book\Http\Requests\BookPublisherRequest;
 use App\Modules\Book\Models\BookPublisher;
 use App\Modules\Book\Repositories\BookPublisherRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;

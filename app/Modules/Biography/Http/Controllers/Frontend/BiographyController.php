@@ -5,7 +5,6 @@ namespace App\Modules\Biography\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Modules\Biography\Repositories\BiographyRepository as Repo;
 use Cache;
-use Caffeinated\Themes\Facades\Theme;
 
 class BiographyController extends Controller
 {

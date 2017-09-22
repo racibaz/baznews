@@ -9,7 +9,6 @@ use App\Models\Setting;
 use App\Modules\Biography\Http\Requests\BiographyRequest;
 use App\Modules\Biography\Models\Biography;
 use App\Modules\Biography\Repositories\BiographyRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Mremi\UrlShortener\Model\Link;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;

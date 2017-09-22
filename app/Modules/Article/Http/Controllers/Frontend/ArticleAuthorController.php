@@ -5,7 +5,6 @@ namespace App\Modules\Article\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Modules\Article\Repositories\ArticleAuthorRepository as Repo;
 use Cache;
-use Caffeinated\Themes\Facades\Theme;
 
 class ArticleAuthorController extends Controller
 {

@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Modules\Article\Http\Requests\ArticleAuthorRequest;
 use App\Modules\Article\Models\ArticleAuthor;
 use App\Modules\Article\Repositories\ArticleAuthorRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;

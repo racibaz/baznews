@@ -7,7 +7,6 @@ use App\Library\Uploader;
 use App\Modules\Book\Http\Requests\BookCategoryRequest;
 use App\Modules\Book\Models\BookCategory;
 use App\Modules\Book\Repositories\BookCategoryRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;

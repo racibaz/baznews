@@ -10,7 +10,6 @@ use App\Modules\Article\Models\Article;
 use App\Modules\Article\Models\ArticleAuthor;
 use App\Modules\Article\Models\ArticleCategory;
 use App\Modules\Article\Repositories\ArticleRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use League\Flysystem\Exception;
 use Mews\Purifier\Facades\Purifier;
 use Mremi\UrlShortener\Model\Link;

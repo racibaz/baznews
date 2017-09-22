@@ -5,7 +5,6 @@ namespace App\Modules\Book\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Modules\Book\Repositories\BookAuthorRepository as Repo;
 use Cache;
-use Caffeinated\Themes\Facades\Theme;
 
 class BookAuthorController extends Controller
 {

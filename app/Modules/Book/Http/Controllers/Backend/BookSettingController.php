@@ -5,7 +5,6 @@ namespace App\Modules\Book\Http\Controllers\Backend;
 use App\Http\Controllers\Backend\BackendController;
 use App\Modules\Book\Models\BookSetting;
 use App\Repositories\SettingRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
