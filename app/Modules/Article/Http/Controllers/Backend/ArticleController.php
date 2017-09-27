@@ -79,7 +79,7 @@ class ArticleController extends BackendController
         $statuses = Article::$statuses;
 
         foreach ($statuses as $index => $status) {
-            if (Auth::user()->can($status . '-news')) {
+            if (Auth::user()->can($status . '-article')) {
                 $statusList[$index] = $status;
             }
         }
@@ -116,7 +116,7 @@ class ArticleController extends BackendController
 
 
         foreach ($statuses as $index => $status) {
-            if (Auth::user()->can($status . '-news')) {
+            if (Auth::user()->can($status . '-article')) {
                 $statusList[$index] = $status;
             }
         }
