@@ -21,7 +21,7 @@ class CityRepository extends EloquentRepository
     public function getCitiesByCountryId($countryId)
     {
         $cities = City::where('country_id', '=', $countryId)->pluck('name', 'id')->all();
-        $data = Theme::view('backend.partials.cities_select_box',compact('cities'))->render();
+        $data = view('backend.partials.cities_select_box',compact('cities'))->render();
         return response()->json(['options'=>$data]);
     }
 

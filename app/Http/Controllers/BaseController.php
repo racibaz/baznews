@@ -24,7 +24,7 @@ class BaseController extends Controller
     {
         if($request->ajax()){
             $cityRepo = new CityRepository();
-            return $cityRepo->getCitiesByCountryId($request->country_id);
+            return $cityRepo->getCitiesByCountryId(strip_tags($request->country_id));
         }
     }
 }
