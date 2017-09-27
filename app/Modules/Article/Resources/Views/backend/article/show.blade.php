@@ -32,23 +32,23 @@
                         <table class="table table-bordered table-hover">
                             <tbody>
                             <tr>
-                                <th width="20%">{{trans('article::article.id')}}</th>
+                                <th width="20%">{{trans('common.id')}}</th>
                                 <td>{{$record->id}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article.user_id')}}</th>
-                                <td>{{$record->user_id}}</td>
+                                <th>{{trans('user.name')}}</th>
+                                <td>{{$record->user->name}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article.article_author_id')}}</th>
-                                <td>{{$record->article_author_id}}</td>
+                                <th>{{trans('article::article.author_name')}}</th>
+                                <td>{{$record->article_author->name}}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('article::article.title')}}</th>
                                 <td>{{$record->title}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article.slug')}}</th>
+                                <th>{{trans('common.slug')}}</th>
                                 <td>{{$record->slug}}</td>
                             </tr>
                             <tr>
@@ -65,7 +65,7 @@
                             </tr>
                             <tr>
                                 <th>{{trans('article::article.content')}}</th>
-                                <td>{{$record->content}}</td>
+                                <td>{!! $record->content !!}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('article::article.description')}}</th>
@@ -97,7 +97,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    Footer
+
                 </div>
                 <!-- /.box-footer-->
             </div>

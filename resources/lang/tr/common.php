@@ -26,6 +26,7 @@ return [
     'remove' => 'Sil',
     'is_cuff' => 'Manşet',
     'search' => 'Ara',
+    'slug' => 'slug',
     //Genel Mesajlar
     'message_model_updated' => 'Kayıt İşlemi Başarılı',
     'save_failed' => 'Kayıt İşlemi Hatalı',
@@ -37,5 +38,4 @@ return [
     'redis_key' => 'Redis Key',
     'redis_remove' => 'Redis Temizle',
     'redis_remove_cache' => 'Redis Belleğinden Sil',
-
 ];

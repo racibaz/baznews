@@ -25,7 +25,7 @@ return [
     'user_info' => 'Kullanıcı Bilgisi',
     'user_list_title' => 'Kullanıcı Listesi',
     'user_add_title' => 'Kullanıcı Ekle',
-    'name_surname' => 'Ad Soyad',
+    'name' => 'Ad Soyad',
     'mail' => 'Mail Adresi',
     'trashed_user' => 'Silinmiş Kullanıcılar',
     'active_user_count' => 'Aktif Kullanıcı Sayısı',

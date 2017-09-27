@@ -34,7 +34,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('user.name_surname')}}</th>
+                            <th>{{trans('user.name')}}</th>
                             <th>{{trans('user.mail')}}</th>
                         </tr>
                         </thead>
@@ -59,7 +59,7 @@
                         <tfoot>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('user.name_surname')}}</th>
+                            <th>{{trans('user.name')}}</th>
                             <th>{{trans('user.mail')}}</th>
                         </tr>
                         </tfoot>
