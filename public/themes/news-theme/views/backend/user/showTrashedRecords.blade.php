@@ -6,7 +6,7 @@
             <small>{{trans('user.trushed_management')}}</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href=""><i class="fa fa-home"></i> {{trans('dashboard.name')}}</a></li>
+            <li><a href=""><i class="fa fa-home"></i></a></li>
             <li><a href="{{ route('user.index') }}"><i class="fa fa-users"></i> {{trans('user.users')}}</a></li>
             <li class="active"><i class="fa fa-user-times"></i> {{trans('user.trushed_management')}}</li>
         </ol>

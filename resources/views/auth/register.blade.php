@@ -100,8 +100,8 @@
                 {{Cache::tags('Setting')->get('user_contract')}}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default privacy-cancel" data-dismiss="modal">Kabul etmiyorum.</button>
-                <button type="button" class="btn btn-primary privacy-done">Kabul ediyorum.</button>
+                <button type="button" class="btn btn-default privacy-cancel" data-dismiss="modal">{{trans('account.not_accept')}}</button>
+                <button type="button" class="btn btn-primary privacy-done">{{trans('account.i_agree')}}</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

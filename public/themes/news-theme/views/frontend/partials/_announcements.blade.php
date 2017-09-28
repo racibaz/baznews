@@ -2,7 +2,7 @@
     <!-- /.box-header -->
     <div class="box-body">
         <div class="pull-left" style="font-size: 22px;line-height: 0.1em;margin-right: 15px;"><i
-                    class="fa fa-bullhorn"></i> <strong>Duyurular: </strong></div>
+                    class="fa fa-bullhorn"></i> <strong>{{trans('announcement.announcements')}}: </strong></div>
         <div class="announcement vticker" style="height: 10px;">
             <ul>
                 @foreach($announcements as $announcement)

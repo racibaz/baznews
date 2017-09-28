@@ -53,7 +53,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Aktif/Pasif</th>
+                                <th>{{trans('common.is_active')}}</th>
                                 <td>{!!$record->status ? '<label class="badge bg-green">Aktif</label>' : '<label class="badge bg-brown">Pasif</label>'!!}</td>
                             </tr>
 

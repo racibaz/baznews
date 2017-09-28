@@ -38,4 +38,5 @@ return [
     'redis_key' => 'Redis Key',
     'redis_remove' => 'Redis Temizle',
     'redis_remove_cache' => 'Redis Belleğinden Sil',
+    'force_deleted' => 'Kayıt Silindi',
 ];

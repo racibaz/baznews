@@ -33,6 +33,8 @@ return [
     'user_edit_create' => 'Kullanıcı Ekle/Düzenle',
     'edit_delete'=>'Düzenle/Sil',
     'adress'=>'Adres',
+    'roles' => 'Yetikleri',
+    'groups' => 'Grupları',
     //Kullanıcı Detay - Revizyonlar
 
     'about' => 'Kullanıcı Hakkında',

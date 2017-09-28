@@ -17,4 +17,7 @@ return [
     'read' => 'Okundu',
     'unread' => 'Okunmadı',
     'edit_delete' => 'Düzenle/Sil',
+    'your_message_posted' => 'Mesajınız Gönderildi.',
+    'find_on_the_map' => 'Haritada Bulun',
+    'contact_information' => 'İletişim Bilgileri',
 ];

@@ -19,8 +19,7 @@
                         <div class="paging text-center module">
                             <ul class="pagination">
                                 <li>
-                                    <a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk
-                                        Sayfa</a>
+                                    <a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">{{trans('news::photo_gallery.first_item')}}</a>
                                 </li>
                                 <li>
                                     <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}"><i
@@ -36,8 +35,7 @@
                                                 class="fa fa-angle-right"></i></a>
                                 </li>
                                 <li>
-                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son
-                                        Sayfa</a>
+                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">{{trans('news::photo_gallery.last_item')}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -58,8 +56,7 @@
                         <div class="paging text-center module">
                             <ul class="pagination">
                                 <li>
-                                    <a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">İlk
-                                        Sayfa</a>
+                                    <a href="{{route('show_gallery_photos',['slug' => $firstPhoto->slug ])}}">{{trans('news::photo_gallery.first_item')}}</a>
                                 </li>
                                 <li>
                                     <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}"><i
@@ -75,8 +72,7 @@
                                                 class="fa fa-angle-right"></i></a>
                                 </li>
                                 <li>
-                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">Son
-                                        Sayfa</a>
+                                    <a href="{{route('show_gallery_photos',['slug' => $lastPhoto->slug ])}}">{{trans('news::photo_gallery.last_item')}}</a>
                                 </li>
                             </ul>
                         </div>

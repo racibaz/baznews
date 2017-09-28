@@ -35,4 +35,5 @@ return [
     'subtitle' => 'Altyazı',
     'gallery_other_videos' => 'Galerinin Diğer Videoları',
     'latest_videos' => 'Son Videolar',
+    'embed' => 'Embed Code',
 ];

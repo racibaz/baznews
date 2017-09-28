@@ -75,7 +75,7 @@
             <div class="col-lg-5" id="sidebar">
                 <div class="title-section">
                     <h1>
-                        <span>İletişim Bilgileri</span>
+                        <span>{{trans('contact.contact_information')}}</span>
                     </h1>
                 </div>
                 <div class="contact-details module">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="title-section">
                     <h1>
-                        <span>Haritada Bulun</span>
+                        <span>{{trans('contact.find_on_the_map')}}</span>
                     </h1>
                 </div>
                 <div class="map module">

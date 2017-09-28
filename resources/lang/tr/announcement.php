@@ -21,6 +21,7 @@ return [
 
     'management' => 'Duyuru Yönetimi',
     'announce_list' => 'Duyuru Listesi',
+    'announcements' => 'Duyurular',
     'title' => 'Başlık',
     'description' => 'Tanım',
     'order' => 'Sırası',

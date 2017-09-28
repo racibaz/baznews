@@ -33,4 +33,6 @@ return [
     'is_photo_gallery_cuff_thumbnail' => 'Galeri Manşet Resmi',
     'drag_files' => 'Dosyayı Buraya Sürükleyin',
     'thumbnail_is_not_exist' => 'Fotoğraf Galerisinine Thumbnail Eklenmeli.',
+    'first_item' => 'İlk Sayfa',
+    'last_item' => 'Son Sayfa',
 ];

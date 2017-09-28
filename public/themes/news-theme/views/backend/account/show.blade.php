@@ -53,15 +53,15 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <th>Ad Soyad</th>
+                                    <th>{{trans('user.account')}}</th>
                                     <td>{{$record->name}}</td>
                                 </tr>
                                 <tr>
-                                    <th>E-Posta</th>
+                                    <th>{{trans('user.mail')}}</th>
                                     <td>{{$record->email}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Rolleri</th>
+                                    <th>{{trans('user.roles')}}</th>
                                     <td>
                                         @foreach($record->roles as $role)
                                             <span class="label label-default">{{$role->name}}</span>
@@ -77,7 +77,7 @@
                                 {{--</td>--}}
                                 {{--</tr>--}}
                                 <tr>
-                                    <th>Aktif/Pasif</th>
+                                    <th>{{trans('common.active')}}/{{trans('common.passive')}}</th>
                                     <td>{!!$record->is_active ? '<label class="badge badge-green">Aktif</label>' : '<label class="badge badge-brown">Pasif</label>'!!}</td>
                                 </tr>
 
