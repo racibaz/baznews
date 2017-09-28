@@ -55,6 +55,9 @@ class BaznewsServiceProvider extends ServiceProvider
                     }
                 });
 
+                app()->setLocale(Cache::tags('Setting')->get('language_code'));
+
+
                 /*todo
                  *
                  * //todo cachle nerebilirnir.

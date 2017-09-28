@@ -18,6 +18,8 @@ use Caffeinated\Themes\Facades\Theme;
 use DateTimeZone;
 use Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Redis;
@@ -42,7 +44,6 @@ class SettingController extends BackendController
          * https://github.com/garygreen/pretty-routes
          * gibi özellikler kayılabilinir.
          */
-
         $timezoneList = [];
         $records = $this->repo->findAll();
         $languageList = Language::languageList();
@@ -337,7 +338,7 @@ class SettingController extends BackendController
             $record = $this->repo->findBy('attribute_key', 'allow_video_formats');
             $this->repo->update($record->id, ['attribute_value' => $input['allow_video_formats']]);
         }
-
+        $this->removeCacheTags(['Setting']);
         $this->flushAllCache();
 
         Session::flash('flash_message', trans('common.message_model_updated'));
@@ -362,6 +363,8 @@ class SettingController extends BackendController
 
         //tüm cache leri siliyoruz
         Redis::flushall();
+        Cache::flush();
+
 
         Log::info('Caches deleted');
         Session::flash('flash_message', trans('setting.flush_all_cache'));
