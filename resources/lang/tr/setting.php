@@ -60,7 +60,7 @@ return [
     'user_contract_force' => 'Kullanıcı Sözleşmesi Zorunlu mu?',
     'user_registration_type' => 'Kullanıcı Kayıt Türü',
     'public' => 'Kayıt Açık',
-    'private' => 'Yetkili Olanlasın',
+    'private' => 'Yetkili Onaylasın',
     'verified' => 'Email Doğrulama Yapılsın',
     'none' => 'Kayıt Olmasın',
     'user_registration_type.private' => 'Hesabınız Site Yönetici Tarafından Onaylandığında Giriş Yapabilirsiniz. Site Yöneticisi İle İletişime Geçebilirsiniz.',
