@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -65,5 +66,7 @@ class LoginController extends Controller
             Auth::logout();
             return redirect('/login')->withErrors('Hesabınız Silindi.');
         }
+
+        Log::info('logged on.' . ' ID : ' . $user->id . ' email : ' . $user->email . ' name : ' . $user->name);
     }
 }

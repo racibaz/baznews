@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -119,5 +120,7 @@ class RegisterController extends Controller
                 return redirect()->back()->withErrors(trans('setting.user_registration_type.none'));
                 break;
         }
+
+        Log::info('user has make registered.' . ' ID : ' . $user->id . ' email : ' . $user->email . ' name : ' . $user->name);
     }
 }
