@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\City;
-use Caffeinated\Themes\Facades\Theme;
 use Rinvex\Repository\Repositories\EloquentRepository;
 
 class CityRepository extends EloquentRepository

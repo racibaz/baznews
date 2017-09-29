@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Sitemap;
 use Caffeinated\Modules\Facades\Module;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
 class SitemapController extends Controller
@@ -19,8 +18,8 @@ class SitemapController extends Controller
             return Sitemap::where('is_active', 1)->get();
         });
 
-        return Theme::response('frontend.sitemap.sitemap', compact('sitemaps'), 200, [
-            'Content-Type' => 'text/xml'
-        ]);
+        return response()
+            ->view('frontend.sitemap.sitemap', compact('sitemaps'), 200)
+            ->header('Content-Type', 'text/xml');
     }
 }

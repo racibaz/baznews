@@ -4,7 +4,6 @@ namespace App\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
 use Cache;
-use Caffeinated\Themes\Facades\Theme;
 
 class FacebookWidget extends AbstractWidget
 {

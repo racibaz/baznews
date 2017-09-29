@@ -4,7 +4,6 @@ namespace App\Modules\Book\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Book\Repositories\BookRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
 class SitemapController extends Controller
@@ -20,8 +19,8 @@ class SitemapController extends Controller
             return $this->repo->getLastBooks();
         });
 
-        return Theme::response('modules.book.frontend.sitemap.sitemap', compact('books'), 200, [
-            'Content-Type' => 'text/xml'
-        ]);
+        return response()
+            ->view('book::frontend.sitemap.sitemap', compact('books'), 200)
+            ->header('Content-Type', 'text/xml');
     }
 }

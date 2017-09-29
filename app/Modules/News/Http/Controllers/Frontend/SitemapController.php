@@ -4,7 +4,6 @@ namespace App\Modules\News\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Modules\News\Repositories\NewsRepository as Repo;
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\Facades\Cache;
 
 class SitemapController extends Controller
@@ -24,8 +23,8 @@ class SitemapController extends Controller
             return $this->repo->getLastNewsItems();
         });
 
-        return Theme::response('modules.news.frontend.sitemap.sitemap', compact('newsItems'), 200, [
-            'Content-Type' => 'text/xml'
-        ]);
+        return response()
+            ->view('news::frontend.sitemap.sitemap', compact('newsItems'), 200)
+            ->header('Content-Type', 'text/xml');
     }
 }

@@ -5,7 +5,6 @@ namespace App\Widgets;
 use App\Repositories\TagRepository;
 use Arrilot\Widgets\AbstractWidget;
 use Cache;
-use Caffeinated\Themes\Facades\Theme;
 
 class TagCloud extends AbstractWidget
 {

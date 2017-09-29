@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Models\Setting;
 use App\Models\WidgetManager;
-use App\Modules\News\Models\News;
 use App\Modules\News\Repositories\NewsRepository;
 use App\Repositories\AdvertisementRepository;
 use App\Repositories\MenuRepository;
