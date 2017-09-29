@@ -76,6 +76,8 @@ class BaznewsServiceProvider extends ServiceProvider
                     $repo->putCacheAdvertisementItems();
                 });
 
+                Theme::set(env('ACTIVE_THEME'));
+
                 //TODO tema içerisinde misal js, css veya diğer gereksiz yerlerden bu değişken kaldırılmalı
                 View::share('activeTheme', Theme::getCurrent());
 

@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Caffeinated\Themes\Facades\Theme;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +14,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        Theme::set('news-theme');
     }
 
     /**
