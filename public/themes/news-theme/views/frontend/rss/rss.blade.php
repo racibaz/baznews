@@ -1,4 +1,4 @@
-@extends($themeAssetsPath . 'frontend.master')
+@extends($activeTheme . '::frontend.master')
 
 
 @section('content')
