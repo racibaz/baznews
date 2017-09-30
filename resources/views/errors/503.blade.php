@@ -7,7 +7,7 @@
         <title>Be right back.</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="/css/error.css">
+        <link rel="stylesheet" href="{{ asset('css/error.css') }}">
     </head>
     <body>
         <div class="content-w3">
