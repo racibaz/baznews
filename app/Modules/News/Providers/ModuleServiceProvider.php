@@ -5,6 +5,7 @@ namespace App\Modules\News\Providers;
 use App\Modules\News\Models\News;
 use App\Modules\News\Observers\NewsObserver;
 use App\Modules\News\Repositories\NewsCategoryRepository;
+use App\Modules\News\Repositories\NewsRepository;
 use Cache;
 use Caffeinated\Modules\Support\ServiceProvider;
 use View;
@@ -26,8 +27,8 @@ class ModuleServiceProvider extends ServiceProvider
         if (!app()->runningInConsole()) {
 
             Cache::tags(['NewsCategory', 'News'])->rememberForever('cuffNewsCategories', function () {
-                $newsCategoryRepository = new NewsCategoryRepository();
-                View::share('cuffNewsCategories', $newsCategoryRepository->getAllNewsCategoriesWithNews());
+                View::share('cuffNewsCategories', app(NewsCategoryRepository::class)->getAllNewsCategoriesWithNews());
+                View::share('breakNewsItems', app(NewsRepository::class)->getBreakNewsItems());
             });
         }
     }
