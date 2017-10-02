@@ -54,15 +54,15 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        if ($user->status == User::PASSIVE) {
+        if ($user->status === User::PASSIVE) {
             Auth::logout();
             return redirect('/login')->withErrors('Your Account is Passive Mode');
 
-        } elseif ($user->status == User::PREPARING_EMAIL_ACTIVATION) {
+        } elseif ($user->status === User::PREPARING_EMAIL_ACTIVATION) {
             Auth::logout();
             return redirect('/login')->withErrors('Please activate your account. <a href="' . route('auth.activate.resend') . '?email=' . $user->email . '">Resend</a>');
 
-        } elseif ($user->status == User::GARBAGE) {
+        } elseif ($user->status === User::GARBAGE) {
             Auth::logout();
             return redirect('/login')->withErrors('Hesabınız Silindi.');
         }
