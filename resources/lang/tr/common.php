@@ -34,6 +34,7 @@ return [
     'description' => 'Açıklama',
     'content' => 'İçerik',
     'order' => 'Sıralama',
+    'list' => 'Liste',
     //Genel Mesajlar
     'message_model_updated' => 'Kayıt İşlemi Başarılı',
     'save_failed' => 'Kayıt İşlemi Hatalı',
