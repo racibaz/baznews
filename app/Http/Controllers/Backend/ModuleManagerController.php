@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\ModuleManagerRequest;
 use App\Models\ModuleManager;
+use App\Models\SearchList;
 use App\Repositories\ModuleManagerRepository as Repo;
 use App\Repositories\WidgetManagerRepository;
 use Caffeinated\Modules\Facades\Module;
@@ -124,8 +125,12 @@ class ModuleManagerController extends BackendController
 
             Module::disable($moduleSlug);
 
+            $this->toggleSearchListOfModule($moduleSlug);
+
         } else {
             Module::enable($moduleSlug);
+
+            $this->toggleSearchListOfModule($moduleSlug, true);
         }
 
         $this->removeCacheTags(['routeList']);
@@ -175,10 +180,12 @@ class ModuleManagerController extends BackendController
     }
 
 
-    /*
-     * //Bu model de soft delete kullanıdğımız için forceDelete methodu ile tamammen siliyoruz.
+
+    /**
+     * Bu model de soft delete kullanıdğımız için forceDelete methodu ile tamammen siliyoruz.
      *
-     * */
+     * @param $moduleName
+     */
     public function widgetDeleteByModuleName($moduleName)
     {
         $widgetManagerRepo = new WidgetManagerRepository();
@@ -191,5 +198,15 @@ class ModuleManagerController extends BackendController
         $this->removeCacheTags(['Widget']);
         $this->removeHomePageCache();
 
+    }
+
+
+    /**
+     * @param $moduleSlug
+     * @param bool $mode
+     */
+    public function toggleSearchListOfModule($moduleSlug, $mode = false)
+    {
+        SearchList::where('module_slug', $moduleSlug)->update(['is_active' => $mode]);
     }
 }

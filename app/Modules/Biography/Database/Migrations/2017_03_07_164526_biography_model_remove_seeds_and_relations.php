@@ -33,6 +33,8 @@ class BiographyModelRemoveSeedsAndRelations extends Migration
         $this->removeSitemapsTableItems();
 
         $this->removeRssTableItems();
+
+        $this->removeSearchListItems();
     }
 
 
@@ -123,6 +125,13 @@ class BiographyModelRemoveSeedsAndRelations extends Migration
     {
         DB::table('rss')
             ->where('url', 'rss/biographies')
+            ->delete();
+    }
+
+    public function removeSearchListItems()
+    {
+        DB::table('search_lists')
+            ->where('class_path', Biography::class)
             ->delete();
     }
 }

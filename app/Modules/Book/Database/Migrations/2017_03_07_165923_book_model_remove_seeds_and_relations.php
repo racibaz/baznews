@@ -34,6 +34,8 @@ class BookModelRemoveSeedsAndRelations extends Migration
         $this->removeSitemapsTableItems();
 
         $this->removeRssTableItems();
+
+        $this->removeSearchListItems();
     }
 
 
@@ -202,6 +204,13 @@ class BookModelRemoveSeedsAndRelations extends Migration
     {
         DB::table('rss')
             ->where('url', 'rss/books')
+            ->delete();
+    }
+
+    public function removeSearchListItems()
+    {
+        DB::table('search_lists')
+            ->where('class_path', Book::class)
             ->delete();
     }
 }

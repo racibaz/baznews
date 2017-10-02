@@ -17,5 +17,6 @@ class BiographyDatabaseSeeder extends Seeder
         $this->call(PermissionTableSeeder::class);
         $this->call(SitemapsTableSeeder::class);
         $this->call(RssTableSeeder::class);
+        $this->call(SearchListsTableSeeder::class);
     }
 }

@@ -43,6 +43,9 @@
         @permission('index-city')
         <li data-name="city"><a href="{!! route('city.index') !!}"><i class="fa fa-map-marker"></i>
                 <span>{{trans('dashboard.cities')}}</span></a></li>@endpermission
+        @permission('index-searchlist')
+        <li data-name="city"><a href="{!! route('search_list.index') !!}"><i class="fa fa-map-marker"></i>
+                <span>{{trans('dashboard.search_lists')}}</span></a></li>@endpermission
         @permission('index-ping')
         <li data-name="ping"><a href="{!! route('ping') !!}"><i class="fa fa-bullseye"></i>
                 <span>{{trans('dashboard.pings')}}</span></a></li>@endpermission

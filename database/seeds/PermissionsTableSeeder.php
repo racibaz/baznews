@@ -1327,6 +1327,48 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        //searchlist
+        $searchlist1 = Permission::create([
+            'name'          => 'index-searchlist',
+            'display_name'  => 'Dosya Listeleme',
+            'is_active'     => 1,
+        ]);
+
+        $searchlist2 = Permission::create([
+            'name'          => 'create-searchlist',
+            'display_name'  => 'Dosya Oluşturma',
+            'is_active'     => 1,
+        ]);
+
+        $searchlist3 = Permission::create([
+            'name'          => 'edit-searchlist',
+            'display_name'  => 'Dosya Düzenleme',
+            'is_active'     => 1,
+        ]);
+
+        $searchlist4 = Permission::create([
+            'name'          => 'destroy-searchlist',
+            'display_name'  => 'Dosya Silme',
+            'is_active'     => 1,
+        ]);
+
+        $searchlist5 = Permission::create([
+            'name'          => 'show-searchlist',
+            'display_name'  => 'Dosya Gösterme',
+            'is_active'     => 1,
+        ]);
+
+        $searchlist6 = Permission::create([
+            'name'          => 'update-searchlist',
+            'display_name'  => 'searchlist update',
+            'is_active'     => 1,
+        ]);
+
+        $searchlist7 = Permission::create([
+            'name'          => 'store-searchlist',
+            'display_name'  => 'searchlist store',
+            'is_active'     => 1,
+        ]);
 
         //api_manager
         $api_manager = Permission::create([
@@ -1562,6 +1604,13 @@ class PermissionsTableSeeder extends Seeder
         $super_admin->permissions()->attach($language5);
         $super_admin->permissions()->attach($language6);
         $super_admin->permissions()->attach($language7);
+        $super_admin->permissions()->attach($searchlist1);
+        $super_admin->permissions()->attach($searchlist2);
+        $super_admin->permissions()->attach($searchlist3);
+        $super_admin->permissions()->attach($searchlist4);
+        $super_admin->permissions()->attach($searchlist5);
+        $super_admin->permissions()->attach($searchlist6);
+        $super_admin->permissions()->attach($searchlist7);
         $super_admin->permissions()->attach($api_manager);
 
 
@@ -1580,10 +1629,6 @@ class PermissionsTableSeeder extends Seeder
         $demo_role->permissions()->attach($dashboard2);
 
         $demo_role->permissions()->attach($user1);
-//        $demo_role->permissions()->attach($user3);
-//        $demo_role->permissions()->attach($user5);
-//        $demo_role->permissions()->attach($user11);
-//        $demo_role->permissions()->attach($user12);
 
         foreach (User::$statuses as $status){
             $demo_role->permissions()->attach($user[$status]);
@@ -1694,5 +1739,9 @@ class PermissionsTableSeeder extends Seeder
         $demo_role->permissions()->attach($language1);
         $demo_role->permissions()->attach($language3);
         $demo_role->permissions()->attach($language5);
+
+        $demo_role->permissions()->attach($searchlist1);
+        $demo_role->permissions()->attach($searchlist3);
+        $demo_role->permissions()->attach($searchlist5);
     }
 }

@@ -26,6 +26,7 @@ Route::get('rss.xml', 'Frontend\RssController@rssRender')->name('rss');
 Route::get('/tags/{q}', 'Frontend\SearchController@tagSearch')->name('tag_search');
 Route::get('contact', 'Frontend\ContactController@index')->name('contact-index');
 Route::post('contact', 'Frontend\ContactController@store')->name('contact-store');
+Route::post('search', 'Frontend\SearchController@index')->name('search');
 
 Auth::routes();
 
@@ -68,6 +69,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function() {
     Route::get('module_manager/moduleReset/{moduleSlug}', 'Backend\ModuleManagerController@moduleReset')->name('moduleReset');
     Route::get('module_manager/moduleRefreshAndSeed/{moduleSlug}', 'Backend\ModuleManagerController@moduleRefreshAndSeed')->name('moduleRefreshAndSeed');
     Route::resource('module_manager', 'Backend\ModuleManagerController');
+    Route::resource('search_list', 'Backend\SearchListController');
 
     Route::resource('sitemap', 'Backend\SitemapController',['except' => [
         'show'

@@ -32,5 +32,6 @@ class DatabaseSeeder extends Seeder
 //        $this->call(WidgetGroupTableSeeder::class);
         $this->call(PingsTableSeeder::class);
         $this->call(LinksTableSeeder::class);
+        $this->call(SearchListsTableSeeder::class);
     }
 }

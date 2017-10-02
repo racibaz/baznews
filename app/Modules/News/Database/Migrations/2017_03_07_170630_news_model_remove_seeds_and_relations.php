@@ -47,6 +47,8 @@ class NewsModelRemoveSeedsAndRelations extends Migration
         $this->removeSitemapsTableItems();
 
         $this->removeRssTableItems();
+
+        $this->removeSearchListItems();
     }
 
     public function modelRemoveSeedAndRelations()
@@ -574,5 +576,20 @@ class NewsModelRemoveSeedsAndRelations extends Migration
             ->where('url', 'rss/mini_cuff')
             ->delete();
 
+    }
+
+    public function removeSearchListItems()
+    {
+        DB::table('search_lists')
+            ->where('class_path', News::class)
+            ->delete();
+
+        DB::table('search_lists')
+            ->where('class_path', Video::class)
+            ->delete();
+
+        DB::table('search_lists')
+            ->where('class_path', Photo::class)
+            ->delete();
     }
 }

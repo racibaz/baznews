@@ -18,7 +18,6 @@ use Caffeinated\Themes\Facades\Theme;
 use DateTimeZone;
 use Route;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
@@ -361,10 +360,8 @@ class SettingController extends BackendController
     {
 //        $this->dispatch(new FlushAllCache());
 
-        //tüm cache leri siliyoruz
         Redis::flushall();
         Cache::flush();
-
 
         Log::info('Caches deleted');
         Session::flash('flash_message', trans('setting.flush_all_cache'));

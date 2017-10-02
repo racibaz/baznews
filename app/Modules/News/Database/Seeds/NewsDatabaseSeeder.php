@@ -33,6 +33,7 @@ class NewsDatabaseSeeder extends Seeder
         $this->call(PermissionsTableSeeder::class);
         $this->call(SitemapsTableSeeder::class);
         $this->call(RssTableSeeder::class);
+        $this->call(SearchListsTableSeeder::class);
 
 
         $setting = Setting::where('attribute_key', 'break_news')->first();

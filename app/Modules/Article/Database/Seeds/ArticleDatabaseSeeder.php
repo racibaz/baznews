@@ -20,6 +20,7 @@ class ArticleDatabaseSeeder extends Seeder
         $this->call(ArticleWidgetManagerTableSeeder::class);
         $this->call(PermissionTableSeeder::class);
         $this->call(SitemapsTableSeeder::class);
+        $this->call(SearchListsTableSeeder::class);
 
 
         $setting = Setting::where('attribute_key', 'article_count')->first();

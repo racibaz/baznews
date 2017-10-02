@@ -39,6 +39,8 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
         $this->removeSitemapsTableItems();
 
         $this->removeRssTableItems();
+
+        $this->removeSearchListItems();
     }
 
     public function modelRemoveSeedAndRelations()
@@ -205,4 +207,10 @@ class ArticleModelRemoveSeedsAndRelations extends Migration
             ->delete();
     }
 
+    public function removeSearchListItems()
+    {
+        DB::table('search_lists')
+            ->where('class_path', Article::class)
+            ->delete();
+    }
 }
