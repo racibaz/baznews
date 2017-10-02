@@ -9,7 +9,6 @@
 return[
     'rss_list'=>'Olay Listesi',
     'management'=>'Olay Yönetimi',
-    'create_edit'=>'Oluştur/Düzenle',
     'create'=>'Olay Oluştur',
     'edit_delete'=>'Düzenle/Sil',
     'is_active'=>'Aktif/Pasif',
@@ -19,7 +18,4 @@ return[
     'user_id'=>'Kullanıcı Adı',
     'event'=>'Gerçekleşen Olay',
     'event_list'=>'Olay Listesi',
-    'active'=>'Aktif',
-    'passive'=>'Pasif',
-    'order'=>'Sıralama',
 ];

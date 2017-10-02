@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('book::book.management')}}
-            <small>{{trans('book::book.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('book.index') !!}">{{trans('book::book.management')}}</a></li>
-            <li class="active">{{trans('book::book.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -25,7 +25,7 @@
         <div class="col-lg-8" id="content">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('book::book.create_edit')}}</h3>
+                    <h3 class="box-title">{{trans('common.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -41,8 +41,8 @@
                         {!! Form::text('name', $record->name, ['placeholder' => trans('book::book.name') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('slug', trans('book::book.slug'),['class'=> 'control-label']) !!}
-                        {!! Form::text('slug', $record->_rgt, ['placeholder' => trans('book::book.slug') ,'class' => 'form-control']) !!}
+                        {!! Form::label('slug', trans('common.slug'),['class'=> 'control-label']) !!}
+                        {!! Form::text('slug', $record->_rgt, ['placeholder' => trans('common.slug') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('short_url', trans('book::book.short_url'),['class'=> 'control-label']) !!}
@@ -62,8 +62,8 @@
                         {!! Form::select('book_publisher_id', $bookPublisherList , $record->book_publisher_id, ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('description', trans('book::book.description'),['class'=> 'control-label']) !!}
-                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('book::book.description') ,'class' => 'form-control']) !!}
+                        {!! Form::label('description', trans('common.description'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('common.description') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
@@ -104,7 +104,7 @@
         <div class="col-lg-4" id="sidebar">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('book::book.status')}}</h3>
+                    <h3 class="box-title">{{trans('common.status')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -157,7 +157,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        {!! Form::label('thumbnail', trans('book::book.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
+                        {!! Form::label('thumbnail', trans('common.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
 
                         <div class="fileinput fileinput-new" data-provides="fileinput">
                             <div class="fileinput-preview thumbnail" data-trigger="fileinput"

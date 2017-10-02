@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('contact_type.management')}}
-            <small>{{trans('contact_type.edit_create')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('contact_type.index') !!}"> {{trans('contact_type.management')}}</a></li>
-            <li class="active">{{trans('contact_type.edit_create')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection

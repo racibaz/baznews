@@ -36,7 +36,7 @@
                             <th>{{trans('article::article_author.name')}}</th>
                             <th>{{trans('article::article_author.is_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>
-                            <th>{{trans('article::article_author.edit_delete')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

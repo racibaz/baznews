@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('news::future_news.management')}}
-            <small>{{trans('news::future_news.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('future_news.index') !!}">{{trans('news::future_news.management')}}</a></li>
-            <li class="active">{{trans('news::future_news.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -23,7 +23,7 @@
         <div class="col-md-6">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('news::future_news.edit_create')}}</h3>
+                    <h3 class="box-title">{{trans('common.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -55,12 +55,12 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-2">
-                                <b>{{trans('news::future_news.status')}}</b>
+                                <b>{{trans('common.status')}}</b>
                             </div>
                             <div class="col-lg-10">
                                 <label>
                                     {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                                    <i></i> {{trans('news::future_news.is_active')}}
+                                    <i></i> {{trans('common.is_active')}}
                                 </label>
                             </div>
                         </div>

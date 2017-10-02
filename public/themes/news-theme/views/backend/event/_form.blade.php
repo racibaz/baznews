@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('event.management')}}
-            <small>{{trans('event.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('event.index') !!}"> {{trans('event.management')}}</a></li>
-            <li>{{trans('event.create_edit')}}</li>
+            <li>{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection

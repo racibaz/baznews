@@ -45,8 +45,8 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                {!! Form::label('slug', trans('news::news.slug')) !!}
-                                {!! Form::text('slug', null ,['placeholder' => trans('news::news.slug'),'class' => 'form-control']) !!}
+                                {!! Form::label('slug', trans('common.slug')) !!}
+                                {!! Form::text('slug', null ,['placeholder' => trans('common.slug'),'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                                     'data-onstyle' => "success",
                                     'data-offstyle' => "danger"
                                     ] ) !!}
-                                    {!! trans('news::news.status') !!}
+                                    {!! trans('common.status') !!}
                                 </label>
                             </div>
                         </div><!-- /.col-lg-3 -->
@@ -203,7 +203,7 @@
                                     'data-onstyle' => "success",
                                     'data-offstyle' => "danger"
                                     ] ) !!}
-                                    {!! trans('news::news.is_active') !!}
+                                    {!! trans('common.is_active') !!}
                                 </label>
                             </div>
                         </div><!-- /.col-lg-12 -->
@@ -283,9 +283,9 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>{{trans('news::news.title')}}</th>
+                                <th>{{trans('common.title')}}</th>
                                 <th>{{trans('news::news.short_url')}}</th>
-                                <th>{{trans('news::news.status')}}</th>
+                                <th>{{trans('common.status')}}</th>
                                 <th>{{trans('news::news.band_news')}}</th>
                                 <th>{{trans('news::news.box_cuff')}}</th>
                                 <th>{{trans('news::news.is_cuff')}}</th>
@@ -293,7 +293,7 @@
                                 <th>{{trans('common.is_comment')}}</th>
                                 <th>{{trans('news::news.main_cuff')}}</th>
                                 <th>{{trans('news::news.mini_cuff')}}</th>
-                                <th>{{trans('news::news.edit_delete')}}</th>
+                                <th>{{trans('common.edit_delete')}}</th>
                             </tr>
                             </thead>
                             <tbody>

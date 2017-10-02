@@ -37,12 +37,12 @@
                                 <td>{!! $record->display_name !!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('permission.description')}}:</th>
+                                <th>{{trans('common.description')}}:</th>
                                 <td>{!! $record->description !!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('permission.is_active')}}:</th>
-                                <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('permission.active').'</span>' : '<span class="badge bg-gray">'.trans('permission.passive').'</span>'!!}</td>
+                                <th>{{trans('common.is_active')}}:</th>
+                                <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('common.active').'</span>' : '<span class="badge bg-gray">'.trans('common.passive').'</span>'!!}</td>
                             </tr>
                             </tbody>
                         </table>

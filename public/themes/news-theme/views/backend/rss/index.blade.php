@@ -35,8 +35,8 @@
                             <th>#</th>
                             <th>{{trans('rss.name')}}</th>
                             <th>{{trans('rss.url')}}</th>
-                            <th>{{trans('rss.is_active')}}</th>
-                            <th>{{trans('rss.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

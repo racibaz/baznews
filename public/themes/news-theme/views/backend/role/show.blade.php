@@ -40,12 +40,12 @@
                                 <td>{{$record->display_name}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('role.description')}}</th>
+                                <th>{{trans('common.description')}}</th>
                                 <td>{{$record->description}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('role.is_active')}}</th>
-                                <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('role.active').'</span>' : '<span class="badge bg-brown">'.trans('role.passive').'</span>' !!}</td>
+                                <th>{{trans('common.is_active')}}</th>
+                                <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('common.active').'</span>' : '<span class="badge bg-brown">'.trans('common.passive').'</span>' !!}</td>
                             </tr>
                             </tbody>
                         </table>

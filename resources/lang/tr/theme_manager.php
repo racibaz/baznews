@@ -12,6 +12,5 @@ return[
     'themes'=>'Temalar',
     'list'=>'Tema Listesi',
     'create'=>'Tema Oluştur',
-    'create_edit'=>'Oluştur/Düzenle',
     'theme' => 'Tema',
 ];

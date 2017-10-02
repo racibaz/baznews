@@ -22,7 +22,7 @@
                             <th>#</th>
                             <th>{{trans('contact_type.name')}}</th>
                             <th>{{trans('common.is_active')}}</th>
-                            <th>{{trans('contact_type.edit_create')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

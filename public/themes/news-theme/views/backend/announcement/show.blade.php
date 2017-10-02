@@ -33,15 +33,15 @@
                     <table class="table table-bordered table-hover" style="margin: 0;">
                         <tbody>
                         <tr>
-                            <th width="20%">{{trans('announcement.title')}}:</th>
+                            <th width="20%">{{trans('common.title')}}:</th>
                             <td>{{$record->title}}</td>
                         </tr>
                         <tr>
-                            <th>{{trans('announcement.order')}}:</th>
+                            <th>{{trans('common.order')}}:</th>
                             <td>{{$record->order}}</td>
                         </tr>
                         <tr>
-                            <th>{{trans('announcement.description')}}:</th>
+                            <th>{{trans('common.description')}}:</th>
                             <td>{!! $record->description !!}</td>
                         </tr>
                         <tr>

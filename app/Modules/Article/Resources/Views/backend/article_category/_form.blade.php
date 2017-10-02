@@ -3,14 +3,14 @@
     <section class="content-header">
         <h1>
             {{trans('article::article_category.management')}}
-            <small>{{trans('article::article_category.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li>
                 <a href="{!! URL::route('article_category.index') !!}">{{trans('article::article_category.management')}}</a>
             </li>
-            <li class="active">{{trans('article::article_category.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -46,16 +46,16 @@
                         {!! Form::text('name', $record->name, ['placeholder' => trans('article::article_category.name') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('slug', trans('article::article_category.slug'),['class'=> 'control-label']) !!}
-                        {!! Form::text('slug', $record->slug, ['placeholder' => trans('article::article_category.slug') ,'class' => 'form-control']) !!}
+                        {!! Form::label('slug', trans('common.slug'),['class'=> 'control-label']) !!}
+                        {!! Form::text('slug', $record->slug, ['placeholder' => trans('common.slug') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('description', trans('article::article_category.description'),['class'=> 'control-label']) !!}
-                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('article::article_category.description') ,'class' => 'form-control']) !!}
+                        {!! Form::label('description', trans('common.description'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('common.description') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('keywords', trans('article::article_category.keywords'),['class'=> 'control-label']) !!}
-                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('article::article_category.keywords') ,'class' => 'form-control tagsinput']) !!}
+                        {!! Form::label('keywords', trans('common.keywords'),['class'=> 'control-label']) !!}
+                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('common.keywords') ,'class' => 'form-control tagsinput']) !!}
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -64,7 +64,7 @@
         <div class="col-lg-4">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{ trans('article::article_category.status')}}</h3>
+                    <h3 class="box-title">{{ trans('common.status')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -103,7 +103,7 @@
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                            {{trans('article::article_category.is_active')}}
+                            {{trans('common.is_active')}}
                         </label>
                     </div>
                     <div class="form-group">

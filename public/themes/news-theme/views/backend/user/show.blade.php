@@ -177,9 +177,9 @@
                                     <th>{{trans('user.eventable_type')}}</th>
                                     <th>{{trans('user.eventable_id')}}</th>
                                     <th>{{trans('user.event_name')}}</th>
-                                    <th>{{trans('user.created_at')}}</th>
-                                    <th>{{trans('user.updated_at')}}</th>
-                                    <th>{{trans('user.is_active')}}</th>
+                                    <th>{{trans('common.created_at')}}</th>
+                                    <th>{{trans('common.updated_at')}}</th>
+                                    <th>{{trans('common.is_active')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -209,9 +209,9 @@
                                     <th>{{trans('user.eventable_type')}}</th>
                                     <th>{{trans('user.eventable_id')}}</th>
                                     <th>{{trans('user.event_name')}}</th>
-                                    <th>{{trans('user.created_at')}}</th>
-                                    <th>{{trans('user.updated_at')}}</th>
-                                    <th>{{trans('user.is_active')}}</th>
+                                    <th>{{trans('common.created_at')}}</th>
+                                    <th>{{trans('common.updated_at')}}</th>
+                                    <th>{{trans('common.is_active')}}</th>
                                 </tr>
                                 </tfoot>
                             </table>

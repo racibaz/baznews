@@ -42,7 +42,7 @@
                                 <td>{{$record->name}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book_publisher.slug')}}</th>
+                                <th>{{trans('common.slug')}}</th>
                                 <td>{{$record->slug}}</td>
                             </tr>
                             <tr>
@@ -54,15 +54,15 @@
                                 <td>{{$record->description}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book_publisher.is_active')}}</th>
+                                <th>{{trans('common.is_active')}}</th>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book_publisher.created_at')}}</th>
+                                <th>{{trans('common.created_at')}}</th>
                                 <td>{{$record->created_at}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book_publisher.updated_at')}}</th>
+                                <th>{{trans('common.updated_at')}}</th>
                                 <td>{{$record->updated_at}}</td>
                             </tr>
                             </tbody>

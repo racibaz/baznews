@@ -37,11 +37,11 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('article::article.author_name')}}</th>
-                            <th>{{trans('article::article.title')}}</th>
-                            <th>{{trans('article::article.order')}}</th>
+                            <th>{{trans('common.title')}}</th>
+                            <th>{{trans('common.order')}}</th>
                             <th>{{trans('article::article.is_cuff')}}</th>
                             <th>{{trans('common.is_active')}}</th>
-                            <th>{{trans('article::article.edit_delete')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

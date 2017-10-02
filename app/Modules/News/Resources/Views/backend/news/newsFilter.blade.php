@@ -17,11 +17,11 @@
                         {!! Form::number('id', null ,['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('title', trans('news.title')) !!}
+                        {!! Form::label('title', trans('common.title')) !!}
                         {!! Form::text('title', null ,['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('slug', trans('news.slug')) !!}
+                        {!! Form::label('slug', trans('common.slug')) !!}
                         {!! Form::text('slug', null ,['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
@@ -34,7 +34,7 @@
                             'data-onstyle' => "success",
                             'data-offstyle' => "danger"
                             ] ) !!}
-                            {!! trans('news.status') !!}
+                            {!! trans('common.status') !!}
                         </label>
                     </div>
                     <div class="form-group">
@@ -138,7 +138,7 @@
                             'data-onstyle' => "success",
                             'data-offstyle' => "danger"
                             ] ) !!}
-                            {!! trans('news.is_active') !!}
+                            {!! trans('common.is_active') !!}
                         </label>
                     </div>
                     <div class="form-group">
@@ -186,8 +186,8 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('news.title')}}</th>
-                            <th>{{trans('news.status')}}</th>
+                            <th>{{trans('common.title')}}</th>
+                            <th>{{trans('common.status')}}</th>
                             <th>{{trans('news.band_news')}}</th>
                             <th>{{trans('news.box_cuff')}}</th>
                             <th>{{trans('news.is_cuff')}}</th>
@@ -229,8 +229,8 @@
                         <tfoot>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('news.title')}}</th>
-                            <th>{{trans('news.status')}}</th>
+                            <th>{{trans('common.title')}}</th>
+                            <th>{{trans('common.status')}}</th>
                             <th>{{trans('news.band_news')}}</th>
                             <th>{{trans('news.box_cuff')}}</th>
                             <th>{{trans('news.is_cuff')}}</th>

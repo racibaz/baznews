@@ -36,7 +36,7 @@
                             <td>{{$record->name}}</td>
                         </tr>
                         <tr>
-                            <th>{{trans('tag.slug')}}</th>
+                            <th>{{trans('common.slug')}}</th>
                             <td>{{$record->slug}}</td>
                         </tr>
                         </tbody>

@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('news::news.management')}}
-            <small>{{trans('news::news_setting.news_create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('news.index') !!}">{{trans('news::news.management')}}</a></li>
-            <li class="active">{{trans('news::news_setting.news_create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection

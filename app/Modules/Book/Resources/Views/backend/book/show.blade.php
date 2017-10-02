@@ -36,7 +36,7 @@
                                 <td>{{$record->name}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book.slug')}}</th>
+                                <th>{{trans('common.slug')}}</th>
                                 <td>{{$record->slug}}</td>
                             </tr>
                             <tr>
@@ -48,7 +48,7 @@
                                 <td>{{$record->link}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book.thumbnail')}}</th>
+                                <th>{{trans('common.thumbnail')}}</th>
                                 <td>
                                     <img src="{{ asset('images/books/' . $record->id . '/original/' . $record->thumbnail)}}"
                                          alt="{{$record->name}}"/>
@@ -62,7 +62,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book.description')}}</th>
+                                <th>{{trans('common.description')}}</th>
                                 <td>{{$record->description}}</td>
                             </tr>
                             <tr>

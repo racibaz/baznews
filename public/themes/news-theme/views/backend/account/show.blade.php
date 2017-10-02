@@ -105,8 +105,8 @@
                             <th>{{trans('revision.key')}}</th>
                             <th>{{trans('revision.old_value')}}</th>
                             <th>{{trans('revision.new_value')}}</th>
-                            <th>{{trans('revision.created_at')}}</th>
-                            <th>{{trans('revision.updated_at')}}</th>
+                            <th>{{trans('common.created_at')}}</th>
+                            <th>{{trans('common.updated_at')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -131,8 +131,8 @@
                             <th>{{trans('revision.key')}}</th>
                             <th>{{trans('revision.old_value')}}</th>
                             <th>{{trans('revision.new_value')}}</th>
-                            <th>{{trans('revision.created_at')}}</th>
-                            <th>{{trans('revision.updated_at')}}</th>
+                            <th>{{trans('common.created_at')}}</th>
+                            <th>{{trans('common.updated_at')}}</th>
                         </tr>
                         </tfoot>
                     </table>
@@ -156,8 +156,8 @@
                             <th>{{trans('event.eventable_type')}}</th>
                             <th>{{trans('event.eventable_id')}}</th>
                             <th>{{trans('event.event')}}</th>
-                            <th>{{trans('event.created_at')}}</th>
-                            <th>{{trans('event.updated_at')}}</th>
+                            <th>{{trans('common.created_at')}}</th>
+                            <th>{{trans('common.updated_at')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -178,8 +178,8 @@
                             <th>{{trans('event.eventable_type')}}</th>
                             <th>{{trans('event.eventable_id')}}</th>
                             <th>{{trans('event.event')}}</th>
-                            <th>{{trans('event.created_at')}}</th>
-                            <th>{{trans('event.updated_at')}}</th>
+                            <th>{{trans('common.created_at')}}</th>
+                            <th>{{trans('common.updated_at')}}</th>
                         </tr>
                         </tfoot>
                     </table>

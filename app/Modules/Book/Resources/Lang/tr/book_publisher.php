@@ -10,10 +10,5 @@ return [
     'management' => 'Yayıncı Yönetimi',
     'list' => 'Yayıncı Listesi',
     'name' => 'Yayıncı Adı',
-    'slug' => 'Slug',
     'link' => 'Link',
-    'description' => 'Açıklama',
-    'is_active' => 'Aktif/Pasif',
-    'created_at' => 'Oluşturma Zamanı',
-    'updated_at' => 'Güncelleme Zamanı',
 ];

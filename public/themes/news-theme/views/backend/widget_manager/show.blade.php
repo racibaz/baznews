@@ -36,7 +36,7 @@
                             <td>{{$record->name}}</td>
                         </tr>
                         <tr>
-                            <th>{{trans('widget_manager.slug')}}</th>
+                            <th>{{trans('common.slug')}}</th>
                             <td>{{$record->slug}}</td>
                         </tr>
                         <tr>
@@ -56,7 +56,7 @@
                             <td>{{$record->group}}</td>
                         </tr>
                         <tr>
-                            <th>{{trans('widget_manager.is_active')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
                             <td>{{$record->is_active}}</td>
                         </tr>
                         </tbody>

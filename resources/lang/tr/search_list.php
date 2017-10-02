@@ -9,7 +9,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Group Language Lines
+    | SearchList Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines contain the default error messages used by
@@ -24,6 +24,4 @@ return [
     'field' => 'Tablo Alanı',
     'route_name' => 'Route Adı',
     'is_require_slug' => 'Slug Gerekli mi?',
-    'create_edit' => 'Ekle/Düzenle',
-    'edit_delete' => 'Düzenle/Sil',
 ];

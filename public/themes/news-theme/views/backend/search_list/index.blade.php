@@ -37,7 +37,7 @@
                             <th>{{trans('search_list.field')}}</th>
                             <th>{{trans('search_list.is_require_slug')}}</th>
                             <th>{{trans('common.is_active')}}</th>
-                            <th>{{trans('search_list.edit_delete')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('news::photo_gallery.management')}}
-            <small>{{trans('news::photo_category.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('photo_gallery.index') !!}">{{trans('news::photo_gallery.management')}}</a></li>
-            <li class="active">{{trans('news::photo_gallery.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -26,7 +26,7 @@
         <div class="col-lg-6">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('news::photo_category.news_create_edit')}}</h3>
+                    <h3 class="box-title">{{trans('common.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -42,27 +42,27 @@
                         {!! Form::select('photo_category_id', $photoCategories , $record->photo_category_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('title', trans('news::photo_gallery.title'),['class'=> 'control-label']) !!}
-                        {!! Form::text('title', $record->name, ['placeholder' => trans('news::photo_gallery.title') ,'class' => 'form-control']) !!}
+                        {!! Form::label('title', trans('common.title'),['class'=> 'control-label']) !!}
+                        {!! Form::text('title', $record->name, ['placeholder' => trans('common.title') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('slug', trans('news::photo_gallery.slug'),['class'=> 'control-label']) !!}
-                        {!! Form::text('slug', $record->slug, ['placeholder' => trans('news::photo_gallery.slug') ,'class' => 'form-control']) !!}
+                        {!! Form::label('slug', trans('common.slug'),['class'=> 'control-label']) !!}
+                        {!! Form::text('slug', $record->slug, ['placeholder' => trans('common.slug') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('short_url', trans('news::photo_gallery.short_url'),['class'=> 'control-label']) !!}
                         {!! Form::text('short_url', $record->short_url, ['placeholder' => trans('news::photo_gallery.short_url') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('description', trans('news::photo_gallery.description'),['class'=> 'control-label']) !!}
-                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('news::photo_gallery.description') ,'class' => 'form-control']) !!}
+                        {!! Form::label('description', trans('common.description'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('common.description') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('keywords', trans('news::photo_gallery.keywords'),['class'=> 'control-label']) !!}
-                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('news::photo_gallery.keywords') ,'class' => 'form-control tagsinput']) !!}
+                        {!! Form::label('keywords', trans('common.keywords'),['class'=> 'control-label']) !!}
+                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('common.keywords') ,'class' => 'form-control tagsinput']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('thumbnail', trans('news::photo_gallery.thumbnail'),['class'=> 'control-label','style'=>'width:100%;']) !!}
+                        {!! Form::label('thumbnail', trans('common.thumbnail'),['class'=> 'control-label','style'=>'width:100%;']) !!}
 
                         <div class="fileinput fileinput-new" data-provides="fileinput">
                             <div class="fileinput-preview thumbnail" data-trigger="fileinput"
@@ -87,7 +87,7 @@
         <div class="col-md-6">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{ trans('news::photo_gallery.status') }}</h3>
+                    <h3 class="box-title">{{ trans('common.status') }}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">

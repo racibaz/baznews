@@ -53,10 +53,10 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('description', trans('setting.description'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('description', trans('common.description'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('setting.description') ,'class' => 'form-control']) !!}
+                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('common.description') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

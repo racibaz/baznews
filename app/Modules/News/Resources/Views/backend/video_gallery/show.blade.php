@@ -36,11 +36,11 @@
                                 <td>{{$record->video_category->name}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::video_gallery.title')}}</th>
+                                <th>{{trans('common.title')}}</th>
                                 <td>{{$record->title}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::video_gallery.slug')}}</th>
+                                <th>{{trans('common.slug')}}</th>
                                 <td>{{$record->slug}}</td>
                             </tr>
                             <tr>
@@ -48,15 +48,15 @@
                                 <td>{{$record->short_url}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::video_gallery.description')}}</th>
+                                <th>{{trans('common.description')}}</th>
                                 <td>{{$record->description}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::video_gallery.keywords')}}</th>
+                                <th>{{trans('common.keywords')}}</th>
                                 <td>{{$record->keywords}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::video_gallery.thumbnail')}}</th>
+                                <th>{{trans('common.thumbnail')}}</th>
                                 <td>
                                     <img src="{{ asset('video_gallery/' . $record->id . '/224x195_' . $record->thumbnail)}}"
                                          alt="{{$record->title}}"/>
@@ -67,7 +67,7 @@
                                 <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::video_gallery.is_active')}}</th>
+                                <th>{{trans('common.is_active')}}</th>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             </tbody>

@@ -38,7 +38,7 @@
                                 <td>{{$record->name}}</td>
                             </tr>
                             <tr>
-                                <td><b>{!! Form::label('description', trans('group.description')) !!}:</b></td>
+                                <td><b>{!! Form::label('description', trans('common.description')) !!}:</b></td>
                                 <td>{{$record->description}}</td>
                             </tr>
                             <tr>

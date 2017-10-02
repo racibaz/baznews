@@ -34,10 +34,10 @@
                             <th>#</th>
                             <th>{{trans('biography::biography.name')}}</th>
                             <th>{{trans('biography::biography.short_url')}}</th>
-                            <th>{{trans('biography::biography.order')}}</th>
+                            <th>{{trans('common.order')}}</th>
                             <th>{{trans('biography::biography.is_cuff')}}</th>
-                            <th>{{trans('biography::biography.is_active')}}</th>
-                            <th>{{trans('biography::biography.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

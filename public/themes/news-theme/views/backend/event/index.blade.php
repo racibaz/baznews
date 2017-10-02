@@ -33,7 +33,7 @@
                             <th>{{trans('event.user_id')}}</th>
                             <th>{{trans('common.created_at')}}</th>
                             <th>{{trans('common.updated_at')}}</th>
-                            <th>{{trans('event.edit_delete')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

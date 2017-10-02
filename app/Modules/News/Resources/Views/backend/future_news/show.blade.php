@@ -40,11 +40,11 @@
                                 <td>{{$record->future_datetime}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::future_news.status')}}:</th>
+                                <th>{{trans('common.status')}}:</th>
                                 <td>{!! $record->news->status ? '<span class="badge bg-green">'.trans('news::future_news.news_live').'</span>':'<span class="badge bg-brown">'.trans('news::future_news.news_not_live').'</span>' !!} </td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::future_news.is_active')}}:</th>
+                                <th>{{trans('common.is_active')}}:</th>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('news::future_news.active') . '</label>' : '<label class="badge bg-brown">' . trans('news::future_news.passive') . '</label>'!!}</td>
                             </tr>
                             </tbody>

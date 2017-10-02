@@ -34,7 +34,7 @@
                             <th>#</th>
                             <th>{{trans('contact.subject')}}</th>
                             <th>{{trans('contact.is_read')}}</th>
-                            <th>{{trans('contact.edit_delete')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -59,7 +59,7 @@
                             <th>#</th>
                             <th>{{trans('contact.subject')}}</th>
                             <th>{{trans('contact.is_read')}}</th>
-                            <th>{{trans('contact.edit_delete')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </tfoot>
                     </table>

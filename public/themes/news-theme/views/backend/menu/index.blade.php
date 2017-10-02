@@ -43,9 +43,9 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('menu.name')}}</th>
-                            <th>{{trans('menu.order')}}</th>
-                            <th>{{trans('menu.is_active')}}</th>
-                            <th>{{trans('menu.edit_delete')}}</th>
+                            <th>{{trans('common.order')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -70,9 +70,9 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('menu.name')}}</th>
-                            <th>{{trans('menu.order')}}</th>
-                            <th>{{trans('menu.is_active')}}</th>
-                            <th>{{trans('menu.edit_delete')}}</th>
+                            <th>{{trans('common.order')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </tfoot>
                     </table>

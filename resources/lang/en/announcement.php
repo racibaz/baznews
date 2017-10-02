@@ -21,8 +21,6 @@ return [
 
     'management'             => 'Duyuru Yönetimi',
     'title'=>'Başlık',
-    'description' => 'Tanım',
-    'order' => 'Sırası',
     'show_time' => 'Son Gösterilme Tarihi',
     'list'      => 'Duyuru Listesi',
 ];

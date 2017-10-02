@@ -39,7 +39,7 @@
                                 <td>{{$record->url}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news_source.is_active')}}</th>
+                                <th>{{trans('common.is_active')}}</th>
                                 <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('news::news_source.active').'</span>':'<span class="badge bg-brown">'.trans('news::news_source.passive').'</span>'!!}</td>
                             </tr>
 

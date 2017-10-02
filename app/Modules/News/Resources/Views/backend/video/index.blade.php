@@ -3,7 +3,7 @@
     <section class="content-header">
         <h1>
             {{trans('news::video.management')}}
-            <small>{{trans('news::video.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
@@ -32,9 +32,9 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('news::video.name')}}</th>
-                            <th>{{trans('news::video.thumbnail')}}</th>
-                            <th>{{trans('news::video.is_active')}}</th>
-                            <th>{{trans('news::video.edit_delete')}}</th>
+                            <th>{{trans('common.thumbnail')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

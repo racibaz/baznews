@@ -38,8 +38,8 @@
                             <th>{{trans('article::article_category.name')}}</th>
                             <th>{{trans('article::article_category.parent')}}</th>
                             <th>{{trans('article::article_category.is_cuff')}}</th>
-                            <th>{{trans('article::article_category.is_active')}}</th>
-                            <th>{{trans('article::article_category.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

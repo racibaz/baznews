@@ -38,8 +38,8 @@
                             <th>{{trans('news::video_category.name')}}</th>
                             <th>{{trans('news::video_category.parent_id')}}</th>
                             <th>{{trans('news::video_category.is_cuff')}}</th>
-                            <th>{{trans('news::video_category.is_active')}}</th>
-                            <th>{{trans('news::video_category.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

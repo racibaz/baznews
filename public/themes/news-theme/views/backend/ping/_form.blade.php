@@ -29,12 +29,12 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body" style="display: block;">
-                    <span><b>{{trans('ping.created_at')}}</b> : {{$record->created_at}}</span>-
+                    <span><b>{{trans('common.created_at')}}</b> : {{$record->created_at}}</span>-
                     <span><b>{{trans('ping.last_updated')}}</b> : {{$record->updated_at}}</span>
 
                     <div class="form-group">
-                        {!! Form::label('ping_lists', trans('ping.description'),['class'=> 'control-label']) !!}
-                        {!! Form::textarea('ping_list', $record->ping_list, ['placeholder' => trans('ping.description') ,'class' => 'form-control']) !!}
+                        {!! Form::label('ping_lists', trans('common.description'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('ping_list', $record->ping_list, ['placeholder' => trans('common.description') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         <button class="btn btn-success" type="submit"><i

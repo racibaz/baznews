@@ -3,14 +3,14 @@
     <section class="content-header">
         <h1>
             {{trans('news::recommendation_news.management')}}
-            <small>{{trans('news::recommendation_news.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li>
                 <a href="{!! URL::route('recommendation_news.index') !!}">{{trans('news::recommendation_news.management')}}</a>
             </li>
-            <li class="active">{{trans('news::recommendation_news.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -24,7 +24,7 @@
         <div class="col-lg-6">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('news::recommendation_news.create_edit')}}</h3>
+                    <h3 class="box-title">{{trans('common.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -44,8 +44,8 @@
                         {!! Form::select('user_id', $userList , $record->user_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('order', trans('news::recommendation_news.order'),['class'=> 'control-label']) !!}
-                        {!! Form::number('order', $record->order, ['placeholder' => trans('news::recommendation_news.order') ,'class' => 'form-control']) !!}
+                        {!! Form::label('order', trans('common.order'),['class'=> 'control-label']) !!}
+                        {!! Form::number('order', $record->order, ['placeholder' => trans('common.order') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         <label>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                            {{trans('news::recommendation_news.is_active')}}
+                            {{trans('common.is_active')}}
                         </label>
                     </div>
                     <div class="form-group">

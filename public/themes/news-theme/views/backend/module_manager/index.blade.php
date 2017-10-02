@@ -31,7 +31,7 @@
                             <thead>
                             <tr>
                                 <th>{{trans('module_manager.name')}}</th>
-                                <th>{{trans('module_manager.is_active')}}</th>
+                                <th>{{trans('common.is_active')}}</th>
                                 <th>{{trans('module_manager.refresh')}}</th>
                             </tr>
                             </thead>

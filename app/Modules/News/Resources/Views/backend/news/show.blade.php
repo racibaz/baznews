@@ -32,7 +32,7 @@
                 <div class="box-header with-border">
                     <i class="fa fa-globe"></i>
 
-                    <h3 class="box-title">{{trans('news::news.content')}}</h3>
+                    <h3 class="box-title">{{trans('common.content')}}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -55,7 +55,7 @@
                                 <td>{{$record->small_title}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.slug')}}</th>
+                                <th>{{trans('common.slug')}}</th>
                                 <td>{{$record->slug}}</td>
                             </tr>
                             <tr>
@@ -63,11 +63,11 @@
                                 <td>{{$record->short_url}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.description')}}</th>
+                                <th>{{trans('common.description')}}</th>
                                 <td>{{$record->description}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.keywords')}}</th>
+                                <th>{{trans('common.keywords')}}</th>
                                 <td>{{$record->keywords}}</td>
                             </tr>
                             <tr>
@@ -117,7 +117,7 @@
                                 <td>{!!$record->cuff_photo ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.thumbnail')}}</th>
+                                <th>{{trans('common.thumbnail')}}</th>
                                 <td>
                                     <img src="{{ asset('images/news_images/' . $record->id . '/thumbnail/' . $record->thumbnail)}}"/>
                                 </td>
@@ -141,7 +141,7 @@
                                 <td>{{$record->news_type}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.status')}}</th>
+                                <th>{{trans('common.status')}}</th>
                                 <td>{!! $record->status ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
@@ -181,7 +181,7 @@
                                 <td>{!! $record->is_show_previous_and_next_news ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.is_active')}}</th>
+                                <th>{{trans('common.is_active')}}</th>
                                 <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('news::news.active').'</span>':'<span class="badge bg-warning">'.trans('news::news.passive').'</span>'!!}</td>
                             </tr>
                             </tbody>

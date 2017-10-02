@@ -33,7 +33,7 @@
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
-                        {!! Form::label('description', trans('group.description')) !!}
+                        {!! Form::label('description', trans('common.description')) !!}
                         {!! Form::text('description', null, ['class' => 'form-control','required']) !!}
                         <div class="help-block with-errors"></div>
                     </div>

@@ -44,7 +44,7 @@
                                 <td>{{$record->article_author->name}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article.title')}}</th>
+                                <th>{{trans('common.title')}}</th>
                                 <td>{{$record->title}}</td>
                             </tr>
                             <tr>
@@ -60,27 +60,27 @@
                                 <td>{{$record->subtitle}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article.spot')}}</th>
+                                <th>{{trans('common.spot')}}</th>
                                 <td>{{$record->spot}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article.content')}}</th>
+                                <th>{{trans('common.content')}}</th>
                                 <td>{!! $record->content !!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article.description')}}</th>
+                                <th>{{trans('common.description')}}</th>
                                 <td>{{$record->description}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article.keywords')}}</th>
+                                <th>{{trans('common.keywords')}}</th>
                                 <td>{{$record->keywords}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article.order')}}</th>
+                                <th>{{trans('common.order')}}</th>
                                 <td>{{$record->order}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article.status')}}</th>
+                                <th>{{trans('common.status')}}</th>
                                 <td>{!!$record->status ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
@@ -88,7 +88,7 @@
                                 <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article.is_active')}}</th>
+                                <th>{{trans('common.is_active')}}</th>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             </tbody>

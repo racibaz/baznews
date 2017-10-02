@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('biography::biography.biography')}}
-            <small>{{trans('biography::biography.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('biography.index') !!}">{{trans('biography::biography.biography')}}</a></li>
-            <li class="active">{{trans('biography::biography.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -25,7 +25,7 @@
         <div class="col-lg-8" id="content-area">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('biography::biography.create_edit')}}</h3>
+                    <h3 class="box-title">{{trans('common.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -37,24 +37,24 @@
                 <div class="box-body">
 
                     <div class="form-group">
-                        {!! Form::label('title', trans('biography::biography.title'),['class'=> 'control-label']) !!}
-                        {!! Form::text('title', $record->title, ['placeholder' => trans('biography::biography.title') ,'class' => 'form-control']) !!}
+                        {!! Form::label('title', trans('common.title'),['class'=> 'control-label']) !!}
+                        {!! Form::text('title', $record->title, ['placeholder' => trans('common.title') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('name', trans('biography::biography.name'),['class'=> 'control-label']) !!}
                         {!! Form::text('name', $record->name, ['placeholder' => trans('biography::biography.name') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('slug', trans('biography::biography.slug'),['class'=> 'control-label']) !!}
-                        {!! Form::text('slug', $record->slug, ['placeholder' => trans('biography::biography.slug') ,'class' => 'form-control']) !!}
+                        {!! Form::label('slug', trans('common.slug'),['class'=> 'control-label']) !!}
+                        {!! Form::text('slug', $record->slug, ['placeholder' => trans('common.slug') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('spot', trans('biography::biography.spot'),['class'=> 'control-label']) !!}
-                        {!! Form::textarea('spot', $record->spot, ['placeholder' => trans('biography::biography.spot') ,'class' => 'form-control']) !!}
+                        {!! Form::label('spot', trans('common.spot'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('spot', $record->spot, ['placeholder' => trans('common.spot') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('content', trans('biography::biography.content'),['class'=> 'control-label']) !!}
-                        {!! Form::textarea('content', $record->content, ['placeholder' => trans('biography::biography.content') ,'class' => 'form-control summernote']) !!}
+                        {!! Form::label('content', trans('common.content'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('content', $record->content, ['placeholder' => trans('common.content') ,'class' => 'form-control summernote']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('photo', trans('biography::biography.photo'),['class'=> 'control-label','style'=>'width:100%']) !!}
@@ -75,12 +75,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        {!! Form::label('description', trans('biography::biography.description'),['class'=> 'control-label']) !!}
-                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('biography::biography.description') ,'class' => 'form-control']) !!}
+                        {!! Form::label('description', trans('common.description'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('common.description') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('keywords', trans('biography::biography.keywords'),['class'=> 'control-label']) !!}
-                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('biography::biography.keywords') ,'class' => 'form-control tagsinput']) !!}
+                        {!! Form::label('keywords', trans('common.keywords'),['class'=> 'control-label']) !!}
+                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('common.keywords') ,'class' => 'form-control tagsinput']) !!}
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
         <div class="col-lg-4" id="sidebar">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('biography::biography.status')}}</h3>
+                    <h3 class="box-title">{{trans('common.status')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -104,11 +104,11 @@
                         </label>
                     </div>
                     <div class="form-group">
-                        {!! Form::label('order', trans('biography::biography.order'),['class'=> 'control-label']) !!}
-                        {!! Form::number('order', $record->order, ['placeholder' => trans('biography::biography.order') ,'class' => 'form-control']) !!}
+                        {!! Form::label('order', trans('common.order'),['class'=> 'control-label']) !!}
+                        {!! Form::number('order', $record->order, ['placeholder' => trans('common.order') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('status', trans('biography::biography.status'),['class'=> ' control-label']) !!}
+                        {!! Form::label('status', trans('common.status'),['class'=> ' control-label']) !!}
                         {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('biography::biography.please_choose'),'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">

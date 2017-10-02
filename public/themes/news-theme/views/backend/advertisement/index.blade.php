@@ -34,8 +34,8 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('advertisement.name')}}</th>
-                            <th>{{trans('advertisement.is_active')}}</th>
-                            <th>{{trans('advertisement.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -85,7 +85,7 @@
                         <tr>
                             <th>{{trans('advertisement.area_name')}}</th>
                             <th>{{trans('advertisement.type')}}</th>
-                            <th>{{trans('advertisement.status')}}</th>
+                            <th>{{trans('common.status')}}</th>
                         </tr>
                         </thead>
                         <tbody>

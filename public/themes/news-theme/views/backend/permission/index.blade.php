@@ -38,9 +38,9 @@
                     <tr>
                         <th>{!! trans('permission.name') !!}</th>
                         <th>{!! trans('permission.display_name') !!}</th>
-                        <th>{!! trans('permission.description') !!}</th>
-                        <th>{!! trans('permission.is_active') !!}</th>
-                        <th>{!! trans('permission.edit_delete') !!}</th>
+                        <th>{!! trans('common.description') !!}</th>
+                        <th>{!! trans('common.is_active') !!}</th>
+                        <th>{!! trans('common.edit_delete') !!}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -51,7 +51,7 @@
                             </td>
                             <td>{{$record->display_name }}</td>
                             <td>{{$record->description }}</td>
-                            <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('permission.active').'</span>':'<span class="badge bg-gray">'.trans('permission.passive').'</span>' !!}</td>
+                            <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('common.active').'</span>':'<span class="badge bg-gray">'.trans('common.passive').'</span>' !!}</td>
                             <td>
                                 <div class="btn-group">
                                     {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('permission.destroy',  $record))) !!}

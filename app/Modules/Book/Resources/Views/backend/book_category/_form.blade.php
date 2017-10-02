@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('book::book_category.management')}}
-            <small>{{trans('book::book_category.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('book_category.index') !!}">{{trans('book::book_category.management')}}</a></li>
-            <li class="active">{{trans('book::book_category.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -22,7 +22,7 @@
         <div class="col-lg-8">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('book::book_category.create_edit')}}</h3>
+                    <h3 class="box-title">{{trans('common.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -42,20 +42,20 @@
                         {!! Form::text('name', $record->name, ['placeholder' => trans('book::book_category.name') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('slug', trans('book::book_category.slug'),['class'=> 'control-label']) !!}
+                        {!! Form::label('slug', trans('common.slug'),['class'=> 'control-label']) !!}
                         {!! Form::text('slug', $record->slug, ['placeholder' => trans('book::book_category.slug') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('description', trans('book::book_category.description'),['class'=> 'control-label']) !!}
-                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('book::book_category.description') ,'class' => 'form-control']) !!}
+                        {!! Form::label('description', trans('common.description'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('common.description') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('keywords', trans('book::book_category.keywords'),['class'=> 'control-label']) !!}
-                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('book::book_category.keywords') ,'class' => 'form-control tagsinput']) !!}
+                        {!! Form::label('keywords', trans('common.keywords'),['class'=> 'control-label']) !!}
+                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('common.keywords') ,'class' => 'form-control tagsinput']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('order', trans('book::book_category.order'),['class'=> 'control-label']) !!}
-                        {!! Form::number('order', $record->order, ['placeholder' => trans('book::book_category.order') ,'class' => 'form-control']) !!}
+                        {!! Form::label('order', trans('common.order'),['class'=> 'control-label']) !!}
+                        {!! Form::number('order', $record->order, ['placeholder' => trans('common.order') ,'class' => 'form-control']) !!}
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -64,7 +64,7 @@
         <div class="col-lg-4">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('book::book_category.status')}}</h3>
+                    <h3 class="box-title">{{trans('common.status')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -111,7 +111,7 @@
             </div>
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('book::book_category.thumbnail')}}</h3>
+                    <h3 class="box-title">{{trans('common.thumbnail')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -123,7 +123,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        {!! Form::label('thumbnail', trans('book::book_category.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
+                        {!! Form::label('thumbnail', trans('common.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
                         <div class="fileinput fileinput-new" data-provides="fileinput">
                             <div class="fileinput-preview thumbnail" data-trigger="fileinput"
                                  style="width: 200px; height: 150px;">

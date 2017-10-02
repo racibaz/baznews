@@ -60,7 +60,7 @@
                                     {{$widget['name']}}
                                 </li>
                                 <li class="list-group-item list-group-item-text">
-                                    <b>{{trans('widget_manager.slug')}}: </b>
+                                    <b>{{trans('common.slug')}}: </b>
                                     {{$widget['slug']}}
                                 </li>
                                 <li class="list-group-item list-group-item-text">
@@ -72,7 +72,7 @@
                                     {{$widget['version']}}
                                 </li>
                                 <li class="list-group-item list-group-item-text">
-                                    <b>{{trans('widget_manager.description')}}: </b>
+                                    <b>{{trans('common.description')}}: </b>
                                     {{$widget['description']}}
                                 </li>
                             </ul>
@@ -99,7 +99,7 @@
                             <th>{{trans('widget_manager.position')}}</th>
                             <th>{{trans('widget_manager.widget_group')}}</th>
                             <th>{{trans('common.is_active')}}</th>
-                            <th>{{trans('widget_manager.edit_delete')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
