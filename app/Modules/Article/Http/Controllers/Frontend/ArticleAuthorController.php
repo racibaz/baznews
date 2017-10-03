@@ -17,9 +17,15 @@ class ArticleAuthorController extends Controller
     {
         return Cache::tags(['ArticleAuthorController', 'Article', 'articleAuthors'])->rememberForever('articleAuthors', function () {
 
-            $records = $this->repo
-                ->where('is_active', 1)
-                ->findAll();
+            try{
+
+                $records = $this->repo
+                    ->where('is_active', 1)
+                    ->findAll();
+
+            }catch(\Exception $e){
+                abort(404);
+            }
 
             return view('article::frontend.article_author.index', compact([
                 'records',
@@ -32,15 +38,21 @@ class ArticleAuthorController extends Controller
         $id = substr(strrchr($slug, '-'), 1);
         return Cache::tags(['ArticleAuthorController', 'Article', 'articleAuthor'])->rememberForever('articleAuthor:' . $id, function () use ($id) {
 
-            $record = $this->repo
-                ->with([
-                    'articles',
-                ])
-                ->where('is_active', 1)
-                ->findBy('id', $id);
+            try{
+
+                $record = $this->repo
+                    ->with([
+                        'articles',
+                    ])
+                    ->where('is_active', 1)
+                    ->findBy('id', $id);
 
 
-            $authorPhoto = $this->repo->getAuthorAvatar($record);
+                $authorPhoto = $this->repo->getAuthorAvatar($record);
+
+            }catch(\Exception $e){
+                abort(404);
+            }
 
             return view('article::frontend.article_author.show', compact([
                 'record',

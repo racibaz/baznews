@@ -17,26 +17,25 @@ class IndexController extends Controller
     {
         return Cache::tags(['homePage'])->rememberForever('homePage', function () {
 
-            $newsRepository = new NewsRepository();
-            // $breakNewsItems değerini BaznewsServicePorvider da View::share() methodu ile alıyoruz.
-            $bandNewsItems = $newsRepository->getBandNewsItems();
-            $mainCuffNewsItems = $newsRepository->getMainCuffItems();
-            $miniCuffNewsItems = $newsRepository->getMiniCuffItems();
-            $boxCuffNewsItems = $newsRepository->getBoxCuffNewsItems();
+            try {
+                $bandNewsItems = app(NewsRepository::class)->getBandNewsItems();
+                $mainCuffNewsItems = app(NewsRepository::class)->getMainCuffItems();
+                $miniCuffNewsItems = app(NewsRepository::class)->getMiniCuffItems();
+                $boxCuffNewsItems = app(NewsRepository::class)->getBoxCuffNewsItems();
 
-            $photoGalleryRepository = new PhotoGalleryRepository();
-            $photoGalleries = $photoGalleryRepository->getCuffPhotoGalleries();
+                $photoGalleries = app(PhotoGalleryRepository::class)->getCuffPhotoGalleries();
+                $videoGalleries = app(VideoGalleryRepository::class)->getCuffVideoGalleries();
 
-            $videoGalleryRepository = new VideoGalleryRepository();
-            $videoGalleries = $videoGalleryRepository->getCuffVideoGalleries();
+                Cache::tags(['Widget'])->rememberForever('widgets', function () {
+                    return WidgetManager::getAllWidgets();
+                });
 
-            Cache::tags(['Widget'])->rememberForever('widgets', function () {
-                return WidgetManager::getAllWidgets();
-            });
+                $pageSetting = Setting::all();
+                $modules = Module::enabled();
 
-            $pageSetting = Setting::all();
-            $modules = Module::enabled();
-
+            }catch(\Exception $e){
+                abort(404);
+            }
 
             return view('frontend.index', compact(
                 'pageSetting',

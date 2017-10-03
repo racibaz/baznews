@@ -19,17 +19,22 @@ class BookController extends Controller
 
         return Cache::tags(['BookController', 'Book', 'book'])->rememberForever('book:' . $id, function () use ($id) {
 
-            $record = $this->repo
-                ->with([
-                    'book_categories',
-                    'book_author',
-                    'user',
-                ])
-                ->where('is_active', 1)
-                ->findBy('id', $id);
+            try{
+                $record = $this->repo
+                    ->with([
+                        'book_categories',
+                        'book_author',
+                        'user',
+                    ])
+                    ->where('is_active', 1)
+                    ->findBy('id', $id);
 
-            $bookFirstCategory = $record->book_categories()->first();
-            $firstCategoryBooks = isset($bookFirstCategory) ? $bookFirstCategory->books : [];
+                $bookFirstCategory = $record->book_categories->first();
+                $firstCategoryBooks = isset($bookFirstCategory) ? $bookFirstCategory->books : [];
+
+            }catch(\Exception $e){
+                abort(404);
+            }
 
             return view('book::frontend.book.show', compact([
                 'record',

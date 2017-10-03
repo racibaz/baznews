@@ -21,10 +21,15 @@ class EditorController extends Controller
         return Cache::tags(['UserController', 'NewsController', 'User', 'News'])->rememberForever(request()->fullUrl(), function () use ($slug) {
 
             $slug = removeHtmlTagsOfField($slug);
+            try{
 
-            $user = $this->repo->getUserBySlug($slug);
-            $newsItems = $this->newsRepo->getNewsOfUserById($user->id);
-            $userAvatar = User::getUserAvatar($user->email, 100);
+                $user = $this->repo->getUserBySlug($slug);
+                $newsItems = $this->newsRepo->getNewsOfUserById($user->id);
+                $userAvatar = User::getUserAvatar($user->email, 100);
+
+            }catch(\Exception $e){
+                abort(404);
+            }
 
             return view('news::frontend.editor.editor_news', compact([
                 'user',

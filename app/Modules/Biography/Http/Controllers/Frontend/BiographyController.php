@@ -17,19 +17,26 @@ class BiographyController extends Controller
     {
         $id = substr(strrchr($slug, '-'), 1);
         return Cache::tags(['BiographyController', 'Biography', 'biography'])->rememberForever('biography:' . $id, function () use ($id) {
-            $record = $this->repo
-                ->with([
-                    'user',
-                ])
-                ->where('is_active', 1)
-                ->findBy('id', $id);
 
-            $otherBiographies = $this->repo
-                ->with([
-                    'user',
-                ])
-                ->where('is_active', 1)
-                ->findAll()->take(5);
+            try{
+
+                $record = $this->repo
+                    ->with([
+                        'user',
+                    ])
+                    ->where('is_active', 1)
+                    ->findBy('id', $id);
+
+                $otherBiographies = $this->repo
+                    ->with([
+                        'user',
+                    ])
+                    ->where('is_active', 1)
+                    ->findAll()->take(5);
+
+            }catch (\Exception $e){
+                abort(404);
+            }
 
             return view('biography::frontend.biography.show', compact([
                 'record',

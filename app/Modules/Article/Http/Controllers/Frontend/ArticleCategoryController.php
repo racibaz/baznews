@@ -17,12 +17,18 @@ class ArticleCategoryController extends Controller
     {
         return Cache::tags(['ArticleCategoryController', 'Article', 'categoryArticles'])->rememberForever('categoryArticles:' . $slug, function () use ($slug) {
             $slug = removeHtmlTagsOfField($slug);
-            $record = $this->repo
-                ->with([
-                    'articles',
-                ])
-                ->where('is_active', 1)
-                ->findBy('slug', $slug);
+
+            try{
+                $record = $this->repo
+                    ->with([
+                        'articles',
+                    ])
+                    ->where('is_active', 1)
+                    ->findBy('slug', $slug);
+
+            }catch(\Exception $e){
+                abort(404);
+            }
 
             return view('article::frontend.article_category.show', compact([
                 'record',

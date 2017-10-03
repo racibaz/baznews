@@ -19,17 +19,24 @@ class BookAuthorController extends Controller
 
         return Cache::tags(['BookAuthorController', 'Book', 'bookAuthor'])->rememberForever(request()->fullUrl(), function () use ($id) {
 
-            $bookAuthor = $this->repo
-                ->with(['books'])
-                ->where('is_active', 1)
-                ->findBy('id', $id);
+            try{
 
-            $records = $bookAuthor->books()->paginate();
+                $bookAuthor = $this->repo
+                    ->with(['books'])
+                    ->where('is_active', 1)
+                    ->findBy('id', $id);
+
+                $records = $bookAuthor->books()->paginate();
+
+            }catch(\Exception $e){
+                abort(404);
+            }
 
             return view('book::frontend.book_author.show', compact([
                 'bookAuthor',
                 'records',
             ]))->render();
+
         });
     }
 }

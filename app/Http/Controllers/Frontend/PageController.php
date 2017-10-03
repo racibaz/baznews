@@ -18,9 +18,15 @@ class PageController extends Controller
         return Cache::tags(['PageController', 'Page', 'page'])->rememberForever('page:' . $slug, function () use ($slug) {
 
             $slug = removeHtmlTagsOfField($slug);
-            $record = $this->repo
-                ->where('is_active', 1)
-                ->findBy('slug', $slug);
+
+            try{
+                $record = $this->repo
+                    ->where('is_active', 1)
+                    ->findBy('slug', $slug);
+
+            }catch(\Exception $e){
+                abort(404);
+            }
 
             return view('frontend.page.show', compact([
                 'record'

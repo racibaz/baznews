@@ -37,9 +37,7 @@ class ArchiveController extends Controller
                 ->paginate();
         }
 
-
-        $tagRepo = new TagRepository();
-        $tags = $tagRepo->orderBy('updated_at', 'desc')->simplePaginate(15);
+        $tags = app(TagRepository::class)->orderBy('updated_at', 'desc')->simplePaginate(15);
 
         $subYears = Carbon::now()->subYears(5)->year;
         $nowYear = Carbon::now()->year;

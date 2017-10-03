@@ -33,15 +33,16 @@ class NewsCategoryController extends Controller
     {
         return Cache::tags(['NewsCategoryController', 'News', 'NewsCategory'])->rememberForever(request()->fullUrl(), function () use ($newsCategorySlug) {
 
-            $newsCategorySlug = removeHtmlTagsOfField($newsCategorySlug);
-            $newsCategory = $this->repo
-                ->with(['news'])
-                ->where('is_active', 1)
-                ->findBy('slug', $newsCategorySlug);
+            try {
 
-            abort_if(!$newsCategory,404,'The specified News Category cannot be found');
+                $newsCategorySlug = removeHtmlTagsOfField($newsCategorySlug);
+                $newsCategory = $this->repo->with(['news'])->where('is_active', 1)->findBy('slug', $newsCategorySlug);
 
-            $records = $newsCategory->news()->paginate();
+                $records = $newsCategory->news()->paginate();
+
+            }catch (\Exception $e){
+                abort(404,'The specified News Category cannot be found');
+            }
 
             return view('news::frontend.news_category.category_news', compact([
                 'newsCategory',

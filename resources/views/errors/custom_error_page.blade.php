@@ -14,6 +14,7 @@
     <h1>{{$message}}</h1>
     <p>
         <span> <a href="{{route('index')}}" class="back-button">{{trans('common.homepage')}}</a></span>
+        <span> <a href="{{redirect()->back()}}" class="back-button">{{trans('common.redirect_back')}}</a></span>
     </p>
 </div>
 </body>

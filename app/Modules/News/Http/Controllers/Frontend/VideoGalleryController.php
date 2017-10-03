@@ -22,27 +22,31 @@ class VideoGalleryController extends Controller
     public function getVideoGalleryBySlug($slug)
     {
         $id = substr(strrchr($slug, '-'), 1);
-
         return Cache::tags(['VideoGalleryController', 'News', 'video_gallery'])->rememberForever('video_gallery:' . $id, function () use ($id) {
 
-            $video = $this->videoRepo->getVideo($id);
-            abort_if(empty($video), 404, trans('common.not_found'));
+            try{
 
-            $galleryVideos = $this->videoRepo->getVideoGalleryOtherVideos($video);
-            $videoGallery = $this->videoRepo->getVideoGallery($video);
-            $tags = $this->videoRepo->getVideoTags($video);
-            $lastestVideos = $this->videoRepo->getLatestVideos(20);
-            $otherGalleryVideos = $this->videoRepo->getOtherGalleryVideos($video);
+                $video = $this->videoRepo->getVideo($id);
+                $galleryVideos = $this->videoRepo->getVideoGalleryOtherVideos($video);
+                $videoGallery = $this->videoRepo->getVideoGallery($video);
+                $tags = $this->videoRepo->getVideoTags($video);
+                $lastestVideos = $this->videoRepo->getLatestVideos(20);
+                $otherGalleryVideos = $this->videoRepo->getOtherGalleryVideos($video);
 
-            $nextVideo = $this->repo->getGalleryNextVideo($videoGallery, $video);
-            $previousVideo = $this->repo->getGalleryPreviousVideo($videoGallery, $video);
-            $otherGalleries = $this->repo->getOtherGalleries($videoGallery);
+                $nextVideo = $this->repo->getGalleryNextVideo($videoGallery, $video);
+                $previousVideo = $this->repo->getGalleryPreviousVideo($videoGallery, $video);
+                $otherGalleries = $this->repo->getOtherGalleries($videoGallery);
 
-            $videoCategories = $this->videoCategoryRepo->getCuffVideoCategories();
-            $categoryVideos = $this->videoCategoryRepo->getVideoCategoryVideos($video);
-            //todo is set video's videocategory area for video category relations
-            if (!empty($videoGallery->video_category)) {
-                $videoGallery->video_category;
+                $videoCategories = $this->videoCategoryRepo->getCuffVideoCategories();
+                $categoryVideos = $this->videoCategoryRepo->getVideoCategoryVideos($video);
+
+                //todo is set video's videocategory area for video category relations
+                if (!empty($videoGallery->video_category)) {
+                    $videoGallery->video_category;
+                }
+
+            }catch (\Exception $e){
+                abort(404);
             }
 
             return view('news::frontend.video_gallery.video_gallery', compact([
@@ -61,6 +65,4 @@ class VideoGalleryController extends Controller
 
         });
     }
-
-
 }
