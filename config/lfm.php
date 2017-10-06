@@ -12,7 +12,7 @@ return [
 
     // Middlewares which should be applied to all package routes.
     // For laravel 5.1 and before, remove 'web' from the array.
-    'middlewares' => ['web','auth'],
+    'middlewares' => ['web','auth','laravelFileManager'],
 
     // The url to this package. Change it if necessary.
     'prefix' => 'laravel-filemanager',
