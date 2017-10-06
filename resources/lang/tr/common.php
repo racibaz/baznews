@@ -3,6 +3,7 @@
 return [
     'id' => 'ID',
     'homepage' => 'Anasayfa',
+    'title' => 'Başlık',
     'save' => 'Kaydet',
     'create' => 'Ekle',
     'edit' => 'Düzenle',
@@ -25,6 +26,7 @@ return [
     'remove' => 'Sil',
     'is_cuff' => 'Manşet',
     'search' => 'Ara',
+    'filter' => 'Filtrele',
     'create_edit' => 'Ekle / Düzenle',
     'edit_delete' => 'Düzenle / Sil',
     'spot' => 'Spot',
@@ -35,6 +37,9 @@ return [
     'content' => 'İçerik',
     'order' => 'Sıralama',
     'list' => 'Liste',
+    'redirect_back' => 'Geri Dön..',
+    'updated_at' => 'Güncellenme Zamanı',
+    'created_at' => 'Oluşturulma Zamanı',
     //Genel Mesajlar
     'message_model_updated' => 'Kayıt İşlemi Başarılı',
     'save_failed' => 'Kayıt İşlemi Hatalı',

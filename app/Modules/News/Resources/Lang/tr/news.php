@@ -10,6 +10,7 @@ return [
     'statistic' => 'İstatistik',
     'country_id' => 'Ülke',
     'city_id' => 'Şehir',
+    'news_category' => 'Haber Kategorisi',
     'news_source_id' => 'Haber Kaynağı',
     'small_title' => 'Kısa Haber Başlığı',
     'meta_tags' => 'Meta Etiketler',

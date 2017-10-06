@@ -39,8 +39,6 @@ Route::group(['prefix' => 'rss'], function () {
     Route::get('videos', 'Frontend\RssController@videosRssRender')->name('rss/videos');
     //TODO video kategorileri, photo kategorileri, photo lar da eklenecek.
 
-    //TODO XSS script sorunu olur mu? test edilecek gerekli önlemler alınacak
-    Route::get('news_category/{category_name}', 'Frontend\RssController@getNewsCategoryRssRender')->name('rss/category');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function () {

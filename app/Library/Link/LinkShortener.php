@@ -22,14 +22,11 @@ class LinkShortener
         $this->link = $link;
     }
 
-    //todo php 7.1 method return type larına uygun olmalı
     public function linkShortener($slug)
     {
         return $this->linkShortenerByGoogle($slug);
     }
 
-
-    //todo php 7.1 method return type larına uygun olmalı
     public function linkShortenerByGoogle($slug)
     {
         $this->link->setLongUrl(Cache::tags(['Setting'])->get('url') . '/' . $slug);

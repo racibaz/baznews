@@ -39,7 +39,7 @@
                         {!! Form::text('name', $record->name, ['placeholder' => trans('article::article_author.name') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('slug', trans('commonslug'),['class'=> 'control-label']) !!}
+                        {!! Form::label('slug', trans('common.slug'),['class'=> 'control-label']) !!}
                         {!! Form::text('slug', $record->slug, ['placeholder' => trans('common.slug') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">

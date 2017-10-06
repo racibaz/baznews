@@ -25,17 +25,25 @@ class BackendController extends Controller
         $this->middleware(function ($request, $next) {
             $this->checkPermission();
 
-            Cache::tags(['Setting', 'Advertisement'])->rememberForever('advertisements', function () {
-
-                $advertisementRepository = new AdvertisementRepository();
-                $advertisements = $advertisementRepository->where('is_active', 1)->findAll();
-
-                foreach ($advertisements as $advertisement) {
-                    Cache::tags(['Setting', 'Advertisement'])->forever($advertisement->name, $advertisement->code);
-                }
-            });
+            $this->setAdvertisement();
 
             return $next($request);
+        });
+    }
+
+
+    /**
+     *
+     */
+    private function setAdvertisement()
+    {
+        Cache::tags(['Setting', 'Advertisement'])->rememberForever('advertisements', function () {
+
+            $advertisements = app(AdvertisementRepository::class)->where('is_active', 1)->findAll();
+
+            foreach ($advertisements as $advertisement) {
+                Cache::tags(['Setting', 'Advertisement'])->forever($advertisement->name, $advertisement->code);
+            }
         });
     }
 
@@ -95,7 +103,6 @@ class BackendController extends Controller
         return redirect()->back();
     }
 
-
     public function removeHomePageCache()
     {
         Cache::tags('homePage')->flush();
@@ -107,18 +114,4 @@ class BackendController extends Controller
 
         return redirect()->route('dashboard');
     }
-
-
-    //todo genel birşey yapılacak
-//    public function toggleBooleanType( $record, string $key)
-//    {
-//        if($record->$key){
-//            $record->$key =  0;
-//        }else
-//            $record->$key = 1;
-//
-//        $record->save();
-//
-//        return Redirect::back();
-//    }
 }

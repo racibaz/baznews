@@ -182,7 +182,7 @@
                             </tr>
                             <tr>
                                 <th>{{trans('common.is_active')}}</th>
-                                <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('news::news.active').'</span>':'<span class="badge bg-warning">'.trans('news::news.passive').'</span>'!!}</td>
+                                <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('common.active').'</span>':'<span class="badge bg-warning">'.trans('common.passive').'</span>'!!}</td>
                             </tr>
                             </tbody>
                         </table>
