@@ -11,7 +11,6 @@
 |
 */
 
-Route::pattern('slug', '[a-z0-9-]+');
 Route::get('news/{slug}', 'Frontend\NewsController@show')->name('show_news');
 Route::get('archive/{years?}/{months?}/{days?}', 'Frontend\ArchiveController@index')
     ->name('archive_index')

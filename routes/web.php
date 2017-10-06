@@ -14,6 +14,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::pattern('id', '[0-9]+');
+Route::pattern('slug', '[a-z0-9-]+');
 
 Route::get('/', 'Frontend\IndexController@index')->name('index');
 Route::get('page/{slug}', 'Frontend\PageController@show')->name('page');
