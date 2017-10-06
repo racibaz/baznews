@@ -35,7 +35,7 @@ class BookCategoryTransformer extends TransformerAbstract
                 ],
                 [
                     'rel' => 'bookAuthor',
-                    'href' => route('book_authors.show', $record->book_author_id),
+                    'href' => route('book_authors.show', $record->author_id),
                 ],
                 [
                     'rel' => 'book_categories.books',

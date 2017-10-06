@@ -46,7 +46,7 @@ class Book extends Model
     protected $fillable = [
         'user_id',
         'publisher_id',
-        'book_author_id',
+        'author_id',
         'name',
         'slug',
         'short_url',
@@ -80,12 +80,12 @@ class Book extends Model
 
     public function book_author()
     {
-        return $this->belongsTo(BookAuthor::class, 'book_author_id');
+        return $this->belongsTo(BookAuthor::class, 'author_id');
     }
 
     public function book_publisher()
     {
-        return $this->belongsTo(BookPublisher::class, 'book_publisher_id');
+        return $this->belongsTo(BookPublisher::class, 'publisher_id');
     }
 
     public static function bookList()

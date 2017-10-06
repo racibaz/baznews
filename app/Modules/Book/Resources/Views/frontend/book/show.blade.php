@@ -57,7 +57,7 @@
                                         </a>
                                     </div>
                                     <div class="book-desc">
-                                        {{$record->description}}
+                                        {!! $record->description !!}
                                     </div>
                                 </div>
                             </div>

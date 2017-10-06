@@ -17,8 +17,8 @@ class BooksTableSeeder extends Seeder
     {
         $book1 = Book::create([
             'user_id' => 1,
-            'book_author_id' => 1,
-            'book_publisher_id' => 1,
+            'author_id' => 1,
+            'publisher_id' => 1,
             'name' => 'kitap 1',
             'slug' => 'kitap1-1',
             'thumbnail' => '1.png',
@@ -30,8 +30,8 @@ class BooksTableSeeder extends Seeder
 
         $book2 = Book::create([
             'user_id' => 1,
-            'book_author_id' => 2,
-            'book_publisher_id' => 1,
+            'author_id' => 2,
+            'publisher_id' => 1,
             'name' => 'kitap 2',
             'slug' => 'kitap2-2',
             'thumbnail' => '2.png',
@@ -43,8 +43,8 @@ class BooksTableSeeder extends Seeder
 
         $book3 = Book::create([
             'user_id' => 1,
-            'book_author_id' => 3,
-            'book_publisher_id' => 1,
+            'author_id' => 3,
+            'publisher_id' => 1,
             'name' => 'kitap 3',
             'slug' => 'kitap3-3',
             'thumbnail' => '3.png',
@@ -56,8 +56,8 @@ class BooksTableSeeder extends Seeder
 
         $book4 = Book::create([
             'user_id' => 1,
-            'book_author_id' => 4,
-            'book_publisher_id' => 1,
+            'author_id' => 4,
+            'publisher_id' => 1,
             'name' => 'kitap 4',
             'slug' => 'kitap4-4',
             'thumbnail' => '4.png',

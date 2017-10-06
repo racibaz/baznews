@@ -54,12 +54,12 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('book_author_id', trans('book::book.book_author'),['class'=> 'control-label']) !!}
-                        {!! Form::select('book_author_id', $bookAuthorList , $record->book_author_id, ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
+                        {!! Form::label('author_id', trans('book::book.book_author'),['class'=> 'control-label']) !!}
+                        {!! Form::select('author_id', $bookAuthorList , $record->author_id, ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('book_publisher_id', trans('book::book.book_publisher'),['class'=> 'control-label']) !!}
-                        {!! Form::select('book_publisher_id', $bookPublisherList , $record->book_publisher_id, ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
+                        {!! Form::label('publisher_id', trans('book::book.book_publisher'),['class'=> 'control-label']) !!}
+                        {!! Form::select('publisher_id', $bookPublisherList , $record->publisher_id, ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('description', trans('common.description'),['class'=> 'control-label']) !!}
