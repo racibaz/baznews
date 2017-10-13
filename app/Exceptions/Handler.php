@@ -78,7 +78,11 @@ class Handler extends ExceptionHandler
         }
 
         if ($exception instanceof AuthorizationException) {
-            return $this->errorResponse($exception->getMessage(), 403);
+
+            if ($request->ajax())
+                return $this->errorResponse($exception->getMessage(), 403);
+
+            return response()->view('errors.custom_error_page', ['message' => $exception->getMessage()], 403);
         }
 
         if ($exception instanceof MethodNotAllowedHttpException) {

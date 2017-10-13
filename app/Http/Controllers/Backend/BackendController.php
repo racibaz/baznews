@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\AdvertisementRepository;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -49,10 +50,8 @@ class BackendController extends Controller
 
 
     /**
-     *
-     * Check user permission with controller name and method name
-     *
      * @return bool
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function checkPermission()
     {
@@ -67,8 +66,9 @@ class BackendController extends Controller
         $classModelName = strtolower(substr($controllerName, 0, -10));
         if (!Auth::user()->can($methodName . '-' . $classModelName)) {
             Log::warning('Yetkisiz Alana Girmeye Çalışıldı. ' . 'Kişi : ' . Auth::user()->name . '  IP :' . Auth::user()->getUserIp());
-            abort(403, 'Unauthorized action.');
+            throw new AuthorizationException('Unauthorized action.');
         }
+
         return true;
     }
 
