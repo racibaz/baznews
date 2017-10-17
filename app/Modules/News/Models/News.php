@@ -5,6 +5,7 @@ namespace App\Modules\News\Models;
 use App\Models\User;
 use App\Modules\News\Transformers\NewsTransformer;
 use App\Traits\Eventable;
+use App\Traits\TagRelationTrait;
 use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Laravel\Scout\Searchable;
@@ -19,6 +20,7 @@ class News extends Model
     use Searchable;
     use RevisionableTrait;
     use Sluggable;
+    use TagRelationTrait;
 
     /**
      * Return the sluggable configuration array for this model.
@@ -124,12 +126,6 @@ class News extends Model
     public function recommendation_news()
     {
         return $this->hasOne(RecommendationNews::class);
-    }
-
-    //todo core model
-    public function tags()
-    {
-        return $this->morphToMany('App\Models\Tag', 'taggable');
     }
 
     public function scopeStatus($query, $flag)

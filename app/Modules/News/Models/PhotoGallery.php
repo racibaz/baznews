@@ -4,6 +4,7 @@ namespace App\Modules\News\Models;
 
 use App\Modules\News\Transformers\PhotoGalleryTransformer;
 use App\Traits\Eventable;
+use App\Traits\TagRelationTrait;
 use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Venturecraft\Revisionable\RevisionableTrait;
@@ -14,6 +15,7 @@ class PhotoGallery extends Model
     use Eventable;
     use RevisionableTrait;
     use Sluggable;
+    use TagRelationTrait;
 
     /**
      * Return the sluggable configuration array for this model.
@@ -57,12 +59,6 @@ class PhotoGallery extends Model
     public function photos()
     {
         return $this->hasMany(Photo::class);
-    }
-
-    //todo core model
-    public function tags()
-    {
-        return $this->morphToMany('App\Models\Tag', 'taggable');
     }
 
     public static function photoGalleryList()

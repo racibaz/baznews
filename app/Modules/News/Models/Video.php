@@ -4,6 +4,7 @@ namespace App\Modules\News\Models;
 
 use App\Modules\News\Transformers\VideoTransformer;
 use App\Traits\Eventable;
+use App\Traits\TagRelationTrait;
 use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Venturecraft\Revisionable\RevisionableTrait;
@@ -16,6 +17,7 @@ class Video extends Model
     use SoftDeletes;
     use RevisionableTrait;
     use Sluggable;
+    use TagRelationTrait;
 
     /**
      * Return the sluggable configuration array for this model.
@@ -67,12 +69,6 @@ class Video extends Model
     public function video_gallery()
     {
         return $this->belongsTo(VideoGallery::class);
-    }
-
-    //todo core model
-    public function tags()
-    {
-        return $this->morphToMany('App\Models\Tag', 'taggable');
     }
 
     public static function videoList()
