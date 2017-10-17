@@ -316,13 +316,12 @@ class NewsController extends BackendController
          * update işlemlerinde tekrar üzerine yazıldığında mükerrer oluşturduğundan dolayı
          * sadece create işleminde bu işlemi yapıyoruz.
          * */
-        $tagsRepo = new TagRepository();
 
         if (!isset($record->id)) {
             $findTagsInContent = Input::get('find_tags_in_content') == "on" ? true : false;
 
             if ($findTagsInContent) {
-                foreach ($tagsRepo->findAll() as $tag) {
+                foreach (app(TagRepository::class)->findAll() as $tag) {
 
                     $input['content'] = str_replace(
                         $tag->name,
@@ -441,7 +440,7 @@ class NewsController extends BackendController
 
             if ($automaticAddTags) {
 
-                foreach ($tagsRepo->findAll() as $tag) {
+                foreach (app(TagRepository::class)->findAll() as $tag) {
 
                     if (strpos($input['content'], $tag->name)) {
 

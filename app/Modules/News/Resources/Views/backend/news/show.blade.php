@@ -138,7 +138,9 @@
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.news_type')}}</th>
-                                <td>{{$record->news_type}}</td>
+                                <td>
+                                    {{\app\Modules\News\Models\News::$newsTypes[$record->news_type]}}
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{trans('common.status')}}</th>
