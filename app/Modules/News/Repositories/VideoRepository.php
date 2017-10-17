@@ -30,6 +30,14 @@ class VideoRepository extends EloquentRepository
         return $this->where('is_active', 1)->findAll();
     }
 
+    public function getAllVideosWithRelations()
+    {
+        return $this->with(['video_category', 'video_gallery', 'tags'])
+            ->where('is_active', 1)
+            ->orderBy('updated_at', 'desc')
+            ->paginate(20);
+    }
+
     public function getLastVideo()
     {
         return $this->where('is_active', 1)->last();

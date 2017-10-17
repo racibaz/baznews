@@ -19,6 +19,19 @@ class VideoController extends Controller
         $this->videoCategoryRepo = $videoCategoryRepo;
     }
 
+    public function index()
+    {
+        try {
+
+            $records = $this->repo->getAllVideosWithRelations();
+
+        } catch (\Exception $e) {
+            abort(404);
+        }
+
+        return view('news::frontend.video.index', compact(['records']));
+    }
+
     public function getVideoBySlug($slug)
     {
         $id = substr(strrchr($slug, '-'), 1);
@@ -45,21 +58,11 @@ class VideoController extends Controller
                     $videoGallery->video_category;
                 }
 
-            }catch (\Exception $e){
+            } catch (\Exception $e) {
                 abort(404);
             }
 
-            return view('news::frontend.video.video', compact([
-                'video',
-                'videoGallery',
-                'tags',
-                'previousVideo',
-                'nextVideo',
-                'otherGalleryVideos',
-                'lastestVideos',
-                'categoryVideos',
-            ]))->render();
+            return view('news::frontend.video.video', compact(['video', 'videoGallery', 'tags', 'previousVideo', 'nextVideo', 'otherGalleryVideos', 'lastestVideos', 'categoryVideos',]))->render();
         });
-
     }
 }
