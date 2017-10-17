@@ -138,16 +138,7 @@
                                                         {!! $revison->newValue()  !!}
                                                     </div>
                                                 </div>
-                                                {{--TODO revision CRUD işlemrlerinin yapıldığı yere düzenle ve sil linkleri verilecek.--}}
-                                                {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('user.destroy',  $record))) !!}
-                                                {!! link_to_route('user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                                                {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                                {!! Form::close() !!}
                                             </div>
-
-                                            {{--<div class="timeline-footer">--}}
-                                            {{--<a class="btn btn-primary btn-xs">...</a>--}}
-                                            {{--</div>--}}
                                         </div>
                                     </li>
                                     <!-- END timeline item -->
@@ -179,7 +170,7 @@
                                     <th>{{trans('user.event_name')}}</th>
                                     <th>{{trans('common.created_at')}}</th>
                                     <th>{{trans('common.updated_at')}}</th>
-                                    <th>{{trans('common.is_active')}}</th>
+                                    <th>{{trans('common.edit_delete')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -193,10 +184,13 @@
                                         <td>{{$event->updated_at }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                {{--TODO revision CRUD işlemrlerinin yapıldığı yere düzenle ve sil linkleri verilecek.--}}
-                                                {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('user.destroy',  $record))) !!}
-                                                {!! link_to_route('user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                                                {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                                {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('event.destroy',  $event))) !!}
+                                                    @permission('edit-event')
+                                                        {!! link_to_route('event.edit', trans('common.edit'), $event, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                                    @endpermission
+                                                    @permission('destroy-event')
+                                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                                    @endpermission
                                                 {!! Form::close() !!}
                                             </div>
                                         </td>
@@ -211,7 +205,7 @@
                                     <th>{{trans('user.event_name')}}</th>
                                     <th>{{trans('common.created_at')}}</th>
                                     <th>{{trans('common.updated_at')}}</th>
-                                    <th>{{trans('common.is_active')}}</th>
+                                    <th>{{trans('common.edit_delete')}}</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -222,7 +216,6 @@
                 </div>
             </div>
         </div>
-
     </div><!-- end row -->
     <!-- Main Content Element  End-->
 @endsection

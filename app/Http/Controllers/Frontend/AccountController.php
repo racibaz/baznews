@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\User;
 use App\Repositories\AccountRepository as Repo;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
@@ -42,7 +43,7 @@ class AccountController extends BackendController
     {
         if(auth()->user()->getAuthIdentifier() <> $record->id){
             Log::warning('Yetkisiz Alana Girmeye Çalışıldı. uri :' . Route::getCurrentRoute()->uri() . ' : user_id : ' . auth()->user()->getAuthIdentifier() . '  IP :' . auth()->user()->getUserIp());
-            abort(403, 'Unauthorized action.');
+            throw new AuthorizationException('Unauthorized action.');
         }
 
         $countries = Country::countryList();

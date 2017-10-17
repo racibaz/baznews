@@ -9,6 +9,7 @@ use App\Models\Event;
 use App\Models\Group;
 use App\Models\Role;
 use App\Models\User;
+use App\Repositories\EventRepository;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository as Repo;
 use Auth;
@@ -78,7 +79,7 @@ class UserController extends BackendController
     public function show(User $record)
     {
         $revisions = $record->getUserRevisions($record->id);
-        $events = Event::where('user_id', $record->id)->orderBy('updated_at', 'desc')->get();
+        $events = app(EventRepository::class)->getUserEvents($record->id);
 
         return view($this->getViewName(__FUNCTION__), compact('record', 'revisions', 'events'));
     }
