@@ -178,7 +178,17 @@
                                     <tr>
                                         <td>{{$event->id}}</td>
                                         <td>{{$event->eventable_type }}</td>
-                                        <td>{{$event->eventable_id }}</td>
+                                        @php
+                                            $nameSpaceArray = explode('\\', $event->eventable_type);
+                                            $className = str_slug(array_last($nameSpaceArray));
+                                        @endphp
+                                        <td>
+                                            @if(Route::has($className . '.show'))
+                                                {!! link_to_route($className . '.show', $event->eventable_id , $event->eventable_id, ['target' => '_blank'] ) !!}
+                                            @else
+                                                {{$event->eventable_id}}
+                                            @endif
+                                        </td>
                                         <td>{{$event->event }}</td>
                                         <td>{{$event->created_at }}</td>
                                         <td>{{$event->updated_at }}</td>

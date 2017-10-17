@@ -41,7 +41,19 @@
                             <tr>
                                 <td>{{$record->id}}</td>
                                 <td>{!! link_to_route('event.show',$record->event , $record, [] ) !!} </td>
-                                <td>{{$record->eventable_id}} </td>
+                                <td>
+                                    @php
+                                        $nameSpaceArray = explode('\\', $record->eventable_type);
+                                        $className = str_slug(array_last($nameSpaceArray));
+                                    @endphp
+
+                                    @if(Route::has($className . '.show'))
+                                        {!! link_to_route($className . '.show', $record->eventable_id , $record->eventable_id, ['target' => '_blank'] ) !!}
+                                    @else
+                                        {{$record->eventable_id}}
+                                    @endif
+
+                                </td>
                                 <td>{{$record->eventable_type}}</td>
                                 <td>{!! link_to_route('user.show', $record->user->name , $record, [] ) !!}</td>
                                 <td>{{$record->created_at}}</td>
