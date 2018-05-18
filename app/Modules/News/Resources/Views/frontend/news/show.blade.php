@@ -22,8 +22,8 @@
                 <article class="article news-article">
                     <div id="new-content" class="module">
                         <div class="meta">
-                            <span class="timestamp"><strong>GİRİŞ :</strong> {{ $record->created_at->format('d.m.Y h:m') }}
-                                &nbsp;&nbsp;&nbsp;<strong>GÜNCELLEME:</strong> {{ $record->updated_at->format('d.m.Y h:m') }}</span>
+                            <span class="timestamp"><strong> {{trans('common.created_date')}} :</strong> {{ $record->created_at->format('d.m.Y h:m') }}
+                                &nbsp;&nbsp;&nbsp;<strong> {{trans('common.updated_date')}} :</strong> {{ $record->updated_at->format('d.m.Y h:m') }}</span>
                         </div><!-- /.meta -->
                         <h1 class="news-title">{{ $record->title }}</h1>
                         @if($record->news_type == 0 || $record->news_type == 1)

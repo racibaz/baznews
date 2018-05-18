@@ -23,8 +23,8 @@
                     <h1 class="page-title">{{$record->name}}</h1>
                     <div class="time">
                         <i class="fa fa-clock-o"></i>
-                        <span>{{$record->created_at}}</span>
-                        <span>{{$record->updated_at}}</span>
+                        <span class="timestamp"><strong> {{trans('common.created_date')}} :</strong> {{ $record->created_at->format('d.m.Y h:m') }}
+                            &nbsp;&nbsp;&nbsp;<strong> {{trans('common.updated_date')}} :</strong> {{ $record->updated_at->format('d.m.Y h:m') }}</span>
                     </div>
                     <div class="content">
                         {!! $record->content !!}

@@ -52,4 +52,6 @@ return [
     'redis_remove' => 'Redis Temizle',
     'redis_remove_cache' => 'Redis Belleğinden Sil',
     'force_deleted' => 'Kayıt Silindi',
+    'created_date' => 'Eklenme Zamanı',
+    'updated_date' => 'Güncellenme Zamanı',
 ];
