@@ -5,7 +5,6 @@ namespace App\Modules\Book\Widgets;
 use App\Modules\Book\Repositories\BookRepository;
 use Arrilot\Widgets\AbstractWidget;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
 
 class RecentBooks extends AbstractWidget
 {
@@ -28,7 +27,7 @@ class RecentBooks extends AbstractWidget
             return $bookRepository
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
-                ->take(Redis::get('book_count'))
+                ->take(Cache::tags('Setting')->get('book_count'))
                 ->orderBy('updated_at', 'desc')
                 ->get();
         });

@@ -5,7 +5,6 @@ namespace App\Modules\Article\Widgets;
 use App\Modules\Article\Repositories\ArticleRepository;
 use Arrilot\Widgets\AbstractWidget;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
 
 class RecentArticles extends AbstractWidget
 {
@@ -28,7 +27,7 @@ class RecentArticles extends AbstractWidget
             return $repo->with(['article_categories', 'article_authors'])
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
-                ->take(Redis::get('recent_article_widget_list_count'))
+                ->take(Cache::tags('Setting')->get('recent_article_widget_list_count'))
                 ->orderBy('order', 'desc')
                 ->get();
         });

@@ -120,7 +120,6 @@ class NewsController extends BackendController
             }
         }
 
-
         return view('news::' . $this->getViewName(__FUNCTION__),
             compact(['record',
                 'newsList',
