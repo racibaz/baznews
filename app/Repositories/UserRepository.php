@@ -11,9 +11,8 @@ class UserRepository extends EloquentRepository
 
     public function getUserBySlug($slug)
     {
-        $user = $this->where('slug', $slug)
-            ->where('status', 1)
-            ->first();
+        $user = $this->where('status', 1)
+            ->findBy('slug', $slug);
 
         return $user ? $user : null;
     }
