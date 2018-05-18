@@ -45,7 +45,7 @@
                                 <td>{{$record->id}}</td>
                                 <td>{!! link_to_route('rss.show', $record->name , $record, [] ) !!}</td>
                                 <td>{{ $record->url }}</td>
-                                <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('rss.active') . '</label>' : '<label class="badge badge-brown">' . trans('rss.passive') . '</label>'!!}</td>
+                                <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                                 <td>
                                     <div class="btn-group">
                                         {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('rss.destroy',  $record))) !!}
