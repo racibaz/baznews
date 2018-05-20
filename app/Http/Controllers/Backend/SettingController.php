@@ -347,7 +347,7 @@ class SettingController extends BackendController
 
     public function repairMysqlTables()
     {
-        $this->dispatch_now(new RepairMysqlTables());
+        dispatch_now(new RepairMysqlTables());
 
         Log::info('Database table repaired.');
         Session::flash('flash_message', trans('setting.repair_mysql_tables'));
@@ -397,7 +397,7 @@ class SettingController extends BackendController
 
     public function getBackUp()
     {
-        $this->dispatch_now(new GetBackUp());
+        dispatch_now(new GetBackUp());
 
         Log::info('Backup received.');
         Session::flash('flash_message', trans('setting.backup_received'));
@@ -408,7 +408,7 @@ class SettingController extends BackendController
 
     public function backUpClean()
     {
-        $this->dispatch_now(new BackUpClean());
+        dispatch_now(new BackUpClean());
 
         Log::info('Backup cleaned.');
         Session::flash('flash_message', trans('setting.backup_cleaned'));
