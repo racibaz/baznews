@@ -13,6 +13,6 @@ return [
     '_rgt' => 'Sağ',
     'parent_id' => 'Üst Kategori',
     'name' => 'Kategori Adı',
-
+    'is_cuff' => 'Manşet',
     'category_books' => 'Kategori Kitapları',
 ];

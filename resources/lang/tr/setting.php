@@ -69,4 +69,8 @@ return [
     'user_default_role' => 'Kullanıcı Kayıt Olduğunda  Varsayılan Yetki',
     'user_default_group' => 'Kullanıcı Kayıt Olduğunda Varsayılan Grup',
     'favicon' => 'favicon',
+    'backup_cleaned' => 'Backup Temizlendi.',
+    'route_cached' => 'Route Ön Belleğe Alındı.',
+    'route_cleared' => 'Route Ön Belleği Silindi.',
+    'view_cleared' => 'View ler Ön Belleğe Alındı.',
 ];

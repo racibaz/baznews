@@ -509,8 +509,9 @@
                             <span>Route Ayarlarını Ön Belleğe Al</span></a>
                         <a class="list-group-item" href="{!! route('routeClear') !!}"> <i class="fa fa-trash-o"></i>
                             <span>Route Ön Belleğini Temizle</span></a>
-                        <a class="list-group-item" href="{!! route('configCache') !!}"><i class="fa fa-trash-o"></i>
+                        <!--<a class="list-group-item" href="{!! route('configCache') !!}"><i class="fa fa-trash-o"></i>
                             <span>Konfigürasyon Ayarlarını Ön Belleğe Al</span></a>
+                         !-->
                         <a class="list-group-item" href="{!! route('configClear') !!}"> <i class="fa fa-trash-o"></i>
                             <span>Konfigürasyon Ayarlarını Temizle</span></a>
                     </div>
