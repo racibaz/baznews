@@ -14,7 +14,7 @@ class BookCategory extends Model
 {
     use Eventable;
     use Sluggable;
-    //https://github.com/Zizaco/entrust/issues/379
+    // link : https://github.com/Zizaco/entrust/issues/379
     use NodeTrait {
         NodeTrait::replicate insteadof Sluggable;
     }

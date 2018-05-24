@@ -17,7 +17,8 @@ class BookPublisherController extends Controller
     {
         return Cache::tags(['BookPublisherController', 'Book', 'bookPublisher'])->rememberForever(request()->fullUrl(), function () use ($slug) {
 
-            try{
+            try
+            {
 
                 $slug = removeHtmlTagsOfField($slug);
                 $bookPublisher = $this->repo
