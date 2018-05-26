@@ -17,6 +17,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $siteTitle = Cache::tags(['Setting'])->get('title');
+
         $activeUserCount = User::where('status', User::ACTIVE)->get()->count();
         $passiveUserCount = User::where('status', User::PASSIVE)->get()->count();
         //todo farklı statusler de gelmeli. foreach ile dönülebilinir.
@@ -46,6 +48,7 @@ class DashboardController extends Controller
         }
 
         return view('backend.dashboard.index', compact(
+            'siteTitle',
             'activeUserCount',
             'passiveUserCount',
             'activeGroupCount',
