@@ -1,4 +1,4 @@
-@extends($themeAssetsPath . 'backend.master')
+@extends($activeTheme . '::backend.master')
 @section('content-header')
     <section class="content-header">
         <h1>
