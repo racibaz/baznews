@@ -83,7 +83,7 @@ class VideoRepository extends EloquentRepository
 
     public function getVideoGallery($video)
     {
-        return count($video->video_gallery) > 0 ? $video->video_gallery : null;
+        return $video->video_gallery->count() > 0 ? $video->video_gallery : null;
     }
 
     public function getVideoGalleryOtherVideos($video)
