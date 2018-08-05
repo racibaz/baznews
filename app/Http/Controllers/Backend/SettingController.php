@@ -248,12 +248,12 @@ class SettingController extends BackendController
             $this->repo->update($record->id, ['attribute_value' => $input['google_url_shortener_key']]);
         }
 
-        if (!empty($input['head_code'])) {
+        if (!empty($input['head_code']) || $input['head_code'] == null ) {
             $record = $this->repo->findBy('attribute_key', 'head_code');
             $this->repo->update($record->id, ['attribute_value' => $input['head_code']]);
         }
 
-        if (!empty($input['footer_code'])) {
+        if (!empty($input['footer_code']) || $input['footer_code'] == null) {
             $record = $this->repo->findBy('attribute_key', 'footer_code');
             $this->repo->update($record->id, ['attribute_value' => $input['footer_code']]);
         }
