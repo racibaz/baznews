@@ -108,6 +108,10 @@ class AdvertisementController extends BackendController
     public function destroy(Advertisement $record)
     {
         $this->repo->delete($record->id);
+
+        $this->removeCacheTags(['Setting', 'Advertisement']);
+        $this->removeHomePageCache();
+
         return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
@@ -125,7 +129,7 @@ class AdvertisementController extends BackendController
 
         if ($result) {
 
-            $this->removeCacheTags(['Advertisement']);
+            $this->removeCacheTags(['Setting', 'Advertisement']);
             $this->removeHomePageCache();
 
             Session::flash('flash_message', trans('common.message_model_updated'));
