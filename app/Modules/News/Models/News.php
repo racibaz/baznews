@@ -17,7 +17,6 @@ class News extends Model
 {
     use Eventable;
     use SoftDeletes;
-    use Searchable;
     use RevisionableTrait;
     use Sluggable;
     use TagRelationTrait;
@@ -41,16 +40,6 @@ class News extends Model
         return $engine->activateRuleset('turkish');
     }
 
-
-    /**
-     * Get the index name for the model.
-     *
-     * @return string
-     */
-    public function searchableAs()
-    {
-        return 'news';
-    }
 
     protected $table = 'news';
     public $transformer = NewsTransformer::class;
