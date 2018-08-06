@@ -60,5 +60,29 @@ class NewsSourceTableSeeder extends Seeder
             'url' => 'http://www.hayalperdesi.net',
             'is_active' => 1
         ]);
+
+        NewsSource::create([
+            'name' => 'islamveihsan.com',
+            'url' => 'http://www.islamveihsan.com',
+            'is_active' => 1
+        ]);
+
+        NewsSource::create([
+            'name' => 'ntv.com.tr',
+            'url' => 'https://www.ntv.com.tr/',
+            'is_active' => 1
+        ]);
+
+        NewsSource::create([
+            'name' => 'hurriyet.com.tr',
+            'url' => 'http://www.hurriyet.com.tr/',
+            'is_active' => 1
+        ]);
+
+        NewsSource::create([
+            'name' => 'www.milliyet.com.tr/',
+            'url' => 'http://www.milliyet.com.tr/',
+            'is_active' => 1
+        ]);
     }
 }
