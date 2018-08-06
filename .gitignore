@@ -1,11 +1,11 @@
 /node_modules
 /public/storage
 /public/icons
-/public/video_gallery
-/public/videos
-/public/photos
-/public/images
-/public/gallery
+/public/video_gallery/*
+/public/videos/*
+/public/photos/*
+/public/images/*
+/public/gallery/*
 /public/files
 
 /vendor
