@@ -67,9 +67,8 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $search }} "/>
     <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}"/>
-    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}"/>
     <meta property="og:description" content="{{$search}}"/>
-    <meta property="fb:app_id" content="671303379704288">
+    <meta property="fb:app_id" content="{{Cache::tags('Setting')->get('FACEBOOK_CLIENT_ID')}}">
     <meta property="article:author" content="">
 @endsection
 

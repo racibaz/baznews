@@ -87,9 +87,8 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $record->name }} "/>
     <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}"/>
-    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}"/>
     <meta property="og:description" content="{{$record->description}}"/>
-    <meta property="fb:app_id" content="671303379704288">
+    <meta property="fb:app_id" content="{{Cache::tags('Setting')->get('FACEBOOK_CLIENT_ID')}}">
     <meta property="og:image" content="{{asset('images/books/' . $record->id . '/original/' .$record->thumbnail)}}"/>
     <meta property="article:published_time" content="{{$record->created_at}}">
     <meta property="article:author" content="">
