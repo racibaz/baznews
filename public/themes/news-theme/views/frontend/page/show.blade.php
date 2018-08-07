@@ -65,7 +65,7 @@
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $record->name }} "/>
-    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}"/>
+    <meta property="og:url" content="{{url()->current()}}"/>
     <meta property="og:description" content="{{$record->description}}"/>
     <meta property="fb:app_id" content="{{Cache::tags('Setting')->get('FACEBOOK_CLIENT_ID')}}">
     {{--<meta property="og:image" content="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}"/>--}}

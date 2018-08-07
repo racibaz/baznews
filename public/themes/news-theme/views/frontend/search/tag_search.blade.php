@@ -61,7 +61,7 @@
                                         <div class="col-lg-4 col-md-3 col-xs-4">
                                             <div class="frame-image">
                                                 <a href="{!! route('show_news', ['slug' => $video->slug]) !!}">
-                                                    <img src="http://baznews.app/images/news_images/2/196x150_2.jpg"
+                                                    <img src="http://baznews.test/images/news_images/2/196x150_2.jpg"
                                                          alt="{{$video->name}}">
                                                 </a>
                                             </div>
@@ -98,7 +98,7 @@
                                         <div class="col-lg-4 col-md-3 col-xs-4">
                                             <div class="frame-image">
                                                 <a href="{!! route('show_news', ['slug' => $photoGallery->slug]) !!}">
-                                                    <img src="http://baznews.app/images/news_images/2/196x150_2.jpg"
+                                                    <img src="http://baznews.test/images/news_images/2/196x150_2.jpg"
                                                          alt="{{$photoGallery->tinametle}}">
                                                 </a>
                                             </div>
@@ -156,7 +156,7 @@
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $search }} "/>
-    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}"/>
+    <meta property="og:url" content="{{url()->current()}}"/>
     <meta property="og:description" content="{{$search}}"/>
     <meta property="fb:app_id" content="{{Cache::tags('Setting')->get('FACEBOOK_CLIENT_ID')}}">
     <meta property="article:author" content="">
