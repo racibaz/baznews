@@ -132,37 +132,37 @@ class SettingController extends BackendController
                 ->withInput($input);
         }
 
-        if (!empty($input['country_id'])) {
+        if (!empty($input['country_id']) || $input['country_id'] == null){
             $record = $this->repo->findBy('attribute_key', 'country');
             $this->repo->update($record->id, ['attribute_value' => $input['country_id']]);
         }
 
-        if (!empty($input['city_id'])) {
+        if (!empty($input['city_id']) || $input['city_id'] == null){
             $record = $this->repo->findBy('attribute_key', 'city');
             $this->repo->update($record->id, ['attribute_value' => $input['city_id']]);
         }
 
-        if (!empty($input['language_code'])) {
+        if (!empty($input['language_code']) || $input['language_code'] == null){
             $record = $this->repo->findBy('attribute_key', 'language_code');
             $this->repo->update($record->id, ['attribute_value' => $input['language_code']]);
         }
 
-        if (!empty($input['title'])) {
+        if (!empty($input['title'])  || $input['title'] == null){
             $record = $this->repo->findBy('attribute_key', 'title');
             $this->repo->update($record->id, ['attribute_value' => $input['title']]);
         }
 
-        if (!empty($input['slogan'])) {
+        if (!empty($input['slogan']) || $input['slogan'] == null) {
             $record = $this->repo->findBy('attribute_key', 'slogan');
             $this->repo->update($record->id, ['attribute_value' => $input['slogan']]);
         }
 
-        if (!empty($input['description'])) {
+        if (!empty($input['description']) || $input['description'] == null) {
             $record = $this->repo->findBy('attribute_key', 'description');
             $this->repo->update($record->id, ['attribute_value' => $input['description']]);
         }
 
-        if (!empty($input['keywords'])) {
+        if (!empty($input['keywords']) || $input['keywords'] == null) {
             $record = $this->repo->findBy('attribute_key', 'keywords');
             $this->repo->update($record->id, ['attribute_value' => $input['keywords']]);
         }
@@ -175,32 +175,32 @@ class SettingController extends BackendController
             Uploader::faviconUploader($input['favicon']);
         }
 
-        if (!empty($input['abstract_text'])) {
+        if (!empty($input['abstract_text']) || $input['abstract_text'] == null) {
             $record = $this->repo->findBy('attribute_key', 'abstract_text');
             $this->repo->update($record->id, ['attribute_value' => $input['abstract_text']]);
         }
 
-        if (!empty($input['footer_text'])) {
+        if (!empty($input['footer_text'])  || $input['footer_text'] == null) {
             $record = $this->repo->findBy('attribute_key', 'footer_text');
             $this->repo->update($record->id, ['attribute_value' => $input['footer_text']]);
         }
 
-        if (!empty($input['contact'])) {
+        if (!empty($input['contact']) || $input['contact'] == null) {
             $record = $this->repo->findBy('attribute_key', 'contact');
             $this->repo->update($record->id, ['attribute_value' => $input['contact']]);
         }
 
-        if (!empty($input['longitude'])) {
+        if (!empty($input['longitude']) || $input['longitude'] == null) {
             $record = $this->repo->findBy('attribute_key', 'longitude');
             $this->repo->update($record->id, ['attribute_value' => $input['longitude']]);
         }
 
-        if (!empty($input['latitude'])) {
+        if (!empty($input['latitude']) || $input['latitude'] == null) {
             $record = $this->repo->findBy('attribute_key', 'latitude');
             $this->repo->update($record->id, ['attribute_value' => $input['latitude']]);
         }
 
-        if (!empty($input['copyright'])) {
+        if (!empty($input['copyright'])  || $input['copyright'] == null) {
             $record = $this->repo->findBy('attribute_key', 'copyright');
             $this->repo->update($record->id, ['attribute_value' => $input['copyright']]);
         }
@@ -218,7 +218,7 @@ class SettingController extends BackendController
             $this->repo->update($record->id, ['attribute_value' => $input['user_registration_type']]);
         }
 
-        if (!empty($input['user_contract'])) {
+        if (!empty($input['user_contract'])  || $input['user_contract'] == null) {
             $record = $this->repo->findBy('attribute_key', 'user_contract');
             $this->repo->update($record->id, ['attribute_value' => $input['user_contract']]);
         }
@@ -228,22 +228,22 @@ class SettingController extends BackendController
             $this->repo->update($record->id, ['attribute_value' => $input['user_default_role']]);
         }
 
-        if (!empty($input['url'])) {
+        if (!empty($input['url']) || $input['url'] == null) {
             $record = $this->repo->findBy('attribute_key', 'url');
             $this->repo->update($record->id, ['attribute_value' => $input['url']]);
         }
 
-        if (!empty($input['google_recaptcha_site_key'])) {
+        if (!empty($input['google_recaptcha_site_key']) || $input['google_recaptcha_site_key'] == null) {
             $record = $this->repo->findBy('attribute_key', 'google_recaptcha_site_key');
             $this->repo->update($record->id, ['attribute_value' => $input['google_recaptcha_site_key']]);
         }
 
-        if (!empty($input['google_recaptcha_secret_key'])) {
+        if (!empty($input['google_recaptcha_secret_key']) || $input['google_recaptcha_secret_key'] == null) {
             $record = $this->repo->findBy('attribute_key', 'google_recaptcha_secret_key');
             $this->repo->update($record->id, ['attribute_value' => $input['google_recaptcha_secret_key']]);
         }
 
-        if (!empty($input['google_url_shortener_key'])) {
+        if (!empty($input['google_url_shortener_key']) || $input['google_url_shortener_key'] == null) {
             $record = $this->repo->findBy('attribute_key', 'google_url_shortener_key');
             $this->repo->update($record->id, ['attribute_value' => $input['google_url_shortener_key']]);
         }
@@ -258,62 +258,62 @@ class SettingController extends BackendController
             $this->repo->update($record->id, ['attribute_value' => $input['footer_code']]);
         }
 
-        if (!empty($input['timezone'])) {
+        if (!empty($input['timezone']) || $input['timezone'] == null) {
             $record = $this->repo->findBy('attribute_key', 'timezone');
             $this->repo->update($record->id, ['attribute_value' => $input['timezone']]);
         }
 
-        if (!empty($input['facebook'])) {
+        if (!empty($input['facebook']) || $input['facebook'] == null) {
             $record = $this->repo->findBy('attribute_key', 'facebook');
             $this->repo->update($record->id, ['attribute_value' => $input['facebook']]);
         }
 
-        if (!empty($input['facebook_embed_code'])) {
+        if (!empty($input['facebook_embed_code']) || $input['facebook_embed_code'] == null) {
             $record = $this->repo->findBy('attribute_key', 'facebook_embed_code');
             $this->repo->update($record->id, ['attribute_value' => $input['facebook_embed_code']]);
         }
 
-        if (!empty($input['twitter'])) {
+        if (!empty($input['twitter']) || $input['twitter'] == null) {
             $record = $this->repo->findBy('attribute_key', 'twitter');
             $this->repo->update($record->id, ['attribute_value' => $input['twitter']]);
         }
 
-        if (!empty($input['twitter_embed_code'])) {
+        if (!empty($input['twitter_embed_code']) || $input['twitter_embed_code'] == null) {
             $record = $this->repo->findBy('attribute_key', 'twitter_embed_code');
             $this->repo->update($record->id, ['attribute_value' => $input['twitter_embed_code']]);
         }
 
-        if (!empty($input['instagram'])) {
+        if (!empty($input['instagram']) || $input['instagram'] == null) {
             $record = $this->repo->findBy('attribute_key', 'instagram');
             $this->repo->update($record->id, ['attribute_value' => $input['instagram']]);
         }
 
-        if (!empty($input['instagram_embed_code'])) {
+        if (!empty($input['instagram_embed_code']) || $input['instagram_embed_code'] == null) {
             $record = $this->repo->findBy('attribute_key', 'instagram_embed_code');
             $this->repo->update($record->id, ['attribute_value' => $input['instagram_embed_code']]);
         }
 
-        if (!empty($input['pinterest'])) {
+        if (!empty($input['pinterest']) || $input['pinterest'] == null) {
             $record = $this->repo->findBy('attribute_key', 'pinterest');
             $this->repo->update($record->id, ['attribute_value' => $input['pinterest']]);
         }
 
-        if (!empty($input['pinterest_embed_code'])) {
+        if (!empty($input['pinterest_embed_code'])  || $input['pinterest_embed_code'] == null) {
             $record = $this->repo->findBy('attribute_key', 'pinterest_embed_code');
             $this->repo->update($record->id, ['attribute_value' => $input['pinterest_embed_code']]);
         }
 
-        if (!empty($input['weather_embed_code'])) {
+        if (!empty($input['weather_embed_code'])  || $input['weather_embed_code'] == null) {
             $record = $this->repo->findBy('attribute_key', 'weather_embed_code');
             $this->repo->update($record->id, ['attribute_value' => $input['weather_embed_code']]);
         }
 
-        if (!empty($input['addthis'])) {
+        if (!empty($input['addthis'])   || $input['addthis'] == null) {
             $record = $this->repo->findBy('attribute_key', 'addthis');
             $this->repo->update($record->id, ['attribute_value' => $input['addthis']]);
         }
 
-        if (!empty($input['disqus'])) {
+        if (!empty($input['disqus'])  || $input['disqus'] == null) {
             $record = $this->repo->findBy('attribute_key', 'disqus');
             $this->repo->update($record->id, ['attribute_value' => $input['disqus']]);
         }
