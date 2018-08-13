@@ -3,8 +3,38 @@
 * Kurulum
   * Sistem Gereksinimleri
 * Konfigürasyon
- *
+* Ayarlar
+* Kullanıcı Yönetimi
+  * Kullanıcılar
+  * Grouplar
+  * Roleler
+  * İzinler
+* Genel Ayarlar
+  * Ayarlar
+  * Ülkeler
+  * İller
+  * Arama Listesi
+  * Ping
+  * Loglar
+  * ENV Yönetimi
+* İletişim Yönetimi
+* Menüler
+* Sayfalar
+* Etiketler
+* Reklamlar
+* Duyurular
+* Site Haritası
+* Rss Yönetimi
+* Olay Yönetimi
+* Modül Yönetimi
+* Tema Yönetimi
+* API Yönetimi
 
+## Modüller
+* Biyografi Modülü
+* Makale Modülü
+* Kitap Modülü
+* Haber Modülü
 
 
 ## Kurulum
@@ -20,6 +50,47 @@
 
 ## Konfigürasyon
 
-    Anadizinde bulunan .env dosyasını düzenleyerek sistemi yapılandırabilirsiniz. 
-    
-## Konfigürasyon    
+    Anadizinde .env dosyasını aşağıdaki gibi düzenleyerek yapılandırabilirsiniz.
+```php
+APP_ENV=local
+APP_KEY=YOURAPPKEY
+APP_DEBUG=true
+APP_LOG_LEVEL=debug
+APP_URL=http://localhost
+ACTIVE_THEME=news-theme
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=YOURDBNAME
+DB_USERNAME=YOURDBNAME
+DB_PASSWORD=YOURDBPASSWORD
+BROADCAST_DRIVER=log
+CACHE_DRIVER=redis
+SESSION_DRIVER=file
+QUEUE_DRIVER=redis
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME=YOUREMAIL
+MAIL_PASSWORD=YOUREMAILPASSWORD
+MAIL_ENCRYPTION=ssl
+PUSHER_APP_ID=
+PUSHER_KEY=
+PUSHER_SECRET=
+SCOUT_DRIVER=
+ALGOLIA_APP_ID=
+ALGOLIA_SECRET=
+SCOUT_QUEUE=true
+FACEBOOK_CLIENT_ID=
+FACEBOOK_SECRET=
+FACEBOOK_REDIRECT=http://baznews.test/auth/facebook/callback
+TWITTER_CLIENT_ID=
+TWITTER_SECRET=
+TWITTER_REDIRECT=http://baznews.test/auth/twitter/callback
+GOOGLE_CLIENT_ID=
+GOOGLE_SECRET=
+GOOGLE_REDIRECT=http://baznews.test/auth/google/callback
+```
