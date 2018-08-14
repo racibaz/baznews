@@ -19,9 +19,9 @@ class IndexController extends Controller
 
             try {
                 $bandNewsItems = app(NewsRepository::class)->getBandNewsItems();
-                $mainCuffNewsItems = app(NewsRepository::class)->getMainCuffItems();
+                $mainCuffNewsItems = app(NewsRepository::class)->getMainCuffItems(10);
                 $miniCuffNewsItems = app(NewsRepository::class)->getMiniCuffItems(10);
-                $boxCuffNewsItems = app(NewsRepository::class)->getBoxCuffNewsItems();
+                $boxCuffNewsItems = app(NewsRepository::class)->getBoxCuffNewsItems(10);
 
                 $photoGalleries = app(PhotoGalleryRepository::class)->getCuffPhotoGalleries();
                 $videoGalleries = app(VideoGalleryRepository::class)->getCuffVideoGalleries();
