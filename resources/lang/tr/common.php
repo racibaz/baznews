@@ -54,4 +54,5 @@ return [
     'force_deleted' => 'Kayıt Silindi',
     'created_date' => 'Eklenme Zamanı',
     'updated_date' => 'Güncellenme Zamanı',
+    'record_is_available' => 'Kayıt Mevcut'
 ];

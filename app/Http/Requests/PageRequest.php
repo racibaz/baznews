@@ -33,7 +33,6 @@ class PageRequest extends FormRequest
                 return [
                     'name' => 'required',
                     'slug' => [
-                        'required',
                         'max:255',
                         Rule::unique('pages'),
                     ],
