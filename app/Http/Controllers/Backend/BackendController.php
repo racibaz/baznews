@@ -114,4 +114,9 @@ class BackendController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function flushAll()
+    {
+        Cache::flush();
+    }
 }

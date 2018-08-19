@@ -116,7 +116,7 @@ class ThemeManagerController extends BackendController
 //        $this->dispatch(new FlushAllCache());
 
         //Delete all cache
-        Cache::flush();
+        $this->flushAll();
 
 
         Log::info('Theme changed to the ' . $themeSlug);

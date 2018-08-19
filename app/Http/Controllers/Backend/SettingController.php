@@ -337,8 +337,8 @@ class SettingController extends BackendController
             $record = $this->repo->findBy('attribute_key', 'allow_video_formats');
             $this->repo->update($record->id, ['attribute_value' => $input['allow_video_formats']]);
         }
-        $this->removeCacheTags(['Setting']);
-        $this->flushAllCache();
+
+        $this->flushAll();
 
         Session::flash('flash_message', trans('common.message_model_updated'));
         return Redirect::route($this->redirectRouteName . $this->view . 'index');
