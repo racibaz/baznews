@@ -1,9 +1,10 @@
 # Baznews Haber Yazılımı
 
-* Kurulum
+* Kurumlum İşlemleri 
   * Sistem Gereksinimleri
-* Konfigürasyon
-* Ayarlar
+  * Konfigürasyon
+  * Kurulum
+  
 * Kullanıcı Yönetimi
   * Kullanıcılar
   * Grouplar
@@ -37,7 +38,7 @@
 * Haber Modülü
 
 
-## Kurulum
+## Kurulum İşlemleri
 
 ### Sistem Gereksinimleri
 
@@ -50,7 +51,8 @@
 
 ## Konfigürasyon
 
-    Anadizinde .env dosyasını aşağıdaki gibi düzenleyerek yapılandırabilirsiniz.
+    Anadizinde .env dosyasını oluşturduktan sonra aşağıdaki gibi düzenleyerek yapılandırabilirsiniz.
+    
 ```php
 APP_ENV=local
 APP_KEY=YOURAPPKEY
@@ -94,3 +96,20 @@ GOOGLE_CLIENT_ID=
 GOOGLE_SECRET=
 GOOGLE_REDIRECT=http://baznews.test/auth/google/callback
 ```
+
+## Kurulum
+
+ Anadizinde ki .env doayasında "DB_DATABASE" alanına girdiğiniz isimde veritabanını oluşturun ve konsoldan 
+ 
+ composer update yapın.
+ 
+ php artisan baznews:install 
+ veya 
+ php artisan migrate
+ php artisan db:seed
+ php artisan module:migrate
+ php artisan module:seed
+ php artisan migrate --path=vendor/venturecraft/revisionable/src/migrations
+ php artisan passport:install
+ 
+ kodlarını çalıştırın.
