@@ -110,7 +110,8 @@ class ThemeManagerController extends BackendController
         $this->changeEnv(['ACTIVE_THEME' => $themeSlug]);
 
         \Artisan::call('config:clear');
-        \Artisan::call('config:cache');
+        // todo hata veriyor.
+        //\Artisan::call('config:cache');
 
         //todo çalışmıyor.
 //        $this->dispatch(new FlushAllCache());
