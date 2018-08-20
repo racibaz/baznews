@@ -101,15 +101,15 @@
                             <tbody>
                             <tr>
                                 <th width="20%">{{trans('news::news.country_id')}}</th>
-                                <td>{{$record->country->name}}</td>
+                                <td>{{ isset($record->country) ? $record->country->name  : '' }}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.city_id')}}</th>
-                                <td>{{$record->city->name}}</td>
+                                <td>{{ isset($record->city) ? $record->city->name  : '' }}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.news_source_id')}}</th>
-                                <td>{{$record->news_source->name}}</td>
+                                <td>{{ isset($record->news_source) ? $record->news_source->name  : '' }}</td>
                             </tr>
 
                             <tr>
@@ -119,13 +119,13 @@
                             <tr>
                                 <th>{{trans('common.thumbnail')}}</th>
                                 <td>
-                                    <img src="{{ asset('images/news_images/' . $record->id . '/thumbnail/' . $record->thumbnail)}}"/>
+                                    <img src="{{ asset('images/news_images/' . $record->id . '/thumbnail/' . $record->thumbnail)}}" width="350" height="200"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.cuff_photo')}}</th>
                                 <td>
-                                    <img src="{{ asset('images/news_images/' . $record->id . '/cuff_photo/' . $record->cuff_photo)}}"/>
+                                    <img src="{{ asset('images/news_images/' . $record->id . '/cuff_photo/' . $record->cuff_photo)}}" width="350" height="200"/>
                                 </td>
                             </tr>
                             <tr>
