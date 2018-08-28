@@ -21,7 +21,7 @@ class NewsCategoryRepository extends EloquentRepository
     {
         return $this->with(['news' => function($query){
 
-            $query->orderBy('id', 'DESC');
+            $query->orderBy('updated_at', 'desc');
 
         }])->where('is_cuff', 1)
                         ->where('is_active', 1)

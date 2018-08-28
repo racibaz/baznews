@@ -36,7 +36,11 @@ class NewsCategoryController extends Controller
             try {
 
                 $newsCategorySlug = removeHtmlTagsOfField($newsCategorySlug);
-                $newsCategory = $this->repo->with(['news'])->where('is_active', 1)->findBy('slug', $newsCategorySlug);
+                $newsCategory = $this->repo
+                    ->with(['news'])
+                    ->where('is_active', 1)
+                    ->orderBy('updated_at', 'desc')
+                    ->findBy('slug', $newsCategorySlug);
 
                 $records = $newsCategory->news()->paginate();
 
