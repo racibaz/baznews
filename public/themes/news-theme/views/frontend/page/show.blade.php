@@ -7,14 +7,7 @@
             <li>
                 <a href="{!! route('index') !!}">{{trans('common.homepage')}}</a>
             </li>
-            <li>
-                <a href="{!! route('show_news_category', ['slug' => $record->slug]) !!}">
-                    {{$record->name}}
-                </a>
-            </li>
-            <li>
-                {{$record->title}}
-            </li>
+            <li> {{$record->name}} </li>
         </ol>
 
         <div class="row">
