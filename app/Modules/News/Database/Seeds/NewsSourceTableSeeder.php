@@ -28,6 +28,7 @@ class NewsSourceTableSeeder extends Seeder
 
         NewsSource::create([
             'name' => 'Medya Takip',
+            'url' => 'http://www.medyatakip.com.tr',
             'is_active' => 1
         ]);
 
@@ -39,7 +40,7 @@ class NewsSourceTableSeeder extends Seeder
 
         NewsSource::create([
             'name' => 'SANATLOG',
-            'url' => 'http://www.sanatlog.com/',
+            'url' => 'http://www.sanatlog.com',
             'is_active' => 1
         ]);
 
@@ -51,7 +52,7 @@ class NewsSourceTableSeeder extends Seeder
 
         NewsSource::create([
             'name' => 'Mürekkep Haber',
-            'url' => 'http://www.murekkephaber.com/',
+            'url' => 'http://www.murekkephaber.com',
             'is_active' => 1
         ]);
 
@@ -68,20 +69,26 @@ class NewsSourceTableSeeder extends Seeder
         ]);
 
         NewsSource::create([
-            'name' => 'ntv.com.tr',
-            'url' => 'https://www.ntv.com.tr/',
+            'name' => 'ntv',
+            'url' => 'https://www.ntv.com.tr',
             'is_active' => 1
         ]);
 
         NewsSource::create([
-            'name' => 'hurriyet.com.tr',
-            'url' => 'http://www.hurriyet.com.tr/',
+            'name' => 'hurriyet',
+            'url' => 'http://www.hurriyet.com.tr',
             'is_active' => 1
         ]);
 
         NewsSource::create([
-            'name' => 'www.milliyet.com.tr/',
-            'url' => 'http://www.milliyet.com.tr/',
+            'name' => 'milliyet',
+            'url' => 'http://www.milliyet.com.tr',
+            'is_active' => 1
+        ]);
+
+        NewsSource::create([
+            'name' => 'LaleGülHaber',
+            'url' => 'https://www.lalegulhaber.com.tr',
             'is_active' => 1
         ]);
     }
