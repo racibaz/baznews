@@ -108,6 +108,11 @@
                             </div>
 
                             <div class="form-group">
+                                {!! Form::label('source_link', trans('news::news.source_link'),['class'=> ' control-label']) !!}
+                                {!! Form::text('source_link', $record->source_link, ['placeholder' => trans('news::news.source_link') ,'class' => 'form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
                                 {!! Form::label('cuff_direct_link', trans('news::news.cuff_direct_link'),['class'=> ' control-label']) !!}
                                 {!! Form::text('cuff_direct_link', $record->cuff_direct_link, ['placeholder' => trans('news::news.cuff_direct_link') ,'class' => 'form-control']) !!}
                             </div>

@@ -34,6 +34,7 @@ class CreateNewsTable extends Migration
             $table->string('video_embed')->nullable();
             $table->unsignedInteger('news_type')->nullable()->default(0);
             $table->string('map_text')->nullable();
+            $table->string('source_link')->nullable();
             $table->unsignedInteger('status')->nullable();
             //$table->enum('choices', array('foo', 'bar'));
             $table->boolean('band_news');

@@ -48,7 +48,7 @@ class News extends Model
 
     protected $fillable = ['user_id', 'country_id', 'city_id', 'news_source_id',
         'title', 'small_title', 'slug', 'spot', 'short_url', 'content', 'description', 'keywords', 'meta_tags', 'cuff_photo', 'thumbnail', 'cuff_direct_link',
-        'video_embed', 'news_type', 'status', 'band_news', 'box_cuff', 'is_cuff', 'break_news', 'main_cuff', 'mini_cuff', 'map', 'is_comment',
+        'source_link', 'video_embed', 'news_type', 'status', 'band_news', 'box_cuff', 'is_cuff', 'break_news', 'main_cuff', 'mini_cuff', 'map', 'is_comment',
         'is_show_editor_profile', 'is_show_previous_and_next_news', 'is_ping', 'is_active'];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];

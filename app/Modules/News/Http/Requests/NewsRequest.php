@@ -66,6 +66,7 @@ class NewsRequest extends FormRequest
                     'video_embed' => 'string|nullable',
                     'news_type' => 'integer|nullable',
                     'map_text' => 'max:255|nullable',
+                    'source_link' => 'max:255|url|nullable',
                     'status' => 'integer|nullable',
                 ];
             }
@@ -108,6 +109,7 @@ class NewsRequest extends FormRequest
                     'video_embed' => 'string|nullable',
                     'news_type' => 'integer|nullable',
                     'map_text' => 'max:255|nullable',
+                    'source_link' => 'max:255|url|nullable',
                     'status' => 'integer|nullable',
                 ];
             }
