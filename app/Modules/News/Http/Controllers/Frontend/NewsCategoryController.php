@@ -42,7 +42,10 @@ class NewsCategoryController extends Controller
                     ->orderBy('updated_at', 'desc')
                     ->findBy('slug', $newsCategorySlug);
 
-                $records = $newsCategory->news()->paginate();
+                $records = $newsCategory->news()
+                    ->orderBy('updated_at', 'desc')
+                    ->paginate();
+
 
             }catch (\Exception $e){
                 abort(404,'The specified News Category cannot be found');
