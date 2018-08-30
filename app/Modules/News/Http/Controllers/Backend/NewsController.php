@@ -24,6 +24,7 @@ use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Repositories\TagRepository;
 use Carbon\Carbon;
+use File;
 use Mremi\UrlShortener\Model\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -786,7 +787,11 @@ class NewsController extends BackendController
         }
 
         $news = $this->repo->withTrashed()->find($input['historyForceDeleteRecordId']);
+        $newsID = $news->id;
         $news->forceDelete();
+
+        //Foto ların bulunduğu klasörü siliyoruz.
+        File::deleteDirectory(public_path('images/news_images/' . $newsID));
 
         Session::flash('flash_message', trans('common.force_deleted'));
         return redirect()->back();
