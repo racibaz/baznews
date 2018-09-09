@@ -21,3 +21,13 @@ composer.lock
 /storage/oauth-public.key
 baznews
 baznews.pub
+
+
+/public/themes/*
+!/public/themes/news-theme
+
+/app/Modules/*
+!/app/Modules/Article
+!/app/Modules/Biography
+!/app/Modules/Book
+!/app/Modules/News
