@@ -16,6 +16,16 @@ trait Eventable
                 $event->user_id = Auth::user() ? Auth::user()->id : null;
                 $event->event = get_called_class() . ' Created';
                 $record->events()->save($event);
+
+                /*
+                 * todo
+                 * Sluggable hatasını gidermek için eklnen modeli, güncelliyoruz.
+                 * Normalde bu işlemi yapmamamız lazım ama sluggable da bu konuyu şimdilik çözemedim.
+                 * Geçici olarak bu çözümü kullanıyoruz.
+                 *
+                 * */
+                $record->update(['id' => $record->id]);
+
             });
 
             static::updated(function ($record) {
