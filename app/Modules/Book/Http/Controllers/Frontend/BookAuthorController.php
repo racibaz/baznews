@@ -26,6 +26,10 @@ class BookAuthorController extends Controller
                     ->findBy('id', $id);
 
 
+                if(empty($bookAuthor)){
+                    abort(404);
+                }
+
                 $records = $bookAuthor->books()->paginate();
 
                 return view('book::frontend.book_author.show', compact([
