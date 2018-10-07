@@ -91,5 +91,11 @@ class NewsSourceTableSeeder extends Seeder
             'url' => 'https://www.lalegulhaber.com.tr',
             'is_active' => 1
         ]);
+
+        NewsSource::create([
+            'name' => 'EnSonHaber',
+            'url' => 'http://www.ensonhaber.com',
+            'is_active' => 1
+        ]);
     }
 }
