@@ -97,5 +97,11 @@ class NewsSourceTableSeeder extends Seeder
             'url' => 'http://www.ensonhaber.com',
             'is_active' => 1
         ]);
+
+        NewsSource::create([
+            'name' => 'AHaber',
+            'url' => 'https://www.ahaber.com.tr',
+            'is_active' => 1
+        ]);
     }
 }
