@@ -658,7 +658,9 @@ class NewsController extends BackendController
                     $query->where('id', "$id");
                 }
                 if ($title = Input::get('title')) {
-                    $query->where('title', 'LIKE', "%$title%");
+                    $query->orWhere('title', 'LIKE', "%$title%")
+                        ->orWhere('spot', 'LIKE', "%$title%")
+                        ->orWhere('content', 'LIKE', "%$title%");
                 }
                 if ($slug = Input::get('slug')) {
                     $query->where('slug', 'LIKE', "%$slug%");

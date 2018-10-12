@@ -45,6 +45,12 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
+                                {!! Form::label('title', trans('common.title') . ' + ' . trans('common.spot') . ' + ' . trans('common.content')) !!}
+                                {!! Form::text('title', null ,['placeholder' => trans('common.title'),'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
                                 {!! Form::label('slug', trans('common.slug')) !!}
                                 {!! Form::text('slug', null ,['placeholder' => trans('common.slug'),'class' => 'form-control']) !!}
                             </div>
