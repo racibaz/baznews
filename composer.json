@@ -65,6 +65,11 @@
         ]
     },
     "extra": {
+        "merge-plugin": {
+            "include": [
+                "app/Modules/*/composer.json"
+            ]
+        },
         "laravel": {
             "dont-discover": [
             ]
