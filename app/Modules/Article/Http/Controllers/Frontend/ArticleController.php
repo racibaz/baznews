@@ -20,26 +20,31 @@ class ArticleController extends Controller
         $id = substr(strrchr($slug, '-'), 1);
         return Cache::tags(['ArticleController', 'Article', 'article'])->rememberForever('article:' . $id, function () use ($id) {
 
-            $record = $this->repo
-                ->with([
-                    'article_categories',
-                    'article_author',
-                    'user',
-                ])
-                ->where('is_active', 1)
-                ->findBy('id', $id);
+            try{
+                $record = $this->repo
+                    ->with([
+                        'article_categories',
+                        'article_author',
+                        'user',
+                    ])
+                    ->where('is_active', 1)
+                    ->findBy('id', $id);
 
-            $otherArticles = $this->repo
-                ->with([
-                    'article_categories',
-                    'article_author',
-                    'user',
-                ])
-                ->where('is_active', 1)
-                ->findAll()
-                ->take(5);
+                $otherArticles = $this->repo
+                    ->with([
+                        'article_categories',
+                        'article_author',
+                        'user',
+                    ])
+                    ->where('is_active', 1)
+                    ->findAll()
+                    ->take(5);
 
-            $authorPhoto = $this->authorRepo->getAuthorAvatar($record->article_author);
+                $authorPhoto = $this->authorRepo->getAuthorAvatar($record->article_author);
+
+            }catch(\Exception $e){
+                abort(404);
+            }
 
             return view('article::frontend.article.show', compact([
                 'record',

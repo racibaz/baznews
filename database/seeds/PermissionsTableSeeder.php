@@ -27,6 +27,12 @@ class PermissionsTableSeeder extends Seeder
             'is_active'     => 1,
         ]);
 
+        $laravelfilemanager = Permission::create([
+            'name'          => '*-laravelfilemanager',
+            'display_name'  => 'Laravel File Manager permissions',
+            'is_active'     => 1,
+        ]);
+
         //dashboard
         $dashboard1 = Permission::create([
             'name'          => 'index-admin',
@@ -1390,6 +1396,7 @@ class PermissionsTableSeeder extends Seeder
 
         $super_admin->permissions()->attach($env1);
         $super_admin->permissions()->attach($env2);
+        $super_admin->permissions()->attach($laravelfilemanager);
         $super_admin->permissions()->attach($dashboard1);
         $super_admin->permissions()->attach($dashboard2);
         $super_admin->permissions()->attach($user1);
@@ -1622,6 +1629,8 @@ class PermissionsTableSeeder extends Seeder
         $demo_role->users()->attach($demo_user);
 
         $demo_role->permissions()->attach($env1);
+
+        $demo_role->permissions()->attach($laravelfilemanager);
 
         $demo_role->permissions()->attach($log1);
 

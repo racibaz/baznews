@@ -137,15 +137,6 @@ class BookController extends BackendController
                 Uploader::fileUpload($result, 'photo', $input['photo'], $destination, $document_name);
             }
 
-
-            /*
-             * todo
-             *
-             * gerekirse crop işlemleri yapılabilinir.
-             *
-             * */
-
-
             $this->bookBookCategoriesStore($result, $input);
 
 

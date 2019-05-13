@@ -37,19 +37,19 @@
                             </tr>
 
                             <tr>
-                                <th>{{trans('page.slug')}}:</th>
+                                <th>{{trans('common.slug')}}:</th>
                                 <td>{{$record->slug}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('page.content')}}:</th>
+                                <th>{{trans('common.content')}}:</th>
                                 <td>{!! $record->content !!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('page.keywords')}}:</th>
+                                <th>{{trans('common.keywords')}}:</th>
                                 <td>{{$record->keywords}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('page.description')}}:</th>
+                                <th>{{trans('common.description')}}:</th>
                                 <td>{{$record->description}}</td>
                             </tr>
                             </tbody>

@@ -38,7 +38,7 @@ class UsersTableSeeder extends Seeder
             'language_id' => 1,
             'country_id' => 1,
             'city_id' => 1,
-            'name' => 'editor cansız',
+            'name' => 'editor1',
             'email' => 'editor@hotmail.com',
             'password' => bcrypt("1"),
 //            'slug' => 'slug',
@@ -57,7 +57,7 @@ class UsersTableSeeder extends Seeder
             'language_id' => 1,
             'country_id' => 1,
             'city_id' => 1,
-            'name' => 'yazar cansız',
+            'name' => 'yazar1',
             'email' => 'yazar@hotmail.com',
             'password' => bcrypt("1"),
 //            'slug' => 'slug',
@@ -89,6 +89,24 @@ class UsersTableSeeder extends Seeder
             'status' => 1,
         ]);
 
+
+        $user5 = User::create([
+            'language_id' => 1,
+            'country_id' => 1,
+            'city_id' => 1,
+            'name' => 'bot',
+            'email' => 'bot@bazsoft.biz',
+            'password' => bcrypt("bot"),
+//            'slug' => 'slug',
+//            'cell_phone' => 'cell_phone',
+//            'facebook' => 'facebook',
+//            'twitter' => 'twitter',
+//            'linkedin' => 'linkedin',
+//            'youtube' => 'youtube',
+//            'sex' => 1,
+//            'IP' => '1213123',
+            'status' => 1,
+        ]);
         
     }
 }

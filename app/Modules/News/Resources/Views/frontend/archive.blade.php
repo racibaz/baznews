@@ -92,8 +92,8 @@
                                         <tr>
                                             <th>#</th>
                                             <th>{{trans('news::news.image')}}</th>
-                                            <th>{{trans('news::news.title')}}</th>
-                                            <th>{{trans('news::news.spot')}}</th>
+                                            <th>{{trans('common.title')}}</th>
+                                            <th>{{trans('common.spot')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>

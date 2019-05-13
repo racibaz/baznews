@@ -15,19 +15,26 @@ class BookCategoryController extends Controller
 
     public function show($slug)
     {
-        return Cache::tags(['BookCategoryController', 'Book', 'bookCategory'])->rememberForever(request()->fullUrl(), function () use ($slug) {
-            $slug = removeHtmlTagsOfField($slug);
-            $bookCategory = $this->repo
-                ->with(['books'])
-                ->where('is_active', 1)
-                ->findBy('slug', $slug);
+        try
+        {
+            return Cache::tags(['BookCategoryController', 'Book', 'bookCategory'])->rememberForever(request()->fullUrl(), function () use ($slug) {
+                $slug = removeHtmlTagsOfField($slug);
 
-            $records = $bookCategory->books()->paginate();
+                $bookCategory = $this->repo
+                    ->with(['books'])
+                    ->where('is_active', 1)
+                    ->findBy('slug', $slug);
 
-            return view('book::frontend.book_category.show', compact([
-                'bookCategory',
-                'records',
-            ]))->render();
-        });
+                $records = $bookCategory->books()->paginate();
+
+                return view('book::frontend.book_category.show', compact([
+                    'bookCategory',
+                    'records',
+                ]))->render();
+            });
+
+        }catch(\Exception $e){
+            abort(404);
+        }
     }
 }

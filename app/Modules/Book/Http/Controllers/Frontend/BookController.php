@@ -13,23 +13,36 @@ class BookController extends Controller
         $this->repo = $repo;
     }
 
+
+    /**
+     *
+     * unique() methodu ile birden çok kategoriye eklenmiş kitapları listelememek kullanıyoruz.
+     *
+     * @param $slug
+     * @return mixed
+     */
     public function show($slug)
     {
         $id = substr(strrchr($slug, '-'), 1);
 
         return Cache::tags(['BookController', 'Book', 'book'])->rememberForever('book:' . $id, function () use ($id) {
 
-            $record = $this->repo
-                ->with([
-                    'book_categories',
-                    'book_author',
-                    'user',
-                ])
-                ->where('is_active', 1)
-                ->findBy('id', $id);
+            try{
+                $record = $this->repo
+                    ->with([
+                        'book_categories',
+                        'book_author',
+                        'user',
+                    ])
+                    ->where('is_active', 1)
+                    ->findBy('id', $id);
 
-            $bookFirstCategory = $record->book_categories()->first();
-            $firstCategoryBooks = isset($bookFirstCategory) ? $bookFirstCategory->books : [];
+                $bookFirstCategory = $record->book_categories->first();
+                $firstCategoryBooks = isset($bookFirstCategory) ? $bookFirstCategory->books->unique() : [];
+
+            }catch(\Exception $e){
+                abort(404);
+            }
 
             return view('book::frontend.book.show', compact([
                 'record',

@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('page.management')}}
-            <small>{{trans('page.edit_create')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('page.index') !!}"> {{trans('page.management')}}</a></li>
-            <li class="active">{{trans('page.edit_create')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -23,7 +23,7 @@
         <div class="col-lg-9" id="content">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('page.content')}}</h3>
+                    <h3 class="box-title">{{trans('common.content')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -46,8 +46,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-12">
-                                {!! Form::label('slug', trans('page.slug'),['class'=> 'control-label']) !!}
-                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('page.slug') ,'class' => 'form-control']) !!}
+                                {!! Form::label('slug', trans('common.slug'),['class'=> 'control-label']) !!}
+                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('common.slug') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -56,24 +56,24 @@
                         <div class="row">
 
                             <div class="col-lg-12">
-                                {!! Form::label('content_area', trans('page.content'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('content_area', $record->content, ['placeholder' => trans('page.content') ,'class' => 'form-control summernote']) !!}
+                                {!! Form::label('content_area', trans('common.content'),['class'=> 'control-label']) !!}
+                                {!! Form::textarea('content_area', $record->content, ['placeholder' => trans('common.content') ,'class' => 'form-control summernote']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-12">
-                                {!! Form::label('keywords', trans('page.keywords'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('keywords', $record->keywords, ['placeholder' => trans('page.keywords') ,'class' => 'form-control']) !!}
+                                {!! Form::label('keywords', trans('common.keywords'),['class'=> 'control-label']) !!}
+                                {!! Form::textarea('keywords', $record->keywords, ['placeholder' => trans('common.keywords') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-12">
-                                {!! Form::label('description', trans('page.description'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('page.description') ,'class' => 'form-control']) !!}
+                                {!! Form::label('description', trans('common.description'),['class'=> 'control-label']) !!}
+                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('common.description') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
         <div class="col-lg-3" id="sidebar">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('page.status')}}</h3>
+                    <h3 class="box-title">{{trans('common.status')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i

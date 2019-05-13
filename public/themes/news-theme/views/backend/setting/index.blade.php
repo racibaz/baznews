@@ -61,10 +61,10 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                {!! Form::label('title', trans('setting.title'),['class'=> 'col-lg-2 control-label']) !!}
+                                {!! Form::label('title', trans('common.title'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::text('title', $records->where('attribute_key','title')->first()->attribute_value, ['placeholder' => trans('setting.title') ,'class' => 'form-control']) !!}
+                                    {!! Form::text('title', $records->where('attribute_key','title')->first()->attribute_value, ['placeholder' => trans('common.title') ,'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div><!-- /.form-group -->
@@ -89,19 +89,19 @@
 
                         <div class="form-group">
                             <div class="row">
-                                {!! Form::label('description', trans('setting.description'),['class'=> 'col-lg-2 control-label']) !!}
+                                {!! Form::label('description', trans('common.description'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::text('description', $records->where('attribute_key','description')->first()->attribute_value, ['placeholder' => trans('setting.description') ,'class' => 'form-control']) !!}
+                                    {!! Form::text('description', $records->where('attribute_key','description')->first()->attribute_value, ['placeholder' => trans('common.description') ,'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div><!-- /.form-group -->
                         <div class="form-group">
                             <div class="row">
-                                {!! Form::label('keywords', trans('setting.keywords'),['class'=> 'col-lg-2 control-label']) !!}
+                                {!! Form::label('keywords', trans('common.keywords'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::text('keywords', $records->where('attribute_key','keywords')->first()->attribute_value, ['placeholder' => trans('setting.keywords') ,'class' => 'form-control tagsinput']) !!}
+                                    {!! Form::text('keywords', $records->where('attribute_key','keywords')->first()->attribute_value, ['placeholder' => trans('common.keywords') ,'class' => 'form-control tagsinput']) !!}
                                 </div>
                             </div>
                         </div><!-- /.form-group -->
@@ -479,7 +479,7 @@
         <div class="col-sm-5 col-md-3" id="sidebar">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('setting.status')}}</h3>
+                    <h3 class="box-title">{{trans('common.status')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -509,8 +509,9 @@
                             <span>Route Ayarlarını Ön Belleğe Al</span></a>
                         <a class="list-group-item" href="{!! route('routeClear') !!}"> <i class="fa fa-trash-o"></i>
                             <span>Route Ön Belleğini Temizle</span></a>
-                        <a class="list-group-item" href="{!! route('configCache') !!}"><i class="fa fa-trash-o"></i>
+                        <!--<a class="list-group-item" href="{!! route('configCache') !!}"><i class="fa fa-trash-o"></i>
                             <span>Konfigürasyon Ayarlarını Ön Belleğe Al</span></a>
+                         !-->
                         <a class="list-group-item" href="{!! route('configClear') !!}"> <i class="fa fa-trash-o"></i>
                             <span>Konfigürasyon Ayarlarını Temizle</span></a>
                     </div>

@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('news::video_gallery.management')}}
-            <small>{{trans('news::video_gallery.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('video_gallery.index') !!}">{{trans('news::video_gallery.management')}}</a></li>
-            <li class="active">{{trans('news::video_gallery.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -46,16 +46,16 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                {!! Form::label('title', trans('news::video_gallery.title'),['class'=> 'control-label']) !!}
-                                {!! Form::text('title', $record->name, ['placeholder' => trans('news::video_gallery.title') ,'class' => 'form-control']) !!}
+                                {!! Form::label('title', trans('common.title'),['class'=> 'control-label']) !!}
+                                {!! Form::text('title', $record->name, ['placeholder' => trans('common.title') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                {!! Form::label('slug', trans('news::video_gallery.slug'),['class'=> 'control-label']) !!}
-                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('news::video_gallery.slug') ,'class' => 'form-control']) !!}
+                                {!! Form::label('slug', trans('common.slug'),['class'=> 'control-label']) !!}
+                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('common.slug') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -66,12 +66,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        {!! Form::label('description', trans('news::video_gallery.description'),['class'=> 'control-label']) !!}
-                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('news::video_gallery.description') ,'class' => 'form-control']) !!}
+                        {!! Form::label('description', trans('common.description'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('common.description') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('keywords', trans('news::video_gallery.keywords'),['class'=> 'control-label','style'=>'width:100%']) !!}
-                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('news::video_gallery.keywords') ,'class' => 'form-control tagsinput']) !!}
+                        {!! Form::label('keywords', trans('common.keywords'),['class'=> 'control-label','style'=>'width:100%']) !!}
+                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('common.keywords') ,'class' => 'form-control tagsinput']) !!}
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -80,7 +80,7 @@
         <div class="col-lg-4">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('news::video_gallery.status')}}</h3>
+                    <h3 class="box-title">{{trans('common.status')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -117,7 +117,7 @@
 
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('news::video_gallery.thumbnail')}}</h3>
+                    <h3 class="box-title">{{trans('common.thumbnail')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -129,7 +129,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        {!! Form::label('thumbnail', trans('news::photo_gallery.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
+                        {!! Form::label('thumbnail', trans('common.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
                         <div class="fileinput fileinput-new" data-provides="fileinput">
                             <div class="fileinput-preview thumbnail" data-trigger="fileinput"
                                  style="width: 200px; height: 150px;">

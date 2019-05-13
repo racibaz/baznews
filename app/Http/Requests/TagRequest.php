@@ -40,8 +40,6 @@ class TagRequest extends FormRequest
                         Rule::unique('tags'),
                     ],
                     'slug' => [
-                        'required',
-                        'min:1',
                         'max:255',
                         Rule::unique('tags'),
                     ],

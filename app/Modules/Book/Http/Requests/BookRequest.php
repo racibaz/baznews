@@ -32,8 +32,8 @@ class BookRequest extends FormRequest
             case 'POST': {
                 return [
                     'user_id' => 'required|integer',
-                    'book_publisher_id' => 'required|integer',
-                    'book_author_id' => 'required|integer',
+                    'publisher_id' => 'required|integer',
+                    'author_id' => 'required|integer',
                     'name' => [
                         'required',
                         'max:255',
@@ -62,8 +62,8 @@ class BookRequest extends FormRequest
                 $id = $this->route('book')->id;
                 return [
                     'user_id' => 'required|integer',
-                    'book_publisher_id' => 'required|integer',
-                    'book_author_id' => 'required|integer',
+                    'publisher_id' => 'required|integer',
+                    'author_id' => 'required|integer',
                     'name' => [
                         'required',
                         'max:255',

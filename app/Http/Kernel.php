@@ -59,6 +59,7 @@ class Kernel extends HttpKernel
         'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
         'checkperm' => \App\Http\Middleware\CheckPerm::class,
+        'laravelFileManager' => \App\Http\Middleware\LaravelFileManager::class,
         'social' => \App\Http\Middleware\Social::class,
         'envFileChange' => \App\Http\Middleware\EnvFileChange::class,
         'scopes' => \Laravel\Passport\Http\Middleware\CheckScopes::class,

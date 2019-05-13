@@ -54,12 +54,9 @@ class NewsRepository extends EloquentRepository
             ->first();
     }
 
-    //todo php versiyon farkından dolayı "?" hata veriyor.
-    //    public function relatedNews($record): ?array
     public function relatedNews($record)
     {
         $relatedNews = [];
-        //filter veya map vs.. ye dönüştürülebilinir.
         foreach ($record->related_news as $related_news) {
             array_push($relatedNews, $related_news->related_news_id);
         }

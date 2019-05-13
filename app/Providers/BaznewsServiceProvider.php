@@ -54,8 +54,14 @@ class BaznewsServiceProvider extends ServiceProvider
                     app(AdvertisementRepository::class)->putCacheAdvertisementItems();
                 });
 
+                //set language
                 app()->setLocale(Cache::tags('Setting')->get('language_code'));
 
+                Cache::tags('Setting')->forever('FACEBOOK_CLIENT_ID', env('FACEBOOK_CLIENT_ID'));
+                Cache::tags('Setting')->forever('TWITTER_CLIENT_ID', env('TWITTER_CLIENT_ID'));
+                Cache::tags('Setting')->forever('GOOGLE_CLIENT_ID', env('GOOGLE_CLIENT_ID'));
+
+                //set theme
                 Theme::set(env('ACTIVE_THEME'));
                 View::share('activeTheme', Theme::getCurrent());
                 View::share('themeAssetsPath', 'themes/' . Theme::getCurrent() . '/assets/');

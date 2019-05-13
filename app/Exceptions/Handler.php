@@ -7,6 +7,7 @@ use App\Traits\ApiResponser;
 use Illuminate\Database\QueryException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Session\TokenMismatchException;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -54,6 +55,8 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        Log::error($exception);
+
         if ($exception instanceof ValidationException) {
             return $this->convertValidationExceptionToResponse($exception, $request);
         }
@@ -75,7 +78,11 @@ class Handler extends ExceptionHandler
         }
 
         if ($exception instanceof AuthorizationException) {
-            return $this->errorResponse($exception->getMessage(), 403);
+
+            if ($request->ajax())
+                return $this->errorResponse($exception->getMessage(), 403);
+
+            return response()->view('errors.custom_error_page', ['message' => $exception->getMessage()], 403);
         }
 
         if ($exception instanceof MethodNotAllowedHttpException) {

@@ -84,21 +84,6 @@ class ArticleAuthorController extends BackendController
         $input['is_cuff'] = Input::get('is_cuff') == "on" ? true : false;
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
 
-        //todo logic düzeyde tekrar bakılacak. trello da  cartı var.
-//        if(!empty($input['user_id'])){
-//            $userRepo = new UserRepository();
-//            $user = $userRepo->find($input['user_id']);
-//
-//            $input['user_id'] = $user->id;
-//            $input['name'] = $user->name;
-////            $input['slug'] = $user->slug . '-' . $input['user_id'];
-//            $input['email'] = $user->email;
-//
-//        }else{
-//            //user_id seçilmediyse db ye null değeri göndermek için null değeri veriyoruz.
-//            $input['user_id'] = null;
-//        }
-
 
         if (isset($record->id)) {
             $result = $this->repo->update($record->id, $input);

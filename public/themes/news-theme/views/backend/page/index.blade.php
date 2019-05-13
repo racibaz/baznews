@@ -41,8 +41,8 @@
                             <th>#</th>
                             <th>{{trans('page.name')}}</th>
                             <th>{{trans('common.is_comment')}}</th>
-                            <th>{{trans('page.is_active')}}</th>
-                            <th>{{trans('page.edit_create')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -71,8 +71,8 @@
                             <th>#</th>
                             <th>{{trans('page.name')}}</th>
                             <th>{{trans('common.is_comment')}}</th>
-                            <th>{{trans('page.is_active')}}</th>
-                            <th>{{trans('page.edit_create')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </tfoot>
                     </table>

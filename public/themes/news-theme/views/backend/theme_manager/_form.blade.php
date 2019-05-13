@@ -8,7 +8,7 @@
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('theme_manager.index') !!}"> {{trans('theme_manager.management')}}</a></li>
-            <li class="active">{{trans('theme_manager.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -58,19 +58,19 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                {!! Form::label('slug', trans('module_manager.slug'),['class'=> 'col-lg-2 control-label']) !!}
+                                {!! Form::label('slug', trans('common.slug'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::text('slug', $record->slug, ['placeholder' => trans('module_manager.slug') ,'class' => 'form-control']) !!}
+                                    {!! Form::text('slug', $record->slug, ['placeholder' => trans('common.slug') ,'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                {!! Form::label('order', trans('module_manager.order'),['class'=> 'col-lg-2 control-label']) !!}
+                                {!! Form::label('order', trans('common.order'),['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::number('order', $record->order, ['placeholder' => trans('module_manager.order') ,'class' => 'form-control']) !!}
+                                    {!! Form::number('order', $record->order, ['placeholder' => trans('common.order') ,'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>

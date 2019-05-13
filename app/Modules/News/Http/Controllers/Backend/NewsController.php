@@ -24,6 +24,7 @@ use App\Modules\News\Models\VideoGallery;
 use App\Modules\News\Repositories\NewsRepository as Repo;
 use App\Repositories\TagRepository;
 use Carbon\Carbon;
+use File;
 use Mremi\UrlShortener\Model\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -119,7 +120,6 @@ class NewsController extends BackendController
                 $statusList[$index] = $status;
             }
         }
-
 
         return view('news::' . $this->getViewName(__FUNCTION__),
             compact(['record',
@@ -316,13 +316,12 @@ class NewsController extends BackendController
          * update işlemlerinde tekrar üzerine yazıldığında mükerrer oluşturduğundan dolayı
          * sadece create işleminde bu işlemi yapıyoruz.
          * */
-        $tagsRepo = new TagRepository();
 
         if (!isset($record->id)) {
             $findTagsInContent = Input::get('find_tags_in_content') == "on" ? true : false;
 
             if ($findTagsInContent) {
-                foreach ($tagsRepo->findAll() as $tag) {
+                foreach (app(TagRepository::class)->findAll() as $tag) {
 
                     $input['content'] = str_replace(
                         $tag->name,
@@ -441,7 +440,7 @@ class NewsController extends BackendController
 
             if ($automaticAddTags) {
 
-                foreach ($tagsRepo->findAll() as $tag) {
+                foreach (app(TagRepository::class)->findAll() as $tag) {
 
                     if (strpos($input['content'], $tag->name)) {
 
@@ -659,7 +658,9 @@ class NewsController extends BackendController
                     $query->where('id', "$id");
                 }
                 if ($title = Input::get('title')) {
-                    $query->where('title', 'LIKE', "%$title%");
+                    $query->orWhere('title', 'LIKE', "%$title%")
+                        ->orWhere('spot', 'LIKE', "%$title%")
+                        ->orWhere('content', 'LIKE', "%$title%");
                 }
                 if ($slug = Input::get('slug')) {
                     $query->where('slug', 'LIKE', "%$slug%");
@@ -788,7 +789,11 @@ class NewsController extends BackendController
         }
 
         $news = $this->repo->withTrashed()->find($input['historyForceDeleteRecordId']);
+        $newsID = $news->id;
         $news->forceDelete();
+
+        //Foto ların bulunduğu klasörü siliyoruz.
+        File::deleteDirectory(public_path('images/news_images/' . $newsID));
 
         Session::flash('flash_message', trans('common.force_deleted'));
         return redirect()->back();

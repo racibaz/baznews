@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('news::photo_gallery.management')}}
-            <small>{{trans('news::photo_category.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('photo_gallery.index') !!}">{{trans('news::photo_gallery.management')}}</a></li>
-            <li class="active">{{trans('news::photo_gallery.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -38,12 +38,12 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('news::photo_gallery.title')}}</th>
+                            <th>{{trans('common.title')}}</th>
                             <th>{{trans('news::photo_gallery.short_url')}}</th>
-                            <th>{{trans('news::photo_gallery.thumbnail')}}</th>
+                            <th>{{trans('common.thumbnail')}}</th>
                             <th>{{trans('news::photo_gallery.is_cuff')}}</th>
-                            <th>{{trans('news::photo_gallery.is_active')}}</th>
-                            <th>{{trans('news::photo_gallery.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

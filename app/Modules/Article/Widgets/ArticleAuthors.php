@@ -5,7 +5,6 @@ namespace App\Modules\Article\Widgets;
 use App\Modules\Article\Repositories\ArticleAuthorRepository;
 use Arrilot\Widgets\AbstractWidget;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
 
 class ArticleAuthors extends AbstractWidget
 {
@@ -28,7 +27,7 @@ class ArticleAuthors extends AbstractWidget
             return $repo->with(['articles'])
                 ->where('is_active', 1)
                 ->where('is_cuff', 1)
-                ->take(Redis::get('article_authors_widget_list_count'))
+                ->take(Cache::tags('Setting')->get('article_authors_widget_list_count'))
                 ->orderBy('updated_at', 'desc')
                 ->get();
         });

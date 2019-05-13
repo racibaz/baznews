@@ -44,23 +44,23 @@
                                 <td>{{$record->name}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book_category.slug')}}</th>
+                                <th>{{trans('common.slug')}}</th>
                                 <td>{{$record->slug}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book_category.description')}}</th>
+                                <th>{{trans('common.description')}}</th>
                                 <td>{{$record->description}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book_category.keywords')}}</th>
+                                <th>{{trans('common.keywords')}}</th>
                                 <td>{{$record->keywords}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book_category.thumbnail')}}</th>
+                                <th>{{trans('common.thumbnail')}}</th>
                                 <td>{{$record->thumbnail}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book_category.order')}}</th>
+                                <th>{{trans('common.order')}}</th>
                                 <td>{{$record->order}}</td>
                             </tr>
                             <tr>
@@ -68,15 +68,15 @@
                                 <td>{!!$record->cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book_category.is_active')}}</th>
+                                <th>{{trans('common.is_active')}}</th>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book_category.created_at')}}</th>
+                                <th>{{trans('common.created_at')}}</th>
                                 <td>{{$record->created_at}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('book::book_category.updated_at')}}</th>
+                                <th>{{trans('common.updated_at')}}</th>
                                 <td>{{$record->updated_at}}</td>
                             </tr>
                             </tbody>

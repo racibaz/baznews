@@ -23,8 +23,7 @@ class BaseController extends Controller
     public function getCitiesByCountryId(Request $request)
     {
         if($request->ajax()){
-            $cityRepo = new CityRepository();
-            return $cityRepo->getCitiesByCountryId(strip_tags($request->country_id));
+            return app(CityRepository::class)->getCitiesByCountryId(strip_tags($request->country_id));
         }
     }
 }

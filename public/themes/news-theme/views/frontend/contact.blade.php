@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="content">{{trans('contact.content')}}</label>
+                        <label for="content">{{trans('common.content')}}</label>
                         <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
                     </div>
 

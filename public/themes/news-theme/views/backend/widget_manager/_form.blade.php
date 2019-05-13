@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('module_manager.management')}}
-            <small>{{trans('module_manager.edit_create')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('module_manager.index') !!}"> {{trans('module_manager.management')}}</a></li>
-            <li class="active">{{trans('module_manager.edit_create')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -49,11 +49,11 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('slug', trans('widget_manager.slug'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('slug', trans('common.slug'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
                                 {!! Form::hidden('slug',$record->slug) !!}
-                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('widget_manager.slug') ,'class' => 'form-control','disabled' => 'disabled']) !!}
+                                {!! Form::text('slug', $record->slug, ['placeholder' => trans('common.slug') ,'class' => 'form-control','disabled' => 'disabled']) !!}
                             </div>
                         </div>
                     </div>

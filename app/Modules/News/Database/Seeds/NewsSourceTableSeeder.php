@@ -28,6 +28,7 @@ class NewsSourceTableSeeder extends Seeder
 
         NewsSource::create([
             'name' => 'Medya Takip',
+            'url' => 'http://www.medyatakip.com.tr',
             'is_active' => 1
         ]);
 
@@ -39,7 +40,7 @@ class NewsSourceTableSeeder extends Seeder
 
         NewsSource::create([
             'name' => 'SANATLOG',
-            'url' => 'http://www.sanatlog.com/',
+            'url' => 'http://www.sanatlog.com',
             'is_active' => 1
         ]);
 
@@ -51,13 +52,55 @@ class NewsSourceTableSeeder extends Seeder
 
         NewsSource::create([
             'name' => 'Mürekkep Haber',
-            'url' => 'http://www.murekkephaber.com/',
+            'url' => 'http://www.murekkephaber.com',
             'is_active' => 1
         ]);
 
         NewsSource::create([
             'name' => 'Hayal Perdesi',
             'url' => 'http://www.hayalperdesi.net',
+            'is_active' => 1
+        ]);
+
+        NewsSource::create([
+            'name' => 'islamveihsan.com',
+            'url' => 'http://www.islamveihsan.com',
+            'is_active' => 1
+        ]);
+
+        NewsSource::create([
+            'name' => 'ntv',
+            'url' => 'https://www.ntv.com.tr',
+            'is_active' => 1
+        ]);
+
+        NewsSource::create([
+            'name' => 'hurriyet',
+            'url' => 'http://www.hurriyet.com.tr',
+            'is_active' => 1
+        ]);
+
+        NewsSource::create([
+            'name' => 'milliyet',
+            'url' => 'http://www.milliyet.com.tr',
+            'is_active' => 1
+        ]);
+
+        NewsSource::create([
+            'name' => 'LaleGülHaber',
+            'url' => 'https://www.lalegulhaber.com.tr',
+            'is_active' => 1
+        ]);
+
+        NewsSource::create([
+            'name' => 'EnSonHaber',
+            'url' => 'http://www.ensonhaber.com',
+            'is_active' => 1
+        ]);
+
+        NewsSource::create([
+            'name' => 'AHaber',
+            'url' => 'https://www.ahaber.com.tr',
             'is_active' => 1
         ]);
     }

@@ -22,7 +22,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('news::news.title')}}</th>
+                            <th>{{trans('common.title')}}</th>
                             <th>{{trans('news::news.band_news')}}</th>
                             <th>{{trans('news::news.box_cuff')}}</th>
                             <th>{{trans('news::news.is_cuff')}}</th>

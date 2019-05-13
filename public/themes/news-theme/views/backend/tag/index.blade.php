@@ -38,7 +38,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('tag.name')}}</th>
-                            <th>{{trans('tag.is_active')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -63,7 +63,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('tag.name')}}</th>
-                            <th>{{trans('tag.is_active')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
                         </tr>
                         </tfoot>
                     </table>

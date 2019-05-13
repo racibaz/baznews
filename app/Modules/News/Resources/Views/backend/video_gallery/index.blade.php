@@ -39,12 +39,12 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{trans('news::video_gallery.title')}}</th>
+                            <th>{{trans('common.title')}}</th>
                             <th>{{trans('news::video_gallery.short_url')}}</th>
-                            <th>{{trans('news::video_gallery.thumbnail')}}</th>
+                            <th>{{trans('common.thumbnail')}}</th>
                             <th>{{trans('news::video_gallery.is_cuff')}}</th>
-                            <th>{{trans('news::video_gallery.is_active')}}</th>
-                            <th>{{trans('news::video_gallery.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

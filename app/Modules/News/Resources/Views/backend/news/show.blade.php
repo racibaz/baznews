@@ -32,7 +32,7 @@
                 <div class="box-header with-border">
                     <i class="fa fa-globe"></i>
 
-                    <h3 class="box-title">{{trans('news::news.content')}}</h3>
+                    <h3 class="box-title">{{trans('common.content')}}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -55,7 +55,7 @@
                                 <td>{{$record->small_title}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.slug')}}</th>
+                                <th>{{trans('common.slug')}}</th>
                                 <td>{{$record->slug}}</td>
                             </tr>
                             <tr>
@@ -63,11 +63,11 @@
                                 <td>{{$record->short_url}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.description')}}</th>
+                                <th>{{trans('common.description')}}</th>
                                 <td>{{$record->description}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.keywords')}}</th>
+                                <th>{{trans('common.keywords')}}</th>
                                 <td>{{$record->keywords}}</td>
                             </tr>
                             <tr>
@@ -101,15 +101,15 @@
                             <tbody>
                             <tr>
                                 <th width="20%">{{trans('news::news.country_id')}}</th>
-                                <td>{{$record->country->name}}</td>
+                                <td>{{ isset($record->country) ? $record->country->name  : '' }}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.city_id')}}</th>
-                                <td>{{$record->city->name}}</td>
+                                <td>{{ isset($record->city) ? $record->city->name  : '' }}</td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.news_source_id')}}</th>
-                                <td>{{$record->news_source->name}}</td>
+                                <td>{{ isset($record->news_source) ? $record->news_source->name  : '' }}</td>
                             </tr>
 
                             <tr>
@@ -117,15 +117,15 @@
                                 <td>{!!$record->cuff_photo ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.thumbnail')}}</th>
+                                <th>{{trans('common.thumbnail')}}</th>
                                 <td>
-                                    <img src="{{ asset('images/news_images/' . $record->id . '/thumbnail/' . $record->thumbnail)}}"/>
+                                    <img src="{{ asset('images/news_images/' . $record->id . '/thumbnail/' . $record->thumbnail)}}" width="350" height="200"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.cuff_photo')}}</th>
                                 <td>
-                                    <img src="{{ asset('images/news_images/' . $record->id . '/cuff_photo/' . $record->cuff_photo)}}"/>
+                                    <img src="{{ asset('images/news_images/' . $record->id . '/cuff_photo/' . $record->cuff_photo)}}" width="350" height="200"/>
                                 </td>
                             </tr>
                             <tr>
@@ -138,10 +138,12 @@
                             </tr>
                             <tr>
                                 <th>{{trans('news::news.news_type')}}</th>
-                                <td>{{$record->news_type}}</td>
+                                <td>
+                                    {{\app\Modules\News\Models\News::$newsTypes[$record->news_type]}}
+                                </td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.status')}}</th>
+                                <th>{{trans('common.status')}}</th>
                                 <td>{!! $record->status ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
@@ -181,8 +183,8 @@
                                 <td>{!! $record->is_show_previous_and_next_news ? '<span class="badge bg-green"><i class="fa fa-check"></i></span>':'<span class="badge bg-warning"><i class="fa fa-times"></i></span></span>' !!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news.is_active')}}</th>
-                                <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('news::news.active').'</span>':'<span class="badge bg-warning">'.trans('news::news.passive').'</span>'!!}</td>
+                                <th>{{trans('common.is_active')}}</th>
+                                <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('common.active').'</span>':'<span class="badge bg-warning">'.trans('common.passive').'</span>'!!}</td>
                             </tr>
                             </tbody>
                         </table>

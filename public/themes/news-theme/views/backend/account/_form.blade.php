@@ -87,10 +87,10 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                {!! Form::label('slug', trans('account.slug'), ['class'=> 'col-lg-2 control-label']) !!}
+                                {!! Form::label('slug', trans('common.slug'), ['class'=> 'col-lg-2 control-label']) !!}
 
                                 <div class="col-lg-10">
-                                    {!! Form::text('slug', $record->slug,['placeholder' => trans('account.slug'), 'class' => 'form-control']) !!}
+                                    {!! Form::text('slug', $record->slug,['placeholder' => trans('common.slug'), 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>

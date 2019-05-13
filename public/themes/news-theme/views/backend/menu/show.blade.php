@@ -59,7 +59,7 @@
                                 <td>{{$record->page_id}}</td>
                             </tr>
                             <tr>
-                                <td><b>{{trans('menu.slug')}}:</b></td>
+                                <td><b>{{trans('common.slug')}}:</b></td>
                                 <td>{{$record->slug}}</td>
                             </tr>
                             <tr>
@@ -75,7 +75,7 @@
                                 <td>{{$record->target}}</td>
                             </tr>
                             <tr>
-                                <td><b>{{trans('menu.order')}}:</b></td>
+                                <td><b>{{trans('common.order')}}:</b></td>
                                 <td>{{$record->order}}</td>
                             </tr>
 

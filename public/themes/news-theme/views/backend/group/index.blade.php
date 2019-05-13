@@ -31,7 +31,7 @@
                     <tr>
                         <th>{!! trans('group.name') !!}</th>
                         <th>{!! trans('group.user_count') !!}</th>
-                        <th>{!! trans('group.is_active') !!}</th>
+                        <th>{!! trans('common.is_active') !!}</th>
                         <th>{!! trans('group.edit_remove') !!}</th>
                     </tr>
                     </thead>
@@ -44,9 +44,9 @@
                             <td><span class="badge bg-yellow">{{$record->users->count()}}</span></td>
                             <td>
                                 @if($record->is_active)
-                                    <span class="badge bg-green">{{trans('group.active')}}</span>
+                                    <span class="badge bg-green">{{trans('common.active')}}</span>
                                 @else
-                                    <span class="badge bg-red">{{trans('group.passive')}}</span>
+                                    <span class="badge bg-red">{{trans('common.passive')}}</span>
                                 @endif
                             </td>
                             <td>
@@ -64,7 +64,7 @@
                     <tr>
                         <th>{!! trans('group.name') !!}</th>
                         <th>{!! trans('group.user_count') !!}</th>
-                        <th>{!! trans('group.is_active') !!}</th>
+                        <th>{!! trans('common.is_active') !!}</th>
                         <th>{!! trans('group.edit_remove') !!}</th>
                     </tr>
                     </tfoot>

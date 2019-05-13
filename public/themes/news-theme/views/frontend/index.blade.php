@@ -38,7 +38,7 @@
                         <ul class="bxslider">
                             @foreach($boxCuffNewsItems as $boxCuffNewsItem)
                                 <li data-slide-index="{{$mainCuffNewsItem->id}}">
-                                    <a href="{!! route('show_news', ['slug' => $mainCuffNewsItem->slug]) !!}">
+                                    <a href="{!! route('show_news', ['slug' => $boxCuffNewsItem->slug]) !!}">
                                         <img src="{{ asset('images/news_images/' . $boxCuffNewsItem->id . '/322x265_' . $boxCuffNewsItem->thumbnail )}}"
                                              alt="{{$boxCuffNewsItem->title}}" class="lazy">
                                     </a>

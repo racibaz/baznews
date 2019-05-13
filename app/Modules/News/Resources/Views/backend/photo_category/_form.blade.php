@@ -3,13 +3,13 @@
     <section class="content-header">
         <h1>
             {{trans('news::photo_category.management')}}
-            <small>{{trans('news::photo_category.news_create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('photo_category.index') !!}">{{trans('news::photo_category.management')}}</a>
             </li>
-            <li class="active">{{trans('news::photo_category.news_create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -24,7 +24,7 @@
         <div class="col-lg-8" id="content">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('news::photo_category.create_edit')}}</h3>
+                    <h3 class="box-title">{{trans('common.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -44,12 +44,12 @@
                         {!! Form::select('parent_id', $photoCategoryList , $record->parent_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control select2']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('slug', trans('news::photo_category.slug'),['class'=> 'control-label']) !!}
-                        {!! Form::text('slug', $record->slug, ['placeholder' => trans('news::photo_category.slug') ,'class' => 'form-control']) !!}
+                        {!! Form::label('slug', trans('common.slug'),['class'=> 'control-label']) !!}
+                        {!! Form::text('slug', $record->slug, ['placeholder' => trans('common.slug') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('description', trans('news::photo_category.description'),['class'=> 'control-label']) !!}
-                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('news::photo_category.description') ,'class' => 'form-control']) !!}
+                        {!! Form::label('description', trans('common.description'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('common.description') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('icon', trans('news::photo_category.icon'),['class'=> 'control-label']) !!}
@@ -63,7 +63,7 @@
         <div class="col-lg-4" id="sidebar">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('news::photo_category.status')}}</h3>
+                    <h3 class="box-title">{{trans('common.status')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -97,7 +97,7 @@
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                            {{trans('news::photo_category.is_active')}}
+                            {{trans('common.is_active')}}
                         </label>
                     </div>
 
@@ -113,7 +113,7 @@
 
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('news::photo_category.keywords')}}</h3>
+                    <h3 class="box-title">{{trans('common.keywords')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -125,8 +125,8 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        {!! Form::label('keywords', trans('news::photo_category.keywords'),['class'=> 'control-label']) !!}
-                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('news::photo_category.keywords') ,'class' => 'form-control tagsinput']) !!}
+                        {!! Form::label('keywords', trans('common.keywords'),['class'=> 'control-label']) !!}
+                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('common.keywords') ,'class' => 'form-control tagsinput']) !!}
                     </div>
                 </div>
                 <!-- /.box-body -->

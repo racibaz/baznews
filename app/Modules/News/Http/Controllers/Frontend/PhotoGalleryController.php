@@ -24,38 +24,33 @@ class PhotoGalleryController extends Controller
         return Cache::tags(['PhotoGalleryController', 'News', 'photo_gallery'])->rememberForever('photo_gallery:' . $id, function () use ($id) {
 
             //$slug = htmlentities(strip_tags($id), ENT_QUOTES, 'UTF-8');
-            $photoGallery = $this->repo
-                ->where('is_active', 1)
-                ->find($id);
+
+            try {
+
+                $photoGallery = $this->repo->where('is_active', 1)->find($id);
+
+                $galleryPhotos = $photoGallery->photos;
+                $firstPhoto = $photoGallery->photos->first();
+
+                $lastPhoto = $photoGallery->photos->take(-1)->first();
+
+                $nextPhoto = $photoGallery->photos->filter(function ($photo) use ($firstPhoto) {
+                    return $photo->id > $firstPhoto->id;
+                })->first();
+
+                $nextPhoto = !isset($nextPhoto) ? $firstPhoto : $nextPhoto;
+
+                $photoCount = app(PhotoRepository::class)->where('is_active', 1)->findAll()->count();
+                $randomPhotos = app(PhotoRepository::class)->where('is_active', 1)->findAll()->random(3);
 
 
-            $galleryPhotos = $photoGallery->photos;
-            $firstPhoto = $photoGallery->photos
-                ->first();
+                $photoCategoryGalleries = $this->getPhotoGalleriesFormPhotoCategory($photoGallery->photo_category->id);
+                //mevcutta gösterilen foto galeriyi collection dan siliyoruz.
+                $photoCategoryGalleries = $photoCategoryGalleries->except($photoGallery->id);
 
-            $lastPhoto = $photoGallery->photos
-                ->take(-1)
-                ->first();
-
-            $nextPhoto = $photoGallery->photos->filter(function ($photo) use ($firstPhoto) {
-
-                return $photo->id > $firstPhoto->id;
-            })->first();
-
-            $nextPhoto = !isset($nextPhoto) ? $firstPhoto : $nextPhoto;
-
-
-            $photoRepository = new PhotoRepository();
-            //$lastphotos = $photoRepository->orderBy('updated_at','desc')->limit(6)->findAll();
-
-            $photoCount = $photoRepository->where('is_active', 1)->findAll()->count();
-            $randomPhotos = $photoRepository->where('is_active', 1)->findAll()->random(3);
-
-
-            $photoCategoryGalleries = $this->getPhotoGalleriesFormPhotoCategory($photoGallery->photo_category->id);
-            //mevcutta gösterilen foto galeriyi collection dan siliyoruz.
-            $photoCategoryGalleries = $photoCategoryGalleries->except($photoGallery->id);
-
+            }catch(\Exception $e){
+                abort(404);
+            }
 
             return view('news::frontend.photo_gallery.photo_gallery', compact([
                 'photoGallery',
@@ -77,45 +72,43 @@ class PhotoGalleryController extends Controller
 
         return Cache::tags(['PhotoGalleryController', 'News', 'showGalleryPhoto'])->rememberForever('showGalleryPhoto:' . $id, function () use ($id) {
 
+            try {
 
-            $photoRepository = new PhotoRepository();
-            $photo = $photoRepository->where('is_active', 1)->find($id);
+                $photo = app(PhotoRepository::class)->where('is_active', 1)->find($id);
 
-            //todo bulunamadığında exception yerine düzgün bir hata verilecek.
-            $photoGallery = $photo->photo_gallery;
-            $galleryPhotos = $photoGallery->photos;
+                $photoGallery = $photo->photo_gallery;
+                $galleryPhotos = $photoGallery->photos;
 
-            $firstPhoto = $photoGallery->photos->first();
+                $firstPhoto = $photoGallery->photos->first();
 
-            $lastPhoto = $photoGallery->photos
-                ->take(-1)
-                ->first();
+                $lastPhoto = $photoGallery->photos->take(-1)->first();
 
-            $nextPhoto = $photoGallery->photos->filter(function ($galleryPhoto) use ($photo) {
+                $nextPhoto = $photoGallery->photos->filter(function ($galleryPhoto) use ($photo) {
+                    return $galleryPhoto->id > $photo->id;
+                })->first();
 
-                return $galleryPhoto->id > $photo->id;
-            })->first();
-
-            $nextPhoto = !isset($nextPhoto) ? $firstPhoto : $nextPhoto;
+                $nextPhoto = !isset($nextPhoto) ? $firstPhoto : $nextPhoto;
 
 
-            $previousPhoto = $photoGallery->photos->filter(function ($galleryPhoto) use ($photo) {
+                $previousPhoto = $photoGallery->photos->filter(function ($galleryPhoto) use ($photo) {
+                    return $galleryPhoto->id < $photo->id;
+                })->first();
 
-                return $galleryPhoto->id < $photo->id;
-            })->first();
-
-            $previousPhoto = !isset($previousPhoto) ? $firstPhoto : $previousPhoto;
+                $previousPhoto = !isset($previousPhoto) ? $firstPhoto : $previousPhoto;
 
 
-            $photoCount = $photoRepository->where('is_active', 1)->findAll()->count();
-            $randomPhotos = $photoRepository->where('is_active', 1)->findAll()->random(3);
+                $photoCount = app(PhotoRepository::class)->where('is_active', 1)->findAll()->count();
+                $randomPhotos = app(PhotoRepository::class)->where('is_active', 1)->findAll()->random(3);
 
-            $photoCategoryRepository = new PhotoCategoryRepository();
-            $photoCategories = $photoCategoryRepository->where('is_cuff', 1)->where('is_active', 1)->findAll();
+                $photoCategories = app(PhotoCategoryRepository::class)->where('is_cuff', 1)->where('is_active', 1)->findAll();
 
-            $photoCategoryGalleries = $this->getPhotoGalleriesFormPhotoCategory($photoGallery->photo_category->id);
-            //mevcutta gösterilen foto galeriyi collection dan siliyoruz.
-            $photoCategoryGalleries = $photoCategoryGalleries->except($photoGallery->id);
+                $photoCategoryGalleries = $this->getPhotoGalleriesFormPhotoCategory($photoGallery->photo_category->id);
+                //mevcutta gösterilen foto galeriyi collection dan siliyoruz.
+                $photoCategoryGalleries = $photoCategoryGalleries->except($photoGallery->id);
+
+            }catch (\Exception $e){
+                abort(404);
+            }
 
             return view('news::frontend.photo_gallery.photo_gallery_photos', compact([
                 'photoGallery',
@@ -135,13 +128,18 @@ class PhotoGalleryController extends Controller
 
     public function getPhotoGalleriesFormPhotoCategory($id)
     {
-        return Cache::tags(['PhotoGalleryController', 'News', 'photoGalleriesFormPhotoCategory'])->rememberForever('photoGalleriesFormPhotoCategory:' . $id, function () use ($id) {
+        return Cache::tags(['PhotoGalleryController', 'News', 'photoGalleriesFormPhotoCategory'])
+            ->rememberForever('photoGalleriesFormPhotoCategory:' . $id, function () use ($id) {
 
-            $photoCategoryRepository = new PhotoCategoryRepository();
-            $photoCategory = $photoCategoryRepository
-                ->where('is_cuff', 1)
-                ->where('is_active', 1)
-                ->find($id);
+            try{
+                $photoCategory = app(PhotoCategoryRepository::class)
+                    ->where('is_cuff', 1)
+                    ->where('is_active', 1)
+                    ->find($id);
+
+            }catch (\Exception $e){
+                abort(404);
+            }
 
             return $photoCategory->photo_galleries;
         });

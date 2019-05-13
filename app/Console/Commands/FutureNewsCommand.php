@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\Backend\BackendController;
 use App\Modules\News\Models\FutureNews;
 use App\Modules\News\Models\News;
 use Carbon\Carbon;
@@ -40,11 +41,21 @@ class FutureNewsCommand extends Command
      */
     public function handle()
     {
-        $future_news_ids = FutureNews::whereBetween('future_datetime', [Carbon::now(), Carbon::now()->addHour(1)])
+        $future_news_ids = FutureNews::where('future_datetime', '>', Carbon::now()->toDateTimeString())
+            ->where('future_datetime', '<', Carbon::now()->addHour(1)->toDateTimeString())
+            ->where('is_active', 1)
             ->get()
-            ->pluck('id');
+            ->pluck('news_id');
 
-        $news = News::whereIn('id', $future_news_ids)
-            ->update(['status' => 3]);
+        News::whereIn('id', $future_news_ids)
+            ->update([
+                'created_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+
+        app(BackendController::class)->removeCacheTags(['News']);
+        app(BackendController::class)->removeHomePageCache();
+
+        return true;
     }
 }

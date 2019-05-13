@@ -11,7 +11,6 @@
 |
 */
 
-Route::pattern('slug', '[a-z0-9-]+');
 Route::get('news/{slug}', 'Frontend\NewsController@show')->name('show_news');
 Route::get('archive/{years?}/{months?}/{days?}', 'Frontend\ArchiveController@index')
     ->name('archive_index')
@@ -23,6 +22,7 @@ Route::get('news_sitemap', 'Frontend\SitemapController@sitemap')->name('news_sit
 Route::get('news-category/{slug}', 'Frontend\NewsCategoryController@getNewsByNewsCategorySlug')->name('show_news_category');
 Route::get('video_galleries/{slug}', 'Frontend\VideoGalleryController@getVideoGalleryBySlug')->name('show_video_gallery');
 Route::get('videos/{slug}', 'Frontend\VideoController@getVideoBySlug')->name('show_videos');
+Route::get('video/index', 'Frontend\VideoController@index')->name('video.index');
 Route::get('photo_gallery/{slug}', 'Frontend\PhotoGalleryController@getPhotoGalleryBySlug')->name('show_photo_gallery');
 Route::get('photo/{slug}', 'Frontend\PhotoController@getPhotoBySlug')->name('show_photo');
 Route::get('gallery_photo/{slug}', 'Frontend\PhotoGalleryController@showGalleryPhotos')->name('show_gallery_photos');
@@ -37,10 +37,6 @@ Route::group(['prefix' => 'rss'], function () {
     Route::get('main_cuff', 'Frontend\RssController@mainCuffRssRender')->name('rss/main_cuff');
     Route::get('mini_cuff', 'Frontend\RssController@miniCuffRssRender')->name('rss/mini_cuff');
     Route::get('videos', 'Frontend\RssController@videosRssRender')->name('rss/videos');
-    //TODO video kategorileri, photo kategorileri, photo lar da eklenecek.
-
-    //TODO XSS script sorunu olur mu? test edilecek gerekli önlemler alınacak
-    Route::get('news_category/{category_name}', 'Frontend\RssController@getNewsCategoryRssRender')->name('rss/category');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function () {
@@ -49,21 +45,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function () {
     Route::get('/news_dashboard', 'Backend\NewsDashboardController@index')->name('news_dashboard');
 
     Route::resource('news_category', 'Backend\NewsCategoryController');
-
-    /*
-     * todo
-     *
-     * laravel-filemanager middleware bizim checkperm le yapılması gerekiyor.
-     *
-     * */
-
-//    Route::filter('laravel-filemanager', function()
-//    {
-//        // check the current user
-//        if (!Entrust::can('create-post')) {
-//            return Redirect::to('admin');
-//        }
-//    });
 
 
     Route::get('news/showTrashedRecords/{trashedRecord}', 'Backend\NewsController@trashedNewsRestore')->name('trashedNewsRestore');
@@ -81,7 +62,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkperm'], function () {
     Route::post('news.recommendation_news_store', 'Backend\NewsController@recommendation_news_store')->name('recommendation_news_store');
     Route::post('news.future_news_store', 'Backend\NewsController@future_news_store')->name('future_news_store');
     Route::post('news.news_news_categories_store', 'Backend\NewsController@news_news_categories_store')->name('news_news_categories_store');
-    Route::post('news/newsFilter', 'Backend\NewsController@newsFilter')->name('newsFilter');
+    Route::any('news/newsFilter', 'Backend\NewsController@newsFilter')->name('newsFilter');
     Route::get('news.status/{status?}', 'Backend\NewsController@index')->name('news_statuses');
 
     Route::resource('news', 'Backend\NewsController', [

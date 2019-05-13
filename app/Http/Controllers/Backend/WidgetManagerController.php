@@ -73,8 +73,8 @@ class WidgetManagerController extends BackendController
     public function destroy(WidgetManager $record)
     {
         $this->repo->delete($record->id);
-        Cache::tags(['Setting', 'Widget', 'homePage'])->flush();
 
+        $this->removeCacheTags(['Setting', 'Widget', 'homePage']);
         return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
 
@@ -100,7 +100,7 @@ class WidgetManagerController extends BackendController
 
             if ($result) {
 
-                Cache::tags(['Setting', 'Widget', 'homePage'])->flush();
+                $this->removeCacheTags(['Setting', 'Widget', 'homePage']);
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $result);
@@ -125,7 +125,8 @@ class WidgetManagerController extends BackendController
         if (!empty($trashedWidget)) {
             $trashedWidget->restore();
             $this->repo->forgetCache();
-            Cache::tags(['Setting', 'Widget', 'homePage'])->flush();
+
+            $this->removeCacheTags(['Setting', 'Widget', 'homePage']);
             return Redirect::back();
         }
 
@@ -157,7 +158,7 @@ class WidgetManagerController extends BackendController
             $this->repo->create($widgetManagaer);
         }
 
-        Cache::tags(['Setting', 'Widget', 'homePage'])->flush();
+        $this->flushAll();
         return Redirect::back();
     }
 

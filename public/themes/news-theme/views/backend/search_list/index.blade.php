@@ -7,8 +7,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{!! URL::route('search_list.index') !!}">{{trans('search_list.management')}}</a></li>
-            <li class="active">{{trans('search_list.list')}}</li>
+            <li class="active"><a href="{!! URL::route('search_list.index') !!}">{{trans('search_list.management')}}</a></li>
         </ol>
     </section>
 @endsection
@@ -37,7 +36,7 @@
                             <th>{{trans('search_list.field')}}</th>
                             <th>{{trans('search_list.is_require_slug')}}</th>
                             <th>{{trans('common.is_active')}}</th>
-                            <th>{{trans('search_list.edit_delete')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

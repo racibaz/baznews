@@ -138,16 +138,7 @@
                                                         {!! $revison->newValue()  !!}
                                                     </div>
                                                 </div>
-                                                {{--TODO revision CRUD işlemrlerinin yapıldığı yere düzenle ve sil linkleri verilecek.--}}
-                                                {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('user.destroy',  $record))) !!}
-                                                {!! link_to_route('user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                                                {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
-                                                {!! Form::close() !!}
                                             </div>
-
-                                            {{--<div class="timeline-footer">--}}
-                                            {{--<a class="btn btn-primary btn-xs">...</a>--}}
-                                            {{--</div>--}}
                                         </div>
                                     </li>
                                     <!-- END timeline item -->
@@ -177,9 +168,9 @@
                                     <th>{{trans('user.eventable_type')}}</th>
                                     <th>{{trans('user.eventable_id')}}</th>
                                     <th>{{trans('user.event_name')}}</th>
-                                    <th>{{trans('user.created_at')}}</th>
-                                    <th>{{trans('user.updated_at')}}</th>
-                                    <th>{{trans('user.is_active')}}</th>
+                                    <th>{{trans('common.created_at')}}</th>
+                                    <th>{{trans('common.updated_at')}}</th>
+                                    <th>{{trans('common.edit_delete')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -187,16 +178,29 @@
                                     <tr>
                                         <td>{{$event->id}}</td>
                                         <td>{{$event->eventable_type }}</td>
-                                        <td>{{$event->eventable_id }}</td>
+                                        @php
+                                            $nameSpaceArray = explode('\\', $event->eventable_type);
+                                            $className = str_slug(array_last($nameSpaceArray));
+                                        @endphp
+                                        <td>
+                                            @if(Route::has($className . '.show'))
+                                                {!! link_to_route($className . '.show', $event->eventable_id , $event->eventable_id, ['target' => '_blank'] ) !!}
+                                            @else
+                                                {{$event->eventable_id}}
+                                            @endif
+                                        </td>
                                         <td>{{$event->event }}</td>
                                         <td>{{$event->created_at }}</td>
                                         <td>{{$event->updated_at }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                {{--TODO revision CRUD işlemrlerinin yapıldığı yere düzenle ve sil linkleri verilecek.--}}
-                                                {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('user.destroy',  $record))) !!}
-                                                {!! link_to_route('user.edit', trans('common.edit'), $record, ['class' => 'btn btn-primary btn-xs'] ) !!}
-                                                {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                                {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('event.destroy',  $event))) !!}
+                                                    @permission('edit-event')
+                                                        {!! link_to_route('event.edit', trans('common.edit'), $event, ['class' => 'btn btn-primary btn-xs'] ) !!}
+                                                    @endpermission
+                                                    @permission('destroy-event')
+                                                        {!! Form::submit('Sil', ['class' => 'btn btn-danger btn-xs','data-toggle'=>'confirmation']) !!}
+                                                    @endpermission
                                                 {!! Form::close() !!}
                                             </div>
                                         </td>
@@ -209,9 +213,9 @@
                                     <th>{{trans('user.eventable_type')}}</th>
                                     <th>{{trans('user.eventable_id')}}</th>
                                     <th>{{trans('user.event_name')}}</th>
-                                    <th>{{trans('user.created_at')}}</th>
-                                    <th>{{trans('user.updated_at')}}</th>
-                                    <th>{{trans('user.is_active')}}</th>
+                                    <th>{{trans('common.created_at')}}</th>
+                                    <th>{{trans('common.updated_at')}}</th>
+                                    <th>{{trans('common.edit_delete')}}</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -222,7 +226,6 @@
                 </div>
             </div>
         </div>
-
     </div><!-- end row -->
     <!-- Main Content Element  End-->
 @endsection

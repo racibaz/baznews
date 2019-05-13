@@ -30,7 +30,7 @@
                         <div class="img-container module">
                             <div class="img">
                                 <a href="{{route('show_photo',['slug' => $photo->slug ])}}">
-                                    <img src="{{ asset('gallery/' . $photo->photo_gallery_id . '/photos/' . $photo->file)}}"
+                                    <img src="{{ asset('photos/' . $photo->id . '/497x358_' . $photo->file)}}"
                                          alt="{{$photo->name}}" class="img-responsive"/>
                                 </a>
                             </div>
@@ -90,50 +90,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row" id="home_center">
-                <div class="col-md-8">
-                    <div class="f-posts">
-                        <div class="title-section">
-                            <h1>
-                                <span>{{trans('news::photo_gallery.other_galleries')}}</span>
-                            </h1>
-                        </div>
-                        <div class="gallery-posts module">
-                            <div class="row">
-                                @foreach($lastPhotos as $lastPhoto)
-                                    <div class="col-md-4">
-                                        <a href="{{route('show_photo',['slug' => $lastPhoto->slug ])}}" class="news">
-                                            <div class="pic">
-                                                <img src="{{ asset('gallery/' . $lastPhoto->photo_gallery_id . '/photos/' . $lastPhoto->thumbnail)}}"
-                                                     alt="{{$lastPhoto->name}}"
-                                                     title="{{$lastPhoto->name}}"/>
-                                            </div>
-                                        </a>
-                                    </div><!-- /.col-->
-                                @endforeach
-                            </div><!-- /.row -->
-                        </div><!-- /.gallery-post -->
-                    </div><!-- /.f-posts -->
-
-                    <div class="share-box">
-                        <div class="title-section">
-                            <h1>
-                                <span>{{trans('common.share')}}</span>
-                            </h1>
-                        </div>
-                        {!! Cache::tags('Setting')->get('addthis') !!}
-                    </div>
-
-                </div>
-                <div class="col-md-4">
-
-                </div>
-            </div>
         </div>
-
-
     </article><!-- /.article -->
-
 @endsection
 
 
@@ -141,15 +99,7 @@
     <title>{{$photo->name}}</title>
     <meta name="keywords" content="{{$photo->keywords}}"/>
     <meta name="description" content="{{$photo->description}}"/>
-    <meta name='subtitle' content='This is my subtitle'>
     <meta name='pagename' content='{{$photo->name}}'>
-    <meta name='identifier-URL' content='http://www.websiteaddress.com'>
-    <meta name='directory' content='submission'>
-    <meta name='author' content='name, email@hotmail.com'>
-    <meta name='subject' content='your website s subject'>
-    <meta name='abstract' content=''>
-    <meta name='topic' content=''>
-    <meta name='summary' content=''>
 @endsection
 
 

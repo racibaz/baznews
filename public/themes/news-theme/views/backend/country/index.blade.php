@@ -33,8 +33,8 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('country.name')}}</th>
-                            <th>{{trans('country.is_active')}}</th>
-                            <th>{{trans('country.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

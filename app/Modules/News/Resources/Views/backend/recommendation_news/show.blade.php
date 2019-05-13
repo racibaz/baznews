@@ -40,7 +40,7 @@
                                 <td>{!! link_to_route('user.show', $record->user->name, $record, [] ) !!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::recommendation_news.order')}}:</th>
+                                <th>{{trans('common.order')}}:</th>
                                 <td>{{$record->order}}</td>
                             </tr>
                             <tr>
@@ -48,7 +48,7 @@
                                 <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::recommendation_news.is_active')}}:</th>
+                                <th>{{trans('common.is_active')}}:</th>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             </tbody>

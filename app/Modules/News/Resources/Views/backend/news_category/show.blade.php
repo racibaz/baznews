@@ -44,7 +44,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news_category.slug')}}:</th>
+                                <th>{{trans('common.slug')}}:</th>
                                 <td>{{$record->slug}}</td>
                             </tr>
                             <tr>
@@ -52,7 +52,7 @@
                                 <td>{{$record->description}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('news::news_category.keywords')}}:</th>
+                                <th>{{trans('common.keywords')}}:</th>
                                 <td>{{$record->keywords}}</td>
                             </tr>
                             </tbody>
@@ -64,7 +64,7 @@
         <div class="col-md-4">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('news::news_category.status')}}</h3>
+                    <h3 class="box-title">{{trans('common.status')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>

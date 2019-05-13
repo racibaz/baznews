@@ -38,8 +38,8 @@
                             <th>#</th>
                             <th>{{trans('news::news_source.name')}}</th>
                             <th>{{trans('news::news_source.url')}}</th>
-                            <th>{{trans('news::news_source.is_active')}}</th>
-                            <th>{{trans('news::news_source.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

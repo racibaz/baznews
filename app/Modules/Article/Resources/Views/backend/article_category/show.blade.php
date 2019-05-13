@@ -37,7 +37,7 @@
                                 <td>{{$record->name}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article_category.slug')}}:</th>
+                                <th>{{trans('common.slug')}}:</th>
                                 <td>{{$record->slug}}</td>
                             </tr>
                             <tr>
@@ -57,7 +57,7 @@
                                 <td>{{$record->description}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article_category.keywords')}}:</th>
+                                <th>{{trans('common.keywords')}}:</th>
                                 <td>{{$record->keywords}}</td>
                             </tr>
                             <tr>
@@ -69,7 +69,7 @@
                                 <td>{!!$record->is_cuff ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('article::article_category.is_active')}}:</th>
+                                <th>{{trans('common.is_active')}}:</th>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             </tbody>

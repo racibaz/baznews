@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('rss.management')}}
-            <small>{{trans('rss.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('announcement.index') !!}"> {{trans('rss.management')}}</a></li>
-            <li>{{trans('rss.create_edit')}}</li>
+            <li>{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -24,7 +24,7 @@
         <div class="col-md-6">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('rss.create_edit')}}</h3>
+                    <h3 class="box-title">{{trans('common.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -55,10 +55,10 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            {!! Form::label('order', trans('rss.order'),['class'=> 'col-lg-2 control-label']) !!}
+                            {!! Form::label('order', trans('common.order'),['class'=> 'col-lg-2 control-label']) !!}
 
                             <div class="col-lg-10">
-                                {!! Form::number('order', $record->order, ['placeholder' => trans('rss.order') ,'class' => 'form-control']) !!}
+                                {!! Form::number('order', $record->order, ['placeholder' => trans('common.order') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

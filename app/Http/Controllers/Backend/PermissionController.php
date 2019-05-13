@@ -23,7 +23,7 @@ class PermissionController extends BackendController
 
     public function index()
     {
-        $records = $this->repo->paginate();
+        $records = $this->repo->findAll();
         return view($this->getViewName(__FUNCTION__), compact('records'));
     }
 

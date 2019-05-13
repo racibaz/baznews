@@ -32,11 +32,11 @@
                         <table class="table table-bordered table-hover">
                             <tbody>
                             <tr>
-                                <th width="20%">{{trans('biography::biography.title')}}</th>
+                                <th width="20%">{{trans('common.title')}}</th>
                                 <td>{{$record->title}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('biography::biography.spot')}}</th>
+                                <th>{{trans('common.spot')}}</th>
                                 <td>{{$record->spot}}</td>
                             </tr>
                             <tr>
@@ -44,7 +44,7 @@
                                 <td>{{$record->name}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('biography::biography.slug')}}</th>
+                                <th>{{trans('common.slug')}}</th>
                                 <td>{{$record->slug}}</td>
                             </tr>
                             <tr>
@@ -52,7 +52,7 @@
                                 <td>{{$record->short_url}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('biography::biography.content')}}</th>
+                                <th>{{trans('common.content')}}</th>
                                 <td>{{$record->content}}</td>
                             </tr>
                             <tr>
@@ -67,15 +67,15 @@
                                 <td>{{$record->description}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('biography::biography.keywords')}}</th>
+                                <th>{{trans('common.keywords')}}</th>
                                 <td>{{$record->keywords}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('biography::biography.order')}}</th>
+                                <th>{{trans('common.order')}}</th>
                                 <td>{{$record->order}}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('biography::biography.status')}}</th>
+                                <th>{{trans('common.status')}}</th>
                                 <td>{!!$record->status ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
@@ -83,7 +83,7 @@
                                 <td>{!!$record->cuff ? '<label class="badge badge-green">' . trans('common.active') . '</label>' : '<label class="badge badge-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             <tr>
-                                <th>{{trans('biography::biography.is_active')}}</th>
+                                <th>{{trans('common.is_active')}}</th>
                                 <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                             </tr>
                             </tbody>

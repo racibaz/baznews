@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('news::video.management')}}
-            <small>{{trans('news::video.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('video.index') !!}">{{trans('news::video.management')}}</a></li>
-            <li class="active">{{trans('news::video.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -22,7 +22,7 @@
         <div class="col-lg-8" id="content">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{trans('news::video.create_edit')}}</h3>
+                    <h3 class="box-title">{{trans('common.create_edit')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -47,11 +47,11 @@
                         {!! Form::text('name', $record->name, ['placeholder' => trans('news::video.name') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('slug', trans('news::video.slug'),['class'=> 'control-label']) !!}
-                        {!! Form::text('slug', $record->url, ['placeholder' => trans('news::video.slug') ,'class' => 'form-control']) !!}
+                        {!! Form::label('slug', trans('common.slug'),['class'=> 'control-label']) !!}
+                        {!! Form::text('slug', $record->url, ['placeholder' => trans('common.slug') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('thumbnail', trans('news::video.thumbnail'),['class'=> 'control-label','style'=>'width:100%;']) !!}
+                        {!! Form::label('thumbnail', trans('common.thumbnail'),['class'=> 'control-label','style'=>'width:100%;']) !!}
 
                         <div class="fileinput fileinput-new" data-provides="fileinput">
                             <div class="fileinput-preview thumbnail" data-trigger="fileinput"
@@ -79,16 +79,16 @@
                         {!! Form::textarea('embed', $record->embed, ['placeholder' => trans('news::video.embed') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('content', trans('news::video.content'),['class'=> 'control-label']) !!}
-                        {!! Form::textarea('content', $record->content, ['placeholder' => trans('news::video.content') ,'class' => 'form-control']) !!}
+                        {!! Form::label('content', trans('common.content'),['class'=> 'control-label']) !!}
+                        {!! Form::textarea('content', $record->content, ['placeholder' => trans('common.content') ,'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('keywords', trans('news::video.keywords'),['class'=> 'control-label','style'=>'width:100%']) !!}
-                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('news::video.keywords') ,'class' => 'form-control tagsinput']) !!}
+                        {!! Form::label('keywords', trans('common.keywords'),['class'=> 'control-label','style'=>'width:100%']) !!}
+                        {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('common.keywords') ,'class' => 'form-control tagsinput']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('order', trans('news::video.order'),['class'=> 'control-label']) !!}
-                        {!! Form::number('order', $record->order, ['placeholder' => trans('news::video.order') ,'class' => 'form-control']) !!}
+                        {!! Form::label('order', trans('common.order'),['class'=> 'control-label']) !!}
+                        {!! Form::number('order', $record->order, ['placeholder' => trans('common.order') ,'class' => 'form-control']) !!}
                     </div>
 
                 </div><!-- /.box-body -->
@@ -97,7 +97,7 @@
         <div class="col-lg-4" id="sidebar">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{ trans('news::video.status') }}</h3>
+                    <h3 class="box-title">{{ trans('common.status') }}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -116,7 +116,7 @@
                     <div class="form-group">
                         <label>
                             {!! Form::checkbox('is_active', null , $record->is_active) !!}
-                            {{trans('news::video.is_active')}}
+                            {{trans('common.is_active')}}
                         </label>
                     </div>
                 </div><!-- /.box-body -->

@@ -16,13 +16,21 @@ class BookPublisherController extends Controller
     public function show($slug)
     {
         return Cache::tags(['BookPublisherController', 'Book', 'bookPublisher'])->rememberForever(request()->fullUrl(), function () use ($slug) {
-            $slug = removeHtmlTagsOfField($slug);
-            $bookPublisher = $this->repo
-                ->with(['books'])
-                ->where('is_active', 1)
-                ->findBy('slug', $slug);
 
-            $records = $bookPublisher->books()->paginate();
+            try
+            {
+
+                $slug = removeHtmlTagsOfField($slug);
+                $bookPublisher = $this->repo
+                    ->with(['books'])
+                    ->where('is_active', 1)
+                    ->findBy('slug', $slug);
+
+                $records = $bookPublisher->books()->paginate();
+
+            }catch(\Exception $e){
+                abort(404);
+            }
 
             return view('book::frontend.book_publisher.show', compact([
                 'bookPublisher',

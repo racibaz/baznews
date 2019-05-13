@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('news::news.management')}}
-            <small>{{trans('news::news.news_create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('news.index') !!}">{{trans('news::news.management')}}</a></li>
-            <li class="active">{{trans('news::news.news_create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -42,7 +42,7 @@
         <div class="col-lg-8" id="content-area">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-file-text"></i> {{trans('news::news.content')}}</h3>
+                    <h3 class="box-title"><i class="fa fa-file-text"></i> {{trans('common.content')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -56,8 +56,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                {!! Form::label('title', trans('news::news.title'),['class'=> 'control-label']) !!}
-                                {!! Form::text('title', $record->title, ['placeholder' => trans('news::news.title') ,'class' => 'form-control']) !!}
+                                {!! Form::label('title', trans('common.title'),['class'=> 'control-label']) !!}
+                                {!! Form::text('title', $record->title, ['placeholder' => trans('common.title') ,'class' => 'form-control']) !!}
                             </div>
                         </div><!-- /.col-lg-12 -->
                         <div class="col-lg-12">
@@ -70,8 +70,8 @@
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                {!! Form::label('spot', trans('news::news.spot'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('spot', $record->spot, ['placeholder' => trans('news::news.spot') ,'class' => 'form-control']) !!}
+                                {!! Form::label('spot', trans('common.spot'),['class'=> 'control-label']) !!}
+                                {!! Form::textarea('spot', $record->spot, ['placeholder' => trans('common.spot') ,'class' => 'form-control']) !!}
                             </div>
                         </div>
 
@@ -93,18 +93,23 @@
                         <div class="col-lg-12">
 
                             <div class="form-group">
-                                {!! Form::label('content', trans('news::news.content'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('content', $record->content, ['placeholder' => trans('news::news.content') ,'class' => 'form-control summernote ']) !!}
+                                {!! Form::label('content', trans('common.content'),['class'=> 'control-label']) !!}
+                                {!! Form::textarea('content', $record->content, ['placeholder' => trans('common.content') ,'class' => 'form-control summernote ']) !!}
                             </div>
 
                             <div class="form-group">
-                                {!! Form::label('description', trans('news::news.description'),['class'=> 'control-label']) !!}
-                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('news::news.description') ,'class' => 'form-control']) !!}
+                                {!! Form::label('description', trans('common.description'),['class'=> 'control-label']) !!}
+                                {!! Form::textarea('description', $record->description, ['placeholder' => trans('common.description') ,'class' => 'form-control']) !!}
                             </div>
 
                             <div class="form-group">
                                 {!! Form::label('meta_tags', trans('news::news.meta_tags'),['class'=> 'control-label']) !!}
                                 {!! Form::textarea('meta_tags', $record->meta_tags, ['placeholder' => trans('news::news.meta_tags') ,'class' => 'form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('source_link', trans('news::news.source_link'),['class'=> ' control-label']) !!}
+                                {!! Form::text('source_link', $record->source_link, ['placeholder' => trans('news::news.source_link') ,'class' => 'form-control']) !!}
                             </div>
 
                             <div class="form-group">
@@ -157,7 +162,7 @@
             <!-- /.box -->
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-edit"></i> {{trans('news::news.status')}}</h3>
+                    <h3 class="box-title"><i class="fa fa-edit"></i> {{trans('common.status')}}</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                     class="fa fa-minus"></i></button>
@@ -176,7 +181,7 @@
                                 {!! Form::select('news_category_ids[]', $newsCategoryList , $newsCategoryIDs , ['class' => 'form-control select2','multiple' => 'multiple']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('status', trans('news::news.status'),['class'=> ' control-label']) !!}
+                                {!! Form::label('status', trans('common.status'),['class'=> ' control-label']) !!}
                                 {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('news::news.please_choose'),'class' => 'form-control']) !!}
                             </div>
                         </div><!-- /.col-lg-12 -->
@@ -193,7 +198,7 @@
             </div>
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-edit"></i> {{trans('news::news.keywords')}}</h3>
+                    <h3 class="box-title"><i class="fa fa-edit"></i> {{trans('common.keywords')}}</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -207,8 +212,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                {!! Form::label('keywords', trans('news::news.keywords'),['class'=> 'control-label','style'=>'width:100%']) !!}
-                                {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('news::news.keywords') ,'class' => 'form-control tagsinput']) !!}
+                                {!! Form::label('keywords', trans('common.keywords'),['class'=> 'control-label','style'=>'width:100%']) !!}
+                                {!! Form::text('keywords', $record->keywords, ['placeholder' => trans('common.keywords') ,'class' => 'form-control tagsinput']) !!}
                             </div>
                         </div><!-- /.col-lg-12 -->
                     </div>
@@ -287,25 +292,25 @@
                             </div>
                             <div class="form-group">
                                 <label>
-                                    {!! Form::checkbox('is_show_editor_profile', null , isset($record->id) ? $record->is_show_editor_profile_in_news :  Redis::get('is_show_editor_profile_in_news')) !!}
+                                    {!! Form::checkbox('is_show_editor_profile', null , isset($record->id) ? $record->is_show_editor_profile_in_news :  Cache::tags('Setting')->get('is_show_editor_profile_in_news')) !!}
                                     {{trans('news::news.is_show_editor_profile')}}
                                 </label>
                             </div>
                             <div class="form-group">
                                 <label>
-                                    {!! Form::checkbox('is_show_previous_and_next_news', null ,  isset($record->id) ? $record->is_show_previous_and_next_news  : Redis::get('is_show_previous_and_next_news') ) !!}
+                                    {!! Form::checkbox('is_show_previous_and_next_news', null ,  isset($record->id) ? $record->is_show_previous_and_next_news  : Cache::tags('Setting')->get('is_show_previous_and_next_news') ) !!}
                                     {{trans('news::news.is_show_previous_and_next_news')}}
                                 </label>
                             </div>
                             <div class="form-group">
                                 <label>
-                                    {!! Form::checkbox('find_tags_in_content', null , isset($record->id) ? $record->find_tags_in_content : Redis::get('find_tags_in_content') ) !!}
+                                    {!! Form::checkbox('find_tags_in_content', null , isset($record->id) ? $record->find_tags_in_content : Cache::tags('Setting')->get('find_tags_in_content') ) !!}
                                     {{trans('news::news.find_tags_in_content')}}
                                 </label>
                             </div>
                             <div class="form-group">
                                 <label>
-                                    {!! Form::checkbox('automatic_add_tags', null , isset($record->id) ? 0 :  Redis::get('automatic_add_tags') ) !!}
+                                    {!! Form::checkbox('automatic_add_tags', null , isset($record->id) ? 0 :  Cache::tags('Setting')->get('automatic_add_tags') ) !!}
                                     {{trans('news::news.automatic_add_tags')}}
                                 </label>
                             </div>
@@ -363,7 +368,7 @@
                         </div><!-- /.col-lg-12 -->
                         <div class="col-lg-6">
                             <div class="form-group">
-                                {!! Form::label('thumbnail', trans('news::news.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
+                                {!! Form::label('thumbnail', trans('common.thumbnail'),['class'=> 'control-label','style'=>'width:100%']) !!}
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput"
                                          style="width: 200px; height: 150px;">

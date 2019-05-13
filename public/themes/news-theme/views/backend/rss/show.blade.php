@@ -39,12 +39,12 @@
                             <td>{{$record->url}}</td>
                         </tr>
                         <tr>
-                            <th>{{trans('rss.order')}}:</th>
+                            <th>{{trans('common.order')}}:</th>
                             <td>{{$record->order}}</td>
                         </tr>
                         <tr>
-                            <th>{{trans('rss.is_active')}}:</th>
-                            <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('rss.active').'</span>' : '<span class="badge bg-gray">'.trans('rss.passive').'</span>' !!}</td>
+                            <th>{{trans('common.is_active')}}:</th>
+                            <td>{!! $record->is_active ? '<span class="badge bg-green">'.trans('common.active').'</span>' : '<span class="badge bg-gray">'.trans('common.passive').'</span>' !!}</td>
                         </tr>
                         </tbody>
                     </table>

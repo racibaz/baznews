@@ -37,8 +37,8 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('role.name')}}</th>
-                            <th>{{trans('role.is_active')}}</th>
-                            <th>{{trans('role.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

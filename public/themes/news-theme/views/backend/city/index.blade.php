@@ -38,8 +38,8 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('city.name')}}</th>
-                            <th>{{trans('city.is_active')}}</th>
-                            <th>{{trans('city.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

@@ -38,12 +38,15 @@ class BaznewsInstall extends Command
      */
     public function handle()
     {
-        \Artisan::call('migrate');
-        \Artisan::call('db:seed');
-        \Artisan::call('module:migrate');
-        \Artisan::call('module:seed');
-        \Artisan::call('migrate', ['--path' => 'vendor/venturecraft/revisionable/src/migrations']);
-        \Artisan::call('passport:install');
+        \Artisan::call('migrate',['--force' => true]);
+        \Artisan::call('db:seed',['--force' => true]);
+        \Artisan::call('module:migrate',['--force' => true]);
+        \Artisan::call('module:seed',['--force' => true]);
+        \Artisan::call('migrate', [
+            '--path' => 'vendor/venturecraft/revisionable/src/migrations',
+            '--force' => true
+        ]);
+        \Artisan::call('passport:install',['--force' => true]);
         \Cache::flush();
 
         return true;

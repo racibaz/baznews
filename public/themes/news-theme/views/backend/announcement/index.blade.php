@@ -29,9 +29,9 @@
                 <table id="announce" class="table table-bordered table-hover table-data">
                     <thead>
                     <tr>
-                        <th>{!! trans('announcement.title') !!}</th>
-                        <th>{!! trans('announcement.is_active') !!}</th>
-                        <th>{!! trans('announcement.edit_delete') !!}</th>
+                        <th>{!! trans('common.title') !!}</th>
+                        <th>{!! trans('common.is_active') !!}</th>
+                        <th>{!! trans('common.edit_delete') !!}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -40,9 +40,9 @@
                             <td>{!! link_to_route('announcement.show', $record->title, $record, [] ) !!}</td>
                             <td>
                                 @if($record->is_active)
-                                    <span class="badge bg-green">{{trans('announcement.active')}}</span>
+                                    <span class="badge bg-green">{{trans('common.active')}}</span>
                                 @else
-                                    <span class="badge bg-gray">{{trans('announcement.passive')}}</span>
+                                    <span class="badge bg-gray">{{trans('common.passive')}}</span>
                                 @endif
                             </td>
                             <td>

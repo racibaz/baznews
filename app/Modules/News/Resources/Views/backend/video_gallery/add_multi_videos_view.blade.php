@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('news::video_gallery.management')}}
-            <small>{{trans('news::video_gallery.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('video_gallery.index') !!}">{{trans('news::video_gallery.management')}}</a></li>
-            <li class="active">{{trans('news::video_gallery.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -105,10 +105,10 @@
                                     {!! Form::text('subtitle/'. $video->id, $video->subtitle, ['placeholder' => trans('news::video.subtitle') ,'class' => 'form-control']) !!}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::textarea('content/'. $video->id, $video->content, ['placeholder' => trans('news::video.content') ,'class' => 'form-control']) !!}
+                                    {!! Form::textarea('content/'. $video->id, $video->content, ['placeholder' => trans('common.content') ,'class' => 'form-control']) !!}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::number('order/'. $video->id, $video->order, ['placeholder' => trans('news::video.order') ,'class' => 'form-control']) !!}
+                                    {!! Form::number('order/'. $video->id, $video->order, ['placeholder' => trans('common.order') ,'class' => 'form-control']) !!}
                                 </div>
                                 <div class="form-group">
                                     {!! Form::text('link/'. $video->id, $video->link, ['placeholder' => trans('news::video.link') ,'class' => 'form-control']) !!}

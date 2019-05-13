@@ -3,14 +3,14 @@
     <section class="content-header">
         <h1>
             {{trans('news::recommendation_news.management')}}
-            <small>{{trans('news::recommendation_news.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li>
                 <a href="{!! URL::route('recommendation_news.index') !!}">{{trans('news::recommendation_news.management')}}</a>
             </li>
-            <li class="active">{{trans('news::recommendation_news.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -36,10 +36,10 @@
                             <th>#</th>
                             <th>{{trans('news::recommendation_news.news_id')}}</th>
                             <th>{{trans('news::recommendation_news.user_id')}}</th>
-                            <th>{{trans('news::recommendation_news.order')}}</th>
+                            <th>{{trans('common.order')}}</th>
                             <th>{{trans('news::recommendation_news.is_cuff')}}</th>
-                            <th>{{trans('news::recommendation_news.is_active')}}</th>
-                            <th>{{trans('news::recommendation_news.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

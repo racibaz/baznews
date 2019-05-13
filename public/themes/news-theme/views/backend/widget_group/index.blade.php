@@ -33,8 +33,8 @@
                         <tr>
                             <th>#</th>
                             <th>{{trans('widget_group.name')}}</th>
-                            <th>{{trans('widget_group.is_active')}}</th>
-                            <th>{{trans('widget_group.edit_create')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

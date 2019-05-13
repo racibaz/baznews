@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('permission.management')}}
-            <small>{{trans('permission.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('permission.index') !!}">{{trans('permission.management')}}</a></li>
-            <li class="active">{{trans('permission.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -26,7 +26,7 @@
             <!-- general form elements disabled -->
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{trans('permission.create_edit')}}</strong></h3>
+                    <h3 class="box-title"><strong>{{trans('common.create_edit')}}</strong></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -39,7 +39,7 @@
                         {!! Form::text('display_name', null, ['class' => 'form-control','required']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('description', trans('permission.description')) !!}
+                        {!! Form::label('description', trans('common.description')) !!}
                         {!! Form::textarea('description', null, ['class' => 'form-control','required']) !!}
                     </div>
                     <div class="form-group">

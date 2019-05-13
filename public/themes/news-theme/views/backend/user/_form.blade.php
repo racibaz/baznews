@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('user.user_management')}}
-            <small>{{trans('user.user_edit_create')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('user.index') !!}"> {{ trans('user.users') }} </a></li>
-            <li class="active">{{trans('user.user_edit_create')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 
@@ -75,8 +75,8 @@
                                 {!! Form::select('city_id', $cities , $record->city_id , ['placeholder' => trans('common.please_choose'),'class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('slug', trans('user.slug'), ['class'=> 'control-label']) !!}
-                                {!! Form::text('slug', $record->slug,['placeholder' => trans('user.slug'), 'class' => 'form-control']) !!}
+                                {!! Form::label('slug', trans('common.slug'), ['class'=> 'control-label']) !!}
+                                {!! Form::text('slug', $record->slug,['placeholder' => trans('common.slug'), 'class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('cell_phone', trans('user.cell_phone'), ['class'=> 'control-label']) !!}
@@ -192,7 +192,7 @@
                         </label>
                     </div><!-- /.form-group -->
                     <div class="form-group">
-                        {!! Form::label('status', trans('news::news.status'),['class'=> 'control-label']) !!}
+                        {!! Form::label('status', trans('common.status'),['class'=> 'control-label']) !!}
                         {!! Form::select('status', $statusList , $record->status , ['placeholder' => trans('user.please_choose'),'class' => 'form-control']) !!}
                     </div>
                 </div>

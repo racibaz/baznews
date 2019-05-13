@@ -1,14 +1,14 @@
-@extends($themeAssetsPath . 'backend.master')
+@extends($activeTheme . '::backend.master')
 @section('content-header')
     <section class="content-header">
         <h1>
             {{trans('announcement.management')}}
-            <small>{{trans('announcement.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('announcement.index') !!}"> {{trans('announcement.management')}}</a></li>
-            <li>{{trans('announcement.create_edit')}}</li>
+            <li>{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -26,23 +26,23 @@
             <!-- general form elements disabled -->
             <div class="box box-warning">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-bullhorn"></i> {{trans('announcement.create_edit')}}</h3>
+                    <h3 class="box-title"><i class="fa fa-bullhorn"></i> {{trans('common.create_edit')}}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                 {{--<form announcement="form">--}}
                 <!-- text input -->
                     <div class="form-group">
-                        {!! Form::label('title', trans('announcement.title')) !!}
-                        {!! Form::text('title', $record->title, ['placeholder' => trans('announcement.title'),'class' => 'form-control']) !!}
+                        {!! Form::label('title', trans('common.title')) !!}
+                        {!! Form::text('title', $record->title, ['placeholder' => trans('common.title'),'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('description', trans('announcement.description')) !!}
-                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('announcement.description'),'class' => 'form-control']) !!}
+                        {!! Form::label('description', trans('common.description')) !!}
+                        {!! Form::textarea('description', $record->description, ['placeholder' => trans('common.description'),'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('order', trans('announcement.order')) !!}
-                        {!! Form::number('order', $record->order, ['placeholder' => trans('announcement.order'),'class' => 'form-control']) !!}
+                        {!! Form::label('order', trans('common.order')) !!}
+                        {!! Form::number('order', $record->order, ['placeholder' => trans('common.order'),'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('show_time', trans('announcement.show_time')) !!}

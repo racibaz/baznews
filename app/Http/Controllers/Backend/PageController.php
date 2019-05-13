@@ -74,8 +74,29 @@ class PageController extends BackendController
     public function save($record)
     {
         $input = Input::all();
+
         $input['is_active'] = Input::get('is_active') == "on" ? true : false;
         $input['is_comment'] = Input::get('is_comment') == "on" ? true : false;
+
+        // ckeditor isim benzerliğinden dolayı
+        $input['content'] = $input['content_area'];
+
+        /*
+            slug alanı unique olduğu için kontrol ediyoruz. Request class ında "required" kontrolü yapmamamızın
+            sebebi ise kullanıcı manuel olarak slug girmeye zorunlu olmaması için.
+        */
+        if(empty(Input::get('slug'))){
+
+            $input['slug'] = str_slug(Input::get('name'));
+            $isAvailable = $this->repo->where('slug',$input['slug'])->findFirst();
+
+            if(!empty($isAvailable)){
+
+                return Redirect::back()
+                    ->withErrors(trans('common.record_is_available'))
+                    ->withInput($input);
+            }
+        }
 
 
         if (isset($record->id)) {

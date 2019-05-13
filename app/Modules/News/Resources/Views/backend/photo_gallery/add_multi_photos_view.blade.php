@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('news::photo_gallery.management')}}
-            <small>{{trans('news::photo_category.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('photo_gallery.index') !!}">{{trans('news::photo_gallery.management')}}</a></li>
-            <li class="active">{{trans('news::photo_gallery.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -66,8 +66,8 @@
                             <thead>
                             <tr>
                                 <th>{{trans('news::photo_gallery.file')}}</th>
-                                <th>{{trans('news::photo_gallery.title')}}</th>
-                                <th>{{trans('news::photo_gallery.content')}}</th>
+                                <th>{{trans('common.title')}}</th>
+                                <th>{{trans('common.content')}}</th>
                                 <th>{{trans('news::photo_gallery.delete')}}</th>
                                 <th>{{trans('news::photo_gallery.cuff')}}</th>
                             </tr>
@@ -83,8 +83,8 @@
                                                  height="73">
                                         </a>
                                     </td>
-                                    <td>{!! Form::text('subtitle/'. $photo->id, $photo->subtitle, ['placeholder' => trans('news::photo_gallery.title') ,'class' => 'form-control']) !!}</td>
-                                    <td>{!! Form::textarea('content/'. $photo->id, $photo->content, ['placeholder' => trans('news::photo_gallery.content') ,'class' => 'form-control','rows'=>'2']) !!}</td>
+                                    <td>{!! Form::text('subtitle/'. $photo->id, $photo->subtitle, ['placeholder' => trans('common.title') ,'class' => 'form-control']) !!}</td>
+                                    <td>{!! Form::textarea('content/'. $photo->id, $photo->content, ['placeholder' => trans('common.content') ,'class' => 'form-control','rows'=>'2']) !!}</td>
                                     <td>
                                         <label>
                                             {!! Form::checkbox('delete/' . $photo->id, null , null) !!}

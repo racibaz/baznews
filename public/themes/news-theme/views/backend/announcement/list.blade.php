@@ -22,8 +22,8 @@
                 <table id="announcement_list" class="table table-bordered table-hover table-data">
                     <thead>
                     <tr>
-                        <th>{!! trans('announcement.title') !!}</th>
-                        <th>{!! trans('announcement.description') !!}</th>
+                        <th>{!! trans('common.title') !!}</th>
+                        <th>{!! trans('common.description') !!}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -36,8 +36,8 @@
                     </tbody>
                     <tfoot>
                     <tr>
-                        <th>{!! trans('announcement.title') !!}</th>
-                        <th>{!! trans('announcement.description') !!}</th>
+                        <th>{!! trans('common.title') !!}</th>
+                        <th>{!! trans('common.description') !!}</th>
                     </tr>
                     </tfoot>
                 </table>

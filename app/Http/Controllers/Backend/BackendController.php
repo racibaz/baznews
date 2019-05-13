@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\AdvertisementRepository;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -25,15 +26,7 @@ class BackendController extends Controller
         $this->middleware(function ($request, $next) {
             $this->checkPermission();
 
-            Cache::tags(['Setting', 'Advertisement'])->rememberForever('advertisements', function () {
-
-                $advertisementRepository = new AdvertisementRepository();
-                $advertisements = $advertisementRepository->where('is_active', 1)->findAll();
-
-                foreach ($advertisements as $advertisement) {
-                    Cache::tags(['Setting', 'Advertisement'])->forever($advertisement->name, $advertisement->code);
-                }
-            });
+            $this->setAdvertisement();
 
             return $next($request);
         });
@@ -42,9 +35,23 @@ class BackendController extends Controller
 
     /**
      *
-     * Check user permission with controller name and method name
-     *
+     */
+    private function setAdvertisement()
+    {
+        Cache::tags(['Setting', 'Advertisement'])->rememberForever('advertisements', function () {
+
+            $advertisements = app(AdvertisementRepository::class)->where('is_active', 1)->findAll();
+
+            foreach ($advertisements as $advertisement) {
+                Cache::tags(['Setting', 'Advertisement'])->forever($advertisement->name, $advertisement->code);
+            }
+        });
+    }
+
+
+    /**
      * @return bool
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function checkPermission()
     {
@@ -59,8 +66,9 @@ class BackendController extends Controller
         $classModelName = strtolower(substr($controllerName, 0, -10));
         if (!Auth::user()->can($methodName . '-' . $classModelName)) {
             Log::warning('Yetkisiz Alana Girmeye Çalışıldı. ' . 'Kişi : ' . Auth::user()->name . '  IP :' . Auth::user()->getUserIp());
-            abort(403, 'Unauthorized action.');
+            throw new AuthorizationException('Unauthorized action.');
         }
+
         return true;
     }
 
@@ -95,7 +103,6 @@ class BackendController extends Controller
         return redirect()->back();
     }
 
-
     public function removeHomePageCache()
     {
         Cache::tags('homePage')->flush();
@@ -108,17 +115,8 @@ class BackendController extends Controller
         return redirect()->route('dashboard');
     }
 
-
-    //todo genel birşey yapılacak
-//    public function toggleBooleanType( $record, string $key)
-//    {
-//        if($record->$key){
-//            $record->$key =  0;
-//        }else
-//            $record->$key = 1;
-//
-//        $record->save();
-//
-//        return Redirect::back();
-//    }
+    public function flushAll()
+    {
+        Cache::flush();
+    }
 }

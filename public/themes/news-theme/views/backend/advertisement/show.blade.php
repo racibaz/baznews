@@ -39,11 +39,11 @@
                             <td>{!! $record->code !!}</td>
                         </tr>
                         <tr>
-                            <th>{{trans('advertisement.description')}}</th>
+                            <th>{{trans('common.description')}}</th>
                             <td>{{$record->description}}</td>
                         </tr>
                         <tr>
-                            <th>{{trans('advertisement.status')}}</th>
+                            <th>{{trans('common.status')}}</th>
                             <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                         </tr>
                         </tbody>

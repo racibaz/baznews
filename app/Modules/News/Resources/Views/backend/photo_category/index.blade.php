@@ -38,8 +38,8 @@
                             <th>{{trans('news::photo_category.name')}}</th>
                             <th>{{trans('news::photo_category.parent_id')}}</th>
                             <th>{{trans('news::photo_category.is_cuff')}}</th>
-                            <th>{{trans('news::photo_category.is_active')}}</th>
-                            <th>{{trans('news::photo_category.edit_delete')}}</th>
+                            <th>{{trans('common.is_active')}}</th>
+                            <th>{{trans('common.edit_delete')}}</th>
                         </tr>
                         </thead>
                         <tbody>

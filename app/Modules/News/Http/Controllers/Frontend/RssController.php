@@ -290,7 +290,7 @@ class RssController extends Controller
             $feed = App::make("feed");
 
             // creating rss feed with our most recent 20 posts
-            $newsItems = $this->repo->getBandNewsItems();
+            $newsItems = $this->repo->getLastNewsItems(20);
 
             // set your feed's title, description, link, pubdate and language
             $feed->title = Cache::tags(['Setting'])->get('title');

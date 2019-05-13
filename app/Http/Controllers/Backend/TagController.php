@@ -69,6 +69,7 @@ class TagController extends BackendController
     public function save($record)
     {
         $input = Input::all();
+        $input['slug'] = str_slug($input['slug']);
 
         if (isset($record->id)) {
             $result = $this->repo->update($record->id, $input);

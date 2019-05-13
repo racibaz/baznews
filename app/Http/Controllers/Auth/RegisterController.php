@@ -38,13 +38,22 @@ class RegisterController extends Controller
     protected $redirectTo = '/account';
 
     protected $repo;
+
     /**
      * RegisterController constructor.
      * Create a new controller instance.
      */
     public function __construct(Repo $repo)
     {
-        $this->middleware('guest');
+        if (Cache::tags('Setting')->get('user_registration_type') == Setting::NONE) {
+
+            return redirect()->to('login')->withErrors(trans('setting.user_registration_type.none'))->send();
+
+        } else {
+
+            $this->middleware('guest');
+        }
+
         $this->repo = $repo;
     }
 
@@ -52,6 +61,7 @@ class RegisterController extends Controller
      * Get a validator for an incoming registration request.
      *
      * @param  array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -59,28 +69,20 @@ class RegisterController extends Controller
         //kullanıcı sözleşmesi Setting  de zorunlu hale getirilmişse kullanıcı kayıt olmadan kontrol ediyoruz.
         $userCheckContractValidation = Cache::tags('Setting')->get('user_contract_force') == 1 ? 'required' : '';
 
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-            'user_contract' => $userCheckContractValidation,
-        ]);
+        return Validator::make($data, ['name' => 'required|max:255', 'email' => 'required|email|max:255|unique:users', 'password' => 'required|min:6|confirmed', 'user_contract' => $userCheckContractValidation]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array $data
+     *
      * @return User
      */
     protected function create(array $data)
     {
         // "status" kısmını User modelinde kontrol ediyoruz.
-        $user = $this->repo->create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $user = $this->repo->create(['name' => $data['name'], 'email' => $data['email'], 'password' => bcrypt($data['password']),]);
 
         //Setting de belirtilen default role atıyoruz.
         $defaultRole = Role::find(Cache::tags('Setting')->get('user_default_role'));
@@ -98,12 +100,12 @@ class RegisterController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  mixed $user
+     *
      * @return mixed
      */
     protected function registered(Request $request, $user)
     {
-        switch (Cache::tags('Setting')->get('user_registration_type'))
-        {
+        switch (Cache::tags('Setting')->get('user_registration_type')) {
             case Setting::PUBLIC:
                 return redirect('/login');
                 break;

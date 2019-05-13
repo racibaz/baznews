@@ -13,8 +13,6 @@ class CreateModulesTable extends Migration
      */
     public function up()
     {
-        //TODO seeder ı yazılacak şimdilik kullanılmıyor ama ileride ek özellikler katılarak kullanılabilnir.
-
         Schema::create('modules', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();

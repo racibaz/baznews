@@ -5,6 +5,7 @@ namespace App\Modules\News\Models;
 use App\Models\User;
 use App\Modules\News\Transformers\NewsTransformer;
 use App\Traits\Eventable;
+use App\Traits\TagRelationTrait;
 use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Laravel\Scout\Searchable;
@@ -16,9 +17,9 @@ class News extends Model
 {
     use Eventable;
     use SoftDeletes;
-    use Searchable;
     use RevisionableTrait;
     use Sluggable;
+    use TagRelationTrait;
 
     /**
      * Return the sluggable configuration array for this model.
@@ -40,24 +41,14 @@ class News extends Model
     }
 
 
-    /**
-     * Get the index name for the model.
-     *
-     * @return string
-     */
-    public function searchableAs()
-    {
-        return 'news';
-    }
-
     protected $table = 'news';
     public $transformer = NewsTransformer::class;
     public static $newsTypes = ['Standard', 'Private News', 'Internal News', 'Photo Gallery', 'Video', 'Video Gallery', 'Sound'];
     public static $statuses = ['Passive', 'Active', 'Draft', 'On Air', 'Preparing', 'Pending for Editor Approval', 'Garbage'];
-    //todo is_cuff kullanımına bakılmalı.
+
     protected $fillable = ['user_id', 'country_id', 'city_id', 'news_source_id',
         'title', 'small_title', 'slug', 'spot', 'short_url', 'content', 'description', 'keywords', 'meta_tags', 'cuff_photo', 'thumbnail', 'cuff_direct_link',
-        'video_embed', 'news_type', 'status', 'band_news', 'box_cuff', 'is_cuff', 'break_news', 'main_cuff', 'mini_cuff', 'map', 'is_comment',
+        'source_link', 'video_embed', 'news_type', 'status', 'band_news', 'box_cuff', 'is_cuff', 'break_news', 'main_cuff', 'mini_cuff', 'map', 'is_comment',
         'is_show_editor_profile', 'is_show_previous_and_next_news', 'is_ping', 'is_active'];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
@@ -124,12 +115,6 @@ class News extends Model
     public function recommendation_news()
     {
         return $this->hasOne(RecommendationNews::class);
-    }
-
-    //todo core model
-    public function tags()
-    {
-        return $this->morphToMany('App\Models\Tag', 'taggable');
     }
 
     public function scopeStatus($query, $flag)

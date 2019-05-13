@@ -22,8 +22,8 @@
                 <article class="article news-article">
                     <div id="new-content" class="module">
                         <div class="meta">
-                            <span class="timestamp"><strong>GİRİŞ :</strong> {{ $record->created_at->format('d.m.Y h:m') }}
-                                &nbsp;&nbsp;&nbsp;<strong>GÜNCELLEME:</strong> {{ $record->updated_at->format('d.m.Y h:m') }}</span>
+                            <span class="timestamp"><strong> {{trans('common.created_date')}} :</strong> {{ $record->created_at->format('d.m.Y H:m') }}
+                                &nbsp;&nbsp;&nbsp;<strong> {{trans('common.updated_date')}} :</strong> {{ $record->updated_at->format('d.m.Y H:m') }}</span>
                         </div><!-- /.meta -->
                         <h1 class="news-title">{{ $record->title }}</h1>
                         @if($record->news_type == 0 || $record->news_type == 1)
@@ -77,7 +77,7 @@
 
                         <div class="tags-box">
                             @foreach($record->tags as $tag)
-                                <a href="{!! route('tag_search',['q' => $tag->name]) !!}">{{$tag->name}}</a>
+                                <a href="#">{{$tag->name}}</a>
                             @endforeach
                         </div>
 
@@ -354,13 +354,13 @@
     <meta name="twitter:site" content="{{Cache::tags('Setting')->get('twitter_account')}}">
     <meta name="twitter:title" content="{{$record->title}}">
     <meta name="twitter:description" content="{{$record->description}}">
+    <meta name="twitter:image" content="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}" />
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $record->title }} "/>
-    <meta property="og:url" content="{{Cache::tags('Setting')->get('url')}}"/>
-    <meta property="og:site_name" content="{{Cache::tags('Setting')->get('title')}}"/>
+    <meta property="og:url" content="{{url()->current()}}"/>
     <meta property="og:description" content="{{$record->description}}"/>
-    <meta property="fb:app_id" content="671303379704288">
+    <meta property="fb:app_id" content="{{Cache::tags('Setting')->get('FACEBOOK_CLIENT_ID')}}">
     <meta property="og:image"
           content="{{asset('images/news_images/' . $record->id . '/thumbnail/' .$record->thumbnail)}}"/>
     <meta property="article:published_time" content="{{$record->created_at}}">

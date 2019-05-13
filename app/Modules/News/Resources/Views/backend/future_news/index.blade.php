@@ -3,12 +3,12 @@
     <section class="content-header">
         <h1>
             {{trans('news::future_news.management')}}
-            <small>{{trans('news::future_news.create_edit')}}</small>
+            <small>{{trans('common.create_edit')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{!! URL::route('dashboard') !!}"><i class="fa fa-home"></i></a></li>
             <li><a href="{!! URL::route('future_news.index') !!}">{{trans('news::future_news.management')}}</a></li>
-            <li class="active">{{trans('news::future_news.create_edit')}}</li>
+            <li class="active">{{trans('common.create_edit')}}</li>
         </ol>
     </section>
 @endsection
@@ -39,10 +39,10 @@
                             <tr>
                                 <th>#</th>
                                 <th>{{trans('news::future_news.news_title')}}</th>
-                                <th>{{trans('news::future_news.status')}}</th>
+                                <th>{{trans('common.status')}}</th>
                                 <th>{{trans('news::future_news.future_datetime')}}</th>
-                                <th>{{trans('news::future_news.is_active')}}</th>
-                                <th>{{trans('news::future_news.edit_create')}}</th>
+                                <th>{{trans('common.is_active')}}</th>
+                                <th>{{trans('common.edit_delete')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -52,7 +52,7 @@
                                     <td>{!! link_to_route('future_news.show', $record->news->title , $record, [] ) !!}</td>
                                     <td>{!! $record->news->status ? '<span class="badge bg-green">'.trans('news::future_news.news_live').'</span>':'<span class="badge bg-brown">'.trans('news::future_news.news_not_live').'</span>' !!} </td>
                                     <td>{{$record->future_datetime}} </td>
-                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('news::future_news.active') . '</label>' : '<label class="badge bg-brown">' . trans('news::future_news.passive') . '</label>'!!}</td>
+                                    <td>{!!$record->is_active ? '<label class="badge bg-green">' . trans('common.active') . '</label>' : '<label class="badge bg-brown">' . trans('common.passive') . '</label>'!!}</td>
                                     <td>
                                         <div class="btn-group">
                                             @if($record->is_active)

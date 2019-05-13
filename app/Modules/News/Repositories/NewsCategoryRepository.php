@@ -19,9 +19,18 @@ class NewsCategoryRepository extends EloquentRepository
 
     public function getAllNewsCategoriesWithNews()
     {
-        return $this->with(['news'])
-            ->where('is_cuff', 1)
-            ->where('is_active', 1)
-            ->findAll();
+        return $this->with(['news' => function($query){
+
+            $query->orderBy('updated_at', 'desc');
+
+        }])->where('is_cuff', 1)
+                        ->where('is_active', 1)
+                        ->findAll();
+    }
+
+    public function getNames()
+    {
+        return $this->where('is_active', 1)
+                    ->findAll();
     }
 }

@@ -25,7 +25,4 @@ return [
     'create' => 'Etiket Oluştur',
     'tag_list' => 'Etiket Listesi',
     'name' => 'Etiket Adı',
-    'slug' => 'Slug',
-    'is_active' => 'Aktif/Pasif',
-
 ];

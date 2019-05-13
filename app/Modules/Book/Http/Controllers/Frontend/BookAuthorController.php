@@ -16,20 +16,30 @@ class BookAuthorController extends Controller
     public function show($slug)
     {
         $id = substr(strrchr($slug, '-'), 1);
-
         return Cache::tags(['BookAuthorController', 'Book', 'bookAuthor'])->rememberForever(request()->fullUrl(), function () use ($id) {
 
-            $bookAuthor = $this->repo
-                ->with(['books'])
-                ->where('is_active', 1)
-                ->findBy('id', $id);
+            try
+            {
+                $bookAuthor = $this->repo
+                    ->with(['books'])
+                    ->where('is_active', 1)
+                    ->findBy('id', $id);
 
-            $records = $bookAuthor->books()->paginate();
 
-            return view('book::frontend.book_author.show', compact([
-                'bookAuthor',
-                'records',
-            ]))->render();
+                if(empty($bookAuthor)){
+                    abort(404);
+                }
+
+                $records = $bookAuthor->books()->paginate();
+
+                return view('book::frontend.book_author.show', compact([
+                    'bookAuthor',
+                    'records',
+                ]))->render();
+
+            }catch(\Exception $e){
+                abort(404);
+            }
         });
     }
 }

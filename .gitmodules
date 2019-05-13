@@ -1,0 +1,6 @@
+[submodule "app/Modules/Newsbots"]
+	path = app/Modules/Newsbots
+	url = https://gitlab.com/recai/Newsbots.git
+[submodule "app/Modules/Gamebots"]
+	path = app/Modules/Gamebots
+	url = https://gitlab.com/recai/gamebots.git

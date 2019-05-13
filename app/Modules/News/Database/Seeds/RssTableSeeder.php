@@ -14,6 +14,13 @@ class RssTableSeeder extends Seeder
     public function run()
     {
         \App\Models\Rss::create([
+            'name' => 'Tüm Haberler',
+            'url' => 'rss/all_news',
+            'order' => 1,
+            'is_active' => 1
+        ]);
+
+        \App\Models\Rss::create([
             'name' => 'Manşetler Haberler',
             'url' => 'rss/box_cuff',
             'order' => 1,

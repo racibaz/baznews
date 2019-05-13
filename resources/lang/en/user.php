@@ -3,7 +3,6 @@
 return [
 
     'users' => 'kullanıcılar',
-    'slug' => 'Slug',
     'cell_phone' => 'Cep Telefonu',
     'sex' => 'Cinsiyet',
     'facebook' => 'Facebook',

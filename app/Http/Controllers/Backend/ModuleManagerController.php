@@ -73,8 +73,7 @@ class ModuleManagerController extends BackendController
     {
         $this->repo->delete($record->id);
 
-        $this->removeCacheTags(['routeList']);
-        $this->removeHomePageCache();
+        $this->flushAll();
 
         return redirect()->route($this->redirectRouteName . $this->view . 'index');
     }
@@ -101,8 +100,7 @@ class ModuleManagerController extends BackendController
 
             if ($status) {
 
-                $this->removeCacheTags(['routeList']);
-                $this->removeHomePageCache();
+                $this->flushAll();
 
                 Session::flash('flash_message', trans('common.message_model_updated'));
                 return Redirect::route($this->redirectRouteName . $this->view . 'index', $status);
@@ -133,8 +131,7 @@ class ModuleManagerController extends BackendController
             $this->toggleSearchListOfModule($moduleSlug, true);
         }
 
-        $this->removeCacheTags(['routeList']);
-        $this->removeHomePageCache();
+        $this->flushAll();
 
         return Redirect::back();
     }
@@ -148,19 +145,24 @@ class ModuleManagerController extends BackendController
         ]);
 
         $module = Module::where('slug', $moduleSlug)->toArray();
-        $this->widgetDeleteByModuleName($module['name']);
 
+        $this->widgetDeleteByModuleName($module['name']);
         $this->moduleActivationToggle($moduleSlug);
 
-        $this->removeCacheTags(['routeList']);
-        $this->removeHomePageCache();
-
+        $this->flushAll();
         return Redirect::back();
     }
 
 
     public function moduleRefreshAndSeed($moduleSlug)
     {
+
+        Artisan::call('module:migrate:reset', [
+            'slug' => $moduleSlug,
+            '--force' => true,
+        ]);
+
+
         Artisan::call('module:migrate', [
             'slug' => $moduleSlug,
             '--force' => true,
@@ -173,31 +175,30 @@ class ModuleManagerController extends BackendController
 
         $this->moduleActivationToggle($moduleSlug);
 
-        $this->removeCacheTags(['routeList']);
-        $this->removeHomePageCache();
+        $this->flushAll();
 
         return Redirect::back();
     }
-
 
 
     /**
      * Bu model de soft delete kullanıdğımız için forceDelete methodu ile tamammen siliyoruz.
      *
      * @param $moduleName
+     * @return bool
      */
     public function widgetDeleteByModuleName($moduleName)
     {
         $widgetManagerRepo = new WidgetManagerRepository();
         $widget = $widgetManagerRepo->findBy('module_name', $moduleName);
 
+        if (isset($widget)){
 
-        if (isset($widget))
             $widget->forceDelete();
+            return true;
+        }
 
-        $this->removeCacheTags(['Widget']);
-        $this->removeHomePageCache();
-
+        return false;
     }
 
 
